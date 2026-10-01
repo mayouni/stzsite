@@ -141,3 +141,31 @@ next:
   - author:  rule the three definitions, and say whether the Start page may stay silent on the runtime until Haro ships
   - me:      Release 1 in the order of the learnings doc: a render per area (the wall of outputs), the generated reference from the library's own explanations, the narrations as pages, the trajectory chart
 ```
+
+---
+
+```yaml
+by:        stzsite · claude-fable-5-1 · 2026-10-01 04:08
+
+subject:   Release 1, first move -- a render per area, 26 of 28, and the wall of outputs
+
+why:       the author said go ahead with Release 1 and start with the render per area; the Wolfram learning was that a platform is shown by its outputs
+
+did:
+  - wrote tools/areas.ring and ran it inside the library at 0e72e2e2c: seventeen pictures in ten seconds, each from the engine's canvas, diagram renderer or chart family
+  - carried eight of the library's own committed renders with the guard that drew them, and the Niger map re-rendered on 2026-09-30; GUI (not on the public branch) and binary formats (no code) carry a sentence instead of a picture
+  - wired the renders into data/atlas-index.json and the generator: a wall of outputs on the home and platform pages, the picture on every Atlas card, a hero figure with its making on every area page; whole pictures, never crops
+  - paid two Ring traps that the operating notes already name: a helper called Done closed every try block (done is a keyword) and oR is or; Segoe UI has no Devanagari, so the six-script picture shows Hausa in Ajami instead of Hindi
+  - rendered 83 proofs; pushed ebea494
+
+state:
+  release-1:        render per area DONE (26/28); next the generated reference, the narrations as pages, the trajectory chart
+  perception-gate:  OPEN
+
+waiting:
+  - STZSITE-VERDICT-01, STZSITE-DEFINITIONS-01, STZSITE-RUNTIME-01: unchanged -> the author
+
+next:
+  - me:      the generated reference from the library's own explanations, by area
+  - author:  look at the wall of outputs and say which pictures mislead; a picture that needs a caption to be understood is a picture to redraw
+```
