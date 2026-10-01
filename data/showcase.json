@@ -1,0 +1,703 @@
+{
+ "string": [
+  {
+   "code": "? Q(\"\").Contains(\"\")\n? Q(\"\").Contains(\"text\")\n? Q(\"text\").Contains(\"\")",
+   "expected": "FALSE\nFALSE\nFALSE",
+   "source": "base/doc/narrations/stzstring-emptiness-narration.md (Rule 3; the same rule is asserted in base/test/string/612_dealing_in_emptiness_in_softanza.ring)",
+   "what_en": "The empty string is never contained, not even in itself, so a match on nothing can never trigger an edit.",
+   "what_fr": "La chaîne vide n'est jamais contenue, pas même en elle-même : une correspondance sur rien ne peut déclencher aucune modification.",
+   "out": "0\n0\n0",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  },
+  {
+   "code": "Then(\"NumberOfChars('héllo') is 5 (not byte count)\", Q(\"héllo\").NumberOfChars(), 5)",
+   "expected": "5 (asserted by the guard)",
+   "source": "base/test/string/00_string_narrated.ring",
+   "what_en": "Length counts characters, not bytes: the accented word héllo has five characters although it takes six bytes.",
+   "what_fr": "La longueur compte des caractères, pas des octets : le mot accentué héllo a cinq caractères alors qu'il occupe six octets.",
+   "out": "  THEN  NumberOfChars('héllo') is 5 (not byte count)  [PASS]",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  },
+  {
+   "code": "? AreEqual([\"O\", \"Ο\", \"О\"])\n? Unicodes([\"O\", \"Ο\", \"О\"])\n? Scripts([\"O\", \"Ο\", \"О\"])",
+   "expected": "FALSE\n[ 79, 927, 1054 ]\n[ \"latin\", \"greek\", \"cyrillic\" ]",
+   "source": "base/doc/narrations/stz-unmasking-unicode-lookalities-narration.md",
+   "what_en": "Three letters that look identical are told apart by their code points and their scripts: Latin, Greek and Cyrillic.",
+   "what_fr": "Trois lettres d'apparence identique se distinguent par leurs points de code et leurs écritures : latine, grecque et cyrillique.",
+   "out": "0\n79\n927\n1054\n\nlatin\ngreek\ncyrillic",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  }
+ ],
+ "collections": [
+  {
+   "code": "? @@( StzFind(\"tea\", \"tea rice tea fish\") )\n? @@( StzFind(\"tea\", [ \"tea\", \"rice\", \"tea\", \"fish\" ]) )",
+   "expected": "[ 1, 10 ]\n[ 1, 3 ]",
+   "source": "base/education/program/courses/elementary-introduction/chapters/05-one-object-any-structure.en.md",
+   "what_en": "One function finds a value in a string or in a list; only the unit changes, characters or items.",
+   "what_fr": "Une même fonction trouve une valeur dans une chaîne ou dans une liste ; seule l'unité change, caractères ou éléments.",
+   "out": "[ 1, 10 ]\n[ 1, 3 ]",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  },
+  {
+   "code": "? @@( QH(\"1 AA 2 B 3 CCC 4 DD 5 Z\").\n\tRemoveCharsWQ('Q(@Char).IsNumberInString()').\n\tRemoveSpacesQ().\n\tRemoveDuplicatedCharsQ().\n\tHistory() )",
+   "expected": "[ \"1 AA 2 B 3 CCC 4 DD 5 Z\", \" AA  B  CCC  DD  Z\", \"AABCCCDDZ\", \"ABCDZ\" ]",
+   "source": "base/test/string/466_keeping_the_history_of_updates_of_a_softanza_objec.ring",
+   "what_en": "A chain of changes keeps its history: the starting value and the result of every step.",
+   "what_fr": "Une chaîne de transformations garde son historique : la valeur de départ et le résultat de chaque étape.",
+   "out": "[ \"1 AA 2 B 3 CCC 4 DD 5 Z\", \" AA  B  CCC  DD  Z\", \"AABCCCDDZ\", \"ABCDZ\" ]",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  },
+  {
+   "code": "SetSubStringsMakingAStringFalse([ \"no\", \"off\" ])\nThen(\"a string carrying a marker is FALSE\", IsTrueXT(\"no way\"), FALSE)\nThen(\"...and IsFalseXT says so\", IsFalseXT(\"no way\"), TRUE)\nThen(\"a string without one is still TRUE\", IsTrueXT(\"Hello\"), TRUE)",
+   "expected": "FALSE\nTRUE\nTRUE (each asserted by the guard)",
+   "source": "base/test/func/00_func_narrated.ring",
+   "what_en": "Truth is configurable: once 'no' and 'off' are declared as markers, a string containing one counts as false.",
+   "what_fr": "La vérité se configure : une fois « no » et « off » déclarés comme marqueurs, une chaîne qui en contient un compte comme fausse.",
+   "out": "  THEN  a string carrying a marker is FALSE  [PASS]\n  THEN  ...and IsFalseXT says so  [PASS]\n  THEN  a string without one is still TRUE  [PASS]",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  }
+ ],
+ "numeric": [
+  {
+   "code": "oThird = new stzNumber(\"1\")\noThird.Divide(\"3\")\nThen(\"1 / 3 does NOT claim to be exact\", oThird.IsExact(), FALSE)\nThen(\"...and says why\", StzFindFirst(\"does not terminate\", oThird.Why()) > 0, TRUE)",
+   "expected": "IsExact() is FALSE, and Why() contains \"does not terminate\" (asserted by the guard)",
+   "source": "base/test/number/numeric_exactness_narrated.ring",
+   "what_en": "One divided by three does not pretend to be exact, and the number itself says why.",
+   "what_fr": "Un divisé par trois ne prétend pas être exact, et le nombre dit lui-même pourquoi.",
+   "out": "  THEN  1 / 3 does NOT claim to be exact  [PASS]\n  THEN  ...and says why  [PASS]",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  },
+  {
+   "code": "oPrice = StzMoneyQ(\"19.99\")\noPrice.MultiplyBy(\"0.15\")\nThen(\"a rate applied to it lands on money, not 2.9985\", oPrice.Content(), \"3.00\")",
+   "expected": "3.00 (asserted by the guard)",
+   "source": "base/test/number/numeric_regime_narrated.ring",
+   "what_en": "A price declared as money stays money: a rate applied to it lands on two decimal places, not 2.9985.",
+   "what_fr": "Un prix déclaré comme monnaie le reste : un taux appliqué donne deux décimales, pas 2,9985.",
+   "out": "  THEN  a rate applied to it lands on money, not 2.9985  [PASS]",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  },
+  {
+   "code": "oS = StzOptimNaturally(\"\nmaximize 3*x + 2*y\nwhere x is between 0 and 40\nand y is a whole number at least 0\nkeeping x + y under 50\nand keeping 2*x + y under 80\n\")\noS.SolveWith(:auto)\n? oS.Objective()",
+   "expected": "130",
+   "source": "base/test/optim/optim_modelling_narrated.ring",
+   "what_en": "An optimization problem written as a sentence is solved like the same model built in code, and reaches 130.",
+   "what_fr": "Un problème d'optimisation écrit comme une phrase se résout comme le même modèle construit en code, et atteint 130.",
+   "out": "130",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  }
+ ],
+ "tables": [
+  {
+   "code": "oT = new stzTable([\n\t[ :DISH, :PRICE, :ORDERS ],\n\t[ \"tea\",  200, 6 ],\n\t[ \"rice\", 500, 3 ],\n\t[ \"fish\", 900, 2 ]\n])\n? StzListQ(oT.Col(:ORDERS)).Sum()\n? @@( StzListQ(oT.Col(:PRICE)).FindW(\"{ @item > 400 }\") )",
+   "expected": "11\n[ 2, 3 ]",
+   "source": "base/education/program/courses/elementary-introduction/chapters/10-when-code-meets-cells.en.md",
+   "what_en": "A column is a list, so it can be summed or searched with a condition like any list.",
+   "what_fr": "Une colonne est une liste : on peut la sommer ou y chercher avec une condition, comme dans toute liste.",
+   "out": "11\n[ 2, 3 ]",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.0
+  },
+  {
+   "code": "oT = new stzTable([\n\t[:age,    [20, 25, 30, 35, 40]],\n\t[:income, [30, 42, 51, 66, 80]],\n\t[:city,   [\"a\", \"b\", \"c\", \"d\", \"e\"]]\n])\nThen(\"MedianCol(age) is 30\", oT.MedianCol(:age), 30)\nThen(\"Q1Col(age) is 25\", oT.Q1Col(:age), 25)",
+   "expected": "30\n25 (asserted by the guard)",
+   "source": "base/test/table/table_statistics_narrated.ring",
+   "what_en": "A table built column by column answers statistics such as the median and first quartile through the shared statistics engine.",
+   "what_fr": "Une table construite colonne par colonne donne la médiane ou le premier quartile grâce au moteur statistique commun.",
+   "out": "  THEN  MedianCol(age) is 30  [PASS]\n  THEN  Q1Col(age) is 25  [PASS]",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.0
+  }
+ ],
+ "i18n": [
+  {
+   "code": "oFr = new stzLocale(\"fr_FR\")\nThen(\"the ISO code is the ISO code\", oFr.CurrencyISOSymbol(), \"EUR\")\nThen(\"...and the symbol is the euro sign\", oFr.CurrencySymbol(), \"€\")",
+   "expected": "EUR\n€ (asserted by the guard)",
+   "source": "base/test/locale/02_currencysymbol_narrated.ring",
+   "what_en": "A locale knows both its currency's ISO code and the sign people actually write, from one table the engine owns.",
+   "what_fr": "Une locale connaît à la fois le code ISO de sa devise et le signe qu'on écrit vraiment, tirés d'une seule table du moteur.",
+   "out": "  THEN  the ISO code is the ISO code  [PASS]\n  THEN  ...and the symbol is the euro sign  [PASS]",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  },
+  {
+   "code": "oFa = new stzLocale(\"fa_IR\")\nThen(\"the language itself resolves\", oFa.LanguageName(), \"persian\")\nThen(\"...and its first day is Saturday, as Iran counts it\", oFa.NthDayOfWeek(1), \"saturday\")\nThen(\"...named in Persian, not English\", oFa.NativeNthDayOfWeek(1), \"شنبه\")",
+   "expected": "persian\nsaturday\nشنبه (each asserted by the guard)",
+   "source": "base/test/locale/01_languagename_narrated.ring",
+   "what_en": "An Iranian locale starts its week on Saturday and names that day in Persian.",
+   "what_fr": "Une locale iranienne commence la semaine le samedi et nomme ce jour en persan.",
+   "out": "  THEN  the language itself resolves  [PASS]\n  THEN  ...and its first day is Saturday, as Iran counts it  [PASS]\n  THEN  ...named in Persian, not English  [PASS]",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  },
+  {
+   "code": "oTimeline = new stzTimeLine(\"2024-01-01\", \"2024-12-31\")\noTimeline.AddBlockedSpan(\"MAINTENANCE\", \"2024-06-15 09:00:00\", \"2024-06-15 17:00:00\")\noTimeline.AddPoint(\"EVENT1\", \"2024-06-15 08:00:00\")  # OK\noTimeline.AddPoint(\"EVENT2\", \"2024-06-15 12:00:00\")  # Error: blocked",
+   "expected": "Point 'EVENT2' falls within a blocked span",
+   "source": "base/test/timeline/47_simple_blocked_maintenance_period.ring",
+   "what_en": "A timeline refuses an event placed inside a blocked maintenance window, at the moment it is added.",
+   "what_fr": "Une chronologie refuse un événement placé dans une période de maintenance bloquée, dès qu'on l'ajoute.",
+   "out": "Point 'EVENT2' falls within a blocked span or blocked point",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  }
+ ],
+ "nlp": [
+  {
+   "code": "o = new stzText(\"The quick brown fox jumps over the lazy dog\")\naNP = o.NounPhrases()\n? \"  NounPhrases: \" + @@(aNP)\nchk(\"the classic NP grammar finds both phrases\",\n\tlen(aNP) = 2 and aNP[1] = \"The quick brown fox\" and aNP[2] = \"the lazy dog\")\nchk(\"any tag grammar works (VBZ IN)\", o.Chunks(\"VBZ IN\")[1] = \"jumps over\")",
+   "expected": "NounPhrases: \"The quick brown fox\", \"the lazy dog\"; Chunks(\"VBZ IN\") gives \"jumps over\" (asserted by the guard)",
+   "source": "base/test/linguistic/chunker_narrated.ring",
+   "what_en": "With nothing downloaded, a sentence is tagged and its noun phrases are found by a pattern over word classes.",
+   "what_fr": "Sans rien télécharger, une phrase est étiquetée et ses groupes nominaux sont trouvés par un motif sur les classes de mots.",
+   "out": "  NounPhrases: [ \"The quick brown fox\", \"the lazy dog\" ]\n  [OK] the classic NP grammar finds both phrases\n  [OK] any tag grammar works (VBZ IN)",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  },
+  {
+   "code": "Then(\"strong evidence\", StzEvidentialVerdict(1, 0.95), \"certainly yes\")\nThen(\"good evidence\", StzEvidentialVerdict(1, 0.7), \"probably yes\")\nThen(\"weak evidence\", StzEvidentialVerdict(1, 0.3), \"apparently yes\")\nThen(\"strong evidence AGAINST\", StzEvidentialVerdict(0, 0.9), \"certainly not\")",
+   "expected": "certainly yes\nprobably yes\napparently yes\ncertainly not (each asserted by the guard)",
+   "source": "base/test/natural/evidentiality_narrated.ring",
+   "what_en": "A verdict is spoken with its confidence: strong, good or weak evidence becomes certainly, probably or apparently.",
+   "what_fr": "Un verdict s'énonce avec son degré de certitude : une preuve forte, bonne ou faible devient certainement, probablement ou apparemment.",
+   "out": "  THEN  strong evidence  [PASS]\n  THEN  good evidence  [PASS]\n  THEN  weak evidence  [PASS]\n  THEN  strong evidence AGAINST  [PASS]",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  },
+  {
+   "code": "Then(\"'at most 2 vowels' refuses on 3\", Q(\"AnnIE\").AtMost(2).VowelNB(), FALSE)\nThen(\"...and explains itself\", Why(), \"no: expected atmost 2, found 3\")",
+   "expected": "FALSE\nno: expected atmost 2, found 3 (asserted by the guard)",
+   "source": "base/test/natural/nnl_narrated.ring",
+   "what_en": "Code that reads like English checks a claim, refuses it, and explains why in words.",
+   "what_fr": "Un code qui se lit comme de l'anglais vérifie une affirmation, la refuse et explique pourquoi en mots.",
+   "out": "  THEN  'at most 2 vowels' refuses on 3  [PASS]\n  THEN  ...and explains itself  [PASS]",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  }
+ ],
+ "neural": [
+  {
+   "code": "oP = StzOutputSchemaQ([\n\t[ :field = \"person\", :type = :string ],\n\t[ :field = \"age\",    :type = :number, :must = [ [ \">=\", 0 ], [ \"<=\", 130 ] ] ]\n])\naLie = oP.ParseOutput('{ \"person\":\"Ada Lovelace\", \"age\":9 }')\nchk(\"a schema-valid LIE validates -- Ada Lovelace was not nine\", aLie[:ok] = 1)\nchk(\"...and the court has no complaint to make about it\", len(aLie[:findings]) = 0)",
+   "expected": "  [OK] a schema-valid LIE validates -- Ada Lovelace was not nine\n  [OK] ...and the court has no complaint to make about it",
+   "source": "base/test/neural/structuredoutput_narrated.ring (Scene 10)",
+   "what_en": "A well-formed answer that is false still passes: the schema guarantees shape, never truth, and the guard shows this limit on purpose.",
+   "what_fr": "Une réponse bien formée mais fausse passe quand même : le schéma garantit la forme, jamais la vérité, et le test montre cette limite exprès.",
+   "out": "  [OK] a schema-valid LIE validates -- Ada Lovelace was not nine\n  [OK] ...and the court has no complaint to make about it",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  },
+  {
+   "code": "oN = new stzLLMFunction(\"add\")\noN.SetPrompt(\"Compute: {input}\")\noN.ReturnsNumber()\noN.Budget(2)\noN.SeedAnswer(\"2+3\", 5)\nchk(\"a Number-typed answer computes\", oN.Call_(\"2+3\") + 1 = 6)",
+   "expected": "  [OK] a Number-typed answer computes",
+   "source": "base/test/neural/llmfunction_narrated.ring (Scene 5)",
+   "what_en": "A model call declared to return a number, with a mandatory budget, gives a real number you can compute with, not text to decode.",
+   "what_fr": "Un appel au modèle déclaré comme rendant un nombre, avec un budget obligatoire, fournit un vrai nombre utilisable dans un calcul, pas un texte à décoder.",
+   "out": "  [OK] a Number-typed answer computes",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  }
+ ],
+ "agents": [
+  {
+   "code": "oBad = new stzAgentGraph(\"mailer-bad\")\noBad.AddLLMActor(\"writer\")\noBad.AddEffect(\"send\")\noBad.Proposes(\"writer\", \"send\")\nchk(\"llm-straight-to-effect is NOT sound\", oBad.IsSound() = 0)\nchk(\"multiple invariants fire\", len(oBad.Violations()) >= 3)\nchk(\"Explain names the refusal\", len(StzFind(\"REFUSED\", oBad.Explain())) > 0)",
+   "expected": "  [OK] llm-straight-to-effect is NOT sound\n  [OK] multiple invariants fire\n  [OK] Explain names the refusal",
+   "source": "base/test/agentic/agentgraph_narrated.ring (Scene 1)",
+   "what_en": "A composition where a language model reaches an action directly, with no guardian between them, is judged unsound before anything runs.",
+   "what_fr": "Une composition où un modèle de langage atteint directement une action, sans gardien entre les deux, est jugée non conforme avant toute exécution.",
+   "out": "  [OK] llm-straight-to-effect is NOT sound\n  [OK] multiple invariants fire\n  [OK] Explain names the refusal",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  }
+ ],
+ "graphics": [
+  {
+   "code": "# the guard's fixture: a committed Arabic font subset\ncFixture = \"../gpu/fixtures/amiri_arabic_subset.ttf\"\noF = new stzFont(cFixture)\noG = new stzCanvas(220, 120)\noG.SetBackgroundQ(\"#101418\").\n   AddCircleQ(60, 60, 40).FillQ(\"#e0a030\").\n   AddTextQ(\"Softanza\", 110, 70).SetFontQ(oF, 18).ColorQ(\"#ffffff\")\ncSvg = oG.ToSVG()\nchk(\"the SVG tier answered\", len(cSvg) > 100)\nchk(\"it carries the canvas size\", substr(cSvg, 'width=\"220\" height=\"120\"') > 0)\nchk(\"the circle's EXACT geometry is in it\", substr(cSvg, 'cx=\"60\" cy=\"60\" r=\"40\"') > 0)",
+   "expected": "  [OK] the SVG tier answered\n  [OK] it carries the canvas size\n  [OK] the circle's EXACT geometry is in it",
+   "source": "base/test/graphics/graphics_faces_narrated.ring (Scene 6, one model, two tiers)",
+   "what_en": "One canvas answers as SVG with no GPU at all, and the vector picture carries the exact size and the exact circle that were declared.",
+   "what_fr": "Un même canevas répond en SVG sans aucun GPU, et l'image vectorielle porte exactement la taille et le cercle déclarés.",
+   "out": "  [OK] the SVG tier answered\n  [OK] it carries the canvas size\n  [OK] the circle's EXACT geometry is in it",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.0
+  },
+  {
+   "code": "# the guard's fixture: a committed Arabic font subset\ncFixture = \"../gpu/fixtures/amiri_arabic_subset.ttf\"\noF = new stzFont(cFixture)\ncAr = char(0xD8)+char(0xB3) + char(0xD9)+char(0x88) + char(0xD9)+char(0x81) +\n      char(0xD8)+char(0xAA) + char(0xD8)+char(0xA7) + char(0xD9)+char(0x86) +\n      char(0xD8)+char(0xB2) + char(0xD8)+char(0xA7)\nchk(\"Arabic measures positive (a real shaped advance)\", oF.WidthOf(cAr, 24) > 0)\nchk(\"Arabic is ONE visual run\", oF.RunCountOf(cAr, 24) = 1)\nchk(\"mixed script is THREE runs\", oF.RunCountOf(\"abc \" + cAr + \" xyz\", 24) = 3)\nchk(\"8 Arabic codepoints shape to 8 glyphs\", len(oF.GlyphsOf(cAr, 24)) = 8)",
+   "expected": "  [OK] Arabic measures positive (a real shaped advance)\n  [OK] Arabic is ONE visual run\n  [OK] mixed script is THREE runs\n  [OK] 8 Arabic codepoints shape to 8 glyphs",
+   "source": "base/test/graphics/graphics_faces_narrated.ring (Scene 2; oF is a committed Arabic font subset)",
+   "what_en": "The Arabic spelling of Softanza is shaped into one right-to-left run of eight glyphs, and placed between Latin words it splits into three runs.",
+   "what_fr": "Le mot Softanza écrit en arabe est façonné en une seule séquence de huit glyphes, de droite à gauche ; placé entre deux mots latins, il donne trois séquences.",
+   "out": "  [OK] Arabic measures positive (a real shaped advance)\n  [OK] Arabic is ONE visual run\n  [OK] mixed script is THREE runs\n  [OK] 8 Arabic codepoints shape to 8 glyphs",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.0
+  },
+  {
+   "code": "chk(\"mid-grey on white is REFUSED\", NOT StzIsLegible(\"#999999\", :White))\nchk(\"black on white passes\", StzIsLegible(:Black, :White))\nchk(\"a colour on itself is refused\", NOT StzIsLegible(:Danger, :Danger))",
+   "expected": "   ok   mid-grey on white is REFUSED\n   ok   black on white passes\n   ok   a colour on itself is refused",
+   "source": "base/test/graphics/gg_color_c3.ring (section 4, the gate can refuse)",
+   "what_en": "Legibility is a number that can say no: mid-grey text on white is refused, black on white passes, and a colour on itself is refused.",
+   "what_fr": "La lisibilité est un nombre qui peut dire non : du gris moyen sur blanc est refusé, du noir sur blanc passe, et une couleur sur elle-même est refusée.",
+   "out": "  [OK] mid-grey on white is REFUSED\n  [OK] black on white passes\n  [OK] a colour on itself is refused",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.0
+  }
+ ],
+ "diagramming": [
+  {
+   "code": "# a notation declared as data: three kinds, a closed vocabulary, and no self-links\noFsm = new stzNotation(\"fsm51\")\noFsm.AddKind(\"state\", \"circle\")\noFsm.AddKind(\"final\", \"doublecircle\")\noFsm.AddKind(\"task\", \"diamond\")\noFsm.Close()\noFsm.Forbid(:SelfLink, \"a state cannot transition to itself in fsm51; \" +\n\t\"model a stay as a guard on departure instead\")\nStzRegisterNotation(oFsm)\n\noDm = new stzDiagram(\"m51\")\noDm.SetNotation(\"fsm51\")\noDm.AddNodeXTT(\"a\", \"A\", [ :type = \"state\" ])\noDm.AddNodeXTT(\"b\", \"B\", [ :type = \"task\" ])\noDm.AddEdge(\"a\", \"b\")\noDm.ToCanvasXT([ :NodeWidth = 96, :NodeHeight = 36 ])\n\nnDnLog = len(oDm.EditLog())\nbDnGot = oDm.Edit(:Link, [ \"a\", \"a\" ])\nchk(\"a link the domain forbids is refused at the command\",\n    bDnGot = 0 and len(oDm.EditLog()) = nDnLog)\nbDnGot = oDm.Edit(:Link, [ \"b\", \"a\" ])\nchk(\"...while a lawful link passes the same gate\",\n    bDnGot = 1 and len(oDm.EditLog()) = nDnLog + 1)",
+   "expected": "   ok   a link the domain forbids is refused at the command\n   ok   ...while a lawful link passes the same gate",
+   "source": "base/test/graphics/gg_adversarial.ring (section 51, DN0: a domain is a declaration; oDm uses a declared notation that forbids self-links)",
+   "what_en": "A declared notation that forbids self-links makes the editor refuse one, though no editor code knows that notation; a lawful link passes.",
+   "what_fr": "Une notation déclarée qui interdit les boucles sur soi fait refuser ce lien par l'éditeur, sans qu'aucun code de l'éditeur la connaisse ; un lien licite passe.",
+   "out": "   ok   a link the domain forbids is refused at the command\n   ok   ...while a lawful link passes the same gate",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  }
+ ],
+ "gpu": [
+  {
+   "code": "k1 = StzKernelMakerQ()\nk1.TakesVector(:A)\nk1.TakesVector(:B)\nk1.TakesScalar(:alpha)\nk1.ReturnsVector(:C)\nk1.ForEachElement('{ @C = alpha * @A + @B }')\ncW = k1.ToWGSL()\n? cW",
+   "source": "base/test/gpu/gpu_declarative_narrated.ring (Scene 1, authoring needs no device)",
+   "what_en": "A one-line formula becomes a GPU kernel; writing it needs no device, and the generated code can be read before anything runs.",
+   "what_fr": "Une formule d'une ligne devient un noyau GPU ; l'écrire ne demande aucun appareil, et le code produit se lit avant toute exécution.",
+   "contains": [
+    "v_c[i] = p.s_alpha * v_a[i] + v_b[i];"
+   ],
+   "out": "struct StzTile { xoff : u32, p0 : u32, p1 : u32, p2 : u32 }\n@group(0) @binding(0) var<uniform> tile : StzTile;\nstruct P { n : u32, pad : u32, s_alpha : f32 }\n@group(0) @binding(1) var<uniform> p : P;\n@group(0) @binding(2) var<storage, read> v_a : array<f32>;\n@group(0) @binding(3) var<storage, read> v_b : array<f32>;\n@group(0) @binding(4) var<storage, read_write> v_c : array<f32>;\n@compute @workgroup_size(256)\nfn main(@builtin(global_invocation_id) gid : vec3<u32>) {\n  let i = gid.x + tile.xoff * 256u;\n  if (i < p.n) { v_c[i] = p.s_alpha * v_a[i] + v_b[i]; }\n}",
+   "matches_source": true,
+   "ran": "2026-10-01 21:17",
+   "seconds": 3.1
+  }
+ ],
+ "gui": [
+  {
+   "code": "oRtl = new stzUiDocument(\n\t'DEFINE PANEL p ( FONT \"app\", CHILDREN [r] ) RATIONALE \"x\"' + char(10) +\n\t'DEFINE BOX r ( TEXT_DIRECTION rtl, HEIGHT 20 ) RATIONALE \"x\"')\nchk(\"TEXT_DIRECTION rtl becomes --rmlui-direction\",\n    StzFindFirst(\"--rmlui-direction: rtl\", oRtl.ToRml()) > 0)\nchk(\"...and never the CSS spelling RCSS rejects\",\n    StzFindFirst(\"; direction:\", oRtl.ToRml()) = 0)",
+   "expected": "  [OK] TEXT_DIRECTION rtl becomes --rmlui-direction\n  [OK] ...and never the CSS spelling RCSS rejects",
+   "source": "base/test/gui/gui_stzui_narrated.ring (Scene 4, the emitter)",
+   "what_en": "One declared word, rtl, is emitted as the engine's own direction property, so an author never writes the engine's markup by hand.",
+   "what_fr": "Un seul mot déclaré, rtl, est traduit dans la propriété de direction propre au moteur : l'auteur n'écrit jamais le balisage du moteur à la main.",
+   "out": "  [OK] TEXT_DIRECTION rtl becomes --rmlui-direction\n  [OK] ...and never the CSS spelling RCSS rejects",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.0
+  },
+  {
+   "code": "oApp = new stzApp(\"SonibankVisits\")\noApp {\n    AddThingQ(:Account) { Has([ :number, :chapter, :balance ])  IsTrue(:balance, \"@ >= 0\") }\n    AddThingQ(:Client)  { Has([ :code, :name, :city ])  Owns(:Account) }\n    AddThingQ(:Visit)   { Of(:Client)  Has([ :agent, :date, :subject ]) }\n    AddRelation(:Account, :belongsTo, :Client)\n}\noApp.Explain()",
+   "expected": "WORLD SonibankVisits   lives in: memory (not persisted)\n  BEING\n    account (number, chapter, balance)\n        true when balance @ >= 0\n    client (code, name, city)\n    visit (agent, date, subject)\n  RELATIONS\n    client owns account\n    visit of client\n    account belongsto client",
+   "source": "base/test/app/00_stzapp_narrated.ring (expected copied from its #--> lines; one blank line before Explain() omitted to fit 8 lines)",
+   "what_en": "An application is declared as a world of things, truths and relations, and it explains itself in plain text.",
+   "what_fr": "Une application se déclare comme un monde de choses, de vérités et de relations, et elle s'explique elle-même en texte clair.",
+   "out": "WORLD SonibankVisits   lives in: memory (not persisted)\n  BEING\n    account (number, chapter, balance)\n        true when balance @ >= 0\n    client (code, name, city)\n    visit (agent, date, subject)\n  RELATIONS\n    client owns account\n    visit of client\n    account belongsto client",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.0
+  }
+ ],
+ "stats": [
+  {
+   "code": "aV = [ 2, 4, 4, 5, 7, 9, 12, 25 ]\noS = StzTukeySummaryQ(aV)\n? oS.Why()",
+   "expected": "a Tukey summary of 8 value(s) under Tukey's fourths (hinges at depth (floor((n+1)/2)+1)/2): hinges 4 | 6 | 10.5, fourth-spread 6.5, 1 outside, 0 far out",
+   "source": "base/education/program/courses/math/chapters/13-tukeys-first-look.en.md (§1)",
+   "what_en": "A resistant summary states in words which convention it used, so hinges are never confused with quartiles.",
+   "what_fr": "Un résumé résistant dit en clair quelle convention il emploie : charnières et quartiles ne se confondent jamais.",
+   "out": "a Tukey summary of 8 value(s) under Tukey's fourths (hinges at depth (floor((n+1)/2)+1)/2): hinges 4 | 6 | 10.5, fourth-spread 6.5, 1 outside, 0 far out",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.1
+  },
+  {
+   "code": "aDeaths = [ [ 14, 15, 14 ], [ 7, 4, 7 ], [ 8, 2, 10 ], [ 15, 9, 10 ], [ 0, 2, 0 ] ]\noF = StzTukeyFitQ(aDeaths)\noF.Polish()\noRep = StzTukeyReportQ(\"deaths\", [ oF ])\n? oRep.IsSound()\naE = oRep.Errors()\n? len( aE )\n? aE[1][:message]",
+   "expected": "0\n2\nresidual -5 lies 5 fourth-spread(s) past the hinge, beyond the far-out fence at 3",
+   "source": "base/education/program/courses/math/chapters/13-tukeys-first-look.en.md (§5 and §8)",
+   "what_en": "A table fitted by medians becomes verdicts a program can gate on: the report says the table is not sound, and which residual breaks it.",
+   "what_fr": "Une table ajustée par médianes devient des verdicts exploitables par un programme : le rapport dit que la table n'est pas saine, et quel résidu la rompt.",
+   "out": "0\n2\nresidual -5 lies 5 fourth-spread(s) past the hinge, beyond the far-out fence at 3",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.1
+  },
+  {
+   "code": "oSt = StzTukeyStoryQ(oF, oRep)\nacP = oSt.Paragraphs()\n? acP[1]\n? oSt.IsHonest()",
+   "expected": "A table of 5 rows and 3 columns was fitted by median polish, which converged in 2 sweep(s). The common value is 8 and the residuals' fourth-spread, the scale every judgement below is in, is 1.\n1",
+   "source": "base/education/program/courses/math/chapters/13-tukeys-first-look.en.md (§9)",
+   "what_en": "Continuing the fit above, the story computes nothing and checks on itself that every number it prints comes from the fit or a finding.",
+   "what_fr": "À partir de l'ajustement précédent, le récit ne calcule rien et vérifie lui-même que chaque nombre affiché vient de l'ajustement ou d'un constat.",
+   "out": "A table of 5 rows and 3 columns was fitted by median polish, which converged in 2 sweep(s). The common value is 8 and the residuals' fourth-spread, the scale every judgement below is in, is 1.\n1",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.1
+  }
+ ],
+ "system": [
+  {
+   "code": "oVfs = new stzVirtualFileSystem()\noVfs.CreateFolder(\"config\")\noVfs.CreateFile(\"config/greenhouse.ini\", \"pump_threshold=40\")\noVfs.MoveFile(\"old_settings.txt\", \"config/legacy.ini\")\noPlan = oVfs.GenerateUpdatePlan()\n? oPlan.Narration()",
+   "expected": "Update plan (3 of 3 operations to commit):\n  * 1. create folder 'config'\n  * 2. create file 'config/greenhouse.ini' (17 bytes)\n  * 3. move 'old_settings.txt' -> 'config/legacy.ini'",
+   "source": "base/doc/narrations/stz-system-dev-to-deploy-narration.md (§4)",
+   "what_en": "File changes are rehearsed in an in-memory twin and come out as a plain-language plan; nothing on disk changes until the plan is committed.",
+   "what_fr": "Les changements de fichiers se répètent dans un jumeau en mémoire et donnent un plan lisible ; rien ne change sur le disque avant la validation du plan.",
+   "out": "Update plan (3 of 3 operations to commit):\n  * 1. create folder 'config'\n  * 2. create file 'config/greenhouse.ini' (17 bytes)\n  * 3. move 'old_settings.txt' -> 'config/legacy.ini'",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.1
+  }
+ ],
+ "web": [
+  {
+   "code": "NOW = 1700000000   # a fixed clock, as in the guard\na = new stzAuth()\na.Register(\"dana\", \"pw\")\na.GrantRole(\"dana\", \"admin\")\ntok = a.LoginAt(\"dana\", \"pw\", NOW)\nact = a.ActorOfAt(tok, NOW)\n? \"user        : \" + act.Name()\n? \"capabilities: \" + @@(act.Kinds())\n? \"posture     : \" + act.Posture()",
+   "expected": "user        : dana\ncapabilities: [ \"effectful\", \"compute\", \"sensing\" ]\nposture     : trusted",
+   "source": "base/doc/narrations/stz-auth-the-front-door-narration.md (First idea: a login hands you an actor)",
+   "what_en": "A login returns an actor with capabilities and a trust level, not a role string.",
+   "what_fr": "Une connexion renvoie un acteur doté de capacités et d'un niveau de confiance, pas un rôle en texte.",
+   "out": "user        : dana\ncapabilities: [ \"effectful\", \"compute\", \"sensing\" ]\nposture     : trusted",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.2
+  },
+  {
+   "code": "NOW = 1700000000   # a fixed clock, as in the guard\nidp = new stzOidcSandbox(\"https://idp.local\", \"my-app\")\nrp  = new stzOidcClient(\"https://idp.local\", \"my-app\")\nrp.SetJwks( idp.JwksJson() )        # the provider's public keys\nb = new stzAuth()\nb.SetOidcClient(rp)\n? \"forged token   : [\" + b.LoginWithOidcAt(idp.IssueForgedIdTokenAt(\"dana\",\"n-1\",NOW), \"n-1\", NOW) + \"]\"\n? \"  why          : \" + b.OidcWhy()",
+   "expected": "forged token   : []\n  why          : the signature does not verify against the provider's key",
+   "source": "base/doc/narrations/stz-auth-the-front-door-narration.md (OpenID Connect section)",
+   "what_en": "The identity-provider sandbox holds a real key and can issue a forged token, so the refusal path is tested before any real provider is involved.",
+   "what_fr": "Le bac à sable du fournisseur d'identité détient une vraie clé et sait émettre un jeton falsifié : le refus se teste avant tout vrai fournisseur.",
+   "out": "forged token   : []\n  why          : the signature does not verify against the provider's key",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.2
+  },
+  {
+   "code": "oReg = new stzServiceRegistry(\"shop\")\noReg.Bind(:payments, new stzPaymentsSandbox())\n? oReg.PostureOf(:payments)          # --> sandbox\noReg.SetPhaseQ(:production)\n? oReg.IsSound()                     # --> 0",
+   "expected": "sandbox\n0",
+   "source": "base/doc/narrations/stz-service-virtualization-code-first-subscribe-later.md (posture and phase section)",
+   "what_en": "Switching the registry to production turns a still-bound payments sandbox into an error, so a fake cannot ship.",
+   "what_fr": "En phase de production, un bac à sable de paiement encore branché devient une erreur dans le registre : un faux ne peut pas partir.",
+   "out": "sandbox\n0",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.2
+  }
+ ],
+ "meta": [
+  {
+   "code": "aF = StzCheckCode(\"class Foo\" + nl + \"def Bar()\" + nl + \"\tx = substr(s, 2)\" + nl)\nnF = len(aF)\nfor i = 1 to nF\n    ? aF[i][:rule] + \"  @line \" + aF[i][:line] + \"  [\" + aF[i][:severity] + \"]\"\nnext\n? \"findings: \" + len(StzCheckCode(\"class Foo\" + nl + \"def substr(x)\" + nl + \"\treturn x\" + nl))",
+   "expected": "engine-first  @line 3  [warning]\nfindings: 0",
+   "source": "base/doc/narrations/stz-rules-as-graph-rules-narration.md (The model sees what the text scan cannot)",
+   "what_en": "The rule reads call edges, so a real call is flagged while a method merely named substr is not.",
+   "what_fr": "La règle lit les arêtes d'appel : un vrai appel est signalé, une méthode simplement nommée substr ne l'est pas.",
+   "out": "engine-first  @line 3  [warning]\nfindings: 0",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.2
+  },
+  {
+   "code": "oAG = new stzAgentGraph(\"mailer\")\noAG.AddLLMActor(\"writer\")\ntry\n    oAG.Grant(\"writer\", \"effectful\")\ncatch\n    ? cCatchError\ndone",
+   "expected": "REFUSED: granting 'effectful' to llm actor 'writer' -- an LLM proposes, only a pi-gate commits (no-llm-effectful, enforced at CONSTRUCTION, not merely audited).",
+   "source": "base/doc/narrations/stz-rules-as-graph-rules-narration.md (Audit becomes a gate)",
+   "what_en": "Granting the power to act to a language-model actor is refused at construction, not merely reported afterwards.",
+   "what_fr": "Donner le pouvoir d'agir à un acteur de type modèle de langage est refusé dès la construction, pas seulement signalé après coup.",
+   "out": "REFUSED: granting 'effectful' to llm actor 'writer' -- an LLM proposes, only a pi-gate commits (no-llm-effectful, enforced at CONSTRUCTION, not merely audited).",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.2
+  },
+  {
+   "code": "oSG = new stzSecurityGraph(\"resto\")\noSG.AddActor(\"llm\", \"sandboxed\")\noSG.AddTool(\"shell\")\noSG.Uses(\"llm\", \"shell\")\noSG.Grants(\"shell\", \"effectful\")\n? \"llm holds effectful directly? no. reaches it by a path? \" + oSG.ReachesEffectful(\"llm\")",
+   "expected": "llm holds effectful directly? no. reaches it by a path? 1",
+   "source": "base/doc/narrations/stz-rules-as-graph-rules-narration.md (Escalation is a path)",
+   "what_en": "A sandboxed actor that holds no effect itself is still caught, because the graph finds a path to an effect through a tool.",
+   "what_fr": "Un acteur isolé qui ne détient aucun effet est tout de même repéré : le graphe trouve un chemin vers un effet à travers un outil.",
+   "out": "llm holds effectful directly? no. reaches it by a path? 1",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.2
+  }
+ ],
+ "files": [
+  {
+   "code": "? StzXmlIsValid(\"<!DOCTYPE d [<!ENTITY e SYSTEM 'file:///etc/passwd'>]><d/>\")\n? StzXmlIsValid(\"<!ENTITY xxe SYSTEM 'file:///etc/passwd'><d/>\")",
+   "expected": "0\n0",
+   "source": "base/doc/narrations/stz-xml-the-parser-that-says-no.md (The refusal)",
+   "what_en": "Any document carrying a DOCTYPE or an ENTITY declaration is refused before parsing begins.",
+   "what_fr": "Tout document portant une déclaration DOCTYPE ou ENTITY est refusé avant même l'analyse.",
+   "out": "0\n0",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.3
+  },
+  {
+   "code": "cXml = '<library xmlns=\"urn:lib\" name=\"City Library\">' +\n       '<book isbn=\"1\"><title>Dune</title><year>1965</year></book>' +\n       '<book isbn=\"2\"><title>Ubik</title><year>1969</year></book>' +\n       '</library>'\n? StzXmlRoot(cXml)\n? StzXmlGet(cXml, \"library/book/title\")\n? StzXmlGet(cXml, \"library/book[2]/title\")\n? StzXmlGet(cXml, \"//year\")",
+   "expected": "library\nDune\nUbik\n1965",
+   "source": "base/doc/narrations/stz-xml-the-parser-that-says-no.md (Start with the object)",
+   "what_en": "Three path forms, matched by local name, read a document that has a namespace without ever naming it.",
+   "what_fr": "Trois formes de chemin, comparées sur le nom local, lisent un document doté d'un espace de noms sans jamais le nommer.",
+   "out": "library\nDune\nUbik\n1965",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.3
+  },
+  {
+   "code": "oB = StzFileBlobStoreQ(\"uploads\")\noB.Save(\"Photo.JPG\", \"the original\")\noB.Save(\"photo.jpg\", \"a different picture\")\n? oB.NumberOfBlobs()                 # --> 2\n? oB.Fetch(\"Photo.JPG\")              # --> the original\n? oB.Fetch(\"photo.jpg\")              # --> a different picture",
+   "expected": "2\nthe original\na different picture",
+   "source": "base/doc/narrations/stz-service-virtualization-code-first-subscribe-later.md (Building the double taught us the service)",
+   "what_en": "Two keys that differ only by case stay two objects, even on a case-insensitive disk, because each stored file is named by a hash of its key.",
+   "what_fr": "Deux clés qui ne diffèrent que par la casse restent deux objets, même sur un disque insensible à la casse, car chaque fichier stocké est nommé par une empreinte de sa clé.",
+   "out": "2\nthe original\na different picture",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.3
+  }
+ ],
+ "security": [
+  {
+   "code": "oKey = new stzSecret(\"deploy-key\")\noKey.FromEnvQ(\"DEPLOY_KEY\")     # the value lives in an environment variable\n\n? oKey.Descriptor()",
+   "expected": "<secret 'deploy-key' (secret) from env:DEPLOY_KEY>",
+   "source": "base/doc/narrations/stz-guarding-secrets-and-credentials-narration.md",
+   "what_en": "A secret names where its key lives, and its only printed form is a descriptor, so the value cannot appear in any log.",
+   "what_fr": "Un secret indique où se trouve sa clé, et sa seule forme affichable est un descripteur : la valeur ne peut donc apparaître dans aucun journal.",
+   "out": "<secret 'deploy-key' (secret) from env:DEPLOY_KEY>",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.1
+  },
+  {
+   "code": "SysSet(\"DEPLOY_KEY\", \"ssh-ed25519-AAAAC3NzaC1lZDI1\")   # a test key, set for this page\noKey = new stzSecret(\"deploy-key\")\noKey.FromEnvQ(\"DEPLOY_KEY\")     # the value lives in an environment variable\noHuman = HumanActor(\"ops\")       # effectful, trusted\noLLM   = LLMActor(\"planner\")     # inference-only, sandboxed\n? oKey.Reveal(oHuman)            # allowed\ntry\n    ? oKey.Reveal(oLLM)          # refused\ncatch\n    ? cCatchError\ndone",
+   "expected": "ssh-ed25519-AAAAC3NzaC1lZDI1\nRefused: actor 'planner' (posture sandboxed) may not reveal secret\n'deploy-key'. Only an effectful, non-sandboxed actor can read a secret.",
+   "source": "base/doc/narrations/stz-guarding-secrets-and-credentials-narration.md",
+   "what_en": "The same key is revealed to a human operator and refused to a language-model actor, because only an actor able to cause effects may read it.",
+   "what_fr": "La même clé est révélée à un opérateur humain et refusée à un acteur de type modèle de langage : seul un acteur capable d'agir peut la lire.",
+   "out": "ssh-ed25519-AAAAC3NzaC1lZDI1\nRefused: actor 'planner' (posture sandboxed) may not reveal secret 'deploy-key'. Only an effectful, non-sandboxed actor can read a secret.",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.1
+  }
+ ],
+ "extensibility": [
+  {
+   "code": "Then(\"range0(3) = [0..2]\", @@(range0(3)), \"[ 0, 1, 2 ]\")\nThen(\"range0([1, 4]) = [1..3]\", @@(range0([1, 4])), \"[ 1, 2, 3 ]\")\nThen(\"range0([1, 6, 2]) steps by 2\", @@(range0([1, 6, 2])), \"[ 1, 3, 5 ]\")\nThen(\"range0([5, 1, -1]) walks backward\", @@(range0([5, 1, -1])), \"[ 5, 4, 3, 2 ]\")",
+   "expected": "  THEN  range0(3) = [0..2]  [PASS]\n  THEN  range0([1, 4]) = [1..3]  [PASS]\n  THEN  range0([1, 6, 2]) steps by 2  [PASS]\n  THEN  range0([5, 1, -1]) walks backward  [PASS]",
+   "source": "base/test/extincode/51_extincode_narrated.ring",
+   "what_en": "Helpers mirror Python's range, with the end excluded and steps allowed, so code ported from Python keeps its meaning.",
+   "what_fr": "Des fonctions reproduisent range de Python, borne de fin exclue et pas autorisé, pour que le code porté depuis Python garde son sens.",
+   "out": "  THEN  range0(3) = [0..2]  [PASS]\n  THEN  range0([1, 4]) = [1..3]  [PASS]\n  THEN  range0([1, 6, 2]) steps by 2  [PASS]\n  THEN  range0([5, 1, -1]) walks backward  [PASS]",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.1
+  }
+ ],
+ "sound": [
+  {
+   "code": "oP = new stzEarcons()\noP.RecordFireAt(\"Danger.Alert\", 10.0)\nChk(\"a cue under a sounding alert is DROPPED\", NOT oP.WouldFireAt(:Success, 10.05))\nChk(\"and so is a warning -- rank, not recency\", NOT oP.WouldFireAt(:Warning, 10.05))\nChk(\"once the alert is over, a cue passes again\", oP.WouldFireAt(:Success, 12.0))\noP2 = new stzEarcons()\noP2.RecordFireAt(\"Warning.Alert\", 10.0)\nChk(\"a warning alert does NOT pre-empt danger\", oP2.WouldFireAt(:Danger, 10.05))",
+   "expected": "  [ok]   a cue under a sounding alert is DROPPED\n  [ok]   and so is a warning -- rank, not recency\n  [ok]   once the alert is over, a cue passes again\n  [ok]   a warning alert does NOT pre-empt danger",
+   "source": "base/test/sound/sound_semantics_narrated.ring",
+   "what_en": "While a danger alert sounds, a success cue and a warning are dropped; once it ends cues pass again, and a warning never silences danger.",
+   "what_fr": "Pendant qu'une alerte de danger retentit, un signal de succès et un avertissement sont abandonnés ; ensuite tout repasse, et un avertissement ne fait jamais taire le danger.",
+   "out": "  [ok]   a cue under a sounding alert is DROPPED\n  [ok]   and so is a warning -- rank, not recency\n  [ok]   once the alert is over, a cue passes again\n  [ok]   a warning alert does NOT pre-empt danger",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.1
+  },
+  {
+   "code": "oRst = StzSoundUniverseQ(:maqam).Mode(:rast)\noRst.PerformQ(\"5 6 7 8 7 6 5\", 1)\naN = oRst.PlayedNotes()\n? \"   Rast, 5 6 7 8 7 6 5: the seventh up \" + aN[3][3] + \", down \" + aN[5][3]\nChk(\"Rast ascends through the half-flat seventh (1050) and descends through the flat (1000)\",\n    aN[3][3] = 1050 and aN[5][3] = 1000)",
+   "expected": "   Rast, 5 6 7 8 7 6 5: the seventh up 1050, down 1000\n  [ok]   Rast ascends through the half-flat seventh (1050) and descends through the flat (1000)",
+   "source": "base/test/sound/sound_mu4_narrated.ring",
+   "what_en": "In the Rast maqam the seventh degree is played half-flat going up and flat coming down, because the universe declares movement, not only pitch.",
+   "what_fr": "Dans le maqam Rast, la septième est jouée un demi-bémol en montant et bémol en descendant : l'univers déclare le mouvement, pas seulement les hauteurs.",
+   "out": "   Rast, 5 6 7 8 7 6 5: the seventh up 1050, down 1000\n  [ok]   Rast ascends through the half-flat seventh (1050) and descends through the flat (1000)",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.1
+  },
+  {
+   "code": "oNig = StzSoundUniverseQ(:niger)\noKal = oNig.SentenceQ(\"sannu da zuwa\")\naK = oNig.PlayedNotes()\ncTones = \"\"\nfor k in aK  cTones += k[3] + \" \" next\n? \"   sannu da zuwa ('welcome'): \" + trim(cTones) + \"  -- Newman's tones, low-high-low-high-low\"\nChk(\"the declared contour is L H L H L\", trim(cTones) = \"L H L H L\")",
+   "expected": "   sannu da zuwa ('welcome'): L H L H L  -- Newman's tones, low-high-low-high-low\n  [ok]   the declared contour is L H L H L",
+   "source": "base/test/sound/sound_mu4_narrated.ring",
+   "what_en": "A Hausa greeting becomes a drum phrase that follows the language's low and high tones, the way a talking drum does.",
+   "what_fr": "Une salutation haoussa devient une phrase de tambour qui suit les tons bas et hauts de la langue, comme le fait un tambour parlant.",
+   "out": "   sannu da zuwa ('welcome'): L H L H L  -- Newman's tones, low-high-low-high-low\n  [ok]   the declared contour is L H L H L",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.1
+  }
+ ],
+ "testing": [
+  {
+   "code": "cFake = \"## 3. Guarantees\" + char(10) +\n\t\"| G98 | a claim | code | `base/test/security/no_such_guard_narrated.ring` (5) | A01 | - |\" + char(10) +\n\t\"| G99 | an unproven claim | code | nothing here | A01 | - |\" + char(10) +\n\t\"## 4. Open risks\" + char(10)\naFR = GuaranteeRows(cFake)\nThen(\"it reads both fake rows\", len(aFR), 2)\nThen(\"it flags the row with no proof\", len(RowsWithoutProof(aFR)), 1)\nThen(\"it flags the guard that does not exist\", len(MissingPaths(GuardPaths(aFR))), 1)",
+   "expected": "  THEN  it reads both fake rows  [PASS]\n  THEN  it flags the row with no proof  [PASS]\n  THEN  it flags the guard that does not exist  [PASS]",
+   "source": "base/test/security/threat_model_narrated.ring",
+   "what_en": "The checker that keeps the threat model honest is itself shown catching a fake row with no proof and a guard that does not exist.",
+   "what_fr": "Le vérificateur qui garde le modèle de menaces honnête est lui-même vu attraper une fausse ligne sans preuve et un test qui n'existe pas.",
+   "out": "  THEN  it reads both fake rows  [PASS]\n  THEN  it flags the row with no proof  [PASS]\n  THEN  it flags the guard that does not exist  [PASS]",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.1
+  }
+ ],
+ "documentation": [
+  {
+   "code": "oDoc = StzSelfDocQ(\"stzList\")\n? oDoc.HowTo(\"remove duplicates\")\n? oDoc.HasMethod(\"DuplicatesRemoved\")",
+   "expected": "Q([...]).RemoveDuplicates()   -- composed by grammar (remove duplicates)\nTRUE",
+   "source": "base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md",
+   "what_en": "Asked in plain words how to remove duplicates, the library composes the method name from its own naming grammar, and says so.",
+   "what_fr": "À la question « comment retirer les doublons », la bibliothèque compose le nom de la méthode grâce à sa propre grammaire de nommage, et le dit.",
+   "out": "Q([...]).RemoveDuplicates()   -- composed by grammar (remove duplicates)\n1",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 9.2
+  },
+  {
+   "code": "oDoc = StzSelfDocQ(\"stzList\")\n? StzLeft( oDoc.ExplainMethod(\"DuplicatesRemoved\"), 20 )\n? oDoc.ExplainMethod(\"NoSuchThing\")",
+   "expected": "DuplicatesRemoved --\nNo method 'NoSuchThing' in stzList.",
+   "source": "base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md",
+   "what_en": "The library explains a method from its own source comment, and plainly refuses a method that does not exist instead of inventing one.",
+   "what_fr": "La bibliothèque explique une méthode à partir du commentaire de son code, et refuse franchement une méthode qui n'existe pas au lieu d'en inventer une.",
+   "out": "DuplicatesRemoved --\nNo method 'NoSuchThing' in stzList.",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 9.2
+  },
+  {
+   "code": "cBroken = \"# Mini\" + char(10) + \"```ring\" + char(10) + \"? 1 + 1\" + char(10) + \"#--> 3\" + char(10) + \"```\" + char(10)\ncMini2 = \"t_mini2_\" + ProcessId() + \".en.md\"\nwrite(cMini2, cBroken)\noCh2 = StzChapterQ(cMini2, \"en\")\noCh2.Run(\"\")\n? oCh2.AllPromisesKept()\n? oCh2.CellKept(1)",
+   "expected": "FALSE\nFALSE",
+   "source": "base/education/program/courses/elementary-introduction/chapters/15-write-a-narration.en.md",
+   "what_en": "A tiny document whose example promises 3 for 1 + 1 is run, and the broken promise is reported rather than hidden.",
+   "what_fr": "Un petit document dont l'exemple promet 3 pour 1 + 1 est exécuté, et la promesse non tenue est signalée au lieu d'être cachée.",
+   "out": "0\n0",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 9.2
+  }
+ ],
+ "governance": [
+  {
+   "code": "oGov = new stzGovernance(\"shop\")\n? \"no coverage stated -> \" + oGov.MayRegister(\"mystery\", \"\", \"reversible\")\n? \"  \" + oGov.Why()\n? \"no reversal declared -> \" + oGov.MayRegister(\"mystery\", \"reorders stock\", \"\")\n? \"  \" + oGov.Why()\n? \"both stated -> \" + oGov.MayRegister(\"mystery\", \"reorders stock\", :Compensable)",
+   "expected": "no coverage stated -> 0\n  AGENTLOOP-R4: agent 'mystery' declares no coverage statement. Registration refuses it. Say what this agent covers, in one sentence, before the loop will run it. Law 18: nothing schedules what nobody has stated the reach of.\nno reversal declared -> 0\n  AGENTLOOP-R5: agent 'mystery' declares no reversibility class. Registration refuses it. Declare one of: reversible | compensable | irreversible. Law 18: an agent whose reversal nobody stated cannot be scheduled by something that cannot undo it.\nboth stated -> 1",
+   "source": "base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md",
+   "what_en": "An agent that does not say what it covers, or how reversible its work is, cannot be registered, and each refusal names its rule.",
+   "what_fr": "Un agent qui ne dit pas ce qu'il couvre, ou à quel point son travail est réversible, ne peut pas s'inscrire, et chaque refus nomme sa règle.",
+   "out": "no coverage stated -> 0\n  AGENTLOOP-R4: agent 'mystery' declares no coverage statement. Registration refuses it. Say what this agent covers, in one sentence, before the loop will run it. Law 18: nothing schedules what nobody has stated the reach of.\nno reversal declared -> 0\n  AGENTLOOP-R5: agent 'mystery' declares no reversibility class. Registration refuses it. Declare one of: reversible | compensable | irreversible. Law 18: an agent whose reversal nobody stated cannot be scheduled by something that cannot undo it.\nboth stated -> 1",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.1
+  },
+  {
+   "code": "oG2 = new stzGovernance(\"billing\")\noG2.DeclareRisk(\"send-invoice\", 3)\noG2.GrantPermission(\"billing-agent\", \"send-invoice\")\noG2.SetAuthority(\"billing-agent\", :Delegated)\n? \"may it proceed? \" + oG2.MayProceed(\"billing-agent\", \"send-invoice\")\n? \"  \" + oG2.Why()",
+   "expected": "may it proceed? 0\n  refused: 'billing-agent' holds 'delegated' authority (level 2) but 'send-invoice' is risk tier 3 (SHOULD does not cover it)",
+   "source": "base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md",
+   "what_en": "An agent holds the permission yet is refused, because its delegated authority does not cover a risk-3 action; the answer explains why.",
+   "what_fr": "Un agent détient la permission mais est refusé, car son autorité déléguée ne couvre pas une action de risque 3 ; la réponse explique pourquoi.",
+   "out": "may it proceed? 0\n  refused: 'billing-agent' holds 'delegated' authority (level 2) but 'send-invoice' is risk tier 3 (SHOULD does not cover it)",
+   "matches_source": true,
+   "ran": "2026-10-01 21:18",
+   "seconds": 3.1
+  }
+ ],
+ "regex": [
+  {
+   "code": "# a number, then a string\n? Lx(\"[@N, @S]\").Match([42, \"hello\"])\n# one to three numbers, then a string\n? Lx(\"[@N1-3, @S]\").Match([1, 2, \"end\"])\n# anything but a number\n? Lx(\"[@!N]\").Match([\"string\"])\n? Lx(\"[@!N]\").Match([42])",
+   "expected": "TRUE\nTRUE\nTRUE\nFALSE",
+   "source": "base/doc/narrations/stzlistex-pattern-matching-for-lists.md (A Simple Example; Quantifiers and Ranges)",
+   "what_en": "A list is matched by its shape, the way a regex matches text: a number then a string, one to three numbers then a string, anything but a number.",
+   "what_fr": "Une liste se reconnaît à sa forme, comme une expression régulière reconnaît un texte : un nombre puis une chaîne, de un à trois nombres puis une chaîne, tout sauf un nombre.",
+   "out": "1\n1\n1\n0",
+   "matches_source": true,
+   "ran": "2026-10-01 21:19",
+   "seconds": 3.1
+  },
+  {
+   "code": "rx(pat(:xlsConditionalExpression)) {\n\t? Match(\"B2<>C3\")\n\t? Pattern() + NL\n\t? Explain() + NL\n}",
+   "expected": "TRUE\n\"^.*(?:=|<|>|<>).*$\"\nMatches an Excel conditional expression",
+   "source": "base/test/regexmaker/02_match.ring",
+   "what_en": "A ready-made pattern is called by name, matched against a whole value, and explains itself in plain words.",
+   "what_fr": "Un motif tout fait s'appelle par son nom, se compare à une valeur entière et s'explique en mots simples.",
+   "out": "1\n^.*(?:=|<|>|<>).*$\n\nMatches an Excel conditional expression",
+   "matches_source": true,
+   "ran": "2026-10-01 21:19",
+   "seconds": 3.1
+  },
+  {
+   "code": "wrxm() {\n\tIfStartsWith(\"+\").\n\tThenMatch(\"\\+1\\d{10}\").     # International format\n\tElseMatch(\"\\d{10}\")         # Local format\n\t? Pattern()\n}",
+   "expected": "(?(?=^\\+)\\+1\\d{10}|\\d{10})",
+   "source": "base/test/regexmaker/34_validate_phone_numbers.ring",
+   "what_en": "A conditional pattern is declared like an if/else, international or local phone format, and the maker writes the regex.",
+   "what_fr": "Un motif conditionnel se déclare comme un si/sinon, format de téléphone international ou local, et le constructeur écrit l'expression régulière.",
+   "out": "(?(?=^\\+)\\+1\\d{10}|\\d{10})",
+   "matches_source": true,
+   "ran": "2026-10-01 21:19",
+   "seconds": 3.1
+  },
+  {
+   "code": "Nx = new stzNumbrex(\"{@Property(Prime)}\")\n? Nx.Match(17)\n? Nx.Match(18)",
+   "expected": "TRUE\nFALSE",
+   "source": "base/test/numbrex/02_basic_property_matching.ring",
+   "what_en": "A number is matched by what it is: 17 fits the pattern for primes, 18 does not.",
+   "what_fr": "Un nombre se reconnaît à ce qu'il est : 17 correspond au motif des nombres premiers, 18 non.",
+   "out": "1\n0",
+   "matches_source": true,
+   "ran": "2026-10-01 21:19",
+   "seconds": 3.1
+  }
+ ],
+ "geo": [
+  {
+   "code": "# the guard's fixture: two countries, in the caller's own file\noF = StzGeoFeaturesFromJson(read(\"../graphics/fixtures/two_countries.geojson\"))\noBad = StzGeoMap(new stzGeoProjection(:Mercator), oF)\noBad.SetValuesQ([ 4200, 99999 ]).SetClasses([ 0, 5000, 20000, 30000 ])\naBad = oBad.Findings()\nchk(\"A CHOROPLETH ON A PROJECTION THAT DISTORTS AREA IS AN ERROR -- it encodes \" +\n    \"a quantity as the colour of an area, so the picture argues against its own legend\",\n    _HasRule(aBad, \"choropleth_needs_an_equal_area_projection\", \"error\"))",
+   "expected": "  ok   A CHOROPLETH ON A PROJECTION THAT DISTORTS AREA IS AN ERROR -- it encodes a quantity as the colour of an area, so the picture argues against its own legend",
+   "source": "base/test/graphics/geo_map_narrated.ring (section 7, what the gate owes a map)",
+   "what_en": "A map coloured by value on Mercator reports itself as an error, because the colour then speaks for areas the projection has swollen.",
+   "what_fr": "Une carte colorée selon une valeur sur Mercator se signale elle-même en erreur, car la couleur parle alors pour des surfaces que la projection a gonflées.",
+   "out": "  ok   A CHOROPLETH ON A PROJECTION THAT DISTORTS AREA IS AN ERROR -- it encodes a quantity as the colour of an area, so the picture argues against its own legend",
+   "matches_source": true,
+   "ran": "2026-10-01 21:20",
+   "seconds": 3.4
+  },
+  {
+   "code": "# the guard's fixture: two countries, in the caller's own file\noF = StzGeoFeaturesFromJson(read(\"../graphics/fixtures/two_countries.geojson\"))\noAt = StzGeoAtlas(oF)\naRows = [ [ \"Arda\", 10 ], [ \"berea\", 20 ], [ \"Atlantis\", 30 ] ]\naV = oAt.ValuesFor(aRows)\nchk(\"A TABLE OF ROWS BECOMES ONE VALUE PER FEATURE, in the features' own order, \" +\n    \"which is what the map takes\",\n    len(aV) = 2 and aV[1] = 10 and aV[2] = 20)\nchk(\"...and what did not bind is ANSWERED rather than swallowed\",\n    len(oAt.Unresolved(aRows)) = 1 and oAt.Unresolved(aRows)[1] = \"Atlantis\")",
+   "expected": "  ok   A TABLE OF ROWS BECOMES ONE VALUE PER FEATURE, in the features' own order, which is what the map takes\n  ok   ...and what did not bind is ANSWERED rather than swallowed",
+   "source": "base/test/graphics/geo_map_narrated.ring (section 8, names to shapes; oAt is an atlas over the caller's own two regions)",
+   "what_en": "A table typed by a person binds to the caller's own shapes; a name that matches nothing, here Atlantis, is reported back and never guessed.",
+   "what_fr": "Un tableau saisi à la main se rattache aux formes fournies par l'appelant ; un nom qui ne correspond à rien, ici Atlantis, est signalé et jamais deviné.",
+   "out": "  ok   A TABLE OF ROWS BECOMES ONE VALUE PER FEATURE, in the features' own order, which is what the map takes\n  ok   ...and what did not bind is ANSWERED rather than swallowed",
+   "matches_source": true,
+   "ran": "2026-10-01 21:20",
+   "seconds": 3.4
+  },
+  {
+   "code": "# the guard's fixture: one square, on a world Mercator map\noSq = StzGeoFeaturesFromJson(_FSquare())\noMe = StzGeoMap(new stzGeoProjection(:Mercator), oSq)\noMe.Projection().FitToSphere(900, 900, 4)\noC1 = new stzCanvas(600, 300)\noC1.SetBackground(\"#FFFFFF\")\noFont = new stzFont(\"../gpu/fixtures/amiri_arabic_subset.ttf\")   # a font the library commits\nnDrew = oMe.DrawScaleBarOn(oC1, oFont, 12, 40, 200, 140, 0, \"#333333\")\n? \"   drawing a bar on a world Mercator returned \" + nDrew",
+   "expected": "   drawing a bar on a world Mercator returned 0",
+   "source": "base/test/graphics/geo_furniture_narrated.ring (section THE SCALE BAR, AND WHEN IT REFUSES; oMe is a world Mercator map, and the next line of the guard asserts nDrew = 0)",
+   "what_en": "Asked to draw a scale bar on a world Mercator map, the map declines and answers 0, because no single bar is true across that sheet.",
+   "what_fr": "Sollicitée pour une échelle graphique sur un planisphère Mercator, la carte refuse et répond 0, car aucune barre unique n'est juste sur toute la feuille.",
+   "out": "   drawing a bar on a world Mercator returned 0",
+   "matches_source": true,
+   "ran": "2026-10-01 21:20",
+   "seconds": 3.4
+  }
+ ]
+}

@@ -33,27 +33,34 @@
 <p class="counts-line">4 Strong · 5 Solid · 3 Partial · 0 Emerging</p>
     <p class="proof">Mesuré contre : Graphviz · Mermaid · D2 · NetworkX · Dossiers : <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/graph">base/graph</a> · <a href="../guide/diagramming.html">Le guide des fonctions de ce domaine</a></p>
     <figure class="area-hero"><img src="../../assets/img/areas/diagramming.webp" alt="un diagramme DRAKON du catalogue : préparer le déjeuner" width="1100" height="660"><figcaption><b>un diagramme DRAKON du catalogue : préparer le déjeuner.</b> rendu par le garde gg_drakon_catalogue de la bibliothèque et commis avec lui à 0e72e2e2c sous le nom cat_14_cook_lunch.png · <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphics/gg_drakon_catalogue.ring">la source</a></figcaption></figure>
-    
+    <h2>Repensé depuis les premiers principes</h2><p>Ce que Softanza a gardé de ce qui marche, et ce qu'elle a repensé, tel que la bibliothèque l'a écrit dans ses documents de conception et ses narrations.</p><p class="way"><span>La manière Softanza</span>Un diagramme est un langage visuel, pas une peinture : toute relation que le lecteur y perçoit doit exister dans le graphe.</p><div class="sg"><div><h4>Gardé des meilleures pratiques</h4><ul><li>Les dessins en couches suivent la chaîne classique de Sugiyama : couches, nœuds relais sur les longues arêtes, réduction des croisements, coordonnées, puis tracé des liens. <a class="src" href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md">source</a></li><li>Le modèle de Graphviz est conservé : l&#x27;espacement entre les nœuds fait contrat, et la taille de l&#x27;image découle de son contenu, pas l&#x27;inverse. <a class="src" href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md">source</a></li><li>Les diagrammes mathématiques reprennent le découpage de Penrose : un domaine déclare les types, une substance énonce le contenu, un style le traduit en formes, et une optimisation trouve la disposition. <a class="src" href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md">source</a></li></ul></div><div><h4>Repensé</h4><ul><li>L&#x27;auteur modifie le sens, l&#x27;algorithme gère la géométrie. Déplacer une boîte suggère seulement un ordre, car une position choisie à la main affirmerait ce que le graphe ignore. <a class="src" href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md">source</a></li><li>BPMN, UML, machines à états et circuits sont des profils déclarés sur une seule base de dessin, jamais des moteurs à part : un moteur dupliqué était arrivé défectueux. <a class="src" href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md">source</a></li><li>Les positions dans une couche sont calculées exactement, par régression isotonique, et non par une heuristique de médiane. Toute disposition est déterministe : un test peut vérifier l&#x27;image octet par octet. <a class="src" href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md">source</a></li><li>Deux liens ne peuvent se superposer que là où ils partagent une extrémité, car le lecteur voit dans des traits fusionnés une relation que le graphe n&#x27;a peut-être pas. <a class="src" href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md">source</a></li></ul></div></div>
     <blockquote><p>One of the most complete planes in the library: 25 notations all rendered by one engine, over a native deterministic layout engine and a NetworkX-tier graph-algorithm suite; math and molecule diagrams are genuinely constraint-solved via autodiff. The old dot.exe dependency is demoted to an optional viewer — diagram layout is now engine-native. Guarded by ~1,790 assertions.</p></blockquote>
     <div class="sg"><div><h4>Ce qu'un maker en fait, et ce qui se distingue</h4><ul><li>25 notations as data profiles over one renderer</li><li>determinism as a guarantee: bit-identical layout across processes</li><li>constraint-solved layout via autodiff, which no mainstream tool does</li><li>NetworkX-core parity, compiled</li></ul></div><div><h4>Ce qui est dû</h4><ul><li>meet the dot kill criterion (spline routing, nested clusters)</li><li>live interactivity via the GUI plane</li><li>graph generators &amp; isomorphism</li><li>PDF / PostScript export</li></ul></div></div>
-    <h2>Un exemple, exécuté</h2><p>Un graphe orienté de cinq villes ; le plus court chemin est demandé, pas calculé à la main.</p><div class="run"><div><div class="lbl">Softanza</div><pre>oG = new stzGraph(&quot;roads&quot;)
-for cTown in [ &quot;Niamey&quot;, &quot;Dosso&quot;, &quot;Maradi&quot;, &quot;Zinder&quot;, &quot;Tahoua&quot; ]
-    oG.AddNode(cTown)
-next
-oG.AddEdge(&quot;Niamey&quot;, &quot;Dosso&quot;)
-oG.AddEdge(&quot;Dosso&quot;, &quot;Maradi&quot;)
-oG.AddEdge(&quot;Maradi&quot;, &quot;Zinder&quot;)
-oG.AddEdge(&quot;Niamey&quot;, &quot;Tahoua&quot;)
-oG.AddEdge(&quot;Tahoua&quot;, &quot;Zinder&quot;)
-? oG.NumberOfNodes()
-? oG.NumberOfEdges()
-? @@( oG.Neighbors(&quot;Dosso&quot;) )
-? oG.IsConnected()
-? @@( oG.ShortestPath(&quot;Niamey&quot;, &quot;Zinder&quot;) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>5
-5
-[ &quot;maradi&quot; ]
-1
-[ &quot;niamey&quot;, &quot;tahoua&quot;, &quot;zinder&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-01 à 01:52 (les nœuds ont été ajoutés un par un dans le script ; la boucle est une abréviation de lecture) ; les identifiants ressortent en minuscules, c&#x27;est le pliage du graphe</p>
+    <h2>La manière Softanza, exécutée</h2><p>Ce que Softanza fait autrement dans ce domaine, montré par du code tiré de ses narrations et de ses gardes, et exécuté pour cette page.</p><p style="margin-top:32px"><b>Une notation déclarée qui interdit les boucles sur soi fait refuser ce lien par l&#x27;éditeur, sans qu&#x27;aucun code de l&#x27;éditeur la connaisse ; un lien licite passe.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre># a notation declared as data: three kinds, a closed vocabulary, and no self-links
+oFsm = new stzNotation(&quot;fsm51&quot;)
+oFsm.AddKind(&quot;state&quot;, &quot;circle&quot;)
+oFsm.AddKind(&quot;final&quot;, &quot;doublecircle&quot;)
+oFsm.AddKind(&quot;task&quot;, &quot;diamond&quot;)
+oFsm.Close()
+oFsm.Forbid(:SelfLink, &quot;a state cannot transition to itself in fsm51; &quot; +
+	&quot;model a stay as a guard on departure instead&quot;)
+StzRegisterNotation(oFsm)
+
+oDm = new stzDiagram(&quot;m51&quot;)
+oDm.SetNotation(&quot;fsm51&quot;)
+oDm.AddNodeXTT(&quot;a&quot;, &quot;A&quot;, [ :type = &quot;state&quot; ])
+oDm.AddNodeXTT(&quot;b&quot;, &quot;B&quot;, [ :type = &quot;task&quot; ])
+oDm.AddEdge(&quot;a&quot;, &quot;b&quot;)
+oDm.ToCanvasXT([ :NodeWidth = 96, :NodeHeight = 36 ])
+
+nDnLog = len(oDm.EditLog())
+bDnGot = oDm.Edit(:Link, [ &quot;a&quot;, &quot;a&quot; ])
+chk(&quot;a link the domain forbids is refused at the command&quot;,
+    bDnGot = 0 and len(oDm.EditLog()) = nDnLog)
+bDnGot = oDm.Edit(:Link, [ &quot;b&quot;, &quot;a&quot; ])
+chk(&quot;...while a lawful link passes the same gate&quot;,
+    bDnGot = 1 and len(oDm.EditLog()) = nDnLog + 1)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>   ok   a link the domain forbids is refused at the command
+   ok   ...while a lawful link passes the same gate</pre></div></div><p class="ran">exécuté le 2026-10-01 21:17 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphics/gg_adversarial.ring">base/test/graphics/gg_adversarial.ring</a></p>
     <h2>Les couloirs, un par un</h2>
     <p class="proof">Les couloirs et leurs notes sont cités tels qu'ils ont été lus à la source, le Read from the source on 2026-09-16, from a read-only main worktree.</p>
     

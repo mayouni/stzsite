@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Regex · Softanza</title>
-<meta name="description" content="Feature-complete PCRE2 with the friendliest match API; JIT and linear-time matcher compiled but dark.">
+<title>Pattern matching · Softanza</title>
+<meta name="description" content="Regex at full PCRE2 power is the entry point; six pattern languages carry it to lists, numbers, time, tables, matrices and graphs. The lanes rate the text engine.">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
 <link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
@@ -26,29 +26,41 @@
 <main id="main">
   <section class="page-head"><div class="wrap">
     <div class="eyebrow">Core data &amp; language</div>
-    <h1>Regex</h1>
-    <p class="lede">Feature-complete PCRE2 with the friendliest match API; JIT and linear-time matcher compiled but dark.</p>
+    <h1>Pattern matching</h1>
+    <p class="lede">Regex at full PCRE2 power is the entry point; six pattern languages carry it to lists, numbers, time, tables, matrices and graphs. The lanes rate the text engine.</p>
   </div></section>
   <div class="wrap page-body">
 <p class="counts-line">4 Strong · 5 Solid · 3 Partial · 0 Emerging</p>
     <p class="proof">Measured against: PCRE2 · RE2 · Oniguruma · Folders: <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/regex">base/regex</a> · <a href="../guide/regex.html">The guide to this area's functions</a></p>
     <figure class="area-hero"><img src="../../assets/img/areas/regex.webp" alt="a pattern, its matches and their places in the line" width="1100" height="660"><figcaption><b>a pattern, its matches and their places in the line.</b> rendered on 2026-10-01 at 04:00 by the site&#x27;s render script tools/areas.ring, run inside the library at commit 0e72e2e2c · <a href="https://github.com/mayouni/stzsite/blob/main/tools/areas.ring">the source</a></figcaption></figure>
-    
+    <h2>Rethought from first principles</h2><p>What Softanza kept from what works, and what it rethought, as the library wrote it down in its design documents and narrations.</p><p class="way"><span>The Softanza way</span>Pattern matching is one way of thinking for every kind of data. The regex is its entry point; Softanza carries the same idea to lists, numbers, time, tables, matrices and graphs, and lets you build a pattern in words or call it by its name.</p><div class="sg"><div><h4>Kept from the best practice</h4><ul><li>PCRE2 runs every match: proven, Unicode-aware, and written in the regex syntax programmers already know, with Unicode mode always switched on. <a class="src" href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/STRING_ENGINE_DESIGN_v2.md,">source</a></li><li>Simple matches are not reinvented: a classic pattern string, named groups and captures work as written; Softanza only adds clearer names around them. <a class="src" href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/deepdives/softanzifying-regex-paradigm-shift.md,">source</a></li></ul></div><div><h4>Rethought</h4><ul><li>Listex, Matrex, Tablex and Graphex apply one pattern grammar to lists, matrices, tables and graphs, replacing the verbose conditional code structured data usually needs. <a class="src" href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md,">source</a></li><li>Numbrex and Timex describe a number&#x27;s properties (prime, perfect, palindrome) or a timeline&#x27;s events and durations, so you state what you mean, not how to test it. <a class="src" href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stznumbrex-pattern-language-for-number.md, Numbers as Patterns, Not Procedures; base/doc/narrations/stzTimex-A-Pattern-Language-for-Time-in-Softanza.md, Introduction">source</a></li><li>stzRegexMaker builds a pattern from readable steps, with conditional (wrxm) and look-around (arxm) makers, because cryptic notation is error-prone and documents nothing. <a class="src" href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/deepdives/softanzifying-regex-paradigm-shift.md,">source</a></li><li>Ready-made patterns are called by name — pat(:email), pat(:IPv6) — and can explain themselves with Explain(), because a raw pattern carries no sign of its intent. <a class="src" href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzregexdata-library-narration.md, The Power of Predefined Regex Patterns; base/doc/deepdives/softanzifying-regex-paradigm-shift.md">source</a></li><li>Four scope verbs — Match, MatchLine, MatchWord, MatchSegment — replace the dotall, multiline and word-boundary flags, because a flag set elsewhere hides what the pattern means. <a class="src" href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SCOPE_ORIENTED_PROGRAMMING.md,">source</a></li><li>Match() asks whether the whole text fits the pattern; MatchFirst() asks whether it occurs anywhere — two different questions get two different verbs. <a class="src" href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/deepdives/softanzifying-regex-paradigm-shift.md,">source</a></li></ul></div></div>
     <blockquote><p>Under the hood it is PCRE2 10.47, statically linked, Unicode always on, with an unusually rich Haro layer (100+ methods, four fluent builder classes, a reactive match-to-code engine). On features it is at PCRE2 parity, with lookaround, backreferences, recursion and conditionals that RE2 and Rust refuse. Where it trails the modern engines is the safety-and-throughput story: no JIT, no linear-time matcher, and the ReDoS knob is not reachable from Haro, although the code for both is already compiled into the binary.</p></blockquote>
     <div class="sg"><div><h4>What a maker does with it, and what stands out</h4><ul><li>Feature-complete PCRE2: lookaround, backrefs, recursion, conditionals that RE2 and Rust deliberately refuse</li><li>The clearest match-semantics API in its class: Match() anchors, MatchFirst() searches, partial as-you-type</li><li>Four fluent builder classes with no native peer</li><li>A reactive RegexUter match-to-code engine</li></ul></div><div><h4>What is owed</h4><ul><li>Wire the linear-time DFA matcher (pcre2_dfa_match is already in the binary)</li><li>Surface the ReDoS limits on the Haro stzRegex class</li><li>Named-group substitution ${name} in replace</li><li>Fix the broken Explain fallback (missing stzRegexAnalyzer) and the builder stubs</li></ul></div></div>
-    <h2>One example, run</h2><p>Match() anchors, MatchFirst() searches, MatchAnywhere() collects; captures come back as a list.</p><div class="run"><div><div class="lbl">Softanza</div><pre>o = rx(&quot;(\w+)@(\w+)\.org&quot;)
-? o.MatchFirst(&quot;write to hello@softanza.org today&quot;)
-? @@( o.Captures() )
-? rx(&quot;^[A-Z][a-z]+$&quot;).Match(&quot;Niamey&quot;)
-? rx(&quot;^[A-Z][a-z]+$&quot;).Match(&quot;niamey&quot;)
-o = rx(&quot;\d+&quot;)
-? o.MatchAnywhere(&quot;RGPH 2012, census 2026&quot;)
-? @@( o.Matches() )</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-[ &quot;hello@softanza.org&quot;, &quot;hello&quot;, &quot;softanza&quot; ]
+    <h2>The Softanza way, run</h2><p>What Softanza does differently in this area, shown by code taken from its narrations and guards, and run for this page.</p><p style="margin-top:32px"><b>A list is matched by its shape, the way a regex matches text: a number then a string, one to three numbers then a string, anything but a number.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre># a number, then a string
+? Lx(&quot;[@N, @S]&quot;).Match([42, &quot;hello&quot;])
+# one to three numbers, then a string
+? Lx(&quot;[@N1-3, @S]&quot;).Match([1, 2, &quot;end&quot;])
+# anything but a number
+? Lx(&quot;[@!N]&quot;).Match([&quot;string&quot;])
+? Lx(&quot;[@!N]&quot;).Match([42])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 1
-0
 1
-[ &quot;2012&quot;, &quot;2026&quot; ]</pre></div></div><p class="ran">run on 2026-10-01 at 01:48</p>
+0</pre></div></div><p class="ran">run on 2026-10-01 21:19 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzlistex-pattern-matching-for-lists.md">base/doc/narrations/stzlistex-pattern-matching-for-lists.md</a></p><p style="margin-top:32px"><b>A ready-made pattern is called by name, matched against a whole value, and explains itself in plain words.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>rx(pat(:xlsConditionalExpression)) {
+	? Match(&quot;B2&lt;&gt;C3&quot;)
+	? Pattern() + NL
+	? Explain() + NL
+}</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+^.*(?:=|&lt;|&gt;|&lt;&gt;).*$
+
+Matches an Excel conditional expression</pre></div></div><p class="ran">run on 2026-10-01 21:19 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/regexmaker/02_match.ring">base/test/regexmaker/02_match.ring</a></p><p style="margin-top:32px"><b>A conditional pattern is declared like an if/else, international or local phone format, and the maker writes the regex.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>wrxm() {
+	IfStartsWith(&quot;+&quot;).
+	ThenMatch(&quot;\+1\d{10}&quot;).     # International format
+	ElseMatch(&quot;\d{10}&quot;)         # Local format
+	? Pattern()
+}</pre></div><div class="out"><div class="lbl">Output</div><pre>(?(?=^\+)\+1\d{10}|\d{10})</pre></div></div><p class="ran">run on 2026-10-01 21:19 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/regexmaker/34_validate_phone_numbers.ring">base/test/regexmaker/34_validate_phone_numbers.ring</a></p><p style="margin-top:32px"><b>A number is matched by what it is: 17 fits the pattern for primes, 18 does not.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>Nx = new stzNumbrex(&quot;{@Property(Prime)}&quot;)
+? Nx.Match(17)
+? Nx.Match(18)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+0</pre></div></div><p class="ran">run on 2026-10-01 21:19 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/numbrex/02_basic_property_matching.ring">base/test/numbrex/02_basic_property_matching.ring</a></p>
     <h2>The lanes, one by one</h2>
     <p class="proof">Lanes and their notes are quoted as they were read at the source, on Read from the source on 2026-09-16.</p>
     

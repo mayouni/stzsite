@@ -69,14 +69,14 @@
   {
    "slug": "regex",
    "band": "core",
-   "en": "Regex",
-   "fr": "Expressions régulières",
+   "en": "Pattern matching",
+   "fr": "Recherche de motifs",
    "s": 4,
    "so": 5,
    "p": 3,
    "e": 0,
-   "line_en": "Feature-complete PCRE2 with the friendliest match API; JIT and linear-time matcher compiled but dark.",
-   "line_fr": "PCRE2 complet avec l'API de correspondance la plus lisible ; le JIT et le moteur en temps linéaire sont compilés mais éteints.",
+   "line_en": "Regex at full PCRE2 power is the entry point; six pattern languages carry it to lists, numbers, time, tables, matrices and graphs. The lanes rate the text engine.",
+   "line_fr": "L'expression régulière, avec toute la puissance de PCRE2, en est la porte d'entrée ; six langages de motifs la portent aux listes, aux nombres, au temps, aux tables, aux matrices et aux graphes. Les couloirs notent le moteur de texte.",
    "dirs": "regex",
    "peers": "PCRE2 · RE2 · Oniguruma",
    "render": {

@@ -303,3 +303,56 @@ next:
 
 note:      the author's two navigation rulings ("a page has a structure that must be shown in a submenu" and "a submenu is not needed when the reader can grasp the page in a normal scroll") are one rule once read with Zui 115: the second level lists PAGES of a section, never anchors inside a page.
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-01 21:22
+
+subject:   every area shows what Softanza rethought, and runs its proof
+
+why:       the author asked that each domain show the first-principles thinking behind it, pragmatic and
+           innovative; that the regex area be presented as the entry point of pattern matching; and that
+           the documentation centre learn from how Wolfram's documentation is designed
+
+did:
+  - read the library's design documents, narrations and guards at commit 0e72e2e2c with four reading
+    agents, seven areas each, and wrote for each of the 28 areas a principle, what it kept from best
+    practice and what it rethought, every item with its source file (data/heritage.json); each area
+    page opens with it, in both languages, and the area tiles carry the principle
+  - renamed the regex area Pattern matching (Recherche de motifs): the regex at full PCRE2 power is the
+    entry point, and Listex, Numbrex, Timex, Tablex, Matrex, Graphex, stzRegexMaker and the patterns
+    called by name are what Softanza rethought
+  - built tools/showcase_run.py, which runs each area's snippets inside the library, one area per
+    process and one at a time, loads the guards' own helpers, and keeps a snippet only when its output
+    keeps the promise its source wrote; of 80 snippets taken from the library, 12 were not run for a
+    stated reason and 59 of the 68 run kept their promise, in 25 areas; binary formats has no code yet,
+    concurrency needs a running cluster and performance a live server, so those three keep the Atlas
+    example
+  - completed doc/DOCUMENTATION-DESIGN.md: what Softanza already decided about its documentation,
+    counted from the tree, and the design that follows (page types, method entries with graded
+    examples, order of work D1 to D5)
+  - linked every class page and area page to its area's guide (3398a87)
+  - checked: 62 pages at 375 px, none wider; no forbidden name and no machine path in the runs; the
+    build's contrast check passes
+
+state:
+  release-1-pass-6:  built; the commit carrying this entry is the one after 3398a87
+  perception-gate:   OPEN -- the author has not seen this pass
+
+waiting:
+  - STZLIB-PATTERN-PROMISES-01: pattern-language promises broken at 0e72e2e2c -- the Listex narration's
+                       [@S, @A] prints 0 twice and [@N1-3, @S] accepts four numbers; timex/03 MatchPartial
+                       and timex/04 Match print 0 where TRUE is promised; tablex/07 @cs:unique and
+                       tablex/29 @!nulls print 0; the recorded run files mark timex/04 and tablex/29 PASS
+                       -> the stzlib desk [routed in CONCLUSIONS]
+  - STZLIB-DEPLOY-NARRATION-01: stz-system-dev-to-deploy-narration calls AddServer and AddSuperApp,
+                       which stzPlatformProfile does not define, and uses oGuarded, which it never builds
+                       -> the stzlib desk [routed in CONCLUSIONS]
+  - STZLIB-EXAMPLE-INDEX-01: _StzExampleFor reads only the same-line #--> form, keys by bare method
+                       name, and records the first file a name was seen in; D3 of the design needs it right
+                       -> the stzlib desk [routed in CONCLUSIONS]
+  - STZSITE-ZUI99-01:  Zui Rule 99 -> the author [not routed]
+
+next:
+  - me:      D3, method entries with graded examples, once the example index is right; narrations as pages
+  - author:  read the area pages, Pattern matching first
+```

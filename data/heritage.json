@@ -1,0 +1,2080 @@
+{
+ "string": {
+  "slug": "string",
+  "principle_en": "A string is a sequence of characters a person reads, counted in Unicode code points, never in the bytes a machine stores.",
+  "principle_fr": "Une chaîne est une suite de caractères qu'une personne lit, comptés en points de code Unicode, jamais en octets stockés par la machine.",
+  "kept": [
+   {
+    "en": "Case rules come from the Unicode standard through utf8proc, so case-insensitive search folds German ß to ss instead of using ASCII-only tricks.",
+    "fr": "Les règles de casse viennent du standard Unicode via utf8proc : une recherche insensible à la casse ramène l'allemand ß à ss, sans astuce limitée à l'ASCII.",
+    "source": "base/doc/design/STRING_ENGINE_DESIGN_v2.md, §1 Value Proposition and §4.1–4.3"
+   },
+   {
+    "en": "Whitespace follows Unicode, which defines more than 25 space characters, so trimming also removes no-break and ideographic spaces.",
+    "fr": "Les espaces suivent Unicode, qui en définit plus de vingt-cinq : rogner une chaîne retire aussi les espaces insécables et idéographiques.",
+    "source": "base/doc/design/STRING_ENGINE_DESIGN_v2.md, §4.4 Unicode-Aware Trim"
+   },
+   {
+    "en": "Identity follows Unicode: two characters are equal only when their code points match, so look-alike Latin, Greek and Cyrillic letters stay distinct and detectable.",
+    "fr": "L'identité suit Unicode : deux caractères ne sont égaux que si leurs points de code coïncident ; les sosies latins, grecs et cyrilliques restent distincts et repérables.",
+    "source": "base/doc/narrations/stz-unmasking-unicode-lookalities-narration.md, Why Does This Happen?"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "Every position and length counts code points, not bytes, so text in Hebrew, Arabic or emoji is never cut through the middle of a character.",
+    "fr": "Chaque position et chaque longueur se comptent en points de code, non en octets : l'hébreu, l'arabe ou un emoji ne sont jamais coupés en plein caractère.",
+    "source": "base/doc/design/STRING_ENGINE_DESIGN_v2.md, §1 Value Proposition",
+    "stage": "shipped",
+    "evidence": "engine/src/string/core.zig; guard base/test/string/00_string_narrated.ring"
+   },
+   {
+    "en": "Positions start at 1, as people count, at every layer including the compiled engine, which removes a whole class of off-by-one errors.",
+    "fr": "Les positions commencent à 1, comme on compte d'habitude, à tous les niveaux, moteur compilé compris, ce qui élimine toute une famille d'erreurs de décalage.",
+    "source": "base/doc/design/STRING_ENGINE_DESIGN_v2.md, §3 Indexing: 1-Based by Default",
+    "stage": "shipped",
+    "evidence": "engine/src/string/core.zig (INDEX_BASE = 1 at the engine boundary)"
+   },
+   {
+    "en": "The empty string is never counted, found, contained, replaced or removed, because a match on nothing can silently delete a real character.",
+    "fr": "La chaîne vide n'est jamais comptée, trouvée, contenue, remplacée ni retirée, car une correspondance sur « rien » peut effacer en silence un vrai caractère.",
+    "source": "base/doc/narrations/stzstring-emptiness-narration.md, the five rules and Logical Fluency",
+    "stage": "shipped",
+    "evidence": "guard base/test/string/612_dealing_in_emptiness_in_softanza.ring"
+   },
+   {
+    "en": "Case sensitivity is one parameter of a single function, not a second twin function, which halves the number of functions to learn.",
+    "fr": "La sensibilité à la casse est un paramètre d'une seule fonction, pas une fonction jumelle, ce qui divise par deux le nombre de fonctions à apprendre.",
+    "source": "base/doc/design/STRING_ENGINE_DESIGN_v2.md, §2.3 Case Sensitivity: CS Pattern",
+    "stage": "shipped",
+    "evidence": "StzFindCS in base/common/stzFuncs.ring, StzReplaceCS in base/common/stzPrimitives.ring; engine/src/string/find.zig folds case with Unicode"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "? Q(\"\").Contains(\"\")\n? Q(\"\").Contains(\"text\")\n? Q(\"text\").Contains(\"\")",
+    "expected": "FALSE\nFALSE\nFALSE",
+    "source": "base/doc/narrations/stzstring-emptiness-narration.md (Rule 3; the same rule is asserted in base/test/string/612_dealing_in_emptiness_in_softanza.ring)",
+    "what_en": "The empty string is never contained, not even in itself, so a match on nothing can never trigger an edit.",
+    "what_fr": "La chaîne vide n'est jamais contenue, pas même en elle-même : une correspondance sur rien ne peut déclencher aucune modification."
+   },
+   {
+    "code": "Then(\"NumberOfChars('héllo') is 5 (not byte count)\", Q(\"héllo\").NumberOfChars(), 5)",
+    "expected": "5 (asserted by the guard)",
+    "source": "base/test/string/00_string_narrated.ring",
+    "what_en": "Length counts characters, not bytes: the accented word héllo has five characters although it takes six bytes.",
+    "what_fr": "La longueur compte des caractères, pas des octets : le mot accentué héllo a cinq caractères alors qu'il occupe six octets."
+   },
+   {
+    "code": "? AreEqual([\"O\", \"Ο\", \"О\"])\n? Unicodes([\"O\", \"Ο\", \"О\"])\n? Scripts([\"O\", \"Ο\", \"О\"])",
+    "expected": "FALSE\n[ 79, 927, 1054 ]\n[ \"latin\", \"greek\", \"cyrillic\" ]",
+    "source": "base/doc/narrations/stz-unmasking-unicode-lookalities-narration.md",
+    "what_en": "Three letters that look identical are told apart by their code points and their scripts: Latin, Greek and Cyrillic.",
+    "what_fr": "Trois lettres d'apparence identique se distinguent par leurs points de code et leurs écritures : latine, grecque et cyrillique."
+   }
+  ]
+ },
+ "regex": {
+  "slug": "regex",
+  "principle_en": "Pattern matching is one way of thinking for every kind of data. The regex is its entry point; Softanza carries the same idea to lists, numbers, time, tables, matrices and graphs, and lets you build a pattern in words or call it by its name.",
+  "principle_fr": "La recherche de motifs est une même façon de penser pour toutes les données. L'expression régulière en est la porte d'entrée ; Softanza porte la même idée aux listes, aux nombres, au temps, aux tables, aux matrices et aux graphes, et permet de construire un motif avec des mots ou de l'appeler par son nom.",
+  "kept": [
+   {
+    "en": "PCRE2 runs every match: proven, Unicode-aware, and written in the regex syntax programmers already know, with Unicode mode always switched on.",
+    "fr": "Chaque correspondance passe par PCRE2 : éprouvé, compatible Unicode et fidèle à la syntaxe que les développeurs connaissent déjà, avec le mode Unicode toujours activé.",
+    "source": "base/doc/design/STRING_ENGINE_DESIGN_v2.md, §9.3 Regex Engine Choice"
+   },
+   {
+    "en": "Simple matches are not reinvented: a classic pattern string, named groups and captures work as written; Softanza only adds clearer names around them.",
+    "fr": "Les cas simples ne sont pas réinventés : un motif classique, les groupes nommés et les captures s'écrivent comme d'habitude ; Softanza ajoute seulement des noms plus clairs.",
+    "source": "base/doc/deepdives/softanzifying-regex-paradigm-shift.md, §4 Basic Matching and §5.1 Capturing Named Groups"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "Listex, Matrex, Tablex and Graphex apply one pattern grammar to lists, matrices, tables and graphs, replacing the verbose conditional code structured data usually needs.",
+    "fr": "Listex, Matrex, Tablex et Graphex appliquent une même grammaire de motifs aux listes, matrices, tables et graphes, à la place du code conditionnel verbeux des données structurées.",
+    "source": "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md, §5.2 PATTERNS (Graphex is layered on Listex); base/doc/narrations/stzlistex-pattern-matching-for-lists.md, Why List Regex?; base/doc/narrations/stztablex-pattern-langauge-for-tables.md.md",
+    "stage": "shipped",
+    "evidence": "classes stzListex (Lx), stzMatrex (Mx), stzTablex, stzGraphex in base/regex/; guards base/test/matrex/00_matrex_narrated.ring and base/test/graphex/00_graphex_narrated.ring; base/test/tablex/ recorded 32 PASS, 7 ERR; base/test/listex/ runs but asserts nothing (no expected-output markers)"
+   },
+   {
+    "en": "Numbrex and Timex describe a number's properties (prime, perfect, palindrome) or a timeline's events and durations, so you state what you mean, not how to test it.",
+    "fr": "Numbrex et Timex décrivent les propriétés d'un nombre (premier, parfait, palindrome) ou les événements et durées d'une chronologie : on dit ce qu'on veut, pas comment le vérifier.",
+    "source": "base/doc/narrations/stznumbrex-pattern-language-for-number.md, Numbers as Patterns, Not Procedures; base/doc/narrations/stzTimex-A-Pattern-Language-for-Time-in-Softanza.md, Introduction",
+    "stage": "shipped",
+    "evidence": "classes stzNumbrex (Nx) and stzTimex in base/regex/; guard base/test/numbrex/00_numbrex_narrated.ring; base/test/timex/ (11 files, recorded PASS)"
+   },
+   {
+    "en": "stzRegexMaker builds a pattern from readable steps, with conditional (wrxm) and look-around (arxm) makers, because cryptic notation is error-prone and documents nothing.",
+    "fr": "stzRegexMaker construit un motif par étapes lisibles, avec des constructeurs conditionnels (wrxm) et d'assertions de contexte (arxm), car la notation cryptique est source d'erreurs et ne documente rien.",
+    "source": "base/doc/deepdives/softanzifying-regex-paradigm-shift.md, §2 The Challenge, §3 Semantic Engineering and §6 Declarative Pattern Design",
+    "stage": "shipped",
+    "evidence": "class stzRegexMaker (with rxm, wrxm, arxm), base/regex/stzRegexMaker.ring; base/test/regexmaker/ (51 files, all recorded PASS in _ERR_RUN.txt)"
+   },
+   {
+    "en": "Ready-made patterns are called by name — pat(:email), pat(:IPv6) — and can explain themselves with Explain(), because a raw pattern carries no sign of its intent.",
+    "fr": "Des motifs tout faits s'appellent par leur nom — pat(:email), pat(:IPv6) — et s'expliquent avec Explain(), car un motif brut ne dit rien de son intention.",
+    "source": "base/doc/narrations/stzregexdata-library-narration.md, The Power of Predefined Regex Patterns; base/doc/deepdives/softanzifying-regex-paradigm-shift.md §2 (Limited Contextual Semantics)",
+    "stage": "shipped",
+    "evidence": "pat() in base/regex/stzRegexMaker.ring, pattern data in base/data/stzRegexData.ring; base/test/regexdata/ (11 files, recorded PASS) and base/test/regexmaker/02_match.ring"
+   },
+   {
+    "en": "Four scope verbs — Match, MatchLine, MatchWord, MatchSegment — replace the dotall, multiline and word-boundary flags, because a flag set elsewhere hides what the pattern means.",
+    "fr": "Quatre verbes de portée — Match, MatchLine, MatchWord, MatchSegment — remplacent les options dotall, multiligne et limite de mot, car une option posée ailleurs masque le sens du motif.",
+    "source": "base/doc/design/SCOPE_ORIENTED_PROGRAMMING.md, §2–4 (and base/doc/deepdives/stz-regexp-confusion-solved-deepdive.md)",
+    "stage": "shipped",
+    "evidence": "class stzRegex, base/regex/stzRegex.ring (MatchLinesIn, MatchWordsIn, MatchSegmentsIn); tests base/test/regex/34_test_2_line_matching.ring and 36_test_4_word_boundaries.ring, recorded PASS"
+   },
+   {
+    "en": "Match() asks whether the whole text fits the pattern; MatchFirst() asks whether it occurs anywhere — two different questions get two different verbs.",
+    "fr": "Match() demande si tout le texte épouse le motif ; MatchFirst() demande s'il y apparaît quelque part : deux questions différentes, deux verbes différents.",
+    "source": "base/doc/deepdives/softanzifying-regex-paradigm-shift.md, §4 Match() vs MatchFirst()",
+    "stage": "shipped",
+    "evidence": "base/regex/stzRegex.ring; guard base/test/regex/00_regex_narrated.ring (scenario: Match ANCHORS, MatchFirst SEARCHES)"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "rx(pat(:xlsConditionalExpression)) {\n\t? Match(\"B2<>C3\")\n\t? Pattern() + NL\n\t? Explain() + NL\n}",
+    "expected": "TRUE\n\"^.*(?:=|<|>|<>).*$\"\nMatches an Excel conditional expression",
+    "source": "base/test/regexmaker/02_match.ring",
+    "what_en": "A ready-made pattern is called by name, matched against a whole value, and explains itself in plain words.",
+    "what_fr": "Un motif tout fait s'appelle par son nom, se compare à une valeur entière et s'explique en mots simples."
+   },
+   {
+    "code": "wrxm() {\n\tIfStartsWith(\"+\").\n\tThenMatch(\"\\+1\\d{10}\").     # International format\n\tElseMatch(\"\\d{10}\")         # Local format\n\t? Pattern()\n}",
+    "expected": "(?(?=^\\+)\\+1\\d{10}|\\d{10})",
+    "source": "base/test/regexmaker/34_validate_phone_numbers.ring",
+    "what_en": "A conditional pattern is declared like an if/else, international or local phone format, and the maker writes the regex.",
+    "what_fr": "Un motif conditionnel se déclare comme un si/sinon, format de téléphone international ou local, et le constructeur écrit l'expression régulière."
+   },
+   {
+    "code": "Nx = new stzNumbrex(\"{@Property(Prime)}\")\n? Nx.Match(17)\n? Nx.Match(18)",
+    "expected": "TRUE\nFALSE",
+    "source": "base/test/numbrex/02_basic_property_matching.ring",
+    "what_en": "A number is matched by what it is: 17 fits the pattern for primes, 18 does not.",
+    "what_fr": "Un nombre se reconnaît à ce qu'il est : 17 correspond au motif des nombres premiers, 18 non."
+   },
+   {
+    "code": "oTimeline2 = new stzTimeLine(\"2025-10-22\", \"2025-10-22\")\noTimeline2.AddInstant(\"Start\", \"2025-10-22 09:00:00\")\noTimeline2.AddSpan(\"Work\", \"2025-10-22 09:00:00\", \"2025-10-22 17:00:00\")\noTimeline2.AddInstant(\"End\", \"2025-10-22 17:00:00\")\nTmx2 = new stzTimex(\"{@Event(Start) -> @Duration* -> @Event(Work) -> @Duration* -> @Event(End)}\")\n? Tmx2.Match(oTimeline2)",
+    "expected": "TRUE (exact match - entire timeline consumed)",
+    "source": "base/test/timex/04_example_4_complete_sequence_matching.ring",
+    "what_en": "A timeline is matched against a sequence of events with any durations between them, with no loop or date arithmetic.",
+    "what_fr": "Une chronologie est comparée à une suite d'événements séparés par des durées quelconques, sans boucle ni calcul de dates."
+   }
+  ]
+ },
+ "collections": {
+  "slug": "collections",
+  "principle_en": "The same few questions — does it contain, how many, where — and the same verbs work on every structure; only the unit of position changes.",
+  "principle_fr": "Les mêmes questions — contient-elle, combien, où — et les mêmes verbes valent pour toute structure ; seule l'unité de position change.",
+  "kept": [
+   {
+    "en": "Default truth stays the platform's own: empty is false, something is true; IsTrue() behaves exactly like the native test before any extension.",
+    "fr": "La vérité par défaut reste celle de la plateforme : le vide est faux, la présence est vraie ; IsTrue() se comporte exactement comme le test natif.",
+    "source": "base/doc/narrations/istrue-softanza-truth.md"
+   },
+   {
+    "en": "Keeps the usual safe-lookup discipline: check that a key exists (HasKey, HasPath) before reading it, so a lookup never silently creates an empty entry.",
+    "fr": "Garde la discipline habituelle de lecture sûre : vérifier qu'une clé existe (HasKey, HasPath) avant de la lire, pour qu'une lecture ne crée jamais en silence une entrée vide.",
+    "source": "base/doc/narrations/Safe-Access-to-Ring-Hashlists-using-HasKey.md"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "Strings and lists answer the same verbs — Contains, NumberOfOccurrence, FindAll — and StzFind accepts either, so one way of thinking covers every structure.",
+    "fr": "Chaînes et listes répondent aux mêmes verbes — Contains, NumberOfOccurrence, FindAll — et StzFind accepte l'une ou l'autre : une seule façon de penser couvre toutes les structures.",
+    "source": "base/education/program/courses/elementary-introduction/chapters/05-one-object-any-structure.en.md",
+    "stage": "shipped",
+    "evidence": "StzFind in base/common/stzFuncs.ring; the chapter's cells run against the library"
+   },
+   {
+    "en": "A method's form carries its effect: Remove() changes the object, Removed() returns a changed copy, RemoveQ() chains, so side effects are visible in the name.",
+    "fr": "La forme d'une méthode dit son effet : Remove() modifie l'objet, Removed() renvoie une copie modifiée, RemoveQ() enchaîne ; les effets de bord se lisent dans le nom.",
+    "source": "base/doc/narrations/stz-function-forms-narration.md, Active and Passive Forms",
+    "stage": "shipped",
+    "evidence": "base/list/stzList.ring (Sorted, Reversed beside their mutating forms); the convention is restated in base/doc/design/SOFTANZA_NUMERIC_FOUNDATION.md §7"
+   },
+   {
+    "en": "Truth can be configured: IsTrueXT() lets a program declare which items or words make a list or string false, instead of one fixed empty-equals-false rule.",
+    "fr": "La vérité se configure : IsTrueXT() permet de déclarer quels éléments ou mots rendent une liste ou une chaîne fausse, au lieu d'une règle figée « vide égale faux ».",
+    "source": "base/doc/narrations/istrue-softanza-truth.md",
+    "stage": "shipped",
+    "evidence": "base/object/stzObject.ring (IsTrueXT); guard base/test/func/00_func_narrated.ring (scenario: A CONFIGURED falsity list still bites)"
+   },
+   {
+    "en": "An object can keep the story of its changes: QH() records every step of a chain, because a transformation normally leaves no trace of its path.",
+    "fr": "Un objet peut garder l'histoire de ses changements : QH() enregistre chaque étape d'une chaîne, car une transformation ne laisse d'ordinaire aucune trace de son parcours.",
+    "source": "base/doc/narrations/stzobject-history-narration.md",
+    "stage": "shipped",
+    "evidence": "QH in base/common/stzSmallFuncs.ring; guard base/test/string/466_keeping_the_history_of_updates_of_a_softanza_objec.ring (recorded PASS)"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "? @@( StzFind(\"tea\", \"tea rice tea fish\") )\n? @@( StzFind(\"tea\", [ \"tea\", \"rice\", \"tea\", \"fish\" ]) )",
+    "expected": "[ 1, 10 ]\n[ 1, 3 ]",
+    "source": "base/education/program/courses/elementary-introduction/chapters/05-one-object-any-structure.en.md",
+    "what_en": "One function finds a value in a string or in a list; only the unit changes, characters or items.",
+    "what_fr": "Une même fonction trouve une valeur dans une chaîne ou dans une liste ; seule l'unité change, caractères ou éléments."
+   },
+   {
+    "code": "QH(\"1 AA 2 B 3 CCC 4 DD 5 Z\").\n\tRemoveCharsWQ('Q(@Char).IsNumberInString()').\n\tRemoveSpacesQ().\n\tRemoveDuplicatedCharsQ().\n\tHistory()",
+    "expected": "[ \"1 AA 2 B 3 CCC 4 DD 5 Z\", \" AA  B  CCC  DD  Z\", \"AABCCCDDZ\", \"ABCDZ\" ] (asserted by the guard)",
+    "source": "base/test/string/466_keeping_the_history_of_updates_of_a_softanza_objec.ring",
+    "what_en": "A chain of changes keeps its history: the starting value and the result of every step.",
+    "what_fr": "Une chaîne de transformations garde son historique : la valeur de départ et le résultat de chaque étape."
+   },
+   {
+    "code": "SetSubStringsMakingAStringFalse([ \"no\", \"off\" ])\nThen(\"a string carrying a marker is FALSE\", IsTrueXT(\"no way\"), FALSE)\nThen(\"...and IsFalseXT says so\", IsFalseXT(\"no way\"), TRUE)\nThen(\"a string without one is still TRUE\", IsTrueXT(\"Hello\"), TRUE)",
+    "expected": "FALSE\nTRUE\nTRUE (each asserted by the guard)",
+    "source": "base/test/func/00_func_narrated.ring",
+    "what_en": "Truth is configurable: once 'no' and 'off' are declared as markers, a string containing one counts as false.",
+    "what_fr": "La vérité se configure : une fois « no » et « off » déclarés comme marqueurs, une chaîne qui en contient un compte comme fausse."
+   }
+  ]
+ },
+ "numeric": {
+  "slug": "numeric",
+  "principle_en": "A number should know whether it is exact and say why when it is not, and the frame that bends a result must be visible where the number is used.",
+  "principle_fr": "Un nombre doit savoir s'il est exact et dire pourquoi quand il ne l'est pas ; le cadre qui infléchit un résultat doit être visible là où l'on s'en sert.",
+  "kept": [
+   {
+    "en": "Machine numbers stay IEEE-754 double precision, with half-even rounding as the stated default, the accounting rule, because half-up rounding drifts a long ledger upward.",
+    "fr": "Les nombres machine restent en double précision IEEE-754, avec l'arrondi au pair comme défaut annoncé, la règle comptable, car l'arrondi vers le haut fait dériver un long registre.",
+    "source": "base/doc/design/SOFTANZA_NUMERIC_FOUNDATION.md, Pillar 2 and §8 Phase 2 (slice 2)"
+   },
+   {
+    "en": "Numerically stable textbook methods by default: compensated summation, Welford moments, and the standard LU, QR, Cholesky and SVD decompositions.",
+    "fr": "Des méthodes numériques classiques et stables par défaut : sommation compensée, moments de Welford et décompositions standard LU, QR, Cholesky et SVD.",
+    "source": "base/doc/design/SOFTANZA_NUMERIC_FOUNDATION.md, Pillar 4 (Kernels)"
+   },
+   {
+    "en": "Results are judged against reference oracles — NumPy and exact rationals — with a tolerance derived from the problem's conditioning, never a hand-picked constant.",
+    "fr": "Les résultats sont jugés face à des oracles de référence — NumPy et rationnels exacts — avec une tolérance tirée du conditionnement du problème, jamais une constante choisie à la main.",
+    "source": "base/math/CHARTER.md, §1 What Softanza owns (and base/test/number/numeric_reference_oracle_narrated.ring)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "One number type, many inner forms — integer, big integer, rational, decimal — chosen automatically, because users should not carry a type decision the system can make.",
+    "fr": "Un seul type de nombre, aux formes internes multiples — entier, grand entier, rationnel, décimal — choisies automatiquement : le choix du type revient au système, pas à l'utilisateur.",
+    "source": "base/doc/design/SOFTANZA_NUMERIC_FOUNDATION.md, Pillar 1",
+    "stage": "shipped",
+    "evidence": "base/number/stzNumber.ring (Representation, IsBigInteger, IsRational); guard base/test/number/numeric_rationals_narrated.ring"
+   },
+   {
+    "en": "A number knows whether it is exact, and WhyNotExact() names what was lost, because numeric surprise usually comes from a frame the caller could not see.",
+    "fr": "Un nombre sait s'il est exact, et WhyNotExact() nomme ce qui a été perdu, car une surprise numérique vient presque toujours d'un cadre que l'appelant ne voyait pas.",
+    "source": "base/doc/design/SOFTANZA_NUMERIC_FOUNDATION.md, Pillar 1 and §7 Heritage",
+    "stage": "shipped",
+    "evidence": "base/number/stzNumber.ring (IsExact, WhyNotExact, Same); guard base/test/number/numeric_exactness_narrated.ring"
+   },
+   {
+    "en": "The regime travels with the value: money keeps two places with banker's rounding, an exact number refuses to become approximate, instead of a global mode set by whoever ran last.",
+    "fr": "Le régime voyage avec la valeur : la monnaie garde deux décimales avec l'arrondi bancaire, un nombre exact refuse de devenir approché, au lieu d'un réglage global hérité du dernier appel.",
+    "source": "base/doc/design/SOFTANZA_NUMERIC_FOUNDATION.md, Pillar 2 and §8 Phase 2 (slice 3)",
+    "stage": "shipped",
+    "evidence": "StzMoneyQ / StzExactQ / StzMeasuredQ in base/number/stzNumber.ring; guards base/test/number/numeric_regime_narrated.ring, numeric_tie_rule_narrated.ring"
+   },
+   {
+    "en": "An optimization model can be an object, a sentence or a file, all building one model, so two surfaces can never silently disagree; Why() names the solver used.",
+    "fr": "Un modèle d'optimisation s'écrit en objet, en phrase ou en fichier, tous construisant le même modèle, pour que deux surfaces ne divergent jamais en silence ; Why() nomme le solveur employé.",
+    "source": "base/optim/stzOptimModel.ring and base/optim/stzOptimSentence.ring (header comments); base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md §5.5",
+    "stage": "shipped",
+    "evidence": "base/optim/stzOptimModel.ring, stzOptimSentence.ring, stzOptimFile.ring; guard base/test/optim/optim_modelling_narrated.ring"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "oThird = new stzNumber(\"1\")\noThird.Divide(\"3\")\nThen(\"1 / 3 does NOT claim to be exact\", oThird.IsExact(), FALSE)\nThen(\"...and says why\", StzFindFirst(\"does not terminate\", oThird.Why()) > 0, TRUE)",
+    "expected": "IsExact() is FALSE, and Why() contains \"does not terminate\" (asserted by the guard)",
+    "source": "base/test/number/numeric_exactness_narrated.ring",
+    "what_en": "One divided by three does not pretend to be exact, and the number itself says why.",
+    "what_fr": "Un divisé par trois ne prétend pas être exact, et le nombre dit lui-même pourquoi."
+   },
+   {
+    "code": "oPrice = StzMoneyQ(\"19.99\")\noPrice.MultiplyBy(\"0.15\")\nThen(\"a rate applied to it lands on money, not 2.9985\", oPrice.Content(), \"3.00\")",
+    "expected": "3.00 (asserted by the guard)",
+    "source": "base/test/number/numeric_regime_narrated.ring",
+    "what_en": "A price declared as money stays money: a rate applied to it lands on two decimal places, not 2.9985.",
+    "what_fr": "Un prix déclaré comme monnaie le reste : un taux appliqué donne deux décimales, pas 2,9985."
+   },
+   {
+    "code": "oS = StzOptimNaturally(\"\nmaximize 3*x + 2*y\nwhere x is between 0 and 40\nand y is a whole number at least 0\nkeeping x + y under 50\nand keeping 2*x + y under 80\n\")\noS.SolveWith(:auto)",
+    "expected": "Objective 130; the guard also asserts that the sentence builds the same model (AST signature) as the stzOptimModel version",
+    "source": "base/test/optim/optim_modelling_narrated.ring",
+    "what_en": "An optimization problem written as a sentence is solved like the same model built in code, and reaches 130.",
+    "what_fr": "Un problème d'optimisation écrit comme une phrase se résout comme le même modèle construit en code, et atteint 130."
+   }
+  ]
+ },
+ "tables": {
+  "slug": "tables",
+  "principle_en": "A table is a grid people read like a spreadsheet — named columns, rows and cells — and every column is a list you can question.",
+  "principle_fr": "Une table est une grille qu'on lit comme un tableur — colonnes nommées, lignes et cellules — et chaque colonne est une liste qu'on peut interroger.",
+  "kept": [
+   {
+    "en": "Data is stored by column, because columns have names and rows do not, and data analysis treats every variable as a column.",
+    "fr": "Les données sont rangées par colonne, car les colonnes ont un nom et pas les lignes, et l'analyse de données traite chaque variable comme une colonne.",
+    "source": "base/table/stzTable.ring (comment on the content layout in the core class)"
+   },
+   {
+    "en": "Familiar spreadsheet functions (SUM, AVERAGE, MIN, MAX, PRODUCT), grouping with aggregates, and pivot tables work on a table directly.",
+    "fr": "Les fonctions de tableur familières (SUM, AVERAGE, MIN, MAX, PRODUCT), le regroupement avec agrégats et les tableaux croisés s'appliquent directement à une table.",
+    "source": "base/doc/narrations/stztable-when-code-meets-cells.md, Excel-Like Functions; Grouping and Aggregating Data; Pivot Tables"
+   },
+   {
+    "en": "Standard formats in and out: CSV, JSON and HTML tables, plus real SQL through an embedded SQLite database (stzDatabase).",
+    "fr": "Des formats standard en entrée et en sortie : CSV, JSON et tableaux HTML, plus du vrai SQL grâce à une base SQLite embarquée (stzDatabase).",
+    "source": "base/doc/narrations/stztable-when-code-meets-cells.md, Importing and exporting CSV / JSON / HTML; base/data/stzDatabase.ring (header)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "Methods use plain words — AddRow, RemoveCol, Cell, FindInCol — that follow how people think about tables, rather than a technical data-frame vocabulary, so learning stays gentle.",
+    "fr": "Les méthodes parlent clair — AddRow, RemoveCol, Cell, FindInCol — comme on pense une table, plutôt qu'en jargon de data frame, pour un apprentissage en douceur.",
+    "source": "base/doc/narrations/stztable-when-code-meets-cells.md, Introduction and Softanza Advantage",
+    "stage": "shipped",
+    "evidence": "base/table/stzTable.ring and its submodules; guard base/test/table/00_table_narrated.ring"
+   },
+   {
+    "en": "A column is a list: whatever you ask a list — sum it, filter it by a condition — you can ask a column, so knowing lists already means knowing tables.",
+    "fr": "Une colonne est une liste : ce qu'on demande à une liste — somme, filtre par condition — se demande aussi à une colonne, et qui sait les listes sait les tables.",
+    "source": "base/education/program/courses/elementary-introduction/chapters/10-when-code-meets-cells.en.md",
+    "stage": "shipped",
+    "evidence": "stzTable.Col() in base/table/stzTable.ring returns a plain list; the chapter's cells run it"
+   },
+   {
+    "en": "Tables are validated by pattern: one stzTablex expression states shape, unique keys, missing values and averages, instead of procedural checking code.",
+    "fr": "Les tables se valident par motif : une seule expression stzTablex décrit forme, clés uniques, valeurs manquantes et moyennes, au lieu d'un code de vérification procédural.",
+    "source": "base/doc/narrations/stztablex-pattern-langauge-for-tables.md.md, Introduction",
+    "stage": "shipped",
+    "evidence": "base/regex/stzTablex.ring; base/test/tablex/ (32 of 39 recorded PASS)"
+   },
+   {
+    "en": "A table hands a column to the statistics object instead of recomputing statistics itself, because duplicated definitions drift: two classes once disagreed on a variance (4 versus 4.57).",
+    "fr": "Une table confie sa colonne à l'objet statistique au lieu de recalculer elle-même, car les définitions dupliquées divergent : deux classes ont déjà donné 4 et 4,57 pour une variance.",
+    "source": "base/test/table/table_statistics_narrated.ring (header); base/doc/design/SOFTANZA_NUMERIC_FOUNDATION.md, Phase 3 slice 3",
+    "stage": "shipped",
+    "evidence": "guards base/test/table/table_statistics_narrated.ring and base/test/number/numeric_variance_authority_narrated.ring"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "oT = new stzTable([\n\t[ :DISH, :PRICE, :ORDERS ],\n\t[ \"tea\",  200, 6 ],\n\t[ \"rice\", 500, 3 ],\n\t[ \"fish\", 900, 2 ]\n])\n? StzListQ(oT.Col(:ORDERS)).Sum()\n? @@( StzListQ(oT.Col(:PRICE)).FindW(\"{ @item > 400 }\") )",
+    "expected": "11\n[ 2, 3 ]",
+    "source": "base/education/program/courses/elementary-introduction/chapters/10-when-code-meets-cells.en.md",
+    "what_en": "A column is a list, so it can be summed or searched with a condition like any list.",
+    "what_fr": "Une colonne est une liste : on peut la sommer ou y chercher avec une condition, comme dans toute liste."
+   },
+   {
+    "code": "oTable = new stzTable([\n\t[ :ID, :NAME, :EMAIL ],\n\t[ 1, \"Ali\", \"ali@mail.com\" ],\n\t[ 2, \"Sara\", \"sara@mail.com\" ]\n])\noTx = new stzTablex(\"{@!nulls(email) & @!nulls(name)}\")\n? oTx.Match(oTable)",
+    "expected": "TRUE",
+    "source": "base/test/tablex/29_ensuring_no_nulls.ring",
+    "what_en": "One readable pattern checks that a table has no missing emails and no missing names.",
+    "what_fr": "Un seul motif lisible vérifie qu'une table n'a ni e-mail ni nom manquant."
+   },
+   {
+    "code": "oT = new stzTable([\n\t[:age,    [20, 25, 30, 35, 40]],\n\t[:income, [30, 42, 51, 66, 80]],\n\t[:city,   [\"a\", \"b\", \"c\", \"d\", \"e\"]]\n])\nThen(\"MedianCol(age) is 30\", oT.MedianCol(:age), 30)\nThen(\"Q1Col(age) is 25\", oT.Q1Col(:age), 25)",
+    "expected": "30\n25 (asserted by the guard)",
+    "source": "base/test/table/table_statistics_narrated.ring",
+    "what_en": "A table built column by column answers statistics such as the median and first quartile through the shared statistics engine.",
+    "what_fr": "Une table construite colonne par colonne donne la médiane ou le premier quartile grâce au moteur statistique commun."
+   }
+  ]
+ },
+ "i18n": {
+  "slug": "i18n",
+  "principle_en": "A locale says how a value is written down; a culture says how it will be read, and no meaning may be inferred from a locale code alone.",
+  "principle_fr": "Une locale dit comment une valeur s'écrit ; une culture dit comment elle sera lue, et aucun sens ne peut se déduire d'un seul code de locale.",
+  "kept": [
+   {
+    "en": "Standard identifiers: locales are created from IETF language tags such as ar-TN, and currencies are keyed by their ISO codes.",
+    "fr": "Des identifiants standard : les locales se créent à partir d'étiquettes de langue IETF comme ar-TN, et les devises se repèrent par leur code ISO.",
+    "source": "base/doc/narrations/stzlocale-locale-management-the-softanza-way.md; engine/SOFTANZA_LOCALE_PLAN.md, L1"
+   },
+   {
+    "en": "ISO 8601 for data exchange and logs, and a 24-hour clock by default, for precision and international clarity.",
+    "fr": "L'ISO 8601 pour l'échange de données et les journaux ; l'horloge de 24 heures par défaut, pour la précision et la clarté internationale.",
+    "source": "base/doc/narrations/stzdatetime-guide-narration.md, Formatting: A Hierarchical Philosophy"
+   },
+   {
+    "en": "Unicode normalization in all four standard forms and script detection come from the shared Unicode library rather than home-made tables.",
+    "fr": "La normalisation Unicode dans ses quatre formes standard et la détection d'écriture viennent de la bibliothèque Unicode partagée, pas de tables maison.",
+    "source": "base/culture/SOFTANZA_CULTURE_PLAN.md, §0 FACT 4; engine/SOFTANZA_LOCALE_PLAN.md (opening)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "No ICU: the locale data the library actually answers is generated offline and committed with its source stamped, avoiding tens of megabytes of dependency.",
+    "fr": "Pas d'ICU : seules les données de locale réellement utilisées sont générées hors ligne et versionnées avec leur source, ce qui évite des dizaines de mégaoctets de dépendance.",
+    "source": "engine/SOFTANZA_LOCALE_PLAN.md, L0 (decided) and L1",
+    "stage": "shipped",
+    "evidence": "currencies only: engine/src/locale_data.zig generated by tools/gen_locale_tables.py, guard base/test/locale/02_currencysymbol_narrated.ring; countries, languages and day names (L2–L4) are still planned"
+   },
+   {
+    "en": "A locale formats; a culture interprets: a meaning such as red-for-loss is never derived from a locale code, since red means gain in some financial cultures.",
+    "fr": "Une locale met en forme, une culture interprète : un sens comme rouge-égale-perte ne se déduit jamais d'un code de locale, car le rouge signifie le gain dans certaines cultures financières.",
+    "source": "base/culture/SOFTANZA_CULTURE_PLAN.md, founding law and The mission",
+    "stage": "planned",
+    "evidence": "base/culture/ holds only the plan; phase CU0 is marked NOT STARTED"
+   },
+   {
+    "en": "No facades: an operation honours the culture it was given or refuses, because ignoring a locale silently looks like success and returns wrong text.",
+    "fr": "Pas de façade : une opération respecte la culture reçue ou refuse, car ignorer une locale en silence ressemble à un succès et renvoie un texte faux.",
+    "source": "base/culture/SOFTANZA_CULTURE_PLAN.md, second law and §0 FACT 1 (Turkish casing ignored at four levels)",
+    "stage": "planned",
+    "evidence": "the refusal path is phase CU2 of the culture plan, not started"
+   },
+   {
+    "en": "Time is modelled, not just measured: one timeline object holds events, spans and blocked zones, checks them on insertion and draws them, instead of stitched-together tools.",
+    "fr": "Le temps se modélise, pas seulement se mesure : un seul objet chronologie réunit événements, périodes et zones bloquées, les vérifie à l'insertion et les dessine, au lieu d'outils raboutés.",
+    "source": "base/doc/narrations/stztimeline-temporal-design-philosophy-in-softanza.md",
+    "stage": "shipped",
+    "evidence": "base/datetime/stzTimeLine.ring; base/test/timeline/ (54 files, recorded PASS)"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "oFr = new stzLocale(\"fr_FR\")\nThen(\"the ISO code is the ISO code\", oFr.CurrencyISOSymbol(), \"EUR\")\nThen(\"...and the symbol is the euro sign\", oFr.CurrencySymbol(), \"€\")",
+    "expected": "EUR\n€ (asserted by the guard)",
+    "source": "base/test/locale/02_currencysymbol_narrated.ring",
+    "what_en": "A locale knows both its currency's ISO code and the sign people actually write, from one table the engine owns.",
+    "what_fr": "Une locale connaît à la fois le code ISO de sa devise et le signe qu'on écrit vraiment, tirés d'une seule table du moteur."
+   },
+   {
+    "code": "oFa = new stzLocale(\"fa_IR\")\nThen(\"the language itself resolves\", oFa.LanguageName(), \"persian\")\nThen(\"...and its first day is Saturday, as Iran counts it\", oFa.NthDayOfWeek(1), \"saturday\")\nThen(\"...named in Persian, not English\", oFa.NativeNthDayOfWeek(1), \"شنبه\")",
+    "expected": "persian\nsaturday\nشنبه (each asserted by the guard)",
+    "source": "base/test/locale/01_languagename_narrated.ring",
+    "what_en": "An Iranian locale starts its week on Saturday and names that day in Persian.",
+    "what_fr": "Une locale iranienne commence la semaine le samedi et nomme ce jour en persan."
+   },
+   {
+    "code": "oTimeline = new stzTimeLine(\"2024-01-01\", \"2024-12-31\")\noTimeline.AddBlockedSpan(\"MAINTENANCE\", \"2024-06-15 09:00:00\", \"2024-06-15 17:00:00\")\noTimeline.AddPoint(\"EVENT1\", \"2024-06-15 08:00:00\")  # OK\noTimeline.AddPoint(\"EVENT2\", \"2024-06-15 12:00:00\")  # Error: blocked",
+    "expected": "Point 'EVENT2' falls within a blocked span",
+    "source": "base/test/timeline/47_simple_blocked_maintenance_period.ring",
+    "what_en": "A timeline refuses an event placed inside a blocked maintenance window, at the moment it is added.",
+    "what_fr": "Une chronologie refuse un événement placé dans une période de maintenance bloquée, dès qu'on l'ajoute."
+   }
+  ]
+ },
+ "nlp": {
+  "slug": "nlp",
+  "principle_en": "A string is characters; a text is a string raised to meaning, and every language capability must work locally, with nothing to install or download.",
+  "principle_fr": "Une chaîne est faite de caractères ; un texte est une chaîne élevée au sens, et toute capacité linguistique doit fonctionner en local, sans rien installer ni télécharger.",
+  "kept": [
+   {
+    "en": "Published reference algorithms, not home-made ones: Snowball stemming in 25 languages, VADER sentiment, an averaged-perceptron part-of-speech tagger, and TextRank summaries.",
+    "fr": "Des algorithmes de référence publiés, pas des recettes maison : racinisation Snowball en 25 langues, sentiment VADER, étiquetage grammatical par perceptron moyenné et résumés TextRank.",
+    "source": "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md, §4.2; engine/src/string/stem.zig (header)"
+   },
+   {
+    "en": "Words and sentences are split by the Unicode segmentation rules (UAX #29), with a few documented deviations chosen for good language tokens.",
+    "fr": "Mots et phrases sont découpés selon les règles de segmentation Unicode (UAX #29), avec quelques écarts documentés, choisis pour obtenir de bons jetons linguistiques.",
+    "source": "engine/src/string/word_break.zig (header comment)"
+   },
+   {
+    "en": "Classic, explainable machine learning — nearest neighbours, naive Bayes, decision trees, association rules — is the learning floor, running locally and explaining its answers.",
+    "fr": "L'apprentissage automatique classique et explicable — plus proches voisins, Bayes naïf, arbres de décision, règles d'association — sert de socle, en local, et justifie ses réponses.",
+    "source": "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md, §5.5 The classic-ML roster"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "Everything is embedded: one line works with no install, no download and no internet, instead of fetching data packages feature by feature.",
+    "fr": "Tout est embarqué : une ligne suffit, sans installation, sans téléchargement ni internet, au lieu de récupérer des paquets de données fonctionnalité par fonctionnalité.",
+    "source": "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md, §4.3 The three beat-axes (SIMPLICITY)",
+    "stage": "shipped",
+    "evidence": "lexicons and models compiled into the engine: engine/src/string/sentiment.zig, pos.zig, lemma.zig, ner.zig; guard base/test/linguistic/chunker_narrated.ring"
+   },
+   {
+    "en": "Verdicts carry their confidence — certainly, probably or apparently — and Why() explains them, because language reports how surely something is known, not only what.",
+    "fr": "Les verdicts portent leur degré de certitude — certainement, probablement, apparemment — et Why() les explique, car la langue dit aussi avec quelle assurance on sait.",
+    "source": "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md, §1 LAW 3 and §4.3 (INNOVATION)",
+    "stage": "shipped",
+    "evidence": "guard base/test/natural/evidentiality_narrated.ring"
+   },
+   {
+    "en": "The same call sharpens when a local model is present — rule-based entities become transformer entities — and never requires anything paid or remote.",
+    "fr": "Le même appel s'affine quand un modèle local est présent — les entités par règles deviennent des entités par transformeur — sans jamais exiger de service payant ou distant.",
+    "source": "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md, §1 LAW 2 and §4.1",
+    "stage": "shipped",
+    "evidence": "base/linguistic/stzText.ring (NamedEntities switches to NeuralEntities when a model is loaded)"
+   },
+   {
+    "en": "In near-natural code the programmer is the parser: method chains follow English grammar (articles, agreement, 'which'), so the machine never has to guess.",
+    "fr": "Dans le code quasi naturel, c'est le programmeur qui analyse : les chaînes de méthodes suivent la grammaire anglaise (articles, accord, « which »), et la machine n'a jamais à deviner.",
+    "source": "base/doc/design/NNL_REVIEW.md, §1 The Thesis and §2 The Device Catalog",
+    "stage": "shipped",
+    "evidence": "base/natural/stzNNL.ring; guard base/test/natural/nnl_narrated.ring"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "o = new stzText(\"The quick brown fox jumps over the lazy dog\")\naNP = o.NounPhrases()\n? \"  NounPhrases: \" + @@(aNP)\nchk(\"the classic NP grammar finds both phrases\",\n\tlen(aNP) = 2 and aNP[1] = \"The quick brown fox\" and aNP[2] = \"the lazy dog\")\nchk(\"any tag grammar works (VBZ IN)\", o.Chunks(\"VBZ IN\")[1] = \"jumps over\")",
+    "expected": "NounPhrases: \"The quick brown fox\", \"the lazy dog\"; Chunks(\"VBZ IN\") gives \"jumps over\" (asserted by the guard)",
+    "source": "base/test/linguistic/chunker_narrated.ring",
+    "what_en": "With nothing downloaded, a sentence is tagged and its noun phrases are found by a pattern over word classes.",
+    "what_fr": "Sans rien télécharger, une phrase est étiquetée et ses groupes nominaux sont trouvés par un motif sur les classes de mots."
+   },
+   {
+    "code": "Then(\"strong evidence\", StzEvidentialVerdict(1, 0.95), \"certainly yes\")\nThen(\"good evidence\", StzEvidentialVerdict(1, 0.7), \"probably yes\")\nThen(\"weak evidence\", StzEvidentialVerdict(1, 0.3), \"apparently yes\")\nThen(\"strong evidence AGAINST\", StzEvidentialVerdict(0, 0.9), \"certainly not\")",
+    "expected": "certainly yes\nprobably yes\napparently yes\ncertainly not (each asserted by the guard)",
+    "source": "base/test/natural/evidentiality_narrated.ring",
+    "what_en": "A verdict is spoken with its confidence: strong, good or weak evidence becomes certainly, probably or apparently.",
+    "what_fr": "Un verdict s'énonce avec son degré de certitude : une preuve forte, bonne ou faible devient certainement, probablement ou apparemment."
+   },
+   {
+    "code": "Then(\"'at most 2 vowels' refuses on 3\", Q(\"AnnIE\").AtMost(2).VowelNB(), FALSE)\nThen(\"...and explains itself\", Why(), \"no: expected atmost 2, found 3\")",
+    "expected": "FALSE\nno: expected atmost 2, found 3 (asserted by the guard)",
+    "source": "base/test/natural/nnl_narrated.ring",
+    "what_en": "Code that reads like English checks a claim, refuses it, and explains why in words.",
+    "what_fr": "Un code qui se lit comme de l'anglais vérifie une affirmation, la refuse et explique pourquoi en mots."
+   }
+  ]
+ },
+ "neural": {
+  "slug": "neural",
+  "principle_en": "Every capability works with no model at all, gets sharper when a local model is present, and never depends on anything paid or remote.",
+  "principle_fr": "Chaque capacité fonctionne sans aucun modèle, gagne en finesse quand un modèle local est présent, et ne dépend jamais d'un service payant ou distant.",
+  "kept": [
+   {
+    "en": "Models are standard GGUF files run on the vendored ggml runtime. Softanza consumes the common format first, and only later learns to write it.",
+    "fr": "Les modèles sont des fichiers GGUF standard, exécutés par le moteur ggml intégré. Softanza consomme d'abord le format commun, et n'apprend que plus tard à l'écrire.",
+    "source": "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md (§1, LAW 4); engine/src/neural.zig and engine/src/gguf_export.zig (headers)"
+   },
+   {
+    "en": "Grammar-constrained decoding follows the algorithm of llama.cpp's grammar sampler, the reference design for GBNF. The machine itself is written in-house.",
+    "fr": "Le décodage contraint par une grammaire reprend l'algorithme de l'échantillonneur de llama.cpp, la référence pour GBNF. La machine elle-même est écrite en interne.",
+    "source": "base/neural/SOFTANZA_STRUCTURED_OUTPUT.md (§7); engine/src/gbnf_machine.zig (header)"
+   },
+   {
+    "en": "The text encoder is checked against an independent numpy implementation of the same forward pass, within a measured tolerance band.",
+    "fr": "L'encodeur de texte est vérifié contre une implémentation numpy indépendante du même calcul, dans une marge de tolérance mesurée.",
+    "source": "engine/src/neural_embed.zig (header; guard base/test/neural/bert_parity_narrated.ring)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "Structure kills malformed answers, not false ones. A grammar shapes the answer while it is generated. A court then checks the values, which no grammar can check.",
+    "fr": "La structure élimine les réponses mal formées, pas les mensonges. Une grammaire façonne la réponse pendant sa génération. Un tribunal vérifie ensuite les valeurs, ce qu'aucune grammaire ne sait faire.",
+    "source": "base/neural/SOFTANZA_STRUCTURED_OUTPUT.md (§1 and §2)",
+    "stage": "shipped",
+    "evidence": "base/neural/stzOutputSchema.ring, engine/src/schema_gbnf.zig, engine/src/gbnf_machine.zig; guards base/test/neural/structuredoutput_narrated.ring and constrained_decoding_narrated.ring. Measured: 2 of 10 answers valid on the first try when checked afterwards, against 10 of 10 when constrained."
+   },
+   {
+    "en": "A model call is a pure typed function: the declared type or a refusal, a mandatory budget, no power to act. A broken answer never passes as a value.",
+    "fr": "Un appel au modèle est une fonction pure et typée : le type déclaré ou un refus, un budget obligatoire, aucun pouvoir d'agir. Une réponse cassée ne passe jamais pour une valeur.",
+    "source": "base/neural/stzLLMFunction.ring (header); base/neural/SOFTANZA_STRUCTURED_OUTPUT.md (§9)",
+    "stage": "shipped",
+    "evidence": "base/neural/stzLLMFunction.ring; guard base/test/neural/llmfunction_narrated.ring"
+   },
+   {
+    "en": "A model file opens only if its fingerprint matches one recorded for it. The check runs before the parser reads a byte, because the parser is where an attack would enter.",
+    "fr": "Un fichier de modèle ne s'ouvre que si son empreinte correspond à une empreinte enregistrée. La vérification précède toute lecture, car c'est l'analyseur qui est exposé aux attaques.",
+    "source": "engine/src/model_digest.zig (header)",
+    "stage": "shipped",
+    "evidence": "engine/src/model_digest.zig: SHA-256 checked before parsing, no recorded digest means refusal, trusting a new model is an explicit act (StzTrustModel); guard base/test/security/model_digest_narrated.ring"
+   },
+   {
+    "en": "The instruction sent with a structured request is fixed by measurement. Extra advice to the model dropped valid answers to 0 of 10, so it was removed.",
+    "fr": "La consigne jointe à une demande structurée est fixée par la mesure. Des conseils supplémentaires ont fait tomber les réponses valides à 0 sur 10, et ont été retirés.",
+    "source": "base/neural/SOFTANZA_STRUCTURED_OUTPUT.md (§9.1, the prompt clause is a measurement, not taste)",
+    "stage": "shipped",
+    "evidence": "PromptClause() in base/neural/stzOutputSchema.ring; harness base/test/neural/_measure_structured.ring"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "oP = StzOutputSchemaQ([\n\t[ :field = \"person\", :type = :string ],\n\t[ :field = \"age\",    :type = :number, :must = [ [ \">=\", 0 ], [ \"<=\", 130 ] ] ]\n])\naLie = oP.ParseOutput('{ \"person\":\"Ada Lovelace\", \"age\":9 }')\nchk(\"a schema-valid LIE validates -- Ada Lovelace was not nine\", aLie[:ok] = 1)\nchk(\"...and the court has no complaint to make about it\", len(aLie[:findings]) = 0)",
+    "expected": "  [OK] a schema-valid LIE validates -- Ada Lovelace was not nine\n  [OK] ...and the court has no complaint to make about it",
+    "source": "base/test/neural/structuredoutput_narrated.ring (Scene 10)",
+    "what_en": "A well-formed answer that is false still passes: the schema guarantees shape, never truth, and the guard shows this limit on purpose.",
+    "what_fr": "Une réponse bien formée mais fausse passe quand même : le schéma garantit la forme, jamais la vérité, et le test montre cette limite exprès."
+   },
+   {
+    "code": "Scenario(\"a model with NO recorded digest is refused\")\n\tGiven(\"a byte-identical copy in a folder with no SHA256SUMS\")\n\tWhen(\"it is loaded\")\n\t# before: loaded; being identical to a good model is not the point --\n\t# nobody SAID this file is that model\n\tThen(\"it is refused\", StzEngineNeuralModelLoad($cUnknown), 0)\n\tStzEngineNeuralModelFree()\nEndScenario()",
+    "expected": "SCENARIO: a model with NO recorded digest is refused\n  GIVEN a byte-identical copy in a folder with no SHA256SUMS\n  WHEN  it is loaded\n  THEN  it is refused  [PASS]\n  -> 1 pass, 0 fail",
+    "source": "base/test/security/model_digest_narrated.ring",
+    "what_en": "A byte-for-byte copy of a good model is still refused, because nobody recorded its fingerprint; trusting it must be an explicit act.",
+    "what_fr": "Une copie identique, octet pour octet, d'un bon modèle est tout de même refusée, faute d'empreinte enregistrée ; lui faire confiance doit être un acte explicite."
+   },
+   {
+    "code": "oN = new stzLLMFunction(\"add\")\noN.SetPrompt(\"Compute: {input}\")\noN.ReturnsNumber()\noN.Budget(2)\noN.SeedAnswer(\"2+3\", 5)\nchk(\"a Number-typed answer computes\", oN.Call_(\"2+3\") + 1 = 6)",
+    "expected": "  [OK] a Number-typed answer computes",
+    "source": "base/test/neural/llmfunction_narrated.ring (Scene 5)",
+    "what_en": "A model call declared to return a number, with a mandatory budget, gives a real number you can compute with, not text to decode.",
+    "what_fr": "Un appel au modèle déclaré comme rendant un nombre, avec un budget obligatoire, fournit un vrai nombre utilisable dans un calcul, pas un texte à décoder."
+   }
+  ]
+ },
+ "agents": {
+  "slug": "agents",
+  "principle_en": "Softanza does not try to build a safe agent; it builds a safe world and lets ordinary agents work inside it.",
+  "principle_fr": "Softanza ne cherche pas à fabriquer un agent sûr ; il bâtit un monde sûr et y laisse travailler des agents ordinaires.",
+  "kept": [
+   {
+    "en": "The familiar agent shape is kept: a loop with a goal, tools, memory and skills. The usual vocabulary maps onto it one to one.",
+    "fr": "La forme habituelle d'un agent est conservée : une boucle avec un but, des outils, une mémoire et des compétences. Le vocabulaire courant s'y retrouve terme à terme.",
+    "source": "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md (§5.6, the Uter ladder)"
+   },
+   {
+    "en": "A change is first a plan, validated and reviewed, then executed by another actor with an audit trail. This is the familiar review-before-commit discipline.",
+    "fr": "Un changement est d'abord un plan, validé et relu, puis exécuté par un autre acteur avec une piste d'audit. C'est la discipline connue du « relire avant d'appliquer ».",
+    "source": "base/doc/design/Softaza and Agents That Cannot Hurt You.md (Separated powers; The plan as a conversation)"
+   },
+   {
+    "en": "A person stays in the loop. Every refusal can reach a human checkpoint, which keeps its context and expires if nobody answers.",
+    "fr": "Un humain reste dans la boucle. Tout refus peut remonter à un point de contrôle humain, qui garde le contexte et expire faute de réponse.",
+    "source": "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md (§5.7, G7 human_checkpoint)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "An agent rehearses in a virtual workbench with no wire to reality, so it cannot escape. Only a plan leaves, and a separate committing actor runs it.",
+    "fr": "Un agent répète dans un atelier virtuel sans aucun lien avec le réel ; il ne peut donc pas s'en échapper. Seul un plan en sort, exécuté par un autre acteur.",
+    "source": "base/doc/design/Softaza and Agents That Cannot Hurt You.md",
+    "stage": "shipped",
+    "evidence": "base/agentic/stzAgentWorkbench.ring; GiveWorkbench() and GenerateUpdatePlan() in base/agentic/stzPIAgent.ring; guard base/test/agentic/safeworld_narrated.ring. The negotiation verbs (Receive/Revise, agent exams, parallel branches) are still planned (SOFTANZA_INTELLIGENCE_ARCHITECTURE.md §3.2)."
+   },
+   {
+    "en": "The mind is programmatic by default. A language model is one pluggable faculty that may propose but never act, so no unchecked suggestion becomes an action.",
+    "fr": "L'esprit de l'agent est programmatique par défaut. Un modèle de langage n'est qu'une faculté enfichable, qui propose sans jamais agir : aucune suggestion non vérifiée ne devient une action.",
+    "source": "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md (§5.6; §5.7 G1)",
+    "stage": "shipped",
+    "evidence": "base/agentic/stzPIAgent.ring; stzAgentGraph.Grant refuses an 'effectful' capability to an llm actor (base/agentic/stzAgentGraph.ring); guard base/test/agentic/agentgraph_narrated.ring"
+   },
+   {
+    "en": "An agent must declare what it covers and how undoable its acts are. Otherwise it is refused before its first tick, when refusing still costs nothing.",
+    "fr": "Un agent doit déclarer ce qu'il couvre et à quel point ses actes sont réversibles. Sinon, il est refusé avant sa première exécution, quand le refus ne coûte encore rien.",
+    "source": "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md (§3.2, the agent-doctrine ruling)",
+    "stage": "shipped",
+    "evidence": "MayRegister() in base/governance/stzGovernance.ring; engine/src/agentloop.zig; .pia agent files judged at load by base/agentic/stzAgentDeclaration.ring. The gate is still opt-in on some hosts, a stated migration state."
+   },
+   {
+    "en": "Softanza asks rather than guesses. The gap between a declared goal and current knowledge generates the next question, and each answer is checked before admission.",
+    "fr": "Softanza pose les questions au lieu de deviner. L'écart entre un but déclaré et le savoir acquis produit la question suivante, et chaque réponse est vérifiée avant d'être admise.",
+    "source": "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md (§0.3, Wise Coding)",
+    "stage": "shipped",
+    "evidence": "base/conversation/stzConversation.ring, base/conversation/stzGoal.ring; guards base/test/conversation/wisecoding_narrated.ring and wisecoding_rich_narrated.ring"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "oBad = new stzAgentGraph(\"mailer-bad\")\noBad.AddLLMActor(\"writer\")\noBad.AddEffect(\"send\")\noBad.Proposes(\"writer\", \"send\")\nchk(\"llm-straight-to-effect is NOT sound\", oBad.IsSound() = 0)\nchk(\"multiple invariants fire\", len(oBad.Violations()) >= 3)\nchk(\"Explain names the refusal\", len(StzFind(\"REFUSED\", oBad.Explain())) > 0)",
+    "expected": "  [OK] llm-straight-to-effect is NOT sound\n  [OK] multiple invariants fire\n  [OK] Explain names the refusal",
+    "source": "base/test/agentic/agentgraph_narrated.ring (Scene 1)",
+    "what_en": "A composition where a language model reaches an action directly, with no guardian between them, is judged unsound before anything runs.",
+    "what_fr": "Une composition où un modèle de langage atteint directement une action, sans gardien entre les deux, est jugée non conforme avant toute exécution."
+   },
+   {
+    "code": "chk(\"one cycle fires the skill and verifies it\", oScrib.Cycle() = 1)\nchk(\"...the ambient was restored on the way out\", StzInWorkbench() = 0)\nchk(\"...the memory fact is written -- expression was free\",\n\toScrib.MemoryQ().Fact(\"note\", \"was\", \"scribbled\") = 1)\nchk(\"...and THE DISK DID NOT MOVE -- the write landed in the twin\",\n\tStzFileExists($cSafeworldOut) = 0)\nchk(\"...where it is readable\", oScrib.WorkbenchQ().ContentOf($cSafeworldOut) = \"scribbled-by-agent\")",
+    "expected": "  [OK] one cycle fires the skill and verifies it\n  [OK] ...the ambient was restored on the way out\n  [OK] ...the memory fact is written -- expression was free\n  [OK] ...and THE DISK DID NOT MOVE -- the write landed in the twin\n  [OK] ...where it is readable",
+    "source": "base/test/agentic/safeworld_narrated.ring (Scene 6, the workbench; oScrib was given its workbench two lines earlier)",
+    "what_en": "An agent holding a workbench runs one cycle and writes a file: the disk does not change, and the write exists only inside the workbench.",
+    "what_fr": "Un agent doté d'un atelier exécute un cycle et écrit un fichier : le disque ne bouge pas, et l'écriture n'existe que dans l'atelier."
+   },
+   {
+    "code": "aQ = oKB.AskInXT(\"restaurant-setup\")\nchk(\"the question is SYSTEM-LED and names its subject\",\n\taQ[:subject] = \"margherita\" and aQ[:relation] = \"contains\")\nchk(\"the question is ACCOUNTABLE (it says why it asks)\",\n\taQ[:why] = \"every dish needs 'contains'\")",
+    "expected": "  [OK] the question is SYSTEM-LED and names its subject\n  [OK] the question is ACCOUNTABLE (it says why it asks)",
+    "source": "base/test/conversation/wisecoding_narrated.ring (Scene 1; the conversation's goal is RequireEach(\"dish\", \"contains\"))",
+    "what_en": "Given the goal that every dish must say what it contains, the system asks the next question itself, names its subject and says why it asks.",
+    "what_fr": "Avec le but « chaque plat doit dire ce qu'il contient », le système pose lui-même la question suivante, en nomme le sujet et dit pourquoi il la pose."
+   }
+  ]
+ },
+ "graphics": {
+  "slug": "graphics",
+  "principle_en": "Graphics is not a new engine: it is the GPU layer Softanza already owns, taught to draw as well as compute.",
+  "principle_fr": "Le graphisme n'est pas un nouveau moteur : c'est la couche GPU que Softanza possède déjà, à laquelle on apprend à dessiner en plus de calculer.",
+  "kept": [
+   {
+    "en": "Text shaping is delegated to HarfBuzz and bidirectional order to SheenBidi. Correct Arabic shaping is a specialty built over many years, not something to rewrite.",
+    "fr": "La mise en forme du texte est confiée à HarfBuzz, et l'ordre bidirectionnel à SheenBidi. Bien façonner l'arabe est une spécialité de longue haleine, qu'on ne réinvente pas.",
+    "source": "base/graphics/SOFTANZA_GRAPHICS_PLAN.md (§1, the vendor decision)"
+   },
+   {
+    "en": "Windows on all three desktop systems come from GLFW, a small proven library, instead of three hand-written windowing layers.",
+    "fr": "Les fenêtres, sur les trois systèmes de bureau, viennent de GLFW, une petite bibliothèque éprouvée, plutôt que de trois couches écrites à la main.",
+    "source": "base/graphics/SOFTANZA_GRAPHICS_PLAN.md (§1, the vendor decision)"
+   },
+   {
+    "en": "The colour system keeps proven ideas. Each shade step names its job (surface, border, text), and every fill comes with a paired colour readable on it.",
+    "fr": "Le système de couleurs garde des idées éprouvées. Chaque palier de teinte nomme son rôle (fond, bordure, texte), et chaque remplissage a sa couleur lisible associée.",
+    "source": "base/graphics/SOFTANZA_COLOR_SYSTEM.md (§0 and §2)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "Computing and drawing share one GPU device, so a simulation feeds the picture without copies. In one test, 16 bytes per frame went to the card instead of 1.7 MB.",
+    "fr": "Calcul et dessin partagent un seul processeur graphique : une simulation alimente l'image sans copie. Dans un essai, 16 octets par image partaient vers la carte au lieu de 1,7 Mo.",
+    "source": "base/graphics/SOFTANZA_GRAPHICS_PLAN.md (§2 Architecture; CHALLENGE PASS, 2026-08-09)",
+    "stage": "shipped",
+    "evidence": "render pipelines inside stz_gpu.dll (GR1); measured in the challenge pass on a 12,000-particle field: 16 bytes per frame against 1,728,000"
+   },
+   {
+    "en": "Unicode text is required from day one, with Arabic as the acceptance test. One layout serves every output, so the vector and pixel pictures cannot disagree.",
+    "fr": "Le texte Unicode est exigé dès le premier jour, avec l'arabe comme test d'acceptation. Une seule mise en page sert toutes les sorties : vecteur et pixels ne peuvent pas diverger.",
+    "source": "base/graphics/SOFTANZA_GRAPHICS_PLAN.md (product vision, requirement 3; §2)",
+    "stage": "shipped",
+    "evidence": "engine/src/gpu_text.zig (GR2a); in the challenge pass, an Arabic string's width was within 0.010 px of Chrome's own text stack"
+   },
+   {
+    "en": "Every drawing can always become SVG with no GPU, so pictures can be produced and checked anywhere. Without a device, a PNG request is refused and counted.",
+    "fr": "Tout dessin peut toujours devenir du SVG, sans GPU, et donc être produit et vérifié partout. Sans carte graphique, une demande de PNG est refusée et comptée.",
+    "source": "base/graphics/SOFTANZA_GRAPHICS_PLAN.md (§2, output tier ladder; THE RASTERIZER THAT WAS NEVER WRITTEN)",
+    "stage": "shipped",
+    "evidence": "ToSVG()/ToPNG() in base/graphics/stzCanvas.ring; the refusal is recorded by countFallback(). No CPU rasterizer exists, and the plan says so."
+   },
+   {
+    "en": "Colour ramps are computed in OKLCH, so each step is evenly lighter and never out of order. Contrast becomes a number that can make a theme fail.",
+    "fr": "Les dégradés de couleur sont calculés en OKLCH : chaque palier s'éclaircit régulièrement, sans jamais se désordonner. Le contraste devient un nombre qui peut faire refuser un thème.",
+    "source": "base/graphics/SOFTANZA_COLOR_SYSTEM.md (§1 What is measurably wrong; §3.2 and §3.3)",
+    "stage": "shipped",
+    "evidence": "engine/src/color.zig; StzContrastOf in base/graphics/stzColor.ring; guards base/test/graphics/gg_color_c1 to gg_color_c5"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "oG = new stzCanvas(220, 120)\noG.SetBackgroundQ(\"#101418\").\n   AddCircleQ(60, 60, 40).FillQ(\"#e0a030\").\n   AddTextQ(\"Softanza\", 110, 70).SetFontQ(oF, 18).ColorQ(\"#ffffff\")\ncSvg = oG.ToSVG()\nchk(\"the SVG tier answered\", len(cSvg) > 100)\nchk(\"it carries the canvas size\", substr(cSvg, 'width=\"220\" height=\"120\"') > 0)\nchk(\"the circle's EXACT geometry is in it\", substr(cSvg, 'cx=\"60\" cy=\"60\" r=\"40\"') > 0)",
+    "expected": "  [OK] the SVG tier answered\n  [OK] it carries the canvas size\n  [OK] the circle's EXACT geometry is in it",
+    "source": "base/test/graphics/graphics_faces_narrated.ring (Scene 6, one model, two tiers)",
+    "what_en": "One canvas answers as SVG with no GPU at all, and the vector picture carries the exact size and the exact circle that were declared.",
+    "what_fr": "Un même canevas répond en SVG sans aucun GPU, et l'image vectorielle porte exactement la taille et le cercle déclarés."
+   },
+   {
+    "code": "cAr = char(0xD8)+char(0xB3) + char(0xD9)+char(0x88) + char(0xD9)+char(0x81) +\n      char(0xD8)+char(0xAA) + char(0xD8)+char(0xA7) + char(0xD9)+char(0x86) +\n      char(0xD8)+char(0xB2) + char(0xD8)+char(0xA7)\nchk(\"Arabic measures positive (a real shaped advance)\", oF.WidthOf(cAr, 24) > 0)\nchk(\"Arabic is ONE visual run\", oF.RunCountOf(cAr, 24) = 1)\nchk(\"mixed script is THREE runs\", oF.RunCountOf(\"abc \" + cAr + \" xyz\", 24) = 3)\nchk(\"8 Arabic codepoints shape to 8 glyphs\", len(oF.GlyphsOf(cAr, 24)) = 8)",
+    "expected": "  [OK] Arabic measures positive (a real shaped advance)\n  [OK] Arabic is ONE visual run\n  [OK] mixed script is THREE runs\n  [OK] 8 Arabic codepoints shape to 8 glyphs",
+    "source": "base/test/graphics/graphics_faces_narrated.ring (Scene 2; oF is a committed Arabic font subset)",
+    "what_en": "The Arabic spelling of Softanza is shaped into one right-to-left run of eight glyphs, and placed between Latin words it splits into three runs.",
+    "what_fr": "Le mot Softanza écrit en arabe est façonné en une seule séquence de huit glyphes, de droite à gauche ; placé entre deux mots latins, il donne trois séquences."
+   },
+   {
+    "code": "chk(\"mid-grey on white is REFUSED\", NOT StzIsLegible(\"#999999\", :White))\nchk(\"black on white passes\", StzIsLegible(:Black, :White))\nchk(\"a colour on itself is refused\", NOT StzIsLegible(:Danger, :Danger))",
+    "expected": "   ok   mid-grey on white is REFUSED\n   ok   black on white passes\n   ok   a colour on itself is refused",
+    "source": "base/test/graphics/gg_color_c3.ring (section 4, the gate can refuse)",
+    "what_en": "Legibility is a number that can say no: mid-grey text on white is refused, black on white passes, and a colour on itself is refused.",
+    "what_fr": "La lisibilité est un nombre qui peut dire non : du gris moyen sur blanc est refusé, du noir sur blanc passe, et une couleur sur elle-même est refusée."
+   }
+  ]
+ },
+ "geo": {
+  "slug": "geo",
+  "principle_en": "A map makes claims about the world, so it must say how it was made and assert nothing it cannot check.",
+  "principle_fr": "Une carte affirme des choses sur le monde : elle doit donc dire comment elle a été faite et ne rien affirmer qu'elle ne puisse vérifier.",
+  "kept": [
+   {
+    "en": "Every map passes through one pipeline borrowed from d3-geo (rotate, cut on the sphere, project, resample, clip), so no picture can skip these steps.",
+    "fr": "Chaque carte passe par un même flux de traitement, repris de d3-geo (rotation, découpe sur la sphère, projection, rééchantillonnage, découpe au cadre) : aucune image ne peut sauter une étape.",
+    "source": "base/graphics/SOFTANZA_GRAPHICS_PLAN.md (THE GEO PLANE)"
+   },
+   {
+    "en": "Labels follow four rules shared by QGIS, Mapbox and ArcGIS: a label is a box, big regions speak first, a name that will not fit goes outside, or is dropped.",
+    "fr": "Les étiquettes suivent quatre règles de QGIS, Mapbox et ArcGIS : une étiquette est une boîte, les grandes régions d'abord, un nom qui ne tient pas va à l'extérieur, ou disparaît.",
+    "source": "base/graphics/SOFTANZA_GRAPHICS_PLAN.md (THE LABEL ENGINE, THE RAMPS, AND POINTS THAT ARE WHERE THEY SAY)"
+   },
+   {
+    "en": "Colour ramps are Cynthia Brewer's ColorBrewer schemes, written out as data rather than computed, because a computed ramp is one nobody checked.",
+    "fr": "Les dégradés sont les palettes ColorBrewer de Cynthia Brewer, écrites telles quelles plutôt que calculées : un dégradé calculé est un dégradé que personne n'a vérifié.",
+    "source": "base/geo/stzGeoMap.ring (ramp comment); base/graphics/SOFTANZA_GRAPHICS_PLAN.md (The ramps: Brewer's, stated as data)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "No border data ships with the library. A boundary file takes sides on disputed borders, ages silently and carries a licence, so callers bring or fetch their own.",
+    "fr": "Aucune donnée de frontières n'est livrée. Un tel fichier prend parti sur les frontières disputées, vieillit en silence et impose une licence : chacun apporte ou télécharge la sienne.",
+    "source": "base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md (DN24b, The vendoring question, answered rather than deferred)",
+    "stage": "shipped",
+    "evidence": "base/geo/stzGeoAtlas.ring binds to features the caller loaded; the world atlas is fetched into a gitignored folder (GE2); guard §120 of the graph-plane suite"
+   },
+   {
+    "en": "A map judges its own argument. Colouring regions by value on a projection that swells areas is reported as an error, because the colour then misstates the quantity.",
+    "fr": "Une carte juge son propre raisonnement. Colorer des régions selon une valeur sur une projection qui gonfle les surfaces est signalé comme une erreur, car la couleur trahit la quantité.",
+    "source": "base/graphics/SOFTANZA_GRAPHICS_PLAN.md (GE3, what the gate owes a map)",
+    "stage": "shipped",
+    "evidence": "Findings() and StzCheckGeoMaps in base/geo/stzGeoMap.ring; guard base/test/graphics/geo_map_narrated.ring"
+   },
+   {
+    "en": "A scale bar is drawn at a stated latitude, and refused when scale varies too much across the sheet, because a bar true along one line misleads everywhere else.",
+    "fr": "L'échelle graphique est tracée à une latitude indiquée, et refusée si l'échelle varie trop sur la feuille : une barre juste sur une seule ligne trompe partout ailleurs.",
+    "source": "base/graphics/SOFTANZA_GRAPHICS_PLAN.md (GE10, A scale bar that refuses)",
+    "stage": "shipped",
+    "evidence": "engine/src/geo_furniture.zig; guard base/test/graphics/geo_furniture_narrated.ring"
+   },
+   {
+    "en": "Place names are matched without fuzzy guessing. A near miss is reported, never coloured, because a map that paints Niger for Nigeria is worse than one with a hole.",
+    "fr": "Les noms de lieux sont rapprochés sans deviner. Une correspondance approximative est signalée, jamais coloriée, car colorier le Niger à la place du Nigeria est pire qu'un trou.",
+    "source": "base/graphics/SOFTANZA_GRAPHICS_PLAN.md (GE4, names to shapes, without vendoring shapes)",
+    "stage": "shipped",
+    "evidence": "Unresolved() in base/geo/stzGeoAtlas.ring; guard base/test/graphics/geo_map_narrated.ring"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "oBad = StzGeoMap(new stzGeoProjection(:Mercator), oF)\noBad.SetValuesQ([ 4200, 99999 ]).SetClasses([ 0, 5000, 20000, 30000 ])\naBad = oBad.Findings()\nchk(\"A CHOROPLETH ON A PROJECTION THAT DISTORTS AREA IS AN ERROR -- it encodes \" +\n    \"a quantity as the colour of an area, so the picture argues against its own legend\",\n    _HasRule(aBad, \"choropleth_needs_an_equal_area_projection\", \"error\"))",
+    "expected": "  ok   A CHOROPLETH ON A PROJECTION THAT DISTORTS AREA IS AN ERROR -- it encodes a quantity as the colour of an area, so the picture argues against its own legend",
+    "source": "base/test/graphics/geo_map_narrated.ring (section 7, what the gate owes a map)",
+    "what_en": "A map coloured by value on Mercator reports itself as an error, because the colour then speaks for areas the projection has swollen.",
+    "what_fr": "Une carte colorée selon une valeur sur Mercator se signale elle-même en erreur, car la couleur parle alors pour des surfaces que la projection a gonflées."
+   },
+   {
+    "code": "aRows = [ [ \"Arda\", 10 ], [ \"berea\", 20 ], [ \"Atlantis\", 30 ] ]\naV = oAt.ValuesFor(aRows)\nchk(\"A TABLE OF ROWS BECOMES ONE VALUE PER FEATURE, in the features' own order, \" +\n    \"which is what the map takes\",\n    len(aV) = 2 and aV[1] = 10 and aV[2] = 20)\nchk(\"...and what did not bind is ANSWERED rather than swallowed\",\n    len(oAt.Unresolved(aRows)) = 1 and oAt.Unresolved(aRows)[1] = \"Atlantis\")",
+    "expected": "  ok   A TABLE OF ROWS BECOMES ONE VALUE PER FEATURE, in the features' own order, which is what the map takes\n  ok   ...and what did not bind is ANSWERED rather than swallowed",
+    "source": "base/test/graphics/geo_map_narrated.ring (section 8, names to shapes; oAt is an atlas over the caller's own two regions)",
+    "what_en": "A table typed by a person binds to the caller's own shapes; a name that matches nothing, here Atlantis, is reported back and never guessed.",
+    "what_fr": "Un tableau saisi à la main se rattache aux formes fournies par l'appelant ; un nom qui ne correspond à rien, ici Atlantis, est signalé et jamais deviné."
+   },
+   {
+    "code": "oC1 = new stzCanvas(600, 300)\noC1.SetBackground(\"#FFFFFF\")\noFont = new stzFont(\"C:/Windows/Fonts/segoeui.ttf\")\nnDrew = oMe.DrawScaleBarOn(oC1, oFont, 12, 40, 200, 140, 0, \"#333333\")\n? \"   drawing a bar on a world Mercator returned \" + nDrew",
+    "expected": "   drawing a bar on a world Mercator returned 0",
+    "source": "base/test/graphics/geo_furniture_narrated.ring (section THE SCALE BAR, AND WHEN IT REFUSES; oMe is a world Mercator map, and the next line of the guard asserts nDrew = 0)",
+    "what_en": "Asked to draw a scale bar on a world Mercator map, the map declines and answers 0, because no single bar is true across that sheet.",
+    "what_fr": "Sollicitée pour une échelle graphique sur un planisphère Mercator, la carte refuse et répond 0, car aucune barre unique n'est juste sur toute la feuille."
+   }
+  ]
+ },
+ "diagramming": {
+  "slug": "diagramming",
+  "principle_en": "A diagram is a visual language, not a painting: every relation a reader can see in it must be one the graph actually contains.",
+  "principle_fr": "Un diagramme est un langage visuel, pas une peinture : toute relation que le lecteur y perçoit doit exister dans le graphe.",
+  "kept": [
+   {
+    "en": "Layered drawings follow the classic Sugiyama pipeline: layers, helper nodes on long edges, crossing reduction, coordinates, then edge routing.",
+    "fr": "Les dessins en couches suivent la chaîne classique de Sugiyama : couches, nœuds relais sur les longues arêtes, réduction des croisements, coordonnées, puis tracé des liens.",
+    "source": "base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md (GG6, Diagramming as a strength)"
+   },
+   {
+    "en": "Graphviz's model is kept: the spacing between nodes is the contract, and the picture's size follows from its content, not the reverse.",
+    "fr": "Le modèle de Graphviz est conservé : l'espacement entre les nœuds fait contrat, et la taille de l'image découle de son contenu, pas l'inverse.",
+    "source": "base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md (GG6, The decision: spacing is the contract, the size is derived)"
+   },
+   {
+    "en": "Mathematical diagrams take Penrose's split: a domain declares types, a substance states the content, a style maps it to shapes, and optimisation finds the layout.",
+    "fr": "Les diagrammes mathématiques reprennent le découpage de Penrose : un domaine déclare les types, une substance énonce le contenu, un style le traduit en formes, et une optimisation trouve la disposition.",
+    "source": "base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md (DN7, a picture is SOLVED, not placed)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "The author edits meaning and the layout owns all geometry. Dragging a box only suggests an order, because a hand-placed position asserts something the graph cannot back.",
+    "fr": "L'auteur modifie le sens, l'algorithme gère la géométrie. Déplacer une boîte suggère seulement un ordre, car une position choisie à la main affirmerait ce que le graphe ignore.",
+    "source": "base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md (THE PLASTIC LAYOUT)",
+    "stage": "shipped",
+    "evidence": "edit commands RemoveLinkAt and RewireAnchor in base/graph/stzDiagram.ring; section 49 of base/test/graphics/gg_adversarial.ring"
+   },
+   {
+    "en": "BPMN, UML, state machines and circuits are declared profiles over one drawing foundation, never separate renderers, because a duplicate renderer had arrived broken.",
+    "fr": "BPMN, UML, machines à états et circuits sont des profils déclarés sur une seule base de dessin, jamais des moteurs à part : un moteur dupliqué était arrivé défectueux.",
+    "source": "base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md (DN, Diagramming as domains: a notation is DATA, the contract is LAW)",
+    "stage": "shipped",
+    "evidence": "base/graph/stzNotation.ring (DN0, 2026-08-23) and the domain profiles DN2 to DN24"
+   },
+   {
+    "en": "Positions within a layer are solved exactly, by isotonic regression, not a median heuristic. Every layout is deterministic, so a test can check a picture byte for byte.",
+    "fr": "Les positions dans une couche sont calculées exactement, par régression isotonique, et non par une heuristique de médiane. Toute disposition est déterministe : un test peut vérifier l'image octet par octet.",
+    "source": "base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md (GG6, Why isotonic regression for stage 4; GG1)",
+    "stage": "shipped",
+    "evidence": "pool-adjacent-violators in engine/src/graph_layout.zig; guard base/test/graphics/graph_layout_determinism.ring"
+   },
+   {
+    "en": "Two lines may run together only where they share an endpoint, because a reader takes merged lines as a shared relation the graph may not have.",
+    "fr": "Deux liens ne peuvent se superposer que là où ils partagent une extrémité, car le lecteur voit dans des traits fusionnés une relation que le graphe n'a peut-être pas.",
+    "source": "base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md (THE VISUAL CONTRACT, I2)",
+    "stage": "shipped",
+    "evidence": "base/graph/stzDiagram.ring (enforces THE VISUAL CONTRACT, I2); section 46 of base/test/graphics/gg_adversarial.ring"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "oRw.OnPress(nRwMx, nRwMy)\nchkeq(\"the MIDDLE of an edge grabs nothing -- it is the layout's\",\n      \"\" + oRw.UiState(), \"idle\")\noRw.OnCancel()",
+    "expected": "   ok   the MIDDLE of an edge grabs nothing -- it is the layout's  [got idle, want idle]",
+    "source": "base/test/graphics/gg_adversarial.ring (section 49, a link is edited by its knobs; nRwMx/nRwMy is the midpoint of a drawn link)",
+    "what_en": "Pressing the middle of a link in the live editor grabs nothing, because the line's route belongs to the layout, not to the author.",
+    "what_fr": "Appuyer au milieu d'un lien dans l'éditeur ne saisit rien, car le tracé appartient à l'algorithme de disposition, pas à l'auteur."
+   },
+   {
+    "code": "nDnLog = len(oDm.EditLog())\nbDnGot = oDm.Edit(:Link, [ \"a\", \"a\" ])\nchk(\"a link the domain forbids is refused at the command\",\n    bDnGot = 0 and len(oDm.EditLog()) = nDnLog)\nbDnGot = oDm.Edit(:Link, [ \"b\", \"a\" ])\nchk(\"...while a lawful link passes the same gate\",\n    bDnGot = 1 and len(oDm.EditLog()) = nDnLog + 1)",
+    "expected": "   ok   a link the domain forbids is refused at the command\n   ok   ...while a lawful link passes the same gate",
+    "source": "base/test/graphics/gg_adversarial.ring (section 51, DN0: a domain is a declaration; oDm uses a declared notation that forbids self-links)",
+    "what_en": "A declared notation that forbids self-links makes the editor refuse one, though no editor code knows that notation; a lawful link passes.",
+    "what_fr": "Une notation déclarée qui interdit les boucles sur soi fait refuser ce lien par l'éditeur, sans qu'aucun code de l'éditeur la connaisse ; un lien licite passe."
+   },
+   {
+    "code": "? \"   unrelated edges sharing a lane : \" + nAuShare\nchkeq(\"no two unrelated edges share ink\", nAuShare, 0)",
+    "expected": "   unrelated edges sharing a lane : 0\n   ok   no two unrelated edges share ink  [got 0, want 0]",
+    "source": "base/test/graphics/gg_adversarial.ring (section 46, the shipped picture audited against the whole contract; nAuShare is counted over every pair of drawn links just above)",
+    "what_en": "On the shipped picture, the guard counts unrelated links drawn along the same lane; the contract demands zero, and zero is what it finds.",
+    "what_fr": "Sur l'image livrée, le test compte les liens sans rapport tracés sur la même voie ; le contrat en exige zéro, et c'est ce qu'il trouve."
+   }
+  ]
+ },
+ "gpu": {
+  "slug": "gpu",
+  "principle_en": "The GPU is used only where a measurement shows it wins, and the CPU path always remains the reference answer.",
+  "principle_fr": "Le GPU n'est utilisé que là où une mesure prouve qu'il gagne, et le chemin CPU reste toujours la réponse de référence.",
+  "kept": [
+   {
+    "en": "One lightweight, proven library is built in: wgpu-native (WebGPU). Kernels compile from text at run time, and the same kernels also run in a browser.",
+    "fr": "Une seule bibliothèque légère et éprouvée est intégrée : wgpu-native (WebGPU). Les noyaux se compilent depuis du texte à l'exécution, et les mêmes noyaux tournent aussi dans un navigateur.",
+    "source": "base/gpu/SOFTANZA_GPU_PLAN.md (§1, The vendor decision)"
+   },
+   {
+    "en": "Data stays on the device: upload once, chain several kernels, read back once, because moving data costs more than computing on it.",
+    "fr": "Les données restent sur la carte : un envoi, plusieurs noyaux enchaînés, une seule relecture, car déplacer les données coûte plus que les traiter.",
+    "source": "base/gpu/SOFTANZA_GPU_PLAN.md (§2, Residency is the entire game)"
+   },
+   {
+    "en": "Every GPU operation ships with a parity check against the CPU result, within a tolerance set from measurement.",
+    "fr": "Chaque opération GPU est livrée avec une vérification de parité contre le résultat CPU, dans une tolérance fixée par la mesure.",
+    "source": "base/gpu/SOFTANZA_GPU_PLAN.md (§3, G2 Op library)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "Exact double-precision work stays on the CPU by decision. The GPU serves only domains that tolerate single precision, because consumer cards run doubles 32 to 64 times slower.",
+    "fr": "Le calcul exact en double précision reste sur le CPU : les cartes grand public y sont 32 à 64 fois plus lentes. Le GPU se limite à la simple précision.",
+    "source": "base/gpu/SOFTANZA_GPU_PLAN.md (§0, FACT 2; GS.3, refused, with the law that refuses each)",
+    "stage": "shipped",
+    "evidence": "single-precision scope on every shipped seam; refusals named in GS.3 (linear algebra, exact statistics, stzNumBuffer)"
+   },
+   {
+    "en": "Each route to the GPU must win a measurement first, with kill criteria written in advance. Standalone element-by-element operations were dropped because data transfer was 92% of their cost.",
+    "fr": "Chaque passage au GPU doit gagner une mesure, selon des critères d'abandon écrits d'avance. Les opérations élément par élément isolées ont été écartées : le transfert pesait 92 % du coût.",
+    "source": "base/gpu/SOFTANZA_GPU_PLAN.md (G0 RESULTS, Kill criteria, applied)",
+    "stage": "shipped",
+    "evidence": "thresholds calibrated per adapter, then per shape (GK1), in stz_gpu.dll; element-wise ops admitted only inside resident chains; fallbacks counted in gpu.fallback.count; guard base/test/gpu/gpu_seams_narrated.ring"
+   },
+   {
+    "en": "GPU compute is described, not hand-written. stzKernelMaker turns a short formula into a kernel, making it approachable the way the regex maker did for patterns.",
+    "fr": "Le calcul GPU se décrit au lieu de s'écrire. stzKernelMaker change une courte formule en noyau, ce qui le rend abordable, comme le générateur de regex l'a fait pour les motifs.",
+    "source": "base/gpu/SOFTANZA_GPU_PLAN.md (product vision, level 1; §1 reason 1; G4)",
+    "stage": "shipped",
+    "evidence": "base/gpu/stzKernelMaker.ring (G4, the declarative surface); formula-to-WGSL transpiler engine/src/gpu_wgsl.zig; guard base/test/gpu/gpu_declarative_narrated.ring"
+   },
+   {
+    "en": "Kernel variants are proposed by a plain loop, not a language model, since the search space is small. An engine checker verifies each one and refuses impossible speeds.",
+    "fr": "Les variantes de noyaux viennent d'une simple boucle, et non d'un modèle de langage, car l'espace de recherche est petit. Un vérificateur contrôle chacune et refuse les vitesses impossibles.",
+    "source": "base/gpu/SOFTANZA_GPU_PLAN.md (GK, the kernel foundry; GK.2, what this plane refuses)",
+    "stage": "shipped",
+    "evidence": "engine/src/gpu_verify.zig (stz_gpu_verify, judged against a measured roofline), engine/src/gpu_foundry.zig (GK0 to GK2, shipped 2026-09-09); guard base/test/gpu/gpu_verify_narrated.ring"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "StzEngineGpuCalibSet(\"pairdist\", 4000000)\nStzEngineGpuCountersReset()\nnLive0 = StzEngineGpuCounter(C_LIVE)\naSmall = BuildCorpus(100, 8)         # 800 << 4,000,000\noIdxS = new stzVectorIndex(aSmall)\naResS = oIdxS.SearchExact(BuildQuery(8, 3), 5)\nchk(\"small-corpus SearchExact answers (5 hits)\", len(aResS) = 5)\nchk(\"NO dispatch happened below the line\", StzEngineGpuCounter(C_DISP) = 0)",
+    "expected": "  [OK] small-corpus SearchExact answers (5 hits)\n  [OK] NO dispatch happened below the line",
+    "source": "base/test/gpu/gpu_seams_narrated.ring (Scene 1, below the line)",
+    "what_en": "Below the measured line the same search stays on the CPU, and the dispatch counter staying at zero proves it rather than asserting it.",
+    "what_fr": "Sous la ligne mesurée, la même recherche reste sur le CPU, et le compteur d'envois resté à zéro le prouve au lieu de l'affirmer."
+   },
+   {
+    "code": "k1 = StzKernelMakerQ()\nk1.TakesVector(:A)\nk1.TakesVector(:B)\nk1.TakesScalar(:alpha)\nk1.ReturnsVector(:C)\nk1.ForEachElement('{ @C = alpha * @A + @B }')\ncW = k1.ToWGSL()\n? \"  generated kernel (excerpt): v_c[i] = ...\"",
+    "expected": "  generated kernel (excerpt): v_c[i] = ...\n(the guard's next assertion checks that cW contains: v_c[i] = p.s_alpha * v_a[i] + v_b[i];)",
+    "source": "base/test/gpu/gpu_declarative_narrated.ring (Scene 1, authoring needs no device)",
+    "what_en": "A one-line formula becomes a GPU kernel; writing it needs no device, and the generated code can be read before anything runs.",
+    "what_fr": "Une formule d'une ligne devient un noyau GPU ; l'écrire ne demande aucun appareil, et le code produit se lit avant toute exécution."
+   },
+   {
+    "code": "\tchk(\"1 GB in 0.01 ms (100 TB/s) is IMPOSSIBLE\", oG.VerifyJudge(1000000000, 0.01) = \"impossible\")\n\tchk(\"a time below half the smallest dispatch is IMPOSSIBLE whatever the bytes\",\n\t\toG.VerifyJudge(16, aF[:submitfloorms] / 4) = \"impossible\")\n\tchk(\"32 KB in 5 ms is possible\", oG.VerifyJudge(32768, 5) = \"verified\")",
+    "expected": "  [OK] 1 GB in 0.01 ms (100 TB/s) is IMPOSSIBLE\n  [OK] a time below half the smallest dispatch is IMPOSSIBLE whatever the bytes\n  [OK] 32 KB in 5 ms is possible",
+    "source": "base/test/gpu/gpu_verify_narrated.ring (Scene 5, the roofline; aF holds the floors measured on this device)",
+    "what_en": "The checker refuses a timing faster than this machine's measured limits, so an impossible speed-up is caught as a measurement error.",
+    "what_fr": "Le vérificateur refuse un temps plus rapide que les limites mesurées de la machine : une accélération impossible est traitée comme une erreur de mesure."
+   }
+  ]
+ },
+ "gui": {
+  "slug": "gui",
+  "principle_en": "Softanza declarations are the contract; the markup a UI engine reads is only one projection of them, generated and never written by hand.",
+  "principle_fr": "Les déclarations Softanza font contrat ; le balisage que lit le moteur d'interface n'en est qu'une projection, générée et jamais écrite à la main.",
+  "kept": [
+   {
+    "en": "Layout and input come from RmlUi rather than a home-made toolkit. It was chosen for its permissive licence, host-supplied rendering, no JavaScript engine and a real input model.",
+    "fr": "La mise en page et la saisie viennent de RmlUi plutôt que d'une boîte à outils maison. Il a été choisi pour sa licence permissive, son rendu fourni par l'hôte, l'absence de JavaScript et un vrai modèle de saisie.",
+    "source": "base/gui/SOFTANZA_GUI_PLAN.md (§1, The four constraints RmlUi was chosen to satisfy)"
+   },
+   {
+    "en": "The authoring format keeps an idea from QML: each item is a name with a bag of typed properties. Anonymous nested items were refused, so every box has a name.",
+    "fr": "Le format de description reprend une idée de QML : chaque élément est un nom doté de propriétés typées. Les éléments anonymes imbriqués sont refusés, donc chaque boîte a un nom.",
+    "source": "base/gui/SOFTANZA_GUI_PLAN.md (§4b, What was taken from QML, and what was refused)"
+   },
+   {
+    "en": "Asynchronous work rests on libuv, the proven cross-platform event loop, instead of a hand-rolled reactor. Scripts submit work and collect results, and are never called back.",
+    "fr": "Le travail asynchrone repose sur libuv, boucle d'événements multiplateforme éprouvée, plutôt que sur un réacteur fait maison. Les scripts soumettent et récupèrent leur travail, sans jamais être rappelés.",
+    "source": "base/doc/design/TIER2_REACTOR_DIRECTION.md (Decision; Architecture)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "Markup is generated, never hand-written. A .panel file is the contract, and RmlUi markup or HTML are its projections, because hand-written markup escapes every check.",
+    "fr": "Le balisage est généré, jamais écrit à la main. Un fichier .panel fait contrat ; RmlUi et HTML n'en sont que des projections, car le balisage manuel échappe aux contrôles.",
+    "source": "base/gui/SOFTANZA_GUI_PLAN.md (§3; §4, RML is emitted, never authored; §4b)",
+    "stage": "shipped",
+    "evidence": "base/gui/stzUiDocument.ring; guard base/test/gui/gui_stzui_narrated.ring"
+   },
+   {
+    "en": "The accessibility tree is generated from declared intent, not guessed from markup, which gives screen readers better information. Every focusable element must have a role and a name.",
+    "fr": "L'arbre d'accessibilité est produit à partir de l'intention déclarée, non deviné depuis le balisage, ce qui informe mieux les lecteurs d'écran. Tout élément focalisable a un rôle et un nom.",
+    "source": "base/gui/SOFTANZA_GUI_PLAN.md (G4; G4a STATUS, the accessibility tree: emitted, not inferred)",
+    "stage": "shipped",
+    "evidence": "base/gui/stzAccessibilityTree.ring; guard base/test/gui/gui_accessibility_narrated.ring (37 assertions); G4b reaches a real screen-reader API (base/gui/stzScreenReaderBridge.ring)"
+   },
+   {
+    "en": "Reactive code is named in plain words, such as functions that wait and values that update themselves, instead of borrowed metaphors like callbacks and subscribers, which hide a simple flow.",
+    "fr": "Le code réactif s'exprime en mots simples, des fonctions qui attendent, des valeurs qui se mettent à jour seules, plutôt qu'en métaphores comme rappels et abonnés, qui masquent un flux simple.",
+    "source": "base/doc/narrations/stz-reaxis-reactive-programming-narration.md; base/doc/narrations/Softanza-Reactive-Programming-Semantics.md",
+    "stage": "shipped",
+    "evidence": "base/reactive/stzReactiveStream.ring (OnPassed, OnNoMore), base/reactive/stzReactiveObject.ring (Watch, Computed)"
+   },
+   {
+    "en": "An application is modelled as a living world of meaning, a domain, a life with goals, and a body, because files, database and interface are its plumbing, not its being.",
+    "fr": "Une application est un monde vivant, porteur de sens : un domaine, une vie tendue vers des buts, un corps. Fichiers, base de données et interface n'en sont que la tuyauterie.",
+    "source": "base/doc/design/STZAPP_DESIGN.md (§0, The construct)",
+    "stage": "shipped",
+    "evidence": "base/app/stzApp.ring; the domain slice is validated by base/test/app/00_stzapp_narrated.ring, and the file header records slices B to E converted on 2026-07-14"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "oRtl = new stzUiDocument(\n\t'DEFINE PANEL p ( FONT \"app\", CHILDREN [r] ) RATIONALE \"x\"' + char(10) +\n\t'DEFINE BOX r ( TEXT_DIRECTION rtl, HEIGHT 20 ) RATIONALE \"x\"')\nchk(\"TEXT_DIRECTION rtl becomes --rmlui-direction\",\n    StzFindFirst(\"--rmlui-direction: rtl\", oRtl.ToRml()) > 0)\nchk(\"...and never the CSS spelling RCSS rejects\",\n    StzFindFirst(\"; direction:\", oRtl.ToRml()) = 0)",
+    "expected": "  [OK] TEXT_DIRECTION rtl becomes --rmlui-direction\n  [OK] ...and never the CSS spelling RCSS rejects",
+    "source": "base/test/gui/gui_stzui_narrated.ring (Scene 4, the emitter)",
+    "what_en": "One declared word, rtl, is emitted as the engine's own direction property, so an author never writes the engine's markup by hand.",
+    "what_fr": "Un seul mot déclaré, rtl, est traduit dans la propriété de direction propre au moteur : l'auteur n'écrit jamais le balisage du moteur à la main."
+   },
+   {
+    "code": "? \"   confirm: \" + oT.DescriptionOf(\"confirm\")\nchk(\"the act carries its reason\", oT.DescriptionOf(\"confirm\") = \"The act.\")",
+    "expected": "   confirm: The act.\n  [OK] the act carries its reason",
+    "source": "base/test/gui/gui_accessibility_narrated.ring (Scene 4; the button is declared in base/test/gui/form.panel with RATIONALE \"The act.\")",
+    "what_en": "The reason written for a button in its declaration becomes what a screen reader announces as its description, with no extra work.",
+    "what_fr": "La raison écrite pour un bouton dans sa déclaration devient la description annoncée par le lecteur d'écran, sans travail supplémentaire."
+   },
+   {
+    "code": "oApp = new stzApp(\"SonibankVisits\")\noApp {\n    AddThingQ(:Account) { Has([ :number, :chapter, :balance ])  IsTrue(:balance, \"@ >= 0\") }\n    AddThingQ(:Client)  { Has([ :code, :name, :city ])  Owns(:Account) }\n    AddThingQ(:Visit)   { Of(:Client)  Has([ :agent, :date, :subject ]) }\n    AddRelation(:Account, :belongsTo, :Client)\n}\noApp.Explain()",
+    "expected": "WORLD SonibankVisits   lives in: memory (not persisted)\n  BEING\n    account (number, chapter, balance)\n        true when balance @ >= 0\n    client (code, name, city)\n    visit (agent, date, subject)\n  RELATIONS\n    client owns account\n    visit of client\n    account belongsto client",
+    "source": "base/test/app/00_stzapp_narrated.ring (expected copied from its #--> lines; one blank line before Explain() omitted to fit 8 lines)",
+    "what_en": "An application is declared as a world of things, truths and relations, and it explains itself in plain text.",
+    "what_fr": "Une application se déclare comme un monde de choses, de vérités et de relations, et elle s'explique elle-même en texte clair."
+   }
+  ]
+ },
+ "stats": {
+  "slug": "stats",
+  "principle_en": "Explore before you model: data is a fit plus a residual, computed so that one wild value cannot sway it, and the data itself tells which scale to read it on.",
+  "principle_fr": "Explorer avant de modéliser : les données sont un ajustement plus un résidu, calculés pour qu'une valeur extrême ne les fausse pas, et les données indiquent elles-mêmes leur échelle de lecture.",
+  "kept": [
+   {
+    "en": "Variance divides by N−1 by default, as in R and pandas. The choice is written once in the engine, so every module gives the same answer.",
+    "fr": "Par défaut, la variance divise par N−1, comme dans R et pandas. Ce choix est écrit une seule fois dans le moteur : tous les modules répondent pareil.",
+    "source": "engine/src/stats.zig (block: THE VARIANCE CONVENTION LIVES HERE)"
+   },
+   {
+    "en": "Tukey's methods are used as he defined them: fourths, median polish, resistant line, smoothers. They are checked against R and published examples, never against the library's own output.",
+    "fr": "Les méthodes de Tukey sont reprises telles quelles : quarts, polissage par médianes, droite résistante, lisseurs. On les vérifie contre R et des exemples publiés, jamais contre leurs propres résultats.",
+    "source": "base/stats/SOFTANZA_TUKEY_PLAN.md (§6 Verification method; TK0 and TK1 results)"
+   },
+   {
+    "en": "Charts keep the classic craft: axis ticks on round numbers (1, 2, 2.5 or 5 times a power of ten), a legend for several series, histogram bars that touch.",
+    "fr": "Les graphiques gardent les bons usages : graduations sur des nombres ronds (1, 2, 2,5, 5 fois une puissance de dix), une légende pour plusieurs séries, des barres d'histogramme jointives.",
+    "source": "base/graphics/SOFTANZA_GRAPHICS_PLAN.md (GR6a and GR6c status)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "Exploration emits no p-values, intervals or forecasts. Inference is called deliberately, so a pattern found in the data is never presented as a hypothesis posed beforehand.",
+    "fr": "L'exploration ne produit ni valeur p, ni intervalle, ni prévision. L'inférence s'appelle délibérément : un motif trouvé dans les données ne passe jamais pour une hypothèse posée d'avance.",
+    "source": "base/stats/SOFTANZA_TUKEY_PLAN.md (§1.5 What this plane is not)",
+    "stage": "shipped",
+    "evidence": "base/math/stzTukey.ring (header: no inference anywhere in the tier)"
+   },
+   {
+    "en": "Ambiguous conventions are named, never picked silently. Tukey's fourths and percentile quartiles both ship, because measurement showed they differ, and every display prints which one it used.",
+    "fr": "Une convention ambiguë est nommée, jamais choisie en silence. Quarts de Tukey et quartiles par centiles coexistent, car la mesure a montré qu'ils diffèrent ; chaque affichage indique lequel il emploie.",
+    "source": "base/stats/SOFTANZA_TUKEY_PLAN.md (§2.2 D2; TK0 results)",
+    "stage": "shipped",
+    "evidence": "base/math/stzTukey.ring (SetConvention, Why)"
+   },
+   {
+    "en": "A story told about data does no arithmetic. Every number in the prose is read from the fit or a finding, and a check refuses any unsourced numeral.",
+    "fr": "Un récit sur des données ne calcule rien. Chaque nombre du texte vient de l'ajustement ou d'un constat, et une vérification refuse tout chiffre sans source.",
+    "source": "base/stats/SOFTANZA_TUKEY_PLAN.md (§2.6 the honesty law; TK5 results)",
+    "stage": "shipped",
+    "evidence": "base/math/stzTukeyStory.ring (Unsourced); guard base/test/math/tukey_narrated.ring"
+   },
+   {
+    "en": "One chart model, several render targets. Terminal, SVG and PNG share the meaning (values, labels, flags) but not the layout, since character cells and pixels differ.",
+    "fr": "Un seul modèle de graphique, plusieurs rendus. Terminal, SVG et PNG partagent le sens (valeurs, libellés, options) mais pas la mise en page, car caractères et pixels diffèrent.",
+    "source": "base/graphics/SOFTANZA_GRAPHICS_PLAN.md (GR6a status: what is shared is the MODEL, not the layout)",
+    "stage": "shipped",
+    "evidence": "base/graphics/stzPlotCanvas.ring; guards base/test/graphics/plot_backends_narrated.ring, dataviz_backends_narrated.ring"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "aV = [ 2, 4, 4, 5, 7, 9, 12, 25 ]\noS = StzTukeySummaryQ(aV)\n? oS.Why()",
+    "expected": "a Tukey summary of 8 value(s) under Tukey's fourths (hinges at depth (floor((n+1)/2)+1)/2): hinges 4 | 6 | 10.5, fourth-spread 6.5, 1 outside, 0 far out",
+    "source": "base/education/program/courses/math/chapters/13-tukeys-first-look.en.md (§1)",
+    "what_en": "A resistant summary states in words which convention it used, so hinges are never confused with quartiles.",
+    "what_fr": "Un résumé résistant dit en clair quelle convention il emploie : charnières et quartiles ne se confondent jamais."
+   },
+   {
+    "code": "aDeaths = [ [ 14, 15, 14 ], [ 7, 4, 7 ], [ 8, 2, 10 ], [ 15, 9, 10 ], [ 0, 2, 0 ] ]\noF = StzTukeyFitQ(aDeaths)\noF.Polish()\noRep = StzTukeyReportQ(\"deaths\", [ oF ])\n? oRep.IsSound()\naE = oRep.Errors()\n? len( aE )\n? aE[1][:message]",
+    "expected": "0\n2\nresidual -5 lies 5 fourth-spread(s) past the hinge, beyond the far-out fence at 3",
+    "source": "base/education/program/courses/math/chapters/13-tukeys-first-look.en.md (§5 and §8)",
+    "what_en": "A table fitted by medians becomes verdicts a program can gate on: the report says the table is not sound, and which residual breaks it.",
+    "what_fr": "Une table ajustée par médianes devient des verdicts exploitables par un programme : le rapport dit que la table n'est pas saine, et quel résidu la rompt."
+   },
+   {
+    "code": "oSt = StzTukeyStoryQ(oF, oRep)\nacP = oSt.Paragraphs()\n? acP[1]\n? oSt.IsHonest()",
+    "expected": "A table of 5 rows and 3 columns was fitted by median polish, which converged in 2 sweep(s). The common value is 8 and the residuals' fourth-spread, the scale every judgement below is in, is 1.\n1",
+    "source": "base/education/program/courses/math/chapters/13-tukeys-first-look.en.md (§9)",
+    "what_en": "Continuing the fit above, the story computes nothing and checks on itself that every number it prints comes from the fit or a finding.",
+    "what_fr": "À partir de l'ajustement précédent, le récit ne calcule rien et vérifie lui-même que chaque nombre affiché vient de l'ajustement ou d'un constat."
+   }
+  ]
+ },
+ "system": {
+  "slug": "system",
+  "principle_en": "Only the engine touches the real system; everything above it is a view or a rehearsal, and reality changes only when a governed plan crosses the one door.",
+  "principle_fr": "Seul le moteur touche le système réel ; tout ce qui est au-dessus n'en est qu'une vue ou une répétition, et la réalité ne change que lorsqu'un plan autorisé franchit l'unique porte.",
+  "kept": [
+   {
+    "en": "Direct action stays available: the real file, folder and process classes still act at once. Rehearsal is the recommended path for consequential change, not a forced one.",
+    "fr": "L'action directe reste possible : les vraies classes de fichiers, dossiers et processus agissent immédiatement. La répétition est recommandée pour les changements lourds, pas imposée.",
+    "source": "base/doc/design/SOFTANZA_SYSTEM_FOUNDATION.md (§1, SP3)"
+   },
+   {
+    "en": "Child processes are managed the usual way: spawn, stream the output, wait, read the exit code, stop. Closing a handle stops a running child, so nothing leaks.",
+    "fr": "Les processus enfants se gèrent de façon classique : lancer, lire la sortie au fil de l'eau, attendre, lire le code de sortie, arrêter. Fermer un descripteur arrête l'enfant : rien ne fuit.",
+    "source": "base/doc/design/SOFTANZA_SYSTEM_FOUNDATION.md (§5.1 stzProcess)"
+   },
+   {
+    "en": "Building for another machine reuses Zig's cross-compiler: a deployment target's operating system and processor are simply the build triple.",
+    "fr": "Compiler pour une autre machine réutilise le compilateur croisé de Zig : le système et le processeur de la cible de déploiement forment simplement le triplet de compilation.",
+    "source": "base/doc/design/SOFTANZA_SYSTEM_FOUNDATION.md (status header, stzBuilder)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "Rehearse, plan, commit. Changes are tried in an in-memory twin that holds no reference to reality; an update plan is the only way they reach the real system.",
+    "fr": "Répéter, planifier, valider. Les changements s'essaient dans un jumeau en mémoire, sans lien avec le réel ; seul un plan de mise à jour les fait passer au système réel.",
+    "source": "base/doc/design/SOFTANZA_SYSTEM_FOUNDATION.md (§1 SP3 and SP5; §6); base/doc/design/Softanza Virtual System Framework.md (§2, P1)",
+    "stage": "shipped",
+    "evidence": "base/system/stzVirtualSystem.ring (stzUpdatePlan, stzCommitScope), base/system/stzVirtualFileSystem.ring"
+   },
+   {
+    "en": "Imagining a change and enacting it are separate powers. A language-model actor holds no power to act, so it can propose a plan but never commit one.",
+    "fr": "Imaginer un changement et l'exécuter sont deux pouvoirs séparés. Un acteur de type modèle de langage n'a aucun droit d'agir : il propose, il ne valide jamais.",
+    "source": "base/doc/design/SOFTANZA_SYSTEM_FOUNDATION.md (§1 SP4; §7 governance)",
+    "stage": "shipped",
+    "evidence": "base/system/stzSystemActor.ring; guard base/test/system/governance_crossing_narrated.ring"
+   },
+   {
+    "en": "System code is written in a named scope: development, deployment or runtime. Code for a phone is checked against the phone, and a forbidden act is refused at write time.",
+    "fr": "Le code système s'écrit dans une portée nommée : développement, déploiement ou exécution. Le code destiné à un téléphone est vérifié pour ce téléphone ; un acte interdit est refusé dès l'écriture.",
+    "source": "base/doc/design/SOFTANZA_SYSTEM_FOUNDATION.md (§1 SP6; §2.3 three scopes)",
+    "stage": "shipped",
+    "evidence": "base/system/stzPlatformProfile.ring (stzSystemScope); guards base/test/system/full_scope_model_narrated.ring, system_scope_model_narrated.ring"
+   },
+   {
+    "en": "The twin also stands in for a machine you do not have: a microcontroller's pins are rehearsed on a laptop, then lowered to firmware source for the real device.",
+    "fr": "Le jumeau remplace aussi une machine absente : les broches d'un microcontrôleur se simulent sur un portable, puis deviennent le code source du micrologiciel pour l'appareil réel.",
+    "source": "base/doc/design/SOFTANZA_SYSTEM_FOUNDATION.md (§2.4 the two worlds; status header)",
+    "stage": "shipped",
+    "evidence": "base/system/stzPlatformProfile.ring (stzLoweringBridge); flashing the device stays external"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "oProduct = new stzPlatformProfile(\"smart-greenhouse\")\noProduct.DevelopedOn(:Windows)\noProduct.AddServer(:backend, :LinuxServer)\noProduct.AddSuperApp(:phone, :Android)\noProduct.AddApp(:sensor, :ESP32)\n? oProduct.ReadPinIn(:sensor, 34)      # read the moisture pin\n? oProduct.WritePinIn(:sensor, 26, 1)  # drive the pump\noProduct.SpawnIn(:sensor, \"worker\")    # ... and try to spawn a process",
+    "expected": "ReadPin(34)    -> rehearsed   (ESP32 allows gpio; rehearsed -- my laptop has none)\nWritePin(26,1) -> rehearsed\nSpawn('worker') -> REFUSED here, on my laptop, at write time\n                   (an MCU has no processes -- I learn it NOW, not on the bench)\n(The narration's output block has one more line, about a backend spawn that this excerpt does not include.)",
+    "source": "base/doc/narrations/stz-system-dev-to-deploy-narration.md (§2 and §3)",
+    "what_en": "The product is declared once, then code for the sensor is checked against the sensor: rehearsed where the laptop lacks pins, refused where the device forbids it.",
+    "what_fr": "Le produit est déclaré une fois, puis le code du capteur est vérifié pour le capteur : simulé là où le portable n'a pas de broches, refusé là où l'appareil l'interdit."
+   },
+   {
+    "code": "oVfs = new stzVirtualFileSystem()\noVfs.CreateFolder(\"config\")\noVfs.CreateFile(\"config/greenhouse.ini\", \"pump_threshold=40\")\noVfs.MoveFile(\"old_settings.txt\", \"config/legacy.ini\")\noPlan = oVfs.GenerateUpdatePlan()\n? oPlan.Narration()",
+    "expected": "Update plan (3 of 3 operations to commit):\n  * 1. create folder 'config'\n  * 2. create file 'config/greenhouse.ini' (17 bytes)\n  * 3. move 'old_settings.txt' -> 'config/legacy.ini'\n\nreality is untouched until I choose to commit this plan.",
+    "source": "base/doc/narrations/stz-system-dev-to-deploy-narration.md (§4)",
+    "what_en": "File changes are rehearsed in an in-memory twin and come out as a plain-language plan; nothing on disk changes until the plan is committed.",
+    "what_fr": "Les changements de fichiers se répètent dans un jumeau en mémoire et donnent un plan lisible ; rien ne change sur le disque avant la validation du plan."
+   },
+   {
+    "code": "oGuarded.DeployAs(LLMActor(\"copilot\"))   # raises\noGuarded.DeployAs(HumanActor(\"me\"))      # proceeds",
+    "expected": "the copilot may PROPOSE the deploy -- but CANNOT perform it (no effect capability)\nI approve; the human deploys. Expression is free; admission is governed.",
+    "source": "base/doc/narrations/stz-system-dev-to-deploy-narration.md (§8)",
+    "what_en": "Deployment is an act with effects: a language-model copilot may propose it but cannot perform it, while a human can.",
+    "what_fr": "Le déploiement est un acte à effet : un copilote de type modèle de langage peut le proposer sans pouvoir l'exécuter, un humain le peut."
+   }
+  ]
+ },
+ "concurrency": {
+  "slug": "concurrency",
+  "principle_en": "A process is the natural unit of concurrency: nodes share nothing, talk only by messages, and every crossing has a measured cost that decides whether it pays.",
+  "principle_fr": "Le processus est l'unité naturelle de la concurrence : les nœuds ne partagent rien, ne communiquent que par messages, et chaque passage a un coût mesuré qui décide s'il vaut la peine.",
+  "kept": [
+   {
+    "en": "From Erlang, Softanza takes share-nothing processes, messages as the only contact, location transparency, and supervisors that restart failed nodes under declared strategies and budgets.",
+    "fr": "D'Erlang, Softanza reprend les processus sans partage, les messages comme seul contact, la transparence de l'emplacement et des superviseurs qui relancent les nœuds selon des stratégies déclarées.",
+    "source": "base/cluster/SOFTANZA_DISTRIBUTION_PLAN.md (Taken from Erlang/Elixir — and refused, in writing; D3 result)"
+   },
+   {
+    "en": "The event loop is libuv, vendored and compiled from source, rather than a home-made reactor: avoid reinventing the wheel, and rely on its tested Windows support.",
+    "fr": "La boucle d'événements est libuv, intégrée et compilée depuis les sources, plutôt qu'un réacteur maison : ne pas réinventer la roue, et profiter de son support Windows éprouvé.",
+    "source": "base/doc/design/TIER2_REACTOR_DIRECTION.md (Decision; Why libuv)"
+   },
+   {
+    "en": "Security reuses what exists: the same HMAC request signer and the same mutual-TLS channel as the rest of the library. No new crypto, no second signer.",
+    "fr": "La sécurité réutilise l'existant : le même signataire HMAC et le même canal TLS mutuel que le reste de la bibliothèque. Aucune cryptographie nouvelle, aucun second signataire.",
+    "source": "base/cluster/SOFTANZA_DISTRIBUTION_PLAN.md (D5 governance + security)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "The hard part of distribution is refused in writing: no exactly-once delivery, consensus or message broker. At-most-once is the honest default; apps needing shared state use a database.",
+    "fr": "La partie difficile est refusée par écrit : ni livraison exactement-une-fois, ni consensus, ni courtier. « Au plus une fois » est le défaut honnête ; l'état partagé va dans une base de données.",
+    "source": "base/cluster/SOFTANZA_DISTRIBUTION_PLAN.md (Taken from Erlang/Elixir — and refused, in writing)",
+    "stage": "shipped",
+    "evidence": "base/cluster/stzNodePlane.ring; guard base/test/cluster/d2_location_transparency_narrated.ring (late replies discarded, never mis-delivered)"
+   },
+   {
+    "en": "No wait is endless and no queue is silent. Every request carries a mandatory timeout, and every mailbox is bounded and counts what it drops.",
+    "fr": "Aucune attente n'est infinie, aucune file n'est muette. Chaque requête porte un délai obligatoire, et chaque boîte aux lettres est bornée et compte ce qu'elle rejette.",
+    "source": "base/cluster/SOFTANZA_DISTRIBUTION_PLAN.md (The model; D1 and D2 results)",
+    "stage": "shipped",
+    "evidence": "base/cluster/stzNode.ring; guards base/test/cluster/d1_node_mailbox_narrated.ring, d2_location_transparency_narrated.ring"
+   },
+   {
+    "en": "A node topology is plain data: it can be described and rebuilt identically. Moving a node to another host is one changed line, Deploy, with nothing else touched.",
+    "fr": "Une topologie est une donnée qui se décrit et se recrée à l'identique. Déplacer un nœud sur une autre machine tient en une ligne : Deploy.",
+    "source": "base/cluster/SOFTANZA_DISTRIBUTION_PLAN.md (D4 and D6 results)",
+    "stage": "shipped",
+    "evidence": "base/cluster/stzNodeApp.ring; guards base/test/cluster/d4_declarative_narrated.ring, d6_semantic_search_node_narrated.ring"
+   },
+   {
+    "en": "Concurrency is a routing vocabulary, not a new machine. One word, Concurrently, routes work to engine threads, the event loop or worker processes, fanning out only where measurement shows it pays.",
+    "fr": "La concurrence est un vocabulaire d'aiguillage, pas une machine : Concurrently envoie le travail au moteur, à la boucle ou aux processus, et ne répartit que si la mesure le justifie.",
+    "source": "base/concurrent/SOFTANZA_CONCURRENT_PLAN.md (§1.1 thesis; §1.2 first law)",
+    "stage": "planned",
+    "evidence": "plan of record only; base/concurrent/ holds no code yet"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "vR = Ask(\"worker\", [ \"ping\", 1 ], 0)\nThen(\"the ask is refused outright\", NodeAskStatus(), :BadTimeout)\nThen(\"nothing was returned\", vR, \"\")",
+    "expected": "Asserted by the guard: NodeAskStatus() is :BadTimeout, and vR is \"\".",
+    "source": "base/test/cluster/d2_location_transparency_narrated.ring (scenario: Ask's timeout is mandatory)",
+    "what_en": "A request without a positive timeout is refused outright, so no caller can wait forever.",
+    "what_fr": "Une requête sans délai positif est refusée d'emblée : aucun appelant ne peut attendre indéfiniment."
+   },
+   {
+    "code": "Given(\"a handler that takes ~800 ms and an Ask that waits only 200\")\nvR = Ask(\"worker\", [ \"slow\", 7 ], 200)\nThen(\"the ask timed out\", NodeAskStatus(), :Timeout)\nWhen(\"the very next Ask runs on the same link\")\nvR2 = Ask(\"worker\", [ \"ping\", 99 ], 3000)\nThen(\"it gets ITS OWN reply, not the stale slow one\",\n\tD2PackEq(vR2, [ \"pong\", 99 ]), TRUE)\nThen(\"and the plane reports :Ok again\", NodeAskStatus(), :Ok)",
+    "expected": "Asserted by the guard: the first Ask ends in :Timeout; the next Ask receives [ \"pong\", 99 ], not the late reply; the status is :Ok again.",
+    "source": "base/test/cluster/d2_location_transparency_narrated.ring (scenario: a timed-out Ask leaves no residue)",
+    "what_en": "A reply that arrives after its timeout is discarded by its correlation id, so the next request gets its own answer, never a stale one.",
+    "what_fr": "Une réponse arrivée après son délai est écartée grâce à son identifiant de corrélation : la requête suivante reçoit sa propre réponse, jamais une ancienne."
+   },
+   {
+    "code": "$oApp.Deploy(\"calc\", \"127.0.0.2\")\nD4DriveUntil($oApp, \"calc\", 2, 25000)\nvR = Ask(\"calc\", [ \"double\", 50 ], 3000)\nThen(\"and computes the same (double 50 = 100)\", vR, 100)\nvInfo = Ask(\"calc\", [ \"stz.info\" ], 3000)\nThen(\"it now SERVES FROM the new host\", vInfo[2], \"127.0.0.2\")\nThen(\"the greeter never noticed\",\n\tAsk(\"greeter\", [ \"greet\", \"still\" ], 3000), \"hello still\")",
+    "expected": "Asserted by the guard: vR is 100; vInfo[2] is \"127.0.0.2\"; the greeter still answers \"hello still\".",
+    "source": "base/test/cluster/d4_declarative_narrated.ring (scenario: Deploy: ONE line moves a node)",
+    "what_en": "One Deploy line moves a running node to another host; the same request by name gives the same answer, and the other node never notices.",
+    "what_fr": "Une seule ligne Deploy déplace un nœud vers un autre hôte ; la même requête par nom donne la même réponse, et l'autre nœud ne s'aperçoit de rien."
+   }
+  ]
+ },
+ "web": {
+  "slug": "web",
+  "principle_en": "The server is a host, not a per-request library: the engine is already loaded and warm, and the server only moves requests onto it and results back.",
+  "principle_fr": "Le serveur est un hôte, pas une bibliothèque appelée à chaque requête : le moteur est déjà chargé et prêt, et le serveur ne fait qu'y amener les requêtes et en rapporter les résultats.",
+  "kept": [
+   {
+    "en": "Routing stays plain: a table of method, path and handler, with path parameters like /user/:id and a trailing wildcard. Exact routes are tried first.",
+    "fr": "Le routage reste simple : une table méthode, chemin, gestionnaire, avec des paramètres comme /user/:id et un joker final. Les routes exactes passent en premier.",
+    "source": "base/appserver/stzAppRouter.ring (header comment)"
+   },
+   {
+    "en": "Login uses published standards: OpenID Connect, passkeys, SAML and one-time codes. A session's token is replaced whenever it gains privilege, which defeats session fixation.",
+    "fr": "La connexion suit les standards publiés : OpenID Connect, clés d'accès, SAML, codes à usage unique. Le jeton change dès que la session gagne des droits, contre la fixation de session.",
+    "source": "base/doc/narrations/stz-auth-the-front-door-narration.md"
+   },
+   {
+    "en": "A data back-end is plain REST over the embedded SQLite database: Expose(db, table) gives list, read, create, update and delete, safe from injection, with honest 404s.",
+    "fr": "Un back-end de données, c'est du REST sur la base SQLite intégrée : Expose(db, table) fournit lister, lire, créer, modifier, supprimer, à l'abri des injections, avec de vrais 404.",
+    "source": "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md (§5.10, R7 service-host status)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "The engine is resident, so there are no cold starts and no clustering for warmth. Workers scale only for concurrency and load isolation, specialised by competence, not by module.",
+    "fr": "Le moteur est résident : aucun démarrage à froid, donc nulle grappe pour rester « chaud ». Les workers ne servent qu'à la concurrence et à l'isolement de charge.",
+    "source": "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md (§7, THE CORE INVERSION; facet naming law)",
+    "stage": "shipped",
+    "evidence": "base/cluster/stzWorkerPool.ring, base/cluster/stzWorkerProfile.ring"
+   },
+   {
+    "en": "One host, four shapes: web routes, a data back-end, raw device streams, and hosted agents. Agents share the server's own event loop instead of a separate runtime.",
+    "fr": "Un hôte, quatre formes : routes web, back-end de données, flux bruts d'objets connectés et agents hébergés. Les agents partagent la boucle d'événements du serveur, sans runtime séparé.",
+    "source": "base/appserver/stzAppServer.ring (header: ONE HOST, FOUR TOPOLOGIES)",
+    "stage": "shipped",
+    "evidence": "base/appserver/stzAppServer.ring (Expose, ListenRaw, HostAgents); guard base/test/appserver/64_appserver_agents_narrated.ring"
+   },
+   {
+    "en": "A login does not set a flag or return a role string. It returns an actor carrying capabilities and a trust level, which the rest of the program already understands.",
+    "fr": "Une connexion ne pose pas un drapeau et ne renvoie pas un simple rôle : elle produit un acteur, avec capacités et niveau de confiance, que tout le programme comprend.",
+    "source": "base/doc/narrations/stz-auth-the-front-door-narration.md (First idea: a login hands you an actor)",
+    "stage": "shipped",
+    "evidence": "base/security/stzAuth.ring (ActorOfAt); guard base/test/system/auth_authz_narrated.ring"
+   },
+   {
+    "en": "Code the whole app against faithful sandboxes, then switch to real services at deploy. The registry refuses to let a sandbox ship to production.",
+    "fr": "On code toute l'application contre des bacs à sable fidèles, puis on passe aux vrais services au déploiement. Le registre interdit un bac à sable en production.",
+    "source": "base/doc/design/SOFTANZA_SERVICE_VIRTUALIZATION_PLAN.md (status, phase 1 and phase 7)",
+    "stage": "shipped",
+    "evidence": "base/service/stzServiceRegistry.ring; guard base/test/system/service_registry_narrated.ring"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "a = new stzAuth()\na.Register(\"dana\", \"pw\")\na.GrantRole(\"dana\", \"admin\")\ntok = a.LoginAt(\"dana\", \"pw\", NOW)\nact = a.ActorOfAt(tok, NOW)\n? \"user        : \" + act.Name()\n? \"capabilities: \" + @@(act.Kinds())\n? \"posture     : \" + act.Posture()",
+    "expected": "user        : dana\ncapabilities: [ \"effectful\", \"compute\", \"sensing\" ]\nposture     : trusted",
+    "source": "base/doc/narrations/stz-auth-the-front-door-narration.md (First idea: a login hands you an actor)",
+    "what_en": "A login returns an actor with capabilities and a trust level, not a role string.",
+    "what_fr": "Une connexion renvoie un acteur doté de capacités et d'un niveau de confiance, pas un rôle en texte."
+   },
+   {
+    "code": "idp = new stzOidcSandbox(\"https://idp.local\", \"my-app\")\nrp  = new stzOidcClient(\"https://idp.local\", \"my-app\")\nrp.SetJwks( idp.JwksJson() )        # the provider's public keys\nb = new stzAuth()\nb.SetOidcClient(rp)\n? \"forged token   : [\" + b.LoginWithOidcAt(idp.IssueForgedIdTokenAt(\"dana\",\"n-1\",NOW), \"n-1\", NOW) + \"]\"\n? \"  why          : \" + b.OidcWhy()",
+    "expected": "forged token   : []\n  why          : the signature does not verify against the provider's key",
+    "source": "base/doc/narrations/stz-auth-the-front-door-narration.md (OpenID Connect section)",
+    "what_en": "The identity-provider sandbox holds a real key and can issue a forged token, so the refusal path is tested before any real provider is involved.",
+    "what_fr": "Le bac à sable du fournisseur d'identité détient une vraie clé et sait émettre un jeton falsifié : le refus se teste avant tout vrai fournisseur."
+   },
+   {
+    "code": "oReg = new stzServiceRegistry(\"shop\")\noReg.Bind(:payments, new stzPaymentsSandbox())\n? oReg.PostureOf(:payments)          # --> sandbox\noReg.SetPhaseQ(:production)\n? oReg.IsSound()                     # --> 0",
+    "expected": "sandbox\n0\n[error] sandbox-in-production @ shop/payments\n        still bound to a SANDBOX in a production phase -- a fake must never ship\n(The narration also binds a database and an in-memory store; their lines are left out of this excerpt.)",
+    "source": "base/doc/narrations/stz-service-virtualization-code-first-subscribe-later.md (posture and phase section)",
+    "what_en": "Switching the registry to production turns a still-bound payments sandbox into an error, so a fake cannot ship.",
+    "what_fr": "En phase de production, un bac à sable de paiement encore branché devient une erreur dans le registre : un faux ne peut pas partir."
+   }
+  ]
+ },
+ "performance": {
+  "slug": "performance",
+  "principle_en": "Performance is something a program knows about itself: the engine measures, the code declares the budget, and any corrective act passes through governance.",
+  "principle_fr": "La performance est une chose qu'un programme sait de lui-même : le moteur mesure, le code déclare le budget, et toute action corrective passe par la gouvernance.",
+  "kept": [
+   {
+    "en": "Data leaves in open formats other tools read: Prometheus text, OpenTelemetry (OTLP) and W3C trace ids. Storage and dashboards are left to those tools, by design.",
+    "fr": "Les données sortent dans des formats ouverts : texte Prometheus, OpenTelemetry (OTLP) et identifiants de trace W3C. Stockage et tableaux de bord restent, à dessein, à ces outils.",
+    "source": "base/doc/design/SOFTANZA_PERF_SYSTEM.md (§12 Interop); base/doc/design/SOFTANZA_PERF_VS_THE_FIELD.md (§6)"
+   },
+   {
+    "en": "Analysis rests on classic operational laws: utilization U = X·D and Little's law N = X·R. Response time is a distribution (p50, p95, p99), never just an average.",
+    "fr": "L'analyse s'appuie sur les lois classiques : utilisation U = X·D et loi de Little N = X·R. Le temps de réponse est une distribution (p50, p95, p99), jamais une moyenne.",
+    "source": "base/doc/design/SOFTANZA_PERF_SYSTEM.md (§4 The vocabulary: U, R, X, D)"
+   },
+   {
+    "en": "Durations use monotonic clocks only, immune to network time corrections. Wall-clock time is kept for timestamps, never for measuring how long something took.",
+    "fr": "Les durées se mesurent uniquement avec des horloges monotones, insensibles aux corrections de l'heure réseau. L'heure murale sert à dater, jamais à chronométrer.",
+    "source": "CLAUDE.md (Perf-system laws, 3: Clocks are scopes)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "The performance budget is code, declared next to what it judges. A missed target becomes a finding that fails the build, through the same gate as security rules.",
+    "fr": "Le budget de performance est du code, déclaré près de ce qu'il juge. Un objectif manqué devient un constat qui fait échouer le build, par la même porte que la sécurité.",
+    "source": "base/doc/design/SOFTANZA_PERF_SYSTEM.md (§11 SLA at design time)",
+    "stage": "shipped",
+    "evidence": "base/perf/stzSla.ring; guard base/test/perf/judgment_narrated.ring"
+   },
+   {
+    "en": "Watch freely, act through the gate. Scaling or restarting is a governed plan; a language-model actor can analyse and propose it but is structurally unable to commit.",
+    "fr": "Observer librement, agir par la porte. Augmenter la capacité ou redémarrer est un plan gouverné ; un acteur de type modèle de langage peut l'analyser et le proposer, jamais l'exécuter.",
+    "source": "base/doc/design/SOFTANZA_PERF_SYSTEM.md (§3 thesis, point 2; §10 Governance)",
+    "stage": "shipped",
+    "evidence": "base/perf/stzPerfPlan.ring (MayCommit); guard base/test/perf/governed_loop_narrated.ring"
+   },
+   {
+    "en": "Each measurement is cross-checked by an independent one: Little's law against the counted requests in flight. A formula that cannot fail proves nothing.",
+    "fr": "Chaque mesure est recoupée par une autre, indépendante : la loi de Little contre les requêtes en cours comptées. Une formule qui ne peut échouer ne prouve rien.",
+    "source": "CLAUDE.md (Perf-system laws, 5: An identity is not a self-check); base/doc/design/SOFTANZA_PERF_SYSTEM.md (§4)",
+    "stage": "shipped",
+    "evidence": "base/perf/stzPerfProfile.ring; guard base/test/perf/profile_narrated.ring"
+   },
+   {
+    "en": "The monitor states its own cost. SelfCost() reports what observing costs, a guard fails if it exceeds a stated share of the work, and fixed-size rings keep memory flat.",
+    "fr": "Le moniteur annonce son propre coût : SelfCost() le mesure, un test échoue s'il dépasse une part fixée du travail, et des anneaux de taille fixe gardent la mémoire stable.",
+    "source": "base/doc/design/SOFTANZA_PERF_SYSTEM.md (§13 Overhead discipline)",
+    "stage": "shipped",
+    "evidence": "base/perf/stzPerfMonitor.ring (SelfCost)"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "oRep = new stzRuleReport(\"restolean-ci\")\noRep.Ingest(aF)\noRep.Report()\n? \"IsSound() = \" + oRep.IsSound()",
+    "expected": "Rule report 'restolean-ci': 2 finding(s), 2 error(s), 0 warning(s) -> UNSOUND (errors present)\n  [perf] 2 finding(s)\n    ERROR availability-atleast-99.90 @ restolean-api/http.requests -- availability-atleast-99.90: measured 92.31 (must be >= 99.90)\n    ERROR error-rate-under-0 @ restolean-api/http.requests -- error-rate-under-0: measured 7.69 (must be <= 0)\nIsSound() = 0",
+    "source": "base/doc/narrations/stz-perf-judgment-narration.md (The perf budget fails the SAME build the security rules fail)",
+    "what_en": "The budget's breach findings (aF) enter the same rule report that judges code and security, and the build is judged unsound.",
+    "what_fr": "Les constats de dépassement du budget (aF) entrent dans le même rapport de règles que le code et la sécurité, et le build est jugé non sain."
+   },
+   {
+    "code": "aF = oSla.CheckAgainst(oMon)\noPlan = StzPerfPlan(\"relieve-queue\")\noPlan.Propose(:ScaleUp, \"nlp\", aF[1][:message])   # the finding IS the rationale\n? \"LLM may commit?   \" + oPlan.MayCommit(oLlm)\n? \"human may commit? \" + oPlan.MayCommit(oHuman)\n? \"LLM executes   -> \" + oPlan.ExecuteOn(oFake, oLlm) + \" committed (fleet calls: \" + oFake.CallCount() + \")\"\n? \"human executes -> \" + oPlan.ExecuteOn(oFake, oHuman) + \" committed (fleet calls: \" + oFake.CallCount() + \")\"\noPlan.Show()",
+    "expected": "LLM may commit?   0\nhuman may commit? 1\nLLM executes   -> 0 committed (fleet calls: 0)\nhuman executes -> 1 committed (fleet calls: 1)\n\nPerf plan relieve-queue -- 1 proposed action(s).\n  1. scaleup 'nlp' -- value-queue.depth-under-100: measured 900 (must be <= 100)\nAudit (2):\n  #1 REFUSED scaleup 'nlp' by advisor -- actor is not effectful -- expression is free; admission is governed\n  #1 COMMITTED scaleup 'nlp' by mansour -- value-queue.depth-under-100: measured 900 (must be <= 100)",
+    "source": "base/doc/narrations/stz-perf-governed-loop-narration.md (The plan: the LLM proposes, the human commits)",
+    "what_en": "A scaling plan built from a breach is refused for the language-model advisor and committed by the human, and both judgments are recorded in the audit.",
+    "what_fr": "Un plan d'augmentation de capacité tiré d'un dépassement est refusé au conseiller de type modèle de langage, exécuté par l'humain, et les deux décisions sont consignées."
+   },
+   {
+    "code": "aUC = oP.UtilizationCheck()\n? aUC[:message]",
+    "expected": "U computed from anchors = 0.03, U sampled by the monitor = 0.03: the two measurements agree -- the measurement is sound",
+    "source": "base/doc/narrations/stz-perf-profile-narration.md (The analysis distrusts itself -- on purpose)",
+    "what_en": "The profile compares the utilization it computed with the one the monitor sampled independently, and says whether the measurement can be trusted.",
+    "what_fr": "Le profil compare l'utilisation qu'il calcule à celle que le moniteur a échantillonnée de son côté, et dit si la mesure est fiable."
+   }
+  ]
+ },
+ "meta": {
+  "slug": "meta",
+  "principle_en": "A house rule is not folklore or a text pattern: it is an object checked over a model of the code, runnable by any programmer, human or machine.",
+  "principle_fr": "Une règle maison n'est ni du folklore ni un motif de texte : c'est un objet vérifié sur un modèle du code, que tout programmeur, humain ou machine, peut exécuter.",
+  "kept": [
+   {
+    "en": "Findings carry a severity: errors fail the build, warnings only advise. Existing checkers keep their old output shapes behind thin adapters, so nothing downstream breaks.",
+    "fr": "Chaque constat porte une gravité : les erreurs bloquent le build, les avertissements conseillent seulement. Les anciens vérificateurs gardent leur format derrière de fins adaptateurs : rien ne casse en aval.",
+    "source": "base/doc/narrations/stz-rules-as-graph-rules-narration.md (One gate over every domain); base/doc/design/SOFTANZA_GRAPH_RULES_PLAN.md (§3 The decision)"
+   },
+   {
+    "en": "Not everything belongs on a graph. A naming rule such as no-aggressive-verbs stays a plain text check; the aim is to stop pretending a text scan is a model.",
+    "fr": "Tout ne va pas dans un graphe. Une règle de nommage comme no-aggressive-verbs reste un contrôle textuel ; le but est de ne plus prendre un balayage pour un modèle.",
+    "source": "base/doc/design/SOFTANZA_GRAPH_RULES_PLAN.md (§9 Honest caveats)"
+   },
+   {
+    "en": "Rules that change behaviour roll out gently: constraint rules ship opt-in per domain, in validation mode first, with a migration window for existing callers.",
+    "fr": "Les règles qui changent le comportement arrivent en douceur : activables par domaine, d'abord en simple validation, avec une période de migration pour le code existant.",
+    "source": "base/doc/design/SOFTANZA_GRAPH_RULES_PLAN.md (§9 Honest caveats)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "Rules run over a code graph, not line by line. The graph tells a definition from a call and sees two methods colliding by case, which a line scan cannot.",
+    "fr": "Les règles portent sur un graphe du code, pas sur les lignes. Le graphe distingue définition et appel, et voit deux méthodes qui ne diffèrent que par la casse.",
+    "source": "base/doc/design/SOFTANZA_GRAPH_RULES_PLAN.md (§2 (d); §8 The payoff); base/meta/stzCodeRules.ring (header: LAW 6 made runnable)",
+    "stage": "shipped",
+    "evidence": "base/meta/stzCodeRule.ring; guard base/test/meta/coderule_narrated.ring"
+   },
+   {
+    "en": "Guardrails become gates, not audits. A constraint rule refuses illegal wiring when it is built: granting an effect capability to a language-model actor is rejected on the spot.",
+    "fr": "Les garde-fous deviennent des portes, pas des audits. Une règle de contrainte refuse un câblage interdit dès sa création : donner un pouvoir d'agir à un modèle de langage est rejeté.",
+    "source": "base/doc/design/SOFTANZA_GRAPH_RULES_PLAN.md (§5 What AGENTS gain; phase 4)",
+    "stage": "shipped",
+    "evidence": "base/agentic/stzAgentGraph.ring (Grant); guard base/test/agentic/agentrule_narrated.ring"
+   },
+   {
+    "en": "One rule engine serves code, agents, security, workflows and org charts, with one finding shape and one gate. Performance budgets and data findings join the same gate.",
+    "fr": "Un seul moteur de règles couvre code, agents, sécurité, processus métier et organigrammes : une forme de constat, une porte. Budgets de performance et constats de données y passent aussi.",
+    "source": "base/doc/design/SOFTANZA_GRAPH_RULES_PLAN.md (§1 thesis; phase 6); base/stats/SOFTANZA_TUKEY_PLAN.md (§2.6)",
+    "stage": "shipped",
+    "evidence": "base/graph/stzRuleReport.ring; guard base/test/graph/rulereport_narrated.ring"
+   },
+   {
+    "en": "Thousands of test lines state the output they promise. A harness runs each file and compares, and is itself tested on deliberately wrong promises.",
+    "fr": "Des milliers de lignes de test annoncent la sortie promise. Un banc les exécute et compare, et il est lui-même éprouvé sur des promesses volontairement fausses.",
+    "source": "base/meta/promises.py (header)",
+    "stage": "shipped",
+    "evidence": "base/meta/promises.py"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "aF = StzCheckCode(\"class Foo\" + nl + \"def Bar()\" + nl + \"\tx = substr(s, 2)\" + nl)\nnF = len(aF)\nfor i = 1 to nF\n    ? aF[i][:rule] + \"  @line \" + aF[i][:line] + \"  [\" + aF[i][:severity] + \"]\"\nnext\n? \"findings: \" + len(StzCheckCode(\"class Foo\" + nl + \"def substr(x)\" + nl + \"\treturn x\" + nl))",
+    "expected": "engine-first  @line 3  [warning]\nfindings: 0",
+    "source": "base/doc/narrations/stz-rules-as-graph-rules-narration.md (The model sees what the text scan cannot)",
+    "what_en": "The rule reads call edges, so a real call is flagged while a method merely named substr is not.",
+    "what_fr": "La règle lit les arêtes d'appel : un vrai appel est signalé, une méthode simplement nommée substr ne l'est pas."
+   },
+   {
+    "code": "oAG = new stzAgentGraph(\"mailer\")\noAG.AddLLMActor(\"writer\")\ntry\n    oAG.Grant(\"writer\", \"effectful\")\ncatch\n    ? cCatchError\ndone",
+    "expected": "REFUSED: granting 'effectful' to llm actor 'writer' -- an LLM proposes, only a pi-gate commits (no-llm-effectful, enforced at CONSTRUCTION, not merely audited).",
+    "source": "base/doc/narrations/stz-rules-as-graph-rules-narration.md (Audit becomes a gate)",
+    "what_en": "Granting the power to act to a language-model actor is refused at construction, not merely reported afterwards.",
+    "what_fr": "Donner le pouvoir d'agir à un acteur de type modèle de langage est refusé dès la construction, pas seulement signalé après coup."
+   },
+   {
+    "code": "oSG = new stzSecurityGraph(\"resto\")\noSG.AddActor(\"llm\", \"sandboxed\")\noSG.AddTool(\"shell\")\noSG.Uses(\"llm\", \"shell\")\noSG.Grants(\"shell\", \"effectful\")\n? \"llm holds effectful directly? no. reaches it by a path? \" + oSG.ReachesEffectful(\"llm\")",
+    "expected": "llm holds effectful directly? no. reaches it by a path? 1",
+    "source": "base/doc/narrations/stz-rules-as-graph-rules-narration.md (Escalation is a path)",
+    "what_en": "A sandboxed actor that holds no effect itself is still caught, because the graph finds a path to an effect through a tool.",
+    "what_fr": "Un acteur isolé qui ne détient aucun effet est tout de même repéré : le graphe trouve un chemin vers un effet à travers un outil."
+   }
+  ]
+ },
+ "files": {
+  "slug": "files",
+  "principle_en": "You reach a file by what you intend to do with it, and each format is parsed once, in the engine, by a parser whose refusals are part of its safety.",
+  "principle_fr": "On aborde un fichier selon ce qu'on veut en faire, et chaque format est analysé une seule fois, dans le moteur, par un analyseur dont les refus font partie de la sécurité.",
+  "note": "Most recorded reasoning concerns the file API and XML. The CSV, JSON and HTML modules record little design reasoning beyond being moved into the engine (SOFTANZA_SYSTEM_FOUNDATION.md SP1), so no item rests on them alone.",
+  "kept": [
+   {
+    "en": "XML canonical form is checked byte for byte against libxml2 across ten test vectors, kept as permanent tests. An independent reference judges the code, not its own word.",
+    "fr": "La forme canonique XML est comparée octet par octet à libxml2 sur dix vecteurs, gardés comme tests permanents. Une référence indépendante juge le code, pas sa propre parole.",
+    "source": "base/doc/narrations/stz-xml-the-parser-that-says-no.md (One parser); engine/src/xml.zig (header)"
+   },
+   {
+    "en": "Reading returns the value, not the raw text: &amp; comes back as &. Callers never decode by hand, so nothing is shown raw or escaped twice.",
+    "fr": "La lecture rend la valeur, pas le texte brut : &amp; revient en &. L'appelant ne décode jamais à la main, donc rien n'est affiché brut ni échappé deux fois.",
+    "source": "base/doc/narrations/stz-xml-the-parser-that-says-no.md (Reading is reading, not decoding)"
+   },
+   {
+    "en": "One class per format, not per source. JSON, CSV, HTML and XML each take text; a file is a source, not a kind, so loading and saving are conveniences.",
+    "fr": "Une classe par format, pas par source. JSON, CSV, HTML et XML prennent du texte ; un fichier est une source, pas un genre, et charger ou enregistrer reste une commodité.",
+    "source": "base/doc/narrations/stz-xml-the-parser-that-says-no.md (The object shape)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "Files are opened by intention, not by mode: FileRead, FileAppend, FileCreate, FileOverwrite, FileUpdate. Each intention can also read, as an open notebook can.",
+    "fr": "Un fichier s'ouvre par intention, pas par mode : FileRead, FileAppend, FileCreate, FileOverwrite, FileUpdate. Chaque intention permet aussi de lire, comme un cahier ouvert.",
+    "source": "base/doc/narrations/stzfile-api-narration.md (The Core Insight; The Seven Core Intentions)",
+    "stage": "shipped",
+    "evidence": "base/file/stzFile.ring"
+   },
+   {
+    "en": "The XML parser refuses any DOCTYPE or ENTITY declaration before parsing. File-reading and memory-bomb attacks are closed by construction, not by a setting someone may forget.",
+    "fr": "L'analyseur XML refuse toute déclaration DOCTYPE ou ENTITY avant d'analyser. La lecture de fichiers piégée et l'explosion mémoire sont exclues par construction, pas par un réglage oubliable.",
+    "source": "base/doc/narrations/stz-xml-the-parser-that-says-no.md (The refusal); engine/src/xml.zig (header)",
+    "stage": "shipped",
+    "evidence": "engine/src/xml.zig; base/file/stzXml.ring"
+   },
+   {
+    "en": "XML paths come in three forms only, matched by local name. A partial XPath would invite queries that silently fail, and prefixes are only local nicknames.",
+    "fr": "Les chemins XML n'ont que trois formes, et comparent les noms locaux. Un XPath partiel inviterait des requêtes qui échouent en silence ; un préfixe n'est qu'un surnom local.",
+    "source": "base/doc/narrations/stz-xml-the-parser-that-says-no.md (Start with the object; Why local names, not prefixes)",
+    "stage": "shipped",
+    "evidence": "base/file/stzXmlFuncs.ring (StzXmlGet)"
+   },
+   {
+    "en": "An object-store key is not a file path. Each stored file is named by the SHA-256 of its key, so path traversal cannot be expressed and case-distinct keys stay distinct.",
+    "fr": "Une clé de stockage d'objets n'est pas un chemin. Chaque fichier porte le SHA-256 de sa clé : la traversée de chemin devient inexprimable et Photo.JPG reste distinct de photo.jpg.",
+    "source": "base/doc/design/SOFTANZA_SERVICE_VIRTUALIZATION_PLAN.md (status, phase 6: object store)",
+    "stage": "shipped",
+    "evidence": "base/service/stzBlobPort.ring; guard base/test/system/blob_port_narrated.ring"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "? StzXmlIsValid(\"<!DOCTYPE d [<!ENTITY e SYSTEM 'file:///etc/passwd'>]><d/>\")\n? StzXmlIsValid(\"<!ENTITY xxe SYSTEM 'file:///etc/passwd'><d/>\")",
+    "expected": "0\n0",
+    "source": "base/doc/narrations/stz-xml-the-parser-that-says-no.md (The refusal)",
+    "what_en": "Any document carrying a DOCTYPE or an ENTITY declaration is refused before parsing begins.",
+    "what_fr": "Tout document portant une déclaration DOCTYPE ou ENTITY est refusé avant même l'analyse."
+   },
+   {
+    "code": "cXml = '<library xmlns=\"urn:lib\" name=\"City Library\">' +\n       '<book isbn=\"1\"><title>Dune</title><year>1965</year></book>' +\n       '<book isbn=\"2\"><title>Ubik</title><year>1969</year></book>' +\n       '</library>'\n? StzXmlRoot(cXml)\n? StzXmlGet(cXml, \"library/book/title\")\n? StzXmlGet(cXml, \"library/book[2]/title\")\n? StzXmlGet(cXml, \"//year\")",
+    "expected": "library\nDune\nUbik\n1965",
+    "source": "base/doc/narrations/stz-xml-the-parser-that-says-no.md (Start with the object)",
+    "what_en": "Three path forms, matched by local name, read a document that has a namespace without ever naming it.",
+    "what_fr": "Trois formes de chemin, comparées sur le nom local, lisent un document doté d'un espace de noms sans jamais le nommer."
+   },
+   {
+    "code": "oB = StzFileBlobStoreQ(\"uploads\")\noB.Save(\"Photo.JPG\", \"the original\")\noB.Save(\"photo.jpg\", \"a different picture\")\n? oB.NumberOfBlobs()                 # --> 2\n? oB.Fetch(\"Photo.JPG\")              # --> the original\n? oB.Fetch(\"photo.jpg\")              # --> a different picture",
+    "expected": "2\nthe original\na different picture",
+    "source": "base/doc/narrations/stz-service-virtualization-code-first-subscribe-later.md (Building the double taught us the service)",
+    "what_en": "Two keys that differ only by case stay two objects, even on a case-insensitive disk, because each stored file is named by a hash of its key.",
+    "what_fr": "Deux clés qui ne diffèrent que par la casse restent deux objets, même sur un disque insensible à la casse, car chaque fichier stocké est nommé par une empreinte de sa clé."
+   }
+  ]
+ },
+ "binary": {
+  "slug": "binary",
+  "principle_en": "A binary file is a table the bytes forgot to show: write its layout down once, as data, and the bytes become rows and columns.",
+  "principle_fr": "Un fichier binaire est un tableau que les octets ont oublié de montrer : on décrit sa structure une fois, sous forme de données, et les octets deviennent lignes et colonnes.",
+  "kept": [
+   {
+    "en": "A layout is declared as data, not written as parsing code. Kaitai Struct and COBOL copybooks showed this works; a copybook becomes one input format among others.",
+    "fr": "La structure se déclare comme des données, pas comme du code d'analyse. Kaitai Struct et les copybooks COBOL l'ont montré ; un copybook devient un format d'entrée parmi d'autres.",
+    "source": "base/binary/SOFTANZA_BINARY_PLAN.md (§0.4 What the field does; §0.5 claim 2)"
+   },
+   {
+    "en": "The COBOL picture rules are adopted, done right: text, binary, zoned and packed decimal, with scale and sign.",
+    "fr": "Les règles de type de COBOL (clauses PIC) sont reprises et appliquées correctement : texte, binaire, décimal zoné et décimal condensé, avec échelle et signe.",
+    "source": "base/binary/SOFTANZA_BINARY_PLAN.md (§0.5 claim 7; §2.3 stzCopybook)"
+   },
+   {
+    "en": "The classic hex view is kept: offset, hexadecimal bytes and readable text side by side, now with each field's span named.",
+    "fr": "La vue hexadécimale classique est conservée : position, octets en hexadécimal et texte lisible côte à côte, avec en plus le nom de chaque champ sur sa plage.",
+    "source": "base/binary/SOFTANZA_BINARY_PLAN.md (§2.5 The annotated hex view)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "A decoded file lands as a live table, where summaries, statistics, plots and export already wait, so exploring it takes zero extra steps.",
+    "fr": "Un fichier décodé arrive sous forme de tableau vivant, où résumés, statistiques, graphiques et export sont déjà prêts : l'explorer ne demande aucune étape de plus.",
+    "source": "base/binary/SOFTANZA_BINARY_PLAN.md (§0.4 differentiator a; §1 The thesis)",
+    "stage": "planned"
+   },
+   {
+    "en": "The same schema also writes files. A maker narrates each field and its bytes, teaching layout to beginners and producing test files.",
+    "fr": "Le même schéma sert aussi à écrire des fichiers. Un « fabricant » raconte chaque champ et ses octets : il enseigne la structure aux débutants et produit les fichiers de test.",
+    "source": "base/binary/SOFTANZA_BINARY_PLAN.md (§2.4 stzBinaryFileMaker)",
+    "stage": "planned"
+   },
+   {
+    "en": "Damaged records return verdicts, never crashes, because an old file will contain garbage and a tool that stops at the first bad record is useless.",
+    "fr": "Un enregistrement abîmé produit un verdict, jamais un plantage : un vieux fichier contient forcément des données corrompues, et un outil qui s'arrête à la première est inutile.",
+    "source": "base/binary/SOFTANZA_BINARY_PLAN.md (§2.2 stzBinaryFile, laws)",
+    "stage": "planned"
+   },
+   {
+    "en": "Schemas are declared, never guessed from the bytes. Format inference is refused as a different, research-grade product.",
+    "fr": "Les schémas sont déclarés, jamais devinés à partir des octets. L'inférence de format est refusée : c'est un autre produit, du niveau de la recherche.",
+    "source": "base/binary/SOFTANZA_BINARY_PLAN.md (§6 Refusals)",
+    "stage": "planned"
+   }
+  ],
+  "showcase": [],
+  "showcase_note": "No snippet exists to copy: the binary plane is a plan of record written before any code (BN0 not started), and base/test/binary/ does not exist. The plan's code examples are illustrative and have never run."
+ },
+ "security": {
+  "slug": "security",
+  "principle_en": "Expression is free, admission is governed: anyone may compose and propose, but only an actor entitled to cause effects may commit.",
+  "principle_fr": "S'exprimer est libre, être admis est gouverné : chacun peut composer et proposer, mais seul un acteur habilité à produire des effets peut valider.",
+  "kept": [
+   {
+    "en": "The threat model is read through recognised norms: the OWASP Top 10 lists for web, language-model and agent applications, and NIST CSF 2.0, as lenses, not verdicts.",
+    "fr": "Le modèle de menaces s'appuie sur les Top 10 de l'OWASP (web, modèles de langage, agents) et le NIST CSF 2.0, comme grilles de lecture, pas comme verdicts.",
+    "source": "base/security/SOFTANZA_THREAT_MODEL.md (norms table)"
+   },
+   {
+    "en": "Proven cryptography, not home-made: passwords are stored with Argon2id, and data at rest is sealed with authenticated encryption, so one altered byte opens nothing.",
+    "fr": "Une cryptographie éprouvée, pas artisanale : les mots de passe sont stockés avec Argon2id, et les données au repos scellées par un chiffrement authentifié ; un octet modifié n'ouvre rien.",
+    "source": "base/security/SOFTANZA_THREAT_MODEL.md (G27, G28)"
+   },
+   {
+    "en": "Safe defaults at every boundary: TLS checks the peer unless told otherwise by name, SQL values are bound and never spliced, and arguments start a program without a shell.",
+    "fr": "Des réglages sûrs par défaut : TLS vérifie le pair sauf option explicitement nommée, les valeurs SQL sont liées, jamais concaténées, et un programme se lance sans shell.",
+    "source": "base/security/SOFTANZA_THREAT_MODEL.md (G07, G09, G10)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "Softanza assumes a manipulated prompt will get through, and makes it harmless: a language model never holds the capability to act, so a fooled model still cannot act.",
+    "fr": "Softanza part du principe qu'une injection dans le prompt finira par passer, et la rend inoffensive : un modèle de langage ne détient jamais le droit d'agir.",
+    "source": "base/security/SOFTANZA_THREAT_MODEL.md (§2 central design claim; G01)",
+    "stage": "shipped",
+    "evidence": "base/test/agentic/agentgraph_narrated.ring"
+   },
+   {
+    "en": "Four capability kinds and three trust postures decide alike who may write a file, deploy, or read a key: one mechanism, not many.",
+    "fr": "Quatre types de capacité et trois postures de confiance décident de la même façon qui peut écrire un fichier, déployer ou lire une clé : un seul mécanisme.",
+    "source": "base/doc/design/SOFTANZA_SECURITY.md (The thesis)",
+    "stage": "shipped",
+    "evidence": "base/test/system/secretstore_narrated.ring"
+   },
+   {
+    "en": "A secret is a pointer to where the key lives. Its printed form is its own redaction, so no log or dump can leak the value.",
+    "fr": "Un secret est un pointeur vers l'endroit où se trouve la clé. Sa forme affichée est déjà masquée : aucun journal ni affichage ne peut divulguer la valeur.",
+    "source": "base/doc/narrations/stz-guarding-secrets-and-credentials-narration.md (A secret is a pointer, not a value)",
+    "stage": "shipped",
+    "evidence": "base/test/system/secret_narrated.ring"
+   },
+   {
+    "en": "A guarantee is listed only with the test that proves it, and a meta-test fails if that test is missing. Gaps without a test are named as open risks.",
+    "fr": "Une garantie n'est annoncée qu'avec le test qui la prouve, et un méta-test échoue si ce test manque. Les failles non couvertes sont nommées comme risques ouverts.",
+    "source": "base/security/SOFTANZA_THREAT_MODEL.md (header; §4 Open risks; §6 Keeping this honest)",
+    "stage": "shipped",
+    "evidence": "base/test/security/threat_model_narrated.ring"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "oKey = new stzSecret(\"deploy-key\")\noKey.FromEnvQ(\"DEPLOY_KEY\")     # the value lives in an environment variable\n\n? oKey.Descriptor()",
+    "expected": "<secret 'deploy-key' (secret) from env:DEPLOY_KEY>",
+    "source": "base/doc/narrations/stz-guarding-secrets-and-credentials-narration.md",
+    "what_en": "A secret names where its key lives, and its only printed form is a descriptor, so the value cannot appear in any log.",
+    "what_fr": "Un secret indique où se trouve sa clé, et sa seule forme affichable est un descripteur : la valeur ne peut donc apparaître dans aucun journal."
+   },
+   {
+    "code": "oKey = new stzSecret(\"deploy-key\")\noKey.FromEnvQ(\"DEPLOY_KEY\")     # the value lives in an environment variable\noHuman = HumanActor(\"ops\")       # effectful, trusted\noLLM   = LLMActor(\"planner\")     # inference-only, sandboxed\n? oKey.Reveal(oHuman)            # allowed\n? oKey.Reveal(oLLM)              # refused",
+    "expected": "ssh-ed25519-AAAAC3NzaC1lZDI1\nRefused: actor 'planner' (posture sandboxed) may not reveal secret\n'deploy-key'. Only an effectful, non-sandboxed actor can read a secret.",
+    "source": "base/doc/narrations/stz-guarding-secrets-and-credentials-narration.md",
+    "what_en": "The same key is revealed to a human operator and refused to a language-model actor, because only an actor able to cause effects may read it.",
+    "what_fr": "La même clé est révélée à un opérateur humain et refusée à un acteur de type modèle de langage : seul un acteur capable d'agir peut la lire."
+   },
+   {
+    "code": "? oResp.MayCommit(oLlm)                 # the agent that did the analysis\n? oResp.ExecuteOn(oFake, oLlm)          # ...tries anyway",
+    "expected": "preflight refuses the inference-only actor\n...and says why: actor 'advisor' is not effectful -- it may propose, not commit\nthe LLM's execution commits NOTHING\n...the responder was never touched\n...and all four actions were audited REFUSED",
+    "source": "base/doc/narrations/stz-security-response-narration.md",
+    "what_en": "A language-model actor that wrote a containment plan is refused when it tries to run it: nothing is executed, and every refusal is audited.",
+    "what_fr": "Un acteur modèle de langage qui a rédigé un plan de confinement est refusé quand il tente de l'exécuter : rien n'est fait, et chaque refus est audité."
+   }
+  ]
+ },
+ "extensibility": {
+  "slug": "extensibility",
+  "principle_en": "A plugin is governed foreign capability: code the host does not own, run under a contract the host enforces.",
+  "principle_fr": "Un plugin est une capacité étrangère gouvernée : du code que l'hôte ne possède pas, exécuté selon un contrat que l'hôte fait respecter.",
+  "kept": [
+   {
+    "en": "Each language does what it does best: Python for machine learning, R for statistics, Julia for science, Prolog for logic, all driven through one interface.",
+    "fr": "Chaque langage fait ce qu'il fait le mieux : Python pour l'apprentissage automatique, R pour les statistiques, Julia pour le calcul scientifique, Prolog pour la logique, via une seule interface.",
+    "source": "base/doc/narrations/stzexterlib-domain-driven-polyglot-programming.md (The Philosophy: Domain-Driven Polyglot Programming)"
+   },
+   {
+    "en": "Foreign code runs in its own runtime, kept apart from the host. Data is converted on the way in and out, and the console output is logged.",
+    "fr": "Le code étranger s'exécute dans son propre environnement, à l'écart de l'hôte. Les données sont converties à l'aller et au retour, et la sortie console est journalisée.",
+    "source": "base/doc/internals/stz-excis-external-lang-integr-internal.md (System Architecture)"
+   },
+   {
+    "en": "Isolation is chosen per plugin: a cheap separate state inside the process, or a separate process that survives crashes and can be stopped by force.",
+    "fr": "L'isolation se choisit par plugin : un état séparé et peu coûteux dans le processus, ou un processus à part qui survit aux plantages et peut être arrêté de force.",
+    "source": "base/plugin/SOFTANZA_PLUGIN_PLAN.md (§2.1 D1: isolation is a tier)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "A plugin receives a value and returns a value; it never reaches into the host. Stray effects on the host are impossible by construction, not forbidden by promise.",
+    "fr": "Un plugin reçoit une valeur et rend une valeur ; il n'entre jamais dans l'hôte. Les effets cachés sur l'hôte sont impossibles par construction, et non interdits par promesse.",
+    "source": "base/plugin/SOFTANZA_PLUGIN_COMPARATIVE_STUDY.md (§4.2 Discipline vs physics)",
+    "stage": "planned"
+   },
+   {
+    "en": "No false sandbox claim: the in-process tier is said to resist buggy plugins, not malicious ones. An untrusted source is allowed only in a separate process.",
+    "fr": "Aucune fausse promesse de bac à sable : le niveau interne au processus résiste aux plugins bogués, pas aux malveillants. Une source non fiable n'a droit qu'à un processus séparé.",
+    "source": "base/plugin/SOFTANZA_PLUGIN_PLAN.md (§2.8 D8: governance yes, sandbox no)",
+    "stage": "planned"
+   },
+   {
+    "en": "Built so a program can accept code it does not trust, even written by a model: every call is logged with its author, and every change can be undone.",
+    "fr": "Conçu pour qu'un programme accepte du code auquel il ne fait pas confiance, même écrit par un modèle : chaque appel est journalisé avec son auteur, chaque modification est réversible.",
+    "source": "base/plugin/SOFTANZA_PLUGIN_COMPARATIVE_STUDY.md (§6 Synthesis); base/plugin/SOFTANZA_PLUGIN_PLAN.md (§9.3 A1, A3)",
+    "stage": "planned"
+   },
+   {
+    "en": "A solution found online in another language can be pasted and run with small changes, because helpers mirror that language's functions, like Python's range.",
+    "fr": "Une solution trouvée en ligne dans un autre langage peut être collée et exécutée avec peu de retouches, car des fonctions reproduisent celles de ce langage, comme range en Python.",
+    "source": "base/extincode/stzExtinCode.ring (header comment)",
+    "stage": "shipped",
+    "evidence": "base/extincode/stzExtinPython.ring; base/test/extincode/51_extincode_narrated.ring"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "py() {\n    @('res = {\"numbers\": [1, 2, 3, 4, 5], \"mean\": sum([1, 2, 3, 4, 5]) / 5}')\n    Execute()\n    ? @@(Result())\n}",
+    "expected": "[ [ \"numbers\", [ 1, 2, 3, 4, 5 ] ], [ \"mean\", 3 ] ]",
+    "source": "base/doc/narrations/stz-pycode-bridging-ring-and-python-narration.md",
+    "what_en": "A Python snippet runs in its own runtime, and its result comes back as a native nested list, ready to use.",
+    "what_fr": "Un extrait Python s'exécute dans son propre environnement, et son résultat revient sous forme de liste imbriquée native, prête à l'emploi."
+   },
+   {
+    "code": "Then(\"range0(3) = [0..2]\", @@(range0(3)), \"[ 0, 1, 2 ]\")\nThen(\"range0([1, 4]) = [1..3]\", @@(range0([1, 4])), \"[ 1, 2, 3 ]\")\nThen(\"range0([1, 6, 2]) steps by 2\", @@(range0([1, 6, 2])), \"[ 1, 3, 5 ]\")\nThen(\"range0([5, 1, -1]) walks backward\", @@(range0([5, 1, -1])), \"[ 5, 4, 3, 2 ]\")",
+    "expected": "  THEN  range0(3) = [0..2]  [PASS]\n  THEN  range0([1, 4]) = [1..3]  [PASS]\n  THEN  range0([1, 6, 2]) steps by 2  [PASS]\n  THEN  range0([5, 1, -1]) walks backward  [PASS]",
+    "source": "base/test/extincode/51_extincode_narrated.ring",
+    "what_en": "Helpers mirror Python's range, with the end excluded and steps allowed, so code ported from Python keeps its meaning.",
+    "what_fr": "Des fonctions reproduisent range de Python, borne de fin exclue et pas autorisé, pour que le code porté depuis Python garde son sens."
+   }
+  ],
+  "showcase_note": "The plugin plane (value-in, value-out isolation, manifest gate, reversible ledger) is a plan with no runnable code yet, so both snippets come from the foreign-code layers that do ship: extercode and extincode."
+ },
+ "sound": {
+  "slug": "sound",
+  "principle_en": "A sound is described, not hand-built: you declare a graph or a meaning, the engine renders it, and a listener is the last judge.",
+  "principle_fr": "Un son se décrit, il ne se fabrique pas à la main : on déclare un graphe ou un sens, le moteur le produit, et une oreille humaine juge en dernier.",
+  "kept": [
+   {
+    "en": "Device input and output and file decoding come from miniaudio: one public-domain file, no dependencies, all three operating systems, playback and capture. Only the missing half is borrowed.",
+    "fr": "Les entrées-sorties audio et le décodage de fichiers viennent de miniaudio : un seul fichier du domaine public, sans dépendance, pour les trois systèmes. Seule la moitié manquante est empruntée.",
+    "source": "base/sound/SOFTANZA_SOUND_PLAN.md (§1 The vendor decision)"
+   },
+   {
+    "en": "The real-time rule of audio is kept strictly: the device callback never allocates memory, never locks and never calls the platform's language; it reads prepared buffers only.",
+    "fr": "La règle du temps réel est stricte : le rappel audio n'alloue pas, ne verrouille pas et n'appelle pas le langage de la plateforme ; il lit des tampons déjà prêts.",
+    "source": "base/sound/SOFTANZA_SOUND_PLAN.md (§0 FACT 4; §2 Architecture)"
+   },
+   {
+    "en": "Music keeps Euterpea's score algebra: notes and rests joined in sequence or together, repeated and transposed. A score is data that can be analysed before it is heard.",
+    "fr": "La musique reprend l'algèbre de partition d'Euterpea : notes et silences enchaînés ou superposés, répétés, transposés. Une partition est une donnée qu'on peut analyser avant de l'entendre.",
+    "source": "base/sound/SOFTANZA_MUSIC_PLAN.md (§2 The four transforms; MU2 STATUS, The score is data)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "One sound graph renders to the speaker or to a file through the same path, so what you hear and what you export can never drift apart.",
+    "fr": "Un même graphe sonore joue sur le haut-parleur ou s'écrit dans un fichier par le même chemin : ce qu'on entend et ce qu'on exporte ne peuvent pas diverger.",
+    "source": "base/sound/SOFTANZA_SOUND_PLAN.md (§2 Architecture, the sink is a parameter; SN2 STATUS)",
+    "stage": "shipped",
+    "evidence": "base/test/sound/sound_graph_narrated.ring"
+   },
+   {
+    "en": "An author fires a meaning such as 'danger' and gets a sound. Since an alert that can be talked over is no alert, lesser sounds are turned down or dropped.",
+    "fr": "Un auteur déclenche un sens, comme « danger », et obtient un son. Une alerte qu'on peut couvrir n'en est pas une : les sons moins importants baissent ou se taisent.",
+    "source": "base/sound/SOFTANZA_SOUND_PLAN.md (SOUND SEMANTICS §S.2, §S.3; SS3 STATUS)",
+    "stage": "shipped",
+    "evidence": "base/sound/stzEarcons.ring; base/test/sound/sound_ss3_narrated.ring"
+   },
+   {
+    "en": "A cultural universe is declared as data: tuning, movement rules, rhythmic cycle, ornaments and instruments, so one phrase can render in maqam, raga or gamelan.",
+    "fr": "Un univers culturel se déclare comme des données : accordage, règles de mouvement, cycle rythmique, ornements et instruments ; une même phrase peut alors sonner en maqam, en raga ou en gamelan.",
+    "source": "base/sound/SOFTANZA_MUSIC_PLAN.md (§1.3 the common shape; MU4 STATUS)",
+    "stage": "shipped",
+    "evidence": "base/sound/universes/ (eight files); base/test/sound/sound_mu4_narrated.ring -- seven of the eight still recorded as unperceived"
+   },
+   {
+    "en": "The ear is the last gate: speech playing at double speed passed every counter and was caught by a listener. Each phase records who listened.",
+    "fr": "L'oreille est le dernier juge : une voix lue deux fois trop vite a passé tous les compteurs et c'est un auditeur qui l'a repérée. Chaque phase note qui a écouté.",
+    "source": "base/sound/SOFTANZA_VOICE_PLAN.md (sample-rate defect found by ear); base/sound/SOFTANZA_MUSIC_PLAN.md (header); base/sound/SOFTANZA_SOUND_PLAN.md (SS5, Confirmed by ear)",
+    "stage": "shipped",
+    "evidence": "base/test/sound/sound_transport_narrated.ring (wall-clock check added after the ear found the defect)"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "oP = new stzEarcons()\noP.RecordFireAt(\"Danger.Alert\", 10.0)\nChk(\"a cue under a sounding alert is DROPPED\", NOT oP.WouldFireAt(:Success, 10.05))\nChk(\"and so is a warning -- rank, not recency\", NOT oP.WouldFireAt(:Warning, 10.05))\nChk(\"once the alert is over, a cue passes again\", oP.WouldFireAt(:Success, 12.0))\noP2 = new stzEarcons()\noP2.RecordFireAt(\"Warning.Alert\", 10.0)\nChk(\"a warning alert does NOT pre-empt danger\", oP2.WouldFireAt(:Danger, 10.05))",
+    "expected": "  [ok]   a cue under a sounding alert is DROPPED\n  [ok]   and so is a warning -- rank, not recency\n  [ok]   once the alert is over, a cue passes again\n  [ok]   a warning alert does NOT pre-empt danger",
+    "source": "base/test/sound/sound_semantics_narrated.ring",
+    "what_en": "While a danger alert sounds, a success cue and a warning are dropped; once it ends cues pass again, and a warning never silences danger.",
+    "what_fr": "Pendant qu'une alerte de danger retentit, un signal de succès et un avertissement sont abandonnés ; ensuite tout repasse, et un avertissement ne fait jamais taire le danger."
+   },
+   {
+    "code": "oRst = StzSoundUniverseQ(:maqam).Mode(:rast)\noRst.PerformQ(\"5 6 7 8 7 6 5\", 1)\naN = oRst.PlayedNotes()\n? \"   Rast, 5 6 7 8 7 6 5: the seventh up \" + aN[3][3] + \", down \" + aN[5][3]\nChk(\"Rast ascends through the half-flat seventh (1050) and descends through the flat (1000)\",\n    aN[3][3] = 1050 and aN[5][3] = 1000)",
+    "expected": "   Rast, 5 6 7 8 7 6 5: the seventh up 1050, down 1000\n  [ok]   Rast ascends through the half-flat seventh (1050) and descends through the flat (1000)",
+    "source": "base/test/sound/sound_mu4_narrated.ring",
+    "what_en": "In the Rast maqam the seventh degree is played half-flat going up and flat coming down, because the universe declares movement, not only pitch.",
+    "what_fr": "Dans le maqam Rast, la septième est jouée un demi-bémol en montant et bémol en descendant : l'univers déclare le mouvement, pas seulement les hauteurs."
+   },
+   {
+    "code": "oNig = StzSoundUniverseQ(:niger)\noKal = oNig.SentenceQ(\"sannu da zuwa\")\naK = oNig.PlayedNotes()\ncTones = \"\"\nfor k in aK  cTones += k[3] + \" \" next\n? \"   sannu da zuwa ('welcome'): \" + trim(cTones) + \"  -- Newman's tones, low-high-low-high-low\"\nChk(\"the declared contour is L H L H L\", trim(cTones) = \"L H L H L\")",
+    "expected": "   sannu da zuwa ('welcome'): L H L H L  -- Newman's tones, low-high-low-high-low\n  [ok]   the declared contour is L H L H L",
+    "source": "base/test/sound/sound_mu4_narrated.ring",
+    "what_en": "A Hausa greeting becomes a drum phrase that follows the language's low and high tones, the way a talking drum does.",
+    "what_fr": "Une salutation haoussa devient une phrase de tambour qui suit les tons bas et hauts de la langue, comme le fait un tambour parlant."
+   }
+  ]
+ },
+ "testing": {
+  "slug": "testing",
+  "principle_en": "Every expected value written down is a promise, and it counts only once a run that could have failed has kept it.",
+  "principle_fr": "Chaque valeur attendue écrite est une promesse, et elle ne compte que lorsqu'une exécution qui aurait pu échouer l'a tenue.",
+  "kept": [
+   {
+    "en": "Tests are scenarios in Given, When, Then form, so the output reads as a specification and a failure shows what was expected and what came.",
+    "fr": "Les tests sont des scénarios Given, When, Then : la sortie se lit comme une spécification, et un échec montre la valeur attendue et la valeur obtenue.",
+    "source": "base/test/_narrated.ring (header)"
+   },
+   {
+    "en": "The engine's parsers of untrusted input are fuzzed with sanitizers on, and property tests are themselves checked by mutation: deliberately broken versions must fail.",
+    "fr": "Les analyseurs du moteur exposés aux entrées hostiles passent au fuzzing, et les tests de propriétés sont vérifiés par mutation : des versions volontairement fausses doivent échouer.",
+    "source": "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md (§7.7 Memory-safety fuzzing; §7.8 Property + mutation testing)"
+   },
+   {
+    "en": "Results are pinned against an independent reference, such as values generated by NumPy for matrices and by R for statistical smoothers.",
+    "fr": "Les résultats sont comparés à une référence indépendante : des valeurs produites par NumPy pour les matrices, et par R pour les lissages statistiques.",
+    "source": "base/stats/SOFTANZA_TUKEY_PLAN.md (TK1 results, smoothers against R 4.5.1); base/test/number/_numpy_reference.ring (header)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "Thousands of example lines record what they should print. Nothing compared them, so a harness now runs each file and checks those promises in order.",
+    "fr": "Des milliers de lignes d'exemple notent ce qu'elles doivent afficher. Personne ne les comparait : un banc d'essai exécute désormais chaque fichier et vérifie ces promesses dans l'ordre.",
+    "source": "base/meta/promises.py (header)",
+    "stage": "shipped",
+    "evidence": "base/meta/promises.py"
+   },
+   {
+    "en": "A check that can only pass proves nothing: each positive case gets a negative sibling, and the harness is run on deliberately wrong promises to watch it fail.",
+    "fr": "Un test qui ne peut que réussir ne prouve rien : tout cas positif a son jumeau négatif, et l'outil est essayé sur de fausses promesses, pour le voir échouer.",
+    "source": "base/meta/promises.py (a harness nobody has watched fail is not evidence); base/education/program/courses/elementary-introduction/chapters/15-write-a-narration.en.md (§3)",
+    "stage": "shipped",
+    "evidence": "base/meta/promises.py; base/test/security/threat_model_narrated.ring (negative-sibling scene)"
+   },
+   {
+    "en": "An identity is not a self-check: a formula built from one set of numbers can never fail. A real check compares two independent measurements of the same truth.",
+    "fr": "Une identité n'est pas une vérification : une formule tirée d'un seul jeu de chiffres ne peut jamais échouer. Une vraie vérification compare deux mesures indépendantes d'une même réalité.",
+    "source": "CLAUDE.md (Perf-system laws, law 5)",
+    "stage": "shipped",
+    "evidence": "base/test/perf/profile_narrated.ring"
+   },
+   {
+    "en": "The full suite is a gate run once before each commit, not after every edit. New checks start as standalone probes, so each edit gets a verdict in seconds.",
+    "fr": "La suite complète est une barrière passée une fois avant chaque commit, pas après chaque modification. Les nouveaux contrôles naissent en sondes isolées : verdict en quelques secondes.",
+    "source": "CLAUDE.md (Guard suites: iterate on probes, gate once)",
+    "stage": "shipped",
+    "evidence": "base/test/graphics/gg_adversarial.ring (prints per-section wall times)"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "cFake = \"## 3. Guarantees\" + char(10) +\n\t\"| G98 | a claim | code | `base/test/security/no_such_guard_narrated.ring` (5) | A01 | - |\" + char(10) +\n\t\"| G99 | an unproven claim | code | nothing here | A01 | - |\" + char(10) +\n\t\"## 4. Open risks\" + char(10)\naFR = GuaranteeRows(cFake)\nThen(\"it reads both fake rows\", len(aFR), 2)\nThen(\"it flags the row with no proof\", len(RowsWithoutProof(aFR)), 1)\nThen(\"it flags the guard that does not exist\", len(MissingPaths(GuardPaths(aFR))), 1)",
+    "expected": "  THEN  it reads both fake rows  [PASS]\n  THEN  it flags the row with no proof  [PASS]\n  THEN  it flags the guard that does not exist  [PASS]",
+    "source": "base/test/security/threat_model_narrated.ring",
+    "what_en": "The checker that keeps the threat model honest is itself shown catching a fake row with no proof and a guard that does not exist.",
+    "what_fr": "Le vérificateur qui garde le modèle de menaces honnête est lui-même vu attraper une fausse ligne sans preuve et un test qui n'existe pas."
+   },
+   {
+    "code": "aUC = oP.UtilizationCheck()\n? aUC[:message]",
+    "expected": "U computed from anchors = 0.03, U sampled by the monitor = 0.03: the two measurements agree -- the measurement is sound",
+    "source": "base/doc/narrations/stz-perf-profile-narration.md",
+    "what_en": "Utilization computed from a formula is checked against utilization sampled independently by the monitor; the evidence is their agreement, not the formula.",
+    "what_fr": "L'utilisation calculée par formule est confrontée à celle mesurée indépendamment par le moniteur : la preuve est leur accord, pas la formule."
+   },
+   {
+    "code": "? oCh.AllPromisesKept() = 1 and oCh2.AllPromisesKept() = 0",
+    "expected": "TRUE",
+    "source": "base/education/program/courses/elementary-introduction/chapters/15-write-a-narration.en.md",
+    "what_en": "One assertion turns red if the runner ever accepts the broken document, and red if it ever refuses the good one.",
+    "what_fr": "Une seule assertion devient rouge si l'exécuteur accepte un jour le document faux, et rouge aussi s'il refuse le bon."
+   }
+  ]
+ },
+ "documentation": {
+  "slug": "documentation",
+  "principle_en": "Documentation is run, not just written: every example shows real output, and the library can explain itself from its own source.",
+  "principle_fr": "La documentation s'exécute, elle ne se contente pas d'être écrite : chaque exemple montre une vraie sortie, et la bibliothèque s'explique à partir de son propre code.",
+  "kept": [
+   {
+    "en": "Several doors for several readers: one-liners for the hurried, narrations for story lovers, references for structured lookup, deep dives for engineers, and FAQs.",
+    "fr": "Plusieurs portes pour plusieurs lecteurs : des recettes d'une ligne pour les pressés, des narrations pour les amateurs d'histoires, des références, des analyses de fond et une FAQ.",
+    "source": "base/doc/stz-doc-system-overview.md (The Five Pillars)"
+   },
+   {
+    "en": "Plain markdown files kept with the code and hosted on GitHub, so the documentation stays lightweight and accessible.",
+    "fr": "De simples fichiers markdown, rangés avec le code et hébergés sur GitHub, pour une documentation légère et accessible.",
+    "source": "base/doc/stz-doc-system-overview.md (Guiding Principles: Simplicity)"
+   },
+   {
+    "en": "Each method is described where it lives, in a comment in the source, and section headers group methods by capability.",
+    "fr": "Chaque méthode est décrite là où elle vit, par un commentaire dans le code source, et des en-têtes de section regroupent les méthodes par capacité.",
+    "source": "base/doc/design/stz-information-tagging-strategy.md (§1 Why; Layer 0)"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "Narrations explain an idea as a story with real code. Every output block is the actual output of a run, and a guard keeps it true.",
+    "fr": "Les narrations expliquent une idée comme une histoire, avec du vrai code. Chaque bloc de sortie est la sortie réelle d'une exécution, et un test la maintient exacte.",
+    "source": "base/doc/narrations/stz-governance-lineage-narration.md (header)",
+    "stage": "shipped",
+    "evidence": "base/test/governance/governance_lineage_narrated.ring"
+   },
+   {
+    "en": "A chapter stores no output. Each cell promises what it prints, all cells run in a fresh process, and a wrong promise is caught, not hidden.",
+    "fr": "Un chapitre ne stocke aucune sortie. Chaque cellule promet ce qu'elle affiche, toutes s'exécutent dans un processus neuf, et une promesse fausse est détectée, pas cachée.",
+    "source": "base/education/stzChapter.ring (header); base/education/program/courses/elementary-introduction/chapters/15-write-a-narration.en.md",
+    "stage": "shipped",
+    "evidence": "base/test/education/slice_narrated.ring"
+   },
+   {
+    "en": "Ask the library in plain words and it answers from its own source comments, with no large language model, because the knowledge already lives there.",
+    "fr": "On interroge la bibliothèque en langage courant, et elle répond à partir des commentaires de son propre code, sans grand modèle de langage : le savoir y est déjà.",
+    "source": "base/meta/stzSelfDoc.ring (header)",
+    "stage": "shipped",
+    "evidence": "base/test/reflect/selfdoc_narrated.ring"
+   },
+   {
+    "en": "Because method names follow a grammar, HowTo composes a name from your intent and checks it against the real methods, falling back to search by meaning.",
+    "fr": "Les noms de méthodes suivent une grammaire : HowTo compose un nom depuis l'intention, le vérifie parmi les méthodes réelles, sinon cherche par le sens.",
+    "source": "base/meta/stzSelfDoc.ring (HowTo)",
+    "stage": "shipped",
+    "evidence": "base/test/reflect/ask_probe_narrated.ring"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "oDoc = StzSelfDocQ(\"stzList\")\n? oDoc.HowTo(\"remove duplicates\")\n? oDoc.HasMethod(\"DuplicatesRemoved\")",
+    "expected": "Q([...]).RemoveDuplicates()   -- composed by grammar (remove duplicates)\nTRUE",
+    "source": "base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md",
+    "what_en": "Asked in plain words how to remove duplicates, the library composes the method name from its own naming grammar, and says so.",
+    "what_fr": "À la question « comment retirer les doublons », la bibliothèque compose le nom de la méthode grâce à sa propre grammaire de nommage, et le dit."
+   },
+   {
+    "code": "oDoc = StzSelfDocQ(\"stzList\")\n? StzLeft( oDoc.ExplainMethod(\"DuplicatesRemoved\"), 20 )\n? oDoc.ExplainMethod(\"NoSuchThing\")",
+    "expected": "DuplicatesRemoved --\nNo method 'NoSuchThing' in stzList.",
+    "source": "base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md",
+    "what_en": "The library explains a method from its own source comment, and plainly refuses a method that does not exist instead of inventing one.",
+    "what_fr": "La bibliothèque explique une méthode à partir du commentaire de son code, et refuse franchement une méthode qui n'existe pas au lieu d'en inventer une."
+   },
+   {
+    "code": "cBroken = \"# Mini\" + char(10) + \"```ring\" + char(10) + \"? 1 + 1\" + char(10) + \"#--> 3\" + char(10) + \"```\" + char(10)\ncMini2 = \"t_mini2_\" + ProcessId() + \".en.md\"\nwrite(cMini2, cBroken)\noCh2 = StzChapterQ(cMini2, \"en\")\noCh2.Run(\"\")\n? oCh2.AllPromisesKept()\n? oCh2.CellKept(1)",
+    "expected": "FALSE\nFALSE",
+    "source": "base/education/program/courses/elementary-introduction/chapters/15-write-a-narration.en.md",
+    "what_en": "A tiny document whose example promises 3 for 1 + 1 is run, and the broken promise is reported rather than hidden.",
+    "what_fr": "Un petit document dont l'exemple promet 3 pour 1 + 1 est exécuté, et la promesse non tenue est signalée au lieu d'être cachée."
+   }
+  ]
+ },
+ "governance": {
+  "slug": "governance",
+  "principle_en": "Do not try to build safe agents; build a safe world and let ordinary agents work inside it.",
+  "principle_fr": "Ne pas chercher à construire des agents sûrs, mais un monde sûr dans lequel des agents ordinaires peuvent travailler.",
+  "kept": [
+   {
+    "en": "Separated powers: whoever imagines a change is not whoever may carry it out. Proposers produce plans; committing actors execute them within a declared scope, with an audit trail.",
+    "fr": "Séparation des pouvoirs : qui imagine un changement n'est pas qui l'exécute. Les plans proposés sont exécutés par des acteurs habilités, dans un périmètre déclaré et avec une trace d'audit.",
+    "source": "base/doc/design/Softaza and Agents That Cannot Hurt You.md (Separated powers: the constitutional core)"
+   },
+   {
+    "en": "Fail closed: an action with no declared risk level never proceeds. The usual failure, an agent doing what nobody thought to forbid, cannot happen.",
+    "fr": "Refus par défaut : une action sans niveau de risque déclaré ne s'exécute jamais. L'échec habituel, un agent qui fait ce que personne n'a pensé à interdire, devient impossible.",
+    "source": "base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md (Second idea)"
+   },
+   {
+    "en": "Every decision keeps its lineage: who decided what, when, and under which authority and risk. The record survives a save and can be searched by actor, action or time.",
+    "fr": "Chaque décision reste traçable : qui a décidé quoi, quand, avec quelle autorité et quel risque. La trace survit à l'enregistrement et se consulte par acteur, action ou période.",
+    "source": "base/doc/narrations/stz-governance-lineage-narration.md"
+   }
+  ],
+  "rethought": [
+   {
+    "en": "An agent works on a virtual workbench: it believes it wrote the file, yet the disk did not move. Only a plan crosses, committed by another actor.",
+    "fr": "Un agent travaille sur un établi virtuel : il croit avoir écrit le fichier, mais le disque n'a pas bougé. Seul un plan sort, validé par un autre acteur.",
+    "source": "base/doc/design/Softaza and Agents That Cannot Hurt You.md (The trust boundary); base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md (Fifth and sixth ideas)",
+    "stage": "shipped",
+    "evidence": "base/agentic/stzAgentWorkbench.ring; base/test/agentic/safeworld_narrated.ring"
+   },
+   {
+    "en": "An agent is a file judged when it loads, the only moment the answer is free. If it does not state its reach and reversibility, it is refused.",
+    "fr": "Un agent est un fichier jugé au chargement, seul moment où la réponse ne coûte rien. S'il ne déclare ni sa portée ni sa réversibilité, il est refusé.",
+    "source": "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md (§3.2, the registration gate)",
+    "stage": "shipped",
+    "evidence": "base/agentic/stzAgentDeclaration.ring; base/test/agentic/agentfile_narrated.ring"
+   },
+   {
+    "en": "Permission is not authority. An agent may hold the right to an action and still be refused, because its standing does not cover the action's risk.",
+    "fr": "La permission n'est pas l'autorité. Un agent peut avoir le droit de faire une action et être refusé quand même, car son niveau d'autorité ne couvre pas le risque.",
+    "source": "base/governance/stzGovernance.ring (header)",
+    "stage": "shipped",
+    "evidence": "base/test/governance/governance_narrated.ring"
+   },
+   {
+    "en": "Risk and reversibility are separate axes. The harder an act is to undo, the more trusted the code performing it must be; model-written code may only do reversible work.",
+    "fr": "Risque et réversibilité sont deux axes : plus un acte est difficile à défaire, plus son code doit être fiable ; un code écrit par un modèle ne fait que du réversible.",
+    "source": "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md (§3.2, reversibility as the sixth contract)",
+    "stage": "shipped",
+    "evidence": "base/governance/stzGovernance.ring (StzPostureReversibilityRefusal); base/test/agentic/safeworld_narrated.ring (scene 3)"
+   }
+  ],
+  "showcase": [
+   {
+    "code": "oAg.GiveWorkbench()\n? \"cycle fired skills: \" + oAg.Cycle()\n? \"agent believes it wrote them: \" + oAg.MemoryQ().Fact(\"prices\", \"were\", \"written\")\n? \"the real file exists: \" + StzFileExists($cNarrOut)\n? \"the workbench holds it: \" + oAg.WorkbenchQ().Exists($cNarrOut)",
+    "expected": "cycle fired skills: 1\nagent believes it wrote them: 1\nthe real file exists: 0\nthe workbench holds it: 1",
+    "source": "base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md",
+    "what_en": "Given a workbench, an agent runs and believes it wrote its file, yet the real disk is untouched; the work waits in the workbench.",
+    "what_fr": "Muni d'un établi, un agent s'exécute et croit avoir écrit son fichier, mais le vrai disque est intact ; le travail attend sur l'établi."
+   },
+   {
+    "code": "oGov = new stzGovernance(\"shop\")\n? \"no coverage stated -> \" + oGov.MayRegister(\"mystery\", \"\", \"reversible\")\n? \"  \" + oGov.Why()\n? \"no reversal declared -> \" + oGov.MayRegister(\"mystery\", \"reorders stock\", \"\")\n? \"  \" + oGov.Why()\n? \"both stated -> \" + oGov.MayRegister(\"mystery\", \"reorders stock\", :Compensable)",
+    "expected": "no coverage stated -> 0\n  AGENTLOOP-R4: agent 'mystery' declares no coverage statement. Registration refuses it. Say what this agent covers, in one sentence, before the loop will run it. Law 18: nothing schedules what nobody has stated the reach of.\nno reversal declared -> 0\n  AGENTLOOP-R5: agent 'mystery' declares no reversibility class. Registration refuses it. Declare one of: reversible | compensable | irreversible. Law 18: an agent whose reversal nobody stated cannot be scheduled by something that cannot undo it.\nboth stated -> 1",
+    "source": "base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md",
+    "what_en": "An agent that does not say what it covers, or how reversible its work is, cannot be registered, and each refusal names its rule.",
+    "what_fr": "Un agent qui ne dit pas ce qu'il couvre, ou à quel point son travail est réversible, ne peut pas s'inscrire, et chaque refus nomme sa règle."
+   },
+   {
+    "code": "oG2 = new stzGovernance(\"billing\")\noG2.DeclareRisk(\"send-invoice\", 3)\noG2.GrantPermission(\"billing-agent\", \"send-invoice\")\noG2.SetAuthority(\"billing-agent\", :Delegated)\n? \"may it proceed? \" + oG2.MayProceed(\"billing-agent\", \"send-invoice\")\n? \"  \" + oG2.Why()",
+    "expected": "may it proceed? 0\n  refused: 'billing-agent' holds 'delegated' authority (level 2) but 'send-invoice' is risk tier 3 (SHOULD does not cover it)",
+    "source": "base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md",
+    "what_en": "An agent holds the permission yet is refused, because its delegated authority does not cover a risk-3 action; the answer explains why.",
+    "what_fr": "Un agent détient la permission mais est refusé, car son autorité déléguée ne couvre pas une action de risque 3 ; la réponse explique pourquoi."
+   }
+  ]
+ }
+}
