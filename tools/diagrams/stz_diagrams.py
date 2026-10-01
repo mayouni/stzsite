@@ -299,7 +299,131 @@ def trajectory(lang):
     text(d, 68, 732, fit(mono(24), L["cap"], 1240, "cap"), mono(24), MUTED)
     return save(img, f"trajectory-{lang}.png")
 
+# --------------------------------------------------------------------------- 7
+def northstar(lang):
+    """The author's diagram of 2020, "Softanza -- Programming by heart!", redrawn with what
+    exists (softanza/vision/08-NORTH-STAR.md, ratified 2026-09-27): six bands, and the court
+    beside everything. Two things are new since 2020: the agents in the first band, and the
+    floors beneath."""
+    L = {
+      "en": dict(k="SOFTANZA  ·  PROGRAMMING BY HEART  ·  2020, READ IN 2026",
+                 bands=[("Who it is for", "programmers · analysts · designers · leaders · educators · and agents", "agents · 2026"),
+                        ("Solutions", "a software model · a delivery model · an enterprise model", ""),
+                        ("Systems", "technical · social · ecological · economic · cultural", ""),
+                        ("Languages: what you think is what you write", "a declared language per domain · natural language asks · runs narrated", ""),
+                        ("Foundation: Softanza", "one engine · 28 areas · a learnable model · documentation that runs", "built"),
+                        ("Beneath", "Haro, language of languages · Harobanda, declared machine · device", "floors · 2026")],
+                 side=("The court", "beside everything", ["fixtures judge", "the languages,", "contracts judge", "the foundation,", "the gate judges", "each change, the", "boot judges the", "machine: nothing", "is believed"]),
+                 cap="the author, 2020 · redrawn 2026-09-13 · ratified 2026-09-27"),
+      "fr": dict(k="SOFTANZA  ·  PROGRAMMER PAR CŒUR  ·  2020, RELU EN 2026",
+                 bands=[("Pour qui", "programmeurs · analystes · designers · décideurs · enseignants · agents", "agents · 2026"),
+                        ("Solutions", "un modèle logiciel · un modèle de livraison · un modèle d'entreprise", ""),
+                        ("Systèmes", "technique · social · écologique · économique · culturel", ""),
+                        ("Langues : ce que vous pensez, vous l'écrivez", "une langue par métier · la langue naturelle demande · tout est raconté", ""),
+                        ("Fondation : Softanza", "un moteur · 28 domaines · un modèle qui s'apprend · la doc s'exécute", "construite"),
+                        ("En dessous", "Haro, langue des langues · Harobanda, machine déclarée · l'appareil", "étages · 2026")],
+                 side=("Le tribunal", "à côté de tout", ["les fixtures jugent", "les langues, les", "contrats jugent", "la fondation, la", "porte juge chaque", "changement, le", "démarrage juge la", "machine : rien", "n'est cru"]),
+                 cap="l'auteur, 2020 · redessiné 2026-09-13 · ratifié 2026-09-27"),
+    }[lang]
+    HH = 820
+    img, d = canvas(17, h=HH)
+    kicker(d, 52, L["k"])
+    MX, MW = 68, 964
+    SX, SW = 1054, 254
+    TOP, BOT = 100, 742
+    n = len(L["bands"]); gap = 10.0
+    bh = ((BOT - TOP) - (n-1)*gap) / n
+    f_t = F_T36; f_sub = sans(28)
+    for i, (title, sub, st) in enumerate(L["bands"]):
+        y = TOP + i*(bh + gap)
+        found = i == 4
+        fill, line, ink = (NEW_FILL, NEW_LINE, NEW_TEXT) if found else (OLD_FILL, OLD_LINE, OLD_TEXT)
+        band(d, MX, y, MW, bh, 11, fill, line, lw=2.2 if found else 1.8, amp=1.0)
+        if found: accent(d, MX, y, bh)
+        cw = stage(d, MX + MW - 22, y + 12, st, NEW_LINE if found else OLD_TEXT) if st else 0
+        text(d, MX + 44, y + 30, fit(f_t, title, MW - 70 - cw, "band title"), f_t, ink)
+        text(d, MX + 44, y + bh - 24, fit(f_sub, sub, MW - 64, "band sub"), f_sub, NEW_SUB if found else OLD_TEXT)
+    band(d, SX, TOP, SW, BOT - TOP, 13, KERN_FILL, KERN_LINE, lw=1.8, amp=0.9)
+    nm, role, lines = L["side"]
+    text(d, SX + SW/2, TOP + 46, fit(F_TITLE, nm, SW - 30, "side name"), F_TITLE, INK, anchor="mm")
+    f_role = sans(28, "Medium")
+    text(d, SX + SW/2, TOP + 92, fit(f_role, role, SW - 24, "side role"), f_role, NEW_LINE, anchor="mm")
+    rule(d, SX + 30, TOP + 122, SX + SW - 30, TOP + 122, HAIR, 1.6)
+    f_side = sans(27)
+    for j, ln in enumerate(lines):
+        text(d, SX + SW/2, TOP + 166 + j*44, fit(f_side, ln, SW - 30, "side line"), f_side, OLD_TEXT, anchor="mm")
+    text(d, MX, HH - 40, fit(F_READ, L["cap"], 1240, "cap"), F_READ, MUTED)
+    return save(img, f"northstar-{lang}.png")
+
+# --------------------------------------------------------------------------- 8
+def platforms(lang):
+    """A platform of platforms: each organisation declares its own platform in its own words,
+    Softanza gives every one of them what a platform needs. The construction is stzApp (a world)
+    and stzSuperApp (a constellation of worlds, which may hold constellations)."""
+    L = {
+      "en": dict(k="A PLATFORM OF PLATFORMS  ·  ONE CONSTRUCTION, MANY WORLDS",
+                 tops=[("RestoLean", ["neighbourhood", "commerce", "Lyon"], False),
+                       ("Organizium", ["a bank's", "organisation", "Niamey"], False),
+                       ("Customs school", ["from assessment", "to organisation", "Tunisia"], False),
+                       ("Yours", ["declared in", "your own words"], True)],
+                 decl=("Each declares, in its own words", "a shared ground · a world per person and device · bonds · rules · roles"),
+                 give=("Softanza gives every one the platform", ["a grammar and its court · web, phone, desktop, server and device",
+                                                                 "data with an audit trail and undo · agents held to the same rules"]),
+                 base="Beneath: Haro, the language of languages · Harobanda, the declared machine",
+                 cap="a world: stzApp · a constellation of worlds: stzSuperApp"),
+      "fr": dict(k="UNE PLATEFORME DE PLATEFORMES  ·  UNE CONSTRUCTION, DES MONDES",
+                 tops=[("RestoLean", ["commerce de", "quartier", "Lyon"], False),
+                       ("Organizium", ["l'organisation", "d'une banque", "Niamey"], False),
+                       ("École des douanes", ["de l'évaluation", "à l'organisation", "Tunisie"], False),
+                       ("La vôtre", ["déclarée dans", "vos propres mots"], True)],
+                 decl=("Chacune déclare, dans ses propres mots", "un socle commun · un monde par personne et appareil · liens · règles · rôles"),
+                 give=("Softanza donne à chacune la plateforme", ["une grammaire et son tribunal · web, téléphone, bureau, serveur, appareil",
+                                                                 "des données avec journal et retour arrière · des agents tenus aux mêmes règles"]),
+                 base="En dessous : Haro, la langue des langues · Harobanda, la machine déclarée",
+                 cap="un monde : stzApp · une constellation de mondes : stzSuperApp"),
+    }[lang]
+    HH = 700
+    img, d = canvas(19, h=HH)
+    kicker(d, 52, L["k"])
+    MX, MW = 68, 1240
+    f_t = F_T36; f_sub = sans(28)
+    # the platforms, side by side: three references and yours
+    n = len(L["tops"]); gap = 18.0
+    bw = (MW - (n-1)*gap) / n
+    TY, TH = 96, 168
+    for i, (title, lines, dashed_box) in enumerate(L["tops"]):
+        x = MX + i*(bw + gap)
+        if dashed_box:
+            dashed(d, rr_path(x*S, TY*S, (x + bw)*S, (TY + TH)*S, 12*S), OLD_LINE, int(2.0*S))
+        else:
+            band(d, x, TY, bw, TH, 11, OLD_FILL, OLD_LINE, lw=1.8, amp=1.0)
+        f_bt = sans(30, "SemiBold")                    # the four boxes share one title size
+        text(d, x + 20, TY + 36, fit(f_bt, title, bw - 36, "platform title"), f_bt, OLD_TEXT if dashed_box else INK)
+        for j, ln in enumerate(lines):
+            text(d, x + 20, TY + 78 + j*32, fit(f_sub, ln, bw - 36, "platform line"), f_sub, MUTED if dashed_box else OLD_TEXT)
+        arrow_down(d, x + bw/2, TY + TH + 4, TY + TH + 27, fill=OLD_LINE, lw=2.4, head=8)
+    # what each one declares
+    y = TY + TH + 30; h = 92
+    band(d, MX, y, MW, h, 11, KERN_FILL, KERN_LINE, lw=1.8, amp=1.0)
+    text(d, MX + 30, y + 30, fit(f_t, L["decl"][0], MW - 60, "decl title"), f_t, INK)
+    text(d, MX + 30, y + h - 24, fit(f_sub, L["decl"][1], MW - 60, "decl sub"), f_sub, OLD_TEXT)
+    # what Softanza gives every one: the band that matters most
+    y += h + 16; h = 132
+    band(d, MX, y, MW, h, 11, NEW_FILL, NEW_LINE, lw=2.2, amp=1.0)
+    accent(d, MX, y, h)
+    text(d, MX + 44, y + 32, fit(f_t, L["give"][0], MW - 70, "give title"), f_t, NEW_TEXT)
+    for j, ln in enumerate(L["give"][1]):
+        text(d, MX + 44, y + 74 + j*34, fit(f_sub, ln, MW - 70, "give line"), f_sub, NEW_SUB)
+    # beneath
+    y += h + 16; h = 64
+    band(d, MX, y, MW, h, 11, OLD_FILL, OLD_LINE, lw=1.8, amp=1.0)
+    text(d, MX + 30, y + h/2, fit(f_sub, L["base"], MW - 60, "base"), f_sub, OLD_TEXT)
+    text(d, MX, HH - 36, fit(F_READ, L["cap"], 1240, "cap"), F_READ, MUTED)
+    return save(img, f"platforms-{lang}.png")
+
 if __name__ == "__main__":
-    for fn in (technology, wise, languages, govern, editions, trajectory):
+    only = sys.argv[1:]
+    for fn in (technology, wise, languages, govern, editions, trajectory, northstar, platforms):
+        if only and fn.__name__ not in only: continue
         for lang in ("en", "fr"):
             print("wrote", fn(lang))

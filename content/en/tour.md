@@ -15,7 +15,14 @@ help: → or click: next · ←: previous · n: notes · h: menu · Esc: open th
 Let the picture speak for ten seconds. Then one sentence: "This man is reading code. The wall behind him already says Softanza. Everything I will show tonight is in this picture: knowledge, a place, and a language one can read."
 ```
 
-<<< scene id="vision" page="vision.html" label="Vision" >>>
+<<< scene id="northstar" page="vision.html" label="The north star" >>>
+<div class="eyebrow">The architecture since 2020 · read band by band against what exists, September 2026</div>
+<figure class="diagram"><img src="../assets/img/diagrams/northstar-en.png" alt="Six bands: who it is for, solutions, systems, languages, the foundation Softanza, and beneath; beside them the court." width="1376" height="820"></figure>
+```notes
+"In 2020 the author drew Softanza on one sheet. Read it from the top: who it is for, the solutions, the five systems a solution answers to, the languages, the foundation, what lies beneath." In September 2026 every band was checked against the repositories. The goal has not moved. Two things are new: the agents in the first band, and the floors beneath. Beside everything, the court: nothing is believed.
+```
+
+<<< scene id="vision" page="principles.html" label="Vision" >>>
 <div class="eyebrow">Softanza's approach to programming in the agentic age</div>
 ## Declare <i>a language</i>
 <p>With Softanza you do not write software.</p>
@@ -37,6 +44,13 @@ Three ideas, one per line. Do not read the page. The spoken example: a bank decl
 <p>One engine in Zig · one language, <b>Haro</b>, in construction · twenty-eight areas, each rated honestly against .NET, Python, Wolfram and the JVM.</p>
 ```notes
 Say the stage as it is: Haro is the platform's language, its virtual machine and compiler exist and run, its charter awaits my ratification; I will not call it available before it is. The platform's credibility is that the Atlas shows its 36 "Emerging" lanes next to its 101 "Strong" ones.
+```
+
+<<< scene id="platforms" page="platforms.html" label="Platform of platforms" >>>
+<div class="eyebrow">The language of languages, and the platform of platforms · the construction runs in the library</div>
+<figure class="diagram"><img src="../assets/img/diagrams/platforms-en.png" alt="RestoLean, Organizium, a customs school, and yours: each declares its platform in its own words; Softanza gives every one the platform." width="1376" height="700"></figure>
+```notes
+"Haro is the language of languages. Softanza is the platform of platforms." A restaurant network, a bank, a school: each declares its own platform in its own words, a shared ground, a world per person and device, bonds, rules, roles. Softanza gives every one a grammar and its court, every screen, data with undo, and agents held to the same rules. Say the stage: the construction runs in the library; the customer platforms run today on ordinary web stacks, and moving them onto the engine is a change of engine, not of plan.
 ```
 
 <<< scene id="atlas" page="areas.html" label="The areas" >>>

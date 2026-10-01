@@ -30,12 +30,14 @@ GH = "https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/"
 SECTIONS = [
   ("platform", {"fr": "Plateforme", "en": "Platform"}, [
      ("platform", {"fr": "Plateforme", "en": "Platform"}),
+     ("platforms", {"fr": "Plateforme de plateformes", "en": "Platform of platforms"}),
      ("areas", {"fr": "Les domaines", "en": "The areas"}),
      ("atlas", {"fr": "L'Atlas", "en": "The Atlas"}),
      ("code", {"fr": "Le code", "en": "The code"}),
      ("compare", {"fr": "Comparée", "en": "Compared"})]),
   ("vision", {"fr": "Vision", "en": "Vision"}, [
-     ("vision", {"fr": "Vision", "en": "Vision"}),
+     ("vision", {"fr": "L'étoile polaire", "en": "The north star"}),
+     ("principles", {"fr": "Douze principes", "en": "Twelve principles"}),
      ("estate", {"fr": "Le domaine", "en": "The estate"}),
      ("history", {"fr": "Depuis les principes", "en": "From first principles"}),
      ("sovereignty", {"fr": "Souveraineté", "en": "Sovereignty"}),
@@ -327,6 +329,8 @@ def inject(body_html, lang, idx, groups, rel="../"):
     body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
     body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
     body_html = body_html.replace("<!--DOCS-SCOPE-->", scope_html(lang, idx, groups))
+    # <!--SHOWCASE:slug-->: the runs of data/showcase.json inside a content page, under the page's own heading
+    body_html = re.sub(r"<!--SHOWCASE:([a-z0-9-]+)-->", lambda m: showcase_html(lang, m.group(1), heading=False), body_html)
     return diagram_imgs(body_html, rel)
 
 LONG = []
@@ -435,11 +439,13 @@ def load_showcase():
     return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
 SHOWCASE = load_showcase()
 
-def showcase_html(lang, slug):
+def showcase_html(lang, slug, heading=True):
     items = SHOWCASE.get(slug)
-    if not items: return ""
+    if not items:
+        if not heading: raise SystemExit(f"no run in data/showcase.json for the placeholder SHOWCASE:{slug}")
+        return ""
     ui = SHOW_UI[lang]; out_lbl = "Sortie" if lang == "fr" else "Output"
-    parts = [f'<h2>{ui["h"]}</h2><p>{ui["intro"]}</p>']
+    parts = [f'<h2>{ui["h"]}</h2><p>{ui["intro"]}</p>'] if heading else []
     for it in items:
         parts.append(f'<p style="margin-top:32px"><b>{esc(it["what_" + lang])}</b></p>'
                      f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(it["code"])}</pre></div>'

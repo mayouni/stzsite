@@ -1,22 +1,49 @@
 ---
-title: Vision
-title_html: La <i>vision</i>
-kicker: Douze principes
-lede: Softanza reconstruit la programmation depuis les premiers principes. Douze idées la tiennent ; chacune tient ici en une phrase, et les autres pages de cette section montrent où en est chacune.
-description: Les douze principes de Softanza, chacun en une phrase.
+title: L'étoile polaire
+title_html: L'<i>étoile polaire</i>
+kicker: L'architecture, depuis 2020
+lede: En 2020, l'auteur a dessiné Softanza sur une seule feuille, en six bandes, des personnes qu'elle sert jusqu'à ce sur quoi elle repose. En septembre 2026, la feuille a été relue, bande par bande, face à ce qui avait été construit. Le but n'a pas bougé. Ce qui le porte, si.
+description: L'architecture de Softanza telle que l'auteur l'a dessinée en 2020, relue bande par bande face à ce qui existe en 2026, et redessinée.
 ---
 
-<div class="cards principles">
-<div class="card"><h3>1 · Déclarez une langue</h3><p>L'approche de Softanza pour programmer à l'ère agentique, et non la pratique d'aujourd'hui : on n'écrit pas des logiciels, on déclare son monde dans une langue faite pour lui, et on gouverne la manière dont ce monde change.</p></div>
-<div class="card"><h3>2 · Tout est jugé</h3><p>Une narration s'exécute quand on la lit ; une promesse est vérifiée en s'exécutant ; un garde compte ses assertions. Ce qui n'a pas tourné n'est pas montré, sur ce site non plus.</p></div>
-<div class="card"><h3>3 · Un moteur, plusieurs visages</h3><p>La substance vit dans le moteur Zig ; la langue en est le visage, et un visage futur partage le même moteur.</p></div>
-<div class="card"><h3>4 · Des agents qui ne peuvent pas nuire</h3><p>Un modèle propose ; un atelier répète ; un tribunal juge ; seul un acteur gouverné commet.</p></div>
-<div class="card"><h3>5 · La connaissance de votre monde</h3><p>Softanza connaît votre monde, et non les faits du monde en général : ses entités, ses règles, ses acteurs et ses flux, déclarés en texte brut.</p></div>
-<div class="card"><h3>6 · Un code qui se lit</h3><p>L'humain est l'analyseur : trouver d'abord, agir ensuite ; les noms sont des verbes ; une instruction en langue naturelle s'exécute.</p></div>
-<div class="card"><h3>7 · Dans votre langue</h3><p>Le cours parle anglais, français, arabe et haoussa ; le moteur compte des lettres, pas des octets ; la même instruction s'exécute dans les quatre langues.</p></div>
-<div class="card"><h3>8 · Exact par défaut</h3><p>Un entier est exact à toute taille ; un décimal dit qu'il est décimal ; l'algèbre est prouvée contre un oracle.</p></div>
-<div class="card"><h3>9 · Honnête par conception</h3><p>L'Atlas montre les notes basses à côté des hautes ; chaque produit porte son stade ; aucun chiffre sans fichier.</p></div>
-<div class="card"><h3>10 · Souveraine par construction</h3><p>Rien que quiconque puisse retirer : un verdict par dépendance, du texte brut que vous gardez, une machine que vous déclarez. <a href="#sovereign">Ci-dessus</a>.</p></div>
-<div class="card"><h3>11 · Programmer par cœur</h3><p>Ce que vous pensez est ce que vous écrivez. Le tribunal est sévère pour que la surface reste chaleureuse ; un tuteur demande et ne donne jamais la réponse.</p></div>
-<div class="card"><h3>12 · Née en Afrique</h3><p>Conçue entre la Tunisie, Niamey et Paris ; une banque, une école des douanes et un restaurant comme références ; une machine nommée d'après un pont. <a href="#africa">Ci-dessous</a>.</p></div>
-</div>
+## La feuille de 2020 {#sheet}
+
+La feuille s'intitule « Softanza — Programming by heart! ». Le projet est plus ancien que son dessin : il a commencé en 2018, et la feuille dit comment il se voyait deux ans plus tard. Ses six bandes, de haut en bas :
+
+- **Pour qui.** Les programmeurs seuls ou en petite équipe, d'abord. Puis les analystes fonctionnels et de données ; les designers d'interface et d'expérience ; les responsables techniques, les gouvernements, les jeunes pousses et les entreprises ; les enseignants, les linguistes, les auteurs et les architectes du savoir.
+- **Solutions.** Un modèle logiciel, un modèle de livraison, un modèle d'entreprise.
+- **Systèmes.** Technique, social, écologique, économique et culturel : cinq dimensions auxquelles toute solution répond, et non une seule.
+- **Narrations**, « un cadre de pensée computationnelle : ce que vous pensez est ce que vous écrivez ». Une langue naturelle qui s'exécute, l'expression et la conversation naturelles dans le code, le savoir représenté dans le code, et un manifeste.
+- **Fondation**, « une bibliothèque qui accélère tout besoin algorithmique ». Une belle expérience du programmeur et une documentation de qualité, un modèle mental intuitif qui s'apprend, une conception en couches guidée par les buts.
+- **En dessous.** La langue de script de l'époque, la force du code de bas niveau, et d'autres langues plus tard.
+
+## Relue en 2026 {#read}
+
+Chaque bande a été vérifiée dans les dépôts, avec les endroits nommés pour que la vérification puisse être refaite. Les verdicts, en une ligne chacun :
+
+- **Pour qui : gardée, et un lecteur ajouté.** Chaque public a aujourd'hui un cas réel. Le lecteur que 2020 ne pouvait pas dessiner est l'agent, qui désormais construit et parle les langues, tenu par leur grammaire.
+- **Solutions : gardée, renommée, affûtée.** Le modèle logiciel est la plateforme ouverte ; le modèle de livraison est la façon dont une solution atteint ses utilisateurs, un monde à la fois ; le modèle d'entreprise est la couche commerciale au-dessus du même texte brut : les ateliers où le modèle rencontre un métier, et la garantie derrière la fondation. Un même chemin les relie : déclarer sa première langue gratuitement, puis composer une application, fédérer une organisation, gouverner son évolution, chaque étape faisant grandir les mêmes fichiers.
+- **Systèmes : gardée, et sous-employée.** Chacun des cinq a sa pratique, du matériel frugal à la règle qui laisse au client son code et ses données. Aucune solution ne les écrit encore en cinq lignes ; c'est la prochaine étape, pas une affirmation.
+- **Narrations : gardée dans la promesse, changée dans le mécanisme.** La langue naturelle reste à la porte, où elle demande et propose un brouillon. L'exécution est passée dans de petites langues déclarées qu'un tribunal peut juger, parce qu'une phrase naturelle peut être ambiguë et qu'un mensonge peut être grammatical.
+- **Fondation : gardée, et la bibliothèque est devenue un corpus.** Vingt-huit domaines, 618 classes et 501 gardes racontées, là où 2020 promettait « une bibliothèque ». La direction est désormais un seul binaire et ses organes, du moteur d'exécution au narrateur, et les gardes de la bibliothèque sont l'instrument qui juge chaque module qui déménage.
+- **En dessous : dépassée, dans la direction qu'elle indiquait.** La plateforme possède désormais les étages sur lesquels elle repose : Haro, sa langue, en construction ; Harobanda, la machine déclarée, construite ; et l'appareil en dessous.
+
+<p class="way"><span>La manière Softanza</span> Une vision se relit face à ce qui existe, bande par bande, et chaque verdict dit où le vérifier. Une promesse qui a changé de mécanisme le dit, au lieu de prétendre l'avoir toujours voulu ainsi.</p>
+
+## La feuille, redessinée {#redrawn}
+
+Les mêmes six bandes, avec ce qui porte chacune aujourd'hui, et le tribunal qui siège à côté de toutes. Deux choses sont nouvelles depuis 2020 : les agents dans la première bande, et les étages en dessous.
+
+<figure class="diagram"><img src="../assets/img/diagrams/northstar-fr.png" alt="Six bandes, de haut en bas. Pour qui : programmeurs, analystes, designers, décideurs, enseignants, et les agents, ajoutés en 2026. Solutions : un modèle logiciel, un modèle de livraison, un modèle d'entreprise. Systèmes : technique, social, écologique, économique, culturel. Langues, ce que vous pensez, vous l'écrivez : une langue par métier, la langue naturelle demande, tout est raconté. Fondation, Softanza, construite : un moteur, 28 domaines, un modèle qui s'apprend, une documentation qui s'exécute. En dessous, redessiné en 2026 : Haro, la langue des langues ; Harobanda, la machine déclarée ; l'appareil. À côté de chaque bande, le tribunal : rien n'est cru." width="1376" height="820"><figcaption>La feuille de l'auteur de 2020, redessinée depuis les dépôts le 13 septembre 2026 et ratifiée par l'auteur le 27 septembre 2026.</figcaption></figure>
+
+La mission est celle de 2020 : programmer par cœur, un chemin ouvert à tous, quel que soit son parcours, d'une idée à un système qui fonctionne. Ce que 2026 ajoute est la phrase qui la rend sûre quand les machines écrivent aussi : tout est une déclaration, chaque déclaration est jugée, et la machine sur laquelle tout tourne se déclare de la même façon.
+
+## Ce qui ne doit pas changer {#keep}
+
+- **Le premier lecteur reste le programmeur en petite équipe.** L'ère agentique ne l'a pas remplacé ; elle l'a multiplié.
+- **Programmer par cœur.** Le tribunal est sévère pour que la surface reste chaleureuse : les narrations, les mots simples, un tuteur qui demande au lieu de répondre.
+- **Le refus de la complexité.** Pas de système temps réel à soi, pas de shell sur la machine déclarée, pas de magasin, pas de dépôt unique de tout, une seule porte gouvernée pour le code étranger. Chaque refus du domaine est le même refus.
+- **La souveraineté, comme une définition et non comme une humeur.** Rien que quiconque puisse retirer, décidé dépendance par dépendance.
+- **L'honnêteté sur la portée.** « Construit », « en construction », « nommé » : chaque mot se vérifie, sur ce site comme dans les dépôts.
+
+<p class="proof">Source : le chapitre 8 du corpus de vision de Softanza, « L'étoile polaire : le schéma de 2020, relu en 2026 », ratifié par l'auteur le 27 septembre 2026. Le corpus lui-même n'est pas encore public ; chaque dépôt qu'il cite pour une partie publique de la plateforme est lié depuis la page qui décrit cette partie.</p>

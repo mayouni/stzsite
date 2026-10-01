@@ -271,7 +271,72 @@ def trajectory(lang):
     return c.render(f"trajectory-narrow-{lang}.png")
 
 
+def northstar(lang):
+    T = {
+     "en": dict(t="PROGRAMMING BY HEART · 2020, READ IN 2026", rows=[
+        ("Who it is for", "programmers · analysts · designers · leaders · educators · and, since 2026, agents", "old", False),
+        ("Solutions", "a software model · a delivery model · an enterprise model", "old", False),
+        ("Systems", "technical · social · ecological · economic · cultural", "old", False),
+        ("Languages", "what you think is what you write: a declared language per domain, natural language asks, every run narrated", "old", False),
+        ("Foundation: Softanza", "one engine, 28 areas, a learnable mental model, documentation that runs · built", "machine", True),
+        ("Beneath, since 2026", "Haro, the language of languages · Harobanda, the declared machine · the device", "old", False)],
+        side=("The court, beside everything", "fixtures judge the languages, contracts the foundation, the gate each change, the boot the machine: nothing is believed"),
+        cap="the author, 2020 · redrawn 2026-09-13 · ratified 2026-09-27"),
+     "fr": dict(t="PROGRAMMER PAR CŒUR · 2020, RELU EN 2026", rows=[
+        ("Pour qui", "programmeurs · analystes · designers · dirigeants · enseignants · et, depuis 2026, les agents", "old", False),
+        ("Solutions", "un modèle logiciel · un modèle de livraison · un modèle d'entreprise", "old", False),
+        ("Systèmes", "technique · social · écologique · économique · culturel", "old", False),
+        ("Langues", "ce que vous pensez, vous l'écrivez : une langue déclarée par domaine, la langue naturelle demande, chaque exécution racontée", "old", False),
+        ("Fondation : Softanza", "un moteur, 28 domaines, un modèle mental qui s'apprend, une documentation qui s'exécute · construite", "machine", True),
+        ("En dessous, depuis 2026", "Haro, la langue des langues · Harobanda, la machine déclarée · l'appareil", "old", False)],
+        side=("Le tribunal, à côté de tout", "les fixtures jugent les langues, les contrats la fondation, la porte chaque changement, le démarrage la machine : rien n'est cru"),
+        cap="l'auteur, 2020 · redessiné 2026-09-13 · ratifié 2026-09-27"),
+    }[lang]
+    c = Narrow(23)
+    c.title(T["t"]); c.gap(8)
+    for title, sub, style, accent in T["rows"]:
+        c.titled(title, sub, style, accent)
+    c.gap(14)
+    c.titled(T["side"][0], T["side"][1], "plain")
+    c.note(T["cap"])
+    return c.render(f"northstar-narrow-{lang}.png")
+
+
+def platforms(lang):
+    T = {
+     "en": dict(t="A PLATFORM OF PLATFORMS · ONE CONSTRUCTION, MANY WORLDS",
+        tops=[("RestoLean", "neighbourhood commerce · Lyon"), ("Organizium", "a bank's organisation · Niamey"),
+              ("Customs school", "assessment become organisation, Tunisia")],
+        yours=("Yours", "declared in your own words"),
+        decl=("Each declares, in its own words", "a shared ground · a world per person and device · bonds · rules · roles"),
+        give=("Softanza gives every one the platform", "a grammar and its court · web, phone, desktop, server and device · data with an audit trail and undo · agents held to the same rules"),
+        base=("Beneath", "Haro, the language of languages · Harobanda, the declared machine"),
+        cap="a world: stzApp · a constellation of worlds: stzSuperApp"),
+     "fr": dict(t="UNE PLATEFORME DE PLATEFORMES · UNE CONSTRUCTION, DES MONDES",
+        tops=[("RestoLean", "commerce de quartier · Lyon"), ("Organizium", "l'organisation d'une banque · Niamey"),
+              ("École des douanes", "l'évaluation devenue organisation, Tunisie")],
+        yours=("La vôtre", "déclarée dans vos propres mots"),
+        decl=("Chacune déclare, dans ses propres mots", "un socle commun · un monde par personne et appareil · liens · règles · rôles"),
+        give=("Softanza donne à chacune la plateforme", "une grammaire et son tribunal · web, téléphone, bureau, serveur, appareil · des données avec journal et retour arrière · des agents tenus aux mêmes règles"),
+        base=("En dessous", "Haro, la langue des langues · Harobanda, la machine déclarée"),
+        cap="un monde : stzApp · une constellation de mondes : stzSuperApp"),
+    }[lang]
+    c = Narrow(29)
+    c.title(T["t"]); c.gap(8)
+    for title, sub in T["tops"]:
+        c.titled(title, sub, "old")
+    c.direction(T["yours"][0], T["yours"][1])
+    c.gap(10)
+    c.titled(T["decl"][0], T["decl"][1], "kern")
+    c.titled(T["give"][0], T["give"][1], "machine", accent=True)
+    c.titled(T["base"][0], T["base"][1], "old")
+    c.note(T["cap"])
+    return c.render(f"platforms-narrow-{lang}.png")
+
+
 if __name__ == "__main__":
-    for fn in (technology, wise, languages, govern, editions, trajectory):
+    only = sys.argv[1:]
+    for fn in (technology, wise, languages, govern, editions, trajectory, northstar, platforms):
+        if only and fn.__name__ not in only: continue
         for lang in ("en", "fr"):
             fn(lang)

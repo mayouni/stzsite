@@ -356,3 +356,48 @@ next:
   - me:      D3, method entries with graded examples, once the example index is right; narrations as pages
   - author:  read the area pages, Pattern matching first
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-02 00:11
+
+subject:   the identity: the north star of 2020 opens Vision, and Softanza is presented as a platform of platforms
+
+why:       the author asked, before the method entries, whether Softanza is also a platform of platforms, to read
+           the DIKO Hub study and the other platforms built with Softanza, and to embrace strategically in the
+           site's identity the platform architecture he drew years ago and that was updated in September
+
+did:
+  - found the architecture: the author's sheet "Softanza -- Programming by heart!" (2020), read band by band
+    against the estate on 2026-09-13 and ratified on 2026-09-27 (softanza/vision/08-NORTH-STAR.md, private)
+  - read, with three reading agents, the DIKO Hub study, RestoLean, Organizium at Sonibank, Zin, Zing, Refine
+    and the vision corpus; the estate's word for the idea is recursion: "a super-app is a graph whose nodes
+    are worlds -- a graph of graphs" (stzlib STZSUPERAPP_DESIGN.md, public)
+  - made the Vision page the north star: the sheet of 2020, each band's verdict in 2026, the sheet redrawn
+    (new diagram, wide and phone, both languages), and what must not change; the twelve principles moved to
+    their own page, without their two stale in-page links
+  - added "A platform of platforms" to the Platform section: what it means, what every platform declares and
+    receives (new diagram), the construction run inside the library from the stzSuperApp guard (two worlds
+    become one platform, then one world of a holding), three platforms, and the stage stated plainly
+  - added one sentence to the home page's definition of a platform, and two scenes to the tour (13 now)
+  - verified: build passes with its contrast check; 2 of 2 constellation runs keep their guard's promise;
+    37 renders, deck-check 184 of 184 assets offline
+
+state:
+  release-1-pass-7:  built; the commit carrying this entry is the one after 1ef989b
+  perception-gate:   OPEN -- the author has not seen this pass
+
+waiting:
+  - STZSITE-DIKO-NAMING-01: DIKO Hub follows the same construction, but its study is marked internal and
+                       nothing records DIKO's consent; the site does not name it -> the author [not routed]
+  - STZSITE-CUSTOMS-REFERENCE-01: the site lists the customs school as a reference; zin's design notes say
+                       Organizium was PROPOSED to it -> the author [not routed]
+  - STZSITE-HARO-TENSE-01: the Platform page says Haro's virtual machine "already runs the platform's code";
+                       the ratified chapter says "Haro does not exist" yet, its road being the VM in Zig -> the
+                       author [not routed]
+  - STZSITE-ZUI99-01:  Zui Rule 99 -> the author [not routed]
+
+next:
+  - me:      the method entries with graded examples (D3 of doc/DOCUMENTATION-DESIGN.md), once the author has
+             read this pass
+  - author:  read Vision and Platform of platforms; rule on the three naming questions
+```

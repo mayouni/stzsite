@@ -15,7 +15,14 @@ help: → ou clic : suivant · ← : précédent · n : notes · h : menu · Éc
 Laisser l'image parler dix secondes. Puis une phrase : « Cet homme lit du code. Le mur derrière lui dit déjà Softanza. Tout ce que je vais montrer ce soir tient dans cette image : la connaissance, le lieu, et une langue que l'on peut lire. »
 ```
 
-<<< scene id="vision" page="vision.html" label="Vision" >>>
+<<< scene id="northstar" page="vision.html" label="L'étoile polaire" >>>
+<div class="eyebrow">L'architecture depuis 2020 · relue bande par bande face à ce qui existe, septembre 2026</div>
+<figure class="diagram"><img src="../assets/img/diagrams/northstar-fr.png" alt="Six bandes : pour qui, solutions, systèmes, langues, la fondation Softanza, et en dessous ; à côté, le tribunal." width="1376" height="820"></figure>
+```notes
+« En 2020, l'auteur a dessiné Softanza sur une seule feuille. Lisez-la depuis le haut : pour qui, les solutions, les cinq systèmes auxquels une solution répond, les langues, la fondation, ce qui est en dessous. » En septembre 2026, chaque bande a été vérifiée dans les dépôts. Le but n'a pas bougé. Deux choses sont nouvelles : les agents dans la première bande, et les étages en dessous. À côté de tout, le tribunal : rien n'est cru.
+```
+
+<<< scene id="vision" page="principles.html" label="Vision" >>>
 <div class="eyebrow">L'approche de Softanza pour programmer à l'ère agentique</div>
 ## Déclarez <i>une langue</i>
 <p>Avec Softanza, on n'écrit plus des logiciels.</p>
@@ -37,6 +44,13 @@ Trois idées, une par ligne. Ne pas lire la page. L'exemple parlé : une banque 
 <p>Un moteur en Zig · une langue, <b>Haro</b>, en construction · vingt-huit domaines, chacun noté honnêtement contre .NET, Python, Wolfram et la JVM.</p>
 ```notes
 Dire le stade tel qu'il est : Haro est la langue de la plateforme, sa machine virtuelle et son compilateur existent et tournent, sa charte attend ma ratification ; je ne la dirai pas disponible avant qu'elle le soit. La crédibilité de la plateforme, c'est que l'Atlas montre ses 36 couloirs « Emerging » à côté de ses 101 « Strong ».
+```
+
+<<< scene id="platforms" page="platforms.html" label="Plateforme de plateformes" >>>
+<div class="eyebrow">La langue des langues, et la plateforme des plateformes · la construction tourne dans la bibliothèque</div>
+<figure class="diagram"><img src="../assets/img/diagrams/platforms-fr.png" alt="RestoLean, Organizium, une école des douanes, et la vôtre : chacune déclare sa plateforme dans ses propres mots ; Softanza donne à chacune la plateforme." width="1376" height="700"></figure>
+```notes
+« Haro est la langue des langues. Softanza est la plateforme des plateformes. » Un réseau de restaurants, une banque, une école : chacun déclare sa propre plateforme dans ses propres mots, un socle commun, un monde par personne et appareil, des liens, des règles, des rôles. Softanza donne à chacune une grammaire et son tribunal, tous les écrans, des données avec retour arrière, et des agents tenus aux mêmes règles. Dire le stade : la construction tourne dans la bibliothèque ; les plateformes des clients tournent aujourd'hui sur des piles web ordinaires, et les passer sur le moteur est un changement de moteur, pas de plan.
 ```
 
 <<< scene id="atlas" page="areas.html" label="Les domaines" >>>

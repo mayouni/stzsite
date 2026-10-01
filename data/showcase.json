@@ -699,5 +699,32 @@
    "ran": "2026-10-01 21:20",
    "seconds": 3.4
   }
+ ],
+ "platforms": [
+  {
+   "code": "# two worlds: a restaurant and its produce supplier\noResto = StzAppQ(\"resto\")\noResto.AddThingQ(:dish) { Has([ :name, :price ]) }\noSupplier = StzAppQ(\"supplier\")\noSupplier.AddThingQ(:crate) { Has([ :produce, :qty ]) }\n\n# one platform made of both: a shared ground, a bond, a rule\noCon = new stzSuperApp(\"acme-group\")\noCon.AddWorld(\"resto\", oResto)\noCon.AddWorld(\"supplier\", oSupplier)\noCon.OpenCommonsOn(new stzDatabase(\":memory:\"))\noCon.StorePut(\"currency\", \"EUR\")\noCon.Bond(\"resto\", \"supplier\", \"order-produce\")\noCon.GovDeclareRisk(\"order-produce\", 2)\noCon.GovGrant(\"resto\", \"order-produce\")\noCon.GovSetAuthority(\"resto\", :Delegated)\n\n? oCon.StoreGet(\"currency\")\n? oCon.CallAcross(\"resto\", \"supplier\", \"order-produce\")\n? oCon.CallAcross(\"resto\", \"supplier\", \"raid-kitchen\")\n? oCon.Why()",
+   "contains": [
+    "EUR\n1\n0",
+    "no bond"
+   ],
+   "source": "base/test/app/06_stzsuperapp_narrated.ring",
+   "what_en": "Two worlds become one platform: they share a ground, the restaurant may order from its supplier because a bond declares it and governance clears it, and an action nobody declared is refused with its reason.",
+   "what_fr": "Deux mondes deviennent une seule plateforme : ils partagent un socle, le restaurant peut commander à son fournisseur parce qu'un lien le déclare et que la gouvernance l'autorise, et une action que personne n'a déclarée est refusée avec sa raison.",
+   "out": "EUR\n1\n0\nno bond declares 'raid-kitchen' from 'resto' to 'supplier'.",
+   "matches_source": true,
+   "ran": "2026-10-02 00:00",
+   "seconds": 5.2
+  },
+  {
+   "code": "# a platform of platforms: the group itself becomes one world of a holding\noHolding = new stzSuperApp(\"holding\")\noHolding.AddConstellation(\"acme\", oCon)\n? oHolding.NumberOfWorlds()\n? oHolding.KindOf(\"acme\")\n? oHolding.WorldQ(\"acme\").NumberOfWorlds()",
+   "expected": "1\nsuper\n2",
+   "source": "base/test/app/06_stzsuperapp_narrated.ring",
+   "what_en": "The whole platform then becomes one world of a larger one: the holding holds one world, that world is itself a constellation, and its two worlds are still inside.",
+   "what_fr": "La plateforme entière devient ensuite un monde d'une plateforme plus grande : la holding contient un monde, ce monde est lui-même une constellation, et ses deux mondes sont toujours dedans.",
+   "out": "1\nsuper\n2",
+   "matches_source": true,
+   "ran": "2026-10-02 00:00",
+   "seconds": 5.2
+  }
  ]
 }
