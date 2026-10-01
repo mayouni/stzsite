@@ -79,3 +79,5 @@ next:
   - author:  clone the repository, open deck-check.html then fr/tour.html with the network off, and write the verdict below
   - me:      Release 1 after the verdict
 ```
+
+> **Correction, 2026-10-01 01:06.** The first entry above is stamped "01:20" and that stamp was COMPOSED, not read from the clock: the commit that carried it, 73ee023, was made at 2026-10-01 01:03. The estate's rule (read the stamp from the clock, never compose it) was broken in this journal's first line; the stamp is left as written so the defect stays visible, and this note is the repair.
