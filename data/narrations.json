@@ -1,0 +1,538 @@
+[
+ {
+  "file": "istrue-softanza-truth.md",
+  "title": "istrue-softanza-truth"
+ },
+ {
+  "file": "Safe-Access-to-Ring-Hashlists-using-HasKey.md",
+  "title": "Safe Access to Ring Hashlists: How Softanza Solves a Common Problem"
+ },
+ {
+  "file": "softanza-reactive-objects-narration.md",
+  "title": "Softanza Reactive Objects: A Complete Beginner's Tutorial"
+ },
+ {
+  "file": "Softanza-Reactive-Programming-Semantics.md",
+  "title": "Softanza Reactive Programming Semantics: A Conceptual Framework"
+ },
+ {
+  "file": "stz-adverb-engine.md",
+  "title": "From \"Quick\" to \"Quickly\": Programmatic Adverb Formation"
+ },
+ {
+  "file": "stz-agents-that-cannot-hurt-you-narration.md",
+  "title": "Agents That Cannot Hurt You"
+ },
+ {
+  "file": "stz-auth-the-front-door-narration.md",
+  "title": "The Front Door"
+ },
+ {
+  "file": "stz-bridging-minds-and-code.md",
+  "title": "Softanza: Bridging Minds and Code - A Humanistic Approach to Programming"
+ },
+ {
+  "file": "stz-built-on-real-world-need.md",
+  "title": "Softanza Library: Built on Real-World Needs"
+ },
+ {
+  "file": "stz-conditional-code-narration.md",
+  "title": "Conditional Code in Softanza — Constraining Functions with `W` and `WF`"
+ },
+ {
+  "file": "stz-deploying-to-target-sites-narration.md",
+  "title": "Deploying to the Target Sites"
+ },
+ {
+  "file": "stz-emulating-the-whole-solution-narration.md",
+  "title": "Emulating the Whole Solution"
+ },
+ {
+  "file": "stz-engine-senses-narration.md",
+  "title": "The Engine Senses"
+ },
+ {
+  "file": "stz-eye-sees-the-inivisible-narration.md",
+  "title": "Softanza Eye Sees the Invisible: Unmasking Hidden Unicode Characters"
+ },
+ {
+  "file": "stz-fastporupdate-narration.md",
+  "title": "FastProUpdate(): A Semantic Rengineering of RingFastPro extension"
+ },
+ {
+  "file": "stz-function-forms-narration.md",
+  "title": "Softanza: Functions as Linguistic Artifacts - A Comprehensive Narration"
+ },
+ {
+  "file": "stz-functions-as-linguistic-expressions.md",
+  "title": "Writability vs. Readability of Computer Code— Softanza Asks: Why NOT Both?"
+ },
+ {
+  "file": "stz-fututure-actions.md",
+  "title": "Programming the Future, Litterally, in Softanza"
+ },
+ {
+  "file": "stz-governance-lineage-narration.md",
+  "title": "Answerable Forever"
+ },
+ {
+  "file": "stz-governing-project-security-narration.md",
+  "title": "Governing a Project's Security"
+ },
+ {
+  "file": "stz-guarding-secrets-and-credentials-narration.md",
+  "title": "Guarding Secrets & Credentials"
+ },
+ {
+  "file": "stz-honest-stopwatch-narration.md",
+  "title": "The Honest Stopwatch"
+ },
+ {
+  "file": "stz-integrating-r-scripts-inside-ring.md",
+  "title": "R() in Ring: Statistical Power, One Call Away"
+ },
+ {
+  "file": "stz-knowledge-programming-narration.md",
+  "title": "Softanza Knowledge Porgramming: Crafting the Semantics of Thought"
+ },
+ {
+  "file": "stz-lowlevel-system-programming.md",
+  "title": "Your First Taste of Systems Programming - Without the Fear"
+ },
+ {
+  "file": "stz-managing-deep-lists-narration.md",
+  "title": "Taming Deep Lists with Softanza"
+ },
+ {
+  "file": "stz-max-adverb-generation-in-softan.md",
+  "title": "Smart Adverb Generation in Softanza"
+ },
+ {
+  "file": "stz-mental-mode-narration.md",
+  "title": "A Guided Path to Problem-Solving: The Softanza Mental Model"
+ },
+ {
+  "file": "stz-metrics-monitor-narration.md",
+  "title": "Metrics and the Monitor"
+ },
+ {
+  "file": "stz-named-vars-narration.md",
+  "title": "Named Variables in Softanza: the What, Why and How!"
+ },
+ {
+  "file": "stz-near-natural-language-programming.md",
+  "title": "Near-Natural Programming: Bridging Human Thought and Code Execution"
+ },
+ {
+  "file": "stz-near-natural-language-tutorial.md",
+  "title": "Softanza Near-Natural Programming Tutorial"
+ },
+ {
+  "file": "stz-perf-driven-load-narration.md",
+  "title": "The Driven Load"
+ },
+ {
+  "file": "stz-perf-frame-profiler-narration.md",
+  "title": "The Frame Profiler"
+ },
+ {
+  "file": "stz-perf-governed-loop-narration.md",
+  "title": "The Governed Loop"
+ },
+ {
+  "file": "stz-perf-judgment-narration.md",
+  "title": "Judgment"
+ },
+ {
+  "file": "stz-perf-labels-narration.md",
+  "title": "Labels and Dimensions"
+ },
+ {
+  "file": "stz-perf-log-trace-narration.md",
+  "title": "Log-Trace Correlation"
+ },
+ {
+  "file": "stz-perf-profile-narration.md",
+  "title": "The Profile"
+ },
+ {
+  "file": "stz-perf-seams-narration.md",
+  "title": "The Seams"
+ },
+ {
+  "file": "stz-perf-tracing-tail-narration.md",
+  "title": "The Tail"
+ },
+ {
+  "file": "stz-planning-and-provisioning-a-deployment-narration.md",
+  "title": "Planning and Provisioning a Deployment"
+ },
+ {
+  "file": "stz-plotting-system-narration.md",
+  "title": "Softanza Ploting System: Where AsciiArt Meets DataViz"
+ },
+ {
+  "file": "stz-probabilistic-quantifiers-narration.md",
+  "title": "Probabilistic Quantifiers in Softanza: Natural Proportions Meet Logical Precision"
+ },
+ {
+  "file": "stz-pycode-bridging-ring-and-python-narration.md",
+  "title": "Expanding Ring’s Horizons: Unlocking New Possibilities with Python"
+ },
+ {
+  "file": "stz-random-narrration.md",
+  "title": "Practical Randomness in Softanza"
+ },
+ {
+  "file": "stz-reaxis-reactive-programming-narration.md",
+  "title": "Reaxis: A Natural Model for Reactive Programming in Ring, by Softanza"
+ },
+ {
+  "file": "stz-reaxis-simplification-of-complex-reactive-programming.md",
+  "title": "The Great Simplification: How Reaxis Dissolves Decades of Reactive Programming Complexity"
+ },
+ {
+  "file": "stz-repeat-function-narration.md",
+  "title": "The Symphony of Repetition: A Coding Journey in Softanza"
+ },
+ {
+  "file": "stz-repetition-with-elegance-narration.md",
+  "title": "Repetition with Elegance: Exploring @N() and @NXT() Smart Builders in Softanza"
+ },
+ {
+  "file": "stz-rules-as-graph-rules-narration.md",
+  "title": "Rules That See the Whole Picture"
+ },
+ {
+  "file": "stz-security-attestation-narration.md",
+  "title": "Attestation and Export"
+ },
+ {
+  "file": "stz-security-detection-narration.md",
+  "title": "Detection over Sequences"
+ },
+ {
+  "file": "stz-security-drill-narration.md",
+  "title": "The Drill"
+ },
+ {
+  "file": "stz-security-event-narration.md",
+  "title": "The Security Event"
+ },
+ {
+  "file": "stz-security-incident-narration.md",
+  "title": "The Incident"
+ },
+ {
+  "file": "stz-security-ledger-narration.md",
+  "title": "The Security Ledger"
+ },
+ {
+  "file": "stz-security-response-narration.md",
+  "title": "The Governed Response"
+ },
+ {
+  "file": "stz-security-seams-2-narration.md",
+  "title": "The Rest of the Seams"
+ },
+ {
+  "file": "stz-security-seams-narration.md",
+  "title": "The Seams"
+ },
+ {
+  "file": "stz-security-sentinel-narration.md",
+  "title": "The Sentinel"
+ },
+ {
+  "file": "stz-service-virtualization-code-first-subscribe-later.md",
+  "title": "Code First, Subscribe Later"
+ },
+ {
+  "file": "stz-string-insert-substrings-narration.md",
+  "title": "InsertSubstrings(): A Powerful String Manipulation Tool in Softanza"
+ },
+ {
+  "file": "stz-structured-logging-narration.md",
+  "title": "Structured Logging with stzLog"
+ },
+ {
+  "file": "stz-system-dev-to-deploy-narration.md",
+  "title": "From Dev to Deploy Without Leaving Your Editor"
+ },
+ {
+  "file": "stz-time-programming-intro.md",
+  "title": "Time Programming in Softanza: A Gentle Introduction"
+ },
+ {
+  "file": "stz-unfied-item-finding-with-@find.md",
+  "title": "The Unified @Find() Function in Softanza"
+ },
+ {
+  "file": "stz-unmasking-unicode-lookalities-narration.md",
+  "title": "Unmasking Unicode Lookalikes"
+ },
+ {
+  "file": "stz-vs-qt-unicode-narration.md",
+  "title": "Softanza: Simplifying the Power of C++ Backends for Unicode Handling"
+ },
+ {
+  "file": "stz-xml-the-parser-that-says-no.md",
+  "title": "The Parser That Says No"
+ },
+ {
+  "file": "stzApp-building-your-first-app-narration.md",
+  "title": "Your First App with stzApp: A World That Lives, and Wants"
+ },
+ {
+  "file": "stzappserver-article.md",
+  "title": "stzAppServer: The Persistent Computational Web Engine Revolution"
+ },
+ {
+  "file": "stzcalendar-time-capacity-planning-in-softanza.md",
+  "title": "Time Capacity Planning in Softanza: Mastering Constraints with stzCalendar"
+ },
+ {
+  "file": "stzdatasetdoc.md",
+  "title": "stzDataSet: Statistics as a Language of Thought"
+ },
+ {
+  "file": "stzdate-date-programming-in-softanza.md",
+  "title": "Date Programming Made Easy in Softanza"
+ },
+ {
+  "file": "stzdatetime-guide-narration.md",
+  "title": "stzDateTime: Elegant DateTime Operations in Softanza"
+ },
+ {
+  "file": "stzDotCode-Graphiz-Dot-Language-Guide.md",
+  "title": "Graphviz DOT Language Guide: Using stzDotCode"
+ },
+ {
+  "file": "stzduration-measuring-time-in-softanza.md",
+  "title": "stzDuration: Measuring Time in Softanza"
+ },
+ {
+  "file": "stzexcis-performance-battle.md",
+  "title": "The Performance Battle: A Window into EXCIS system in Softanza"
+ },
+ {
+  "file": "stzexcis-polyglot-programming-in-ring.md",
+  "title": "Softanza EXCIS: Orchestrating a Polyglot Symphony"
+ },
+ {
+  "file": "stzexterlib-domain-driven-polyglot-programming.md",
+  "title": "Softanza ExterLib: A Foundation for Domain-Driven Polyglot Programming"
+ },
+ {
+  "file": "stzfile-api-narration.md",
+  "title": "Beyond File Modes: The Softanza Intent-Based Paradigm"
+ },
+ {
+  "file": "stzfolder-intelligent-navigation.md",
+  "title": "Intelligent Folder Navigation in Softanza"
+ },
+ {
+  "file": "stzfolder-natural-navigation.md",
+  "title": "Natural Folder Navigation in Softanza"
+ },
+ {
+  "file": "stzfolder-visual-exploration-and-search.md",
+  "title": "Softanza's stzFolder: A Journey Through Intelligent Directory Navigation"
+ },
+ {
+  "file": "stzgraph-chatgpt-opinion.md",
+  "title": "What ChatGPT Thinks of the `stzGraph` Module in the Softanza Library"
+ },
+ {
+  "file": "stzgraph-claudeai-opinion.md",
+  "title": "ClaudeAI Opinion on stzGraph design"
+ },
+ {
+  "file": "stzGraph-Computational-Foundation.md",
+  "title": "stzGraph: Computational Foundation and Design"
+ },
+ {
+  "file": "stzgraph-modeling-knowledge-with-nodes-and-connections.md",
+  "title": "stzGraph — Modeling Knowledge Through Structure"
+ },
+ {
+  "file": "stzgraph-vs-other-graph-libraries.md",
+  "title": "Softanza stzGraph vs. Modern Graph Ecosystem"
+ },
+ {
+  "file": "stzGraphDoc.md",
+  "title": "stzGraph: The Art of Connected Thinking"
+ },
+ {
+  "file": "stzgraphplannerdoc.md",
+  "title": "Intelligence in Motion: Graph Planning in Softanza"
+ },
+ {
+  "file": "stzgraphquery-doc.md",
+  "title": "stzGraphQuery: Asking Questions to Your Graph"
+ },
+ {
+  "file": "stzgrid-navigator-grid-mastering.md",
+  "title": "The Navigator's Grid: Mastering stzGrid in the Softanza Library"
+ },
+ {
+  "file": "stzLinearSolver-Empowering-Real-World-Applications with-Linear-Programming.md",
+  "title": "Empowering Real-World Applications with Softanza's Linear Solver for Ring"
+ },
+ {
+  "file": "stzlist-diff.md",
+  "title": "When “different” is not enough: the story behind `Diff()`, `DiffXT()` and `DiffXTT()` in stzList"
+ },
+ {
+  "file": "stzlist-in-strings-narration.md",
+  "title": "Unlocking the Power of Lists-in-Strings with Softanza"
+ },
+ {
+  "file": "stzlistex-pattern-matching-for-lists.md",
+  "title": "Softanza Listex: Bringing Pattern Matching to Lists"
+ },
+ {
+  "file": "stzlocale-locale-management-the-softanza-way.md",
+  "title": "Software Global Reach: Locale Management the Softanza Way"
+ },
+ {
+  "file": "stzMatrex-Declarative-Pattern-Matching-for-Matrices.md",
+  "title": "stzMatrex: Declarative Pattern Matching for Matrices in Softanza"
+ },
+ {
+  "file": "stzmatrix-matrix-computing-in-softanza-narration.md",
+  "title": "Matrix Computing in Softanza with stzMatrix"
+ },
+ {
+  "file": "stzmax-stzurl-narration.md",
+  "title": "Mastering URL Manipulation with stzUrl: A Complete Guide"
+ },
+ {
+  "file": "stznatural-narration.md",
+  "title": "**Natural Language Programming, Reimagined: The `stzNatural` Class in Softanza**"
+ },
+ {
+  "file": "stznatural-vs-ring-naturallib.md",
+  "title": "Why I Built `stzNatural`: A Journey from Ring's NaturalLib to Softanza's Natural System"
+ },
+ {
+  "file": "stzNumbex-number-patterns-made-simple.md",
+  "title": "stzNumbrex: A Pattern Language for Numbers"
+ },
+ {
+  "file": "stznumbrex-pattern-language-for-number.md",
+  "title": "stzNumbrex: A Pattern Language for Numbers in Softanza"
+ },
+ {
+  "file": "stzobject-history-narration.md",
+  "title": "The Narrative of Transformations: Tracking Object History in Softanza"
+ },
+ {
+  "file": "stzOrgChartDoc-BankUseCase.md",
+  "title": "Organizational Intelligence in Action"
+ },
+ {
+  "file": "stzOrgChartDoc.md",
+  "title": "Introducing stzOrgChart - The Strategic Organizational Intelligence Platform"
+ },
+ {
+  "file": "stzpolycode-refinement-centered_programming.md",
+  "title": "Refinement-Centered Programming with stzPolyCode"
+ },
+ {
+  "file": "stzreactive-from-sequential-bottlenecks-to-reactive-solutions.md",
+  "title": "From Sequential Bottlenecks to Reactive Solutions: A Programming Journey"
+ },
+ {
+  "file": "stzregex-mastering-regex-with-softanza-narration.md",
+  "title": "Mastering Regular Expressions with Softanza: A Modern Approach to Pattern Matching"
+ },
+ {
+  "file": "stzregexdata-library-narration.md",
+  "title": "Simplifying Regular Expressions with the Enhanced stzRegexData Library"
+ },
+ {
+  "file": "stzregexmaker-making-regex-human-freindly-narration.md",
+  "title": "The Softanza RegexMaker: Making Regex Human-Friendly"
+ },
+ {
+  "file": "stzregexuter-regex-as-computational-reactive-medium.md",
+  "title": "Softanza Regexuter: Regex as Computational Reactive Medium"
+ },
+ {
+  "file": "stzsections-merging-narration.md",
+  "title": "Understanding Section Merging Features in Softanza"
+ },
+ {
+  "file": "stzstring-duplicates-narration.md",
+  "title": "Decoding Duplicates: Exploring Duplicate Detection and Removal with Softanza"
+ },
+ {
+  "file": "stzstring-emptiness-narration.md",
+  "title": "Emptiness in Strings, Clear Rules: The Softanza Way"
+ },
+ {
+  "file": "stzstring-overspaces-narration.md",
+  "title": "Managing Over Spaces in Softanza: Beyond Simplify, Trim, and RemoveSpaces"
+ },
+ {
+  "file": "stzstring-removefrom-narration.md",
+  "title": "Simplifying Orientation in String Removal with Softanza"
+ },
+ {
+  "file": "stzstring-sit-narration.md",
+  "title": "Mastering Precision with the `Sit()` Function"
+ },
+ {
+  "file": "stzstring-slah-operator-narration.md",
+  "title": "Five Practical Applications on Strings of the `/` Operator in Softanza"
+ },
+ {
+  "file": "stzstring-vizfind-narration.md",
+  "title": "Visual Sequence Finding in Softanza"
+ },
+ {
+  "file": "stzstringart-narration.md",
+  "title": "An overview of String Art support in Softanza"
+ },
+ {
+  "file": "stzsystemcalldoc.md",
+  "title": "Softanza's System Call : Built on the System Process API"
+ },
+ {
+  "file": "stztable-when-code-meets-cells.md",
+  "title": "\"Code Meets Cells\": The Spreadsheet Metaphor in Softanza's stzTable"
+ },
+ {
+  "file": "stztablex-pattern-langauge-for-tables.md.md",
+  "title": "stzTablex: Declarative Pattern Matching for Tables in Softanza"
+ },
+ {
+  "file": "stztime-handling-time-in-softanza.md",
+  "title": "Time Handling in Softanza"
+ },
+ {
+  "file": "stztimeline-managing-temporal-structures-narration.md",
+  "title": "**Time Modeling in Softanza using `stzTimeLine`**"
+ },
+ {
+  "file": "stztimeline-temporal-design-philosophy-in-softanza.md",
+  "title": "Temporal Design Philosophy of stzTimeLine"
+ },
+ {
+  "file": "stzTimex-A-Pattern-Language-for-Time-in-Softanza.md",
+  "title": "stzTimex: A Pattern Language for Time in Softanza"
+ },
+ {
+  "file": "stzwalker-beyond-loops-the -walker-metaphor.md",
+  "title": "Beyond Loops: The Walker Metaphor in Softanza"
+ },
+ {
+  "file": "stzwalker-walking-at-the-edge-narration.md",
+  "title": "Walking at the Edge — A Naturally-Oriented and Practical Design"
+ },
+ {
+  "file": "stzwalker2D-walking-second-dimension.md",
+  "title": "Beyond Inner Loops: Walking on the Second Dimension in Softanza"
+ }
+]

@@ -356,3 +356,109 @@ a.abar:hover{background:var(--panel);border-color:var(--line)}
 .azrow{margin-top:16px;max-width:none}
 .azrow .chip{text-decoration:none;margin:2px 2px 2px 0}
 @media (max-width:700px){.rtable .lane{grid-template-columns:1fr 110px}.rtable .lane .lt{grid-column:1/-1}}
+/* ---- ergonomics ruled 2026-10-01: code never scrolls sideways, every page has a fixed sub-menu ---- */
+pre{white-space:pre-wrap!important;overflow-wrap:anywhere;overflow-x:hidden!important}
+.run pre{white-space:pre-wrap!important}
+.submenu{position:sticky;top:62px;z-index:40;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.submenu .wrap{display:flex;gap:4px 6px;overflow-x:auto;scrollbar-width:none;padding-block:6px}
+.submenu .wrap::-webkit-scrollbar{display:none}
+.submenu a{flex:none;text-decoration:none;color:var(--ink-2);font-size:15px;font-weight:500;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.submenu a:hover{background:var(--brand-soft);color:var(--brand-ink)}
+.submenu a.on{background:var(--brand);color:#fff}
+.page-body h2[id]{scroll-margin-top:120px}
+/* the wall: names under the pictures, no dark band */
+.wtile{aspect-ratio:auto;border:0;background:transparent;box-shadow:none;border-radius:0}
+.wtile img{aspect-ratio:16/10;border-radius:12px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.wtile .wname{position:static;display:block;padding:8px 2px 0;background:none;color:var(--ink);text-shadow:none;font-size:15.5px;font-weight:600}
+/* the onboarding panel must not hide the person */
+.hero-panel{background:color-mix(in srgb,var(--hero-panel) 58%,transparent);backdrop-filter:blur(4px)}
+
+/* ---- chrome ruled 2026-10-01 ------------------------------------------------ */
+.brand img{height:30px;width:auto;display:block}
+.icon-link{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:999px;color:var(--ink-2);border:1px solid transparent}
+.icon-link:hover{color:var(--brand-ink);background:var(--brand-soft)}
+.site-nav a{font-size:16px;padding:7px 10px}
+.home-head{position:fixed;left:0;right:0;top:0;background:color-mix(in srgb,#120F18 55%,transparent);border-bottom:1px solid rgba(255,255,255,.12)}
+.home-head .site-nav a,.home-head .icon-link,.home-head .lang{color:#fff}
+.home-head .site-nav a:hover,.home-head .icon-link:hover{background:rgba(255,255,255,.14);color:#fff}
+.home-head .lang{border-color:rgba(255,255,255,.4)}
+.home-head .theme-btn{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.home-head .brand img{filter:brightness(0) invert(1)}
+@media (max-width:980px){.home-head .site-nav{background:#1B1524}}
+.hero{padding-top:0}
+
+/* ---- fourth pass, 2026-10-01: readable everywhere, the new blocks ----------- */
+body{font-size:17px}
+.ran{font-size:14.5px}
+.proof{font-size:14.5px}
+.figure span{font-size:15.5px}
+.door .how{font-size:15.5px}
+.door .who{font-size:13.5px}
+.acard p{font-size:15.5px}
+.lane .lt{font-size:15.5px}
+.lane .lt small{font-size:13.5px}
+figcaption{font-size:15px}
+.card p{font-size:16px}
+.word p{font-size:16px}
+.pill{font-size:12.5px}
+.eyebrow,.kicker{font-size:14px}
+.submenu a{font-size:16px}
+.hero-voice{font-size:17px;color:#F4F1F8}
+.hero-doors{font-size:16px}
+.hero-name{font-size:14px}
+.hero-panel{background:color-mix(in srgb,var(--hero-panel) 52%,transparent)}
+.chip{font-size:12.5px}
+.counts{font-size:14px}
+.small{font-size:14.5px}
+
+/* a differentiator is named, so the reader can tell it from the usual assumption */
+.way{display:block;background:var(--brand-soft);border-left:4px solid var(--brand);border-radius:0 12px 12px 0;padding:14px 18px;margin-top:18px;max-width:none!important;font-size:17px;color:var(--ink)}
+.way span{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:14.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-ink);margin-right:10px}
+
+/* a drawn diagram in the house style */
+figure.diagram img{border-radius:14px;border:1px solid var(--line);background:#F5EFE1;width:100%}
+
+/* code beside another language: two sides, each with its output */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+@media (max-width:820px){.vs{grid-template-columns:1fr}}
+.vs .side{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--panel)}
+.vs .lbl{font-family:"IBM Plex Mono",monospace;font-size:14px;font-weight:700;letter-spacing:.04em;color:var(--ink-2);margin-bottom:8px}
+.vs .stz .lbl{color:var(--brand-ink)}
+.vs pre{margin:0;font-size:14.5px}
+.vs pre.o{margin-top:8px;border-left:4px solid var(--logo-green);min-height:2.6em}
+.vs .other pre.o{border-left-color:var(--line-2)}
+.vs + .ran{margin-top:10px}
+
+/* a big door: the reader as a main page */
+.doors-wide{grid-template-columns:1fr}
+.door.big{padding:22px 24px}
+.door.big .what{font-size:26px}
+.door.big .how{font-size:16.5px}
+
+/* the coverage matrix */
+.covwrap{overflow-x:auto;margin-top:18px;border:1px solid var(--line);border-radius:12px}
+.cov{width:100%;border-collapse:collapse;font-size:15.5px;min-width:760px;background:var(--panel)}
+.cov th,.cov td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.cov thead th{font-family:"IBM Plex Mono",monospace;font-size:14.5px;font-weight:700;color:var(--ink);background:var(--panel-2)}
+.cov thead th small{display:block;font-weight:400;color:var(--ink-2);font-size:13.5px;margin-top:2px}
+.cov tr.cg th{background:var(--panel-2);font-weight:700;font-size:16px;padding-top:14px}
+.cov th[scope=row]{font-weight:500}
+.cov th[scope=row] small{display:block;font-size:14px;color:var(--ink-2);font-weight:400;margin-top:2px}
+.cv{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:13.5px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.cv.deep{color:var(--strong);background:var(--strong-bg);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--strong) 40%,transparent)}
+.cv.solid{color:var(--solid);background:var(--solid-bg);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--solid) 40%,transparent)}
+.cv.partial{color:var(--partial);background:var(--partial-bg);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--partial) 40%,transparent)}
+.cv.none{color:var(--emerging);background:var(--emerging-bg);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--emerging) 40%,transparent)}
+.cov tr.ct td b{font-family:"Fraunces",serif;font-size:22px;color:var(--brand-ink)}
+.cov tr.ct td small{display:block;font-size:13.5px;color:var(--ink-2)}
+
+/* the narrations list */
+ol.narr{margin-top:14px;padding-left:28px;max-width:none}
+ol.narr li{padding:6px 0;border-bottom:1px solid var(--line);font-size:16.5px}
+ol.narr li small{display:block;font-size:13.5px;color:var(--ink-2)}
+
+/* the three-level headings inside a door section */
+.door-section h3{margin-top:4px}
+
+/* the home band of differentiators */
+.home-ways .cards{margin-top:18px}

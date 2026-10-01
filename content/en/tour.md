@@ -15,10 +15,10 @@ help: → or click: next · ←: previous · n: notes · h: menu · Esc: open th
 Let the picture speak for ten seconds. Then one sentence: "This man is reading code. The wall behind him already says Softanza. Everything I will show tonight is in this picture: knowledge, a place, and a language one can read."
 ```
 
-<<< scene id="why" page="why.html" label="Why" >>>
+<<< scene id="vision" page="vision.html" label="Vision" >>>
 <div class="eyebrow">The founding act</div>
 # Declare <i>a language</i>
-<p>In the agentic era you do not write software.</p>
+<p>In the agentic age you do not write software.</p>
 <p>You <b>declare worlds</b> in languages made for their domains, and you <b>govern</b> how those worlds change.</p>
 <p>Wolfram knows the world's facts. <b>Softanza knows your world.</b></p>
 ```notes
@@ -26,35 +26,40 @@ Three ideas, one per line. Do not read the page. The spoken example: a bank decl
 ```
 
 <<< scene id="platform" page="platform.html" label="Platform" >>>
-<div class="eyebrow">The engine and its faces</div>
-# One engine in Zig, <i>languages as faces</i>
+<div class="eyebrow">One engine, twenty-eight areas</div>
+# One engine in Zig, <i>a language as its face</i>
 <div class="figures">
-<div class="figure"><b>401</b><span>Zig source files</span></div>
-<div class="figure"><b>134</b><span>run-verified narrations</span></div>
+<div class="figure"><b>401</b><span>Zig source files, 179,000 lines</span></div>
+<div class="figure"><b>531,000</b><span>lines of library, 306,000 of tests</span></div>
 <div class="figure"><b>334</b><span>lanes rated in the Atlas</span></div>
-<div class="figure"><b>101 / 129 / 68 / 36</b><span>Strong / Solid / Partial / Emerging</span></div>
+<div class="figure"><b>5,824</b><span>commits since 12 March 2022</span></div>
 </div>
-<p>One engine in Zig · one language, <b>Haro</b>, in construction · twenty-eight areas, each rated honestly.</p>
+<p>One engine in Zig · one language, <b>Haro</b>, in construction · twenty-eight areas, each rated honestly against .NET, Python, Wolfram and the JVM.</p>
 ```notes
 Say the stage as it is: Haro is the platform's language, its virtual machine and compiler exist and run, its charter awaits my ratification; I will not call it available before it is. The platform's credibility is that the Atlas shows its 36 "Emerging" lanes next to its 101 "Strong" ones.
 ```
 
-<<< scene id="atlas" page="atlas.html" label="Atlas" >>>
-<div class="eyebrow">One unified computational platform · 28 groups · 334 rated lanes</div>
-<!--ATLAS-TALLY-->
-<!--ATLAS-COMPACT-->
+<<< scene id="atlas" page="platform.html#areas" label="The areas" >>>
+<div class="eyebrow">Twenty-eight areas, one engine · every picture produced by the platform itself</div>
+<!--ATLAS-WALL-->
 ```notes
-Let the wall of bars speak. "Each bar is a module group; green, blue, amber, red: strong, solid, partial, emerging. No competitor spans all these lines; we span them on one engine, and we show the reds." Click a group if asked: every page has its lanes and an example run tonight.
+Let the wall of pictures speak. "Each picture was rendered by the platform: a map, a waveform, a diagram, a table. No competitor spans all these lines on one engine, and the Atlas page shows the ratings, the low ones beside the high ones." Click an area if asked: every page has its lanes and an example run.
 ```
 
-<<< scene id="learn" page="learn.html" label="Learn" >>>
-<div class="eyebrow">The Learning System · built tonight, 15 chapters × 4 languages</div>
-<div class="embed"><div class="embed-bar"><a href="../reader.html">Full screen</a><span>en · fr · ar · ha — every cell ran; no output stored</span></div><iframe src="../reader.html" title="The Softanza course reader" loading="lazy"></iframe></div>
+<<< scene id="code" page="platform.html#code" label="The code" >>>
+<div class="eyebrow">The code, beside JavaScript · run tonight</div>
+<div class="run"><div><div class="lbl">Softanza</div><pre>? Q(2).Power(64)
+? Q("مرحبا بالعالم").Script()
+? @@( Naturally("Create a list with [ 5, 3, 5, 1 ]
+                 and remove its duplicates").Result() )</pre></div><div class="out"><div class="lbl">Output</div><pre>18446744073709551616
+arabic
+[ 5, 3, 1 ]</pre></div></div>
+<p>JavaScript answers <b>18446744073709552000</b> to the first line. The third line has no counterpart without an external language model.</p>
 ```notes
-Open the reader's menu, switch to Hausa, then to Arabic (right to left). Say: "This reader was built tonight in three minutes twenty-two: every cell of every chapter in every language was run, and the build would be red if one had failed." Then: "Zarma is not in it. That is your invitation."
+Three lines, three points: exact by default; the engine knows the script of a text; an instruction in English, Hausa or Arabic runs, locally, with no model. Say that every block on the site was run tonight and the output sits beside it.
 ```
 
-<<< scene id="govern" page="govern.html" label="Govern" >>>
+<<< scene id="agentic" page="agentic.html" label="Agentic" >>>
 <div class="eyebrow">Agents that cannot hurt you</div>
 # The agent proposes. <i>It does not commit.</i>
 <div class="run"><div><div class="lbl">A student lets loose an agent that "tidies" the course</div><pre>Update plan (610 of 610 operations to commit):
@@ -72,37 +77,52 @@ PROVED  the course folder still holds all 610 files</pre></div></div>
 The story to tell: Amina writes an agent that "tidies" the course. It proposes to delete all 610 files. It cannot: it does not hold the capability to act, it never did. A human reads the plan and refuses. Then the two numbers: credential stuffing was detected in 395 milliseconds and contained in 50, tonight, on this laptop, and the language model investigating could commit nothing.
 ```
 
-<<< scene id="africa" page="africa.html" label="Africa" >>>
+<<< scene id="wise" page="agentic.html#wise" label="Wise coding" >>>
+<div class="eyebrow">Wise coding, against vibe coding · proved tonight, 13 of 13 and 52 of 52</div>
+<figure class="diagram"><img src="../assets/img/diagrams/wise-en.png" alt="Vibe coding: the human prompts, the machine guesses; wise coding: Softanza asks, the gap is measured, each answer is judged, the knowledge base is written." width="1376" height="768"></figure>
+```notes
+"In vibe coding the human prompts and the machine guesses. In wise coding it is Softanza that asks: it knows what a complete model of your world needs, measures the gap, and turns each gap into the next question. The session ends with a knowledge base written, not with code you must trust." Two guards prove it, run tonight.
+```
+
+<<< scene id="estate" page="vision.html#estate" label="The estate" >>>
+<div class="eyebrow">Where the platform stands · stages read in the repositories today</div>
+<figure class="diagram"><img src="../assets/img/diagrams/technology-en.png" alt="The estate: applications, Aïcha, Softanza, Haro, Harobanda, hardware; beside them Takamba, the harness." width="1376" height="768"></figure>
+```notes
+Read the stack bottom-up: ordinary hardware; Harobanda, the declared machine, built; Haro, the language of languages, in construction; Softanza, the foundation, built, tonight's subject; Aïcha, named, nothing else yet; applications on top. Takamba beside: how all of it is built. Say every stage out loud; never say Haro is available.
+```
+
+<<< scene id="learn" page="learn.html" label="Learn" >>>
+<div class="eyebrow">The Learning System · 15 chapters × 4 languages, every cell ran</div>
+# Three steps: <i>introduction, book, documentation</i>
+<div class="pair">
+<div><h4>Hausa · Nemo, sannan ka aiwatar</h4><p>Kowane wurin aiki yana karɓar buƙatu: gidan abinci yana karɓar oda, banki yana karɓar tikiti.</p><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
+? o1.NumberOfItems()
+#--> 6</pre></div>
+<div><h4>French · Trouver, puis agir</h4><p>Tout lieu de travail reçoit des demandes : un restaurant reçoit des commandes, une banque reçoit des tickets.</p><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
+? o1.NumberOfItems()
+#--> 6</pre></div>
+</div>
+<p><a href="../reader.html">Open the reader</a> · en · fr · ar · ha · built tonight in 3 minutes 22 seconds, every cell green</p>
+```notes
+Open the reader from the link, switch to Hausa, then to Arabic (right to left). Say: "This reader was built tonight in three minutes twenty-two: every cell of every chapter in every language was run, and the build would be red if one had failed." Then: "Zarma is not in it. That is your invitation."
+```
+
+<<< scene id="africa" page="vision.html#africa" label="Africa" >>>
 <div class="eyebrow">Born in Africa</div>
-<figure><img src="../assets/img/niger-density.png" alt="Population density map of Niger by region, rendered by the engine." width="1500" height="1240"><figcaption>"Where Niger lives": rendered tonight by the engine in 5.9 seconds from the official borders and the 2012 census; the areas are measured by Softanza's geodesic routine.</figcaption></figure>
+<figure><img src="../assets/img/niger-density.png" alt="Population density map of Niger by region, rendered by the engine." width="1500" height="1240"><figcaption>"Where Niger lives": rendered by the engine in 5.9 seconds from the official borders and the 2012 census; the areas are measured by Softanza's geodesic routine.</figcaption></figure>
 ```notes
 "Agadez is 52% of the territory and 2.8% of the people. That number was not copied from a table: the library measured every region's area on the ellipsoid." Then the roots: Sonibank, the customs school, RestoLean; the course in Hausa; Harobanda, the name of the Niamey bridge.
 ```
 
-<<< scene id="products" page="products.html" label="Products" >>>
-<div class="eyebrow">The family, with its stages</div>
-<div class="cards">
-<div class="card"><h3>Softanza <span class="pill built">built</span></h3><p>The foundation and its engine, public.</p></div>
-<div class="card"><h3>The Learning System <span class="pill built">built</span></h3><p>Two courses, four languages, eleven guards.</p></div>
-<div class="card"><h3>Haro <span class="pill charter">in construction</span></h3><p>The platform's language; its charter awaits.</p></div>
-<div class="card"><h3>Harobanda <span class="pill built">built</span></h3><p>The declared machine, MIT, boots in an emulator.</p></div>
-<div class="card"><h3>Aïcha <span class="pill named">named</span></h3><p>The coming face of the neural tier.</p></div>
-<div class="card"><h3>Zin · Refine · Studio</h3><p><span class="pill built">built</span> <span class="pill spec">specification</span> <span class="pill spec">specification</span></p></div>
-<div class="card"><h3>HaroBase · Bangalo · COBOL</h3><p><span class="pill spec">specification</span> <span class="pill built">built</span> <span class="pill proposal">proposal</span></p></div>
-</div>
-```notes
-One word per card, and the stage out loud. Aïcha: "it is the name I give Softanza's language model; no product carries that name today". Never say Haro is available.
-```
-
 <<< scene id="start" page="start.html" label="Start" >>>
 <div class="eyebrow">Start, in one hour</div>
-# Two public repositories. <i>One folder, copied.</i>
+# One public repository. <i>One folder, copied.</i>
 <pre>git clone https://github.com/mayouni/stzlib.git
 cd stzlib/libraries/stzlib</pre>
 <div class="run"><div><div class="lbl">first</div><pre>? Q("Softanza").Boxed()</pre></div><div class="out"><div class="lbl">Output, tonight</div><pre>┌──────────┐
 │ Softanza │
 └──────────┘</pre></div></div>
-<p>github.com/mayouni/stzlib · codeberg.org/MAyouni/stzlib · this site: github.com/mayouni/stzsite</p>
+<p>github.com/mayouni/stzlib · open edition, MIT · enterprise edition: the same code, plus the people who wrote it</p>
 ```notes
 Close with the invitation: the course in Zarma, the native review of Hausa, and the first "Softanza Architects". Everything shown tonight is a file one can open, and every figure links to the file that proves it.
 ```

@@ -197,3 +197,45 @@ next:
   - me:      the 134 narrations as pages, grouped by area, with their code cells shown as the library stores them
   - author:  open fr/reference/stzstring.html and say whether a maker finds what they came for
 ```
+
+---
+
+```yaml
+by:        stzsite · claude-fable-5-1 · 2026-10-01 18:29
+
+subject:   Release 1, fourth pass -- the site redesigned on the author's list of 2026-10-01: six pages, the Zui ergonomics, the diagrams, the editions, sovereignty, wise coding, the language of languages, Takamba
+
+why:       the author read the third pass and listed what was missing: the site left many dimensions of the project behind and did not yet reflect the depth of a unified computational platform
+
+did:
+  - replaced the eleven-entry menu by six (Platform, Vision, Agentic, Learn, Offering, Start) with the tour and the stzlib GitHub repository as icons in the bar, as on the Harobanda site; the Atlas sits under Platform, the reference and the narrations under Learn
+  - gave every page a sub-menu built from its sections, fixed under the main bar with the main bar itself; removed the previous/next pagers from ordinary pages; the reader is a main page linked from Learn and Start, no longer embedded in an iframe
+  - put the main menu on the home page as a fixed translucent bar and made the hero panel translucent (52 percent) so the elder's face and the sheet of code stay visible behind the slogan
+  - wrote six content pages in French and English from the author's list, in plain language, with a "The Softanza way" marker on each differentiator: platform (figures counted in the repository, the wall of pictures, the engine example, four code comparisons beside Python 3.13 and Node 22 run at 09:26, the coverage matrix against .NET, Python, Wolfram and the JVM from data/coverage.json, one folder copied), vision (the three definitions, the estate diagram, the trajectory, sovereignty and honest lock-in, the twelve principles, every product with its stage, Africa), agentic (the loop with its diagram, wise coding against vibe coding with two guards run at 09:39 giving 13 of 13 and 52 of 52, the language of languages with a diagram whose unbuilt parts are dashed, the Zui constitution with its measured figures, refinement-oriented programming with its book, how an agent reads the platform, the security numbers), learn (introduction, the interactive book as a door, documentation, tutor, overlay, the Zin pedagogy taken, refused and proposed, what is missing), offering (the six doors with their runs, the two editions, what is owned, the references, where to write), start (one repository only)
+  - drew six diagrams in the Harobanda house style with tools/diagrams/house.py, in both languages, every label fitted or refused: the technology estate with Takamba beside it, wise against vibe, the language of languages, propose-rehearse-judge-commit, open against enterprise, the trajectory of commits per year with the tree at end-2024 against today
+  - measured the figures the pages quote and recorded how: 531,012 lines of library in 1,227 files and 306,302 lines of tests in 5,251 files with 501 narrated guards at 0e72e2e2c; 179,233 lines of Zig in 401 files; 5,824 commits on main; at the end of 2024 (a395d09c) 347,670 lines of library and 63,288 of tests in 1,697 commits and no engine, which is the file behind the author's "hand-written before agents" statement, quoted as the author's
+  - replaced the figurative pictures of fifteen areas that were diagrams; names sit under the pictures, no dark band; the Harobanda site's Softanza mark replaces the old one and the wordmark is cut from the original logo
+  - removed every claude.ai link from the site (58 pages carried the Atlas's external links) and every link to Codeberg, Harobanda's and the site's own repositories; only the stzlib repository is linked
+  - removed the compact Atlas grids and tallies from the home and platform pages; the ratings live only on the Atlas page and its group pages
+  - renamed Bangalo to Takamba on the site on the author's word of 2026-10-01; no repository carries the name yet, and the site says the repository is not public
+  - added a narrations page (134 titles from data/narrations.json linking to the repository; the language's name in titles follows the site's rule, file names untouched), the coverage matrix block, the two-sided code block, the sub-menu scroll-spy, and raised every text size below 15 pixels (body 17, proofs 14.5, captions 15, chips 12.5) under the Zui legibility floor
+  - verified in the app's browser over a local server: the sticky sub-menu sits at 62.8 px under the bar, no code block scrolls horizontally on any width, the document never exceeds the viewport at 574 px, the home page shows one visible header per language, the tour has eleven scenes and lands on the scene its hash names
+  - rendered the proofs with tools/shoot.mjs at phone, laptop and projector widths, light and dark, and read nine of them; the figures on the pages are the ones in the diagrams
+
+state:
+  release-1-pass-4:  built; the commit that carries this entry is the one after 7981f9e
+  perception-gate:   OPEN -- the author has not yet read the six pages or opened the tour offline; the verdict goes below
+  takamba:           named on the site by the author's word only; no repository, file or memo carries the name yet
+
+waiting:
+  - STZSITE-VERDICT-02: the author reads the six pages and the tour and says what is wrong -> the author
+                        [not routed: a reading only the author can do]
+  - STZSITE-TAKAMBA-01: the rename Bangalo -> Takamba exists only in this site; the harness repository and the estate's documents still say Bangalo -> Central and the author
+                        [routed in the memo of 2026-10-01]
+
+next:
+  - me:      the narrations as pages of the site (run, not copied), the reader's ladder and cell-to-proof as proposed on the Learn page, native reviews of the French, Arabic and Hausa editions
+  - author:  read, then rule on Takamba's name in the estate's documents
+
+note:      the counts of 2024 were taken from the tree at the last commit of that year, so "written by hand before agents" is a statement the author makes and the site attributes, beside a figure the repository gives.
+```

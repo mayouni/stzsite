@@ -16,22 +16,21 @@ const CHROME = ['C:/Program Files/Google/Chrome/Application/chrome.exe',
   'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'].find(existsSync);
 if (!CHROME) { console.error('no Chrome or Edge found'); process.exit(1); }
 const SIZES = { phone: [390, 844, true], laptop: [1366, 768, false], projector: [1920, 1080, false] };
-const PAGES = ['index.html', 'fr/why.html', 'fr/platform.html', 'fr/atlas.html', 'en/atlas.html', 'fr/learn.html', 'fr/govern.html', 'fr/makers.html',
-  'fr/products.html', 'fr/africa.html', 'fr/start.html', 'fr/tour.html', 'en/why.html', 'en/platform.html',
-  'en/learn.html', 'en/govern.html', 'en/makers.html', 'en/products.html', 'en/africa.html', 'en/start.html',
-  'en/tour.html', 'deck-check.html'];
+const PAGES = ['index.html', 'fr/platform.html', 'fr/vision.html', 'fr/agentic.html', 'fr/learn.html', 'fr/offering.html', 'fr/start.html',
+  'fr/atlas.html', 'fr/narrations.html', 'fr/tour.html', 'en/platform.html', 'en/vision.html', 'en/agentic.html', 'en/learn.html',
+  'en/offering.html', 'en/start.html', 'en/atlas.html', 'en/narrations.html', 'en/tour.html', 'deck-check.html'];
 const PLAN = [];
 for (const p of PAGES) {
   PLAN.push([p, 'laptop', 'light']);
   if (p.startsWith('fr/') || p === 'index.html') { PLAN.push([p, 'phone', 'light']); PLAN.push([p, 'projector', 'light']); }
-  if (['index.html', 'fr/why.html', 'fr/govern.html', 'fr/tour.html', 'en/platform.html'].includes(p)) PLAN.push([p, 'laptop', 'dark']);
+  if (['index.html', 'fr/vision.html', 'fr/agentic.html', 'fr/tour.html', 'en/platform.html'].includes(p)) PLAN.push([p, 'laptop', 'dark']);
 }
 PLAN.push(['index.html?panel=right', 'laptop', 'light'], ['index.html?panel=right', 'phone', 'light']);
 for (const g of ['string', 'geo', 'governance', 'security', 'tables', 'binary']) PLAN.push([`fr/atlas/${g}.html`, 'laptop', 'light']);
 PLAN.push(['fr/reference.html', 'laptop', 'light'], ['fr/reference.html', 'phone', 'light'], ['fr/reference/stzlist.html', 'laptop', 'light'], ['fr/reference/stzstring.html', 'phone', 'light'], ['en/reference/methods-a.html', 'laptop', 'light'], ['en/atlas/numeric.html', 'laptop', 'light'], ['fr/atlas/geo.html', 'phone', 'light'], ['fr/atlas.html', 'laptop', 'dark']);
-for (const k of [2, 3, 4, 5, 6, 7, 8, 9]) PLAN.push([`fr/tour.html#s${k}`, 'projector', 'light']);
+for (const k of [2, 3, 4, 5, 6, 7, 8, 9, 10]) PLAN.push([`fr/tour.html#s${k}`, 'projector', 'light']);
 PLAN.push(['fr/tour.html#s4', 'phone', 'light']);
-const FULL = ['index.html', 'fr/atlas.html', 'fr/atlas/geo.html', 'fr/why.html', 'fr/learn.html', 'fr/govern.html', 'fr/makers.html', 'fr/products.html', 'fr/africa.html', 'fr/start.html', 'en/makers.html'];
+const FULL = ['index.html', 'fr/atlas.html', 'fr/atlas/geo.html', 'fr/platform.html', 'fr/vision.html', 'fr/agentic.html', 'fr/learn.html', 'fr/offering.html', 'fr/start.html', 'en/vision.html', 'en/agentic.html'];
 
 const only = process.argv.slice(2);
 const port = 9333;

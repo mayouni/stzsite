@@ -1,0 +1,50 @@
+{
+  "read_at": "2026-09-17",
+  "source": "the Softanza compass, 'Functional coverage against the platforms', read from the main branch; comparator ratings reflect the mainstream ecosystems and are deliberately generous to the incumbents",
+  "scale": {"deep": {"en": "Deep: first-class, often best-in-class", "fr": "Deep : de premier rang, souvent le meilleur de la catégorie"},
+            "solid": {"en": "Solid: fully usable, mainstream-grade", "fr": "Solid : pleinement utilisable, au niveau du marché"},
+            "partial": {"en": "Partial: present but a subset, or young", "fr": "Partial : présent mais partiel, ou jeune"},
+            "none": {"en": "Absent: not covered, or refused by design", "fr": "Absent : non couvert, ou refusé par choix"}},
+  "platforms": [["softanza", "Softanza", "one engine", "un seul moteur"], ["dotnet", ".NET", "BCL + NuGet", "BCL + NuGet"], ["python", "Python", "stdlib + PyPI", "stdlib + PyPI"], ["wolfram", "Wolfram", "Mathematica", "Mathematica"], ["jvm", "JVM", "JDK + Maven", "JDK + Maven"]],
+  "groups": [
+    {"en": "Data & language", "fr": "Données et langage", "rows": [
+      {"en": "Text & strings", "fr": "Texte et chaînes", "note_en": "codepoint-correct by default", "note_fr": "correct au point de code par défaut", "r": ["deep", "deep", "deep", "deep", "deep"]},
+      {"en": "Regular expressions", "fr": "Expressions régulières", "r": ["deep", "deep", "deep", "solid", "deep"]},
+      {"en": "Collections & functional", "fr": "Collections et fonctionnel", "r": ["deep", "deep", "deep", "deep", "deep"]}]},
+    {"en": "Math & analytics", "fr": "Mathématiques et analyse", "rows": [
+      {"en": "Numeric & linear algebra", "fr": "Numérique et algèbre linéaire", "r": ["solid", "solid", "deep", "deep", "solid"]},
+      {"en": "Symbolic mathematics", "fr": "Mathématiques symboliques", "note_en": "no computer algebra in Softanza", "note_fr": "pas de calcul symbolique dans Softanza", "r": ["none", "partial", "solid", "deep", "partial"]},
+      {"en": "Statistics & modeling", "fr": "Statistiques et modélisation", "r": ["partial", "solid", "deep", "deep", "solid"]},
+      {"en": "Dataframes & tabular", "fr": "Tables de données", "r": ["solid", "solid", "deep", "solid", "solid"]},
+      {"en": "Charts & data-viz", "fr": "Graphiques et visualisation", "r": ["solid", "solid", "deep", "deep", "solid"]}]},
+    {"en": "Intelligence", "fr": "Intelligence", "rows": [
+      {"en": "Neural / machine learning", "fr": "Neuronal / apprentissage automatique", "note_en": "inference only; no training foundry", "note_fr": "inférence seulement ; pas de fonderie d'entraînement", "r": ["partial", "solid", "deep", "solid", "solid"]},
+      {"en": "NLP & linguistics", "fr": "Langage naturel et linguistique", "r": ["solid", "solid", "deep", "deep", "solid"]},
+      {"en": "LLM agents & orchestration", "fr": "Agents LLM et orchestration", "note_en": "governed: the model proposes, never acts", "note_fr": "gouverné : le modèle propose, n'agit jamais", "r": ["solid", "solid", "deep", "partial", "solid"]}]},
+    {"en": "Graphics, spatial & media", "fr": "Graphisme, espace et médias", "rows": [
+      {"en": "2D graphics & rendering", "fr": "Graphisme 2D et rendu", "note_en": "one Zig engine, SVG floor", "note_fr": "un seul moteur Zig, SVG pour plancher", "r": ["deep", "deep", "solid", "deep", "deep"]},
+      {"en": "GPU compute", "fr": "Calcul GPU", "r": ["solid", "solid", "deep", "solid", "solid"]},
+      {"en": "Geospatial & mapping", "fr": "Géographie et cartographie", "note_en": "44 projections, geodesy, spatial statistics", "note_fr": "44 projections, géodésie, statistiques spatiales", "r": ["deep", "solid", "deep", "deep", "solid"]},
+      {"en": "Audio & DSP", "fr": "Audio et traitement du signal", "r": ["solid", "solid", "solid", "deep", "solid"]},
+      {"en": "GUI / desktop", "fr": "Interface graphique", "note_en": "young plane, not yet pushed", "note_fr": "plan jeune, pas encore publié", "r": ["partial", "deep", "solid", "deep", "deep"]}]},
+    {"en": "Systems & runtime", "fr": "Systèmes et exécution", "rows": [
+      {"en": "Concurrency & distribution", "fr": "Concurrence et distribution", "r": ["deep", "deep", "solid", "solid", "deep"]},
+      {"en": "Web & app server", "fr": "Web et serveur d'applications", "r": ["solid", "deep", "deep", "partial", "deep"]},
+      {"en": "Databases & SQL", "fr": "Bases de données et SQL", "note_en": "SQLite and a query layer; no ORM ecosystem", "note_fr": "SQLite et une couche de requête ; pas d'écosystème ORM", "r": ["partial", "deep", "deep", "solid", "deep"]},
+      {"en": "System & OS programming", "fr": "Programmation système", "note_en": "governed-effects surface", "note_fr": "surface d'effets gouvernés", "r": ["solid", "deep", "deep", "partial", "deep"]},
+      {"en": "Internationalization & Unicode", "fr": "Internationalisation et Unicode", "note_en": "a deliberate bet against ICU", "note_fr": "un pari délibéré contre ICU", "r": ["partial", "deep", "solid", "solid", "deep"]},
+      {"en": "Date, time & calendars", "fr": "Dates, heures et calendriers", "note_en": "no time-zone database", "note_fr": "pas de base de fuseaux horaires", "r": ["partial", "deep", "solid", "solid", "deep"]}]},
+    {"en": "Formats & security", "fr": "Formats et sécurité", "rows": [
+      {"en": "File formats & serialization", "fr": "Formats de fichiers et sérialisation", "note_en": "safety-first subsets; XXE closed", "note_fr": "sous-ensembles sûrs ; XXE fermé", "r": ["solid", "deep", "deep", "solid", "deep"]},
+      {"en": "Cryptography & security", "fr": "Cryptographie et sécurité", "r": ["solid", "deep", "solid", "solid", "deep"]},
+      {"en": "Interop / FFI / plugins", "fr": "Interopérabilité et greffons", "note_en": "consumes well, exposes little", "note_fr": "consomme bien, expose peu", "r": ["partial", "deep", "deep", "partial", "solid"]}]},
+    {"en": "Platform & discipline", "fr": "Plateforme et discipline", "rows": [
+      {"en": "Metaprogramming & code rules", "fr": "Métaprogrammation et règles de code", "note_en": "one gate over about eleven domains", "note_fr": "une seule porte sur une dizaine de domaines", "r": ["solid", "deep", "solid", "deep", "solid"]},
+      {"en": "Test & quality tooling", "fr": "Outils de test et de qualité", "note_en": "techniques lead, tooling trails", "note_fr": "les techniques mènent, l'outillage suit", "r": ["solid", "deep", "deep", "solid", "deep"]},
+      {"en": "Documentation tooling", "fr": "Outils de documentation", "note_en": "authoring leads, publishing trails", "note_fr": "l'écriture mène, la publication suit", "r": ["solid", "solid", "deep", "deep", "deep"]},
+      {"en": "Package / build / deploy", "fr": "Paquets, construction, déploiement", "note_en": "a library, not a registry", "note_fr": "une bibliothèque, pas un registre", "r": ["none", "deep", "deep", "solid", "deep"]},
+      {"en": "Governance & safe execution", "fr": "Gouvernance et exécution sûre", "note_en": "effectful action refused by construction", "note_fr": "l'action à effet refusée par construction", "r": ["deep", "partial", "partial", "partial", "partial"]}]}
+  ],
+  "tally": {"softanza": [7, 14, 7, 2], "dotnet": [16, 12, 2, 0], "python": [19, 10, 1, 0], "wolfram": [13, 12, 5, 0], "jvm": [16, 12, 2, 0]},
+  "present": {"softanza": "28/30", "dotnet": "30/30", "python": "30/30", "wolfram": "30/30", "jvm": "30/30"}
+}

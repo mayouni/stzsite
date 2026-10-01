@@ -49,3 +49,22 @@
   var pl = root.getAttribute('lang');
   if (!root.classList.contains('home') && (pl === 'fr' || pl === 'en')) store('stz-lang', pl);
 })();
+
+/* the sub-menu names the section the reader is in */
+(function () {
+  var sub = document.querySelector('.submenu');
+  if (!sub) return;
+  var links = sub.querySelectorAll('a[href^="#"]');
+  var heads = [];
+  for (var i = 0; i < links.length; i++) {
+    var h = document.getElementById(links[i].getAttribute('href').slice(1));
+    if (h) heads.push([h, links[i]]);
+  }
+  function spy() {
+    var y = window.scrollY + 150, cur = null;
+    for (var i = 0; i < heads.length; i++) if (heads[i][0].offsetTop <= y) cur = heads[i][1];
+    for (var i = 0; i < heads.length; i++) heads[i][1].classList.toggle('on', heads[i][1] === cur);
+    if (cur && cur.scrollIntoView) { var r = cur.getBoundingClientRect(), w = sub.getBoundingClientRect(); if (r.left < w.left || r.right > w.right) cur.scrollIntoView({ block: 'nearest', inline: 'center' }); }
+  }
+  window.addEventListener('scroll', spy, { passive: true }); spy();
+})();

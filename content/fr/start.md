@@ -1,20 +1,20 @@
 ---
-title: Commencer
-title_html: <i>Commencer</i>
+title: Démarrer
+title_html: <i>Démarrer</i>
 kicker: En une heure
-lede: Deux dépôts publics, une installation en trois commandes, un premier programme, le lecteur du cours. Chaque commande de cette page a été exécutée cette nuit.
-description: Comment commencer avec Softanza : les dépôts GitHub et Codeberg, l'installation, le premier programme, la première narration, le lecteur du cours, et où écrire.
+lede: Un dépôt public, une installation en deux commandes, un premier programme, le lecteur du cours comme page de ce site. Chaque commande de cette page a été exécutée le soir de la publication.
+description: Comment démarrer avec Softanza : le dépôt GitHub, l'installation, le premier programme, la première narration, le lecteur du cours, et où écrire.
 ---
 
-## Les dépôts
+## Le dépôt {#repository}
+
+Tout est au même endroit : la fondation, son moteur, ses gardes, ses narrations et son cours.
 
 <div class="cards">
-<div class="card"><h3>GitHub</h3><p>La fondation, son moteur, ses narrations et son cours.</p><p class="proof"><a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a></p></div>
-<div class="card"><h3>Codeberg</h3><p>Le même dépôt, poussé à chaque commit, sur une forge européenne.</p><p class="proof"><a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a></p></div>
-<div class="card"><h3>Ce site</h3><p>Généré par un script Python à partir de fichiers Markdown ; polices et images hébergées ici, pour qu'il s'ouvre hors ligne.</p><p class="proof"><a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p></div>
+<div class="card"><h3>github.com/mayouni/stzlib</h3><p>Public sous licence MIT depuis le 12 mars 2022. Les tickets, les avis de sécurité et tout l'historique y sont.</p><p class="proof"><a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a></p></div>
 </div>
 
-## Installer
+## Installer {#install}
 
 Le moteur Zig est livré en bibliothèques compilées pour Windows et se construit pour Linux et macOS depuis la source ; l'exécutant de la plateforme est décrit dans le dépôt. Il n'y a rien à installer au sens d'un installateur : un dossier, copié.
 
@@ -23,7 +23,7 @@ cd stzlib/libraries/stzlib</pre>
 
 Un script placé dans le dossier <code>libraries/stzlib</code> charge la bibliothèque par une ligne ; l'exécutant qui le lance, et sa version, sont ceux que le dépôt indique.
 
-## Le premier programme
+## Le premier programme {#first}
 
 <div class="run"><div><div class="lbl">premier</div><pre>o1 = new stzList([ "A", "", "B", "", "", "C" ])
 ? o1.ContainsEmptyStrings()
@@ -34,32 +34,32 @@ Un script placé dans le dossier <code>libraries/stzlib</code> charge la bibliot
 └──────────┘</pre></div></div>
 <p class="ran">exécuté le 2026-10-01 à 00:45 depuis <code>libraries/stzlib</code>, Softanza au commit <a href="https://github.com/mayouni/stzlib/commit/0e72e2e2c">0e72e2e2c</a></p>
 
-## La première narration
+## La première narration {#narration}
 
-Une narration est un document dont chaque bloc de code s'exécute, et dont les sorties ne sont jamais stockées : ce que vous lisez a été produit en lisant. Commencez par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-mental-mode-narration.md">le modèle mental</a>, puis <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md">les agents qui ne peuvent pas vous nuire</a>. Les 134 narrations sont dans <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/doc/narrations">doc/narrations</a>.
+Une narration est un document où chaque bloc de code s'exécute et où aucune sortie n'est jamais stockée : ce que vous lisez a été produit pendant la lecture. Commencez par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-mental-mode-narration.md">le modèle mental</a>, puis <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md">les agents qui ne peuvent pas vous nuire</a>. Les 134 sont listées sur <a href="narrations.html">la page des narrations</a>.
 
-## Le lecteur du cours
+## Le lecteur du cours {#reader}
 
-Le lecteur est [sur la page Apprendre](learn.html), construit cette nuit. Pour le reconstruire vous-même, depuis votre copie du dépôt :
+Le lecteur est une page de ce site : <a href="../reader.html">ouvrir le lecteur</a>. Il a été construit depuis la bibliothèque le 2026-09-30, et <a href="learn.html">la page Apprendre</a> dit comment apprendre avec lui, étape par étape. Pour le reconstruire vous-même, depuis votre copie du dépôt :
 
 <pre>cd libraries/stzlib/base/education/tools
 # lancer build_reader avec l'exécutant du dépôt :
-#   build_reader lecteur.html</pre>
+#   build_reader reader.html</pre>
 
-<p class="ran">exécuté le 2026-09-30 à 23:02 : « 15 of 15 chapters, 3 of 3 world pages », toutes les éditions vertes, en 3 minutes 22 secondes</p>
+<p class="ran">exécuté le 2026-09-30 à 23:02 : « 15 of 15 chapters, 3 of 3 world pages », chaque édition verte, en 3 minutes 22 secondes</p>
 
-Et pour jouer la démo de quinze minutes pour décideurs, dont la dernière ligne doit dire « DEMO: 20 proved, 0 not proved » :
+Et pour jouer la démonstration de quinze minutes pour décideurs, dont la dernière ligne doit dire « DEMO: 20 proved, 0 not proved » :
 
 <pre>cd libraries/stzlib/base/education/demo
 # lancer demo avec l'exécutant du dépôt :
-#   demo repetition</pre>
+#   demo rehearsal</pre>
 
 <p class="ran">exécuté le 2026-09-30 à 23:10, en 49 secondes, 20 preuves sur 20</p>
 
-## Écrire
+## Écrire {#write}
 
-Les questions, les rapports de défaut et les propositions passent par les <a href="https://github.com/mayouni/stzlib/issues">issues du dépôt GitHub</a>. Une faille de sécurité se signale en privé par les avis de sécurité du dépôt, comme l'indique son fichier <a href="https://github.com/mayouni/stzlib/blob/main/SECURITY.md">SECURITY.md</a>. Une édition du cours dans votre langue, zarma ou autre, commence par un dossier de chapitres en texte brut : [la page Apprendre](learn.html) dit comment le tribunal du cours la jugera.
+Les questions, les rapports de défaut et les propositions passent par <a href="https://github.com/mayouni/stzlib/issues">les tickets du dépôt GitHub</a>. Une faille de sécurité se signale en privé par les avis de sécurité du dépôt, comme le dit son <a href="https://github.com/mayouni/stzlib/blob/main/SECURITY.md">SECURITY.md</a>. Une édition du cours dans votre langue commence par un dossier de chapitres en texte brut : <a href="learn.html">la page Apprendre</a> dit comment le tribunal du cours la jugera. Pour l'édition entreprise, écrivez par les mêmes tickets : <a href="offering.html">la page Offre</a> dit ce qu'elle contient.
 
-## Vérifier ce site hors ligne
+## Vérifier ce site hors ligne {#offline}
 
 Avant une présentation sans réseau, ouvrez <a href="../deck-check.html">deck-check.html</a> depuis le dossier du site : la page charge chaque ressource dont la présentation a besoin et dit laquelle manque.
