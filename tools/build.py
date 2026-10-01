@@ -263,7 +263,13 @@ def main():
     for lang in LANGS:
         for slug, _ in order[lang]:
             assets.append({"kind": "page", "path": f"{lang}/{slug}.html"})
-    if (ROOT / "reader.html").exists():
+    reader = ROOT / "reader.html"
+    if reader.exists():
+        # the reader is built by the library's build_reader.ring; the one line the
+        # offline check listens for is appended to this copy, never to the tool
+        r = reader.read_text(encoding="utf-8")
+        if "stzsite:'page'" not in r:
+            reader.write_text(r.replace("</body>", PAGE_PING + "</body>", 1), encoding="utf-8")
         assets.append({"kind": "page", "path": "reader.html"})
     build_deck_check(assets)
     print(f"built {len(outs)} pages + index.html + deck-check.html; tour scenes fr={len(scenes['fr'])} en={len(scenes['en'])}")
