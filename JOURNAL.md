@@ -81,3 +81,34 @@ next:
 ```
 
 > **Correction, 2026-10-01 01:06.** The first entry above is stamped "01:20" and that stamp was COMPOSED, not read from the clock: the commit that carried it, 73ee023, was made at 2026-10-01 01:03. The estate's rule (read the stamp from the clock, never compose it) was broken in this journal's first line; the stamp is left as written so the defect stays visible, and this note is the repair.
+
+---
+
+```yaml
+by:        stzsite · claude-fable-5-1 · 2026-10-01 01:59
+
+subject:   the Atlas made native -- the platform's reach is now the centre of the site
+
+why:       the author's reading of the first release: it told the story and missed the reach of a unified computational platform, the thing the Atlas and its modules show; a site for Softanza must reflect its depth the way Wolfram's reflects the Wolfram Language
+
+did:
+  - read the Atlas index (v21, 28 groups, 334 lanes, 101/129/68/36) and had the 28 group pages extracted to data by four agents in parallel: each lane with its rating, note and the proof it cites, plus standouts, debts, peers, folders and the date read
+  - built fr/atlas.html and en/atlas.html (six bands, 28 cards, the tally) and 56 group pages (fr/atlas/<slug>.html, en/atlas/<slug>.html): thesis, standouts, debts, the twelve lanes, and one code example per group RUN tonight with its output beside it (26 of 28; binary has no code to run and the Python bridge was not exercised, and both pages say so)
+  - probed 90 candidate calls against the library in three passes and kept only what ran: an exact 2^64, a 5,384-method string, Niamey to Tunis in 2,726 km, a directed graph's shortest path, a virtual file system the disk does not see, an RTX 3050 answering by name, a ggml engine with no model on disk, Hausa's native name in Ajami, SHA-256, sentiment and lemmas
+  - put a compact grid of the 28 bars on the home page, the platform page and a tour scene (scene 4 of 9); added Atlas to the navigation (ten entries, still one line at 1366 px, verified by render)
+  - carried two honest divergences on their pages as "two readings": the security group page still shows the September ratings (3/6/2/1) while the Atlas card was re-rated 6/5/0/1 on 2026-09-30; the tables page's chips (2/7/3/0) disagree with its own legend (2/6/3/1)
+  - rendered 79 proofs (the Atlas pages at phone, laptop, projector and dark included); deck-check from file:// reads 57 of 57 found
+  - pushed 47d0126 to github.com/mayouni/stzsite; the Pages deploy is checked in the next entry
+
+state:
+  release-0:        BUILT and DEPLOYED with the Atlas native, UNPERCEIVED
+  perception-gate:  OPEN -- the author's verdict section below is still empty
+
+waiting:
+  - STZSITE-VERDICT-01: unchanged -> the author
+
+next:
+  - author:  open fr/atlas.html and one group page on the presenting laptop, offline, and say whether the reach reads
+  - me:      Release 1 -- the proof gallery (134 narrations as pages), the compass pages (coverage vs the platforms, programming by heart, mathematics, learning), a documentation entry
+  - stzlib:  five findings the group pages carry from their own sources -- the tables page is internally inconsistent by one lane; the security group page predates the 2026-09-30 re-rate; the performance page flags a stale CLAUDE.md line (P0-P7 / 283 assertions against P0-P11 / 366 in the code); the neural page flags its own design doc as stale; the gui page says the plane is on local main only -- all for the compass and the planes, none edited here
+```
