@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Softanza · deck check</title>
+<link rel="icon" href="assets/img/mark-32.png">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/family.css">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="page">
+<main id="main"><div class="wrap" style="padding-block:40px">
+<div class="eyebrow">deck-check.html</div>
+<h1 style="font-size:40px">Every asset the tour needs, checked from this file</h1>
+<p class="thesis">Open this page from the laptop that will present, offline. Each line below is an asset the tour loads; the page tries to load it now and reports found or missing. No network is used. If everything reads <b>found</b>, the tour works from <code>file://</code>.</p>
+<p class="mono small" id="summary" style="margin-top:18px">checking…</p>
+<div class="twrap" style="margin-top:18px"><table id="t" style="min-width:0"><thead><tr><th>kind</th><th>asset</th><th>state</th></tr></thead><tbody></tbody></table></div>
+<p class="small" style="margin-top:16px">Fonts are checked with the browser's font-loading API; images and stylesheets by loading them; pages by opening them in a hidden frame and waiting for the one-line message every generated page posts to its parent. A page that stays silent for eight seconds is reported missing.</p>
+</div></main>
+<script>
+var ASSETS = /*ASSETS*/[];
+var tb = document.querySelector('#t tbody'), done = 0, missing = 0;
+var FONTS = {'Fraunces-normal':'Fraunces','Fraunces-italic':'Fraunces','IBMPlexSans-normal':'IBM Plex Sans','IBMPlexSans-italic':'IBM Plex Sans','IBMPlexMono-normal':'IBM Plex Mono'};
+function row(a){var tr=document.createElement('tr');tr.innerHTML='<td class="mono">'+a.kind+'</td><td class="mono">'+a.path+'</td><td class="st">…</td>';tb.appendChild(tr);return tr.querySelector('.st');}
+function mark(el, ok){el.innerHTML = ok ? '<span class="chip strong">found</span>' : '<span class="chip emerging">MISSING</span>'; done++; if(!ok) missing++; summary();}
+function summary(){document.getElementById('summary').textContent = done + ' of ' + ASSETS.length + ' checked, ' + missing + ' missing' + (done===ASSETS.length ? (missing? ' -- FIX BEFORE PRESENTING' : ' -- the tour is complete on this machine') : '');}
+ASSETS.forEach(function(a){
+  var st = row(a);
+  if (a.kind === 'image') { var im = new Image(); im.onload = function(){mark(st,true)}; im.onerror = function(){mark(st,false)}; im.src = a.path; }
+  else if (a.kind === 'css' || a.kind === 'script') {
+    var el = document.createElement(a.kind === 'css' ? 'link' : 'script');
+    if (a.kind === 'css') { el.rel = 'stylesheet'; el.href = a.path + '?check=1'; } else { el.src = a.path + '?check=1'; el.async = true; }
+    el.onload = function(){mark(st,true)}; el.onerror = function(){mark(st,false)}; document.head.appendChild(el);
+  }
+  else if (a.kind === 'font') {
+    var m = /assets\/fonts\/(\w+-\w+)-(\d+)(?:-\d+)?-/.exec(a.path); var fam = m && FONTS[m[1]], w = m ? m[2] : '400';
+    var style = /italic/.test(a.path) ? 'italic ' : '';
+    if (!fam || !document.fonts) { mark(st,false); return; }
+    document.fonts.load(style + w + ' 16px "' + fam + '"').then(function(fs){ mark(st, fs.length > 0); }, function(){ mark(st,false); });
+  }
+  else if (a.kind === 'page') {
+    var fr = document.createElement('iframe'); fr.style.cssText='position:absolute;width:2px;height:2px;left:-9px;opacity:0'; fr.setAttribute('aria-hidden','true');
+    var t = setTimeout(function(){ mark(st,false); fr.remove(); }, 8000);
+    var want = a.path.replace(/^.*\//,'');
+    window.addEventListener('message', function h(e){ if (e.data && e.data.stzsite === 'page' && e.data.href && e.data.href.indexOf(a.path) !== -1) { clearTimeout(t); mark(st,true); fr.remove(); window.removeEventListener('message', h); } });
+    fr.src = a.path; document.body.appendChild(fr);
+  }
+});
+</script>
+</body></html>

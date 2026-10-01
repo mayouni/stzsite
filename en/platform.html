@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The engine and its faces · Softanza</title>
+<meta name="description" content="The Softanza architecture: a Zig engine of hundreds of modules, Ring as today&#x27;s face, Ring++ as the bridge, Haro at charter stage, and the Atlas that rates every domain.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../assets/img/mark-180.png">
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="../assets/css/family.css">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-platform">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../index.html" aria-label="Softanza"><img src="../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="why.html">Why</a><a href="platform.html" aria-current=page>Platform</a><a href="learn.html">Learn</a><a href="govern.html">Govern</a><a href="makers.html">Makers</a><a href="products.html">Products</a><a href="africa.html">Africa</a><a href="start.html">Start</a><a href="tour.html">Tour</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../fr/platform.html" lang="fr" hreflang="fr">Français</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Theme" title="Theme: light / dark / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">The platform</div>
+    <h1>The engine <i>and its faces</i></h1>
+    <p class="thesis">Substance lives in an engine written in Zig. Languages are its faces. Ring is the one you write today, Ring++ is the bridge, Haro is the language after, at charter stage.</p>
+  </div></section>
+  <div class="wrap page-body">
+<h2 id="the-engine-is-the-product">The engine is the product</h2>
+<p>Strings, tables, graphs, geography, GPU, sound, neural networks, cryptography, database, HTTP, regular expressions, statistics, linear algebra, Fourier transforms: all of it is written in Zig, in one engine, exposed to languages through a C interface. The language you type is a face; what computes is the engine.</p>
+<div class="figures">
+<div class="figure"><b>401</b><span>Zig source files in the engine</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/engine/src">engine/src</a></div>
+<div class="figure"><b>5,822</b><span>commits on the main branch</span><a href="https://github.com/mayouni/stzlib/commits/main">commits/main</a></div>
+<div class="figure"><b>134</b><span>run-verified narrations</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/doc/narrations">doc/narrations</a></div>
+<div class="figure"><b>2</b><span>public repositories, GitHub and Codeberg</span><a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a></div>
+</div>
+
+<p>Fourteen GPU modules, nine geographic ones, six neural, seven for sound: the families read in the file names of the folder linked above, and that is where they are counted.</p>
+<h2 id="ring-ring-haro">Ring, Ring++, Haro</h2>
+<div class="cards">
+<div class="card"><h3>Ring <span class="pill built">today</span></h3><p>The face you write today. A small, readable, multiparadigm language that the Softanza library turns into a sentence: <code>o1.ContainsDuplicates()</code> reads as it is written. Ring is not carried forward as a runtime or a governance; its simplicity and expressiveness are.</p></div>
+<div class="card"><h3>Ring++ <span class="pill built">the bridge</span></h3><p>A register virtual machine and a compiler, in Zig, "sovereign, not new", that run existing Ring code. They are judged against Ring 1.27's machine, taken as the oracle. The Softanza library, over three hundred thousand lines, is their compatibility specification.</p><p class="proof"><a href="https://github.com/mayouni/ringpp">github.com/mayouni/ringpp</a></p></div>
+<div class="card"><h3>Haro <span class="pill charter">charter</span></h3><p>The language after Ring, designed for an agent to write and a human to govern, on the Ring++ virtual machine. Its charter is a v0.1 draft of 2026-09-26 awaiting the author's ratification. Nothing is built: no parser, no compiler. This site will never present Haro as available.</p></div>
+</div>
+
+<h2 id="the-atlas-every-domain-rated-honestly">The Atlas: every domain rated, honestly</h2>
+<p>The Softanza Atlas is the survey of what the library can do, group by group, lane by lane, with four ratings: <span class="chip strong">Strong</span> <span class="chip solid">Solid</span> <span class="chip partial">Partial</span> <span class="chip emerging">Emerging</span>. It shows its gaps; that is what makes its strengths believable.</p>
+<div class="figures">
+<div class="figure"><b>28</b><span>groups: 25 module groups and 3 cross-cutting systems</span></div>
+<div class="figure"><b>334</b><span>rated lanes</span></div>
+<div class="figure"><b>101 · 129</b><span>Strong · Solid</span></div>
+<div class="figure"><b>68 · 36</b><span>Partial · Emerging</span></div>
+</div>
+
+<p class="proof">Atlas version 21, re-read on 2026-09-30 at commit <a href="https://github.com/mayouni/stzlib/commit/0e72e2e2c">0e72e2e2c</a>: <a href="https://claude.ai/artifact/FCeuCNfcZepUDJLxsynwFB">the Atlas online</a>. The Atlas pages will be ported to this site in the next release.</p>
+
+<h2 id="what-engine-means-here">What "engine" means here</h2>
+<p>A tiny, real example: Ring counts bytes, the engine counts characters. The Arabic word "سلام" is eight bytes and four letters.</p>
+<div class="run"><div><div class="lbl">Ring</div><pre>? len("سلام")
+? Q("سلام").NumberOfChars()
+? Q("مرحبا بالعالم").Script()
+? Q("SOFTANZA").BoxedXT([ :Rounded = TRUE ])</pre></div><div class="out"><div class="lbl">Output</div><pre>8
+4
+arabic
+╭──────────╮
+│ SOFTANZA │
+╰──────────╯</pre></div></div>
+<p class="ran">run on 2026-09-30 at 23:11, Ring 1.27, Softanza at commit 0e72e2e2c</p>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"><a class="pager prev" href="why.html"><small>Previous page</small><b>Why</b></a><a class="pager next" href="learn.html"><small>Next page</small><b>Learn</b></a></div>
+  <div class="foot-grid">
+    <div><img src="../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">The Makers Platform of the Agentic Age<br>Born in Africa. Useful to the World!</p></div>
+    <div class="foot"><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.</p>
+      <p class="mono small">Repositories: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, self-hosted on this site. Site generated on 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>
