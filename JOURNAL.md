@@ -53,3 +53,29 @@ here, Release 0 is BUILT and UNPERCEIVED, not done.*
 - deck-check.html: __ of __ found
 - what was seen:
 - what was wrong:
+
+---
+
+```yaml
+by:        stzsite · claude-fable-5-1 · 2026-10-01 01:06
+
+subject:   Release 0 deployed -- https://mayouni.github.io/stzsite/ answers, deck-check reads 55 of 55
+
+why:       the previous entry said deck-check reported every asset found; it did not, and the record must say so
+
+did:
+  - corrected the previous entry: at the time it was written, deck-check reported 54 of 55 then 1 missing, because the reader copy had no ping line; the build now appends that one line to the copy (never to the library's tool) and deck-check from file:// reads 55 of 55, 0 missing (proofs/deck-check--laptop-light.webp)
+  - pushed main to github.com/mayouni/stzsite (first push 73ee023 + 8c57fba); enabled GitHub Pages with the Actions workflow as source; the deploy completed and the site answers 200 at https://mayouni.github.io/stzsite/ and /fr/tour.html, with the right title
+  - renamed the workflow inherited from stzweb-redirect so the run list says what it deploys
+
+state:
+  release-0:        BUILT and DEPLOYED, UNPERCEIVED
+  perception-gate:  OPEN -- the section below is still empty
+
+waiting:
+  - STZSITE-VERDICT-01: unchanged -> the author
+
+next:
+  - author:  clone the repository, open deck-check.html then fr/tour.html with the network off, and write the verdict below
+  - me:      Release 1 after the verdict
+```

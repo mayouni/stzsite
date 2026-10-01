@@ -1,7 +1,7 @@
-name: Deploy the redirect page
+name: Deploy the site
 
-# The legacy Pages builder refused this repository after the stzweb name was
-# freed by the rename; deploying the static files directly avoids it entirely.
+# Deploys the static files as they are: the generated pages are committed, so
+# no build step runs here. Copied from stzweb-redirect on 2026-09-30.
 on:
   push:
     branches: [main]
