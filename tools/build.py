@@ -88,7 +88,7 @@ UI = {
     "measured": "Mesuré contre", "folders": "Dossiers", "standouts": "Ce qu'un maker en fait, et ce qui se distingue", "gaps": "Ce qui est dû",
     "lanes_h": "Les couloirs, un par un", "lanes_note": "Les couloirs et leurs notes sont cités tels qu'ils ont été lus à la source, le",
     "example": "Un exemple, exécuté", "no_example": "Aucun exemple exécuté sur cette page", "output": "Sortie",
-    "source": "la source", "nopic": "Pas encore d'image",
+    "source": "la source", "nopic": "Pas encore d'image", "guide": "Le guide des fonctions de ce domaine",
     "narr_title": "Narrations", "narr_title_html": "Les <i>narrations</i>", "narr_kicker": "La documentation qui s'exécute",
     "narr_lede": "Cent trente-quatre documents où chaque bloc de code s'exécute quand on le lit et où aucune sortie n'est stockée. Chacun est un fichier du dépôt ; le titre est celui du fichier.",
     "narr_desc": "Les 134 narrations de Softanza, listées avec leur fichier dans le dépôt.",
@@ -112,7 +112,7 @@ UI = {
     "measured": "Measured against", "folders": "Folders", "standouts": "What a maker does with it, and what stands out", "gaps": "What is owed",
     "lanes_h": "The lanes, one by one", "lanes_note": "Lanes and their notes are quoted as they were read at the source, on",
     "example": "One example, run", "no_example": "No example run on this page", "output": "Output",
-    "source": "the source", "nopic": "No picture yet",
+    "source": "the source", "nopic": "No picture yet", "guide": "The guide to this area's functions",
     "narr_title": "Narrations", "narr_title_html": "The <i>narrations</i>", "narr_kicker": "Documentation that runs",
     "narr_lede": "One hundred and thirty-four documents where every code block runs as it is read and no output is stored. Each is a file of the repository; the title is the file's own.",
     "narr_desc": "Softanza's 134 narrations, listed with their file in the repository.",
@@ -425,6 +425,28 @@ def heritage_html(lang, slug):
             f'<div class="sg"><div><h4>{ui["kept"]}</h4><ul>{items(h.get("kept", []), False)}</ul></div>'
             f'<div><h4>{ui["re"]}</h4><ul>{items(h.get("rethought", []), True)}</ul></div></div>')
 
+# the distinctive capability of each area, run inside the library (data/showcase.json)
+SHOW_UI = {"fr": {"h": "La manière Softanza, exécutée", "ran": "exécuté le {d} dans la bibliothèque au commit 0e72e2e2c ; tiré de",
+                  "intro": "Ce que Softanza fait autrement dans ce domaine, montré par du code tiré de ses narrations et de ses gardes, et exécuté pour cette page."},
+           "en": {"h": "The Softanza way, run", "ran": "run on {d} inside the library at commit 0e72e2e2c; taken from",
+                  "intro": "What Softanza does differently in this area, shown by code taken from its narrations and guards, and run for this page."}}
+def load_showcase():
+    f = DATA / "showcase.json"
+    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+SHOWCASE = load_showcase()
+
+def showcase_html(lang, slug):
+    items = SHOWCASE.get(slug)
+    if not items: return ""
+    ui = SHOW_UI[lang]; out_lbl = "Sortie" if lang == "fr" else "Output"
+    parts = [f'<h2>{ui["h"]}</h2><p>{ui["intro"]}</p>']
+    for it in items:
+        parts.append(f'<p style="margin-top:32px"><b>{esc(it["what_" + lang])}</b></p>'
+                     f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(it["code"])}</pre></div>'
+                     f'<div class="out"><div class="lbl">{out_lbl}</div><pre>{esc(it["out"])}</pre></div></div>'
+                     f'<p class="ran">{ui["ran"].format(d=esc(it["ran"]))} <a href="{esc(src_link(it["source"]))}">{esc(it["source"].split(" ")[0])}</a></p>')
+    return "".join(parts)
+
 RATING_CLASS = {"Strong": "strong", "Solid": "solid", "Partial": "partial", "Emerging": "emerging"}
 
 def build_group_page(lang, idx, groups, i):
@@ -441,7 +463,9 @@ def build_group_page(lang, idx, groups, i):
         sg = (f'<div class="sg"><div><h4>{ui["standouts"]}</h4><ul>{"".join(f"<li>{esc(s)}</li>" for s in d.get("standouts", []))}</ul></div>'
               f'<div><h4>{ui["gaps"]}</h4><ul>{"".join(f"<li>{esc(s)}</li>" for s in d.get("gaps", []))}</ul></div></div>')
     run = g.get("run") or {}
-    if run.get("code"):
+    if SHOWCASE.get(g["slug"]):
+        example = showcase_html(lang, g["slug"])
+    elif run.get("code"):
         example = (f'<h2>{ui["example"]}</h2><p>{esc(run.get("intro_" + lang, ""))}</p>'
                    f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(run["code"])}</pre></div><div class="out"><div class="lbl">{ui["output"]}</div><pre>{esc(run["out"])}</pre></div></div>'
                    f'<p class="ran">{esc(run.get("ran_" + lang, ""))}</p>')
@@ -471,7 +495,7 @@ def build_group_page(lang, idx, groups, i):
         hero = f'<div class="note"><p><b>{ui["nopic"]}.</b> {esc(g.get("nopic_" + lang, ""))}</p></div>'
     thesis = f'<blockquote><p>{esc(d["thesis"])}</p></blockquote>' if d.get("thesis") else ""
     body = f"""<p class="counts-line">{g["s"]} Strong · {g["so"]} Solid · {g["p"]} Partial · {g["e"]} Emerging</p>
-    <p class="proof">{ui["measured"]}{colon} {esc(g["peers"])} · {ui["folders"]}{colon} {folders}</p>
+    <p class="proof">{ui["measured"]}{colon} {esc(g["peers"])} · {ui["folders"]}{colon} {folders} · <a href="../guide/{g["slug"]}.html">{ui["guide"]}</a></p>
     {hero}
     {heritage_html(lang, g["slug"])}
     {thesis}

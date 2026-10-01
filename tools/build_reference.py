@@ -22,7 +22,7 @@ T = {
          "source": "la source", "inherits": "Hérite aussi de", "method": "Méthode", "explanation": "Explication, telle que la source la porte", "aka": "aussi nommée",
          "chip_q": "chaînable", "chip_cs": "sensible à la casse", "chip_xt": "étendue", "no_desc": "(sans commentaire dans la source : le nom se lit comme une phrase)",
          "note": "Les explications sont citées dans la langue de la source, l'anglais. Récolte : {harvested}. Un commentaire absent est signalé plutôt qu'inventé.",
-         "area_edu": "Le Système d'apprentissage", "area_other": "Autres", "back": "Toutes les classes", "count_in": "méthodes propres dans", "page_title": "Référence"},
+         "area_edu": "Le Système d'apprentissage", "area_other": "Autres", "back": "Toutes les classes", "guide": "Le guide", "count_in": "méthodes propres dans", "page_title": "Référence"},
   "en": {"title": "Reference", "kicker": "The library documents itself",
          "lede": "Every method of every class, with the explanation the library carries in its own source, harvested by its self-documentation module. Nothing here was written for the site: it is what the library answers when asked.",
          "desc": "The Softanza reference, generated from the explanations the library carries in its source: 618 classes, 26,949 own methods.",
@@ -32,7 +32,7 @@ T = {
          "source": "the source", "inherits": "Also inherits from", "method": "Method", "explanation": "Explanation, as the source carries it", "aka": "also named",
          "chip_q": "chainable", "chip_cs": "case-sensitive", "chip_xt": "extended", "no_desc": "(no comment in the source: the name reads as a sentence)",
          "note": "Explanations are quoted in the language of the source, English. Harvest: {harvested}. A missing comment is reported rather than invented.",
-         "area_edu": "The Learning System", "area_other": "Other", "back": "All classes", "count_in": "own methods in", "page_title": "Reference"},
+         "area_edu": "The Learning System", "area_other": "Other", "back": "All classes", "guide": "The guide", "count_in": "own methods in", "page_title": "Reference"},
 }
 
 FILTER_JS = """<script>(function(){var i=document.getElementById('flt');if(!i)return;var rows=document.querySelectorAll('[data-k]');i.addEventListener('input',function(){var q=i.value.toLowerCase();for(var r=0;r<rows.length;r++){rows[r].hidden=q&&rows[r].getAttribute('data-k').indexOf(q)<0;}});})();</script>"""
@@ -140,7 +140,7 @@ def build_reference(ctx):
     <div class="eyebrow">{esc(t["kicker"])} · {area_link}</div>
     <h1 class="mono-title">{esc(title)}</h1>
     <p class="thesis">{len(c["own"])} {t["own"]}{(" · " + t["inherits"] + " " + inh) if inh else ""}</p>
-    <p class="proof"><a href="{GH}{esc(c["file"])}">{t["source"]}: base/{esc(c["file"])}</a> · <a href="../reference.html">{t["back"]}</a></p>
+    <p class="proof"><a href="{GH}{esc(c["file"])}">{t["source"]}: base/{esc(c["file"])}</a> · <a href="../reference.html">{t["back"]}</a>{(' · <a href="../guide/' + a + '.html">' + t["guide"] + ' ' + esc(area_title[a][lang]) + '</a>') if a in area_title else ''}</p>
   </div></section>
   <div class="wrap page-body">
     <input id="flt" class="flt" type="search" placeholder="{esc(t["filter"])}" aria-label="{esc(t["filter"])}">
