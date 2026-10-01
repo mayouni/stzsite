@@ -53,4 +53,24 @@
     root.style.setProperty('--pin', Math.round(h) + 'px');
   }
   pin(); window.addEventListener('resize', pin);
+  /* the home page: the photograph starts at the top of the browser, under the menu;
+     the menu floats over it as text until the reader has scrolled past it */
+  var body = document.body, hero = document.querySelector('.home-body .hero'), img = document.querySelector('.home-body .hero-img');
+  if (hero && img) {
+    var shown = function (sel) { var out = []; var es = document.querySelectorAll(sel); for (var k = 0; k < es.length; k++) if (es[k].getClientRects().length) out.push(es[k]); return out; };
+    var state = function () {
+      var t = shown('header.top')[0]; if (!t) return;
+      body.classList.toggle('over-hero', img.getBoundingClientRect().bottom > t.getBoundingClientRect().bottom + 8);
+    };
+    var place = function () {
+      var h = 0, es = shown('.brandrow, header.top');
+      for (var k = 0; k < es.length; k++) h += es[k].getBoundingClientRect().height;
+      hero.style.marginTop = (-Math.round(h)) + 'px';
+      state();
+    };
+    place();
+    window.addEventListener('resize', place);
+    window.addEventListener('load', place);
+    window.addEventListener('scroll', state, { passive: true });
+  }
 })();

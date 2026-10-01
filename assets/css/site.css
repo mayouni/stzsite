@@ -3,7 +3,7 @@
    reading; the rules it answers are named where they bind.
 
    Rule 3 and 5   the paper of the Atlas pages, flat: no gradient, no shadow
-   Rule 107       ONE reading size (19px); titles and the hero are the only others
+   Rule 107       ONE reading size (21px, raised on the author's word); titles and the hero are the only others
    Rule 105       every text pair below is measured by tools/build.py
    Rule 112, 17   nothing moves: no smooth scroll, no transition, no hover motion
    Rule 110, 13   the bars stick and hold their own space; nothing floats over text
@@ -29,6 +29,7 @@
 /* contrast: #D6A559 | #302811 | 4.5 | Partial label, dark */
 /* contrast: #DB8069 | #31201B | 4.5 | Emerging label, dark */
 /* contrast: #FFFFFF | #6C6B5D | 4.5 | hero text over the brightest part of the photograph, panel 62% */
+/* contrast: #FFFFFF | #0D0D0A | 4.5 | home menu over the photograph: a white letter against its own halo, 95% black at the letter's edge over the brightest pixel of the top band */
 
 :root{
   --paper:#F1F3F1; --panel:#FBFCFB; --panel-2:#EAEEEB;
@@ -39,11 +40,11 @@
   --solid:#2F5A86; --solid-bg:#E4ECF4;
   --partial:#7A4F0E; --partial-bg:#F6ECD9;
   --emerging:#993A25; --emerging-bg:#F6E3DD;
-  --read:1.1875rem; --lh:1.7;
-  --label:1rem;           /* mono capitals, set to LOOK the reading size (Rule 107, optical parity) */
-  --code:1.0625rem;       /* monospace, the same optical allowance */
-  --title:clamp(1.75rem,3.2vw,2.25rem);
-  --hero:clamp(2.25rem,5vw,3.5rem);
+  --read:1.3125rem; --lh:1.7;
+  --label:1.0625rem;      /* mono capitals, set to LOOK the reading size (Rule 107, optical parity) */
+  --code:1.125rem;        /* monospace, the same optical allowance */
+  --title:clamp(1.875rem,3.4vw,2.5rem);
+  --hero:clamp(2.5rem,5.2vw,3.75rem);
   --maxw:1120px; --measure:68ch; --gutter:24px;
   color-scheme:light;
 }
@@ -97,20 +98,20 @@ code,pre,kbd{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
 :root[data-theme="dark"] .brand .wm-dark{display:block}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .brand .wm-light{display:none}:root:not([data-theme="light"]) .brand .wm-dark{display:block}}
 .nav{display:flex;gap:4px 22px;align-items:center;margin-left:auto}
-.nav a{font-size:1.125rem;font-weight:500;color:var(--ink-2);text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;min-height:44px;position:relative}
+.nav a{font-size:1.1875rem;font-weight:500;color:var(--ink-2);text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;min-height:44px;position:relative}
 .nav a[aria-current]{color:var(--accent);font-weight:600}
 .nav a[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:2px;background:var(--accent);border-radius:2px}
 .tools{display:flex;align-items:center;gap:14px;flex:none}
-.tools a{font-size:1.125rem;font-weight:500;color:var(--ink-2);text-decoration:none;display:inline-flex;align-items:center;min-height:44px;white-space:nowrap}
+.tools a{font-size:1.1875rem;font-weight:500;color:var(--ink-2);text-decoration:none;display:inline-flex;align-items:center;min-height:44px;white-space:nowrap}
 .tools a.gh svg{display:block;width:24px;height:24px;fill:currentColor}
 .tools a.lang{font-family:"IBM Plex Mono",monospace;font-size:var(--label);color:var(--accent);border:1px solid var(--line-2);border-radius:8px;padding:0 12px;min-height:40px}
 .path{border-top:1px solid var(--line);background:var(--panel)}
 .path-in{max-width:var(--maxw);margin:0 auto;padding:4px var(--gutter);display:flex;flex-wrap:wrap;gap:0 28px}
-.path a{font-size:1.125rem;color:var(--ink-2);text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;min-height:44px}
+.path a{font-size:1.1875rem;color:var(--ink-2);text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;min-height:44px}
 .path a[aria-current]{color:var(--accent);font-weight:700}
 /* below the width where the six entries and the tools fit on one line, the menu
    becomes its own scrollable row (Rule 27), and so does the path: both stay visible */
-@media (max-width:1080px){
+@media (max-width:1160px){
   .topbar{flex-wrap:wrap;gap:0 16px;padding-top:6px}
   .tools{margin-left:auto}
   .nav{order:3;flex:1 0 100%;margin-left:0;overflow-x:auto;flex-wrap:nowrap;gap:0 22px;scrollbar-width:thin;padding-bottom:2px}
@@ -196,9 +197,9 @@ figure{margin:32px 0 0}
 figure img{display:block;border-radius:12px;border:1px solid var(--line)}
 figcaption{color:var(--ink-2);margin-top:12px;max-width:var(--measure)}
 figure.diagram img{background:#F5EFE1}
-figure.diagram .wide-only{max-width:760px;width:100%}
+figure.diagram .wide-only{max-width:860px;width:100%}
 figure.diagram .narrow-only{display:none}
-@media (max-width:700px){figure.diagram .wide-only{display:none}figure.diagram .narrow-only{display:block;max-width:340px;width:100%}}
+@media (max-width:700px){figure.diagram .wide-only{display:none}figure.diagram .narrow-only{display:block;max-width:360px;width:100%}}
 
 /* pair: the same chapter in two languages */
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
@@ -436,3 +437,50 @@ table.cov thead th,table.ratings thead th{position:sticky;top:var(--pin,0px);z-i
 .page-body ul+p,.page-body ol+p{margin-top:16px}
 @media (min-width:1200px){.scene .tiles{grid-template-columns:repeat(7,minmax(0,1fr))}}
 .scene .tiles{column-gap:20px}
+
+/* ---- the home page, by the author's word (2026-10-01 evening) ---------------
+   The photograph starts at the top of the browser and the menu floats over it as
+   text alone, no bar (a deliberate exception to Rule 110, on the home page only).
+   No single colour reads over this photograph: its top runs from a dark wall to a
+   cream turban and a pale sky, so white or dark text alone falls to about 1:1
+   somewhere (measured). Each letter is white and carries its own dark halo, so it
+   always stands on a dark edge. Once the reader has scrolled past the photograph
+   the menu becomes the ordinary bar again, instantly. */
+.home-body .hero{z-index:0}
+.home-body .brandrow{position:relative;z-index:51}
+.home-body.over-hero .top{background:transparent;border-bottom-color:transparent}
+.home-body.over-hero .brandrow{background:transparent}
+.home-body.over-hero .nav a,.home-body.over-hero .tools a{color:#fff;text-shadow:0 0 1px rgba(0,0,0,.95),0 0 3px rgba(0,0,0,.85),0 0 10px rgba(0,0,0,.6)}
+.home-body.over-hero .nav a[aria-current]::after{background:#fff;box-shadow:0 0 3px rgba(0,0,0,.85)}
+.home-body.over-hero .tools a.lang{border-color:transparent}
+.home-body.over-hero .tools a.gh svg{filter:drop-shadow(0 0 1px rgba(0,0,0,.95)) drop-shadow(0 0 4px rgba(0,0,0,.7))}
+.home-body.over-hero .brand .wm-dark{display:none!important}
+.home-body.over-hero .brand .wm-light{display:block!important;filter:brightness(0) invert(1) drop-shadow(0 0 1px rgba(0,0,0,.95)) drop-shadow(0 0 4px rgba(0,0,0,.7))}
+.home-body .hero{height:100svh}
+@media (max-width:760px){.home-body .hero{height:auto}}
+
+/* the scroll arrow nudges downward, gently, so a reader who thinks the page ends
+   here knows it goes on (the author's word; the one motion on the site), and it
+   stays still for a reader whose system asks for reduced motion */
+.down span{display:inline-block;animation:nudge 2.6s ease-in-out infinite!important}
+@keyframes nudge{0%,55%,100%{transform:translateY(0)}27%{transform:translateY(7px)}}
+@media (prefers-reduced-motion:reduce){.down span{animation:none!important}}
+.page-body code,.proof code,.ran code,figcaption code{overflow-wrap:anywhere}
+/* a long file name or identifier breaks where it must rather than widening the page */
+body{overflow-wrap:break-word}
+.page-body a,.lane .lt,.sg li,blockquote{overflow-wrap:anywhere}
+.cards{grid-template-columns:repeat(auto-fill,minmax(min(420px,100%),1fr))}
+.cards.principles{grid-template-columns:repeat(auto-fill,minmax(min(420px,100%),1fr))}
+.cards>*,.figures>*,.tiles>*,.scope>*,.map>*{min-width:0}
+
+/* the functional map: every area at once, one colour per theme (Wolfram's complete scope) */
+.fmap{margin-top:24px}
+.fkeys{display:flex;flex-wrap:wrap;gap:8px 24px;margin-bottom:16px}
+.fk{display:inline-flex;align-items:center;gap:8px;color:var(--ink-2)}
+.fk::before{content:"";width:14px;height:14px;border-radius:3px;background:var(--tc)}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr));gap:10px}
+.ft{display:flex;align-items:center;min-height:64px;padding:10px 16px;border-radius:10px;background:var(--panel);border:1px solid var(--line);border-left:8px solid var(--tc);color:var(--ink);font-weight:600;line-height:1.3;text-decoration:underline;text-decoration-color:var(--line-2);min-width:0}
+[data-t="core"]{--tc:#3E6E9E} [data-t="intelligence"]{--tc:#2E7D5B} [data-t="visual"]{--tc:#B77A24}
+[data-t="systems"]{--tc:#5E6864} [data-t="io"]{--tc:#7030A0} [data-t="cross"]{--tc:#B4462F}
+.fmap+.theme{margin-top:48px}
+@media (max-width:560px){.fgrid{grid-template-columns:1fr 1fr;gap:8px}.ft{padding:10px 12px;min-height:56px}}

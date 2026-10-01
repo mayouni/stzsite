@@ -271,6 +271,16 @@ def tiles_html(lang, idx, groups, rel_atlas, rel_assets, themed=True, hl="h2"):
         out.append(f'<section class="theme"><{hl} id="{b["id"]}">{esc(b[lang])}</{hl}><div class="tiles">{"".join(tile(g) for g in gs)}</div></section>')
     return "".join(out)
 
+MAP_LABEL = {"fr": ("La carte des domaines", "Les vingt-huit domaines d'un coup d'oeil, chacun dans la couleur de son thème."),
+             "en": ("The map of the areas", "All twenty-eight areas at a glance, each in the colour of its theme.")}
+
+def fmap_html(lang, idx, groups, rel_atlas):
+    """every area in one grid, coloured by its theme, before the families are shown one by one"""
+    legend = "".join(f'<span class="fk" data-t="{b["id"]}">{esc(b[lang])}</span>' for b in idx["bands"])
+    tiles = "".join(f'<a class="ft" data-t="{g["band"]}" href="{rel_atlas}{g["slug"]}.html">{esc(g[lang])}</a>'
+                    for b in idx["bands"] for g in groups if g["band"] == b["id"])
+    return f'<div class="fmap"><div class="fkeys" aria-label="{esc(MAP_LABEL[lang][0])}">{legend}</div><div class="fgrid">{tiles}</div></div>'
+
 def scope_html(lang, idx, groups):
     """the documentation's whole scope, one door per area of the reference"""
     out = []
@@ -309,7 +319,7 @@ def diagram_imgs(body_html, rel):
     return re.sub(r'<img src="(?:\.\./)+assets/img/diagrams/([a-z]+)-(fr|en)\.png" alt="([^"]*)"[^>]*>', rep, body_html)
 
 def inject(body_html, lang, idx, groups, rel="../"):
-    body_html = body_html.replace("<!--AREAS-->", tiles_html(lang, idx, groups, "atlas/", rel))
+    body_html = body_html.replace("<!--AREAS-->", fmap_html(lang, idx, groups, "atlas/") + tiles_html(lang, idx, groups, "atlas/", rel))
     body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
     body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
     body_html = body_html.replace("<!--DOCS-SCOPE-->", scope_html(lang, idx, groups))
@@ -491,13 +501,13 @@ def build_home(idx, groups):
     """the landing page: both languages inside, the header's language link picks"""
     body = (CONTENT / "home.html").read_text(encoding="utf-8")
     for lang in LANGS:
-        body = body.replace(f"<!--AREAS-{lang.upper()}-->", tiles_html(lang, idx, groups, f"{lang}/atlas/", "", hl="h3"))
+        body = body.replace(f"<!--AREAS-{lang.upper()}-->", fmap_html(lang, idx, groups, f"{lang}/atlas/") + tiles_html(lang, idx, groups, f"{lang}/atlas/", "", hl="h3"))
     page = head("fr", "Softanza · La plateforme des makers à l'ère agentique · The Makers Platform of the Agentic Age",
                 "Softanza: declare a language for your world, run it on one engine, let agents speak it safely. Born in Africa. Useful to the World.", "")
     page = page.replace('<html lang="fr" data-lang="fr">', '<html lang="fr" data-lang="fr" class="home">')
     heads = "".join(header(l, "index", "", other_href=f"index.html?lang={o}", nav_rel=f"{l}/", data_lang=l) for l, o in (("fr", "en"), ("en", "fr")))
     feet = "".join(footer(l, "", nav_rel=f"{l}/", scripts=False, data_lang=l) for l in LANGS)
-    page += "\n<body class=\"home-body\">\n" + heads + '\n<main id="main">\n' + body + '\n</main>\n' + feet + f"""
+    page += "\n<body class=\"home-body over-hero\">\n" + heads + '\n<main id="main">\n' + body + '\n</main>\n' + feet + f"""
 <script src="assets/js/site.js"></script>{PAGE_PING}
 </body></html>"""
     (ROOT / "index.html").write_text(page, encoding="utf-8")
