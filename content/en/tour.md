@@ -16,13 +16,13 @@ Let the picture speak for ten seconds. Then one sentence: "This man is reading c
 ```
 
 <<< scene id="vision" page="vision.html" label="Vision" >>>
-<div class="eyebrow">The founding act</div>
+<div class="eyebrow">Softanza's approach to programming in the agentic age</div>
 # Declare <i>a language</i>
-<p>In the agentic age you do not write software.</p>
+<p>With Softanza you do not write software.</p>
 <p>You <b>declare worlds</b> in languages made for their domains, and you <b>govern</b> how those worlds change.</p>
-<p>Wolfram knows the world's facts. <b>Softanza knows your world.</b></p>
+<p>This is not today's practice. It is Softanza's proposal: <b>a platform that knows your world.</b></p>
 ```notes
-Three ideas, one per line. Do not read the page. The spoken example: a bank declares its entities, rules and actors; the system answers "which flows touch the deposit account, and what breaks if I add a field". Wolfram cannot answer that: it was never given your bank.
+Three ideas, one per line. Do not read the page. The spoken example: a bank declares its entities, rules and actors; the system answers "which flows touch the deposit account, and what breaks if I add a field". No general tool can answer that: none was ever given your bank. Say it as Softanza's approach, never as what the industry does.
 ```
 
 <<< scene id="platform" page="platform.html" label="Platform" >>>

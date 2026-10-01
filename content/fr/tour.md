@@ -16,13 +16,13 @@ Laisser l'image parler dix secondes. Puis une phrase : « Cet homme lit du code.
 ```
 
 <<< scene id="vision" page="vision.html" label="Vision" >>>
-<div class="eyebrow">L'acte fondateur</div>
+<div class="eyebrow">L'approche de Softanza pour programmer à l'ère agentique</div>
 # Déclarez <i>une langue</i>
-<p>À l'ère agentique, on n'écrit plus des logiciels.</p>
+<p>Avec Softanza, on n'écrit plus des logiciels.</p>
 <p>On <b>déclare des mondes</b> dans des langues faites pour leur domaine, et on <b>gouverne</b> la manière dont ces mondes changent.</p>
-<p>Wolfram connaît les faits du monde. <b>Softanza connaît votre monde.</b></p>
+<p>Ce n'est pas la pratique d'aujourd'hui. C'est la proposition de Softanza : <b>une plateforme qui connaît votre monde.</b></p>
 ```notes
-Trois idées, une par ligne. Ne pas lire la page. L'exemple parlé : une banque déclare ses entités, ses règles et ses acteurs ; le système répond « quels flux touchent le compte de dépôt, et qu'est-ce qui casse si j'ajoute un champ ». Wolfram ne peut pas répondre à cela : on ne lui a jamais donné votre banque.
+Trois idées, une par ligne. Ne pas lire la page. L'exemple parlé : une banque déclare ses entités, ses règles et ses acteurs ; le système répond « quels flux touchent le compte de dépôt, et qu'est-ce qui casse si j'ajoute un champ ». Aucun outil général ne peut répondre à cela : on ne lui a jamais donné votre banque. Le dire comme l'approche de Softanza, jamais comme ce que fait l'industrie.
 ```
 
 <<< scene id="platform" page="platform.html" label="Plateforme" >>>

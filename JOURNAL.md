@@ -239,3 +239,24 @@ next:
 
 note:      the counts of 2024 were taken from the tree at the last commit of that year, so "written by hand before agents" is a statement the author makes and the site attributes, beside a figure the repository gives.
 ```
+
+---
+
+```yaml
+by:        stzsite · claude-fable-5-1 · 2026-10-01 18:41
+
+subject:   correction after the author's reading -- Wolfram is never put forward, and the declared-language approach is stated as Softanza's own, not as today's practice
+
+why:       the author read "Wolfram knows the world's facts. Softanza knows your world." and refused both the order and the implication that this is the state of the art
+
+did:
+  - removed the sentence from the agentic page, the vision page's principle 5 and the tour's second scene, in both languages; the replacement says that this is Softanza's proposal for the agentic age, not how programming is done today, and names no other vendor
+  - reworded the founding act (agentic page, vision principle 1, tour scene 2, the home hero's voice and the home's "agentic age" paragraph) so each sentence is attributed to Softanza: "with Softanza you do not write software", "Softanza's approach to programming in the agentic age, not today's practice"
+  - left Wolfram only where it is one of four platforms in a comparison list or in the coverage matrix (platform page, home's "platform" paragraph, tour's platform scene), never alone and never first
+
+state:
+  perception-gate:   still OPEN; the author has read at least the vision and tour wording and corrected it
+
+next:
+  - me:      keep this rule for every future sentence: a differentiator is "the Softanza way", never "how things are done now"
+```

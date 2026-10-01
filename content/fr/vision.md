@@ -60,11 +60,11 @@ Le mot du domaine pour la souveraineté a exactement un sens : **rien que quicon
 Douze idées tiennent la plateforme. Chacune tient ici en une phrase ; les preuves sont sur les pages que ce site relie.
 
 <div class="cards principles">
-<div class="card"><h3>1 · Déclarez une langue</h3><p>À l'ère agentique on n'écrit plus des logiciels : on déclare son monde dans une langue faite pour lui, et on gouverne la manière dont ce monde change. <a href="agentic.html#languages">Comment</a>.</p></div>
+<div class="card"><h3>1 · Déclarez une langue</h3><p>L'approche de Softanza pour programmer à l'ère agentique, et non la pratique d'aujourd'hui : on n'écrit pas des logiciels, on déclare son monde dans une langue faite pour lui, et on gouverne la manière dont ce monde change. <a href="agentic.html#languages">Comment</a>.</p></div>
 <div class="card"><h3>2 · Tout est jugé</h3><p>Une narration s'exécute quand on la lit ; une promesse est vérifiée en s'exécutant ; un garde compte ses assertions. Ce qui n'a pas tourné n'est pas montré, sur ce site non plus.</p></div>
 <div class="card"><h3>3 · Un moteur, plusieurs visages</h3><p>La substance vit dans le moteur Zig ; la langue en est le visage, et un visage futur partage le même moteur. <a href="platform.html#engine">Le moteur</a>.</p></div>
 <div class="card"><h3>4 · Des agents qui ne peuvent pas nuire</h3><p>Un modèle propose ; un atelier répète ; un tribunal juge ; seul un acteur gouverné commet. <a href="agentic.html#govern">Le paradigme</a>.</p></div>
-<div class="card"><h3>5 · La connaissance de votre monde</h3><p>Wolfram connaît les faits du monde. Softanza connaît votre monde : ses entités, ses règles, ses acteurs et ses flux, déclarés en texte brut.</p></div>
+<div class="card"><h3>5 · La connaissance de votre monde</h3><p>Softanza connaît votre monde, et non les faits du monde en général : ses entités, ses règles, ses acteurs et ses flux, déclarés en texte brut.</p></div>
 <div class="card"><h3>6 · Un code qui se lit</h3><p>L'humain est l'analyseur : trouver d'abord, agir ensuite ; les noms sont des verbes ; une instruction en langue naturelle s'exécute. <a href="platform.html#code">À côté de Python</a>.</p></div>
 <div class="card"><h3>7 · Dans votre langue</h3><p>Le cours parle anglais, français, arabe et haoussa ; le moteur compte des lettres, pas des octets ; la même instruction s'exécute dans les quatre langues.</p></div>
 <div class="card"><h3>8 · Exact par défaut</h3><p>Un entier est exact à toute taille ; un décimal dit qu'il est décimal ; l'algèbre est prouvée contre un oracle.</p></div>
