@@ -726,5 +726,40 @@
    "ran": "2026-10-02 00:00",
    "seconds": 5.2
   }
+ ],
+ "coding-agents": [
+  {
+   "code": "oDoc = StzSelfDocQ(\"stzList\")\n? oDoc.HowTo(\"remove duplicates\")\n? oDoc.HasMethod(\"DuplicatesRemoved\")",
+   "expected": "Q([...]).RemoveDuplicates()   -- composed by grammar (remove duplicates)\nTRUE",
+   "source": "base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md",
+   "what_en": "Know the API: asked in plain words how to remove duplicates, the library composes the method's name from its own naming grammar, then confirms the method exists. An agent does not guess.",
+   "what_fr": "Connaître l'API : à la question « comment retirer les doublons », la bibliothèque compose le nom de la méthode grâce à sa propre grammaire de nommage, puis confirme que la méthode existe. Un agent ne devine pas.",
+   "out": "Q([...]).RemoveDuplicates()   -- composed by grammar (remove duplicates)\n1",
+   "matches_source": true,
+   "ran": "2026-10-02 00:46",
+   "seconds": 4.3
+  },
+  {
+   "code": "aF = StzCheckCode(\"class Foo\" + nl + \"def Bar()\" + nl + \"\tx = substr(s, 2)\" + nl)\nnF = len(aF)\nfor i = 1 to nF\n    ? aF[i][:rule] + \"  @line \" + aF[i][:line] + \"  [\" + aF[i][:severity] + \"]\"\nnext\n? \"findings: \" + len(StzCheckCode(\"class Foo\" + nl + \"def substr(x)\" + nl + \"\treturn x\" + nl))",
+   "expected": "engine-first  @line 3  [warning]\nfindings: 0",
+   "source": "base/doc/narrations/stz-rules-as-graph-rules-narration.md (The model sees what the text scan cannot)",
+   "what_en": "Check the code: a house rule no generic linter knows finds a real call at its line, and leaves alone a method that merely bears the same name.",
+   "what_fr": "Vérifier le code : une règle maison qu'aucun linter générique ne connaît trouve un vrai appel à sa ligne, et laisse tranquille une méthode qui porte seulement le même nom.",
+   "out": "engine-first  @line 3  [warning]\nfindings: 0",
+   "matches_source": true,
+   "ran": "2026-10-02 00:46",
+   "seconds": 4.3
+  },
+  {
+   "code": "oVfs = new stzVirtualFileSystem()\noVfs.CreateFolder(\"config\")\noVfs.CreateFile(\"config/greenhouse.ini\", \"pump_threshold=40\")\noVfs.MoveFile(\"old_settings.txt\", \"config/legacy.ini\")\noPlan = oVfs.GenerateUpdatePlan()\n? oPlan.Narration()",
+   "expected": "Update plan (3 of 3 operations to commit):\n  * 1. create folder 'config'\n  * 2. create file 'config/greenhouse.ini' (17 bytes)\n  * 3. move 'old_settings.txt' -> 'config/legacy.ini'",
+   "source": "base/doc/narrations/stz-system-dev-to-deploy-narration.md (§4)",
+   "what_en": "Show the change before it lands: three file operations are rehearsed in a twin and come out as a plan a person can read; nothing on disk has moved.",
+   "what_fr": "Montrer le changement avant qu'il n'arrive : trois opérations sur des fichiers sont répétées dans un jumeau et en sortent comme un plan lisible ; rien n'a bougé sur le disque.",
+   "out": "Update plan (3 of 3 operations to commit):\n  * 1. create folder 'config'\n  * 2. create file 'config/greenhouse.ini' (17 bytes)\n  * 3. move 'old_settings.txt' -> 'config/legacy.ini'",
+   "matches_source": true,
+   "ran": "2026-10-02 00:46",
+   "seconds": 4.3
+  }
  ]
 }

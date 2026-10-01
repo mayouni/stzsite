@@ -401,3 +401,40 @@ next:
              read this pass
   - author:  read Vision and Platform of platforms; rule on the three naming questions
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-02 00:51
+
+subject:   Softanza for coding agents added to the site, and the open decisions taken on the author's delegation
+
+why:       the author wrote "take whatever decision on my behalf and move forward adding this part to the site"
+
+decided, on the author's delegation, 2026-10-02:
+  - COMPASS-AGENTTOOLS-01 to 08: adopted in the compass's order -- failure made visible, the door (AGENTS.md and
+    a skill), stz check and stz ask, stz promise, rehearse and grammar, an MCP server generated from the verbs
+    (reusing the application tier's read-only, audited pattern), a Claude Code plugin, then measurement before
+    any claim; the verbs live on one stz executable. The site shows the door as "ratified proposal", not built.
+  - STZSITE-DIKO-NAMING-01: DIKO stays unnamed -- the consent is DIKO's to give, not the author's
+  - STZSITE-CUSTOMS-REFERENCE-01: the customs school stays a reference -- the ratified corpus (08-NORTH-STAR,
+    section 4) lists it among the customer deliveries
+  - STZSITE-HARO-TENSE-01: the Platform page now says Haro is in construction and its machine is the road
+    being built, aligned with the ratified chapter
+  - STZSITE-ZUI99-01: applied -- every page's footer says the prose was drafted with an AI assistant under the
+    author's direction, and that code, runs and figures come from the repositories
+
+did:
+  - added "For coding agents" to the Agentic section: hands and judges (new diagram, wide and phone, both
+    languages), three judges run inside the library (ask, check, plan; 3 of 3 kept their sources' promises),
+    what an agent reaches today, the stz command and its six verbs, five ways in, governed tools, the order
+  - corrected the "For agents" grammar card: a schema already compiles to a constraint grammar; emitting one
+    for every declared language is the next step
+  - shortened the Zui path label so the Agentic section's eight pages stay on one line at laptop width
+
+state:
+  release-1-pass-8:  built; the commit carrying this entry is the one after 4f9e10c
+  perception-gate:   OPEN -- the author has not seen this pass
+
+next:
+  - me:      nothing on the site claims the door until it is built; the method entries come next
+  - Central: route COMPASS-AGENTTOOLS-01 to 08, now decided, to stzlib and stz
+```

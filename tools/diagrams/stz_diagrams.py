@@ -421,9 +421,62 @@ def platforms(lang):
     text(d, MX, HH - 36, fit(F_READ, L["cap"], 1240, "cap"), F_READ, MUTED)
     return save(img, f"platforms-{lang}.png")
 
+# --------------------------------------------------------------------------- 9
+def codingagents(lang):
+    """Hands and judges: a coding agent's own tools are the hands; Softanza supplies the judges;
+    one stz command is the door between them (decided 2026-10-02, not built: drawn dashed)."""
+    L = {
+      "en": dict(k="HANDS AND JUDGES  ·  SOFTANZA FOR CODING AGENTS",
+                 cols=[("The coding agent", "the hands", ["read and search", "edit files", "run a shell", "", "Claude Code, Codex,", "Cursor and others"], "old", ""),
+                       ("The door", "one stz command", ["a command line", "an MCP server", "a skill and a hook", "a plugin to install"], "door", "decided"),
+                       ("The judges", "Softanza", ["know the API", "check code and promises", "show the change first", "compute on one engine"], "new", "built")],
+                 rule=("The model proposes; a person commits.", "every tool says whether it may act, and refuses with its reason"),
+                 cap="judges built and run today · door decided, not built yet"),
+      "fr": dict(k="LES MAINS ET LES JUGES  ·  SOFTANZA POUR LES AGENTS QUI CODENT",
+                 cols=[("L'agent qui code", "les mains", ["lire et chercher", "modifier des fichiers", "lancer un shell", "", "Claude Code, Codex,", "Cursor et d'autres"], "old", ""),
+                       ("La porte", "une commande stz", ["une ligne de commande", "un serveur MCP", "compétence et hook", "un plugin à installer"], "door", "décidée"),
+                       ("Les juges", "Softanza", ["connaître l'API", "juger code et promesses", "montrer le plan d'abord", "calculer sur un moteur"], "new", "construits")],
+                 rule=("Le modèle propose ; une personne valide.", "chaque outil dit s'il peut agir, et refuse en disant pourquoi"),
+                 cap="juges construits et exécutés · porte décidée, à construire"),
+    }[lang]
+    HH = 650
+    img, d = canvas(23, h=HH)
+    kicker(d, 52, L["k"])
+    f_t = F_T36; f_role = sans(28, "Medium"); f_l = sans(28)
+    xs = [(68, 340), (470, 360), (892, 416)]
+    TOP, BH = 100, 360
+    for (x, w), (title, role, lines, style, st) in zip(xs, L["cols"]):
+        if style == "door":
+            dashed(d, rr_path(x*S, TOP*S, (x + w)*S, (TOP + BH)*S, 13*S), NEW_LINE, int(2.2*S))
+            ink, sub = NEW_TEXT, NEW_SUB
+        elif style == "new":
+            band(d, x, TOP, w, BH, 13, NEW_FILL, NEW_LINE, lw=2.4, amp=0.9)
+            accent(d, x, TOP, BH); ink, sub = NEW_TEXT, NEW_SUB
+        else:
+            band(d, x, TOP, w, BH, 13, OLD_FILL, OLD_LINE, lw=1.8, amp=0.9); ink, sub = INK, OLD_TEXT
+        px = x + (44 if style == "new" else 28)
+        text(d, px, TOP + 40, fit(f_t, title, w - (px - x) - 20, "col title"), f_t, ink)
+        text(d, px, TOP + 84, fit(f_role, role, w - (px - x) - 20, "col role"), f_role, NEW_LINE if style != "old" else MUTED)
+        rule(d, px, TOP + 112, x + w - 24, TOP + 112, HAIR, 1.6)
+        for j, ln in enumerate(lines):
+            if ln: text(d, px, TOP + 150 + j*38, fit(f_l, ln, w - (px - x) - 20, "col line"), f_l, sub if j < 4 else MUTED)
+        if st:
+            cw = F_CHIP.getlength(st) / S + 34
+            chip(d, x + w - 22 - cw, TOP + BH - 50, cw, 34, st, F_CHIP, NEW_LINE if style == "new" else OLD_TEXT, ink=BG, ls=1.2)
+    # the door sits between the hands and the judges
+    for (x0, w0), (x1, _) in ((xs[0], xs[1]), (xs[1], xs[2])):
+        link_peer(d, x0 + w0 + 8, x1 - 8, TOP + BH/2, fill=OLD_LINE, lw=2.4, head=9)
+    # the rule under all three
+    y = TOP + BH + 22; h = 98
+    band(d, 68, y, 1240, h, 11, KERN_FILL, KERN_LINE, lw=1.8, amp=1.0)
+    text(d, 98, y + 32, fit(f_t, L["rule"][0], 1180, "rule title"), f_t, INK)
+    text(d, 98, y + h - 24, fit(f_l, L["rule"][1], 1180, "rule sub"), f_l, OLD_TEXT)
+    text(d, 68, HH - 36, fit(F_READ, L["cap"], 1240, "cap"), F_READ, MUTED)
+    return save(img, f"codingagents-{lang}.png")
+
 if __name__ == "__main__":
     only = sys.argv[1:]
-    for fn in (technology, wise, languages, govern, editions, trajectory, northstar, platforms):
+    for fn in (technology, wise, languages, govern, editions, trajectory, northstar, platforms, codingagents):
         if only and fn.__name__ not in only: continue
         for lang in ("en", "fr"):
             print("wrote", fn(lang))

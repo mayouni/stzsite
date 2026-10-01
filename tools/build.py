@@ -46,9 +46,10 @@ SECTIONS = [
      ("agentic", {"fr": "Agentique", "en": "Agentic"}),
      ("wise", {"fr": "Wise coding", "en": "Wise coding"}),
      ("languages", {"fr": "Langue des langues", "en": "Language of languages"}),
-     ("zui", {"fr": "Constitution Zui", "en": "Zui constitution"}),
+     ("zui", {"fr": "Zui", "en": "Zui"}),
      ("refinement", {"fr": "Raffinement", "en": "Refinement"}),
      ("agents", {"fr": "Pour les agents", "en": "For agents"}),
+     ("coding-agents", {"fr": "Agents qui codent", "en": "Coding agents"}),
      ("security", {"fr": "Sécurité", "en": "Security"})]),
   ("learn", {"fr": "Apprendre", "en": "Learn"}, [
      ("learn", {"fr": "Apprendre", "en": "Learn"}),
@@ -79,6 +80,7 @@ UI = {
     "present": "Présenter", "github": "Le dépôt Softanza sur GitHub", "menu": "Menu principal", "path": "Pages de la section",
     "proof_law": "Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.",
     "fonts": "Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s'ouvre sans réseau.",
+    "made": "Les textes de ce site ont été rédigés avec un assistant d'IA, Claude, sous la direction de l'auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)",
     "built": "Site généré le", "elsewhere": "Softanza", "repo": "Le dépôt sur GitHub", "tour": "Mode présentation", "check": "Vérifier hors ligne",
     "theme_light": "Passer en clair", "theme_dark": "Passer en sombre", "theme_auto": "Suivre le système", "theme_h": "Affichage",
     "atlas_title": "L'Atlas", "atlas_title_html": "L'<i>Atlas</i>", "atlas_kicker": "Où se tient toute la plateforme",
@@ -103,6 +105,7 @@ UI = {
     "present": "Present", "github": "The Softanza repository on GitHub", "menu": "Main menu", "path": "Pages of the section",
     "proof_law": "Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.",
     "fonts": "Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network.",
+    "made": "The prose of this site was drafted with an AI assistant, Claude, under the author's direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)",
     "built": "Site generated on", "elsewhere": "Softanza", "repo": "The repository on GitHub", "tour": "Presentation mode", "check": "Check offline",
     "theme_light": "Use the light theme", "theme_dark": "Use the dark theme", "theme_auto": "Follow the system", "theme_h": "Display",
     "atlas_title": "The Atlas", "atlas_title_html": "The <i>Atlas</i>", "atlas_kicker": "Where the whole platform stands",
@@ -230,7 +233,7 @@ def footer(lang, rel, pagers_html="", nav_rel=None, scripts=True, data_lang=""):
   <div class="foot-bottom">
     <div><a class="foot-mark" href="{rel}index.html" aria-label="Softanza">{wordmark(rel)}</a>
       <p style="margin-top:12px">{esc(ui["slogan"])}. {esc(ui["second"])}</p>{themes}</div>
-    <div><p>{esc(ui["proof_law"])}</p><p>{esc(ui["fonts"])} {ui["built"]} {today}.</p></div>
+    <div><p>{esc(ui["proof_law"])}</p><p>{esc(ui["made"])}</p><p>{esc(ui["fonts"])} {ui["built"]} {today}.</p></div>
   </div>
 </div></footer>"""
     if scripts:

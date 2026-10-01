@@ -2,7 +2,7 @@
 title: Plateforme
 title_html: La <i>plateforme</i>
 kicker: Un moteur, vingt-huit domaines
-lede: Softanza est une seule plateforme de calcul. Un moteur, écrit en Zig, traite le texte, les nombres exacts, les tables, les graphes, les cartes, les images, le son, les réseaux de neurones, les agents gouvernés et la sécurité qui les entoure. Une langue, Haro, met tout cela dans une phrase. Tout ce qui est sur cette page a été exécuté le soir de la publication.
+lede: Softanza est une seule plateforme de calcul. Un moteur, écrit en Zig, traite le texte, les nombres exacts, les tables, les graphes, les cartes, les images, le son, les réseaux de neurones, les agents gouvernés et la sécurité qui les entoure. Une langue, Haro, en construction, doit mettre tout cela dans une phrase. Tout ce qui est sur cette page a été exécuté le soir de la publication.
 description: La plateforme Softanza en mots simples : ce qu'elle est, ce que fait le moteur, et la langue, Haro.
 ---
 
@@ -44,7 +44,7 @@ arabic
 
 ## La langue : Haro {#haro}
 
-Haro est la langue de la plateforme. Elle est conçue pour qu'un humain la lise comme une phrase et qu'un agent l'écrive sous une grammaire qui interdit les phrases malformées. Sa machine virtuelle à registres et son compilateur sont écrits en Zig et exécutent déjà le code de la plateforme d'aujourd'hui. Sa charte, un brouillon du 26 septembre 2026, attend la ratification de l'auteur.
+Haro est la langue de la plateforme. Elle est conçue pour qu'un humain la lise comme une phrase et qu'un agent l'écrive sous une grammaire qui interdit les phrases malformées. Elle n'est pas achevée : sa route est une machine virtuelle à registres et un compilateur écrits en Zig, vers lesquels le code de la plateforme est en train de passer. Sa charte, un brouillon du 26 septembre 2026, attend la ratification de l'auteur.
 
 <p class="proof"><b>en construction</b> Ce site ne dira pas que Haro est disponible avant qu'il le soit. Chaque bloc de code de ce site est du code Softanza tel qu'il tourne sur la plateforme aujourd'hui.</p>
 

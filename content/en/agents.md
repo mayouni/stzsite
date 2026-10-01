@@ -20,5 +20,5 @@ first without saying what it covers:
 ...then with its coverage stated:
 -> The court judged your declaration,
    and every promise of the exercise was kept.</pre><p class="ran">run on 2026-09-30 at 23:10, demo, scene 7</p></div>
-<div class="card"><h3>Speak the grammar, not general code</h3><p>A declared language emits its constraint grammar; a model whose sampler is constrained to it can only emit valid sentences. That is the platform's contract C9: structure kills malformedness, never falsehood.</p><p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md">SOFTANZA_INTELLIGENCE_ARCHITECTURE.md</a></p></div>
+<div class="card"><h3>Speak the grammar, not general code</h3><p>A schema already compiles to a constraint grammar: a local model whose sampler is held to it can only emit valid answers. That is the platform's contract C9: structure kills malformedness, never falsehood. Emitting such a grammar for every declared language is the next step, decided as the command stz grammar.</p><p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md">SOFTANZA_INTELLIGENCE_ARCHITECTURE.md</a></p></div>
 </div>

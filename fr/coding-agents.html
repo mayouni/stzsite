@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pour les agents qui codent · Softanza</title>
+<meta name="description" content="Softanza comme boîte à outils des agents qui codent : une API qui répond, un juge pour le code et les promesses, des changements montrés comme des plans, un moteur pour calculer ; et la commande stz qui les ouvrira à Claude Code et aux autres agents.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../assets/img/mark-180.png">
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-coding-agents">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="tour.html">Présenter</a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../en/coding-agents.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="platform.html">Plateforme</a><a href="vision.html">Vision</a><a href="agentic.html" aria-current=page>Agentique</a><a href="learn.html">Apprendre</a><a href="offering.html">Offre</a><a href="start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="tour.html">Présenter</a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../en/coding-agents.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="agentic.html">Agentique</a><a href="wise.html">Wise coding</a><a href="languages.html">Langue des langues</a><a href="zui.html">Zui</a><a href="refinement.html">Raffinement</a><a href="agents.html">Pour les agents</a><a href="coding-agents.html" aria-current=page>Agents qui codent</a><a href="security.html">Sécurité</a></div></nav>
+</header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Softanza comme boîte à outils des agents qui écrivent du code</div>
+    <h1>Des juges pour <i>les agents qui codent</i></h1>
+    <p class="lede">Un agent qui écrit du code a déjà de bonnes mains : il lit, cherche, modifie et lance un shell. Ce qui lui manque, c'est un moyen de connaître une API sur laquelle il n'a jamais été entraîné, de vérifier que ce qu'il a écrit tient ses promesses, et de montrer un changement avant qu'il n'arrive. Softanza a ces trois choses sur un seul moteur. Cette page les montre en marche, dit ce qu'un agent peut atteindre aujourd'hui, et décrit la porte qui lui ouvrira le reste.</p>
+  </div></section>
+  <div class="wrap page-body">
+<h2 id="judges">Les mains et les juges</h2>
+<p>Les agents qui codent, comme Claude Code, Codex ou Cursor, viennent avec leurs propres outils : ils lisent des fichiers, y cherchent, les modifient et lancent des commandes. De nouvelles façons de trouver du code les aident peu ; ils reviennent toujours à la simple recherche. Ce qu'ils ne savent pas faire seuls, c'est connaître une API inconnue sans deviner, juger leur travail face à des règles et à des promesses, et présenter un changement comme une intention qu'une personne relit avant que rien ne bouge.</p>
+<p class="way"><span>La manière Softanza</span> Softanza ne concurrence pas les outils de l'agent pour trouver du code. Elle fournit les juges : quelque chose qui connaît l'API, quelque chose qui vérifie l'affirmation, et quelque chose qui montre le changement avant qu'il n'arrive. L'agent garde ses mains.</p>
+
+<figure class="diagram"><img class="wide-only" src="../assets/img/diagrams/codingagents-fr.png" alt="Trois boîtes reliées par des flèches. L'agent qui code, les mains : lire et chercher, modifier des fichiers, lancer un shell ; Claude Code, Codex, Cursor et d'autres. La porte, une commande stz, décidée et dessinée en pointillé : une ligne de commande, un serveur MCP, compétence et hook, un plugin à installer. Les juges, Softanza, construits : connaître l'API, juger code et promesses, montrer le plan d'abord, calculer sur un moteur. Sous les trois : le modèle propose ; une personne valide ; chaque outil dit s'il peut agir, et refuse en disant pourquoi." width="1376" height="768"><img class="narrow-only" loading="lazy" src="../assets/img/diagrams/codingagents-narrow-fr.png" alt="Trois boîtes reliées par des flèches. L'agent qui code, les mains : lire et chercher, modifier des fichiers, lancer un shell ; Claude Code, Codex, Cursor et d'autres. La porte, une commande stz, décidée et dessinée en pointillé : une ligne de commande, un serveur MCP, compétence et hook, un plugin à installer. Les juges, Softanza, construits : connaître l'API, juger code et promesses, montrer le plan d'abord, calculer sur un moteur. Sous les trois : le modèle propose ; une personne valide ; chaque outil dit s'il peut agir, et refuse en disant pourquoi." width="640" height="1286"><figcaption>Les juges sont construits et s'exécutent aujourd'hui. La porte entre eux et l'agent est décidée et pas encore construite.</figcaption></figure>
+
+<h2 id="run">Les juges, en marche</h2>
+<p>Ils s'exécutent aujourd'hui dans la bibliothèque. Un agent peut déjà les atteindre en écrivant un court script ; la porte décrite plus bas lui permettra de les appeler comme des commandes.</p>
+<p style="margin-top:32px"><b>Connaître l&#x27;API : à la question « comment retirer les doublons », la bibliothèque compose le nom de la méthode grâce à sa propre grammaire de nommage, puis confirme que la méthode existe. Un agent ne devine pas.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oDoc = StzSelfDocQ(&quot;stzList&quot;)
+? oDoc.HowTo(&quot;remove duplicates&quot;)
+? oDoc.HasMethod(&quot;DuplicatesRemoved&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>Q([...]).RemoveDuplicates()   -- composed by grammar (remove duplicates)
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 00:46 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md">base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md</a></p><p style="margin-top:32px"><b>Vérifier le code : une règle maison qu&#x27;aucun linter générique ne connaît trouve un vrai appel à sa ligne, et laisse tranquille une méthode qui porte seulement le même nom.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>aF = StzCheckCode(&quot;class Foo&quot; + nl + &quot;def Bar()&quot; + nl + &quot;	x = substr(s, 2)&quot; + nl)
+nF = len(aF)
+for i = 1 to nF
+    ? aF[i][:rule] + &quot;  @line &quot; + aF[i][:line] + &quot;  [&quot; + aF[i][:severity] + &quot;]&quot;
+next
+? &quot;findings: &quot; + len(StzCheckCode(&quot;class Foo&quot; + nl + &quot;def substr(x)&quot; + nl + &quot;	return x&quot; + nl))</pre></div><div class="out"><div class="lbl">Sortie</div><pre>engine-first  @line 3  [warning]
+findings: 0</pre></div></div><p class="ran">exécuté le 2026-10-02 00:46 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-rules-as-graph-rules-narration.md">base/doc/narrations/stz-rules-as-graph-rules-narration.md</a></p><p style="margin-top:32px"><b>Montrer le changement avant qu&#x27;il n&#x27;arrive : trois opérations sur des fichiers sont répétées dans un jumeau et en sortent comme un plan lisible ; rien n&#x27;a bougé sur le disque.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oVfs = new stzVirtualFileSystem()
+oVfs.CreateFolder(&quot;config&quot;)
+oVfs.CreateFile(&quot;config/greenhouse.ini&quot;, &quot;pump_threshold=40&quot;)
+oVfs.MoveFile(&quot;old_settings.txt&quot;, &quot;config/legacy.ini&quot;)
+oPlan = oVfs.GenerateUpdatePlan()
+? oPlan.Narration()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>Update plan (3 of 3 operations to commit):
+  * 1. create folder &#x27;config&#x27;
+  * 2. create file &#x27;config/greenhouse.ini&#x27; (17 bytes)
+  * 3. move &#x27;old_settings.txt&#x27; -&gt; &#x27;config/legacy.ini&#x27;</pre></div></div><p class="ran">exécuté le 2026-10-02 00:46 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-system-dev-to-deploy-narration.md">base/doc/narrations/stz-system-dev-to-deploy-narration.md</a></p>
+
+<h2 id="today">Ce qu'un agent atteint aujourd'hui</h2>
+<ul>
+<li><strong>À l'intérieur, les juges sont profonds.</strong> La bibliothèque explique chaque méthode à partir de son propre code. Des règles maison et un vérificateur de programme entier jugent le code. Des milliers de promesses écrites et cinq cents gardes racontées disent ce que le code doit afficher. Un changement peut être répété puis validé à travers des portes, et un schéma peut tenir les réponses d'un modèle local dans une forme.</li>
+<li><strong>De l'extérieur, peu de choses passent.</strong> Un agent peut lancer un script, mais il ne peut pas encore appeler une commande qui répond, juge ou planifie. Un échec ne se traduit pas encore en code de sortie, aucun hook ne peut donc se fier à une réussite, et aucun fichier d'instructions n'est écrit pour les agents.</li>
+<li><strong>Cet écart est le constat.</strong> La revue que Softanza a faite de la question a jugé la capacité profonde et la portée presque nulle. Le travail n'est pas une nouvelle machinerie ; c'est une porte.</li>
+</ul>
+<h2 id="door">La porte : une commande stz</h2>
+<p class="proof"><b>proposition ratifiée</b> Décidée le 2 octobre 2026. Pas encore construite. Chaque verbe ci-dessous répond depuis la bibliothèque et le moteur, jamais depuis un modèle.</p>
+
+<div class="cards">
+<div class="card"><h3>stz ask · explain · howto</h3><p>Ce que fait une méthode, ses formes, un exemple avec sa promesse, et où elle se trouve. La réponse vient d'un catalogue généré depuis le code source : elle ne peut pas inventer une méthode.</p></div>
+<div class="card"><h3>stz check</h3><p>Des constats sous forme de données : la règle, le fichier, la ligne, la gravité et ce qu'il faut faire. Les règles maison de la bibliothèque, les règles du programme entier et le tribunal des langues déclarées, sous une seule forme.</p></div>
+<div class="card"><h3>stz promise · guard</h3><p>Chaque affirmation écrite, ou chaque scénario d'une garde, tenu ou rompu, avec un code de sortie auquel un hook peut se fier.</p></div>
+<div class="card"><h3>stz rehearse · commit</h3><p>Le changement comme un plan, sans toucher au disque ; puis sa validation à travers les portes, par quelqu'un qui a le droit de valider.</p></div>
+<div class="card"><h3>stz do</h3><p>Un court programme contre le moteur, pour le travail lui-même : texte, tables, graphes, cartes, statistiques et diagrammes, en un appel et un seul binaire.</p></div>
+<div class="card"><h3>stz grammar</h3><p>La grammaire de chaque langue déclarée, pour que la phrase d'un agent soit validée avant de s'exécuter, et qu'un modèle local ne puisse produire que des phrases valides.</p></div>
+</div>
+
+<p>Chaque verbe suit les mêmes lois. Il répond sous forme de données quand il ne parle pas à une personne. Il sort avec 0 en cas de succès, 1 en cas de constats et 2 en cas de refus. Il ne contient aucun modèle : l'agent apporte le modèle, Softanza apporte le jugement. Chaque refus dit où, quoi, pourquoi et que faire. Et les verbes restent les mêmes, quelle que soit la langue dans laquelle la plateforme elle-même est écrite.</p>
+<h2 id="ways">Cinq façons d'entrer</h2>
+<ul>
+<li><strong>Une ligne de commande.</strong> Tout agent qui dispose d'un shell peut s'en servir, et ses réponses se composent avec des tubes.</li>
+<li><strong>Un serveur MCP.</strong> Les mêmes verbes comme outils typés, pour les clients sans shell, tenus dans un seul processus déjà chaud, en lecture seule d'abord. La couche applicative de la plateforme sert déjà ainsi un projet déclaré aux outils d'IA, en lecture seule et sous journal, et s'inscrit elle-même auprès des outils installés sur la machine.</li>
+<li><strong>Une compétence.</strong> Une page que l'agent ne charge que lorsqu'il en a besoin, et qui lui apprend quel verbe employer et quand.</li>
+<li><strong>Un hook.</strong> Une vérification facultative après chaque modification, pour que l'agent corrige une erreur dans le même tour.</li>
+<li><strong>Un plugin.</strong> Une seule installation pour Claude Code, qui réunit la compétence, le hook et le serveur. Les autres agents lisent un fichier AGENTS.md et utilisent le même serveur.</li>
+</ul>
+<h2 id="governed">Des outils qui savent s'ils peuvent agir</h2>
+<p>Chaque outil porte l'une des sortes de capacité de la plateforme : calcul, perception, inférence ou effet. Le modèle de l'agent est traité pour ce qu'il est, un acteur qui peut inférer et proposer, mais pas agir. Un outil qui calcule ou qui lit répond donc aussitôt. Un outil qui agirait rend un plan avec un identifiant et ne change rien. Seule une personne qui confirme à l'invite de permission de l'agent, ou un acteur gouverné, valide ce plan, et chaque appel est consigné.</p>
+<p class="way"><span>La manière Softanza</span> La différence avec un serveur d'outils ordinaire n'est pas d'avoir plus d'outils. C'est que chaque outil sait s'il peut agir, et refuse en disant pourquoi quand il ne le peut pas.</p>
+
+<h2 id="order">L'ordre du travail</h2>
+<ol>
+<li>Rendre l'échec visible : chaque exécuteur échoue avec un code de sortie quand une promesse est rompue.</li>
+<li>Ouvrir la porte : un fichier AGENTS.md et une compétence qui enseignent les verbes.</li>
+<li>Les deux verbes à la valeur la plus nette : <code>stz check</code> et <code>stz ask</code>.</li>
+<li>Les verbes que personne d'autre n'offre : <code>stz promise</code>, <code>stz rehearse</code> et <code>stz grammar</code>.</li>
+<li>Le serveur MCP, généré depuis les verbes, puis le plugin.</li>
+<li>Mesurer vingt tâches réelles avec et sans les verbes. Ce site n'annoncera aucun gain avant cette mesure.</li>
+</ol>
+<p class="proof">Décidé le 2 octobre 2026 par délégation de l'auteur, à partir de la revue que Softanza a faite des outils pour agents. Les juges ci-dessus se sont exécutés dans la bibliothèque au commit 0e72e2e2c.</p>
+  </div>
+</main>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="platform.html">Plateforme</a></li><li><a href="platforms.html">Plateforme de plateformes</a></li><li><a href="areas.html">Les domaines</a></li><li><a href="atlas.html">L&#x27;Atlas</a></li><li><a href="code.html">Le code</a></li><li><a href="compare.html">Comparée</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="vision.html">L&#x27;étoile polaire</a></li><li><a href="principles.html">Douze principes</a></li><li><a href="estate.html">Le domaine</a></li><li><a href="history.html">Depuis les principes</a></li><li><a href="sovereignty.html">Souveraineté</a></li><li><a href="africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="agentic.html">Agentique</a></li><li><a href="wise.html">Wise coding</a></li><li><a href="languages.html">Langue des langues</a></li><li><a href="zui.html">Zui</a></li><li><a href="refinement.html">Raffinement</a></li><li><a href="agents.html">Pour les agents</a></li><li><a href="coding-agents.html">Agents qui codent</a></li><li><a href="security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="learn.html">Apprendre</a></li><li><a href="book.html">Le livre</a></li><li><a href="docs.html">Documentation</a></li><li><a href="reference.html">Référence</a></li><li><a href="narrations.html">Narrations</a></li><li><a href="teaching.html">Enseigner</a></li><li><a href="pedagogy.html">Pédagogie</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="offering.html">Offre</a></li><li><a href="editions.html">Éditions</a></li><li><a href="customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib">Le dépôt sur GitHub</a></li><li><a href="tour.html">Mode présentation</a></li><li><a href="../deck-check.html">Vérifier hors ligne</a></li><li><a href="../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../index.html" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers à l&#x27;ère agentique. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-02.</p></div>
+  </div>
+</div></footer>
+<script src="../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

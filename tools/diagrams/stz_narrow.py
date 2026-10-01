@@ -334,9 +334,35 @@ def platforms(lang):
     return c.render(f"platforms-narrow-{lang}.png")
 
 
+def codingagents(lang):
+    T = {
+     "en": dict(t="HANDS AND JUDGES · SOFTANZA FOR CODING AGENTS",
+        hands=("The coding agent: the hands", "read and search · edit files · run a shell · Claude Code, Codex, Cursor and others"),
+        door=("The door: one stz command · decided", "a command line · an MCP server · a skill and a hook · a plugin to install"),
+        judges=("The judges: Softanza · built", "know the API · check code and promises · show the change first · compute on one engine"),
+        rule=("The model proposes; a person commits.", "every tool says whether it may act, and refuses with its reason"),
+        cap="judges built and run today · door decided, not built yet"),
+     "fr": dict(t="LES MAINS ET LES JUGES · SOFTANZA POUR LES AGENTS QUI CODENT",
+        hands=("L'agent qui code : les mains", "lire et chercher · modifier des fichiers · lancer un shell · Claude Code, Codex, Cursor et d'autres"),
+        door=("La porte : une commande stz · décidée", "une ligne de commande · un serveur MCP · compétence et hook · un plugin à installer"),
+        judges=("Les juges : Softanza · construits", "connaître l'API · juger code et promesses · montrer le plan d'abord · calculer sur un moteur"),
+        rule=("Le modèle propose ; une personne valide.", "chaque outil dit s'il peut agir, et refuse en disant pourquoi"),
+        cap="juges construits et exécutés · porte décidée, à construire"),
+    }[lang]
+    c = Narrow(31)
+    c.title(T["t"]); c.gap(8)
+    c.titled(T["hands"][0], T["hands"][1], "old")
+    c.direction(T["door"][0], T["door"][1])
+    c.titled(T["judges"][0], T["judges"][1], "machine", accent=True)
+    c.gap(10)
+    c.titled(T["rule"][0], T["rule"][1], "kern")
+    c.note(T["cap"])
+    return c.render(f"codingagents-narrow-{lang}.png")
+
+
 if __name__ == "__main__":
     only = sys.argv[1:]
-    for fn in (technology, wise, languages, govern, editions, trajectory, northstar, platforms):
+    for fn in (technology, wise, languages, govern, editions, trajectory, northstar, platforms, codingagents):
         if only and fn.__name__ not in only: continue
         for lang in ("en", "fr"):
             fn(lang)

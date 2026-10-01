@@ -17,7 +17,7 @@ const CHROME = ['C:/Program Files/Google/Chrome/Application/chrome.exe',
 if (!CHROME) { console.error('no Chrome or Edge found'); process.exit(1); }
 const SIZES = { phone: [390, 844, true], laptop: [1366, 768, false], projector: [1920, 1080, false] };
 const NEW = ['platform', 'platforms', 'areas', 'atlas', 'code', 'compare', 'vision', 'principles', 'estate', 'history', 'sovereignty', 'africa',
-  'agentic', 'wise', 'languages', 'zui', 'refinement', 'agents', 'security', 'learn', 'book', 'docs', 'reference',
+  'agentic', 'wise', 'languages', 'zui', 'refinement', 'agents', 'coding-agents', 'security', 'learn', 'book', 'docs', 'reference',
   'narrations', 'teaching', 'pedagogy', 'offering', 'editions', 'customers', 'start', 'tour'];
 const PAGES = ['index.html', ...NEW.map(p => `fr/${p}.html`), ...NEW.map(p => `en/${p}.html`), 'deck-check.html'];
 const PLAN = [];
@@ -32,7 +32,7 @@ PLAN.push(['fr/guide/string.html', 'laptop', 'light'], ['fr/guide/string.html', 
 PLAN.push(['fr/atlas/geo.html', 'phone', 'light'], ['fr/reference/stzlist.html', 'laptop', 'light'], ['fr/reference/stzstring.html', 'phone', 'light'], ['en/reference/methods-a.html', 'laptop', 'light']);
 for (const k of [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]) PLAN.push([`fr/tour.html#s${k}`, 'projector', 'light']);
 PLAN.push(['fr/tour.html#s4', 'phone', 'light']);
-const FULL = ['index.html', 'fr/platform.html', 'fr/platforms.html', 'en/platforms.html', 'fr/vision.html', 'en/vision.html', 'fr/areas.html', 'fr/agentic.html', 'fr/compare.html', 'fr/estate.html', 'fr/learn.html', 'fr/offering.html', 'fr/atlas.html', 'en/zui.html', 'en/docs.html'];
+const FULL = ['index.html', 'fr/platform.html', 'fr/coding-agents.html', 'en/coding-agents.html', 'fr/platforms.html', 'en/platforms.html', 'fr/vision.html', 'en/vision.html', 'fr/areas.html', 'fr/agentic.html', 'fr/compare.html', 'fr/estate.html', 'fr/learn.html', 'fr/offering.html', 'fr/atlas.html', 'en/zui.html', 'en/docs.html'];
 
 const only = process.argv.slice(2);
 const port = 9333;

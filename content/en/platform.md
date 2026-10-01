@@ -2,7 +2,7 @@
 title: Platform
 title_html: The <i>platform</i>
 kicker: One engine, twenty-eight areas
-lede: Softanza is one computational platform. One engine, written in Zig, handles text, exact numbers, tables, graphs, maps, images, sound, neural networks, governed agents and the security around them. One language, Haro, puts all of it in a sentence. Everything on this page was run on the night of publication.
+lede: Softanza is one computational platform. One engine, written in Zig, handles text, exact numbers, tables, graphs, maps, images, sound, neural networks, governed agents and the security around them. One language, Haro, in construction, is to put all of it in a sentence. Everything on this page was run on the night of publication.
 description: The Softanza platform in plain words: what it is, what the engine does, and the language, Haro.
 ---
 
@@ -44,7 +44,7 @@ arabic
 
 ## The language: Haro {#haro}
 
-Haro is the platform's language. It is designed so that a human can read it like a sentence and an agent can write it under a grammar that forbids malformed sentences. Its register virtual machine and its compiler are written in Zig and already run the platform's code of today. Its charter, a draft of 26 September 2026, awaits the author's ratification.
+Haro is the platform's language. It is designed so that a human can read it like a sentence and an agent can write it under a grammar that forbids malformed sentences. It is not finished: its road is a register virtual machine and a compiler written in Zig, onto which the platform's code is being moved. Its charter, a draft of 26 September 2026, awaits the author's ratification.
 
 <p class="proof"><b>in construction</b> This site will not call Haro available before it is. Every code block on this site is Softanza code as it runs on the platform today.</p>
 
