@@ -112,3 +112,32 @@ next:
   - me:      Release 1 -- the proof gallery (134 narrations as pages), the compass pages (coverage vs the platforms, programming by heart, mathematics, learning), a documentation entry
   - stzlib:  five findings the group pages carry from their own sources -- the tables page is internally inconsistent by one lane; the security group page predates the 2026-09-30 re-rate; the performance page flags a stale CLAUDE.md line (P0-P7 / 283 assertions against P0-P11 / 366 in the code); the neural page flags its own design doc as stale; the gui page says the plane is on local main only -- all for the compass and the planes, none edited here
 ```
+
+---
+
+```yaml
+by:        stzsite · claude-fable-5-1 · 2026-10-01 03:34
+
+subject:   learning from the Wolfram Language site, applied -- maker, platform, agentic paradigm defined; Ring gone
+
+why:       the author's second reading: still far from the value of Softanza as a unified computational platform; the slogan must be defined on the site; Ring is retired and must not be named
+
+did:
+  - read eleven pages of wolfram.com and reference.wolfram.com and captured four as pictures; wrote doc/LEARNING-FROM-WOLFRAM.md: what the site does (a wall of outputs, one definition sentence, core areas as tiles with real pictures, one skeleton per area page, twelve principles with proofs, the documentation centre with a function-page template, a learning door per reader, numbers that count things, a live playground, "For AIs" in the navigation), what transfers and what does not, the three definitions, the re-plan
+  - defined the three words on the home page, each with proof links: maker (ownership, not programming skill), platform (one engine, Haro, 28 areas, one law), agentic age (grammar, court, safe world, governed commit; the agent as sixth reader)
+  - rewrote Why as Principles and concepts (twelve cards), Platform as the areas page, Govern as the agentic paradigm with a "for agents" section, Makers opening on the definition; navigation reads Principles · Platform · Atlas · Learn · Agents · Makers · Products · Africa · Start · Tour, one line at 1366 px
+  - removed every visible Ring mention: 94 in the sources plus the lane notes; the generated pages count zero outside link targets; the language is Haro, code is labelled Softanza, the first program shows no load line, the Start page points to the repository for the runtime
+  - rendered 80 proofs; pushed ecc1733
+
+state:
+  release-0:        DEPLOYED, re-centred on the three words, UNPERCEIVED
+  perception-gate:  OPEN
+
+waiting:
+  - STZSITE-VERDICT-01: unchanged -> the author
+  - STZSITE-DEFINITIONS-01: the three definitions in doc/LEARNING-FROM-WOLFRAM.md section 4 are drafts for the author's ruling -> the author [not routed]
+
+next:
+  - author:  rule the three definitions, and say whether the Start page may stay silent on the runtime until Haro ships
+  - me:      Release 1 in the order of the learnings doc: a render per area (the wall of outputs), the generated reference from the library's own explanations, the narrations as pages, the trajectory chart
+```
