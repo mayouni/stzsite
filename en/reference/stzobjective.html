@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stzObjective · Reference · Softanza</title>
+<meta name="description" content="stzObjective: 12 own methods">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/family.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-reference-class">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Principles</a><a href="../platform.html">Platform</a><a href="../atlas.html">Atlas</a><a href="../learn.html">Learn</a><a href="../govern.html">Agents</a><a href="../makers.html">Makers</a><a href="../products.html">Products</a><a href="../africa.html">Africa</a><a href="../reference.html" aria-current=page>Reference</a><a href="../start.html">Start</a><a href="../tour.html">Tour</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../../fr/reference/stzobjective.html" lang="fr" hreflang="fr">Français</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Theme" title="Theme: light / dark / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">The library documents itself · <a href="../atlas/numeric.html">Numeric &amp; optimization</a></div>
+    <h1 class="mono-title">stzObjective</h1>
+    <p class="thesis">12 own methods</p>
+    <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/number/stzObjective.ring">the source: base/number/stzObjective.ring</a> · <a href="../reference.html">All classes</a></p>
+  </div></section>
+  <div class="wrap page-body">
+    <input id="flt" class="flt" type="search" placeholder="Filter the methods…" aria-label="Filter the methods…">
+    <div class="lanes rtable"><div class="lane rhead"><div class="ln">Method</div><div class="lr"></div><div class="lt">Explanation, as the source carries it</div></div><div class="lane rrow" id="init" data-k="init "><div class="ln mono">init</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">init</span></div></div><div class="lane rrow" id="expression" data-k="expression "><div class="ln mono">Expression</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">expression</span></div></div><div class="lane rrow" id="variables" data-k="variables "><div class="ln mono">Variables</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">variables</span></div></div><div class="lane rrow" id="mathfunctionq" data-k="mathfunctionq not `function()`: ring accepts `function` as a synonym for `func`, so a method by that name is a c6 &quot;error in function name&quot; at load time. same family as naming a variable `or`, which folds onto the `or` keyword. an object accessor, so it is q-only -- a plain twin would return an object, which is exactly what the plain form must never do"><div class="ln mono">MathFunctionQ</div><div class="lr"><span class="fchip q">chainable</span></div><div class="lt">NOT `Function()`: Haro accepts `function` as a synonym for `func`, so a method by that name is a C6 &quot;Error in function name&quot; at load time. Same family as naming a variable `oR`, which folds onto the `or` keyword. an OBJECT accessor, so it is Q-only -- a plain twin would return an object, which is exactly what the plain form must never do</div></div><div class="lane rrow" id="valueat" data-k="valueat "><div class="ln mono">ValueAt</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">value at</span></div></div><div class="lane rrow" id="gradientat" data-k="gradientat "><div class="ln mono">GradientAt</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">gradient at</span></div></div><div class="lane rrow" id="setmaxiterations" data-k="setmaxiterations "><div class="ln mono">SetMaxIterations</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">set max iterations</span></div></div><div class="lane rrow" id="setmaxiterationsq" data-k="setmaxiterationsq "><div class="ln mono">SetMaxIterationsQ</div><div class="lr"><span class="fchip q">chainable</span></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">set max iterations q</span></div></div><div class="lane rrow" id="setgradienttolerance" data-k="setgradienttolerance how small the gradient must get before the search calls it done. left at the engine&#x27;s default when unset, rather than guessed at here."><div class="ln mono">SetGradientTolerance</div><div class="lr"></div><div class="lt">How small the gradient must get before the search calls it done. Left at the engine&#x27;s default when unset, rather than guessed at here.</div></div><div class="lane rrow" id="setgradienttoleranceq" data-k="setgradienttoleranceq same as setgradienttolerance: how small the gradient must get before the search calls it done. left at the engine&#x27;s default when unset, rather than guessed at here."><div class="ln mono">SetGradientToleranceQ</div><div class="lr"><span class="fchip q">chainable</span></div><div class="lt">Same as SetGradientTolerance: How small the gradient must get before the search calls it done. Left at the engine&#x27;s default when unset, rather than guessed at here.</div></div><div class="lane rrow" id="minimizefrom" data-k="minimizefrom the answer is a record, not a point, for the same reason the hypothesis tests return one: a bare answer cannot tell you it did not converge. :status says how it stopped, :evaluations is the honest cost (an iteration that line-searched twelve times is not one unit of work), and :why says it in words."><div class="ln mono">MinimizeFrom</div><div class="lr"></div><div class="lt">THE ANSWER IS A RECORD, NOT A POINT, for the same reason the hypothesis tests return one: a bare answer cannot tell you it did not converge. :status says how it stopped, :evaluations is the honest cost (an iteration that line-searched twelve times is not one unit of work), and :why says it in words.</div></div><div class="lane rrow" id="maximizefrom" data-k="maximizefrom the largest value, by minimising the negative. doing it here rather than telling you to rewrite the expression is the point: -f has the same maximiser as f has minimiser, but the value comes back negated, and forgetting to flip it back is the obvious way to get this wrong."><div class="ln mono">MaximizeFrom</div><div class="lr"></div><div class="lt">THE LARGEST value, by minimising the negative. Doing it here rather than telling you to rewrite the expression is the point: -f has the same maximiser as f has minimiser, but the VALUE comes back negated, and forgetting to flip it back is the obvious way to get this wrong.</div></div></div>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"></div>
+  <div class="foot-grid">
+    <div><img src="../../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">The Makers Platform of the Agentic Age<br>Born in Africa. Useful to the World!</p></div>
+    <div class="foot"><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.</p>
+      <p class="mono small">Repositories: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, self-hosted on this site. Site generated on 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+<script>(function(){var i=document.getElementById('flt');if(!i)return;var rows=document.querySelectorAll('[data-k]');i.addEventListener('input',function(){var q=i.value.toLowerCase();for(var r=0;r<rows.length;r++){rows[r].hidden=q&&rows[r].getAttribute('data-k').indexOf(q)<0;}});})();</script></body></html>

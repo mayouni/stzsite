@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stzAgentMemory · Référence · Softanza</title>
+<meta name="description" content="stzAgentMemory: 12 méthodes propres">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/family.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-reference-class">
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Principes</a><a href="../platform.html">Plateforme</a><a href="../atlas.html">Atlas</a><a href="../learn.html">Apprendre</a><a href="../govern.html">Agents</a><a href="../makers.html">Makers</a><a href="../products.html">Produits</a><a href="../africa.html">Afrique</a><a href="../reference.html" aria-current=page>Référence</a><a href="../start.html">Démarrer</a><a href="../tour.html">Présenter</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../../en/reference/stzagentmemory.html" lang="en" hreflang="en">English</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Thème" title="Thème: clair / sombre / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">La bibliothèque se documente elle-même · <a href="../atlas/agents.html">Agents et conversation</a></div>
+    <h1 class="mono-title">stzAgentMemory</h1>
+    <p class="thesis">12 méthodes propres</p>
+    <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/agentic/stzAgentMemory.ring">la source: base/agentic/stzAgentMemory.ring</a> · <a href="../reference.html">Toutes les classes</a></p>
+  </div></section>
+  <div class="wrap page-body">
+    <input id="flt" class="flt" type="search" placeholder="Filtrer les méthodes…" aria-label="Filtrer les méthodes…">
+    <div class="lanes rtable"><div class="lane rhead"><div class="ln">Méthode</div><div class="lr"></div><div class="lt">Explication, telle que la source la porte</div></div><div class="lane rrow" id="init" data-k="init "><div class="ln mono">init</div><div class="lr"></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">init</span></div></div><div class="lane rrow" id="graphq" data-k="graphq "><div class="ln mono">GraphQ</div><div class="lr"><span class="fchip q">chaînable</span></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">graph q</span></div></div><div class="lane rrow" id="learn" data-k="learn a learned fact carries its provenance: which agent learned it (:source = &quot;agent:&lt;name&gt;&quot;) and when (:learnedat, epoch ms). it used to carry nothing, so a memory read back could not say where a belief came from. no :confidence is invented -- nobody stated one; learnxt takes the caller&#x27;s own."><div class="ln mono">Learn</div><div class="lr"></div><div class="lt">A learned fact carries its PROVENANCE: which agent learned it (:source = &quot;agent:&lt;name&gt;&quot;) and when (:learnedat, epoch ms). It used to carry nothing, so a memory read back could not say where a belief came from. No :confidence is invented -- nobody stated one; LearnXT takes the caller&#x27;s own.</div></div><div class="lane rrow" id="learnxt" data-k="learnxt learn with the caller&#x27;s provenance (e.g. [ :source = &quot;sensor-3&quot;, :confidence = 0.8 ]); :source defaults to this agent, :learnedat to now."><div class="ln mono">LearnXT</div><div class="lr"><span class="fchip xt">étendue</span></div><div class="lt">Learn with the caller&#x27;s provenance (e.g. [ :source = &quot;sensor-3&quot;, :confidence = 0.8 ]); :source defaults to this agent, :learnedat to now.</div></div><div class="lane rrow" id="provenanceof" data-k="provenanceof where a fact came from -- the provenance recorded when it was learned."><div class="ln mono">ProvenanceOf</div><div class="lr"></div><div class="lt">Where a fact came from -- the provenance recorded when it was learned.</div></div><div class="lane rrow" id="fact" data-k="fact "><div class="ln mono">Fact</div><div class="lr"></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">fact</span></div></div><div class="lane rrow" id="recall" data-k="recall "><div class="ln mono">Recall</div><div class="lr"></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">recall</span></div></div><div class="lane rrow" id="forget" data-k="forget "><div class="ln mono">Forget</div><div class="lr"></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">forget</span></div></div><div class="lane rrow" id="numberoffacts" data-k="numberoffacts "><div class="ln mono">NumberOfFacts</div><div class="lr"></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">number of facts</span></div></div><div class="lane rrow" id="prove" data-k="prove "><div class="ln mono">Prove</div><div class="lr"></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">prove</span></div></div><div class="lane rrow" id="save" data-k="save "><div class="ln mono">Save</div><div class="lr"></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">save</span></div></div><div class="lane rrow" id="restore" data-k="restore read a saved memory back, provenance included. returns the merge report [ :merged, :refused ]. (not &quot;load&quot;: a ring keyword.)"><div class="ln mono">Restore</div><div class="lr"></div><div class="lt">Read a saved memory back, provenance included. Returns the merge report [ :merged, :refused ]. (Not &quot;Load&quot;: a Haro keyword.)</div></div></div>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"></div>
+  <div class="foot-grid">
+    <div><img src="../../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">La plateforme des makers à l&#x27;ère agentique<br>Née en Afrique. Utile au monde !</p></div>
+    <div class="foot"><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.</p>
+      <p class="mono small">Dépôts: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site. Site généré le 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+<script>(function(){var i=document.getElementById('flt');if(!i)return;var rows=document.querySelectorAll('[data-k]');i.addEventListener('input',function(){var q=i.value.toLowerCase();for(var r=0;r<rows.length;r++){rows[r].hidden=q&&rows[r].getAttribute('data-k').indexOf(q)<0;}});})();</script></body></html>

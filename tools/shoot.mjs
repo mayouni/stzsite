@@ -28,7 +28,7 @@ for (const p of PAGES) {
 }
 PLAN.push(['index.html?panel=right', 'laptop', 'light'], ['index.html?panel=right', 'phone', 'light']);
 for (const g of ['string', 'geo', 'governance', 'security', 'tables', 'binary']) PLAN.push([`fr/atlas/${g}.html`, 'laptop', 'light']);
-PLAN.push(['en/atlas/numeric.html', 'laptop', 'light'], ['fr/atlas/geo.html', 'phone', 'light'], ['fr/atlas.html', 'laptop', 'dark']);
+PLAN.push(['fr/reference.html', 'laptop', 'light'], ['fr/reference.html', 'phone', 'light'], ['fr/reference/stzlist.html', 'laptop', 'light'], ['fr/reference/stzstring.html', 'phone', 'light'], ['en/reference/methods-a.html', 'laptop', 'light'], ['en/atlas/numeric.html', 'laptop', 'light'], ['fr/atlas/geo.html', 'phone', 'light'], ['fr/atlas.html', 'laptop', 'dark']);
 for (const k of [2, 3, 4, 5, 6, 7, 8, 9]) PLAN.push([`fr/tour.html#s${k}`, 'projector', 'light']);
 PLAN.push(['fr/tour.html#s4', 'phone', 'light']);
 const FULL = ['index.html', 'fr/atlas.html', 'fr/atlas/geo.html', 'fr/why.html', 'fr/learn.html', 'fr/govern.html', 'fr/makers.html', 'fr/products.html', 'fr/africa.html', 'fr/start.html', 'en/makers.html'];

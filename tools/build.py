@@ -8,6 +8,7 @@ build step and GitHub Pages serves it as it is.   Run:  python tools/build.py
 """
 import json, re, sys, html, datetime, pathlib
 import markdown
+from build_reference import build_reference
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -20,7 +21,7 @@ GH = "https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/"
 UI = {
   "fr": {
     "nav": [("why","Principes"),("platform","Plateforme"),("atlas","Atlas"),("learn","Apprendre"),("govern","Agents"),
-            ("makers","Makers"),("products","Produits"),("africa","Afrique"),("start","Démarrer"),("tour","Présenter")],
+            ("makers","Makers"),("products","Produits"),("africa","Afrique"),("reference","Référence"),("start","Démarrer"),("tour","Présenter")],
     "slogan": "La plateforme des makers à l'ère agentique",
     "second": "Née en Afrique. Utile au monde !",
     "skip": "Aller au contenu",
@@ -45,7 +46,7 @@ UI = {
   },
   "en": {
     "nav": [("why","Principles"),("platform","Platform"),("atlas","Atlas"),("learn","Learn"),("govern","Agents"),
-            ("makers","Makers"),("products","Products"),("africa","Africa"),("start","Start"),("tour","Tour")],
+            ("makers","Makers"),("products","Products"),("africa","Africa"),("reference","Reference"),("start","Start"),("tour","Tour")],
     "slogan": "The Makers Platform of the Agentic Age",
     "second": "Born in Africa. Useful to the World!",
     "skip": "Skip to content",
@@ -457,7 +458,7 @@ def main():
     outs = []
     for lang in LANGS:
         for slug, _ in order[lang]:
-            if slug in ("tour", "atlas"): continue
+            if slug in ("tour", "atlas", "reference"): continue
             outs.append(build_page(lang, slug, order[lang], idx, groups))
         build_atlas_index(lang, idx, groups, order[lang])
         for i in range(len(groups)):
@@ -466,6 +467,7 @@ def main():
     for lang in LANGS:
         out, sc = build_tour(lang, order[lang], idx, groups); outs.append(out); scenes[lang] = sc
     build_home(idx, groups)
+    nref, ncls, nown = build_reference({"ROOT": ROOT, "LANGS": LANGS, "head": head, "header": header, "footer": footer, "idx": idx, "groups": groups})
     # every asset the tour needs, for deck-check.html
     assets = []
     for f in sorted((ROOT / "assets/fonts").glob("*.woff2")):
@@ -491,6 +493,7 @@ def main():
         assets.append({"kind": "page", "path": "reader.html"})
     build_deck_check(assets)
     nrun = sum(1 for g in groups if g.get("run") and (g["run"].get("code") or g["run"].get("image") or g["run"].get("text")))
+    print(f"reference: {nref} pages, {ncls} classes, {nown} own methods")
     print(f"built {len(outs)} pages + {2*len(groups)} group pages + 2 atlas indexes + index.html + deck-check.html; "
           f"tour scenes fr={len(scenes['fr'])} en={len(scenes['en'])}; groups with a run example: {nrun}/{len(groups)}")
     print("contrast:")

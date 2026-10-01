@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stzKnn · Reference · Softanza</title>
+<meta name="description" content="stzKnn: 13 own methods">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/family.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-reference-class">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Principles</a><a href="../platform.html">Platform</a><a href="../atlas.html">Atlas</a><a href="../learn.html">Learn</a><a href="../govern.html">Agents</a><a href="../makers.html">Makers</a><a href="../products.html">Products</a><a href="../africa.html">Africa</a><a href="../reference.html" aria-current=page>Reference</a><a href="../start.html">Start</a><a href="../tour.html">Tour</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../../fr/reference/stzknn.html" lang="fr" hreflang="fr">Français</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Theme" title="Theme: light / dark / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">The library documents itself · <a href="../atlas/nlp.html">NLP &amp; linguistics</a></div>
+    <h1 class="mono-title">stzKnn</h1>
+    <p class="thesis">13 own methods</p>
+    <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/learning/stzKnn.ring">the source: base/learning/stzKnn.ring</a> · <a href="../reference.html">All classes</a></p>
+  </div></section>
+  <div class="wrap page-body">
+    <input id="flt" class="flt" type="search" placeholder="Filter the methods…" aria-label="Filter the methods…">
+    <div class="lanes rtable"><div class="lane rhead"><div class="ln">Method</div><div class="lr"></div><div class="lt">Explanation, as the source carries it</div></div><div class="lane rrow" id="init" data-k="init a different thing whenever the vote overrules proximity"><div class="ln mono">init</div><div class="lr"></div><div class="lt">a different thing whenever the vote overrules proximity</div></div><div class="lane rrow" id="trainingsetq" data-k="trainingsetq the held set is live through here. ring copies an object into an attribute, so the set handed to the constructor is a snapshot: growing the caller&#x27;s own object afterwards would not reach this learner. grow it through this accessor -- olearner.trainingsetq().addexample(...) -- which reaches the real held set (accessor + method call is live in ring)."><div class="ln mono">TrainingSetQ</div><div class="lr"><span class="fchip q">chainable</span></div><div class="lt">THE HELD SET IS LIVE THROUGH HERE. Haro COPIES an object into an attribute, so the set handed to the constructor is a SNAPSHOT: growing the caller&#x27;s own object afterwards would NOT reach this learner. Grow it through this accessor -- oLearner.TrainingSetQ().AddExample(...) -- which reaches the real held set (accessor + method call is live in Haro).</div></div><div class="lane rrow" id="setk" data-k="setk "><div class="ln mono">SetK</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">set k</span></div></div><div class="lane rrow" id="setapproximate" data-k="setapproximate label agreement measured 1.000 in both rows above -- on separable data the vote absorbed every neighbour the forest missed. do not read that as a guarantee; read it as the reason agreementwithexact() takes your queries."><div class="ln mono">SetApproximate</div><div class="lr"></div><div class="lt">Label agreement measured 1.000 in both rows above -- on separable data the vote absorbed every neighbour the forest missed. Do not read that as a guarantee; read it as the reason AgreementWithExact() takes YOUR queries.</div></div><div class="lane rrow" id="isapproximate" data-k="isapproximate "><div class="ln mono">IsApproximate</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">is approximate</span></div></div><div class="lane rrow" id="setapproximatetrees" data-k="setapproximatetrees more trees, better recall, bigger index and a slower build."><div class="ln mono">SetApproximateTrees</div><div class="lr"></div><div class="lt">More trees, better recall, bigger index and a slower build.</div></div><div class="lane rrow" id="setapproximatebudget" data-k="setapproximatebudget candidates examined per query before the true distances decide. 0 lets the engine scale it from k. this is the recall dial."><div class="ln mono">SetApproximateBudget</div><div class="lr"></div><div class="lt">Candidates examined per query before the true distances decide. 0 lets the engine scale it from k. This is the recall dial.</div></div><div class="lane rrow" id="approximatetrees" data-k="approximatetrees "><div class="ln mono">ApproximateTrees</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">approximate trees</span></div></div><div class="lane rrow" id="approximatebudget" data-k="approximatebudget "><div class="ln mono">ApproximateBudget</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">approximate budget</span></div></div><div class="lane rrow" id="agreementwithexact" data-k="agreementwithexact returns the fraction of the given queries on which approximate and exact classification agree. each mode is built once, not once per query."><div class="ln mono">AgreementWithExact</div><div class="lr"></div><div class="lt">Returns the fraction of the given queries on which approximate and exact classification agree. Each mode is built once, not once per query.</div></div><div class="lane rrow" id="k" data-k="k "><div class="ln mono">K</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">k</span></div></div><div class="lane rrow" id="classify" data-k="classify "><div class="ln mono">Classify</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">classify</span></div></div><div class="lane rrow" id="why" data-k="why "><div class="ln mono">Why</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">why</span></div></div></div>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"></div>
+  <div class="foot-grid">
+    <div><img src="../../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">The Makers Platform of the Agentic Age<br>Born in Africa. Useful to the World!</p></div>
+    <div class="foot"><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.</p>
+      <p class="mono small">Repositories: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, self-hosted on this site. Site generated on 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+<script>(function(){var i=document.getElementById('flt');if(!i)return;var rows=document.querySelectorAll('[data-k]');i.addEventListener('input',function(){var q=i.value.toLowerCase();for(var r=0;r<rows.length;r++){rows[r].hidden=q&&rows[r].getAttribute('data-k').indexOf(q)<0;}});})();</script></body></html>

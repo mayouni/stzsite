@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stzScreenReaderBridge · Reference · Softanza</title>
+<meta name="description" content="stzScreenReaderBridge: 11 own methods">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/family.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-reference-class">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Principles</a><a href="../platform.html">Platform</a><a href="../atlas.html">Atlas</a><a href="../learn.html">Learn</a><a href="../govern.html">Agents</a><a href="../makers.html">Makers</a><a href="../products.html">Products</a><a href="../africa.html">Africa</a><a href="../reference.html" aria-current=page>Reference</a><a href="../start.html">Start</a><a href="../tour.html">Tour</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../../fr/reference/stzscreenreaderbridge.html" lang="fr" hreflang="fr">Français</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Theme" title="Theme: light / dark / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">The library documents itself · <a href="../atlas/gui.html">GUI &amp; reactive</a></div>
+    <h1 class="mono-title">stzScreenReaderBridge</h1>
+    <p class="thesis">11 own methods</p>
+    <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/gui/stzScreenReaderBridge.ring">the source: base/gui/stzScreenReaderBridge.ring</a> · <a href="../reference.html">All classes</a></p>
+  </div></section>
+  <div class="wrap page-body">
+    <input id="flt" class="flt" type="search" placeholder="Filter the methods…" aria-label="Filter the methods…">
+    <div class="lanes rtable"><div class="lane rhead"><div class="ln">Method</div><div class="lr"></div><div class="lt">Explanation, as the source carries it</div></div><div class="lane rrow" id="init" data-k="init "><div class="ln mono">init</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">init</span></div></div><div class="lane rrow" id="islive" data-k="islive "><div class="ln mono">IsLive</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">is live</span></div></div><div class="lane rrow" id="lasterror" data-k="lasterror "><div class="ln mono">LastError</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">last error</span></div></div><div class="lane rrow" id="announce" data-k="announce takes an stzaccessibilitytree, or the json itself, because the json is the contract and a caller that already has one should not have to rebuild the object to say it."><div class="ln mono">Announce</div><div class="lr"></div><div class="lt">Takes an stzAccessibilityTree, or the JSON itself, because the JSON is the contract and a caller that already has one should not have to rebuild the object to say it.</div></div><div class="lane rrow" id="announceq" data-k="announceq same as announce: takes an stzaccessibilitytree, or the json itself, because the json is the contract and a caller that already has one should not have to rebuild the object to say it."><div class="ln mono">AnnounceQ</div><div class="lr"><span class="fchip q">chainable</span></div><div class="lt">Same as Announce: Takes an stzAccessibilityTree, or the JSON itself, because the JSON is the contract and a caller that already has one should not have to rebuild the object to say it.</div></div><div class="lane rrow" id="timesannounced" data-k="timesannounced what actually happened ----------------------------------------------- how many times we handed a tree over."><div class="ln mono">TimesAnnounced</div><div class="lr"></div><div class="lt">what actually happened ----------------------------------------------- How many times WE handed a tree over.</div></div><div class="lane rrow" id="timesread" data-k="timesread how many times an assistive technology asked for one. this is the number that distinguishes a working bridge from a hopeful one."><div class="ln mono">TimesRead</div><div class="lr"></div><div class="lt">How many times an assistive technology ASKED for one. This is the number that distinguishes a working bridge from a hopeful one.</div></div><div class="lane rrow" id="nodecount" data-k="nodecount how many nodes the platform currently holds."><div class="ln mono">NodeCount</div><div class="lr"></div><div class="lt">How many nodes the platform currently holds.</div></div><div class="lane rrow" id="stats" data-k="stats [ announced, read, nodes ] straight from the bridge, or []."><div class="ln mono">Stats</div><div class="lr"></div><div class="lt">[ announced, read, nodes ] straight from the bridge, or [].</div></div><div class="lane rrow" id="isbeingread" data-k="isbeingread true when something has read the tree at least once -- which is the only evidence available in-process that a screen reader is there."><div class="ln mono">IsBeingRead</div><div class="lr"></div><div class="lt">TRUE when something has read the tree at least once -- which is the only evidence available in-process that a screen reader is there.</div></div><div class="lane rrow" id="free" data-k="free "><div class="ln mono">Free</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">free</span></div></div></div>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"></div>
+  <div class="foot-grid">
+    <div><img src="../../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">The Makers Platform of the Agentic Age<br>Born in Africa. Useful to the World!</p></div>
+    <div class="foot"><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.</p>
+      <p class="mono small">Repositories: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, self-hosted on this site. Site generated on 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+<script>(function(){var i=document.getElementById('flt');if(!i)return;var rows=document.querySelectorAll('[data-k]');i.addEventListener('input',function(){var q=i.value.toLowerCase();for(var r=0;r<rows.length;r++){rows[r].hidden=q&&rows[r].getAttribute('data-k').indexOf(q)<0;}});})();</script></body></html>

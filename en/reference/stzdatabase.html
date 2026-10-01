@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stzDatabase · Reference · Softanza</title>
+<meta name="description" content="stzDatabase: 16 own methods">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/family.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-reference-class">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Principles</a><a href="../platform.html">Platform</a><a href="../atlas.html">Atlas</a><a href="../learn.html">Learn</a><a href="../govern.html">Agents</a><a href="../makers.html">Makers</a><a href="../products.html">Products</a><a href="../africa.html">Africa</a><a href="../reference.html" aria-current=page>Reference</a><a href="../start.html">Start</a><a href="../tour.html">Tour</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../../fr/reference/stzdatabase.html" lang="fr" hreflang="fr">Français</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Theme" title="Theme: light / dark / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">The library documents itself · <a href="../atlas/tables.html">Tables &amp; data</a></div>
+    <h1 class="mono-title">stzDatabase</h1>
+    <p class="thesis">16 own methods</p>
+    <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/data/stzDatabase.ring">the source: base/data/stzDatabase.ring</a> · <a href="../reference.html">All classes</a></p>
+  </div></section>
+  <div class="wrap page-body">
+    <input id="flt" class="flt" type="search" placeholder="Filter the methods…" aria-label="Filter the methods…">
+    <div class="lanes rtable"><div class="lane rhead"><div class="ln">Method</div><div class="lr"></div><div class="lt">Explanation, as the source carries it</div></div><div class="lane rrow" id="init" data-k="init "><div class="ln mono">init</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">init</span></div></div><div class="lane rrow" id="path" data-k="path "><div class="ln mono">Path</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">path</span></div></div><div class="lane rrow" id="isopen" data-k="isopen "><div class="ln mono">IsOpen</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">is open</span></div></div><div class="lane rrow" id="why" data-k="why "><div class="ln mono">Why</div><div class="lr"></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">why</span></div></div><div class="lane rrow" id="exec" data-k="exec run a ddl/dml statement; returns rows-changed, or raises on error"><div class="ln mono">Exec</div><div class="lr"></div><div class="lt">run a DDL/DML statement; returns rows-changed, or raises on error</div></div><div class="lane rrow" id="rows" data-k="rows query rows: [ [ col, col, ... ], ... ] (cells text-coerced). empty result -&gt; []. raises on a malformed query, and on a query that fails partway through its rows -- it never returns the rows read so far as if they were the answer. rows come back as ring lists straight from the engine: a tab or a newline inside a value is data. (they used to travel as one tab/newline-joined string split here, which cut such a value into extra cells and extra rows.)"><div class="ln mono">Rows</div><div class="lr"></div><div class="lt">query rows: [ [ col, col, ... ], ... ] (cells text-coerced). Empty result -&gt; []. Raises on a malformed query, AND on a query that fails partway through its rows -- it never returns the rows read so far as if they were the answer. Rows come back as Haro lists straight from the engine: a tab or a newline inside a value is data. (They used to travel as one TAB/NEWLINE-joined string split here, which cut such a value into extra cells and extra rows.)</div></div><div class="lane rrow" id="value" data-k="value a single scalar (first cell of the first row), &quot;&quot; when empty"><div class="ln mono">Value</div><div class="lr"></div><div class="lt">a single scalar (first cell of the first row), &quot;&quot; when empty</div></div><div class="lane rrow" id="execwith" data-k="execwith a string binds as text (exact bytes), an integral number as integer, any other number as real. one statement per call. run a statement with bound values; returns rows changed, raises on error"><div class="ln mono">ExecWith</div><div class="lr"></div><div class="lt">A string binds as TEXT (exact bytes), an integral number as INTEGER, any other number as REAL. One statement per call. run a statement with bound values; returns rows changed, raises on error</div></div><div class="lane rrow" id="rowswith" data-k="rowswith rows with bound values, every cell as text (null -&gt; &quot;&quot;)"><div class="ln mono">RowsWith</div><div class="lr"></div><div class="lt">rows with bound values, every cell as text (NULL -&gt; &quot;&quot;)</div></div><div class="lane rrow" id="typedrowswith" data-k="typedrowswith rows with bound values, integer and real cells as ring numbers"><div class="ln mono">TypedRowsWith</div><div class="lr"></div><div class="lt">rows with bound values, INTEGER and REAL cells as Haro numbers</div></div><div class="lane rrow" id="valuewith" data-k="valuewith bound statements"><div class="ln mono">ValueWith</div><div class="lr"></div><div class="lt">bound statements</div></div><div class="lane rrow" id="begin" data-k="begin begin() takes the write lock at once (begin immediate), so a busy database refuses here, where the whole unit can be retried."><div class="ln mono">Begin</div><div class="lr"></div><div class="lt">Begin() takes the write lock at once (BEGIN IMMEDIATE), so a busy database refuses here, where the whole unit can be retried.</div></div><div class="lane rrow" id="commit" data-k="commit transactions"><div class="ln mono">Commit</div><div class="lr"></div><div class="lt">transactions</div></div><div class="lane rrow" id="rollback" data-k="rollback transactions"><div class="ln mono">Rollback</div><div class="lr"></div><div class="lt">transactions</div></div><div class="lane rrow" id="lastinsertid" data-k="lastinsertid transactions"><div class="ln mono">LastInsertId</div><div class="lr"></div><div class="lt">transactions</div></div><div class="lane rrow" id="close" data-k="close transactions"><div class="ln mono">Close</div><div class="lr"></div><div class="lt">transactions</div></div></div>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"></div>
+  <div class="foot-grid">
+    <div><img src="../../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">The Makers Platform of the Agentic Age<br>Born in Africa. Useful to the World!</p></div>
+    <div class="foot"><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.</p>
+      <p class="mono small">Repositories: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, self-hosted on this site. Site generated on 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+<script>(function(){var i=document.getElementById('flt');if(!i)return;var rows=document.querySelectorAll('[data-k]');i.addEventListener('input',function(){var q=i.value.toLowerCase();for(var r=0;r<rows.length;r++){rows[r].hidden=q&&rows[r].getAttribute('data-k').indexOf(q)<0;}});})();</script></body></html>
