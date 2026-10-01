@@ -204,12 +204,23 @@ def compact_html(lang, idx, groups, rel_atlas):
         out.append(f'<div class="band-compact"><div class="band-h">{esc(b[lang])}</div><div class="atlas-compact">{items}</div></div>')
     return "".join(out)
 
+def wall_html(lang, idx, groups, rel_atlas, rel_assets):
+    """every area that has a render, as one picture each, linking to its page"""
+    tiles = []
+    for g in groups:
+        r = g.get("render")
+        if not r: continue
+        tiles.append(f'<a class="wtile" href="{rel_atlas}{g["slug"]}.html"><img src="{rel_assets}assets/img/areas/{r["thumb"]}" alt="{esc(r["cap_" + lang])}" loading="lazy"><span class="wname">{esc(g[lang])}</span></a>')
+    return f'<div class="wall">{"".join(tiles)}</div>'
+
 def cards_html(lang, idx, groups, rel_atlas):
     out = []
     for b in idx["bands"]:
         gs = [g for g in groups if g["band"] == b["id"]]
         items = "".join(
-            f'<a class="acard" href="{rel_atlas}{g["slug"]}.html"><div class="t"><span>{esc(g[lang])}</span><span class="arrow">&#8599;</span></div>'
+            f'<a class="acard{" has-pic" if g.get("render") else ""}" href="{rel_atlas}{g["slug"]}.html">'
+            + (f'<img class="pic" src="{rel_atlas}../../assets/img/areas/{g["render"]["thumb"]}" alt="{esc(g["render"]["cap_" + lang])}" loading="lazy">' if g.get("render") else "")
+            + f'<div class="t"><span>{esc(g[lang])}</span><span class="arrow">&#8599;</span></div>'
             f'<p>{esc(g["line_" + lang])}</p>{bar(g["s"], g["so"], g["p"], g["e"])}{counts(g["s"], g["so"], g["p"], g["e"])}'
             f'<div class="dirs">{esc(g["dirs"])} · vs {esc(g["peers"])}</div></a>'
             for g in gs)
@@ -287,6 +298,10 @@ def build_group_page(lang, idx, groups, i):
     page = head(lang, f'{title} · Atlas · Softanza', g["line_" + lang], rel)
     page += '\n<body class="page page-atlas-group">\n' + header(lang, "atlas", rel, other_href=f"../../{ui['other_code']}/atlas/{g['slug']}.html", nav_rel="../")
     thesis = f'<blockquote><p>{esc(d["thesis"])}</p></blockquote>' if d.get("thesis") else ""
+    r = g.get("render")
+    hero = (f'<figure class="area-hero"><img src="{rel}assets/img/areas/{r["file"]}" alt="{esc(r["cap_" + lang])}">'
+            f'<figcaption><b>{esc(r["cap_" + lang])}.</b> {esc(r["by_" + lang])} · <a href="{r["src"]}">{"la source" if lang == "fr" else "the source"}</a></figcaption></figure>') if r else ""
+    thesis = hero + thesis
     page += f"""
 <main id="main">
   <section class="page-head"><div class="wrap">
@@ -313,7 +328,8 @@ def build_group_page(lang, idx, groups, i):
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(page, encoding="utf-8")
 
-def inject_atlas(body_html, lang, idx, groups, rel_atlas):
+def inject_atlas(body_html, lang, idx, groups, rel_atlas, rel_assets="../"):
+    body_html = body_html.replace("<!--ATLAS-WALL-->", wall_html(lang, idx, groups, rel_atlas, rel_assets))
     body_html = body_html.replace("<!--ATLAS-TALLY-->", tally_html(lang, idx))
     body_html = body_html.replace("<!--ATLAS-COMPACT-->", compact_html(lang, idx, groups, rel_atlas))
     return body_html
@@ -395,6 +411,7 @@ def build_home(idx, groups):
     """The onboarding scene: one page, both languages inside, JS picks."""
     body = (CONTENT / "home.html").read_text(encoding="utf-8")
     for lang in LANGS:
+        body = body.replace(f"<!--ATLAS-WALL-{lang.upper()}-->", wall_html(lang, idx, groups, f"{lang}/atlas/", ""))
         body = body.replace(f"<!--ATLAS-TALLY-{lang.upper()}-->", tally_html(lang, idx))
         body = body.replace(f"<!--ATLAS-COMPACT-{lang.upper()}-->", compact_html(lang, idx, groups, f"{lang}/atlas/"))
     page = head("fr", "Softanza · La plateforme des makers à l'ère agentique · The Makers Platform of the Agentic Age",

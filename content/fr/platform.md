@@ -22,6 +22,7 @@ Softanza est une plateforme de calcul : un moteur, écrit en Zig, qui sait trait
 
 Chaque domaine a sa page : ce qu'un maker en fait, un exemple exécuté, ses couloirs notés contre les meilleurs de sa catégorie, ce qui se distingue et ce qui est dû. Les barres disent la note : <span class="chip strong">Strong</span> <span class="chip solid">Solid</span> <span class="chip partial">Partial</span> <span class="chip emerging">Emerging</span>.
 
+<!--ATLAS-WALL-->
 <!--ATLAS-TALLY-->
 <!--ATLAS-COMPACT-->
 

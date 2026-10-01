@@ -330,3 +330,15 @@ a.abar:hover{background:var(--panel);border-color:var(--line)}
 .cards.principles .card h3{font-size:20px}
 .cards.principles .card ul{margin:4px 0 0;padding-left:18px;font-size:14.5px;color:var(--ink-2)}
 .cards.principles .card li+li{margin-top:4px}
+
+/* the wall of outputs: one real render per area */
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:20px}
+.wtile{position:relative;display:block;aspect-ratio:16/10;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);text-decoration:none}
+.wtile img{width:100%;height:100%;object-fit:contain;background:#fff;display:block;transition:transform .2s}
+.wtile:hover img{transform:scale(1.04)}
+.wtile .wname{position:absolute;left:0;right:0;bottom:0;padding:6px 10px;font-size:13.5px;font-weight:600;color:#fff;background:linear-gradient(180deg,rgba(14,11,18,0),rgba(14,11,18,.78));text-shadow:0 1px 2px rgba(0,0,0,.5)}
+.acard .pic{width:calc(100% + 36px);margin:-16px -18px 2px;aspect-ratio:16/9;object-fit:contain;background:#fff;display:block;border-bottom:1px solid var(--line)}
+.area-hero{margin:22px 0 0}
+.area-hero img{max-height:70vh;object-fit:contain;background:#fff}
+.scene .wall{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+@media (min-width:1200px){.scene .wall{grid-template-columns:repeat(7,1fr);gap:8px}}

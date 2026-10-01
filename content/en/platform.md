@@ -22,6 +22,7 @@ Softanza is a computational platform: an engine, written in Zig, that handles co
 
 Every area has its page: what a maker does with it, an example run, its lanes rated against the leaders of its category, what stands out and what is owed. The bars say the rating: <span class="chip strong">Strong</span> <span class="chip solid">Solid</span> <span class="chip partial">Partial</span> <span class="chip emerging">Emerging</span>.
 
+<!--ATLAS-WALL-->
 <!--ATLAS-TALLY-->
 <!--ATLAS-COMPACT-->
 
