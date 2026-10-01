@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neural tier · Atlas · Softanza</title>
+<meta name="description" content="A real, numpy-verified inference engine (BERT and LLM, constrained decoding); training and the foundry are owed.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/family.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-atlas-group">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Why</a><a href="../platform.html">Platform</a><a href="../atlas.html" aria-current=page>Atlas</a><a href="../learn.html">Learn</a><a href="../govern.html">Govern</a><a href="../makers.html">Makers</a><a href="../products.html">Products</a><a href="../africa.html">Africa</a><a href="../start.html">Start</a><a href="../tour.html">Tour</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../../fr/atlas/neural.html" lang="fr" hreflang="fr">Français</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Theme" title="Theme: light / dark / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">The Softanza Atlas · Language &amp; intelligence</div>
+    <h1>Neural tier</h1>
+    <p class="thesis">A real, numpy-verified inference engine (BERT and LLM, constrained decoding); training and the foundry are owed.</p>
+    <div class="tally"><div class="tallybar" role="img" aria-label="4 strong, 4 solid, 3 partial, 1 emerging"><span style="flex:4;background:var(--strong)"></span><span style="flex:4;background:var(--solid)"></span><span style="flex:3;background:var(--partial)"></span><span style="flex:1;background:var(--emerging)"></span></div><div class="counts"><span class="st-strong"><b>4</b> S</span><span class="st-solid"><b>4</b> So</span><span class="st-partial"><b>3</b> P</span><span class="st-emerging"><b>1</b> E</span></div></div>
+    <p class="proof">Measured against: ggml/llama.cpp · ONNX Runtime · Folders: <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/neural">base/neural</a> · <a href="https://claude.ai/artifact/3LD3dNfL7Jxf9DGgujU6x6">The original Atlas page</a></p>
+  </div></section>
+  <div class="wrap page-body">
+    <blockquote><p>The consumption side is complete and genuinely wired to a patched, vendored ggml: real GGUF loading, id-exact tokenizers, a numpy-parity BERT encoder, a multi-architecture causal LLM decoder with grammar-constrained decoding, and a measurement-gated GPU path. What is not there is the production side. A llama.cpp-class runner, wired into a governed library — not yet a training or model-production platform.</p></blockquote>
+    <div class="sg"><div class="good"><h4>What stands out</h4><ul><li>numpy-parity BERT encoder (1.64e-7)</li><li>grammar-constrained decoding wired to the structured-output contract</li><li>id-exact WordPiece and BPE tokenizers</li><li>measurement-gated wgpu GPU path (2-5x)</li></ul></div><div class="owed"><h4>What is owed</h4><ul><li>wire ggml&#x27;s backward pass -- the training foundry</li><li>a quantization (encode) path</li><li>ship or fetch a real semantic model for CI</li><li>ONNX import</li></ul></div></div>
+    <h2>One example, run</h2><p>The inference engine is present; no model file was on this laptop tonight, so nothing was inferred. The guards in test/neural prove inference against numpy.</p><div class="run"><div><div class="lbl">Ring</div><pre>o = StzNeuralEngineQ()
+? o.IsAvailable()
+? o.Backend()
+? StzHasNeuralModel()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+ggml (CPU)
+0</pre></div></div><p class="ran">run on 2026-10-01 at 01:52</p>
+    <h2>The lanes, one by one</h2>
+    <p class="proof">Lanes and their notes are quoted as they were read at the source. read from the source on Read from the source on 2026-09-16.</p>
+    
+    <div class="lanes"><div class="lane"><div class="ln">GGUF model loading</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">neural_embed.zig loads GGUF metadata + weights into a ggml context; F16/Q8_0 de-quant on load; tested against a committed tiny_bert.gguf<small>neural_embed.zig; tiny_bert.gguf</small></div></div><div class="lane"><div class="ln">Tokenizers</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">WordPiece/SentencePiece-metaspace and GPT-2 byte-level BPE from the GGUF vocab; tokenization is id-exact against a numpy reference</div></div><div class="lane"><div class="ln">Encoder inference (BERT family)</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Full BERT-family forward (MiniLM/BERT/RoBERTa/jina-bert-v2): embeddings, NER, rerank, matching an independent numpy reference to 1.64e-7<small>neural_embed.zig; test/neural BERT numpy-parity 1.64e-7</small></div></div><div class="lane"><div class="ln">Constrained / structured decoding</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">GBNF grammar-constrained decoding makes invalid tokens unemittable; ~5 calls per valid answer without the grammar, one with<small>gbnf_machine.zig / schema_gbnf.zig; test/neural GBNF</small></div></div><div class="lane"><div class="ln">Decoder inference (causal LLM)</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">llama/qwen2/qwen3/smollm with KV-cache, sampling, streaming; CI has no generative model, so proven by construction, not by a parity fixture<small>neural_gen.zig</small></div></div><div class="lane"><div class="ln">Tensor ops &amp; the numeric bridge</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Vendored ggml tensor core wired; stzMatrix&lt;-&gt;ggml bridge routes f64 matmul through ggml; the bridge is matmul-only, no backward pass<small>neural_matmul.zig</small></div></div><div class="lane"><div class="ln">Semantic index &amp; embeddings pipeline</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">stzSemanticIndex AddText/Search over StzNeuralEmbeddingOf; shipped and tested, but the strong model is user-supplied (only tiny_bert.gguf tracked)<small>stzSemanticIndex</small></div></div><div class="lane"><div class="ln">GPU execution</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">wgpu resident BERT backbone auto-routes to GPU via the calibration foundry: 2.08x on the backbone forward, 5.3x over full CPU forward; training sees no GPU<small>neural_backbone.zig (GK0-GK2c)</small></div></div><div class="lane"><div class="ln">Training &amp; backward pass</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">nn.zig forward + backward SGD for small dense MLPs (learns XOR, tested); no transformer training, ggml-opt.cpp vendored but never called<small>nn.zig; test/learning XOR training</small></div></div><div class="lane"><div class="ln">Quantization</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">Consume-only: F16 and Q8_0 de-quantized on load (dequantRows); no encode path, GGUF export writes F32 only</div></div><div class="lane"><div class="ln">GGUF export &amp; the foundry</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">gguf_export.zig writes GGUF for small F32 nets (stz-mlp, bigram DLM), round-trip verified; foundry rung 2 (train a transformer) is unbuilt<small>gguf_export.zig</small></div></div><div class="lane"><div class="ln">ONNX interop</div><div class="lr"><span class="chip emerging">Emerging</span></div><div class="lt">None: GGUF is the chosen and only model format; no ONNX import, runtime or export anywhere in the engine or faces</div></div></div>
+    <div class="group-nav"><a href="nlp.html">&larr; NLP &amp; linguistics</a><a href="../atlas.html">All groups</a><a href="agents.html">Agents &amp; conversation &rarr;</a></div>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"></div>
+  <div class="foot-grid">
+    <div><img src="../../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">The Makers Platform of the Agentic Age<br>Born in Africa. Useful to the World!</p></div>
+    <div class="foot"><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.</p>
+      <p class="mono small">Repositories: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, self-hosted on this site. Site generated on 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

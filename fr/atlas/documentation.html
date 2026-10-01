@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Système de documentation · Atlas · Softanza</title>
+<meta name="description" content="La documentation s&#x27;exécute au lieu de s&#x27;écrire ; la bibliothèque se documente elle-même et répond aux questions ; les plans consignent ce qui a été livré ; ni site, ni référence générée.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/family.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-atlas-group">
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Pourquoi</a><a href="../platform.html">Plateforme</a><a href="../atlas.html" aria-current=page>Atlas</a><a href="../learn.html">Apprendre</a><a href="../govern.html">Gouverner</a><a href="../makers.html">Makers</a><a href="../products.html">Produits</a><a href="../africa.html">Afrique</a><a href="../start.html">Démarrer</a><a href="../tour.html">Présenter</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../../en/atlas/documentation.html" lang="en" hreflang="en">English</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Thème" title="Thème: clair / sombre / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">L'Atlas Softanza · Disciplines transversales</div>
+    <h1>Système de documentation</h1>
+    <p class="thesis">La documentation s&#x27;exécute au lieu de s&#x27;écrire ; la bibliothèque se documente elle-même et répond aux questions ; les plans consignent ce qui a été livré ; ni site, ni référence générée.</p>
+    <div class="tally"><div class="tallybar" role="img" aria-label="3 strong, 6 solid, 2 partial, 1 emerging"><span style="flex:3;background:var(--strong)"></span><span style="flex:6;background:var(--solid)"></span><span style="flex:2;background:var(--partial)"></span><span style="flex:1;background:var(--emerging)"></span></div><div class="counts"><span class="st-strong"><b>3</b> S</span><span class="st-solid"><b>6</b> So</span><span class="st-partial"><b>2</b> P</span><span class="st-emerging"><b>1</b> E</span></div></div>
+    <p class="proof">Mesuré contre: Sphinx · rustdoc · MkDocs · literate programming · Dossiers: <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/doc">base/doc</a> · <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/meta">base/meta</a> · <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/reflect">base/reflect</a> · <a href="https://claude.ai/artifact/T5D1QdW8EbGpcbizgXmrN9">La page d'origine de l'Atlas</a></p>
+  </div></section>
+  <div class="wrap page-body">
+    <blockquote><p>Documentation is not a module in Softanza; it is a discipline built into how the library is made, and its signature is that the docs are run, not written, and the library can document itself. 134 literate narrations teach through stories whose every code-and-output block is produced by a real executed demo; the library answers Ask() / HowTo() / ExplainMethod() about its own API deterministically; 2,956 files carry inline #--&gt; promises a harness checks; ~63 plans-of-record record what actually shipped. Where it is thin: no published doc site, no generated API reference, no measured coverage, and its own overview has drifted behind the system it describes.</p></blockquote>
+    <div class="sg"><div class="good"><h4>Ce qui se distingue</h4><ul><li>The docs are run, not written: 134 narrations whose every block is produced by an executed demo</li><li>The library documents itself: Ask() / HowTo() / ExplainMethod() are deterministic and zero-hallucination</li><li>Design docs that record what actually shipped, not just what was intended</li><li>Self-illustrating figures drawn by the thing being documented</li></ul></div><div class="owed"><h4>Ce qui est dû</h4><ul><li>A published doc site (MkDocs / Docusaurus over the existing markdown)</li><li>Generate the API reference from the stzReflectFuncs harvester</li><li>Refresh the system overview (5 pillars vs 9 surfaces) and widen the self-doc corpus beyond 2 classes</li><li>Measured doc coverage, and docs wired into CI</li></ul></div></div>
+    <h2>Un exemple, exécuté</h2><p>La bibliothèque se documente elle-même : on lui demande, elle répond avec ses propres méthodes.</p><div class="run"><div><div class="lbl">Ring</div><pre>? Q([ 1, 2, 2 ]).Ask(&quot;how do I remove duplicates&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>Unique
+1.10
+remove duplicates / unique (engine-backed)
+UniqueCS
+1.10
+remove duplicates / unique (engine-backed)
+RemoveDuplicates
+1.10
+remove duplicates / unique (engine-backed)</pre></div></div><p class="ran">exécuté le 2026-10-01 à 01:40 ; 134 narrations vérifiées par exécution dans base/doc/narrations</p>
+    <h2>Les couloirs, un par un</h2>
+    <p class="proof">Les couloirs et leurs notes sont cités dans la langue de l'Atlas, l'anglais, tels qu'ils ont été lus à la source. lu à la source le Read from the source on 2026-09-17, from a read-only main worktree -- base/doc/narrations (134), base/meta/stzSelfDoc.ring + stzLibDoc.ring, base/reflect/stzReflectFuncs.ring, base/meta/promises.py over 2,956 #--&gt; files, base/doc/design (44) + SOFTANZA_*_PLAN.md, and stz-doc-system-overview.md.</p>
+    
+    <div class="lanes"><div class="lane"><div class="ln">Run-verified literate narrations</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">134 narrations where every code and output block is executed, paired with 17 *_narration_demo.ring and 455 *_narrated.ring guards; outputs are hand-pasted<small>base/doc/narrations; *_narration_demo.ring; *_narrated.ring</small></div></div><div class="lane"><div class="ln">Self-documenting, queryable library</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">stzSelfDoc/stzLibDoc answer Ask(), HowTo(), ExplainMethod() from source via a lexical-IDF retriever; deterministic, zero-hallucination; default corpus 2 classes<small>base/meta/stzSelfDoc.ring + stzLibDoc.ring</small></div></div><div class="lane"><div class="ln">Plans-of-record with results</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">~63 design docs written before the code and amended as phases close, with STATUS/RESULTS banners recording files, guard count and narration per phase<small>base/doc/design (44) + SOFTANZA_*_PLAN.md, e.g. SOFTANZA_PERF_SYSTEM.md</small></div></div><div class="lane"><div class="ln">Docs-as-tests (the promise harness)</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">2,956 files carry inline #--&gt; promises; promises.py runs each file and walks them as an ordered subsequence; standalone, not in CI, tolerates stale promises<small>base/meta/promises.py</small></div></div><div class="lane"><div class="ln">Doc-comments harvested from source</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">The harvester reads doc-comments above each def, lifts undocumented methods from #==# headers, inherits variants, synthesizes signatures; nothing emits a manual<small>base/reflect/stzReflectFuncs.ring</small></div></div><div class="lane"><div class="ln">Audience-layered taxonomy</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">quickers (22 + recipes), narrations (134), deepdives (8), references, faqs, internals (5) map onto Diataxis; references/ holds 3 files, faqs/ 1, misc/ 9 outside</div></div><div class="lane"><div class="ln">Quick-starts &amp; recipes</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">22 quickers plus a recipes/ tree (list/number/string/text) with copy-ready one-liners, also ingested by the self-doc index; breadth limited to core types</div></div><div class="lane"><div class="ln">Conceptual &amp; deep-dive essays</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">8 deepdives plus design studies (SCOPE_ORIENTED_PROGRAMMING.md, SOFTANZA_ENGINE_ARCHITECTURE.md, *_VS_THE_FIELD.md); essay-driven, not systematically indexed</div></div><div class="lane"><div class="ln">Self-illustrating figures</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">The library draws its own figures via stzCanvas/stzGraphCanvas/stzPlotCanvas/stzTreeCanvas; but they are committed PNGs nothing regenerates on a doc build<small>narrations/images</small></div></div><div class="lane"><div class="ln">Browsable API reference</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">The reference is the live queryable self-doc plus a hand-written references/ of 3 files; no static, browsable, cross-linked API manual or generator</div></div><div class="lane"><div class="ln">Doc health &amp; coverage</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">No measured doc coverage and prose freshness is unenforced: stz-doc-system-overview.md still describes 5 pillars while the tree has 9 surfaces<small>stz-doc-system-overview.md</small></div></div><div class="lane"><div class="ln">Published site &amp; discoverability</div><div class="lr"><span class="chip emerging">Emerging</span></div><div class="lt">Hand-written markdown read on GitHub; no mkdocs.yml, conf.py, docusaurus.config.js or .rst anywhere; no site, no search, no versioned rendering</div></div></div>
+    <div class="group-nav"><a href="testing.html">&larr; Système de test et de qualité</a><a href="../atlas.html">Tous les groupes</a><a href="governance.html">Doctrine de gouvernance &rarr;</a></div>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"></div>
+  <div class="foot-grid">
+    <div><img src="../../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">La plateforme des makers à l&#x27;ère agentique<br>Née en Afrique. Utile au monde !</p></div>
+    <div class="foot"><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.</p>
+      <p class="mono small">Dépôts: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site. Site généré le 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

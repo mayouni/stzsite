@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regex · Atlas · Softanza</title>
+<meta name="description" content="Feature-complete PCRE2 with the friendliest match API; JIT and linear-time matcher compiled but dark.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/family.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-atlas-group">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Why</a><a href="../platform.html">Platform</a><a href="../atlas.html" aria-current=page>Atlas</a><a href="../learn.html">Learn</a><a href="../govern.html">Govern</a><a href="../makers.html">Makers</a><a href="../products.html">Products</a><a href="../africa.html">Africa</a><a href="../start.html">Start</a><a href="../tour.html">Tour</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../../fr/atlas/regex.html" lang="fr" hreflang="fr">Français</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Theme" title="Theme: light / dark / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">The Softanza Atlas · Core data &amp; language</div>
+    <h1>Regex</h1>
+    <p class="thesis">Feature-complete PCRE2 with the friendliest match API; JIT and linear-time matcher compiled but dark.</p>
+    <div class="tally"><div class="tallybar" role="img" aria-label="4 strong, 5 solid, 3 partial, 0 emerging"><span style="flex:4;background:var(--strong)"></span><span style="flex:5;background:var(--solid)"></span><span style="flex:3;background:var(--partial)"></span></div><div class="counts"><span class="st-strong"><b>4</b> S</span><span class="st-solid"><b>5</b> So</span><span class="st-partial"><b>3</b> P</span></div></div>
+    <p class="proof">Measured against: PCRE2 · RE2 · Oniguruma · Folders: <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/regex">base/regex</a> · <a href="https://claude.ai/artifact/TUj8gXotShcsjw32Cv1EZn">The original Atlas page</a></p>
+  </div></section>
+  <div class="wrap page-body">
+    <blockquote><p>Under the hood it is PCRE2 10.47, statically linked, Unicode always on, with an unusually rich Ring layer (100+ methods, four fluent builder classes, a reactive match-to-code engine). On features it is at PCRE2 parity, with lookaround, backreferences, recursion and conditionals that RE2 and Rust refuse. Where it trails the modern engines is the safety-and-throughput story: no JIT, no linear-time matcher, and the ReDoS knob is not reachable from Ring, although the code for both is already compiled into the binary.</p></blockquote>
+    <div class="sg"><div class="good"><h4>What stands out</h4><ul><li>Feature-complete PCRE2: lookaround, backrefs, recursion, conditionals that RE2 and Rust deliberately refuse</li><li>The clearest match-semantics API in its class: Match() anchors, MatchFirst() searches, partial as-you-type</li><li>Four fluent builder classes with no native peer</li><li>A reactive RegexUter match-to-code engine</li></ul></div><div class="owed"><h4>What is owed</h4><ul><li>Wire the linear-time DFA matcher (pcre2_dfa_match is already in the binary)</li><li>Surface the ReDoS limits on the Ring stzRegex class</li><li>Named-group substitution ${name} in replace</li><li>Fix the broken Explain fallback (missing stzRegexAnalyzer) and the builder stubs</li></ul></div></div>
+    <h2>One example, run</h2><p>Match() anchors, MatchFirst() searches, MatchAnywhere() collects; captures come back as a list.</p><div class="run"><div><div class="lbl">Ring</div><pre>o = rx(&quot;(\w+)@(\w+)\.org&quot;)
+? o.MatchFirst(&quot;write to hello@softanza.org today&quot;)
+? @@( o.Captures() )
+? rx(&quot;^[A-Z][a-z]+$&quot;).Match(&quot;Niamey&quot;)
+? rx(&quot;^[A-Z][a-z]+$&quot;).Match(&quot;niamey&quot;)
+o = rx(&quot;\d+&quot;)
+? o.MatchAnywhere(&quot;RGPH 2012, census 2026&quot;)
+? @@( o.Matches() )</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+[ &quot;hello@softanza.org&quot;, &quot;hello&quot;, &quot;softanza&quot; ]
+1
+0
+1
+[ &quot;2012&quot;, &quot;2026&quot; ]</pre></div></div><p class="ran">run on 2026-10-01 at 01:48</p>
+    <h2>The lanes, one by one</h2>
+    <p class="proof">Lanes and their notes are quoted as they were read at the source. read from the source on Read from the source on 2026-09-16.</p>
+    
+    <div class="lanes"><div class="lane"><div class="ln">Match, search and anchoring</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Match() anchors whole content, MatchFirst() searches, MatchAt(s,n) from a position, plus partial as-you-type mode (PARTIAL_HARD/SOFT); nothing structural owed<small>stzRegex.ring Match / MatchFirst / MatchAt</small></div></div><div class="lane"><div class="ln">Capture groups, numbered and named</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Numbered and named captures with positions and section variants; Ring re-derives names in source order because PCRE2 enumerates them alphabetically</div></div><div class="lane"><div class="ln">Unicode correctness</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">PCRE2 compiled with UTF | UCP unconditionally: p{L}, scripts, codepoint-correct w/d/dot over multibyte UTF-8, offset conversion at the boundary<small>regex.zig (UTF | UCP)</small></div></div><div class="lane"><div class="ln">Advanced pattern features</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Full PCRE2 set proven by engine tests: lookaround, backrefs, atomic, possessive, non-capturing, recursion (?R), conditionals; RE2 and Rust omit these<small>Zig in-source tests (~57 blocks)</small></div></div><div class="lane"><div class="ln">Replace and substitution</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Engine-backed replace with $1 / ${1} / backref and $$ via StzRegexReplace and ReplaceRegex; ${name} parsed but only numeric honored; no Replace on stzRegex<small>StzRegexReplace / ReplaceRegex</small></div></div><div class="lane"><div class="ln">Split, find-all and iteration</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Single-pass FindAllRegex / extract_all (O(n)) plus stzRegex Matches/MatchesZZ and SplitByRegex; split_get silently caps at 512 pieces<small>FindAllRegex / extract_all / SplitByRegex</small></div></div><div class="lane"><div class="ln">Flags and compiled-pattern reuse</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Standard modifiers plus auto-multiline; compiles once, recompiles only on flag change; :DontCapture, :DisableOptimizations, :UseUnicode are no-ops; no cache</div></div><div class="lane"><div class="ln">Fluent builder DSL</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Four builders (stzRegexMaker, Recursive, Conditional W-DSL, Lookaround) emitting patterns; Quantifiers() is an empty TODO, MatchSameContentAs has a param bug<small>stzRegexMaker.ring</small></div></div><div class="lane"><div class="ln">Reactive computing (RegexUter)</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">stzRegexuter: a trigger-pattern-code engine with @value, state tracking, dependency chains, per-position results; novel, built on eval()<small>stzRegexUter.ring</small></div></div><div class="lane"><div class="ln">Named-pattern catalogue and explanation</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">4,842-line catalogue (stzRegexData.ring) via rxp()/pat(); Explain() works only for named patterns, the fallback calls a nonexistent stzRegexAnalyzer<small>base/data/stzRegexData.ring</small></div></div><div class="lane"><div class="ln">Throughput: JIT and linear-time matcher</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">One backtracking pcre2_match path; pcre2_jit_compile and pcre2_dfa_match are compiled into the binary but never called<small>regex.zig (pcre2_match)</small></div></div><div class="lane"><div class="ln">ReDoS safety and limits</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">stz_regex_set_limits(steps, input_len, depth) exists (engine test proves (a+)+$ aborts, ~10M-step default) but no Ring stzRegex method calls it<small>stz_regex_set_limits engine test</small></div></div></div>
+    <div class="group-nav"><a href="string.html">&larr; String</a><a href="../atlas.html">All groups</a><a href="collections.html">Collections &amp; objects &rarr;</a></div>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"></div>
+  <div class="foot-grid">
+    <div><img src="../../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">The Makers Platform of the Agentic Age<br>Born in Africa. Useful to the World!</p></div>
+    <div class="foot"><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.</p>
+      <p class="mono small">Repositories: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, self-hosted on this site. Site generated on 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collections et objets · Atlas · Softanza</title>
+<meta name="description" content="Un pipeline fonctionnel porté par le moteur et une racine d&#x27;objet réflexive ; le stockage boxé plafonne la vitesse des opérations d&#x27;ensembles.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/family.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-atlas-group">
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Pourquoi</a><a href="../platform.html">Plateforme</a><a href="../atlas.html" aria-current=page>Atlas</a><a href="../learn.html">Apprendre</a><a href="../govern.html">Gouverner</a><a href="../makers.html">Makers</a><a href="../products.html">Produits</a><a href="../africa.html">Afrique</a><a href="../start.html">Démarrer</a><a href="../tour.html">Présenter</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../../en/atlas/collections.html" lang="en" hreflang="en">English</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Thème" title="Thème: clair / sombre / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">L'Atlas Softanza · Données et langage de base</div>
+    <h1>Collections et objets</h1>
+    <p class="thesis">Un pipeline fonctionnel porté par le moteur et une racine d&#x27;objet réflexive ; le stockage boxé plafonne la vitesse des opérations d&#x27;ensembles.</p>
+    <div class="tally"><div class="tallybar" role="img" aria-label="6 strong, 5 solid, 1 partial, 0 emerging"><span style="flex:6;background:var(--strong)"></span><span style="flex:5;background:var(--solid)"></span><span style="flex:1;background:var(--partial)"></span></div><div class="counts"><span class="st-strong"><b>6</b> S</span><span class="st-solid"><b>5</b> So</span><span class="st-partial"><b>1</b> P</span></div></div>
+    <p class="proof">Mesuré contre: Lodash · Immutable.js · standard libraries · Dossiers: <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/list">base/list</a> · <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/object">base/object</a> · <a href="https://claude.ai/artifact/A7erA2T64KAfYKf1hkDAdn">La page d'origine de l'Atlas</a></p>
+  </div></section>
+  <div class="wrap page-body">
+    <blockquote><p>One of the largest surfaces in the library: ~155 list operations in a 6,500-line Zig core behind a 1,600-method Ring face, a functional pipeline, deep-path search, Lodash-grade grouping, and a reflective object root that 449 classes inherit, tuned for millions of items with measured residency wins. Two honest limits keep it short of the very top: boxed value storage holds raw set-op throughput an order of magnitude below NumPy/native, and there are no persistent immutable structures.</p></blockquote>
+    <div class="sg"><div class="good"><h4>Ce qui se distingue</h4><ul><li>String-expression predicates run inside the engine, which the peers cannot do</li><li>A deep-path search API that Lodash get only approximates</li><li>A reflective object root 449 classes inherit, with Q-elevation and the Verb/Verbed/VerbQ grammar</li><li>Measured residency wins at 1M items: 2.6x read-reuse, Classify -51%, Union -34%</li></ul></div><div class="owed"><h4>Ce qui est dû</h4><ul><li>Finish the list narration / fidelity grind (312 of ~602 legacy blocks error)</li><li>Unboxed typed storage for native-speed set-ops</li><li>Complete the residency migration (Slices 4 and 5, ~32 marshal-in sites)</li><li>Persistent immutable collections with structural sharing</li></ul></div></div>
+    <h2>Un exemple, exécuté</h2><p>Trouver d&#x27;abord, agir ensuite : la liste répond avant qu&#x27;on la change.</p><div class="run"><div><div class="lbl">Ring</div><pre>o1 = new stzList([ &quot;tea&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;fish&quot;, &quot;rice&quot;, &quot;tea&quot; ])
+? o1.ContainsDuplicates()
+? o1.NumberOfOccurrence(&quot;tea&quot;)
+? @@( o1.FindAll(&quot;tea&quot;) )
+? @@( o1.DuplicatesRemoved() )
+? @@( Q([ 3, 1, 2 ]).Sorted() )
+? @@( Q([ 1, 2, 3, 4, 5, 6 ]).Reversed() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+3
+[ 1, 3, 6 ]
+[ &quot;tea&quot;, &quot;rice&quot;, &quot;fish&quot; ]
+[ 1, 2, 3 ]
+[ 6, 5, 4, 3, 2, 1 ]</pre></div></div><p class="ran">exécuté le 2026-10-01 à 01:40</p>
+    <h2>Les couloirs, un par un</h2>
+    <p class="proof">Les couloirs et leurs notes sont cités dans la langue de l'Atlas, l'anglais, tels qu'ils ont été lus à la source. lu à la source le Read from the source on 2026-09-16.</p>
+    
+    <div class="lanes"><div class="lane"><div class="ln">Core list operations</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Index, slice, section, insert, remove, reverse, swap, rotate, repeat; reads engine-backed (stz_list_get/slice/reverse/rotate); mutators hop through Ring<small>stz_list_get / slice / reverse / rotate</small></div></div><div class="lane"><div class="ln">Functional pipeline (map, filter, reduce)</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Engine-backed map_expr/filter_expr/reduce_expr with a string DSL (@item, @accumulator) plus W (engine) and WF (Ring function) predicate modes<small>map_expr / filter_expr / reduce_expr</small></div></div><div class="lane"><div class="ln">Search, find, contains, deep paths</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Finder family engine-backed (find_cs, find_all_cs, find_nth_cs, contains_cs) plus a deep-path API (deep_find, item_at_path, paths_at_depth)<small>find_cs / deep_find / find_all_held_cs</small></div></div><div class="lane"><div class="ln">Set operations</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Union, intersection, difference, subset, unique engine-backed with a splitmix64 fast path; intersection_cs dedups, common_items_cs keeps dups; 1M union ~2-3s<small>stz_list_union_cs</small></div></div><div class="lane"><div class="ln">Grouping, partition, chunk, zip</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">classify_cs, partition, chunked, zip, interleave, sliding_window, frequencies_cs engine-backed; classify emits the nested shape engine-side (-51% at 1M)<small>classify_cs (-51% at 1M)</small></div></div><div class="lane"><div class="ln">Sorting and ordering</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">sort, sort_cs, sort_descending, sort_by_expr, sort_on, sorted_insert plus is_sorted / is_strictly_increasing / is_monotonic, all engine-backed<small>sort_by_expr / sort_on</small></div></div><div class="lane"><div class="ln">Aggregation and statistics on lists</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">sum, product, mean, median, variance, stddev, nth_largest, ranked engine-backed, also on stzListOfNumbers; deep statistics lives on the Statistics page</div></div><div class="lane"><div class="ln">Immutability and copy semantics</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">Ring assigns lists by value (safe by default, clean Copy()) but no persistent immutable structures with structural sharing; a modified copy is a full copy</div></div><div class="lane"><div class="ln">Large-scale performance and residency</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Generation-keyed cache (FIFO at 8M items / 1024 entries): read-reuse 3.34s to 1.29s, Classify -51%, Union -34% at 1M; boxed *StzValue, Slices 4-5 open<small>_ENGINE_RESIDENCY_PLAN.md; ring_bridge_list.zig</small></div></div><div class="lane"><div class="ln">The object system (stzObject root)</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">One reflective root inherited by 449 classes: Attributes, Methods, Type, ObjectUID, cloning, Q-elevation, Verb/Verbed/VerbQ; #TODO notes incomplete abstraction<small>base/object/stzObject.ring</small></div></div><div class="lane"><div class="ln">Specialized collections</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">stzHashList, stzGrid, stzTree, stzSet, stzListOfLists, stzListOfPairs, stzListOfSections, stzYielder; mostly Ring-side; stzHashList folds keys to lowercase</div></div><div class="lane"><div class="ln">Named-parameter grammar</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">stzListNamedParams, a 1,945-method grammar for natural-language named arguments with no direct peer; pure Ring and the least-verified under the fidelity grind<small>stzListNamedParams.ring</small></div></div></div>
+    <div class="group-nav"><a href="regex.html">&larr; Expressions régulières</a><a href="../atlas.html">Tous les groupes</a><a href="numeric.html">Numérique et optimisation &rarr;</a></div>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"></div>
+  <div class="foot-grid">
+    <div><img src="../../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">La plateforme des makers à l&#x27;ère agentique<br>Née en Afrique. Utile au monde !</p></div>
+    <div class="foot"><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.</p>
+      <p class="mono small">Dépôts: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site. Site généré le 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

@@ -39,6 +39,14 @@ Trois idées, une par ligne. Ne pas lire la page. L'exemple à donner à l'oral 
 Dire les stades tels quels : Ring on l'écrit aujourd'hui ; Ring++ existe et tourne, il arrive publiquement quand je l'annonce ; Haro n'est qu'une charte, rien n'est construit. La crédibilité de la plateforme, c'est que l'Atlas montre ses 36 couloirs « Emerging » à côté de ses 101 « Strong ».
 ```
 
+<<< scene id="atlas" page="atlas.html" label="Atlas" >>>
+<div class="eyebrow">Une plateforme de calcul unifiée · 28 groupes · 334 couloirs notés</div>
+<!--ATLAS-TALLY-->
+<!--ATLAS-COMPACT-->
+```notes
+Laisser le mur de barres parler. « Chaque barre est un groupe de modules ; vert, bleu, ambre, rouge : fort, solide, partiel, émergent. Aucun concurrent ne couvre toutes ces lignes ; nous les couvrons sur un seul moteur, et nous montrons les rouges. » Cliquer un groupe si on demande : chaque page a ses couloirs et un exemple exécuté cette nuit.
+```
+
 <<< scene id="learn" page="learn.html" label="Apprendre" >>>
 <div class="eyebrow">Le Système d'apprentissage · construit cette nuit, 15 chapitres × 4 langues</div>
 <div class="embed"><div class="embed-bar"><a href="../reader.html">Plein écran</a><span>en · fr · ar · ha — chaque cellule s'est exécutée ; aucune sortie stockée</span></div><iframe src="../reader.html" title="Le lecteur du cours Softanza" loading="lazy"></iframe></div>

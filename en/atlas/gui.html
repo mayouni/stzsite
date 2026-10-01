@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GUI &amp; reactive · Atlas · Softanza</title>
+<meta name="description" content="A young RmlUi plane with standout right-to-left and accessibility; the reactive runtime is not yet wired to the view.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/family.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-atlas-group">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Why</a><a href="../platform.html">Platform</a><a href="../atlas.html" aria-current=page>Atlas</a><a href="../learn.html">Learn</a><a href="../govern.html">Govern</a><a href="../makers.html">Makers</a><a href="../products.html">Products</a><a href="../africa.html">Africa</a><a href="../start.html">Start</a><a href="../tour.html">Tour</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../../fr/atlas/gui.html" lang="fr" hreflang="fr">Français</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Theme" title="Theme: light / dark / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">The Softanza Atlas · Visual &amp; spatial</div>
+    <h1>GUI &amp; reactive</h1>
+    <p class="thesis">A young RmlUi plane with standout right-to-left and accessibility; the reactive runtime is not yet wired to the view.</p>
+    <div class="tally"><div class="tallybar" role="img" aria-label="2 strong, 6 solid, 4 partial, 0 emerging"><span style="flex:2;background:var(--strong)"></span><span style="flex:6;background:var(--solid)"></span><span style="flex:4;background:var(--partial)"></span></div><div class="counts"><span class="st-strong"><b>2</b> S</span><span class="st-solid"><b>6</b> So</span><span class="st-partial"><b>4</b> P</span></div></div>
+    <p class="proof">Measured against: Qt · GTK · Flutter · React · Folders: <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/gui">base/gui</a> · <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/reactive">base/reactive</a> · <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/app">base/app</a> · <a href="https://claude.ai/artifact/87voC79SnAN26YwY84hmDN">The original Atlas page</a></p>
+  </div></section>
+  <div class="wrap page-body">
+    <blockquote><p>A young but genuinely coherent GUI plane, built on vendored RmlUi and actually running — windows open, events flow, it renders through the GPU plane and an SVG tier. Two standouts reflect the library&#x27;s DNA: RTL/bidi fully owned and accessibility built in from the grammar up. The rest is early: a four-primitive vocabulary, flexbox-only layout, imperative view-binding, and a full reactive runtime that ships but is not yet wired to the GUI. The whole plane is on local main only, not yet pushed.</p></blockquote>
+    <div class="sg"><div class="good"><h4>What stands out</h4><ul><li>RTL/bidi fully owned end to end</li><li>accessibility mandatory at authoring time, exposed via AccessKit</li><li>a recorder-not-painter render model with a deviceless SVG tier</li><li>an event surface that counts dropped events</li></ul></div><div class="owed"><h4>What is owed</h4><ul><li>wire the reactive runtime to the GUI (G5 clause 2)</li><li>a richer widget set</li><li>the semantic theme system (G6)</li><li>IME &amp; two-way text editing</li></ul></div></div>
+    <h2>One example, run</h2><p>The GUI plane is not yet pushed to the public repositories, and the Atlas says so. The one call that runs everywhere says whether the module is loaded.</p><div class="run"><div><div class="lbl">Ring</div><pre>? StzGuiAvailable()</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-01 at 01:40</p>
+    <h2>The lanes, one by one</h2>
+    <p class="proof">Lanes and their notes are quoted as they were read at the source. read from the source on Read from the source on 2026-09-16, from a read-only main worktree.</p>
+    
+    <div class="lanes"><div class="lane"><div class="ln">RTL &amp; bidirectional text</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Fully owned (RmlUi does no bidi): stzUiDocument reverses flex rows under RTL; gpu_text.zig reorders with SheenBidi (UAX#9) and shapes Arabic with HarfBuzz<small>stzUiDocument / gpu_text.zig; test/gui RTL suite</small></div></div><div class="lane"><div class="ln">Accessibility</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">G4a: a mandatory RATIONALE on every element emits an ARIA-role tree; G4b: a11y.zig hands that tree to AccessKit (UIA / NSAccessibility / AT-SPI)<small>stzAccessibilityTree / a11y.zig</small></div></div><div class="lane"><div class="ln">Declarative authoring (.panel)</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">A closed four-kind grammar PANEL/BOX/TEXT/STYLE, a diagnostics court, a .panel-&gt;RML-&gt;.panel round-trip fixpoint; far narrower than peer component models<small>stzUiDocument</small></div></div><div class="lane"><div class="ln">Layout</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">RmlUi flexbox via RCSS: direction, wrap, gap, align, justify, px/%/fill sizing; CSS Grid refused by decision, no constraint or custom layout<small>stzUiDocument.ring::ToRml()</small></div></div><div class="lane"><div class="ln">Rendering backend</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">RmlUi&#x27;s render interface is a recorder, not a painter (stz_rmlui.cpp): one flat display list drawn by the GPU tier or an SVG tier; PNG needs a GPU device<small>stz_rmlui.cpp</small></div></div><div class="lane"><div class="ln">Event handling</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Pointer, key, text-input, focus and directional focus move, hit-testing (element_at), an event recorder that counts dropped events; no gesture recognition<small>stzPanel</small></div></div><div class="lane"><div class="ln">Reactive runtime &amp; signals</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">stzReactiveObject with Watch / Computed(deps) / BindTo / SetAttribute, streams, timers, HTTP, event bus on a libuv reactor; not yet reaching the view<small>base/reactive; reactor.zig</small></div></div><div class="lane"><div class="ln">App shell &amp; windowing</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Native windows via vendored GLFW (window.zig); stzApp is a declarative living world; no multi-window orchestration, dialogs, menus or system-tray<small>window.zig / stzApp</small></div></div><div class="lane"><div class="ln">Widget / element toolkit</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">RmlUi&#x27;s own form controls (input, select, textarea, progress, tabset, button); no tables, trees, menus, dialogs, pickers, toolbars, docking</div></div><div class="lane"><div class="ln">State-&gt;view binding</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">{placeholder} templates and Set/SetStyle/Apply mutate a live document preserving focus, values escaped as data; imperative, not reactive<small>stzUiBindings (G5 clause 1)</small></div></div><div class="lane"><div class="ln">Text input &amp; IME</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">Single-line text input works (stz_gui_text_input); no IME, composition input for CJK and complex scripts deferred (costed at 1-3 engineer-years)</div></div><div class="lane"><div class="ln">Theming &amp; animation</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">Inline styling (BACKGROUND, COLOR, STYLE bags -&gt; RCSS) and a profile layer; no semantic theme system (G6 not started) and no animation/transitions</div></div></div>
+    <div class="group-nav"><a href="gpu.html">&larr; GPU</a><a href="../atlas.html">All groups</a><a href="stats.html">Statistics &amp; data-viz &rarr;</a></div>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"></div>
+  <div class="foot-grid">
+    <div><img src="../../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">The Makers Platform of the Agentic Age<br>Born in Africa. Useful to the World!</p></div>
+    <div class="foot"><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.</p>
+      <p class="mono small">Repositories: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, self-hosted on this site. Site generated on 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

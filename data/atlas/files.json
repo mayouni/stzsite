@@ -1,0 +1,34 @@
+{
+  "slug": "files",
+  "title": "Files & formats -- where it stands",
+  "thesis": "A competent, safety-first formats module -- engine-backed file I/O, directories (with the Windows non-ASCII listing bug defeated), CSV, JSON, and a namespace-aware XML parser -- whose one genuine standout is XML security: XXE is closed by construction, the parser refusing <!DOCTYPE> and <!ENTITY> outright, which lxml and most XML libraries get wrong by default. Everything else is a deliberate subset: no XPath/XSLT/validation, a flat HTML index, zip-only archives via Ring's minizip, UTF-8 only, and whole-file reads with a 64 MB cap.",
+  "lanes": [
+    {"lane": "XML security -- XXE closed by construction", "rating": "Strong", "note": "xml.zig refuses any document containing <!DOCTYPE> or <!ENTITY>, a hard failure; guarded: a file:///etc/passwd entity doc returns FALSE, SAML docs parse.", "proof": "xml.zig; XXE guard under test/file"},
+    {"lane": "File I/O", "rating": "Solid", "note": "read/write/append/copy/delete/stat engine-backed with a pathIsUsable screen; 64 MB read cap, no streaming, no mmap/seek, Move is copy+delete.", "proof": "file.zig, stzFile"},
+    {"lane": "Directory operations", "rating": "Solid", "note": "list/walk/create/delete/count via stz_dir_*; non-ASCII listing fixed with the wide-W API (guarded: Arabic/CJK/Hebrew/emoji names, listed count == engine count).", "proof": "stz_dir_*, stzFolder; non-ASCII guard under test/file"},
+    {"lane": "CSV", "rating": "Solid", "note": "csv.zig RFC-4180 quoting, header auto-detect, exact round-trip inference; eval() on cells removed, byte-scan number test ~156x faster; no multiline fields.", "proof": "csv.zig, stzCSV"},
+    {"lane": "JSON", "rating": "Solid", "note": "json.zig parse/serialize/pretty; the UTF-8 trap fixed in StzJsonToList, but the stzJson class constructor still calls the old pure-Ring parser; no JSONPath.", "proof": "json.zig, StzJsonToList, JsonFilterFeatures"},
+    {"lane": "XML parsing & query", "rating": "Solid", "note": "Strict namespace-aware parser shared with xmldsig.zig/SAML, exclusive C14N, a small local-name path grammar; no XPath, XSLT or DTD/XSD validation.", "proof": "xml.zig, xmldsig.zig, stzXml"},
+    {"lane": "File watching", "rating": "Solid", "note": "fswatch.zig snapshots (mtime, size) and diffs to ADD/MOD/DEL; stzFolderWatcher Watch/Drain/Stop; polling-based, no native OS events.", "proof": "fswatch.zig, stzFolderWatcher"},
+    {"lane": "HTML parsing & query", "rating": "Partial", "note": "html_dom.zig tokenizer + flat element index with tag/#id/.class selectors, double-decode fix, O(n^2) Find fix; no real DOM tree, no combinators, read-only.", "proof": "html_dom.zig, stzHtml; test/html"},
+    {"lane": "Archives & compression", "rating": "Partial", "note": "stzZipFile read/write backed by Ring's native ziplib (minizip), not the engine; compressor.zig only crc32/adler32/RLE; zip only, no tar/gzip/7z.", "proof": "stzZipFile, compressor.zig"},
+    {"lane": "Path manipulation", "rating": "Partial", "note": "Engine stz_path_extension/basename/dirname only (both / and \\); no join, normalize, relative-to or glob, no path object.", "proof": "stz_path_extension, stz_path_basename, stz_path_dirname"},
+    {"lane": "Streaming & large files", "rating": "Partial", "note": "Whole-file read only with a hard 64 MB cap; the one large-file path is JsonFilterFeatures (GeoJSON in-engine); no streaming, iterparse or mmap.", "proof": "JsonFilterFeatures"},
+    {"lane": "Encoding / charset", "rating": "Emerging", "note": "None for text: codec.zig is Base64 only, everything UTF-8 by design; no charset detection, no non-UTF-8 decoding (Windows-1252, Shift-JIS).", "proof": "codec.zig"}
+  ],
+  "standouts": [
+    "XXE closed by construction: the parser refuses <!DOCTYPE> and <!ENTITY>, a posture lxml defaults to wrong",
+    "The Windows non-ASCII directory listing bug defeated (wide-W API to UTF-8)",
+    "One strict namespace-aware XML parser shared with XML digital signatures (SAML), with exclusive C14N",
+    "CSV eval() on list-looking cells removed; byte-scan number test ~156x faster than regex-per-cell"
+  ],
+  "gaps": [
+    "Migrate the stzJson constructor to the fixed UTF-8 parser (shipped but unwired)",
+    "Streaming and large-file reads past the 64 MB cap; iterparse-style XML/JSON",
+    "A real archive layer (tar, gzip/zlib); charset detection and non-UTF-8 decoding",
+    "Multiline CSV, richer HTML (slice 3), XPath, a pathlib-style path surface"
+  ],
+  "peers": ["lxml", "defusedxml", "ElementTree", "BeautifulSoup", "cheerio", "libarchive", "Python zipfile / tarfile", "Python csv", "pandas read_csv", "Python json", "jq", "serde_json", "Go os / io / filepath", "Rust std::fs", "Python open / pathlib", "inotify / FSEvents", "watchdog", "chokidar", "chardet", "iconv"],
+  "folders": ["base/file", "test/file", "test/csv", "test/json", "test/html"],
+  "dated": "Read from the source on 2026-09-16, from a read-only main worktree"
+}

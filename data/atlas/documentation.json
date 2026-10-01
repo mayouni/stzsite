@@ -1,0 +1,34 @@
+{
+  "slug": "documentation",
+  "title": "Documentation System — Where It Stands",
+  "thesis": "Documentation is not a module in Softanza; it is a discipline built into how the library is made, and its signature is that the docs are run, not written, and the library can document itself. 134 literate narrations teach through stories whose every code-and-output block is produced by a real executed demo; the library answers Ask() / HowTo() / ExplainMethod() about its own API deterministically; 2,956 files carry inline #--> promises a harness checks; ~63 plans-of-record record what actually shipped. Where it is thin: no published doc site, no generated API reference, no measured coverage, and its own overview has drifted behind the system it describes.",
+  "lanes": [
+    {"lane": "Run-verified literate narrations", "rating": "Strong", "note": "134 narrations where every code and output block is executed, paired with 17 *_narration_demo.ring and 455 *_narrated.ring guards; outputs are hand-pasted", "proof": "base/doc/narrations; *_narration_demo.ring; *_narrated.ring"},
+    {"lane": "Self-documenting, queryable library", "rating": "Strong", "note": "stzSelfDoc/stzLibDoc answer Ask(), HowTo(), ExplainMethod() from source via a lexical-IDF retriever; deterministic, zero-hallucination; default corpus 2 classes", "proof": "base/meta/stzSelfDoc.ring + stzLibDoc.ring"},
+    {"lane": "Plans-of-record with results", "rating": "Strong", "note": "~63 design docs written before the code and amended as phases close, with STATUS/RESULTS banners recording files, guard count and narration per phase", "proof": "base/doc/design (44) + SOFTANZA_*_PLAN.md, e.g. SOFTANZA_PERF_SYSTEM.md"},
+    {"lane": "Docs-as-tests (the promise harness)", "rating": "Solid", "note": "2,956 files carry inline #--> promises; promises.py runs each file and walks them as an ordered subsequence; standalone, not in CI, tolerates stale promises", "proof": "base/meta/promises.py"},
+    {"lane": "Doc-comments harvested from source", "rating": "Solid", "note": "The harvester reads doc-comments above each def, lifts undocumented methods from #==# headers, inherits variants, synthesizes signatures; nothing emits a manual", "proof": "base/reflect/stzReflectFuncs.ring"},
+    {"lane": "Audience-layered taxonomy", "rating": "Solid", "note": "quickers (22 + recipes), narrations (134), deepdives (8), references, faqs, internals (5) map onto Diataxis; references/ holds 3 files, faqs/ 1, misc/ 9 outside", "proof": ""},
+    {"lane": "Quick-starts & recipes", "rating": "Solid", "note": "22 quickers plus a recipes/ tree (list/number/string/text) with copy-ready one-liners, also ingested by the self-doc index; breadth limited to core types", "proof": ""},
+    {"lane": "Conceptual & deep-dive essays", "rating": "Solid", "note": "8 deepdives plus design studies (SCOPE_ORIENTED_PROGRAMMING.md, SOFTANZA_ENGINE_ARCHITECTURE.md, *_VS_THE_FIELD.md); essay-driven, not systematically indexed", "proof": ""},
+    {"lane": "Self-illustrating figures", "rating": "Solid", "note": "The library draws its own figures via stzCanvas/stzGraphCanvas/stzPlotCanvas/stzTreeCanvas; but they are committed PNGs nothing regenerates on a doc build", "proof": "narrations/images"},
+    {"lane": "Browsable API reference", "rating": "Partial", "note": "The reference is the live queryable self-doc plus a hand-written references/ of 3 files; no static, browsable, cross-linked API manual or generator", "proof": ""},
+    {"lane": "Doc health & coverage", "rating": "Partial", "note": "No measured doc coverage and prose freshness is unenforced: stz-doc-system-overview.md still describes 5 pillars while the tree has 9 surfaces", "proof": "stz-doc-system-overview.md"},
+    {"lane": "Published site & discoverability", "rating": "Emerging", "note": "Hand-written markdown read on GitHub; no mkdocs.yml, conf.py, docusaurus.config.js or .rst anywhere; no site, no search, no versioned rendering", "proof": ""}
+  ],
+  "standouts": [
+    "The docs are run, not written: 134 narrations whose every block is produced by an executed demo",
+    "The library documents itself: Ask() / HowTo() / ExplainMethod() are deterministic and zero-hallucination",
+    "Design docs that record what actually shipped, not just what was intended",
+    "Self-illustrating figures drawn by the thing being documented"
+  ],
+  "gaps": [
+    "A published doc site (MkDocs / Docusaurus over the existing markdown)",
+    "Generate the API reference from the stzReflectFuncs harvester",
+    "Refresh the system overview (5 pillars vs 9 surfaces) and widen the self-doc corpus beyond 2 classes",
+    "Measured doc coverage, and docs wired into CI"
+  ],
+  "peers": ["literate programming (Knuth)", "Jupyter", "org-mode Babel", "help() / pydoc", "rustdoc search", "ADRs", "RFCs", "design docs", "rustdoc doctests", "python doctest", "Elixir doctest", "docstrings", "JSDoc", "rustdoc comments", "Diataxis", "Divio doc system", "cookbook docs", "getting-started guides", "architecture docs", "design essays", "RFC rationale", "matplotlib-in-docs", "mermaid", "Sphinx plot directive", "Sphinx autodoc", "rustdoc HTML", "Doxygen", "doc coverage tools", "Vale / docs linters", "interrogate", "Read the Docs", "Docusaurus", "Mintlify"],
+  "folders": ["base/doc/narrations", "base/doc/design", "base/doc/quickers", "base/doc/deepdives", "base/doc/references", "base/doc/faqs", "base/doc/internals", "base/meta", "base/reflect"],
+  "dated": "Read from the source on 2026-09-17, from a read-only main worktree -- base/doc/narrations (134), base/meta/stzSelfDoc.ring + stzLibDoc.ring, base/reflect/stzReflectFuncs.ring, base/meta/promises.py over 2,956 #--> files, base/doc/design (44) + SOFTANZA_*_PLAN.md, and stz-doc-system-overview.md"
+}

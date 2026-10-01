@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Numérique et optimisation · Atlas · Softanza</title>
+<meta name="description" content="L&#x27;exactitude que NumPy n&#x27;a pas, des décompositions de niveau LAPACK et la différentiation automatique ; pas un NumPy, par choix.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/family.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-atlas-group">
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Pourquoi</a><a href="../platform.html">Plateforme</a><a href="../atlas.html" aria-current=page>Atlas</a><a href="../learn.html">Apprendre</a><a href="../govern.html">Gouverner</a><a href="../makers.html">Makers</a><a href="../products.html">Produits</a><a href="../africa.html">Afrique</a><a href="../start.html">Démarrer</a><a href="../tour.html">Présenter</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../../en/atlas/numeric.html" lang="en" hreflang="en">English</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Thème" title="Thème: clair / sombre / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">L'Atlas Softanza · Données et langage de base</div>
+    <h1>Numérique et optimisation</h1>
+    <p class="thesis">L&#x27;exactitude que NumPy n&#x27;a pas, des décompositions de niveau LAPACK et la différentiation automatique ; pas un NumPy, par choix.</p>
+    <div class="tally"><div class="tallybar" role="img" aria-label="5 strong, 5 solid, 2 partial, 0 emerging"><span style="flex:5;background:var(--strong)"></span><span style="flex:5;background:var(--solid)"></span><span style="flex:2;background:var(--partial)"></span></div><div class="counts"><span class="st-strong"><b>5</b> S</span><span class="st-solid"><b>5</b> So</span><span class="st-partial"><b>2</b> P</span></div></div>
+    <p class="proof">Mesuré contre: NumPy · Eigen · GSL · SciPy · Dossiers: <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/number">base/number</a> · <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/optim">base/optim</a> · <a href="https://claude.ai/artifact/7Faos68KGLaFV6tQkof5J6">La page d'origine de l'Atlas</a></p>
+  </div></section>
+  <div class="wrap page-body">
+    <blockquote><p>The most rigorously measured module in the library: P0-P7 complete, ~1,827 assertions, every parallel route gated by a measured threshold and every kernel bit-identical under threads. It leads with something NumPy has no concept of, exactness: an arbitrary-precision numeric tower with a register that tells you why a value is exact or not. It reaches LAPACK-tier decompositions and ships reverse-mode autodiff with L-BFGS. It is deliberately not a NumPy: no broadcasting, raw matmul peak below tuned BLAS, and it refuses what it cannot measure a use for.</p></blockquote>
+    <div class="sg"><div class="good"><h4>Ce qui se distingue</h4><ul><li>An exactness register (IsExact, Why, Representation) that NumPy has no concept of</li><li>General non-symmetric eigen with a Francis double-shift QR, hand-rolled and verified</li><li>Reverse-mode autodiff paired with a real quasi-Newton (L-BFGS) optimizer</li><li>Nothing parallel ships without a measurement; many gaps are deliberate, measured refusals</li></ul></div><div class="owed"><h4>Ce qui est dû</h4><ul><li>Arbitrary-N and multi-dimensional FFT (mixed-radix / Bluestein, rfft, 2-D)</li><li>Complete the complex surface: log, inverse-trig and general powers</li><li>Adaptive quadrature and an ODE stepper</li><li>Broaden sampling distributions (binomial, Poisson, gamma, beta, Dirichlet)</li></ul></div></div>
+    <h2>Un exemple, exécuté</h2><p>Un entier exact de vingt chiffres, et un nombre qui dit sous quelle forme il est tenu.</p><div class="run"><div><div class="lbl">Ring</div><pre>? Q(2).Power(64)
+? Q(0.1 + 0.2).Representation()
+? Q(17).IsPrime()
+? @@( Q(12).Factors() )
+? Q(10).Factorial()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>18446744073709551616
+decimal
+1
+[ 1, 2, 3, 4, 6, 12 ]
+3628800</pre></div></div><p class="ran">exécuté le 2026-10-01 à 01:40</p>
+    <h2>Les couloirs, un par un</h2>
+    <p class="proof">Les couloirs et leurs notes sont cités dans la langue de l'Atlas, l'anglais, tels qu'ils ont été lus à la source. lu à la source le Read from the source on 2026-09-16.</p>
+    
+    <div class="lanes"><div class="lane"><div class="ln">Scalar arithmetic and exactness</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Arbitrary-precision tower over std.math.big: bignum, exact rationals, money-exact decimal (0.1+0.2 is exactly 0.3), plus IsExact()/Why()/Representation()<small>IsExact() / Why() / Representation()</small></div></div><div class="lane"><div class="ln">Matrices and linear algebra</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">matrix.zig + linalg.zig: SIMD/threaded matmul, LU determinant, Solve, Inverse, LeastSquares, PseudoInverse (Penrose-4 verified), rank, condition; vs NumPy<small>matrix.zig / linalg.zig vs NumPy oracle</small></div></div><div class="lane"><div class="ln">Eigen and decompositions</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Symmetric Jacobi eigen plus general non-symmetric eigen (balancing, Hessenberg, Francis double-shift QR, Schur), Jacobi SVD, Householder QR, Cholesky, roots<small>eigen_general.zig</small></div></div><div class="lane"><div class="ln">Automatic differentiation and optimization</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Reverse-mode autodiff (compiled tape, valueAndGradient) and L-BFGS with strong-Wolfe line search; verified to 8-12 decimals; Rosenbrock in 34 iterations<small>autodiff.zig / lbfgs.zig</small></div></div><div class="lane"><div class="ln">Acceleration and residency</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">SIMD + row-banded threaded matmul (16x cache reorder, up to 7x threaded), Neumaier summation (2.5x), resident reductions 19x; every route gated by calib.Gate<small>calib.Gate thresholds; bit-identical under threads</small></div></div><div class="lane"><div class="ln">Vectors and buffers</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">stzNumBuffer over numbuf.zig: an engine-owned f64 buffer with dot/scale/add/sub/mul and reductions that never marshal; no broadcasting, no n-D arrays<small>numbuf.zig</small></div></div><div class="lane"><div class="ln">Linear and integer programming</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Engine simplex (41x after a cubic re-parse fix) with branch-and-bound MIP, stzOptimModel DSL, exact coefficient compiler, .zopt round-trip; no IPM, no QP<small>simplex.zig; base/optim</small></div></div><div class="lane"><div class="ln">Special functions</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">special.zig: erf/erfc, log-gamma and gamma, incomplete gamma and beta, Normal/t/chi-square/F CDFs and quantiles; no Bessel, Airy, elliptic or hypergeometric<small>special.zig</small></div></div><div class="lane"><div class="ln">Solvers and roots</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">solver.zig: linear and quadratic roots, bisection, Newton, Simpson integration, polynomial eval, lerp/clamp/map-range; no adaptive quadrature, no ODE/BVP<small>solver.zig</small></div></div><div class="lane"><div class="ln">Random and sampling</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">random.zig over Xoshiro/PCG/ChaCha: seeded ints, floats, Gaussian, exponential, shuffle, Bernoulli, weighted choice under SeedRandom; no binomial/Poisson/gamma<small>random.zig</small></div></div><div class="lane"><div class="ln">FFT and spectral</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">fft.zig: radix-2 Cooley-Tukey with the NumPy fft/ifft convention, convolveReal, magnitudes, phases, power spectrum; radix-2 only, no rfft, no multi-dimensional<small>fft.zig</small></div></div><div class="lane"><div class="ln">Complex numbers</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">complex.zig: arithmetic, modulus (hypot), argument, conjugate, principal sqrt and exp, division via Smith&#x27;s formula; no log, inverse-trig or general powers<small>complex.zig</small></div></div></div>
+    <div class="group-nav"><a href="collections.html">&larr; Collections et objets</a><a href="../atlas.html">Tous les groupes</a><a href="tables.html">Tables et données &rarr;</a></div>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"></div>
+  <div class="foot-grid">
+    <div><img src="../../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">La plateforme des makers à l&#x27;ère agentique<br>Née en Afrique. Utile au monde !</p></div>
+    <div class="foot"><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.</p>
+      <p class="mono small">Dépôts: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site. Site généré le 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

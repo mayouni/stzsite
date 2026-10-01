@@ -16,7 +16,7 @@ const CHROME = ['C:/Program Files/Google/Chrome/Application/chrome.exe',
   'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'].find(existsSync);
 if (!CHROME) { console.error('no Chrome or Edge found'); process.exit(1); }
 const SIZES = { phone: [390, 844, true], laptop: [1366, 768, false], projector: [1920, 1080, false] };
-const PAGES = ['index.html', 'fr/why.html', 'fr/platform.html', 'fr/learn.html', 'fr/govern.html', 'fr/makers.html',
+const PAGES = ['index.html', 'fr/why.html', 'fr/platform.html', 'fr/atlas.html', 'en/atlas.html', 'fr/learn.html', 'fr/govern.html', 'fr/makers.html',
   'fr/products.html', 'fr/africa.html', 'fr/start.html', 'fr/tour.html', 'en/why.html', 'en/platform.html',
   'en/learn.html', 'en/govern.html', 'en/makers.html', 'en/products.html', 'en/africa.html', 'en/start.html',
   'en/tour.html', 'deck-check.html'];
@@ -27,9 +27,11 @@ for (const p of PAGES) {
   if (['index.html', 'fr/why.html', 'fr/govern.html', 'fr/tour.html', 'en/platform.html'].includes(p)) PLAN.push([p, 'laptop', 'dark']);
 }
 PLAN.push(['index.html?panel=right', 'laptop', 'light'], ['index.html?panel=right', 'phone', 'light']);
-for (const k of [2, 3, 4, 5, 6, 7, 8]) PLAN.push([`fr/tour.html#s${k}`, 'projector', 'light']);
-PLAN.push(['fr/tour.html#s5', 'phone', 'light']);
-const FULL = ['fr/why.html', 'fr/learn.html', 'fr/govern.html', 'fr/makers.html', 'fr/products.html', 'fr/africa.html', 'fr/start.html', 'en/makers.html'];
+for (const g of ['string', 'geo', 'governance', 'security', 'tables', 'binary']) PLAN.push([`fr/atlas/${g}.html`, 'laptop', 'light']);
+PLAN.push(['en/atlas/numeric.html', 'laptop', 'light'], ['fr/atlas/geo.html', 'phone', 'light'], ['fr/atlas.html', 'laptop', 'dark']);
+for (const k of [2, 3, 4, 5, 6, 7, 8, 9]) PLAN.push([`fr/tour.html#s${k}`, 'projector', 'light']);
+PLAN.push(['fr/tour.html#s4', 'phone', 'light']);
+const FULL = ['fr/atlas.html', 'fr/atlas/geo.html', 'fr/why.html', 'fr/learn.html', 'fr/govern.html', 'fr/makers.html', 'fr/products.html', 'fr/africa.html', 'fr/start.html', 'en/makers.html'];
 
 const only = process.argv.slice(2);
 const port = 9333;

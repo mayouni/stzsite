@@ -1,0 +1,34 @@
+{
+  "slug": "sound",
+  "title": "Sound — Where It Stands",
+  "thesis": "The survey's biggest surprise: memory said 'plan, SN0 next', the code says one of the most fully-realized planes in the library, SN0-SN6 and a sonification series shipped and closed. miniaudio is vendored and split into two DLLs, there is an owned Zig sound graph (Web-Audio-shaped), FFT-backed analysis, and a real lock-free real-time callback that does no allocation, no lock, and never re-enters the Ring VM. What it refuses on purpose: MIDI, spatial/HRTF, plugin hosting, notation; and reverb is absent even from the effect palette.",
+  "lanes": [
+    {"lane": "Real-time callback discipline", "rating": "Strong", "note": "sinkCallback does no allocation, no lock, never re-enters the Ring VM; SPSC lock-free ring, underruns counted, worst-callback microseconds tracked", "proof": "engine audiodev.zig sinkCallback, soundring.zig"},
+    {"lane": "Device playback & transport", "rating": "Strong", "note": "Vendored miniaudio backends per OS: open/start/stop/close, a stzSoundTransport face, an honest report when no device; split into decode and device DLLs", "proof": "stz_sound + stz_audiodev DLLs"},
+    {"lane": "Sound graph -- mixing & routing", "rating": "Strong", "note": "An owned node graph (miniaudio's own graph disabled): OSC/SOURCE/GAIN/MIX/PAN/FILTER/DELAY/ENVELOPE over planar buses, topological and cycle-free", "proof": "engine soundgraph.zig"},
+    {"lane": "Spectral analysis", "rating": "Strong", "note": "soundanalysis.zig on the shared fft.zig: Hann spectrum, threaded spectrogram, onset detection, tempo estimation, LUFS loudness, dominant frequency", "proof": "engine soundanalysis.zig, fft.zig"},
+    {"lane": "Sonification, earcons & voice", "rating": "Strong", "note": "stzEarcons (66 methods), stzVoice/stzVoicePool, stzListener (closed grammar), and the SS1-SS5 sonification series; no mainstream audio library offers this", "proof": "test/sound earcon_expect.json, voice_guard.html"},
+    {"lane": "File decode / encode", "rating": "Solid", "note": "Decodes WAV/MP3/FLAC/OGG via miniaudio with resample and channel conversion; encode is WAV/FLAC only, MP3/OGG out return UNSUPPORTED", "proof": "engine sound.zig"},
+    {"lane": "Synthesis", "rating": "Solid", "note": "Band-limited oscillators (polyBLEP/polyBLAMP) for sine/square/saw/triangle plus ADSR, f64, unit-tested; no wavetable, FM, additive or granular", "proof": "engine sounddsp.zig"},
+    {"lane": "Capture / recording", "rating": "Solid", "note": "Microphone capture through the same device layer and callback discipline; multi-device selection and format negotiation stay basic", "proof": "stzMicrophone.ring; audiodev.zig capture side"},
+    {"lane": "Streaming", "rating": "Solid", "note": "A producer thread feeds the lock-free ring the callback drains, bounded at MAX_STREAMS=16, with StreamStart/Stop/Drain; no network streaming", "proof": "engine soundgraph.zig (the stream)"},
+    {"lane": "Audio <-> graphics convergence", "rating": "Solid", "note": "stzSoundPlot and stzSoundGrid render waveforms and spectrograms through the library's own graphics plane as SVG/PNG, plus a browser guard harness", "proof": ""},
+    {"lane": "DSP effects palette", "rating": "Partial", "note": "RBJ biquad filters (lowpass/highpass/bandpass), a feedback delay, gain and pan; no reverb (absent even as a named node), compressor, chorus or distortion", "proof": ""},
+    {"lane": "Pro-audio breadth (MIDI, spatial, plugins)", "rating": "Emerging", "note": "None, stated in writing as deliberate non-goals: MIDI, notation, 3D/HRTF spatial, time-stretching and VST/CLAP hosting are OUT until asked", "proof": "SOFTANZA_SOUND_PLAN.md (non-goals)"}
+  ],
+  "standouts": [
+    "A lock-free real-time callback: no alloc, no lock, no Ring re-entry, guarded down to worst-callback microseconds",
+    "An owned Zig sound graph, Web-Audio-shaped, not a wrapper",
+    "librosa-grade analysis: spectrogram, onsets, tempo and LUFS on the shared engine FFT",
+    "A sonification / earcon / voice layer no mainstream audio library offers"
+  ],
+  "gaps": [
+    "Reverb and a fuller effect palette (compressor, chorus, distortion)",
+    "Richer synthesis (wavetable, FM, additive, granular)",
+    "MP3 / OGG encode to close the read-broad / write-narrow asymmetry",
+    "MIDI input, spatial/HRTF and plugin hosting (deliberate non-goals)"
+  ],
+  "peers": ["JUCE", "miniaudio", "Web Audio (AudioWorklet)", "PortAudio", "Web Audio", "Web Audio AudioNode graph", "JUCE AudioProcessorGraph", "Pure Data", "Web Audio AnalyserNode", "librosa", "Essentia", "sonification libraries", "earcon systems", "libsndfile", "Web Audio decodeAudioData", "Web Audio OscillatorNode", "JUCE dsp", "SuperCollider", "Web Audio getUserMedia", "librosa.display", "Faust", "Web MIDI"],
+  "folders": ["base/sound", "test/sound"],
+  "dated": "Read from the source on 2026-09-16, from a read-only main worktree -- base/sound; engine sound.zig, soundgraph.zig, soundanalysis.zig, audiodev.zig, sounddsp.zig, soundring.zig, soundwasm.zig + vendored miniaudio 0.11.25; guards under test/sound (31 files + a web-audio harness)"
+}

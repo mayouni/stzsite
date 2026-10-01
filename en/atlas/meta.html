@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metaprogramming &amp; code rules · Atlas · Softanza</title>
+<meta name="description" content="One CI gate over about eleven domains, a unification no peer has; trails on declarative rule authoring.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/family.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-atlas-group">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Why</a><a href="../platform.html">Platform</a><a href="../atlas.html" aria-current=page>Atlas</a><a href="../learn.html">Learn</a><a href="../govern.html">Govern</a><a href="../makers.html">Makers</a><a href="../products.html">Products</a><a href="../africa.html">Africa</a><a href="../start.html">Start</a><a href="../tour.html">Tour</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../../fr/atlas/meta.html" lang="fr" hreflang="fr">Français</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Theme" title="Theme: light / dark / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">The Softanza Atlas · Systems &amp; runtime</div>
+    <h1>Metaprogramming &amp; code rules</h1>
+    <p class="thesis">One CI gate over about eleven domains, a unification no peer has; trails on declarative rule authoring.</p>
+    <div class="tally"><div class="tallybar" role="img" aria-label="1 strong, 7 solid, 4 partial, 0 emerging"><span style="flex:1;background:var(--strong)"></span><span style="flex:7;background:var(--solid)"></span><span style="flex:4;background:var(--partial)"></span></div><div class="counts"><span class="st-strong"><b>1</b> S</span><span class="st-solid"><b>7</b> So</span><span class="st-partial"><b>4</b> P</span></div></div>
+    <p class="proof">Measured against: semgrep · OPA · Folders: <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/meta">base/meta</a> · <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/reflect">base/reflect</a> · <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/refine">base/refine</a> · <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/governance">base/governance</a> · <a href="https://claude.ai/artifact/TmxWRgtkKRLTgFUbgerua4">The original Atlas page</a></p>
+  </div></section>
+  <div class="wrap page-body">
+    <blockquote><p>The distinctive thing here is unification, not any single tool: one CI gate (stzRuleReport) collects findings in one shape from ~11 domains -- code rules, agent-graph invariants, security reachability, org charts, service contracts, workflow SLAs, even diagram notations -- something neither semgrep (code-only) nor OPA (policy-only) attempts. The honest gaps are extensibility (no way to author a custom rule pattern), a two-grammar tree-sitter, and shallow reflection.</p></blockquote>
+    <div class="sg"><div class="good"><h4>What stands out</h4><ul><li>One CI gate, one finding shape, across ~11 domains -- a genuine category-of-one</li><li>Code rules born from the library&#x27;s own hard-won bugs, so it lints itself</li><li>A three-language code graph (Ring, Python, JS) that self-checks via CheckRules()</li><li>A signable, sha256-sealed rule constitution -- governance of the rules</li></ul></div><div class="owed"><h4>What is owed</h4><ul><li>Declarative rule and policy authoring (semgrep-style patterns, Rego-style expressions)</li><li>Broaden tree-sitter and put Ring on it</li><li>Richer reflection; resolved call edges and dataflow; full dominator analysis for effects-guarded</li><li>Production-harden the semantic resolver; a policy expression language</li></ul></div></div>
+    <h2>One example, run</h2><p>A string knows its 5,384 methods and can explain one of them.</p><div class="run"><div><div class="lbl">Ring</div><pre>? len( Q(&quot;Softanza&quot;).Methods() )
+? ClassName( Q(&quot;Softanza&quot;) )
+? Q(&quot;Softanza&quot;).ExplainMethod(&quot;Uppercased&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>5384
+stzstring
+Uppercased -- An UPPER CASE (all capitals) copy of the string; the original is unchanged.
+  (passive form -- returns a new transformed copy, leaving the original unchanged
+   (use the active/mutating or ...Q/chainable sibling if you need those))
+  e.g. ? o1.Uppercased()	#--&gt; [ &quot;TOM&quot;, &quot;SAM&quot;, &quot;DAN&quot; ]</pre></div></div><p class="ran">run on 2026-10-01 at 01:40</p>
+    <h2>The lanes, one by one</h2>
+    <p class="proof">Lanes and their notes are quoted as they were read at the source. read from the source on Read from the source on 2026-09-16, from a read-only main worktree.</p>
+    
+    <div class="lanes"><div class="lane"><div class="ln">The unified rule report (one CI gate)</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">stzRuleReport collects findings in one shape [:rule,:subject,:where,:severity,:message] from ~11 domains; IsSound() = zero errors; IngestLegacy for old checks.<small>base/graph/stzRuleReport.ring</small></div></div><div class="lane"><div class="ln">Governance / policy model</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Policy as data (.zgov): risk tiers, CAN vs SHOULD composed by MayProceed, decision lineage, reversibility, postures; fixed primitives, not a query language.<small>stzGovernance, stzGovernanceChecks</small></div></div><div class="lane"><div class="ln">Code-rule engine</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Hybrid graph-query plus text-pass engine, 14 rules born from the library&#x27;s own bugs; graph-awareness avoids text-scanner false positives; a house catalogue.<small>stzCodeRule, stzCodeRules</small></div></div><div class="lane"><div class="ln">Code as a graph</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">stzCodeGraph across Ring, Python, JS: Ancestry, Subclasses, Impact, Cascade, Callers/Callees, DeadCode, CyclicCalls; name-based call resolution, no dataflow.<small>stzCodeGraph; CheckRules()</small></div></div><div class="lane"><div class="ln">Knob gate (library hygiene)</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">StzCheckProjectKnobs: nine text-passes over the tree from a single source list so entry points cannot drift; narrow to known Ring footguns.<small>StzCheckProjectKnobs</small></div></div><div class="lane"><div class="ln">Self-documentation (Ask / ExplainMethod)</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">stzSelfDoc/stzLibDoc: Ask (lexical IDF first, neural rescue on zero overlap), ExplainMethod (deterministic), HowTo, harvested from source; prototype-grade.<small>stzSelfDoc, stzLibDoc</small></div></div><div class="lane"><div class="ln">Code refinement</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">stzRefinableCode: typed refinement points with a five-stage gate and a reversibility timeline (RevertTo/Redo/checkpoints, .zrfn); niche, not general codegen.<small>stzRefinableCode</small></div></div><div class="lane"><div class="ln">Signable rule constitution</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">stzPredicateSet assembles rules and invariants, Save/LoadFrom/Verify/EnforceOnCode, sealed with sha256 (.zrlz); reach grows only with the catalogue.<small>stzPredicateSet</small></div></div><div class="lane"><div class="ln">Reflection / introspection</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">Methods(), Attributes(), AttributesAndValues(), Type(), ClassName() on stzObject; no signatures, parameters, decorators or dynamic invocation.<small>stzObject</small></div></div><div class="lane"><div class="ln">Tree-sitter polyglot</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">Vendored tree-sitter with a walk() mapping CST nodes to CLASS|/METHOD|/CALL|; only two grammars (Python, JS), parse-only, Ring itself not on it.<small>tree_sitter.zig</small></div></div><div class="lane"><div class="ln">Semantic resolver (one lexicon)</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">stzSemanticResolver merges three lexical sources into one semantic-ID-keyed lexicon (StzResolveSemantic); described in source as &#x27;the unification prototype&#x27;.<small>base/natural/stzSemanticResolver.ring</small></div></div><div class="lane"><div class="ln">Custom rule / policy authoring</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">Extending means writing a Ring stzGraphRule checker or a governance declaration; no declarative semgrep-style pattern or Rego-style policy surface.<small>stzGraphRule</small></div></div></div>
+    <div class="group-nav"><a href="performance.html">&larr; Performance</a><a href="../atlas.html">All groups</a><a href="files.html">Files &amp; formats &rarr;</a></div>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"></div>
+  <div class="foot-grid">
+    <div><img src="../../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">The Makers Platform of the Agentic Age<br>Born in Africa. Useful to the World!</p></div>
+    <div class="foot"><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.</p>
+      <p class="mono small">Repositories: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, self-hosted on this site. Site generated on 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

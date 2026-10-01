@@ -39,6 +39,14 @@ Three ideas, one per line. Do not read the page. The spoken example: a bank decl
 Say the stages as they are: Ring is what we write today; Ring++ exists and runs, it lands publicly when I announce it; Haro is only a charter, nothing is built. The platform's credibility is that the Atlas shows its 36 "Emerging" lanes next to its 101 "Strong" ones.
 ```
 
+<<< scene id="atlas" page="atlas.html" label="Atlas" >>>
+<div class="eyebrow">One unified computational platform · 28 groups · 334 rated lanes</div>
+<!--ATLAS-TALLY-->
+<!--ATLAS-COMPACT-->
+```notes
+Let the wall of bars speak. "Each bar is a module group; green, blue, amber, red: strong, solid, partial, emerging. No competitor spans all these lines; we span them on one engine, and we show the reds." Click a group if asked: every page has its lanes and an example run tonight.
+```
+
 <<< scene id="learn" page="learn.html" label="Learn" >>>
 <div class="eyebrow">The Learning System · built tonight, 15 chapters × 4 languages</div>
 <div class="embed"><div class="embed-bar"><a href="../reader.html">Full screen</a><span>en · fr · ar · ha — every cell ran; no output stored</span></div><iframe src="../reader.html" title="The Softanza course reader" loading="lazy"></iframe></div>

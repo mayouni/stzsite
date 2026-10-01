@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Statistiques et visualisation · Atlas · Softanza</title>
+<meta name="description" content="Un noyau de calcul soigneux et des graphiques testés à l&#x27;octet ; les tests non paramétriques, le rééchantillonnage et la moitié des types de graphiques sont dus.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/family.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-atlas-group">
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Pourquoi</a><a href="../platform.html">Plateforme</a><a href="../atlas.html" aria-current=page>Atlas</a><a href="../learn.html">Apprendre</a><a href="../govern.html">Gouverner</a><a href="../makers.html">Makers</a><a href="../products.html">Produits</a><a href="../africa.html">Afrique</a><a href="../start.html">Démarrer</a><a href="../tour.html">Présenter</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../../en/atlas/stats.html" lang="en" hreflang="en">English</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Thème" title="Thème: clair / sombre / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">L'Atlas Softanza · Visuel et spatial</div>
+    <h1>Statistiques et visualisation</h1>
+    <p class="thesis">Un noyau de calcul soigneux et des graphiques testés à l&#x27;octet ; les tests non paramétriques, le rééchantillonnage et la moitié des types de graphiques sont dus.</p>
+    <div class="tally"><div class="tallybar" role="img" aria-label="2 strong, 4 solid, 3 partial, 3 emerging"><span style="flex:2;background:var(--strong)"></span><span style="flex:4;background:var(--solid)"></span><span style="flex:3;background:var(--partial)"></span><span style="flex:3;background:var(--emerging)"></span></div><div class="counts"><span class="st-strong"><b>2</b> S</span><span class="st-solid"><b>4</b> So</span><span class="st-partial"><b>3</b> P</span><span class="st-emerging"><b>3</b> E</span></div></div>
+    <p class="proof">Mesuré contre: R · scipy.stats · statsmodels · matplotlib · Dossiers: <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/stats">base/stats</a> · <a href="https://claude.ai/artifact/6CtjrTqTPvKU5w2H4uUPem">La page d'origine de l'Atlas</a></p>
+  </div></section>
+  <div class="wrap page-body">
+    <blockquote><p>The compute core is genuinely careful -- SIMD Neumaier summation, engine hypothesis tests that never return a bare p-value, and a chart pipeline byte-tested against captured ground truth. But this is not yet scipy.stats or R: nonparametric tests, resampling and time-series are absent, half the analyst&#x27;s chart types don&#x27;t render, and the exploratory (Tukey) tier is a plan with no code. A strong foundation, honestly incomplete.</p></blockquote>
+    <div class="sg"><div class="good"><h4>Ce qui se distingue</h4><ul><li>Lane-parallel Neumaier compensated summation (measured 2.5x)</li><li>Hypothesis tests never return a bare p-value: effect size and a conclusion with every one</li><li>Chart renderers byte-tested against captured ground truth (107 parity assertions)</li><li>Three backends per chart: engine terminal, deviceless SVG, GPU PNG</li></ul></div><div class="owed"><h4>Ce qui est dû</h4><ul><li>Nonparametric and normality tests (Mann-Whitney, Kruskal-Wallis, KS, Shapiro-Wilk)</li><li>The statistical chart family (box, violin, pie/donut, heatmap, area)</li><li>Bootstrap CI and permutation test over the existing sampler</li><li>Multiple regression, GLM and diagnostics; a real time-series lane; the unbuilt Tukey tier</li></ul></div></div>
+    <h2>Un exemple, exécuté</h2><p>Les huit régions du Niger, en cinq statistiques.</p><div class="run"><div><div class="lbl">Ring</div><pre>o = Q([ 487620, 593821, 2037713, 3402094, 1026848, 3328365, 2722482, 3539764 ])
+? o.Mean()
+? o.Median()
+? o.StandardDeviation()
+? Q([ 1, 2, 3, 4, 5 ]).Variance()
+? @@( Q([ 1, 2, 2, 3, 9 ]).Mode() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>2142338.38
+2380097.50
+1291415.20
+2.50
+[ &quot;2&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-01 à 01:40 et 01:52</p>
+    <h2>Les couloirs, un par un</h2>
+    <p class="proof">Les couloirs et leurs notes sont cités dans la langue de l'Atlas, l'anglais, tels qu'ils ont été lus à la source. lu à la source le Read from the source on 2026-09-16.</p>
+    
+    <div class="lanes"><div class="lane"><div class="ln">Descriptive statistics</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Full descriptive set over lane-parallel Neumaier compensated summation (@Vector(8), measured 2.5x); at parity and numerically more careful than most.<small>stats.zig</small></div></div><div class="lane"><div class="ln">Chart rendering pipeline &amp; fidelity</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Three backends per chart; renderers guarded byte-identical against captured ground truth (107 parity assertions), 19 SVG/PNG checks with no GPU.<small>plot.zig; 107 parity assertions + 19 deviceless SVG/PNG checks</small></div></div><div class="lane"><div class="ln">Hypothesis testing</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">t-tests, chi-square, one-way ANOVA, Pearson test each return statistic, df, p-value, effect size and a conclusion; the nonparametric family is missing.<small>hypothesis.zig</small></div></div><div class="lane"><div class="ln">Multivariate &amp; dimensionality reduction</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">PCA, t-SNE/UMAP, k-means, kNN, naive Bayes, ID3, logistic regression, FFT, eigen-solver over a 15 GFLOP/s matmul; shallower than scikit-learn.<small>pca.zig, cluster.zig, fft.zig</small></div></div><div class="lane"><div class="ln">Analytical dataset &amp; wrangling</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">stzDataSet (211 methods): CIs, five-number stats, contingency, entropy, mutual information, insights/rules/plans; stzDataWrangler is pure Ring.<small>stzDataSet, stzDataWrangler</small></div></div><div class="lane"><div class="ln">Optimization &amp; solvers</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Real LP/MIP: Big-M tableau simplex in the engine, branch-and-bound, stochastic/robust solver, root/quadrature, LU/Gauss-Jordan.<small>simplex.zig, optim.zig, stzLinearSolver</small></div></div><div class="lane"><div class="ln">Distribution functions</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">CDF and quantile for Normal, Student-t, Chi-square, F only; no discrete distributions (binomial, Poisson), no distribution object.<small>special.zig</small></div></div><div class="lane"><div class="ln">Correlation &amp; regression</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">Pearson/Spearman, covariance, simple linear regression engine-backed; no multiple regression, GLM, logistic-as-stats or ridge/lasso.<small>frame.zig</small></div></div><div class="lane"><div class="ln">Charts &amp; data-viz catalogue</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">Bar, histogram, scatter, treemap render across all three backends; box, violin, pie/donut, heatmap, area, radar, contour all missing.<small>stzPlotCanvas</small></div></div><div class="lane"><div class="ln">Resampling &amp; Monte-Carlo inference</div><div class="lr"><span class="chip emerging">Emerging</span></div><div class="lt">random.zig ships seeded sampling and shuffles but no bootstrap CI, permutation test or jackknife is built on it.<small>random.zig</small></div></div><div class="lane"><div class="ln">Time-series</div><div class="lr"><span class="chip emerging">Emerging</span></div><div class="lt">Moving average is an engine primitive, trend is Ring-side; no autocorrelation, seasonality, exponential smoothing or ARIMA.<small>stz_stats_moving_average</small></div></div><div class="lane"><div class="ln">Exploratory data analysis (Tukey tier)</div><div class="lr"><span class="chip emerging">Emerging</span></div><div class="lt">A detailed plan of record (TK0-TK6) with no code shipped: no eda.zig, no faces, no test/tukey/.<small>SOFTANZA_TUKEY_PLAN.md</small></div></div></div>
+    <div class="group-nav"><a href="gui.html">&larr; Interface et réactif</a><a href="../atlas.html">Tous les groupes</a><a href="system.html">Programmation système &rarr;</a></div>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"></div>
+  <div class="foot-grid">
+    <div><img src="../../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">La plateforme des makers à l&#x27;ère agentique<br>Née en Afrique. Utile au monde !</p></div>
+    <div class="foot"><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.</p>
+      <p class="mono small">Dépôts: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site. Site généré le 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

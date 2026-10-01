@@ -1,0 +1,34 @@
+{
+  "slug": "web",
+  "title": "Web & app server -- where it stands",
+  "thesis": "Two things live here, and the distinctive one isn't the web server. The HTTP server is real and competent -- reactor-driven HTTP/1.1, Express-like routing, built-in HTTPS/mTLS, auto-CRUD sqlite, and ahead of Express and FastAPI a built-in per-request SLA bracket plus an auth router that is also an OIDC provider -- but middleware is registered-but-never-invoked, with no JSON body parsing, streaming or WebSocket. The standout is the service-virtualization plane: stateful doubles under a governance gate where Deploy(:Production) structurally refuses a fake dependency, even for a fully-entitled human.",
+  "lanes": [
+    {"lane": "Request bracket & SLA observability", "rating": "Strong", "note": "Per-request bracket recording http.request.ms/requests/errors and http.route.ms over engine histograms (p50/p95/p99); built-in /health, /metrics, traceparent.", "proof": "histogram.zig; well-known subjects http.request.ms, http.requests, http.errors"},
+    {"lane": "Auth, OIDC & sessions", "rating": "Strong", "note": "MountAuth serves login/2FA/magic-link/OTP with HttpOnly+SameSite cookies and CSRF; MountOidcProvider makes the server an IdP; signed requests off-loopback.", "proof": "stzAuth, stzRequestSigner"},
+    {"lane": "Stateful service doubles", "rating": "Strong", "note": "Payment state machine (capture-once, refund <= captured), LLM double with cost accounting, mail/SMS sinks, blob store, real-signing OIDC/passkey doubles.", "proof": "stzPaymentsPort; SOFTANZA_SERVICE_VIRTUALIZATION_PLAN.md"},
+    {"lane": "Deploy(:Production) refuses fakes", "rating": "Strong", "note": "Every bound service carries a posture; five registry invariants plus graph rules; stzDelivery.Deploy refuses even a fully-entitled human if unsound.", "proof": "base/system/stzDelivery.ring, stzServiceRegistry, stzServiceRule; ~370 assertions under test/system"},
+    {"lane": "HTTP server (accept, route, respond)", "rating": "Solid", "note": "Real HTTP/1.1: async accept + framing on the libuv thread, Ring dispatches synchronously (ServeOne/Run), keep-alive; HTTP/1.1 only, single-threaded dispatch.", "proof": "reactor.zig, http_framing.zig, stzAppServer"},
+    {"lane": "Routing", "rating": "Solid", "note": "stzAppRouter: Get_/Post/Put_/Delete, path params, trailing * wildcard, exact-first then first-pattern-wins; no route groups, regex constraints or 405 vs 404.", "proof": "stzAppRouter"},
+    {"lane": "TLS / HTTPS / mTLS serving", "rating": "Solid", "note": "StartTls/StartHttps with mbedTLS termination below the router and mutual TLS (bRequireClient + CA path); test certs only, no managed cert lifecycle.", "proof": ""},
+    {"lane": "Auto-CRUD backend (MBaaS)", "rating": "Solid", "note": "Expose/ExposeWithKey generate REST CRUD over sqlite (/api/<table> list/count/read/create/update/delete); sqlite-only, no relations, filtering or pagination.", "proof": "stzAppBackend, db.zig"},
+    {"lane": "HTTP mocking (record / replay / journal)", "rating": "Solid", "note": "stzHttpSandbox: Script matching, record/replay keyed by sha256(method|url|body), strict by default, a journal; no header/body/regex matchers, no latency knob.", "proof": "stzHttpSandbox, stzHttpPort"},
+    {"lane": "Request & response objects, body parsing", "rating": "Partial", "note": "stzAppRequest (Query/Header/Body/Param, form-urlencoded) and stzAppResponse (Status/Header/Json/Text/Html/Send); no JSON body parsing, multipart or streaming.", "proof": "stzAppRequest, stzAppResponse"},
+    {"lane": "Modern API table stakes", "rating": "Partial", "note": "/health and /metrics ship; WebSocket serving, OpenAPI, content negotiation, rate limiting, templating absent; static files registered but never served.", "proof": ""},
+    {"lane": "Middleware pipeline", "rating": "Emerging", "note": "Use/AddMiddleware store handlers in @aMiddleware but _Dispatch has no execution path for them: registered but never invoked.", "proof": "stzAppServer _Dispatch / @aMiddleware"}
+  ],
+  "standouts": [
+    "A built-in per-request SLA bracket with Prometheus /metrics and distributed tracing, ahead of Express and FastAPI",
+    "A mounted auth router that is also an OIDC provider (discovery, JWKS, authorize, PKCE token)",
+    "Stateful service doubles that enforce the real service's rules -- WireMock-and-beyond",
+    "Deploy(:Production) structurally refuses a fake dependency, even for a fully-entitled human"
+  ],
+  "gaps": [
+    "Execute the middleware pipeline (registered but never invoked)",
+    "JSON request bodies and streaming responses",
+    "Serve static files; WebSocket serving; latency injection and a status-aware live adapter in the sandbox",
+    "OpenAPI/schema and content negotiation; server-side HTTP/2; deeper MBaaS"
+  ],
+  "peers": ["Express", "FastAPI", "Go net/http", "OpenTelemetry", "passport", "authlib", "Keycloak", "WireMock", "Stripe test mode", "nock / VCR", "Mountebank", "nginx", "PostgREST", "Supabase", "Firebase"],
+  "folders": ["base/appserver", "base/service", "base/system", "test/appserver", "test/system"],
+  "dated": "Read from the source on 2026-09-16, from a read-only main worktree"
+}

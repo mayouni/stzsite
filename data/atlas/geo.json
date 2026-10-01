@@ -1,0 +1,34 @@
+{
+  "slug": "geo",
+  "title": "Geo & Cartography — Where It Stands",
+  "thesis": "A genuine standout: 44 self-inverting projections, full WGS84 geodesy, and a spatstat-class spatial-statistics engine ship together behind Ring faces, guarded by ~400 assertions and 72 negative controls. It is the rare library where the tool that draws the map also computes the statistics it shows and measures its own distortion — analysis-and-cartography strong, GIS-plumbing light.",
+  "lanes": [
+    {"lane": "Map projections", "rating": "Strong", "note": "44 projections across five families, all with inverses; a shared 2D Newton solver refuses any inverse not round-tripping to 1e-6; rotate/clip/fit, UTM", "proof": "geo_projection.zig; all-44 inverse round-trips"},
+    {"lane": "Geodesy", "rating": "Strong", "note": "WGS84 + ellipsoid table, geodesic inverse/direct, rhumb lines, ECEF/ENU, DMS, meridian arc, polygon area on the ellipsoid with geodesic edges", "proof": "geo_geodesy.zig"},
+    {"lane": "Spatial statistics", "rating": "Strong", "note": "Clark-Evans z-test, Ripley K/L/G/F with Monte-Carlo envelopes, IDW, variograms, ordinary kriging with variance surface, 7+ point-process null models", "proof": "geo_stats.zig / geo_interp.zig / geo_process.zig; kriging-variance invariance guard"},
+    {"lane": "Thematic maps", "rating": "Strong", "note": "Choropleth (equal-area default), proportional symbol, flow (great circles), hex-bin, bloc/membership, insets with a measured locator scale", "proof": "stzGeoMap"},
+    {"lane": "Map decorations & fields", "rating": "Strong", "note": "Graticule, Tissot indicatrix on the same Jacobian, a scale bar that refuses to lie, north arrow, day-night terminator, even-spaced streamlines", "proof": "geo_furniture.zig"},
+    {"lane": "GeoJSON / TopoJSON I/O", "rating": "Solid", "note": "stzGeoFeatures reads GeoJSON and TopoJSON with an engine-side filtered read (a 40 MB file yields only wanted features); read-only, no writer", "proof": "stzGeoFeatures"},
+    {"lane": "Atlas & real-data pipeline", "rating": "Solid", "note": "stzGeoAtlas binds name->shape without vendoring data; the Niger real-data map (geoBoundaries ADM1 + RGPH-2012) is the cap; no fuzzy name matching", "proof": "stzGeoAtlas; test/graphics/niger_density.ring"},
+    {"lane": "Geometry & spatial ops", "rating": "Partial", "note": "Ring area (planar/spherical/ellipsoidal), centroid, point-in-polygon, bounding boxes, spatial join; no buffer/intersection/union/convex hull", "proof": ""},
+    {"lane": "Source reprojection (CRS transforms)", "rating": "Partial", "note": "Projections are a display transform (lon/lat in, pixels out); no source-CRS reprojection from UTM or a national grid", "proof": ""},
+    {"lane": "Raster & DEM", "rating": "Partial", "note": "Scalar density fields, an ESRI ASCII grid reader, per-pixel resampled field image, marching-squares contours; no hillshade/slope/aspect, no GeoTIFF", "proof": "geo_field.zig"},
+    {"lane": "Interactivity", "rating": "Partial", "note": "Maps emit interactive SVG with per-region ids, classes and <title> hooks (SetInteractive, GE2c); no live pan/zoom, by plan the GUI plane's job", "proof": "SetInteractive (GE2c)"},
+    {"lane": "Tiling & web maps", "rating": "Emerging", "note": "None: no slippy-tile scheme, no tile server, no web-map basemap integration anywhere in the geo module", "proof": ""}
+  ],
+  "standouts": [
+    "44 self-inverting projections with a solver that refuses a bad inverse",
+    "the tool that draws the map also computes the statistics and measures its own distortion",
+    "ordinary kriging with its variance surface",
+    "the Niger real-data map, vendor-free end to end"
+  ],
+  "gaps": [
+    "vector geometry overlay algebra",
+    "source-CRS reprojection",
+    "a GeoJSON / TopoJSON writer",
+    "raster / DEM & GeoTIFF"
+  ],
+  "peers": ["D3-geo", "Cartopy", "PROJ", "GeographicLib (Karney)", "GDAL", "spatstat", "PySAL", "ArcGIS", "D3", "GeoPandas", "kepler.gl", "matplotlib / basemap", "GDAL / OGR", "Natural Earth", "PostGIS / GEOS", "Shapely", "rasterio", "Leaflet", "Mapbox GL", "OpenLayers"],
+  "folders": ["base/geo", "test/graphics"],
+  "dated": "Read from the source on 2026-09-16, from a read-only main worktree (HEAD 04cff1c34)"
+}

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web &amp; app server · Atlas · Softanza</title>
+<meta name="description" content="A competent HTTP server with a built-in SLA, auth and identity provider, and a fake-refusing service-virtualization plane.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/family.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-atlas-group">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Why</a><a href="../platform.html">Platform</a><a href="../atlas.html" aria-current=page>Atlas</a><a href="../learn.html">Learn</a><a href="../govern.html">Govern</a><a href="../makers.html">Makers</a><a href="../products.html">Products</a><a href="../africa.html">Africa</a><a href="../start.html">Start</a><a href="../tour.html">Tour</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../../fr/atlas/web.html" lang="fr" hreflang="fr">Français</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Theme" title="Theme: light / dark / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">The Softanza Atlas · Systems &amp; runtime</div>
+    <h1>Web &amp; app server</h1>
+    <p class="thesis">A competent HTTP server with a built-in SLA, auth and identity provider, and a fake-refusing service-virtualization plane.</p>
+    <div class="tally"><div class="tallybar" role="img" aria-label="4 strong, 5 solid, 2 partial, 1 emerging"><span style="flex:4;background:var(--strong)"></span><span style="flex:5;background:var(--solid)"></span><span style="flex:2;background:var(--partial)"></span><span style="flex:1;background:var(--emerging)"></span></div><div class="counts"><span class="st-strong"><b>4</b> S</span><span class="st-solid"><b>5</b> So</span><span class="st-partial"><b>2</b> P</span><span class="st-emerging"><b>1</b> E</span></div></div>
+    <p class="proof">Measured against: Express · FastAPI · WireMock · Folders: <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/appserver">base/appserver</a> · <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/service">base/service</a> · <a href="https://claude.ai/artifact/6Efbrrw2mzNEVd2uMzKrvv">The original Atlas page</a></p>
+  </div></section>
+  <div class="wrap page-body">
+    <blockquote><p>Two things live here, and the distinctive one isn&#x27;t the web server. The HTTP server is real and competent -- reactor-driven HTTP/1.1, Express-like routing, built-in HTTPS/mTLS, auto-CRUD sqlite, and ahead of Express and FastAPI a built-in per-request SLA bracket plus an auth router that is also an OIDC provider -- but middleware is registered-but-never-invoked, with no JSON body parsing, streaming or WebSocket. The standout is the service-virtualization plane: stateful doubles under a governance gate where Deploy(:Production) structurally refuses a fake dependency, even for a fully-entitled human.</p></blockquote>
+    <div class="sg"><div class="good"><h4>What stands out</h4><ul><li>A built-in per-request SLA bracket with Prometheus /metrics and distributed tracing, ahead of Express and FastAPI</li><li>A mounted auth router that is also an OIDC provider (discovery, JWKS, authorize, PKCE token)</li><li>Stateful service doubles that enforce the real service&#x27;s rules -- WireMock-and-beyond</li><li>Deploy(:Production) structurally refuses a fake dependency, even for a fully-entitled human</li></ul></div><div class="owed"><h4>What is owed</h4><ul><li>Execute the middleware pipeline (registered but never invoked)</li><li>JSON request bodies and streaming responses</li><li>Serve static files; WebSocket serving; latency injection and a status-aware live adapter in the sandbox</li><li>OpenAPI/schema and content negotiation; server-side HTTP/2; deeper MBaaS</li></ul></div></div>
+    <h2>One example, run</h2><p>The containment drill spawns a real HTTP target, attacks it, detects and contains, stopwatch in hand.</p><pre>SCENARIO: the drill detects credential stuffing and contains it, timed
+  GIVEN a spawned target with a real stzAuth and a real responder
+  THEN  the target is up                                         [PASS]
+  THEN  the victim has a live session before the attack          [PASS]
+  WHEN  five bad passwords are sent over real HTTP
+  THEN  the sealed evidence is acquired and verified             [PASS]
+  THEN  credential stuffing was detected                         [PASS]
+  &gt;&gt; TIME TO DETECT : 395 ms
+  &gt;&gt; TIME TO CONTAIN: 50 ms</pre><p class="ran">run on 2026-10-01 at 00:41 by base/test/security/containment_drill_narrated.ring, 27 assertions out of 27</p>
+    <h2>The lanes, one by one</h2>
+    <p class="proof">Lanes and their notes are quoted as they were read at the source. read from the source on Read from the source on 2026-09-16, from a read-only main worktree.</p>
+    
+    <div class="lanes"><div class="lane"><div class="ln">Request bracket &amp; SLA observability</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Per-request bracket recording http.request.ms/requests/errors and http.route.ms over engine histograms (p50/p95/p99); built-in /health, /metrics, traceparent.<small>histogram.zig; well-known subjects http.request.ms, http.requests, http.errors</small></div></div><div class="lane"><div class="ln">Auth, OIDC &amp; sessions</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">MountAuth serves login/2FA/magic-link/OTP with HttpOnly+SameSite cookies and CSRF; MountOidcProvider makes the server an IdP; signed requests off-loopback.<small>stzAuth, stzRequestSigner</small></div></div><div class="lane"><div class="ln">Stateful service doubles</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Payment state machine (capture-once, refund &lt;= captured), LLM double with cost accounting, mail/SMS sinks, blob store, real-signing OIDC/passkey doubles.<small>stzPaymentsPort; SOFTANZA_SERVICE_VIRTUALIZATION_PLAN.md</small></div></div><div class="lane"><div class="ln">Deploy(:Production) refuses fakes</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Every bound service carries a posture; five registry invariants plus graph rules; stzDelivery.Deploy refuses even a fully-entitled human if unsound.<small>base/system/stzDelivery.ring, stzServiceRegistry, stzServiceRule; ~370 assertions under test/system</small></div></div><div class="lane"><div class="ln">HTTP server (accept, route, respond)</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Real HTTP/1.1: async accept + framing on the libuv thread, Ring dispatches synchronously (ServeOne/Run), keep-alive; HTTP/1.1 only, single-threaded dispatch.<small>reactor.zig, http_framing.zig, stzAppServer</small></div></div><div class="lane"><div class="ln">Routing</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">stzAppRouter: Get_/Post/Put_/Delete, path params, trailing * wildcard, exact-first then first-pattern-wins; no route groups, regex constraints or 405 vs 404.<small>stzAppRouter</small></div></div><div class="lane"><div class="ln">TLS / HTTPS / mTLS serving</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">StartTls/StartHttps with mbedTLS termination below the router and mutual TLS (bRequireClient + CA path); test certs only, no managed cert lifecycle.</div></div><div class="lane"><div class="ln">Auto-CRUD backend (MBaaS)</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Expose/ExposeWithKey generate REST CRUD over sqlite (/api/&lt;table&gt; list/count/read/create/update/delete); sqlite-only, no relations, filtering or pagination.<small>stzAppBackend, db.zig</small></div></div><div class="lane"><div class="ln">HTTP mocking (record / replay / journal)</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">stzHttpSandbox: Script matching, record/replay keyed by sha256(method|url|body), strict by default, a journal; no header/body/regex matchers, no latency knob.<small>stzHttpSandbox, stzHttpPort</small></div></div><div class="lane"><div class="ln">Request &amp; response objects, body parsing</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">stzAppRequest (Query/Header/Body/Param, form-urlencoded) and stzAppResponse (Status/Header/Json/Text/Html/Send); no JSON body parsing, multipart or streaming.<small>stzAppRequest, stzAppResponse</small></div></div><div class="lane"><div class="ln">Modern API table stakes</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">/health and /metrics ship; WebSocket serving, OpenAPI, content negotiation, rate limiting, templating absent; static files registered but never served.</div></div><div class="lane"><div class="ln">Middleware pipeline</div><div class="lr"><span class="chip emerging">Emerging</span></div><div class="lt">Use/AddMiddleware store handlers in @aMiddleware but _Dispatch has no execution path for them: registered but never invoked.<small>stzAppServer _Dispatch / @aMiddleware</small></div></div></div>
+    <div class="group-nav"><a href="concurrency.html">&larr; Concurrency &amp; distribution</a><a href="../atlas.html">All groups</a><a href="performance.html">Performance &rarr;</a></div>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"></div>
+  <div class="foot-grid">
+    <div><img src="../../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">The Makers Platform of the Agentic Age<br>Born in Africa. Useful to the World!</p></div>
+    <div class="foot"><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.</p>
+      <p class="mono small">Repositories: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, self-hosted on this site. Site generated on 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

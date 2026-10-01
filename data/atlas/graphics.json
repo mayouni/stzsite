@@ -1,0 +1,34 @@
+{
+  "slug": "graphics",
+  "title": "Softanza Graphics Engine — Where It Stands",
+  "thesis": "Most of the field ships one lane well: Skia renders, D3 charts the web, Graphviz lays out graphs, spatstat does the statistics and draws nothing. Softanza is one Zig engine behind declarative Ring faces that reaches across twelve of those lanes at once; its advantage is being coherent across twelve lanes under one governed colour and text system, which no single competitor is.",
+  "lanes": [
+    {"lane": "Text & typography", "rating": "Strong", "note": "SheenBidi -> HarfBuzz -> stb_truetype: bidi reorder, OpenType shaping, Arabic kashida justification at font-declared points, fallback chains, vertical CJK", "proof": ""},
+    {"lane": "Colour system", "rating": "Strong", "note": "OKLCH/Oklab throughout, monotonic ramps, a five-value semantic family under a constitution, ten themes, WCAG 2 + APCA contrast as gate-able numbers", "proof": "StzIsLegible / StzContrastLc; SOFTANZA_COLOR_SYSTEM.md"},
+    {"lane": "Cartography & projections", "rating": "Strong", "note": "44 projections with inverses, WGS84 geodesy, GeoJSON/TopoJSON, choropleth/symbol/flow/hex-bin, insets, Tissot, scale bar, north arrow, terminator", "proof": "stz_geo.dll"},
+    {"lane": "Spatial statistics", "rating": "Strong", "note": "Clark-Evans z-test, Ripley K/L, G & F, envelopes, kernel density, contours, IDW, variograms, ordinary kriging with variance; seven null models", "proof": ""},
+    {"lane": "Diagramming", "rating": "Strong", "note": "25+ notations all closed (DN0-DN24), many constraint-solved; own deterministic layout engine (GG1-GG6) plus a live picture-as-input mode", "proof": "SOFTANZA_GRAPH_PLANE_PLAN.md (DN0-DN24, GG1-GG6)"},
+    {"lane": "GPU compute + render", "rating": "Strong", "note": "In-house wgpu surface: instanced multi-texture render and compute (matmul, fft, softmax, topk, pairdist) zero-copy on one device, W-string -> WGSL", "proof": "stz_gpu.dll"},
+    {"lane": "2D vector rendering", "rating": "Solid", "note": "Retained display-list canvas with an SVG floor that always answers, GPU-backed PNG; no Bezier/arc/AddPath, no transform stack, CPU rasteriser never written", "proof": ""},
+    {"lane": "Accessibility", "rating": "Solid", "note": "An accessibility tree with roles, names, reading order and ToJSON, a screen-reader bridge, contrast maths gating colour; CVD simulation owed", "proof": ""},
+    {"lane": "Output & portability", "rating": "Solid", "note": "SVG everywhere, lossless PNG with a returned encode decision, native window and browser tiers; no PDF/JPEG/WebP, only Windows runtime-verified", "proof": ""},
+    {"lane": "Charts & data-viz", "rating": "Partial", "note": "Bar, multi-bar, line, scatter, histogram, surface, treemap with SVG/PNG/terminal renderers; no pie/donut, area, heatmap, box/violin, candlestick", "proof": "stzDataSet"},
+    {"lane": "Interactivity & animation", "rating": "Partial", "note": "Canvas hit-testing (Pick), SVG ids/classes for hover, a drag-driven live diagram; animation and tweening explicitly deferred to GUI G5", "proof": ""},
+    {"lane": "Perception — the plane can draw, not yet see", "rating": "Emerging", "note": "VISION plane's first rung: a draw->read round trip through Windows.Media.Ocr and onnxruntime (10 ms, glyph-accurate incl. Arabic shaping)", "proof": ""}
+  ],
+  "standouts": [
+    "coherent across twelve lanes under one governed colour and text system",
+    "Arabic kashida justification at font-declared points",
+    "the rare lane where a graphics library also computes the statistics it draws",
+    "compute and render zero-copy on one wgpu device"
+  ],
+  "gaps": [
+    "general paths, curves & transforms",
+    "complete the chart family",
+    "colour-blindness simulation",
+    "PDF export & the raster floor"
+  ],
+  "peers": ["Skia", "D3", "Graphviz", "spatstat", "HarfBuzz + FreeType + ICU", "Pango", "D3-color", "chroma.js / culori", "Adobe Leonardo", "D3-geo", "Wolfram GeoGraphics", "Cartopy", "GeoTools", "PySAL", "ArcGIS", "Mermaid", "PlantUML", "D2", "raw wgpu / Dawn", "three.js", "taichi", "regl", "Cairo", "HTML Canvas / SVG", "PlutoVG", "axe-core", "WAI-ARIA", "librsvg", "Vega-Lite", "matplotlib", "ECharts", "Observable Plot", "GSAP", "Framer Motion", "OpenCV", "Tesseract", "Cloud Vision"],
+  "folders": ["base/graphics", "base/graph", "base/geo", "base/gui"],
+  "dated": "Read from the source on 2026-09-15"
+}

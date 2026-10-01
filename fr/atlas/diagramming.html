@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagrammes et graphes · Atlas · Softanza</title>
+<meta name="description" content="Vingt-cinq notations sur un seul moteur de rendu, un moteur de graphes de niveau NetworkX et une mise en page résolue par contraintes.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/family.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-atlas-group">
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Pourquoi</a><a href="../platform.html">Plateforme</a><a href="../atlas.html" aria-current=page>Atlas</a><a href="../learn.html">Apprendre</a><a href="../govern.html">Gouverner</a><a href="../makers.html">Makers</a><a href="../products.html">Produits</a><a href="../africa.html">Afrique</a><a href="../start.html">Démarrer</a><a href="../tour.html">Présenter</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../../en/atlas/diagramming.html" lang="en" hreflang="en">English</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Thème" title="Thème: clair / sombre / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">L'Atlas Softanza · Visuel et spatial</div>
+    <h1>Diagrammes et graphes</h1>
+    <p class="thesis">Vingt-cinq notations sur un seul moteur de rendu, un moteur de graphes de niveau NetworkX et une mise en page résolue par contraintes.</p>
+    <div class="tally"><div class="tallybar" role="img" aria-label="4 strong, 5 solid, 3 partial, 0 emerging"><span style="flex:4;background:var(--strong)"></span><span style="flex:5;background:var(--solid)"></span><span style="flex:3;background:var(--partial)"></span></div><div class="counts"><span class="st-strong"><b>4</b> S</span><span class="st-solid"><b>5</b> So</span><span class="st-partial"><b>3</b> P</span></div></div>
+    <p class="proof">Mesuré contre: Graphviz · Mermaid · D2 · NetworkX · Dossiers: <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/graph">base/graph</a> · <a href="https://claude.ai/artifact/2L8Xei2dfLHvy9VS512ho9">La page d'origine de l'Atlas</a></p>
+  </div></section>
+  <div class="wrap page-body">
+    <blockquote><p>One of the most complete planes in the library: 25 notations all rendered by one engine, over a native deterministic layout engine and a NetworkX-tier graph-algorithm suite; math and molecule diagrams are genuinely constraint-solved via autodiff. The old dot.exe dependency is demoted to an optional viewer — diagram layout is now engine-native. Guarded by ~1,790 assertions.</p></blockquote>
+    <div class="sg"><div class="good"><h4>Ce qui se distingue</h4><ul><li>25 notations as data profiles over one renderer</li><li>determinism as a guarantee: bit-identical layout across processes</li><li>constraint-solved layout via autodiff, which no mainstream tool does</li><li>NetworkX-core parity, compiled</li></ul></div><div class="owed"><h4>Ce qui est dû</h4><ul><li>meet the dot kill criterion (spline routing, nested clusters)</li><li>live interactivity via the GUI plane</li><li>graph generators &amp; isomorphism</li><li>PDF / PostScript export</li></ul></div></div>
+    <h2>Un exemple, exécuté</h2><p>Un graphe orienté de cinq villes ; le plus court chemin est demandé, pas calculé à la main.</p><div class="run"><div><div class="lbl">Ring</div><pre>oG = new stzGraph(&quot;roads&quot;)
+for cTown in [ &quot;Niamey&quot;, &quot;Dosso&quot;, &quot;Maradi&quot;, &quot;Zinder&quot;, &quot;Tahoua&quot; ]
+    oG.AddNode(cTown)
+next
+oG.AddEdge(&quot;Niamey&quot;, &quot;Dosso&quot;)
+oG.AddEdge(&quot;Dosso&quot;, &quot;Maradi&quot;)
+oG.AddEdge(&quot;Maradi&quot;, &quot;Zinder&quot;)
+oG.AddEdge(&quot;Niamey&quot;, &quot;Tahoua&quot;)
+oG.AddEdge(&quot;Tahoua&quot;, &quot;Zinder&quot;)
+? oG.NumberOfNodes()
+? oG.NumberOfEdges()
+? @@( oG.Neighbors(&quot;Dosso&quot;) )
+? oG.IsConnected()
+? @@( oG.ShortestPath(&quot;Niamey&quot;, &quot;Zinder&quot;) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>5
+5
+[ &quot;maradi&quot; ]
+1
+[ &quot;niamey&quot;, &quot;tahoua&quot;, &quot;zinder&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-01 à 01:52 (les nœuds ont été ajoutés un par un dans le script ; la boucle est une abréviation de lecture) ; les identifiants ressortent en minuscules, c&#x27;est le pliage du graphe</p>
+    <h2>Les couloirs, un par un</h2>
+    <p class="proof">Les couloirs et leurs notes sont cités dans la langue de l'Atlas, l'anglais, tels qu'ils ont été lus à la source. lu à la source le Read from the source on 2026-09-16, from a read-only main worktree.</p>
+    
+    <div class="lanes"><div class="lane"><div class="ln">Notation breadth</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">25 notations (DN0-DN24), ~21 Ring faces, all as profiles over one renderer (stzDiagram), not separate tools; the domain list is closed by design<small>stzDiagram; SOFTANZA_GRAPH_PLANE_PLAN.md DN0-DN24</small></div></div><div class="lane"><div class="ln">Deterministic layout engine</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">graph_layout.zig (GG1): barycentre crossing-reduction, seeded Fruchterman-Reingold force, bit-identical within and across processes<small>graph_layout.zig; determinism guard</small></div></div><div class="lane"><div class="ln">Graph algorithms</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">graph.zig (CSR): BFS/DFS, Dijkstra, A*, SCC, bridges, toposort, betweenness/closeness/PageRank/k-core/Louvain, MST, max-flow/min-cut; engine-implemented<small>graph.zig; test/graph (158 files)</small></div></div><div class="lane"><div class="ln">Constraint-solved diagrams</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Math (DN7) and molecule (DN11) layouts are solved by the engine&#x27;s autodiff solver (StzEngineGrad*), with DragTo/Pin interactive re-solve<small>solver/constraint/autodiff.zig</small></div></div><div class="lane"><div class="ln">Rendering &amp; output</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">One renderer, three outputs: ToSVG (no device), ToPNG (GPU-backed), an ASCII visualizer; 24 node shapes; DOT export; no PDF/PostScript</div></div><div class="lane"><div class="ln">Diagram editing &amp; interactivity</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Command-based edit session: Edit, Undo/Redo, EditLog, PickAt, RewireAnchor; illegal edits refused at the gesture; not a visual WYSIWYG editor</div></div><div class="lane"><div class="ln">Graph rules &amp; governance</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">stzGraphRule and stzOrgRule feed the one CI gate (stzRuleReport): no-orphan-position, separation-of-duties; the rule catalogue is small<small>stzGraphRule / stzOrgRule / stzRuleReport</small></div></div><div class="lane"><div class="ln">Export &amp; interchange</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">stzGraph exports DOT, JSON, GraphML and YAML (Dot(), RenditionAs); import parity thinner, GEXF/adjacency round-trips not all present<small>stzGraph</small></div></div><div class="lane"><div class="ln">Text &amp; label placement</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Notation-in-a-label (DN10), labels centred on cap-height not the em-box (DN12), curve clearance (DN13), solver-placed labels (SolveLabelsAfter)<small>DN10 / DN12 / DN13</small></div></div><div class="lane"><div class="ln">General graph layout &amp; edge routing</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">Diagram layouts are engine-native; arbitrary large-graph visualization still leans on the optional dot.exe viewer: spline routing, nested clusters unmet</div></div><div class="lane"><div class="ln">Graph generators &amp; isomorphism</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">No standard graph generators (Erdos-Renyi, Barabasi-Albert, Watts-Strogatz) and no isomorphism / graph-edit-distance surfaced</div></div><div class="lane"><div class="ln">Live / web interactivity</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">Diagrams emit interactive SVG and support programmatic re-layout (Relayout, DragTo); no built-in live pan/zoom/brush, the GUI plane&#x27;s job</div></div></div>
+    <div class="group-nav"><a href="geo.html">&larr; Géographie et cartographie</a><a href="../atlas.html">Tous les groupes</a><a href="gpu.html">GPU &rarr;</a></div>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"></div>
+  <div class="foot-grid">
+    <div><img src="../../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">La plateforme des makers à l&#x27;ère agentique<br>Née en Afrique. Utile au monde !</p></div>
+    <div class="foot"><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.</p>
+      <p class="mono small">Dépôts: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site. Site généré le 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

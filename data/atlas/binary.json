@@ -1,0 +1,32 @@
+{
+  "slug": "binary",
+  "title": "Binary Formats — Where It Stands",
+  "thesis": "The one pilot page that rates a plan, not a product: the binary plane is 607 lines of design and zero shipped code -- no classes, no decode engine, no tests, no phase has run. The bet is to treat a binary file as 'a table the bytes forgot to show', decoded in one engine crossing into the stzTable analysis stack that already exists, with zero new DLLs; the substrate is real, everything above it is named, sequenced (BN0-BN5) and unbuilt.",
+  "lanes": [
+    {"lane": "Byte-buffer & encoding substrate", "rating": "Partial", "note": "stzBytes over an engine handle buffer plus hex/base64/crc32; the bridge silently truncates slices above 4096/8192 bytes and has no typed endian readers", "proof": "engine bytes.zig / ring_bridge_bytes.zig, string/encode.zig"},
+    {"lane": "Schema-driven decode engine", "rating": "Emerging", "note": "stzBinarySchema (pure-Ring data, never code) consumed by a planned stz_bytes_decode_records that decodes the whole file in one crossing; no code (BN1)", "proof": "SOFTANZA_BINARY_PLAN.md (BN1)"},
+    {"lane": "Endian-aware scalar types", "rating": "Emerging", "note": "Planned :U8..:U64, :I8..:I64, :F32/:F64 in both endiannesses; the engine has only stz_bits_byte_swap, no readInt or endian-aware scalar decode", "proof": "engine bits.zig (byte_swap)"},
+    {"lane": "Text & legacy character encodings", "rating": "Emerging", "note": "UTF-8 is codepoint-correct today, but the EBCDIC CP037 / CP500 / CP1140 translation tables the plan targets do not exist", "proof": ""},
+    {"lane": "Numeric encodings -- packed & zoned decimal", "rating": "Emerging", "note": "Planned :PackedDecimal (COMP-3) and :Zoned (overpunch) decode, the numeric heart of COBOL data; no code, no primitive", "proof": ""},
+    {"lane": "COBOL copybook dialect", "rating": "Emerging", "note": "Planned stzCopybook compiling a copybook into a stzBinarySchema (BN2); two fossils exist and the plan disavows both", "proof": "fossils max/stzBinaryFile.ring and future/stzCobol.ring (disavowed)"},
+    {"lane": "Composite structure & framing", "rating": "Emerging", "note": "Planned flat fields + :occurs first, then :variants (REDEFINES), RDW variable-length records and Fortran framing; nothing built, staged to v2 (BN4)", "proof": ""},
+    {"lane": "Decode-to-table & analysis pipeline", "rating": "Emerging", "note": "The destination (stzTable with stats, Tukey, plots, CSV/JSON, SQLite) is real; the pipe into it does not exist because nothing decodes yet", "proof": ""},
+    {"lane": "Binary writing & fixture generation", "rating": "Emerging", "note": "Planned stzBinaryFileMaker + Narrate() and stz_bytes_encode_records (BN3) so a read schema also writes; no code", "proof": ""},
+    {"lane": "Hex view, exploration & big files", "rating": "Emerging", "note": "Planned HexView(), DecodeReport(), Explore() and streaming (BN4); file I/O today is whole-file only via stz_file_read, no seek/chunk", "proof": "engine file.zig (whole-file read)"}
+  ],
+  "standouts": [
+    "A declarative data schema decoded in one engine crossing, not a generated parser (vs Kaitai's compiler model)",
+    "Decoded bytes land in stzTable, the same analysis stack as every other Softanza source",
+    "Round-trip: the same schema vocabulary reads and writes, which most binary parsers cannot do",
+    "Zero new DLLs: extend the stz_bytes engine rather than vendor Kaitai"
+  ],
+  "gaps": [
+    "Repair the byte-bridge truncation (fixed [4096]/[8192] return buffers)",
+    "The schema + decode-records engine (BN1)",
+    "Endian readers + EBCDIC CP037, then wire decode into stzTable",
+    "COBOL copybook compiler (BN2), tied to the RINGBOL commercial gate"
+  ],
+  "peers": ["Python struct", "Rust bytes / nom", "construct", "Kaitai Struct", "DFDL / Daffodil", "010 Editor", "Rust binread", "std.mem readInt", "iconv", "ICU converters", "cobol-copybook tools", "JRecord / CB2XML", "Cobrix", "Micro Focus tools", "pandas.read_*", "Spark binary sources", "010 Editor / ImHex", "hexyl", "Kaitai IDE"],
+  "folders": ["base/binary"],
+  "dated": "Read from the source on 2026-09-16 -- base/binary holds one file, SOFTANZA_BINARY_PLAN.md (607 lines, 2026-08-16); no test/binary exists"
+}

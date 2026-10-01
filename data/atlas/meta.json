@@ -1,0 +1,34 @@
+{
+  "slug": "meta",
+  "title": "Metaprogramming & code rules -- where it stands",
+  "thesis": "The distinctive thing here is unification, not any single tool: one CI gate (stzRuleReport) collects findings in one shape from ~11 domains -- code rules, agent-graph invariants, security reachability, org charts, service contracts, workflow SLAs, even diagram notations -- something neither semgrep (code-only) nor OPA (policy-only) attempts. The honest gaps are extensibility (no way to author a custom rule pattern), a two-grammar tree-sitter, and shallow reflection.",
+  "lanes": [
+    {"lane": "The unified rule report (one CI gate)", "rating": "Strong", "note": "stzRuleReport collects findings in one shape [:rule,:subject,:where,:severity,:message] from ~11 domains; IsSound() = zero errors; IngestLegacy for old checks.", "proof": "base/graph/stzRuleReport.ring"},
+    {"lane": "Governance / policy model", "rating": "Solid", "note": "Policy as data (.zgov): risk tiers, CAN vs SHOULD composed by MayProceed, decision lineage, reversibility, postures; fixed primitives, not a query language.", "proof": "stzGovernance, stzGovernanceChecks"},
+    {"lane": "Code-rule engine", "rating": "Solid", "note": "Hybrid graph-query plus text-pass engine, 14 rules born from the library's own bugs; graph-awareness avoids text-scanner false positives; a house catalogue.", "proof": "stzCodeRule, stzCodeRules"},
+    {"lane": "Code as a graph", "rating": "Solid", "note": "stzCodeGraph across Ring, Python, JS: Ancestry, Subclasses, Impact, Cascade, Callers/Callees, DeadCode, CyclicCalls; name-based call resolution, no dataflow.", "proof": "stzCodeGraph; CheckRules()"},
+    {"lane": "Knob gate (library hygiene)", "rating": "Solid", "note": "StzCheckProjectKnobs: nine text-passes over the tree from a single source list so entry points cannot drift; narrow to known Ring footguns.", "proof": "StzCheckProjectKnobs"},
+    {"lane": "Self-documentation (Ask / ExplainMethod)", "rating": "Solid", "note": "stzSelfDoc/stzLibDoc: Ask (lexical IDF first, neural rescue on zero overlap), ExplainMethod (deterministic), HowTo, harvested from source; prototype-grade.", "proof": "stzSelfDoc, stzLibDoc"},
+    {"lane": "Code refinement", "rating": "Solid", "note": "stzRefinableCode: typed refinement points with a five-stage gate and a reversibility timeline (RevertTo/Redo/checkpoints, .zrfn); niche, not general codegen.", "proof": "stzRefinableCode"},
+    {"lane": "Signable rule constitution", "rating": "Solid", "note": "stzPredicateSet assembles rules and invariants, Save/LoadFrom/Verify/EnforceOnCode, sealed with sha256 (.zrlz); reach grows only with the catalogue.", "proof": "stzPredicateSet"},
+    {"lane": "Reflection / introspection", "rating": "Partial", "note": "Methods(), Attributes(), AttributesAndValues(), Type(), ClassName() on stzObject; no signatures, parameters, decorators or dynamic invocation.", "proof": "stzObject"},
+    {"lane": "Tree-sitter polyglot", "rating": "Partial", "note": "Vendored tree-sitter with a walk() mapping CST nodes to CLASS|/METHOD|/CALL|; only two grammars (Python, JS), parse-only, Ring itself not on it.", "proof": "tree_sitter.zig"},
+    {"lane": "Semantic resolver (one lexicon)", "rating": "Partial", "note": "stzSemanticResolver merges three lexical sources into one semantic-ID-keyed lexicon (StzResolveSemantic); described in source as 'the unification prototype'.", "proof": "base/natural/stzSemanticResolver.ring"},
+    {"lane": "Custom rule / policy authoring", "rating": "Partial", "note": "Extending means writing a Ring stzGraphRule checker or a governance declaration; no declarative semgrep-style pattern or Rego-style policy surface.", "proof": "stzGraphRule"}
+  ],
+  "standouts": [
+    "One CI gate, one finding shape, across ~11 domains -- a genuine category-of-one",
+    "Code rules born from the library's own hard-won bugs, so it lints itself",
+    "A three-language code graph (Ring, Python, JS) that self-checks via CheckRules()",
+    "A signable, sha256-sealed rule constitution -- governance of the rules"
+  ],
+  "gaps": [
+    "Declarative rule and policy authoring (semgrep-style patterns, Rego-style expressions)",
+    "Broaden tree-sitter and put Ring on it",
+    "Richer reflection; resolved call edges and dataflow; full dominator analysis for effects-guarded",
+    "Production-harden the semantic resolver; a policy expression language"
+  ],
+  "peers": ["semgrep", "OPA / Rego", "SonarQube", "XACML", "AWS IAM", "ESLint", "ruff", "clippy", "Sourcetrail / Understand", "stack-graphs", "docstrings + Sphinx", "AI code assistants", "Python inspect", "Java reflection", "Ruby / Smalltalk", "tree-sitter", "sigstore policy"],
+  "folders": ["base/meta", "base/reflect", "base/refine", "base/governance", "base/graph", "base/natural", "test/meta", "test/reflect", "test/refine", "test/governance"],
+  "dated": "Read from the source on 2026-09-16, from a read-only main worktree"
+}

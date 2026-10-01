@@ -27,18 +27,14 @@ Quatorze modules GPU, neuf modules géographiques, six neuronaux, sept sonores :
 <div class="card"><h3>Haro <span class="pill charter">charte</span></h3><p>La langue d'après Ring, conçue pour qu'un agent l'écrive et qu'un humain la gouverne, sur la machine virtuelle de Ring++. Sa charte est un brouillon v0.1 du 2026-09-26 qui attend la ratification de l'auteur. Rien n'est construit : ni analyseur, ni compilateur. Ce site ne présentera jamais Haro comme disponible.</p></div>
 </div>
 
-## L'Atlas : chaque domaine noté, honnêtement
+## L'Atlas : vingt-huit groupes, chaque couloir noté, honnêtement
 
-L'Atlas Softanza est le relevé de ce que la bibliothèque sait faire, groupe par groupe, couloir par couloir, avec quatre notes : <span class="chip strong">Strong</span> <span class="chip solid">Solid</span> <span class="chip partial">Partial</span> <span class="chip emerging">Emerging</span>. Il montre ses lacunes ; c'est ce qui rend ses forces crédibles.
+L'Atlas Softanza est le relevé de ce que la plateforme sait faire, groupe par groupe, couloir par couloir, chaque groupe mesuré contre les meilleurs de sa catégorie, avec quatre notes : <span class="chip strong">Strong</span> <span class="chip solid">Solid</span> <span class="chip partial">Partial</span> <span class="chip emerging">Emerging</span>. Les notes sont gagnées par ce que les gardes prouvent, pas par ce que les plans promettent. Il montre ses lacunes ; c'est ce qui rend ses forces crédibles. Chaque groupe a sa page sur ce site, avec ses couloirs, ses forces, ses dettes et un exemple exécuté.
 
-<div class="figures">
-<div class="figure"><b>28</b><span>groupes : 25 groupes de modules et 3 systèmes transversaux</span></div>
-<div class="figure"><b>334</b><span>couloirs notés</span></div>
-<div class="figure"><b>101 · 129</b><span>Strong · Solid</span></div>
-<div class="figure"><b>68 · 36</b><span>Partial · Emerging</span></div>
-</div>
+<!--ATLAS-TALLY-->
+<!--ATLAS-COMPACT-->
 
-<p class="proof">Atlas version 21, relu le 2026-09-30 sur le commit <a href="https://github.com/mayouni/stzlib/commit/0e72e2e2c">0e72e2e2c</a> : <a href="https://claude.ai/artifact/FCeuCNfcZepUDJLxsynwFB">l'Atlas en ligne</a>. Les pages de l'Atlas seront portées sur ce site dans la version suivante.</p>
+<p class="proof">Atlas version 21, relu le 2026-09-30 sur le commit <a href="https://github.com/mayouni/stzlib/commit/0e72e2e2c">0e72e2e2c</a> ; <a href="atlas.html">l'Atlas complet sur ce site</a> · <a href="https://claude.ai/artifact/FCeuCNfcZepUDJLxsynwFB">l'Atlas d'origine</a>.</p>
 
 ## Ce que « moteur » veut dire ici
 

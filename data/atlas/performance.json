@@ -1,0 +1,34 @@
+{
+  "slug": "performance",
+  "title": "Performance -- where it stands",
+  "thesis": "One of the most complete and rigorous planes in the library -- P0-P11 all shipped, 366 assertions -- it closes the OTel triad (metrics + traces + logs, all in native OTLP JSON) and exposes Prometheus text, and adds SLA judgment with edge-triggered alerting, a sampling profiler, queueing-theory capacity analysis and a driven-load harness, in one coherent plane. Its real signature is measurement discipline: clocks as scopes, Windows 15.6 ms quantization handled, self-cost priced, and a rule that unmeasured is an error, never a silent pass. What it is not, by design, is the storage-and-dashboard half.",
+  "lanes": [
+    {"lane": "Metrics & labeled families", "rating": "Strong", "note": "Counters/gauges/timers and Prometheus-style labeled families with the child registry engine-side; cardinality bounded at birth with a counted overflow child.", "proof": "perf.zig Family; stzMetric, stzMetricFamily"},
+    {"lane": "Percentiles & histograms", "rating": "Strong", "note": "Two independent engines: an O(1) log-bucket sketch and sort-exact nearest-rank over the window; histogram_sum keeps an exact lifetime sum so the mean is exact.", "proof": "histogram.zig, perf_series_percentile"},
+    {"lane": "Exposition & export", "rating": "Strong", "note": "Prometheus text (PromText) and OTLP JSON for metrics, spans and logs; built-in GET /metrics + /health; pull (scrape) and push (OTLP) both present.", "proof": "stzOtelBatch, stzLog.OtelJson"},
+    {"lane": "SLA judgment & alerting", "rating": "Strong", "note": "stzSla verdicts in the unified rule shape into stzRuleReport; stzPerfSentinel edge-triggered OnBreach/OnClear with a flight recorder; NOT-MEASURED is an error.", "proof": "stzSla, stzPerfSentinel, stzRuleReport"},
+    {"lane": "Measurement discipline", "rating": "Strong", "note": "Clocks as scopes, Windows 15.6 ms quantization handled, SelfCost() priced (~0.03 ms), exact-transfer proven against frozen stubs, the self-check identity law.", "proof": "watch.zig; perf laws in CLAUDE.md"},
+    {"lane": "Capacity & queueing analysis", "rating": "Strong", "note": "stzPerfProfile: utilization, throughput, service demand, MaxThroughput, Headroom, Bottleneck split, memory trend, Little's law with an independent self-check.", "proof": "stzPerfProfile"},
+    {"lane": "Distributed tracing", "rating": "Solid", "note": "W3C traceparent spans, parent->child join, engine trace ring, OTLP resourceSpans export; propagation at the HTTP seam only, one global scope, drop-oldest ring.", "proof": "stzOtelBatch"},
+    {"lane": "Log<->trace correlation", "rating": "Solid", "note": "Inside stzTraceScope every stzLog record stamps a traceId; OfTrace(id) recovers a trip's lines; OTLP logs export; one global scope slot.", "proof": "stzTraceScope, stzLog"},
+    {"lane": "The instrumentation bracket", "rating": "Solid", "note": "Observe/ObserveRoutes wrap the appserver seam recording the well-known subjects; stzStopwatch brackets any operation; manual, no auto-instrumentation.", "proof": "Observe, ObserveRoutes, stzStopwatch"},
+    {"lane": "Profiling", "rating": "Solid", "note": "stzProfiler over an engine frame stack plus a real engine sampler thread, folded flamegraph output; cooperative Enter/Leave frames, not native stack unwinding.", "proof": "stzProfiler"},
+    {"lane": "Governed tuning & load harness", "rating": "Solid", "note": "stzPerfPlan: a closed catalog an LLM may propose, only an effectful actor may ExecuteOn; stzLoadDriver measured X sub-linear and R super-linear on a real fleet.", "proof": "stzPerfPlan, stzLoadDriver"},
+    {"lane": "Storage, query & dashboards", "rating": "Partial", "note": "Bounded in-memory rings hold the recent window; no time-series database, no PromQL, no dashboards -- export-only by explicit design.", "proof": ""}
+  ],
+  "standouts": [
+    "Closes the OTel triad (metrics + traces + logs) and exposes Prometheus text, in one plane",
+    "Measurement discipline: clocks as scopes, Windows 15.6 ms quantization handled, self-cost priced with its own machinery",
+    "Unmeasured is an error, never a silent pass",
+    "Queueing-theory capacity analysis with independent self-checks (utilization, Little's law)"
+  ],
+  "gaps": [
+    "Auto-instrumentation (zero-code, opt-out rather than opt-in Observe)",
+    "Full trace-context propagation (baggage, async-context through reactor jobs, per-task scopes)",
+    "Head/tail trace sampling; in-process aggregation (PromQL-lite); native-stack profiling",
+    "A storage/dashboard integration story; macOS RSS; one stale CLAUDE.md metadata line (P0-P7 / 283 vs P0-P11 / 366)"
+  ],
+  "peers": ["Prometheus (client, histograms, exposition, Alertmanager, TSDB/PromQL)", "OpenTelemetry (metrics, tracing, logs, auto-instrumentation)", "Micrometer", "HdrHistogram", "StatsD", "Grafana", "JFR", "py-spy / pprof", "perf", "Jaeger / Tempo", "k6 / wrk / Locust", "APM backends"],
+  "folders": ["base/perf", "test/perf"],
+  "dated": "Read from the source on 2026-09-16, from a read-only main worktree"
+}

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Graphisme · Atlas · Softanza</title>
+<meta name="description" content="Un seul moteur Zig sur douze couloirs : texte, couleur, cartographie, GPU, sous un seul système gouverné.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/family.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-atlas-group">
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Pourquoi</a><a href="../platform.html">Plateforme</a><a href="../atlas.html" aria-current=page>Atlas</a><a href="../learn.html">Apprendre</a><a href="../govern.html">Gouverner</a><a href="../makers.html">Makers</a><a href="../products.html">Produits</a><a href="../africa.html">Afrique</a><a href="../start.html">Démarrer</a><a href="../tour.html">Présenter</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../../en/atlas/graphics.html" lang="en" hreflang="en">English</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Thème" title="Thème: clair / sombre / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">L'Atlas Softanza · Visuel et spatial</div>
+    <h1>Graphisme</h1>
+    <p class="thesis">Un seul moteur Zig sur douze couloirs : texte, couleur, cartographie, GPU, sous un seul système gouverné.</p>
+    <div class="tally"><div class="tallybar" role="img" aria-label="6 strong, 3 solid, 2 partial, 1 emerging"><span style="flex:6;background:var(--strong)"></span><span style="flex:3;background:var(--solid)"></span><span style="flex:2;background:var(--partial)"></span><span style="flex:1;background:var(--emerging)"></span></div><div class="counts"><span class="st-strong"><b>6</b> S</span><span class="st-solid"><b>3</b> So</span><span class="st-partial"><b>2</b> P</span><span class="st-emerging"><b>1</b> E</span></div></div>
+    <p class="proof">Mesuré contre: Skia · D3 · Graphviz · Dossiers: <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/graphics">base/graphics</a> · <a href="https://claude.ai/artifact/4uSeoZvDiv39BwRAwBz6Ba">La page d'origine de l'Atlas</a></p>
+  </div></section>
+  <div class="wrap page-body">
+    <blockquote><p>Most of the field ships one lane well: Skia renders, D3 charts the web, Graphviz lays out graphs, spatstat does the statistics and draws nothing. Softanza is one Zig engine behind declarative Ring faces that reaches across twelve of those lanes at once; its advantage is being coherent across twelve lanes under one governed colour and text system, which no single competitor is.</p></blockquote>
+    <div class="sg"><div class="good"><h4>Ce qui se distingue</h4><ul><li>coherent across twelve lanes under one governed colour and text system</li><li>Arabic kashida justification at font-declared points</li><li>the rare lane where a graphics library also computes the statistics it draws</li><li>compute and render zero-copy on one wgpu device</li></ul></div><div class="owed"><h4>Ce qui est dû</h4><ul><li>general paths, curves &amp; transforms</li><li>complete the chart family</li><li>colour-blindness simulation</li><li>PDF export &amp; the raster floor</li></ul></div></div>
+    <h2>Un exemple, exécuté</h2><p>Une carte analytique du Niger, rendue par le moteur à partir des frontières officielles et du recensement 2012.</p><figure><img src="../../assets/img/niger-density.png" alt="Carte de densité de population du Niger par région, rendue par le moteur Softanza."><figcaption>rendue le 2026-09-30 à 23:09 en 5,9 secondes par base/test/graphics/niger_density.ring, à l&#x27;octet près identique au PNG commis</figcaption></figure>
+    <h2>Les couloirs, un par un</h2>
+    <p class="proof">Les couloirs et leurs notes sont cités dans la langue de l'Atlas, l'anglais, tels qu'ils ont été lus à la source. lu à la source le Read from the source on 2026-09-15.</p>
+    
+    <div class="lanes"><div class="lane"><div class="ln">Text &amp; typography</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">SheenBidi -&gt; HarfBuzz -&gt; stb_truetype: bidi reorder, OpenType shaping, Arabic kashida justification at font-declared points, fallback chains, vertical CJK</div></div><div class="lane"><div class="ln">Colour system</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">OKLCH/Oklab throughout, monotonic ramps, a five-value semantic family under a constitution, ten themes, WCAG 2 + APCA contrast as gate-able numbers<small>StzIsLegible / StzContrastLc; SOFTANZA_COLOR_SYSTEM.md</small></div></div><div class="lane"><div class="ln">Cartography &amp; projections</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">44 projections with inverses, WGS84 geodesy, GeoJSON/TopoJSON, choropleth/symbol/flow/hex-bin, insets, Tissot, scale bar, north arrow, terminator<small>stz_geo.dll</small></div></div><div class="lane"><div class="ln">Spatial statistics</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Clark-Evans z-test, Ripley K/L, G &amp; F, envelopes, kernel density, contours, IDW, variograms, ordinary kriging with variance; seven null models</div></div><div class="lane"><div class="ln">Diagramming</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">25+ notations all closed (DN0-DN24), many constraint-solved; own deterministic layout engine (GG1-GG6) plus a live picture-as-input mode<small>SOFTANZA_GRAPH_PLANE_PLAN.md (DN0-DN24, GG1-GG6)</small></div></div><div class="lane"><div class="ln">GPU compute + render</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">In-house wgpu surface: instanced multi-texture render and compute (matmul, fft, softmax, topk, pairdist) zero-copy on one device, W-string -&gt; WGSL<small>stz_gpu.dll</small></div></div><div class="lane"><div class="ln">2D vector rendering</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Retained display-list canvas with an SVG floor that always answers, GPU-backed PNG; no Bezier/arc/AddPath, no transform stack, CPU rasteriser never written</div></div><div class="lane"><div class="ln">Accessibility</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">An accessibility tree with roles, names, reading order and ToJSON, a screen-reader bridge, contrast maths gating colour; CVD simulation owed</div></div><div class="lane"><div class="ln">Output &amp; portability</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">SVG everywhere, lossless PNG with a returned encode decision, native window and browser tiers; no PDF/JPEG/WebP, only Windows runtime-verified</div></div><div class="lane"><div class="ln">Charts &amp; data-viz</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">Bar, multi-bar, line, scatter, histogram, surface, treemap with SVG/PNG/terminal renderers; no pie/donut, area, heatmap, box/violin, candlestick<small>stzDataSet</small></div></div><div class="lane"><div class="ln">Interactivity &amp; animation</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">Canvas hit-testing (Pick), SVG ids/classes for hover, a drag-driven live diagram; animation and tweening explicitly deferred to GUI G5</div></div><div class="lane"><div class="ln">Perception — the plane can draw, not yet see</div><div class="lr"><span class="chip emerging">Emerging</span></div><div class="lt">VISION plane&#x27;s first rung: a draw-&gt;read round trip through Windows.Media.Ocr and onnxruntime (10 ms, glyph-accurate incl. Arabic shaping)</div></div></div>
+    <div class="group-nav"><a href="agents.html">&larr; Agents et conversation</a><a href="../atlas.html">Tous les groupes</a><a href="geo.html">Géographie et cartographie &rarr;</a></div>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"></div>
+  <div class="foot-grid">
+    <div><img src="../../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">La plateforme des makers à l&#x27;ère agentique<br>Née en Afrique. Utile au monde !</p></div>
+    <div class="foot"><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.</p>
+      <p class="mono small">Dépôts: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site. Site généré le 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

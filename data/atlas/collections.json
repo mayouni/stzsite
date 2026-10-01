@@ -1,0 +1,113 @@
+{
+  "slug": "collections",
+  "title": "Collections & Objects — Where It Stands",
+  "thesis": "One of the largest surfaces in the library: ~155 list operations in a 6,500-line Zig core behind a 1,600-method Ring face, a functional pipeline, deep-path search, Lodash-grade grouping, and a reflective object root that 449 classes inherit, tuned for millions of items with measured residency wins. Two honest limits keep it short of the very top: boxed value storage holds raw set-op throughput an order of magnitude below NumPy/native, and there are no persistent immutable structures.",
+  "lanes": [
+    {
+      "lane": "Core list operations",
+      "rating": "Strong",
+      "note": "Index, slice, section, insert, remove, reverse, swap, rotate, repeat; reads engine-backed (stz_list_get/slice/reverse/rotate); mutators hop through Ring",
+      "proof": "stz_list_get / slice / reverse / rotate"
+    },
+    {
+      "lane": "Functional pipeline (map, filter, reduce)",
+      "rating": "Strong",
+      "note": "Engine-backed map_expr/filter_expr/reduce_expr with a string DSL (@item, @accumulator) plus W (engine) and WF (Ring function) predicate modes",
+      "proof": "map_expr / filter_expr / reduce_expr"
+    },
+    {
+      "lane": "Search, find, contains, deep paths",
+      "rating": "Strong",
+      "note": "Finder family engine-backed (find_cs, find_all_cs, find_nth_cs, contains_cs) plus a deep-path API (deep_find, item_at_path, paths_at_depth)",
+      "proof": "find_cs / deep_find / find_all_held_cs"
+    },
+    {
+      "lane": "Set operations",
+      "rating": "Solid",
+      "note": "Union, intersection, difference, subset, unique engine-backed with a splitmix64 fast path; intersection_cs dedups, common_items_cs keeps dups; 1M union ~2-3s",
+      "proof": "stz_list_union_cs"
+    },
+    {
+      "lane": "Grouping, partition, chunk, zip",
+      "rating": "Strong",
+      "note": "classify_cs, partition, chunked, zip, interleave, sliding_window, frequencies_cs engine-backed; classify emits the nested shape engine-side (-51% at 1M)",
+      "proof": "classify_cs (-51% at 1M)"
+    },
+    {
+      "lane": "Sorting and ordering",
+      "rating": "Strong",
+      "note": "sort, sort_cs, sort_descending, sort_by_expr, sort_on, sorted_insert plus is_sorted / is_strictly_increasing / is_monotonic, all engine-backed",
+      "proof": "sort_by_expr / sort_on"
+    },
+    {
+      "lane": "Aggregation and statistics on lists",
+      "rating": "Solid",
+      "note": "sum, product, mean, median, variance, stddev, nth_largest, ranked engine-backed, also on stzListOfNumbers; deep statistics lives on the Statistics page",
+      "proof": ""
+    },
+    {
+      "lane": "Immutability and copy semantics",
+      "rating": "Partial",
+      "note": "Ring assigns lists by value (safe by default, clean Copy()) but no persistent immutable structures with structural sharing; a modified copy is a full copy",
+      "proof": ""
+    },
+    {
+      "lane": "Large-scale performance and residency",
+      "rating": "Solid",
+      "note": "Generation-keyed cache (FIFO at 8M items / 1024 entries): read-reuse 3.34s to 1.29s, Classify -51%, Union -34% at 1M; boxed *StzValue, Slices 4-5 open",
+      "proof": "_ENGINE_RESIDENCY_PLAN.md; ring_bridge_list.zig"
+    },
+    {
+      "lane": "The object system (stzObject root)",
+      "rating": "Strong",
+      "note": "One reflective root inherited by 449 classes: Attributes, Methods, Type, ObjectUID, cloning, Q-elevation, Verb/Verbed/VerbQ; #TODO notes incomplete abstraction",
+      "proof": "base/object/stzObject.ring"
+    },
+    {
+      "lane": "Specialized collections",
+      "rating": "Solid",
+      "note": "stzHashList, stzGrid, stzTree, stzSet, stzListOfLists, stzListOfPairs, stzListOfSections, stzYielder; mostly Ring-side; stzHashList folds keys to lowercase",
+      "proof": ""
+    },
+    {
+      "lane": "Named-parameter grammar",
+      "rating": "Solid",
+      "note": "stzListNamedParams, a 1,945-method grammar for natural-language named arguments with no direct peer; pure Ring and the least-verified under the fidelity grind",
+      "proof": "stzListNamedParams.ring"
+    }
+  ],
+  "standouts": [
+    "String-expression predicates run inside the engine, which the peers cannot do",
+    "A deep-path search API that Lodash get only approximates",
+    "A reflective object root 449 classes inherit, with Q-elevation and the Verb/Verbed/VerbQ grammar",
+    "Measured residency wins at 1M items: 2.6x read-reuse, Classify -51%, Union -34%"
+  ],
+  "gaps": [
+    "Finish the list narration / fidelity grind (312 of ~602 legacy blocks error)",
+    "Unboxed typed storage for native-speed set-ops",
+    "Complete the residency migration (Slices 4 and 5, ~32 marshal-in sites)",
+    "Persistent immutable collections with structural sharing"
+  ],
+  "peers": [
+    "Python list / set / collections / itertools / statistics",
+    "Rust Vec / iterators / im crate",
+    "C++ std::vector",
+    "Lodash",
+    "Immutable.js",
+    "Clojure persistent collections",
+    "NumPy",
+    "Ruby",
+    "JS Object / Reflect"
+  ],
+  "folders": [
+    "base/list",
+    "base/object",
+    "engine list.zig",
+    "engine ring_bridge_list.zig",
+    "engine number.zig",
+    "engine bytes.zig",
+    "test/list",
+    "test/object"
+  ],
+  "dated": "Read from the source on 2026-09-16"
+}

@@ -1,0 +1,124 @@
+{
+  "slug": "numeric",
+  "title": "Numeric & Optimization — Where It Stands",
+  "thesis": "The most rigorously measured module in the library: P0-P7 complete, ~1,827 assertions, every parallel route gated by a measured threshold and every kernel bit-identical under threads. It leads with something NumPy has no concept of, exactness: an arbitrary-precision numeric tower with a register that tells you why a value is exact or not. It reaches LAPACK-tier decompositions and ships reverse-mode autodiff with L-BFGS. It is deliberately not a NumPy: no broadcasting, raw matmul peak below tuned BLAS, and it refuses what it cannot measure a use for.",
+  "lanes": [
+    {
+      "lane": "Scalar arithmetic and exactness",
+      "rating": "Strong",
+      "note": "Arbitrary-precision tower over std.math.big: bignum, exact rationals, money-exact decimal (0.1+0.2 is exactly 0.3), plus IsExact()/Why()/Representation()",
+      "proof": "IsExact() / Why() / Representation()"
+    },
+    {
+      "lane": "Matrices and linear algebra",
+      "rating": "Strong",
+      "note": "matrix.zig + linalg.zig: SIMD/threaded matmul, LU determinant, Solve, Inverse, LeastSquares, PseudoInverse (Penrose-4 verified), rank, condition; vs NumPy",
+      "proof": "matrix.zig / linalg.zig vs NumPy oracle"
+    },
+    {
+      "lane": "Eigen and decompositions",
+      "rating": "Strong",
+      "note": "Symmetric Jacobi eigen plus general non-symmetric eigen (balancing, Hessenberg, Francis double-shift QR, Schur), Jacobi SVD, Householder QR, Cholesky, roots",
+      "proof": "eigen_general.zig"
+    },
+    {
+      "lane": "Automatic differentiation and optimization",
+      "rating": "Strong",
+      "note": "Reverse-mode autodiff (compiled tape, valueAndGradient) and L-BFGS with strong-Wolfe line search; verified to 8-12 decimals; Rosenbrock in 34 iterations",
+      "proof": "autodiff.zig / lbfgs.zig"
+    },
+    {
+      "lane": "Acceleration and residency",
+      "rating": "Strong",
+      "note": "SIMD + row-banded threaded matmul (16x cache reorder, up to 7x threaded), Neumaier summation (2.5x), resident reductions 19x; every route gated by calib.Gate",
+      "proof": "calib.Gate thresholds; bit-identical under threads"
+    },
+    {
+      "lane": "Vectors and buffers",
+      "rating": "Solid",
+      "note": "stzNumBuffer over numbuf.zig: an engine-owned f64 buffer with dot/scale/add/sub/mul and reductions that never marshal; no broadcasting, no n-D arrays",
+      "proof": "numbuf.zig"
+    },
+    {
+      "lane": "Linear and integer programming",
+      "rating": "Solid",
+      "note": "Engine simplex (41x after a cubic re-parse fix) with branch-and-bound MIP, stzOptimModel DSL, exact coefficient compiler, .zopt round-trip; no IPM, no QP",
+      "proof": "simplex.zig; base/optim"
+    },
+    {
+      "lane": "Special functions",
+      "rating": "Solid",
+      "note": "special.zig: erf/erfc, log-gamma and gamma, incomplete gamma and beta, Normal/t/chi-square/F CDFs and quantiles; no Bessel, Airy, elliptic or hypergeometric",
+      "proof": "special.zig"
+    },
+    {
+      "lane": "Solvers and roots",
+      "rating": "Solid",
+      "note": "solver.zig: linear and quadratic roots, bisection, Newton, Simpson integration, polynomial eval, lerp/clamp/map-range; no adaptive quadrature, no ODE/BVP",
+      "proof": "solver.zig"
+    },
+    {
+      "lane": "Random and sampling",
+      "rating": "Solid",
+      "note": "random.zig over Xoshiro/PCG/ChaCha: seeded ints, floats, Gaussian, exponential, shuffle, Bernoulli, weighted choice under SeedRandom; no binomial/Poisson/gamma",
+      "proof": "random.zig"
+    },
+    {
+      "lane": "FFT and spectral",
+      "rating": "Partial",
+      "note": "fft.zig: radix-2 Cooley-Tukey with the NumPy fft/ifft convention, convolveReal, magnitudes, phases, power spectrum; radix-2 only, no rfft, no multi-dimensional",
+      "proof": "fft.zig"
+    },
+    {
+      "lane": "Complex numbers",
+      "rating": "Partial",
+      "note": "complex.zig: arithmetic, modulus (hypot), argument, conjugate, principal sqrt and exp, division via Smith's formula; no log, inverse-trig or general powers",
+      "proof": "complex.zig"
+    }
+  ],
+  "standouts": [
+    "An exactness register (IsExact, Why, Representation) that NumPy has no concept of",
+    "General non-symmetric eigen with a Francis double-shift QR, hand-rolled and verified",
+    "Reverse-mode autodiff paired with a real quasi-Newton (L-BFGS) optimizer",
+    "Nothing parallel ships without a measurement; many gaps are deliberate, measured refusals"
+  ],
+  "gaps": [
+    "Arbitrary-N and multi-dimensional FFT (mixed-radix / Bluestein, rfft, 2-D)",
+    "Complete the complex surface: log, inverse-trig and general powers",
+    "Adaptive quadrature and an ODE stepper",
+    "Broaden sampling distributions (binomial, Poisson, gamma, beta, Dirichlet)"
+  ],
+  "peers": [
+    "NumPy / LAPACK",
+    "Python int / Decimal / Fraction / cmath",
+    "GMP",
+    "Eigen",
+    "GSL",
+    "scipy (optimize, special, integrate)",
+    "autograd / JAX",
+    "Ceres",
+    "MKL / OpenBLAS",
+    "GLPK",
+    "HiGHS / OR-Tools",
+    "Boost.Math",
+    "FFTW",
+    "KISS FFT",
+    "C++ std::complex"
+  ],
+  "folders": [
+    "base/number",
+    "base/optim",
+    "engine number.zig",
+    "engine matrix.zig",
+    "engine linalg.zig",
+    "engine eigen_general.zig",
+    "engine autodiff.zig",
+    "engine lbfgs.zig",
+    "engine simplex.zig",
+    "engine special.zig",
+    "engine fft.zig",
+    "test/number",
+    "test/optim"
+  ],
+  "dated": "Read from the source on 2026-09-16"
+}

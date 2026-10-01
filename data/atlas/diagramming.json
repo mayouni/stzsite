@@ -1,0 +1,34 @@
+{
+  "slug": "diagramming",
+  "title": "Diagramming & Graphs — Where It Stands",
+  "thesis": "One of the most complete planes in the library: 25 notations all rendered by one engine, over a native deterministic layout engine and a NetworkX-tier graph-algorithm suite; math and molecule diagrams are genuinely constraint-solved via autodiff. The old dot.exe dependency is demoted to an optional viewer — diagram layout is now engine-native. Guarded by ~1,790 assertions.",
+  "lanes": [
+    {"lane": "Notation breadth", "rating": "Strong", "note": "25 notations (DN0-DN24), ~21 Ring faces, all as profiles over one renderer (stzDiagram), not separate tools; the domain list is closed by design", "proof": "stzDiagram; SOFTANZA_GRAPH_PLANE_PLAN.md DN0-DN24"},
+    {"lane": "Deterministic layout engine", "rating": "Strong", "note": "graph_layout.zig (GG1): barycentre crossing-reduction, seeded Fruchterman-Reingold force, bit-identical within and across processes", "proof": "graph_layout.zig; determinism guard"},
+    {"lane": "Graph algorithms", "rating": "Strong", "note": "graph.zig (CSR): BFS/DFS, Dijkstra, A*, SCC, bridges, toposort, betweenness/closeness/PageRank/k-core/Louvain, MST, max-flow/min-cut; engine-implemented", "proof": "graph.zig; test/graph (158 files)"},
+    {"lane": "Constraint-solved diagrams", "rating": "Strong", "note": "Math (DN7) and molecule (DN11) layouts are solved by the engine's autodiff solver (StzEngineGrad*), with DragTo/Pin interactive re-solve", "proof": "solver/constraint/autodiff.zig"},
+    {"lane": "Rendering & output", "rating": "Solid", "note": "One renderer, three outputs: ToSVG (no device), ToPNG (GPU-backed), an ASCII visualizer; 24 node shapes; DOT export; no PDF/PostScript", "proof": ""},
+    {"lane": "Diagram editing & interactivity", "rating": "Solid", "note": "Command-based edit session: Edit, Undo/Redo, EditLog, PickAt, RewireAnchor; illegal edits refused at the gesture; not a visual WYSIWYG editor", "proof": ""},
+    {"lane": "Graph rules & governance", "rating": "Solid", "note": "stzGraphRule and stzOrgRule feed the one CI gate (stzRuleReport): no-orphan-position, separation-of-duties; the rule catalogue is small", "proof": "stzGraphRule / stzOrgRule / stzRuleReport"},
+    {"lane": "Export & interchange", "rating": "Solid", "note": "stzGraph exports DOT, JSON, GraphML and YAML (Dot(), RenditionAs); import parity thinner, GEXF/adjacency round-trips not all present", "proof": "stzGraph"},
+    {"lane": "Text & label placement", "rating": "Solid", "note": "Notation-in-a-label (DN10), labels centred on cap-height not the em-box (DN12), curve clearance (DN13), solver-placed labels (SolveLabelsAfter)", "proof": "DN10 / DN12 / DN13"},
+    {"lane": "General graph layout & edge routing", "rating": "Partial", "note": "Diagram layouts are engine-native; arbitrary large-graph visualization still leans on the optional dot.exe viewer: spline routing, nested clusters unmet", "proof": ""},
+    {"lane": "Graph generators & isomorphism", "rating": "Partial", "note": "No standard graph generators (Erdos-Renyi, Barabasi-Albert, Watts-Strogatz) and no isomorphism / graph-edit-distance surfaced", "proof": ""},
+    {"lane": "Live / web interactivity", "rating": "Partial", "note": "Diagrams emit interactive SVG and support programmatic re-layout (Relayout, DragTo); no built-in live pan/zoom/brush, the GUI plane's job", "proof": ""}
+  ],
+  "standouts": [
+    "25 notations as data profiles over one renderer",
+    "determinism as a guarantee: bit-identical layout across processes",
+    "constraint-solved layout via autodiff, which no mainstream tool does",
+    "NetworkX-core parity, compiled"
+  ],
+  "gaps": [
+    "meet the dot kill criterion (spline routing, nested clusters)",
+    "live interactivity via the GUI plane",
+    "graph generators & isomorphism",
+    "PDF / PostScript export"
+  ],
+  "peers": ["Mermaid", "PlantUML", "D2", "Graphviz", "ELK / dagre", "NetworkX", "igraph", "graph-tool", "TikZ", "draw.io", "tldraw", "Mermaid Live", "Gephi / GEXF", "ELK / OGDF", "yFiles", "Cytoscape.js", "D3 force"],
+  "folders": ["base/graph", "base/graphics", "test/graphics", "test/graph"],
+  "dated": "Read from the source on 2026-09-16, from a read-only main worktree"
+}

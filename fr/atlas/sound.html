@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Son · Atlas · Softanza</title>
+<meta name="description" content="Entièrement livré : un rappel sans verrou, un graphe possédé, une analyse de niveau librosa, la sonification.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/family.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-atlas-group">
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="site-head"><div class="wrap head-row">
+  <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Pourquoi</a><a href="../platform.html">Plateforme</a><a href="../atlas.html" aria-current=page>Atlas</a><a href="../learn.html">Apprendre</a><a href="../govern.html">Gouverner</a><a href="../makers.html">Makers</a><a href="../products.html">Produits</a><a href="../africa.html">Afrique</a><a href="../start.html">Démarrer</a><a href="../tour.html">Présenter</a></nav>
+  <div class="head-tools">
+    <a class="lang" href="../../en/atlas/sound.html" lang="en" hreflang="en">English</a>
+    <button class="theme-btn" type="button" data-theme-toggle aria-label="Thème" title="Thème: clair / sombre / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
+  </div>
+</div></header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">L'Atlas Softanza · Entrées-sorties, formats, extensibilité, médias</div>
+    <h1>Son</h1>
+    <p class="thesis">Entièrement livré : un rappel sans verrou, un graphe possédé, une analyse de niveau librosa, la sonification.</p>
+    <div class="tally"><div class="tallybar" role="img" aria-label="5 strong, 5 solid, 1 partial, 1 emerging"><span style="flex:5;background:var(--strong)"></span><span style="flex:5;background:var(--solid)"></span><span style="flex:1;background:var(--partial)"></span><span style="flex:1;background:var(--emerging)"></span></div><div class="counts"><span class="st-strong"><b>5</b> S</span><span class="st-solid"><b>5</b> So</span><span class="st-partial"><b>1</b> P</span><span class="st-emerging"><b>1</b> E</span></div></div>
+    <p class="proof">Mesuré contre: miniaudio · Web Audio · JUCE · Dossiers: <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/sound">base/sound</a> · <a href="https://claude.ai/artifact/NZkmXxFGQAtW69QAPyMEzC">La page d'origine de l'Atlas</a></p>
+  </div></section>
+  <div class="wrap page-body">
+    <blockquote><p>The survey&#x27;s biggest surprise: memory said &#x27;plan, SN0 next&#x27;, the code says one of the most fully-realized planes in the library, SN0-SN6 and a sonification series shipped and closed. miniaudio is vendored and split into two DLLs, there is an owned Zig sound graph (Web-Audio-shaped), FFT-backed analysis, and a real lock-free real-time callback that does no allocation, no lock, and never re-enters the Ring VM. What it refuses on purpose: MIDI, spatial/HRTF, plugin hosting, notation; and reverb is absent even from the effect palette.</p></blockquote>
+    <div class="sg"><div class="good"><h4>Ce qui se distingue</h4><ul><li>A lock-free real-time callback: no alloc, no lock, no Ring re-entry, guarded down to worst-callback microseconds</li><li>An owned Zig sound graph, Web-Audio-shaped, not a wrapper</li><li>librosa-grade analysis: spectrogram, onsets, tempo and LUFS on the shared engine FFT</li><li>A sonification / earcon / voice layer no mainstream audio library offers</li></ul></div><div class="owed"><h4>Ce qui est dû</h4><ul><li>Reverb and a fuller effect palette (compressor, chorus, distortion)</li><li>Richer synthesis (wavetable, FM, additive, granular)</li><li>MP3 / OGG encode to close the read-broad / write-narrow asymmetry</li><li>MIDI input, spatial/HRTF and plugin hosting (deliberate non-goals)</li></ul></div></div>
+    <h2>Un exemple, exécuté</h2><p>Le son se juge à l&#x27;oreille : les fichiers WAV à côté des gardes de test/sound en sont la preuve. Ici, seulement la table des instruments.</p><div class="run"><div><div class="lbl">Ring</div><pre>? len( StzSoundInstruments() )
+? StzSoundInstrumentQ(&quot;piano&quot;).Name()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>20
+piano</pre></div></div><p class="ran">exécuté le 2026-10-01 à 01:52</p>
+    <h2>Les couloirs, un par un</h2>
+    <p class="proof">Les couloirs et leurs notes sont cités dans la langue de l'Atlas, l'anglais, tels qu'ils ont été lus à la source. lu à la source le Read from the source on 2026-09-16, from a read-only main worktree -- base/sound; engine sound.zig, soundgraph.zig, soundanalysis.zig, audiodev.zig, sounddsp.zig, soundring.zig, soundwasm.zig + vendored miniaudio 0.11.25; guards under test/sound (31 files + a web-audio harness).</p>
+    
+    <div class="lanes"><div class="lane"><div class="ln">Real-time callback discipline</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">sinkCallback does no allocation, no lock, never re-enters the Ring VM; SPSC lock-free ring, underruns counted, worst-callback microseconds tracked<small>engine audiodev.zig sinkCallback, soundring.zig</small></div></div><div class="lane"><div class="ln">Device playback &amp; transport</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">Vendored miniaudio backends per OS: open/start/stop/close, a stzSoundTransport face, an honest report when no device; split into decode and device DLLs<small>stz_sound + stz_audiodev DLLs</small></div></div><div class="lane"><div class="ln">Sound graph -- mixing &amp; routing</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">An owned node graph (miniaudio&#x27;s own graph disabled): OSC/SOURCE/GAIN/MIX/PAN/FILTER/DELAY/ENVELOPE over planar buses, topological and cycle-free<small>engine soundgraph.zig</small></div></div><div class="lane"><div class="ln">Spectral analysis</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">soundanalysis.zig on the shared fft.zig: Hann spectrum, threaded spectrogram, onset detection, tempo estimation, LUFS loudness, dominant frequency<small>engine soundanalysis.zig, fft.zig</small></div></div><div class="lane"><div class="ln">Sonification, earcons &amp; voice</div><div class="lr"><span class="chip strong">Strong</span></div><div class="lt">stzEarcons (66 methods), stzVoice/stzVoicePool, stzListener (closed grammar), and the SS1-SS5 sonification series; no mainstream audio library offers this<small>test/sound earcon_expect.json, voice_guard.html</small></div></div><div class="lane"><div class="ln">File decode / encode</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Decodes WAV/MP3/FLAC/OGG via miniaudio with resample and channel conversion; encode is WAV/FLAC only, MP3/OGG out return UNSUPPORTED<small>engine sound.zig</small></div></div><div class="lane"><div class="ln">Synthesis</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Band-limited oscillators (polyBLEP/polyBLAMP) for sine/square/saw/triangle plus ADSR, f64, unit-tested; no wavetable, FM, additive or granular<small>engine sounddsp.zig</small></div></div><div class="lane"><div class="ln">Capture / recording</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">Microphone capture through the same device layer and callback discipline; multi-device selection and format negotiation stay basic<small>stzMicrophone.ring; audiodev.zig capture side</small></div></div><div class="lane"><div class="ln">Streaming</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">A producer thread feeds the lock-free ring the callback drains, bounded at MAX_STREAMS=16, with StreamStart/Stop/Drain; no network streaming<small>engine soundgraph.zig (the stream)</small></div></div><div class="lane"><div class="ln">Audio &lt;-&gt; graphics convergence</div><div class="lr"><span class="chip solid">Solid</span></div><div class="lt">stzSoundPlot and stzSoundGrid render waveforms and spectrograms through the library&#x27;s own graphics plane as SVG/PNG, plus a browser guard harness</div></div><div class="lane"><div class="ln">DSP effects palette</div><div class="lr"><span class="chip partial">Partial</span></div><div class="lt">RBJ biquad filters (lowpass/highpass/bandpass), a feedback delay, gain and pan; no reverb (absent even as a named node), compressor, chorus or distortion</div></div><div class="lane"><div class="ln">Pro-audio breadth (MIDI, spatial, plugins)</div><div class="lr"><span class="chip emerging">Emerging</span></div><div class="lt">None, stated in writing as deliberate non-goals: MIDI, notation, 3D/HRTF spatial, time-stretching and VST/CLAP hosting are OUT until asked<small>SOFTANZA_SOUND_PLAN.md (non-goals)</small></div></div></div>
+    <div class="group-nav"><a href="extensibility.html">&larr; Extensibilité et code étranger</a><a href="../atlas.html">Tous les groupes</a><a href="testing.html">Système de test et de qualité &rarr;</a></div>
+  </div>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <div class="pagers"></div>
+  <div class="foot-grid">
+    <div><img src="../../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">La plateforme des makers à l&#x27;ère agentique<br>Née en Afrique. Utile au monde !</p></div>
+    <div class="foot"><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.</p>
+      <p class="mono small">Dépôts: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a> · <a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a> · <a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a> · <a href="https://github.com/mayouni/stzsite">github.com/mayouni/stzsite</a></p>
+      <p class="small">Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site. Site généré le 2026-10-01.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

@@ -1,0 +1,111 @@
+{
+  "slug": "tables",
+  "title": "Tables & Data — Where It Stands",
+  "thesis": "One enormous unified class, 2,517 methods with eleven sibling caps merged into a single stzTable, with engine-backed sort, aggregates, calculated columns, describe and pivot, plus a distinctive multi-table TableX pattern-query language. Measured against pandas, Polars and DuckDB it has three real holes: there is no join at all; group-by and filter run Ring-side even though engine bridges for both sit exported-but-unused; and the columnar engine is used per-operation, not as the live store.",
+  "lanes": [
+    {
+      "lane": "Calculated and derived columns",
+      "rating": "Strong",
+      "note": "AddCalculatedCol with an @(:ColName) formula lowered engine-first through StzEngineListEvalRows (compile-once), Ring eval() fallback; guarded at 50k rows",
+      "proof": "StzEngineListEvalRows; narrated calc-column guard"
+    },
+    {
+      "lane": "Sort and order",
+      "rating": "Strong",
+      "note": "SortOn(col) via StzEngineTableSortOn to table.zig sortOnColumn: an index-permutation pdq sort that moves companion columns without copying row objects",
+      "proof": "table.zig sortOnColumn"
+    },
+    {
+      "lane": "Construction and I/O",
+      "rating": "Solid",
+      "note": "From list-of-columns or hashlist; CSV, JSON, HTML round-trips; SQLite via stzDatabase; no Parquet/Arrow/Excel; FromJson is #TODO; iscsv guards fail (collision)",
+      "proof": "base/file/stzCSV.ring; test/csv"
+    },
+    {
+      "lane": "Columns, typing and access",
+      "rating": "Solid",
+      "note": "Per-column type_hint and per-cell tags in table.zig; Cell/Row/Col/Section access; legacy aliases (colsection, rowz, cellsincol) error after the 11-to-1 merge",
+      "proof": "table.zig"
+    },
+    {
+      "lane": "Select, project, filter",
+      "rating": "Solid",
+      "note": "Filter, FilterBy, FilterW/FilterWXT and TableX multi-table querying over stzListOfTables; all Ring-side, the engine ring_FilterRows exists but is never called",
+      "proof": ""
+    },
+    {
+      "lane": "Reshape: pivot and transpose",
+      "rating": "Solid",
+      "note": "stzPivotTable + stzPivotTableShow engine-backed via StzEnginePivotCrossTab / ring_PivotGroupBy, plus Transpose variants; no melt / unpivot / wide-to-long",
+      "proof": "StzEnginePivotCrossTab / ring_PivotGroupBy"
+    },
+    {
+      "lane": "Describe and summary stats",
+      "rating": "Solid",
+      "note": "Describe() engine-backed through frame.zig (StzEngineFrameDescribeAll: 8 stats per column) plus whole-table regression (StzEngineFrameRegression)",
+      "proof": "frame.zig StzEngineFrameDescribeAll"
+    },
+    {
+      "lane": "The unified hierarchy and TableX",
+      "rating": "Solid",
+      "note": "Eleven caps merged into one stzTable namespace, old classes survive as ~1 KB shells; TableX pattern language over tables; 150 legacy tests left erroring",
+      "proof": ""
+    },
+    {
+      "lane": "Aggregates (scalar column)",
+      "rating": "Solid",
+      "note": "StzEngineTableSumCol / AvgCol / MinCol / MaxCol / ProductCol / CountNonNull: cache-friendly columnar scans, engine-backed",
+      "proof": "StzEngineTableSumCol et al."
+    },
+    {
+      "lane": "Group-by (grouped aggregation)",
+      "rating": "Partial",
+      "note": "GroupBy/GroupByXT work as pure Ring row-wise hash-string keying; the engine groupByAggregate (ring_GroupBy) has O(n) hashed keys but stzTable never calls it",
+      "proof": "table.zig groupByAggregate / ring_GroupBy (unused)"
+    },
+    {
+      "lane": "Missing-data handling",
+      "rating": "Partial",
+      "note": "Per-cell null tags, AllItemsAreNull, CountNonNull and TableX null checks; no fillna / dropna / interpolate / forward-fill family",
+      "proof": ""
+    },
+    {
+      "lane": "Columnar scale and SQL",
+      "rating": "Partial",
+      "note": "A real columnar engine (table.zig) and SQLite via stzDatabase, but the Ring table marshals row-wise @aContent per operation; no query planner, no lazy execution",
+      "proof": "table.zig; db.zig"
+    }
+  ],
+  "standouts": [
+    "A multi-table TableX pattern-query language with no direct peer",
+    "A copy-free index-permutation engine sort",
+    "Engine-first calculated columns, compile-once over all rows, guarded at 50k rows",
+    "Eleven sibling caps merged into one stzTable namespace"
+  ],
+  "gaps": [
+    "Add joins: there is no join anywhere in the tables lane",
+    "Wire group-by and filter to the engine bridges already compiled and exported",
+    "Finish the 11-to-1 fidelity grind (150 of 251 legacy tests error)",
+    "Missing-data toolkit (fillna / dropna) and melt / unpivot"
+  ],
+  "peers": [
+    "pandas",
+    "Polars",
+    "DuckDB",
+    "SQL"
+  ],
+  "folders": [
+    "base/table",
+    "base/data",
+    "base/file",
+    "engine table.zig",
+    "engine frame.zig",
+    "engine db.zig",
+    "engine ring_bridge_table.zig",
+    "test/table",
+    "test/csv",
+    "test/database"
+  ],
+  "dated": "Read from the source on 2026-09-16",
+  "tally_note": "The page legend says 2 Strong / 6 Solid / 3 Partial / 1 Emerging, but the twelve lane chips read 2 Strong / 7 Solid / 3 Partial / 0 Emerging (lane 12 is chipped Partial). Lane ratings above copy the chips."
+}

@@ -27,18 +27,14 @@ Fourteen GPU modules, nine geographic ones, six neural, seven for sound: the fam
 <div class="card"><h3>Haro <span class="pill charter">charter</span></h3><p>The language after Ring, designed for an agent to write and a human to govern, on the Ring++ virtual machine. Its charter is a v0.1 draft of 2026-09-26 awaiting the author's ratification. Nothing is built: no parser, no compiler. This site will never present Haro as available.</p></div>
 </div>
 
-## The Atlas: every domain rated, honestly
+## The Atlas: twenty-eight groups, every lane rated, honestly
 
-The Softanza Atlas is the survey of what the library can do, group by group, lane by lane, with four ratings: <span class="chip strong">Strong</span> <span class="chip solid">Solid</span> <span class="chip partial">Partial</span> <span class="chip emerging">Emerging</span>. It shows its gaps; that is what makes its strengths believable.
+The Softanza Atlas is the survey of what the platform can do, group by group, lane by lane, each group measured against the leaders of its category, with four ratings: <span class="chip strong">Strong</span> <span class="chip solid">Solid</span> <span class="chip partial">Partial</span> <span class="chip emerging">Emerging</span>. Ratings are earned by what the guards prove, not by what the plans intend. It shows its gaps; that is what makes its strengths believable. Every group has its page on this site, with its lanes, its standouts, its debts and one example run.
 
-<div class="figures">
-<div class="figure"><b>28</b><span>groups: 25 module groups and 3 cross-cutting systems</span></div>
-<div class="figure"><b>334</b><span>rated lanes</span></div>
-<div class="figure"><b>101 · 129</b><span>Strong · Solid</span></div>
-<div class="figure"><b>68 · 36</b><span>Partial · Emerging</span></div>
-</div>
+<!--ATLAS-TALLY-->
+<!--ATLAS-COMPACT-->
 
-<p class="proof">Atlas version 21, re-read on 2026-09-30 at commit <a href="https://github.com/mayouni/stzlib/commit/0e72e2e2c">0e72e2e2c</a>: <a href="https://claude.ai/artifact/FCeuCNfcZepUDJLxsynwFB">the Atlas online</a>. The Atlas pages will be ported to this site in the next release.</p>
+<p class="proof">Atlas version 21, re-read on 2026-09-30 at commit <a href="https://github.com/mayouni/stzlib/commit/0e72e2e2c">0e72e2e2c</a>; <a href="atlas.html">the full Atlas on this site</a> · <a href="https://claude.ai/artifact/FCeuCNfcZepUDJLxsynwFB">the original Atlas</a>.</p>
 
 ## What "engine" means here
 
