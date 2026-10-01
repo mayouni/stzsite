@@ -36,11 +36,11 @@ Un script placé dans le dossier <code>libraries/stzlib</code> charge la bibliot
 
 ## La première narration {#narration}
 
-Une narration est un document où chaque bloc de code s'exécute et où aucune sortie n'est jamais stockée : ce que vous lisez a été produit pendant la lecture. Commencez par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-mental-mode-narration.md">le modèle mental</a>, puis <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md">les agents qui ne peuvent pas vous nuire</a>. Les 134 sont listées sur <a href="narrations.html">la page des narrations</a>.
+Une narration est un document où chaque bloc de code s'exécute et où aucune sortie n'est jamais stockée : ce que vous lisez a été produit pendant la lecture. Commencez par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-mental-mode-narration.md">le modèle mental</a>, puis <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md">les agents qui ne peuvent pas vous nuire</a>. Les 134 sont listées sous Apprendre, dans Narrations.
 
 ## Le lecteur du cours {#reader}
 
-Le lecteur est une page de ce site : <a href="../reader.html">ouvrir le lecteur</a>. Il a été construit depuis la bibliothèque le 2026-09-30, et <a href="learn.html">la page Apprendre</a> dit comment apprendre avec lui, étape par étape. Pour le reconstruire vous-même, depuis votre copie du dépôt :
+Le lecteur est une page de ce site : <a href="../reader.html">ouvrir le lecteur</a>. Il a été construit depuis la bibliothèque le 2026-09-30, et la page Apprendre dit comment apprendre avec lui, étape par étape. Pour le reconstruire vous-même, depuis votre copie du dépôt :
 
 <pre>cd libraries/stzlib/base/education/tools
 # lancer build_reader avec l'exécutant du dépôt :
@@ -58,7 +58,7 @@ Et pour jouer la démonstration de quinze minutes pour décideurs, dont la derni
 
 ## Écrire {#write}
 
-Les questions, les rapports de défaut et les propositions passent par <a href="https://github.com/mayouni/stzlib/issues">les tickets du dépôt GitHub</a>. Une faille de sécurité se signale en privé par les avis de sécurité du dépôt, comme le dit son <a href="https://github.com/mayouni/stzlib/blob/main/SECURITY.md">SECURITY.md</a>. Une édition du cours dans votre langue commence par un dossier de chapitres en texte brut : <a href="learn.html">la page Apprendre</a> dit comment le tribunal du cours la jugera. Pour l'édition entreprise, écrivez par les mêmes tickets : <a href="offering.html">la page Offre</a> dit ce qu'elle contient.
+Les questions, les rapports de défaut et les propositions passent par <a href="https://github.com/mayouni/stzlib/issues">les tickets du dépôt GitHub</a>. Une faille de sécurité se signale en privé par les avis de sécurité du dépôt, comme le dit son <a href="https://github.com/mayouni/stzlib/blob/main/SECURITY.md">SECURITY.md</a>. Une édition du cours dans votre langue commence par un dossier de chapitres en texte brut : la page Apprendre dit comment le tribunal du cours la jugera. Pour l'édition entreprise, écrivez par les mêmes tickets : la page Offre dit ce qu'elle contient.
 
 ## Vérifier ce site hors ligne {#offline}
 

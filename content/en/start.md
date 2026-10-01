@@ -36,11 +36,11 @@ A script placed in the <code>libraries/stzlib</code> folder loads the library wi
 
 ## The first narration {#narration}
 
-A narration is a document where every code block runs and no output is ever stored: what you read was produced while reading. Start with <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-mental-mode-narration.md">the mental model</a>, then <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md">the agents that cannot hurt you</a>. All 134 are listed on <a href="narrations.html">the narrations page</a>.
+A narration is a document where every code block runs and no output is ever stored: what you read was produced while reading. Start with <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-mental-mode-narration.md">the mental model</a>, then <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md">the agents that cannot hurt you</a>. All 134 are listed under Learn, in Narrations.
 
 ## The course reader {#reader}
 
-The reader is a page of this site: <a href="../reader.html">open the reader</a>. It was built from the library on 2026-09-30, and <a href="learn.html">the Learn page</a> says how to learn with it, step by step. To rebuild it yourself, from your copy of the repository:
+The reader is a page of this site: <a href="../reader.html">open the reader</a>. It was built from the library on 2026-09-30, and the Learn page says how to learn with it, step by step. To rebuild it yourself, from your copy of the repository:
 
 <pre>cd libraries/stzlib/base/education/tools
 # run build_reader with the repository's runtime:
@@ -58,7 +58,7 @@ And to play the fifteen-minute demo for decision makers, whose last line must re
 
 ## Write {#write}
 
-Questions, defect reports and proposals go through the <a href="https://github.com/mayouni/stzlib/issues">issues of the GitHub repository</a>. A security flaw is reported privately through the repository's security advisories, as its <a href="https://github.com/mayouni/stzlib/blob/main/SECURITY.md">SECURITY.md</a> says. An edition of the course in your language starts with a folder of plain-text chapters: <a href="learn.html">the Learn page</a> says how the course's court will judge it. For the enterprise edition, write through the same issues: <a href="offering.html">the Offering page</a> says what it contains.
+Questions, defect reports and proposals go through the <a href="https://github.com/mayouni/stzlib/issues">issues of the GitHub repository</a>. A security flaw is reported privately through the repository's security advisories, as its <a href="https://github.com/mayouni/stzlib/blob/main/SECURITY.md">SECURITY.md</a> says. An edition of the course in your language starts with a folder of plain-text chapters: the Learn page says how the course's court will judge it. For the enterprise edition, write through the same issues: the Offering page says what it contains.
 
 ## Check this site offline {#offline}
 

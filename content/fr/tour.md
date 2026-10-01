@@ -17,7 +17,7 @@ Laisser l'image parler dix secondes. Puis une phrase : « Cet homme lit du code.
 
 <<< scene id="vision" page="vision.html" label="Vision" >>>
 <div class="eyebrow">L'approche de Softanza pour programmer à l'ère agentique</div>
-# Déclarez <i>une langue</i>
+## Déclarez <i>une langue</i>
 <p>Avec Softanza, on n'écrit plus des logiciels.</p>
 <p>On <b>déclare des mondes</b> dans des langues faites pour leur domaine, et on <b>gouverne</b> la manière dont ces mondes changent.</p>
 <p>Ce n'est pas la pratique d'aujourd'hui. C'est la proposition de Softanza : <b>une plateforme qui connaît votre monde.</b></p>
@@ -27,7 +27,7 @@ Trois idées, une par ligne. Ne pas lire la page. L'exemple parlé : une banque 
 
 <<< scene id="platform" page="platform.html" label="Plateforme" >>>
 <div class="eyebrow">Un moteur, vingt-huit domaines</div>
-# Un moteur en Zig, <i>une langue pour visage</i>
+## Un moteur en Zig, <i>une langue pour visage</i>
 <div class="figures">
 <div class="figure"><b>401</b><span>fichiers source Zig, 179 000 lignes</span></div>
 <div class="figure"><b>531 000</b><span>lignes de bibliothèque, 306 000 de tests</span></div>
@@ -39,15 +39,15 @@ Trois idées, une par ligne. Ne pas lire la page. L'exemple parlé : une banque 
 Dire le stade tel qu'il est : Haro est la langue de la plateforme, sa machine virtuelle et son compilateur existent et tournent, sa charte attend ma ratification ; je ne la dirai pas disponible avant qu'elle le soit. La crédibilité de la plateforme, c'est que l'Atlas montre ses 36 couloirs « Emerging » à côté de ses 101 « Strong ».
 ```
 
-<<< scene id="atlas" page="platform.html#areas" label="Les domaines" >>>
+<<< scene id="atlas" page="areas.html" label="Les domaines" >>>
 <div class="eyebrow">Vingt-huit domaines, un seul moteur · chaque image produite par la plateforme elle-même</div>
 <!--ATLAS-WALL-->
 ```notes
 Laisser le mur d'images parler. « Chaque image a été rendue par la plateforme : une carte, une onde, un diagramme, une table. Aucun concurrent ne couvre toutes ces lignes sur un seul moteur, et la page de l'Atlas montre les notes, les basses à côté des hautes. » Cliquer un domaine si on le demande : chaque page a ses couloirs et un exemple exécuté.
 ```
 
-<<< scene id="code" page="platform.html#code" label="Le code" >>>
-<div class="eyebrow">Le code, à côté de JavaScript · exécuté ce soir</div>
+<<< scene id="code" page="code.html" label="Le code" >>>
+<div class="eyebrow">Le code, à côté de JavaScript · chaque côté exécuté</div>
 <div class="run"><div><div class="lbl">Softanza</div><pre>? Q(2).Power(64)
 ? Q("مرحبا بالعالم").Script()
 ? @@( Naturally("Create a list with [ 5, 3, 5, 1 ]
@@ -61,39 +61,39 @@ Trois lignes, trois points : exact par défaut ; le moteur connaît l'écriture 
 
 <<< scene id="agentic" page="agentic.html" label="Agentique" >>>
 <div class="eyebrow">Des agents qui ne peuvent pas vous nuire</div>
-# L'agent propose. <i>Il ne commet pas.</i>
+## L'agent propose. <i>Il ne commet pas.</i>
 <div class="run"><div><div class="lbl">Une étudiante lâche un agent qui « range » le cours</div><pre>Update plan (610 of 610 operations to commit):
 * 1. delete file '…/course.zknw'
 * 2. delete file '…/curriculum.zknw'
-...</pre></div><div class="out"><div class="lbl">Le tribunal, ce soir</div><pre>actor 'amina-helper-llm' cannot commit
+...</pre></div><div class="out"><div class="lbl">Le tribunal répond</div><pre>actor 'amina-helper-llm' cannot commit
 -- it lacks the 'effectful' capability
 PROVED  the course folder still holds all 610 files</pre></div></div>
 <div class="figures">
 <div class="figure"><b>38</b><span>garanties, chacune avec son garde</span></div>
-<div class="figure"><b>395 ms</b><span>pour détecter une attaque, ce soir</span></div>
+<div class="figure"><b>395 ms</b><span>pour détecter une attaque, mesuré</span></div>
 <div class="figure"><b>50 ms</b><span>pour la confiner, vérifié de l'extérieur</span></div>
 </div>
 ```notes
 L'histoire à raconter : Amina écrit un agent qui « range » le cours. Il propose de supprimer les 610 fichiers. Il ne peut pas : il ne détient pas la capacité d'agir, il ne l'a jamais eue. Un humain lit le plan et refuse. Puis les deux chiffres : un bourrage d'identifiants détecté en 395 millisecondes et confiné en 50, ce soir, sur ce portable, et le modèle de langage qui enquêtait n'a rien pu commettre.
 ```
 
-<<< scene id="wise" page="agentic.html#wise" label="Wise coding" >>>
-<div class="eyebrow">Wise coding, contre vibe coding · prouvé ce soir, 13 sur 13 et 52 sur 52</div>
+<<< scene id="wise" page="wise.html" label="Wise coding" >>>
+<div class="eyebrow">Wise coding, contre vibe coding · prouvé par deux gardes, 13 sur 13 et 52 sur 52</div>
 <figure class="diagram"><img src="../assets/img/diagrams/wise-fr.png" alt="Vibe coding : l'humain souffle une consigne, la machine devine ; wise coding : Softanza demande, l'écart est mesuré, chaque réponse est jugée, la base de connaissances est écrite." width="1376" height="768"></figure>
 ```notes
 « En vibe coding, l'humain souffle une consigne et la machine devine. En wise coding, c'est Softanza qui demande : elle sait ce qu'un modèle complet de votre monde exige, mesure l'écart, et transforme chaque écart en la question suivante. La session finit par une base de connaissances écrite, pas par un code qu'il faut croire. » Deux gardes le prouvent, exécutés ce soir.
 ```
 
-<<< scene id="estate" page="vision.html#estate" label="Le domaine" >>>
+<<< scene id="estate" page="estate.html" label="Le domaine" >>>
 <div class="eyebrow">Où se tient la plateforme · stades lus dans les dépôts aujourd'hui</div>
 <figure class="diagram"><img src="../assets/img/diagrams/technology-fr.png" alt="Le domaine : applications, Aïcha, Softanza, Haro, Harobanda, matériel ; à côté, Takamba, le harnais." width="1376" height="768"></figure>
 ```notes
 Lire la pile de bas en haut : du matériel ordinaire ; Harobanda, la machine déclarée, construite ; Haro, la langue des langues, en construction ; Softanza, la fondation, construite, le sujet de ce soir ; Aïcha, nommée, rien d'autre encore ; les applications au-dessus. Takamba à côté : comment tout cela se construit. Dire chaque stade à voix haute ; ne jamais dire que Haro est disponible.
 ```
 
-<<< scene id="learn" page="learn.html" label="Apprendre" >>>
+<<< scene id="learn" page="book.html" label="Apprendre" >>>
 <div class="eyebrow">Le système d'apprentissage · 15 chapitres × 4 langues, chaque cellule a tourné</div>
-# Trois étapes : <i>introduction, livre, documentation</i>
+## Trois étapes : <i>introduction, livre, documentation</i>
 <div class="pair">
 <div><h4>Haoussa · Nemo, sannan ka aiwatar</h4><p>Kowane wurin aiki yana karɓar buƙatu: gidan abinci yana karɓar oda, banki yana karɓar tikiti.</p><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
 ? o1.NumberOfItems()
@@ -102,12 +102,12 @@ Lire la pile de bas en haut : du matériel ordinaire ; Harobanda, la machine dé
 ? o1.NumberOfItems()
 #--> 6</pre></div>
 </div>
-<p><a href="../reader.html">Ouvrir le lecteur</a> · en · fr · ar · ha · construit ce soir en 3 minutes 22 secondes, chaque cellule verte</p>
+<p><a href="../reader.html">Ouvrir le lecteur</a> · en · fr · ar · ha · construit en 3 minutes 22 secondes, chaque cellule verte</p>
 ```notes
-Ouvrir le lecteur par le lien, passer en haoussa, puis en arabe (de droite à gauche). Dire : « Ce lecteur a été construit ce soir en trois minutes vingt-deux : chaque cellule de chaque chapitre dans chaque langue a été exécutée, et la construction serait rouge si une seule avait échoué. » Puis : « Le zarma n'y est pas. C'est votre invitation. »
+Ouvrir le lecteur par le lien, passer en haoussa, puis en arabe (de droite à gauche). Dire : « Ce lecteur a été construit en trois minutes vingt-deux : chaque cellule de chaque chapitre dans chaque langue a été exécutée, et la construction serait rouge si une seule avait échoué. » Puis : « Le zarma n'y est pas. C'est votre invitation. »
 ```
 
-<<< scene id="africa" page="vision.html#africa" label="Afrique" >>>
+<<< scene id="africa" page="africa.html" label="Afrique" >>>
 <div class="eyebrow">Née en Afrique</div>
 <figure><img src="../assets/img/niger-density.png" alt="Carte de densité de population du Niger par région, rendue par le moteur." width="1500" height="1240"><figcaption>« Où vit le Niger » : rendue par le moteur en 5,9 secondes à partir des frontières officielles et du recensement de 2012 ; les superficies sont mesurées par la routine géodésique de Softanza.</figcaption></figure>
 ```notes
@@ -116,10 +116,10 @@ Ouvrir le lecteur par le lien, passer en haoussa, puis en arabe (de droite à ga
 
 <<< scene id="start" page="start.html" label="Démarrer" >>>
 <div class="eyebrow">Démarrer, en une heure</div>
-# Un dépôt public. <i>Un dossier, copié.</i>
+## Un dépôt public. <i>Un dossier, copié.</i>
 <pre>git clone https://github.com/mayouni/stzlib.git
 cd stzlib/libraries/stzlib</pre>
-<div class="run"><div><div class="lbl">premier</div><pre>? Q("Softanza").Boxed()</pre></div><div class="out"><div class="lbl">Sortie, ce soir</div><pre>┌──────────┐
+<div class="run"><div><div class="lbl">premier</div><pre>? Q("Softanza").Boxed()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>┌──────────┐
 │ Softanza │
 └──────────┘</pre></div></div>
 <p>github.com/mayouni/stzlib · édition ouverte, MIT · édition entreprise : le même code, plus les personnes qui l'ont écrit</p>

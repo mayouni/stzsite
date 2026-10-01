@@ -1,70 +1,56 @@
-/* stzsite -- theme toggle, mobile nav, language pick on the onboarding page.
-   No network, no framework. Works from file://. */
+/* stzsite -- the theme buttons, the language of the home page, and the
+   scroll rows of a narrow screen. No network, no framework, works from file://.
+   Nothing here animates (Zui Rule 112): every change is instant. */
 (function () {
   var root = document.documentElement;
   function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
   function read(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 
-  /* theme: auto -> dark -> light -> auto */
-  var btn = document.querySelector('[data-theme-toggle]');
-  if (btn) {
-    btn.addEventListener('click', function () {
-      var cur = root.getAttribute('data-theme') || 'auto';
-      var next = cur === 'auto' ? 'dark' : cur === 'dark' ? 'light' : 'auto';
-      if (next === 'auto') { root.removeAttribute('data-theme'); store('stz-theme', ''); }
-      else { root.setAttribute('data-theme', next); store('stz-theme', next); }
+  /* the theme: three buttons in the footer, each saying what it does (Rule 106) */
+  function paintTheme() {
+    var cur = root.getAttribute('data-theme') || 'auto';
+    var bs = document.querySelectorAll('[data-set-theme]');
+    for (var i = 0; i < bs.length; i++) bs[i].setAttribute('aria-pressed', bs[i].getAttribute('data-set-theme') === cur ? 'true' : 'false');
+  }
+  var tb = document.querySelectorAll('[data-set-theme]');
+  for (var i = 0; i < tb.length; i++) {
+    tb[i].addEventListener('click', function () {
+      var t = this.getAttribute('data-set-theme');
+      if (t === 'auto') { root.removeAttribute('data-theme'); store('stz-theme', ''); }
+      else { root.setAttribute('data-theme', t); store('stz-theme', t); }
+      paintTheme();
     });
   }
+  paintTheme();
 
-  /* mobile navigation */
-  var tog = document.querySelector('.nav-toggle'), nav = document.getElementById('site-nav');
-  if (tog && nav) {
-    tog.addEventListener('click', function () {
-      var open = nav.classList.toggle('open');
-      tog.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-  }
-
-  /* the onboarding page carries both languages; pick one */
+  /* the home page carries both languages; the header's language link chooses */
+  function setLang(l) { root.setAttribute('data-lang', l); root.setAttribute('lang', l); }
   if (root.classList.contains('home')) {
     var q = new URLSearchParams(location.search);
-    var lang = q.get('lang') || read('stz-lang');
-    if (!lang) {
-      var nl = (navigator.language || navigator.userLanguage || 'fr').toLowerCase();
+    var lang = q.get('lang');
+    if (lang === 'fr' || lang === 'en') store('stz-lang', lang); else lang = read('stz-lang');
+    if (lang !== 'fr' && lang !== 'en') {
+      var nl = (navigator.language || 'fr').toLowerCase();
       lang = nl.indexOf('fr') === 0 ? 'fr' : 'en';
     }
     setLang(lang);
-    if (q.get('panel') === 'right') root.classList.add('panel-right');
-    var bs = document.querySelectorAll('.hero-lang button');
-    for (var i = 0; i < bs.length; i++) {
-      bs[i].addEventListener('click', function () { setLang(this.getAttribute('data-set-lang')); store('stz-lang', this.getAttribute('data-set-lang')); });
-    }
+  } else {
+    var pl = root.getAttribute('lang');
+    if (pl === 'fr' || pl === 'en') store('stz-lang', pl);
   }
-  function setLang(l) {
-    root.setAttribute('data-lang', l); root.setAttribute('lang', l);
-    var bs = document.querySelectorAll('.hero-lang button');
-    for (var i = 0; i < bs.length; i++) bs[i].setAttribute('aria-pressed', bs[i].getAttribute('data-set-lang') === l ? 'true' : 'false');
-  }
-  /* remember the language of any inner page the visitor reads */
-  var pl = root.getAttribute('lang');
-  if (!root.classList.contains('home') && (pl === 'fr' || pl === 'en')) store('stz-lang', pl);
-})();
 
-/* the sub-menu names the section the reader is in */
-(function () {
-  var sub = document.querySelector('.submenu');
-  if (!sub) return;
-  var links = sub.querySelectorAll('a[href^="#"]');
-  var heads = [];
-  for (var i = 0; i < links.length; i++) {
-    var h = document.getElementById(links[i].getAttribute('href').slice(1));
-    if (h) heads.push([h, links[i]]);
+  /* on a narrow screen the menu and the path are scrollable rows: open them on
+     the current entry, instantly, so the reader sees where they are */
+  var cur = document.querySelectorAll('.nav a[aria-current], .path a[aria-current]');
+  for (var j = 0; j < cur.length; j++) {
+    var row = cur[j].parentNode;
+    if (row.scrollWidth > row.clientWidth) row.scrollLeft = (cur[j].offsetLeft - row.offsetLeft) - (row.clientWidth - cur[j].offsetWidth) / 2;
   }
-  function spy() {
-    var y = window.scrollY + 150, cur = null;
-    for (var i = 0; i < heads.length; i++) if (heads[i][0].offsetTop <= y) cur = heads[i][1];
-    for (var i = 0; i < heads.length; i++) heads[i][1].classList.toggle('on', heads[i][1] === cur);
-    if (cur && cur.scrollIntoView) { var r = cur.getBoundingClientRect(), w = sub.getBoundingClientRect(); if (r.left < w.left || r.right > w.right) cur.scrollIntoView({ block: 'nearest', inline: 'center' }); }
+  /* the height of the pinned menus, so a table's header row can stick just below them */
+  function pin() {
+    var tops = document.querySelectorAll('header.top'), h = 0;
+    for (var k = 0; k < tops.length; k++) if (tops[k].getClientRects().length) h = tops[k].getBoundingClientRect().height;
+    root.style.setProperty('--pin', Math.round(h) + 'px');
   }
-  window.addEventListener('scroll', spy, { passive: true }); spy();
+  pin(); window.addEventListener('resize', pin);
 })();

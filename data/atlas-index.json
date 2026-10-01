@@ -2,7 +2,6 @@
  "version": 21,
  "read_at": "2026-09-30",
  "commit": "0e72e2e2c",
- "index_url": "https://claude.ai/artifact/FCeuCNfcZepUDJLxsynwFB",
  "tally": {
   "strong": 101,
   "solid": 129,
@@ -57,7 +56,6 @@
    "line_fr": "Un sur-ensemble, correct au point de code, des chaînes de Python et de Rust ; la lacune nette est la couche locale d'ICU.",
    "dirs": "string",
    "peers": "ICU · Rust/Python str · Boost.Locale",
-   "url": "https://claude.ai/artifact/1Z839KWgApUpujMppdaSgy",
    "render": {
     "file": "string.webp",
     "thumb": "string-thumb.webp",
@@ -81,7 +79,6 @@
    "line_fr": "PCRE2 complet avec l'API de correspondance la plus lisible ; le JIT et le moteur en temps linéaire sont compilés mais éteints.",
    "dirs": "regex",
    "peers": "PCRE2 · RE2 · Oniguruma",
-   "url": "https://claude.ai/artifact/TUj8gXotShcsjw32Cv1EZn",
    "render": {
     "file": "regex.webp",
     "thumb": "regex-thumb.webp",
@@ -105,15 +102,14 @@
    "line_fr": "Un pipeline fonctionnel porté par le moteur et une racine d'objet réflexive ; le stockage boxé plafonne la vitesse des opérations d'ensembles.",
    "dirs": "list, object",
    "peers": "Lodash · Immutable.js · standard libraries",
-   "url": "https://claude.ai/artifact/A7erA2T64KAfYKf1hkDAdn",
    "render": {
     "file": "collections.webp",
     "thumb": "collections-thumb.webp",
-    "cap_en": "a list through three operations, each state drawn",
-    "cap_fr": "une liste à travers trois opérations, chaque état dessiné",
-    "by_en": "rendered on 2026-10-01 at 04:00 by the site's render script tools/areas.ring, run inside the library at commit 0e72e2e2c",
-    "by_fr": "rendu le 2026-10-01 à 04:00 par le script de rendu du site tools/areas.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
-    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas.ring"
+    "cap_en": "the same twelve values, before and after one call",
+    "cap_fr": "les mêmes douze valeurs, avant et après un seul appel",
+    "by_en": "drawn on 2026-10-01 by the site's script tools/areas-figurative.ring, run inside the library at commit 0e72e2e2c",
+    "by_fr": "dessiné le 2026-10-01 par le script du site tools/areas-figurative.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
+    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring"
    }
   },
   {
@@ -129,7 +125,6 @@
    "line_fr": "L'exactitude que NumPy n'a pas, des décompositions de niveau LAPACK et la différentiation automatique ; pas un NumPy, par choix.",
    "dirs": "number, optim",
    "peers": "NumPy · Eigen · GSL · SciPy",
-   "url": "https://claude.ai/artifact/7Faos68KGLaFV6tQkof5J6",
    "render": {
     "file": "numeric.webp",
     "thumb": "numeric-thumb.webp",
@@ -153,7 +148,6 @@
    "line_fr": "Une table de données unifiée et large, avec un langage de motifs ; mais pas de jointure, et le groupement s'exécute hors du moteur.",
    "dirs": "table, data",
    "peers": "pandas · Polars · DuckDB",
-   "url": "https://claude.ai/artifact/CFt2s2vabDhQivCn3mpLX1",
    "render": {
     "file": "tables.webp",
     "thumb": "tables-thumb.webp",
@@ -177,7 +171,6 @@
    "line_fr": "Un pari délibéré contre ICU : des données larges et une date-heure solide, mais ni collation, ni règles de pluriel, ni fuseaux horaires.",
    "dirs": "i18n, culture, datetime",
    "peers": "ICU/CLDR · Luxon · Babel",
-   "url": "https://claude.ai/artifact/3pqbb25E9XuxnVttoGEng3",
    "render": {
     "file": "i18n.webp",
     "thumb": "i18n-thumb.webp",
@@ -201,15 +194,14 @@
    "line_fr": "Une chaîne classique, déterministe et entièrement embarquée ; plus simple que NLTK, un cran sous les modèles neuronaux de spaCy.",
    "dirs": "linguistic, natural, learning",
    "peers": "spaCy · NLTK · Stanza",
-   "url": "https://claude.ai/artifact/GfESsd62R4oyYeiUdcqM29",
    "render": {
     "file": "nlp.webp",
     "thumb": "nlp-thumb.webp",
-    "cap_en": "a sentence, its lemmas, its language and its sentiment",
-    "cap_fr": "une phrase, ses lemmes, sa langue et son sentiment",
-    "by_en": "rendered on 2026-10-01 at 04:00 by the site's render script tools/areas.ring, run inside the library at commit 0e72e2e2c",
-    "by_fr": "rendu le 2026-10-01 à 04:00 par le script de rendu du site tools/areas.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
-    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas.ring"
+    "cap_en": "the words of one paragraph, sized by how often they occur",
+    "cap_fr": "les mots d'un paragraphe, à la taille de leur fréquence",
+    "by_en": "drawn on 2026-10-01 by the site's script tools/areas-figurative.ring, run inside the library at commit 0e72e2e2c",
+    "by_fr": "dessiné le 2026-10-01 par le script du site tools/areas-figurative.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
+    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring"
    }
   },
   {
@@ -225,7 +217,6 @@
    "line_fr": "Un vrai moteur d'inférence, vérifié contre numpy (BERT et LLM, décodage contraint) ; l'entraînement et la fonderie sont dus.",
    "dirs": "neural",
    "peers": "ggml/llama.cpp · ONNX Runtime",
-   "url": "https://claude.ai/artifact/3LD3dNfL7Jxf9DGgujU6x6",
    "render": {
     "file": "neural.webp",
     "thumb": "neural-thumb.webp",
@@ -249,15 +240,14 @@
    "line_fr": "L'inverse gouverné de LangChain : le modèle propose et n'agit jamais ; répétition dans un monde sûr, puis commit.",
    "dirs": "agentic, conversation",
    "peers": "LangChain · AutoGen · Semantic Kernel",
-   "url": "https://claude.ai/artifact/JqibGH4MRydpf8JrzjUwSN",
    "render": {
     "file": "agents.webp",
     "thumb": "agents-thumb.webp",
-    "cap_en": "the crossing: an agent rehearses, a court judges, an actor commits",
-    "cap_fr": "le passage : un agent répète, un tribunal juge, un acteur commet",
-    "by_en": "rendered on 2026-10-01 at 04:00 by the site's render script tools/areas.ring, run inside the library at commit 0e72e2e2c",
-    "by_fr": "rendu le 2026-10-01 à 04:00 par le script de rendu du site tools/areas.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
-    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas.ring"
+    "cap_en": "an agent may propose anything inside the circle; only a person carries a plan across the line",
+    "cap_fr": "un agent peut tout proposer dans le cercle ; seule une personne fait franchir la ligne à un plan",
+    "by_en": "drawn on 2026-10-01 by the site's script tools/areas-figurative.ring, run inside the library at commit 0e72e2e2c",
+    "by_fr": "dessiné le 2026-10-01 par le script du site tools/areas-figurative.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
+    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring"
    }
   },
   {
@@ -273,7 +263,6 @@
    "line_fr": "Un seul moteur Zig sur douze couloirs : texte, couleur, cartographie, GPU, sous un seul système gouverné.",
    "dirs": "graphics",
    "peers": "Skia · D3 · Graphviz",
-   "url": "https://claude.ai/artifact/4uSeoZvDiv39BwRAwBz6Ba",
    "render": {
     "file": "graphics.webp",
     "thumb": "graphics-thumb.webp",
@@ -297,7 +286,6 @@
    "line_fr": "Un moteur de cartes qui fait aussi la géodésie et les statistiques spatiales ; la plomberie SIG est la frontière.",
    "dirs": "geo",
    "peers": "D3-geo · GDAL · PostGIS · Cartopy",
-   "url": "https://claude.ai/artifact/28ACwqSU1qwjYiSvsKDy3r",
    "render": {
     "file": "geo.webp",
     "thumb": "geo-thumb.webp",
@@ -321,7 +309,6 @@
    "line_fr": "Vingt-cinq notations sur un seul moteur de rendu, un moteur de graphes de niveau NetworkX et une mise en page résolue par contraintes.",
    "dirs": "graph",
    "peers": "Graphviz · Mermaid · D2 · NetworkX",
-   "url": "https://claude.ai/artifact/2L8Xei2dfLHvy9VS512ho9",
    "render": {
     "file": "diagramming.webp",
     "thumb": "diagramming-thumb.webp",
@@ -345,7 +332,6 @@
    "line_fr": "Calcul et rendu sur un même périphérique, avec une fonderie qui se règle et se vérifie elle-même ; f64 et multi-GPU refusés par choix.",
    "dirs": "gpu",
    "peers": "wgpu · taichi · three.js",
-   "url": "https://claude.ai/artifact/HefJH6rS2QYbVvR2cXaSXH",
    "render": {
     "file": "gpu.webp",
     "thumb": "gpu-thumb.webp",
@@ -369,8 +355,9 @@
    "line_fr": "Un jeune plan RmlUi, remarquable en droite-à-gauche et en accessibilité ; le moteur réactif n'est pas encore relié à la vue.",
    "dirs": "gui, reactive, app",
    "peers": "Qt · GTK · Flutter · React",
-   "url": "https://claude.ai/artifact/87voC79SnAN26YwY84hmDN",
-   "render": null
+   "render": null,
+   "nopic_en": "The interface plane is young and not yet published; its pictures will come from its own guards.",
+   "nopic_fr": "Le plan des interfaces est jeune et pas encore publié ; ses images viendront de ses propres gardes."
   },
   {
    "slug": "stats",
@@ -385,7 +372,6 @@
    "line_fr": "Un noyau de calcul soigneux et des graphiques testés à l'octet ; les tests non paramétriques, le rééchantillonnage et la moitié des types de graphiques sont dus.",
    "dirs": "stats",
    "peers": "R · scipy.stats · statsmodels · matplotlib",
-   "url": "https://claude.ai/artifact/6CtjrTqTPvKU5w2H4uUPem",
    "render": {
     "file": "stats.webp",
     "thumb": "stats-thumb.webp",
@@ -409,15 +395,14 @@
    "line_fr": "Une surface d'effets gouvernés, pas une copie des bibliothèques standard de Go ou de Rust : répéter puis commettre ; un modèle ne peut pas agir, par construction.",
    "dirs": "system, platform",
    "peers": "Go/Rust std · libuv",
-   "url": "https://claude.ai/artifact/3oWhGiSou6wBQyKbBkCDQ4",
    "render": {
     "file": "system.webp",
     "thumb": "system-thumb.webp",
-    "cap_en": "the virtual twin beside the untouched disk",
-    "cap_fr": "le jumeau virtuel à côté du disque intact",
-    "by_en": "rendered on 2026-10-01 at 04:00 by the site's render script tools/areas.ring, run inside the library at commit 0e72e2e2c",
-    "by_fr": "rendu le 2026-10-01 à 04:00 par le script de rendu du site tools/areas.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
-    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas.ring"
+    "cap_en": "an agent writes into a twin of the file system; the disk does not move",
+    "cap_fr": "un agent écrit dans un jumeau du système de fichiers ; le disque ne bouge pas",
+    "by_en": "drawn on 2026-10-01 by the site's script tools/areas-figurative.ring, run inside the library at commit 0e72e2e2c",
+    "by_fr": "dessiné le 2026-10-01 par le script du site tools/areas-figurative.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
+    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring"
    }
   },
   {
@@ -433,15 +418,14 @@
    "line_fr": "D'excellents substrats : nœuds, supervision, multicœur, flotte ; le vocabulaire unificateur n'existe qu'en conception.",
    "dirs": "concurrent, cluster, network",
    "peers": "Go · Akka · Erlang/OTP · Ray",
-   "url": "https://claude.ai/artifact/CC2DEQUCQ2q9qK2nnBSwzh",
    "render": {
     "file": "concurrency.webp",
     "thumb": "concurrency-thumb.webp",
-    "cap_en": "a supervisor over seven workers, one restarted by state-proof",
-    "cap_fr": "un superviseur sur sept travailleurs, un redémarré par preuve d'état",
-    "by_en": "rendered on 2026-10-01 at 04:00 by the site's render script tools/areas.ring, run inside the library at commit 0e72e2e2c",
-    "by_fr": "rendu le 2026-10-01 à 04:00 par le script de rendu du site tools/areas.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
-    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas.ring"
+    "cap_en": "work spread over the cores of this machine, each block a job, drawn to scale",
+    "cap_fr": "le travail réparti sur les cœurs de cette machine, chaque bloc une tâche, à l'échelle",
+    "by_en": "drawn on 2026-10-01 by the site's script tools/areas-figurative.ring, run inside the library at commit 0e72e2e2c",
+    "by_fr": "dessiné le 2026-10-01 par le script du site tools/areas-figurative.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
+    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring"
    }
   },
   {
@@ -457,15 +441,14 @@
    "line_fr": "Un serveur HTTP compétent, avec un contrat de service intégré, l'authentification et un fournisseur d'identité, et un plan de virtualisation de services qui refuse les faux.",
    "dirs": "appserver, service",
    "peers": "Express · FastAPI · WireMock",
-   "url": "https://claude.ai/artifact/6Efbrrw2mzNEVd2uMzKrvv",
    "render": {
     "file": "web.webp",
     "thumb": "web-thumb.webp",
-    "cap_en": "a login request as a sequence diagram, with the SLA in the loop",
-    "cap_fr": "une requête de connexion en diagramme de séquence, avec le contrat de service",
-    "by_en": "rendered on 2026-10-01 at 04:00 by the site's render script tools/areas.ring, run inside the library at commit 0e72e2e2c",
-    "by_fr": "rendu le 2026-10-01 à 04:00 par le script de rendu du site tools/areas.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
-    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas.ring"
+    "cap_en": "requests arriving at the server, and their answers",
+    "cap_fr": "des requêtes qui arrivent au serveur, et leurs réponses",
+    "by_en": "drawn on 2026-10-01 by the site's script tools/areas-figurative.ring, run inside the library at commit 0e72e2e2c",
+    "by_fr": "dessiné le 2026-10-01 par le script du site tools/areas-figurative.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
+    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring"
    }
   },
   {
@@ -481,15 +464,14 @@
    "line_fr": "Ferme la triade OpenTelemetry, le contrat de service et l'analyse de capacité en un seul plan ; export seulement, ni stockage ni tableaux de bord.",
    "dirs": "perf",
    "peers": "OpenTelemetry · Prometheus",
-   "url": "https://claude.ai/artifact/QWnP4nn4ywzpB4s8E4jB6D",
    "render": {
     "file": "performance.webp",
     "thumb": "performance-thumb.webp",
-    "cap_en": "a Gantt chart from the notation guides",
-    "cap_fr": "un diagramme de Gantt des guides de notation",
-    "by_en": "rendered by the library's guard gantt_narrated and committed with it at 0e72e2e2c as guide_gantt.png",
-    "by_fr": "rendu par le garde gantt_narrated de la bibliothèque et commis avec lui à 0e72e2e2c sous le nom guide_gantt.png",
-    "src": "https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphics/gantt_narrated.ring"
+    "cap_en": "a request, span by span, measured by the engine's monotonic clock",
+    "cap_fr": "une requête, étape par étape, mesurée par l'horloge monotone du moteur",
+    "by_en": "drawn on 2026-10-01 by the site's script tools/areas-figurative.ring, run inside the library at commit 0e72e2e2c",
+    "by_fr": "dessiné le 2026-10-01 par le script du site tools/areas-figurative.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
+    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring"
    }
   },
   {
@@ -505,15 +487,14 @@
    "line_fr": "Une seule porte d'intégration sur une dizaine de domaines, une unification qu'aucun pair n'a ; en retard sur l'écriture déclarative des règles.",
    "dirs": "meta, reflect, refine, governance",
    "peers": "semgrep · OPA",
-   "url": "https://claude.ai/artifact/TmxWRgtkKRLTgFUbgerua4",
    "render": {
     "file": "meta.webp",
     "thumb": "meta-thumb.webp",
-    "cap_en": "eleven rule domains into one gate, one verdict",
-    "cap_fr": "onze domaines de règles vers une seule porte, un seul verdict",
-    "by_en": "rendered on 2026-10-01 at 04:00 by the site's render script tools/areas.ring, run inside the library at commit 0e72e2e2c",
-    "by_fr": "rendu le 2026-10-01 à 04:00 par le script de rendu du site tools/areas.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
-    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas.ring"
+    "cap_en": "every domain's rules flow into one judgement",
+    "cap_fr": "les règles de chaque domaine aboutissent à un seul verdict",
+    "by_en": "drawn on 2026-10-01 by the site's script tools/areas-figurative.ring, run inside the library at commit 0e72e2e2c",
+    "by_fr": "dessiné le 2026-10-01 par le script du site tools/areas-figurative.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
+    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring"
    }
   },
   {
@@ -529,15 +510,14 @@
    "line_fr": "La sûreté d'abord : XXE fermé par construction ; des sous-ensembles délibérés (HTML plat, zip seul, UTF-8, plafond de 64 Mo).",
    "dirs": "file, archive, html",
    "peers": "lxml · libarchive",
-   "url": "https://claude.ai/artifact/5UKK51SEWidJA36g5sTAn9",
    "render": {
     "file": "files.webp",
     "thumb": "files-thumb.webp",
-    "cap_en": "a JSON document as a tree, with the format's safety rules",
-    "cap_fr": "un document JSON en arbre, avec les règles de sûreté du format",
-    "by_en": "rendered on 2026-10-01 at 04:00 by the site's render script tools/areas.ring, run inside the library at commit 0e72e2e2c",
-    "by_fr": "rendu le 2026-10-01 à 04:00 par le script de rendu du site tools/areas.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
-    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas.ring"
+    "cap_en": "the shapes a document takes: a tree for JSON, rows for CSV, nested boxes for XML",
+    "cap_fr": "les formes d'un document : un arbre pour JSON, des lignes pour CSV, des boîtes imbriquées pour XML",
+    "by_en": "drawn on 2026-10-01 by the site's script tools/areas-figurative.ring, run inside the library at commit 0e72e2e2c",
+    "by_fr": "dessiné le 2026-10-01 par le script du site tools/areas-figurative.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
+    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring"
    }
   },
   {
@@ -553,8 +533,9 @@
    "line_fr": "Un plan acté et aucun code livré ; noté sur le substrat et la feuille de route BN0 à BN5.",
    "dirs": "binary",
    "peers": "Kaitai Struct · construct · 010 Editor",
-   "url": "https://claude.ai/artifact/T7hXXTAX7VLyFtBTyoorWT",
-   "render": null
+   "render": null,
+   "nopic_en": "A plan of record with no shipped code: there is nothing to draw yet, and the page says so.",
+   "nopic_fr": "Un plan sans code livré : il n'y a encore rien à dessiner, et la page le dit."
   },
   {
    "slug": "security",
@@ -569,15 +550,14 @@
    "line_fr": "Une doctrine de gouvernance, un modèle ne peut pas agir par construction, plus l'identité, un registre durable inviolable et une réponse mesurée.",
    "dirs": "security",
    "peers": "OWASP · Vault · OPA · semgrep",
-   "url": "https://claude.ai/artifact/KZPQcHHPuGEPhnUe34wNsj",
    "render": {
     "file": "security.webp",
     "thumb": "security-thumb.webp",
-    "cap_en": "a fault tree with its cut sets",
-    "cap_fr": "un arbre de défaillances avec ses coupes",
-    "by_en": "rendered by the library's guard faulttree_narrated and committed with it at 0e72e2e2c as guide_faulttree.png",
-    "by_fr": "rendu par le garde faulttree_narrated de la bibliothèque et commis avec lui à 0e72e2e2c sous le nom guide_faulttree.png",
-    "src": "https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphics/faulttree_narrated.ring"
+    "cap_en": "a chain of five blocks that cannot be rewritten, each hashed by the engine",
+    "cap_fr": "une chaîne de cinq blocs qu'on ne peut pas réécrire, chacun haché par le moteur",
+    "by_en": "drawn on 2026-10-01 by the site's script tools/areas-figurative.ring, run inside the library at commit 0e72e2e2c",
+    "by_fr": "dessiné le 2026-10-01 par le script du site tools/areas-figurative.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
+    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring"
    }
   },
   {
@@ -593,15 +573,14 @@
    "line_fr": "Fort pour consommer des bibliothèques étrangères, pragmatique pour les relier ; le plan des greffons, de la FFI et de l'embarquement est surtout prévu.",
    "dirs": "plugin, extercode, extincode",
    "peers": "FFI · Pyodide",
-   "url": "https://claude.ai/artifact/B7CGAa1NoVLSQPYN3kMy4j",
    "render": {
     "file": "extensibility.webp",
     "thumb": "extensibility-thumb.webp",
-    "cap_en": "the external door between the engine and four languages",
-    "cap_fr": "la porte externe entre le moteur et quatre langages",
-    "by_en": "rendered on 2026-10-01 at 04:00 by the site's render script tools/areas.ring, run inside the library at commit 0e72e2e2c",
-    "by_fr": "rendu le 2026-10-01 à 04:00 par le script de rendu du site tools/areas.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
-    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas.ring"
+    "cap_en": "the engine in the middle, four languages and C at arm's length, each through one governed door",
+    "cap_fr": "le moteur au centre, quatre langages et le C à distance, chacun par une seule porte gouvernée",
+    "by_en": "drawn on 2026-10-01 by the site's script tools/areas-figurative.ring, run inside the library at commit 0e72e2e2c",
+    "by_fr": "dessiné le 2026-10-01 par le script du site tools/areas-figurative.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
+    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring"
    }
   },
   {
@@ -617,15 +596,14 @@
    "line_fr": "Entièrement livré : un rappel sans verrou, un graphe possédé, une analyse de niveau librosa, la sonification.",
    "dirs": "sound",
    "peers": "miniaudio · Web Audio · JUCE",
-   "url": "https://claude.ai/artifact/NZkmXxFGQAtW69QAPyMEzC",
    "render": {
     "file": "sound.webp",
     "thumb": "sound-thumb.webp",
-    "cap_en": "the owned sound graph, from oscillator to device sink",
-    "cap_fr": "le graphe sonore possédé, de l'oscillateur au périphérique",
-    "by_en": "rendered on 2026-10-01 at 04:00 by the site's render script tools/areas.ring, run inside the library at commit 0e72e2e2c",
-    "by_fr": "rendu le 2026-10-01 à 04:00 par le script de rendu du site tools/areas.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
-    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas.ring"
+    "cap_en": "a note, as the engine hears it",
+    "cap_fr": "une note, telle que le moteur l'entend",
+    "by_en": "drawn on 2026-10-01 by the site's script tools/areas-figurative.ring, run inside the library at commit 0e72e2e2c",
+    "by_fr": "dessiné le 2026-10-01 par le script du site tools/areas-figurative.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
+    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring"
    }
   },
   {
@@ -641,15 +619,14 @@
    "line_fr": "Des gardes narrés comme spécifications, numpy et LAPACK pour oracles, une porte adversariale avec contrôles négatifs, une seule porte de règles ; ni couverture ni intégration continue.",
    "dirs": "test, meta, engine",
    "peers": "pytest · Hypothesis · libFuzzer · SonarQube",
-   "url": "https://claude.ai/artifact/CToahAJ7Mp95S84hkvjvU6",
    "render": {
     "file": "testing.webp",
     "thumb": "testing-thumb.webp",
-    "cap_en": "a fishbone diagram, cause and effect",
-    "cap_fr": "un diagramme en arêtes de poisson, causes et effet",
-    "by_en": "rendered by the library's guard fishbone_narrated and committed with it at 0e72e2e2c as guide_fishbone.png",
-    "by_fr": "rendu par le garde fishbone_narrated de la bibliothèque et commis avec lui à 0e72e2e2c sous le nom guide_fishbone.png",
-    "src": "https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphics/fishbone_narrated.ring"
+    "cap_en": "a grid of assertions from one night's guards",
+    "cap_fr": "une grille d'assertions des gardes d'une nuit",
+    "by_en": "drawn on 2026-10-01 by the site's script tools/areas-figurative.ring, run inside the library at commit 0e72e2e2c",
+    "by_fr": "dessiné le 2026-10-01 par le script du site tools/areas-figurative.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
+    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring"
    }
   },
   {
@@ -665,15 +642,14 @@
    "line_fr": "La documentation s'exécute au lieu de s'écrire ; la bibliothèque se documente elle-même et répond aux questions ; les plans consignent ce qui a été livré ; ni site, ni référence générée.",
    "dirs": "doc, meta, reflect",
    "peers": "Sphinx · rustdoc · MkDocs · literate programming",
-   "url": "https://claude.ai/artifact/T5D1QdW8EbGpcbizgXmrN9",
    "render": {
     "file": "documentation.webp",
     "thumb": "documentation-thumb.webp",
-    "cap_en": "narrations that run and a library that documents itself",
-    "cap_fr": "des narrations qui s'exécutent et une bibliothèque qui se documente",
-    "by_en": "rendered on 2026-10-01 at 04:00 by the site's render script tools/areas.ring, run inside the library at commit 0e72e2e2c",
-    "by_fr": "rendu le 2026-10-01 à 04:00 par le script de rendu du site tools/areas.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
-    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas.ring"
+    "cap_en": "a document whose code cells ran before you read it",
+    "cap_fr": "un document dont les cellules de code ont tourné avant votre lecture",
+    "by_en": "drawn on 2026-10-01 by the site's script tools/areas-figurative.ring, run inside the library at commit 0e72e2e2c",
+    "by_fr": "dessiné le 2026-10-01 par le script du site tools/areas-figurative.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
+    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring"
    }
   },
   {
@@ -689,15 +665,14 @@
    "line_fr": "La signature : un modèle ne peut pas agir par construction ; répéter puis commettre, une seule porte de règles sur onze domaines, la production refuse les faux.",
    "dirs": "agentic, system, security, service, graph",
    "peers": "OPA · Deno · Vault",
-   "url": "https://claude.ai/artifact/JgUS6fdkp3EUw4sEJVhpLb",
    "render": {
     "file": "governance.webp",
     "thumb": "governance-thumb.webp",
-    "cap_en": "a BPMN process with its verdicts",
-    "cap_fr": "un processus BPMN avec ses verdicts",
-    "by_en": "rendered by the library's guard gg_bpmn_cases and committed with it at 0e72e2e2c as bpmn_5_verdicts.png",
-    "by_fr": "rendu par le garde gg_bpmn_cases de la bibliothèque et commis avec lui à 0e72e2e2c sous le nom bpmn_5_verdicts.png",
-    "src": "https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphics/gg_bpmn_cases.ring"
+    "cap_en": "three gates before reality: declare, rehearse, let a person commit",
+    "cap_fr": "trois portes avant le réel : déclarer, répéter, laisser une personne commettre",
+    "by_en": "drawn on 2026-10-01 by the site's script tools/areas-figurative.ring, run inside the library at commit 0e72e2e2c",
+    "by_fr": "dessiné le 2026-10-01 par le script du site tools/areas-figurative.ring, exécuté dans la bibliothèque au commit 0e72e2e2c",
+    "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring"
    }
   }
  ]

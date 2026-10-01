@@ -16,21 +16,22 @@ const CHROME = ['C:/Program Files/Google/Chrome/Application/chrome.exe',
   'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'].find(existsSync);
 if (!CHROME) { console.error('no Chrome or Edge found'); process.exit(1); }
 const SIZES = { phone: [390, 844, true], laptop: [1366, 768, false], projector: [1920, 1080, false] };
-const PAGES = ['index.html', 'fr/platform.html', 'fr/vision.html', 'fr/agentic.html', 'fr/learn.html', 'fr/offering.html', 'fr/start.html',
-  'fr/atlas.html', 'fr/narrations.html', 'fr/tour.html', 'en/platform.html', 'en/vision.html', 'en/agentic.html', 'en/learn.html',
-  'en/offering.html', 'en/start.html', 'en/atlas.html', 'en/narrations.html', 'en/tour.html', 'deck-check.html'];
+const NEW = ['platform', 'areas', 'atlas', 'code', 'compare', 'vision', 'estate', 'history', 'sovereignty', 'africa',
+  'agentic', 'wise', 'languages', 'zui', 'refinement', 'agents', 'security', 'learn', 'book', 'docs', 'reference',
+  'narrations', 'teaching', 'pedagogy', 'offering', 'editions', 'customers', 'start', 'tour'];
+const PAGES = ['index.html', ...NEW.map(p => `fr/${p}.html`), ...NEW.map(p => `en/${p}.html`), 'deck-check.html'];
 const PLAN = [];
 for (const p of PAGES) {
   PLAN.push([p, 'laptop', 'light']);
-  if (p.startsWith('fr/') || p === 'index.html') { PLAN.push([p, 'phone', 'light']); PLAN.push([p, 'projector', 'light']); }
-  if (['index.html', 'fr/vision.html', 'fr/agentic.html', 'fr/tour.html', 'en/platform.html'].includes(p)) PLAN.push([p, 'laptop', 'dark']);
+  if (p.startsWith('fr/') || p === 'index.html') PLAN.push([p, 'phone', 'light']);
+  if (['index.html', 'fr/platform.html', 'fr/agentic.html', 'fr/areas.html', 'fr/tour.html'].includes(p)) PLAN.push([p, 'projector', 'light']);
+  if (['index.html', 'fr/vision.html', 'fr/agentic.html', 'fr/compare.html', 'en/platform.html'].includes(p)) PLAN.push([p, 'laptop', 'dark']);
 }
-PLAN.push(['index.html?panel=right', 'laptop', 'light'], ['index.html?panel=right', 'phone', 'light']);
-for (const g of ['string', 'geo', 'governance', 'security', 'tables', 'binary']) PLAN.push([`fr/atlas/${g}.html`, 'laptop', 'light']);
-PLAN.push(['fr/reference.html', 'laptop', 'light'], ['fr/reference.html', 'phone', 'light'], ['fr/reference/stzlist.html', 'laptop', 'light'], ['fr/reference/stzstring.html', 'phone', 'light'], ['en/reference/methods-a.html', 'laptop', 'light'], ['en/atlas/numeric.html', 'laptop', 'light'], ['fr/atlas/geo.html', 'phone', 'light'], ['fr/atlas.html', 'laptop', 'dark']);
-for (const k of [2, 3, 4, 5, 6, 7, 8, 9, 10]) PLAN.push([`fr/tour.html#s${k}`, 'projector', 'light']);
+for (const g of ['string', 'geo', 'governance', 'security', 'tables', 'binary', 'gui']) PLAN.push([`fr/atlas/${g}.html`, 'laptop', 'light']);
+PLAN.push(['fr/atlas/geo.html', 'phone', 'light'], ['fr/reference/stzlist.html', 'laptop', 'light'], ['fr/reference/stzstring.html', 'phone', 'light'], ['en/reference/methods-a.html', 'laptop', 'light']);
+for (const k of [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) PLAN.push([`fr/tour.html#s${k}`, 'projector', 'light']);
 PLAN.push(['fr/tour.html#s4', 'phone', 'light']);
-const FULL = ['index.html', 'fr/atlas.html', 'fr/atlas/geo.html', 'fr/platform.html', 'fr/vision.html', 'fr/agentic.html', 'fr/learn.html', 'fr/offering.html', 'fr/start.html', 'en/vision.html', 'en/agentic.html'];
+const FULL = ['index.html', 'fr/platform.html', 'fr/areas.html', 'fr/agentic.html', 'fr/compare.html', 'fr/estate.html', 'fr/learn.html', 'fr/offering.html', 'fr/atlas.html', 'en/zui.html', 'en/docs.html'];
 
 const only = process.argv.slice(2);
 const port = 9333;
@@ -64,7 +65,7 @@ async function main() {
   const jobs = PLAN.map(([p, s, t]) => [p, s, t, false]).concat(only.length ? [] : FULL.map(p => [p, 'laptop', 'light', true]));
   for (const [page, size, theme, full] of jobs) {
     if (only.length && !only.some(o => page.includes(o))) continue;
-    const [w, h0, mobile] = SIZES[size]; const h = full ? 3600 : h0;
+    const [w, h, mobile] = SIZES[size];
     const base = page.split(/[?#]/)[0]; let q = page.slice(base.length);
     if (theme === 'dark') q = q.includes('#') ? q.replace('#', '?theme=dark#') : q + (q.includes('?') ? '&' : '?') + 'theme=dark';
     const url = pathToFileURL(resolve(ROOT, base)).href + q;
@@ -74,8 +75,17 @@ async function main() {
     await c.send('Page.navigate', { url });
     await c.until('Page.loadEventFired', 15000);
     await c.send('Runtime.evaluate', { expression: 'document.fonts ? document.fonts.ready.then(()=>1) : 1', awaitPromise: true });
-    await sleep(page.includes('learn') || page.includes('tour') || page.includes('deck-check') ? 9000 : 500);
-    const shot = await c.send('Page.captureScreenshot', { format: 'webp', quality: 82, captureBeyondViewport: false });
+    await sleep(page.includes('tour') || page.includes('deck-check') ? 9000 : 700);
+    let opts = { format: 'webp', quality: 82, captureBeyondViewport: false };
+    if (full) {
+      /* a whole page at the real viewport size: the layout a reader gets, captured past the fold;
+         lazy pictures are told to load first, since a capture never scrolls */
+      await c.send('Runtime.evaluate', { expression: "document.querySelectorAll('img[loading=lazy]').forEach(i=>i.loading='eager'); 1" });
+      await sleep(1500);
+      const hh = await c.send('Runtime.evaluate', { expression: 'Math.min(document.documentElement.scrollHeight, 16000)', returnByValue: true });
+      opts = { format: 'webp', quality: 80, captureBeyondViewport: true, clip: { x: 0, y: 0, width: w, height: hh.result.result.value, scale: 1 } };
+    }
+    const shot = await c.send('Page.captureScreenshot', opts);
     const out = resolve(ROOT, 'proofs', name(page, size, theme, full));
     writeFileSync(out, Buffer.from(shot.result.data, 'base64'));
     console.log(`  ${name(page, size, theme, full)}  ${w}x${h}`); n++;

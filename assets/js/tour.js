@@ -44,7 +44,7 @@
   /* a click on empty scene space advances; links, buttons and frames keep their job */
   document.addEventListener('click', function (e) {
     var t = e.target;
-    if (t.closest('a, button, iframe, .notes, .site-head, pre, input, select, textarea')) return;
+    if (t.closest('a, button, iframe, .notes, .top, pre, input, select, textarea')) return;
     var sc = t.closest('.scene'); if (!sc) return;
     if (e.clientX < window.innerWidth * 0.2) prev(); else next();
   });

@@ -17,7 +17,7 @@ Let the picture speak for ten seconds. Then one sentence: "This man is reading c
 
 <<< scene id="vision" page="vision.html" label="Vision" >>>
 <div class="eyebrow">Softanza's approach to programming in the agentic age</div>
-# Declare <i>a language</i>
+## Declare <i>a language</i>
 <p>With Softanza you do not write software.</p>
 <p>You <b>declare worlds</b> in languages made for their domains, and you <b>govern</b> how those worlds change.</p>
 <p>This is not today's practice. It is Softanza's proposal: <b>a platform that knows your world.</b></p>
@@ -27,7 +27,7 @@ Three ideas, one per line. Do not read the page. The spoken example: a bank decl
 
 <<< scene id="platform" page="platform.html" label="Platform" >>>
 <div class="eyebrow">One engine, twenty-eight areas</div>
-# One engine in Zig, <i>a language as its face</i>
+## One engine in Zig, <i>a language as its face</i>
 <div class="figures">
 <div class="figure"><b>401</b><span>Zig source files, 179,000 lines</span></div>
 <div class="figure"><b>531,000</b><span>lines of library, 306,000 of tests</span></div>
@@ -39,15 +39,15 @@ Three ideas, one per line. Do not read the page. The spoken example: a bank decl
 Say the stage as it is: Haro is the platform's language, its virtual machine and compiler exist and run, its charter awaits my ratification; I will not call it available before it is. The platform's credibility is that the Atlas shows its 36 "Emerging" lanes next to its 101 "Strong" ones.
 ```
 
-<<< scene id="atlas" page="platform.html#areas" label="The areas" >>>
+<<< scene id="atlas" page="areas.html" label="The areas" >>>
 <div class="eyebrow">Twenty-eight areas, one engine · every picture produced by the platform itself</div>
 <!--ATLAS-WALL-->
 ```notes
 Let the wall of pictures speak. "Each picture was rendered by the platform: a map, a waveform, a diagram, a table. No competitor spans all these lines on one engine, and the Atlas page shows the ratings, the low ones beside the high ones." Click an area if asked: every page has its lanes and an example run.
 ```
 
-<<< scene id="code" page="platform.html#code" label="The code" >>>
-<div class="eyebrow">The code, beside JavaScript · run tonight</div>
+<<< scene id="code" page="code.html" label="The code" >>>
+<div class="eyebrow">The code, beside JavaScript · each side run</div>
 <div class="run"><div><div class="lbl">Softanza</div><pre>? Q(2).Power(64)
 ? Q("مرحبا بالعالم").Script()
 ? @@( Naturally("Create a list with [ 5, 3, 5, 1 ]
@@ -61,39 +61,39 @@ Three lines, three points: exact by default; the engine knows the script of a te
 
 <<< scene id="agentic" page="agentic.html" label="Agentic" >>>
 <div class="eyebrow">Agents that cannot hurt you</div>
-# The agent proposes. <i>It does not commit.</i>
+## The agent proposes. <i>It does not commit.</i>
 <div class="run"><div><div class="lbl">A student lets loose an agent that "tidies" the course</div><pre>Update plan (610 of 610 operations to commit):
 * 1. delete file '…/course.zknw'
 * 2. delete file '…/curriculum.zknw'
-...</pre></div><div class="out"><div class="lbl">The court, tonight</div><pre>actor 'amina-helper-llm' cannot commit
+...</pre></div><div class="out"><div class="lbl">The court answers</div><pre>actor 'amina-helper-llm' cannot commit
 -- it lacks the 'effectful' capability
 PROVED  the course folder still holds all 610 files</pre></div></div>
 <div class="figures">
 <div class="figure"><b>38</b><span>guarantees, each with its guard</span></div>
-<div class="figure"><b>395 ms</b><span>to detect an attack, tonight</span></div>
+<div class="figure"><b>395 ms</b><span>to detect an attack, measured</span></div>
 <div class="figure"><b>50 ms</b><span>to contain it, verified from outside</span></div>
 </div>
 ```notes
 The story to tell: Amina writes an agent that "tidies" the course. It proposes to delete all 610 files. It cannot: it does not hold the capability to act, it never did. A human reads the plan and refuses. Then the two numbers: credential stuffing was detected in 395 milliseconds and contained in 50, tonight, on this laptop, and the language model investigating could commit nothing.
 ```
 
-<<< scene id="wise" page="agentic.html#wise" label="Wise coding" >>>
-<div class="eyebrow">Wise coding, against vibe coding · proved tonight, 13 of 13 and 52 of 52</div>
+<<< scene id="wise" page="wise.html" label="Wise coding" >>>
+<div class="eyebrow">Wise coding, against vibe coding · proved by two guards, 13 of 13 and 52 of 52</div>
 <figure class="diagram"><img src="../assets/img/diagrams/wise-en.png" alt="Vibe coding: the human prompts, the machine guesses; wise coding: Softanza asks, the gap is measured, each answer is judged, the knowledge base is written." width="1376" height="768"></figure>
 ```notes
 "In vibe coding the human prompts and the machine guesses. In wise coding it is Softanza that asks: it knows what a complete model of your world needs, measures the gap, and turns each gap into the next question. The session ends with a knowledge base written, not with code you must trust." Two guards prove it, run tonight.
 ```
 
-<<< scene id="estate" page="vision.html#estate" label="The estate" >>>
+<<< scene id="estate" page="estate.html" label="The estate" >>>
 <div class="eyebrow">Where the platform stands · stages read in the repositories today</div>
 <figure class="diagram"><img src="../assets/img/diagrams/technology-en.png" alt="The estate: applications, Aïcha, Softanza, Haro, Harobanda, hardware; beside them Takamba, the harness." width="1376" height="768"></figure>
 ```notes
 Read the stack bottom-up: ordinary hardware; Harobanda, the declared machine, built; Haro, the language of languages, in construction; Softanza, the foundation, built, tonight's subject; Aïcha, named, nothing else yet; applications on top. Takamba beside: how all of it is built. Say every stage out loud; never say Haro is available.
 ```
 
-<<< scene id="learn" page="learn.html" label="Learn" >>>
+<<< scene id="learn" page="book.html" label="Learn" >>>
 <div class="eyebrow">The Learning System · 15 chapters × 4 languages, every cell ran</div>
-# Three steps: <i>introduction, book, documentation</i>
+## Three steps: <i>introduction, book, documentation</i>
 <div class="pair">
 <div><h4>Hausa · Nemo, sannan ka aiwatar</h4><p>Kowane wurin aiki yana karɓar buƙatu: gidan abinci yana karɓar oda, banki yana karɓar tikiti.</p><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
 ? o1.NumberOfItems()
@@ -102,12 +102,12 @@ Read the stack bottom-up: ordinary hardware; Harobanda, the declared machine, bu
 ? o1.NumberOfItems()
 #--> 6</pre></div>
 </div>
-<p><a href="../reader.html">Open the reader</a> · en · fr · ar · ha · built tonight in 3 minutes 22 seconds, every cell green</p>
+<p><a href="../reader.html">Open the reader</a> · en · fr · ar · ha · built in 3 minutes 22 seconds, every cell green</p>
 ```notes
-Open the reader from the link, switch to Hausa, then to Arabic (right to left). Say: "This reader was built tonight in three minutes twenty-two: every cell of every chapter in every language was run, and the build would be red if one had failed." Then: "Zarma is not in it. That is your invitation."
+Open the reader from the link, switch to Hausa, then to Arabic (right to left). Say: "This reader was built in three minutes twenty-two: every cell of every chapter in every language was run, and the build would be red if one had failed." Then: "Zarma is not in it. That is your invitation."
 ```
 
-<<< scene id="africa" page="vision.html#africa" label="Africa" >>>
+<<< scene id="africa" page="africa.html" label="Africa" >>>
 <div class="eyebrow">Born in Africa</div>
 <figure><img src="../assets/img/niger-density.png" alt="Population density map of Niger by region, rendered by the engine." width="1500" height="1240"><figcaption>"Where Niger lives": rendered by the engine in 5.9 seconds from the official borders and the 2012 census; the areas are measured by Softanza's geodesic routine.</figcaption></figure>
 ```notes
@@ -116,10 +116,10 @@ Open the reader from the link, switch to Hausa, then to Arabic (right to left). 
 
 <<< scene id="start" page="start.html" label="Start" >>>
 <div class="eyebrow">Start, in one hour</div>
-# One public repository. <i>One folder, copied.</i>
+## One public repository. <i>One folder, copied.</i>
 <pre>git clone https://github.com/mayouni/stzlib.git
 cd stzlib/libraries/stzlib</pre>
-<div class="run"><div><div class="lbl">first</div><pre>? Q("Softanza").Boxed()</pre></div><div class="out"><div class="lbl">Output, tonight</div><pre>┌──────────┐
+<div class="run"><div><div class="lbl">first</div><pre>? Q("Softanza").Boxed()</pre></div><div class="out"><div class="lbl">Output</div><pre>┌──────────┐
 │ Softanza │
 └──────────┘</pre></div></div>
 <p>github.com/mayouni/stzlib · open edition, MIT · enterprise edition: the same code, plus the people who wrote it</p>

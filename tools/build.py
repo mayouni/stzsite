@@ -2,12 +2,20 @@
 """stzsite build -- one script turns content/<lang>/*.md and data/ into the static site.
 
 Every page has a French and an English edition. Output is written next to the
-sources (index.html, fr/*.html, en/*.html, fr/atlas/*.html, en/atlas/*.html,
-deck-check.html) so that a clone of the repository opens from file:// with no
-build step and GitHub Pages serves it as it is.   Run:  python tools/build.py
+sources (index.html, fr/*.html, en/*.html, fr/atlas/*.html, ...) so that a clone
+of the repository opens from file:// with no build step and GitHub Pages serves
+it as it is.   Run:  python tools/build.py
+
+The structure is the Zui constitution's (v3.11): a main menu of six sections
+(Rule 27), and under it the PATH of the current section, every page of it shown,
+the current one marked (Rules 108, 115, 116). Both stay on screen while the page
+scrolls (Rule 13). Inside a page there is no menu of anchors: a page is read top
+to bottom (Rule 12), and it carries no links that pull the reader elsewhere
+except the ones that belong to what they are reading.
 """
 import json, re, sys, html, datetime, pathlib
 import markdown
+from PIL import Image
 from build_reference import build_reference
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -17,74 +25,99 @@ LANGS = ("fr", "en")
 GH = "https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/"
 
 # ----------------------------------------------------------------------------
-# strings the layout needs, per language
+# the tree: six sections, each with its pages; the first page is the landing
+SECTIONS = [
+  ("platform", {"fr": "Plateforme", "en": "Platform"}, [
+     ("platform", {"fr": "Plateforme", "en": "Platform"}),
+     ("areas", {"fr": "Les domaines", "en": "The areas"}),
+     ("atlas", {"fr": "L'Atlas", "en": "The Atlas"}),
+     ("code", {"fr": "Le code", "en": "The code"}),
+     ("compare", {"fr": "Comparée", "en": "Compared"})]),
+  ("vision", {"fr": "Vision", "en": "Vision"}, [
+     ("vision", {"fr": "Vision", "en": "Vision"}),
+     ("estate", {"fr": "Le domaine", "en": "The estate"}),
+     ("history", {"fr": "Depuis les principes", "en": "From first principles"}),
+     ("sovereignty", {"fr": "Souveraineté", "en": "Sovereignty"}),
+     ("africa", {"fr": "Née en Afrique", "en": "Born in Africa"})]),
+  ("agentic", {"fr": "Agentique", "en": "Agentic"}, [
+     ("agentic", {"fr": "Agentique", "en": "Agentic"}),
+     ("wise", {"fr": "Wise coding", "en": "Wise coding"}),
+     ("languages", {"fr": "Langue des langues", "en": "Language of languages"}),
+     ("zui", {"fr": "Constitution Zui", "en": "Zui constitution"}),
+     ("refinement", {"fr": "Raffinement", "en": "Refinement"}),
+     ("agents", {"fr": "Pour les agents", "en": "For agents"}),
+     ("security", {"fr": "Sécurité", "en": "Security"})]),
+  ("learn", {"fr": "Apprendre", "en": "Learn"}, [
+     ("learn", {"fr": "Apprendre", "en": "Learn"}),
+     ("book", {"fr": "Le livre", "en": "The book"}),
+     ("docs", {"fr": "Documentation", "en": "Documentation"}),
+     ("reference", {"fr": "Référence", "en": "Reference"}),
+     ("narrations", {"fr": "Narrations", "en": "Narrations"}),
+     ("teaching", {"fr": "Enseigner", "en": "Teaching"}),
+     ("pedagogy", {"fr": "Pédagogie", "en": "Pedagogy"})]),
+  ("offering", {"fr": "Offre", "en": "Offering"}, [
+     ("offering", {"fr": "Offre", "en": "Offering"}),
+     ("editions", {"fr": "Éditions", "en": "Editions"}),
+     ("customers", {"fr": "Clients", "en": "Customers"})]),
+  ("start", {"fr": "Démarrer", "en": "Start"}, [
+     ("start", {"fr": "Démarrer", "en": "Start"})]),
+]
+GENERATED = {"atlas", "reference", "narrations"}   # built by code, not from a .md
+OWNER = {}                                          # page -> its section
+for sec, _, pages in SECTIONS:
+    for slug, _ in pages: OWNER[slug] = sec
+OWNER["atlas-group"] = "platform"                   # an area's own page sits under The areas
+
 UI = {
   "fr": {
-    "nav": [("platform","Plateforme"),("vision","Vision"),("agentic","Agentique"),("learn","Apprendre"),("offering","Offre"),("start","Démarrer")],
-    "tour_label": "Mode présentation", "github_label": "Le dépôt Softanza sur GitHub",
-    "slogan": "La plateforme des makers à l'ère agentique",
-    "second": "Née en Afrique. Utile au monde !",
-    "skip": "Aller au contenu",
-    "other_lang": "English", "other_code": "en",
-    "theme": "Thème", "theme_light": "clair", "theme_dark": "sombre", "theme_auto": "auto",
+    "slogan": "La plateforme des makers à l'ère agentique", "second": "Née en Afrique. Utile au monde !",
+    "skip": "Aller au contenu", "other_lang": "English", "other_code": "en",
+    "present": "Présenter", "github": "Le dépôt Softanza sur GitHub", "menu": "Menu principal", "path": "Pages de la section",
     "proof_law": "Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.",
-    "repos": "Dépôts",
-    "prev": "Page précédente", "next": "Page suivante",
-    "fonts": "Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site.",
-    "built": "Site généré le",
-    "atlas_kicker": "L'Atlas Softanza", "atlas_title": "Où se tient <i>toute la plateforme</i>",
-    "atlas_lede": "Vingt-huit groupes, 334 couloirs, chacun noté contre les meilleurs de sa catégorie. Le pari de Softanza est la cohérence de nombreux couloirs sous un seul moteur gouverné : aucun concurrent ne les couvre tous. Les notes sont gagnées par ce que les gardes prouvent, lues sur la branche principale, et les lacunes sont montrées.",
-    "atlas_desc": "L'Atlas Softanza : 28 groupes de modules et 334 couloirs notés Strong, Solid, Partial ou Emerging contre les meilleurs de chaque catégorie.",
-    "lanes": "couloirs", "strong": "Strong", "solid": "Solid", "partial": "Partial", "emerging": "Emerging",
+    "fonts": "Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s'ouvre sans réseau.",
+    "built": "Site généré le", "elsewhere": "Softanza", "repo": "Le dépôt sur GitHub", "tour": "Mode présentation", "check": "Vérifier hors ligne",
+    "theme_light": "Passer en clair", "theme_dark": "Passer en sombre", "theme_auto": "Suivre le système", "theme_h": "Affichage",
+    "atlas_title": "L'Atlas", "atlas_title_html": "L'<i>Atlas</i>", "atlas_kicker": "Où se tient toute la plateforme",
+    "atlas_lede": "Vingt-huit groupes et 334 couloirs, chacun noté contre les meilleurs de sa catégorie : Strong, au niveau ou au-dessus du meilleur ; Solid, complet et prouvé, un cran derrière ; Partial, présent mais incomplet ; Emerging, prévu ou tout juste commencé. Les notes sont gagnées par ce que les gardes prouvent, et les lacunes sont montrées à côté des forces.",
+    "atlas_desc": "L'Atlas Softanza : 28 groupes et 334 couloirs notés Strong, Solid, Partial ou Emerging contre les meilleurs de chaque catégorie.",
+    "group": "Groupe", "strong": "Strong", "solid": "Solid", "partial": "Partial", "emerging": "Emerging", "vs": "comparé à",
+    "tally": "Les 334 couloirs : 101 Strong · 129 Solid · 68 Partial · 36 Emerging.",
+    "atlas_note": "Atlas version 21, lu sur la branche principale le 2026-09-30 au commit",
     "measured": "Mesuré contre", "folders": "Dossiers", "standouts": "Ce qu'un maker en fait, et ce qui se distingue", "gaps": "Ce qui est dû",
-    "lanes_h": "Les couloirs, un par un", "lanes_note": "Les couloirs et leurs notes sont cités dans la langue de l'Atlas, l'anglais, tels qu'ils ont été lus à la source.",
-    "example": "Un exemple, exécuté", "no_example": "Aucun exemple exécuté sur cette page",
-    "atlas_page": "La page d'origine de l'Atlas", "all_groups": "Tous les groupes",
-    "read_on": "lu à la source le", "legend": "Légende",
-    "legend_text": "Strong : au niveau ou au-dessus du meilleur de la catégorie · Solid : complet et prouvé, un cran derrière · Partial : présent, incomplet · Emerging : prévu ou tout juste commencé.",
-    "tally_label": "Les 334 couloirs", "groups_word": "groupes",
-  },
-  "en": {
-    "nav": [("platform","Platform"),("vision","Vision"),("agentic","Agentic"),("learn","Learn"),("offering","Offering"),("start","Start")],
-    "tour_label": "Presentation mode", "github_label": "The Softanza repository on GitHub",
-    "slogan": "The Makers Platform of the Agentic Age",
-    "second": "Born in Africa. Useful to the World!",
-    "skip": "Skip to content",
-    "other_lang": "Français", "other_code": "fr",
-    "theme": "Theme", "theme_light": "light", "theme_dark": "dark", "theme_auto": "auto",
-    "proof_law": "Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.",
-    "repos": "Repositories",
-    "prev": "Previous page", "next": "Next page",
-    "fonts": "Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, self-hosted on this site.",
-    "built": "Site generated on",
-    "atlas_kicker": "The Softanza Atlas", "atlas_title": "Where <i>the whole platform</i> stands",
-    "atlas_lede": "Twenty-eight groups, 334 lanes, each rated against the leaders of its category. The bet Softanza makes everywhere is coherence across many lanes under one governed engine: no single competitor spans them all. Ratings are earned by what the guards prove, read from the main branch, and the gaps are shown.",
-    "atlas_desc": "The Softanza Atlas: 28 module groups and 334 lanes rated Strong, Solid, Partial or Emerging against the leaders of each category.",
-    "lanes": "lanes", "strong": "Strong", "solid": "Solid", "partial": "Partial", "emerging": "Emerging",
-    "measured": "Measured against", "folders": "Folders", "standouts": "What a maker does with it, and what stands out", "gaps": "What is owed",
-    "lanes_h": "The lanes, one by one", "lanes_note": "Lanes and their notes are quoted as they were read at the source.",
-    "example": "One example, run", "no_example": "No example run on this page",
-    "atlas_page": "The original Atlas page", "all_groups": "All groups",
-    "read_on": "read from the source on", "legend": "Legend",
-    "legend_text": "Strong: at or above the category leader · Solid: complete and proven, a step behind · Partial: present, incomplete · Emerging: planned or barely begun.",
-    "tally_label": "All 334 lanes", "groups_word": "groups",
-  },
-}
-
-UI["fr"].update({
-    "cov_row": "Domaine", "cov_present": "Présent", "cov_deep": "Deep", "cov_solid": "Solid", "cov_partial": "Partial", "cov_none": "Absent",
-    "narr_title": "Les narrations", "narr_kicker": "La documentation qui s'exécute",
+    "lanes_h": "Les couloirs, un par un", "lanes_note": "Les couloirs et leurs notes sont cités tels qu'ils ont été lus à la source, le",
+    "example": "Un exemple, exécuté", "no_example": "Aucun exemple exécuté sur cette page", "output": "Sortie",
+    "source": "la source", "nopic": "Pas encore d'image",
+    "narr_title": "Narrations", "narr_title_html": "Les <i>narrations</i>", "narr_kicker": "La documentation qui s'exécute",
     "narr_lede": "Cent trente-quatre documents où chaque bloc de code s'exécute quand on le lit et où aucune sortie n'est stockée. Chacun est un fichier du dépôt ; le titre est celui du fichier.",
     "narr_desc": "Les 134 narrations de Softanza, listées avec leur fichier dans le dépôt.",
     "narr_note": "Liste lue dans le dossier doc/narrations du dépôt au commit 0e72e2e2c, le 2026-10-01. Une narration s'ouvre sur GitHub ; sa version exécutée comme page de ce site est le prochain pas de la publication.",
-})
-UI["en"].update({
-    "cov_row": "Domain", "cov_present": "Present", "cov_deep": "Deep", "cov_solid": "Solid", "cov_partial": "Partial", "cov_none": "Absent",
-    "narr_title": "The narrations", "narr_kicker": "Documentation that runs",
+    "cov_row": "Domaine", "cov_present": "Présent", "cov_deep": "Deep", "cov_solid": "Solid", "cov_partial": "Partial", "cov_none": "Absent",
+  },
+  "en": {
+    "slogan": "The Makers Platform of the Agentic Age", "second": "Born in Africa. Useful to the World!",
+    "skip": "Skip to content", "other_lang": "Français", "other_code": "fr",
+    "present": "Present", "github": "The Softanza repository on GitHub", "menu": "Main menu", "path": "Pages of the section",
+    "proof_law": "Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.",
+    "fonts": "Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network.",
+    "built": "Site generated on", "elsewhere": "Softanza", "repo": "The repository on GitHub", "tour": "Presentation mode", "check": "Check offline",
+    "theme_light": "Use the light theme", "theme_dark": "Use the dark theme", "theme_auto": "Follow the system", "theme_h": "Display",
+    "atlas_title": "The Atlas", "atlas_title_html": "The <i>Atlas</i>", "atlas_kicker": "Where the whole platform stands",
+    "atlas_lede": "Twenty-eight groups and 334 lanes, each rated against the leaders of its category: Strong, at or above the leader; Solid, complete and proven, a step behind; Partial, present but incomplete; Emerging, planned or barely begun. Ratings are earned by what the guards prove, and the gaps are shown beside the strengths.",
+    "atlas_desc": "The Softanza Atlas: 28 groups and 334 lanes rated Strong, Solid, Partial or Emerging against the leaders of each category.",
+    "group": "Group", "strong": "Strong", "solid": "Solid", "partial": "Partial", "emerging": "Emerging", "vs": "measured against",
+    "tally": "All 334 lanes: 101 Strong · 129 Solid · 68 Partial · 36 Emerging.",
+    "atlas_note": "Atlas version 21, read on the main branch on 2026-09-30 at commit",
+    "measured": "Measured against", "folders": "Folders", "standouts": "What a maker does with it, and what stands out", "gaps": "What is owed",
+    "lanes_h": "The lanes, one by one", "lanes_note": "Lanes and their notes are quoted as they were read at the source, on",
+    "example": "One example, run", "no_example": "No example run on this page", "output": "Output",
+    "source": "the source", "nopic": "No picture yet",
+    "narr_title": "Narrations", "narr_title_html": "The <i>narrations</i>", "narr_kicker": "Documentation that runs",
     "narr_lede": "One hundred and thirty-four documents where every code block runs as it is read and no output is stored. Each is a file of the repository; the title is the file's own.",
     "narr_desc": "Softanza's 134 narrations, listed with their file in the repository.",
     "narr_note": "List read in the repository's doc/narrations folder at commit 0e72e2e2c, on 2026-10-01. A narration opens on GitHub; its run version as a page of this site is the next step of the publication.",
-})
+    "cov_row": "Domain", "cov_present": "Present", "cov_deep": "Deep", "cov_solid": "Solid", "cov_partial": "Partial", "cov_none": "Absent",
+  },
+}
 
 MD = markdown.Markdown(extensions=["tables", "fenced_code", "attr_list", "md_in_html", "toc"],
                        extension_configs={"toc": {"permalink": False}})
@@ -106,7 +139,6 @@ def md(text):
 def esc(s): return html.escape(str(s), quote=True)
 
 THEME_SCRIPT = """<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>"""
-
 PAGE_PING = """<script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>"""
 
 def head(lang, title, description, rel, extra=""):
@@ -121,69 +153,85 @@ def head(lang, title, description, rel, extra=""):
 <link rel="icon" type="image/png" sizes="64x64" href="{rel}assets/img/mark-64.png">
 <link rel="apple-touch-icon" href="{rel}assets/img/mark-180.png">
 <link rel="stylesheet" href="{rel}assets/css/fonts.css">
-<link rel="stylesheet" href="{rel}assets/css/family.css">
 <link rel="stylesheet" href="{rel}assets/css/site.css">
 {extra}{THEME_SCRIPT}
 </head>"""
 
-GITHUB_SVG = '<svg viewBox="0 0 16 16" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>'
-TOUR_SVG = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M4 4h16a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-7v2h3v2H8v-2h3v-2H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm1 2v9h14V6H5zm4 2 5 2.5L9 13V8z"/></svg>'
+GITHUB_SVG = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>'
 
-RING_WORD = re.compile(r"\bRing\b")
-CURRENT = {"atlas": "platform", "reference": "learn", "narrations": "learn"}
+def nav_prefix(rel, lang):
+    """from a page at depth `rel`, the prefix that reaches this language's folder"""
+    return f"{lang}/" if rel == "" else rel[3:]
 
-def header(lang, slug, rel, other_href=None, nav_rel=""):
+def wordmark(rel):
+    return (f'<img class="wm-light" src="{rel}assets/img/wordmark.png" alt="Softanza" width="660" height="105">'
+            f'<img class="wm-dark" src="{rel}assets/img/wordmark-dark.png" alt="" width="660" height="105">')
+
+def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_lang=""):
+    """the main menu, and under it the path of the current section"""
     ui = UI[lang]
-    cur = CURRENT.get(slug, slug)
-    links = "".join(
-        f'<a href="{nav_rel}{s}.html"{" aria-current=page" if s == cur else ""}>{esc(l)}</a>'
-        for s, l in ui["nav"])
+    if nav_rel is None: nav_rel = nav_prefix(rel, lang)
+    key = page_key or slug
+    sec = OWNER.get(key)
+    current_page = "areas" if key == "atlas-group" else key
+    links = "".join(f'<a href="{nav_rel}{pages[0][0]}.html"{" aria-current=page" if s == sec else ""}>{esc(lab[lang])}</a>'
+                    for s, lab, pages in SECTIONS)
     other = ui["other_code"]
     if other_href is None: other_href = f"../{other}/{slug}.html"
-    return f"""<a class="skip" href="#main">{ui["skip"]}</a>
-<header class="site-head"><div class="wrap head-row">
-  <a class="brand" href="{rel}index.html" aria-label="Softanza"><img src="{rel}assets/img/wordmark.png" alt="Softanza" height="30"></a>
-  <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
-  <nav id="site-nav" class="site-nav">{links}</nav>
-  <div class="head-tools">
-    <a class="icon-link" href="{nav_rel}tour.html" aria-label="{ui["tour_label"]}" title="{ui["tour_label"]}">{TOUR_SVG}</a>
-    <a class="icon-link" href="https://github.com/mayouni/stzlib" aria-label="{ui["github_label"]}" title="{ui["github_label"]}">{GITHUB_SVG}</a>
-    <a class="lang" href="{other_href}" lang="{other}" hreflang="{other}">{ui["other_lang"]}</a>
-    <button class="theme-btn" type="button" data-theme-toggle aria-label="{ui["theme"]}" title="{ui["theme"]}: {ui["theme_light"]} / {ui["theme_dark"]} / {ui["theme_auto"]}"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
-  </div>
-</div></header>"""
+    path = ""
+    if sec:
+        pages = next(p for s, _, p in SECTIONS if s == sec)
+        if len(pages) > 1:
+            path = ('\n  <nav class="path" aria-label="' + esc(ui["path"]) + '"><div class="path-in">'
+                    + "".join(f'<a href="{nav_rel}{p}.html"{" aria-current=page" if p == current_page else ""}>{esc(lab[lang])}</a>' for p, lab in pages)
+                    + '</div></nav>')
+    dl = f' data-lang="{data_lang}"' if data_lang else ""
+    home = f"{rel}index.html" + (f"?lang={lang}" if rel else "")
+    tools = (f'<div class="tools"><a class="present" href="{nav_rel}tour.html">{esc(ui["present"])}</a>'
+             f'<a class="gh" href="https://github.com/mayouni/stzlib" aria-label="{esc(ui["github"])}" title="{esc(ui["github"])}">{GITHUB_SVG}</a>'
+             f'<a class="lang" href="{other_href}" lang="{other}" hreflang="{other}">{ui["other_lang"]}</a></div>')
+    brand = f'<a class="brand" href="{home}" aria-label="Softanza">{wordmark(rel)}</a>'
+    # on a phone the brand row scrolls away and only the two menus stay pinned;
+    # the row is the same links, shown in one place or the other, never both
+    return f"""<a class="skip" href="#main"{dl}>{ui["skip"]}</a>
+<div class="brandrow"{dl}>{brand}{tools}</div>
+<header class="top"{dl}>
+  <div class="topbar">
+    {brand}
+    <nav class="nav" aria-label="{esc(ui["menu"])}">{links}</nav>
+    {tools}
+  </div>{path}
+</header>"""
 
-SUB_RX = re.compile(r'<h2 id="([^"]+)">(.*?)</h2>', re.S)
-def submenu(body_html):
-    """the page's own sections, as a bar fixed under the main menu"""
-    items = [(i, re.sub(r"<[^>]+>", "", t)) for i, t in SUB_RX.findall(body_html)]
-    if len(items) < 2: return ""
-    return '<nav class="submenu" aria-label="sections"><div class="wrap">' + "".join(f'<a href="#{i}">{esc(t)}</a>' for i, t in items) + '</div></nav>'
-
-def footer(lang, rel, pagers_html=""):
+def footer(lang, rel, pagers_html="", nav_rel=None, scripts=True, data_lang=""):
+    """a site map: every section and every page, then the signature"""
     ui = UI[lang]
+    if nav_rel is None: nav_rel = nav_prefix(rel, lang)
     today = datetime.date.today().isoformat()
-    return f"""<footer class="site-foot"><div class="wrap">
-  <div class="foot-grid">
-    <div><img src="{rel}assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">{esc(ui["slogan"])}<br>{esc(ui["second"])}</p></div>
-    <div class="foot"><p>{esc(ui["proof_law"])}</p>
-      <p class="mono small">{ui["repos"]}: <a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a></p>
-      <p class="small">{esc(ui["fonts"])} {ui["built"]} {today}.</p></div>
+    cols = "".join(f'<div><h3>{esc(lab[lang])}</h3><ul>' + "".join(f'<li><a href="{nav_rel}{p}.html">{esc(pl[lang])}</a></li>' for p, pl in pages) + '</ul></div>'
+                   for s, lab, pages in SECTIONS)
+    other = ui["other_code"]
+    cols += (f'<div><h3>{esc(ui["elsewhere"])}</h3><ul>'
+             f'<li><a href="https://github.com/mayouni/stzlib">{esc(ui["repo"])}</a></li>'
+             f'<li><a href="{nav_rel}tour.html">{esc(ui["tour"])}</a></li>'
+             f'<li><a href="{rel}deck-check.html">{esc(ui["check"])}</a></li>'
+             f'<li><a href="{rel}index.html?lang={other}" lang="{other}">{esc(ui["other_lang"])}</a></li></ul></div>')
+    themes = (f'<div class="themes" role="group" aria-label="{esc(ui["theme_h"])}">'
+              f'<button type="button" data-set-theme="light">{esc(ui["theme_light"])}</button>'
+              f'<button type="button" data-set-theme="dark">{esc(ui["theme_dark"])}</button>'
+              f'<button type="button" data-set-theme="auto">{esc(ui["theme_auto"])}</button></div>')
+    dl = f' data-lang="{data_lang}"' if data_lang else ""
+    out = f"""<footer class="foot"{dl}><div class="wrap">
+  <nav class="map" aria-label="Site">{cols}</nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="{rel}index.html" aria-label="Softanza">{wordmark(rel)}</a>
+      <p style="margin-top:12px">{esc(ui["slogan"])}. {esc(ui["second"])}</p>{themes}</div>
+    <div><p>{esc(ui["proof_law"])}</p><p>{esc(ui["fonts"])} {ui["built"]} {today}.</p></div>
   </div>
-</div></footer>
-<script src="{rel}assets/js/site.js"></script>{PAGE_PING}
-</body></html>"""
-
-def pagers(lang, slug, order):
-    ui = UI[lang]
-    slugs = [s for s, _ in order]
-    i = slugs.index(slug) if slug in slugs else -1
-    prev_html = next_html = ""
-    if i > 0:
-        s, l = order[i-1]; prev_html = f'<a class="pager prev" href="{s}.html"><small>{ui["prev"]}</small><b>{esc(l)}</b></a>'
-    if 0 <= i < len(order) - 1:
-        s, l = order[i+1]; next_html = f'<a class="pager next" href="{s}.html"><small>{ui["next"]}</small><b>{esc(l)}</b></a>'
-    return prev_html + next_html
+</div></footer>"""
+    if scripts:
+        out += f'\n<script src="{rel}assets/js/site.js"></script>{PAGE_PING}\n</body></html>'
+    return out
 
 # ----------------------------------------------------------------------------
 # the Atlas data
@@ -195,7 +243,6 @@ def load_atlas():
     for g in idx["groups"]:
         f = DATA / "atlas" / f"{g['slug']}.json"
         d = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
-        # the extractors wrote a replacement character where the pages had a dash
         for l in d.get("lanes", []):
             for k in ("lane", "note", "proof"): l[k] = l.get(k, "").replace("�", "-")
         d["thesis"] = d.get("thesis", "").replace("�", "-")
@@ -204,80 +251,128 @@ def load_atlas():
         groups.append({**g, "detail": d, "run": runs.get(g["slug"])})
     return idx, groups
 
-def bar(s, so, p, e, cls="cardbar"):
-    parts = []
-    for n, var in ((s, "strong"), (so, "solid"), (p, "partial"), (e, "emerging")):
-        if n: parts.append(f'<span style="flex:{n};background:var(--{var})"></span>')
-    return f'<div class="{cls}" role="img" aria-label="{s} strong, {so} solid, {p} partial, {e} emerging">{"".join(parts)}</div>'
-
-def counts(s, so, p, e):
-    out = []
-    for n, var, ab in ((s, "strong", "S"), (so, "solid", "So"), (p, "partial", "P"), (e, "emerging", "E")):
-        if n: out.append(f'<span class="st-{var}"><b>{n}</b> {ab}</span>')
-    return f'<div class="counts">{"".join(out)}</div>'
-
-def tally_html(lang, idx):
-    t = idx["tally"]; ui = UI[lang]
-    return (f'<div class="tally" aria-label="{ui["tally_label"]}">{bar(t["strong"], t["solid"], t["partial"], t["emerging"], "tallybar")}'
-            f'<div class="legend"><span class="k"><span class="dot" style="background:var(--strong)"></span>{t["strong"]} {ui["strong"]}</span>'
-            f'<span class="k"><span class="dot" style="background:var(--solid)"></span>{t["solid"]} {ui["solid"]}</span>'
-            f'<span class="k"><span class="dot" style="background:var(--partial)"></span>{t["partial"]} {ui["partial"]}</span>'
-            f'<span class="k"><span class="dot" style="background:var(--emerging)"></span>{t["emerging"]} {ui["emerging"]}</span></div></div>')
-
-def compact_html(lang, idx, groups, rel_atlas):
-    """name + bar per group, banded; links into the group pages"""
+def tiles_html(lang, idx, groups, rel_atlas, rel_assets, themed=True, hl="h2"):
+    """every area as a picture with its name beneath it, grouped by theme"""
+    def tile(g):
+        r = g.get("render"); href = f"{rel_atlas}{g['slug']}.html"
+        if r:
+            pic = (f'<a class="pic" href="{href}" tabindex="-1" aria-hidden="true"><img src="{rel_assets}assets/img/areas/{r["thumb"]}" '
+                   f'alt="" width="1100" height="660" loading="lazy"></a>')
+            what = esc(r["cap_" + lang])
+        else:
+            pic = f'<div class="nopic">{esc(UI[lang]["nopic"])}</div>'
+            what = esc(g.get("nopic_" + lang, ""))
+        return f'<div class="tile">{pic}<a class="name" href="{href}">{esc(g[lang])}</a><span class="what">{what}</span></div>'
+    if not themed:
+        return '<div class="tiles">' + "".join(tile(g) for g in groups if g.get("render")) + '</div>'
     out = []
     for b in idx["bands"]:
         gs = [g for g in groups if g["band"] == b["id"]]
-        items = "".join(
-            f'<a class="abar" href="{rel_atlas}{g["slug"]}.html"><div class="n"><span>{esc(g[lang])}</span><small>{g["s"]+g["so"]+g["p"]+g["e"]}</small></div>{bar(g["s"], g["so"], g["p"], g["e"])}</a>'
-            for g in gs)
-        out.append(f'<div class="band-compact"><div class="band-h">{esc(b[lang])}</div><div class="atlas-compact">{items}</div></div>')
+        out.append(f'<section class="theme"><{hl} id="{b["id"]}">{esc(b[lang])}</{hl}><div class="tiles">{"".join(tile(g) for g in gs)}</div></section>')
     return "".join(out)
 
-def wall_html(lang, idx, groups, rel_atlas, rel_assets):
-    """every area that has a render, as one picture each, linking to its page"""
-    tiles = []
-    for g in groups:
-        r = g.get("render")
-        if not r: continue
-        tiles.append(f'<a class="wtile" href="{rel_atlas}{g["slug"]}.html"><img src="{rel_assets}assets/img/areas/{r["thumb"]}" alt="{esc(r["cap_" + lang])}" loading="lazy"><span class="wname">{esc(g[lang])}</span></a>')
-    return f'<div class="wall">{"".join(tiles)}</div>'
-
-def cards_html(lang, idx, groups, rel_atlas):
+def scope_html(lang, idx, groups):
+    """the documentation's whole scope, one door per area of the reference"""
     out = []
     for b in idx["bands"]:
-        gs = [g for g in groups if g["band"] == b["id"]]
-        items = "".join(
-            f'<a class="acard{" has-pic" if g.get("render") else ""}" href="{rel_atlas}{g["slug"]}.html">'
-            + (f'<img class="pic" src="{rel_atlas}../../assets/img/areas/{g["render"]["thumb"]}" alt="{esc(g["render"]["cap_" + lang])}" loading="lazy">' if g.get("render") else "")
-            + f'<div class="t"><span>{esc(g[lang])}</span><span class="arrow">&#8599;</span></div>'
-            f'<p>{esc(g["line_" + lang])}</p>{bar(g["s"], g["so"], g["p"], g["e"])}{counts(g["s"], g["so"], g["p"], g["e"])}'
-            f'<div class="dirs">{esc(g["dirs"])} · vs {esc(g["peers"])}</div></a>'
-            for g in gs)
-        out.append(f'<div class="band"><div class="band-h">{esc(b[lang])}</div><div class="atlas-grid">{items}</div></div>')
-    return "".join(out)
+        for g in [g for g in groups if g["band"] == b["id"]]:
+            out.append(f'<a data-t="{b["id"]}" href="reference.html#{g["slug"]}"><span>{esc(g[lang])}<small>{esc(b[lang])}</small></span></a>')
+    return '<div class="scope">' + "".join(out) + '</div>'
 
-def build_atlas_index(lang, idx, groups, order):
-    ui = UI[lang]; rel = "../"
-    page = head(lang, 'Atlas · Softanza', ui["atlas_desc"], rel)
-    page += '\n<body class="page page-atlas">\n' + header(lang, "atlas", rel)
+def coverage_html(lang):
+    cov = json.loads((DATA / "coverage.json").read_text(encoding="utf-8"))
+    ui = UI[lang]; n = len(cov["platforms"])
+    heads = "".join(f'<th scope="col">{esc(p[1])}<small>{esc(p[2] if lang == "en" else p[3])}</small></th>' for p in cov["platforms"])
+    rows = []
+    for g in cov["groups"]:
+        rows.append(f'<tr class="cg"><th colspan="{1 + n}" scope="colgroup">{esc(g[lang])}</th></tr>')
+        for r in g["rows"]:
+            note = r.get("note_" + lang)
+            name = f'{esc(r[lang])}{("<small>" + esc(note) + "</small>") if note else ""}'
+            cells = "".join(f'<td><span class="cv {v}">{esc(ui["cov_" + v])}</span></td>' for v in r["r"])
+            rows.append(f'<tr class="dn" aria-hidden="true"><th colspan="{n}">{name}</th></tr><tr><th scope="row">{name}</th>{cells}</tr>')
+    t = cov["tally"]; pr = cov["present"]
+    tally = "".join(f'<td><b>{esc(pr[k])}</b><small>{t[k][0]} deep · {t[k][1]} solid · {t[k][2]} partial</small></td>' for k, _, _, _ in cov["platforms"])
+    rows.append(f'<tr class="dn" aria-hidden="true"><th colspan="{n}">{esc(ui["cov_present"])}</th></tr><tr class="ct"><th scope="row">{esc(ui["cov_present"])}</th>{tally}</tr>')
+    return f'<div class="covwrap"><table class="cov"><thead><tr><th scope="col">{esc(ui["cov_row"])}</th>{heads}</tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
+
+def diagram_imgs(body_html, rel):
+    """every drawn diagram gets its phone drawing beside it; CSS shows the one that fits"""
+    def rep(m):
+        name, lang, alt = m.group(1), m.group(2), m.group(3)
+        narrow = ROOT / "assets" / "img" / "diagrams" / f"{name}-narrow-{lang}.png"
+        if not narrow.exists():
+            return m.group(0)
+        w, h = Image.open(narrow).size
+        return (f'<img class="wide-only" src="{rel}assets/img/diagrams/{name}-{lang}.png" alt="{alt}" width="1376" height="768">'
+                f'<img class="narrow-only" loading="lazy" src="{rel}assets/img/diagrams/{name}-narrow-{lang}.png" alt="{alt}" width="{w}" height="{h}">')
+    return re.sub(r'<img src="(?:\.\./)+assets/img/diagrams/([a-z]+)-(fr|en)\.png" alt="([^"]*)"[^>]*>', rep, body_html)
+
+def inject(body_html, lang, idx, groups, rel="../"):
+    body_html = body_html.replace("<!--AREAS-->", tiles_html(lang, idx, groups, "atlas/", rel))
+    body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
+    body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
+    body_html = body_html.replace("<!--DOCS-SCOPE-->", scope_html(lang, idx, groups))
+    return diagram_imgs(body_html, rel)
+
+LONG = []
+def check_reading_arc(slug, lang, body_html):
+    """Rule 123: a paragraph past about 800 characters has become a wall"""
+    for p in re.findall(r"<p(?:\s[^>]*)?>(.*?)</p>", body_html, re.S):
+        t = re.sub(r"<[^>]+>", "", p)
+        if len(t) > 800: LONG.append(f"{lang}/{slug}: {len(t)} chars: {t[:60]}...")
+
+def page_shell(lang, slug, title, description, kicker, title_html, lede, body_html, rel="../", page_key=None, other_href=None, body_class=None):
+    page = head(lang, f'{title} · Softanza', description, rel)
+    page += f'\n<body class="{body_class or "page page-" + slug}">\n' + header(lang, slug, rel, other_href=other_href, page_key=page_key)
     page += f"""
 <main id="main">
   <section class="page-head"><div class="wrap">
-    <div class="eyebrow">{ui["atlas_kicker"]}</div>
-    <h1>{ui["atlas_title"]}</h1>
-    <p class="thesis">{esc(ui["atlas_lede"])}</p>
-    {tally_html(lang, idx)}
-    <p class="proof">{idx["tally"]["groups"]} {ui["groups_word"]} · {idx["tally"]["lanes"]} {ui["lanes"]} · Atlas v{idx["version"]} · {ui["read_on"]} {idx["read_at"]}, <a href="https://github.com/mayouni/stzlib/commit/{idx["commit"]}">{idx["commit"]}</a></p>
+    <div class="eyebrow">{kicker}</div>
+    <h1>{title_html}</h1>
+    {f'<p class="lede">{lede}</p>' if lede else ''}
   </div></section>
   <div class="wrap page-body">
-    {cards_html(lang, idx, groups, "atlas/")}
-    <div class="note"><p><b>{ui["legend"]}.</b> {esc(ui["legend_text"])}</p></div>
+{body_html}
   </div>
 </main>
 """
-    page += footer(lang, rel, "")
+    page += footer(lang, rel)
+    return page
+
+# ----------------------------------------------------------------------------
+BOLD_RX = re.compile("[*][*](.+?)[*][*]")
+def BOLD_TO(m): return "<b>" + m.group(1) + "</b>"
+
+def build_page(lang, slug, idx, groups):
+    src = CONTENT / lang / f"{slug}.md"
+    meta, body = front_matter(src.read_text(encoding="utf-8"))
+    title = meta.get("title", slug)
+    body_html = inject(md(body), lang, idx, groups)
+    check_reading_arc(slug, lang, body_html)
+    page = page_shell(lang, slug, title, meta.get("description", ""), esc(meta.get("kicker", "")),
+                      meta.get("title_html", esc(title)), BOLD_RX.sub(BOLD_TO, meta.get("lede", "")), body_html)
+    out = ROOT / lang / f"{slug}.html"
+    out.parent.mkdir(exist_ok=True)
+    out.write_text(page, encoding="utf-8")
+    return out
+
+def build_atlas_index(lang, idx, groups):
+    ui = UI[lang]
+    sections = []
+    for b in idx["bands"]:
+        rows = "".join(
+            f'<tr><td><a href="atlas/{g["slug"]}.html">{esc(g[lang])}</a><span class="line">{esc(g["line_" + lang])}</span>'
+            f'<span class="peers">{ui["vs"]} {esc(g["peers"])}</span></td>'
+            f'<td class="n">{g["s"]}</td><td class="n">{g["so"]}</td><td class="n">{g["p"]}</td><td class="n">{g["e"]}</td></tr>'
+            for g in groups if g["band"] == b["id"])
+        cols = "".join(f'<th scope="col" class="n"><span class="full">{ui[k]}</span><span class="short" aria-hidden="true">{ui[k][:2] if k == "solid" else ui[k][0]}</span></th>'
+                       for k in ("strong", "solid", "partial", "emerging"))
+        sections.append(f'<h2 id="{b["id"]}">{esc(b[lang])}</h2><div class="tw"><table class="ratings"><thead><tr><th scope="col">{ui["group"]}</th>{cols}</tr></thead><tbody>{rows}</tbody></table></div>')
+    body = (f'<p class="tally-line">{ui["tally"]}</p>'
+            f'<p class="proof">{ui["atlas_note"]} <a href="https://github.com/mayouni/stzlib/commit/{idx["commit"]}">{idx["commit"]}</a>.</p>'
+            + "".join(sections))
+    page = page_shell(lang, "atlas", ui["atlas_title"], ui["atlas_desc"], esc(ui["atlas_kicker"]), ui["atlas_title_html"], esc(ui["atlas_lede"]), body)
     (ROOT / lang / "atlas.html").write_text(page, encoding="utf-8")
 
 RATING_CLASS = {"Strong": "strong", "Solid": "solid", "Partial": "partial", "Emerging": "emerging"}
@@ -285,6 +380,7 @@ RATING_CLASS = {"Strong": "strong", "Solid": "solid", "Partial": "partial", "Eme
 def build_group_page(lang, idx, groups, i):
     g = groups[i]; d = g["detail"]; ui = UI[lang]; rel = "../../"
     band = next(b for b in idx["bands"] if b["id"] == g["band"])
+    colon = " :" if lang == "fr" else ":"
     lanes = "".join(
         f'<div class="lane"><div class="ln">{esc(l["lane"])}</div><div class="lr"><span class="chip {RATING_CLASS.get(l["rating"], "solid")}">{esc(l["rating"])}</span></div>'
         f'<div class="lt">{esc(l["note"])}{("<small>" + esc(l["proof"]) + "</small>") if l.get("proof") else ""}</div></div>'
@@ -292,14 +388,12 @@ def build_group_page(lang, idx, groups, i):
     folders = " · ".join(f'<a href="{GH}base/{f.strip()}">base/{esc(f.strip())}</a>' for f in g["dirs"].split(","))
     sg = ""
     if d.get("standouts") or d.get("gaps"):
-        sg = (f'<div class="sg"><div class="good"><h4>{ui["standouts"]}</h4><ul>{"".join(f"<li>{esc(s)}</li>" for s in d.get("standouts", []))}</ul></div>'
-              f'<div class="owed"><h4>{ui["gaps"]}</h4><ul>{"".join(f"<li>{esc(s)}</li>" for s in d.get("gaps", []))}</ul></div></div>')
-    # the example run
+        sg = (f'<div class="sg"><div><h4>{ui["standouts"]}</h4><ul>{"".join(f"<li>{esc(s)}</li>" for s in d.get("standouts", []))}</ul></div>'
+              f'<div><h4>{ui["gaps"]}</h4><ul>{"".join(f"<li>{esc(s)}</li>" for s in d.get("gaps", []))}</ul></div></div>')
     run = g.get("run") or {}
-    out_lbl = "Sortie" if lang == "fr" else "Output"
     if run.get("code"):
         example = (f'<h2>{ui["example"]}</h2><p>{esc(run.get("intro_" + lang, ""))}</p>'
-                   f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(run["code"])}</pre></div><div class="out"><div class="lbl">{out_lbl}</div><pre>{esc(run["out"])}</pre></div></div>'
+                   f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(run["code"])}</pre></div><div class="out"><div class="lbl">{ui["output"]}</div><pre>{esc(run["out"])}</pre></div></div>'
                    f'<p class="ran">{esc(run.get("ran_" + lang, ""))}</p>')
     elif run.get("image"):
         example = (f'<h2>{ui["example"]}</h2><p>{esc(run.get("intro_" + lang, ""))}</p>'
@@ -308,129 +402,48 @@ def build_group_page(lang, idx, groups, i):
         example = (f'<h2>{ui["example"]}</h2><p>{esc(run.get("intro_" + lang, ""))}</p><pre>{esc(run["text"])}</pre>'
                    f'<p class="ran">{esc(run.get("ran_" + lang, ""))}</p>')
     else:
-        example = f'<div class="note warn"><p><b>{ui["no_example"]}.</b> {esc(run.get("why_" + lang, ""))}</p></div>'
-    # the two readings, when the group page and the Atlas card disagree
+        example = f'<div class="note"><p><b>{ui["no_example"]}.</b> {esc(run.get("why_" + lang, ""))}</p></div>'
     c = {"Strong": 0, "Solid": 0, "Partial": 0, "Emerging": 0}
     for l in d.get("lanes", []): c[l["rating"]] = c.get(l["rating"], 0) + 1
     note = ""
     if d.get("lanes") and (c["Strong"], c["Solid"], c["Partial"], c["Emerging"]) != (g["s"], g["so"], g["p"], g["e"]):
         if lang == "fr":
-            note = (f'<div class="note warn"><p><b>Deux lectures.</b> La carte de l\'Atlas (v{idx["version"]}, {idx["read_at"]}) donne {g["s"]} Strong / {g["so"]} Solid / {g["p"]} Partial / {g["e"]} Emerging ; '
-                    f'la page du groupe, lue le {esc(d.get("dated", ""))}, note ses couloirs {c["Strong"]} / {c["Solid"]} / {c["Partial"]} / {c["Emerging"]}. Les couloirs ci-dessous sont ceux de la page du groupe ; la carte est la lecture la plus récente.</p></div>')
+            note = (f'<div class="note"><p><b>Deux lectures.</b> La carte de l\'Atlas (v{idx["version"]}, {idx["read_at"]}) donne {g["s"]} Strong, {g["so"]} Solid, {g["p"]} Partial, {g["e"]} Emerging ; '
+                    f'la page du groupe, lue le {esc(d.get("dated", ""))}, note ses couloirs {c["Strong"]}, {c["Solid"]}, {c["Partial"]}, {c["Emerging"]}. Les couloirs ci-dessous sont ceux de la page du groupe ; la carte est la lecture la plus récente.</p></div>')
         else:
-            note = (f'<div class="note warn"><p><b>Two readings.</b> The Atlas card (v{idx["version"]}, {idx["read_at"]}) says {g["s"]} Strong / {g["so"]} Solid / {g["p"]} Partial / {g["e"]} Emerging; '
-                    f'the group page, read {esc(d.get("dated", ""))}, rates its lanes {c["Strong"]} / {c["Solid"]} / {c["Partial"]} / {c["Emerging"]}. The lanes below are the group page\'s; the card is the more recent reading.</p></div>')
-    prev_g = groups[i-1] if i > 0 else None
-    next_g = groups[i+1] if i < len(groups) - 1 else None
-    prev_a = f'<a href="{prev_g["slug"]}.html">&larr; {esc(prev_g[lang])}</a>' if prev_g else "<span></span>"
-    next_a = f'<a href="{next_g["slug"]}.html">{esc(next_g[lang])} &rarr;</a>' if next_g else "<span></span>"
-    nav = f'<div class="group-nav">{prev_a}<a href="../atlas.html">{ui["all_groups"]}</a>{next_a}</div>'
-    title = g[lang]
-    page = head(lang, f'{title} · Atlas · Softanza', g["line_" + lang], rel)
-    page += '\n<body class="page page-atlas-group">\n' + header(lang, "atlas", rel, other_href=f"../../{ui['other_code']}/atlas/{g['slug']}.html", nav_rel="../")
-    thesis = f'<blockquote><p>{esc(d["thesis"])}</p></blockquote>' if d.get("thesis") else ""
+            note = (f'<div class="note"><p><b>Two readings.</b> The Atlas card (v{idx["version"]}, {idx["read_at"]}) says {g["s"]} Strong, {g["so"]} Solid, {g["p"]} Partial, {g["e"]} Emerging; '
+                    f'the group page, read {esc(d.get("dated", ""))}, rates its lanes {c["Strong"]}, {c["Solid"]}, {c["Partial"]}, {c["Emerging"]}. The lanes below are the group page\'s; the card is the more recent reading.</p></div>')
     r = g.get("render")
-    hero = (f'<figure class="area-hero"><img src="{rel}assets/img/areas/{r["file"]}" alt="{esc(r["cap_" + lang])}">'
-            f'<figcaption><b>{esc(r["cap_" + lang])}.</b> {esc(r["by_" + lang])} · <a href="{r["src"]}">{"la source" if lang == "fr" else "the source"}</a></figcaption></figure>') if r else ""
-    thesis = hero + thesis
-    page += f"""
-<main id="main">
-  <section class="page-head"><div class="wrap">
-    <div class="eyebrow">{ui["atlas_kicker"]} · {esc(band[lang])}</div>
-    <h1>{esc(title)}</h1>
-    <p class="thesis">{esc(g["line_" + lang])}</p>
-    <div class="tally">{bar(g["s"], g["so"], g["p"], g["e"], "tallybar")}{counts(g["s"], g["so"], g["p"], g["e"])}</div>
-    <p class="proof">{ui["measured"]}: {esc(g["peers"])} · {ui["folders"]}: {folders}</p>
-  </div></section>
-  <div class="wrap page-body">
+    if r:
+        hero = (f'<figure class="area-hero"><img src="{rel}assets/img/areas/{r["file"]}" alt="{esc(r["cap_" + lang])}" width="1100" height="660">'
+                f'<figcaption><b>{esc(r["cap_" + lang])}.</b> {esc(r["by_" + lang])} · <a href="{r["src"]}">{ui["source"]}</a></figcaption></figure>')
+    else:
+        hero = f'<div class="note"><p><b>{ui["nopic"]}.</b> {esc(g.get("nopic_" + lang, ""))}</p></div>'
+    thesis = f'<blockquote><p>{esc(d["thesis"])}</p></blockquote>' if d.get("thesis") else ""
+    body = f"""<p class="counts-line">{g["s"]} Strong · {g["so"]} Solid · {g["p"]} Partial · {g["e"]} Emerging</p>
+    <p class="proof">{ui["measured"]}{colon} {esc(g["peers"])} · {ui["folders"]}{colon} {folders}</p>
+    {hero}
     {thesis}
     {sg}
     {example}
     <h2>{ui["lanes_h"]}</h2>
-    <p class="proof">{ui["lanes_note"]} {ui["read_on"]} {esc(d.get("dated", ""))}.</p>
+    <p class="proof">{ui["lanes_note"]} {esc(d.get("dated", ""))}.</p>
     {note}
-    <div class="lanes">{lanes}</div>
-    {nav}
-  </div>
-</main>
-"""
-    page += footer(lang, rel, "")
+    <div class="lanes">{lanes}</div>"""
+    page = page_shell(lang, "atlas", g[lang], g["line_" + lang], esc(band[lang]), esc(g[lang]), esc(g["line_" + lang]), body,
+                      rel=rel, page_key="atlas-group", other_href=f"../../{ui['other_code']}/atlas/{g['slug']}.html", body_class="page page-atlas-group")
     out = ROOT / lang / "atlas" / f"{g['slug']}.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(page, encoding="utf-8")
 
-def coverage_html(lang):
-    """the compass's coverage matrix: thirty rows, five platforms, four words"""
-    cov = json.loads((DATA / "coverage.json").read_text(encoding="utf-8"))
-    ui = UI[lang]
-    heads = "".join(f'<th>{esc(p[1])}<small>{esc(p[2] if lang == "en" else p[3])}</small></th>' for p in cov["platforms"])
-    rows = []
-    for g in cov["groups"]:
-        rows.append(f'<tr class="cg"><th colspan="{1 + len(cov["platforms"])}">{esc(g[lang])}</th></tr>')
-        for r in g["rows"]:
-            note = r.get("note_" + lang)
-            cells = "".join(f'<td><span class="cv {v}">{esc(ui["cov_" + v])}</span></td>' for v in r["r"])
-            rows.append(f'<tr><th scope="row">{esc(r[lang])}{("<small>" + esc(note) + "</small>") if note else ""}</th>{cells}</tr>')
-    t = cov["tally"]; pr = cov["present"]
-    tally = "".join(f'<td><b>{esc(pr[k])}</b><small>{t[k][0]} deep · {t[k][1]} solid · {t[k][2]} partial</small></td>' for k, _, _, _ in cov["platforms"])
-    rows.append(f'<tr class="ct"><th scope="row">{esc(ui["cov_present"])}</th>{tally}</tr>')
-    return f'<div class="covwrap"><table class="cov"><thead><tr><th>{esc(ui["cov_row"])}</th>{heads}</tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
-
+RING_WORD = re.compile(r"\bRing\b")
 def build_narrations(lang):
-    ui = UI[lang]; rel = "../"
+    ui = UI[lang]
     items = json.loads((DATA / "narrations.json").read_text(encoding="utf-8"))
-    lis = "".join(f'<li><a href="{GH}base/doc/narrations/{esc(n["file"])}">{esc(re.sub(RING_WORD, "Haro", n["title"]).replace("Ring++", "Haro"))}</a> <small class="mono">{esc(n["file"])}</small></li>' for n in items)
-    body_html = f'<h2 id="list">{len(items)} {"narrations" if lang == "en" else "narrations"}</h2><p class="proof">{esc(ui["narr_note"])}</p><ol class="narr">{lis}</ol>'
-    page = head(lang, f'{ui["narr_title"]} · Softanza', ui["narr_desc"], rel)
-    page += '\n<body class="page page-narrations">\n' + header(lang, "narrations", rel)
-    page += f"""
-<main id="main">
-  <section class="page-head"><div class="wrap">
-    <div class="eyebrow">{esc(ui["narr_kicker"])}</div>
-    <h1>{esc(ui["narr_title"])}</h1>
-    <p class="thesis">{esc(ui["narr_lede"])}</p>
-  </div></section>
-  <div class="wrap page-body">
-{body_html}
-  </div>
-</main>
-"""
-    page += footer(lang, rel, "")
+    lis = "".join(f'<li><a href="{GH}base/doc/narrations/{esc(n["file"])}">{esc(RING_WORD.sub("Haro", n["title"]).replace("Ring++", "Haro"))}</a></li>' for n in items)
+    body = f'<p class="proof">{esc(ui["narr_note"])}</p><ol class="narr">{lis}</ol>'
+    page = page_shell(lang, "narrations", ui["narr_title"], ui["narr_desc"], esc(ui["narr_kicker"]), ui["narr_title_html"], esc(ui["narr_lede"]), body)
     (ROOT / lang / "narrations.html").write_text(page, encoding="utf-8")
-
-def inject_atlas(body_html, lang, idx, groups, rel_atlas, rel_assets="../"):
-    body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
-    body_html = body_html.replace("<!--ATLAS-WALL-->", wall_html(lang, idx, groups, rel_atlas, rel_assets))
-    body_html = body_html.replace("<!--ATLAS-TALLY-->", tally_html(lang, idx))
-    body_html = body_html.replace("<!--ATLAS-COMPACT-->", compact_html(lang, idx, groups, rel_atlas))
-    return body_html
-
-# ----------------------------------------------------------------------------
-def build_page(lang, slug, order, idx, groups):
-    src = CONTENT / lang / f"{slug}.md"
-    meta, body = front_matter(src.read_text(encoding="utf-8"))
-    title = meta.get("title", slug)
-    rel = "../"
-    body_html = inject_atlas(md(body), lang, idx, groups, "atlas/")
-    page = head(lang, f'{title} · Softanza', meta.get("description", ""), rel)
-    page += f'\n<body class="page page-{slug}">\n' + header(lang, slug, rel) + submenu(body_html)
-    page += f"""
-<main id="main">
-  <section class="page-head"><div class="wrap">
-    <div class="eyebrow">{esc(meta.get("kicker", ""))}</div>
-    <h1>{meta.get("title_html", esc(title))}</h1>
-    <p class="thesis">{meta.get("lede", "")}</p>
-  </div></section>
-  <div class="wrap page-body">
-{body_html}
-  </div>
-</main>
-"""
-    page += footer(lang, rel, "")
-    out = ROOT / lang / f"{slug}.html"
-    out.parent.mkdir(exist_ok=True)
-    out.write_text(page, encoding="utf-8")
-    return out
 
 # ----------------------------------------------------------------------------
 # the tour: scenes separated by <<< scene ... >>> lines, notes in ```notes fences
@@ -438,7 +451,7 @@ SCENE_RX = re.compile(r'^<<<\s*scene\s+(.*?)\s*>>>\s*$', re.M)
 ATTR_RX = re.compile(r'(\w+)="([^"]*)"')
 NOTES_RX = re.compile(r'```notes\n(.*?)\n```', re.S)
 
-def build_tour(lang, order, idx, groups):
+def build_tour(lang, idx, groups):
     src = CONTENT / lang / "tour.md"
     meta, body = front_matter(src.read_text(encoding="utf-8"))
     parts = SCENE_RX.split(body)
@@ -447,16 +460,13 @@ def build_tour(lang, order, idx, groups):
         attrs = dict(ATTR_RX.findall(parts[i])); text = parts[i+1]
         m = NOTES_RX.search(text); notes = m.group(1).strip() if m else ""
         text = NOTES_RX.sub("", text)
-        scenes.append((attrs, inject_atlas(md(text), lang, idx, groups, "atlas/"), md(notes) if notes else ""))
-    rel = "../"
-    n = len(scenes)
-    secs = []
+        scenes.append((attrs, inject(md(text), lang, idx, groups), md(notes) if notes else ""))
+    rel = "../"; n = len(scenes); secs = []
     for k, (attrs, body_html, notes_html) in enumerate(scenes, 1):
-        cls = attrs.get("class", "")
         page = attrs.get("page", "")
         page_link = f'<a class="scene-page" href="{page}">{esc(attrs.get("label", page))}</a>' if page else ""
-        notes_block = f'<aside class="notes"><div class="notes-inner"><div class="eyebrow">Notes</div>{notes_html}</div></aside>' if notes_html else ''
-        secs.append(f"""<section class="scene {cls}" id="s{k}" data-index="{k}" aria-label="{k}/{n}">
+        notes_block = f'<aside class="notes"><div class="eyebrow">Notes</div>{notes_html}</aside>' if notes_html else ''
+        secs.append(f"""<section class="scene {attrs.get("class", "")}" id="s{k}" data-index="{k}" aria-label="{k}/{n}">
   <div class="scene-inner">{body_html}</div>
   {notes_block}
   <div class="scene-foot">{page_link}<span class="scene-count mono">{k} / {n}</span></div>
@@ -473,23 +483,21 @@ def build_tour(lang, order, idx, groups):
 <script src="{rel}assets/js/site.js"></script>
 <script src="{rel}assets/js/tour.js"></script>{PAGE_PING}
 </body></html>"""
-    out = ROOT / lang / "tour.html"
-    out.write_text(page_html, encoding="utf-8")
-    return out, [a for a, _, _ in scenes]
+    (ROOT / lang / "tour.html").write_text(page_html, encoding="utf-8")
+    return [a for a, _, _ in scenes]
 
 # ----------------------------------------------------------------------------
 def build_home(idx, groups):
-    """The onboarding scene: one page, both languages inside, JS picks."""
+    """the landing page: both languages inside, the header's language link picks"""
     body = (CONTENT / "home.html").read_text(encoding="utf-8")
     for lang in LANGS:
-        body = body.replace(f"<!--ATLAS-WALL-{lang.upper()}-->", wall_html(lang, idx, groups, f"{lang}/atlas/", ""))
-        body = body.replace(f"<!--ATLAS-TALLY-{lang.upper()}-->", tally_html(lang, idx))
-        body = body.replace(f"<!--ATLAS-COMPACT-{lang.upper()}-->", compact_html(lang, idx, groups, f"{lang}/atlas/"))
+        body = body.replace(f"<!--AREAS-{lang.upper()}-->", tiles_html(lang, idx, groups, f"{lang}/atlas/", "", hl="h3"))
     page = head("fr", "Softanza · La plateforme des makers à l'ère agentique · The Makers Platform of the Agentic Age",
                 "Softanza: declare a language for your world, run it on one engine, let agents speak it safely. Born in Africa. Useful to the World.", "")
     page = page.replace('<html lang="fr" data-lang="fr">', '<html lang="fr" data-lang="fr" class="home">')
-    heads = "".join('<div data-lang="%s">%s</div>' % (l, header(l, "index", "", other_href=f"index.html?lang={o}", nav_rel=f"{l}/").replace('class="site-head"', 'class="site-head home-head"')) for l, o in (("fr", "en"), ("en", "fr")))
-    page += "\n<body class=\"home-body\">\n" + heads + body + f"""
+    heads = "".join(header(l, "index", "", other_href=f"index.html?lang={o}", nav_rel=f"{l}/", data_lang=l) for l, o in (("fr", "en"), ("en", "fr")))
+    feet = "".join(footer(l, "", nav_rel=f"{l}/", scripts=False, data_lang=l) for l in LANGS)
+    page += "\n<body class=\"home-body\">\n" + heads + '\n<main id="main">\n' + body + '\n</main>\n' + feet + f"""
 <script src="assets/js/site.js"></script>{PAGE_PING}
 </body></html>"""
     (ROOT / "index.html").write_text(page, encoding="utf-8")
@@ -510,67 +518,63 @@ def contrast(a, b):
     return (max(la, lb) + 0.05) / (min(la, lb) + 0.05)
 
 def check_contrast():
-    """Measured, not eyeballed: the token pairs the site paints text with,
-    declared in site.css as  /* contrast: fg | bg | minimum | label */ ."""
+    """Measured, not eyeballed: the pairs declared in site.css as /* contrast: fg | bg | min | label */"""
     css = (ROOT / "assets/css/site.css").read_text(encoding="utf-8")
-    pairs = re.findall(r'/\*\s*contrast:\s*([^*]+?)\s*\*/', css)
     ok = True
-    for spec in pairs:
+    for spec in re.findall(r'/\*\s*contrast:\s*([^*]+?)\s*\*/', css):
         fg, bg, need, label = [s.strip() for s in spec.split("|")]
         c = contrast(fg, bg)
-        flag = "ok " if c >= float(need) else "LOW"
         if c < float(need): ok = False
-        print(f"  contrast {flag} {c:5.2f} >= {need}  {label} ({fg} on {bg})")
+        print(f"  contrast {'ok ' if c >= float(need) else 'LOW'} {c:5.2f} >= {need}  {label} ({fg} on {bg})")
     return ok
 
 def main():
     idx, groups = load_atlas()
-    order = {lang: UI[lang]["nav"] for lang in LANGS}
     outs = []
     for lang in LANGS:
-        for slug, _ in order[lang]:
-            if slug in ("tour", "atlas", "reference"): continue
-            outs.append(build_page(lang, slug, order[lang], idx, groups))
-        build_atlas_index(lang, idx, groups, order[lang])
+        for sec, _, pages in SECTIONS:
+            for slug, _ in pages:
+                if slug in GENERATED: continue
+                outs.append(build_page(lang, slug, idx, groups))
+        build_atlas_index(lang, idx, groups)
         build_narrations(lang)
-        for old in ("why", "govern", "makers", "products", "africa"):
-            f = ROOT / lang / f"{old}.html"
-            if f.exists(): f.unlink()
         for i in range(len(groups)):
             build_group_page(lang, idx, groups, i)
-    scenes = {}
-    for lang in LANGS:
-        out, sc = build_tour(lang, order[lang], idx, groups); outs.append(out); scenes[lang] = sc
+        for old in ("why", "govern", "makers", "products"):
+            f = ROOT / lang / f"{old}.html"
+            if f.exists(): f.unlink()
+    scenes = {lang: build_tour(lang, idx, groups) for lang in LANGS}
     build_home(idx, groups)
     nref, ncls, nown = build_reference({"ROOT": ROOT, "LANGS": LANGS, "head": head, "header": header, "footer": footer, "idx": idx, "groups": groups})
-    # every asset the tour needs, for deck-check.html
     assets = []
     for f in sorted((ROOT / "assets/fonts").glob("*.woff2")):
         assets.append({"kind": "font", "path": f"assets/fonts/{f.name}"})
-    for f in sorted((ROOT / "assets/img").glob("*")):
-        if f.suffix.lower() in (".png", ".webp", ".jpg", ".svg"):
-            assets.append({"kind": "image", "path": f"assets/img/{f.name}"})
-    for f in ("fonts.css", "family.css", "site.css"):
+    for sub in ("", "areas/", "diagrams/"):
+        for f in sorted((ROOT / "assets/img" / sub).glob("*")):
+            if f.is_file() and f.suffix.lower() in (".png", ".webp", ".jpg", ".svg"):
+                assets.append({"kind": "image", "path": f"assets/img/{sub}{f.name}"})
+    for f in ("fonts.css", "site.css"):
         assets.append({"kind": "css", "path": f"assets/css/{f}"})
     for f in ("site.js", "tour.js"):
         assets.append({"kind": "script", "path": f"assets/js/{f}"})
     assets.append({"kind": "page", "path": "index.html"})
     for lang in LANGS:
-        for slug, _ in order[lang] + [("tour", ""), ("atlas", ""), ("narrations", ""), ("reference", "")]:
-            assets.append({"kind": "page", "path": f"{lang}/{slug}.html"})
+        for sec, _, pages in SECTIONS:
+            for slug, _ in pages:
+                assets.append({"kind": "page", "path": f"{lang}/{slug}.html"})
+        assets.append({"kind": "page", "path": f"{lang}/tour.html"})
     reader = ROOT / "reader.html"
     if reader.exists():
-        # the reader is built by the library's build_reader.ring; the one line the
-        # offline check listens for is appended to this copy, never to the tool
         r = reader.read_text(encoding="utf-8")
         if "stzsite:'page'" not in r:
             reader.write_text(r.replace("</body>", PAGE_PING + "</body>", 1), encoding="utf-8")
         assets.append({"kind": "page", "path": "reader.html"})
     build_deck_check(assets)
-    nrun = sum(1 for g in groups if g.get("run") and (g["run"].get("code") or g["run"].get("image") or g["run"].get("text")))
     print(f"reference: {nref} pages, {ncls} classes, {nown} own methods")
-    print(f"built {len(outs)} pages + {2*len(groups)} group pages + 2 atlas indexes + index.html + deck-check.html; "
-          f"tour scenes fr={len(scenes['fr'])} en={len(scenes['en'])}; groups with a run example: {nrun}/{len(groups)}")
+    print(f"built {len(outs)} pages + {2*len(groups)} area pages + atlas + narrations + index.html + deck-check.html; tour scenes fr={len(scenes['fr'])} en={len(scenes['en'])}")
+    if LONG:
+        print("reading arc (Rule 123), paragraphs past 800 characters:")
+        for l in LONG: print("  ", l)
     print("contrast:")
     if not check_contrast():
         print("CONTRAST BELOW TARGET"); sys.exit(1)

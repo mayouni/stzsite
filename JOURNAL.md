@@ -260,3 +260,46 @@ state:
 next:
   - me:      keep this rule for every future sentence: a differentiator is "the Softanza way", never "how things are done now"
 ```
+
+---
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-01 19:56
+
+subject:   Release 1, fifth pass -- the site rebuilt under the Zui constitution on the author's second list of 2026-10-01
+
+why:       the author ruled that text was still too small, that a page must not be interrupted by links that jump elsewhere, that the sub-menu belongs to sections dense enough to need several pages, that animation is forbidden, and asked that the Zui constitution be read and applied
+
+did:
+  - read the Zui constitution in full (v3.11, 122 rules, 7 articles, 6 rights, 17 forbidden patterns) and the Harobanda site's stylesheet and page markup, which the author points to as the reading of it; rewrote the stylesheet whole against them, naming the rule each block answers
+  - set one reading size of 19 px for all text, titles and the hero voice being the only larger sizes (Rule 107); monospace labels and code at the optical allowance; nothing below 16 px anywhere
+  - removed every motion: no smooth scrolling, no transition, no hover movement (Rules 1, 17, 112); removed every gradient and shadow, so the backgrounds are the Atlas pages' flat paper and panels (#F1F3F1, #FBFCFB) with no lavender tint (Rule 3)
+  - rebuilt the navigation as a tree: six sections in the main menu, and under it the path of the current section listing every page of it (Rules 108, 115, 116); both bars stay on screen while scrolling, and on a phone the brand row scrolls away while the two menus stay pinned in 100 px; a single-page section (Start) has no path
+  - split the five long pages into section pages (Platform 5, Vision 5, Agentic 7, Learn 7, Offering 3), removed every in-page anchor menu, and removed every link inside the prose that pulled the reader to another page; the links that remain are evidence on GitHub or the doors a hub page exists for (areas, reference, reader)
+  - made the home page's bar hold its own space so the elder's head is never covered (Rule 110), shortened the hero panel to the slogan, the second line and a scroll arrow, and set its opacity at 62 percent, the lowest that keeps white text above 4.5:1 over the brightest part of the photograph at laptop, tablet and projector sizes; on a phone the panel sits below the picture
+  - replaced the six home doors that jumped to another page's anchor with inline rows that say who and what, with no link
+  - removed the graphic logo from the pages: the text wordmark only, with a light copy for the dark theme; the favicon keeps the mark
+  - grouped the 28 areas by the Atlas's six themes on the home page and a new Areas page, every picture titled beneath it with what it shows; corrected the captions and provenance of the fifteen figurative pictures, which still described the replaced renders, and published their script as tools/areas-figurative.ring
+  - turned the Atlas into tables of numbers by theme (Rules 11, 117, 128) and removed the duplicated bars; added a documentation hub with the whole scope as tiles per area, coloured by theme, opening the generated reference; added a site map footer on every page (Wolfram's footer)
+  - capped every diagram at 760 px so its labels land at 17.7 px beside 19 px prose, and drew a narrow phone version of all six in both languages with Harobanda's narrowlib, labels at 17 px on a 340 px screen
+  - made the coverage matrix a grid at every width (Rule 129) with its header row sticky under the menus, and the Atlas table shed its descriptions on a phone instead of scrolling
+  - moved stage labels beneath the names they classify (Rule 113), put the theme choice in the footer as three buttons that say what they do (Rule 106), gave the tour's scene titles h2 so each page has one h1 (Rule 10), and removed the claude.ai addresses that were still in the public Atlas data
+  - added to the Zui page the chaos of vibe-coded applications it answers and the list of the rules this site applies, with the limit that the site has not been run through the constitution's verifier
+  - verified in the app's browser and in 133 renders from tools/shoot.mjs (now capturing whole pages at the real viewport height): no horizontal overflow at 375 px and 1366 px, no code block scrolling sideways, the path current on every page including the 56 area pages and the reference, the tour's 26 areas on one projector screen, deck-check 172 of 172 assets found offline
+
+state:
+  release-1-pass-5:  built; the commit carrying this entry is the one after 9c11a46
+  perception-gate:   OPEN -- the author has not seen this pass
+  zui-rule-99:       NOT APPLIED -- the rule asks that machine-made text be marked as such; whether the site says so is the author's decision
+
+waiting:
+  - STZSITE-ZUI99-01: Zui Rule 99 (visible provenance of machine-made content) applies to a site whose prose was drafted with an AI assistant -> the author
+                      [not routed: a statement about authorship is the author's to make]
+  - STZSITE-VERDICT-03: the author's reading of this pass -> the author [not routed]
+
+next:
+  - me:      run the Zui verifier on the generated pages once its repository can be reached from this one; narrations as pages of the site
+  - author:  read the site; rule on Rule 99
+
+note:      the author's two navigation rulings ("a page has a structure that must be shown in a submenu" and "a submenu is not needed when the reader can grasp the page in a normal scroll") are one rule once read with Zui 115: the second level lists PAGES of a section, never anchors inside a page.
+```
