@@ -169,3 +169,31 @@ next:
   - me:      the generated reference from the library's own explanations, by area
   - author:  look at the wall of outputs and say which pictures mislead; a picture that needs a caption to be understood is a picture to redraw
 ```
+
+---
+
+```yaml
+by:        stzsite · claude-fable-5-1 · 2026-10-01 08:20
+
+subject:   Release 1, second move -- the reference generated from the library's own explanations
+
+why:       the Wolfram learning: the documentation centre is the heart; Softanza's library documents itself, so the site can generate what Wolfram writes by hand
+
+did:
+  - harvested every class with the library's stzSelfDoc inside the library tree: 635 sources, 618 classes, 134,944 entries, 26,949 own methods, 74 seconds, no failure
+  - generated 1,292 pages per language pair: the index by area with a filter, one page per class (own methods with form chips, source file, inherited surfaces as counts linking to the ancestor), 27 alphabetical index pages mapping 19,868 method names to their classes
+  - kept honesty on the page: 77% of own methods carry a description, the rest say so; the harvest date is pinned on the pages; descriptions render the language as Haro while the 54 identifiers that contain the old name stay exactly as the API spells them
+  - fixed what the first render showed: the source path pointed at archive copies (the file map now prefers the live folder), the French navigation wrapped with eleven entries (tightened), one nested f-string the parser refused
+  - pushed 0655760; the reference pages are 17 MB per language
+
+state:
+  release-1:        render per area DONE · reference DONE · narrations as pages and the trajectory chart remain
+  perception-gate:  OPEN
+
+waiting:
+  - STZSITE-VERDICT-01, STZSITE-DEFINITIONS-01, STZSITE-RUNTIME-01: unchanged -> the author
+
+next:
+  - me:      the 134 narrations as pages, grouped by area, with their code cells shown as the library stores them
+  - author:  open fr/reference/stzstring.html and say whether a maker finds what they came for
+```
