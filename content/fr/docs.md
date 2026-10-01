@@ -8,7 +8,7 @@ description: La documentation complète de Softanza : la référence générée 
 
 ## Toute l'étendue, domaine par domaine {#scope}
 
-Chaque domaine de la plateforme a ses classes dans la référence. Choisissez un domaine pour ouvrir sa partie de la référence ; la couleur à gauche de chaque entrée est son thème.
+Chaque domaine de la plateforme a ses classes dans la référence. Choisissez un domaine pour ouvrir son guide : ce qu'on y fait, les fonctions regroupées par ce qu'elles font, chacune avec sa propre explication, et les narrations qui en parlent. La couleur à gauche de chaque entrée est son thème.
 
 <!--DOCS-SCOPE-->
 

@@ -8,7 +8,7 @@ description: The complete Softanza documentation: the reference generated from t
 
 ## The whole scope, area by area {#scope}
 
-Every area of the platform has its classes in the reference. Pick an area to open its part of the reference; the colour on the left of each entry is its theme.
+Every area of the platform has its classes in the reference. Pick an area to open its guide: what you can do there, the functions grouped by what they do, each with its own explanation, and the narrations about it. The colour on the left of each entry is its theme.
 
 <!--DOCS-SCOPE-->
 

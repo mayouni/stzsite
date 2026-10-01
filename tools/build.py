@@ -17,6 +17,7 @@ import json, re, sys, html, datetime, pathlib
 import markdown
 from PIL import Image
 from build_reference import build_reference
+from build_guides import build_guides
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -67,6 +68,7 @@ OWNER = {}                                          # page -> its section
 for sec, _, pages in SECTIONS:
     for slug, _ in pages: OWNER[slug] = sec
 OWNER["atlas-group"] = "platform"                   # an area's own page sits under The areas
+OWNER["guide"] = "learn"                            # a guide page sits under Documentation
 
 UI = {
   "fr": {
@@ -173,7 +175,7 @@ def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_l
     if nav_rel is None: nav_rel = nav_prefix(rel, lang)
     key = page_key or slug
     sec = OWNER.get(key)
-    current_page = "areas" if key == "atlas-group" else key
+    current_page = {"atlas-group": "areas", "guide": "docs"}.get(key, key)
     links = "".join(f'<a href="{nav_rel}{pages[0][0]}.html"{" aria-current=page" if s == sec else ""}>{esc(lab[lang])}</a>'
                     for s, lab, pages in SECTIONS)
     other = ui["other_code"]
@@ -262,6 +264,8 @@ def tiles_html(lang, idx, groups, rel_atlas, rel_assets, themed=True, hl="h2"):
         else:
             pic = f'<div class="nopic">{esc(UI[lang]["nopic"])}</div>'
             what = esc(g.get("nopic_" + lang, ""))
+        h = HERITAGE.get(g["slug"])
+        if h: what = esc(h["principle_" + lang])
         return f'<div class="tile">{pic}<a class="name" href="{href}">{esc(g[lang])}</a><span class="what">{what}</span></div>'
     if not themed:
         return '<div class="tiles">' + "".join(tile(g) for g in groups if g.get("render")) + '</div>'
@@ -286,7 +290,7 @@ def scope_html(lang, idx, groups):
     out = []
     for b in idx["bands"]:
         for g in [g for g in groups if g["band"] == b["id"]]:
-            out.append(f'<a data-t="{b["id"]}" href="reference.html#{g["slug"]}"><span>{esc(g[lang])}<small>{esc(b[lang])}</small></span></a>')
+            out.append(f'<a data-t="{b["id"]}" href="guide/{g["slug"]}.html"><span>{esc(g[lang])}<small>{esc(b[lang])}</small></span></a>')
     return '<div class="scope">' + "".join(out) + '</div>'
 
 def coverage_html(lang):
@@ -385,6 +389,42 @@ def build_atlas_index(lang, idx, groups):
     page = page_shell(lang, "atlas", ui["atlas_title"], ui["atlas_desc"], esc(ui["atlas_kicker"]), ui["atlas_title_html"], esc(ui["atlas_lede"]), body)
     (ROOT / lang / "atlas.html").write_text(page, encoding="utf-8")
 
+# ----------------------------------------------------------------------------
+# the heritage: how each area was rethought from first principles (data/heritage.json)
+HER_UI = {
+  "fr": {"h": "Repensé depuis les premiers principes", "way": "La manière Softanza", "kept": "Gardé des meilleures pratiques",
+         "re": "Repensé", "planned": "prévu", "src": "source",
+         "intro": "Ce que Softanza a gardé de ce qui marche, et ce qu'elle a repensé, tel que la bibliothèque l'a écrit dans ses documents de conception et ses narrations."},
+  "en": {"h": "Rethought from first principles", "way": "The Softanza way", "kept": "Kept from the best practice",
+         "re": "Rethought", "planned": "planned", "src": "source",
+         "intro": "What Softanza kept from what works, and what it rethought, as the library wrote it down in its design documents and narrations."},
+}
+def load_heritage():
+    f = DATA / "heritage.json"
+    return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+HERITAGE = load_heritage()
+
+def src_link(path):
+    path = path.split(" (")[0].split(" §")[0].split(" #")[0].strip()
+    url = "https://github.com/mayouni/stzlib/blob/main/CLAUDE.md" if path == "CLAUDE.md" else "https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/" + path
+    return url
+
+def heritage_html(lang, slug):
+    h = HERITAGE.get(slug)
+    if not h: return ""
+    ui = HER_UI[lang]
+    def items(lst, staged):
+        out = []
+        for it in lst:
+            mark = f' <b>({ui["planned"]})</b>' if staged and it.get("stage") == "planned" else ""
+            src = f' <a class="src" href="{esc(src_link(it["source"]))}">{ui["src"]}</a>' if it.get("source") else ""
+            out.append(f'<li>{esc(it[lang])}{mark}{src}</li>')
+        return "".join(out)
+    return (f'<h2>{ui["h"]}</h2><p>{ui["intro"]}</p>'
+            f'<p class="way"><span>{ui["way"]}</span>{esc(h["principle_" + lang])}</p>'
+            f'<div class="sg"><div><h4>{ui["kept"]}</h4><ul>{items(h.get("kept", []), False)}</ul></div>'
+            f'<div><h4>{ui["re"]}</h4><ul>{items(h.get("rethought", []), True)}</ul></div></div>')
+
 RATING_CLASS = {"Strong": "strong", "Solid": "solid", "Partial": "partial", "Emerging": "emerging"}
 
 def build_group_page(lang, idx, groups, i):
@@ -433,6 +473,7 @@ def build_group_page(lang, idx, groups, i):
     body = f"""<p class="counts-line">{g["s"]} Strong · {g["so"]} Solid · {g["p"]} Partial · {g["e"]} Emerging</p>
     <p class="proof">{ui["measured"]}{colon} {esc(g["peers"])} · {ui["folders"]}{colon} {folders}</p>
     {hero}
+    {heritage_html(lang, g["slug"])}
     {thesis}
     {sg}
     {example}
@@ -556,6 +597,8 @@ def main():
     scenes = {lang: build_tour(lang, idx, groups) for lang in LANGS}
     build_home(idx, groups)
     nref, ncls, nown = build_reference({"ROOT": ROOT, "LANGS": LANGS, "head": head, "header": header, "footer": footer, "idx": idx, "groups": groups})
+    nguide = build_guides({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "idx": idx, "groups": groups, "heritage": HERITAGE})
+    print(f"guides: {nguide} pages")
     assets = []
     for f in sorted((ROOT / "assets/fonts").glob("*.woff2")):
         assets.append({"kind": "font", "path": f"assets/fonts/{f.name}"})

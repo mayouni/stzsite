@@ -484,3 +484,13 @@ body{overflow-wrap:break-word}
 [data-t="systems"]{--tc:#5E6864} [data-t="io"]{--tc:#7030A0} [data-t="cross"]{--tc:#B4462F}
 .fmap+.theme{margin-top:48px}
 @media (max-width:560px){.fgrid{grid-template-columns:1fr 1fr;gap:8px}.ft{padding:10px 12px;min-height:56px}}
+
+.sg li+li{margin-top:10px}
+.sg a.src{white-space:nowrap}
+
+/* a guide page: functions grouped by what they do, each with its own explanation */
+ul.fnlist{list-style:none;padding-left:0;max-width:var(--measure)}
+ul.fnlist li{padding:8px 0;border-bottom:1px solid var(--line)}
+ul.fnlist li a.mono{font-weight:600;margin-right:6px}
+ul.fnlist .in{color:var(--ink-2);white-space:nowrap}
+.page-head .thesis{margin-top:20px;max-width:var(--measure)}
