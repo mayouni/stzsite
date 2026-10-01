@@ -18,7 +18,7 @@
 <header class="site-head"><div class="wrap head-row">
   <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
   <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
-  <nav id="site-nav" class="site-nav"><a href="../why.html">Why</a><a href="../platform.html">Platform</a><a href="../atlas.html" aria-current=page>Atlas</a><a href="../learn.html">Learn</a><a href="../govern.html">Govern</a><a href="../makers.html">Makers</a><a href="../products.html">Products</a><a href="../africa.html">Africa</a><a href="../start.html">Start</a><a href="../tour.html">Tour</a></nav>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Principles</a><a href="../platform.html">Platform</a><a href="../atlas.html" aria-current=page>Atlas</a><a href="../learn.html">Learn</a><a href="../govern.html">Agents</a><a href="../makers.html">Makers</a><a href="../products.html">Products</a><a href="../africa.html">Africa</a><a href="../start.html">Start</a><a href="../tour.html">Tour</a></nav>
   <div class="head-tools">
     <a class="lang" href="../../fr/atlas/gpu.html" lang="fr" hreflang="fr">Français</a>
     <button class="theme-btn" type="button" data-theme-toggle aria-label="Theme" title="Theme: light / dark / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
@@ -34,8 +34,8 @@
   </div></section>
   <div class="wrap page-body">
     <blockquote><p>An in-house wgpu plane that does what neither three.js (render-only) nor taichi (compute-only) does: compute and render on one device, zero-copy. Its distinctive core is a self-tuning foundry; real consumers are accelerated and verified (t-SNE 5-8x, UMAP up to 16x, k-means 6x, neural forward 5x, exact vector search 18x), always with a bit-identical CPU fallback. What it refuses by measured decision — f64 on GPU, multi-GPU, deep 3D — are scope boundaries, not oversights.</p></blockquote>
-    <div class="sg"><div class="good"><h4>What stands out</h4><ul><li>a self-tuning, self-checking calibration foundry: category-of-one</li><li>compute and render zero-copy on one device</li><li>every GPU route measured, verified, and reversible to CPU</li><li>byte-identical WGSL native vs browser</li></ul></div><div class="owed"><h4>What is owed</h4><ul><li>broaden the kernel transpiler beyond elementwise</li><li>whole-pipeline GPU residency</li><li>idle-aware routing (GK1b)</li><li>deeper 3D rendering</li></ul></div></div>
-    <h2>One example, run</h2><p>This laptop&#x27;s GPU answers by name. The compute and render scenes run on this machine; the continuous integration has no GPU, and the Atlas says so.</p><div class="run"><div><div class="lbl">Ring</div><pre>o = StzGpuQ()
+    <div class="sg"><div class="good"><h4>What a maker does with it, and what stands out</h4><ul><li>a self-tuning, self-checking calibration foundry: category-of-one</li><li>compute and render zero-copy on one device</li><li>every GPU route measured, verified, and reversible to CPU</li><li>byte-identical WGSL native vs browser</li></ul></div><div class="owed"><h4>What is owed</h4><ul><li>broaden the kernel transpiler beyond elementwise</li><li>whole-pipeline GPU residency</li><li>idle-aware routing (GK1b)</li><li>deeper 3D rendering</li></ul></div></div>
+    <h2>One example, run</h2><p>This laptop&#x27;s GPU answers by name. The compute and render scenes run on this machine; the continuous integration has no GPU, and the Atlas says so.</p><div class="run"><div><div class="lbl">Softanza</div><pre>o = StzGpuQ()
 ? o.IsAvailable()
 ? o.DeviceName()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 NVIDIA GeForce RTX 3050 6GB Laptop GPU</pre></div></div><p class="ran">run on 2026-10-01 at 01:52</p>

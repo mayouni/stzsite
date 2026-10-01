@@ -1,116 +1,116 @@
 {
-  "slug": "nlp",
-  "title": "NLP & Linguistics — Where It Stands",
-  "thesis": "A deterministic, fully-embedded classic NLP pipeline (UAX#29 tokenization, 25-language Snowball stemming, an averaged-perceptron POS tagger reimplemented in Zig, VADER sentiment, RAKE + TextRank + TF-IDF keywords, WordNet, phonetics) with zero downloads and a one-line first contact. Its stated target is to beat NLTK on simplicity, and against NLTK it largely does. But it sits a full tier below spaCy and Stanza: NER is gazetteer-rule not neural, there is no dependency parsing, and the neural upgrades are wired but no-op without a local model, gated on the still-unstarted ggml/GGUF foundry.",
-  "lanes": [
-    {
-      "lane": "Tokenization and sentence segmentation",
-      "rating": "Strong",
-      "note": "word_break.zig implements the full UAX#29 state machine; WordIter / SentenceIter are the shared seam every lane routes through; CJK and Thai break per-codepoint",
-      "proof": "engine/src/string/word_break.zig"
-    },
-    {
-      "lane": "Stemming",
-      "rating": "Strong",
-      "note": "Vendored Snowball (stem.zig) across 25 languages, engine-backed, with per-language and auto-detect entry points; at reference parity because it is Snowball",
-      "proof": "stem.zig"
-    },
-    {
-      "lane": "Keyword and keyphrase extraction",
-      "rating": "Strong",
-      "note": "RAKE (textutil.zig), TextRank keywords + extractive summary (textrank.zig), TF-IDF (textstats.zig, corpus IDF via stzCorpus), all engine-backed",
-      "proof": "textutil.zig / textrank.zig / textstats.zig"
-    },
-    {
-      "lane": "POS tagging",
-      "rating": "Solid",
-      "note": "pos.zig averaged perceptron, a faithful reimplementation of NLTK's tagger (Penn Treebank), ~75k weights @embedFile'd; English only, below neural taggers",
-      "proof": "pos.zig"
-    },
-    {
-      "lane": "Sentiment (VADER)",
-      "rating": "Solid",
-      "note": "sentiment.zig faithful VADER: 7,500-term lexicon plus five rule heuristics with an explainable breakdown; English only, rule-based",
-      "proof": "sentiment.zig; build-time tally over 1,000 reviews"
-    },
-    {
-      "lane": "Lemmatization",
-      "rating": "Solid",
-      "note": "lemma.zig dictionary lookup for en / fr / ar (fr table 4.5 MB) plus English suffix rules; POS-blind, ambiguous forms resolve by an alphabetical tie-break",
-      "proof": "lemma.zig"
-    },
-    {
-      "lane": "Statistical text (collocations, readability, lang-detect)",
-      "rating": "Solid",
-      "note": "PMI collocations, n-grams + frequency, cosine similarity, Flesch readability, stopwords, lexical diversity, language detection; mostly English-tuned",
-      "proof": "textstats.zig / textutil.zig"
-    },
-    {
-      "lane": "Phonetics",
-      "rating": "Solid",
-      "note": "phonetics.zig: Soundex (4-char) and Metaphone (6-char), pure algorithm with no data file; no Double Metaphone, NYSIIS or Caverphone",
-      "proof": "phonetics.zig"
-    },
-    {
-      "lane": "Named-entity recognition",
-      "rating": "Partial",
-      "note": "ner.zig deterministic gazetteer + POS-chunk + rules into PERSON / ORGANIZATION / LOCATION / ENTITY; four types, English gazetteers, no learned disambiguation",
-      "proof": "ner.zig"
-    },
-    {
-      "lane": "WordNet",
-      "rating": "Partial",
-      "note": "wordnet.zig over a compacted Princeton WordNet 3.1 (8.6 MB, ~140k words): synonyms and hypernyms only; hyponyms, meronyms, antonyms and glosses dropped",
-      "proof": "wordnet.zig"
-    },
-    {
-      "lane": "Parsing (chunk and constituency)",
-      "rating": "Partial",
-      "note": "Ring-side Chunks, NounPhrases and a cascaded constituency parse tree (stzParseTree, Penn bracket notation); no dependency parsing at all",
-      "proof": "stzParseTree"
-    },
-    {
-      "lane": "Neural NLP and embeddings",
-      "rating": "Emerging",
-      "note": "stzText exposes Embedding(), SemanticSimilarityWith(), Classify(labels), SummarizedAbstractively() gated on HasSemanticModel(); no-op without a GGUF model",
-      "proof": "stzText HasSemanticModel()"
-    }
-  ],
-  "standouts": [
-    "Zero downloads: every model and lexicon is @embedFile'd, one-line first contact",
-    "RAKE, TextRank and TF-IDF plus extractive summary in one engine",
-    "NLTK's own averaged-perceptron POS model reimplemented in Zig with no ML runtime",
-    "25-language Snowball stemming at reference parity"
-  ],
-  "gaps": [
-    "The ggml bridge + GGUF foundry that turns every neural delegator real",
-    "Statistical or neural NER above the gazetteer floor",
-    "Restore the full WordNet graph (hyponyms, meronyms, antonyms, glosses)",
-    "Dependency parsing, entirely absent"
-  ],
-  "peers": [
-    "NLTK",
-    "spaCy",
-    "Stanza",
-    "ICU BreakIterator",
-    "gensim",
-    "RAKE-nltk / yake",
-    "TextBlob",
-    "textstat",
-    "langdetect",
-    "jellyfish",
-    "Apache Commons Codec",
-    "sentence-transformers"
-  ],
-  "folders": [
-    "base/linguistic",
-    "base/natural",
-    "base/learning",
-    "engine/src/string",
-    "test/linguistic",
-    "test/natural",
-    "test/learning",
-    "test/string"
-  ],
-  "dated": "Read from the source on 2026-09-16"
+ "slug": "nlp",
+ "title": "NLP & Linguistics — Where It Stands",
+ "thesis": "A deterministic, fully-embedded classic NLP pipeline (UAX#29 tokenization, 25-language Snowball stemming, an averaged-perceptron POS tagger reimplemented in Zig, VADER sentiment, RAKE + TextRank + TF-IDF keywords, WordNet, phonetics) with zero downloads and a one-line first contact. Its stated target is to beat NLTK on simplicity, and against NLTK it largely does. But it sits a full tier below spaCy and Stanza: NER is gazetteer-rule not neural, there is no dependency parsing, and the neural upgrades are wired but no-op without a local model, gated on the still-unstarted ggml/GGUF foundry.",
+ "lanes": [
+  {
+   "lane": "Tokenization and sentence segmentation",
+   "rating": "Strong",
+   "note": "word_break.zig implements the full UAX#29 state machine; WordIter / SentenceIter are the shared seam every lane routes through; CJK and Thai break per-codepoint",
+   "proof": "engine/src/string/word_break.zig"
+  },
+  {
+   "lane": "Stemming",
+   "rating": "Strong",
+   "note": "Vendored Snowball (stem.zig) across 25 languages, engine-backed, with per-language and auto-detect entry points; at reference parity because it is Snowball",
+   "proof": "stem.zig"
+  },
+  {
+   "lane": "Keyword and keyphrase extraction",
+   "rating": "Strong",
+   "note": "RAKE (textutil.zig), TextRank keywords + extractive summary (textrank.zig), TF-IDF (textstats.zig, corpus IDF via stzCorpus), all engine-backed",
+   "proof": "textutil.zig / textrank.zig / textstats.zig"
+  },
+  {
+   "lane": "POS tagging",
+   "rating": "Solid",
+   "note": "pos.zig averaged perceptron, a faithful reimplementation of NLTK's tagger (Penn Treebank), ~75k weights @embedFile'd; English only, below neural taggers",
+   "proof": "pos.zig"
+  },
+  {
+   "lane": "Sentiment (VADER)",
+   "rating": "Solid",
+   "note": "sentiment.zig faithful VADER: 7,500-term lexicon plus five rule heuristics with an explainable breakdown; English only, rule-based",
+   "proof": "sentiment.zig; build-time tally over 1,000 reviews"
+  },
+  {
+   "lane": "Lemmatization",
+   "rating": "Solid",
+   "note": "lemma.zig dictionary lookup for en / fr / ar (fr table 4.5 MB) plus English suffix rules; POS-blind, ambiguous forms resolve by an alphabetical tie-break",
+   "proof": "lemma.zig"
+  },
+  {
+   "lane": "Statistical text (collocations, readability, lang-detect)",
+   "rating": "Solid",
+   "note": "PMI collocations, n-grams + frequency, cosine similarity, Flesch readability, stopwords, lexical diversity, language detection; mostly English-tuned",
+   "proof": "textstats.zig / textutil.zig"
+  },
+  {
+   "lane": "Phonetics",
+   "rating": "Solid",
+   "note": "phonetics.zig: Soundex (4-char) and Metaphone (6-char), pure algorithm with no data file; no Double Metaphone, NYSIIS or Caverphone",
+   "proof": "phonetics.zig"
+  },
+  {
+   "lane": "Named-entity recognition",
+   "rating": "Partial",
+   "note": "ner.zig deterministic gazetteer + POS-chunk + rules into PERSON / ORGANIZATION / LOCATION / ENTITY; four types, English gazetteers, no learned disambiguation",
+   "proof": "ner.zig"
+  },
+  {
+   "lane": "WordNet",
+   "rating": "Partial",
+   "note": "wordnet.zig over a compacted Princeton WordNet 3.1 (8.6 MB, ~140k words): synonyms and hypernyms only; hyponyms, meronyms, antonyms and glosses dropped",
+   "proof": "wordnet.zig"
+  },
+  {
+   "lane": "Parsing (chunk and constituency)",
+   "rating": "Partial",
+   "note": "Haro-side Chunks, NounPhrases and a cascaded constituency parse tree (stzParseTree, Penn bracket notation); no dependency parsing at all",
+   "proof": "stzParseTree"
+  },
+  {
+   "lane": "Neural NLP and embeddings",
+   "rating": "Emerging",
+   "note": "stzText exposes Embedding(), SemanticSimilarityWith(), Classify(labels), SummarizedAbstractively() gated on HasSemanticModel(); no-op without a GGUF model",
+   "proof": "stzText HasSemanticModel()"
+  }
+ ],
+ "standouts": [
+  "Zero downloads: every model and lexicon is @embedFile'd, one-line first contact",
+  "RAKE, TextRank and TF-IDF plus extractive summary in one engine",
+  "NLTK's own averaged-perceptron POS model reimplemented in Zig with no ML runtime",
+  "25-language Snowball stemming at reference parity"
+ ],
+ "gaps": [
+  "The ggml bridge + GGUF foundry that turns every neural delegator real",
+  "Statistical or neural NER above the gazetteer floor",
+  "Restore the full WordNet graph (hyponyms, meronyms, antonyms, glosses)",
+  "Dependency parsing, entirely absent"
+ ],
+ "peers": [
+  "NLTK",
+  "spaCy",
+  "Stanza",
+  "ICU BreakIterator",
+  "gensim",
+  "RAKE-nltk / yake",
+  "TextBlob",
+  "textstat",
+  "langdetect",
+  "jellyfish",
+  "Apache Commons Codec",
+  "sentence-transformers"
+ ],
+ "folders": [
+  "base/linguistic",
+  "base/natural",
+  "base/learning",
+  "engine/src/string",
+  "test/linguistic",
+  "test/natural",
+  "test/learning",
+  "test/string"
+ ],
+ "dated": "Read from the source on 2026-09-16"
 }

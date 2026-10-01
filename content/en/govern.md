@@ -1,28 +1,22 @@
 ---
-title: Agents that cannot hurt you
-title_html: Agents that cannot <i>hurt you</i>
-kicker: Govern
-lede: The industry builds safe agents. Softanza builds a safe world and lets an ordinary agent loose inside it. A language model never holds the capability to act; work rehearses in a world that holds no reference to reality; only a governed actor commits.
-description: The Softanza governance doctrine: the agent proposes inside a workbench with no link to reality, three gates judge the crossing, only a governed actor commits. The measured numbers of the threat model.
+title: The agentic paradigm
+title_html: The agentic <i>paradigm</i>
+kicker: Agents
+lede: Humans and agents meet in declared languages, small, closed, judged. A grammar constrains what an agent can emit; a court judges what it proposes; a safe world lets it rehearse without touching reality; only a governed actor commits.
+description: Softanza's agentic paradigm, for humans and for agents: the constrained grammar, the workbench, the court, the governed commit, and how an agent reads the platform.
 ---
 
-## The doctrine, in three sentences
+## The agent, sixth reader of every Softanza language
 
-1. **A language model never holds the capability to act.** It can read, propose, draft a plan. It cannot commit, because the "effectful" capability is never granted to it, so a model that is fooled still cannot act.
-2. **Work rehearses in a workbench that holds no reference to reality.** Every file write, every deletion, every memory update goes to a virtual twin. The agent's only export is an update plan.
-3. **Only a governed actor commits.** The plan faces the court: scope, capabilities, governance. A human reviewer can refuse a single step, and the refusal is audited.
-
-## The crossing, and its three gates
+A Softanza language has six readers: the programmer, the analyst, the designer, the decision maker, the educator, and the agent. The agent is the one the language was designed for last, and the one that speaks it most. Three things make that meeting safe.
 
 <div class="cards">
-<div class="card"><h3>1 · The registration gate</h3><p>An actor that does not say what it covers, nor whether its acts are reversible, compensable or irreversible, is refused before its first tick. The court's sentence, run tonight: <code>[pia-coverage @ coverage] an agent must say WHAT IT COVERS</code>.</p></div>
-<div class="card"><h3>2 · The rehearsal</h3><p>The agent runs. Its actions go to the workbench. The real file still exists; the workbench holds the proposed version. At the end of the tick the agent has produced one thing: a plan, readable, operation by operation.</p></div>
-<div class="card"><h3>3 · The commit gate</h3><p>Who commits? A governed actor, never the model. <code>MayCommit()</code> refuses anyone who lacks the capability the first operation requires. A human can reject a step: <code>RejectOperation(2, "reviewer: not this one")</code>.</p></div>
+<div class="card"><h3>1 · The grammar constrains</h3><p>Every declared language emits its constraint grammar, and the engine's decoder makes a violating token impossible to emit. The agent can only utter valid sentences of the language. Malformedness dies by construction; falsehood still faces the court.</p></div>
+<div class="card"><h3>2 · The workbench rehearses</h3><p>Every file write, every deletion, every memory update goes to a virtual twin that holds no reference to reality. The real file still exists; the workbench holds the proposed version. The agent's only export is a plan, readable operation by operation.</p></div>
+<div class="card"><h3>3 · The court judges, the actor commits</h3><p>An actor that does not say what it covers, nor whether its acts are reversible, is refused before its first tick. The plan passes scope, capabilities, governance. A language model never holds the "effectful" capability: it commits nothing, even when fooled. A human can reject a single step, and the refusal is audited.</p></div>
 </div>
 
 ## The plan an agent proposed and a human refused
-
-Tonight, in the decision-makers' demo, a student wrote an agent that "tidies" the course: it deletes every file in it. Here is what it would have done, and what happened.
 
 <div class="run"><div><div class="lbl">What the agent proposed</div><pre>What it WOULD have done (610 operations):
   Update plan (610 of 610 operations to commit):
@@ -37,20 +31,39 @@ PROVED  the court admitted the declaration
 PROVED  the agent rehearsed every deletion
 PROVED  the course folder still holds all 610 files
 PROVED  an AI cannot commit what the agent proposed</pre></div></div>
-<p class="ran">run on 2026-09-30 at 23:10 by <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">demo.ring</a>, scene 6; the same mechanism with a human reviewer rejecting one step is the guard <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/system/virtual_system_twin_narrated.ring">virtual_system_twin_narrated.ring</a>, scene 5</p>
+<p class="ran">run on 2026-09-30 at 23:10 by <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">the decision-makers' demo</a>, scene 6; the same mechanism with a human reviewer rejecting one step is the guard <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/system/virtual_system_twin_narrated.ring">virtual_system_twin_narrated</a>, scene 5</p>
 
-## The threat model: thirty-eight guarantees, each with its guard
+## For agents: how to read Softanza
 
-The library's threat model states thirty-eight guaranteed properties, G01 to G38, and names for each the guard that proves it by running. It also states its limits: one attack shape, on loopback, on one machine; detection runs on demand, not continuously.
+This section also addresses an agent reading this site. Softanza is designed to be read by a machine as much as by a human.
+
+<div class="cards">
+<div class="card"><h3>Ask the library</h3><p>The library documents itself. An object answers <code>Ask()</code> with its own methods, explains each with <code>ExplainMethod()</code>, and says how with <code>HowTo()</code>. An agent does not need to guess a name.</p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([ 1, 2, 2 ]).Ask("how do I remove duplicates")</pre></div><div class="out"><div class="lbl">Output</div><pre>Unique
+1.10
+remove duplicates / unique (engine-backed)
+UniqueCS
+...
+RemoveDuplicates</pre></div></div><p class="ran">run on 2026-10-01 at 01:40</p></div>
+<div class="card"><h3>Declare yourself in an agent file</h3><p>An agent is a file, judged at load: what it covers, the reversibility class of its acts, the execution posture of every function it calls. The court refuses in fixed sentences, the same at both doors.</p><pre>A bank analyst declares a stock-watcher agent,
+first without saying what it covers:
+-> refused / [pia-coverage @ coverage]
+   an agent must say WHAT IT COVERS.
+...then with its coverage stated:
+-> The court judged your declaration,
+   and every promise of the exercise was kept.</pre><p class="ran">run on 2026-09-30 at 23:10, demo, scene 7</p></div>
+<div class="card"><h3>Speak the grammar, not general code</h3><p>A declared language emits its constraint grammar; a model whose sampler is constrained to it can only emit valid sentences. That is the platform's contract C9: structure kills malformedness, never falsehood.</p><p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md">SOFTANZA_INTELLIGENCE_ARCHITECTURE.md</a></p></div>
+</div>
+
+## The security numbers
 
 <div class="figures">
 <div class="figure"><b>38</b><span>guarantees, each tied to a guard</span><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/security/SOFTANZA_THREAT_MODEL.md">SOFTANZA_THREAT_MODEL.md</a></div>
-<div class="figure"><b>351–357 ms</b><span>to detect credential stuffing over real HTTP, three runs</span><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/security/containment_drill_narrated.ring">containment_drill_narrated.ring</a></div>
+<div class="figure"><b>351–357 ms</b><span>to detect credential stuffing over real HTTP, three runs</span><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/security/containment_drill_narrated.ring">containment_drill_narrated</a></div>
 <div class="figure"><b>53–57 ms</b><span>to contain it: account locked, sessions ended, verified from outside</span></div>
 <div class="figure"><b>27 / 27</b><span>assertions of the containment drill, tonight</span></div>
 </div>
 
-The drill was replayed on this machine on 2026-10-01 at 00:41. A language model plays the investigator, proposes the right plan, and commits nothing; the on-call human commits the same plan, and containment holds.
+The drill was replayed on this machine on 2026-10-01 at 00:41. A language model plays the investigator, proposes the right plan, and commits nothing; the on-call human commits the same plan, and containment holds. Limits, stated by the threat model itself: one attack shape, on loopback, on one machine; detection runs on demand, not continuously.
 
 <pre>WHEN  five bad passwords are sent over real HTTP
 THEN  credential stuffing was detected                        [PASS]
@@ -66,6 +79,6 @@ TOTAL: 27 assertions, 27 pass, 0 fail      real 0m7.079s</pre>
 
 ## What governance declares
 
-Six declarable contracts per actor: an action's risk tier, the authority type, the commitment state, the decommission contract, the decision lineage, and the reversibility class. A low-tier action that cannot be undone deserves more ceremony than a high-tier action that can: risk and irreversibility are two axes, not one.
+Six declarable contracts per actor: an action's risk tier, the authority type, the commitment state, the decommission contract, the decision lineage, and the reversibility class. A low-tier action that cannot be undone deserves more ceremony than a high-tier action that can: risk and irreversibility are two axes.
 
-<p class="proof">The full narration: <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md">stz-agents-that-cannot-hurt-you-narration.md</a> · the workbench guard: <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/agentic/safeworld_narrated.ring">safeworld_narrated.ring</a> (76 assertions) · the governed crossing: <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/system/governance_crossing_narrated.ring">governance_crossing_narrated.ring</a> · the "Governance by construction" page: <a href="https://claude.ai/artifact/JgUS6fdkp3EUw4sEJVhpLb">claude.ai/artifact/JgUS6fdkp3EUw4sEJVhpLb</a>.</p>
+<p class="proof">The full narration: <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md">stz-agents-that-cannot-hurt-you-narration.md</a> · the workbench guard: <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/agentic/safeworld_narrated.ring">safeworld_narrated</a> (76 assertions) · the governed crossing: <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/system/governance_crossing_narrated.ring">governance_crossing_narrated</a> · the "Governance by construction" page: <a href="https://claude.ai/artifact/JgUS6fdkp3EUw4sEJVhpLb">claude.ai/artifact/JgUS6fdkp3EUw4sEJVhpLb</a> · the areas in the Atlas: <a href="atlas/governance.html">governance doctrine</a>, <a href="atlas/agents.html">agents and conversation</a>, <a href="atlas/security.html">security</a>.</p>

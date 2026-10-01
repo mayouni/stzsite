@@ -1,115 +1,115 @@
 {
-  "slug": "i18n",
-  "title": "Internationalization — Where It Stands",
-  "thesis": "A deliberate bet against ICU: rather than vendor tens of MB of C++ and CLDR data, Softanza ships broad hand-tables (261 countries, 323 languages, 143 scripts, Qt-sourced), a solid engine-backed datetime core with rich Ring-side formatting, and a distinctive business/holiday calendar. That same choice leaves the CLDR crown jewels absent: no locale collation, no ICU MessageFormat or plural rules, no translation catalog, no locale-aware number/currency formatting, no timezone database (ToUTC is a no-op), and no non-Gregorian calendars.",
-  "lanes": [
-    {
-      "lane": "Locale identity and reference data",
-      "rating": "Solid",
-      "note": "261 countries, 323 languages, 143 scripts, 495 locale abbreviations, mirrored into engine SQLite (ref_data.zig / i18n.db); Qt-sourced, native names romanized",
-      "proof": "ref_data.zig / i18n.db"
-    },
-    {
-      "lane": "Date / time types and arithmetic",
-      "rating": "Solid",
-      "note": "stzDate/stzTime/stzDateTime engine-backed (datetime.zig): components, leap, add-days, diff, compare, ISO/Unix round-trips; month/year add is Ring-side; naive",
-      "proof": "datetime.zig"
-    },
-    {
-      "lane": "Date / time formatting and parsing",
-      "rating": "Solid",
-      "note": "~40 named formats over Qt/Unicode tokens, multi-format and natural-language epoch parsing; all Ring-side, the engine stz_date_format always emits ISO",
-      "proof": ""
-    },
-    {
-      "lane": "Business and holiday calendar",
-      "rating": "Solid",
-      "note": "stzCalendar: quarters, weeks, working-day arithmetic, holidays, capacity and sprint planning, heat-map; plus engine-backed stzTimeLine; pure Ring, Gregorian",
-      "proof": "stzCalendar; test/timeline (54 assertions)"
-    },
-    {
-      "lane": "Currency",
-      "rating": "Partial",
-      "note": "Engine-backed (the L1 cutover) stz_locale_currency_iso / _symbol over 143 rows with a property test; symbol / ISO lookup only, no amount formatting",
-      "proof": "stz_locale_currency_iso / _symbol property test"
-    },
-    {
-      "lane": "Number formatting",
-      "rating": "Partial",
-      "note": "StzFormatNumber groups and rounds; Ring holds per-locale separator hints (~30 languages) but the engine formatter hardcodes US separators and never reads them",
-      "proof": "StzFormatNumber"
-    },
-    {
-      "lane": "Native names and per-locale text",
-      "rating": "Partial",
-      "note": "Native day and month names for 11 languages via NamesOfDaysIn / NamesOfMonthsIn; all else falls back to English; engine day_name takes no locale (L3 work)",
-      "proof": "NamesOfDaysIn / NamesOfMonthsIn"
-    },
-    {
-      "lane": "Calendar systems",
-      "rating": "Partial",
-      "note": "Proleptic Gregorian only, hardcoded in datetime.zig (gregorianToJulian); no Hijri, Persian, Hebrew, Buddhist or Japanese calendars",
-      "proof": "datetime.zig gregorianToJulian"
-    },
-    {
-      "lane": "Timezones",
-      "rating": "Emerging",
-      "note": "None: datetimes are naive wall-clock; ToUTC() and ToLocalTime() are no-ops that copy the components unchanged",
-      "proof": ""
-    },
-    {
-      "lane": "Collation (locale-aware sorting)",
-      "rating": "Emerging",
-      "note": "None: the only collate in the tree is SQLite COLLATE NOCASE (ASCII case-insensitive), not linguistic collation",
-      "proof": ""
-    },
-    {
-      "lane": "Message formatting and pluralization",
-      "rating": "Emerging",
-      "note": "None: the only plural handling is an English singular/plural pair in stzDuration; no ICU MessageFormat, no CLDR plural rules, no gender/select",
-      "proof": ""
-    },
-    {
-      "lane": "Translation / message catalog",
-      "rating": "Emerging",
-      "note": "None: no gettext, no .po / .mo, no message catalog anywhere in the group",
-      "proof": ""
-    }
-  ],
-  "standouts": [
-    "Reference tables whose row coverage rivals CLDR (261 countries, 323 languages, 143 scripts)",
-    "A business/holiday calendar with sprint and capacity planning that most i18n libraries lack",
-    "An engine-backed datetime core with validated construction",
-    "Natural-language epoch parsing (FromNaturalEpoch)"
-  ],
-  "gaps": [
-    "A timezone database (IANA/Olson zones, offset math, DST)",
-    "Locale-aware number and currency formatting over the hint tables that already ship",
-    "Fix the datetime / date / calendar / currency C22 test-runner collision (~450 assertions)",
-    "Locale-aware collation, CLDR plural rules and a translation catalog"
-  ],
-  "peers": [
-    "ICU / CLDR",
-    "Babel",
-    "Luxon",
-    "Temporal",
-    "strftime",
-    "workalendar",
-    "bizdays",
-    "pandas bdate_range",
-    "Intl.NumberFormat",
-    "Intl.Collator",
-    "moment-timezone",
-    "i18next / Fluent",
-    "gettext"
-  ],
-  "folders": [
-    "base/i18n",
-    "base/datetime",
-    "base/data",
-    "engine locale.zig",
-    "engine datetime.zig",
-    "engine ref_data.zig + i18n.db"
-  ],
-  "dated": "Read from the source on 2026-09-16"
+ "slug": "i18n",
+ "title": "Internationalization — Where It Stands",
+ "thesis": "A deliberate bet against ICU: rather than vendor tens of MB of C++ and CLDR data, Softanza ships broad hand-tables (261 countries, 323 languages, 143 scripts, Qt-sourced), a solid engine-backed datetime core with rich Haro-side formatting, and a distinctive business/holiday calendar. That same choice leaves the CLDR crown jewels absent: no locale collation, no ICU MessageFormat or plural rules, no translation catalog, no locale-aware number/currency formatting, no timezone database (ToUTC is a no-op), and no non-Gregorian calendars.",
+ "lanes": [
+  {
+   "lane": "Locale identity and reference data",
+   "rating": "Solid",
+   "note": "261 countries, 323 languages, 143 scripts, 495 locale abbreviations, mirrored into engine SQLite (ref_data.zig / i18n.db); Qt-sourced, native names romanized",
+   "proof": "ref_data.zig / i18n.db"
+  },
+  {
+   "lane": "Date / time types and arithmetic",
+   "rating": "Solid",
+   "note": "stzDate/stzTime/stzDateTime engine-backed (datetime.zig): components, leap, add-days, diff, compare, ISO/Unix round-trips; month/year add is Haro-side; naive",
+   "proof": "datetime.zig"
+  },
+  {
+   "lane": "Date / time formatting and parsing",
+   "rating": "Solid",
+   "note": "~40 named formats over Qt/Unicode tokens, multi-format and natural-language epoch parsing; all Haro-side, the engine stz_date_format always emits ISO",
+   "proof": ""
+  },
+  {
+   "lane": "Business and holiday calendar",
+   "rating": "Solid",
+   "note": "stzCalendar: quarters, weeks, working-day arithmetic, holidays, capacity and sprint planning, heat-map; plus engine-backed stzTimeLine; pure Haro, Gregorian",
+   "proof": "stzCalendar; test/timeline (54 assertions)"
+  },
+  {
+   "lane": "Currency",
+   "rating": "Partial",
+   "note": "Engine-backed (the L1 cutover) stz_locale_currency_iso / _symbol over 143 rows with a property test; symbol / ISO lookup only, no amount formatting",
+   "proof": "stz_locale_currency_iso / _symbol property test"
+  },
+  {
+   "lane": "Number formatting",
+   "rating": "Partial",
+   "note": "StzFormatNumber groups and rounds; Haro holds per-locale separator hints (~30 languages) but the engine formatter hardcodes US separators and never reads them",
+   "proof": "StzFormatNumber"
+  },
+  {
+   "lane": "Native names and per-locale text",
+   "rating": "Partial",
+   "note": "Native day and month names for 11 languages via NamesOfDaysIn / NamesOfMonthsIn; all else falls back to English; engine day_name takes no locale (L3 work)",
+   "proof": "NamesOfDaysIn / NamesOfMonthsIn"
+  },
+  {
+   "lane": "Calendar systems",
+   "rating": "Partial",
+   "note": "Proleptic Gregorian only, hardcoded in datetime.zig (gregorianToJulian); no Hijri, Persian, Hebrew, Buddhist or Japanese calendars",
+   "proof": "datetime.zig gregorianToJulian"
+  },
+  {
+   "lane": "Timezones",
+   "rating": "Emerging",
+   "note": "None: datetimes are naive wall-clock; ToUTC() and ToLocalTime() are no-ops that copy the components unchanged",
+   "proof": ""
+  },
+  {
+   "lane": "Collation (locale-aware sorting)",
+   "rating": "Emerging",
+   "note": "None: the only collate in the tree is SQLite COLLATE NOCASE (ASCII case-insensitive), not linguistic collation",
+   "proof": ""
+  },
+  {
+   "lane": "Message formatting and pluralization",
+   "rating": "Emerging",
+   "note": "None: the only plural handling is an English singular/plural pair in stzDuration; no ICU MessageFormat, no CLDR plural rules, no gender/select",
+   "proof": ""
+  },
+  {
+   "lane": "Translation / message catalog",
+   "rating": "Emerging",
+   "note": "None: no gettext, no .po / .mo, no message catalog anywhere in the group",
+   "proof": ""
+  }
+ ],
+ "standouts": [
+  "Reference tables whose row coverage rivals CLDR (261 countries, 323 languages, 143 scripts)",
+  "A business/holiday calendar with sprint and capacity planning that most i18n libraries lack",
+  "An engine-backed datetime core with validated construction",
+  "Natural-language epoch parsing (FromNaturalEpoch)"
+ ],
+ "gaps": [
+  "A timezone database (IANA/Olson zones, offset math, DST)",
+  "Locale-aware number and currency formatting over the hint tables that already ship",
+  "Fix the datetime / date / calendar / currency C22 test-runner collision (~450 assertions)",
+  "Locale-aware collation, CLDR plural rules and a translation catalog"
+ ],
+ "peers": [
+  "ICU / CLDR",
+  "Babel",
+  "Luxon",
+  "Temporal",
+  "strftime",
+  "workalendar",
+  "bizdays",
+  "pandas bdate_range",
+  "Intl.NumberFormat",
+  "Intl.Collator",
+  "moment-timezone",
+  "i18next / Fluent",
+  "gettext"
+ ],
+ "folders": [
+  "base/i18n",
+  "base/datetime",
+  "base/data",
+  "engine locale.zig",
+  "engine datetime.zig",
+  "engine ref_data.zig + i18n.db"
+ ],
+ "dated": "Read from the source on 2026-09-16"
 }

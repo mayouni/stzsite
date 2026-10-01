@@ -18,7 +18,7 @@
 <header class="site-head"><div class="wrap head-row">
   <a class="brand" href="../index.html" aria-label="Softanza"><img src="../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
   <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
-  <nav id="site-nav" class="site-nav"><a href="why.html">Why</a><a href="platform.html">Platform</a><a href="atlas.html">Atlas</a><a href="learn.html">Learn</a><a href="govern.html">Govern</a><a href="makers.html" aria-current=page>Makers</a><a href="products.html">Products</a><a href="africa.html">Africa</a><a href="start.html">Start</a><a href="tour.html">Tour</a></nav>
+  <nav id="site-nav" class="site-nav"><a href="why.html">Principles</a><a href="platform.html">Platform</a><a href="atlas.html">Atlas</a><a href="learn.html">Learn</a><a href="govern.html">Agents</a><a href="makers.html" aria-current=page>Makers</a><a href="products.html">Products</a><a href="africa.html">Africa</a><a href="start.html">Start</a><a href="tour.html">Tour</a></nav>
   <div class="head-tools">
     <a class="lang" href="../fr/makers.html" lang="fr" hreflang="fr">Français</a>
     <button class="theme-btn" type="button" data-theme-toggle aria-label="Theme" title="Theme: light / dark / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
@@ -31,13 +31,15 @@
     <p class="thesis">One story, six ways in. For each reader: what they declare, what they get, where they start, and one example run tonight.</p>
   </div></section>
   <div class="wrap page-body">
+<h2 id="what-is-a-maker">What is a maker?</h2>
+<p>A maker turns what they know about a world into something that runs, without waiting for the software industry. They are not defined by programming skill but by ownership: the artefact is theirs, in plain text, and it does not expire. A teacher, an analyst, a merchant, a student, a civil servant, and an agent that proposes under all of those worlds. Softanza tells one story; each door below opens it at the place that concerns you.</p>
 <div class="door-section" id="programmer">
 <div class="kicker">Door 1</div>
 <h2 id="a-programmer-alone-or-in-a-small-team">A programmer, alone or in a small team</h2>
 <p><strong>What you declare:</strong> your intent, in a library that reads like a sentence: find first, then apply. <strong>What you get:</strong> a Zig engine under every call, correct in Unicode, and a narration that runs for every idea. <strong>Where to start:</strong> <a href="start.html">the Start page</a>, then chapter 1 of the course.</p>
 <div class="run">
 <div>
-<div class="lbl">Ring</div>
+<div class="lbl">Softanza</div>
 <pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
 ? o1.ContainsDuplicates()
 ? o1.NumberOfOccurrence("tea")
@@ -52,7 +54,7 @@
 [ "tea", "rice", "fish" ]</pre>
 </div>
 </div>
-<p class="ran">run on 2026-09-30 at 23:11, Ring 1.27, Softanza at commit 0e72e2e2c</p>
+<p class="ran">run on 2026-09-30 at 23:11, Softanza at commit 0e72e2e2c</p>
 </div>
 <div class="door-section" id="analyst">
 <div class="kicker">Door 2</div>
@@ -60,7 +62,7 @@
 <p><strong>What you declare:</strong> your organisation's entities, rules and flows, in a plain-text knowledge file. <strong>What you get:</strong> a queryable world, where the dependency graph and the symbol table are the same graph, plus tables and statistics computed by the engine. <strong>Where to start:</strong> chapter 12 of the course, "Teach a world", in <a href="learn.html">the reader</a>.</p>
 <div class="run">
 <div>
-<div class="lbl">Ring</div>
+<div class="lbl">Softanza</div>
 <pre>o = new stzTable([ [ :region, :population ],
     [ "Agadez", 487620 ], [ "Maradi", 3402094 ], [ "Zinder", 3539764 ] ])
 o.Show()
@@ -85,7 +87,7 @@ o.Show()
 <div class="kicker">Door 3</div>
 <h2 id="a-ui-ux-or-cx-designer">A UI, UX or CX designer</h2>
 <p><strong>What you declare:</strong> a picture, a map, a screen, as a program. <strong>What you get:</strong> a render produced by the engine, reproducible to the byte, and an interface language of twenty-four closed verbs in the Zin family. <strong>Where to start:</strong> chapter 11 of the course, "Draw the answer", in <a href="learn.html">the reader</a>.</p>
-<figure><img src="../assets/img/niger-density.png" alt="Population density map of Niger by region: Agadez nearly empty in the north, the southern regions dense, Niamey off the scale." width="1500" height="1240"><figcaption>"Where Niger lives", rendered tonight in 5.9 seconds by <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphics/niger_density.ring">niger_density.ring</a>: geoBoundaries borders (ODbL), the 2012 census, areas measured by the engine's geodesic routine on the WGS84 ellipsoid.</figcaption></figure>
+<figure><img src="../assets/img/niger-density.png" alt="Population density map of Niger by region: Agadez nearly empty in the north, the southern regions dense, Niamey off the scale." width="1500" height="1240"><figcaption>"Where Niger lives", rendered tonight in 5.9 seconds by <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphics/niger_density.ring">niger_density</a>: geoBoundaries borders (ODbL), the 2012 census, areas measured by the engine's geodesic routine on the WGS84 ellipsoid.</figcaption></figure>
 </div>
 <div class="door-section" id="decision-maker">
 <div class="kicker">Door 4</div>
@@ -153,12 +155,12 @@ PROVED  the child's Hausa program passed, checked by running it</pre>
 PROVED  the course folder still holds all 610 files</pre>
 </div>
 </div>
-<p class="ran">run on 2026-09-30 at 23:10 by <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">demo.ring</a>, scene 6</p>
+<p class="ran">run on 2026-09-30 at 23:10 by <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">demo</a>, scene 6</p>
 </div>
   </div>
 </main>
 <footer class="site-foot"><div class="wrap">
-  <div class="pagers"><a class="pager prev" href="govern.html"><small>Previous page</small><b>Govern</b></a><a class="pager next" href="products.html"><small>Next page</small><b>Products</b></a></div>
+  <div class="pagers"><a class="pager prev" href="govern.html"><small>Previous page</small><b>Agents</b></a><a class="pager next" href="products.html"><small>Next page</small><b>Products</b></a></div>
   <div class="foot-grid">
     <div><img src="../assets/img/logo.png" alt="Softanza" class="foot-logo" width="200" height="137"><p class="foot-slogan">The Makers Platform of the Agentic Age<br>Born in Africa. Useful to the World!</p></div>
     <div class="foot"><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.</p>

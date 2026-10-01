@@ -18,7 +18,7 @@
 <header class="site-head"><div class="wrap head-row">
   <a class="brand" href="../../index.html" aria-label="Softanza"><img src="../../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
   <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
-  <nav id="site-nav" class="site-nav"><a href="../why.html">Why</a><a href="../platform.html">Platform</a><a href="../atlas.html" aria-current=page>Atlas</a><a href="../learn.html">Learn</a><a href="../govern.html">Govern</a><a href="../makers.html">Makers</a><a href="../products.html">Products</a><a href="../africa.html">Africa</a><a href="../start.html">Start</a><a href="../tour.html">Tour</a></nav>
+  <nav id="site-nav" class="site-nav"><a href="../why.html">Principles</a><a href="../platform.html">Platform</a><a href="../atlas.html" aria-current=page>Atlas</a><a href="../learn.html">Learn</a><a href="../govern.html">Agents</a><a href="../makers.html">Makers</a><a href="../products.html">Products</a><a href="../africa.html">Africa</a><a href="../start.html">Start</a><a href="../tour.html">Tour</a></nav>
   <div class="head-tools">
     <a class="lang" href="../../fr/atlas/neural.html" lang="fr" hreflang="fr">Français</a>
     <button class="theme-btn" type="button" data-theme-toggle aria-label="Theme" title="Theme: light / dark / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
@@ -34,8 +34,8 @@
   </div></section>
   <div class="wrap page-body">
     <blockquote><p>The consumption side is complete and genuinely wired to a patched, vendored ggml: real GGUF loading, id-exact tokenizers, a numpy-parity BERT encoder, a multi-architecture causal LLM decoder with grammar-constrained decoding, and a measurement-gated GPU path. What is not there is the production side. A llama.cpp-class runner, wired into a governed library — not yet a training or model-production platform.</p></blockquote>
-    <div class="sg"><div class="good"><h4>What stands out</h4><ul><li>numpy-parity BERT encoder (1.64e-7)</li><li>grammar-constrained decoding wired to the structured-output contract</li><li>id-exact WordPiece and BPE tokenizers</li><li>measurement-gated wgpu GPU path (2-5x)</li></ul></div><div class="owed"><h4>What is owed</h4><ul><li>wire ggml&#x27;s backward pass -- the training foundry</li><li>a quantization (encode) path</li><li>ship or fetch a real semantic model for CI</li><li>ONNX import</li></ul></div></div>
-    <h2>One example, run</h2><p>The inference engine is present; no model file was on this laptop tonight, so nothing was inferred. The guards in test/neural prove inference against numpy.</p><div class="run"><div><div class="lbl">Ring</div><pre>o = StzNeuralEngineQ()
+    <div class="sg"><div class="good"><h4>What a maker does with it, and what stands out</h4><ul><li>numpy-parity BERT encoder (1.64e-7)</li><li>grammar-constrained decoding wired to the structured-output contract</li><li>id-exact WordPiece and BPE tokenizers</li><li>measurement-gated wgpu GPU path (2-5x)</li></ul></div><div class="owed"><h4>What is owed</h4><ul><li>wire ggml&#x27;s backward pass -- the training foundry</li><li>a quantization (encode) path</li><li>ship or fetch a real semantic model for CI</li><li>ONNX import</li></ul></div></div>
+    <h2>One example, run</h2><p>The inference engine is present; no model file was on this laptop tonight, so nothing was inferred. The guards in test/neural prove inference against numpy.</p><div class="run"><div><div class="lbl">Softanza</div><pre>o = StzNeuralEngineQ()
 ? o.IsAvailable()
 ? o.Backend()
 ? StzHasNeuralModel()</pre></div><div class="out"><div class="lbl">Output</div><pre>1

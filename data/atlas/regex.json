@@ -1,114 +1,114 @@
 {
-  "slug": "regex",
-  "title": "Regex — Where It Stands",
-  "thesis": "Under the hood it is PCRE2 10.47, statically linked, Unicode always on, with an unusually rich Ring layer (100+ methods, four fluent builder classes, a reactive match-to-code engine). On features it is at PCRE2 parity, with lookaround, backreferences, recursion and conditionals that RE2 and Rust refuse. Where it trails the modern engines is the safety-and-throughput story: no JIT, no linear-time matcher, and the ReDoS knob is not reachable from Ring, although the code for both is already compiled into the binary.",
-  "lanes": [
-    {
-      "lane": "Match, search and anchoring",
-      "rating": "Strong",
-      "note": "Match() anchors whole content, MatchFirst() searches, MatchAt(s,n) from a position, plus partial as-you-type mode (PARTIAL_HARD/SOFT); nothing structural owed",
-      "proof": "stzRegex.ring Match / MatchFirst / MatchAt"
-    },
-    {
-      "lane": "Capture groups, numbered and named",
-      "rating": "Strong",
-      "note": "Numbered and named captures with positions and section variants; Ring re-derives names in source order because PCRE2 enumerates them alphabetically",
-      "proof": ""
-    },
-    {
-      "lane": "Unicode correctness",
-      "rating": "Strong",
-      "note": "PCRE2 compiled with UTF | UCP unconditionally: p{L}, scripts, codepoint-correct w/d/dot over multibyte UTF-8, offset conversion at the boundary",
-      "proof": "regex.zig (UTF | UCP)"
-    },
-    {
-      "lane": "Advanced pattern features",
-      "rating": "Strong",
-      "note": "Full PCRE2 set proven by engine tests: lookaround, backrefs, atomic, possessive, non-capturing, recursion (?R), conditionals; RE2 and Rust omit these",
-      "proof": "Zig in-source tests (~57 blocks)"
-    },
-    {
-      "lane": "Replace and substitution",
-      "rating": "Solid",
-      "note": "Engine-backed replace with $1 / ${1} / backref and $$ via StzRegexReplace and ReplaceRegex; ${name} parsed but only numeric honored; no Replace on stzRegex",
-      "proof": "StzRegexReplace / ReplaceRegex"
-    },
-    {
-      "lane": "Split, find-all and iteration",
-      "rating": "Solid",
-      "note": "Single-pass FindAllRegex / extract_all (O(n)) plus stzRegex Matches/MatchesZZ and SplitByRegex; split_get silently caps at 512 pieces",
-      "proof": "FindAllRegex / extract_all / SplitByRegex"
-    },
-    {
-      "lane": "Flags and compiled-pattern reuse",
-      "rating": "Solid",
-      "note": "Standard modifiers plus auto-multiline; compiles once, recompiles only on flag change; :DontCapture, :DisableOptimizations, :UseUnicode are no-ops; no cache",
-      "proof": ""
-    },
-    {
-      "lane": "Fluent builder DSL",
-      "rating": "Solid",
-      "note": "Four builders (stzRegexMaker, Recursive, Conditional W-DSL, Lookaround) emitting patterns; Quantifiers() is an empty TODO, MatchSameContentAs has a param bug",
-      "proof": "stzRegexMaker.ring"
-    },
-    {
-      "lane": "Reactive computing (RegexUter)",
-      "rating": "Solid",
-      "note": "stzRegexuter: a trigger-pattern-code engine with @value, state tracking, dependency chains, per-position results; novel, built on eval()",
-      "proof": "stzRegexUter.ring"
-    },
-    {
-      "lane": "Named-pattern catalogue and explanation",
-      "rating": "Partial",
-      "note": "4,842-line catalogue (stzRegexData.ring) via rxp()/pat(); Explain() works only for named patterns, the fallback calls a nonexistent stzRegexAnalyzer",
-      "proof": "base/data/stzRegexData.ring"
-    },
-    {
-      "lane": "Throughput: JIT and linear-time matcher",
-      "rating": "Partial",
-      "note": "One backtracking pcre2_match path; pcre2_jit_compile and pcre2_dfa_match are compiled into the binary but never called",
-      "proof": "regex.zig (pcre2_match)"
-    },
-    {
-      "lane": "ReDoS safety and limits",
-      "rating": "Partial",
-      "note": "stz_regex_set_limits(steps, input_len, depth) exists (engine test proves (a+)+$ aborts, ~10M-step default) but no Ring stzRegex method calls it",
-      "proof": "stz_regex_set_limits engine test"
-    }
-  ],
-  "standouts": [
-    "Feature-complete PCRE2: lookaround, backrefs, recursion, conditionals that RE2 and Rust deliberately refuse",
-    "The clearest match-semantics API in its class: Match() anchors, MatchFirst() searches, partial as-you-type",
-    "Four fluent builder classes with no native peer",
-    "A reactive RegexUter match-to-code engine"
-  ],
-  "gaps": [
-    "Wire the linear-time DFA matcher (pcre2_dfa_match is already in the binary)",
-    "Surface the ReDoS limits on the Ring stzRegex class",
-    "Named-group substitution ${name} in replace",
-    "Fix the broken Explain fallback (missing stzRegexAnalyzer) and the builder stubs"
-  ],
-  "peers": [
-    "PCRE2",
-    "PCRE2-JIT",
-    "Python re",
-    "Rust regex",
-    "RE2",
-    "Oniguruma",
-    ".NET regex",
-    "node re2",
-    "VerbalExpressions",
-    "XRegExp",
-    "regexlib / regex101 explain"
-  ],
-  "folders": [
-    "base/regex",
-    "base/data",
-    "engine regex.zig",
-    "engine string/regex.zig",
-    "engine ring_bridge_regex.zig",
-    "test/regex",
-    "test/regexmaker"
-  ],
-  "dated": "Read from the source on 2026-09-16"
+ "slug": "regex",
+ "title": "Regex — Where It Stands",
+ "thesis": "Under the hood it is PCRE2 10.47, statically linked, Unicode always on, with an unusually rich Haro layer (100+ methods, four fluent builder classes, a reactive match-to-code engine). On features it is at PCRE2 parity, with lookaround, backreferences, recursion and conditionals that RE2 and Rust refuse. Where it trails the modern engines is the safety-and-throughput story: no JIT, no linear-time matcher, and the ReDoS knob is not reachable from Haro, although the code for both is already compiled into the binary.",
+ "lanes": [
+  {
+   "lane": "Match, search and anchoring",
+   "rating": "Strong",
+   "note": "Match() anchors whole content, MatchFirst() searches, MatchAt(s,n) from a position, plus partial as-you-type mode (PARTIAL_HARD/SOFT); nothing structural owed",
+   "proof": "stzRegex Match / MatchFirst / MatchAt"
+  },
+  {
+   "lane": "Capture groups, numbered and named",
+   "rating": "Strong",
+   "note": "Numbered and named captures with positions and section variants; Haro re-derives names in source order because PCRE2 enumerates them alphabetically",
+   "proof": ""
+  },
+  {
+   "lane": "Unicode correctness",
+   "rating": "Strong",
+   "note": "PCRE2 compiled with UTF | UCP unconditionally: p{L}, scripts, codepoint-correct w/d/dot over multibyte UTF-8, offset conversion at the boundary",
+   "proof": "regex.zig (UTF | UCP)"
+  },
+  {
+   "lane": "Advanced pattern features",
+   "rating": "Strong",
+   "note": "Full PCRE2 set proven by engine tests: lookaround, backrefs, atomic, possessive, non-capturing, recursion (?R), conditionals; RE2 and Rust omit these",
+   "proof": "Zig in-source tests (~57 blocks)"
+  },
+  {
+   "lane": "Replace and substitution",
+   "rating": "Solid",
+   "note": "Engine-backed replace with $1 / ${1} / backref and $$ via StzRegexReplace and ReplaceRegex; ${name} parsed but only numeric honored; no Replace on stzRegex",
+   "proof": "StzRegexReplace / ReplaceRegex"
+  },
+  {
+   "lane": "Split, find-all and iteration",
+   "rating": "Solid",
+   "note": "Single-pass FindAllRegex / extract_all (O(n)) plus stzRegex Matches/MatchesZZ and SplitByRegex; split_get silently caps at 512 pieces",
+   "proof": "FindAllRegex / extract_all / SplitByRegex"
+  },
+  {
+   "lane": "Flags and compiled-pattern reuse",
+   "rating": "Solid",
+   "note": "Standard modifiers plus auto-multiline; compiles once, recompiles only on flag change; :DontCapture, :DisableOptimizations, :UseUnicode are no-ops; no cache",
+   "proof": ""
+  },
+  {
+   "lane": "Fluent builder DSL",
+   "rating": "Solid",
+   "note": "Four builders (stzRegexMaker, Recursive, Conditional W-DSL, Lookaround) emitting patterns; Quantifiers() is an empty TODO, MatchSameContentAs has a param bug",
+   "proof": "stzRegexMaker"
+  },
+  {
+   "lane": "Reactive computing (RegexUter)",
+   "rating": "Solid",
+   "note": "stzRegexuter: a trigger-pattern-code engine with @value, state tracking, dependency chains, per-position results; novel, built on eval()",
+   "proof": "stzRegexUter"
+  },
+  {
+   "lane": "Named-pattern catalogue and explanation",
+   "rating": "Partial",
+   "note": "4,842-line catalogue (stzRegexData) via rxp()/pat(); Explain() works only for named patterns, the fallback calls a nonexistent stzRegexAnalyzer",
+   "proof": "base/data/stzRegexData"
+  },
+  {
+   "lane": "Throughput: JIT and linear-time matcher",
+   "rating": "Partial",
+   "note": "One backtracking pcre2_match path; pcre2_jit_compile and pcre2_dfa_match are compiled into the binary but never called",
+   "proof": "regex.zig (pcre2_match)"
+  },
+  {
+   "lane": "ReDoS safety and limits",
+   "rating": "Partial",
+   "note": "stz_regex_set_limits(steps, input_len, depth) exists (engine test proves (a+)+$ aborts, ~10M-step default) but no Haro stzRegex method calls it",
+   "proof": "stz_regex_set_limits engine test"
+  }
+ ],
+ "standouts": [
+  "Feature-complete PCRE2: lookaround, backrefs, recursion, conditionals that RE2 and Rust deliberately refuse",
+  "The clearest match-semantics API in its class: Match() anchors, MatchFirst() searches, partial as-you-type",
+  "Four fluent builder classes with no native peer",
+  "A reactive RegexUter match-to-code engine"
+ ],
+ "gaps": [
+  "Wire the linear-time DFA matcher (pcre2_dfa_match is already in the binary)",
+  "Surface the ReDoS limits on the Haro stzRegex class",
+  "Named-group substitution ${name} in replace",
+  "Fix the broken Explain fallback (missing stzRegexAnalyzer) and the builder stubs"
+ ],
+ "peers": [
+  "PCRE2",
+  "PCRE2-JIT",
+  "Python re",
+  "Rust regex",
+  "RE2",
+  "Oniguruma",
+  ".NET regex",
+  "node re2",
+  "VerbalExpressions",
+  "XRegExp",
+  "regexlib / regex101 explain"
+ ],
+ "folders": [
+  "base/regex",
+  "base/data",
+  "engine regex.zig",
+  "engine string/regex.zig",
+  "engine bridge_regex.zig",
+  "test/regex",
+  "test/regexmaker"
+ ],
+ "dated": "Read from the source on 2026-09-16"
 }

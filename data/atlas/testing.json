@@ -1,34 +1,130 @@
 {
-  "slug": "testing",
-  "title": "Test & Quality System — Where It Stands",
-  "thesis": "Softanza has no test framework as a module; it has a test-and-quality discipline spread across the estate, whose signature is that a test is a readable specification and a green checkmark is never enough. 455 narrated guards read as Given/When/Then specs, correctness is proven against independent numpy/LAPACK oracles and byte-parity ground truth, and an adversarial gate of 1,416 assertions carries 58 negative controls. Where it is thin: property/mutation is engine-only, there is no coverage instrumentation and no CI, and the classic suites carry a fidelity backlog.",
-  "lanes": [
-    {"lane": "Narrated guards as executable spec", "rating": "Strong", "note": "_narrated.ring gives a Given/When/Then DSL across 455 *_narrated.ring guards and 10,000+ assertions; the per-file chk() idiom is copy-pasted, not imported", "proof": "base/test/_narrated.ring"},
-    {"lane": "Reference oracles (numpy / LAPACK)", "rating": "Strong", "note": "_gen_numpy_reference.py generates _numpy_reference.ring / _numpy_fft_reference.ring (eigenvalues, SVD, det, Cholesky); BERT forward matches numpy to 1.64e-7", "proof": "_gen_numpy_reference.py"},
-    {"lane": "Adversarial gate & negative controls", "rating": "Strong", "note": "gg_adversarial.ring (23,481 lines, 1,416 assertions): every assertion exists because a defect survived a green suite; 58 negative siblings, 82 discharges()", "proof": "gg_adversarial.ring"},
-    {"lane": "The unified quality gate", "rating": "Strong", "note": "stzRuleReport collects findings in one shape from 13 rule domains with IsSound(); 14 code rules + the knob gate; signable stzPredicateSet; not wired to any CI", "proof": "base/graph/stzRuleReport.ring + stzPredicateSet (.zrlz)"},
-    {"lane": "Byte-parity & golden / snapshot", "rating": "Solid", "note": "plot.zig holds 29 byte-parity tests against pre-port ground truth; stzLLMFunction.AddGolden/RunGoldens; #--> markers; snapshots pin current, not correct", "proof": "engine plot.zig (29 byte-parity tests)"},
-    {"lane": "Fuzzing", "rating": "Solid", "note": "Five UBSan-trap fuzzers (http, tls/X.509, pcre2 300k rounds, sqlite, utf8) via zig build fuzz; engine-only, random-round not coverage-guided, not continuous", "proof": "fuzz_{http,tls,pcre2,sqlite,utf8}.zig"},
-    {"lane": "Real-process & integration testing", "rating": "Solid", "note": "D0-D6 cluster guards spawn genuine OS processes via uv_spawn, exchange STZM frames, perform real kills; a focused set, not a general framework", "proof": "D0-D6 cluster guards; appserver guards"},
-    {"lane": "Engine unit tests (Zig)", "rating": "Solid", "note": "Inline test blocks in 151 of 371 engine .zig files, run by the build's test step; broad but not universal, and unmeasured", "proof": "zig build test (151/371 files)"},
-    {"lane": "Stress & scale testing", "rating": "Solid", "note": "Million-scale guards (1M-item IntSeq ~7 ms vs >60 s; 999_*_millions suites) and multilingual stress (Arabic/CJK/emoji); timed guards are load-sensitive", "proof": "999_*_millions suites"},
-    {"lane": "Test-as-documentation", "rating": "Solid", "note": "Narrated guards double as specs and 135 prose narrations explain the same features; the guard <-> narration link is convention, not enforced", "proof": "base/doc/narrations"},
-    {"lane": "Property & mutation testing", "rating": "Partial", "note": "Three prop_*.zig files (crypto with mutation-kill, http, ratebucket); engine-only, no Ring-side property testing, no generator/shrinking, no mutation framework", "proof": "prop_{crypto,http,ratebucket}.zig"},
-    {"lane": "Coverage, CI & suite health", "rating": "Partial", "note": "Coverage is by assertion count; bespoke Python runners; no line/branch coverage, no CI config (.github absent), classic #--> suites ~41-60% green, 1,312 #ERR", "proof": "base/test/_STATUS.md / _FINDINGS.md"}
-  ],
-  "standouts": [
-    "A test is a readable specification: 455 narrated Given/When/Then guards",
-    "Correctness proven against independent numpy/LAPACK oracles, not self-captured snapshots",
-    "An adversarial gate of 1,416 assertions each born from an escaped defect, with 58 negative controls",
-    "One rule gate collecting code, security, agent and diagram findings in a single shape"
-  ],
-  "gaps": [
-    "A standard CI pipeline running the rule gate on every push",
-    "Coverage instrumentation (line/branch) for the engine and guards",
-    "Ring-side property testing and a shipped assertion module",
-    "Close the fidelity-grind backlog (1,312 #ERR in the classic suites)"
-  ],
-  "peers": ["Cucumber", "RSpec", "jest describe/it", "SciPy test oracles", "mutation testing (in spirit)", "approval testing", "SonarQube", "semgrep", "quality gates", "jest-snapshot", "approvaltests", "insta", "libFuzzer", "AFL", "go-fuzz", "testcontainers", "integration harnesses", "zig test", "cargo test", "go test", "perf regression suites", "load harnesses", "doctest", "Cucumber features", "literate testing", "Hypothesis / QuickCheck", "Stryker / PIT", "pytest-cov / istanbul", "GitHub Actions", "Stryker"],
-  "folders": ["base/test", "base/meta", "base/graph", "base/doc/narrations"],
-  "dated": "Read from the source on 2026-09-17, from a read-only main worktree -- base/test/_narrated.ring (455 guards), base/meta/promises.py (~8,500 #--> markers), engine test blocks (151/371 files), fuzzers and props, _gen_numpy_reference.py, plot.zig, stzRuleReport + stzPredicateSet, health in base/test/_STATUS.md / _FINDINGS.md"
+ "slug": "testing",
+ "title": "Test & Quality System — Where It Stands",
+ "thesis": "Softanza has no test framework as a module; it has a test-and-quality discipline spread across the estate, whose signature is that a test is a readable specification and a green checkmark is never enough. 455 narrated guards read as Given/When/Then specs, correctness is proven against independent numpy/LAPACK oracles and byte-parity ground truth, and an adversarial gate of 1,416 assertions carries 58 negative controls. Where it is thin: property/mutation is engine-only, there is no coverage instrumentation and no CI, and the classic suites carry a fidelity backlog.",
+ "lanes": [
+  {
+   "lane": "Narrated guards as executable spec",
+   "rating": "Strong",
+   "note": "_narrated gives a Given/When/Then DSL across 455 *_narrated guards and 10,000+ assertions; the per-file chk() idiom is copy-pasted, not imported",
+   "proof": "base/test/_narrated"
+  },
+  {
+   "lane": "Reference oracles (numpy / LAPACK)",
+   "rating": "Strong",
+   "note": "_gen_numpy_reference.py generates _numpy_reference / _numpy_fft_reference (eigenvalues, SVD, det, Cholesky); BERT forward matches numpy to 1.64e-7",
+   "proof": "_gen_numpy_reference.py"
+  },
+  {
+   "lane": "Adversarial gate & negative controls",
+   "rating": "Strong",
+   "note": "gg_adversarial (23,481 lines, 1,416 assertions): every assertion exists because a defect survived a green suite; 58 negative siblings, 82 discharges()",
+   "proof": "gg_adversarial"
+  },
+  {
+   "lane": "The unified quality gate",
+   "rating": "Strong",
+   "note": "stzRuleReport collects findings in one shape from 13 rule domains with IsSound(); 14 code rules + the knob gate; signable stzPredicateSet; not wired to any CI",
+   "proof": "base/graph/stzRuleReport + stzPredicateSet (.zrlz)"
+  },
+  {
+   "lane": "Byte-parity & golden / snapshot",
+   "rating": "Solid",
+   "note": "plot.zig holds 29 byte-parity tests against pre-port ground truth; stzLLMFunction.AddGolden/RunGoldens; #--> markers; snapshots pin current, not correct",
+   "proof": "engine plot.zig (29 byte-parity tests)"
+  },
+  {
+   "lane": "Fuzzing",
+   "rating": "Solid",
+   "note": "Five UBSan-trap fuzzers (http, tls/X.509, pcre2 300k rounds, sqlite, utf8) via zig build fuzz; engine-only, random-round not coverage-guided, not continuous",
+   "proof": "fuzz_{http,tls,pcre2,sqlite,utf8}.zig"
+  },
+  {
+   "lane": "Real-process & integration testing",
+   "rating": "Solid",
+   "note": "D0-D6 cluster guards spawn genuine OS processes via uv_spawn, exchange STZM frames, perform real kills; a focused set, not a general framework",
+   "proof": "D0-D6 cluster guards; appserver guards"
+  },
+  {
+   "lane": "Engine unit tests (Zig)",
+   "rating": "Solid",
+   "note": "Inline test blocks in 151 of 371 engine .zig files, run by the build's test step; broad but not universal, and unmeasured",
+   "proof": "zig build test (151/371 files)"
+  },
+  {
+   "lane": "Stress & scale testing",
+   "rating": "Solid",
+   "note": "Million-scale guards (1M-item IntSeq ~7 ms vs >60 s; 999_*_millions suites) and multilingual stress (Arabic/CJK/emoji); timed guards are load-sensitive",
+   "proof": "999_*_millions suites"
+  },
+  {
+   "lane": "Test-as-documentation",
+   "rating": "Solid",
+   "note": "Narrated guards double as specs and 135 prose narrations explain the same features; the guard <-> narration link is convention, not enforced",
+   "proof": "base/doc/narrations"
+  },
+  {
+   "lane": "Property & mutation testing",
+   "rating": "Partial",
+   "note": "Three prop_*.zig files (crypto with mutation-kill, http, ratebucket); engine-only, no Haro-side property testing, no generator/shrinking, no mutation framework",
+   "proof": "prop_{crypto,http,ratebucket}.zig"
+  },
+  {
+   "lane": "Coverage, CI & suite health",
+   "rating": "Partial",
+   "note": "Coverage is by assertion count; bespoke Python runners; no line/branch coverage, no CI config (.github absent), classic #--> suites ~41-60% green, 1,312 #ERR",
+   "proof": "base/test/_STATUS.md / _FINDINGS.md"
+  }
+ ],
+ "standouts": [
+  "A test is a readable specification: 455 narrated Given/When/Then guards",
+  "Correctness proven against independent numpy/LAPACK oracles, not self-captured snapshots",
+  "An adversarial gate of 1,416 assertions each born from an escaped defect, with 58 negative controls",
+  "One rule gate collecting code, security, agent and diagram findings in a single shape"
+ ],
+ "gaps": [
+  "A standard CI pipeline running the rule gate on every push",
+  "Coverage instrumentation (line/branch) for the engine and guards",
+  "Haro-side property testing and a shipped assertion module",
+  "Close the fidelity-grind backlog (1,312 #ERR in the classic suites)"
+ ],
+ "peers": [
+  "Cucumber",
+  "RSpec",
+  "jest describe/it",
+  "SciPy test oracles",
+  "mutation testing (in spirit)",
+  "approval testing",
+  "SonarQube",
+  "semgrep",
+  "quality gates",
+  "jest-snapshot",
+  "approvaltests",
+  "insta",
+  "libFuzzer",
+  "AFL",
+  "go-fuzz",
+  "testcontainers",
+  "integration harnesses",
+  "zig test",
+  "cargo test",
+  "go test",
+  "perf regression suites",
+  "load harnesses",
+  "doctest",
+  "Cucumber features",
+  "literate testing",
+  "Hypothesis / QuickCheck",
+  "Stryker / PIT",
+  "pytest-cov / istanbul",
+  "GitHub Actions",
+  "Stryker"
+ ],
+ "folders": [
+  "base/test",
+  "base/meta",
+  "base/graph",
+  "base/doc/narrations"
+ ],
+ "dated": "Read from the source on 2026-09-17, from a read-only main worktree -- base/test/_narrated (455 guards), base/meta/promises.py (~8,500 #--> markers), engine test blocks (151/371 files), fuzzers and props, _gen_numpy_reference.py, plot.zig, stzRuleReport + stzPredicateSet, health in base/test/_STATUS.md / _FINDINGS.md"
 }

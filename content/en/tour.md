@@ -34,9 +34,9 @@ Three ideas, one per line. Do not read the page. The spoken example: a bank decl
 <div class="figure"><b>334</b><span>lanes rated in the Atlas</span></div>
 <div class="figure"><b>101 / 129 / 68 / 36</b><span>Strong / Solid / Partial / Emerging</span></div>
 </div>
-<p><b>Ring</b> is today's face · <b>Ring++</b> is the bridge · <b>Haro</b> is the language after, at charter stage.</p>
+<p>One engine in Zig · one language, <b>Haro</b>, in construction · twenty-eight areas, each rated honestly.</p>
 ```notes
-Say the stages as they are: Ring is what we write today; Ring++ exists and runs, it lands publicly when I announce it; Haro is only a charter, nothing is built. The platform's credibility is that the Atlas shows its 36 "Emerging" lanes next to its 101 "Strong" ones.
+Say the stage as it is: Haro is the platform's language, its virtual machine and compiler exist and run, its charter awaits my ratification; I will not call it available before it is. The platform's credibility is that the Atlas shows its 36 "Emerging" lanes next to its 101 "Strong" ones.
 ```
 
 <<< scene id="atlas" page="atlas.html" label="Atlas" >>>
@@ -84,25 +84,22 @@ The story to tell: Amina writes an agent that "tidies" the course. It proposes t
 <div class="cards">
 <div class="card"><h3>Softanza <span class="pill built">built</span></h3><p>The foundation and its engine, public.</p></div>
 <div class="card"><h3>The Learning System <span class="pill built">built</span></h3><p>Two courses, four languages, eleven guards.</p></div>
-<div class="card"><h3>Ring++ <span class="pill built">in construction</span></h3><p>The bridge: a VM and a compiler in Zig.</p></div>
-<div class="card"><h3>Haro <span class="pill charter">charter</span></h3><p>The language after. Nothing is built.</p></div>
+<div class="card"><h3>Haro <span class="pill charter">in construction</span></h3><p>The platform's language; its charter awaits.</p></div>
 <div class="card"><h3>Harobanda <span class="pill built">built</span></h3><p>The declared machine, MIT, boots in an emulator.</p></div>
 <div class="card"><h3>Aïcha <span class="pill named">named</span></h3><p>The coming face of the neural tier.</p></div>
 <div class="card"><h3>Zin · Refine · Studio</h3><p><span class="pill built">built</span> <span class="pill spec">specification</span> <span class="pill spec">specification</span></p></div>
 <div class="card"><h3>HaroBase · Bangalo · COBOL</h3><p><span class="pill spec">specification</span> <span class="pill built">built</span> <span class="pill proposal">proposal</span></p></div>
 </div>
 ```notes
-One word per card, and the stage out loud. Aïcha: "it is the name I give Softanza's language model; no product carries that name today". Never say Haro is available, never say Ring is dead.
+One word per card, and the stage out loud. Aïcha: "it is the name I give Softanza's language model; no product carries that name today". Never say Haro is available.
 ```
 
 <<< scene id="start" page="start.html" label="Start" >>>
 <div class="eyebrow">Start, in one hour</div>
 # Two public repositories. <i>One folder, copied.</i>
 <pre>git clone https://github.com/mayouni/stzlib.git
-cd stzlib/libraries/stzlib
-ring first.ring</pre>
-<div class="run"><div><div class="lbl">first.ring</div><pre>load "stzlib.ring"
-? Q("Softanza").Boxed()</pre></div><div class="out"><div class="lbl">Output, tonight</div><pre>┌──────────┐
+cd stzlib/libraries/stzlib</pre>
+<div class="run"><div><div class="lbl">first</div><pre>? Q("Softanza").Boxed()</pre></div><div class="out"><div class="lbl">Output, tonight</div><pre>┌──────────┐
 │ Softanza │
 └──────────┘</pre></div></div>
 <p>github.com/mayouni/stzlib · codeberg.org/MAyouni/stzlib · this site: github.com/mayouni/stzsite</p>

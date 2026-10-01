@@ -32,7 +32,7 @@ The family's declared machine is called Harobanda. It is named for the bridge ac
 
 ## Where Niger lives: a map rendered by the engine
 
-<figure><img src="../assets/img/niger-density.png" alt="Population density map of Niger by region, 2012: Agadez in the north nearly empty at 0.78 people per km²; the southern regions dense; Niamey at 1,844 people per km², off the scale." width="1500" height="1240"><figcaption>Rendered on 2026-09-30 at 23:09 in 5.9 seconds by the guard <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphics/niger_density.ring">niger_density.ring</a>. Borders: geoBoundaries gbHumanitarian ADM1 (UN OCHA / IGN Niger), ODbL. Population: RGPH 2012, Niger's National Institute of Statistics. Areas: measured by the engine's geodesic routine on the WGS84 ellipsoid, so the density is the library's own number.</figcaption></figure>
+<figure><img src="../assets/img/niger-density.png" alt="Population density map of Niger by region, 2012: Agadez in the north nearly empty at 0.78 people per km²; the southern regions dense; Niamey at 1,844 people per km², off the scale." width="1500" height="1240"><figcaption>Rendered on 2026-09-30 at 23:09 in 5.9 seconds by the guard <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphics/niger_density.ring">niger_density</a>. Borders: geoBoundaries gbHumanitarian ADM1 (UN OCHA / IGN Niger), ODbL. Population: RGPH 2012, Niger's National Institute of Statistics. Areas: measured by the engine's geodesic routine on the WGS84 ellipsoid, so the density is the library's own number.</figcaption></figure>
 
 <pre>-- Where Niger lives --
   Agadez: 0.78 /km2 (487620 people, 621917 km2)

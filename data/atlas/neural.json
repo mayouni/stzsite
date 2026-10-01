@@ -1,34 +1,113 @@
 {
-  "slug": "neural",
-  "title": "Neural Tier — Where It Stands",
-  "thesis": "The consumption side is complete and genuinely wired to a patched, vendored ggml: real GGUF loading, id-exact tokenizers, a numpy-parity BERT encoder, a multi-architecture causal LLM decoder with grammar-constrained decoding, and a measurement-gated GPU path. What is not there is the production side. A llama.cpp-class runner, wired into a governed library — not yet a training or model-production platform.",
-  "lanes": [
-    {"lane": "GGUF model loading", "rating": "Strong", "note": "neural_embed.zig loads GGUF metadata + weights into a ggml context; F16/Q8_0 de-quant on load; tested against a committed tiny_bert.gguf", "proof": "neural_embed.zig; tiny_bert.gguf"},
-    {"lane": "Tokenizers", "rating": "Strong", "note": "WordPiece/SentencePiece-metaspace and GPT-2 byte-level BPE from the GGUF vocab; tokenization is id-exact against a numpy reference", "proof": ""},
-    {"lane": "Encoder inference (BERT family)", "rating": "Strong", "note": "Full BERT-family forward (MiniLM/BERT/RoBERTa/jina-bert-v2): embeddings, NER, rerank, matching an independent numpy reference to 1.64e-7", "proof": "neural_embed.zig; test/neural BERT numpy-parity 1.64e-7"},
-    {"lane": "Constrained / structured decoding", "rating": "Strong", "note": "GBNF grammar-constrained decoding makes invalid tokens unemittable; ~5 calls per valid answer without the grammar, one with", "proof": "gbnf_machine.zig / schema_gbnf.zig; test/neural GBNF"},
-    {"lane": "Decoder inference (causal LLM)", "rating": "Solid", "note": "llama/qwen2/qwen3/smollm with KV-cache, sampling, streaming; CI has no generative model, so proven by construction, not by a parity fixture", "proof": "neural_gen.zig"},
-    {"lane": "Tensor ops & the numeric bridge", "rating": "Solid", "note": "Vendored ggml tensor core wired; stzMatrix<->ggml bridge routes f64 matmul through ggml; the bridge is matmul-only, no backward pass", "proof": "neural_matmul.zig"},
-    {"lane": "Semantic index & embeddings pipeline", "rating": "Solid", "note": "stzSemanticIndex AddText/Search over StzNeuralEmbeddingOf; shipped and tested, but the strong model is user-supplied (only tiny_bert.gguf tracked)", "proof": "stzSemanticIndex"},
-    {"lane": "GPU execution", "rating": "Solid", "note": "wgpu resident BERT backbone auto-routes to GPU via the calibration foundry: 2.08x on the backbone forward, 5.3x over full CPU forward; training sees no GPU", "proof": "neural_backbone.zig (GK0-GK2c)"},
-    {"lane": "Training & backward pass", "rating": "Partial", "note": "nn.zig forward + backward SGD for small dense MLPs (learns XOR, tested); no transformer training, ggml-opt.cpp vendored but never called", "proof": "nn.zig; test/learning XOR training"},
-    {"lane": "Quantization", "rating": "Partial", "note": "Consume-only: F16 and Q8_0 de-quantized on load (dequantRows); no encode path, GGUF export writes F32 only", "proof": ""},
-    {"lane": "GGUF export & the foundry", "rating": "Partial", "note": "gguf_export.zig writes GGUF for small F32 nets (stz-mlp, bigram DLM), round-trip verified; foundry rung 2 (train a transformer) is unbuilt", "proof": "gguf_export.zig"},
-    {"lane": "ONNX interop", "rating": "Emerging", "note": "None: GGUF is the chosen and only model format; no ONNX import, runtime or export anywhere in the engine or faces", "proof": ""}
-  ],
-  "standouts": [
-    "numpy-parity BERT encoder (1.64e-7)",
-    "grammar-constrained decoding wired to the structured-output contract",
-    "id-exact WordPiece and BPE tokenizers",
-    "measurement-gated wgpu GPU path (2-5x)"
-  ],
-  "gaps": [
-    "wire ggml's backward pass -- the training foundry",
-    "a quantization (encode) path",
-    "ship or fetch a real semantic model for CI",
-    "ONNX import"
-  ],
-  "peers": ["llama.cpp", "ggml", "HF tokenizers", "ONNX Runtime", "sentence-transformers", "outlines", "guidance", "ollama", "MLC / vLLM", "PyTorch", "FAISS", "GPTQ / AWQ", "onnx"],
-  "folders": ["base/neural", "base/learning", "test/neural", "test/learning"],
-  "dated": "Read from the source on 2026-09-16"
+ "slug": "neural",
+ "title": "Neural Tier — Where It Stands",
+ "thesis": "The consumption side is complete and genuinely wired to a patched, vendored ggml: real GGUF loading, id-exact tokenizers, a numpy-parity BERT encoder, a multi-architecture causal LLM decoder with grammar-constrained decoding, and a measurement-gated GPU path. What is not there is the production side. A llama.cpp-class runner, wired into a governed library — not yet a training or model-production platform.",
+ "lanes": [
+  {
+   "lane": "GGUF model loading",
+   "rating": "Strong",
+   "note": "neural_embed.zig loads GGUF metadata + weights into a ggml context; F16/Q8_0 de-quant on load; tested against a committed tiny_bert.gguf",
+   "proof": "neural_embed.zig; tiny_bert.gguf"
+  },
+  {
+   "lane": "Tokenizers",
+   "rating": "Strong",
+   "note": "WordPiece/SentencePiece-metaspace and GPT-2 byte-level BPE from the GGUF vocab; tokenization is id-exact against a numpy reference",
+   "proof": ""
+  },
+  {
+   "lane": "Encoder inference (BERT family)",
+   "rating": "Strong",
+   "note": "Full BERT-family forward (MiniLM/BERT/RoBERTa/jina-bert-v2): embeddings, NER, rerank, matching an independent numpy reference to 1.64e-7",
+   "proof": "neural_embed.zig; test/neural BERT numpy-parity 1.64e-7"
+  },
+  {
+   "lane": "Constrained / structured decoding",
+   "rating": "Strong",
+   "note": "GBNF grammar-constrained decoding makes invalid tokens unemittable; ~5 calls per valid answer without the grammar, one with",
+   "proof": "gbnf_machine.zig / schema_gbnf.zig; test/neural GBNF"
+  },
+  {
+   "lane": "Decoder inference (causal LLM)",
+   "rating": "Solid",
+   "note": "llama/qwen2/qwen3/smollm with KV-cache, sampling, streaming; CI has no generative model, so proven by construction, not by a parity fixture",
+   "proof": "neural_gen.zig"
+  },
+  {
+   "lane": "Tensor ops & the numeric bridge",
+   "rating": "Solid",
+   "note": "Vendored ggml tensor core wired; stzMatrix<->ggml bridge routes f64 matmul through ggml; the bridge is matmul-only, no backward pass",
+   "proof": "neural_matmul.zig"
+  },
+  {
+   "lane": "Semantic index & embeddings pipeline",
+   "rating": "Solid",
+   "note": "stzSemanticIndex AddText/Search over StzNeuralEmbeddingOf; shipped and tested, but the strong model is user-supplied (only tiny_bert.gguf tracked)",
+   "proof": "stzSemanticIndex"
+  },
+  {
+   "lane": "GPU execution",
+   "rating": "Solid",
+   "note": "wgpu resident BERT backbone auto-routes to GPU via the calibration foundry: 2.08x on the backbone forward, 5.3x over full CPU forward; training sees no GPU",
+   "proof": "neural_backbone.zig (GK0-GK2c)"
+  },
+  {
+   "lane": "Training & backward pass",
+   "rating": "Partial",
+   "note": "nn.zig forward + backward SGD for small dense MLPs (learns XOR, tested); no transformer training, ggml-opt.cpp vendored but never called",
+   "proof": "nn.zig; test/learning XOR training"
+  },
+  {
+   "lane": "Quantization",
+   "rating": "Partial",
+   "note": "Consume-only: F16 and Q8_0 de-quantized on load (dequantRows); no encode path, GGUF export writes F32 only",
+   "proof": ""
+  },
+  {
+   "lane": "GGUF export & the foundry",
+   "rating": "Partial",
+   "note": "gguf_export.zig writes GGUF for small F32 nets (stz-mlp, bigram DLM), round-trip verified; foundry rung 2 (train a transformer) is unbuilt",
+   "proof": "gguf_export.zig"
+  },
+  {
+   "lane": "ONNX interop",
+   "rating": "Emerging",
+   "note": "None: GGUF is the chosen and only model format; no ONNX import, runtime or export anywhere in the engine or faces",
+   "proof": ""
+  }
+ ],
+ "standouts": [
+  "numpy-parity BERT encoder (1.64e-7)",
+  "grammar-constrained decoding wired to the structured-output contract",
+  "id-exact WordPiece and BPE tokenizers",
+  "measurement-gated wgpu GPU path (2-5x)"
+ ],
+ "gaps": [
+  "wire ggml's backward pass -- the training foundry",
+  "a quantization (encode) path",
+  "ship or fetch a real semantic model for CI",
+  "ONNX import"
+ ],
+ "peers": [
+  "llama.cpp",
+  "ggml",
+  "HF tokenizers",
+  "ONNX Runtime",
+  "sentence-transformers",
+  "outlines",
+  "guidance",
+  "ollama",
+  "MLC / vLLM",
+  "PyTorch",
+  "FAISS",
+  "GPTQ / AWQ",
+  "onnx"
+ ],
+ "folders": [
+  "base/neural",
+  "base/learning",
+  "test/neural",
+  "test/learning"
+ ],
+ "dated": "Read from the source on 2026-09-16"
 }

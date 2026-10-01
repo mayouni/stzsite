@@ -6,13 +6,17 @@ lede: Une seule histoire, six façons d'y entrer. Pour chaque lecteur : ce qu'il
 description: Les six audiences de Softanza, du programmeur à l'agent : ce que chacune déclare, ce qu'elle obtient, où elle commence, avec un exemple réel exécuté.
 ---
 
+## Qu'est-ce qu'un maker ?
+
+Un maker transforme ce qu'il sait d'un monde en quelque chose qui tourne, sans attendre l'industrie du logiciel. Il n'est pas défini par sa maîtrise de la programmation mais par la propriété : l'artefact est à lui, en texte brut, et il n'expire pas. Une enseignante, un analyste, un commerçant, un élève, un fonctionnaire, et un agent qui propose sous tous ces mondes. Softanza raconte une seule histoire ; chaque porte ci-dessous l'ouvre à l'endroit qui vous concerne.
+
 <div class="door-section" id="programmeur" markdown="1">
 <div class="kicker">Porte 1</div>
 ## Programmeur ou programmeuse, seul·e ou en petite équipe
 
 **Ce que vous déclarez :** votre intention, dans une bibliothèque qui se lit comme une phrase : on trouve d'abord, on agit ensuite. **Ce que vous obtenez :** un moteur Zig sous chaque appel, correct en Unicode, et une narration qui s'exécute pour chaque idée. **Où commencer :** [la page Commencer](start.html), puis le chapitre 1 du cours.
 
-<div class="run"><div><div class="lbl">Ring</div><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
+<div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
 ? o1.ContainsDuplicates()
 ? o1.NumberOfOccurrence("tea")
 ? @@( o1.FindAll("tea") )
@@ -20,7 +24,7 @@ description: Les six audiences de Softanza, du programmeur à l'agent : ce que c
 3
 [ 1, 3, 6 ]
 [ "tea", "rice", "fish" ]</pre></div></div>
-<p class="ran">exécuté le 2026-09-30 à 23:11, Ring 1.27, Softanza au commit 0e72e2e2c</p>
+<p class="ran">exécuté le 2026-09-30 à 23:11, Softanza au commit 0e72e2e2c</p>
 </div>
 
 <div class="door-section" id="analyste" markdown="1">
@@ -29,7 +33,7 @@ description: Les six audiences de Softanza, du programmeur à l'agent : ce que c
 
 **Ce que vous déclarez :** les entités, les règles et les flux de votre organisation, dans un fichier de connaissance en texte brut. **Ce que vous obtenez :** un monde interrogeable, où le graphe de dépendances et la table des symboles sont le même graphe, et des tables et des statistiques calculées par le moteur. **Où commencer :** le chapitre 12 du cours, « Enseigner un monde », dans [le lecteur](learn.html).
 
-<div class="run"><div><div class="lbl">Ring</div><pre>o = new stzTable([ [ :region, :population ],
+<div class="run"><div><div class="lbl">Softanza</div><pre>o = new stzTable([ [ :region, :population ],
     [ "Agadez", 487620 ], [ "Maradi", 3402094 ], [ "Zinder", 3539764 ] ])
 o.Show()
 ? Q([ 487620, 593821, 2037713, 3402094,
@@ -50,7 +54,7 @@ o.Show()
 
 **Ce que vous déclarez :** une image, une carte, un écran, comme un programme. **Ce que vous obtenez :** un rendu produit par le moteur, reproductible à l'octet près, et un langage d'interface de vingt-quatre verbes fermés dans la famille Zin. **Où commencer :** le chapitre 11 du cours, « Dessiner la réponse », dans [le lecteur](learn.html).
 
-<figure><img src="../assets/img/niger-density.png" alt="Carte de densité de population du Niger par région : Agadez presque vide au nord, les régions du sud denses, Niamey hors échelle." width="1500" height="1240"><figcaption>« Where Niger lives », rendue ce soir en 5,9 secondes par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphics/niger_density.ring">niger_density.ring</a> : frontières geoBoundaries (ODbL), recensement 2012, surfaces mesurées par la routine géodésique du moteur sur l'ellipsoïde WGS84.</figcaption></figure>
+<figure><img src="../assets/img/niger-density.png" alt="Carte de densité de population du Niger par région : Agadez presque vide au nord, les régions du sud denses, Niamey hors échelle." width="1500" height="1240"><figcaption>« Where Niger lives », rendue ce soir en 5,9 secondes par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphics/niger_density.ring">niger_density</a> : frontières geoBoundaries (ODbL), recensement 2012, surfaces mesurées par la routine géodésique du moteur sur l'ellipsoïde WGS84.</figcaption></figure>
 </div>
 
 <div class="door-section" id="decideur" markdown="1">
@@ -100,5 +104,5 @@ PROVED  the child's Hausa program passed, checked by running it</pre></div><div 
 -- it lacks the 'effectful' capability
    (required by operation 1)
 PROVED  the course folder still holds all 610 files</pre></div></div>
-<p class="ran">exécuté le 2026-09-30 à 23:10 par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">demo.ring</a>, scène 6</p>
+<p class="ran">exécuté le 2026-09-30 à 23:10 par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">demo</a>, scène 6</p>
 </div>

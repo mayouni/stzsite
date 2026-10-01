@@ -1,34 +1,116 @@
 {
-  "slug": "stats",
-  "title": "Statistics & data-viz -- where it stands",
-  "thesis": "The compute core is genuinely careful -- SIMD Neumaier summation, engine hypothesis tests that never return a bare p-value, and a chart pipeline byte-tested against captured ground truth. But this is not yet scipy.stats or R: nonparametric tests, resampling and time-series are absent, half the analyst's chart types don't render, and the exploratory (Tukey) tier is a plan with no code. A strong foundation, honestly incomplete.",
-  "lanes": [
-    {"lane": "Descriptive statistics", "rating": "Strong", "note": "Full descriptive set over lane-parallel Neumaier compensated summation (@Vector(8), measured 2.5x); at parity and numerically more careful than most.", "proof": "stats.zig"},
-    {"lane": "Chart rendering pipeline & fidelity", "rating": "Strong", "note": "Three backends per chart; renderers guarded byte-identical against captured ground truth (107 parity assertions), 19 SVG/PNG checks with no GPU.", "proof": "plot.zig; 107 parity assertions + 19 deviceless SVG/PNG checks"},
-    {"lane": "Hypothesis testing", "rating": "Solid", "note": "t-tests, chi-square, one-way ANOVA, Pearson test each return statistic, df, p-value, effect size and a conclusion; the nonparametric family is missing.", "proof": "hypothesis.zig"},
-    {"lane": "Multivariate & dimensionality reduction", "rating": "Solid", "note": "PCA, t-SNE/UMAP, k-means, kNN, naive Bayes, ID3, logistic regression, FFT, eigen-solver over a 15 GFLOP/s matmul; shallower than scikit-learn.", "proof": "pca.zig, cluster.zig, fft.zig"},
-    {"lane": "Analytical dataset & wrangling", "rating": "Solid", "note": "stzDataSet (211 methods): CIs, five-number stats, contingency, entropy, mutual information, insights/rules/plans; stzDataWrangler is pure Ring.", "proof": "stzDataSet, stzDataWrangler"},
-    {"lane": "Optimization & solvers", "rating": "Solid", "note": "Real LP/MIP: Big-M tableau simplex in the engine, branch-and-bound, stochastic/robust solver, root/quadrature, LU/Gauss-Jordan.", "proof": "simplex.zig, optim.zig, stzLinearSolver"},
-    {"lane": "Distribution functions", "rating": "Partial", "note": "CDF and quantile for Normal, Student-t, Chi-square, F only; no discrete distributions (binomial, Poisson), no distribution object.", "proof": "special.zig"},
-    {"lane": "Correlation & regression", "rating": "Partial", "note": "Pearson/Spearman, covariance, simple linear regression engine-backed; no multiple regression, GLM, logistic-as-stats or ridge/lasso.", "proof": "frame.zig"},
-    {"lane": "Charts & data-viz catalogue", "rating": "Partial", "note": "Bar, histogram, scatter, treemap render across all three backends; box, violin, pie/donut, heatmap, area, radar, contour all missing.", "proof": "stzPlotCanvas"},
-    {"lane": "Resampling & Monte-Carlo inference", "rating": "Emerging", "note": "random.zig ships seeded sampling and shuffles but no bootstrap CI, permutation test or jackknife is built on it.", "proof": "random.zig"},
-    {"lane": "Time-series", "rating": "Emerging", "note": "Moving average is an engine primitive, trend is Ring-side; no autocorrelation, seasonality, exponential smoothing or ARIMA.", "proof": "stz_stats_moving_average"},
-    {"lane": "Exploratory data analysis (Tukey tier)", "rating": "Emerging", "note": "A detailed plan of record (TK0-TK6) with no code shipped: no eda.zig, no faces, no test/tukey/.", "proof": "SOFTANZA_TUKEY_PLAN.md"}
-  ],
-  "standouts": [
-    "Lane-parallel Neumaier compensated summation (measured 2.5x)",
-    "Hypothesis tests never return a bare p-value: effect size and a conclusion with every one",
-    "Chart renderers byte-tested against captured ground truth (107 parity assertions)",
-    "Three backends per chart: engine terminal, deviceless SVG, GPU PNG"
-  ],
-  "gaps": [
-    "Nonparametric and normality tests (Mann-Whitney, Kruskal-Wallis, KS, Shapiro-Wilk)",
-    "The statistical chart family (box, violin, pie/donut, heatmap, area)",
-    "Bootstrap CI and permutation test over the existing sampler",
-    "Multiple regression, GLM and diagnostics; a real time-series lane; the unbuilt Tukey tier"
-  ],
-  "peers": ["scipy.stats", "R", "pandas", "NumPy", "statsmodels", "scikit-learn", "scipy.optimize / linprog", "GLPK", "Boost.Math", "matplotlib", "ggplot2", "D3 / Observable Plot", "Vega-Lite", "seaborn", "Prophet"],
-  "folders": ["base/stats", "base/graphics", "base/cluster", "base/neural", "test/plot"],
-  "dated": "Read from the source on 2026-09-16"
+ "slug": "stats",
+ "title": "Statistics & data-viz -- where it stands",
+ "thesis": "The compute core is genuinely careful -- SIMD Neumaier summation, engine hypothesis tests that never return a bare p-value, and a chart pipeline byte-tested against captured ground truth. But this is not yet scipy.stats or R: nonparametric tests, resampling and time-series are absent, half the analyst's chart types don't render, and the exploratory (Tukey) tier is a plan with no code. A strong foundation, honestly incomplete.",
+ "lanes": [
+  {
+   "lane": "Descriptive statistics",
+   "rating": "Strong",
+   "note": "Full descriptive set over lane-parallel Neumaier compensated summation (@Vector(8), measured 2.5x); at parity and numerically more careful than most.",
+   "proof": "stats.zig"
+  },
+  {
+   "lane": "Chart rendering pipeline & fidelity",
+   "rating": "Strong",
+   "note": "Three backends per chart; renderers guarded byte-identical against captured ground truth (107 parity assertions), 19 SVG/PNG checks with no GPU.",
+   "proof": "plot.zig; 107 parity assertions + 19 deviceless SVG/PNG checks"
+  },
+  {
+   "lane": "Hypothesis testing",
+   "rating": "Solid",
+   "note": "t-tests, chi-square, one-way ANOVA, Pearson test each return statistic, df, p-value, effect size and a conclusion; the nonparametric family is missing.",
+   "proof": "hypothesis.zig"
+  },
+  {
+   "lane": "Multivariate & dimensionality reduction",
+   "rating": "Solid",
+   "note": "PCA, t-SNE/UMAP, k-means, kNN, naive Bayes, ID3, logistic regression, FFT, eigen-solver over a 15 GFLOP/s matmul; shallower than scikit-learn.",
+   "proof": "pca.zig, cluster.zig, fft.zig"
+  },
+  {
+   "lane": "Analytical dataset & wrangling",
+   "rating": "Solid",
+   "note": "stzDataSet (211 methods): CIs, five-number stats, contingency, entropy, mutual information, insights/rules/plans; stzDataWrangler is pure Haro.",
+   "proof": "stzDataSet, stzDataWrangler"
+  },
+  {
+   "lane": "Optimization & solvers",
+   "rating": "Solid",
+   "note": "Real LP/MIP: Big-M tableau simplex in the engine, branch-and-bound, stochastic/robust solver, root/quadrature, LU/Gauss-Jordan.",
+   "proof": "simplex.zig, optim.zig, stzLinearSolver"
+  },
+  {
+   "lane": "Distribution functions",
+   "rating": "Partial",
+   "note": "CDF and quantile for Normal, Student-t, Chi-square, F only; no discrete distributions (binomial, Poisson), no distribution object.",
+   "proof": "special.zig"
+  },
+  {
+   "lane": "Correlation & regression",
+   "rating": "Partial",
+   "note": "Pearson/Spearman, covariance, simple linear regression engine-backed; no multiple regression, GLM, logistic-as-stats or ridge/lasso.",
+   "proof": "frame.zig"
+  },
+  {
+   "lane": "Charts & data-viz catalogue",
+   "rating": "Partial",
+   "note": "Bar, histogram, scatter, treemap render across all three backends; box, violin, pie/donut, heatmap, area, radar, contour all missing.",
+   "proof": "stzPlotCanvas"
+  },
+  {
+   "lane": "Resampling & Monte-Carlo inference",
+   "rating": "Emerging",
+   "note": "random.zig ships seeded sampling and shuffles but no bootstrap CI, permutation test or jackknife is built on it.",
+   "proof": "random.zig"
+  },
+  {
+   "lane": "Time-series",
+   "rating": "Emerging",
+   "note": "Moving average is an engine primitive, trend is Haro-side; no autocorrelation, seasonality, exponential smoothing or ARIMA.",
+   "proof": "stz_stats_moving_average"
+  },
+  {
+   "lane": "Exploratory data analysis (Tukey tier)",
+   "rating": "Emerging",
+   "note": "A detailed plan of record (TK0-TK6) with no code shipped: no eda.zig, no faces, no test/tukey/.",
+   "proof": "SOFTANZA_TUKEY_PLAN.md"
+  }
+ ],
+ "standouts": [
+  "Lane-parallel Neumaier compensated summation (measured 2.5x)",
+  "Hypothesis tests never return a bare p-value: effect size and a conclusion with every one",
+  "Chart renderers byte-tested against captured ground truth (107 parity assertions)",
+  "Three backends per chart: engine terminal, deviceless SVG, GPU PNG"
+ ],
+ "gaps": [
+  "Nonparametric and normality tests (Mann-Whitney, Kruskal-Wallis, KS, Shapiro-Wilk)",
+  "The statistical chart family (box, violin, pie/donut, heatmap, area)",
+  "Bootstrap CI and permutation test over the existing sampler",
+  "Multiple regression, GLM and diagnostics; a real time-series lane; the unbuilt Tukey tier"
+ ],
+ "peers": [
+  "scipy.stats",
+  "R",
+  "pandas",
+  "NumPy",
+  "statsmodels",
+  "scikit-learn",
+  "scipy.optimize / linprog",
+  "GLPK",
+  "Boost.Math",
+  "matplotlib",
+  "ggplot2",
+  "D3 / Observable Plot",
+  "Vega-Lite",
+  "seaborn",
+  "Prophet"
+ ],
+ "folders": [
+  "base/stats",
+  "base/graphics",
+  "base/cluster",
+  "base/neural",
+  "test/plot"
+ ],
+ "dated": "Read from the source on 2026-09-16"
 }

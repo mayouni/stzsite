@@ -19,7 +19,7 @@ GH = "https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/"
 # strings the layout needs, per language
 UI = {
   "fr": {
-    "nav": [("why","Pourquoi"),("platform","Plateforme"),("atlas","Atlas"),("learn","Apprendre"),("govern","Gouverner"),
+    "nav": [("why","Principes"),("platform","Plateforme"),("atlas","Atlas"),("learn","Apprendre"),("govern","Agents"),
             ("makers","Makers"),("products","Produits"),("africa","Afrique"),("start","Démarrer"),("tour","Présenter")],
     "slogan": "La plateforme des makers à l'ère agentique",
     "second": "Née en Afrique. Utile au monde !",
@@ -35,7 +35,7 @@ UI = {
     "atlas_lede": "Vingt-huit groupes, 334 couloirs, chacun noté contre les meilleurs de sa catégorie. Le pari de Softanza est la cohérence de nombreux couloirs sous un seul moteur gouverné : aucun concurrent ne les couvre tous. Les notes sont gagnées par ce que les gardes prouvent, lues sur la branche principale, et les lacunes sont montrées.",
     "atlas_desc": "L'Atlas Softanza : 28 groupes de modules et 334 couloirs notés Strong, Solid, Partial ou Emerging contre les meilleurs de chaque catégorie.",
     "lanes": "couloirs", "strong": "Strong", "solid": "Solid", "partial": "Partial", "emerging": "Emerging",
-    "measured": "Mesuré contre", "folders": "Dossiers", "standouts": "Ce qui se distingue", "gaps": "Ce qui est dû",
+    "measured": "Mesuré contre", "folders": "Dossiers", "standouts": "Ce qu'un maker en fait, et ce qui se distingue", "gaps": "Ce qui est dû",
     "lanes_h": "Les couloirs, un par un", "lanes_note": "Les couloirs et leurs notes sont cités dans la langue de l'Atlas, l'anglais, tels qu'ils ont été lus à la source.",
     "example": "Un exemple, exécuté", "no_example": "Aucun exemple exécuté sur cette page",
     "atlas_page": "La page d'origine de l'Atlas", "all_groups": "Tous les groupes",
@@ -44,7 +44,7 @@ UI = {
     "tally_label": "Les 334 couloirs", "groups_word": "groupes",
   },
   "en": {
-    "nav": [("why","Why"),("platform","Platform"),("atlas","Atlas"),("learn","Learn"),("govern","Govern"),
+    "nav": [("why","Principles"),("platform","Platform"),("atlas","Atlas"),("learn","Learn"),("govern","Agents"),
             ("makers","Makers"),("products","Products"),("africa","Africa"),("start","Start"),("tour","Tour")],
     "slogan": "The Makers Platform of the Agentic Age",
     "second": "Born in Africa. Useful to the World!",
@@ -60,7 +60,7 @@ UI = {
     "atlas_lede": "Twenty-eight groups, 334 lanes, each rated against the leaders of its category. The bet Softanza makes everywhere is coherence across many lanes under one governed engine: no single competitor spans them all. Ratings are earned by what the guards prove, read from the main branch, and the gaps are shown.",
     "atlas_desc": "The Softanza Atlas: 28 module groups and 334 lanes rated Strong, Solid, Partial or Emerging against the leaders of each category.",
     "lanes": "lanes", "strong": "Strong", "solid": "Solid", "partial": "Partial", "emerging": "Emerging",
-    "measured": "Measured against", "folders": "Folders", "standouts": "What stands out", "gaps": "What is owed",
+    "measured": "Measured against", "folders": "Folders", "standouts": "What a maker does with it, and what stands out", "gaps": "What is owed",
     "lanes_h": "The lanes, one by one", "lanes_note": "Lanes and their notes are quoted as they were read at the source.",
     "example": "One example, run", "no_example": "No example run on this page",
     "atlas_page": "The original Atlas page", "all_groups": "All groups",
@@ -257,7 +257,7 @@ def build_group_page(lang, idx, groups, i):
     out_lbl = "Sortie" if lang == "fr" else "Output"
     if run.get("code"):
         example = (f'<h2>{ui["example"]}</h2><p>{esc(run.get("intro_" + lang, ""))}</p>'
-                   f'<div class="run"><div><div class="lbl">Ring</div><pre>{esc(run["code"])}</pre></div><div class="out"><div class="lbl">{out_lbl}</div><pre>{esc(run["out"])}</pre></div></div>'
+                   f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(run["code"])}</pre></div><div class="out"><div class="lbl">{out_lbl}</div><pre>{esc(run["out"])}</pre></div></div>'
                    f'<p class="ran">{esc(run.get("ran_" + lang, ""))}</p>')
     elif run.get("image"):
         example = (f'<h2>{ui["example"]}</h2><p>{esc(run.get("intro_" + lang, ""))}</p>'

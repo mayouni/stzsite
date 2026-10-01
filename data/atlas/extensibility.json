@@ -1,34 +1,132 @@
 {
-  "slug": "extensibility",
-  "title": "Extensibility & Foreign Code — Where It Stands",
-  "thesis": "The most honestly-mixed group in the survey. Softanza consumes a large, carefully-vendored foreign-code stack (tree-sitter, SQLite, curl, mbedTLS, zlib, ggml, RmlUi, HarfBuzz, PCRE2, all compiled from source) and bridges pragmatically to Python/R/Julia/C/Prolog/Node by subprocess, but the extensibility the group is named for is overwhelmingly planned: no in-process FFI, no embedded interpreter, and the plugin plane ('a plugin is governed foreign capability') is a detailed plan with a recovered reference archive but zero live code.",
-  "lanes": [
-    {"lane": "Foreign-library consumption (the vendored stack)", "rating": "Strong", "note": "A vendored C/C++ stack compiled from source via Zig (tree-sitter, SQLite, curl, mbedTLS, zlib, ggml, RmlUi, HarfBuzz, PCRE2); no external runtime deps", "proof": ""},
-    {"lane": "Foreign-code parsing (tree-sitter)", "rating": "Solid", "note": "stz_polyglot parses Python and JavaScript (vendored grammars, no interpreter) into a declaration/call protocol feeding stzCodeGraph; two grammars, parse-only", "proof": "stz_polyglot"},
-    {"lane": "External-tool bridges", "rating": "Solid", "note": "Subprocess bridges stzDotCode (Graphviz dot), stzQmlCode (Qt qml runtime), stzImgToAscii (vendored im2ansi.exe); stzImgToAscii ships but is never loaded", "proof": ""},
-    {"lane": "Call-out interop (extercode)", "rating": "Partial", "note": "stzExterCode runs Python, R, Julia, C, Prolog and Node via temp file + stzSystemCall + eval(); subprocess-only, hardcoded d: paths, suite currently red", "proof": "test/extercode (red)"},
-    {"lane": "Foreign-syntax shims (extincode)", "rating": "Partial", "note": "Ring shims to paste Python, PHP, C#, Perl, C ternaries and SQL-in-Ring over stzTable; shims not a runtime, the JS shim is an empty stub, suite red", "proof": "test/extincode (red)"},
-    {"lane": "Interop robustness (test state)", "rating": "Partial", "note": "Both interop suites have real assertions but are entirely red: C22 function-redefinition, 0 passing (echo/range0 defined in both PHP and Python shims)", "proof": "test/extercode + test/extincode"},
-    {"lane": "In-process FFI", "rating": "Emerging", "note": "None for user code: no dlopen / cffi / direct-C-call surface; the only call-out is the subprocess bridge, an order of magnitude heavier", "proof": ""},
-    {"lane": "Embedded interpreters (Pyodide-style)", "rating": "Emerging", "note": "None: no in-process Python / JS / Lua interpreter embedded in the engine; foreign execution is subprocess-only", "proof": ""},
-    {"lane": "Plugin plane -- load / register / govern", "rating": "Emerging", "note": "A plan of record (PL0-PL5) and a recovered/ archive marked reference-only; ring_state_* VM primitives exist; no live code, not loaded, no test dir", "proof": "SOFTANZA_PLUGIN_PLAN.md; recovered/ 2024 system (~3.1 ms/call)"},
-    {"lane": "Governance of untrusted capability", "rating": "Emerging", "note": "Designed five-clause contract: isolation, per-call ledger, cooperative constraint, currency, governance; XfU reversal and @plugin_author provenance; unbuilt", "proof": ""},
-    {"lane": "Isolation & sandboxing", "rating": "Emerging", "note": "Designed two-tier isolation (:State ring_state / :Process reactor spawn); explicitly refuses to be a syscall-level security sandbox; unbuilt", "proof": ""},
-    {"lane": "Distribution -- package / marketplace / signing", "rating": "Emerging", "note": "None, and the plugin plan explicitly states it is not a package manager, marketplace or code-signing scheme; deliberately deferred", "proof": ""}
-  ],
-  "standouts": [
-    "Strong foreign-code integration: a dozen serious native libraries built from source with no runtime dependencies",
-    "Governed foreign capability (designed): accept code you don't trust, audit what it did, undo it",
-    "SQL-in-Ring and paste-and-tweak foreign-syntax shims",
-    "The recovered 2024 plugin system proves per-call VM-state isolation works (~3.1 ms/call)"
-  ],
-  "gaps": [
-    "Fix the red interop suites (C22 duplicate shim definitions, 0 passing)",
-    "Build the plugin plane (PL0-PL5)",
-    "In-process FFI (dlopen / cffi-style)",
-    "Configurable toolchain discovery (retire the hardcoded d: interpreter paths)"
-  ],
-  "peers": ["any language's C ecosystem", "Zig build-from-source", "tree-sitter", "language servers", "tool-shelling patterns", "graphviz bindings", "FFI (in-process)", "Pyodide (embedded)", "subprocess interop", "transpilers", "polyglot notebooks", "embedded DSLs", "green interop suites", "ctypes / cffi", "Node FFI", "JNI", "Pyodide", "embedded V8 / Lua", "RustPython", "VS Code extensions", "OSGi", "WordPress hooks", "MCP", "plugin permission models", "capability systems", "WASM sandbox", "V8 isolates", "gVisor", "npm / pip", "VS Code Marketplace", "crates.io"],
-  "folders": ["base/extercode", "base/extincode", "base/plugin", "test/extercode", "test/extincode"],
-  "dated": "Read from the source on 2026-09-16, from a read-only main worktree -- base/extercode and base/extincode loaded in stzBase.ring; base/plugin = plan + recovered/ archive, not loaded; test/plugin absent"
+ "slug": "extensibility",
+ "title": "Extensibility & Foreign Code — Where It Stands",
+ "thesis": "The most honestly-mixed group in the survey. Softanza consumes a large, carefully-vendored foreign-code stack (tree-sitter, SQLite, curl, mbedTLS, zlib, ggml, RmlUi, HarfBuzz, PCRE2, all compiled from source) and bridges pragmatically to Python/R/Julia/C/Prolog/Node by subprocess, but the extensibility the group is named for is overwhelmingly planned: no in-process FFI, no embedded interpreter, and the plugin plane ('a plugin is governed foreign capability') is a detailed plan with a recovered reference archive but zero live code.",
+ "lanes": [
+  {
+   "lane": "Foreign-library consumption (the vendored stack)",
+   "rating": "Strong",
+   "note": "A vendored C/C++ stack compiled from source via Zig (tree-sitter, SQLite, curl, mbedTLS, zlib, ggml, RmlUi, HarfBuzz, PCRE2); no external runtime deps",
+   "proof": ""
+  },
+  {
+   "lane": "Foreign-code parsing (tree-sitter)",
+   "rating": "Solid",
+   "note": "stz_polyglot parses Python and JavaScript (vendored grammars, no interpreter) into a declaration/call protocol feeding stzCodeGraph; two grammars, parse-only",
+   "proof": "stz_polyglot"
+  },
+  {
+   "lane": "External-tool bridges",
+   "rating": "Solid",
+   "note": "Subprocess bridges stzDotCode (Graphviz dot), stzQmlCode (Qt qml runtime), stzImgToAscii (vendored im2ansi.exe); stzImgToAscii ships but is never loaded",
+   "proof": ""
+  },
+  {
+   "lane": "Call-out interop (extercode)",
+   "rating": "Partial",
+   "note": "stzExterCode runs Python, R, Julia, C, Prolog and Node via temp file + stzSystemCall + eval(); subprocess-only, hardcoded d: paths, suite currently red",
+   "proof": "test/extercode (red)"
+  },
+  {
+   "lane": "Foreign-syntax shims (extincode)",
+   "rating": "Partial",
+   "note": "Haro shims to paste Python, PHP, C#, Perl, C ternaries and SQL-in-Haro over stzTable; shims not a runtime, the JS shim is an empty stub, suite red",
+   "proof": "test/extincode (red)"
+  },
+  {
+   "lane": "Interop robustness (test state)",
+   "rating": "Partial",
+   "note": "Both interop suites have real assertions but are entirely red: C22 function-redefinition, 0 passing (echo/range0 defined in both PHP and Python shims)",
+   "proof": "test/extercode + test/extincode"
+  },
+  {
+   "lane": "In-process FFI",
+   "rating": "Emerging",
+   "note": "None for user code: no dlopen / cffi / direct-C-call surface; the only call-out is the subprocess bridge, an order of magnitude heavier",
+   "proof": ""
+  },
+  {
+   "lane": "Embedded interpreters (Pyodide-style)",
+   "rating": "Emerging",
+   "note": "None: no in-process Python / JS / Lua interpreter embedded in the engine; foreign execution is subprocess-only",
+   "proof": ""
+  },
+  {
+   "lane": "Plugin plane -- load / register / govern",
+   "rating": "Emerging",
+   "note": "A plan of record (PL0-PL5) and a recovered/ archive marked reference-only; state_* VM primitives exist; no live code, not loaded, no test dir",
+   "proof": "SOFTANZA_PLUGIN_PLAN.md; recovered/ 2024 system (~3.1 ms/call)"
+  },
+  {
+   "lane": "Governance of untrusted capability",
+   "rating": "Emerging",
+   "note": "Designed five-clause contract: isolation, per-call ledger, cooperative constraint, currency, governance; XfU reversal and @plugin_author provenance; unbuilt",
+   "proof": ""
+  },
+  {
+   "lane": "Isolation & sandboxing",
+   "rating": "Emerging",
+   "note": "Designed two-tier isolation (:State state / :Process reactor spawn); explicitly refuses to be a syscall-level security sandbox; unbuilt",
+   "proof": ""
+  },
+  {
+   "lane": "Distribution -- package / marketplace / signing",
+   "rating": "Emerging",
+   "note": "None, and the plugin plan explicitly states it is not a package manager, marketplace or code-signing scheme; deliberately deferred",
+   "proof": ""
+  }
+ ],
+ "standouts": [
+  "Strong foreign-code integration: a dozen serious native libraries built from source with no runtime dependencies",
+  "Governed foreign capability (designed): accept code you don't trust, audit what it did, undo it",
+  "SQL-in-Haro and paste-and-tweak foreign-syntax shims",
+  "The recovered 2024 plugin system proves per-call VM-state isolation works (~3.1 ms/call)"
+ ],
+ "gaps": [
+  "Fix the red interop suites (C22 duplicate shim definitions, 0 passing)",
+  "Build the plugin plane (PL0-PL5)",
+  "In-process FFI (dlopen / cffi-style)",
+  "Configurable toolchain discovery (retire the hardcoded d: interpreter paths)"
+ ],
+ "peers": [
+  "any language's C ecosystem",
+  "Zig build-from-source",
+  "tree-sitter",
+  "language servers",
+  "tool-shelling patterns",
+  "graphviz bindings",
+  "FFI (in-process)",
+  "Pyodide (embedded)",
+  "subprocess interop",
+  "transpilers",
+  "polyglot notebooks",
+  "embedded DSLs",
+  "green interop suites",
+  "ctypes / cffi",
+  "Node FFI",
+  "JNI",
+  "Pyodide",
+  "embedded V8 / Lua",
+  "RustPython",
+  "VS Code extensions",
+  "OSGi",
+  "WordPress hooks",
+  "MCP",
+  "plugin permission models",
+  "capability systems",
+  "WASM sandbox",
+  "V8 isolates",
+  "gVisor",
+  "npm / pip",
+  "VS Code Marketplace",
+  "crates.io"
+ ],
+ "folders": [
+  "base/extercode",
+  "base/extincode",
+  "base/plugin",
+  "test/extercode",
+  "test/extincode"
+ ],
+ "dated": "Read from the source on 2026-09-16, from a read-only main worktree -- base/extercode and base/extincode loaded in stzBase; base/plugin = plan + recovered/ archive, not loaded; test/plugin absent"
 }

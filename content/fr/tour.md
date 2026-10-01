@@ -34,9 +34,9 @@ Trois idées, une par ligne. Ne pas lire la page. L'exemple à donner à l'oral 
 <div class="figure"><b>334</b><span>couloirs notés dans l'Atlas</span></div>
 <div class="figure"><b>101 / 129 / 68 / 36</b><span>Strong / Solid / Partial / Emerging</span></div>
 </div>
-<p><b>Ring</b> est le visage d'aujourd'hui · <b>Ring++</b> est le pont · <b>Haro</b> est la langue d'après, au stade de la charte.</p>
+<p>Un moteur en Zig · une langue, <b>Haro</b>, en construction · vingt-huit domaines, chacun noté honnêtement.</p>
 ```notes
-Dire les stades tels quels : Ring on l'écrit aujourd'hui ; Ring++ existe et tourne, il arrive publiquement quand je l'annonce ; Haro n'est qu'une charte, rien n'est construit. La crédibilité de la plateforme, c'est que l'Atlas montre ses 36 couloirs « Emerging » à côté de ses 101 « Strong ».
+Dire le stade tel quel : Haro est la langue de la plateforme, sa machine virtuelle et son compilateur existent et tournent, sa charte attend ma ratification ; je ne la dirai pas disponible avant qu'elle le soit. La crédibilité de la plateforme, c'est que l'Atlas montre ses 36 couloirs « Emerging » à côté de ses 101 « Strong ».
 ```
 
 <<< scene id="atlas" page="atlas.html" label="Atlas" >>>
@@ -84,25 +84,22 @@ L'histoire à raconter : Amina écrit un agent qui « range » le cours. Il prop
 <div class="cards">
 <div class="card"><h3>Softanza <span class="pill built">construit</span></h3><p>La fondation et son moteur, publics.</p></div>
 <div class="card"><h3>Le Système d'apprentissage <span class="pill built">construit</span></h3><p>Deux cours, quatre langues, onze gardes.</p></div>
-<div class="card"><h3>Ring++ <span class="pill built">en chantier</span></h3><p>Le pont : machine virtuelle et compilateur en Zig.</p></div>
-<div class="card"><h3>Haro <span class="pill charter">charte</span></h3><p>La langue d'après. Rien n'est construit.</p></div>
+<div class="card"><h3>Haro <span class="pill charter">en construction</span></h3><p>La langue de la plateforme ; sa charte attend.</p></div>
 <div class="card"><h3>Harobanda <span class="pill built">construit</span></h3><p>La machine déclarée, MIT, démarre en émulateur.</p></div>
 <div class="card"><h3>Aïcha <span class="pill named">nommée</span></h3><p>Le visage à venir du palier neuronal.</p></div>
 <div class="card"><h3>Zin · Refine · Studio</h3><p><span class="pill built">construit</span> <span class="pill spec">spécification</span> <span class="pill spec">spécification</span></p></div>
 <div class="card"><h3>HaroBase · Bangalo · COBOL</h3><p><span class="pill spec">spécification</span> <span class="pill built">construit</span> <span class="pill proposal">proposition</span></p></div>
 </div>
 ```notes
-Un mot par carte, et le stade à voix haute. Aïcha : « c'est le nom que je donne au modèle de langage de Softanza ; aucun produit ne porte ce nom aujourd'hui ». Ne jamais dire que Haro est disponible, ni que Ring est mort.
+Un mot par carte, et le stade à voix haute. Aïcha : « c'est le nom que je donne au modèle de langage de Softanza ; aucun produit ne porte ce nom aujourd'hui ». Ne jamais dire que Haro est disponible.
 ```
 
 <<< scene id="start" page="start.html" label="Commencer" >>>
 <div class="eyebrow">Commencer, en une heure</div>
 # Deux dépôts publics. <i>Un dossier, copié.</i>
 <pre>git clone https://github.com/mayouni/stzlib.git
-cd stzlib/libraries/stzlib
-ring premier.ring</pre>
-<div class="run"><div><div class="lbl">premier.ring</div><pre>load "stzlib.ring"
-? Q("Softanza").Boxed()</pre></div><div class="out"><div class="lbl">Sortie, cette nuit</div><pre>┌──────────┐
+cd stzlib/libraries/stzlib</pre>
+<div class="run"><div><div class="lbl">premier</div><pre>? Q("Softanza").Boxed()</pre></div><div class="out"><div class="lbl">Sortie, cette nuit</div><pre>┌──────────┐
 │ Softanza │
 └──────────┘</pre></div></div>
 <p>github.com/mayouni/stzlib · codeberg.org/MAyouni/stzlib · ce site : github.com/mayouni/stzsite</p>

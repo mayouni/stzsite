@@ -18,7 +18,7 @@
 <header class="site-head"><div class="wrap head-row">
   <a class="brand" href="../index.html" aria-label="Softanza"><img src="../assets/img/mark.png" alt="" width="34" height="29"><span>Softanza</span></a>
   <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
-  <nav id="site-nav" class="site-nav"><a href="why.html">Pourquoi</a><a href="platform.html">Plateforme</a><a href="atlas.html">Atlas</a><a href="learn.html">Apprendre</a><a href="govern.html">Gouverner</a><a href="makers.html">Makers</a><a href="products.html">Produits</a><a href="africa.html">Afrique</a><a href="start.html" aria-current=page>Démarrer</a><a href="tour.html">Présenter</a></nav>
+  <nav id="site-nav" class="site-nav"><a href="why.html">Principes</a><a href="platform.html">Plateforme</a><a href="atlas.html">Atlas</a><a href="learn.html">Apprendre</a><a href="govern.html">Agents</a><a href="makers.html">Makers</a><a href="products.html">Produits</a><a href="africa.html">Afrique</a><a href="start.html" aria-current=page>Démarrer</a><a href="tour.html">Présenter</a></nav>
   <div class="head-tools">
     <a class="lang" href="../en/start.html" lang="en" hreflang="en">English</a>
     <button class="theme-btn" type="button" data-theme-toggle aria-label="Thème" title="Thème: clair / sombre / auto"><span class="sun">&#9728;</span><span class="moon">&#9790;</span></button>
@@ -39,36 +39,35 @@
 </div>
 
 <h2 id="installer">Installer</h2>
-<p>Softanza s'exécute sur Ring 1.27 ; le moteur Zig est livré en bibliothèques compilées pour Windows, et se construit pour Linux et macOS depuis la source. Il n'y a rien à installer au sens d'un installateur : un dossier, copié.</p>
+<p>Le moteur Zig est livré en bibliothèques compilées pour Windows et se construit pour Linux et macOS depuis la source ; l'exécutant de la plateforme est décrit dans le dépôt. Il n'y a rien à installer au sens d'un installateur : un dossier, copié.</p>
 <pre>git clone https://github.com/mayouni/stzlib.git
-cd stzlib/libraries/stzlib
-ring premier.ring</pre>
+cd stzlib/libraries/stzlib</pre>
 
-<p>Ring se télécharge sur <a href="https://ring-lang.github.io/">ring-lang.github.io</a>. Un script placé dans le dossier <code>libraries/stzlib</code> charge la bibliothèque par une ligne.</p>
+<p>Un script placé dans le dossier <code>libraries/stzlib</code> charge la bibliothèque par une ligne ; l'exécutant qui le lance, et sa version, sont ceux que le dépôt indique.</p>
 <h2 id="le-premier-programme">Le premier programme</h2>
-<div class="run"><div><div class="lbl">premier.ring</div><pre>load "stzlib.ring"
-
-o1 = new stzList([ "A", "", "B", "", "", "C" ])
+<div class="run"><div><div class="lbl">premier</div><pre>o1 = new stzList([ "A", "", "B", "", "", "C" ])
 ? o1.ContainsEmptyStrings()
 
 ? Q("Softanza").Boxed()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
 ┌──────────┐
 │ Softanza │
 └──────────┘</pre></div></div>
-<p class="ran">exécuté le 2026-10-01 à 00:45 depuis <code>libraries/stzlib</code>, Ring 1.27, Softanza au commit <a href="https://github.com/mayouni/stzlib/commit/0e72e2e2c">0e72e2e2c</a></p>
+<p class="ran">exécuté le 2026-10-01 à 00:45 depuis <code>libraries/stzlib</code>, Softanza au commit <a href="https://github.com/mayouni/stzlib/commit/0e72e2e2c">0e72e2e2c</a></p>
 
 <h2 id="la-premiere-narration">La première narration</h2>
 <p>Une narration est un document dont chaque bloc de code s'exécute, et dont les sorties ne sont jamais stockées : ce que vous lisez a été produit en lisant. Commencez par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-mental-mode-narration.md">le modèle mental</a>, puis <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md">les agents qui ne peuvent pas vous nuire</a>. Les 134 narrations sont dans <a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/doc/narrations">doc/narrations</a>.</p>
 <h2 id="le-lecteur-du-cours">Le lecteur du cours</h2>
 <p>Le lecteur est <a href="learn.html">sur la page Apprendre</a>, construit cette nuit. Pour le reconstruire vous-même, depuis votre copie du dépôt :</p>
 <pre>cd libraries/stzlib/base/education/tools
-ring build_reader.ring lecteur.html</pre>
+# lancer build_reader avec l'exécutant du dépôt :
+#   build_reader lecteur.html</pre>
 
 <p class="ran">exécuté le 2026-09-30 à 23:02 : « 15 of 15 chapters, 3 of 3 world pages », toutes les éditions vertes, en 3 minutes 22 secondes</p>
 
 <p>Et pour jouer la démo de quinze minutes pour décideurs, dont la dernière ligne doit dire « DEMO: 20 proved, 0 not proved » :</p>
 <pre>cd libraries/stzlib/base/education/demo
-ring demo.ring repetition</pre>
+# lancer demo avec l'exécutant du dépôt :
+#   demo repetition</pre>
 
 <p class="ran">exécuté le 2026-09-30 à 23:10, en 49 secondes, 20 preuves sur 20</p>
 

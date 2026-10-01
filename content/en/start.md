@@ -16,26 +16,23 @@ description: How to start with Softanza: the GitHub and Codeberg repositories, t
 
 ## Install
 
-Softanza runs on Ring 1.27; the Zig engine ships as compiled libraries for Windows, and builds for Linux and macOS from source. There is nothing to install in the sense of an installer: one folder, copied.
+The Zig engine ships as compiled libraries for Windows and builds for Linux and macOS from source; the platform's runtime is described in the repository. There is nothing to install in the sense of an installer: one folder, copied.
 
 <pre>git clone https://github.com/mayouni/stzlib.git
-cd stzlib/libraries/stzlib
-ring first.ring</pre>
+cd stzlib/libraries/stzlib</pre>
 
-Ring downloads from <a href="https://ring-lang.github.io/">ring-lang.github.io</a>. A script placed in the <code>libraries/stzlib</code> folder loads the library with one line.
+A script placed in the <code>libraries/stzlib</code> folder loads the library with one line; the runtime that launches it, and its version, are the ones the repository names.
 
 ## The first program
 
-<div class="run"><div><div class="lbl">first.ring</div><pre>load "stzlib.ring"
-
-o1 = new stzList([ "A", "", "B", "", "", "C" ])
+<div class="run"><div><div class="lbl">first</div><pre>o1 = new stzList([ "A", "", "B", "", "", "C" ])
 ? o1.ContainsEmptyStrings()
 
 ? Q("Softanza").Boxed()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 ┌──────────┐
 │ Softanza │
 └──────────┘</pre></div></div>
-<p class="ran">run on 2026-10-01 at 00:45 from <code>libraries/stzlib</code>, Ring 1.27, Softanza at commit <a href="https://github.com/mayouni/stzlib/commit/0e72e2e2c">0e72e2e2c</a></p>
+<p class="ran">run on 2026-10-01 at 00:45 from <code>libraries/stzlib</code>, Softanza at commit <a href="https://github.com/mayouni/stzlib/commit/0e72e2e2c">0e72e2e2c</a></p>
 
 ## The first narration
 
@@ -46,14 +43,16 @@ A narration is a document where every code block runs and no output is ever stor
 The reader is [on the Learn page](learn.html), built tonight. To rebuild it yourself, from your copy of the repository:
 
 <pre>cd libraries/stzlib/base/education/tools
-ring build_reader.ring reader.html</pre>
+# run build_reader with the repository's runtime:
+#   build_reader reader.html</pre>
 
 <p class="ran">run on 2026-09-30 at 23:02: "15 of 15 chapters, 3 of 3 world pages", every edition green, in 3 minutes 22 seconds</p>
 
 And to play the fifteen-minute demo for decision makers, whose last line must read "DEMO: 20 proved, 0 not proved":
 
 <pre>cd libraries/stzlib/base/education/demo
-ring demo.ring rehearsal</pre>
+# run demo with the repository's runtime:
+#   demo rehearsal</pre>
 
 <p class="ran">run on 2026-09-30 at 23:10, in 49 seconds, 20 proofs out of 20</p>
 

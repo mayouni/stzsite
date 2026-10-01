@@ -1,34 +1,113 @@
 {
-  "slug": "agents",
-  "title": "Agents & Conversation — Where It Stands",
-  "thesis": "A deliberate inversion of LangChain and AutoGen: a governed, declarative substrate where an LLM only proposes and can never act. It is strongest exactly where the peers are weakest — safety, governance, determinism — and deliberately absent exactly where they lead: LLM-driven tool selection, autonomous planning, live multi-agent chat, and RAG.",
-  "lanes": [
-    {"lane": "Safe-world binding (sandboxed execution)", "rating": "Strong", "note": "stzAgentWorkbench rehearses into a virtual-filesystem twin; a separate committing actor executes the plan under three gates; the disk provably does not move", "proof": "stzAgentWorkbench / GenerateUpdatePlan(); test/agentic"},
-    {"lane": "Guardrails & governance (capability lattice)", "rating": "Strong", "note": "Five statically-proven invariants feed the one CI gate; no-llm-effectful enforced at two doors (graph construction and engine registration)", "proof": "stzAgentGraph / stzAgentRule"},
-    {"lane": "Agent definition & lifecycle (.pia, judged-at-load)", "rating": "Strong", "note": "An agent is a closed, versioned .pia file judged at LOAD by a sequence of courts; a defect is a refusal, one per gate (14 refusal codes)", "proof": "stzAgentDeclaration / stzAgentFolder"},
-    {"lane": "Tick / scheduler loop", "rating": "Strong", "note": "agentloop.zig: Zig owns time, Ring runs Cycle(), no callback into the Ring VM; determinism proven as a test; 15 Zig unit tests", "proof": "agentloop.zig / ring_bridge_agentloop.zig"},
-    {"lane": "Structured output (LLM proposals)", "rating": "Solid", "note": "llm_actor proposes via stzLLMFunction + stzOutputSchema, compiled to GBNF so invalid tokens are unemittable; a proposal is a candidate, never an effect", "proof": "stzLLMFunction / stzOutputSchema"},
-    {"lane": "Conversation management", "rating": "Solid", "note": "stzConversation: goal-driven loop in a stzKnowledgeGraph, questions born from gaps, governed Admit, persists as .zcnv; no intent classification", "proof": "stzConversation / stzGoal; test/conversation"},
-    {"lane": "Memory & state", "rating": "Solid", "note": "stzAgentMemory over stzKnowledgeGraph: Learn/Recall/Forget/Prove over triples, persistable; no buffer/summary/vector memory variety", "proof": "stzAgentMemory"},
-    {"lane": "LLM function & prompt management", "rating": "Solid", "note": "stzLLMFunction: typed returns, call budget, retries, goldens, template prompt, real GGUF backend; no chain/pipeline ecosystem or prompt registry", "proof": "stzLLMFunction (AddGolden/RunGoldens)"},
-    {"lane": "Multi-agent orchestration", "rating": "Partial", "note": "stzAgentGraph composes roles and edges and proves soundness; no runtime multi-agent conversation orchestrator, native roster one-fifth wired", "proof": "stzAgentGraph"},
-    {"lane": "Tools / function-calling", "rating": "Partial", "note": "A skill's ring:<Function> clause binds a Ring function under an execution posture; no LLM-driven tool selection -- a deliberate refusal", "proof": ""},
-    {"lane": "Planning & reasoning", "rating": "Partial", "note": "Deterministic perceive->decide->act to a fixpoint (stzPIAgent.Pursue, RunToQuiet); no LLM-driven planning, the planner agent reserved", "proof": "stzPIAgent"},
-    {"lane": "RAG / retrieval", "rating": "Emerging", "note": "Not wired into the agent tier; stzSemanticIndex lives on the Neural tier and is not connected to agent proposal or memory", "proof": ""}
-  ],
-  "standouts": [
-    "safe-world binding: a genuine category-of-one",
-    "a provable governance graph (five static invariants)",
-    "agents as .pia files judged at load",
-    "a Zig-owned tick loop with no callback into Ring"
-  ],
-  "gaps": [
-    "LLM-driven tool selection, gated",
-    "wire RAG into agents",
-    "plan negotiation (Receive / Revise)",
-    "live multi-agent orchestration"
-  ],
-  "peers": ["LangChain", "AutoGen", "Semantic Kernel", "NeMo Guardrails", "Guardrails AI", "LangGraph", "Rasa", "instructor / outlines", "DSPy", "CrewAI", "OpenAI function-calling", "AutoGPT", "LlamaIndex"],
-  "folders": ["base/agentic", "base/conversation", "test/agentic", "test/conversation"],
-  "dated": "Read from the source on 2026-09-16"
+ "slug": "agents",
+ "title": "Agents & Conversation — Where It Stands",
+ "thesis": "A deliberate inversion of LangChain and AutoGen: a governed, declarative substrate where an LLM only proposes and can never act. It is strongest exactly where the peers are weakest — safety, governance, determinism — and deliberately absent exactly where they lead: LLM-driven tool selection, autonomous planning, live multi-agent chat, and RAG.",
+ "lanes": [
+  {
+   "lane": "Safe-world binding (sandboxed execution)",
+   "rating": "Strong",
+   "note": "stzAgentWorkbench rehearses into a virtual-filesystem twin; a separate committing actor executes the plan under three gates; the disk provably does not move",
+   "proof": "stzAgentWorkbench / GenerateUpdatePlan(); test/agentic"
+  },
+  {
+   "lane": "Guardrails & governance (capability lattice)",
+   "rating": "Strong",
+   "note": "Five statically-proven invariants feed the one CI gate; no-llm-effectful enforced at two doors (graph construction and engine registration)",
+   "proof": "stzAgentGraph / stzAgentRule"
+  },
+  {
+   "lane": "Agent definition & lifecycle (.pia, judged-at-load)",
+   "rating": "Strong",
+   "note": "An agent is a closed, versioned .pia file judged at LOAD by a sequence of courts; a defect is a refusal, one per gate (14 refusal codes)",
+   "proof": "stzAgentDeclaration / stzAgentFolder"
+  },
+  {
+   "lane": "Tick / scheduler loop",
+   "rating": "Strong",
+   "note": "agentloop.zig: Zig owns time, Haro runs Cycle(), no callback into the Haro VM; determinism proven as a test; 15 Zig unit tests",
+   "proof": "agentloop.zig / bridge_agentloop.zig"
+  },
+  {
+   "lane": "Structured output (LLM proposals)",
+   "rating": "Solid",
+   "note": "llm_actor proposes via stzLLMFunction + stzOutputSchema, compiled to GBNF so invalid tokens are unemittable; a proposal is a candidate, never an effect",
+   "proof": "stzLLMFunction / stzOutputSchema"
+  },
+  {
+   "lane": "Conversation management",
+   "rating": "Solid",
+   "note": "stzConversation: goal-driven loop in a stzKnowledgeGraph, questions born from gaps, governed Admit, persists as .zcnv; no intent classification",
+   "proof": "stzConversation / stzGoal; test/conversation"
+  },
+  {
+   "lane": "Memory & state",
+   "rating": "Solid",
+   "note": "stzAgentMemory over stzKnowledgeGraph: Learn/Recall/Forget/Prove over triples, persistable; no buffer/summary/vector memory variety",
+   "proof": "stzAgentMemory"
+  },
+  {
+   "lane": "LLM function & prompt management",
+   "rating": "Solid",
+   "note": "stzLLMFunction: typed returns, call budget, retries, goldens, template prompt, real GGUF backend; no chain/pipeline ecosystem or prompt registry",
+   "proof": "stzLLMFunction (AddGolden/RunGoldens)"
+  },
+  {
+   "lane": "Multi-agent orchestration",
+   "rating": "Partial",
+   "note": "stzAgentGraph composes roles and edges and proves soundness; no runtime multi-agent conversation orchestrator, native roster one-fifth wired",
+   "proof": "stzAgentGraph"
+  },
+  {
+   "lane": "Tools / function-calling",
+   "rating": "Partial",
+   "note": "A skill's host-function clause binds a Haro function under an execution posture; no LLM-driven tool selection -- a deliberate refusal",
+   "proof": ""
+  },
+  {
+   "lane": "Planning & reasoning",
+   "rating": "Partial",
+   "note": "Deterministic perceive->decide->act to a fixpoint (stzPIAgent.Pursue, RunToQuiet); no LLM-driven planning, the planner agent reserved",
+   "proof": "stzPIAgent"
+  },
+  {
+   "lane": "RAG / retrieval",
+   "rating": "Emerging",
+   "note": "Not wired into the agent tier; stzSemanticIndex lives on the Neural tier and is not connected to agent proposal or memory",
+   "proof": ""
+  }
+ ],
+ "standouts": [
+  "safe-world binding: a genuine category-of-one",
+  "a provable governance graph (five static invariants)",
+  "agents as .pia files judged at load",
+  "a Zig-owned tick loop with no callback into Haro"
+ ],
+ "gaps": [
+  "LLM-driven tool selection, gated",
+  "wire RAG into agents",
+  "plan negotiation (Receive / Revise)",
+  "live multi-agent orchestration"
+ ],
+ "peers": [
+  "LangChain",
+  "AutoGen",
+  "Semantic Kernel",
+  "NeMo Guardrails",
+  "Guardrails AI",
+  "LangGraph",
+  "Rasa",
+  "instructor / outlines",
+  "DSPy",
+  "CrewAI",
+  "OpenAI function-calling",
+  "AutoGPT",
+  "LlamaIndex"
+ ],
+ "folders": [
+  "base/agentic",
+  "base/conversation",
+  "test/agentic",
+  "test/conversation"
+ ],
+ "dated": "Read from the source on 2026-09-16"
 }

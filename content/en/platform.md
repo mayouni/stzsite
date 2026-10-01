@@ -1,46 +1,45 @@
 ---
-title: The engine and its faces
-title_html: The engine <i>and its faces</i>
+title: The areas of the platform
+title_html: The areas <i>of the platform</i>
 kicker: The platform
-lede: Substance lives in an engine written in Zig. Languages are its faces. Ring is the one you write today, Ring++ is the bridge, Haro is the language after, at charter stage.
-description: The Softanza architecture: a Zig engine of hundreds of modules, Ring as today's face, Ring++ as the bridge, Haro at charter stage, and the Atlas that rates every domain.
+lede: One engine written in Zig, one language, Haro, and twenty-eight areas of computation, from strings to maps, from sound to governed agents, designed to work together. Everything here runs; what does not run yet carries its rating.
+description: The twenty-eight areas of the Softanza platform: a Zig engine, the Haro language, and every area rated honestly against the leaders of its category.
 ---
 
-## The engine is the product
+## One unified computational platform
 
-Strings, tables, graphs, geography, GPU, sound, neural networks, cryptography, database, HTTP, regular expressions, statistics, linear algebra, Fourier transforms: all of it is written in Zig, in one engine, exposed to languages through a C interface. The language you type is a face; what computes is the engine.
+Softanza is a computational platform: an engine, written in Zig, that handles codepoint-correct strings, exact numbers at any size, tables, graphs, maps on the ellipsoid, images, sound, neural networks, governed agents and the security that holds them; a language, Haro, that reads like a sentence and puts all of it within one line; and a law, everything is judged by running, which is why what you read here ran.
 
 <div class="figures">
+<div class="figure"><b>28</b><span>areas, 334 rated lanes</span><a href="atlas.html">the Atlas</a></div>
 <div class="figure"><b>401</b><span>Zig source files in the engine</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/engine/src">engine/src</a></div>
-<div class="figure"><b>5,822</b><span>commits on the main branch</span><a href="https://github.com/mayouni/stzlib/commits/main">commits/main</a></div>
+<div class="figure"><b>5,384</b><span>methods on a single string</span><a href="atlas/meta.html">atlas/meta</a></div>
 <div class="figure"><b>134</b><span>run-verified narrations</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/doc/narrations">doc/narrations</a></div>
-<div class="figure"><b>2</b><span>public repositories, GitHub and Codeberg</span><a href="https://codeberg.org/MAyouni/stzlib">codeberg.org/MAyouni/stzlib</a></div>
+<div class="figure"><b>5,822</b><span>commits on the main branch</span><a href="https://github.com/mayouni/stzlib/commits/main">commits/main</a></div>
 </div>
 
-Fourteen GPU modules, nine geographic ones, six neural, seven for sound: the families read in the file names of the folder linked above, and that is where they are counted.
+## The twenty-eight areas
 
-## Ring, Ring++, Haro
-
-<div class="cards">
-<div class="card"><h3>Ring <span class="pill built">today</span></h3><p>The face you write today. A small, readable, multiparadigm language that the Softanza library turns into a sentence: <code>o1.ContainsDuplicates()</code> reads as it is written. Ring is not carried forward as a runtime or a governance; its simplicity and expressiveness are.</p></div>
-<div class="card"><h3>Ring++ <span class="pill built">the bridge</span></h3><p>A register virtual machine and a compiler, in Zig, "sovereign, not new", that run existing Ring code. They are judged against Ring 1.27's machine, taken as the oracle. The Softanza library, over three hundred thousand lines, is their compatibility specification.</p><p class="proof"><a href="https://github.com/mayouni/ringpp">github.com/mayouni/ringpp</a></p></div>
-<div class="card"><h3>Haro <span class="pill charter">charter</span></h3><p>The language after Ring, designed for an agent to write and a human to govern, on the Ring++ virtual machine. Its charter is a v0.1 draft of 2026-09-26 awaiting the author's ratification. Nothing is built: no parser, no compiler. This site will never present Haro as available.</p></div>
-</div>
-
-## The Atlas: twenty-eight groups, every lane rated, honestly
-
-The Softanza Atlas is the survey of what the platform can do, group by group, lane by lane, each group measured against the leaders of its category, with four ratings: <span class="chip strong">Strong</span> <span class="chip solid">Solid</span> <span class="chip partial">Partial</span> <span class="chip emerging">Emerging</span>. Ratings are earned by what the guards prove, not by what the plans intend. It shows its gaps; that is what makes its strengths believable. Every group has its page on this site, with its lanes, its standouts, its debts and one example run.
+Every area has its page: what a maker does with it, an example run, its lanes rated against the leaders of its category, what stands out and what is owed. The bars say the rating: <span class="chip strong">Strong</span> <span class="chip solid">Solid</span> <span class="chip partial">Partial</span> <span class="chip emerging">Emerging</span>.
 
 <!--ATLAS-TALLY-->
 <!--ATLAS-COMPACT-->
 
-<p class="proof">Atlas version 21, re-read on 2026-09-30 at commit <a href="https://github.com/mayouni/stzlib/commit/0e72e2e2c">0e72e2e2c</a>; <a href="atlas.html">the full Atlas on this site</a> · <a href="https://claude.ai/artifact/FCeuCNfcZepUDJLxsynwFB">the original Atlas</a>.</p>
+<p class="proof">Atlas version 21, re-read on 2026-09-30 at commit <a href="https://github.com/mayouni/stzlib/commit/0e72e2e2c">0e72e2e2c</a>; <a href="atlas.html">the full Atlas, with its cards</a>.</p>
+
+## The language: Haro
+
+<div class="cards">
+<div class="card"><h3>Haro <span class="pill charter">in construction</span></h3><p>The platform's language: designed for an agent to write and a human to govern, on a register virtual machine and a compiler written in Zig, sovereign. Its charter is a v0.1 draft of 2026-09-26 awaiting the author's ratification; the virtual machine and the compiler exist and run the platform's code of today. This site will never present Haro as available before it is.</p></div>
+<div class="card"><h3>The code on this site</h3><p>Every code block on this site is Softanza code as it runs on the platform today, run on the night of publication, its output beside it. It reads like a sentence: find first, then apply.</p></div>
+<div class="card"><h3>The engine</h3><p>Fourteen GPU modules, nine geographic ones, six neural, seven for sound, plus strings, tables, graphs, cryptography, database, HTTP, regular expressions, statistics, linear algebra and Fourier transforms: the families read in the engine's file names, and that is where they are counted.</p><p class="proof"><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/engine/src">engine/src</a></p></div>
+</div>
 
 ## What "engine" means here
 
-A tiny, real example: Ring counts bytes, the engine counts characters. The Arabic word "سلام" is eight bytes and four letters.
+A tiny, real example: the engine counts characters, not bytes. The Arabic word "سلام" is eight bytes and four letters.
 
-<div class="run"><div><div class="lbl">Ring</div><pre>? len("سلام")
+<div class="run"><div><div class="lbl">Softanza</div><pre>? len("سلام")
 ? Q("سلام").NumberOfChars()
 ? Q("مرحبا بالعالم").Script()
 ? Q("SOFTANZA").BoxedXT([ :Rounded = TRUE ])</pre></div><div class="out"><div class="lbl">Output</div><pre>8
@@ -49,4 +48,4 @@ arabic
 ╭──────────╮
 │ SOFTANZA │
 ╰──────────╯</pre></div></div>
-<p class="ran">run on 2026-09-30 at 23:11, Ring 1.27, Softanza at commit 0e72e2e2c</p>
+<p class="ran">run on 2026-09-30 at 23:11, Softanza at commit 0e72e2e2c</p>

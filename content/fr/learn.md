@@ -19,7 +19,7 @@ Une page de cours ordinaire montre des sorties que quelqu'un a copiées un jour.
 
 ## Le lecteur, construit ce soir
 
-Le lecteur ci-dessous a été produit par l'outil <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/tools/build_reader.ring">build_reader.ring</a> le 2026-09-30 à 23:02, en 3 minutes 22 secondes : quinze chapitres dans les quatre langues et trois pages de monde, tous verts. Choisissez la langue dans son menu ; l'arabe se lit de droite à gauche. Ses cellules ont été exécutées sur le bureau au moment de la construction, et la page le dit sur chaque cellule.
+Le lecteur ci-dessous a été produit par l'outil <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/tools/build_reader.ring">build_reader</a> le 2026-09-30 à 23:02, en 3 minutes 22 secondes : quinze chapitres dans les quatre langues et trois pages de monde, tous verts. Choisissez la langue dans son menu ; l'arabe se lit de droite à gauche. Ses cellules ont été exécutées sur le bureau au moment de la construction, et la page le dit sur chaque cellule.
 
 <div class="embed"><div class="embed-bar"><a href="../reader.html">Ouvrir le lecteur en plein écran</a><span>Introduction élémentaire · en · fr · ar · ha</span></div><iframe src="../reader.html" title="Le lecteur du cours Softanza, construit le 2026-09-30" loading="lazy"></iframe></div>
 
@@ -52,12 +52,12 @@ Le chapitre 1 s'ouvre par la même phrase dans les quatre langues, et la même c
 
 La couche naturelle de la bibliothèque comprend une consigne dans les quatre langues du cours et l'exécute. La démonstration ci-dessous a tourné ce soir ; elle fait partie des vingt preuves de la démo pour décideurs.
 
-<div class="run"><div><div class="lbl">Ring</div><pre>? @@( NaturallyIn("fr", "Crée une liste avec [ 5, 3, 5, 1 ] et enlève les doublons").Result() )
+<div class="run"><div><div class="lbl">Softanza</div><pre>? @@( NaturallyIn("fr", "Crée une liste avec [ 5, 3, 5, 1 ] et enlève les doublons").Result() )
 ? @@( NaturallyIn("ha", "Yi jeri dauke [ 5, 3, 5, 1 ] cire maimaitattu").Result() )
 ? @@( NaturallyIn("ar", "أنشئ قائمة مع [ 5, 3, 5, 1 ] أزل التكرارات").Result() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 5, 3, 1 ]
 [ 5, 3, 1 ]
 [ 5, 3, 1 ]</pre></div></div>
-<p class="ran">exécuté le 2026-09-30 à 23:10 par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">demo.ring</a>, dernière ligne : « DEMO: 20 proved, 0 not proved », en 49 secondes</p>
+<p class="ran">exécuté le 2026-09-30 à 23:10 par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">demo</a>, dernière ligne : « DEMO: 20 proved, 0 not proved », en 49 secondes</p>
 
 ## Un tuteur qui demande, et ne donne pas la réponse
 

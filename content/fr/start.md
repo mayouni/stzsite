@@ -16,26 +16,23 @@ description: Comment commencer avec Softanza : les dépôts GitHub et Codeberg, 
 
 ## Installer
 
-Softanza s'exécute sur Ring 1.27 ; le moteur Zig est livré en bibliothèques compilées pour Windows, et se construit pour Linux et macOS depuis la source. Il n'y a rien à installer au sens d'un installateur : un dossier, copié.
+Le moteur Zig est livré en bibliothèques compilées pour Windows et se construit pour Linux et macOS depuis la source ; l'exécutant de la plateforme est décrit dans le dépôt. Il n'y a rien à installer au sens d'un installateur : un dossier, copié.
 
 <pre>git clone https://github.com/mayouni/stzlib.git
-cd stzlib/libraries/stzlib
-ring premier.ring</pre>
+cd stzlib/libraries/stzlib</pre>
 
-Ring se télécharge sur <a href="https://ring-lang.github.io/">ring-lang.github.io</a>. Un script placé dans le dossier <code>libraries/stzlib</code> charge la bibliothèque par une ligne.
+Un script placé dans le dossier <code>libraries/stzlib</code> charge la bibliothèque par une ligne ; l'exécutant qui le lance, et sa version, sont ceux que le dépôt indique.
 
 ## Le premier programme
 
-<div class="run"><div><div class="lbl">premier.ring</div><pre>load "stzlib.ring"
-
-o1 = new stzList([ "A", "", "B", "", "", "C" ])
+<div class="run"><div><div class="lbl">premier</div><pre>o1 = new stzList([ "A", "", "B", "", "", "C" ])
 ? o1.ContainsEmptyStrings()
 
 ? Q("Softanza").Boxed()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
 ┌──────────┐
 │ Softanza │
 └──────────┘</pre></div></div>
-<p class="ran">exécuté le 2026-10-01 à 00:45 depuis <code>libraries/stzlib</code>, Ring 1.27, Softanza au commit <a href="https://github.com/mayouni/stzlib/commit/0e72e2e2c">0e72e2e2c</a></p>
+<p class="ran">exécuté le 2026-10-01 à 00:45 depuis <code>libraries/stzlib</code>, Softanza au commit <a href="https://github.com/mayouni/stzlib/commit/0e72e2e2c">0e72e2e2c</a></p>
 
 ## La première narration
 
@@ -46,14 +43,16 @@ Une narration est un document dont chaque bloc de code s'exécute, et dont les s
 Le lecteur est [sur la page Apprendre](learn.html), construit cette nuit. Pour le reconstruire vous-même, depuis votre copie du dépôt :
 
 <pre>cd libraries/stzlib/base/education/tools
-ring build_reader.ring lecteur.html</pre>
+# lancer build_reader avec l'exécutant du dépôt :
+#   build_reader lecteur.html</pre>
 
 <p class="ran">exécuté le 2026-09-30 à 23:02 : « 15 of 15 chapters, 3 of 3 world pages », toutes les éditions vertes, en 3 minutes 22 secondes</p>
 
 Et pour jouer la démo de quinze minutes pour décideurs, dont la dernière ligne doit dire « DEMO: 20 proved, 0 not proved » :
 
 <pre>cd libraries/stzlib/base/education/demo
-ring demo.ring repetition</pre>
+# lancer demo avec l'exécutant du dépôt :
+#   demo repetition</pre>
 
 <p class="ran">exécuté le 2026-09-30 à 23:10, en 49 secondes, 20 preuves sur 20</p>
 

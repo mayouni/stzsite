@@ -19,7 +19,7 @@ An ordinary course page shows outputs somebody copied one day. Here the page is 
 
 ## The reader, built tonight
 
-The reader below was produced by the tool <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/tools/build_reader.ring">build_reader.ring</a> on 2026-09-30 at 23:02, in 3 minutes 22 seconds: fifteen chapters in the four languages and three world pages, all green. Pick the language in its menu; Arabic reads right to left. Its cells ran on the desktop when the page was built, and the page says so on every cell.
+The reader below was produced by the tool <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/tools/build_reader.ring">build_reader</a> on 2026-09-30 at 23:02, in 3 minutes 22 seconds: fifteen chapters in the four languages and three world pages, all green. Pick the language in its menu; Arabic reads right to left. Its cells ran on the desktop when the page was built, and the page says so on every cell.
 
 <div class="embed"><div class="embed-bar"><a href="../reader.html">Open the reader full screen</a><span>Elementary Introduction · en · fr · ar · ha</span></div><iframe src="../reader.html" title="The Softanza course reader, built on 2026-09-30" loading="lazy"></iframe></div>
 
@@ -52,12 +52,12 @@ Chapter 1 opens with the same sentence in the four languages, and the same cell 
 
 The library's natural layer understands an instruction in the four languages of the course and runs it. The demonstration below ran tonight; it is one of the twenty proofs of the decision-makers' demo.
 
-<div class="run"><div><div class="lbl">Ring</div><pre>? @@( Naturally("Create a list with [ 5, 3, 5, 1 ] and remove its duplicates").Result() )
+<div class="run"><div><div class="lbl">Softanza</div><pre>? @@( Naturally("Create a list with [ 5, 3, 5, 1 ] and remove its duplicates").Result() )
 ? @@( NaturallyIn("ha", "Yi jeri dauke [ 5, 3, 5, 1 ] cire maimaitattu").Result() )
 ? @@( NaturallyIn("ar", "أنشئ قائمة مع [ 5, 3, 5, 1 ] أزل التكرارات").Result() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ 5, 3, 1 ]
 [ 5, 3, 1 ]
 [ 5, 3, 1 ]</pre></div></div>
-<p class="ran">run on 2026-09-30 at 23:10 by <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">demo.ring</a>, last line: "DEMO: 20 proved, 0 not proved", in 49 seconds</p>
+<p class="ran">run on 2026-09-30 at 23:10 by <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">demo</a>, last line: "DEMO: 20 proved, 0 not proved", in 49 seconds</p>
 
 ## A tutor that asks, and does not give the answer
 

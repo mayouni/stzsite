@@ -1,34 +1,117 @@
 {
-  "slug": "gpu",
-  "title": "GPU — Where It Stands",
-  "thesis": "An in-house wgpu plane that does what neither three.js (render-only) nor taichi (compute-only) does: compute and render on one device, zero-copy. Its distinctive core is a self-tuning foundry; real consumers are accelerated and verified (t-SNE 5-8x, UMAP up to 16x, k-means 6x, neural forward 5x, exact vector search 18x), always with a bit-identical CPU fallback. What it refuses by measured decision — f64 on GPU, multi-GPU, deep 3D — are scope boundaries, not oversights.",
-  "lanes": [
-    {"lane": "The calibration foundry", "rating": "Strong", "note": "A checker runs reference vs candidate at a visible and a hidden shape, refusing by name any time under a measured roofline; a shape-keyed store keeps the winner", "proof": "gpu_verify.zig / gpu_foundry.zig (GK0)"},
-    {"lane": "Device & runtime (wgpu)", "rating": "Strong", "note": "gpu.zig over vendored wgpu-native v29: generation-keyed handles, bounded VRAM cache, WGSL compile-cache, TDR-safe tiling, async dispatch, live instruments", "proof": "gpu.zig"},
-    {"lane": "Compute kernels", "rating": "Strong", "note": "A WGSL kernel library: matmul (tiled + register-blocked), pairdist, softmax, reductions, FFT convolution (Stockham radix-2), fused multi-head attention", "proof": "gpu_ops.zig / gpu_fft.zig"},
-    {"lane": "Compute + render on one device", "rating": "Strong", "note": "Compute and render in one DLL sharing one device: instanced 2D display list, HarfBuzz text, texture atlas, 3D meshes in one instanced draw; zero-copy proven", "proof": "gpu_scene.zig / gpu_text.zig / gpu_scene3d.zig"},
-    {"lane": "Acceleration seams (GS)", "rating": "Strong", "note": "t-SNE 5-8x, UMAP 9.8-16.5x, k-means up to 6.1x, semantic index 2-2.5x, neural backbone 5.3x, vector search 17.9x; each with a bit-identical CPU fallback", "proof": "tsne_gpu / umap_gpu / kmeans_gpu / neural_backbone.zig"},
-    {"lane": "W-string -> WGSL transpiler", "rating": "Solid", "note": "gpu_wgsl.zig turns a stzKernelMaker spec into elementwise WGSL: f32-only, 20-function whitelist, refuses unknown functions by name; elementwise-only", "proof": "gpu_wgsl.zig / stzKernelMaker"},
-    {"lane": "Browser / WebGPU edge tier", "rating": "Solid", "note": "The transpiler compiles into stz.wasm; same spec -> byte-identical WGSL native vs browser -> f32-exact results (5/5); elementwise kernels only", "proof": "test/gpu/edge_proof"},
-    {"lane": "Residency & buffer model", "rating": "Solid", "note": "Upload once -> run N kernels -> read once; every op takes and returns stzGpuBuffer handles; bounded FIFO VRAM cache; single-device, not usage-aware", "proof": "stzGpuBuffer"},
-    {"lane": "Idle / power management", "rating": "Solid", "note": "stz_gpu_wake(cap_ms) does adaptive copies until one runs at full speed; every guard wakes the device before timing; idle-aware routing (GK1b) not built", "proof": "Wake(400)"},
-    {"lane": "Precision — f64 on GPU", "rating": "Partial", "note": "f32 throughout; f64 refused by measured decision (consumer NVIDIA runs it at 1/64 of f32); the f64 solver tier stays CPU SIMD", "proof": "gpu_math.zig"},
-    {"lane": "Multi-GPU / scaling", "rating": "Partial", "note": "Adapter enumeration and selection of one device, per-adapter calibration; no two-device parallelism, out of scope with a pre-written 1.5x kill line", "proof": "SelectAdapter"},
-    {"lane": "3D render depth", "rating": "Partial", "note": "A camera, one directional light, instanced meshes in a single call; no PBR materials, shadows, post-processing or a deep scene graph", "proof": "gpu_scene3d.zig / gpu_mesh.zig"}
-  ],
-  "standouts": [
-    "a self-tuning, self-checking calibration foundry: category-of-one",
-    "compute and render zero-copy on one device",
-    "every GPU route measured, verified, and reversible to CPU",
-    "byte-identical WGSL native vs browser"
-  ],
-  "gaps": [
-    "broaden the kernel transpiler beyond elementwise",
-    "whole-pipeline GPU residency",
-    "idle-aware routing (GK1b)",
-    "deeper 3D rendering"
-  ],
-  "peers": ["three.js", "taichi", "wgpu", "Dawn", "WebGPU", "cuBLAS / cuDNN", "regl", "RAPIDS / cuML", "cuGraph", "Triton", "CUDA C++", "TensorFlow.js", "CUDA persistence mode", "OpenCL", "ROCm", "Dask-CUDA", "Babylon.js", "Bevy", "ML-compiler autotuners"],
-  "folders": ["base/gpu", "test/gpu"],
-  "dated": "Read from the source on 2026-09-16, from a read-only main worktree"
+ "slug": "gpu",
+ "title": "GPU — Where It Stands",
+ "thesis": "An in-house wgpu plane that does what neither three.js (render-only) nor taichi (compute-only) does: compute and render on one device, zero-copy. Its distinctive core is a self-tuning foundry; real consumers are accelerated and verified (t-SNE 5-8x, UMAP up to 16x, k-means 6x, neural forward 5x, exact vector search 18x), always with a bit-identical CPU fallback. What it refuses by measured decision — f64 on GPU, multi-GPU, deep 3D — are scope boundaries, not oversights.",
+ "lanes": [
+  {
+   "lane": "The calibration foundry",
+   "rating": "Strong",
+   "note": "A checker runs reference vs candidate at a visible and a hidden shape, refusing by name any time under a measured roofline; a shape-keyed store keeps the winner",
+   "proof": "gpu_verify.zig / gpu_foundry.zig (GK0)"
+  },
+  {
+   "lane": "Device & runtime (wgpu)",
+   "rating": "Strong",
+   "note": "gpu.zig over vendored wgpu-native v29: generation-keyed handles, bounded VRAM cache, WGSL compile-cache, TDR-safe tiling, async dispatch, live instruments",
+   "proof": "gpu.zig"
+  },
+  {
+   "lane": "Compute kernels",
+   "rating": "Strong",
+   "note": "A WGSL kernel library: matmul (tiled + register-blocked), pairdist, softmax, reductions, FFT convolution (Stockham radix-2), fused multi-head attention",
+   "proof": "gpu_ops.zig / gpu_fft.zig"
+  },
+  {
+   "lane": "Compute + render on one device",
+   "rating": "Strong",
+   "note": "Compute and render in one DLL sharing one device: instanced 2D display list, HarfBuzz text, texture atlas, 3D meshes in one instanced draw; zero-copy proven",
+   "proof": "gpu_scene.zig / gpu_text.zig / gpu_scene3d.zig"
+  },
+  {
+   "lane": "Acceleration seams (GS)",
+   "rating": "Strong",
+   "note": "t-SNE 5-8x, UMAP 9.8-16.5x, k-means up to 6.1x, semantic index 2-2.5x, neural backbone 5.3x, vector search 17.9x; each with a bit-identical CPU fallback",
+   "proof": "tsne_gpu / umap_gpu / kmeans_gpu / neural_backbone.zig"
+  },
+  {
+   "lane": "W-string -> WGSL transpiler",
+   "rating": "Solid",
+   "note": "gpu_wgsl.zig turns a stzKernelMaker spec into elementwise WGSL: f32-only, 20-function whitelist, refuses unknown functions by name; elementwise-only",
+   "proof": "gpu_wgsl.zig / stzKernelMaker"
+  },
+  {
+   "lane": "Browser / WebGPU edge tier",
+   "rating": "Solid",
+   "note": "The transpiler compiles into stz.wasm; same spec -> byte-identical WGSL native vs browser -> f32-exact results (5/5); elementwise kernels only",
+   "proof": "test/gpu/edge_proof"
+  },
+  {
+   "lane": "Residency & buffer model",
+   "rating": "Solid",
+   "note": "Upload once -> run N kernels -> read once; every op takes and returns stzGpuBuffer handles; bounded FIFO VRAM cache; single-device, not usage-aware",
+   "proof": "stzGpuBuffer"
+  },
+  {
+   "lane": "Idle / power management",
+   "rating": "Solid",
+   "note": "stz_gpu_wake(cap_ms) does adaptive copies until one runs at full speed; every guard wakes the device before timing; idle-aware routing (GK1b) not built",
+   "proof": "Wake(400)"
+  },
+  {
+   "lane": "Precision — f64 on GPU",
+   "rating": "Partial",
+   "note": "f32 throughout; f64 refused by measured decision (consumer NVIDIA runs it at 1/64 of f32); the f64 solver tier stays CPU SIMD",
+   "proof": "gpu_math.zig"
+  },
+  {
+   "lane": "Multi-GPU / scaling",
+   "rating": "Partial",
+   "note": "Adapter enumeration and selection of one device, per-adapter calibration; no two-device parallelism, out of scope with a pre-written 1.5x kill line",
+   "proof": "SelectAdapter"
+  },
+  {
+   "lane": "3D render depth",
+   "rating": "Partial",
+   "note": "A camera, one directional light, instanced meshes in a single call; no PBR materials, shadows, post-processing or a deep scene graph",
+   "proof": "gpu_scene3d.zig / gpu_mesh.zig"
+  }
+ ],
+ "standouts": [
+  "a self-tuning, self-checking calibration foundry: category-of-one",
+  "compute and render zero-copy on one device",
+  "every GPU route measured, verified, and reversible to CPU",
+  "byte-identical WGSL native vs browser"
+ ],
+ "gaps": [
+  "broaden the kernel transpiler beyond elementwise",
+  "whole-pipeline GPU residency",
+  "idle-aware routing (GK1b)",
+  "deeper 3D rendering"
+ ],
+ "peers": [
+  "three.js",
+  "taichi",
+  "wgpu",
+  "Dawn",
+  "WebGPU",
+  "cuBLAS / cuDNN",
+  "regl",
+  "RAPIDS / cuML",
+  "cuGraph",
+  "Triton",
+  "CUDA C++",
+  "TensorFlow.js",
+  "CUDA persistence mode",
+  "OpenCL",
+  "ROCm",
+  "Dask-CUDA",
+  "Babylon.js",
+  "Bevy",
+  "ML-compiler autotuners"
+ ],
+ "folders": [
+  "base/gpu",
+  "test/gpu"
+ ],
+ "dated": "Read from the source on 2026-09-16, from a read-only main worktree"
 }

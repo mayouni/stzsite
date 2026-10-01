@@ -6,13 +6,17 @@ lede: One story, six ways in. For each reader: what they declare, what they get,
 description: The six audiences of Softanza, from the programmer to the agent: what each declares, gets and starts with, with a real example run.
 ---
 
+## What is a maker?
+
+A maker turns what they know about a world into something that runs, without waiting for the software industry. They are not defined by programming skill but by ownership: the artefact is theirs, in plain text, and it does not expire. A teacher, an analyst, a merchant, a student, a civil servant, and an agent that proposes under all of those worlds. Softanza tells one story; each door below opens it at the place that concerns you.
+
 <div class="door-section" id="programmer" markdown="1">
 <div class="kicker">Door 1</div>
 ## A programmer, alone or in a small team
 
 **What you declare:** your intent, in a library that reads like a sentence: find first, then apply. **What you get:** a Zig engine under every call, correct in Unicode, and a narration that runs for every idea. **Where to start:** [the Start page](start.html), then chapter 1 of the course.
 
-<div class="run"><div><div class="lbl">Ring</div><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
+<div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
 ? o1.ContainsDuplicates()
 ? o1.NumberOfOccurrence("tea")
 ? @@( o1.FindAll("tea") )
@@ -20,7 +24,7 @@ description: The six audiences of Softanza, from the programmer to the agent: wh
 3
 [ 1, 3, 6 ]
 [ "tea", "rice", "fish" ]</pre></div></div>
-<p class="ran">run on 2026-09-30 at 23:11, Ring 1.27, Softanza at commit 0e72e2e2c</p>
+<p class="ran">run on 2026-09-30 at 23:11, Softanza at commit 0e72e2e2c</p>
 </div>
 
 <div class="door-section" id="analyst" markdown="1">
@@ -29,7 +33,7 @@ description: The six audiences of Softanza, from the programmer to the agent: wh
 
 **What you declare:** your organisation's entities, rules and flows, in a plain-text knowledge file. **What you get:** a queryable world, where the dependency graph and the symbol table are the same graph, plus tables and statistics computed by the engine. **Where to start:** chapter 12 of the course, "Teach a world", in [the reader](learn.html).
 
-<div class="run"><div><div class="lbl">Ring</div><pre>o = new stzTable([ [ :region, :population ],
+<div class="run"><div><div class="lbl">Softanza</div><pre>o = new stzTable([ [ :region, :population ],
     [ "Agadez", 487620 ], [ "Maradi", 3402094 ], [ "Zinder", 3539764 ] ])
 o.Show()
 ? Q([ 487620, 593821, 2037713, 3402094,
@@ -50,7 +54,7 @@ o.Show()
 
 **What you declare:** a picture, a map, a screen, as a program. **What you get:** a render produced by the engine, reproducible to the byte, and an interface language of twenty-four closed verbs in the Zin family. **Where to start:** chapter 11 of the course, "Draw the answer", in [the reader](learn.html).
 
-<figure><img src="../assets/img/niger-density.png" alt="Population density map of Niger by region: Agadez nearly empty in the north, the southern regions dense, Niamey off the scale." width="1500" height="1240"><figcaption>"Where Niger lives", rendered tonight in 5.9 seconds by <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphics/niger_density.ring">niger_density.ring</a>: geoBoundaries borders (ODbL), the 2012 census, areas measured by the engine's geodesic routine on the WGS84 ellipsoid.</figcaption></figure>
+<figure><img src="../assets/img/niger-density.png" alt="Population density map of Niger by region: Agadez nearly empty in the north, the southern regions dense, Niamey off the scale." width="1500" height="1240"><figcaption>"Where Niger lives", rendered tonight in 5.9 seconds by <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphics/niger_density.ring">niger_density</a>: geoBoundaries borders (ODbL), the 2012 census, areas measured by the engine's geodesic routine on the WGS84 ellipsoid.</figcaption></figure>
 </div>
 
 <div class="door-section" id="decision-maker" markdown="1">
@@ -100,5 +104,5 @@ PROVED  the child's Hausa program passed, checked by running it</pre></div><div 
 -- it lacks the 'effectful' capability
    (required by operation 1)
 PROVED  the course folder still holds all 610 files</pre></div></div>
-<p class="ran">run on 2026-09-30 at 23:10 by <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">demo.ring</a>, scene 6</p>
+<p class="ran">run on 2026-09-30 at 23:10 by <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">demo</a>, scene 6</p>
 </div>

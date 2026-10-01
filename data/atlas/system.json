@@ -1,34 +1,109 @@
 {
-  "slug": "system",
-  "title": "System programming -- where it stands",
-  "thesis": "Deliberately not a Go/Rust-std system library: a clean but intentional subset of OS primitives, plus a layer none of them have -- an in-memory rehearsal twin over files, env and spawns, a single narrated/scoped/audited stzUpdatePlan that is the only bridge to reality, and a capability-actor lattice where an inference-only (LLM) actor's effect set is empty by construction. It omits by design what a governed-effects surface doesn't need: signals, broad IPC, the raw syscall zoo.",
-  "lanes": [
-    {"lane": "Safe-world governance (actor, twin, commit)", "rating": "Strong", "note": "A capability lattice, a rehearsal twin that touches nothing, stzUpdatePlan as the sole crossing with three gates; an LLM actor's effect set is empty.", "proof": "stzSystemActor, stzVirtualSystem, stzUpdatePlan; marker-file guard (queued spawn does not run until commit)"},
-    {"lane": "Process / subprocess management", "rating": "Solid", "note": "Managed children: Spawn, streaming ReadOutput/ReadError, Wait, ExitCode, Kill, no-leak Close; SystemCall double-exec bug fixed (one spawn).", "proof": "system.zig, stzProcess, stzSystemCall"},
-    {"lane": "Environment & working directory", "rating": "Solid", "note": "Get/set/unset/list env, cwd, hostname, username, cpu-count engine-backed; on Windows SetEnvironmentVariableW so later child spawns inherit.", "proof": "stzEnvironment"},
-    {"lane": "Filesystem operations", "rating": "Solid", "note": "Read/write/append/copy/delete/stat and dir create/delete/list/walk/count screened by pathIsUsable; omits permissions, ownership, symlinks, fifos.", "proof": "file.zig, stzVirtualFileSystem"},
-    {"lane": "OS / platform detection & machine info", "rating": "Solid", "note": "OS/arch/endianness, cpu-count, machine and process memory, declared profiles for non-host targets; facts are engine, opinions are Ring; not a deep sysinfo.", "proof": "base/platform"},
-    {"lane": "Time & clocks", "rating": "Solid", "note": "Monotonic ns/us/ms, wall UTC, sleep, resolution; process uptime from a monotonic base instant at DLL load (the epoch-uptime bug fixed and guarded).", "proof": "time.zig"},
-    {"lane": "Deployment plane", "rating": "Solid", "note": "define -> require -> feasibility -> plan -> execute -> ship; Deploy(:Production) gated by MayCommit; Git and LocalRepo backends proven byte-for-byte.", "proof": "stzDeployment, stzDeploymentSite, SOFTANZA_DELIVERY_PLANE.md"},
-    {"lane": "Build & emulation", "rating": "Solid", "note": "stzBuilder + build.zig wasm produce a bundle; stzEmulator rehearses Deploy(:Emulated); stzPlatform refuses to deploy what wasn't built.", "proof": "stzBuilder, stzEmulator, stzWebBundle, stzPlatform"},
-    {"lane": "Threading / async (reactor)", "rating": "Partial", "note": "reactor.zig is a libuv-backed loop, but only its first slice (version + selftest) ships in this group; no thread-spawn API.", "proof": "reactor.zig"},
-    {"lane": "Low-level OS surface", "rating": "Partial", "note": "Path helpers and common file/dir ops; permissions, ownership, symlinks, fifos, mmap, users/groups, ptrace, raw syscalls deliberately omitted.", "proof": "stz_config_sandbox (designed, not wired)"},
-    {"lane": "IPC", "rating": "Partial", "note": "Only the managed child's stdout/stderr/stdin pipes; no named pipes, shared memory or socketpair.", "proof": ""},
-    {"lane": "Signals", "rating": "Emerging", "note": "None: grep finds no stz_signal* in the engine and no Ring signal class; no SIGINT/SIGTERM/SIGCHLD handling, no graceful shutdown.", "proof": ""}
-  ],
-  "standouts": [
-    "A rehearsal twin over files, env and spawns that touches nothing",
-    "stzUpdatePlan: the sole crossing to reality, through three gates (reject, scope, governance)",
-    "An inference-only (LLM) actor's effect set is empty by construction -- agents that cannot hurt you",
-    "Deploy(:Production) gated by MayCommit; Git and LocalRepo backends proven byte-for-byte"
-  ],
-  "gaps": [
-    "Signal handling (SIGINT/SIGTERM/SIGCHLD and Windows console-control)",
-    "The full async reactor surface",
-    "Complete the process face (ExePath, IsAlive, process table); live-verify ssh/docker/device deploy backends",
-    "Richer IPC and the lower OS surface (permissions, symlinks, users/groups); wire the engine sandbox flag"
-  ],
-  "peers": ["Go std (os, os/exec, os/signal, runtime, time, syscall)", "Rust std (process, env, fs, time) + nix, signal-hook, tokio", "libuv", "sysinfo crates", "Ansible / Capistrano", "Terraform", "Docker", "esbuild / bundlers", "Go goroutines"],
-  "folders": ["base/system", "base/platform", "test/system", "test/platform"],
-  "dated": "Read from the source on 2026-09-16, from a read-only main worktree"
+ "slug": "system",
+ "title": "System programming -- where it stands",
+ "thesis": "Deliberately not a Go/Rust-std system library: a clean but intentional subset of OS primitives, plus a layer none of them have -- an in-memory rehearsal twin over files, env and spawns, a single narrated/scoped/audited stzUpdatePlan that is the only bridge to reality, and a capability-actor lattice where an inference-only (LLM) actor's effect set is empty by construction. It omits by design what a governed-effects surface doesn't need: signals, broad IPC, the raw syscall zoo.",
+ "lanes": [
+  {
+   "lane": "Safe-world governance (actor, twin, commit)",
+   "rating": "Strong",
+   "note": "A capability lattice, a rehearsal twin that touches nothing, stzUpdatePlan as the sole crossing with three gates; an LLM actor's effect set is empty.",
+   "proof": "stzSystemActor, stzVirtualSystem, stzUpdatePlan; marker-file guard (queued spawn does not run until commit)"
+  },
+  {
+   "lane": "Process / subprocess management",
+   "rating": "Solid",
+   "note": "Managed children: Spawn, streaming ReadOutput/ReadError, Wait, ExitCode, Kill, no-leak Close; SystemCall double-exec bug fixed (one spawn).",
+   "proof": "system.zig, stzProcess, stzSystemCall"
+  },
+  {
+   "lane": "Environment & working directory",
+   "rating": "Solid",
+   "note": "Get/set/unset/list env, cwd, hostname, username, cpu-count engine-backed; on Windows SetEnvironmentVariableW so later child spawns inherit.",
+   "proof": "stzEnvironment"
+  },
+  {
+   "lane": "Filesystem operations",
+   "rating": "Solid",
+   "note": "Read/write/append/copy/delete/stat and dir create/delete/list/walk/count screened by pathIsUsable; omits permissions, ownership, symlinks, fifos.",
+   "proof": "file.zig, stzVirtualFileSystem"
+  },
+  {
+   "lane": "OS / platform detection & machine info",
+   "rating": "Solid",
+   "note": "OS/arch/endianness, cpu-count, machine and process memory, declared profiles for non-host targets; facts are engine, opinions are Haro; not a deep sysinfo.",
+   "proof": "base/platform"
+  },
+  {
+   "lane": "Time & clocks",
+   "rating": "Solid",
+   "note": "Monotonic ns/us/ms, wall UTC, sleep, resolution; process uptime from a monotonic base instant at DLL load (the epoch-uptime bug fixed and guarded).",
+   "proof": "time.zig"
+  },
+  {
+   "lane": "Deployment plane",
+   "rating": "Solid",
+   "note": "define -> require -> feasibility -> plan -> execute -> ship; Deploy(:Production) gated by MayCommit; Git and LocalRepo backends proven byte-for-byte.",
+   "proof": "stzDeployment, stzDeploymentSite, SOFTANZA_DELIVERY_PLANE.md"
+  },
+  {
+   "lane": "Build & emulation",
+   "rating": "Solid",
+   "note": "stzBuilder + build.zig wasm produce a bundle; stzEmulator rehearses Deploy(:Emulated); stzPlatform refuses to deploy what wasn't built.",
+   "proof": "stzBuilder, stzEmulator, stzWebBundle, stzPlatform"
+  },
+  {
+   "lane": "Threading / async (reactor)",
+   "rating": "Partial",
+   "note": "reactor.zig is a libuv-backed loop, but only its first slice (version + selftest) ships in this group; no thread-spawn API.",
+   "proof": "reactor.zig"
+  },
+  {
+   "lane": "Low-level OS surface",
+   "rating": "Partial",
+   "note": "Path helpers and common file/dir ops; permissions, ownership, symlinks, fifos, mmap, users/groups, ptrace, raw syscalls deliberately omitted.",
+   "proof": "stz_config_sandbox (designed, not wired)"
+  },
+  {
+   "lane": "IPC",
+   "rating": "Partial",
+   "note": "Only the managed child's stdout/stderr/stdin pipes; no named pipes, shared memory or socketpair.",
+   "proof": ""
+  },
+  {
+   "lane": "Signals",
+   "rating": "Emerging",
+   "note": "None: grep finds no stz_signal* in the engine and no Haro signal class; no SIGINT/SIGTERM/SIGCHLD handling, no graceful shutdown.",
+   "proof": ""
+  }
+ ],
+ "standouts": [
+  "A rehearsal twin over files, env and spawns that touches nothing",
+  "stzUpdatePlan: the sole crossing to reality, through three gates (reject, scope, governance)",
+  "An inference-only (LLM) actor's effect set is empty by construction -- agents that cannot hurt you",
+  "Deploy(:Production) gated by MayCommit; Git and LocalRepo backends proven byte-for-byte"
+ ],
+ "gaps": [
+  "Signal handling (SIGINT/SIGTERM/SIGCHLD and Windows console-control)",
+  "The full async reactor surface",
+  "Complete the process face (ExePath, IsAlive, process table); live-verify ssh/docker/device deploy backends",
+  "Richer IPC and the lower OS surface (permissions, symlinks, users/groups); wire the engine sandbox flag"
+ ],
+ "peers": [
+  "Go std (os, os/exec, os/signal, runtime, time, syscall)",
+  "Rust std (process, env, fs, time) + nix, signal-hook, tokio",
+  "libuv",
+  "sysinfo crates",
+  "Ansible / Capistrano",
+  "Terraform",
+  "Docker",
+  "esbuild / bundlers",
+  "Go goroutines"
+ ],
+ "folders": [
+  "base/system",
+  "base/platform",
+  "test/system",
+  "test/platform"
+ ],
+ "dated": "Read from the source on 2026-09-16, from a read-only main worktree"
 }

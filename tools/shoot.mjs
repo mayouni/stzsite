@@ -31,7 +31,7 @@ for (const g of ['string', 'geo', 'governance', 'security', 'tables', 'binary'])
 PLAN.push(['en/atlas/numeric.html', 'laptop', 'light'], ['fr/atlas/geo.html', 'phone', 'light'], ['fr/atlas.html', 'laptop', 'dark']);
 for (const k of [2, 3, 4, 5, 6, 7, 8, 9]) PLAN.push([`fr/tour.html#s${k}`, 'projector', 'light']);
 PLAN.push(['fr/tour.html#s4', 'phone', 'light']);
-const FULL = ['fr/atlas.html', 'fr/atlas/geo.html', 'fr/why.html', 'fr/learn.html', 'fr/govern.html', 'fr/makers.html', 'fr/products.html', 'fr/africa.html', 'fr/start.html', 'en/makers.html'];
+const FULL = ['index.html', 'fr/atlas.html', 'fr/atlas/geo.html', 'fr/why.html', 'fr/learn.html', 'fr/govern.html', 'fr/makers.html', 'fr/products.html', 'fr/africa.html', 'fr/start.html', 'en/makers.html'];
 
 const only = process.argv.slice(2);
 const port = 9333;
