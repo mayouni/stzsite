@@ -515,3 +515,36 @@ did:
 next:
   - me:      the method entries with graded examples
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-02 03:54
+
+subject:   method entries with graded examples: 666 methods, every example run inside the library
+
+why:       the author's next step after the identity and craft passes; D3 of doc/DOCUMENTATION-DESIGN.md, learned from
+           the Wolfram function page and decided as Softanza's own: an example is published only after it ran
+
+did:
+  - wrote tools/harvest_examples.py: it reads the library's classic test files in 32 pure-computation topics (3,401
+    files), keeps the 894 short ones that touch no file, input, clock or chance, and attributes each to the methods
+    it shows (a call made as a statement counts; a viewer such as Content only when nothing else was called)
+  - wrote tools/examples_run.py: batches of 40 in one process at a time, each example in its own try block; a batch
+    that never starts is split until the faulty example stands alone, and one that stops resumes after the example
+    that stopped it; 558 examples kept every promise, in 108 s, covering 666 methods of 25 classes
+  - wrote tools/build_methods.py: one entry per method (1,332 pages, both languages) with its explanation, the forms
+    of its verb, examples graded as Basic, Scope and Possible issues with the count in each heading, and links to
+    the class, the area's guide and the other methods the examples touch; class pages and guides link to the entries
+  - removed the table of all lanes earlier (bba7345), on the author's request
+
+state:
+  release-1-pass-10: built; the commit carrying this entry is the one after bba7345
+  perception-gate:   OPEN -- the author has not seen the entries
+
+waiting:
+  - STZLIB-PROMISES-269-01: of 894 classic examples run at 0e72e2e2c, 269 print something other than their file
+                       promises and 65 raise an error; the list is reproducible with the two tools -> stzlib [routed]
+
+next:
+  - me:      widen the harvest to the narrated suites and the course chapters, where the string class lives now
+  - author:  read an entry, for instance Reference > stzList > FindW
+```

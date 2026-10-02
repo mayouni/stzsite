@@ -18,6 +18,7 @@ import markdown
 from PIL import Image
 from build_reference import build_reference
 from build_guides import build_guides
+from build_methods import build_methods, load_entries
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -621,8 +622,11 @@ def main():
             if f.exists(): f.unlink()
     scenes = {lang: build_tour(lang, idx, groups) for lang in LANGS}
     build_home(idx, groups)
-    nref, ncls, nown = build_reference({"ROOT": ROOT, "LANGS": LANGS, "head": head, "header": header, "footer": footer, "idx": idx, "groups": groups})
-    nguide = build_guides({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "idx": idx, "groups": groups, "heritage": HERITAGE})
+    ENTRIES = load_entries(ROOT)
+    nref, ncls, nown = build_reference({"ROOT": ROOT, "LANGS": LANGS, "head": head, "header": header, "footer": footer, "idx": idx, "groups": groups, "entries": ENTRIES})
+    nmeth = build_methods({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "entries": ENTRIES})
+    print(f"method entries: {nmeth} pages, {len(ENTRIES)} methods with examples run")
+    nguide = build_guides({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "idx": idx, "groups": groups, "heritage": HERITAGE, "entries": ENTRIES})
     print(f"guides: {nguide} pages")
     assets = []
     for f in sorted((ROOT / "assets/fonts").glob("*.woff2")):

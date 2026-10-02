@@ -65,6 +65,8 @@ def family_of(name):
 
 def build_guides(ctx):
     ROOT, head, header, footer, idx, groups, heritage = (ctx[k] for k in ("ROOT", "head", "header", "footer", "idx", "groups", "heritage"))
+    entries = ctx.get("entries", {})
+    from build_methods import slug as mslug
     GH = "https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/doc/narrations/"
     ref = json.loads((ROOT / "data" / "reference.json").read_text(encoding="utf-8"))
     narr = json.loads((ROOT / "data" / "narrations.json").read_text(encoding="utf-8"))
@@ -97,7 +99,7 @@ def build_guides(ctx):
             for label, items in fam.items():
                 if not items: continue
                 shown = sorted(items, key=lambda x: (x[3], len(x[0]), x[0]))[:12]
-                lis = "".join(f'<li><a class="mono" href="../reference/{cl.lower()}.html#{esc(n.lower())}">{esc(n)}</a> {prose(d)} <span class="in">{t["in"]} {esc(cl)}</span></li>' for n, d, cl, _ in shown)
+                lis = "".join(f'<li><a class="mono" href="{("../reference/" + cl.lower() + "/" + mslug(n) + ".html") if (cl, n) in entries else ("../reference/" + cl.lower() + ".html#" + esc(n.lower()))}">{esc(n)}</a> {prose(d)} <span class="in">{t["in"]} {esc(cl)}</span></li>' for n, d, cl, _ in shown)
                 more = f'<p class="proof">{t["more"].format(n=len(items) - len(shown))}</p>' if len(items) > len(shown) else ""
                 fam_html.append(f'<h3>{esc(label)}</h3><ul class="fnlist">{lis}</ul>{more}')
             # the narrations

@@ -16,7 +16,7 @@ T = {
   "fr": {"title": "Référence", "kicker": "La bibliothèque se documente elle-même",
          "lede": "Chaque méthode de chaque classe, avec l'explication que la bibliothèque porte dans sa propre source, récoltée par son module d'auto-documentation. Rien ici n'a été écrit pour le site : c'est ce que la bibliothèque répond quand on l'interroge.",
          "desc": "La référence Softanza, générée depuis les explications que la bibliothèque porte dans sa source : 618 classes, 26 949 méthodes propres.",
-         "classes": "classes", "own": "méthodes propres", "entries": "entrées de surface, héritage compris", "described": "décrites depuis la source",
+         "examples": "exemples exécutés", "with_ex": "méthodes avec des exemples exécutés", "classes": "classes", "own": "méthodes propres", "entries": "entrées de surface, héritage compris", "described": "décrites depuis la source",
          "by_area": "Par domaine", "class_h": "Classe", "own_h": "Méthodes", "inherited_h": "Héritées", "area_h": "Domaine",
          "methods_az": "Toutes les méthodes, de A à Z", "letter": "Lettre", "filter": "Filtrer les méthodes…", "filter_classes": "Filtrer les classes…",
          "source": "la source", "inherits": "Hérite aussi de", "method": "Méthode", "explanation": "Explication, telle que la source la porte", "aka": "aussi nommée",
@@ -26,7 +26,7 @@ T = {
   "en": {"title": "Reference", "kicker": "The library documents itself",
          "lede": "Every method of every class, with the explanation the library carries in its own source, harvested by its self-documentation module. Nothing here was written for the site: it is what the library answers when asked.",
          "desc": "The Softanza reference, generated from the explanations the library carries in its source: 618 classes, 26,949 own methods.",
-         "classes": "classes", "own": "own methods", "entries": "surface entries, inheritance included", "described": "described from the source",
+         "examples": "examples run", "with_ex": "methods with examples run", "classes": "classes", "own": "own methods", "entries": "surface entries, inheritance included", "described": "described from the source",
          "by_area": "By area", "class_h": "Class", "own_h": "Methods", "inherited_h": "Inherited", "area_h": "Area",
          "methods_az": "Every method, A to Z", "letter": "Letter", "filter": "Filter the methods…", "filter_classes": "Filter the classes…",
          "source": "the source", "inherits": "Also inherits from", "method": "Method", "explanation": "Explanation, as the source carries it", "aka": "also named",
@@ -61,6 +61,8 @@ def chips(name, t):
 
 def build_reference(ctx):
     ROOT, LANGS, head, header, footer, idx, groups = (ctx[k] for k in ("ROOT", "LANGS", "head", "header", "footer", "idx", "groups"))
+    entries = ctx.get("entries", {})
+    from build_methods import slug as mslug
     data = json.loads((ROOT / "data" / "reference.json").read_text(encoding="utf-8"))
     classes = data["classes"]
     by_name = {c["name"].lower(): c for c in classes}
@@ -105,6 +107,7 @@ def build_reference(ctx):
       <div class="figure"><b>{len(classes)}</b><span>{t["classes"]}</span></div>
       <div class="figure"><b>{n_own:,}</b><span>{t["own"]}</span></div>
       <div class="figure"><b>{n_entries:,}</b><span>{t["entries"]}</span></div>
+      <div class="figure"><b>{len(entries):,}</b><span>{t["with_ex"]}</span></div>
       <div class="figure"><b>{round(100*n_desc/max(n_own,1))}%</b><span>{t["described"]}</span></div>
     </div>
     <p class="proof">{esc(t["note"].format(harvested=data["harvested"]))} · <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/meta/stzSelfDoc.ring">stzSelfDoc</a></p>
@@ -130,7 +133,14 @@ def build_reference(ctx):
                 name, aka, desc = m
                 d = prose(desc) if desc else f'<i>{esc(t["no_desc"])}</i> <span class="mono">{esc(split_camel(name))}</span>'
                 aka_html = f'<small>{t["aka"]}: {prose(aka)}</small>' if aka else ""
-                rows.append(f'<div class="lane rrow" id="{esc(name.lower())}" data-k="{esc((name + " " + desc).lower())}"><div class="ln mono">{esc(name)}</div><div class="lr">{chips(name, t)}</div><div class="lt">{d}{aka_html}</div></div>')
+                exs = entries.get((c["name"], name))
+                if exs:
+                    href = f'{c["name"].lower()}/{mslug(name)}.html'
+                    nm = f'<a href="{href}">{esc(name)}</a>'
+                    ex_html = f' <a class="ex" href="{href}">{len(exs)} {t["examples"]}</a>'
+                else:
+                    nm, ex_html = esc(name), ""
+                rows.append(f'<div class="lane rrow" id="{esc(name.lower())}" data-k="{esc((name + " " + desc).lower())}"><div class="ln mono">{nm}</div><div class="lr">{chips(name, t)}</div><div class="lt">{d}{ex_html}{aka_html}</div></div>')
             title = c["name"]
             page = head(lang, f'{title} · {t["title"]} · Softanza', f'{title}: {len(c["own"])} {t["own"]}', rel2)
             page += '\n<body class="page page-reference-class">\n' + header(lang, "reference", rel2, other_href=f"../../{'en' if lang == 'fr' else 'fr'}/reference/{c['name'].lower()}.html", nav_rel="../")
