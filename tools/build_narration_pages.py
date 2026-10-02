@@ -10,7 +10,7 @@ everywhere; code is never rewritten, and a narration whose code shows the name
 is not published at all.
 """
 import json, re, html, posixpath, pathlib
-import level2
+import level2, qforms
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 def esc(s): return html.escape(str(s), quote=True)
@@ -25,6 +25,7 @@ T = {
          "differs": "exécuté : a affiché autre chose ; voici ce qu'il a affiché", "raised": "exécuté : a levé une erreur",
          "stopped": "n'a pas fini", "promised": "Sortie promise", "compare": "{tag}, montré pour comparaison, non exécuté",
          "kicker": "Narration", "source": "Le fichier sur GitHub",
+         "qnote": "Style : ce bloc appelle {names} sans rien faire du résultat ; la forme sans Q suffit. Le texte de la bibliothèque est montré tel qu'il est écrit.",
          "summary": "Exécutée le {d} dans la bibliothèque au commit 0e72e2e2c, bloc après bloc dans un seul processus : {parts}.",
          "parts": {"kept": "{n} bloc a affiché ce qu'il promet|{n} blocs ont affiché ce qu'ils promettent", "ran": "{n} n'annonce pas de sortie|{n} n'annoncent pas de sortie", "differs": "{n} a affiché autre chose|{n} ont affiché autre chose", "raised": "{n} a levé une erreur|{n} ont levé une erreur"},
          "lang": "Cette narration est écrite en anglais, comme la bibliothèque."},
@@ -33,6 +34,7 @@ T = {
          "differs": "ran: printed something else; here is what it printed", "raised": "ran: raised an error",
          "stopped": "did not finish", "promised": "Promised output", "compare": "{tag}, shown for comparison, not run",
          "kicker": "Narration", "source": "The file on GitHub",
+         "qnote": "Style: this block calls {names} and does nothing with the result; the form without Q does the job. The library's text is shown as written.",
          "summary": "Run on {d} inside the library at commit 0e72e2e2c, block after block in one process: {parts}.",
          "parts": {"kept": "{n} block printed what it promises|{n} blocks printed what they promise", "ran": "{n} states no output|{n} state no output", "differs": "{n} printed something else", "raised": "{n} raised an error"},
          "lang": ""},
@@ -91,8 +93,10 @@ def render(rec, lang, md, published):
             v = b["verdict"]
             label = t["ran0"] if v == "ran" and not b["out"] else t[v]
             extra = f'<pre class="ran-out">{esc(b["out"])}</pre>' if v in ("differs", "raised", "ran") and b["out"] else ""
+            qs = list(dict.fromkeys(n for n, _ in qforms.unchained(body, qforms.get(ROOT).plain_anywhere)))
+            qnote = (f'<p class="proof">{t["qnote"].format(names=", ".join("<code>" + esc(n) + "</code>" for n in qs))}</p>') if qs else ""
             tokens[key] = (f'<div class="nblock"><div class="lbl">Softanza</div><pre>{esc(body)}</pre>'
-                           f'<p class="ran nv-{v}">{label}</p>{extra}</div>')
+                           f'<p class="ran nv-{v}">{label}</p>{extra}{qnote}</div>')
             promised_next = True
         elif tag == "" and promised_next and not prose.strip():
             tokens[key] = f'<div class="out"><div class="lbl">{t["promised"]}</div><pre>{esc(body)}</pre></div>'

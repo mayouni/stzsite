@@ -33,8 +33,8 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>Les formes de ce verbe</h2><p><b class="mono">Sentences</b> · <a class="mono" href="sentencesq.html">SentencesQ</a> · <a class="mono" href="sentencesqq.html">SentencesQQ</a> · <a class="mono" href="sentencesqqq.html">SentencesQQQ</a></p>
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;The fox ran fast. Dr. Smith paid $3.14 today. It works.&quot;)
+    
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;The fox ran fast. Dr. Smith paid $3.14 today. It works.&quot;)
 # three sentences, not split on &#x27;Dr.&#x27; or &#x27;3.14&#x27;
 ? o1.NumberOfSentences()
 # Sentences() list agrees with the count
@@ -42,9 +42,38 @@
 # the middle sentence stays intact
 ? o1.NthSentence(2)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>3
 3
-Dr. Smith paid $3.14 today.</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/natural/text_query_layer_narrated.ring">text_query_layer_narrated.ring</a></p>
+Dr. Smith paid $3.14 today.</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/natural/text_query_layer_narrated.ring">text_query_layer_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;I love this wonderful product. The service was terrible and slow. It is a plain wooden chair.&quot;)
+# SentencesQ() is the BASIC object (stzList)
+? classname(o1.SentencesQ())
+# SentencesQQ() is the first secondary type (stzListOfStrings)
+? classname(o1.SentencesQQ())
+# SentencesQQQ() is the most specific (stzListOfTexts)
+? classname(o1.SentencesQQQ())
+# MostSimilarByMeaning (a natural op) picks the closest sentence
+? o1.SentencesQQQ().MostSimilarByMeaning(&quot;bad slow service&quot;)
+# ThatAre filters sentences by sentiment
+? @@(o1.SentencesQQQ().ThatAre(&quot;positive&quot;))
+# chain ThatAreQ -&gt; Joined stays fluent
+? o1.SentencesQQQ().ThatAreQ(&quot;positive&quot;).Joined()
+# ThatContain (lexical) filters by substring
+? @@(o1.SentencesQQ().ThatContain(&quot;chair&quot;))
+# NthString on the stzListOfStrings rung
+? o1.SentencesQQ().NthString(2)
+# WordsQ() is the BASIC object (stzList)
+? classname(o1.WordsQ())
+# WordsQQ().MostSimilarTo fuzzy-matches a typo (Jaro-Winkler)
+? o1.WordsQQ().MostSimilarTo(&quot;wonderfull&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>stzlist
+stzlistofstrings
+stzlistoftexts
+The service was terrible and slow.
+[ &quot;I love this wonderful product.&quot; ]
+I love this wonderful product.
+[ &quot;It is a plain wooden chair.&quot; ]
+The service was terrible and slow.
+stzlist
+wonderful</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/natural/text_query_layer_narrated.ring">text_query_layer_narrated.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#sentences">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/nthsentence.html">stzString.NthSentence</a> · <a class="mono" href="../stzstring/numberofsentences.html">stzString.NumberOfSentences</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#sentences">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/nthsentence.html">stzString.NthSentence</a> · <a class="mono" href="../stzstring/numberofsentences.html">stzString.NumberOfSentences</a> · <a class="mono" href="../stzstring/words.html">stzString.Words</a></li></ul>
   </div>
 </main>
 </div>

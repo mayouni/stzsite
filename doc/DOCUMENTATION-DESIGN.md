@@ -123,7 +123,7 @@ Rethought, because Softanza already decided differently:
 | Area page (Platform › Areas › one area) | What did Softanza rethink here, and what does it look like run? | `data/heritage.json`, `data/showcase.json`, the Atlas ratings | built: heritage on 28 areas; runs where the snippets ran |
 | Guide (one per area) | What exists here, and which function do I want? | the reference, grouped by leading verb, suffix forms folded | built, 28 × 2 languages |
 | Class reference | What exactly does this class offer? | the doc-comments | built, 618 classes |
-| Method entry with examples | What does this method do, shown? | the library's classic test files, harvested by the site and run before publishing | built 2026-10-02 for 1,428 methods of 59 classes |
+| Method entry with examples | What does this method do, shown? | the library's classic test files, harvested by the site and run before publishing | built 2026-10-02 for 1,386 methods of 58 classes (1,428 of 59 before the Q rule below) |
 | How-to (workflow) | How do I do this task? | the recipes of `base/doc/quickers/recipes`, their `# Intent:` line as the title, run in one process (`tools/howto_run.py`) | built 2026-10-02: 28 of 30 published, each kept its promise; 2 show the former name |
 | Narration (tutorial) | How does this idea work as a whole? | `base/doc/narrations`, run block after block in one process (`tools/narrations_run.py`) | built 2026-10-02: 8 narrations are pages, each block with its verdict; the other 126 are listed with the reason they stay on GitHub |
 | Book (course) | Teach me, from the start | the Learning System chapters, run | linked |
@@ -138,6 +138,13 @@ forms, the class's other families) · the guide and the area page it belongs to.
 is run by the same instrument as the area showcases; the count in the heading is the count
 that ran.
 
+### The Q rule (ruled by the author, 2026-10-03)
+
+A method name that ends in `Q` (also `QQ`, `QQQ`) is not another method: it does what the method does, then returns the object so a sentence can go on. It is a syntax detail. So:
+
+- **The reference lists a method once.** A `...Q()` form whose plain method exists in the class or a class it inherits from is folded into it (2,175 of 26,949 names; 24,774 listed). A `...Q()` name with no plain twin is the method itself and stays (1,251, accessors that return an object). The reference, the A to Z index, the guides, the method entries and the machine index all say it once; `tools/qforms.py` is the one place that decides.
+- **An example calls a `Q` form only to chain on it, assign it, print it or loop over it.** `Q([1, 2, 3]).FilterQ('{ @item > 1 }').Content()` is right. `o1.FilterQ('{ @item > 1 }')` alone on a line is wrong: `o1.Filter(...)` does the job. The library's own examples and guards are never rewritten, so one that does it is left out of the entries and the showcases (2 of 1,346 examples, 5 of 75 showcase runs), and a narration that does it is shown as written with a note under the block (1 of the 8 published). The finding goes to the library.
+
 ### Order of work
 
 1. **D1, done 2026-10-01.** Guides for the 28 areas; heritage on every area page; the
@@ -145,6 +152,6 @@ that ran.
 2. **D2.** The example index, made correct in the library (two-line form, class-qualified
    keys, the right file per snippet) — routed to the stzlib desk, since this desk does not
    edit the library.
-3. **D3, done 2026-10-02.** Method entries with graded examples, run before publishing. Built site-side while D2 waits: `tools/harvest_examples.py` reads 3,401 classic test files of 32 topics, keeps 894 short ones that touch no file, input, clock or chance, and attributes each to the methods it shows; `tools/examples_run.py` runs them inside the library and keeps 558 whose output kept every promise, covering 666 methods; 269 printed something other than their file promised, a finding for the library. Widened the same day to the narrated suites: each scenario becomes an example, each assertion a printed line with its label as a comment, and the expected values are printed by the library in the same run and compared; 1,297 examples kept, covering 1,504 methods of 49 classes. Widened again to the course chapters (73 cells, 49 kept), and every example that shows the former language's name in its code or output is left out, as the site never names it; 1,428 methods of 59 classes keep an entry.
+3. **D3, done 2026-10-02.** Method entries with graded examples, run before publishing. Built site-side while D2 waits: `tools/harvest_examples.py` reads 3,401 classic test files of 32 topics, keeps 894 short ones that touch no file, input, clock or chance, and attributes each to the methods it shows; `tools/examples_run.py` runs them inside the library and keeps 558 whose output kept every promise, covering 666 methods; 269 printed something other than their file promised, a finding for the library. Widened the same day to the narrated suites: each scenario becomes an example, each assertion a printed line with its label as a comment, and the expected values are printed by the library in the same run and compared; 1,297 examples kept, covering 1,504 methods of 49 classes. Widened again to the course chapters (73 cells, 49 kept), and every example that shows the former language's name in its code or output is left out, as the site never names it; 1,428 methods of 59 classes kept an entry; the Q rule of 2026-10-03 (see below) folds that to 1,386 of 58.
 4. **D4.** How-to pages from the quickers.
 5. **D5.** Narrations as pages, and the page for agents.

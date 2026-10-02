@@ -245,7 +245,7 @@ oB.AddElementQ(&quot;year&quot;, &quot;2026&quot;)
 oB.CloseQ()
 
 ? oB.Content()
-# --&gt; &lt;catalog version=&quot;1.0&quot;&gt;&lt;book isbn=&quot;9&quot;&gt;&lt;title&gt;Tom &amp;amp; Jerry &amp;lt;fun&amp;gt;&lt;/title&gt;&lt;year&gt;2026&lt;/year&gt;&lt;/book&gt;&lt;/catalog&gt;</pre><p class="ran nv-kept">exécuté : a affiché ce que ce bloc promet</p></div>
+# --&gt; &lt;catalog version=&quot;1.0&quot;&gt;&lt;book isbn=&quot;9&quot;&gt;&lt;title&gt;Tom &amp;amp; Jerry &amp;lt;fun&amp;gt;&lt;/title&gt;&lt;year&gt;2026&lt;/year&gt;&lt;/book&gt;&lt;/catalog&gt;</pre><p class="ran nv-kept">exécuté : a affiché ce que ce bloc promet</p><p class="proof">Style : ce bloc appelle <code>SetAttributeQ</code>, <code>AddElementQ</code>, <code>CloseQ</code> sans rien faire du résultat ; la forme sans Q suffit. Le texte de la bibliothèque est montré tel qu'il est écrit.</p></div>
 <p>The dangerous characters are gone, and — importantly — the <em>value</em> is not:</p>
 <div class="nblock"><div class="lbl">Softanza</div><pre>? oB.XmlQ().TextAt(&quot;catalog/book/title&quot;)
 # --&gt; Tom &amp; Jerry &lt;fun&gt;</pre><p class="ran nv-kept">exécuté : a affiché ce que ce bloc promet</p></div>
@@ -259,7 +259,7 @@ oBad.OpenQ(&quot;a&quot;)
 # --&gt; 1
 
 oBad.Content()
-# --&gt; raises: stzXmlBuilder: 1 element(s) still open -- Close them first.</pre><p class="ran nv-kept">exécuté : a affiché ce que ce bloc promet</p></div>
+# --&gt; raises: stzXmlBuilder: 1 element(s) still open -- Close them first.</pre><p class="ran nv-kept">exécuté : a affiché ce que ce bloc promet</p><p class="proof">Style : ce bloc appelle <code>OpenQ</code> sans rien faire du résultat ; la forme sans Q suffit. Le texte de la bibliothèque est montré tel qu'il est écrit.</p></div>
 <h2 id="reading-a-document-as-a-human">Reading a document as a human</h2>
 <div class="nblock"><div class="lbl">Softanza</div><pre>? oXml.Pretty()</pre><p class="ran nv-kept">exécuté : a affiché ce que ce bloc promet</p></div>
 <div class="out"><div class="lbl">Sortie promise</div><pre>&lt;library xmlns=&quot;urn:lib&quot; name=&quot;City Library&quot;&gt;

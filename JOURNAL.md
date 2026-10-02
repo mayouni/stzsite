@@ -797,3 +797,43 @@ next:
   - me:      the two other proposals of Pedagogy remain: progressive revelation, and from the cell to its proof
   - author:  open Learn > Learn, The ladder; then a chapter of the reader
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-03 00:23
+
+subject:   the Q rule: a method is listed once, and an example calls a Q form only to use what it returns
+
+why:       the author corrected a general misunderstanding: a ...Q() name does what the method does and then returns the
+           object so a call can be chained; it is a syntax detail, not another method
+
+did:
+  - wrote tools/qforms.py, the one place that decides: a ...Q, ...QQ or ...QQQ name whose plain method exists in the class
+    or an ancestor is folded into it; a detector reads code statement by statement and flags a Q call that ends a
+    statement whose value nothing uses (an assignment, ?, return, a loop or a chain on it makes it right; nine test cases)
+  - the reference, the A to Z index, the guides, the method entries, the how-to pages, the Ask page and agents/index.json
+    list a method once: 24,774 of 26,949 names are listed, 2,175 folded, 1,251 Q names with no plain twin stay; inherited
+    counts recomputed; one sentence on the reference and Ask pages says what a trailing Q is
+  - entries now merge a method with its Q form: 1,386 methods of 58 classes (it was 1,428 of 59); 37 gained examples
+  - left out the library's examples that call a Q form and use nothing of it: 2 of 1,346 examples and 5 of 75 showcase runs;
+    4 methods of stzGraphRule lost their only example with them; the published narration "The Parser That Says No" keeps
+    its text and shows a note under the 2 blocks that do it
+  - checked on the built site: no folded name on any class page, 0 dangling among 423,884 local links, and the only code
+    block of the English pages that still calls a Q form without using it is those 2 narration blocks, noted
+
+state:
+  release-1-pass-19: built; the commit carrying this entry is the one after b2f43a0
+  perception-gate:   OPEN
+
+waiting:
+  - STZLIB-QUNCHAINED-01: library examples that call a Q form and use nothing of its result: graph/graphrule_object_narrated
+             (SetDomainQ, SetSeverityQ, SetMessageQ), string/809_content (RemoveSectionQ), graphics_faces_narrated (ColorQ),
+             sound_mu4_narrated (PerformQ), narrations stz-service-virtualization-code-first-subscribe-later (SetPhaseQ),
+             stz-guarding-secrets-and-credentials-narration (FromEnvQ), stz-xml-the-parser-that-says-no (OpenQ, SetAttributeQ,
+             AddElementQ, CloseQ) -> stzlib [routed]
+  - STZLIB-ASK-QTWIN-01: Ask spends one of its three answers on a Q twin for 6 of the 28 recipe questions (Reverse,
+             ReversedCopy, ReverseQ); folding the Q forms would free the slot -> stzlib [routed]
+
+next:
+  - me:      the two other proposals of Pedagogy remain: progressive revelation, and from the cell to its proof
+  - author:  open Learn > Reference > stzList, then Learn > Reference > stzNumber > Add
+```

@@ -33,7 +33,7 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>The forms of this verb</h2><p><b class="mono">StringifyAndReplace</b> · <a class="mono" href="stringifyandreplaceq.html">StringifyAndReplaceQ</a> · <a class="mono" href="stringifyandreplacext.html">StringifyAndReplaceXT</a> · <a class="mono" href="../stzlist.html#stringifyandreplacextq">StringifyAndReplaceXTQ</a></p>
+    <h2>The forms of this verb</h2><p><b class="mono">StringifyAndReplace</b> · <a class="mono" href="stringifyandreplacext.html">StringifyAndReplaceXT</a></p>
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;--_--&quot;, [ 12, &quot;--_--&quot;, 10], &quot;--_--&quot;, 9 ])
 o1.StringifyAndReplace(&quot;_&quot;, &quot;♥&quot;)
 ? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;--♥--&quot;, &#x27;[ 12, &quot;--♥--&quot;, 10 ]&#x27;, &quot;--♥--&quot;, &quot;9&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/92_stringifyandreplace.ring">92_stringifyandreplace.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>aLargeList = [ &quot;--_--&quot;, [ 12, &quot;--_--&quot;, 10], &quot;--_--&quot;, 9 ]
@@ -44,9 +44,20 @@ o1 = new stzList(aLargeList)
 o1.StringifyAndReplace(&quot;_&quot;, &quot;♥&quot;)
 ? @@( o1.FirstNItems(5) )
 ? @@( o1.LastNItems(3) )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;--♥--&quot;, &#x27;[ 12, &quot;--♥--&quot;, 10 ]&#x27;, &quot;--♥--&quot;, &quot;9&quot;, &quot;♥--♥&quot; ]
-[ &quot;♥--♥&quot;, &quot;♥--♥&quot;, &quot;♥--♥&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/96_firstnitems.ring">96_firstnitems.ring</a></p>
+[ &quot;♥--♥&quot;, &quot;♥--♥&quot;, &quot;♥--♥&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/96_firstnitems.ring">96_firstnitems.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>aList = [ 10, 20, &quot;One&quot;, &quot;ONE&quot;, [ :Tunis, :Paris ], 30, &quot;two&quot; ]
+for i = 1 to 10
+	aList + (&quot;*&quot; + i)
+next
+aList + &quot;in&quot;
+aList + &quot;out&quot;
+aList + &quot;IN&quot;
+aList + &quot;OUT&quot;
+o1 = new stzList(aList)
+? @@( o1.StringifyAndReplaceQ(&quot;,&quot;, &quot;*&quot;).Content() )
+? o1.ContainsDuplicates()</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;10&quot;, &quot;20&quot;, &quot;One&quot;, &quot;ONE&quot;, &#x27;[ &quot;tunis&quot;* &quot;paris&quot; ]&#x27;, &quot;30&quot;, &quot;two&quot;, &quot;*1&quot;, &quot;*2&quot;, &quot;*3&quot;, &quot;*4&quot;, &quot;*5&quot;, &quot;*6&quot;, &quot;*7&quot;, &quot;*8&quot;, &quot;*9&quot;, &quot;*10&quot;, &quot;in&quot;, &quot;out&quot;, &quot;IN&quot;, &quot;OUT&quot; ]
+0</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/238_stringifyandreplace.ring">238_stringifyandreplace.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzlist.html#stringifyandreplace">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li><li>The other methods in these examples: <a class="mono" href="../stzlist/firstnitems.html">stzList.FirstNItems</a> · <a class="mono" href="../stzlist/lastnitems.html">stzList.LastNItems</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzlist.html#stringifyandreplace">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li><li>The other methods in these examples: <a class="mono" href="../stzlist/containsduplicates.html">stzList.ContainsDuplicates</a> · <a class="mono" href="../stzlist/firstnitems.html">stzList.FirstNItems</a> · <a class="mono" href="../stzlist/lastnitems.html">stzList.LastNItems</a></li></ul>
   </div>
 </main>
 </div>

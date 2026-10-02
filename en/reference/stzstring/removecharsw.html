@@ -33,8 +33,25 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>The forms of this verb</h2><p><b class="mono">RemoveCharsW</b> · <a class="mono" href="removecharswq.html">RemoveCharsWQ</a></p>
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># removing the { lower(@char) = &quot;x&quot; } block yields the clean sentence
+    
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># removing { @char = &quot;2&quot; } leaves &quot;15.450&quot;
+? Q(&quot;125.450&quot;).RemoveCharsWQ(&#x27;{ @char = &quot;2&quot; }&#x27;).Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>15.450</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/667_removecharsw.ring">667_removecharsw.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># removing isDigit(@char) leaves the punctuation and spaces
+? Q(&quot;(9, 7, 8)&quot;).RemoveCharsWQ(&#x27;isDigit(@char)&#x27;).Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>(, , )</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/459_removecharsw.ring">459_removecharsw.ring</a></p><h2>Scope <span class="mono">(4)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># the chain just transforms
+? Q(&quot;1 AA 2 B 3 CCC 4 DD 5 Z&quot;).
+			RemoveCharsWQ(&#x27;Q(@Char).IsNumberInString()&#x27;).
+			RemoveSpacesQ().
+			RemoveDuplicatedCharsQ().
+			Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>ABCDZ</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/469_pr.ring">469_pr.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># the result is clear, the path forgotten
+? Q(&quot;1 AA 2 B 3 CCC 4 DD 5 Z&quot;).
+			RemoveCharsWQ(&#x27;Q(@Char).IsNumberInString()&#x27;).
+			RemoveSpacesQ().
+			RemoveDuplicatedCharsQ().
+			Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>ABCDZ</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/466_keeping_the_history_of_updates_of_a_softanza_objec.ring">466_keeping_the_history_of_updates_of_a_softanza_objec.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># (9, 7, 8) reduces to (,)
+? Q(&quot;(9, 7, 8)&quot;).
+			RemoveCharsWQ(&#x27;Q(@Char).IsNumberInString()&#x27;).	# becomes (, , )
+			RemoveSpacesQ().				# becomes (,,)
+			RemoveDuplicatedCharsQ().			# becomes (,)
+			Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>(,)</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/460_pr.ring">460_pr.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># removing the { lower(@char) = &quot;x&quot; } block yields the clean sentence
 o = new stzString(&quot;
 The xCommodore X64X, also known as the XC64 or the CBMx 64, is an x8-bit
 home computer introduced in January 1982x by CommodoreXx International

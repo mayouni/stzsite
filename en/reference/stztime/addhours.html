@@ -33,15 +33,16 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>The forms of this verb</h2><p><b class="mono">AddHours</b> · <a class="mono" href="addhoursq.html">AddHoursQ</a></p>
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o = new stzTime(&quot;14:30:45&quot;)
+    
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oTime = StzTimeQ(&quot;10:00:00&quot;)
+? oTime.AddHoursQ(2).AddMinutesQ(30).ToString()</pre></div><div class="out"><div class="lbl">Output</div><pre>12:30:00</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/time/32_chaining_operations_with_q_functions.ring">32_chaining_operations_with_q_functions.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o = new stzTime(&quot;14:30:45&quot;)
 o.AddHours(2)
 # +2 hours -&gt; 16:30:45
 ? o.Content()
 o.AddMinutes(45)
 # +45 minutes rolls into the next hour -&gt; 17:15:45
 ? o.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>16:30:45
-17:15:45</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/time/00_time_narrated.ring">00_time_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oTime = new stzTime(&quot;10:00:00&quot;)
+17:15:45</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/time/00_time_narrated.ring">00_time_narrated.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oTime = new stzTime(&quot;10:00:00&quot;)
 oTime {
 	AddSeconds(30)
 	? Content()

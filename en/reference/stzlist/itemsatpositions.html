@@ -33,7 +33,7 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>The forms of this verb</h2><p><b class="mono">ItemsAtPositions</b> · <a class="mono" href="../stzlist.html#itemsatpositionsq">ItemsAtPositionsQ</a></p>
+    
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>aOrders = [ &quot;tea&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;fish&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;soup&quot;, &quot;tea&quot;, &quot;rice&quot; ]
 ? @@( StzListQ([ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]).FindW(&quot;@item % 3 = 1&quot;) )
 ? @@( StzListQ(aOrders).ItemsAtPositions([ 1, 4, 7 ]) )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ 1, 4, 7 ]

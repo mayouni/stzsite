@@ -10,7 +10,7 @@ output kept every promise their file wrote are shown.
     fr|en/reference/<class>/<method>.html
 """
 import json, re, html, collections
-import level2
+import level2, qforms
 
 def esc(s): return html.escape(str(s), quote=True)
 RING = re.compile(r"\b(?:Ring|RING)\b")
@@ -40,14 +40,19 @@ def slug(name): return re.sub(r"[^a-z0-9@_-]", "_", name.lower())
 def load_entries(ROOT):
     f = ROOT / "data" / "examples.json"
     entries = collections.defaultdict(list)
+    Q = qforms.get(ROOT)
     if f.exists():
         for ex in json.loads(f.read_text(encoding="utf-8")):
             # the site never names the platform's former language; library code is never rewritten,
             # so an example that shows the word, in its code or its output, is left out
             if RING_WORD.search(ex["code"]) or RING_WORD.search(ex["out"]):
                 continue
-            for cls, meth in ex["methods"]:
-                entries[(cls, meth)].append(ex)
+            # a ...Q() call whose result nothing uses is not right (the plain form does the job): left out too
+            if qforms.unchained(ex["code"], Q.plain_anywhere):
+                continue
+            # a method is listed once: its ...Q() form is the same method, so an example of one is an example of the other
+            for key in {(cls, Q.fold(cls, meth)) for cls, meth in ex["methods"]}:
+                entries[key].append(ex)
     return entries
 
 def entry_href(cls, meth, rel_to_reference):
@@ -64,7 +69,8 @@ def build_methods(ctx):
     ROOT, head, header, footer, entries = (ctx[k] for k in ("ROOT", "head", "header", "footer", "entries"))
     howtos = ctx.get("howtos", {})
     from build_howto import intent as howto_intent, page_name as howto_page
-    ref = json.loads((ROOT / "data" / "reference.json").read_text(encoding="utf-8"))
+    ref = qforms.reference(ROOT)
+    Q = qforms.get(ROOT)
     by_class = {c["name"]: c for c in ref["classes"]}
     by_area = collections.defaultdict(list)
     for c in ref["classes"]: by_area[c["area"]].append(c["name"])
@@ -100,7 +106,7 @@ def build_methods(ctx):
                 if not group: continue
                 sections.append(f'<h2>{label} <span class="mono">({len(group)})</span></h2>' + "".join(run_block(e, t) for e in group))
             if more: sections.append(f'<p class="proof">{t["more"].format(n=more)}</p>')
-            others = sorted({(c2, m2) for e in exs for c2, m2 in e["methods"] if (c2, m2) != (cls, meth)})
+            others = sorted({(c2, Q.fold(c2, m2)) for e in exs for c2, m2 in e["methods"] if (c2, Q.fold(c2, m2)) != (cls, meth)})
             other_html = " · ".join((f'<a class="mono" href="../{c2.lower()}/{slug(m2)}.html">{esc(c2)}.{esc(m2)}</a>' if (c2, m2) in entries
                                      else f'<span class="mono">{esc(c2)}.{esc(m2)}</span>') for c2, m2 in others[:12])
             a = c.get("area")

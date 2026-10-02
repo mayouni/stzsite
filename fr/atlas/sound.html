@@ -48,13 +48,7 @@ oP2.RecordFireAt(&quot;Warning.Alert&quot;, 10.0)
 Chk(&quot;a warning alert does NOT pre-empt danger&quot;, oP2.WouldFireAt(:Danger, 10.05))</pre></div><div class="out"><div class="lbl">Sortie</div><pre>  [ok]   a cue under a sounding alert is DROPPED
   [ok]   and so is a warning -- rank, not recency
   [ok]   once the alert is over, a cue passes again
-  [ok]   a warning alert does NOT pre-empt danger</pre></div></div><p class="ran">exécuté le 2026-10-01 21:18 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/sound/sound_semantics_narrated.ring">base/test/sound/sound_semantics_narrated.ring</a></p><p style="margin-top:32px"><b>Dans le maqam Rast, la septième est jouée un demi-bémol en montant et bémol en descendant : l&#x27;univers déclare le mouvement, pas seulement les hauteurs.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oRst = StzSoundUniverseQ(:maqam).Mode(:rast)
-oRst.PerformQ(&quot;5 6 7 8 7 6 5&quot;, 1)
-aN = oRst.PlayedNotes()
-? &quot;   Rast, 5 6 7 8 7 6 5: the seventh up &quot; + aN[3][3] + &quot;, down &quot; + aN[5][3]
-Chk(&quot;Rast ascends through the half-flat seventh (1050) and descends through the flat (1000)&quot;,
-    aN[3][3] = 1050 and aN[5][3] = 1000)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>   Rast, 5 6 7 8 7 6 5: the seventh up 1050, down 1000
-  [ok]   Rast ascends through the half-flat seventh (1050) and descends through the flat (1000)</pre></div></div><p class="ran">exécuté le 2026-10-01 21:18 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/sound/sound_mu4_narrated.ring">base/test/sound/sound_mu4_narrated.ring</a></p><p style="margin-top:32px"><b>Une salutation haoussa devient une phrase de tambour qui suit les tons bas et hauts de la langue, comme le fait un tambour parlant.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oNig = StzSoundUniverseQ(:niger)
+  [ok]   a warning alert does NOT pre-empt danger</pre></div></div><p class="ran">exécuté le 2026-10-01 21:18 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/sound/sound_semantics_narrated.ring">base/test/sound/sound_semantics_narrated.ring</a></p><p style="margin-top:32px"><b>Une salutation haoussa devient une phrase de tambour qui suit les tons bas et hauts de la langue, comme le fait un tambour parlant.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oNig = StzSoundUniverseQ(:niger)
 oKal = oNig.SentenceQ(&quot;sannu da zuwa&quot;)
 aK = oNig.PlayedNotes()
 cTones = &quot;&quot;

@@ -48,13 +48,7 @@ oP2.RecordFireAt(&quot;Warning.Alert&quot;, 10.0)
 Chk(&quot;a warning alert does NOT pre-empt danger&quot;, oP2.WouldFireAt(:Danger, 10.05))</pre></div><div class="out"><div class="lbl">Output</div><pre>  [ok]   a cue under a sounding alert is DROPPED
   [ok]   and so is a warning -- rank, not recency
   [ok]   once the alert is over, a cue passes again
-  [ok]   a warning alert does NOT pre-empt danger</pre></div></div><p class="ran">run on 2026-10-01 21:18 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/sound/sound_semantics_narrated.ring">base/test/sound/sound_semantics_narrated.ring</a></p><p style="margin-top:32px"><b>In the Rast maqam the seventh degree is played half-flat going up and flat coming down, because the universe declares movement, not only pitch.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oRst = StzSoundUniverseQ(:maqam).Mode(:rast)
-oRst.PerformQ(&quot;5 6 7 8 7 6 5&quot;, 1)
-aN = oRst.PlayedNotes()
-? &quot;   Rast, 5 6 7 8 7 6 5: the seventh up &quot; + aN[3][3] + &quot;, down &quot; + aN[5][3]
-Chk(&quot;Rast ascends through the half-flat seventh (1050) and descends through the flat (1000)&quot;,
-    aN[3][3] = 1050 and aN[5][3] = 1000)</pre></div><div class="out"><div class="lbl">Output</div><pre>   Rast, 5 6 7 8 7 6 5: the seventh up 1050, down 1000
-  [ok]   Rast ascends through the half-flat seventh (1050) and descends through the flat (1000)</pre></div></div><p class="ran">run on 2026-10-01 21:18 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/sound/sound_mu4_narrated.ring">base/test/sound/sound_mu4_narrated.ring</a></p><p style="margin-top:32px"><b>A Hausa greeting becomes a drum phrase that follows the language&#x27;s low and high tones, the way a talking drum does.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oNig = StzSoundUniverseQ(:niger)
+  [ok]   a warning alert does NOT pre-empt danger</pre></div></div><p class="ran">run on 2026-10-01 21:18 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/sound/sound_semantics_narrated.ring">base/test/sound/sound_semantics_narrated.ring</a></p><p style="margin-top:32px"><b>A Hausa greeting becomes a drum phrase that follows the language&#x27;s low and high tones, the way a talking drum does.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oNig = StzSoundUniverseQ(:niger)
 oKal = oNig.SentenceQ(&quot;sannu da zuwa&quot;)
 aK = oNig.PlayedNotes()
 cTones = &quot;&quot;

@@ -13,7 +13,8 @@ It also writes what an agent reading this site wants instead of pages:
                               with its code and output, every narration run, as data
 """
 import json, re, html
-from build_howto import intent as howto_intent, page_name as howto_page, published as howto_published, KINDS
+from build_howto import intent as howto_intent, page_name as howto_page, published as howto_published, KINDS, fold_methods
+import qforms
 
 def esc(s): return html.escape(str(s), quote=True)
 RING = re.compile(r"\b(?:Ring|RING)\b")
@@ -40,7 +41,7 @@ T = {
     "out": "Sortie", "ran": "exécuté le {d} dans la bibliothèque au commit 0e72e2e2c, sans modèle neuronal chargé",
     "h_measured": "Mesuré : les recettes de la bibliothèque, posées en retour",
     "measured": "Les {n} recettes publiées sur ce site disent chacune une intention et nomment les méthodes qui la réalisent. Chaque intention a été posée telle quelle, mot pour mot, à la classe de sa recette. <code>HowTo</code> a proposé la méthode de la recette pour {hs} questions et une autre forme du même verbe pour {hv} ; <code>Ask</code> en avait une parmi ses trois premières réponses pour {ag}. Les {ho} autres réponses de <code>HowTo</code> sont montrées telles qu'elles sont venues : c'est le travail de la bibliothèque, et il lui est transmis.",
-    "measured_note": "Exécuté le {d} dans la bibliothèque au commit 0e72e2e2c, en un seul processus ({s} s), sans modèle neuronal chargé, comme un agent l'obtient par défaut. Une réponse compte comme « même méthode » si elle nomme une méthode que la recette utilise, « même verbe » si elle en nomme une autre forme (Reverse pour Reversed).",
+    "measured_note": "Exécuté le {d} dans la bibliothèque au commit 0e72e2e2c, en un seul processus ({s} s), sans modèle neuronal chargé, comme un agent l'obtient par défaut. Une réponse compte comme « même méthode » si elle nomme une méthode que la recette utilise, « même verbe » si elle en nomme une autre forme (Reverse pour Reversed). Un nom qui se termine par Q dans une réponse est la même méthode, qui rend l'objet pour que l'appel puisse s'enchaîner.",
     "uses": "La recette utilise", "proposes": "HowTo propose", "asks": "Ask répond",
     "g_same": "même méthode", "g_verb": "même verbe, autre forme", "g_other": "une autre méthode",
     "h_outside": "Depuis l'extérieur d'un programme",
@@ -61,7 +62,7 @@ T = {
     "out": "Output", "ran": "run on {d} inside the library at commit 0e72e2e2c, with no neural model loaded",
     "h_measured": "Measured: the library's recipes, asked back",
     "measured": "The {n} recipes published on this site each state an intent and name the methods that do it. Each intent was asked as it stands, word for word, of its recipe's class. <code>HowTo</code> proposed the recipe's method for {hs} questions and another form of the same verb for {hv}; <code>Ask</code> had one of them among its first three answers for {ag}. The {ho} other <code>HowTo</code> answers are shown as they came: they are the library's work, and they are routed to it.",
-    "measured_note": "Run on {d} inside the library at commit 0e72e2e2c, in one process ({s} s), with no neural model loaded, as an agent gets it by default. An answer counts as \"same method\" when it names a method the recipe uses, and \"same verb\" when it names another form of one (Reverse for Reversed).",
+    "measured_note": "Run on {d} inside the library at commit 0e72e2e2c, in one process ({s} s), with no neural model loaded, as an agent gets it by default. An answer counts as \"same method\" when it names a method the recipe uses, and \"same verb\" when it names another form of one (Reverse for Reversed). A name ending in Q in an answer is the same method, returning the object so that a call can be chained.",
     "uses": "The recipe uses", "proposes": "HowTo proposes", "asks": "Ask answers",
     "g_same": "same method", "g_verb": "same verb, another form", "g_other": "another method",
     "h_outside": "From outside a program",
@@ -77,6 +78,7 @@ T = {
 def build_ask(ctx):
     ROOT, head, header, footer, entries, groups = (ctx[k] for k in ("ROOT", "head", "header", "footer", "entries", "groups"))
     from build_methods import slug as mslug
+    Q = qforms.get(ROOT)
     ask = json.loads((ROOT / "data" / "ask-run.json").read_text(encoding="utf-8"))
     howto = json.loads((ROOT / "data" / "howto-run.json").read_text(encoding="utf-8"))
     by_file = {r["file"]: r for r in howto.values()}
@@ -102,7 +104,7 @@ def build_ask(ctx):
                 return f'<span class="mono">{esc(m)}</span>'
             g = lambda k: f'<b class="g-{q[k]}">{t["g_" + q[k]]}</b>'
             rows.append(f'<div class="ask-row"><p class="ask-q"><a href="howto/{howto_page(r)}.html">{esc(howto_intent(r, lang))}</a> <span class="mono">{esc(cls)}</span></p>'
-                        f'<p>{t["uses"]} : {" · ".join(mref(m) for m in q["methods"])}</p>'.replace(" : ", ": " if lang == "en" else " : ")
+                        f'<p>{t["uses"]} : {" · ".join(mref(m) for m in dict.fromkeys(Q.fold(cls, x) for x in q["methods"]))}</p>'.replace(" : ", ": " if lang == "en" else " : ")
                         + f'<p>{t["proposes"]} : <span class="mono">{esc(q["howto_method"])}</span> · {g("howto_grade")}</p>'.replace(" : ", ": " if lang == "en" else " : ")
                         + f'<p>{t["asks"]} : <span class="mono">{esc(", ".join(q["ask"]))}</span> · {g("ask_grade")}</p></div>'.replace(" : ", ": " if lang == "en" else " : "))
         body = f"""
@@ -128,7 +130,8 @@ def build_ask(ctx):
 def write_machine_files(ROOT, entries, groups, howto, ask):
     from build_methods import slug as mslug
     from build_narration_pages import publishable, slug as nslug
-    ref = json.loads((ROOT / "data" / "reference.json").read_text(encoding="utf-8"))
+    ref = qforms.reference(ROOT)
+    Q = qforms.get(ROOT)
     narr = json.loads((ROOT / "data" / "narrations-run.json").read_text(encoding="utf-8"))
     classes = []
     for c in ref["classes"]:
@@ -144,12 +147,13 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
     for r in howto.values():
         if not howto_published(r): continue
         recipes.append({"intent": r["intent"], "kind": r["category"], "page": f'{SITE}en/howto/{howto_page(r)}.html',
-                        "code": r["blocks"], "output": [p["out"] for p in r["parts"]], "methods": r["methods"],
+                        "code": r["blocks"], "output": [p["out"] for p in r["parts"]], "methods": fold_methods(Q, r["methods"]),
                         "words": r["tags"], "ran": r["ran"]})
     narrations = [{"title": prose(x["title"]).replace("`", ""), "page": f"{SITE}en/narrations/{nslug(f)}.html", "ran": x["ran"]}
                   for f, x in sorted(narr.items()) if publishable(x)]
     areas = [{"slug": g["slug"], "title": g["en"], "page": f'{SITE}en/atlas/{g["slug"]}.html', "guide": f'{SITE}en/guide/{g["slug"]}.html'} for g in groups]
     index = {"site": SITE, "library": "https://github.com/mayouni/stzlib", "commit": "0e72e2e2c",
+             "naming": "A method name ending in Q, QQ or QQQ is not listed apart: it is the same method, which returns the object so that a call can be chained.",
              "note": "Generated with the Softanza site from the library at commit 0e72e2e2c. Descriptions are the library's own doc-comments. Every recipe's output was produced by running it inside the library.",
              "ask": {"calls": ["Ask(question)", "HowTo(intent)", "ExplainMethod(name)"], "page": f"{SITE}en/ask.html",
                      "measured": {"questions": len(ask["questions"]), "ran": ask["ran"],

@@ -33,7 +33,7 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>The forms of this verb</h2><p><b class="mono">Divide</b> · <a class="mono" href="divideq.html">DivideQ</a> · <a class="mono" href="../stznumber.html#divided">Divided</a></p>
+    <h2>The forms of this verb</h2><p><b class="mono">Divide</b> · <a class="mono" href="../stznumber.html#divided">Divided</a></p>
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oT = StzNumberQ(&quot;1&quot;)
 oT.Divide(&quot;3&quot;)
 ? oT.Content()
@@ -58,9 +58,39 @@ oThird.Divide(&quot;3&quot;)
 2.5
 4.4
 0
-1</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_exactness_narrated.ring">numeric_exactness_narrated.ring</a></p>
+1</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_exactness_narrated.ring">numeric_exactness_narrated.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oThird = new stzNumber(&quot;1/3&quot;)
+oThird.Add(&quot;2/3&quot;)
+# a third plus two thirds is ONE
+? oThird.Content()
+# ...exactly
+? oThird.IsExact()
+# ...and equals the number 1
+? oThird.Same(1)
+# a third plus a sixth
+? (new stzNumber(&quot;1/3&quot;)).AddQ(&quot;1/6&quot;).Content()
+# a half less a third
+? (new stzNumber(&quot;1/2&quot;)).SubtractQ(&quot;1/3&quot;).Content()
+# two thirds of three quarters
+? (new stzNumber(&quot;2/3&quot;)).MultiplyByQ(&quot;3/4&quot;).Content()
+# a half divided by a quarter is two
+? (new stzNumber(&quot;1/2&quot;)).DivideQ(&quot;1/4&quot;).Content()
+# every one of those is exact
+? (new stzNumber(&quot;2/3&quot;)).MultiplyByQ(&quot;3/4&quot;).IsExact()
+# a third times three is one
+? (new stzNumber(&quot;1/3&quot;)).MultiplyByQ(3).Content()
+# ...and adding zero changes nothing
+? (new stzNumber(&quot;1/3&quot;)).AddQ(0).Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+1
+1
+1/2
+1/6
+1/2
+2
+1
+1
+1/3</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rationals_narrated.ring">numeric_rationals_narrated.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stznumber.html#divide">The class stzNumber</a></li><li><a href="../../guide/numeric.html">The area's guide: Numeric &amp; optimization</a></li><li>The other methods in these examples: <a class="mono" href="../stznumber/divideq.html">stzNumber.DivideQ</a> · <a class="mono" href="../stznumber/isexact.html">stzNumber.IsExact</a> · <a class="mono" href="../stznumber/why.html">stzNumber.Why</a> · <a class="mono" href="../stznumber/whynotexact.html">stzNumber.WhyNotExact</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stznumber.html#divide">The class stzNumber</a></li><li><a href="../../guide/numeric.html">The area's guide: Numeric &amp; optimization</a></li><li>The other methods in these examples: <a class="mono" href="../stznumber/add.html">stzNumber.Add</a> · <a class="mono" href="../stznumber/isexact.html">stzNumber.IsExact</a> · <a class="mono" href="../stznumber/multiplyby.html">stzNumber.MultiplyBy</a> · <a class="mono" href="../stznumber/same.html">stzNumber.Same</a> · <a class="mono" href="../stznumber/subtract.html">stzNumber.Subtract</a> · <a class="mono" href="../stznumber/why.html">stzNumber.Why</a> · <a class="mono" href="../stznumber/whynotexact.html">stzNumber.WhyNotExact</a></li></ul>
   </div>
 </main>
 </div>

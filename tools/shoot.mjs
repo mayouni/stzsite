@@ -34,6 +34,7 @@ PLAN.push(['fr/atlas/geo.html', 'phone', 'light'], ['fr/reference/stzlist.html',
 for (const k of [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]) PLAN.push([`fr/tour.html#s${k}`, 'projector', 'light']);
 PLAN.push(['fr/tour.html#s4', 'phone', 'light']);
 PLAN.push(['en/ask.html', 'projector', 'light'], ['fr/ask.html', 'phone', 'light']);
+PLAN.push(['en/reference/stzlist/filter.html', 'laptop', 'light'], ['en/reference/stzlist.html', 'laptop', 'light'], ['en/narrations/stz-xml-the-parser-that-says-no.html', 'laptop', 'light']);
 PLAN.push(['reader.html#en:6', 'laptop', 'light'], ['reader.html#ar:12', 'phone', 'light'], ['fr/learn.html', 'projector', 'light']);
 PLAN.push(['en/howto/list-filter.html', 'laptop', 'light'], ['fr/howto/text-entities.html', 'laptop', 'light'], ['fr/howto/text-entities.html', 'phone', 'light'], ['en/howto/list-filter.html', 'projector', 'light']);
 PLAN.push(['en/atlas/agents.html', 'projector', 'light'], ['en/narrations/stz-xml-the-parser-that-says-no.html', 'projector', 'light'], ['en/reference/stzlist/findw.html', 'projector', 'light'], ['en/atlas/agents.html', 'laptop', 'light'], ['en/narrations/stz-xml-the-parser-that-says-no.html', 'laptop', 'light'], ['en/narrations/stz-xml-the-parser-that-says-no.html', 'laptop', 'dark'], ['fr/narrations/stzstring-sit-narration.html', 'phone', 'light'], ['en/narrations.html', 'laptop', 'light']);

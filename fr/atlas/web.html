@@ -56,12 +56,7 @@ b = new stzAuth()
 b.SetOidcClient(rp)
 ? &quot;forged token   : [&quot; + b.LoginWithOidcAt(idp.IssueForgedIdTokenAt(&quot;dana&quot;,&quot;n-1&quot;,NOW), &quot;n-1&quot;, NOW) + &quot;]&quot;
 ? &quot;  why          : &quot; + b.OidcWhy()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>forged token   : []
-  why          : the signature does not verify against the provider&#x27;s key</pre></div></div><p class="ran">exécuté le 2026-10-01 21:18 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-auth-the-front-door-narration.md">base/doc/narrations/stz-auth-the-front-door-narration.md</a></p><p style="margin-top:32px"><b>En phase de production, un bac à sable de paiement encore branché devient une erreur dans le registre : un faux ne peut pas partir.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oReg = new stzServiceRegistry(&quot;shop&quot;)
-oReg.Bind(:payments, new stzPaymentsSandbox())
-? oReg.PostureOf(:payments)          # --&gt; sandbox
-oReg.SetPhaseQ(:production)
-? oReg.IsSound()                     # --&gt; 0</pre></div><div class="out"><div class="lbl">Sortie</div><pre>sandbox
-0</pre></div></div><p class="ran">exécuté le 2026-10-01 21:18 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-service-virtualization-code-first-subscribe-later.md">base/doc/narrations/stz-service-virtualization-code-first-subscribe-later.md</a></p>
+  why          : the signature does not verify against the provider&#x27;s key</pre></div></div><p class="ran">exécuté le 2026-10-01 21:18 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-auth-the-front-door-narration.md">base/doc/narrations/stz-auth-the-front-door-narration.md</a></p>
     <h2>Les couloirs, un par un</h2>
     <p class="proof">Les couloirs et leurs notes sont cités tels qu'ils ont été lus à la source, le Read from the source on 2026-09-16, from a read-only main worktree.</p>
     

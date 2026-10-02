@@ -17,7 +17,7 @@ La plupart des logiciels sont assemblés à partir de nombreuses bibliothèques 
 <div class="figure"><b>401</b><span>fichiers source du moteur Zig, 179 000 lignes</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/engine/src">engine/src</a></div>
 <div class="figure"><b>531 000</b><span>lignes de bibliothèque, 1 227 fichiers, hors tests et archives</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base">base/</a></div>
 <div class="figure"><b>501</b><span>gardes narrés, 306 000 lignes de tests</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/test">base/test</a></div>
-<div class="figure"><b>618</b><span>classes, 26 949 méthodes, chacune expliquée par la bibliothèque elle-même</span></div>
+<div class="figure"><b>618</b><span>classes, 24 774 méthodes, chacune expliquée par la bibliothèque elle-même</span></div>
 <div class="figure"><b>5 824</b><span>commits sur la branche principale depuis le 12 mars 2022</span><a href="https://github.com/mayouni/stzlib/commits/main">commits/main</a></div>
 </div>
 

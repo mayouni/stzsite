@@ -56,12 +56,7 @@ b = new stzAuth()
 b.SetOidcClient(rp)
 ? &quot;forged token   : [&quot; + b.LoginWithOidcAt(idp.IssueForgedIdTokenAt(&quot;dana&quot;,&quot;n-1&quot;,NOW), &quot;n-1&quot;, NOW) + &quot;]&quot;
 ? &quot;  why          : &quot; + b.OidcWhy()</pre></div><div class="out"><div class="lbl">Output</div><pre>forged token   : []
-  why          : the signature does not verify against the provider&#x27;s key</pre></div></div><p class="ran">run on 2026-10-01 21:18 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-auth-the-front-door-narration.md">base/doc/narrations/stz-auth-the-front-door-narration.md</a></p><p style="margin-top:32px"><b>Switching the registry to production turns a still-bound payments sandbox into an error, so a fake cannot ship.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oReg = new stzServiceRegistry(&quot;shop&quot;)
-oReg.Bind(:payments, new stzPaymentsSandbox())
-? oReg.PostureOf(:payments)          # --&gt; sandbox
-oReg.SetPhaseQ(:production)
-? oReg.IsSound()                     # --&gt; 0</pre></div><div class="out"><div class="lbl">Output</div><pre>sandbox
-0</pre></div></div><p class="ran">run on 2026-10-01 21:18 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-service-virtualization-code-first-subscribe-later.md">base/doc/narrations/stz-service-virtualization-code-first-subscribe-later.md</a></p>
+  why          : the signature does not verify against the provider&#x27;s key</pre></div></div><p class="ran">run on 2026-10-01 21:18 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-auth-the-front-door-narration.md">base/doc/narrations/stz-auth-the-front-door-narration.md</a></p>
     <h2>The lanes, one by one</h2>
     <p class="proof">Lanes and their notes are quoted as they were read at the source, on Read from the source on 2026-09-16, from a read-only main worktree.</p>
     

@@ -33,15 +33,22 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>The forms of this verb</h2><p><b class="mono">Chars</b> · <a class="mono" href="charsq.html">CharsQ</a> · <a class="mono" href="charsw.html">CharsW</a> · <a class="mono" href="../stzstring.html#charswq">CharsWQ</a></p>
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
+    <h2>The forms of this verb</h2><p><b class="mono">Chars</b> · <a class="mono" href="charsw.html">CharsW</a></p>
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
 big  = new stzString( oAB.Repeated(1000000) )
 oA = new stzString(&quot;a&quot;)
 oBigA = new stzString( oA.Repeated(200000) )
 # Chars() returns 200,000 single chars
-? len(oBigA.Chars())</pre></div><div class="out"><div class="lbl">Output</div><pre>200000</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p>
+? len(oBigA.Chars())</pre></div><div class="out"><div class="lbl">Output</div><pre>200000</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># chars of 12309 are numbers
+? Q(&quot;12309&quot;).CharsQ().NumbrifiedQ().Are(:Numbers)
+# chars of 248 are even positive numbers
+? Q(&quot;248&quot;).CharsQ().NumberifiedQ().Are([ :Even, :Positive, :Numbers ])
+# these are punctuation chars
+? Q([ &quot;,&quot;, &quot;:&quot;, &quot;;&quot; ]).Are([ :Punctuation, :Chars ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+1
+1</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/451_what_you_think_is_what_you_write.ring">451_what_you_think_is_what_you_write.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzstring.html#chars">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzstring.html#chars">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzlist/are.html">stzList.Are</a></li></ul>
   </div>
 </main>
 </div>

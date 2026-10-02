@@ -33,8 +33,10 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>The forms of this verb</h2><p><b class="mono">ReplaceFirst</b> · <a class="mono" href="replacefirstq.html">ReplaceFirstQ</a> · <a class="mono" href="../stzstring.html#replacefirstcs">ReplaceFirstCS</a> · <a class="mono" href="../stzstring.html#replacefirstcsq">ReplaceFirstCSQ</a></p>
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;Tunisia is back! People united.&quot;)
+    <h2>The forms of this verb</h2><p><b class="mono">ReplaceFirst</b> · <a class="mono" href="../stzstring.html#replacefirstcs">ReplaceFirstCS</a></p>
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;Softanza loves simplicity&quot;)
+# everything from position 10 becomes arrives!
+? o1.ReplaceFirstQ( o1.Section(10, :LastChar), &quot;arrives!&quot;).Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>Softanza arrives!</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/803_replacefirst.ring">803_replacefirst.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;Tunisia is back! People united.&quot;)
 o1.ReplaceAll(&quot;People&quot;, &quot;Tunisians&quot;)
 # crowd renamed
 ? o1.Content()

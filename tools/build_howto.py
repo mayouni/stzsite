@@ -12,7 +12,7 @@ decided in doc/DOCUMENTATION-DESIGN.md (D4).
     fr|en/howto/<kind>-<slug>.html   one recipe
 """
 import json, re, html
-import level2
+import level2, qforms
 
 def esc(s): return html.escape(str(s), quote=True)
 RING = re.compile(r"\b(?:Ring|RING)\b")
@@ -96,12 +96,22 @@ def load_howtos(ROOT):
     f = ROOT / "data" / "howto-run.json"
     return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
 
-def howtos_by_method(runs):
+def fold_methods(Q, methods):
+    """the methods a recipe names, each once: stzList.Filter and stzList.FilterQ are one method"""
+    out = []
+    for m in methods:
+        if "." in m:
+            cls, meth = m.split(".", 1)
+            m = f"{cls}.{Q.fold(cls, meth)}"
+        if m not in out: out.append(m)
+    return out
+
+def howtos_by_method(runs, Q):
     """(class, method) -> the published recipes that use it, for the method entries' See also"""
     out = {}
     for rec in runs.values():
         if not published(rec): continue
-        for m in rec["methods"]:
+        for m in fold_methods(Q, rec["methods"]):
             if "." in m:
                 cls, meth = m.split(".", 1)
                 out.setdefault((cls, meth), []).append(rec)
@@ -111,7 +121,8 @@ def build_howto(ctx):
     ROOT, head, header, footer, md, entries = (ctx[k] for k in ("ROOT", "head", "header", "footer", "md", "entries"))
     from build_methods import slug as mslug
     runs = load_howtos(ROOT)
-    ref = json.loads((ROOT / "data" / "reference.json").read_text(encoding="utf-8"))
+    ref = qforms.reference(ROOT)
+    Q = qforms.get(ROOT)
     classes = {c["name"]: {m[0] for m in c["own"]} for c in ref["classes"]}
     pub = [r for r in runs.values() if published(r)]
     by_slug = {}
@@ -151,7 +162,7 @@ def build_howto(ctx):
             if any(p["printed"] for p in rec["parts"]): run_line += (" ; " if lang == "fr" else "; ") + t["printed"]
             body = (f'{"".join(blocks)}<p class="proof">{run_line} · <a href="{GH}{esc(rec["file"])}">{t["source"]}</a></p>'
                     f'{notes}'
-                    f'<h2>{t["methods"]}</h2><p>{" · ".join(mlink(m) for m in rec["methods"])}</p>'
+                    f'<h2>{t["methods"]}</h2><p>{" · ".join(mlink(m) for m in fold_methods(Q, rec["methods"]))}</p>'
                     + (f'<h2>{t["see"]}</h2><ul>' + "".join(f"<li>{s}</li>" for s in sees) + "</ul>" if sees else "")
                     + (f'<p class="proof">{t["words"]} : {esc(", ".join(rec["tags"]))}</p>'.replace(" : ", ": " if lang == "en" else " : ") if rec["tags"] else "")
                     + (f'<p class="proof">{t["lang_note"]}</p>' if t["lang_note"] else ""))

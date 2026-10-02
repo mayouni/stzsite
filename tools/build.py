@@ -24,6 +24,7 @@ import level2
 from build_howto import build_howto, load_howtos, howtos_by_method
 from build_ask import build_ask
 import build_ladder
+import qforms
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -457,6 +458,12 @@ def showcase_html(lang, slug, heading=True, only=None):
         if only:
             raise SystemExit(f"SHOWCASE:{slug}: a selected run shows the word; choose another run")
         items = [it for it in items if not (WORD.search(it["code"]) or WORD.search(it["out"]))]
+    # a ...Q() call whose result nothing uses is not right (the plain form does the job): left out as well
+    plain = qforms.get(ROOT).plain_anywhere
+    if any(qforms.unchained(it["code"], plain) for it in items):
+        if only:
+            raise SystemExit(f"SHOWCASE:{slug}: a selected run calls a Q form and uses nothing of its result; choose another run")
+        items = [it for it in items if not qforms.unchained(it["code"], plain)]
     if only:
         # a selection by position is only safe when every snippet of the source list kept its run
         src = json.loads((DATA / "showcase-src.json").read_text(encoding="utf-8")).get(slug, [])
@@ -668,7 +675,7 @@ def main():
     build_home(idx, groups)
     ENTRIES = load_entries(ROOT)
     nref, ncls, nown = build_reference({"ROOT": ROOT, "LANGS": LANGS, "head": head, "header": header, "footer": footer, "idx": idx, "groups": groups, "entries": ENTRIES})
-    HOWTOS = howtos_by_method(load_howtos(ROOT))
+    HOWTOS = howtos_by_method(load_howtos(ROOT), qforms.get(ROOT))
     nmeth = build_methods({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "entries": ENTRIES, "howtos": HOWTOS})
     nhow, npub = build_howto({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "md": md, "entries": ENTRIES})
     print(f"how-to: {nhow} pages, {npub} recipes run and published")

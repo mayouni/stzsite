@@ -33,14 +33,14 @@
     <p class="proof">also: replace  substitute  swap text  find and replace  change all  rename substitute  swap  change  find and replace  put instead</p>
   </div></section>
   <div class="wrap page-body">
-    <h2>The forms of this verb</h2><p><b class="mono">Replace</b> · <a class="mono" href="replaceq.html">ReplaceQ</a> · <a class="mono" href="../stzstring.html#replacew">ReplaceW</a> · <a class="mono" href="replaced.html">Replaced</a> · <a class="mono" href="../stzstring.html#replacecs">ReplaceCS</a> · <a class="mono" href="replacewq.html">ReplaceWQ</a> · <a class="mono" href="replacext.html">ReplaceXT</a> · <a class="mono" href="../stzstring.html#replacecsq">ReplaceCSQ</a> · <a class="mono" href="../stzstring.html#replacextq">ReplaceXTQ</a> · <a class="mono" href="../stzstring.html#replacedcs">ReplacedCS</a></p>
+    <h2>The forms of this verb</h2><p><b class="mono">Replace</b> · <a class="mono" href="replacew.html">ReplaceW</a> · <a class="mono" href="replaced.html">Replaced</a> · <a class="mono" href="../stzstring.html#replacecs">ReplaceCS</a> · <a class="mono" href="replacext.html">ReplaceXT</a> · <a class="mono" href="../stzstring.html#replacedcs">ReplacedCS</a></p>
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;R I N G&quot;)
 o1.Replace(&quot; &quot;, &quot;-&quot;)
 # Replace() mutates the object
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>R-I-N-G</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/55_replace_ref_vs_copy.ring">55_replace_ref_vs_copy.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;a + b - c / d = 0&quot;)
 o1.Replace( [ &quot;+&quot;, &quot;-&quot;, &quot;/&quot; ], :By = &quot;*&quot; )
 # each operator becomes a star
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>a * b * c * d = 0</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/74_replace_many_olds.ring">74_replace_many_olds.ring</a></p><h2>Scope <span class="mono">(4)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>a * b * c * d = 0</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/74_replace_many_olds.ring">74_replace_many_olds.ring</a></p><h2>Scope <span class="mono">(5)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
 big  = new stzString( oAB.Repeated(1000000) )
 oRep = new stzString( oAB.Repeated(500000) )   # 1,000,000 chars
 oRep.Replace(&quot;a&quot;, &quot;X&quot;)
@@ -83,7 +83,29 @@ o1.Undo()
 Softanza is awosme!
 Softanza is wonderful!
 Softanza is really wonderful!
-Softanza is wonderful!</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/913_pr.ring">913_pr.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;Tunisia is back! People united.&quot;)
+Softanza is wonderful!</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/913_pr.ring">913_pr.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># replace on empty
+? Q(&quot;&quot;).ReplaceQ(&#x27;&#x27;, &#x27;&#x27;).Content()
+# replace any on empty
+? Q(&quot;&quot;).ReplaceQ(&#x27;any&#x27;, &#x27;&#x27;).Content()
+# replace it by any on empty
+? Q(&quot;&quot;).ReplaceQ(&#x27;&#x27;, &#x27;any&#x27;).Content()
+# replace it in text
+? Q(&quot;text&quot;).ReplaceQ(&#x27;&#x27;, &quot;&quot;).Content()
+# ... by X
+? Q(&quot;text&quot;).ReplaceQ(&#x27;&#x27;, &quot;X&quot;).Content()
+# remove it from empty
+? Q(&quot;&quot;).RemoveQ(&#x27;&#x27;).Content()
+# remove text from empty
+? Q(&quot;&quot;).RemoveQ(&#x27;text&#x27;).Content()
+# remove it from text
+? Q(&quot;text&quot;).RemoveQ(&#x27;&#x27;).Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>
+
+
+text
+text
+
+
+text</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/612_dealing_in_emptiness_in_softanza.ring">612_dealing_in_emptiness_in_softanza.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;Tunisia is back! People united.&quot;)
 o1.ReplaceAll(&quot;People&quot;, &quot;Tunisians&quot;)
 # crowd renamed
 ? o1.Content()
@@ -111,7 +133,7 @@ is back! Tunisians united.
 Tunisia is back! Tunisians united.
 Egypt is back! Egyptians united.</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/793_content.ring">793_content.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzstring.html#replace">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/insertxt.html">stzString.InsertXT</a> · <a class="mono" href="../stzstring/numberofoccurrences.html">stzString.NumberOfOccurrences</a> · <a class="mono" href="../stzstring/redo.html">stzString.Redo</a> · <a class="mono" href="../stzstring/replaceall.html">stzString.ReplaceAll</a> · <a class="mono" href="../stzstring/replacebymany.html">stzString.ReplaceByMany</a> · <a class="mono" href="../stzstring/replacefirst.html">stzString.ReplaceFirst</a> · <a class="mono" href="../stzstring/section.html">stzString.Section</a> · <a class="mono" href="../stzstring/undo.html">stzString.Undo</a></li><li>How-to: <a href="../../howto/string-replace.html">Replace occurrences of one substring with another</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzstring.html#replace">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/insertxt.html">stzString.InsertXT</a> · <a class="mono" href="../stzstring/numberofoccurrences.html">stzString.NumberOfOccurrences</a> · <a class="mono" href="../stzstring/redo.html">stzString.Redo</a> · <a class="mono" href="../stzstring/remove.html">stzString.Remove</a> · <a class="mono" href="../stzstring/replaceall.html">stzString.ReplaceAll</a> · <a class="mono" href="../stzstring/replacebymany.html">stzString.ReplaceByMany</a> · <a class="mono" href="../stzstring/replacefirst.html">stzString.ReplaceFirst</a> · <a class="mono" href="../stzstring/section.html">stzString.Section</a> · <a class="mono" href="../stzstring/undo.html">stzString.Undo</a></li><li>How-to: <a href="../../howto/string-replace.html">Replace occurrences of one substring with another</a></li></ul>
   </div>
 </main>
 </div>

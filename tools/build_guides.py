@@ -9,7 +9,7 @@ harvested from the doc-comments), the groups come from the verb that leads each
 function's name, and the tutorials are the narrations that run.
 """
 import json, re, html, collections, pathlib
-import level2
+import level2, qforms
 
 def esc(s): return html.escape(str(s), quote=True)
 RING = re.compile(r"\b(?:Ring|RING)\b")
@@ -69,7 +69,7 @@ def build_guides(ctx):
     entries = ctx.get("entries", {})
     from build_methods import slug as mslug
     GH = "https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/doc/narrations/"
-    ref = json.loads((ROOT / "data" / "reference.json").read_text(encoding="utf-8"))
+    ref = qforms.reference(ROOT)       # a function is listed once: its ...Q() form is the same function
     narr = json.loads((ROOT / "data" / "narrations.json").read_text(encoding="utf-8"))
     classes = ref["classes"]; harvested = ref.get("harvested", "2026-10-01")
     pages = 0
