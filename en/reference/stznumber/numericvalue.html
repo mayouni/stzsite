@@ -38,7 +38,7 @@ o1 = new stzNumber([ 981.123456701, :round = 5 ])
 ? o1.NumericValue() # Sensitive to current on the program round, 3.
 ? o1.StringValue() # Rounded to the what is specified at the object level, 5.</pre></div><div class="out"><div class="lbl">Output</div><pre>5
 981.123
-981.12346</pre></div></div><p class="ran">run on 2026-10-02 03:51 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/49_round.ring">49_round.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzNumber(12)
+981.12346</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/49_round.ring">49_round.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzNumber(12)
 o1 * Q(5)
 ? o1.NumericValue()
 o1 = new stzNumber(12)
@@ -48,9 +48,25 @@ o1 = new stzNumber(12)
 o1 * Q([ 5, 4, 2 ])
 ? o1.NumericValue()</pre></div><div class="out"><div class="lbl">Output</div><pre>60
 480
-480</pre></div></div><p class="ran">run on 2026-10-02 03:51 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/15_numericvalue.ring">15_numericvalue.ring</a></p>
+480</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/15_numericvalue.ring">15_numericvalue.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>tiny = number(&quot;1e-20&quot;)
+oTiny = new stzNumber(tiny)
+# the digits are kept
+? oTiny.Content()
+# ...so the value is still positive
+? oTiny.NumericValue() &gt; 0
+# ...and scaling it back recovers 1
+? oTiny.NumericValue() * number(&quot;1e20&quot;)
+oTiny.MultiplyBy(2)
+# it is exact, because the content is a plain decimal the exact path can use
+? oTiny.Content()
+# ...and says so
+? oTiny.IsExact()</pre></div><div class="out"><div class="lbl">Output</div><pre>0.00000000000000000001
+1
+1
+0.00000000000000000002
+1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_no_loss_narrated.ring">numeric_no_loss_narrated.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stznumber.html#numericvalue">The class stzNumber</a></li><li><a href="../../guide/numeric.html">The area's guide: Numeric &amp; optimization</a></li><li>The other methods in these examples: <a class="mono" href="../stznumber/round.html">stzNumber.Round</a> · <a class="mono" href="../stznumber/stringvalue.html">stzNumber.StringValue</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stznumber.html#numericvalue">The class stzNumber</a></li><li><a href="../../guide/numeric.html">The area's guide: Numeric &amp; optimization</a></li><li>The other methods in these examples: <a class="mono" href="../stznumber/isexact.html">stzNumber.IsExact</a> · <a class="mono" href="../stznumber/multiplyby.html">stzNumber.MultiplyBy</a> · <a class="mono" href="../stznumber/round.html">stzNumber.Round</a> · <a class="mono" href="../stznumber/stringvalue.html">stzNumber.StringValue</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

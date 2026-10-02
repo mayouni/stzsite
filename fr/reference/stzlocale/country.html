@@ -32,19 +32,26 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? StzLocaleQ(&quot;ru_RU&quot;).Country()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>russia</pre></div></div><p class="ran">exécuté le 2026-10-02 03:51 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/locale/86_country.ring">86_country.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzLocale(&quot;en-US&quot;)
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? StzLocaleQ(&quot;ru_RU&quot;).Country()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>russia</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/locale/86_country.ring">86_country.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzLocale(&quot;en-US&quot;)
 ? o1.Abbreviation()
 ? o1.Abbreviation()
 ? o1.Country()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>en_US
 en_US
-united_states</pre></div></div><p class="ran">exécuté le 2026-10-02 03:51 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/locale/84_abbreviation.ring">84_abbreviation.ring</a></p><h2>Portée <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzLocale(&quot;pt_Latn_BR&quot;)
+united_states</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/locale/84_abbreviation.ring">84_abbreviation.ring</a></p><h2>Portée <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzLocale(&quot;pt_Latn_BR&quot;)
 ? o1.Abbreviation()
 ? o1.language()
 ? o1.Script()
 ? o1.Country()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>pt_BR
 portuguese
 latin
-brazil</pre></div></div><p class="ran">exécuté le 2026-10-02 03:51 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/locale/69_abbreviation.ring">69_abbreviation.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzLocale([ :Language = &quot;french&quot;, :Country = &quot;Mali&quot; ])
+brazil</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/locale/69_abbreviation.ring">69_abbreviation.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># fr alone is not a locale
+? Q(&quot;fr&quot;).IsLocaleAbbreviation()
+# fr-fr is
+? Q(&quot;fr-fr&quot;).IsLocaleAbbreviation()
+# and its country reads france
+? StzLocaleQ(&quot;fr-fr&quot;).Country()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0
+1
+france</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/842_islocaleabbreviation.ring">842_islocaleabbreviation.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzLocale([ :Language = &quot;french&quot;, :Country = &quot;Mali&quot; ])
 ? o1.Country()
 ? o1.Langauge()
 ? o1.Script() + NL
@@ -73,9 +80,9 @@ latin
 
 spain
 spanish
-latin</pre></div></div><p class="ran">exécuté le 2026-10-02 03:51 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/locale/68_country.ring">68_country.ring</a></p>
+latin</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/locale/68_country.ring">68_country.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stzlocale.html#country">La classe stzLocale</a></li><li><a href="../../guide/i18n.html">Le guide du domaine : Internationalisation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlocale/abbreviation.html">stzLocale.Abbreviation</a> · <a class="mono" href="../stzlocale/langauge.html">stzLocale.Langauge</a> · <a class="mono" href="../stzlocale/language.html">stzLocale.Language</a> · <a class="mono" href="../stzlocale/script.html">stzLocale.Script</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stzlocale.html#country">La classe stzLocale</a></li><li><a href="../../guide/i18n.html">Le guide du domaine : Internationalisation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlocale/abbreviation.html">stzLocale.Abbreviation</a> · <a class="mono" href="../stzlocale/langauge.html">stzLocale.Langauge</a> · <a class="mono" href="../stzlocale/language.html">stzLocale.Language</a> · <a class="mono" href="../stzlocale/script.html">stzLocale.Script</a> · <a class="mono" href="../stzstring/islocaleabbreviation.html">stzString.IsLocaleAbbreviation</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

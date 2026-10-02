@@ -32,12 +32,20 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oDateTime = StzDateTimeQ(&quot;2024-03-15 10:30:00&quot;)
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oDateTime = StzDateTimeQ(&quot;2024-03-15 10:30:00&quot;)
 ? oDateTime.Content()
 ? oDateTime.ToEuropean() # Or ToEuropeanAmPm() or ToEuropean12h()
 ? oDateTime.ToEuropeanWithoutAmPm() # Or ToEuropean24h()</pre></div><div class="out"><div class="lbl">Output</div><pre>2024-03-15 10:30:00
 15/03/2024 10:30:00 AM
-15/03/2024 10:30:00</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/03_creating_datetime_from_european_format.ring">03_creating_datetime_from_european_format.ring</a></p>
+15/03/2024 10:30:00</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/03_creating_datetime_from_european_format.ring">03_creating_datetime_from_european_format.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o = StzDateTimeQ(&quot;2024-03-15 10:30:00&quot;)
+# Content round-trips
+? o.Content()
+# ToEuropean is dd/mm/yyyy 12h AM/PM
+? o.ToEuropean()
+# ToEuropeanWithoutAmPm is 24h
+? o.ToEuropeanWithoutAmPm()</pre></div><div class="out"><div class="lbl">Output</div><pre>2024-03-15 10:30:00
+15/03/2024 10:30:00 AM
+15/03/2024 10:30:00</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/00_datetime_narrated.ring">00_datetime_narrated.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzdatetime.html#toeuropean">The class stzDateTime</a></li><li><a href="../../guide/i18n.html">The area's guide: Internationalization</a></li><li>The other methods in these examples: <a class="mono" href="../stzdatetime/toeuropeanwithoutampm.html">stzDateTime.ToEuropeanWithoutAmPm</a></li></ul>
   </div>

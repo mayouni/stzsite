@@ -38,7 +38,12 @@
 hussein
 haneen
 
-4</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/456_duplicatesremoved.ring">456_duplicatesremoved.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;emm&quot;, &quot;EMM&quot;, &quot;eMm&quot;, &quot;EMM&quot; ])
+4</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/456_duplicatesremoved.ring">456_duplicatesremoved.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 14, 10, 14, 14, 20 ])
+# botharebetween example 1
+? @@( QRT([2, 4], :stzPairOfNumbers).BothAreBetween(1, o1.NumberOfItems()) )
+# botharebetween example 2
+? @@( QRT([0, 4], :stzPairOfNumbers).BothAreBetween(1, o1.NumberOfItems()) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/184_botharebetween.ring">184_botharebetween.ring</a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;emm&quot;, &quot;EMM&quot;, &quot;eMm&quot;, &quot;EMM&quot; ])
 ? o1.Find(&quot;EMM&quot;) # Same as FindCS(&quot;EMM&quot;, :CS = TRUE)
 ? o1.FindCS(&quot;EMM&quot;, :CS = FALSE)
 ? o1.NumberOfItems()
@@ -59,7 +64,7 @@ EMM
 eMm
 EMM
 
-emm</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/from_string_case_sensitivity_in_softanza.ring">from_string_case_sensitivity_in_softanza.ring</a></p>
+emm</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/from_string_case_sensitivity_in_softanza.ring">from_string_case_sensitivity_in_softanza.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#numberofitems">La classe stzList</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlist/contentcs.html">stzList.ContentCS</a> · <a class="mono" href="../stzlist/duplicatesremoved.html">stzList.DuplicatesRemoved</a> · <a class="mono" href="../stzlist/find.html">stzList.Find</a> · <a class="mono" href="../stzlist/findcs.html">stzList.FindCS</a> · <a class="mono" href="../stzlist/numberofitemscs.html">stzList.NumberOfItemsCS</a></li></ul>
   </div>

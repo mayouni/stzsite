@@ -35,16 +35,66 @@
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 1, 2, 3 ])
 ? @@( o1 + Q(4) + 5 )
 ? @@( (o1 + Q(&quot;X&quot; : &quot;Z&quot;)).content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ 1, 2, 3, 4, 5 ]
-[ 1, 2, 3, [ &quot;X&quot;, &quot;Y&quot;, &quot;Z&quot; ] ]</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/408_plus_operator.ring">408_plus_operator.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;File&quot;)
+[ 1, 2, 3, [ &quot;X&quot;, &quot;Y&quot;, &quot;Z&quot; ] ]</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/408_plus_operator.ring">408_plus_operator.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;__Ri__ng__&quot;)
+o1.@(&quot;__&quot;).@RemoveItQ().AndThenQ().UppercaseQ().TheString()
+# the underscores are gone, the rest shouted
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>RING</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/498_content.ring">498_content.ring</a></p><h2>Scope <span class="mono">(6)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># raw list, raw result
+? Q(&quot;ORingoriaLand&quot;) - [ &quot;O&quot;, &quot;oria&quot;, &quot;Land&quot; ]
+# Q-wrapped list, chainable result
+? ( Q(&quot;ORingoriaLand&quot;) - Q([ &quot;O&quot;, &quot;oria&quot;, &quot;Land&quot; ]) ).Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>Ring
+Ring</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/786_pr.ring">786_pr.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;File&quot;)
 ? o1 * 3
 ? o1 + &quot;File&quot;
 ? @@( o1 / 4 )
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>FileFileFile
 FileFile
 [ &quot;F&quot;, &quot;i&quot;, &quot;l&quot;, &quot;e&quot; ]
-File</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/583_string_operators.ring">583_string_operators.ring</a></p>
+File</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/583_string_operators.ring">583_string_operators.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;A**BC***DE***&quot;)
+# stars removed in the result
+? o1 - &quot;*&quot;
+# ... but the object keeps them
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>ABCDE
+A**BC***DE***</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/996_minusoperator.ring">996_minusoperator.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o2 = new stzString(&quot;R I N G&quot;)
+# Copy().ReplaceQ() returns the changed copy
+? o2.Copy().ReplaceQ(&quot; &quot;, &quot;-&quot;).Content()
+# the original is unchanged
+? o2.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>R-I-N-G
+R I N G</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/55_replace_ref_vs_copy.ring">55_replace_ref_vs_copy.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;ilir&quot;)
+# Copy().Uppercase.Spacify.Replace(&#x27; &#x27;,&#x27;*&#x27;) -&gt; I*L*I*R
+? o1.Copy().UppercaseQ().SpacifyQ().ReplaceQ(&quot; &quot;, &quot;*&quot;).Content()
+# the original is unchanged
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>I*L*I*R
+ilir</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/52_copy.ring">52_copy.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>SetLastValue(&quot;h&quot;)
+# &#x27;the first char is the remembered one&#x27;
+? Q(&quot;hello&quot;).FirstCharB()
+SetLastValue(&quot;x&quot;)
+# ...disagreement explains itself
+? Q(&quot;hello&quot;).FirstCharB()
+# ...
+? Why()
+oQ2 = new stzString(&quot;ring&quot;)
+# UppercaseQC acts on a CLONE
+? oQ2.UppercaseQC().Content()
+# ...the original untouched
+? oQ2.Content()
+# arity-1 immutable: RemoveQC
+? oQ2.RemoveQC(&quot;r&quot;).Content()
+# ...original still intact
+? oQ2.Content()
+# a false premise absorbs the whole QC family (one override)
+? classname( Q(&quot;hello&quot;).IsAQ(:Number).UppercaseQC() )
+# the dispatcher speaks FRENCH: IfSo(&#x27;majuscule&#x27;)
+? Q(&quot;ring&quot;).IsAQ(:String).IfSo(&quot;majuscule&quot;).Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+0
+no: firstchar is &quot;h&quot;, expected &quot;x&quot;
+RING
+ring
+ing
+ring
+stzfalseobject
+RING</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/natural/nnl_narrated.ring">nnl_narrated.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzstring.html#content">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzstring.html#content">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/copy.html">stzString.Copy</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

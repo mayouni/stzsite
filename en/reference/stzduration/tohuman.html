@@ -44,7 +44,7 @@ oDuration = new stzDuration([
 oDur = DurationQ(&quot;1 hour 15 minutes&quot;)
 ? oDur.TotalMinutes()</pre></div><div class="out"><div class="lbl">Output</div><pre>2 hours and 30 minutes
 1d 3h 45m 30s
-75</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/duration/02_creation_duration_from_natural_language_string.ring">02_creation_duration_from_natural_language_string.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? @@NL($aDurationPatterns) + NL
+75</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/duration/02_creation_duration_from_natural_language_string.ring">02_creation_duration_from_natural_language_string.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? @@NL($aDurationPatterns) + NL
 o1 = new stzDuration(&quot;365 days 23 hours 59 minutes 59 seconds&quot;)
 ? o1.ToHuman()
 o1 = new stzDuration(&quot;7 days&quot;)
@@ -98,7 +98,7 @@ o1 = new stzDuration(&quot;90 days&quot;)
 
 8 days
 1 quarter
-1 business day</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/duration/16_adding_more_patterns_to_tohuman.ring">16_adding_more_patterns_to_tohuman.ring</a></p>
+1 business day</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/duration/16_adding_more_patterns_to_tohuman.ring">16_adding_more_patterns_to_tohuman.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzduration.html#tohuman">The class stzDuration</a></li><li><a href="../../guide/i18n.html">The area's guide: Internationalization</a></li><li>The other methods in these examples: <a class="mono" href="../stzduration/tocompact.html">stzDuration.ToCompact</a></li></ul>
   </div>

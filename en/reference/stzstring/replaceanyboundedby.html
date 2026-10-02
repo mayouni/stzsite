@@ -31,8 +31,16 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>The forms of this verb</h2><p><b class="mono">ReplaceAnyBoundedBy</b> · <a class="mono" href="../stzstring.html#replaceanyboundedbyib">ReplaceAnyBoundedByIB</a></p>
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&#x27;[[[
+    <h2>The forms of this verb</h2><p><b class="mono">ReplaceAnyBoundedBy</b> · <a class="mono" href="replaceanyboundedbyib.html">ReplaceAnyBoundedByIB</a></p>
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;bla bla /.../ and /---/!&quot;)
+o1.ReplaceAnyBoundedByIB([ &quot;/&quot;, &quot;/&quot; ], &quot;bla&quot;)
+# IB replaces each /../  region wholesale
+? o1.Content()
+o2 = new stzString(&quot;bla bla /.../ and /---/!&quot;)
+o2.ReplaceAnyBoundedBy([ &quot;/&quot;, &quot;/&quot; ], &quot;bla&quot;)
+# non-IB replaces each region&#x27;s content, keeps the gap
+? o2.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>bla bla bla and bla!
+bla bla /bla/ and /bla/!</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/198_replaceanyboundedby.ring">198_replaceanyboundedby.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&#x27;[[[
 	&quot;1&quot;, &quot;1&quot;,
 		[[[&quot;2&quot;, &quot;♥&quot;, &quot;2&quot;]]],
 	&quot;1&quot;,
@@ -55,9 +63,9 @@ o1.ReplaceAnyBoundedBy([ &quot;[&quot;, &quot;]&quot; ], &quot;***&quot;)
 				&quot;♥&quot;]]],
 			&quot;3&quot;]]]
 		]]]
-]]]</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/323_replaceanyboundedby.ring">323_replaceanyboundedby.ring</a></p>
+]]]</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/323_replaceanyboundedby.ring">323_replaceanyboundedby.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzstring.html#replaceanyboundedby">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzstring.html#replaceanyboundedby">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/replaceanyboundedbyib.html">stzString.ReplaceAnyBoundedByIB</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

@@ -548,3 +548,30 @@ next:
   - me:      widen the harvest to the narrated suites and the course chapters, where the string class lives now
   - author:  read an entry, for instance Reference > stzList > FindW
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-02 04:08
+
+subject:   method entries widened to the narrated suites: 1,504 methods of 49 classes
+
+why:       the author asked to widen the harvest to the narrated suites, where most of the string class's tests live now
+
+did:
+  - taught tools/harvest_examples.py the narrated form: each scenario becomes one example; each Then or chk becomes a
+    printed line with its label as a comment; a zero-argument helper ending in one return is inlined so the shown
+    code is whole; a scenario leaning on another helper is left out; linguistics, mathematics and statistics added
+  - taught tools/examples_run.py to print a narrated example's expected values in the same run and compare them
+    with what the code printed, so the promise is the library's own value
+  - made attribution follow a chain that elevates to another class (Q("...").TextQ().IsSemanticallySimilarTo files
+    under stzText)
+  - 1,641 examples harvested, 1,297 kept every promise (739 narrated), in 177 s; 3,008 entry pages for 1,504 methods
+    of 49 classes; the string class now holds 948 attributions, the list class 613
+
+state:
+  release-1-pass-11: built; the commit carrying this entry is the one after ca96d67
+  perception-gate:   OPEN
+
+next:
+  - me:      the course chapters as a last source of examples, then narrations as pages
+  - author:  read an entry of the string class, for instance stzString > RemoveXT
+```

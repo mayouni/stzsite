@@ -32,15 +32,30 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oTime1 = new stzTime(&quot;10:00:00&quot;)
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oTime1 = new stzTime(&quot;10:00:00&quot;)
 oTime2 = new stzTime(&quot;14:00:00&quot;)
 ? oTime1.IsBefore(oTime2)
 ? oTime1.IsAfter(oTime2)
 ? oTime1.IsEqualTo(&quot;10:00:00&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
 0
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 03:51 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/time/15_isbefore_isafter_isequalto.ring">15_isbefore_isafter_isequalto.ring</a></p>
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/time/15_isbefore_isafter_isequalto.ring">15_isbefore_isafter_isequalto.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>a = new stzTime(&quot;09:00:00&quot;)
+b = new stzTime(&quot;17:30:00&quot;)
+# 09:00 IsBefore 17:30
+? a.IsBefore(b)
+# 09:00 IsAfter 17:30 is FALSE
+? a.IsAfter(b)
+# 14:30 is afternoon
+? (new stzTime(&quot;14:30:00&quot;)).IsAfternoon()
+# 09:00 is not afternoon
+? (new stzTime(&quot;09:00:00&quot;)).IsAfternoon()
+# 14:30 is 2 on a 12-hour clock
+? (new stzTime(&quot;14:30:00&quot;)).Hours12()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+0
+1
+0
+2</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/time/00_time_narrated.ring">00_time_narrated.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stztime.html#isafter">La classe stzTime</a></li><li><a href="../../guide/i18n.html">Le guide du domaine : Internationalisation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stztime/isbefore.html">stzTime.IsBefore</a> · <a class="mono" href="../stztime/isequalto.html">stzTime.IsEqualTo</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stztime.html#isafter">La classe stzTime</a></li><li><a href="../../guide/i18n.html">Le guide du domaine : Internationalisation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stztime/hours12.html">stzTime.Hours12</a> · <a class="mono" href="../stztime/isafternoon.html">stzTime.IsAfternoon</a> · <a class="mono" href="../stztime/isbefore.html">stzTime.IsBefore</a> · <a class="mono" href="../stztime/isequalto.html">stzTime.IsEqualTo</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

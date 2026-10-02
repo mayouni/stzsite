@@ -31,8 +31,25 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>Les formes de ce verbe</h2><p><b class="mono">IsBoundedBy</b> · <a class="mono" href="../stzstring.html#isboundedbycs">IsBoundedByCS</a> · <a class="mono" href="../stzstring.html#isboundedbyxt">IsBoundedByXT</a></p>
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oStr = new stzString(&quot;|&lt;--Scope of Life--&gt;|&quot;)
+    <h2>Les formes de ce verbe</h2><p><b class="mono">IsBoundedBy</b> · <a class="mono" href="isboundedbycs.html">IsBoundedByCS</a> · <a class="mono" href="isboundedbyxt.html">IsBoundedByXT</a></p>
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># braced
+? StzStringQ(&quot;{nnnnn}&quot;).IsBoundedBy([ &quot;{&quot;, &quot;}&quot; ])
+o1 = new stzString(&quot;بسم الله الرّحمن الرّحيم&quot;)
+# opens with bism, closes with arrahim
+? o1.IsBoundedBy([ &quot;بسم&quot;, &quot;الرّحيم&quot; ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/805_isboundedby.ring">805_isboundedby.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;&lt;&lt;word&gt;&gt;&quot;)
+# it is angle-bounded
+? o1.IsBoundedBy([&quot;&lt;&lt;&quot;, &quot;&gt;&gt;&quot;])
+o1.RemoveTheseBounds(&quot;&lt;&lt;&quot;,&quot;&gt;&gt;&quot;)
+# stripped
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+word</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/587_isboundedby.ring">587_isboundedby.ring</a></p><h2>Portée <span class="mono">(4)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&#x27;&quot;name&quot;&#x27;)
+# quoted on both sides
+? o1.IsBoundedBy([ &#x27;&quot;&#x27;, &#x27;&quot;&#x27; ])
+o2 = new stzString(&quot;:name&quot;)
+# a leading colon is enough
+? o2.IsBoundedBy([ &quot;:&quot;, NULL ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/692_isboundedby.ring">692_isboundedby.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oStr = new stzString(&quot;|&lt;--Scope of Life--&gt;|&quot;)
 ? oStr.IsBoundedBy([ &quot;|&lt;--&quot;, &quot;--&gt;|&quot; ])
 ? oStr.TheseBoundsRemoved( &quot;|&lt;--&quot;, &quot;--&gt;|&quot; )
 oList = new stzList([ &quot;|&lt;--&quot;, &quot;Scope&quot;, &quot;of&quot;, &quot;Life&quot;, &quot;--&gt;|&quot; ])
@@ -42,9 +59,36 @@ Scope of Life
 1
 Scope
 of
-Life</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/515_same_semantics_for_all_softanza_objects.ring">515_same_semantics_for_all_softanza_objects.ring</a></p>
+Life</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/515_same_semantics_for_all_softanza_objects.ring">515_same_semantics_for_all_softanza_objects.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;{{{ Scope of Life }}}&quot;)
+# begins with {
+? o1.BeginsWith(&quot;{&quot;)
+# ends with }
+? o1.EndsWith(&quot;}&quot;)
+# bounded by the pair
+? o1.IsBoundedBy([ &quot;{&quot;, &quot;}&quot; ])
+# one layer removed
+? o1.TheseBoundsRemoved(&quot;{&quot;, &quot;}&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+1
+1
+{{ Scope of Life }}</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/691_beginswith.ring">691_beginswith.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># &#x27;_world_&#x27; is bounded by &#x27;_&#x27;
+? Q(&quot;_world_&quot;).IsBoundedBy(&quot;_&quot;)
+# &#x27;/world\&#x27; is bounded by [&#x27;/&#x27;,&#x27;\&#x27;]
+? Q(&quot;/world\&quot;).IsBoundedBy([ &quot;/&quot;, &quot;\&quot; ])
+# &#x27;world&#x27; is bounded by &#x27;_&#x27; inside &#x27;_world_&#x27;
+? Q(&quot;world&quot;).IsBoundedByXT( &quot;_&quot;, :In = &quot;_world_&quot; )
+# &#x27;world&#x27; is bounded by [&#x27;/&#x27;,&#x27;\&#x27;] inside &#x27;/world\&#x27;
+? Q(&quot;world&quot;).IsBoundedByXT( [&quot;/&quot;,&quot;\&quot;], :In = &quot;/world\&quot; )
+# &#x27;_&#x27; is a bound of &#x27;world&#x27; inside the sentence
+? Q(&quot;_&quot;).IsBoundOfXT(&quot;world&quot;, :In = &quot;Hello _world_ of Ring!&quot;)
+# [&#x27;/&#x27;,&#x27;\&#x27;] are bounds of &#x27;world&#x27; inside the sentence
+? Q([&quot;/&quot;,&quot;\&quot;]).AreBoundsOfXT(&quot;world&quot;, :In = &quot;Hello /world\ of Ring!&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+1
+1
+1
+1
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/44_5_cases_of_the_many_cheks_softanza_has_for_bounds.ring">44_5_cases_of_the_many_cheks_softanza_has_for_bounds.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#isboundedby">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlist/isboundedby.html">stzList.IsBoundedBy</a> · <a class="mono" href="../stzlist/theseboundsremoved.html">stzList.TheseBoundsRemoved</a> · <a class="mono" href="../stzstring/theseboundsremoved.html">stzString.TheseBoundsRemoved</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#isboundedby">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlist/areboundsofxt.html">stzList.AreBoundsOfXT</a> · <a class="mono" href="../stzlist/isboundedby.html">stzList.IsBoundedBy</a> · <a class="mono" href="../stzlist/theseboundsremoved.html">stzList.TheseBoundsRemoved</a> · <a class="mono" href="../stzstring/beginswith.html">stzString.BeginsWith</a> · <a class="mono" href="../stzstring/endswith.html">stzString.EndsWith</a> · <a class="mono" href="../stzstring/isboundofxt.html">stzString.IsBoundOfXT</a> · <a class="mono" href="../stzstring/isboundedbyxt.html">stzString.IsBoundedByXT</a> · <a class="mono" href="../stzstring/removethesebounds.html">stzString.RemoveTheseBounds</a> · <a class="mono" href="../stzstring/theseboundsremoved.html">stzString.TheseBoundsRemoved</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

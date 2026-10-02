@@ -35,19 +35,19 @@
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oSingle = StzDateTimeQ(&quot;2024-03-15 03:05:00&quot;)
 ? oSingle.ToString12h()
 ? oSingle.ToStringXT(&quot;h:mm AP&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>2024-03-15 3:05:00 AM
-3:05 AM</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/60_single_digit_hours.ring">60_single_digit_hours.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oDateTime = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
+3:05 AM</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/60_single_digit_hours.ring">60_single_digit_hours.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oDateTime = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
 ? oDateTime.ToStringXT(&quot;dd/MM/yyyy h:mm AP&quot;)
 ? oDateTime.ToStringXT(&quot;MM-dd-yyyy h:mm:ss AP&quot;)
 ? oDateTime.ToStringXT(&quot;dddd h:mm AP&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>15/03/2024 2:30 PM
 03-15-2024 2:30:45 PM
-Friday 2:30 PM</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/51_custom_12-hour_format_strings.ring">51_custom_12-hour_format_strings.ring</a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oMorning = StzDateTimeQ(&quot;2024-03-15 09:15:30&quot;)
+Friday 2:30 PM</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/51_custom_12-hour_format_strings.ring">51_custom_12-hour_format_strings.ring</a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oMorning = StzDateTimeQ(&quot;2024-03-15 09:15:30&quot;)
 ? oMorning.ToSimple()
 ? oMorning.ToSimple12h()
 ? oMorning.ToSimple24h()
 ? oMorning.ToStringXT(&quot;h:mm AP&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>15/03/2024 9:15 AM
 15/03/2024 9:15 AM
 15/03/2024 09:15
-9:15 AM</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/52_morning_times_am.ring">52_morning_times_am.ring</a></p>
+9:15 AM</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/52_morning_times_am.ring">52_morning_times_am.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzdatetime.html#tostringxt">La classe stzDateTime</a></li><li><a href="../../guide/i18n.html">Le guide du domaine : Internationalisation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzdatetime/tosimple.html">stzDateTime.ToSimple</a> · <a class="mono" href="../stzdatetime/tosimple12h.html">stzDateTime.ToSimple12h</a> · <a class="mono" href="../stzdatetime/tosimple24h.html">stzDateTime.ToSimple24h</a> · <a class="mono" href="../stzdatetime/tostring12h.html">stzDateTime.ToString12h</a></li></ul>
   </div>

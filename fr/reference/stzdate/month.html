@@ -32,14 +32,37 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzDate(&quot;10/12/2024&quot;)
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzDate(&quot;10/12/2024&quot;)
 ? o1.Day()
 ? o1.Month()
 ? o1.ToHuman()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>Tuesday
 December
-Tuesday, December 10th, 2024</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/28_day.ring">28_day.ring</a></p>
+Tuesday, December 10th, 2024</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/28_day.ring">28_day.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o = StzDateQ(&quot;15/03/2024&quot;)
+# Date() round-trips the string
+? o.Date()
+# Day() is the weekday name Friday
+? o.Day()
+# DayNumber() is 15
+? o.DayNumber()
+# Month() is March
+? o.Month()
+# MonthNumber() is 3
+? o.MonthNumber()
+# Year() is 2024
+? o.Year()
+# DayOfYear() is 75 (leap-year Jan31+Feb29+15)
+? o.DayOfYear()
+# 2024 IsLeapYear
+? o.IsLeapYear()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>15/03/2024
+Friday
+15
+March
+3
+2024
+75
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/00_date_narrated.ring">00_date_narrated.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stzdate.html#month">La classe stzDate</a></li><li><a href="../../guide/i18n.html">Le guide du domaine : Internationalisation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzdate/day.html">stzDate.Day</a> · <a class="mono" href="../stzdate/tohuman.html">stzDate.ToHuman</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stzdate.html#month">La classe stzDate</a></li><li><a href="../../guide/i18n.html">Le guide du domaine : Internationalisation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzdate/date.html">stzDate.Date</a> · <a class="mono" href="../stzdate/day.html">stzDate.Day</a> · <a class="mono" href="../stzdate/daynumber.html">stzDate.DayNumber</a> · <a class="mono" href="../stzdate/dayofyear.html">stzDate.DayOfYear</a> · <a class="mono" href="../stzdate/isleapyear.html">stzDate.IsLeapYear</a> · <a class="mono" href="../stzdate/monthnumber.html">stzDate.MonthNumber</a> · <a class="mono" href="../stzdate/tohuman.html">stzDate.ToHuman</a> · <a class="mono" href="../stzdate/year.html">stzDate.Year</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

@@ -36,7 +36,7 @@
 o1.IfMatch(&quot;^\d{4}&quot;).          		# Starts with 4 digits
    ThenMatch(&quot;\d{4}-\d{2}-\d{2}&quot;).  	# YYYY-MM-DD
    ElseMatch(&quot;\d{2}/\d{2}/\d{4}&quot;)   	# DD/MM/YYYY
-? o1.Pattern()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>(?(?=^\d{4})\d{4}-\d{2}-\d{2}|\d{2}/\d{2}/\d{4})</pre></div></div><p class="ran">exécuté le 2026-10-02 03:51 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/regexmaker/35_match_different_date_formats.ring">35_match_different_date_formats.ring</a></p>
+? o1.Pattern()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>(?(?=^\d{4})\d{4}-\d{2}-\d{2}|\d{2}/\d{2}/\d{4})</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/regexmaker/35_match_different_date_formats.ring">35_match_different_date_formats.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzconditionalregexmaker.html#pattern">La classe stzConditionalRegexMaker</a></li><li><a href="../../guide/regex.html">Le guide du domaine : Recherche de motifs</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzconditionalregexmaker/ifmatch.html">stzConditionalRegexMaker.IfMatch</a></li></ul>
   </div>

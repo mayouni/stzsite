@@ -32,7 +32,16 @@
   </div></section>
   <div class="wrap page-body">
     <h2>The forms of this verb</h2><p><b class="mono">DeepReplace</b> · <a class="mono" href="../stzlist.html#deepreplaceq">DeepReplaceQ</a> · <a class="mono" href="../stzlist.html#deepreplacecs">DeepReplaceCS</a> · <a class="mono" href="../stzlist.html#deepreplacecsq">DeepReplaceCSQ</a></p>
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+		&quot;me&quot;,
+		&quot;other&quot;,
+		[ &quot;other&quot;, &quot;me&quot;, [ &quot;me&quot; ], &quot;other&quot; ],
+		&quot;other&quot;,
+		&quot;me&quot;
+	])
+o1.DeepReplace(&quot;me&quot;, :By = &quot;you&quot;)
+# deepreplace example 1
+? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;you&quot;, &quot;other&quot;, [ &quot;other&quot;, &quot;you&quot;, [ &quot;you&quot; ], &quot;other&quot; ], &quot;other&quot;, &quot;you&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/119_deepreplace.ring">119_deepreplace.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
 	&quot;1&quot;,
 	&quot;🌞&quot;,
 	&quot;1&quot;,
@@ -58,7 +67,7 @@ o1.DeepRemove(&quot;♥&quot;)
 		&quot;2&quot;,
 		[ &quot;3&quot; ]
 	]
-]</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/106_deepcontains.ring">106_deepcontains.ring</a></p>
+]</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/106_deepcontains.ring">106_deepcontains.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzlist.html#deepreplace">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li><li>The other methods in these examples: <a class="mono" href="../stzlist/deepcontains.html">stzList.DeepContains</a> · <a class="mono" href="../stzlist/deepfind.html">stzList.DeepFind</a> · <a class="mono" href="../stzlist/deepremove.html">stzList.DeepRemove</a></li></ul>
   </div>

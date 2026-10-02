@@ -32,13 +32,28 @@
   </div></section>
   <div class="wrap page-body">
     <h2>Les formes de ce verbe</h2><p><a class="mono" href="../stzlist.html#extend">Extend</a> · <a class="mono" href="../stzlist.html#extendq">ExtendQ</a> · <b class="mono">ExtendXT</b> · <a class="mono" href="../stzlist.html#extendxtq">ExtendXTQ</a></p>
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
 o1.ExtendXT(:ToPosition = 5, :With = &quot;0&quot;) # Or ExtendToWith()
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>A
 B
 C
 0
-0</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/590_extendxt.ring">590_extendxt.ring</a></p>
+0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/590_extendxt.ring">590_extendxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
+o1.ExtendXT( :List, :ToPosition = 5 )
+# extendxt example 1
+? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;&quot;, &quot;&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/158_extendxt.ring">158_extendxt.ring</a></p><h2>Portée <span class="mono">(4)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
+o1.ExtendXT( :ToPosition = 5, :With = &quot;*&quot; )
+# extendxt example 1
+? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;*&quot;, &quot;*&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/160_extendxt.ring">160_extendxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
+o1.ExtendXT( :ToPosition = 5, :ByItemsRepeated )
+# extendxt example 1
+? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;A&quot;, &quot;B&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/159_extendxt.ring">159_extendxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
+o1.ExtendXT( :ToPosition = 5, :WithItemsIn = [ &quot;D&quot;, &quot;E&quot; ])
+# extendxt example 1
+? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/161_extendxt.ring">161_extendxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
+o1.ExtendXT( :List, :With = [&quot;D&quot;, &quot;E&quot;])
+# the two items are appended one by one, not nested
+? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/157_extendxt.ring">157_extendxt.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#extendxt">La classe stzList</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li></ul>
   </div>

@@ -34,7 +34,7 @@
     <h2>Les formes de ce verbe</h2><p><a class="mono" href="insertafter.html">InsertAfter</a> · <a class="mono" href="insertafterw.html">InsertAfterW</a> · <b class="mono">InsertAfterWF</b></p>
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;b&quot;, &quot;C&quot;, &quot;D&quot;, &quot;e&quot; ])
 o1.InsertAfterWF( func x { return Q(x).IsLowercase() }, &quot;*&quot; )
-? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ &quot;a&quot;, &quot;*&quot;, &quot;b&quot;, &quot;*&quot;, &quot;C&quot;, &quot;D&quot;, &quot;e&quot;, &quot;*&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/566_insertafterwf.ring">566_insertafterwf.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([&quot;c&quot;, &quot;c++&quot;, &quot;C#&quot;, &quot;RING&quot;, &quot;Python&quot;, &quot;RUBY&quot;])
+? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ &quot;a&quot;, &quot;*&quot;, &quot;b&quot;, &quot;*&quot;, &quot;C&quot;, &quot;D&quot;, &quot;e&quot;, &quot;*&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/566_insertafterwf.ring">566_insertafterwf.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([&quot;c&quot;, &quot;c++&quot;, &quot;C#&quot;, &quot;RING&quot;, &quot;Python&quot;, &quot;RUBY&quot;])
 o1.InsertAfterWF( func x { return Q(x).IsLowercase() }, &quot;*&quot;)
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>c
 *
@@ -43,7 +43,7 @@ c++
 C#
 RING
 Python
-RUBY</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/551_insertafterwf.ring">551_insertafterwf.ring</a></p>
+RUBY</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/551_insertafterwf.ring">551_insertafterwf.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#insertafterwf">La classe stzList</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li></ul>
   </div>

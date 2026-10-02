@@ -39,12 +39,12 @@
 
 3
 4
-6</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/258_managing_duplicated_items_check_errros.ring">258_managing_duplicated_items_check_errros.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;*&quot;, &quot;4&quot;, &quot;*&quot;, &quot;3&quot;, &quot;4&quot; ])
+6</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/258_managing_duplicated_items_check_errros.ring">258_managing_duplicated_items_check_errros.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;*&quot;, &quot;4&quot;, &quot;*&quot;, &quot;3&quot;, &quot;4&quot; ])
 ? o1.NumberOfDuplicates() + NL
 ? o1.Duplicates()</pre></div><div class="out"><div class="lbl">Output</div><pre>2
 
 *
-4</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/260_numberofduplicates.ring">260_numberofduplicates.ring</a></p><h2>Scope <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;ab&quot;, &quot;b&quot;, 1:3, &quot;a&quot;, &quot;ab&quot;, &quot;abc&quot;, &quot;b&quot;, &quot;bc&quot;, 1:3,&quot;c&quot; ])
+4</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/260_numberofduplicates.ring">260_numberofduplicates.ring</a></p><h2>Scope <span class="mono">(4)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;ab&quot;, &quot;b&quot;, 1:3, &quot;a&quot;, &quot;ab&quot;, &quot;abc&quot;, &quot;b&quot;, &quot;bc&quot;, 1:3,&quot;c&quot; ])
 ? o1.FindDuplicates()
 ? @@( o1.ItemsAtPositions( o1.FindDuplicates() ) )
 ? @@( o1.Duplicates() ) + NL
@@ -56,7 +56,7 @@
 [ &quot;a&quot;, &quot;ab&quot;, &quot;b&quot;, [ 1, 2, 3 ] ]
 [ &quot;a&quot;, &quot;ab&quot;, &quot;b&quot;, [ 1, 2, 3 ] ]
 
-[ [ &quot;a&quot;, [ 5 ] ], [ &quot;ab&quot;, [ 6 ] ], [ &quot;b&quot;, [ 8 ] ], [ [ 1, 2, 3 ], [ 10 ] ] ]</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/266_findduplicates.ring">266_findduplicates.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;_&quot;, &quot;ONE&quot;, &quot;_&quot;, &quot;_&quot;, &quot;TWO&quot;, &quot;_&quot;, &quot;THREE&quot;, &quot;*&quot;, &quot;*&quot; ])
+[ [ &quot;a&quot;, [ 5 ] ], [ &quot;ab&quot;, [ 6 ] ], [ &quot;b&quot;, [ 8 ] ], [ [ 1, 2, 3 ], [ 10 ] ] ]</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/266_findduplicates.ring">266_findduplicates.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;_&quot;, &quot;ONE&quot;, &quot;_&quot;, &quot;_&quot;, &quot;TWO&quot;, &quot;_&quot;, &quot;THREE&quot;, &quot;*&quot;, &quot;*&quot; ])
 ? o1.ContainsDuplicates()
 ? @@( o1.FindDuplicates() )
 ? @@( o1.Duplicates() )
@@ -66,7 +66,31 @@ o1.RemoveDuplicates()
 [ 3, 4, 6, 9 ]
 [ &quot;_&quot;, &quot;*&quot; ]
 [ [ &quot;_&quot;, [ 3, 4, 6 ] ], [ &quot;*&quot;, [ 9 ] ] ]
-[ &quot;_&quot;, &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot;, &quot;*&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/234_containsduplicates.ring">234_containsduplicates.ring</a></p>
+[ &quot;_&quot;, &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot;, &quot;*&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/234_containsduplicates.ring">234_containsduplicates.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>aWords = [
+	    &quot;the&quot;, &quot;cat&quot;, &quot;sat&quot;, &quot;on&quot;, &quot;the&quot;, &quot;mat&quot;,
+	    &quot;the&quot;, &quot;cat&quot;, &quot;sat&quot;, &quot;there&quot;
+	]
+oWords = new stzList(aWords)
+# duplicates example 1
+? @@( oWords.Duplicates() )
+# duplicates example 2
+? @@( oWords.DuplicatesZ() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;the&quot;, &quot;cat&quot;, &quot;sat&quot; ]
+[ [ &quot;the&quot;, [ 5, 7 ] ], [ &quot;cat&quot;, [ 8 ] ], [ &quot;sat&quot;, [ 9 ] ] ]</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/143_duplicates.ring">143_duplicates.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+		&quot;*&quot;, &quot;*4&quot;, &quot;*4*&quot;, &quot;*4*3&quot;, &quot;*4*34&quot;,
+		&quot;4&quot;, &quot;4*&quot;, &quot;4*3&quot;, &quot;4*34&quot;, &quot;*&quot;, &quot;*3&quot;,
+		&quot;*34&quot;, &quot;3&quot;, &quot;34&quot;, &quot;4&quot;
+	])
+# numberofduplicates example 1
+? @@( o1.NumberOfDuplicates() )
+# numberofduplicates example 2
+? @@( o1.FindDuplicates() )
+# numberofduplicates example 3
+? @@( o1.Duplicates() )
+# numberofduplicates example 4
+? @@( o1.DuplicatesZ() )</pre></div><div class="out"><div class="lbl">Output</div><pre>2
+[ 10, 15 ]
+[ &quot;*&quot;, &quot;4&quot; ]
+[ [ &quot;*&quot;, [ 10 ] ], [ &quot;4&quot;, [ 15 ] ] ]</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/167_numberofduplicates.ring">167_numberofduplicates.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzlist.html#duplicates">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li><li>The other methods in these examples: <a class="mono" href="../stzlist/containsduplicates.html">stzList.ContainsDuplicates</a> · <a class="mono" href="../stzlist/duplicatesz.html">stzList.DuplicatesZ</a> · <a class="mono" href="../stzlist/findduplicates.html">stzList.FindDuplicates</a> · <a class="mono" href="../stzlist/itemsatpositions.html">stzList.ItemsAtPositions</a> · <a class="mono" href="../stzlist/numberofduplicates.html">stzList.NumberOfDuplicates</a> · <a class="mono" href="../stzlist/removeduplicates.html">stzList.RemoveDuplicates</a></li></ul>
   </div>

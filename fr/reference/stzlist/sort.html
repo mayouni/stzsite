@@ -32,13 +32,33 @@
   </div></section>
   <div class="wrap page-body">
     <h2>Les formes de ce verbe</h2><p><b class="mono">Sort</b> · <a class="mono" href="../stzlist.html#sortq">SortQ</a> · <a class="mono" href="../stzlist.html#sortcs">SortCS</a> · <a class="mono" href="sorted.html">Sorted</a> · <a class="mono" href="../stzlist.html#sortcsq">SortCSQ</a> · <a class="mono" href="../stzlist.html#sortedcs">SortedCS</a></p>
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? @@( StzListQ([ &quot;him&quot;, [ &quot;him&quot; ], &quot;&quot; ]).Sorted() ) + NL
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? @@( StzListQ([ &quot;him&quot;, [ &quot;him&quot; ], &quot;&quot; ]).Sorted() ) + NL
 o1 = new stzList([ &quot;him&quot;, [ &quot;him&quot; ], &quot;&quot; ])
 o1.Stringify()
 ? @@( o1.Content() )
 o1.Sort()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ &quot;&quot;, &quot;him&quot;, [ &quot;him&quot; ] ]
 
-[ &quot;him&quot;, &#x27;[ &quot;him&quot; ]&#x27;, &quot;&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listoflists/20_sorted.ring">20_sorted.ring</a></p>
+[ &quot;him&quot;, &#x27;[ &quot;him&quot; ]&#x27;, &quot;&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listoflists/20_sorted.ring">20_sorted.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>alist = [ 4, 3, 1 , 2, 5 ]
+alist = ring_sort(alist)
+# sort example 1
+? @@( alist )
+o1 = new stzList([ 4, 3, 1 , 2, 5 ])
+o1.Sort()
+# sort example 2
+? @@( o1.Content() )
+aSorted = Q([ 4, 3, 1 , 2, 5 ]).Sorted()
+# sort example 3
+? @@( aSorted )
+aList = [ 4, 3, 5, 2, 1 ]
+ring_sort(aList)
+# sort example 4
+? @@( aList )
+# sort example 5
+? @@( ring_sort([ 4, 3, 5, 2, 1 ]) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 1, 2, 3, 4, 5 ]
+[ 1, 2, 3, 4, 5 ]
+[ 1, 2, 3, 4, 5 ]
+[ 4, 3, 5, 2, 1 ]
+[ 1, 2, 3, 4, 5 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/136_sort.ring">136_sort.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#sort">La classe stzList</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlist/sorted.html">stzList.Sorted</a> · <a class="mono" href="../stzlist/stringify.html">stzList.Stringify</a></li></ul>
   </div>

@@ -34,11 +34,15 @@
     
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([ &quot;ring&quot;, &quot;php&quot;, &quot;python&quot; ]).Are([ :Lowercase, :Strings ])
 ? Q([ &quot;ABC&quot;, &quot;DEF&quot;, &quot;GHI&quot; ]).Are([ :Uppercase, :Strings ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-1</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/343_are.ring">343_are.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([ &quot;واحد&quot;, &quot;اثنان&quot;, &quot;ثلاثة&quot; ]).Are(:Strings)
+1</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/343_are.ring">343_are.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([ &quot;واحد&quot;, &quot;اثنان&quot;, &quot;ثلاثة&quot; ]).Are(:Strings)
 ? Q([ &quot;واحد&quot;, &quot;اثنان&quot;, &quot;ثلاثة&quot; ]).Are([ :Arabic, :Strings ])
 ? Q([ &quot;واحد&quot;, &quot;اثنان&quot;, &quot;ثلاثة&quot; ]).Are([ :ArabicScript, :RightToLeft, :Texts ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 1
-1</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/345_are.ring">345_are.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([ 1, 2, 3 ]).Are(:Numbers)
+1</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/345_are.ring">345_are.ring</a></p><h2>Scope <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># a Han text
+? StzTextQ(&quot;朋友们&quot;).IsHanScript()
+# all three are Han texts
+? Q([ &quot;你好&quot;, &quot;亲&quot;, &quot;朋友们&quot; ]).Are([ :HanScript, :Texts ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+1</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/994_ishanscript.ring">994_ishanscript.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([ 1, 2, 3 ]).Are(:Numbers)
 ? Q([ -2, -4, -8 ]).Are([ :Even, :Negative, :Numbers ])
 ? Q([ 2, 4, 8 ]).Are([ :Even, :Numbers ])
 ? Q([ 2, 4, 8 ]).Are([ :Even, :Positive, :Numbers ])
@@ -46,9 +50,16 @@
 1
 1
 1
-1</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/353_are.ring">353_are.ring</a></p>
+1</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/353_are.ring">353_are.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># chars of 12309 are numbers
+? Q(&quot;12309&quot;).CharsQ().NumbrifiedQ().Are(:Numbers)
+# chars of 248 are even positive numbers
+? Q(&quot;248&quot;).CharsQ().NumberifiedQ().Are([ :Even, :Positive, :Numbers ])
+# these are punctuation chars
+? Q([ &quot;,&quot;, &quot;:&quot;, &quot;;&quot; ]).Are([ :Punctuation, :Chars ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+1
+1</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/451_what_you_think_is_what_you_write.ring">451_what_you_think_is_what_you_write.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzlist.html#are">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzlist.html#are">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/charsq.html">stzString.CharsQ</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

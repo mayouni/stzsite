@@ -35,19 +35,19 @@
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
 ? o1.ContainsNo(&quot;v&quot;)
 ? o1.ContainsNoObjects()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/591_containsno.ring">591_containsno.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList( [ &quot;A&quot;, &quot;B&quot;, [ 1, &quot;v&quot;, 2 ], &quot;X&quot; ] )
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/591_containsno.ring">591_containsno.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList( [ &quot;A&quot;, &quot;B&quot;, [ 1, &quot;v&quot;, 2 ], &quot;X&quot; ] )
 ? o1.ContainsNo(&quot;v&quot;)
 ? o1.ContainsNoObjects()
 ? @@( o1.Flattened() ) # can also be written: o1.FlattenQ().Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
 1
-[ &quot;A&quot;, &quot;B&quot;, 1, &quot;v&quot;, 2, &quot;X&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/592_containsno.ring">592_containsno.ring</a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, 1, &quot;C&quot;, 2, 3, &quot;D&quot;, 4, 5 ])
+[ &quot;A&quot;, &quot;B&quot;, 1, &quot;v&quot;, 2, &quot;X&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/592_containsno.ring">592_containsno.ring</a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, 1, &quot;C&quot;, 2, 3, &quot;D&quot;, 4, 5 ])
 ? o1.Contains(&quot;a&quot;)
 ? o1.Contains(&quot;A&quot;)
 ? o1.ContainsNo(&quot;C&quot;)
 ? o1.ContainsNo(&quot;X&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0
 1
 0
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/396_contains.ring">396_contains.ring</a></p>
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/396_contains.ring">396_contains.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#containsno">La classe stzList</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlist/contains.html">stzList.Contains</a> · <a class="mono" href="../stzlist/containsnoobjects.html">stzList.ContainsNoObjects</a> · <a class="mono" href="../stzlist/flattened.html">stzList.Flattened</a></li></ul>
   </div>

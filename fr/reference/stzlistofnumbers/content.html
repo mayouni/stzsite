@@ -32,22 +32,30 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzListOfNumbers(1:8)
-o1.Clip(3, 5)
-? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 3, 3, 3, 4, 5, 5, 5, 5 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 03:47 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/86_content.ring">86_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzListOfNumbers(1:8)
-o1.AddToEveryNumber(2)
-? ListToCode( o1.Content() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 3, 4, 5, 6, 7, 8, 9, 10 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 03:47 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/82_content.ring">82_content.ring</a></p><h2>Portée <span class="mono">(5)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzListOfNumbers(1:8)
-o1.ReplaceSectionWith(3, 5, 2)
-? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 1, 2, 2, 2, 2, 6, 7, 8 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 03:47 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/87_content.ring">87_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzListOfNumbers(1:8)
-o1.SubStructFromEach(2)
-? ListToCode( o1.Content() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ -1, 0, 1, 2, 3, 4, 5, 6 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 03:47 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/83_content.ring">83_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzListOfNumbers([ 1, 2, 3, 4, 5, 6, 7, 8, 9 ])
-o1.Cumulate()
-? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 1, 2, 5, 9, 14, 20, 27, 35, 44 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 03:47 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/53_content.ring">53_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzListOfNumbers([ 8, 10, 14 ])
-o1.SubStructManyOneByOne([ 6, 7, 7 ])
-? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 2, 3, 7 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 03:47 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/58_content.ring">58_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzListOfNumbers([ 4, 7, 36, 9, 20 ])
-o1.AddToEachW( 1, :Where = &#x27;{ Q(This[@i]).IsDividableBy(4) and This[@i] &lt;= 20 }&#x27; )
-? @@(o1.Content())</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 5, 21 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 03:47 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/77_content.ring">77_content.ring</a></p>
-    <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les titres et le code sont ceux de la bibliothèque, en anglais.</p>
+    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oNums = new stzListOfNumbers([ 1, 2, 3, 4 ])
+oBuf = oNums.ToStzNumBuffer()
+# the numbers arrive resident
+? @@(oBuf.ToList())
+oBuf.Scale(10).AddScalar(1)
+# ...and are worked on there, with no crossing per step
+? @@(oBuf.ToList())
+oBack = oBuf.ToStzListOfNumbers()
+# the return leg lands in the list tier
+? @@(oBack.Content())
+# ...as the real class, not a raw list
+? classname(oBack)
+oAsList = oBuf.ToStzList()
+# or as a plain stzList, if that is what you wanted
+? @@(oAsList.Content())
+# and the ORIGINAL list is untouched -- the door copies, it does not move
+? @@(oNums.Content())
+oBuf.Free()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 1, 2, 3, 4 ]
+[ 11, 21, 31, 41 ]
+[ 11, 21, 31, 41 ]
+stzlistofnumbers
+[ 11, 21, 31, 41 ]
+[ 1, 2, 3, 4 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_tier_door_narrated.ring">numeric_tier_door_narrated.ring</a></p>
+    <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzlistofnumbers.html#content">La classe stzListOfNumbers</a></li><li><a href="../../guide/numeric.html">Le guide du domaine : Numérique et optimisation</a></li></ul>
   </div>
 </main>

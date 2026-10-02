@@ -31,7 +31,7 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>The forms of this verb</h2><p><a class="mono" href="../stzgraph.html#addnode">AddNode</a> · <a class="mono" href="../stzgraph.html#addnodext">AddNodeXT</a> · <b class="mono">AddNodeXTT</b></p>
+    <h2>The forms of this verb</h2><p><a class="mono" href="addnode.html">AddNode</a> · <a class="mono" href="../stzgraph.html#addnodext">AddNodeXT</a> · <b class="mono">AddNodeXTT</b></p>
     <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oGraph = new stzGraph(&quot;test&quot;)
 oGraph.AddNodeXTT(&quot;alice&quot;, &quot;Person&quot;, [:age = 30])
 StzGraphQueryQ(oGraph) {
@@ -39,7 +39,7 @@ StzGraphQueryQ(oGraph) {
 	Set(&quot;n.age&quot;, [:to = 31])
 	Select(&quot;n&quot;)
 	? GraphQ().NodeProperty(&quot;alice&quot;, &quot;age&quot;)
-}</pre></div><div class="out"><div class="lbl">Output</div><pre>31</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphquery/20_set_property.ring">20_set_property.ring</a></p>
+}</pre></div><div class="out"><div class="lbl">Output</div><pre>31</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphquery/20_set_property.ring">20_set_property.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzgraph.html#addnodextt">The class stzGraph</a></li><li><a href="../../guide/diagramming.html">The area's guide: Diagramming &amp; graphs</a></li></ul>
   </div>

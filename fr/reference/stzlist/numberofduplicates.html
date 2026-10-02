@@ -37,7 +37,7 @@
 ? o1.Duplicates()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>2
 
 *
-4</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/260_numberofduplicates.ring">260_numberofduplicates.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;tunis&quot;, 1:3, 1:3, &quot;gafsa&quot;, &quot;tunis&quot;, &quot;tunis&quot;, 1:3, &quot;gabes&quot;, &quot;tunis&quot;, &quot;regueb&quot;, &quot;regueb&quot; ])
+4</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/260_numberofduplicates.ring">260_numberofduplicates.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;tunis&quot;, 1:3, 1:3, &quot;gafsa&quot;, &quot;tunis&quot;, &quot;tunis&quot;, 1:3, &quot;gabes&quot;, &quot;tunis&quot;, &quot;regueb&quot;, &quot;regueb&quot; ])
 o1.Reverse()
 ? @@( o1.Content() ) + NL
 ? o1.NumberOfDuplicates()
@@ -50,9 +50,24 @@ o1.Reverse()
 
 [ &quot;regueb&quot;, &quot;tunis&quot;, [ 1, 2, 3 ] ]
 
-[ &quot;regueb&quot;, &quot;tunis&quot;, &quot;gabes&quot;, [ 1, 2, 3 ], &quot;gafsa&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/588_reverse.ring">588_reverse.ring</a></p>
+[ &quot;regueb&quot;, &quot;tunis&quot;, &quot;gabes&quot;, [ 1, 2, 3 ], &quot;gafsa&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/588_reverse.ring">588_reverse.ring</a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+		&quot;*&quot;, &quot;*4&quot;, &quot;*4*&quot;, &quot;*4*3&quot;, &quot;*4*34&quot;,
+		&quot;4&quot;, &quot;4*&quot;, &quot;4*3&quot;, &quot;4*34&quot;, &quot;*&quot;, &quot;*3&quot;,
+		&quot;*34&quot;, &quot;3&quot;, &quot;34&quot;, &quot;4&quot;
+	])
+# numberofduplicates example 1
+? @@( o1.NumberOfDuplicates() )
+# numberofduplicates example 2
+? @@( o1.FindDuplicates() )
+# numberofduplicates example 3
+? @@( o1.Duplicates() )
+# numberofduplicates example 4
+? @@( o1.DuplicatesZ() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>2
+[ 10, 15 ]
+[ &quot;*&quot;, &quot;4&quot; ]
+[ [ &quot;*&quot;, [ 10 ] ], [ &quot;4&quot;, [ 15 ] ] ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/167_numberofduplicates.ring">167_numberofduplicates.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#numberofduplicates">La classe stzList</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlist/duplicateditems.html">stzList.DuplicatedItems</a> · <a class="mono" href="../stzlist/duplicates.html">stzList.Duplicates</a> · <a class="mono" href="../stzlist/duplicatesremoved.html">stzList.DuplicatesRemoved</a> · <a class="mono" href="../stzlist/numberofduplicatesof.html">stzList.NumberOfDuplicatesOf</a> · <a class="mono" href="../stzlist/reverse.html">stzList.Reverse</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#numberofduplicates">La classe stzList</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlist/duplicateditems.html">stzList.DuplicatedItems</a> · <a class="mono" href="../stzlist/duplicates.html">stzList.Duplicates</a> · <a class="mono" href="../stzlist/duplicatesremoved.html">stzList.DuplicatesRemoved</a> · <a class="mono" href="../stzlist/duplicatesz.html">stzList.DuplicatesZ</a> · <a class="mono" href="../stzlist/findduplicates.html">stzList.FindDuplicates</a> · <a class="mono" href="../stzlist/numberofduplicatesof.html">stzList.NumberOfDuplicatesOf</a> · <a class="mono" href="../stzlist/reverse.html">stzList.Reverse</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

@@ -32,11 +32,22 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? StzStringQ(&quot;ar&quot;).IsLanguageAbbreviation()
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? StzStringQ(&quot;ar&quot;).IsLanguageAbbreviation()
 ? IsLanguageAbbreviation(&quot;ar&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 03:51 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/locale/46_islanguageabbreviation.ring">46_islanguageabbreviation.ring</a></p>
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/locale/46_islanguageabbreviation.ring">46_islanguageabbreviation.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;ara&quot;)
+# a language abbreviation
+? o1.IsLanguageAbbreviation()
+# not the short form
+? o1.IsShortLanguageAbbreviation()
+# the long one
+? o1.IsLongLanguageAbbreviation()
+# says so itself
+? o1.LanguageAbbreviationForm()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+0
+1
+long</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/844_islanguageabbreviation.ring">844_islanguageabbreviation.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#islanguageabbreviation">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#islanguageabbreviation">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/islonglanguageabbreviation.html">stzString.IsLongLanguageAbbreviation</a> · <a class="mono" href="../stzstring/isshortlanguageabbreviation.html">stzString.IsShortLanguageAbbreviation</a> · <a class="mono" href="../stzstring/languageabbreviationform.html">stzString.LanguageAbbreviationForm</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

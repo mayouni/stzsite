@@ -32,21 +32,32 @@
   </div></section>
   <div class="wrap page-body">
     <h2>The forms of this verb</h2><p><b class="mono">NumberOfOccurrence</b> · <a class="mono" href="numberofoccurrencew.html">NumberOfOccurrenceW</a> · <a class="mono" href="../stzlist.html#numberofoccurrencecs">NumberOfOccurrenceCS</a> · <a class="mono" href="../stzlist.html#numberofoccurrencest">NumberOfOccurrenceST</a></p>
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 122, 67, 120, 58, 101, 120 ])
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList(1:14 + 12)
+# numberofoccurrence example 1
+? @@( o1.NumberOfOccurrence(12) )</pre></div><div class="out"><div class="lbl">Output</div><pre>2</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/186_numberofoccurrence.ring">186_numberofoccurrence.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 122, 67, 120, 58, 101, 120 ])
 ? o1.FindAll(120)
 ? o1.NumberOfOccurrence(120)</pre></div><div class="out"><div class="lbl">Output</div><pre>3
 6
 
-2</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/489_findall.ring">489_findall.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ :ring, 5, :php, :ruby, :python, :ring, 5 ])
+2</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/489_findall.ring">489_findall.ring</a></p><h2>Scope <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ :ring, 5, :php, :ruby, :python, :ring, 5 ])
 ? o1.NumberOfOccurrence(5)
 ? o1.NumberOfOccurrence(:ring)</pre></div><div class="out"><div class="lbl">Output</div><pre>2
-2</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/639_numberofoccurrence.ring">639_numberofoccurrence.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([&quot;__&quot;, &quot;♥&quot;, &quot;_&quot;, &quot;__&quot;, &quot;♥&quot;, &quot;♥&quot;, &quot;__&quot;, &quot;♥&quot; ])
+2</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/639_numberofoccurrence.ring">639_numberofoccurrence.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([&quot;__&quot;, &quot;♥&quot;, &quot;_&quot;, &quot;__&quot;, &quot;♥&quot;, &quot;♥&quot;, &quot;__&quot;, &quot;♥&quot; ])
 ? o1.NumberOfOccurrence(&quot;♥&quot;) #NOTE that this is a misspelled form (lacks an &quot;r&quot;)
 o1 = new stzList([&quot;__&quot;, 1:3, &quot;_&quot;, &quot;__&quot;, 1:3, 1:3, &quot;__&quot;, 1:3 ])
 ? o1.NumberOfOccurrence(1:3)</pre></div><div class="out"><div class="lbl">Output</div><pre>4
-4</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/295_numberofoccurrence.ring">295_numberofoccurrence.ring</a></p>
+4</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/295_numberofoccurrence.ring">295_numberofoccurrence.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+		&quot;*&quot;, &#x27;&quot;*&quot;&#x27;, &quot;*4&quot;, &quot;*4*&quot;, &quot;*4*3&quot;, &quot;*4*34&quot;,
+		&quot;4&quot;, &quot;4*&quot;, &quot;4*3&quot;, &quot;4*34&quot;, &quot;*&quot;, &quot;*3&quot;,
+		&quot;*34&quot;, &#x27;&quot;*&quot;&#x27;, &quot;3&quot;, &quot;34&quot;, &quot;4&quot;, &#x27;&quot;*&quot;&#x27;
+	])
+# numberofoccurrence example 1
+? @@( o1.NumberOfOccurrence(&#x27;&quot;*&quot;&#x27;) )
+# numberofoccurrence example 2
+? @@( o1.Find(&#x27;&quot;*&quot;&#x27;) )</pre></div><div class="out"><div class="lbl">Output</div><pre>3
+[ 2, 14, 18 ]</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/166_numberofoccurrence.ring">166_numberofoccurrence.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzlist.html#numberofoccurrence">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li><li>The other methods in these examples: <a class="mono" href="../stzlist/findall.html">stzList.FindAll</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzlist.html#numberofoccurrence">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li><li>The other methods in these examples: <a class="mono" href="../stzlist/find.html">stzList.Find</a> · <a class="mono" href="../stzlist/findall.html">stzList.FindAll</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

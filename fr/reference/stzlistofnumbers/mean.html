@@ -32,16 +32,44 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzListOfNumbers(1:8)
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzListOfNumbers(1:8)
 ? o1.sum()
 ? o1.Product()
 ? o1.Max()
 ? o1.Mean()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>36
 40320
 8
-4.50</pre></div></div><p class="ran">exécuté le 2026-10-02 03:51 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/84_sum.ring">84_sum.ring</a></p>
+4.50</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/84_sum.ring">84_sum.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>an = [ number(&quot;1e16&quot;) ]
+for i = 1 to 1000
+an + 1
+next
+oList = new stzListOfNumbers(an)
+oData = new stzDataSet(an)
+oBuf  = StzNumBufferQ(an)
+nTrue = number(&quot;1e16&quot;) + 1000
+# stzListOfNumbers
+? oList.Sum()
+# stzDataSet
+? oData.Sum()
+# stzNumBuffer
+? oBuf.Sum()
+# list and dataset agree
+? oList.Sum() = oData.Sum()
+# dataset and buffer agree
+? oData.Sum() = oBuf.Sum()
+# list and dataset agree
+? oList.Mean() = oData.Mean()
+# dataset and buffer agree
+? oData.Mean() = oBuf.Mean()
+oBuf.Free()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>10000000000001000.00
+10000000000001000.00
+10000000000001000.00
+1
+1
+1
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_summation_narrated.ring">numeric_summation_narrated.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stzlistofnumbers.html#mean">La classe stzListOfNumbers</a></li><li><a href="../../guide/numeric.html">Le guide du domaine : Numérique et optimisation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlistofnumbers/max.html">stzListOfNumbers.Max</a> · <a class="mono" href="../stzlistofnumbers/product.html">stzListOfNumbers.Product</a> · <a class="mono" href="../stzlistofnumbers/sum.html">stzListOfNumbers.Sum</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stzlistofnumbers.html#mean">La classe stzListOfNumbers</a></li><li><a href="../../guide/numeric.html">Le guide du domaine : Numérique et optimisation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzdataset/mean.html">stzDataSet.Mean</a> · <a class="mono" href="../stzdataset/sum.html">stzDataSet.Sum</a> · <a class="mono" href="../stzlistofnumbers/max.html">stzListOfNumbers.Max</a> · <a class="mono" href="../stzlistofnumbers/product.html">stzListOfNumbers.Product</a> · <a class="mono" href="../stzlistofnumbers/sum.html">stzListOfNumbers.Sum</a> · <a class="mono" href="../stznumbuffer/free.html">stzNumBuffer.Free</a> · <a class="mono" href="../stznumbuffer/sum.html">stzNumBuffer.Sum</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

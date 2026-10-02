@@ -34,39 +34,39 @@
     
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{size(1x1)}&quot;)
 aMatrix = [[42]]
-? oMx.Match(aMatrix)</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 03:51 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/45_1x1_matrix.ring">45_1x1_matrix.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{}&quot;)
+? oMx.Match(aMatrix)</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/45_1x1_matrix.ring">45_1x1_matrix.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{}&quot;)
 aMatrix = [[1, 2], [3, 4]]
-? oMx.Match(aMatrix)</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 03:51 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/44_empty_pattern.ring">44_empty_pattern.ring</a></p><h2>Scope <span class="mono">(8)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{shape(square)}&quot;)
+? oMx.Match(aMatrix)</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/44_empty_pattern.ring">44_empty_pattern.ring</a></p><h2>Scope <span class="mono">(8)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{shape(square)}&quot;)
 aMatrix = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
 oMx.Match(aMatrix)
-? @@( oMx.Size() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ 4, 4 ]</pre></div></div><p class="ran">run on 2026-10-02 03:51 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/37_get_size_from_matched_parts.ring">37_get_size_from_matched_parts.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{shape(square)}&quot;)
+? @@( oMx.Size() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ 4, 4 ]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/37_get_size_from_matched_parts.ring">37_get_size_from_matched_parts.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{shape(square)}&quot;)
 aSquare = [[1, 2], [3, 4]]
 aRect = [[1, 2, 3], [4, 5, 6]]
 ? oMx.Match(aSquare)
 ? oMx.Match(aRect)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-0</pre></div></div><p class="ran">run on 2026-10-02 03:51 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/04_square_matrix.ring">04_square_matrix.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{shape(rectangular)}&quot;)
+0</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/04_square_matrix.ring">04_square_matrix.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{shape(rectangular)}&quot;)
 aSquare = [[1, 2], [3, 4]]
 aRect = [[1, 2, 3], [4, 5, 6]]
 ? oMx.Match(aSquare)
 ? oMx.Match(aRect)</pre></div><div class="out"><div class="lbl">Output</div><pre>0
-1</pre></div></div><p class="ran">run on 2026-10-02 03:51 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/05_rectangular_matrix.ring">05_rectangular_matrix.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{(shape(square) | shape(rectangular))}&quot;)
+1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/05_rectangular_matrix.ring">05_rectangular_matrix.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{(shape(square) | shape(rectangular))}&quot;)
 aSquare = [[1, 2], [3, 4]]
 aRect = [[1, 2, 3], [4, 5, 6]]
 ? oMx.Match(aSquare)
 ? oMx.Match(aRect)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-1</pre></div></div><p class="ran">run on 2026-10-02 03:51 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/19_square_or_rectangular_alternation.ring">19_square_or_rectangular_alternation.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{Size(3x3)}&quot;)
+1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/19_square_or_rectangular_alternation.ring">19_square_or_rectangular_alternation.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{Size(3x3)}&quot;)
 aMatrix = [
 	[1, 2, 3],
 	[4, 5, 6],
 	[7, 8, 9]
 ]
-? oMx.Match(aMatrix)</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 03:51 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/01_matching_exact_size.ring">01_matching_exact_size.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{size(2x2)}&quot;)
+? oMx.Match(aMatrix)</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/01_matching_exact_size.ring">01_matching_exact_size.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{size(2x2)}&quot;)
 aMatrix = [
 	[1, 2, 3],
 	[4, 5, 6],
 	[7, 8, 9]
 ]
-? oMx.Match(aMatrix)</pre></div><div class="out"><div class="lbl">Output</div><pre>0</pre></div></div><p class="ran">run on 2026-10-02 03:51 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/02_matching_wrong_size.ring">02_matching_wrong_size.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{size(mxn)}&quot;)
+? oMx.Match(aMatrix)</pre></div><div class="out"><div class="lbl">Output</div><pre>0</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/02_matching_wrong_size.ring">02_matching_wrong_size.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{size(mxn)}&quot;)
 aMatrix1 = [[1, 2], [3, 4]]
 aMatrix2 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 aMatrix3 = [[1, 2, 3, 4]]
@@ -74,7 +74,7 @@ aMatrix3 = [[1, 2, 3, 4]]
 ? oMx.Match(aMatrix2)
 ? oMx.Match(aMatrix3)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 1
-1</pre></div></div><p class="ran">run on 2026-10-02 03:51 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/03_matching_any_size_mxn_notation.ring">03_matching_any_size_mxn_notation.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{property(identity)}&quot;)
+1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/03_matching_any_size_mxn_notation.ring">03_matching_any_size_mxn_notation.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{property(identity)}&quot;)
 aMatrix = [
 	[1, 0, 0],
 	[0, 1, 0],
@@ -84,7 +84,7 @@ oMx.Match(aMatrix)
 ? oMx.Properties()</pre></div><div class="out"><div class="lbl">Output</div><pre>Square
 Symmetric
 Diagonal
-Identity</pre></div></div><p class="ran">run on 2026-10-02 03:51 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/38_get_properties_list.ring">38_get_properties_list.ring</a></p><p class="proof">and 17 more in the tests</p>
+Identity</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/38_get_properties_list.ring">38_get_properties_list.ring</a></p><p class="proof">and 17 more in the tests</p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzmatrex.html#match">The class stzMatrex</a></li><li><a href="../../guide/regex.html">The area's guide: Pattern matching</a></li><li>The other methods in these examples: <a class="mono" href="../stzmatrex/addconstraint.html">stzMatrex.AddConstraint</a> · <a class="mono" href="../stzmatrex/properties.html">stzMatrex.Properties</a> · <a class="mono" href="../stzmatrex/size.html">stzMatrex.Size</a></li></ul>
   </div>

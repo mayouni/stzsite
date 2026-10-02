@@ -29,7 +29,7 @@ for (const p of PAGES) {
 }
 for (const g of ['string', 'geo', 'governance', 'security', 'tables', 'binary', 'gui']) PLAN.push([`fr/atlas/${g}.html`, 'laptop', 'light']);
 PLAN.push(['fr/guide/string.html', 'laptop', 'light'], ['fr/guide/string.html', 'phone', 'light'], ['en/guide/geo.html', 'laptop', 'light']);
-PLAN.push(['en/reference/stzlist/findfirst.html', 'laptop', 'light'], ['fr/reference/stzlist/findw.html', 'laptop', 'light'], ['fr/reference/stzlist/findw.html', 'phone', 'light']);
+PLAN.push(['en/reference/stzstring/removext.html', 'laptop', 'light'], ['en/reference/stzlist/findfirst.html', 'laptop', 'light'], ['fr/reference/stzlist/findw.html', 'laptop', 'light'], ['fr/reference/stzlist/findw.html', 'phone', 'light']);
 PLAN.push(['fr/atlas/geo.html', 'phone', 'light'], ['fr/reference/stzlist.html', 'laptop', 'light'], ['fr/reference/stzstring.html', 'phone', 'light'], ['en/reference/methods-a.html', 'laptop', 'light']);
 for (const k of [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]) PLAN.push([`fr/tour.html#s${k}`, 'projector', 'light']);
 PLAN.push(['fr/tour.html#s4', 'phone', 'light']);

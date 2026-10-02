@@ -31,13 +31,89 @@
     <p class="proof">also: length  string length  length of the string  size  how long  count characters  number of letters</p>
   </div></section>
   <div class="wrap page-body">
-    <h2>The forms of this verb</h2><p><b class="mono">NumberOfChars</b> · <a class="mono" href="../stzstring.html#numberofcharsw">NumberOfCharsW</a></p>
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>ostr = new stzString(&quot;s㊱m&quot;)
+    <h2>The forms of this verb</h2><p><b class="mono">NumberOfChars</b> · <a class="mono" href="numberofcharsw.html">NumberOfCharsW</a></p>
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>ostr = new stzString(&quot;s㊱m&quot;)
 ? ostr.NumberOfChars()
 ? ostr[2]</pre></div><div class="out"><div class="lbl">Output</div><pre>3
-㊱</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/char/116_numberofchars.ring">116_numberofchars.ring</a></p>
+㊱</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/char/116_numberofchars.ring">116_numberofchars.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># NumberOfChars(&#x27;softanza&#x27;) is 8
+? Q(&quot;softanza&quot;).NumberOfChars()
+# NumberOfChars(&#x27;héllo&#x27;) is 5 (not byte count)
+? Q(&quot;héllo&quot;).NumberOfChars()</pre></div><div class="out"><div class="lbl">Output</div><pre>8
+5</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/00_string_narrated.ring">00_string_narrated.ring</a></p><h2>Scope <span class="mono">(7)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># M is one char
+? Q(&quot;M&quot;).NumberOfChars()
+# the koala too
+? Q(&quot;🐨&quot;).NumberOfChars()
+# but four bytes
+? len(&quot;🐨&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+1
+4</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/859_numberofchars.ring">859_numberofchars.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
+big  = new stzString( oAB.Repeated(1000000) )
+oRev = new stzString( big.Reversed() )
+# Reversed keeps full length
+? oRev.NumberOfChars()
+# Reversed head is &#x27;ba&#x27;
+? oRev.Section(1, 2)</pre></div><div class="out"><div class="lbl">Output</div><pre>2000000
+ba</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;abc&quot; + nl + &quot;de&quot; + nl + &quot;f&quot;)
+# NumberOfChars counts every char incl. newlines
+? o1.NumberOfChars()
+# NumberOfLines is 3
+? o1.NumberOfLines()
+# SplitQ(NL).NumberOfItems agrees
+? o1.SplitQ(nl).NumberOfItems()</pre></div><div class="out"><div class="lbl">Output</div><pre>8
+3
+3</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/232_numberofchars.ring">232_numberofchars.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
+big  = new stzString( oAB.Repeated(1000000) )
+# NumberOfChars is 2,000,000
+? big.NumberOfChars()
+# Contains &#x27;ab&#x27; is TRUE
+? big.Contains(&quot;ab&quot;)
+# FindFirst &#x27;ab&#x27; is 1
+? big.FindFirst(&quot;ab&quot;)
+# FindLast &#x27;ab&#x27; is 1,999,999
+? big.FindLast(&quot;ab&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>2000000
+1
+1
+1999999</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
+big  = new stzString( oAB.Repeated(1000000) )
+oE = new stzString(&quot;😀🎉&quot;)
+e  = new stzString( oE.Repeated(50000) )
+# NumberOfChars is 100,000 codepoints
+? e.NumberOfChars()
+# NumberOfOccurrences(&#x27;😀&#x27;) is 50,000
+? e.NumberOfOccurrences(&quot;😀&quot;)
+# Reversed keeps 100,000 codepoints
+? StzLen(e.Reversed())</pre></div><div class="out"><div class="lbl">Output</div><pre>100000
+50000
+100000</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
+big  = new stzString( oAB.Repeated(1000000) )
+oUp = new stzString( big.Uppercased() )
+# Uppercased keeps full 2,000,000 length
+? oUp.NumberOfChars()
+# Uppercased head is &#x27;ABAB&#x27;
+? oUp.Section(1, 4)
+# Uppercased has 1,000,000 &#x27;A&#x27;
+? oUp.NumberOfOccurrences(&quot;A&quot;)
+# Uppercased has zero &#x27;a&#x27;
+? oUp.NumberOfOccurrences(&quot;a&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>2000000
+ABAB
+1000000
+0</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
+big  = new stzString( oAB.Repeated(1000000) )
+oAr = new stzString(&quot;سلام&quot;)
+ar  = new stzString( oAr.Repeated(100000) )
+# NumberOfChars is 400,000 codepoints
+? ar.NumberOfChars()
+# NumberOfOccurrences(&#x27;سلام&#x27;) is 100,000
+? ar.NumberOfOccurrences(&quot;سلام&quot;)
+# Contains inner &#x27;لا&#x27; is TRUE
+? ar.Contains(&quot;لا&quot;)
+# Reversed keeps 400,000 codepoints
+? StzLen(ar.Reversed())</pre></div><div class="out"><div class="lbl">Output</div><pre>400000
+100000
+1
+400000</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzstring.html#numberofchars">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzstring.html#numberofchars">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/contains.html">stzString.Contains</a> · <a class="mono" href="../stzstring/findfirst.html">stzString.FindFirst</a> · <a class="mono" href="../stzstring/findlast.html">stzString.FindLast</a> · <a class="mono" href="../stzstring/numberoflines.html">stzString.NumberOfLines</a> · <a class="mono" href="../stzstring/numberofoccurrences.html">stzString.NumberOfOccurrences</a> · <a class="mono" href="../stzstring/reversed.html">stzString.Reversed</a> · <a class="mono" href="../stzstring/section.html">stzString.Section</a> · <a class="mono" href="../stzstring/splitq.html">stzString.SplitQ</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

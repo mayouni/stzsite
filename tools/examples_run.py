@@ -37,7 +37,11 @@ def main():
             batch = queue.pop(0); n_run += 1
             lines = ['load "../../stzBase.ring"', ""]
             for i, ex in enumerate(batch):
-                lines += [f'? "@@BEGIN {i}"', "try", ex["code"], "catch", '    ? "@@ERROR " + cCatchError', "done", f'? "@@END {i}"', ""]
+                lines += [f'? "@@BEGIN {i}"', "try", ex["code"], "catch", '    ? "@@ERROR " + cCatchError', "done"]
+                if ex.get("expect_exprs"):
+                    # a narrated example's promise is the library's own value: print it in the same run
+                    lines += [f'? "@@MID {i}"', "try"] + ["? " + e for e in ex["expect_exprs"]] + ["catch", '    ? "@@ERROR " + cCatchError', "done"]
+                lines += [f'? "@@END {i}"', ""]
             script = work / f"batch_{n_run:03d}.ring"
             script.write_text("\n".join(lines) + "\n", encoding="utf-8")
             t0 = datetime.datetime.now()
@@ -60,9 +64,13 @@ def main():
                 if not m:
                     stopped_at = i; report["no output"] += 1; break   # this one stopped the process
                 text = m.group(1).rstrip()
-                if "@@ERROR" in text: report["error"] += 1; continue
-                if not verdict(ex["code"], text, ex["expected"]): report["differs"] += 1; continue
-                kept.append({**ex, "out": text, "ran": t0.strftime("%Y-%m-%d %H:%M")}); n_kept += 1; report["kept"] += 1
+                expected = ex.get("expected", "")
+                if ex.get("expect_exprs"):
+                    text, _, expected = text.partition(f"@@MID {i}")
+                    text, expected = text.rstrip(), expected.strip("\n").rstrip()
+                if "@@ERROR" in text or "@@ERROR" in expected: report["error"] += 1; continue
+                if not expected or not verdict(ex["code"], text, expected): report["differs"] += 1; continue
+                kept.append({**ex, "out": text, "expected": expected, "ran": t0.strftime("%Y-%m-%d %H:%M")}); n_kept += 1; report["kept"] += 1
             if stopped_at is not None and stopped_at + 1 < len(batch):
                 queue.insert(0, batch[stopped_at + 1:])                # resume after the example that stopped it
             print(f"run {n_run}: {n_kept} of {len(batch)} kept{'' if stopped_at is None else f', stopped at {stopped_at + 1}'}, {secs:.1f} s", flush=True)

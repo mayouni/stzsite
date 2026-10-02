@@ -35,13 +35,13 @@
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ [&quot;03&quot;, &quot;04&quot;], 3, [&quot;01&quot;,&quot;02&quot;], 1, &quot;Two&quot;, 2, &quot;One&quot; ])
 ? @@( o1.Sorted() ) # Or o1.SortedInAscending()
 ? @@( o1.SortedInDescending() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 1, 2, 3, &quot;One&quot;, &quot;Two&quot;, [ &quot;01&quot;, &quot;02&quot; ], [ &quot;03&quot;, &quot;04&quot; ] ]
-[ [ &quot;03&quot;, &quot;04&quot; ], [ &quot;01&quot;, &quot;02&quot; ], &quot;Two&quot;, &quot;One&quot;, 3, 2, 1 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/64_sorted.ring">64_sorted.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? @@( StzListQ([ &quot;him&quot;, [ &quot;him&quot; ], &quot;&quot; ]).Sorted() ) + NL
+[ [ &quot;03&quot;, &quot;04&quot; ], [ &quot;01&quot;, &quot;02&quot; ], &quot;Two&quot;, &quot;One&quot;, 3, 2, 1 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/64_sorted.ring">64_sorted.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? @@( StzListQ([ &quot;him&quot;, [ &quot;him&quot; ], &quot;&quot; ]).Sorted() ) + NL
 o1 = new stzList([ &quot;him&quot;, [ &quot;him&quot; ], &quot;&quot; ])
 o1.Stringify()
 ? @@( o1.Content() )
 o1.Sort()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ &quot;&quot;, &quot;him&quot;, [ &quot;him&quot; ] ]
 
-[ &quot;him&quot;, &#x27;[ &quot;him&quot; ]&#x27;, &quot;&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listoflists/20_sorted.ring">20_sorted.ring</a></p>
+[ &quot;him&quot;, &#x27;[ &quot;him&quot; ]&#x27;, &quot;&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listoflists/20_sorted.ring">20_sorted.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#sorted">La classe stzList</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlist/sort.html">stzList.Sort</a> · <a class="mono" href="../stzlist/sortedindescending.html">stzList.SortedInDescending</a> · <a class="mono" href="../stzlist/stringify.html">stzList.Stringify</a></li></ul>
   </div>

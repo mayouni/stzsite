@@ -32,14 +32,31 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oParsed = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oParsed = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
 ? oParsed.Hours()
 ? oParsed.ToString()
 ? oParsed.ToString12h()</pre></div><div class="out"><div class="lbl">Output</div><pre>14
 2024-03-15 14:30:45
-2024-03-15 2:30:45 PM</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/58_parsing_preserves_original_hour.ring">58_parsing_preserves_original_hour.ring</a></p>
+2024-03-15 2:30:45 PM</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/58_parsing_preserves_original_hour.ring">58_parsing_preserves_original_hour.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o = StzDateTimeQ(&quot;2024-03-15 10:30:45&quot;)
+# Year is 2024
+? o.Year()
+# Month is 3
+? o.Month()
+# Day is 15
+? o.Day()
+# Hours is 10
+? o.Hours()
+# Minutes is 30
+? o.Minutes()
+# Seconds is 45
+? o.Seconds()</pre></div><div class="out"><div class="lbl">Output</div><pre>2024
+3
+15
+10
+30
+45</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/00_datetime_narrated.ring">00_datetime_narrated.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzdatetime.html#hours">The class stzDateTime</a></li><li><a href="../../guide/i18n.html">The area's guide: Internationalization</a></li><li>The other methods in these examples: <a class="mono" href="../stzdatetime/tostring12h.html">stzDateTime.ToString12h</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzdatetime.html#hours">The class stzDateTime</a></li><li><a href="../../guide/i18n.html">The area's guide: Internationalization</a></li><li>The other methods in these examples: <a class="mono" href="../stzdatetime/day.html">stzDateTime.Day</a> · <a class="mono" href="../stzdatetime/minutes.html">stzDateTime.Minutes</a> · <a class="mono" href="../stzdatetime/month.html">stzDateTime.Month</a> · <a class="mono" href="../stzdatetime/seconds.html">stzDateTime.Seconds</a> · <a class="mono" href="../stzdatetime/tostring12h.html">stzDateTime.ToString12h</a> · <a class="mono" href="../stzdatetime/year.html">stzDateTime.Year</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

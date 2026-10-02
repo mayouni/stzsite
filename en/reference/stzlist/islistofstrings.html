@@ -32,11 +32,21 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? IsListOfStrings([ &quot;baba&quot;, &quot;ommi&quot;, &quot;jeddy&quot; ])
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? IsListOfStrings([ &quot;baba&quot;, &quot;ommi&quot;, &quot;jeddy&quot; ])
 ? Q([ &quot;baba&quot;, &quot;ommi&quot;, &quot;jeddy&quot; ]).IsListOfStrings()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-1</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/434_islistofstrings.ring">434_islistofstrings.ring</a></p>
+1</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/434_islistofstrings.ring">434_islistofstrings.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># IsListOfNumbers([1,2,3]) is TRUE
+? Q([1,2,3]).IsListOfNumbers()
+# IsListOfStrings([a,b]) is TRUE
+? Q([ &quot;a&quot;,&quot;b&quot; ]).IsListOfStrings()
+# AllItemsAreEqual([5,5,5]) is TRUE
+? Q([5,5,5]).AllItemsAreEqual()
+# AllItemsAreEqual([5,6]) is FALSE
+? Q([5,6]).AllItemsAreEqual()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+1
+1
+0</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/00_list_narrated.ring">00_list_narrated.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzlist.html#islistofstrings">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzlist.html#islistofstrings">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li><li>The other methods in these examples: <a class="mono" href="../stzlist/allitemsareequal.html">stzList.AllItemsAreEqual</a> · <a class="mono" href="../stzlist/islistofnumbers.html">stzList.IsListOfNumbers</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

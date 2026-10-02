@@ -31,8 +31,10 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>Les formes de ce verbe</h2><p><b class="mono">Section</b> · <a class="mono" href="../stzlist.html#sectionq">SectionQ</a> · <a class="mono" href="../stzlist.html#sectionz">SectionZ</a> · <a class="mono" href="../stzlist.html#sectioncs">SectionCS</a> · <a class="mono" href="../stzlist.html#sectionxt">SectionXT</a> · <a class="mono" href="../stzlist.html#sectionzz">SectionZZ</a> · <a class="mono" href="../stzlist.html#sectioncsq">SectionCSQ</a> · <a class="mono" href="../stzlist.html#sectioncsz">SectionCSZ</a> · <a class="mono" href="../stzlist.html#sectioncszz">SectionCSZZ</a></p>
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;S&quot;, &quot;O&quot;, &quot;F&quot;, &quot;T&quot;, &quot;A&quot;, &quot;N&quot;, &quot;Z&quot;, &quot;A&quot; ])
+    <h2>Les formes de ce verbe</h2><p><b class="mono">Section</b> · <a class="mono" href="../stzlist.html#sectionq">SectionQ</a> · <a class="mono" href="../stzlist.html#sectionz">SectionZ</a> · <a class="mono" href="../stzlist.html#sectioncs">SectionCS</a> · <a class="mono" href="sectionxt.html">SectionXT</a> · <a class="mono" href="../stzlist.html#sectionzz">SectionZZ</a> · <a class="mono" href="../stzlist.html#sectioncsq">SectionCSQ</a> · <a class="mono" href="../stzlist.html#sectioncsz">SectionCSZ</a> · <a class="mono" href="../stzlist.html#sectioncszz">SectionCSZZ</a></p>
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList(1:10)
+# section example 1
+? @@( o1.Section(3, 10) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 3, 4, 5, 6, 7, 8, 9, 10 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/182_section.ring">182_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;S&quot;, &quot;O&quot;, &quot;F&quot;, &quot;T&quot;, &quot;A&quot;, &quot;N&quot;, &quot;Z&quot;, &quot;A&quot; ])
 ? o1.Section(1, 4)
 ? o1.Section(4, 1)
 ? o1.Section(:From = 1, :To = 4)
@@ -84,9 +86,29 @@ T
 A
 N
 Z
-A</pre></div></div><p class="ran">exécuté le 2026-10-02 03:50 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/374_section.ring">374_section.ring</a></p>
+A</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/374_section.ring">374_section.ring</a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot; ])
+# section example 1
+? @@( o1.Section(3, 5) )
+# section example 2
+? @@( o1.Section(5, 3) )
+# section example 3
+? @@( o1.SectionXT(3, -3) )
+# section example 4
+? @@( o1.SectionXT(-3, 3) )
+# section example 5
+? @@( o1.Range(3, 3) )
+# section example 6
+? @@( o1.RangeXT(3, 3) )
+# section example 7
+? @@( o1.RangeXT(-5, 3) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ &quot;3&quot;, &quot;4&quot;, &quot;5&quot; ]
+[ &quot;3&quot;, &quot;4&quot;, &quot;5&quot; ]
+[ &quot;3&quot;, &quot;4&quot;, &quot;5&quot; ]
+[ &quot;5&quot;, &quot;4&quot;, &quot;3&quot; ]
+[ &quot;3&quot;, &quot;4&quot;, &quot;5&quot; ]
+[ &quot;3&quot;, &quot;4&quot;, &quot;5&quot; ]
+[ &quot;3&quot;, &quot;4&quot;, &quot;5&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/203_section.ring">203_section.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#section">La classe stzList</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#section">La classe stzList</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlist/range.html">stzList.Range</a> · <a class="mono" href="../stzlist/rangext.html">stzList.RangeXT</a> · <a class="mono" href="../stzlist/sectionxt.html">stzList.SectionXT</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

@@ -38,17 +38,17 @@
 3
 4
 
-1</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/380_findall.ring">380_findall.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 122, 67, 120, 58, 101, 120 ])
+1</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/380_findall.ring">380_findall.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 122, 67, 120, 58, 101, 120 ])
 ? o1.FindAll(120)
 ? o1.NumberOfOccurrence(120)</pre></div><div class="out"><div class="lbl">Output</div><pre>3
 6
 
-2</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/489_findall.ring">489_findall.ring</a></p><h2>Scope <span class="mono">(7)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ [1,2], [3, [1], 4], [5,6], [ 2, 10 ], [3,4], [3, [1], 4] ])
+2</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/489_findall.ring">489_findall.ring</a></p><h2>Scope <span class="mono">(7)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ [1,2], [3, [1], 4], [5,6], [ 2, 10 ], [3,4], [3, [1], 4] ])
 ? o1.FindAll( [3, [1], 4] )
 ? o1.FindFirst( [3, [1], 4] )</pre></div><div class="out"><div class="lbl">Output</div><pre>2
 6
 
-2</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/377_findall.ring">377_findall.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([&quot;__&quot;, &quot;♥&quot;, &quot;_&quot;, &quot;__&quot;, &quot;♥&quot;, &quot;♥&quot;, &quot;__&quot;, &quot;♥&quot; ])
+2</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/377_findall.ring">377_findall.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([&quot;__&quot;, &quot;♥&quot;, &quot;_&quot;, &quot;__&quot;, &quot;♥&quot;, &quot;♥&quot;, &quot;__&quot;, &quot;♥&quot; ])
 ? o1.FindAll(&quot;♥&quot;)
 o1 = new stzList([&quot;__&quot;, 1:3, &quot;_&quot;, &quot;__&quot;, 1:3, 1:3, &quot;__&quot;, 1:3 ])
 ? o1.FindAll(1:3)</pre></div><div class="out"><div class="lbl">Output</div><pre>2
@@ -59,13 +59,13 @@ o1 = new stzList([&quot;__&quot;, 1:3, &quot;_&quot;, &quot;__&quot;, 1:3, 1:3, 
 2
 5
 6
-8</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/298_findall.ring">298_findall.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]).ExistsIn([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;x&quot;, &quot;z&quot;])
+8</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/298_findall.ring">298_findall.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]).ExistsIn([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;x&quot;, &quot;z&quot;])
 ? @@(Q([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;x&quot;, &quot;z&quot;]).FindAll([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]))
 ? Q([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]).ExistsIn([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;x&quot;, &quot;z&quot;, [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]])
 ? Q([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]).ExistIn([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;x&quot;, &quot;z&quot;])</pre></div><div class="out"><div class="lbl">Output</div><pre>0
 [ ]
 1
-1</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/622_existsin.ring">622_existsin.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;arem&quot;, &quot;mohsen&quot;, &quot;AREM&quot; ])
+1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/622_existsin.ring">622_existsin.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;arem&quot;, &quot;mohsen&quot;, &quot;AREM&quot; ])
 ? @@( o1.FindAll(&quot;arem&quot;) ) + NL
 ? o1.FindAllCS(&quot;arem&quot;, :CS = FALSE)
 ? o1.FindNth(2, &quot;arem&quot;)
@@ -75,7 +75,7 @@ o1 = new stzList([&quot;__&quot;, 1:3, &quot;_&quot;, &quot;__&quot;, 1:3, 1:3, 
 3
 
 0
-3</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/372_findall.ring">372_findall.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;,&quot;B&quot;,&quot;A&quot;,[ &quot;A&quot;, &quot;B&quot; ], &quot;C&quot;,&quot;A&quot;,&quot;D&quot;,&quot;E&quot;, [ &quot;A&quot;, &quot;B&quot; ], &quot;A&quot;,&quot;B&quot; ])
+3</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/372_findall.ring">372_findall.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;,&quot;B&quot;,&quot;A&quot;,[ &quot;A&quot;, &quot;B&quot; ], &quot;C&quot;,&quot;A&quot;,&quot;D&quot;,&quot;E&quot;, [ &quot;A&quot;, &quot;B&quot; ], &quot;A&quot;,&quot;B&quot; ])
 ? @@( o1.FindAll(&quot;A&quot;) )
 ? o1.VizFindXT(&quot;A&quot;)
 ? &quot;&quot;
@@ -98,7 +98,7 @@ o1 = new stzList([&quot;__&quot;, 1:3, &quot;_&quot;, &quot;__&quot;, 1:3, 1:3, 
 [ &quot;A&quot;, &quot;B&quot; ] :  ----------------^^^^^^^^^^^^---------------------
 
                 [ &quot;A&quot;, &quot;B&quot; ], &quot;A&quot;, &quot;B&quot; ]
-[ &quot;A&quot;, &quot;B&quot; ] : -^^^^^^^^^^^^------------ (2)</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/vizfind_shallow_and_deep.ring">vizfind_shallow_and_deep.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>obj = NullObject()
+[ &quot;A&quot;, &quot;B&quot; ] : -^^^^^^^^^^^^------------ (2)</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/vizfind_shallow_and_deep.ring">vizfind_shallow_and_deep.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>obj = NullObject()
 o1 = new stzList([ 10, &quot;A&quot;:&quot;E&quot;, 12, obj, 10, &quot;A&quot;:&quot;E&quot;, obj, &quot;Ring&quot; ])
 ? @@( o1.FindAll(10) )
 ? o1.FindAll(&quot;Ring&quot;)
@@ -114,7 +114,7 @@ o1.RemoveMany([ &quot;A&quot;:&quot;E&quot;, obj ])
 4
 7
 
-[ 10, 12, 10, &quot;Ring&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/512_findall.ring">512_findall.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, [1, 2], &quot;C&quot;, &quot;D&quot;, [1, 2], &quot;E&quot; ])
+[ 10, 12, 10, &quot;Ring&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/512_findall.ring">512_findall.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, [1, 2], &quot;C&quot;, &quot;D&quot;, [1, 2], &quot;E&quot; ])
 ? o1.FindAll([1, 2])
 ? o1.FindFirst([1, 2]) + NL
 o1 = new stzList([
@@ -133,7 +133,7 @@ o1 = new stzList([
 3
 6
 
-3</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/375_findall.ring">375_findall.ring</a></p>
+3</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/375_findall.ring">375_findall.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzlist.html#findall">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li><li>The other methods in these examples: <a class="mono" href="../stzlist/contains.html">stzList.Contains</a> · <a class="mono" href="../stzlist/existin.html">stzList.ExistIn</a> · <a class="mono" href="../stzlist/existsin.html">stzList.ExistsIn</a> · <a class="mono" href="../stzlist/findallcs.html">stzList.FindAllCS</a> · <a class="mono" href="../stzlist/findfirst.html">stzList.FindFirst</a> · <a class="mono" href="../stzlist/findnth.html">stzList.FindNth</a> · <a class="mono" href="../stzlist/findnthcs.html">stzList.FindNthCS</a> · <a class="mono" href="../stzlist/numberofoccurrence.html">stzList.NumberOfOccurrence</a> · <a class="mono" href="../stzlist/removemany.html">stzList.RemoveMany</a> · <a class="mono" href="../stzlist/vizdeepfindxt.html">stzList.VizDeepFindXT</a> · <a class="mono" href="../stzlist/vizfindxt.html">stzList.VizFindXT</a></li></ul>
   </div>

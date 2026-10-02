@@ -32,7 +32,7 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(169).IsPrime()
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(169).IsPrime()
 ? Q(17).IsPrime()
 ? @@( Q(54).Divirdos() ) + NL	# Misspelled, but works!
 ? @@( Q(54).Factors() ) + NL
@@ -45,9 +45,25 @@
 
 [ 2, 3 ]
 
-[ 2, 3 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 03:51 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/05_isprime.ring">05_isprime.ring</a></p>
+[ 2, 3 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/05_isprime.ring">05_isprime.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># 17 is prime
+? Q(17).IsPrime()
+# 18 is not prime
+? Q(18).IsPrime()
+# 4 is even
+? Q(4).IsEven()
+# 4 is not odd
+? Q(4).IsOdd()
+# 12 is a multiple of 3
+? Q(12).IsMultipleOf(3)
+# 12 is not a multiple of 5
+? Q(12).IsMultipleOf(5)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+0
+1
+0
+1
+0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/00_number_narrated.ring">00_number_narrated.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stznumber.html#isprime">La classe stzNumber</a></li><li><a href="../../guide/numeric.html">Le guide du domaine : Numérique et optimisation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stznumber/divirdos.html">stzNumber.Divirdos</a> · <a class="mono" href="../stznumber/factors.html">stzNumber.Factors</a> · <a class="mono" href="../stznumber/primedividors.html">stzNumber.PrimeDividors</a> · <a class="mono" href="../stznumber/primefactors.html">stzNumber.PrimeFactors</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stznumber.html#isprime">La classe stzNumber</a></li><li><a href="../../guide/numeric.html">Le guide du domaine : Numérique et optimisation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stznumber/divirdos.html">stzNumber.Divirdos</a> · <a class="mono" href="../stznumber/factors.html">stzNumber.Factors</a> · <a class="mono" href="../stznumber/iseven.html">stzNumber.IsEven</a> · <a class="mono" href="../stznumber/ismultipleof.html">stzNumber.IsMultipleOf</a> · <a class="mono" href="../stznumber/isodd.html">stzNumber.IsOdd</a> · <a class="mono" href="../stznumber/primedividors.html">stzNumber.PrimeDividors</a> · <a class="mono" href="../stznumber/primefactors.html">stzNumber.PrimeFactors</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

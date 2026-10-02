@@ -33,20 +33,20 @@
   <div class="wrap page-body">
     
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;c&quot;, 12 ])
-? o1.HasSameContentAs([ &quot;a&quot;, 12, &quot;c&quot; ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/638_hassamecontentas.ring">638_hassamecontentas.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? ListContains([ &quot;q&quot;, &quot;r&quot;, [ 2, 1 ] ], [ 2, 1 ])
+? o1.HasSameContentAs([ &quot;a&quot;, 12, &quot;c&quot; ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/638_hassamecontentas.ring">638_hassamecontentas.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? ListContains([ &quot;q&quot;, &quot;r&quot;, [ 2, 1 ] ], [ 2, 1 ])
 ? StzListQ([ &quot;q&quot;, &quot;r&quot;, [ 2, 1] ]).HasSameContentAs([ &quot;r&quot;, [ 2, 1], &quot;q&quot; ])
 ? StzListQ([ &quot;q&quot;, &quot;r&quot;, [ 2, 1] ]).HasSameSortingOrderAs([ &quot;r&quot;, [ 2, 1], &quot;q&quot; ])
 ? StzListQ([ &quot;q&quot;, &quot;r&quot;, [ 2, 1] ]).IsEqualTo([ &quot;q&quot;, &quot;r&quot;, [2, 1] ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 1
 0
-1</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/431_listcontains.ring">431_listcontains.ring</a></p><h2>Scope <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ])
+1</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/431_listcontains.ring">431_listcontains.ring</a></p><h2>Scope <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ])
 ? o1.IsStrictlyEqualTo([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ])
 ? o1.HasSameTypeAs([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ])
 ? o1.HasSameContentAs([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ])
 ? o1.HasSameSortingOrderAs([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 1
 1
-1</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/457_isstrictlyequalto.ring">457_isstrictlyequalto.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList(1:3)
+1</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/457_isstrictlyequalto.ring">457_isstrictlyequalto.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList(1:3)
 ? o1.HasSameContentAs(3:1)
 ? o1.HasSameNumberOfItemsAs(3:1)
 ? o1.IsEqualTo(3:1) + NL
@@ -62,7 +62,7 @@
 0
 ascending
 descending
-1</pre></div></div><p class="ran">run on 2026-10-02 03:50 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/507_list_equality_and_strict_equality_in_softanza.ring">507_list_equality_and_strict_equality_in_softanza.ring</a></p>
+1</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/507_list_equality_and_strict_equality_in_softanza.ring">507_list_equality_and_strict_equality_in_softanza.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzlist.html#hassamecontentas">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li><li>The other methods in these examples: <a class="mono" href="../stzlist/hassamenumberofitemsas.html">stzList.HasSameNumberOfItemsAs</a> · <a class="mono" href="../stzlist/hassamesortingorderas.html">stzList.HasSameSortingOrderAs</a> · <a class="mono" href="../stzlist/hassametypeas.html">stzList.HasSameTypeAs</a> · <a class="mono" href="../stzlist/isequalto.html">stzList.IsEqualTo</a> · <a class="mono" href="../stzlist/isstrictlyequalto.html">stzList.IsStrictlyEqualTo</a> · <a class="mono" href="../stznumber/isequalto.html">stzNumber.IsEqualTo</a></li></ul>
   </div>
