@@ -22,6 +22,7 @@ from build_methods import build_methods, load_entries
 from build_narration_pages import build_narration_pages, slug as narration_slug
 import level2
 from build_howto import build_howto, load_howtos, howtos_by_method
+from build_ask import build_ask
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -62,6 +63,7 @@ SECTIONS = [
      ("docs", {"fr": "Documentation", "en": "Documentation"}),
      ("howto", {"fr": "Comment faire", "en": "How-to"}),
      ("reference", {"fr": "Référence", "en": "Reference"}),
+     ("ask", {"fr": "Interroger", "en": "Ask the library"}),
      ("narrations", {"fr": "Narrations", "en": "Narrations"}),
      ("teaching", {"fr": "Enseigner", "en": "Teaching"}),
      ("pedagogy", {"fr": "Pédagogie", "en": "Pedagogy"})]),
@@ -72,7 +74,7 @@ SECTIONS = [
   ("start", {"fr": "Démarrer", "en": "Start"}, [
      ("start", {"fr": "Démarrer", "en": "Start"})]),
 ]
-GENERATED = {"reference", "narrations", "howto"}   # built by code, not from a .md
+GENERATED = {"reference", "narrations", "howto", "ask"}   # built by code, not from a .md
 OWNER = {}                                          # page -> its section
 for sec, _, pages in SECTIONS:
     for slug, _ in pages: OWNER[slug] = sec
@@ -665,6 +667,9 @@ def main():
     nmeth = build_methods({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "entries": ENTRIES, "howtos": HOWTOS})
     nhow, npub = build_howto({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "md": md, "entries": ENTRIES})
     print(f"how-to: {nhow} pages, {npub} recipes run and published")
+    nask, (hs, hv, ho, ag, nq) = build_ask({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "entries": ENTRIES,
+                                            "groups": json.loads((DATA / "atlas-index.json").read_text(encoding="utf-8"))["groups"], "page_shell": page_shell})
+    print(f"ask: {nask} pages; of {nq} recipe intents, HowTo same method {hs}, same verb {hv}, other {ho}; Ask top three {ag}; llms.txt and agents/index.json")
     print(f"method entries: {nmeth} pages, {len(ENTRIES)} methods with examples run")
     nguide = build_guides({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "idx": idx, "groups": groups, "heritage": HERITAGE, "entries": ENTRIES})
     print(f"guides: {nguide} pages")

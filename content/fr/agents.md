@@ -12,7 +12,7 @@ description: Comment un agent lit Softanza : demander à la bibliothèque, se d�
 remove duplicates / unique (engine-backed)
 UniqueCS
 ...
-RemoveDuplicates</pre></div></div><p class="ran">exécuté le 2026-10-01 à 01:40</p></div>
+RemoveDuplicates</pre></div></div><p class="ran">exécuté le 2026-10-01 à 01:40</p><p class="proof"><a href="ask.html">Chaque appel exécuté, et mesuré sur les recettes de la bibliothèque</a></p></div>
 <div class="card"><h3>Déclarez-vous dans un fichier d'agent</h3><p>Un agent est un fichier, jugé au chargement : ce qu'il couvre, la classe de réversibilité de ses actes, la posture d'exécution de chaque fonction qu'il appelle. Le tribunal refuse en phrases fixes, les mêmes aux deux portes.</p><pre>A bank analyst declares a stock-watcher agent,
 first without saying what it covers:
 -> refused / [pia-coverage @ coverage]

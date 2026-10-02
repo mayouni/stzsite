@@ -127,7 +127,7 @@ Rethought, because Softanza already decided differently:
 | How-to (workflow) | How do I do this task? | the recipes of `base/doc/quickers/recipes`, their `# Intent:` line as the title, run in one process (`tools/howto_run.py`) | built 2026-10-02: 28 of 30 published, each kept its promise; 2 show the former name |
 | Narration (tutorial) | How does this idea work as a whole? | `base/doc/narrations`, run block after block in one process (`tools/narrations_run.py`) | built 2026-10-02: 8 narrations are pages, each block with its verdict; the other 126 are listed with the reason they stay on GitHub |
 | Book (course) | Teach me, from the start | the Learning System chapters, run | linked |
-| For agents | How does a program ask the library? | `Ask`, `HowTo`, `ExplainMethod` | planned |
+| For agents (Learn › Ask the library) | How does a program ask the library? | `Ask`, `HowTo`, `ExplainMethod`, run and measured on the 28 recipes' intents (`tools/ask_run.py`); `llms.txt` and `agents/index.json` for an agent reading the site | built 2026-10-02 |
 
 ### The method entry, when it is built
 

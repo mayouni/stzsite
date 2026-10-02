@@ -1,0 +1,567 @@
+{
+ "ran": "2026-10-02 23:02",
+ "seconds": 138.0,
+ "questions": [
+  {
+   "file": "list/average.md",
+   "intent": "Compute the average (mean) of a list of numbers",
+   "class": "stzListOfNumbers",
+   "methods": [
+    "Average"
+   ],
+   "howto": "Q(...).Mean()   -- retrieved by meaning (mean)",
+   "ask": [
+    "Mean",
+    "Average",
+    "MeanByCoefficient"
+   ],
+   "howto_method": "Mean",
+   "howto_grade": "other",
+   "ask_grade": "same",
+   "ask_first": "other"
+  },
+  {
+   "file": "list/contains.md",
+   "intent": "Check whether a list contains an item",
+   "class": "stzList",
+   "methods": [
+    "Contains"
+   ],
+   "howto": "Q([...]).Contains(...)   -- composed by grammar (contains)",
+   "ask": [
+    "IsListOfTexts",
+    "ContainsAll",
+    "ContainsEach"
+   ],
+   "howto_method": "Contains",
+   "howto_grade": "same",
+   "ask_grade": "other",
+   "ask_first": "other"
+  },
+  {
+   "file": "list/filter.md",
+   "intent": "Keep only the list items that match a condition",
+   "class": "stzList",
+   "methods": [
+    "Filter",
+    "FilterQ"
+   ],
+   "howto": "Q([...]).Merge()   -- retrieved by meaning (merge)",
+   "ask": [
+    "Merge",
+    "TrimmedToSize",
+    "RemoveAllExcept"
+   ],
+   "howto_method": "Merge",
+   "howto_grade": "other",
+   "ask_grade": "other",
+   "ask_first": "other"
+  },
+  {
+   "file": "list/find.md",
+   "intent": "Find the position of an item in a list",
+   "class": "stzList",
+   "methods": [
+    "Find",
+    "FindItem"
+   ],
+   "howto": "Q([...]).FindItem(...)   -- retrieved by meaning (grammar suggested FindPosition, not implemented here) (find item)",
+   "ask": [
+    "FindItem",
+    "FindFirst",
+    "FindFirstCS"
+   ],
+   "howto_method": "FindItem",
+   "howto_grade": "same",
+   "ask_grade": "same",
+   "ask_first": "same"
+  },
+  {
+   "file": "list/first-last.md",
+   "intent": "Get the first or last element of a list",
+   "class": "stzList",
+   "methods": [
+    "FirstItem",
+    "LastItem"
+   ],
+   "howto": "Q([...]).LastItem()   -- retrieved by meaning (last item)",
+   "ask": [
+    "LastItem",
+    "FirstItem",
+    "Reverse"
+   ],
+   "howto_method": "LastItem",
+   "howto_grade": "same",
+   "ask_grade": "same",
+   "ask_first": "same"
+  },
+  {
+   "file": "list/max-min.md",
+   "intent": "Get the largest or smallest value in a list",
+   "class": "stzListOfNumbers",
+   "methods": [
+    "Max",
+    "Min"
+   ],
+   "howto": "Q(...).Bottom3Z()   -- retrieved by meaning (bottom3 z)",
+   "ask": [
+    "Bottom3Z",
+    "Top3Z",
+    "Sort"
+   ],
+   "howto_method": "Bottom3Z",
+   "howto_grade": "other",
+   "ask_grade": "other",
+   "ask_first": "other"
+  },
+  {
+   "file": "list/remove-duplicates.md",
+   "intent": "Remove duplicate items from a list (keep the unique ones)",
+   "class": "stzList",
+   "methods": [
+    "RemoveDuplicates",
+    "NoDuplicates"
+   ],
+   "howto": "Q([...]).RemoveAllExcept([...])   -- retrieved by meaning (grammar suggested RemoveDuplicateUniqueOnes, not implemented here) (remove all except -- with exceptions)",
+   "ask": [
+    "RemoveAllExcept",
+    "RemoveItemsOtherThan",
+    "RemoveDuplicates"
+   ],
+   "howto_method": "RemoveAllExcept",
+   "howto_grade": "other",
+   "ask_grade": "same",
+   "ask_first": "other"
+  },
+  {
+   "file": "list/reverse.md",
+   "intent": "Reverse the order of items in a list",
+   "class": "stzList",
+   "methods": [
+    "Reverse",
+    "Reversed"
+   ],
+   "howto": "Q([...]).Reverse()   -- retrieved by meaning (grammar suggested ReverseOrder, not implemented here) (reverse)",
+   "ask": [
+    "Reverse",
+    "ReversedCopy",
+    "ReverseQ"
+   ],
+   "howto_method": "Reverse",
+   "howto_grade": "same",
+   "ask_grade": "same",
+   "ask_first": "same"
+  },
+  {
+   "file": "list/sort.md",
+   "intent": "Sort a list into ascending order",
+   "class": "stzList",
+   "methods": [
+    "Sort",
+    "SortedInAscending"
+   ],
+   "howto": "Q([...]).Sort()   -- retrieved by meaning (grammar suggested SortAscendingOrder, not implemented here) (sort)",
+   "ask": [
+    "Sort",
+    "SortCS",
+    "SortAscending"
+   ],
+   "howto_method": "Sort",
+   "howto_grade": "same",
+   "ask_grade": "same",
+   "ask_first": "same"
+  },
+  {
+   "file": "list/sum.md",
+   "intent": "Add up all the numbers in a list",
+   "class": "stzListOfNumbers",
+   "methods": [
+    "Sum"
+   ],
+   "howto": "Q(...).AddManyOneByOne([...])   -- retrieved by meaning (grammar suggested AddUp, not implemented here) (add many one by one)",
+   "ask": [
+    "AddManyOneByOne",
+    "ManyAddOneByOne",
+    "AddManyNumbersOneByOne"
+   ],
+   "howto_method": "AddManyOneByOne",
+   "howto_grade": "other",
+   "ask_grade": "other",
+   "ask_first": "other"
+  },
+  {
+   "file": "number/even-odd.md",
+   "intent": "Check whether a number is even or odd",
+   "class": "stzNumber",
+   "methods": [
+    "IsEven",
+    "IsOdd"
+   ],
+   "howto": "Q(5).IsNotOdd()   -- retrieved by meaning (a negated test -- is not odd)",
+   "ask": [
+    "IsNotOdd",
+    "IsNotEven",
+    "IsOddOrEven"
+   ],
+   "howto_method": "IsNotOdd",
+   "howto_grade": "other",
+   "ask_grade": "other",
+   "ask_first": "other"
+  },
+  {
+   "file": "number/factors.md",
+   "intent": "Get all the factors (divisors) of a number",
+   "class": "stzNumber",
+   "methods": [
+    "Factors",
+    "Divisors",
+    "PrimeFactors"
+   ],
+   "howto": "Q(5).Factors()   -- retrieved by meaning (factors)",
+   "ask": [
+    "Factors",
+    "Divisors",
+    "Dividors"
+   ],
+   "howto_method": "Factors",
+   "howto_grade": "same",
+   "ask_grade": "same",
+   "ask_first": "same"
+  },
+  {
+   "file": "number/is-prime.md",
+   "intent": "Check whether a number is prime",
+   "class": "stzNumber",
+   "methods": [
+    "IsPrime"
+   ],
+   "howto": "Q(5).ReturnType()   -- retrieved by meaning (return type)",
+   "ask": [
+    "ReturnType",
+    "SetReturnType",
+    "SetReturnTypeAs"
+   ],
+   "howto_method": "ReturnType",
+   "howto_grade": "other",
+   "ask_grade": "other",
+   "ask_first": "other"
+  },
+  {
+   "file": "string/contains.md",
+   "intent": "Check whether a string contains a substring",
+   "class": "stzString",
+   "methods": [
+    "Contains",
+    "FindFirst",
+    "NumberOfOccurrence"
+   ],
+   "howto": "Q(\"...\").Contains(\"...\")   -- composed by grammar (contains)",
+   "ask": [
+    "Contains",
+    "ContainsDuplicates",
+    "ContainsXT"
+   ],
+   "howto_method": "Contains",
+   "howto_grade": "same",
+   "ask_grade": "same",
+   "ask_first": "same"
+  },
+  {
+   "file": "string/count-occurrences.md",
+   "intent": "Count how many times a substring appears",
+   "class": "stzString",
+   "methods": [
+    "NumberOfOccurrences"
+   ],
+   "howto": "Q(\"...\").NumberOfOccurrences(\"...\")   -- retrieved by meaning (grammar suggested CountTimesAppearsMany, not implemented here) (number of occurrences)",
+   "ask": [
+    "NumberOfOccurrences",
+    "Count",
+    "CountCS"
+   ],
+   "howto_method": "NumberOfOccurrences",
+   "howto_grade": "same",
+   "ask_grade": "same",
+   "ask_first": "same"
+  },
+  {
+   "file": "string/find.md",
+   "intent": "Find where a substring occurs in a string",
+   "class": "stzString",
+   "methods": [
+    "FindAll",
+    "Find",
+    "FindFirst"
+   ],
+   "howto": "Q(\"...\").Contains(\"...\")   -- retrieved by meaning (grammar suggested FindOccurs, not implemented here) (contains)",
+   "ask": [
+    "Contains",
+    "Count",
+    "CountCS"
+   ],
+   "howto_method": "Contains",
+   "howto_grade": "other",
+   "ask_grade": "other",
+   "ask_first": "other"
+  },
+  {
+   "file": "string/repeat.md",
+   "intent": "Repeat a string several times",
+   "class": "stzString",
+   "methods": [
+    "Repeated"
+   ],
+   "howto": "Q(\"...\").Repeat(0)   -- retrieved by meaning (grammar suggested RepeatTimesMany, not implemented here) (repeat)",
+   "ask": [
+    "Repeat",
+    "MultiplyBy",
+    "RepeatQ"
+   ],
+   "howto_method": "Repeat",
+   "howto_grade": "verb",
+   "ask_grade": "verb",
+   "ask_first": "verb"
+  },
+  {
+   "file": "string/replace.md",
+   "intent": "Replace occurrences of one substring with another",
+   "class": "stzString",
+   "methods": [
+    "Replace",
+    "ReplaceCS"
+   ],
+   "howto": "Q(\"...\").Replace(\"...\", \"...\")   -- retrieved by meaning (grammar suggested ReplaceOccurrencesAnother, not implemented here) (replace)",
+   "ask": [
+    "Replace",
+    "ReplaceCS",
+    "ReplaceQ"
+   ],
+   "howto_method": "Replace",
+   "howto_grade": "same",
+   "ask_grade": "same",
+   "ask_first": "same"
+  },
+  {
+   "file": "string/reverse.md",
+   "intent": "Reverse the characters of a string",
+   "class": "stzString",
+   "methods": [
+    "Reversed"
+   ],
+   "howto": "Q(\"...\").Reverse()   -- composed by grammar (reverse)",
+   "ask": [
+    "Reverse",
+    "ReverseQ",
+    "Reversed"
+   ],
+   "howto_method": "Reverse",
+   "howto_grade": "verb",
+   "ask_grade": "same",
+   "ask_first": "verb"
+  },
+  {
+   "file": "string/split.md",
+   "intent": "Split a string into parts on a delimiter",
+   "class": "stzString",
+   "methods": [
+    "Split",
+    "SplitCS"
+   ],
+   "howto": "Q(\"...\").Split(\"...\")   -- retrieved by meaning (grammar suggested SplitPartsDelimiter, not implemented here) (split)",
+   "ask": [
+    "Split",
+    "SplitAroundPositions",
+    "SplitQ"
+   ],
+   "howto_method": "Split",
+   "howto_grade": "same",
+   "ask_grade": "same",
+   "ask_first": "same"
+  },
+  {
+   "file": "string/starts-ends-with.md",
+   "intent": "Check whether a string starts or ends with something",
+   "class": "stzString",
+   "methods": [
+    "StartsWith",
+    "EndsWith"
+   ],
+   "howto": "Q(\"...\").StartsWith(\"...\")   -- retrieved by meaning (starts with)",
+   "ask": [
+    "StartsWith",
+    "StartsWithCS",
+    "EndsWith"
+   ],
+   "howto_method": "StartsWith",
+   "howto_grade": "same",
+   "ask_grade": "same",
+   "ask_first": "same"
+  },
+  {
+   "file": "string/trim.md",
+   "intent": "Remove leading and trailing whitespace from a string",
+   "class": "stzString",
+   "methods": [
+    "Trimmed",
+    "TrimmedLeft",
+    "TrimmedRight"
+   ],
+   "howto": "Q(\"...\").Trim()   -- retrieved by meaning (grammar suggested RemoveLeadingTrailingWhitespace, not implemented here) (trim)",
+   "ask": [
+    "Trim",
+    "Shrink",
+    "TrimLeft"
+   ],
+   "howto_method": "Trim",
+   "howto_grade": "verb",
+   "ask_grade": "verb",
+   "ask_first": "verb"
+  },
+  {
+   "file": "string/uppercase.md",
+   "intent": "Convert a string to upper case (or lower case)",
+   "class": "stzString",
+   "methods": [
+    "Uppercased",
+    "Lowercased"
+   ],
+   "howto": "Q(\"...\").IsHybridcase()   -- retrieved by meaning (tests whether is hybridcase)",
+   "ask": [
+    "IsHybridcase",
+    "Uppercase",
+    "Lowercase"
+   ],
+   "howto_method": "IsHybridcase",
+   "howto_grade": "other",
+   "ask_grade": "verb",
+   "ask_first": "other"
+  },
+  {
+   "file": "text/detect-language.md",
+   "intent": "Detect which natural language a text is written in",
+   "class": "stzText",
+   "methods": [
+    "Language",
+    "DetectedLanguage"
+   ],
+   "howto": "Q(\"...\").TextQ().Language()   -- retrieved by meaning (language)",
+   "ask": [
+    "Language",
+    "DetectedLanguage",
+    "LemmatizedInLanguage"
+   ],
+   "howto_method": "Language",
+   "howto_grade": "same",
+   "ask_grade": "same",
+   "ask_first": "same"
+  },
+  {
+   "file": "text/entities.md",
+   "intent": "Find the people, places, and organizations mentioned in text",
+   "class": "stzText",
+   "methods": [
+    "NamedEntities",
+    "PersonNames",
+    "Organizations",
+    "Locations"
+   ],
+   "howto": "Q(\"...\").TextQ().NamedEntities()   -- retrieved by meaning (grammar suggested FindPeoplePlacesOrganizationsMentioned, not implemented here) (named entities)",
+   "ask": [
+    "NamedEntities",
+    "Locations",
+    "Organizations"
+   ],
+   "howto_method": "NamedEntities",
+   "howto_grade": "same",
+   "ask_grade": "same",
+   "ask_first": "same"
+  },
+  {
+   "file": "text/normalize-words.md",
+   "intent": "Reduce words to their base or root form (lemmatize / stem)",
+   "class": "stzText",
+   "methods": [
+    "Lemmatized",
+    "Lemma",
+    "Stemmed",
+    "AutoLemmatized"
+   ],
+   "howto": "Q(\"...\").TextQ().Lemmatized()   -- retrieved by meaning (returns a copy: lemmatized (original unchanged))",
+   "ask": [
+    "Lemmatized",
+    "StemmedInLanguage",
+    "Stem"
+   ],
+   "howto_method": "Lemmatized",
+   "howto_grade": "same",
+   "ask_grade": "same",
+   "ask_first": "same"
+  },
+  {
+   "file": "text/sentiment.md",
+   "intent": "Detect the emotional tone (positive or negative) of some text",
+   "class": "stzText",
+   "methods": [
+    "Sentiment",
+    "SentimentScore",
+    "IsPositive"
+   ],
+   "howto": "Q(\"...\").TextQ().Sentiment()   -- retrieved by meaning (sentiment)",
+   "ask": [
+    "Sentiment",
+    "SentimentScore",
+    "SentimentCompound"
+   ],
+   "howto_method": "Sentiment",
+   "howto_grade": "same",
+   "ask_grade": "same",
+   "ask_first": "same"
+  },
+  {
+   "file": "text/topics.md",
+   "intent": "Find the main topics or key phrases a text is about",
+   "class": "stzText",
+   "methods": [
+    "KeyPhrases",
+    "RankedKeywords",
+    "TopKeyPhrase"
+   ],
+   "howto": "Q(\"...\").TextQ().KeyPhrases(0)   -- retrieved by meaning (grammar suggested FindMainTopicsKeyPhrases, not implemented here) (key phrases)",
+   "ask": [
+    "KeyPhrases",
+    "KeyPhrasesXT",
+    "KeyPhrasesQ"
+   ],
+   "howto_method": "KeyPhrases",
+   "howto_grade": "same",
+   "ask_grade": "same",
+   "ask_first": "same"
+  }
+ ],
+ "shown": [
+  {
+   "call": "Ask",
+   "class": "stzList",
+   "arg": "remove duplicates",
+   "out": "Unique  1.30  remove duplicates / unique (engine-backed)\nUniqueCS  1.30  remove duplicates / unique (engine-backed)\nRemoveDuplicates  1.30  remove duplicates / unique (engine-backed)"
+  },
+  {
+   "call": "HowTo",
+   "class": "stzString",
+   "arg": "replace one word with another",
+   "out": "Q(\"...\").Replace(\"...\", \"...\")   -- retrieved by meaning (grammar suggested ReplaceAnother, not implemented here) (replace)"
+  },
+  {
+   "call": "ExplainMethod",
+   "class": "stzList",
+   "arg": "RemoveDuplicates",
+   "out": "RemoveDuplicates -- remove duplicates / unique (engine-backed)\n  e.g. tested in: Remove duplicates A full cleaning pipeline Removing duplicate items from a list in place with RemoveDuplicates(). Sort and deduplicate"
+  },
+  {
+   "call": "Ask",
+   "class": "stzText",
+   "arg": "what is the mood of this text",
+   "out": "Sentiment  1.10  The overall tone/mood of the text as \"positive\", \"negative\", or \"neutral\".\nStem  0.25  Same as Stemmed: The text with every word reduced to its root/stem (\"running\" -> \"run\").\nVerbs  0.25  The verbs (action words) in the text."
+  }
+ ]
+}

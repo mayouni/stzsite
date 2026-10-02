@@ -722,3 +722,41 @@ next:
   - me:      the agents' door (Ask, HowTo, ExplainMethod) is the last page type of the design still planned
   - author:  open Learn > How-to and a recipe, for instance Lists > Filter
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-02 23:10
+
+subject:   the agents' door: Learn > Ask the library, measured on the library's own recipes, and llms.txt with a JSON index
+
+why:       the author asked for the agents' door, the last page type the documentation design still planned (D5): how a
+           program asks the library, and what an agent reading the site can take as data
+
+did:
+  - wrote tools/ask_run.py: asks each of the 28 published recipes' intents, word for word, of the recipe's class with
+    HowTo and Ask (no neural model loaded, none in the library's models folder), and keeps four whole answers to show;
+    one process, 138 s
+  - measured: HowTo proposed the recipe's own method for 16 of 28, another form of the same verb for 3, another method
+    for 9 (Merge for filter, Bottom3Z for max and min, AddManyOneByOne for sum, ReturnType for is prime, IsNotOdd for
+    even or odd, Contains for find, IsHybridcase for upper case, RemoveAllExcept for remove duplicates, Mean for
+    average); Ask had the recipe's method or its verb among its first three answers for 21
+  - wrote tools/build_ask.py: the page shows the three calls run, the 28 answers as they came with their grade, what an
+    outside agent reaches today (stz ask decided, not built), and the two machine files
+  - generated llms.txt (the site in one text file, every page that matters linked) and agents/index.json (618 classes
+    with every method's explanation and entry, 28 recipes with code and output, 8 narrations, 28 areas; 2.9 MB)
+  - linked the For agents page's Ask card to the new page; fixed my own slip on the way: a failed patch let the old
+    script run with "--regrade" as a library path, which overwrote the uncommitted run data and left three empty
+    folders in stzsite; the folders were removed and the run taken again
+
+state:
+  release-1-pass-17: built; the commit carrying this entry is the one after 11f2f437
+  perception-gate:   OPEN
+
+waiting:
+  - STZLIB-ASK-RECIPES-01: asked its own recipes' intents, HowTo names another method for 9 of 28 (listed above);
+    each recipe's Tags line lists the words a reader would use; whether feeding them to the index finds the
+    right method is for the library to measure -> stzlib [routed]
+
+next:
+  - me:      the documentation design's page types are all built; the reader's ladder on Learn is the open proposal
+  - author:  open Learn > Ask the library
+```

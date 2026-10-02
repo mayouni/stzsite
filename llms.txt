@@ -1,0 +1,87 @@
+# Softanza
+
+> Softanza is a computational platform for makers: one engine, written in Zig, handles text, exact numbers, tables, graphs, maps, images, sound, neural networks, governed agents and the security around them. Its language, Haro, is in construction. Born in Africa, useful to the world.
+
+This site was generated from the library at commit 0e72e2e2c. Its method examples, recipes and narrations were run inside the library before publication, and each output shown is that run's; what did not run is not shown as run. The site is in English and French; this file links the English pages.
+
+## Ask the library
+
+- [Ask the library](https://mayouni.github.io/stzsite/en/ask.html): how a program asks Softanza (Ask, HowTo, ExplainMethod), every call run, measured against the library's own recipes
+- [Machine index](https://mayouni.github.io/stzsite/agents/index.json): every class and method with its explanation, every recipe with its code and output, every narration run, as JSON
+- [Coding agents](https://mayouni.github.io/stzsite/en/coding-agents.html): what an agent reaches today, and the stz command decided for it
+
+## Documentation
+
+- [Documentation](https://mayouni.github.io/stzsite/en/docs.html): the whole scope, area by area
+- [Reference](https://mayouni.github.io/stzsite/en/reference.html): 618 classes, each method with the explanation the library gives of itself; 1,428 methods have an entry with examples run
+- [How-to](https://mayouni.github.io/stzsite/en/howto.html): 28 recipes, each a task, its code and its output, run
+- [Narrations](https://mayouni.github.io/stzsite/en/narrations.html): the library's stories in code; 8 run block by block as pages
+
+## How-to
+
+- [Add up all the numbers in a list](https://mayouni.github.io/stzsite/en/howto/list-sum.html): stzListOfNumbers.Sum, stzList.Sum
+- [Check whether a list contains an item](https://mayouni.github.io/stzsite/en/howto/list-contains.html): stzList.Contains
+- [Compute the average (mean) of a list of numbers](https://mayouni.github.io/stzsite/en/howto/list-average.html): stzListOfNumbers.Average
+- [Find the position of an item in a list](https://mayouni.github.io/stzsite/en/howto/list-find.html): stzList.Find, stzList.FindItem
+- [Get the first or last element of a list](https://mayouni.github.io/stzsite/en/howto/list-first-last.html): stzList.FirstItem, stzList.LastItem
+- [Get the largest or smallest value in a list](https://mayouni.github.io/stzsite/en/howto/list-max-min.html): stzListOfNumbers.Max, stzListOfNumbers.Min
+- [Keep only the list items that match a condition](https://mayouni.github.io/stzsite/en/howto/list-filter.html): stzList.Filter, stzList.FilterQ
+- [Remove duplicate items from a list (keep the unique ones)](https://mayouni.github.io/stzsite/en/howto/list-remove-duplicates.html): stzList.RemoveDuplicates, stzList.NoDuplicates, stzListOfNumbers.Unique
+- [Reverse the order of items in a list](https://mayouni.github.io/stzsite/en/howto/list-reverse.html): stzList.Reverse, stzList.Reversed
+- [Sort a list into ascending order](https://mayouni.github.io/stzsite/en/howto/list-sort.html): stzList.Sort, stzList.SortedInAscending, stzListOfNumbers.Sorted
+- [Check whether a number is even or odd](https://mayouni.github.io/stzsite/en/howto/number-even-odd.html): stzNumber.IsEven, stzNumber.IsOdd
+- [Check whether a number is prime](https://mayouni.github.io/stzsite/en/howto/number-is-prime.html): stzNumber.IsPrime
+- [Get all the factors (divisors) of a number](https://mayouni.github.io/stzsite/en/howto/number-factors.html): stzNumber.Factors, stzNumber.Divisors, stzNumber.PrimeFactors
+- [Check whether a string contains a substring](https://mayouni.github.io/stzsite/en/howto/string-contains.html): stzString.Contains, stzString.FindFirst, stzString.NumberOfOccurrence
+- [Check whether a string starts or ends with something](https://mayouni.github.io/stzsite/en/howto/string-starts-ends-with.html): stzString.StartsWith, stzString.EndsWith
+- [Convert a string to upper case (or lower case)](https://mayouni.github.io/stzsite/en/howto/string-uppercase.html): stzString.Uppercased, stzString.Lowercased
+- [Count how many times a substring appears](https://mayouni.github.io/stzsite/en/howto/string-count-occurrences.html): stzString.NumberOfOccurrences
+- [Find where a substring occurs in a string](https://mayouni.github.io/stzsite/en/howto/string-find.html): stzString.FindAll, stzString.Find, stzString.FindFirst
+- [Remove leading and trailing whitespace from a string](https://mayouni.github.io/stzsite/en/howto/string-trim.html): stzString.Trimmed, stzString.TrimmedLeft, stzString.TrimmedRight
+- [Repeat a string several times](https://mayouni.github.io/stzsite/en/howto/string-repeat.html): stzString.Repeated
+- [Replace occurrences of one substring with another](https://mayouni.github.io/stzsite/en/howto/string-replace.html): stzString.Replace, stzString.ReplaceCS
+- [Reverse the characters of a string](https://mayouni.github.io/stzsite/en/howto/string-reverse.html): stzString.Reversed
+- [Split a string into parts on a delimiter](https://mayouni.github.io/stzsite/en/howto/string-split.html): stzString.Split, stzString.SplitCS
+- [Detect the emotional tone (positive or negative) of some text](https://mayouni.github.io/stzsite/en/howto/text-sentiment.html): stzText.Sentiment, stzText.SentimentScore, stzText.IsPositive
+- [Detect which natural language a text is written in](https://mayouni.github.io/stzsite/en/howto/text-detect-language.html): stzText.Language, stzText.DetectedLanguage
+- [Find the main topics or key phrases a text is about](https://mayouni.github.io/stzsite/en/howto/text-topics.html): stzText.KeyPhrases, stzText.RankedKeywords, stzText.TopKeyPhrase
+- [Find the people, places, and organizations mentioned in text](https://mayouni.github.io/stzsite/en/howto/text-entities.html): stzText.NamedEntities, stzText.PersonNames, stzText.Organizations, stzText.Locations
+- [Reduce words to their base or root form (lemmatize / stem)](https://mayouni.github.io/stzsite/en/howto/text-normalize-words.html): stzText.Lemmatized, stzText.Lemma, stzText.Stemmed, stzText.AutoLemmatized
+
+## Areas
+
+- [String](https://mayouni.github.io/stzsite/en/atlas/string.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/string.html
+- [Pattern matching](https://mayouni.github.io/stzsite/en/atlas/regex.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/regex.html
+- [Collections & objects](https://mayouni.github.io/stzsite/en/atlas/collections.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/collections.html
+- [Numeric & optimization](https://mayouni.github.io/stzsite/en/atlas/numeric.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/numeric.html
+- [Tables & data](https://mayouni.github.io/stzsite/en/atlas/tables.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/tables.html
+- [Internationalization](https://mayouni.github.io/stzsite/en/atlas/i18n.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/i18n.html
+- [NLP & linguistics](https://mayouni.github.io/stzsite/en/atlas/nlp.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/nlp.html
+- [Neural tier](https://mayouni.github.io/stzsite/en/atlas/neural.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/neural.html
+- [Agents & conversation](https://mayouni.github.io/stzsite/en/atlas/agents.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/agents.html
+- [Graphics](https://mayouni.github.io/stzsite/en/atlas/graphics.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/graphics.html
+- [Geo & cartography](https://mayouni.github.io/stzsite/en/atlas/geo.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/geo.html
+- [Diagramming & graphs](https://mayouni.github.io/stzsite/en/atlas/diagramming.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/diagramming.html
+- [GPU](https://mayouni.github.io/stzsite/en/atlas/gpu.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/gpu.html
+- [GUI & reactive](https://mayouni.github.io/stzsite/en/atlas/gui.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/gui.html
+- [Statistics & data-viz](https://mayouni.github.io/stzsite/en/atlas/stats.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/stats.html
+- [System programming](https://mayouni.github.io/stzsite/en/atlas/system.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/system.html
+- [Concurrency & distribution](https://mayouni.github.io/stzsite/en/atlas/concurrency.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/concurrency.html
+- [Web & app server](https://mayouni.github.io/stzsite/en/atlas/web.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/web.html
+- [Performance](https://mayouni.github.io/stzsite/en/atlas/performance.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/performance.html
+- [Metaprogramming & code rules](https://mayouni.github.io/stzsite/en/atlas/meta.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/meta.html
+- [Files & formats](https://mayouni.github.io/stzsite/en/atlas/files.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/files.html
+- [Binary formats](https://mayouni.github.io/stzsite/en/atlas/binary.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/binary.html
+- [Security & governance](https://mayouni.github.io/stzsite/en/atlas/security.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/security.html
+- [Extensibility & foreign code](https://mayouni.github.io/stzsite/en/atlas/extensibility.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/extensibility.html
+- [Sound](https://mayouni.github.io/stzsite/en/atlas/sound.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/sound.html
+- [Test & quality system](https://mayouni.github.io/stzsite/en/atlas/testing.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/testing.html
+- [Documentation system](https://mayouni.github.io/stzsite/en/atlas/documentation.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/documentation.html
+- [Governance doctrine](https://mayouni.github.io/stzsite/en/atlas/governance.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/governance.html
+
+## Optional
+
+- [The platform](https://mayouni.github.io/stzsite/en/platform.html): the platform in plain words
+- [Architecture](https://mayouni.github.io/stzsite/en/architecture.html): layers, engine, conventions
+- [French version](https://mayouni.github.io/stzsite/fr/ask.html): the same site in French
+- [The library on GitHub](https://github.com/mayouni/stzlib): the source, under the MIT licence

@@ -507,6 +507,12 @@ ul.fnlist .in{color:var(--ink-2);white-space:nowrap}
 .ran[class*="nv-"]{font-weight:600}
 .howto-list li{margin-top:8px}
 .howto-notes{margin-top:32px}
+.ask-rows{margin-top:24px;max-width:1120px}
+.ask-row{border-top:1px solid var(--line);padding:16px 0}
+.page-body .ask-row p{margin:0;max-width:none}
+.page-body .ask-row .ask-q{font-weight:600;margin:0 0 4px}
+.ask-row .ask-q .mono{font-weight:400;color:var(--ink-2);margin-left:8px}
+.g-same{color:var(--strong)} .g-verb{color:var(--solid)} .g-other{color:var(--emerging)}
 .narration .ran-out{border-left:4px solid var(--ink-3);margin-top:8px}
 ol.narr .ran{display:inline;margin:0}
 .narration hr{border:0;border-top:1px solid var(--line);margin:40px 0;max-width:920px}

@@ -12,7 +12,7 @@ description: How an agent reads Softanza: ask the library, declare yourself in a
 remove duplicates / unique (engine-backed)
 UniqueCS
 ...
-RemoveDuplicates</pre></div></div><p class="ran">run on 2026-10-01 at 01:40</p></div>
+RemoveDuplicates</pre></div></div><p class="ran">run on 2026-10-01 at 01:40</p><p class="proof"><a href="ask.html">Every call run, and measured against the library's own recipes</a></p></div>
 <div class="card"><h3>Declare yourself in an agent file</h3><p>An agent is a file, judged at load: what it covers, the reversibility class of its acts, the execution posture of every function it calls. The court refuses in fixed sentences, the same at both doors.</p><pre>A bank analyst declares a stock-watcher agent,
 first without saying what it covers:
 -> refused / [pia-coverage @ coverage]
