@@ -31,6 +31,8 @@ SECTIONS = [
   ("platform", {"fr": "Plateforme", "en": "Platform"}, [
      ("platform", {"fr": "Plateforme", "en": "Platform"}),
      ("platforms", {"fr": "Plateforme de plateformes", "en": "Platform of platforms"}),
+     ("architecture", {"fr": "Architecture", "en": "Architecture"}),
+     ("craft", {"fr": "Le métier", "en": "The craft"}),
      ("areas", {"fr": "Les domaines", "en": "The areas"}),
      ("atlas", {"fr": "L'Atlas", "en": "The Atlas"}),
      ("code", {"fr": "Le code", "en": "The code"}),
@@ -334,7 +336,10 @@ def inject(body_html, lang, idx, groups, rel="../"):
     body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
     body_html = body_html.replace("<!--DOCS-SCOPE-->", scope_html(lang, idx, groups))
     # <!--SHOWCASE:slug-->: the runs of data/showcase.json inside a content page, under the page's own heading
-    body_html = re.sub(r"<!--SHOWCASE:([a-z0-9-]+)-->", lambda m: showcase_html(lang, m.group(1), heading=False), body_html)
+    # <!--SHOWCASE:slug:2,3--> places chosen runs beside the idea they show (positions in the source list, from 1)
+    body_html = re.sub(r"<!--SHOWCASE:([a-z0-9-]+)(?::([0-9,]+))?-->",
+                       lambda m: showcase_html(lang, m.group(1), heading=False,
+                                               only=[int(x) for x in m.group(2).split(",")] if m.group(2) else None), body_html)
     return diagram_imgs(body_html, rel)
 
 LONG = []
@@ -443,11 +448,17 @@ def load_showcase():
     return json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
 SHOWCASE = load_showcase()
 
-def showcase_html(lang, slug, heading=True):
+def showcase_html(lang, slug, heading=True, only=None):
     items = SHOWCASE.get(slug)
     if not items:
         if not heading: raise SystemExit(f"no run in data/showcase.json for the placeholder SHOWCASE:{slug}")
         return ""
+    if only:
+        # a selection by position is only safe when every snippet of the source list kept its run
+        src = json.loads((DATA / "showcase-src.json").read_text(encoding="utf-8")).get(slug, [])
+        if len(src) != len(items):
+            raise SystemExit(f"SHOWCASE:{slug}: {len(items)} runs kept of {len(src)} snippets; a selection by position would shift")
+        items = [items[i - 1] for i in only]
     ui = SHOW_UI[lang]; out_lbl = "Sortie" if lang == "fr" else "Output"
     parts = [f'<h2>{ui["h"]}</h2><p>{ui["intro"]}</p>'] if heading else []
     for it in items:

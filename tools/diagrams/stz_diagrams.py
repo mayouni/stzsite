@@ -474,9 +474,98 @@ def codingagents(lang):
     text(d, 68, HH - 36, fit(F_READ, L["cap"], 1240, "cap"), F_READ, MUTED)
     return save(img, f"codingagents-{lang}.png")
 
+# --------------------------------------------------------------------------- 10
+def forms(lang):
+    """One verb, its family: the forms of Remove in the string class, read off the generated reference
+    (data/reference.json), and the suffixes as words with one meaning each across the library."""
+    L = {
+      "en": dict(k="ONE VERB, ITS FAMILY  ·  THE NAME SAYS WHAT THE CALL DOES",
+                 left=("The forms of Remove", [("Remove()", "changes the string"), ("Removed()", "returns a changed copy"),
+                                               ("RemoveQ()", "changes it, and chains"), ("RemoveCS()", "with a case dial"),
+                                               ("RemoveW()", "where a condition holds"), ("RemoveXT()", "with extended options")]),
+                 right=("Suffixes are words", [("ed", "a copy, the original kept"), ("Q", "keep chaining"), ("CS", "case sensitivity"),
+                                               ("W", "a condition, written inline"), ("XT", "extended"), ("Z · ZZ", "positions · sections"),
+                                               ("ST", "from a start position")]),
+                 cap="forms read from the reference generated from the library"),
+      "fr": dict(k="UN VERBE, SA FAMILLE  ·  LE NOM DIT CE QUE FAIT L'APPEL",
+                 left=("Les formes de Remove", [("Remove()", "modifie la chaîne"), ("Removed()", "rend une copie modifiée"),
+                                                ("RemoveQ()", "modifie, et enchaîne"), ("RemoveCS()", "avec un réglage de casse"),
+                                                ("RemoveW()", "là où une condition vaut"), ("RemoveXT()", "avec options étendues")]),
+                 right=("Les suffixes sont des mots", [("ed", "une copie, l'original gardé"), ("Q", "continuer la chaîne"), ("CS", "sensible à la casse"),
+                                                      ("W", "une condition, écrite en ligne"), ("XT", "étendu"), ("Z · ZZ", "positions · sections"),
+                                                      ("ST", "depuis une position")]),
+                 cap="formes lues dans la référence générée depuis la bibliothèque"),
+    }[lang]
+    HH = 640
+    img, d = canvas(29, h=HH)
+    kicker(d, 52, L["k"])
+    f_t = F_T36; f_code = mono(28, "Medium"); f_l = sans(28)
+    TOP, BH = 96, 470
+    # the family: the band that matters most
+    x, w = 68, 640
+    band(d, x, TOP, w, BH, 13, NEW_FILL, NEW_LINE, lw=2.4, amp=0.9); accent(d, x, TOP, BH)
+    text(d, x + 44, TOP + 40, fit(f_t, L["left"][0], w - 70, "forms title"), f_t, NEW_TEXT)
+    rule(d, x + 44, TOP + 76, x + w - 24, TOP + 76, NEW_LINE, 1.4)
+    for j, (code, means) in enumerate(L["left"][1]):
+        y = TOP + 118 + j*58
+        text(d, x + 44, y, fit(f_code, code, 250, "form code"), f_code, NEW_TEXT)
+        text(d, x + 300, y, fit(f_l, means, w - 320, "form means"), f_l, NEW_SUB)
+    # the morphemes
+    x2, w2 = 732, 576
+    band(d, x2, TOP, w2, BH, 13, OLD_FILL, OLD_LINE, lw=1.8, amp=0.9)
+    text(d, x2 + 28, TOP + 40, fit(f_t, L["right"][0], w2 - 50, "suffix title"), f_t, INK)
+    rule(d, x2 + 28, TOP + 76, x2 + w2 - 24, TOP + 76, HAIR, 1.4)
+    for j, (suf, means) in enumerate(L["right"][1]):
+        y = TOP + 116 + j*50
+        text(d, x2 + 28, y, fit(f_code, suf, 130, "suffix code"), f_code, INK)
+        text(d, x2 + 170, y, fit(f_l, means, w2 - 190, "suffix means"), f_l, OLD_TEXT)
+    text(d, 68, HH - 40, fit(F_READ, L["cap"], 1240, "cap"), F_READ, MUTED)
+    return save(img, f"forms-{lang}.png")
+
+# --------------------------------------------------------------------------- 11
+def layers(lang):
+    """Three layers of one vocabulary over one engine; a program chooses its layer by the file it loads.
+    Counts read in the library at commit 010743cce (classes declared in the files each entry file loads)."""
+    L = {
+      "en": dict(k="THREE LAYERS, ONE ENGINE  ·  CHOSEN BY THE FILE YOU LOAD",
+                 bands=[("Max · stx", "walkers, big numbers, multilingual strings, a test framework · 40 classes", "stxLib", "old"),
+                        ("Base · stz", "the full platform: 44 domain folders, 644 classes, some 36,000 method names", "stzLib", "new"),
+                        ("Core · stk", "the lean essentials: strings, lists, numbers, objects · 17 classes", "stkLib", "old"),
+                        ("The engine · Zig", "89 modules behind a plain C interface: the substance, written once", "", "kern")],
+                 cap="counted in the library at commit 010743cce"),
+      "fr": dict(k="TROIS COUCHES, UN MOTEUR  ·  CHOISIES PAR LE FICHIER CHARGÉ",
+                 bands=[("Max · stx", "marcheurs, grands nombres, chaînes multilingues, tests · 40 classes", "stxLib", "old"),
+                        ("Base · stz", "la plateforme entière : 44 dossiers, 644 classes, quelque 36 000 noms de méthodes", "stzLib", "new"),
+                        ("Core · stk", "l'essentiel, léger : chaînes, listes, nombres, objets · 17 classes", "stkLib", "old"),
+                        ("Le moteur · Zig", "89 modules derrière une interface C simple : la substance, écrite une fois", "", "kern")],
+                 cap="comptés dans la bibliothèque au commit 010743cce"),
+    }[lang]
+    HH = 700
+    img, d = canvas(31, h=HH)
+    kicker(d, 52, L["k"])
+    MX, MW = 68, 1240
+    TOP, BOT = 100, 630
+    n = len(L["bands"]); gap = 14.0
+    bh = ((BOT - TOP) - (n-1)*gap) / n
+    f_t = F_T36; f_sub = sans(28)
+    for i, (title, sub, entry, style) in enumerate(L["bands"]):
+        y = TOP + i*(bh + gap)
+        if style == "new":
+            band(d, MX, y, MW, bh, 11, NEW_FILL, NEW_LINE, lw=2.4, amp=1.0); accent(d, MX, y, bh); ink, subink = NEW_TEXT, NEW_SUB
+        elif style == "kern":
+            band(d, MX, y, MW, bh, 11, KERN_FILL, KERN_LINE, lw=1.8, amp=1.0); ink, subink = INK, OLD_TEXT
+        else:
+            band(d, MX, y, MW, bh, 11, OLD_FILL, OLD_LINE, lw=1.8, amp=1.0); ink, subink = INK, OLD_TEXT
+        px = MX + (44 if style == "new" else 30)
+        cw = stage(d, MX + MW - 22, y + 14, entry, NEW_LINE if style == "new" else OLD_TEXT) if entry else 0
+        text(d, px, y + 34, fit(f_t, title, MW - (px - MX) - cw - 40, "layer title"), f_t, ink)
+        text(d, px, y + bh - 28, fit(f_sub, sub, MW - (px - MX) - 30, "layer sub"), f_sub, subink)
+    text(d, MX, HH - 36, fit(F_READ, L["cap"], 1240, "cap"), F_READ, MUTED)
+    return save(img, f"layers-{lang}.png")
+
 if __name__ == "__main__":
     only = sys.argv[1:]
-    for fn in (technology, wise, languages, govern, editions, trajectory, northstar, platforms, codingagents):
+    for fn in (technology, wise, languages, govern, editions, trajectory, northstar, platforms, codingagents, forms, layers):
         if only and fn.__name__ not in only: continue
         for lang in ("en", "fr"):
             print("wrote", fn(lang))

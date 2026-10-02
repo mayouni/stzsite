@@ -18,7 +18,7 @@ Softanza is meant to stand beside .NET, Python with its ecosystem, the Wolfram s
 
 ## One folder, copied {#install}
 
-There is no installer and no package registry. The repository is one folder; the engine ships as compiled libraries for Windows and builds for Linux and macOS from source. A script placed in the library's folder loads everything with one line.
+There is no installer and no package registry. The repository is one folder; the engine ships as compiled libraries for Windows, and a Linux build of most of its modules is under way. A script placed in the library's folder loads everything with one line.
 
 <pre>git clone https://github.com/mayouni/stzlib.git
 cd stzlib/libraries/stzlib</pre>

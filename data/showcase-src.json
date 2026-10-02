@@ -668,5 +668,86 @@
    "what_en": "Show the change before it lands: three file operations are rehearsed in a twin and come out as a plan a person can read; nothing on disk has moved.",
    "what_fr": "Montrer le changement avant qu'il n'arrive : trois opérations sur des fichiers sont répétées dans un jumeau et en sortent comme un plan lisible ; rien n'a bougé sur le disque."
   }
+ ],
+ "craft": [
+  {
+   "code": "o1 = new stzList(L(' \"♥1\" : \"♥3\" '))\n# the passive form returns a copy and keeps the original\n? @@( o1.ItemsReversed() )\n? @@( o1.Content() )\n# the active form changes the list itself\no1.Reverse()\n? @@( o1.Content() )\n# the fluent form changes it and lets the sentence go on\no1 = new stzList(L(' \"♥1\" : \"♥3\" '))\n? o1.ReverseQ().ToStzListOfStrings().ConcatenatedUsing(\"~\")",
+   "expected": "[ \"♥3\", \"♥2\", \"♥1\" ]\n[ \"♥1\", \"♥2\", \"♥3\" ]\n[ \"♥3\", \"♥2\", \"♥1\" ]\n♥3~♥2~♥1",
+   "source": "base/test/list/69_understanding_the_ed_and_q_function_forms.ring",
+   "what_en": "One verb in three forms: the passive returns a reversed copy and keeps the original, the active changes the list, and the fluent changes it and lets the sentence go on.",
+   "what_fr": "Un verbe sous trois formes : la forme passive rend une copie inversée et garde l'original, la forme active modifie la liste, et la forme fluide la modifie puis laisse la phrase continuer."
+  },
+  {
+   "code": "o1 = new stzList([ \"arem\", \"mohsen\", \"AREM\" ])\n? o1.FindNth(2, \"arem\")\n? o1.FindNthCS(2, \"arem\", :CS = FALSE)",
+   "expected": "0\n3",
+   "source": "base/test/list/372_findall.ring",
+   "what_en": "The CS suffix adds a case dial: without it there is no second \"arem\"; with case ignored, the second one is \"AREM\", at position 3.",
+   "what_fr": "Le suffixe CS ajoute un réglage de casse : sans lui, il n'y a pas de second « arem » ; casse ignorée, le second est « AREM », en position 3."
+  },
+  {
+   "code": "o = new stzList([ 4, 7, 10, 3, 8 ])\n? @@( o.FindW(\"{ @item > 5 }\") )\n? @@( o.ItemsW(\"{ @item > 5 }\") )\n? o.CountW(\"{ @item > 5 }\")",
+   "expected": "[ 2, 3, 5 ]\n[ 7, 10, 8 ]\n3",
+   "source": "base/education/program/courses/elementary-introduction/chapters/07-declare-what-not-how.en.md",
+   "what_en": "A condition travels as a short text inside the argument; the engine compiles it and answers with the positions, the items or their number.",
+   "what_fr": "Une condition voyage comme un court texte dans l'argument ; le moteur la compile et répond par les positions, les éléments ou leur nombre."
+  },
+  {
+   "code": "? Q(\"tea, rice, tea\").Replaced(\"tea\", :With = \"coffee\")\no1 = new stzString(\"..•.•..\")\n? o1.FindNext(\"•\", :StartingAt = 3)\n? o1.FindPrevious(\"•\", :StartingAt = 5)",
+   "expected": "coffee, rice, coffee\n5\n3",
+   "source": "base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.en.md",
+   "what_en": "Named parameters make a call read as a sentence, and positions count characters, so each bullet sign counts as one.",
+   "what_fr": "Les paramètres nommés font lire un appel comme une phrase, et les positions comptent des caractères : chaque puce compte pour un."
+  },
+  {
+   "code": "oY = new stzYielder([ 12, 0, 30, -5, 18 ])\n? @@( oY.Filter(:IsPositive) )\n? @@( oY.Map(:Double) )\n? oY.Reduce(:Sum)",
+   "expected": "[ 12, 30, 18 ]\n[ 24, 0, 60, -10, 36 ]\n55",
+   "source": "base/education/program/courses/elementary-introduction/chapters/06-walk-ask-produce-act.en.md",
+   "what_en": "The yielder, one of the four metaphors: it filters, transforms and adds up the day's takings without a single loop.",
+   "what_fr": "Le « yielder », l'une des quatre métaphores : il filtre, transforme et additionne les recettes du jour sans une seule boucle."
+  },
+  {
+   "code": "? Q([ \"AnnIE\", \"aeiou\" ]).EachQ().AtLeast(2).VowelNB()\n? Q([ \"AnnIE\", \"sky\" ]).EachQ().AtLeast(2).VowelNB()\n? Why()",
+   "expected": "TRUE\nFALSE\nno: item 2 (\"sky\") fails -- no: expected atleast 2, found 0",
+   "source": "base/test/natural/nnl_narrated.ring (scenario Q3b, its assertions printed)",
+   "what_en": "A near-natural chain reads as the sentence \"each has at least two vowels\", and when it is false, Why() names the item that failed.",
+   "what_fr": "Une chaîne quasi naturelle se lit comme la phrase « chacun a au moins deux voyelles », et quand elle est fausse, Why() désigne l'élément fautif."
+  },
+  {
+   "code": "oDoc = StzSelfDocQ(\"stzList\")\n? oDoc.HowTo(\"remove duplicates\")\n? oDoc.HasMethod(\"DuplicatesRemoved\")\n? oDoc.ExplainMethod(\"NoSuchThing\")",
+   "expected": "Q([...]).RemoveDuplicates()   -- composed by grammar (remove duplicates)\nTRUE\nNo method 'NoSuchThing' in stzList.",
+   "source": "base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md",
+   "what_en": "Ask the library what it calls what you mean: HowTo composes the call from the naming grammar and says so, and an unknown method is refused by name.",
+   "what_fr": "Demandez à la bibliothèque comment elle nomme ce que vous voulez : HowTo compose l'appel à partir de la grammaire des noms et le dit, et une méthode inconnue est refusée nommément."
+  }
+ ],
+ "architecture": [
+  {
+   "code": "o1 = new stkList([ \"one\", \"and\", \"one\", \"makes\", \"two\", \"ones\" ])\n? o1.FindFirst(\"one\")\n? o1.FindLast(\"one\")",
+   "expected": "1\n3",
+   "source": "core/test/stkListTest.ring",
+   "what_en": "At the core level, a lean stkList answers the two basic searches, the first and the last position, in plain code with no call to the engine.",
+   "what_fr": "Au niveau core, une liste stkList légère répond aux deux recherches de base, la première et la dernière position, en code simple, sans appel au moteur."
+  },
+  {
+   "code": "o1 = new stzList([ \"_\", \"_\", \"♥\", \"_\", \"_\", \"♥\", \"_\" ])\n? o1.FindFirst(\"♥\")\n? o1.FindLast(\"♥\")\n? o1.FindNext(\"♥\", :StartingAt = 3)\n? o1.FindPrevious(\"♥\", :StartingAt = 6)",
+   "expected": "3\n6\n6\n3",
+   "source": "base/test/list/282_findfirst.ring",
+   "what_en": "At the base level, stzList answers the same questions with the same verbs, and adds relative searches with named parameters.",
+   "what_fr": "Au niveau base, stzList répond aux mêmes questions avec les mêmes verbes, et ajoute des recherches relatives avec des paramètres nommés."
+  },
+  {
+   "code": "a = StzEngineBigIntFromString(\"99999999999999999999999999999999\")\n? StzEngineBigIntToString( StzEngineBigIntAdd(a, StzEngineBigIntFromString(\"1\")) )\n? StzEngineBigIntToString( StzEngineBigIntMul(a, a) )",
+   "expected": "100000000000000000000000000000000\n9999999999999999999999999999999800000000000000000000000000000001",
+   "source": "base/doc/design/SOFTANZA_NUMBER_ENGINE_PLAN.md",
+   "what_en": "The library calls the engine directly: these exact sums and products of big integers are computed by the engine's number module, not by the layer above.",
+   "what_fr": "La bibliothèque appelle directement le moteur : ces sommes et produits exacts de grands entiers sont calculés par le module des nombres du moteur, et non par la couche au-dessus."
+  },
+  {
+   "code": "oDelivery = new stzDelivery(\"restolean\")\noDelivery.AddSuperApp(:phone, :Android)\noDelivery.AddBackend(:api, :LinuxServer)\noDelivery.AddFirmware(:node, :ESP32)\noDelivery.NeedsIn(:phone, [ :Unicode, :DateTime, :PivotTable, :ConstraintSolver, :Collection, :Neural, :Regex ])\noDelivery.NeedsIn(:api,   [ :PivotTable, :Neural ])\noDelivery.NeedsIn(:node,  [ :GPIO, :Pattern ])\noPlan = oDelivery.Plan()\n? \"engine caps: \" + @@( oPlan.EngineCapsFor(:phone) )\n? \"wasm groups: \" + @@( StzWasmGroupsFor( oPlan.EngineCapsFor(:phone) ) )",
+   "expected": "engine caps: [ \"pivottable\", \"constraintsolver\" ]\nwasm groups: [ \"aggregation\", \"solver\" ]",
+   "source": "base/doc/narrations/stz-emulating-the-whole-solution-narration.md",
+   "what_en": "Declare what each part of a product needs, and Softanza computes the engine subset to ship: the phone's on-device module carries only the aggregation and solver groups.",
+   "what_fr": "Déclarez ce dont chaque partie d'un produit a besoin, et Softanza calcule le sous-ensemble du moteur à embarquer : le module du téléphone ne porte que les groupes agrégation et solveur."
+  }
  ]
 }

@@ -360,9 +360,51 @@ def codingagents(lang):
     return c.render(f"codingagents-narrow-{lang}.png")
 
 
+def forms(lang):
+    T = {
+     "en": dict(t="ONE VERB, ITS FAMILY · THE NAME SAYS WHAT THE CALL DOES",
+        forms=("The forms of Remove", "Remove() changes the string · Removed() returns a changed copy · RemoveQ() changes it, and chains · RemoveCS() with a case dial · RemoveW() where a condition holds · RemoveXT() with extended options"),
+        sufs=("Suffixes are words", "ed a copy, the original kept · Q keep chaining · CS case sensitivity · W a condition, written inline · XT extended · Z and ZZ positions and sections · ST from a start position"),
+        cap="forms read from the reference generated from the library"),
+     "fr": dict(t="UN VERBE, SA FAMILLE · LE NOM DIT CE QUE FAIT L'APPEL",
+        forms=("Les formes de Remove", "Remove() modifie la chaîne · Removed() rend une copie modifiée · RemoveQ() modifie, et enchaîne · RemoveCS() avec un réglage de casse · RemoveW() là où une condition vaut · RemoveXT() avec options étendues"),
+        sufs=("Les suffixes sont des mots", "ed une copie, l'original gardé · Q continuer la chaîne · CS sensible à la casse · W une condition, écrite en ligne · XT étendu · Z et ZZ positions et sections · ST depuis une position"),
+        cap="formes lues dans la référence générée depuis la bibliothèque"),
+    }[lang]
+    c = Narrow(37)
+    c.title(T["t"]); c.gap(8)
+    c.titled(T["forms"][0], T["forms"][1], "machine", accent=True)
+    c.titled(T["sufs"][0], T["sufs"][1], "old")
+    c.note(T["cap"])
+    return c.render(f"forms-narrow-{lang}.png")
+
+
+def layers(lang):
+    T = {
+     "en": dict(t="THREE LAYERS, ONE ENGINE · CHOSEN BY THE FILE YOU LOAD", rows=[
+        ("Max · stx · stxLib", "walkers, big numbers, multilingual strings, a test framework · 40 classes", "old", False),
+        ("Base · stz · stzLib", "the full platform: 44 domain folders, 644 classes, some 36,000 method names", "machine", True),
+        ("Core · stk · stkLib", "the lean essentials: strings, lists, numbers, objects · 17 classes", "old", False),
+        ("The engine · Zig", "89 modules behind a plain C interface: the substance, written once", "kern", False)],
+        cap="counted in the library at commit 010743cce"),
+     "fr": dict(t="TROIS COUCHES, UN MOTEUR · CHOISIES PAR LE FICHIER CHARGÉ", rows=[
+        ("Max · stx · stxLib", "marcheurs, grands nombres, chaînes multilingues, tests · 40 classes", "old", False),
+        ("Base · stz · stzLib", "la plateforme entière : 44 dossiers, 644 classes, quelque 36 000 noms de méthodes", "machine", True),
+        ("Core · stk · stkLib", "l'essentiel, léger : chaînes, listes, nombres, objets · 17 classes", "old", False),
+        ("Le moteur · Zig", "89 modules derrière une interface C simple : la substance, écrite une fois", "kern", False)],
+        cap="comptés dans la bibliothèque au commit 010743cce"),
+    }[lang]
+    c = Narrow(41)
+    c.title(T["t"]); c.gap(8)
+    for title, sub, style, accent in T["rows"]:
+        c.titled(title, sub, style, accent)
+    c.note(T["cap"])
+    return c.render(f"layers-narrow-{lang}.png")
+
+
 if __name__ == "__main__":
     only = sys.argv[1:]
-    for fn in (technology, wise, languages, govern, editions, trajectory, northstar, platforms, codingagents):
+    for fn in (technology, wise, languages, govern, editions, trajectory, northstar, platforms, codingagents, forms, layers):
         if only and fn.__name__ not in only: continue
         for lang in ("en", "fr"):
             fn(lang)

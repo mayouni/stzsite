@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le métier · Softanza</title>
+<meta name="description" content="Comment s&#x27;écrit le code Softanza : la grammaire de ses noms, les petites langues dans ses arguments, les quatre métaphores qui remplacent les boucles, ses conventions, et une bibliothèque qui s&#x27;explique elle-même.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../assets/img/mark-180.png">
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page page-craft">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../en/craft.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="platform.html" aria-current=page>Plateforme</a><a href="vision.html">Vision</a><a href="agentic.html">Agentique</a><a href="learn.html">Apprendre</a><a href="offering.html">Offre</a><a href="start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../en/craft.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="platform.html">Plateforme</a><a href="platforms.html">Plateforme de plateformes</a><a href="architecture.html">Architecture</a><a href="craft.html" aria-current=page>Le métier</a><a href="areas.html">Les domaines</a><a href="atlas.html">L&#x27;Atlas</a><a href="code.html">Le code</a><a href="compare.html">Comparée</a></div></nav>
+</header>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Comment s&#x27;écrit le code Softanza</div>
+    <h1>Le <i>métier</i> du code Softanza</h1>
+    <p class="lede">Softanza s'écrit de sorte qu'un nom dise ce que fait un appel, qu'une condition voyage dans un argument, qu'une boucle laisse place à une métaphore, et que la bibliothèque puisse s'expliquer elle-même. Ce sont des conventions tenues sur des milliers de méthodes. Cette page montre chacune en marche.</p>
+  </div></section>
+  <div class="wrap page-body">
+<h2 id="names">Un nom est une phrase</h2>
+<p>Le nom d'une méthode se lit comme une courte phrase : le verbe dit ce qui se passe, et la forme du mot dit comment. <code>Remove()</code> modifie l'objet. <code>Removed()</code> rend une copie modifiée et garde l'original. <code>RemoveQ()</code> le modifie et le rend, pour que la phrase continue. Les suffixes ajoutent un sens de la même façon dans toutes les classes : un réglage de casse, une condition, des options étendues, des positions ou des sections, une position de départ.</p>
+<figure class="diagram"><img class="wide-only" src="../assets/img/diagrams/forms-fr.png" alt="À gauche, mise en avant : les formes de Remove. Remove() modifie la chaîne ; Removed() rend une copie modifiée ; RemoveQ() modifie, et enchaîne ; RemoveCS() avec un réglage de casse ; RemoveW() là où une condition vaut ; RemoveXT() avec options étendues. À droite : les suffixes sont des mots. ed, une copie, l'original gardé ; Q, continuer la chaîne ; CS, sensible à la casse ; W, une condition écrite en ligne ; XT, étendu ; Z et ZZ, positions et sections ; ST, depuis une position." width="1376" height="768"><img class="narrow-only" loading="lazy" src="../assets/img/diagrams/forms-narrow-fr.png" alt="À gauche, mise en avant : les formes de Remove. Remove() modifie la chaîne ; Removed() rend une copie modifiée ; RemoveQ() modifie, et enchaîne ; RemoveCS() avec un réglage de casse ; RemoveW() là où une condition vaut ; RemoveXT() avec options étendues. À droite : les suffixes sont des mots. ed, une copie, l'original gardé ; Q, continuer la chaîne ; CS, sensible à la casse ; W, une condition écrite en ligne ; XT, étendu ; Z et ZZ, positions et sections ; ST, depuis une position." width="640" height="1032"><figcaption>Les huit formes de Remove dans la classe des chaînes, lues dans la référence que ce site génère depuis la bibliothèque.</figcaption></figure>
+
+<p>Les formes sont un système, pas une habitude : la bibliothèque lit ses propres noms avec une grammaire, et un audit liste chaque verbe auquel il manque l'une de ses trois formes principales. C'est pourquoi la classe des chaînes porte 2 117 méthodes propres et la classe des listes 1 583, et pourquoi un lecteur qui connaît un verbe connaît déjà sa famille.</p>
+<p style="margin-top:32px"><b>Un verbe sous trois formes : la forme passive rend une copie inversée et garde l&#x27;original, la forme active modifie la liste, et la forme fluide la modifie puis laisse la phrase continuer.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList(L(&#x27; &quot;♥1&quot; : &quot;♥3&quot; &#x27;))
+# the passive form returns a copy and keeps the original
+? @@( o1.ItemsReversed() )
+? @@( o1.Content() )
+# the active form changes the list itself
+o1.Reverse()
+? @@( o1.Content() )
+# the fluent form changes it and lets the sentence go on
+o1 = new stzList(L(&#x27; &quot;♥1&quot; : &quot;♥3&quot; &#x27;))
+? o1.ReverseQ().ToStzListOfStrings().ConcatenatedUsing(&quot;~&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ &quot;♥3&quot;, &quot;♥2&quot;, &quot;♥1&quot; ]
+[ &quot;♥1&quot;, &quot;♥2&quot;, &quot;♥3&quot; ]
+[ &quot;♥3&quot;, &quot;♥2&quot;, &quot;♥1&quot; ]
+♥3~♥2~♥1</pre></div></div><p class="ran">exécuté le 2026-10-02 02:31 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/69_understanding_the_ed_and_q_function_forms.ring">base/test/list/69_understanding_the_ed_and_q_function_forms.ring</a></p><p style="margin-top:32px"><b>Le suffixe CS ajoute un réglage de casse : sans lui, il n&#x27;y a pas de second « arem » ; casse ignorée, le second est « AREM », en position 3.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;arem&quot;, &quot;mohsen&quot;, &quot;AREM&quot; ])
+? o1.FindNth(2, &quot;arem&quot;)
+? o1.FindNthCS(2, &quot;arem&quot;, :CS = FALSE)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0
+3</pre></div></div><p class="ran">exécuté le 2026-10-02 02:31 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/372_findall.ring">base/test/list/372_findall.ring</a></p>
+
+<ul>
+<li><strong>Un verbe, jamais un nom nu.</strong> Un nom dit ce que fait l'appel : <code>AddCircle()</code>, pas <code>Circle()</code>.</li>
+<li><strong>Des verbes calmes.</strong> Remove, Clear, Close ; jamais Kill ni Destroy.</li>
+<li><strong>Donnée ou objet, dit par le nom.</strong> Une forme simple rend une donnée ; la forme <code>Q</code> rend l'objet, pour qu'une chaîne d'appels ne devine jamais ce qu'elle tient.</li>
+<li><strong>Le nom d'un paramètre dit son type.</strong> <code>pc</code> pour un texte, <code>pn</code> pour un nombre, <code>pa</code> pour une liste, <code>pb</code> pour un oui ou un non.</li>
+</ul>
+<h2 id="languages">De petites langues dans les arguments</h2>
+<p>Certains arguments ne sont pas des valeurs mais des phrases dans une petite langue. Une condition comme <code>"{ @item &gt; 5 }"</code> est compilée par le moteur et vérifiée sur chaque élément, sans jamais évaluer de code : elle reste sûre même quand elle vient d'un utilisateur ou d'un fichier. Un paramètre nommé comme <code>:With = "coffee"</code> ou <code>:StartingAt = 3</code> fait lire un appel comme une phrase. Les motifs sur les listes, les nombres, les tables et le temps suivent la même idée, et les chaînes quasi naturelles laissent une ligne de code se lire comme de l'anglais.</p>
+<p style="margin-top:32px"><b>Une condition voyage comme un court texte dans l&#x27;argument ; le moteur la compile et répond par les positions, les éléments ou leur nombre.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>o = new stzList([ 4, 7, 10, 3, 8 ])
+? @@( o.FindW(&quot;{ @item &gt; 5 }&quot;) )
+? @@( o.ItemsW(&quot;{ @item &gt; 5 }&quot;) )
+? o.CountW(&quot;{ @item &gt; 5 }&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 2, 3, 5 ]
+[ 7, 10, 8 ]
+3</pre></div></div><p class="ran">exécuté le 2026-10-02 02:31 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/07-declare-what-not-how.en.md">base/education/program/courses/elementary-introduction/chapters/07-declare-what-not-how.en.md</a></p><p style="margin-top:32px"><b>Les paramètres nommés font lire un appel comme une phrase, et les positions comptent des caractères : chaque puce compte pour un.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(&quot;tea, rice, tea&quot;).Replaced(&quot;tea&quot;, :With = &quot;coffee&quot;)
+o1 = new stzString(&quot;..•.•..&quot;)
+? o1.FindNext(&quot;•&quot;, :StartingAt = 3)
+? o1.FindPrevious(&quot;•&quot;, :StartingAt = 5)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>coffee, rice, coffee
+5
+3</pre></div></div><p class="ran">exécuté le 2026-10-02 02:31 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.en.md">base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.en.md</a></p><p style="margin-top:32px"><b>Une chaîne quasi naturelle se lit comme la phrase « chacun a au moins deux voyelles », et quand elle est fausse, Why() désigne l&#x27;élément fautif.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([ &quot;AnnIE&quot;, &quot;aeiou&quot; ]).EachQ().AtLeast(2).VowelNB()
+? Q([ &quot;AnnIE&quot;, &quot;sky&quot; ]).EachQ().AtLeast(2).VowelNB()
+? Why()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+0
+no: item 2 (&quot;sky&quot;) fails -- no: expected atleast 2, found 0</pre></div></div><p class="ran">exécuté le 2026-10-02 02:31 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/natural/nnl_narrated.ring">base/test/natural/nnl_narrated.ring</a></p>
+
+<p class="way"><span>La manière Softanza</span> Une petite langue dans un argument dit ce que l'on veut, et la bibliothèque décide comment l'obtenir. La boucle, l'indice et la variable temporaire disparaissent de la page.</p>
+
+<h2 id="metaphors">Quatre métaphores au lieu des boucles</h2>
+<p>Une boucle cache le geste qu'elle fait. Softanza nomme les quatre gestes, et une tâche se décompose en eux.</p>
+<div class="cards">
+<div class="card"><h3>Le marcheur</h3><p>Parcourt des positions : il connaît tout son trajet avant de bouger, les pas qu'il fera, ceux qu'il sautera, et l'endroit où il se trouve. Il vit dans la couche max.</p></div>
+<div class="card"><h3>Le vérificateur</h3><p>Pose des questions par oui ou par non sur les éléments : tous, l'un d'eux, aucun, là où une condition vaut.</p></div>
+<div class="card"><h3>Le producteur</h3><p>Produit de nouvelles données à partir des anciennes : il filtre, transforme et réduit, et son cœur tourne dans le moteur.</p></div>
+<div class="card"><h3>L'acteur</h3><p>Agit sur place : il change les éléments qu'on lui dit de changer, là où une condition vaut.</p></div>
+</div>
+
+<p style="margin-top:32px"><b>Le « yielder », l&#x27;une des quatre métaphores : il filtre, transforme et additionne les recettes du jour sans une seule boucle.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oY = new stzYielder([ 12, 0, 30, -5, 18 ])
+? @@( oY.Filter(:IsPositive) )
+? @@( oY.Map(:Double) )
+? oY.Reduce(:Sum)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 12, 30, 18 ]
+[ 24, 0, 60, -10, 36 ]
+55</pre></div></div><p class="ran">exécuté le 2026-10-02 02:31 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/06-walk-ask-produce-act.en.md">base/education/program/courses/elementary-introduction/chapters/06-walk-ask-produce-act.en.md</a></p>
+
+<h2 id="conventions">Conventions</h2>
+<ul>
+<li><strong>Les positions commencent à 1, et 0 veut dire « absent ».</strong> On compte à partir de un ; chaque couche aussi, moteur compris.</li>
+<li><strong>Des caractères, pas des octets.</strong> Une longueur ou une position compte les lettres qu'une personne lit, dans toutes les écritures.</li>
+<li><strong>Le moteur d'abord.</strong> La substance va dans le moteur, écrite une fois, et la langue au-dessus en est le visage.</li>
+<li><strong><code>Q()</code> fait d'une valeur un objet.</strong> Une valeur simple reste une donnée ; <code>Q("texte")</code> devient un objet chaîne et ses milliers de méthodes.</li>
+<li><strong>Trouver d'abord, puis appliquer.</strong> Où est-ce, et que dois-je y faire : les deux mêmes étapes dans tous les domaines.</li>
+<li><strong>Les mêmes verbes pour toutes les structures.</strong> Ce qui marche sur une chaîne marche en général sur une liste.</li>
+<li><strong>Un vrai s'affiche 1.</strong> La console affiche une réponse vraie par 1 et une fausse par 0 : c'est pourquoi les sorties de ce site se lisent ainsi.</li>
+</ul>
+<h2 id="selfdoc">Une bibliothèque qui s'explique</h2>
+<p>Chaque méthode porte, juste au-dessus de sa définition, une ligne qui dit ce qu'elle fait dans les mots de l'utilisateur, et des étiquettes facultatives : d'autres noms qu'un lecteur pourrait employer, la forme de la réponse, un exemple, les méthodes voisines. Une vraie, tirée de la classe des textes :</p>
+<pre># The overall tone/mood of the text as "positive", "negative", or "neutral".
+#@ aka  mood, emotion, feeling, attitude, opinion, how positive or negative
+#@ out  string: "positive" | "negative" | "neutral"
+#@ eg   Q("The food was terrible.").Text().Sentiment()   #--> "negative"
+#@ see  SentimentScore, IsPositive, IsNegative
+def Sentiment()</pre>
+
+<p>Un moissonneur lit ces lignes, les titres de section et les exemples promis dans les tests. Chaque objet répond alors à <code>Ask()</code>, <code>HowTo()</code> et <code>ExplainMethod()</code> à partir d'eux, sans aucun modèle : la réponse est celle de la bibliothèque, et une méthode qui n'existe pas est refusée nommément.</p>
+<p style="margin-top:32px"><b>Demandez à la bibliothèque comment elle nomme ce que vous voulez : HowTo compose l&#x27;appel à partir de la grammaire des noms et le dit, et une méthode inconnue est refusée nommément.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oDoc = StzSelfDocQ(&quot;stzList&quot;)
+? oDoc.HowTo(&quot;remove duplicates&quot;)
+? oDoc.HasMethod(&quot;DuplicatesRemoved&quot;)
+? oDoc.ExplainMethod(&quot;NoSuchThing&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>Q([...]).RemoveDuplicates()   -- composed by grammar (remove duplicates)
+1
+No method &#x27;NoSuchThing&#x27; in stzList.</pre></div></div><p class="ran">exécuté le 2026-10-02 02:31 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md">base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md</a></p>
+
+<p class="proof"><b>en construction</b> La convention n'est encore pleinement employée que sur peu de méthodes : 106 lignes donnent d'autres mots pour une méthode, et le moissonneur ne lit pas encore les étiquettes d'exemple et de forme de réponse. La référence de ce site est générée à partir de ce qui existe.</p>
+
+<p class="proof">Sources : les formes sont décrites dans la narration <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-functions-as-linguistic-expressions.md">stz-functions-as-linguistic-expressions.md</a> ; la langue des conditions est compilée par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/engine/src/expr.zig">engine/src/expr.zig</a> ; la convention des commentaires est fixée dans <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/stz-information-tagging-strategy.md">stz-information-tagging-strategy.md</a>. Nombres de méthodes lus dans la bibliothèque au commit 010743cce.</p>
+  </div>
+</main>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="platform.html">Plateforme</a></li><li><a href="platforms.html">Plateforme de plateformes</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="craft.html">Le métier</a></li><li><a href="areas.html">Les domaines</a></li><li><a href="atlas.html">L&#x27;Atlas</a></li><li><a href="code.html">Le code</a></li><li><a href="compare.html">Comparée</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="vision.html">L&#x27;étoile polaire</a></li><li><a href="principles.html">Douze principes</a></li><li><a href="estate.html">Le domaine</a></li><li><a href="history.html">Depuis les principes</a></li><li><a href="sovereignty.html">Souveraineté</a></li><li><a href="africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="agentic.html">Agentique</a></li><li><a href="wise.html">Wise coding</a></li><li><a href="languages.html">Langue des langues</a></li><li><a href="zui.html">Zui</a></li><li><a href="refinement.html">Raffinement</a></li><li><a href="agents.html">Pour les agents</a></li><li><a href="coding-agents.html">Agents qui codent</a></li><li><a href="security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="learn.html">Apprendre</a></li><li><a href="book.html">Le livre</a></li><li><a href="docs.html">Documentation</a></li><li><a href="reference.html">Référence</a></li><li><a href="narrations.html">Narrations</a></li><li><a href="teaching.html">Enseigner</a></li><li><a href="pedagogy.html">Pédagogie</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="offering.html">Audiences</a></li><li><a href="editions.html">Éditions</a></li><li><a href="customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib">Le dépôt sur GitHub</a></li><li><a href="tour.html">Mode présentation</a></li><li><a href="../deck-check.html">Vérifier hors ligne</a></li><li><a href="../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../index.html" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers à l&#x27;ère agentique. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-02.</p></div>
+  </div>
+</div></footer>
+<script src="../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

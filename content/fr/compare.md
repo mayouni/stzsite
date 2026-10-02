@@ -18,7 +18,7 @@ Softanza est faite pour se tenir à côté de .NET, de Python et de son écosyst
 
 ## Un dossier, copié {#install}
 
-Il n'y a ni installateur ni registre de paquets. Le dépôt est un dossier ; le moteur est livré en bibliothèques compilées pour Windows et se construit pour Linux et macOS depuis la source. Un script placé dans le dossier de la bibliothèque charge tout en une ligne.
+Il n'y a ni installateur ni registre de paquets. Le dépôt est un dossier ; le moteur est livré en bibliothèques compilées pour Windows, et une construction Linux de la plupart de ses modules est en cours. Un script placé dans le dossier de la bibliothèque charge tout en une ligne.
 
 <pre>git clone https://github.com/mayouni/stzlib.git
 cd stzlib/libraries/stzlib</pre>

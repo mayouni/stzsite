@@ -438,3 +438,49 @@ next:
   - me:      nothing on the site claims the door until it is built; the method entries come next
   - Central: route COMPASS-AGENTTOOLS-01 to 08, now decided, to stzlib and stz
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-02 02:46
+
+subject:   how Softanza is built and written: the Architecture and The craft pages
+
+why:       the author found no place on the site for the layered architecture (core, base, max), the coding style and
+           conventions, the small languages inside method arguments, the naming design, the four metaphors, the
+           self-documentation, or the single dependency-free executable
+
+did:
+  - read the library at origin/main 010743cce with two reading agents (one on architecture and build, one on the
+    craft); the first pair was lost when the previous session ended and was relaunched
+  - added Platform > Architecture: three layers over one engine (new layers diagram, wide and phone), the engine's
+    89 modules and two doors (752 C functions, 2,652 registered for the library), a folder per domain (the 44
+    folders of base), and the single executable split into what exists (the cross-platform builder and its 38-check
+    guard, a script compiled with its virtual machine, proven on one line, the web build carrying only the declared
+    engine groups) and what does not yet (a whole program and its engine in one file with only the code it uses)
+  - added Platform > The craft: a name is a sentence (new verb-family diagram from the generated reference), the
+    small languages inside arguments, the four metaphors (walker, checker, yielder, performer), the conventions, and
+    the comment-based self-documentation shown on a real doc-comment, its thin coverage stated
+  - ran 11 snippets inside the library (4 architecture, 7 craft), all kept their sources' promises; a build
+    placeholder now places chosen runs beside the idea they show, and refuses if a run was dropped
+  - corrected the Compared page: the engine ships for Windows, and a Linux build is under way (it said Linux and
+    macOS built from source)
+  - earlier the same night, on the author's reading (3a4522d): a slideshow icon replaces the word Present, the home
+    menu lies on a 30 percent translucent band, and the first Offering page is named Audiences
+
+state:
+  release-1-pass-9:  built; the commit carrying this entry is the one after 3a4522d
+  perception-gate:   OPEN -- the author has not seen these two pages
+
+waiting:
+  - STZLIB-LAYER-DOCS-01: the layer and engine design documents are stale (counts, inheritance, a separate engine
+                       repository and clients that do not exist); future/doc/softanza_architecture_reference.md and
+                       readme.txt promise tools never written -> stzlib [routed: CONCLUSIONS]
+  - STZLIB-CORE-ENGINE-01: stkString and stkChar call twelve StkEngine names that no engine file registers since
+                       4c14b35d4, so a core string most likely fails at main -> stzlib [routed: CONCLUSIONS]
+  - STZLIB-NARRATION-FIXES-01: stz-bridging-minds-and-code section 3.2 calls a method that does not exist;
+                       stzstring-duplicates-narration shows 0-based positions; stzstring-overspaces-narration
+                       contradicts itself -> stzlib [routed: CONCLUSIONS]
+
+next:
+  - me:      the method entries with graded examples
+  - author:  read Platform > Architecture and Platform > The craft
+```
