@@ -46,6 +46,13 @@
     var row = cur[j].parentNode;
     if (row.scrollWidth > row.clientWidth) row.scrollLeft = (cur[j].offsetLeft - row.offsetLeft) - (row.clientWidth - cur[j].offsetWidth) / 2;
   }
+  /* the second submenu: a column on a wide screen, a row on a narrow one; open it on this page's entry */
+  var l2 = document.querySelector('.level2'), l2cur = l2 && l2.querySelector('a[aria-current]');
+  if (l2cur) {
+    var a = l2cur.getBoundingClientRect(), b = l2.getBoundingClientRect();
+    if (l2.scrollHeight > l2.clientHeight) l2.scrollTop += (a.top - b.top) - (l2.clientHeight - a.height) / 2;
+    if (l2.scrollWidth > l2.clientWidth) l2.scrollLeft += (a.left - b.left) - (l2.clientWidth - a.width) / 2;
+  }
   /* the height of the pinned menus, so a table's header row can stick just below them */
   function pin() {
     var tops = document.querySelectorAll('header.top'), h = 0;

@@ -20,6 +20,7 @@ from build_reference import build_reference
 from build_guides import build_guides
 from build_methods import build_methods, load_entries
 from build_narration_pages import build_narration_pages, slug as narration_slug
+import level2
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -522,6 +523,7 @@ def build_group_page(lang, idx, groups, i):
     <div class="lanes">{lanes}</div>"""
     page = page_shell(lang, "atlas", g[lang], g["line_" + lang], esc(band[lang]), esc(g[lang]), esc(g["line_" + lang]), body,
                       rel=rel, page_key="atlas-group", other_href=f"../../{ui['other_code']}/atlas/{g['slug']}.html", body_class="page page-atlas-group")
+    page = level2.wrap(page, level2.nav(level2.LABELS["areas"][lang], level2.area_groups(idx, lang, g["slug"])))
     out = ROOT / lang / "atlas" / f"{g['slug']}.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(page, encoding="utf-8")

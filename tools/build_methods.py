@@ -10,6 +10,7 @@ output kept every promise their file wrote are shown.
     fr|en/reference/<class>/<method>.html
 """
 import json, re, html, collections
+import level2
 
 def esc(s): return html.escape(str(s), quote=True)
 RING = re.compile(r"\b(?:Ring|RING)\b")
@@ -63,6 +64,9 @@ def build_methods(ctx):
     ROOT, head, header, footer, entries = (ctx[k] for k in ("ROOT", "head", "header", "footer", "entries"))
     ref = json.loads((ROOT / "data" / "reference.json").read_text(encoding="utf-8"))
     by_class = {c["name"]: c for c in ref["classes"]}
+    by_area = collections.defaultdict(list)
+    for c in ref["classes"]: by_area[c["area"]].append(c["name"])
+    from build_reference import class_bar, area_name
     area_title = {g["slug"]: g for g in json.loads((ROOT / "data" / "atlas-index.json").read_text(encoding="utf-8"))["groups"]}
     # the entry folders hold nothing but generated pages: clear them, so an entry that no longer qualifies leaves no page
     import shutil
@@ -124,6 +128,8 @@ def build_methods(ctx):
 </main>
 """
             page += footer(lang, rel)
+            a_names = {k: {l: v[l] for l in ("fr", "en")} for k, v in area_title.items()}
+            page = level2.wrap(page, class_bar(lang, area_name(c["area"], lang, a_names), by_area[c["area"]], cls, "location", "../"))
             out = ROOT / lang / "reference" / cls.lower()
             out.mkdir(parents=True, exist_ok=True)
             (out / f"{slug(meth)}.html").write_text(page, encoding="utf-8"); pages += 1

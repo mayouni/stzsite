@@ -9,6 +9,7 @@ harvested from the doc-comments), the groups come from the verb that leads each
 function's name, and the tutorials are the narrations that run.
 """
 import json, re, html, collections, pathlib
+import level2
 
 def esc(s): return html.escape(str(s), quote=True)
 RING = re.compile(r"\b(?:Ring|RING)\b")
@@ -131,5 +132,6 @@ def build_guides(ctx):
 </main>
 """
             page += footer(lang, "../../")
+            page = level2.wrap(page, level2.nav(level2.LABELS["guides"][lang], level2.area_groups(idx, lang, slug)))
             (out_dir / f"{slug}.html").write_text(page, encoding="utf-8"); pages += 1
     return pages

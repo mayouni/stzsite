@@ -10,6 +10,7 @@ everywhere; code is never rewritten, and a narration whose code shows the name
 is not published at all.
 """
 import json, re, html, posixpath, pathlib
+import level2
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 def esc(s): return html.escape(str(s), quote=True)
@@ -148,5 +149,8 @@ def build_narration_pages(ctx):
 </main>
 """
             page += footer(lang, rel)
+            bar = level2.nav(level2.LABELS["narrations"][lang],
+                             [("", [(f"{slug(g)}.html", map_prose(runs[g]["title"]).replace("`", ""), "page" if g == f else "") for g in sorted(published, key=lambda g: runs[g]["title"].lower().strip("`"))])])
+            page = level2.wrap(page, bar)
             (out_dir / f"{slug(f)}.html").write_text(page, encoding="utf-8"); pages += 1
     return pages, published

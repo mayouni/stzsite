@@ -7,6 +7,7 @@ area), fr|en/reference/<class>.html (one page per class) and
 fr|en/reference/methods-<letter>.html (the alphabetical index). Called by build.py
 with its helpers, so the chrome stays one."""
 import json, re, html, collections
+import level2
 PIN_DATE = re.compile(r"(\d{4}-\d{2}-\d{2})\.</p>")
 def pin(page): return PIN_DATE.sub("2026-10-01.</p>", page)
 
@@ -59,6 +60,15 @@ def chips(name, t):
     if base.endswith("XTT") or base.endswith("XT"): out.append(("xt", t["chip_xt"]))
     return "".join(f'<span class="fchip {k}">{esc(l)}</span>' for k, l in out)
 
+def area_name(a, lang, area_title):
+    if a in area_title: return area_title[a][lang]
+    return T[lang]["area_edu"] if a == "education" else T[lang]["area_other"]
+
+def class_bar(lang, area, names, current, state, prefix=""):
+    """the second submenu of a class page, and of its method entries: the classes of its area"""
+    items = [(f"{prefix}{n.lower()}.html", n, state if n == current else "") for n in sorted(names, key=str.lower)]
+    return level2.nav(level2.LABELS["classes"][lang], [(area, items)])
+
 def build_reference(ctx):
     ROOT, LANGS, head, header, footer, idx, groups = (ctx[k] for k in ("ROOT", "LANGS", "head", "header", "footer", "idx", "groups"))
     entries = ctx.get("entries", {})
@@ -71,6 +81,8 @@ def build_reference(ctx):
     n_desc = sum(1 for c in classes for m in c["own"] if m[2])
     area_title = {g["slug"]: {l: g[l] for l in LANGS} for g in groups}
     area_order = [g["slug"] for g in groups] + ["education", ""]
+    by_area = collections.defaultdict(list)
+    for c in classes: by_area[c["area"]].append(c["name"])
     # the alphabetical index: method name -> [(class, has_desc)]
     az = collections.defaultdict(list)
     for c in classes:
@@ -159,6 +171,7 @@ def build_reference(ctx):
 </main>
 """
             page += footer(lang, rel2, "").replace("</body>", FILTER_JS + "</body>")
+            page = level2.wrap(page, class_bar(lang, area_name(c["area"], lang, area_title), by_area[c["area"]], c["name"], "page"))
             (out_dir / f"{c['name'].lower()}.html").write_text(pin(page), encoding="utf-8"); pages += 1
         # ---- the alphabetical index, one page per letter ----------------------
         for L in letters:
@@ -168,7 +181,6 @@ def build_reference(ctx):
                 links = " · ".join(f'<a href="{cl.lower()}.html#{esc(n.lower())}">{esc(cl)}</a>' for cl in sorted(az[n]))
                 rows.append(f'<div class="lane rrow" data-k="{esc(n.lower())}"><div class="ln mono">{esc(n)}</div><div class="lr mono">{len(az[n])}</div><div class="lt">{links}</div></div>')
             rows = "".join(rows)
-            nav_letters = " ".join(f'<a class="chip {"strong" if X == L else "solid"}" href="methods-{X.lower() if X != "#" else "other"}.html">{X}</a>' for X in letters)
             page = head(lang, f'{t["methods_az"]} · {L} · Softanza', t["desc"], rel2)
             page += '\n<body class="page page-reference-az">\n' + header(lang, "reference", rel2, other_href=f"../../{'en' if lang == 'fr' else 'fr'}/reference/methods-{L.lower() if L != '#' else 'other'}.html", nav_rel="../")
             page += f"""
@@ -176,7 +188,6 @@ def build_reference(ctx):
   <section class="page-head"><div class="wrap">
     <div class="eyebrow">{esc(t["methods_az"])}</div>
     <h1>{esc(t["letter"])} {esc(L)} <small class="mono">{len(names)}</small></h1>
-    <p class="azrow">{nav_letters}</p>
     <p class="proof"><a href="../reference.html">{t["back"]}</a></p>
   </div></section>
   <div class="wrap page-body">
@@ -186,5 +197,7 @@ def build_reference(ctx):
 </main>
 """
             page += footer(lang, rel2, "").replace("</body>", FILTER_JS + "</body>")
+            letters_bar = level2.nav(level2.LABELS["letters"][lang], [("", [(f"methods-{X.lower() if X != '#' else 'other'}.html", X, "page" if X == L else "") for X in letters])])
+            page = level2.wrap(page, letters_bar)
             (out_dir / f"methods-{L.lower() if L != '#' else 'other'}.html").write_text(pin(page), encoding="utf-8"); pages += 1
     return pages, len(classes), n_own

@@ -641,3 +641,32 @@ next:
   - me:      file the run's findings for the library, then the how-to pages from the quickers
   - author:  read a narration page, for instance Learn > Narrations > The Parser That Says No
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-02 21:31
+
+subject:   the third menu level: a bar on the left listing the pages of the level the reader is in
+
+why:       the author asked that a page one level below a page of the section's path show its level in a vertical bar
+           on the left, so the reader can go back and forth in it, and ruled that a site never has more than the main
+           menu and two submenu levels
+
+did:
+  - wrote tools/level2.py and wrapped every deeper page with it: the 28 area pages and the 28 guides (by band), the
+    class pages (the classes of their area), the A to Z method pages (the letters, replacing their row of letter
+    chips), the narrations run as pages; 2,137 pages per language carry the bar (709 at that level, 1,428 method
+    entries)
+  - a method entry is a page of its class, not a fourth level: it shows its class's bar with the class marked
+  - the bar sits in the same centred box as the menus, aligned with the brand and the path; it stays in view and opens
+    on the current entry; below 1,100 px it becomes a third row that scrolls sideways, like the path, and is not pinned
+  - fixed on the way: the body is a flex column, so the wrapper took the width of the sideways row (7,425 px) on a phone
+    until given min-width 0; checked at 390 and 1,366 px that nothing overflows
+
+state:
+  release-1-pass-14: built; the commit carrying this entry is the one after b0eb364
+  perception-gate:   OPEN -- the author has not seen the bar
+
+next:
+  - me:      the how-to pages from the quickers
+  - author:  open Platform > The areas > Geo & cartography and move along the bar
+```

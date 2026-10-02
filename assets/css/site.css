@@ -508,3 +508,27 @@ ul.fnlist .in{color:var(--ink-2);white-space:nowrap}
 ol.narr .ran{display:inline;margin:0}
 .narration hr{border:0;border-top:1px solid var(--line);margin:40px 0;max-width:920px}
 .narration img{max-width:920px;width:100%;height:auto;border-radius:10px}
+
+/* ---- the second submenu: the pages of this level, a column on the left -----
+   three menu levels and never more: the main menu, the section's path, this bar */
+.l2wrap{display:grid;grid-template-columns:300px minmax(0,1fr);max-width:var(--maxw);width:100%;min-width:0;margin:0 auto}   /* the same box as the menus above it, so the levels line up */
+.level2{position:sticky;top:var(--pin,120px);align-self:start;max-height:calc(100vh - var(--pin,120px));overflow-y:auto;border-right:1px solid var(--line);padding:28px 14px 40px calc(var(--gutter) - 13px);scrollbar-width:thin}
+.level2 ul{list-style:none;margin:0;padding:0}
+.level2 .l2-group+.l2-group{margin-top:22px}
+.level2 .l2-h{font-size:1.1875rem;font-weight:700;line-height:1.35;color:var(--ink);margin:0 0 6px 13px}
+.level2 a{display:block;font-size:1.1875rem;line-height:1.35;color:var(--ink-2);text-decoration:none;padding:7px 10px;border-left:3px solid transparent;border-radius:0 8px 8px 0}
+.level2 a:hover{color:var(--accent);background:var(--panel)}
+.level2 a[aria-current]{color:var(--accent);font-weight:700;background:var(--panel);border-left-color:var(--accent)}
+/* narrower than the column and the page together: the bar becomes a row above the page, scrolled sideways like the path */
+@media (max-width:1100px){
+  .l2wrap{display:block}
+  .level2{position:static;max-height:none;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--line);padding:6px var(--gutter);scrollbar-width:none}
+  .level2::-webkit-scrollbar{display:none}
+  .level2 .l2-in{display:flex;align-items:center;gap:0 28px;width:max-content}
+  .level2 .l2-group{display:flex;align-items:center}
+  .level2 .l2-group+.l2-group{margin-top:0}
+  .level2 ul{display:flex;gap:0 2px}
+  .level2 .l2-h{margin:0 8px 0 0;white-space:nowrap}
+  .level2 a{white-space:nowrap;border-left:0;border-bottom:3px solid transparent;border-radius:0;padding:8px 8px;min-height:44px;display:flex;align-items:center}
+  .level2 a[aria-current]{background:none;border-bottom-color:var(--accent)}
+}
