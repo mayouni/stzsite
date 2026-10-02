@@ -67,12 +67,11 @@ SECTIONS = [
   ("start", {"fr": "Démarrer", "en": "Start"}, [
      ("start", {"fr": "Démarrer", "en": "Start"})]),
 ]
-GENERATED = {"atlas", "reference", "narrations"}   # built by code, not from a .md
+GENERATED = {"reference", "narrations"}   # built by code, not from a .md
 OWNER = {}                                          # page -> its section
 for sec, _, pages in SECTIONS:
     for slug, _ in pages: OWNER[slug] = sec
 OWNER["atlas-group"] = "platform"
-OWNER["atlas"] = "platform"                         # the ratings table is a view of The areas, not a menu entry                   # an area's own page sits under The areas
 OWNER["guide"] = "learn"                            # a guide page sits under Documentation
 
 UI = {
@@ -183,7 +182,7 @@ def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_l
     if nav_rel is None: nav_rel = nav_prefix(rel, lang)
     key = page_key or slug
     sec = OWNER.get(key)
-    current_page = {"atlas-group": "areas", "atlas": "areas", "guide": "docs"}.get(key, key)
+    current_page = {"atlas-group": "areas", "guide": "docs"}.get(key, key)
     links = "".join(f'<a href="{nav_rel}{pages[0][0]}.html"{" aria-current=page" if s == sec else ""}>{esc(lab[lang])}</a>'
                     for s, lab, pages in SECTIONS)
     other = ui["other_code"]
@@ -383,24 +382,6 @@ def build_page(lang, slug, idx, groups):
     out.parent.mkdir(exist_ok=True)
     out.write_text(page, encoding="utf-8")
     return out
-
-def build_atlas_index(lang, idx, groups):
-    ui = UI[lang]
-    sections = []
-    for b in idx["bands"]:
-        rows = "".join(
-            f'<tr><td><a href="atlas/{g["slug"]}.html">{esc(g[lang])}</a><span class="line">{esc(g["line_" + lang])}</span>'
-            f'<span class="peers">{ui["vs"]} {esc(g["peers"])}</span></td>'
-            f'<td class="n">{g["s"]}</td><td class="n">{g["so"]}</td><td class="n">{g["p"]}</td><td class="n">{g["e"]}</td></tr>'
-            for g in groups if g["band"] == b["id"])
-        cols = "".join(f'<th scope="col" class="n"><span class="full">{ui[k]}</span><span class="short" aria-hidden="true">{ui[k][:2] if k == "solid" else ui[k][0]}</span></th>'
-                       for k in ("strong", "solid", "partial", "emerging"))
-        sections.append(f'<h2 id="{b["id"]}">{esc(b[lang])}</h2><div class="tw"><table class="ratings"><thead><tr><th scope="col">{ui["group"]}</th>{cols}</tr></thead><tbody>{rows}</tbody></table></div>')
-    body = (f'<p class="tally-line">{ui["tally"]}</p>'
-            f'<p class="proof">{ui["atlas_note"]} <a href="https://github.com/mayouni/stzlib/commit/{idx["commit"]}">{idx["commit"]}</a>.</p>'
-            + "".join(sections))
-    page = page_shell(lang, "atlas", ui["atlas_title"], ui["atlas_desc"], esc(ui["atlas_kicker"]), ui["atlas_title_html"], esc(ui["atlas_lede"]), body)
-    (ROOT / lang / "atlas.html").write_text(page, encoding="utf-8")
 
 # ----------------------------------------------------------------------------
 # the heritage: how each area was rethought from first principles (data/heritage.json)
@@ -632,7 +613,6 @@ def main():
             for slug, _ in pages:
                 if slug in GENERATED: continue
                 outs.append(build_page(lang, slug, idx, groups))
-        build_atlas_index(lang, idx, groups)
         build_narrations(lang)
         for i in range(len(groups)):
             build_group_page(lang, idx, groups, i)

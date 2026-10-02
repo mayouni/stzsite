@@ -17,7 +17,7 @@ Every area of the platform has its classes in the reference. Pick an area to ope
 <div class="cards">
 <div class="card"><h3>The reference</h3><p>618 classes and 26,949 methods, each with the explanation the library gives of itself, by area and from A to Z. Generated, never hand-written.</p><p class="proof"><a href="reference.html">Open the reference</a></p></div>
 <div class="card"><h3>The narrations</h3><p>134 documents where every code block runs and no output is stored, from the mental model to the agents that cannot hurt you.</p><p class="proof"><a href="narrations.html">Open the list of narrations</a></p></div>
-<div class="card"><h3>The Atlas</h3><p>Twenty-eight areas, each with what a maker does with it, an example run, and its lanes rated against the leaders of its category.</p><p class="proof"><a href="atlas.html">Open the Atlas</a></p></div>
+<div class="card"><h3>The areas</h3><p>Twenty-eight areas, each with what Softanza rethought, its code run, and its lanes rated against the leaders of its category.</p><p class="proof"><a href="areas.html">Open the areas</a></p></div>
 </div>
 
 <p class="way"><span>The Softanza way</span> The library documents itself. An object answers with its own methods, explains each one, and says how; this documentation is that answer, collected and published, not a manual written beside the code.</p>

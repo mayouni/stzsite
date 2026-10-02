@@ -17,7 +17,7 @@ Chaque domaine de la plateforme a ses classes dans la référence. Choisissez un
 <div class="cards">
 <div class="card"><h3>La référence</h3><p>618 classes et 26 949 méthodes, chacune avec l'explication que la bibliothèque donne d'elle-même, par domaine et de A à Z. Générée, jamais écrite à la main.</p><p class="proof"><a href="reference.html">Ouvrir la référence</a></p></div>
 <div class="card"><h3>Les narrations</h3><p>134 documents où chaque bloc de code s'exécute et où aucune sortie n'est stockée, du modèle mental aux agents qui ne peuvent pas vous nuire.</p><p class="proof"><a href="narrations.html">Ouvrir la liste des narrations</a></p></div>
-<div class="card"><h3>L'Atlas</h3><p>Vingt-huit domaines, chacun avec ce qu'un maker en fait, un exemple exécuté, et ses couloirs notés contre les meilleurs de leur catégorie.</p><p class="proof"><a href="atlas.html">Ouvrir l'Atlas</a></p></div>
+<div class="card"><h3>Les domaines</h3><p>Vingt-huit domaines, chacun avec ce que Softanza a repensé, son code exécuté, et ses couloirs notés contre les meilleurs de leur catégorie.</p><p class="proof"><a href="areas.html">Ouvrir les domaines</a></p></div>
 </div>
 
 <p class="way"><span>La manière Softanza</span> La bibliothèque se documente elle-même. Un objet répond par ses propres méthodes, explique chacune, et dit comment ; cette documentation est cette réponse, rassemblée et publiée, et non un manuel écrit à côté du code.</p>

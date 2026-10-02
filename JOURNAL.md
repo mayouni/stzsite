@@ -500,3 +500,18 @@ did:
 next:
   - me:      the method entries with graded examples
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-02 03:39
+
+subject:   the table of all lanes removed
+
+why:       the author asked to remove the table once it had left the menu: each area's page carries its rated lanes
+
+did:
+  - removed the generation of atlas.html and the two pages; the Documentation card that opened it now opens The
+    areas, and the closing line of The areas is gone; no page links to the table any more
+
+next:
+  - me:      the method entries with graded examples
+```
