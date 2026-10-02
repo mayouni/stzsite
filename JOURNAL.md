@@ -760,3 +760,40 @@ next:
   - me:      the documentation design's page types are all built; the reader's ladder on Learn is the open proposal
   - author:  open Learn > Ask the library
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-03 00:06
+
+subject:   the reader's ladder: the five rungs on the Learn page, and every chapter of the reader naming its rung
+
+why:       the author asked for the reader's ladder on the Learn page; Pedagogy had proposed it as Zin's "ladder always
+           visible": where the learner stands, from S0 to S4, and what earns the next rung
+
+did:
+  - wrote tools/ladder_run.py: asks the library which chapters each rung needs (ChaptersForLevel), has each of the five
+    project guards prove itself on its samples (ProveItself), and asks where a new learner stands (MissingFor); one
+    process inside the library, 47 s; every guard refused its 2 wrong samples and accepted its right one, each refusal
+    with the guard's own words; a new learner is told "ex-01-01 ... ex-04-01, project-s0"
+  - wrote tools/build_ladder.py: Learn > The ladder shows S0 Explorer to S4 Master, the chapters each adds (linked into
+    the reader), the project that earns it, what its guard checks, the guard's verdicts on its samples, and "where you
+    stand" run; the reader's 60 chapters (15 x 4 languages) each carry a line naming their rung and what earns it, added
+    to the site's copy between markers so a rebuild replaces it; the Arabic and Hausa lines use only the library's own
+    brief in that language; the reader is otherwise byte-identical, checked
+  - Pedagogy now says the ladder is built, and that where a learner stands is named by the library on their machine,
+    which the site cannot see
+  - fixed on the way: a greedy pattern had kept only the right samples; the code shown for "where you stand" now
+    matches the code that ran (@@( ... ))
+
+state:
+  release-1-pass-18: built; the commit carrying this entry is the one after 2c9a462
+  perception-gate:   OPEN -- the author has not seen the ladder
+
+waiting:
+  - STZLIB-READER-LADDER-01: the reader generator (base/education/stzEduReader.ring) could draw the rung line itself;
+    the site adds it to its copy meanwhile; the rung names exist only in English (program/levels.zknw) -> stzlib
+    [routed]
+
+next:
+  - me:      the two other proposals of Pedagogy remain: progressive revelation, and from the cell to its proof
+  - author:  open Learn > Learn, The ladder; then a chapter of the reader
+```

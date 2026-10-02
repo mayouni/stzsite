@@ -31,4 +31,8 @@ Trois habitudes complètent le modèle. Une méthode qui finit en <b>-ed</b> ren
 └──────────────────────────────┘</pre></div></div>
 <p class="ran">exécuté le 2026-10-01 à 09:26</p>
 
+## L'échelle {#ladder}
+
+<!--LADDER-->
+
 <p class="way"><span>La manière Softanza</span> L'humain est l'analyseur. Une ligne se lit comme une phrase parce qu'elle a été conçue pour être lue, et pas seulement exécutée.</p>

@@ -23,6 +23,7 @@ from build_narration_pages import build_narration_pages, slug as narration_slug
 import level2
 from build_howto import build_howto, load_howtos, howtos_by_method
 from build_ask import build_ask
+import build_ladder
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -345,6 +346,10 @@ def inject(body_html, lang, idx, groups, rel="../"):
     body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
     body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
     body_html = body_html.replace("<!--DOCS-SCOPE-->", scope_html(lang, idx, groups))
+    if "<!--LADDER-->" in body_html:
+        ladder = build_ladder.load(ROOT)
+        if not ladder: raise SystemExit("<!--LADDER--> needs data/ladder-run.json: run tools/ladder_run.py")
+        body_html = body_html.replace("<!--LADDER-->", build_ladder.ladder_html(ladder, lang))
     # <!--SHOWCASE:slug-->: the runs of data/showcase.json inside a content page, under the page's own heading
     # <!--SHOWCASE:slug:2,3--> places chosen runs beside the idea they show (positions in the source list, from 1)
     body_html = re.sub(r"<!--SHOWCASE:([a-z0-9-]+)(?::([0-9,]+))?-->",
@@ -692,9 +697,11 @@ def main():
         assets.append({"kind": "page", "path": f"{lang}/tour.html"})
     reader = ROOT / "reader.html"
     if reader.exists():
-        r = reader.read_text(encoding="utf-8")
-        if "stzsite:'page'" not in r:
-            reader.write_text(r.replace("</body>", PAGE_PING + "</body>", 1), encoding="utf-8")
+        r0 = reader.read_text(encoding="utf-8")
+        r = r0 if "stzsite:'page'" in r0 else r0.replace("</body>", PAGE_PING + "</body>", 1)
+        ladder = build_ladder.load(ROOT)
+        if ladder: r = build_ladder.inject_reader(r, ladder)      # the rung of every chapter, under its title
+        if r != r0: reader.write_text(r, encoding="utf-8")
         assets.append({"kind": "page", "path": "reader.html"})
     build_deck_check(assets)
     print(f"reference: {nref} pages, {ncls} classes, {nown} own methods")

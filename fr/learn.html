@@ -53,6 +53,64 @@
 └──────────────────────────────┘</pre></div></div>
 <p class="ran">exécuté le 2026-10-01 à 09:26</p>
 
+<h2 id="ladder">L'échelle</h2>
+<p>Cinq barreaux, de S0 Explorateur à S4 Maître, déclarés par la bibliothèque. Un barreau est gagné quand chaque exercice de ses chapitres est réussi et que son projet passe son garde, chacun avec une preuve qui correspond encore : un dossier modifié après la réussite ne compte plus. Jamais un score.</p><div class="ladder"><div class="rung">
+  <div class="rung-id"><b>S0</b><span>Explorateur</span></div>
+  <div class="rung-body">
+    <p><b>Chapitres</b> : <a href="../reader.html#fr:1">1 Trouver, puis agir</a> · <a href="../reader.html#fr:2">2 Une première phrase</a> · <a href="../reader.html#fr:3">3 Lire le nom comme une phrase</a> · <a href="../reader.html#fr:4">4 Le dire dans votre langue</a></p>
+    <p><b>Gagné par</b> <span class="mono">project-s0</span> : Une narration de cinq cellules sur une liste à vous, où chaque cellule s&#x27;exécute.</p>
+    <p><b>Le garde vérifie</b> :</p><ul><li>votre dossier contient <code>narration.en.md</code></li><li>il a au moins cinq cellules, chacune avec une promesse</li><li>chaque promesse est tenue quand les cellules s&#x27;exécutent</li><li>aucun résultat n&#x27;est stocké dans le document</li></ul>
+    <p class="proof">Le garde s'est éprouvé lui-même : il a refusé 2 dossier(s) faux sur 2 et accepté 1 juste(s) sur 1.</p>
+    <ul class="rung-samples"><li><span class="mono">a-broken-promise</span> <b class="g-other">refusé</b> : cells five or more: yes / every cell has a promise: yes / every promise kept: no</li><li><span class="mono">three-cells</span> <b class="g-other">refusé</b> : cells five or more: no / every cell has a promise: yes / every promise kept: yes</li><li><span class="mono">my-list</span> <b class="g-same">accepté</b></li></ul>
+    <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/projects/project-s0/brief.fr.md">la consigne</a> · <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/projects/project-s0/guard.ring">le garde</a> · <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/projects/project-s0">wrong/ · right/</a></p>
+  </div>
+</div><div class="rung">
+  <div class="rung-id"><b>S1</b><span>Bâtisseur</span></div>
+  <div class="rung-body">
+    <p><b>Chapitres</b> : <a href="../reader.html#fr:5">5 Un objet, toute structure</a> · <a href="../reader.html#fr:6">6 Marcher, demander, produire, agir</a> · <a href="../reader.html#fr:7">7 Déclarer le quoi, pas le comment</a></p>
+    <p><b>Gagné par</b> <span class="mono">project-s1</span> : Un petit outil sur votre lieu de travail, ses conditions déclarées comme des données.</p>
+    <p><b>Le garde vérifie</b> :</p><ul><li>votre dossier contient <code>rule.txt</code> (une condition, par exemple <code>{ @item &gt; 20 }</code>), <code>data.txt</code> (un nombre par ligne) et <code>tool.ring</code></li><li>la garde exécute <code>tool.ring</code> avec <code>$cProjectFolder</code> pointant sur votre dossier</li><li>l&#x27;outil affiche <code>rule: </code> suivi de la règle lue dans <code>rule.txt</code>, et <code>count: </code> suivi du nombre de lignes des données qui la satisfont</li></ul>
+    <p class="proof">Le garde s'est éprouvé lui-même : il a refusé 2 dossier(s) faux sur 2 et accepté 1 juste(s) sur 1.</p>
+    <ul class="rung-samples"><li><span class="mono">rule-hard-coded</span> <b class="g-other">refusé</b> : rule read as data: no / count correct: yes</li><li><span class="mono">wrong-count</span> <b class="g-other">refusé</b> : rule read as data: yes / count correct: no</li><li><span class="mono">big-amounts</span> <b class="g-same">accepté</b></li></ul>
+    <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/projects/project-s1/brief.fr.md">la consigne</a> · <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/projects/project-s1/guard.ring">le garde</a> · <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/projects/project-s1">wrong/ · right/</a></p>
+  </div>
+</div><div class="rung">
+  <div class="rung-id"><b>S2</b><span>Artisan</span></div>
+  <div class="rung-body">
+    <p><b>Chapitres</b> : <a href="../reader.html#fr:8">8 Les motifs dans le texte</a> · <a href="../reader.html#fr:9">9 Les motifs dans la structure</a> · <a href="../reader.html#fr:10">10 Quand le code rencontre les cellules</a> · <a href="../reader.html#fr:11">11 Dessiner la réponse</a></p>
+    <p><b>Gagné par</b> <span class="mono">project-s2</span> : Un rapport sur un vrai fichier de données, avec des motifs, une table et une image.</p>
+    <p><b>Le garde vérifie</b> :</p><ul><li>votre dossier contient <code>data.csv</code> et <code>report.ring</code></li><li>la garde exécute <code>report.ring</code> avec <code>$cProjectFolder</code> pointant sur votre dossier</li><li>le rapport dessine une table (<code>stzTable.Show</code>), dessine des barres (<code>stzHBarPlot</code> ou <code>stzVBarPlot</code>), et affiche <code>pattern: </code> suivi de si une ligne des données correspond à un motif que vous avez écrit</li></ul>
+    <p class="proof">Le garde s'est éprouvé lui-même : il a refusé 2 dossier(s) faux sur 2 et accepté 1 juste(s) sur 1.</p>
+    <ul class="rung-samples"><li><span class="mono">no-pattern</span> <b class="g-other">refusé</b> : table drawn: yes / bars drawn: yes / pattern reported: no</li><li><span class="mono">no-picture</span> <b class="g-other">refusé</b> : table drawn: yes / bars drawn: no / pattern reported: yes</li><li><span class="mono">the-menu</span> <b class="g-same">accepté</b></li></ul>
+    <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/projects/project-s2/brief.fr.md">la consigne</a> · <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/projects/project-s2/guard.ring">le garde</a> · <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/projects/project-s2">wrong/ · right/</a></p>
+  </div>
+</div><div class="rung">
+  <div class="rung-id"><b>S3</b><span>Architecte</span></div>
+  <div class="rung-body">
+    <p><b>Chapitres</b> : <a href="../reader.html#fr:12">12 Enseigner un monde</a> · <a href="../reader.html#fr:13">13 La question du manque</a> · <a href="../reader.html#fr:14">14 Un agent qui ne peut pas nuire</a></p>
+    <p><b>Gagné par</b> <span class="mono">project-s3</span> : Un monde que vous avez enseigné, interrogé par un agent que vous gouvernez.</p>
+    <p><b>Le garde vérifie</b> :</p><ul><li>votre dossier contient <code>world.zknw</code> (au moins cinq faits), <code>agent.pia</code> (admis par la cour, chaque acte réversible) et <code>ask.ring</code></li><li>la garde exécute <code>ask.ring</code> avec <code>$cProjectFolder</code> pointant sur votre dossier</li><li><code>ask.ring</code> charge votre monde et affiche au moins une réponse tirée de lui</li></ul>
+    <p class="proof">Le garde s'est éprouvé lui-même : il a refusé 2 dossier(s) faux sur 2 et accepté 1 juste(s) sur 1.</p>
+    <ul class="rung-samples"><li><span class="mono">agent-refused</span> <b class="g-other">refusé</b> : world facts five or more: yes / agent admitted: no / every act reversible: no</li><li><span class="mono">three-facts</span> <b class="g-other">refusé</b> : world facts five or more: no / agent admitted: yes / every act reversible: yes</li><li><span class="mono">the-shop</span> <b class="g-same">accepté</b></li></ul>
+    <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/projects/project-s3/brief.fr.md">la consigne</a> · <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/projects/project-s3/guard.ring">le garde</a> · <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/projects/project-s3">wrong/ · right/</a></p>
+  </div>
+</div><div class="rung">
+  <div class="rung-id"><b>S4</b><span>Maître</span></div>
+  <div class="rung-body">
+    <p><b>Chapitres</b> : <a href="../reader.html#fr:15">15 Écrire une narration</a></p>
+    <p><b>Gagné par</b> <span class="mono">project-s4</span> : Un nouveau chapitre pour ce cours, en deux langues, dont la garde est verte.</p>
+    <p><b>Le garde vérifie</b> :</p><ul><li>votre dossier contient <code>chapter.en.md</code> et un autre <code>chapter.&lt;lang&gt;.md</code></li><li>chaque édition a au moins trois cellules, et chaque promesse est tenue quand elle s&#x27;exécute</li><li>les deux éditions font les mêmes promesses, cellule par cellule</li></ul>
+    <p class="proof">Le garde s'est éprouvé lui-même : il a refusé 2 dossier(s) faux sur 2 et accepté 1 juste(s) sur 1.</p>
+    <ul class="rung-samples"><li><span class="mono">different-promises</span> <b class="g-other">refusé</b> : two languages: yes / cells three or more: yes / every promise kept in both: no</li><li><span class="mono">english-only</span> <b class="g-other">refusé</b> : two languages: no</li><li><span class="mono">counting</span> <b class="g-same">accepté</b></li></ul>
+    <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/projects/project-s4/brief.fr.md">la consigne</a> · <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/projects/project-s4/guard.ring">le garde</a> · <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/projects/project-s4">wrong/ · right/</a></p>
+  </div>
+</div></div><p class="proof">Les consignes citées sont celles de la bibliothèque, en français provisoire, en attente de relecture.</p><h3>Où vous en êtes</h3><p>Le site ne voit pas votre dossier : le navigateur n'exécute pas une cellule, et le lecteur le dit. Sur votre poste, la bibliothèque nomme ce qui manque, par son nom. Voici sa réponse pour un apprenant qui commence :</p><div class="run"><div><div class="lbl">Softanza</div><pre>oP = StzProgramQ(&quot;../../education/program&quot;)
+oC = oP.CourseQ(&quot;elementary-introduction&quot;)
+oL = StzLearnerQ(&quot;t_ladder/a-new-learner&quot;)
+? oL.HasEarned(oP, oC, &quot;s0&quot;)
+? @@( oL.MissingFor(oP, oC, &quot;s0&quot;) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0
+[ &quot;ex-01-01&quot;, &quot;ex-02-01&quot;, &quot;ex-03-01&quot;, &quot;ex-04-01&quot;, &quot;project-s0&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-03 00:00 dans la bibliothèque au commit 0e72e2e2c, en 46.6 s, chaque garde dans son propre processus · <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/stzLearner.ring">stzLearner.ring</a> · <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/stzProject.ring">stzProject.ring</a></p><p class="proof">Un barreau ne peut pas être écrit à la main dans le fichier de progression : le garde des niveaux le vérifie. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/education/levels_narrated.ring">levels_narrated</a></p>
+
 <p class="way"><span>La manière Softanza</span> L'humain est l'analyseur. Une ligne se lit comme une phrase parce qu'elle a été conçue pour être lue, et pas seulement exécutée.</p>
   </div>
 </main>
@@ -61,7 +119,7 @@
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../index.html" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">La plateforme des makers à l&#x27;ère agentique. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
-    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-02.</p></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-03.</p></div>
   </div>
 </div></footer>
 <script src="../assets/js/site.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

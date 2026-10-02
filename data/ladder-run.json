@@ -1,0 +1,544 @@
+{
+ "ran": "2026-10-03 00:00",
+ "seconds": 46.6,
+ "levels": [
+  {
+   "id": "s0",
+   "is-a": "level",
+   "named": "explorer",
+   "rank": "0",
+   "needs-chapters-through": "04",
+   "earned-by": "project-s0",
+   "chapters": [
+    "find-then-apply",
+    "a-first-sentence",
+    "read-the-name-as-a-sentence",
+    "say-it-in-your-language"
+   ]
+  },
+  {
+   "id": "s1",
+   "is-a": "level",
+   "named": "builder",
+   "rank": "1",
+   "needs-chapters-through": "07",
+   "earned-by": "project-s1",
+   "chapters": [
+    "find-then-apply",
+    "a-first-sentence",
+    "read-the-name-as-a-sentence",
+    "say-it-in-your-language",
+    "one-object-any-structure",
+    "walk-ask-produce-act",
+    "declare-what-not-how"
+   ]
+  },
+  {
+   "id": "s2",
+   "is-a": "level",
+   "named": "craftsperson",
+   "rank": "2",
+   "needs-chapters-through": "11",
+   "earned-by": "project-s2",
+   "chapters": [
+    "find-then-apply",
+    "a-first-sentence",
+    "read-the-name-as-a-sentence",
+    "say-it-in-your-language",
+    "one-object-any-structure",
+    "walk-ask-produce-act",
+    "declare-what-not-how",
+    "patterns-in-text",
+    "patterns-in-structure",
+    "when-code-meets-cells",
+    "draw-the-answer"
+   ]
+  },
+  {
+   "id": "s3",
+   "is-a": "level",
+   "named": "architect",
+   "rank": "3",
+   "needs-chapters-through": "14",
+   "earned-by": "project-s3",
+   "chapters": [
+    "find-then-apply",
+    "a-first-sentence",
+    "read-the-name-as-a-sentence",
+    "say-it-in-your-language",
+    "one-object-any-structure",
+    "walk-ask-produce-act",
+    "declare-what-not-how",
+    "patterns-in-text",
+    "patterns-in-structure",
+    "when-code-meets-cells",
+    "draw-the-answer",
+    "teach-a-world",
+    "the-gap-question",
+    "an-agent-that-cannot-hurt"
+   ]
+  },
+  {
+   "id": "s4",
+   "is-a": "level",
+   "named": "master",
+   "rank": "4",
+   "needs-chapters-through": "15",
+   "earned-by": "project-s4",
+   "chapters": [
+    "find-then-apply",
+    "a-first-sentence",
+    "read-the-name-as-a-sentence",
+    "say-it-in-your-language",
+    "one-object-any-structure",
+    "walk-ask-produce-act",
+    "declare-what-not-how",
+    "patterns-in-text",
+    "patterns-in-structure",
+    "when-code-meets-cells",
+    "draw-the-answer",
+    "teach-a-world",
+    "the-gap-question",
+    "an-agent-that-cannot-hurt",
+    "write-a-narration"
+   ]
+  }
+ ],
+ "projects": {
+  "project-s0": {
+   "id": "project-s0",
+   "samples": [
+    {
+     "kind": "wrong",
+     "name": "a-broken-promise",
+     "passed": false,
+     "why": "The court judged your declaration, and its verdict is not yet what the task asks. It said: cells five or more: yes / every cell has a promise: yes / every promise kept: no"
+    },
+    {
+     "kind": "wrong",
+     "name": "three-cells",
+     "passed": false,
+     "why": "The court judged your declaration, and its verdict is not yet what the task asks. It said: cells five or more: no / every cell has a promise: yes / every promise kept: yes"
+    },
+    {
+     "kind": "right",
+     "name": "my-list",
+     "passed": true,
+     "why": "The court judged your declaration, and every promise of the exercise was kept."
+    }
+   ],
+   "wrong": 2,
+   "wrong_refused": 2,
+   "right": 1,
+   "right_accepted": 1,
+   "brief": {
+    "en": {
+     "what": "A five-cell narration over a list of your own, where every cell runs.",
+     "checks": [
+      "your folder holds `narration.en.md`",
+      "it has at least five cells, each with a promise",
+      "every promise is kept when the cells run",
+      "no output is stored in the document"
+     ]
+    },
+    "fr": {
+     "what": "Une narration de cinq cellules sur une liste à vous, où chaque cellule s'exécute.",
+     "checks": [
+      "votre dossier contient `narration.en.md`",
+      "il a au moins cinq cellules, chacune avec une promesse",
+      "chaque promesse est tenue quand les cellules s'exécutent",
+      "aucun résultat n'est stocké dans le document"
+     ]
+    },
+    "ar": {
+     "what": "سرد من خمس خلايا على قائمة من عندك، تعمل فيه كل خلية.",
+     "checks": [
+      "يحوي مجلدك `narration.en.md`",
+      "فيه خمس خلايا على الأقل، لكل منها وعد",
+      "كل وعد يتحقق حين تعمل الخلايا",
+      "لا تُخزَّن أي نتيجة في الوثيقة"
+     ]
+    },
+    "ha": {
+     "what": "Labari mai ɗakuna biyar a kan jerin naka, inda kowane ɗaki yake gudana.",
+     "checks": [
+      "babban fayil ɗinka yana ɗauke da `narration.en.md`",
+      "yana da ɗakuna aƙalla biyar, kowanne da alkawari",
+      "ana cika kowane alkawari lokacin da ɗakunan suka gudana",
+      "ba a ajiye sakamako a cikin takardar ba"
+     ]
+    }
+   }
+  },
+  "project-s1": {
+   "id": "project-s1",
+   "samples": [
+    {
+     "kind": "wrong",
+     "name": "rule-hard-coded",
+     "passed": false,
+     "why": "The court judged your declaration, and its verdict is not yet what the task asks. It said: rule read as data: no / count correct: yes"
+    },
+    {
+     "kind": "wrong",
+     "name": "wrong-count",
+     "passed": false,
+     "why": "The court judged your declaration, and its verdict is not yet what the task asks. It said: rule read as data: yes / count correct: no"
+    },
+    {
+     "kind": "right",
+     "name": "big-amounts",
+     "passed": true,
+     "why": "The court judged your declaration, and every promise of the exercise was kept."
+    }
+   ],
+   "wrong": 2,
+   "wrong_refused": 2,
+   "right": 1,
+   "right_accepted": 1,
+   "brief": {
+    "en": {
+     "what": "A small tool over your workplace, its conditions declared as data.",
+     "checks": [
+      "your folder holds `rule.txt` (one condition, such as `{ @item > 20 }`), `data.txt` (one number per line) and `tool.ring`",
+      "the guard runs `tool.ring` with `$cProjectFolder` set to your folder",
+      "the tool prints `rule: ` followed by the rule it read from `rule.txt`, and `count: ` followed by how many lines of the data satisfy it"
+     ]
+    },
+    "fr": {
+     "what": "Un petit outil sur votre lieu de travail, ses conditions déclarées comme des données.",
+     "checks": [
+      "votre dossier contient `rule.txt` (une condition, par exemple `{ @item > 20 }`), `data.txt` (un nombre par ligne) et `tool.ring`",
+      "la garde exécute `tool.ring` avec `$cProjectFolder` pointant sur votre dossier",
+      "l'outil affiche `rule: ` suivi de la règle lue dans `rule.txt`, et `count: ` suivi du nombre de lignes des données qui la satisfont"
+     ]
+    },
+    "ar": {
+     "what": "أداة صغيرة على مكان عملك، شروطها مصرَّح بها كبيانات.",
+     "checks": [
+      "يحوي مجلدك `rule.txt` (شرطًا واحدًا مثل `{ @item > 20 }`) و`data.txt` (رقمًا في كل سطر) و`tool.ring`",
+      "يشغّل الحارس `tool.ring` مع `$cProjectFolder` مضبوطًا على مجلدك",
+      "تطبع الأداة `rule: ` يتبعها الشرط الذي قرأته من `rule.txt`، و`count: ` يتبعها عدد سطور البيانات التي تحققه"
+     ]
+    },
+    "ha": {
+     "what": "Ƙaramin kayan aiki a kan wurin aikinka, sharuɗɗansa an bayyana su a matsayin bayanai.",
+     "checks": [
+      "babban fayil ɗinka yana ɗauke da `rule.txt` (sharaɗi ɗaya, kamar `{ @item > 20 }`), `data.txt` (lamba ɗaya a kowane layi) da `tool.ring`",
+      "mai tsaro yana gudanar da `tool.ring` da `$cProjectFolder` ya nuna babban fayil ɗinka",
+      "kayan aikin yana buga `rule: ` sannan dokar da ya karanta daga `rule.txt`, da `count: ` sannan layukan bayanai nawa suka cika ta"
+     ]
+    }
+   }
+  },
+  "project-s2": {
+   "id": "project-s2",
+   "samples": [
+    {
+     "kind": "wrong",
+     "name": "no-pattern",
+     "passed": false,
+     "why": "The court judged your declaration, and its verdict is not yet what the task asks. It said: table drawn: yes / bars drawn: yes / pattern reported: no"
+    },
+    {
+     "kind": "wrong",
+     "name": "no-picture",
+     "passed": false,
+     "why": "The court judged your declaration, and its verdict is not yet what the task asks. It said: table drawn: yes / bars drawn: no / pattern reported: yes"
+    },
+    {
+     "kind": "right",
+     "name": "the-menu",
+     "passed": true,
+     "why": "The court judged your declaration, and every promise of the exercise was kept."
+    }
+   ],
+   "wrong": 2,
+   "wrong_refused": 2,
+   "right": 1,
+   "right_accepted": 1,
+   "brief": {
+    "en": {
+     "what": "A report over a real data file, with patterns, a table and a picture.",
+     "checks": [
+      "your folder holds `data.csv` and `report.ring`",
+      "the guard runs `report.ring` with `$cProjectFolder` set to your folder",
+      "the report draws a table (`stzTable.Show`), draws bars (`stzHBarPlot` or `stzVBarPlot`), and prints `pattern: ` followed by whether a line of the data matches a pattern you wrote"
+     ]
+    },
+    "fr": {
+     "what": "Un rapport sur un vrai fichier de données, avec des motifs, une table et une image.",
+     "checks": [
+      "votre dossier contient `data.csv` et `report.ring`",
+      "la garde exécute `report.ring` avec `$cProjectFolder` pointant sur votre dossier",
+      "le rapport dessine une table (`stzTable.Show`), dessine des barres (`stzHBarPlot` ou `stzVBarPlot`), et affiche `pattern: ` suivi de si une ligne des données correspond à un motif que vous avez écrit"
+     ]
+    },
+    "ar": {
+     "what": "تقرير على ملف بيانات حقيقي، بأنماط وجدول وصورة.",
+     "checks": [
+      "يحوي مجلدك `data.csv` و`report.ring`",
+      "يشغّل الحارس `report.ring` مع `$cProjectFolder` مضبوطًا على مجلدك",
+      "يرسم التقرير جدولًا (`stzTable.Show`) وأعمدة (`stzHBarPlot` أو `stzVBarPlot`)، ويطبع `pattern: ` يتبعها هل يطابق سطر من البيانات نمطًا كتبته"
+     ]
+    },
+    "ha": {
+     "what": "Rahoto a kan fayil na bayanai na gaske, mai siffofi, tebur da hoto.",
+     "checks": [
+      "babban fayil ɗinka yana ɗauke da `data.csv` da `report.ring`",
+      "mai tsaro yana gudanar da `report.ring` da `$cProjectFolder` ya nuna babban fayil ɗinka",
+      "rahoton yana zana tebur (`stzTable.Show`), yana zana sanduna (`stzHBarPlot` ko `stzVBarPlot`), yana buga `pattern: ` sannan ko layin bayanai ya dace da siffar da ka rubuta"
+     ]
+    }
+   }
+  },
+  "project-s3": {
+   "id": "project-s3",
+   "samples": [
+    {
+     "kind": "wrong",
+     "name": "agent-refused",
+     "passed": false,
+     "why": "The court judged your declaration, and its verdict is not yet what the task asks. It said: world facts five or more: yes / agent admitted: no / every act reversible: no"
+    },
+    {
+     "kind": "wrong",
+     "name": "three-facts",
+     "passed": false,
+     "why": "The court judged your declaration, and its verdict is not yet what the task asks. It said: world facts five or more: no / agent admitted: yes / every act reversible: yes"
+    },
+    {
+     "kind": "right",
+     "name": "the-shop",
+     "passed": true,
+     "why": "The court judged your declaration, and every promise of the exercise was kept."
+    }
+   ],
+   "wrong": 2,
+   "wrong_refused": 2,
+   "right": 1,
+   "right_accepted": 1,
+   "brief": {
+    "en": {
+     "what": "A world you taught, questioned by an agent you govern.",
+     "checks": [
+      "your folder holds `world.zknw` (at least five facts), `agent.pia` (admitted by the court, every act reversible) and `ask.ring`",
+      "the guard runs `ask.ring` with `$cProjectFolder` set to your folder",
+      "`ask.ring` loads your world and prints at least one answer from it"
+     ]
+    },
+    "fr": {
+     "what": "Un monde que vous avez enseigné, interrogé par un agent que vous gouvernez.",
+     "checks": [
+      "votre dossier contient `world.zknw` (au moins cinq faits), `agent.pia` (admis par la cour, chaque acte réversible) et `ask.ring`",
+      "la garde exécute `ask.ring` avec `$cProjectFolder` pointant sur votre dossier",
+      "`ask.ring` charge votre monde et affiche au moins une réponse tirée de lui"
+     ]
+    },
+    "ar": {
+     "what": "عالم علّمته، يسأله وكيل تحكمه أنت.",
+     "checks": [
+      "يحوي مجلدك `world.zknw` (خمس حقائق على الأقل) و`agent.pia` (تقبله المحكمة، وكل أفعاله قابلة للتراجع) و`ask.ring`",
+      "يشغّل الحارس `ask.ring` مع `$cProjectFolder` مضبوطًا على مجلدك",
+      "يحمّل `ask.ring` عالمك ويطبع جوابًا واحدًا منه على الأقل"
+     ]
+    },
+    "ha": {
+     "what": "Duniyar da ka koyar, wanda wakilin da kake mulka yake tambaya.",
+     "checks": [
+      "babban fayil ɗinka yana ɗauke da `world.zknw` (aƙalla gaskiya biyar), `agent.pia` (kotu ta karɓe shi, kowane aiki mai yiwuwar juyawa) da `ask.ring`",
+      "mai tsaro yana gudanar da `ask.ring` da `$cProjectFolder` ya nuna babban fayil ɗinka",
+      "`ask.ring` yana ɗaukar duniyarka ya buga aƙalla amsa ɗaya daga cikinta"
+     ]
+    }
+   }
+  },
+  "project-s4": {
+   "id": "project-s4",
+   "samples": [
+    {
+     "kind": "wrong",
+     "name": "different-promises",
+     "passed": false,
+     "why": "The court judged your declaration, and its verdict is not yet what the task asks. It said: two languages: yes / cells three or more: yes / every promise kept in both: no"
+    },
+    {
+     "kind": "wrong",
+     "name": "english-only",
+     "passed": false,
+     "why": "The court judged your declaration, and its verdict is not yet what the task asks. It said: two languages: no"
+    },
+    {
+     "kind": "right",
+     "name": "counting",
+     "passed": true,
+     "why": "The court judged your declaration, and every promise of the exercise was kept."
+    }
+   ],
+   "wrong": 2,
+   "wrong_refused": 2,
+   "right": 1,
+   "right_accepted": 1,
+   "brief": {
+    "en": {
+     "what": "A new chapter for this course, in two languages, whose guard is green.",
+     "checks": [
+      "your folder holds `chapter.en.md` and one more `chapter.<lang>.md`",
+      "each edition has at least three cells, and every promise is kept when it runs",
+      "the two editions make the same promises, cell for cell"
+     ]
+    },
+    "fr": {
+     "what": "Un nouveau chapitre pour ce cours, en deux langues, dont la garde est verte.",
+     "checks": [
+      "votre dossier contient `chapter.en.md` et un autre `chapter.<lang>.md`",
+      "chaque édition a au moins trois cellules, et chaque promesse est tenue quand elle s'exécute",
+      "les deux éditions font les mêmes promesses, cellule par cellule"
+     ]
+    },
+    "ar": {
+     "what": "فصل جديد لهذا الدرس، بلغتين، حارسه أخضر.",
+     "checks": [
+      "يحوي مجلدك `chapter.en.md` وملفًا آخر `chapter.<lang>.md`",
+      "لكل طبعة ثلاث خلايا على الأقل، ويتحقق كل وعد حين تعمل",
+      "تقدّم الطبعتان الوعود نفسها، خليةً خلية"
+     ]
+    },
+    "ha": {
+     "what": "Sabon babi ga wannan darasin, da harsuna biyu, wanda mai tsaronsa kore ne.",
+     "checks": [
+      "babban fayil ɗinka yana ɗauke da `chapter.en.md` da wani `chapter.<lang>.md`",
+      "kowane bugu yana da aƙalla ɗakuna uku, kuma ana cika kowane alkawari lokacin da ya gudana",
+      "bugu biyun suna yin alkawura iri ɗaya, ɗaki bayan ɗaki"
+     ]
+    }
+   }
+  }
+ },
+ "chapters": [
+  {
+   "n": 1,
+   "slug": "find-then-apply",
+   "ar": "ابحث، ثم طبّق",
+   "en": "Find, then apply",
+   "fr": "Trouver, puis agir",
+   "ha": "Nemo, sannan ka aiwatar"
+  },
+  {
+   "n": 2,
+   "slug": "a-first-sentence",
+   "ar": "جملة أولى",
+   "en": "A first sentence",
+   "fr": "Une première phrase",
+   "ha": "Jimla ta farko"
+  },
+  {
+   "n": 3,
+   "slug": "read-the-name-as-a-sentence",
+   "ar": "اقرأ الاسم كجملة",
+   "en": "Read the name as a sentence",
+   "fr": "Lire le nom comme une phrase",
+   "ha": "Karanta sunan kamar jimla"
+  },
+  {
+   "n": 4,
+   "slug": "say-it-in-your-language",
+   "ar": "قلها بلغتك",
+   "en": "Say it in your language",
+   "fr": "Le dire dans votre langue",
+   "ha": "Faɗe shi da harshenka"
+  },
+  {
+   "n": 5,
+   "slug": "one-object-any-structure",
+   "ar": "كائن واحد، أي بنية",
+   "en": "One object, any structure",
+   "fr": "Un objet, toute structure",
+   "ha": "Abu ɗaya, kowane tsari"
+  },
+  {
+   "n": 6,
+   "slug": "walk-ask-produce-act",
+   "ar": "سِر، اسأل، أنتِج، افعل",
+   "en": "Walk, ask, produce, act",
+   "fr": "Marcher, demander, produire, agir",
+   "ha": "Tafiya, tambaya, samarwa, aiki"
+  },
+  {
+   "n": 7,
+   "slug": "declare-what-not-how",
+   "ar": "صرّح بما لا بكيف",
+   "en": "Declare what, not how",
+   "fr": "Déclarer le quoi, pas le comment",
+   "ha": "Bayyana me, ba yadda ba"
+  },
+  {
+   "n": 8,
+   "slug": "patterns-in-text",
+   "ar": "الأنماط في النص",
+   "en": "Patterns in text",
+   "fr": "Les motifs dans le texte",
+   "ha": "Siffofi a cikin rubutu"
+  },
+  {
+   "n": 9,
+   "slug": "patterns-in-structure",
+   "ar": "الأنماط في البنية",
+   "en": "Patterns in structure",
+   "fr": "Les motifs dans la structure",
+   "ha": "Siffofi a cikin tsari"
+  },
+  {
+   "n": 10,
+   "slug": "when-code-meets-cells",
+   "ar": "حين يلتقي الكود بالخلايا",
+   "en": "When code meets cells",
+   "fr": "Quand le code rencontre les cellules",
+   "ha": "Lokacin da lamba ta haɗu da ɗakuna"
+  },
+  {
+   "n": 11,
+   "slug": "draw-the-answer",
+   "ar": "ارسم الجواب",
+   "en": "Draw the answer",
+   "fr": "Dessiner la réponse",
+   "ha": "Zana amsar"
+  },
+  {
+   "n": 12,
+   "slug": "teach-a-world",
+   "ar": "علّم عالمًا",
+   "en": "Teach a world",
+   "fr": "Enseigner un monde",
+   "ha": "Koyar da duniya"
+  },
+  {
+   "n": 13,
+   "slug": "the-gap-question",
+   "ar": "سؤال الفجوة",
+   "en": "The gap question",
+   "fr": "La question du manque",
+   "ha": "Tambayar giɓi"
+  },
+  {
+   "n": 14,
+   "slug": "an-agent-that-cannot-hurt",
+   "ar": "وكيل لا يستطيع أن يؤذي",
+   "en": "An agent that cannot hurt",
+   "fr": "Un agent qui ne peut pas nuire",
+   "ha": "Wakilin da ba zai iya cutarwa ba"
+  },
+  {
+   "n": 15,
+   "slug": "write-a-narration",
+   "ar": "اكتب سردًا",
+   "en": "Write a narration",
+   "fr": "Écrire une narration",
+   "ha": "Rubuta labari"
+  }
+ ],
+ "new_learner": {
+  "earned_s0": false,
+  "missing_s0": "[ \"ex-01-01\", \"ex-02-01\", \"ex-03-01\", \"ex-04-01\", \"project-s0\" ]"
+ }
+}

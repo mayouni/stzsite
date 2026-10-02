@@ -34,9 +34,10 @@ PLAN.push(['fr/atlas/geo.html', 'phone', 'light'], ['fr/reference/stzlist.html',
 for (const k of [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]) PLAN.push([`fr/tour.html#s${k}`, 'projector', 'light']);
 PLAN.push(['fr/tour.html#s4', 'phone', 'light']);
 PLAN.push(['en/ask.html', 'projector', 'light'], ['fr/ask.html', 'phone', 'light']);
+PLAN.push(['reader.html#en:6', 'laptop', 'light'], ['reader.html#ar:12', 'phone', 'light'], ['fr/learn.html', 'projector', 'light']);
 PLAN.push(['en/howto/list-filter.html', 'laptop', 'light'], ['fr/howto/text-entities.html', 'laptop', 'light'], ['fr/howto/text-entities.html', 'phone', 'light'], ['en/howto/list-filter.html', 'projector', 'light']);
 PLAN.push(['en/atlas/agents.html', 'projector', 'light'], ['en/narrations/stz-xml-the-parser-that-says-no.html', 'projector', 'light'], ['en/reference/stzlist/findw.html', 'projector', 'light'], ['en/atlas/agents.html', 'laptop', 'light'], ['en/narrations/stz-xml-the-parser-that-says-no.html', 'laptop', 'light'], ['en/narrations/stz-xml-the-parser-that-says-no.html', 'laptop', 'dark'], ['fr/narrations/stzstring-sit-narration.html', 'phone', 'light'], ['en/narrations.html', 'laptop', 'light']);
-const FULL = ['index.html', 'en/ask.html', 'en/narrations/stz-xml-the-parser-that-says-no.html', 'fr/narrations/stzlist-in-strings-narration.html', 'fr/platform.html', 'fr/architecture.html', 'en/architecture.html', 'fr/craft.html', 'en/craft.html', 'fr/coding-agents.html', 'en/coding-agents.html', 'fr/platforms.html', 'en/platforms.html', 'fr/vision.html', 'en/vision.html', 'fr/areas.html', 'fr/agentic.html', 'fr/compare.html', 'fr/estate.html', 'fr/learn.html', 'fr/offering.html', 'en/zui.html', 'en/docs.html'];
+const FULL = ['index.html', 'en/learn.html', 'en/ask.html', 'en/narrations/stz-xml-the-parser-that-says-no.html', 'fr/narrations/stzlist-in-strings-narration.html', 'fr/platform.html', 'fr/architecture.html', 'en/architecture.html', 'fr/craft.html', 'en/craft.html', 'fr/coding-agents.html', 'en/coding-agents.html', 'fr/platforms.html', 'en/platforms.html', 'fr/vision.html', 'en/vision.html', 'fr/areas.html', 'fr/agentic.html', 'fr/compare.html', 'fr/estate.html', 'fr/learn.html', 'fr/offering.html', 'en/zui.html', 'en/docs.html'];
 
 const only = process.argv.slice(2);
 const port = 9333;

@@ -513,6 +513,15 @@ ul.fnlist .in{color:var(--ink-2);white-space:nowrap}
 .page-body .ask-row .ask-q{font-weight:600;margin:0 0 4px}
 .ask-row .ask-q .mono{font-weight:400;color:var(--ink-2);margin-left:8px}
 .g-same{color:var(--strong)} .g-verb{color:var(--solid)} .g-other{color:var(--emerging)}
+/* the learner's ladder: one row per rung, its name on the left */
+.ladder{margin-top:24px;max-width:1120px}
+.rung{display:grid;grid-template-columns:160px minmax(0,1fr);gap:0 32px;border-top:1px solid var(--line);padding:24px 0}
+.rung-id b{display:block;font-family:"IBM Plex Mono",monospace;font-size:2rem;line-height:1.1;color:var(--accent)}
+.rung-id span{display:block;font-weight:600;margin-top:4px}
+.page-body .rung-body p{margin:8px 0 0;max-width:var(--measure)}
+.page-body .rung-body p:first-child{margin-top:0}
+.page-body .rung-body ul{margin-top:4px}
+@media (max-width:760px){.rung{grid-template-columns:1fr;gap:8px 0}.rung-id b,.rung-id span{display:inline;margin-right:12px}}
 .narration .ran-out{border-left:4px solid var(--ink-3);margin-top:8px}
 ol.narr .ran{display:inline;margin:0}
 .narration hr{border:0;border-top:1px solid var(--line);margin:40px 0;max-width:920px}
