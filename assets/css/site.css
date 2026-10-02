@@ -511,8 +511,12 @@ ol.narr .ran{display:inline;margin:0}
 
 /* ---- the second submenu: the pages of this level, a column on the left -----
    three menu levels and never more: the main menu, the section's path, this bar */
-.l2wrap{display:grid;grid-template-columns:300px minmax(0,1fr);max-width:var(--maxw);width:100%;min-width:0;margin:0 auto}   /* the same box as the menus above it, so the levels line up */
-.level2{position:sticky;top:var(--pin,120px);align-self:start;max-height:calc(100vh - var(--pin,120px));overflow-y:auto;border-right:1px solid var(--line);padding:28px 14px 40px calc(var(--gutter) - 13px);scrollbar-width:thin}
+.l2wrap{display:grid;grid-template-columns:clamp(272px,18vw,336px) minmax(0,1fr);max-width:1680px;width:100%;min-width:0;margin:0 auto}
+/* with the bar, the page takes the width the screen offers (the author, 2026-10-02): the bar stays under a fifth of it
+   and quiet (Zui 8), the page gets the rest (Zui 6); prose keeps its measure, code, tables and figures widen */
+.has-l2 main .wrap{max-width:1280px;margin:0;padding-left:48px;padding-right:var(--gutter)}
+.has-l2 pre,.has-l2 .run,.has-l2 .narration .nblock,.has-l2 .narration hr,.has-l2 .narration img{max-width:1120px}
+.level2{position:sticky;top:var(--pin,120px);align-self:start;max-height:calc(100vh - var(--pin,120px));overflow-y:auto;border-right:1px solid var(--line);padding:32px 16px 40px calc(var(--gutter) - 13px);scrollbar-width:thin}
 .level2 ul{list-style:none;margin:0;padding:0}
 .level2 .l2-group+.l2-group{margin-top:22px}
 .level2 .l2-h{font-size:1.1875rem;font-weight:700;line-height:1.35;color:var(--ink);margin:0 0 6px 13px}
@@ -522,6 +526,7 @@ ol.narr .ran{display:inline;margin:0}
 /* narrower than the column and the page together: the bar becomes a row above the page, scrolled sideways like the path */
 @media (max-width:1100px){
   .l2wrap{display:block}
+  .has-l2 main .wrap{padding-left:var(--gutter)}
   .level2{position:static;max-height:none;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--line);padding:6px var(--gutter);scrollbar-width:none}
   .level2::-webkit-scrollbar{display:none}
   .level2 .l2-in{display:flex;align-items:center;gap:0 28px;width:max-content}

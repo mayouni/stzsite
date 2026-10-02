@@ -670,3 +670,26 @@ next:
   - me:      the how-to pages from the quickers
   - author:  open Platform > The areas > Geo & cartography and move along the bar
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-02 22:18
+
+subject:   pages with the left bar take the width the screen offers
+
+why:       the author found the page with the bar boxed in the menus' width, with wide empty margins on a large screen
+
+did:
+  - widened the layout of every page with the bar to 1,680 px: the bar takes 18 % of the width (272 to 336 px), never
+    a quarter (Zui 8, a sidebar stays quiet), and the page takes the rest (Zui 6, 70/30); spacing in steps of 8 px
+  - kept prose at its measure (68 characters) and let code, run blocks, tables and pictures widen to 1,120 px
+  - measured: 1,855 px wide, bar 334 px (18 %), prose 857 px, nothing overflows; 1,366 px, bar 272 px (20 %); 1,180 px,
+    bar 23 %; below 1,100 px the bar is still the sideways row
+
+state:
+  release-1-pass-15: built; the commit carrying this entry is the one after fbf4c34
+  perception-gate:   OPEN
+
+next:
+  - me:      the how-to pages from the quickers
+  - author:  look at Platform > The areas > Agents & conversation on the large screen
+```
