@@ -8,4 +8,6 @@ description: Les vingt-huit domaines de la plateforme Softanza, regroupés par t
 
 <!--AREAS-->
 
+<p style="margin-top:32px">Chaque domaine est noté face aux meilleurs de sa catégorie, couloir par couloir, sur sa propre page. <a href="atlas.html">Les 334 couloirs dans un seul tableau</a>, thème par thème.</p>
+
 <p class="proof">Les images ont été dessinées par deux scripts de ce site, exécutés dans la bibliothèque au commit <a href="https://github.com/mayouni/stzlib/commit/0e72e2e2c">0e72e2e2c</a> : <a href="https://github.com/mayouni/stzsite/blob/main/tools/areas.ring">areas.ring</a> et <a href="https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring">areas-figurative.ring</a> ; huit viennent des gardes de la bibliothèque, et la carte du Niger du garde <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphics/niger_density.ring">niger_density</a>. La page de chaque domaine nomme celui qui a dessiné son image.</p>

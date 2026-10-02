@@ -484,3 +484,19 @@ next:
   - me:      the method entries with graded examples
   - author:  read Platform > Architecture and Platform > The craft
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-02 03:28
+
+subject:   The Atlas leaves the Platform menu and becomes a view of The areas
+
+why:       the author judged the Atlas submenu unnecessary: each area's page already carries its rated lanes
+
+did:
+  - removed "The Atlas" from the Platform section's path (seven entries now); the ratings table of all 334 lanes
+    stays, marks "The areas" as current like every area page, and is reached from one line at the end of The areas
+    and from the Documentation page
+
+next:
+  - me:      the method entries with graded examples
+```

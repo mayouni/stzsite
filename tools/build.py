@@ -34,7 +34,6 @@ SECTIONS = [
      ("architecture", {"fr": "Architecture", "en": "Architecture"}),
      ("craft", {"fr": "Le métier", "en": "The craft"}),
      ("areas", {"fr": "Les domaines", "en": "The areas"}),
-     ("atlas", {"fr": "L'Atlas", "en": "The Atlas"}),
      ("code", {"fr": "Le code", "en": "The code"}),
      ("compare", {"fr": "Comparée", "en": "Compared"})]),
   ("vision", {"fr": "Vision", "en": "Vision"}, [
@@ -72,7 +71,8 @@ GENERATED = {"atlas", "reference", "narrations"}   # built by code, not from a .
 OWNER = {}                                          # page -> its section
 for sec, _, pages in SECTIONS:
     for slug, _ in pages: OWNER[slug] = sec
-OWNER["atlas-group"] = "platform"                   # an area's own page sits under The areas
+OWNER["atlas-group"] = "platform"
+OWNER["atlas"] = "platform"                         # the ratings table is a view of The areas, not a menu entry                   # an area's own page sits under The areas
 OWNER["guide"] = "learn"                            # a guide page sits under Documentation
 
 UI = {
@@ -183,7 +183,7 @@ def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_l
     if nav_rel is None: nav_rel = nav_prefix(rel, lang)
     key = page_key or slug
     sec = OWNER.get(key)
-    current_page = {"atlas-group": "areas", "guide": "docs"}.get(key, key)
+    current_page = {"atlas-group": "areas", "atlas": "areas", "guide": "docs"}.get(key, key)
     links = "".join(f'<a href="{nav_rel}{pages[0][0]}.html"{" aria-current=page" if s == sec else ""}>{esc(lab[lang])}</a>'
                     for s, lab, pages in SECTIONS)
     other = ui["other_code"]

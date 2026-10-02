@@ -8,4 +8,6 @@ description: The twenty-eight areas of the Softanza platform, grouped by theme, 
 
 <!--AREAS-->
 
+<p style="margin-top:32px">Every area is rated against the leaders of its category, lane by lane, on its own page. <a href="atlas.html">All 334 lanes in one table</a>, theme by theme.</p>
+
 <p class="proof">The pictures were drawn by two scripts of this site, run inside the library at commit <a href="https://github.com/mayouni/stzlib/commit/0e72e2e2c">0e72e2e2c</a>: <a href="https://github.com/mayouni/stzsite/blob/main/tools/areas.ring">areas.ring</a> and <a href="https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring">areas-figurative.ring</a>; eight come from the library's own guards, and the map of Niger from the guard <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphics/niger_density.ring">niger_density</a>. Each area's page names the one that drew its picture.</p>
