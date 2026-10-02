@@ -60,7 +60,7 @@ SECTIONS = [
      ("teaching", {"fr": "Enseigner", "en": "Teaching"}),
      ("pedagogy", {"fr": "Pédagogie", "en": "Pedagogy"})]),
   ("offering", {"fr": "Offre", "en": "Offering"}, [
-     ("offering", {"fr": "Offre", "en": "Offering"}),
+     ("offering", {"fr": "Audiences", "en": "Audiences"}),
      ("editions", {"fr": "Éditions", "en": "Editions"}),
      ("customers", {"fr": "Clients", "en": "Customers"})]),
   ("start", {"fr": "Démarrer", "en": "Start"}, [
@@ -77,7 +77,7 @@ UI = {
   "fr": {
     "slogan": "La plateforme des makers à l'ère agentique", "second": "Née en Afrique. Utile au monde !",
     "skip": "Aller au contenu", "other_lang": "English", "other_code": "en",
-    "present": "Présenter", "github": "Le dépôt Softanza sur GitHub", "menu": "Menu principal", "path": "Pages de la section",
+    "present": "Présenter le site en diaporama", "github": "Le dépôt Softanza sur GitHub", "menu": "Menu principal", "path": "Pages de la section",
     "proof_law": "Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.",
     "fonts": "Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s'ouvre sans réseau.",
     "made": "Les textes de ce site ont été rédigés avec un assistant d'IA, Claude, sous la direction de l'auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)",
@@ -102,7 +102,7 @@ UI = {
   "en": {
     "slogan": "The Makers Platform of the Agentic Age", "second": "Born in Africa. Useful to the World!",
     "skip": "Skip to content", "other_lang": "Français", "other_code": "fr",
-    "present": "Present", "github": "The Softanza repository on GitHub", "menu": "Main menu", "path": "Pages of the section",
+    "present": "Present the site as a slideshow", "github": "The Softanza repository on GitHub", "menu": "Main menu", "path": "Pages of the section",
     "proof_law": "Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.",
     "fonts": "Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network.",
     "made": "The prose of this site was drafted with an AI assistant, Claude, under the author's direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)",
@@ -164,6 +164,7 @@ def head(lang, title, description, rel, extra=""):
 {extra}{THEME_SCRIPT}
 </head>"""
 
+PRESENT_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>')   # a screen on its stand, with a play mark: the slideshow
 GITHUB_SVG = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>'
 
 def nav_prefix(rel, lang):
@@ -194,7 +195,7 @@ def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_l
                     + '</div></nav>')
     dl = f' data-lang="{data_lang}"' if data_lang else ""
     home = f"{rel}index.html" + (f"?lang={lang}" if rel else "")
-    tools = (f'<div class="tools"><a class="present" href="{nav_rel}tour.html">{esc(ui["present"])}</a>'
+    tools = (f'<div class="tools"><a class="present" href="{nav_rel}tour.html" aria-label="{esc(ui["present"])}" title="{esc(ui["present"])}">{PRESENT_SVG}</a>'
              f'<a class="gh" href="https://github.com/mayouni/stzlib" aria-label="{esc(ui["github"])}" title="{esc(ui["github"])}">{GITHUB_SVG}</a>'
              f'<a class="lang" href="{other_href}" lang="{other}" hreflang="{other}">{ui["other_lang"]}</a></div>')
     brand = f'<a class="brand" href="{home}" aria-label="Softanza">{wordmark(rel)}</a>'

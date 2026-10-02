@@ -1,5 +1,5 @@
 ---
-title: Offering
+title: Audiences
 title_html: Who it is <i>for</i>
 kicker: Six doors, one story
 lede: Softanza tells one story to six kinds of makers. Each door below says what that reader declares and what they get, and shows one example run on the night of publication.

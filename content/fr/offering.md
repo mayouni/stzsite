@@ -1,5 +1,5 @@
 ---
-title: Offre
+title: Audiences
 title_html: Pour <i>qui</i>
 kicker: Six portes, une seule histoire
 lede: Softanza raconte une seule histoire à six sortes de makers. Chaque porte ci-dessous dit ce que ce lecteur déclare et ce qu'il obtient, et montre un exemple exécuté le soir de la publication.

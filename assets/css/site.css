@@ -104,6 +104,7 @@ code,pre,kbd{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
 .tools{display:flex;align-items:center;gap:14px;flex:none}
 .tools a{font-size:1.1875rem;font-weight:500;color:var(--ink-2);text-decoration:none;display:inline-flex;align-items:center;min-height:44px;white-space:nowrap}
 .tools a.gh svg{display:block;width:24px;height:24px;fill:currentColor}
+.tools a.present svg{display:block;width:26px;height:26px}
 .tools a.lang{font-family:"IBM Plex Mono",monospace;font-size:var(--label);color:var(--accent);border:1px solid var(--line-2);border-radius:8px;padding:0 12px;min-height:40px}
 .path{border-top:1px solid var(--line);background:var(--panel)}
 .path-in{max-width:var(--maxw);margin:0 auto;padding:4px var(--gutter);display:flex;flex-wrap:wrap;gap:0 28px}
@@ -448,12 +449,12 @@ table.cov thead th,table.ratings thead th{position:sticky;top:var(--pin,0px);z-i
    the menu becomes the ordinary bar again, instantly. */
 .home-body .hero{z-index:0}
 .home-body .brandrow{position:relative;z-index:51}
-.home-body.over-hero .top{background:transparent;border-bottom-color:transparent}
-.home-body.over-hero .brandrow{background:transparent}
+.home-body.over-hero .top{background:rgba(12,14,13,.30);border-bottom-color:transparent}
+.home-body.over-hero .brandrow{background:rgba(12,14,13,.30)}
 .home-body.over-hero .nav a,.home-body.over-hero .tools a{color:#fff;text-shadow:0 0 1px rgba(0,0,0,.95),0 0 3px rgba(0,0,0,.85),0 0 10px rgba(0,0,0,.6)}
 .home-body.over-hero .nav a[aria-current]::after{background:#fff;box-shadow:0 0 3px rgba(0,0,0,.85)}
 .home-body.over-hero .tools a.lang{border-color:transparent}
-.home-body.over-hero .tools a.gh svg{filter:drop-shadow(0 0 1px rgba(0,0,0,.95)) drop-shadow(0 0 4px rgba(0,0,0,.7))}
+.home-body.over-hero .tools a.gh svg,.home-body.over-hero .tools a.present svg{filter:drop-shadow(0 0 1px rgba(0,0,0,.95)) drop-shadow(0 0 4px rgba(0,0,0,.7))}
 .home-body.over-hero .brand .wm-dark{display:none!important}
 .home-body.over-hero .brand .wm-light{display:block!important;filter:brightness(0) invert(1) drop-shadow(0 0 1px rgba(0,0,0,.95)) drop-shadow(0 0 4px rgba(0,0,0,.7))}
 .home-body .hero{height:100svh}
