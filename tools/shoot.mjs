@@ -33,7 +33,8 @@ PLAN.push(['en/reference/stzstring/removext.html', 'laptop', 'light'], ['en/refe
 PLAN.push(['fr/atlas/geo.html', 'phone', 'light'], ['fr/reference/stzlist.html', 'laptop', 'light'], ['fr/reference/stzstring.html', 'phone', 'light'], ['en/reference/methods-a.html', 'laptop', 'light']);
 for (const k of [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]) PLAN.push([`fr/tour.html#s${k}`, 'projector', 'light']);
 PLAN.push(['fr/tour.html#s4', 'phone', 'light']);
-const FULL = ['index.html', 'fr/platform.html', 'fr/architecture.html', 'en/architecture.html', 'fr/craft.html', 'en/craft.html', 'fr/coding-agents.html', 'en/coding-agents.html', 'fr/platforms.html', 'en/platforms.html', 'fr/vision.html', 'en/vision.html', 'fr/areas.html', 'fr/agentic.html', 'fr/compare.html', 'fr/estate.html', 'fr/learn.html', 'fr/offering.html', 'en/zui.html', 'en/docs.html'];
+PLAN.push(['en/narrations/stz-xml-the-parser-that-says-no.html', 'laptop', 'light'], ['en/narrations/stz-xml-the-parser-that-says-no.html', 'laptop', 'dark'], ['fr/narrations/stzstring-sit-narration.html', 'phone', 'light'], ['en/narrations.html', 'laptop', 'light']);
+const FULL = ['index.html', 'en/narrations/stz-xml-the-parser-that-says-no.html', 'fr/narrations/stzlist-in-strings-narration.html', 'fr/platform.html', 'fr/architecture.html', 'en/architecture.html', 'fr/craft.html', 'en/craft.html', 'fr/coding-agents.html', 'en/coding-agents.html', 'fr/platforms.html', 'en/platforms.html', 'fr/vision.html', 'en/vision.html', 'fr/areas.html', 'fr/agentic.html', 'fr/compare.html', 'fr/estate.html', 'fr/learn.html', 'fr/offering.html', 'en/zui.html', 'en/docs.html'];
 
 const only = process.argv.slice(2);
 const port = 9333;

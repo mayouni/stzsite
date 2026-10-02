@@ -16,7 +16,7 @@ A maker turns what they know about a world into something that runs, without wai
 <div class="kicker">Door 1</div>
 ### A programmer, alone or in a small team
 
-**What you declare:** your intent, in a library that reads like a sentence: find first, then apply. **What you get:** a Zig engine under every call, correct in Unicode, and a narration that runs for every idea. **Where to start:** the Start page, then chapter 1 of the course.
+**What you declare:** your intent, in a library that reads like a sentence: find first, then apply. **What you get:** a Zig engine under every call, correct in Unicode, and narrations that tell its ideas in code. **Where to start:** the Start page, then chapter 1 of the course.
 
 <div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
 ? o1.ContainsDuplicates()

@@ -16,7 +16,7 @@ Un maker transforme ce qu'il sait d'un monde en quelque chose qui tourne, sans a
 <div class="kicker">Porte 1</div>
 ### Programmeur ou programmeuse, seul·e ou en petite équipe
 
-**Ce que vous déclarez :** votre intention, dans une bibliothèque qui se lit comme une phrase : on trouve d'abord, on agit ensuite. **Ce que vous obtenez :** un moteur Zig sous chaque appel, correct en Unicode, et une narration qui s'exécute pour chaque idée. **Où commencer :** la page Démarrer, puis le chapitre 1 du cours.
+**Ce que vous déclarez :** votre intention, dans une bibliothèque qui se lit comme une phrase : on trouve d'abord, on agit ensuite. **Ce que vous obtenez :** un moteur Zig sous chaque appel, correct en Unicode, et des narrations qui racontent ses idées en code. **Où commencer :** la page Démarrer, puis le chapitre 1 du cours.
 
 <div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
 ? o1.ContainsDuplicates()

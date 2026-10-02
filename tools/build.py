@@ -19,6 +19,7 @@ from PIL import Image
 from build_reference import build_reference
 from build_guides import build_guides
 from build_methods import build_methods, load_entries
+from build_narration_pages import build_narration_pages, slug as narration_slug
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -96,9 +97,11 @@ UI = {
     "example": "Un exemple, exécuté", "no_example": "Aucun exemple exécuté sur cette page", "output": "Sortie",
     "source": "la source", "nopic": "Pas encore d'image", "guide": "Le guide des fonctions de ce domaine",
     "narr_title": "Narrations", "narr_title_html": "Les <i>narrations</i>", "narr_kicker": "La documentation qui s'exécute",
-    "narr_lede": "Cent trente-quatre documents où chaque bloc de code s'exécute quand on le lit et où aucune sortie n'est stockée. Chacun est un fichier du dépôt ; le titre est celui du fichier.",
+    "narr_lede": "Cent trente-quatre documents qui racontent une partie de la bibliothèque comme une histoire, en code écrit pour être exécuté au fil de la lecture. Chacun est un fichier du dépôt ; le titre est celui du fichier.",
     "narr_desc": "Les 134 narrations de Softanza, listées avec leur fichier dans le dépôt.",
-    "narr_note": "Liste lue dans le dossier doc/narrations du dépôt au commit 0e72e2e2c, le 2026-10-01. Une narration s'ouvre sur GitHub ; sa version exécutée comme page de ce site est le prochain pas de la publication.",
+    "narr_note": "Liste lue dans le dossier doc/narrations du dépôt au commit 0e72e2e2c. Le 2026-10-02, chaque narration qui pouvait s'exécuter a été exécutée dans la bibliothèque, bloc après bloc dans un seul processus. Celles dont au moins trois blocs sur quatre tiennent leur promesse sont des pages de ce site, avec le verdict de chaque bloc ; les autres s'ouvrent sur GitHub, et la liste dit pourquoi.",
+    "narr_groups": {"page": "Exécutées, pages de ce site", "run": "Exécutées, ne tenant pas encore leurs promesses : sur GitHub", "effects": "Non exécutées, elles touchent aux fichiers, au réseau, à la saisie, à l'horloge ou au hasard : sur GitHub", "names": "Non exécutées, leur code nomme l'ancien langage de la plateforme : sur GitHub", "compile": "Non exécutées, elles ne compilent pas telles qu'écrites : sur GitHub", "nocode": "Sans code à exécuter : sur GitHub"},
+    "narr_kept": "{k} blocs sur {n} tiennent leur promesse",
     "cov_row": "Domaine", "cov_present": "Présent", "cov_deep": "Deep", "cov_solid": "Solid", "cov_partial": "Partial", "cov_none": "Absent",
   },
   "en": {
@@ -121,9 +124,11 @@ UI = {
     "example": "One example, run", "no_example": "No example run on this page", "output": "Output",
     "source": "the source", "nopic": "No picture yet", "guide": "The guide to this area's functions",
     "narr_title": "Narrations", "narr_title_html": "The <i>narrations</i>", "narr_kicker": "Documentation that runs",
-    "narr_lede": "One hundred and thirty-four documents where every code block runs as it is read and no output is stored. Each is a file of the repository; the title is the file's own.",
+    "narr_lede": "One hundred and thirty-four documents that tell a part of the library as a story, in code written to be run as it is read. Each is a file of the repository; the title is the file's own.",
     "narr_desc": "Softanza's 134 narrations, listed with their file in the repository.",
-    "narr_note": "List read in the repository's doc/narrations folder at commit 0e72e2e2c, on 2026-10-01. A narration opens on GitHub; its run version as a page of this site is the next step of the publication.",
+    "narr_note": "List read in the repository's doc/narrations folder at commit 0e72e2e2c. On 2026-10-02 every narration that could run was run inside the library, block after block in one process. Those where at least three blocks in four keep their promise are pages of this site, with each block's verdict; the others open on GitHub, and the list says why.",
+    "narr_groups": {"page": "Run, pages of this site", "run": "Run, not yet keeping their promises: on GitHub", "effects": "Not run, they touch files, the network, input, the clock or chance: on GitHub", "names": "Not run, their code names the platform's former language: on GitHub", "compile": "Not run, they do not compile as written: on GitHub", "nocode": "No code to run: on GitHub"},
+    "narr_kept": "{k} of {n} blocks keep their promise",
     "cov_row": "Domain", "cov_present": "Present", "cov_deep": "Deep", "cov_solid": "Solid", "cov_partial": "Partial", "cov_none": "Absent",
   },
 }
@@ -522,11 +527,30 @@ def build_group_page(lang, idx, groups, i):
     out.write_text(page, encoding="utf-8")
 
 RING_WORD = re.compile(r"\bRing\b")
-def build_narrations(lang):
+def build_narrations(lang, published):
     ui = UI[lang]
     items = json.loads((DATA / "narrations.json").read_text(encoding="utf-8"))
-    lis = "".join(f'<li><a href="{GH}base/doc/narrations/{esc(n["file"])}">{esc(RING_WORD.sub("Haro", n["title"]).replace("Ring++", "Haro"))}</a></li>' for n in items)
-    body = f'<p class="proof">{esc(ui["narr_note"])}</p><ol class="narr">{lis}</ol>'
+    runs = json.loads((DATA / "narrations-run.json").read_text(encoding="utf-8"))
+    def group(f):
+        r = runs[f]
+        if f in published: return "page"
+        if r["status"] == "run": return "run"
+        return {"effects": "effects", "names": "names", "does not compile": "compile"}.get(r["reason"], "nocode")
+    def item(n):
+        title = esc(RING_WORD.sub("Haro", n["title"]).replace("Ring++", "Haro").replace("`", ""))
+        r = runs[n["file"]]
+        if n["file"] in published:
+            return f'<li><a href="narrations/{narration_slug(n["file"])}.html">{title}</a></li>'
+        kept = ""
+        if r["status"] == "run":
+            k = sum(1 for b in r["blocks"] if b["verdict"] == "kept")
+            kept = f' <span class="ran">{ui["narr_kept"].format(k=k, n=len(r["blocks"]))}</span>'
+        return f'<li><a href="{GH}base/doc/narrations/{esc(n["file"])}">{title}</a>{kept}</li>'
+    body = f'<p class="proof">{esc(ui["narr_note"])}</p>'
+    for g, label in ui["narr_groups"].items():
+        lis = [item(n) for n in items if group(n["file"]) == g]
+        if lis:
+            body += f'<h2>{esc(label)} <span class="mono">({len(lis)})</span></h2><ol class="narr">{"".join(lis)}</ol>'
     page = page_shell(lang, "narrations", ui["narr_title"], ui["narr_desc"], esc(ui["narr_kicker"]), ui["narr_title_html"], esc(ui["narr_lede"]), body)
     (ROOT / lang / "narrations.html").write_text(page, encoding="utf-8")
 
@@ -615,13 +639,15 @@ def check_contrast():
 
 def main():
     idx, groups = load_atlas()
+    npages, PUBLISHED = build_narration_pages({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "md": md})
+    print(f"narrations: {npages} pages, {len(PUBLISHED)} narrations run and published")
     outs = []
     for lang in LANGS:
         for sec, _, pages in SECTIONS:
             for slug, _ in pages:
                 if slug in GENERATED: continue
                 outs.append(build_page(lang, slug, idx, groups))
-        build_narrations(lang)
+        build_narrations(lang, PUBLISHED)
         for i in range(len(groups)):
             build_group_page(lang, idx, groups, i)
         for old in ("why", "govern", "makers", "products"):

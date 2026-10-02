@@ -125,7 +125,7 @@ Rethought, because Softanza already decided differently:
 | Class reference | What exactly does this class offer? | the doc-comments | built, 618 classes |
 | Method entry with examples | What does this method do, shown? | the library's classic test files, harvested by the site and run before publishing | built 2026-10-02 for 1,428 methods of 59 classes |
 | How-to (workflow) | How do I do this task? | the quickers, with their `# Intent:` line as the title | planned |
-| Narration (tutorial) | How does this idea work as a whole? | `base/doc/narrations` | listed and linked; pages planned |
+| Narration (tutorial) | How does this idea work as a whole? | `base/doc/narrations`, run block after block in one process (`tools/narrations_run.py`) | built 2026-10-02: 8 narrations are pages, each block with its verdict; the other 126 are listed with the reason they stay on GitHub |
 | Book (course) | Teach me, from the start | the Learning System chapters, run | linked |
 | For agents | How does a program ask the library? | `Ask`, `HowTo`, `ExplainMethod` | planned |
 

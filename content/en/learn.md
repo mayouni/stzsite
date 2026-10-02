@@ -22,7 +22,7 @@ Softanza has thousands of features. You do not learn them one by one. You learn 
 3
 [ 1, 3, 6 ]
 [ "tea", "rice", "fish" ]</pre></div></div>
-<p class="ran">run on 2026-09-30 at 23:11, Softanza at commit 0e72e2e2c. The full introduction is the narration <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-mental-mode-narration.md">the Softanza mental model</a>, which runs as it is read.</p>
+<p class="ran">run on 2026-09-30 at 23:11, Softanza at commit 0e72e2e2c. The full introduction is the narration <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-mental-mode-narration.md">the Softanza mental model</a>.</p>
 
 Three habits complete the model. A method that ends in <b>-ed</b> returns a copy and leaves the object alone; the same verb without it changes the object. A method that ends in <b>Q</b> returns an object you can keep asking, so a sentence can chain. And if you do not know a name, ask: an object answers <code>Ask("how do I remove duplicates")</code> with the methods that do.
 

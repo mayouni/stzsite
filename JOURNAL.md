@@ -603,3 +603,41 @@ next:
   - me:      narrations as pages
   - author:  read an entry built from a chapter, for instance stzList > FindW
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-02 21:13
+
+subject:   narrations as pages: 8 of 134 run block after block and published, each block with its verdict
+
+why:       a narration is the library's tutorial form, and the site shows only what it ran; the list linked every
+           narration to GitHub with nothing saying which of them still keep their promise
+
+did:
+  - wrote tools/narrations_run.py: each narration runs in ONE process inside the library, its code blocks in order,
+    each in its own try block; a block is judged against its own `#-->` lines (also written `# -->` or `// -->`), or
+    the untagged output block right under it; a promised refusal counts as kept; a promise written on a line that
+    prints nothing cannot be checked and is said so
+  - ran all 134 at 0e72e2e2c in 188 s: 43 ran; 27 not run because their code names the former language; 42 not run
+    because they touch files, the network, input, the clock or chance; 15 do not compile as written; 7 have no code
+  - published as pages the 8 where at least three blocks in four keep their promise (tools/build_narration_pages.py):
+    the narration's own prose and code, under each block what the run did, with what it printed when it differs or
+    raises; their pictures hosted on the site so the pages open with no network
+  - the list page now groups all 134 by that outcome, with the count of kept blocks for those that ran
+  - corrected six sentences in both languages (Start, Documentation, Principles, Learn, Offering, the list's lede)
+    that said every narration's blocks run and keep their output: the run measured otherwise
+
+state:
+  release-1-pass-13: built; the commit carrying this entry is the one after 5ff8466
+  perception-gate:   OPEN -- the author has not seen the narration pages
+
+waiting:
+  - STZLIB-NARRATIONS-RUN-01: of the 318 code blocks in the 43 narrations that ran, 86 print what they promise, 32
+    state no output, 7 write their promise on a line that prints nothing, 59 print something else, 134 raise: 36 an
+    uninitialised variable (mostly left by an earlier block that raised), 32 a method that does not exist, 28 a
+    function that does not exist, 17 a property error, 9 a wrong argument count, 11 a refusal by the library itself;
+    and 15 narrations do not compile -> stzlib [routed]
+
+next:
+  - me:      file the run's findings for the library, then the how-to pages from the quickers
+  - author:  read a narration page, for instance Learn > Narrations > The Parser That Says No
+```

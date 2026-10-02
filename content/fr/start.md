@@ -36,7 +36,7 @@ Un script placé dans le dossier <code>libraries/stzlib</code> charge la bibliot
 
 ## La première narration {#narration}
 
-Une narration est un document où chaque bloc de code s'exécute et où aucune sortie n'est jamais stockée : ce que vous lisez a été produit pendant la lecture. Commencez par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-mental-mode-narration.md">le modèle mental</a>, puis <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md">les agents qui ne peuvent pas vous nuire</a>. Les 134 sont listées sous Apprendre, dans Narrations.
+Une narration est un document qui raconte une partie de la bibliothèque comme une histoire, en code écrit pour être exécuté au fil de la lecture. Commencez par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-mental-mode-narration.md">le modèle mental</a>, puis <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md">les agents qui ne peuvent pas vous nuire</a> ; les deux s'ouvrent sur GitHub. Pour voir une narration jugée bloc par bloc, ouvrez <a href="narrations/stz-repetition-with-elegance-narration.html">Repetition with Elegance</a>, exécutée pour ce site : ses six blocs affichent ce qu'ils promettent. Les 134 sont listées sous Apprendre, dans Narrations.
 
 ## Le lecteur du cours {#reader}
 
