@@ -33,7 +33,7 @@
   <div class="wrap page-body">
     
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># digits flip
-? Q(&quot;9876543210&quot;).Reversed()</pre></div><div class="out"><div class="lbl">Output</div><pre>0123456789</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/637_reversed.ring">637_reversed.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
+? Q(&quot;9876543210&quot;).Reversed()</pre></div><div class="out"><div class="lbl">Output</div><pre>0123456789</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/637_reversed.ring">637_reversed.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
 big  = new stzString( oAB.Repeated(1000000) )
 oE = new stzString(&quot;😀🎉&quot;)
 e  = new stzString( oE.Repeated(50000) )
@@ -44,7 +44,7 @@ e  = new stzString( oE.Repeated(50000) )
 # Reversed keeps 100,000 codepoints
 ? StzLen(e.Reversed())</pre></div><div class="out"><div class="lbl">Output</div><pre>100000
 50000
-100000</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
+100000</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
 big  = new stzString( oAB.Repeated(1000000) )
 oAr = new stzString(&quot;سلام&quot;)
 ar  = new stzString( oAr.Repeated(100000) )
@@ -58,7 +58,7 @@ ar  = new stzString( oAr.Repeated(100000) )
 ? StzLen(ar.Reversed())</pre></div><div class="out"><div class="lbl">Output</div><pre>400000
 100000
 1
-400000</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p>
+400000</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#reversed">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/contains.html">stzString.Contains</a> · <a class="mono" href="../stzstring/numberofchars.html">stzString.NumberOfChars</a> · <a class="mono" href="../stzstring/numberofoccurrences.html">stzString.NumberOfOccurrences</a></li></ul>
   </div>

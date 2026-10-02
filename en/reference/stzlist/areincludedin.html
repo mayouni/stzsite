@@ -32,30 +32,14 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;green&quot;, &quot;red&quot; ])
+    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;green&quot;, &quot;red&quot; ])
 # IsIncludedIn: the list is not itself one element of the host
 ? o1.IsIncludedIn([ &quot;green&quot;, &quot;red&quot;, &quot;blue&quot; ])
 # AreIncludedIn: every item is present in the host
 ? o1.AreIncludedIn([ &quot;green&quot;, &quot;red&quot;, &quot;blue&quot; ])</pre></div><div class="out"><div class="lbl">Output</div><pre>0
-1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/631_isincludedin.ring">631_isincludedin.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># a string contains itself
-? Q(&quot;ring&quot;).Contains(&quot;ring&quot;)
-# but empty does not contain empty
-? Q(&quot;&quot;).Contains(&#x27;&#x27;)
-# a list is not INCLUDED in an equal list
-? Q([ 12, 66 ]).IsIncludedIn([ 12, 66 ])
-# its ITEMS are though
-? Q([ 12, 66]).AreInCludedIn([ 12, 66 ])
-# empty list does not contain empty list
-? Q([]).Contains([])
-# but a list can hold one
-? Q([ 1, [], 3 ]).Contains([])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-0
-0
-1
-0
-1</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/613_contains.ring">613_contains.ring</a></p>
+1</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/631_isincludedin.ring">631_isincludedin.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzlist.html#areincludedin">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li><li>The other methods in these examples: <a class="mono" href="../stzlist/contains.html">stzList.Contains</a> · <a class="mono" href="../stzlist/isincludedin.html">stzList.IsIncludedIn</a> · <a class="mono" href="../stzstring/contains.html">stzString.Contains</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzlist.html#areincludedin">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li><li>The other methods in these examples: <a class="mono" href="../stzlist/isincludedin.html">stzList.IsIncludedIn</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

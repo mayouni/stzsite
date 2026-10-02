@@ -38,14 +38,14 @@ o1 = new stzNumber([ 981.123456701, :round = 5 ])
 ? o1.NumericValue() # Sensitive to current on the program round, 3.
 ? o1.StringValue() # Rounded to the what is specified at the object level, 5.</pre></div><div class="out"><div class="lbl">Sortie</div><pre>5
 981.123
-981.12346</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/49_round.ring">49_round.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? CurrentRound() # Currrent round on the program
+981.12346</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/49_round.ring">49_round.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? CurrentRound() # Currrent round on the program
 o1 = new stzNumber(&quot;-12.4521&quot;)
 ? o1.Round() # Round of the object (infered here from the decimal part .4532)
 ? o1.Value() # Or NumericValue() ~&gt; Sensitive to the currend round on the program (2)
 ? o1.StringValue() # Or Content() ~&gt; Sensitive to the current round on the stzNumber object (4)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>2
 4
 -12.45
--12.4521</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/48_currentround.ring">48_currentround.ring</a></p>
+-12.4521</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/48_currentround.ring">48_currentround.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stznumber.html#stringvalue">La classe stzNumber</a></li><li><a href="../../guide/numeric.html">Le guide du domaine : Numérique et optimisation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stznumber/numericvalue.html">stzNumber.NumericValue</a> · <a class="mono" href="../stznumber/round.html">stzNumber.Round</a></li></ul>
   </div>

@@ -35,32 +35,32 @@
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;123---78--&quot;)
 o1.ReplaceSectionsByMany([ [1, 3], [7, 8] ], [ &quot;*&quot;, &quot;~&quot; ])
 # shrunk
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>*---~--</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/969_content.ring">969_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;--345--89--&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>*---~--</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/969_content.ring">969_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;--345--89--&quot;)
 o1.ReplaceSectionsByMany([ [3, 5], [8, 9] ], [ &quot;*&quot;, &quot;~&quot; ])
 # shrunk
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>--*--~--</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/968_content.ring">968_content.ring</a></p><h2>Portée <span class="mono">(5)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;123---789---&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>--*--~--</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/968_content.ring">968_content.ring</a></p><h2>Portée <span class="mono">(5)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;123---789---&quot;)
 o1.ReplaceSectionsByMany([ [1, 3], [7, 9] ], [ &quot;^^^&quot;, &quot;vvv&quot; ])
 # both replaced
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>^^^---vvv---</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/967_-------------.ring">967_-------------.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;--345--89---&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>^^^---vvv---</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/967_-------------.ring">967_-------------.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;--345--89---&quot;)
 o1.ReplaceSectionsByMany([ [3, 5], [8, 9] ], [ &quot;^^^&quot;, &quot;^^&quot; ])
 # shape preserved
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>--^^^--^^---</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/965_content.ring">965_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;...456...012...678..&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>--^^^--^^---</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/965_content.ring">965_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;...456...012...678..&quot;)
 o1.ReplaceSectionsByMany([ [ 4, 6 ], [ 10, 12 ], [ 16, 18 ] ],
 		[ &quot;A&quot;, &quot;BB&quot;, &quot;CCC&quot; ])
 # each section renamed
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>...A...BB...CCC..</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/926_content.ring">926_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;---456----123--67---&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>...A...BB...CCC..</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/926_content.ring">926_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;---456----123--67---&quot;)
 o1.ReplaceSectionsByMany(
 		[ [4, 6], [11, 13], [16, 17] ],
 		[ &quot;^^^&quot;, &quot;^^^&quot;, &quot;^^&quot; ]
 	)
 # all three replaced
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>---^^^----^^^--^^---</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/961_content.ring">961_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;^---^---^---^---&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>---^^^----^^^--^^---</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/961_content.ring">961_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;^---^---^---^---&quot;)
 o1.ReplaceSectionsByMany(
 		[ [ 1, 1 ], [ 5, 5 ], [ 9, 9 ], [ 13, 14 ] ],
 		[ &quot;1&quot;, &quot;5&quot;, &quot;9&quot;, &quot;13&quot; ]
 	)
 # self-describing
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1---5---9---13--</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/970_content.ring">970_content.ring</a></p>
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1---5---9---13--</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/970_content.ring">970_content.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#replacesectionsbymany">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li></ul>
   </div>

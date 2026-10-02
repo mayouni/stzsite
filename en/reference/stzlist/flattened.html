@@ -32,18 +32,18 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? @@( StzListQ([ &quot;a&quot;, [ &quot;b&quot;, [ &quot;c&quot;,  &quot;d&quot; ], &quot;e&quot; ], &quot;f&quot; ]).Flattened() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/464_flattened.ring">464_flattened.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList( [ &quot;A&quot;, &quot;B&quot;, [ 1, &quot;v&quot;, 2 ], &quot;X&quot; ] )
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? @@( StzListQ([ &quot;a&quot;, [ &quot;b&quot;, [ &quot;c&quot;,  &quot;d&quot; ], &quot;e&quot; ], &quot;f&quot; ]).Flattened() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/464_flattened.ring">464_flattened.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList( [ &quot;A&quot;, &quot;B&quot;, [ 1, &quot;v&quot;, 2 ], &quot;X&quot; ] )
 ? o1.ContainsNo(&quot;v&quot;)
 ? o1.ContainsNoObjects()
 ? @@( o1.Flattened() ) # can also be written: o1.FlattenQ().Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 1
-[ &quot;A&quot;, &quot;B&quot;, 1, &quot;v&quot;, 2, &quot;X&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/592_containsno.ring">592_containsno.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+[ &quot;A&quot;, &quot;B&quot;, 1, &quot;v&quot;, 2, &quot;X&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/592_containsno.ring">592_containsno.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
 	[1, 2],
 	[3, [4, 5:7 ] ],
 	8,
 	[ [ 9, [10] ] ]
 ])
-? @@( o1.Flattened() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listoflists/31_flattened.ring">31_flattened.ring</a></p>
+? @@( o1.Flattened() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listoflists/31_flattened.ring">31_flattened.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzlist.html#flattened">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li><li>The other methods in these examples: <a class="mono" href="../stzlist/containsno.html">stzList.ContainsNo</a> · <a class="mono" href="../stzlist/containsnoobjects.html">stzList.ContainsNoObjects</a></li></ul>
   </div>

@@ -575,3 +575,31 @@ next:
   - me:      the course chapters as a last source of examples, then narrations as pages
   - author:  read an entry of the string class, for instance stzString > RemoveXT
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-02 04:38
+
+subject:   course chapters harvested, and the former language's name kept out of every code block
+
+why:       the author asked to widen the harvest to the course chapters; a sweep then found the former language's name
+           inside published examples, which the site's rule forbids
+
+did:
+  - harvested the course chapters (elementary introduction and mathematics): each fenced cell is an example titled by
+    its section heading; 73 cells read, 49 kept their promises (the others lean on earlier cells of their chapter)
+  - found 146 published examples whose code or output showed the former language's name (often as sample text, such
+    as "RING"); library code is never rewritten, so such examples are now left out of the entries and of the area
+    showcases (one documentation run), a .ring file name not counting; the library's own descriptions now map the
+    uppercase form to HARO as they already mapped the capitalised one
+  - the entry generator now clears its folders before writing, so an entry that no longer qualifies leaves no page
+  - swept every page's code and output blocks: none shows the word; 1,428 methods of 59 classes keep an entry
+    (2,856 pages)
+
+state:
+  release-1-pass-12: built; the commit carrying this entry is the one after 6f8ccf4
+  perception-gate:   OPEN
+
+next:
+  - me:      narrations as pages
+  - author:  read an entry built from a chapter, for instance stzList > FindW
+```

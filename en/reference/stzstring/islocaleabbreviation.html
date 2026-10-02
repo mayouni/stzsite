@@ -34,14 +34,14 @@
     
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;ar_Arab_TN&quot;)
 # well formed
-? o1.IsLocaleAbbreviation()</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/649_islocaleabbreviation.ring">649_islocaleabbreviation.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># fr alone is not a locale
+? o1.IsLocaleAbbreviation()</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/649_islocaleabbreviation.ring">649_islocaleabbreviation.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># fr alone is not a locale
 ? Q(&quot;fr&quot;).IsLocaleAbbreviation()
 # fr-fr is
 ? Q(&quot;fr-fr&quot;).IsLocaleAbbreviation()
 # and its country reads france
 ? StzLocaleQ(&quot;fr-fr&quot;).Country()</pre></div><div class="out"><div class="lbl">Output</div><pre>0
 1
-france</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/842_islocaleabbreviation.ring">842_islocaleabbreviation.ring</a></p>
+france</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/842_islocaleabbreviation.ring">842_islocaleabbreviation.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#islocaleabbreviation">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzlocale/country.html">stzLocale.Country</a></li></ul>
   </div>

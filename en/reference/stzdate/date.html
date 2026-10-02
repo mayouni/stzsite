@@ -33,10 +33,10 @@
   <div class="wrap page-body">
     
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzDate([ 2024, 10, 10 ])
-? o1.Date()</pre></div><div class="out"><div class="lbl">Output</div><pre>10/10/2024</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/04_creating_a_date_objectfrom_list_of_numbers.ring">04_creating_a_date_objectfrom_list_of_numbers.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzDate([ :Day = 12, :Month = 10, :Year = 2024 ])
-? o1.Date()</pre></div><div class="out"><div class="lbl">Output</div><pre>12/10/2024</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/05_createing_a_date_object_from_a_hashlist_in_any_ord.ring">05_createing_a_date_object_from_a_hashlist_in_any_ord.ring</a></p><h2>Scope <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oDate = StzDateQ(&quot;01/01/2025&quot;)
+? o1.Date()</pre></div><div class="out"><div class="lbl">Output</div><pre>10/10/2024</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/04_creating_a_date_objectfrom_list_of_numbers.ring">04_creating_a_date_objectfrom_list_of_numbers.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzDate([ :Day = 12, :Month = 10, :Year = 2024 ])
+? o1.Date()</pre></div><div class="out"><div class="lbl">Output</div><pre>12/10/2024</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/05_createing_a_date_object_from_a_hashlist_in_any_ord.ring">05_createing_a_date_object_from_a_hashlist_in_any_ord.ring</a></p><h2>Scope <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oDate = StzDateQ(&quot;01/01/2025&quot;)
 oDate.AddDays(30)
-? oDate.Date()</pre></div><div class="out"><div class="lbl">Output</div><pre>31/01/2025</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/08_adding_days_to_a_date.ring">08_adding_days_to_a_date.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o = StzDateQ(&quot;15/03/2024&quot;)
+? oDate.Date()</pre></div><div class="out"><div class="lbl">Output</div><pre>31/01/2025</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/08_adding_days_to_a_date.ring">08_adding_days_to_a_date.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o = StzDateQ(&quot;15/03/2024&quot;)
 o.AddDays(20)
 # +20 days crosses into April -&gt; 04/04/2024
 ? o.Date()
@@ -49,7 +49,7 @@ q.AddYears(1)
 # +1 year -&gt; 15/03/2025
 ? q.Date()</pre></div><div class="out"><div class="lbl">Output</div><pre>04/04/2024
 15/05/2024
-15/03/2025</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/00_date_narrated.ring">00_date_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o = StzDateQ(&quot;15/03/2024&quot;)
+15/03/2025</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/00_date_narrated.ring">00_date_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o = StzDateQ(&quot;15/03/2024&quot;)
 # Date() round-trips the string
 ? o.Date()
 # Day() is the weekday name Friday
@@ -72,7 +72,7 @@ March
 3
 2024
 75
-1</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/00_date_narrated.ring">00_date_narrated.ring</a></p>
+1</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/00_date_narrated.ring">00_date_narrated.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzdate.html#date">The class stzDate</a></li><li><a href="../../guide/i18n.html">The area's guide: Internationalization</a></li><li>The other methods in these examples: <a class="mono" href="../stzdate/adddays.html">stzDate.AddDays</a> · <a class="mono" href="../stzdate/addmonths.html">stzDate.AddMonths</a> · <a class="mono" href="../stzdate/addyears.html">stzDate.AddYears</a> · <a class="mono" href="../stzdate/day.html">stzDate.Day</a> · <a class="mono" href="../stzdate/daynumber.html">stzDate.DayNumber</a> · <a class="mono" href="../stzdate/dayofyear.html">stzDate.DayOfYear</a> · <a class="mono" href="../stzdate/isleapyear.html">stzDate.IsLeapYear</a> · <a class="mono" href="../stzdate/month.html">stzDate.Month</a> · <a class="mono" href="../stzdate/monthnumber.html">stzDate.MonthNumber</a> · <a class="mono" href="../stzdate/year.html">stzDate.Year</a></li></ul>
   </div>

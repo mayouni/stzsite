@@ -33,21 +33,10 @@
   <div class="wrap page-body">
     <h2>Les formes de ce verbe</h2><p><a class="mono" href="../stzlist.html#nthitem">NthItem</a> · <a class="mono" href="../stzlist.html#nthitemq">NthItemQ</a> · <b class="mono">NthItemWF</b></p>
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;ami&quot;, &quot;coupain&quot;, &quot;CAMARADE&quot;, &quot;compagon&quot; ])
-? o1.NthItemWF(3, func x { return isString(x) and Q(x).IsLowercase() })</pre></div><div class="out"><div class="lbl">Sortie</div><pre>compagon</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/505_nthitemw.ring">505_nthitemw.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;ami&quot;, &quot;coupain&quot;, &quot;CAMARADE&quot;, &quot;compagon&quot; ])
-? o1.NthItemWF(3, func x { return isString(x) and Q(x).IsLowercase() } )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>compagon</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/506_nthitemwxt.ring">506_nthitemwxt.ring</a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList( [ &quot;c&quot;, &quot;c++&quot;, &quot;C#&quot;, &quot;RING&quot;, &quot;Python&quot;, &quot;RUBY&quot; ] )
-? o1.ItemsWF( func x { return Q(x).IsLowercased() } )
-? o1.FirstItemWF( func x { return Q(x).IsLowercased() } ) + NL
-? o1.NthItemWF(2, func x { return Q(x).IsLowercased() } ) + NL
-? o1.LastItemWF( func x { return Q(x).IsLowercased() } )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>c
-c++
-
-c
-
-c++
-
-c++</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/552_itemswxt.ring">552_itemswxt.ring</a></p>
+? o1.NthItemWF(3, func x { return isString(x) and Q(x).IsLowercase() })</pre></div><div class="out"><div class="lbl">Sortie</div><pre>compagon</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/505_nthitemw.ring">505_nthitemw.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;ami&quot;, &quot;coupain&quot;, &quot;CAMARADE&quot;, &quot;compagon&quot; ])
+? o1.NthItemWF(3, func x { return isString(x) and Q(x).IsLowercase() } )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>compagon</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/506_nthitemwxt.ring">506_nthitemwxt.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#nthitemwf">La classe stzList</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlist/firstitemwf.html">stzList.FirstItemWF</a> · <a class="mono" href="../stzlist/itemswf.html">stzList.ItemsWF</a> · <a class="mono" href="../stzlist/lastitemwf.html">stzList.LastItemWF</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#nthitemwf">La classe stzList</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

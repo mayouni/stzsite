@@ -35,16 +35,16 @@
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oSingle = StzDateTimeQ(&quot;2024-03-15 03:05:00&quot;)
 ? oSingle.ToString12h()
 ? oSingle.ToStringXT(&quot;h:mm AP&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>2024-03-15 3:05:00 AM
-3:05 AM</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/60_single_digit_hours.ring">60_single_digit_hours.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oParsed = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
+3:05 AM</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/60_single_digit_hours.ring">60_single_digit_hours.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oParsed = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
 ? oParsed.Hours()
 ? oParsed.ToString()
 ? oParsed.ToString12h()</pre></div><div class="out"><div class="lbl">Output</div><pre>14
 2024-03-15 14:30:45
-2024-03-15 2:30:45 PM</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/58_parsing_preserves_original_hour.ring">58_parsing_preserves_original_hour.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oEleven = StzDateTimeQ(&quot;2024-03-15 11:59:59&quot;)
+2024-03-15 2:30:45 PM</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/58_parsing_preserves_original_hour.ring">58_parsing_preserves_original_hour.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oEleven = StzDateTimeQ(&quot;2024-03-15 11:59:59&quot;)
 oOne = StzDateTimeQ(&quot;2024-03-15 13:00:00&quot;)
 ? oEleven.ToString12h()
 ? oOne.ToString12h()</pre></div><div class="out"><div class="lbl">Output</div><pre>2024-03-15 11:59:59 AM
-2024-03-15 1:00:00 PM</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/55_hour_boundaries.ring">55_hour_boundaries.ring</a></p>
+2024-03-15 1:00:00 PM</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/55_hour_boundaries.ring">55_hour_boundaries.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzdatetime.html#tostring12h">The class stzDateTime</a></li><li><a href="../../guide/i18n.html">The area's guide: Internationalization</a></li><li>The other methods in these examples: <a class="mono" href="../stzdatetime/hours.html">stzDateTime.Hours</a> · <a class="mono" href="../stzdatetime/tostringxt.html">stzDateTime.ToStringXT</a></li></ul>
   </div>

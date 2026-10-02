@@ -36,35 +36,35 @@
 ? Q(&quot;^^♥^^&quot;).ContainsXT(&quot;^&quot;, :Before = 3)
 # &#x27;^&#x27; is after 2 in &#x27;--♥^^&#x27;
 ? Q(&quot;--♥^^&quot;).ContainsXT(&quot;^&quot;, :After = 2)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/175_containsxt.ring">175_containsxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># a caret after position 2
+1</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/175_containsxt.ring">175_containsxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># a caret after position 2
 ? Q(&quot;^^♥^^&quot;).ContainsXT(&quot;^&quot;, :AfterPosition = 2)
 # a caret in the 5..3 span (normalized)
 ? Q(&quot;^^♥^^&quot;).ContainsInSection(&quot;^&quot;, 5, 3)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/173_containsxt.ring">173_containsxt.ring</a></p><h2>Scope <span class="mono">(5)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># &#x27;^&#x27; occurs before &#x27;♥^&#x27; in &#x27;^^♥^^&#x27;
+1</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/173_containsxt.ring">173_containsxt.ring</a></p><h2>Scope <span class="mono">(5)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># &#x27;^&#x27; occurs before &#x27;♥^&#x27; in &#x27;^^♥^^&#x27;
 ? Q(&quot;^^♥^^&quot;).ContainsXT(&quot;^&quot;, :Before = &quot;♥^&quot;)
 # &#x27;^&#x27; occurs after &#x27;-♥&#x27; in &#x27;--♥^^&#x27;
 ? Q(&quot;--♥^^&quot;).ContainsXT(&quot;^&quot;, :After = &quot;-♥&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/176_containsxt.ring">176_containsxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># &#x27;^&#x27; occurs before position 3 in &#x27;^^♥^^&#x27;
+1</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/176_containsxt.ring">176_containsxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># &#x27;^&#x27; occurs before position 3 in &#x27;^^♥^^&#x27;
 ? Q(&quot;^^♥^^&quot;).ContainsXT(&quot;^&quot;, :BeforePosition = 3)
 # &#x27;^&#x27; occurs after position 2 in &#x27;--♥^^&#x27;
 ? Q(&quot;--♥^^&quot;).ContainsXT(&quot;^&quot;, :AfterPosition = 2)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/174_containsxt.ring">174_containsxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># ContainsAt([1,4,7], &#x27;♥&#x27;) is TRUE
+1</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/174_containsxt.ring">174_containsxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># ContainsAt([1,4,7], &#x27;♥&#x27;) is TRUE
 ? Q(&quot;♥^^♥^^♥&quot;).ContainsAt([ 1, 4, 7 ], &quot;♥&quot;)
 # ContainsXT(&#x27;♥&#x27;, :AtPositions=[1,4,7]) is TRUE
 ? Q(&quot;♥^^♥^^♥&quot;).ContainsXT(&quot;♥&quot;, :AtPositions = [ 1, 4, 7 ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/178_containsat.ring">178_containsat.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;123♥♥678♥♥1234♥♥789&quot;)
+1</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/178_containsat.ring">178_containsat.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;123♥♥678♥♥1234♥♥789&quot;)
 # a heart in [3, 10]
 ? o1.ContainsXT( &quot;♥&quot;, :InSection = [ 3, 10 ] )
 # a heart in any of the sections
 ? o1.ContainsXT( &quot;♥&quot;, :InSections = [ [ 3, 10 ], [ 8, 12 ], [ 14, 19 ] ] )</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/103_containsxt.ring">103_containsxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># ContainsAt(3, &#x27;♥&#x27;) is TRUE
+1</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/103_containsxt.ring">103_containsxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># ContainsAt(3, &#x27;♥&#x27;) is TRUE
 ? Q(&quot;^^♥^^&quot;).ContainsAt(3, &quot;♥&quot;)
 # ContainsAt(&#x27;♥&#x27;, :Position=3) is TRUE
 ? Q(&quot;^^♥^^&quot;).ContainsAt(&quot;♥&quot;, :Position = 3)
 # ContainsXT(&#x27;♥&#x27;, :AtPosition=3) is TRUE
 ? Q(&quot;^^♥^^&quot;).ContainsXT(&quot;♥&quot;, :AtPosition = 3)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/170_containsat.ring">170_containsat.ring</a></p>
+1</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/170_containsat.ring">170_containsat.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#containsxt">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/containsat.html">stzString.ContainsAt</a> · <a class="mono" href="../stzstring/containsinsection.html">stzString.ContainsInSection</a></li></ul>
   </div>

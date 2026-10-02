@@ -40,7 +40,7 @@
 # case strict
 ? o1.IsEqualToCS(&quot;RiteKode&quot;, TRUE)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 1
-0</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/651_isequalto.ring">651_isequalto.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;énoncé&quot;)
+0</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/651_isequalto.ring">651_isequalto.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;énoncé&quot;)
 # strictly different from enonce
 ? o1.IsEqualTo(&quot;enonce&quot;)
 # but quietly equal
@@ -48,7 +48,7 @@
 # ... and to its uppercase
 ? o1.IsQuietEqualTo(&quot;ÉNONCÉ&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>0
 1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/686_isequalto.ring">686_isequalto.ring</a></p><h2>Scope <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;SOFTANZA IS AWSOME!&quot;)
+1</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/686_isequalto.ring">686_isequalto.ring</a></p><h2>Scope <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;SOFTANZA IS AWSOME!&quot;)
 # strictly different
 ? o1.IsEqualTo(&quot;softanza is awsome!&quot;)
 # equal case-aside
@@ -56,7 +56,7 @@
 # it IS the uppercase of it
 ? o1.IsUppercaseOf(&quot;softanza is awsome!&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>0
 1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/684_isequalto.ring">684_isequalto.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># sam before samira
+1</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/684_isequalto.ring">684_isequalto.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># sam before samira
 ? Q(&quot;sam&quot;) &lt; &quot;samira&quot;
 # samira after ira
 ? Q(&quot;samira&quot;) &gt; &quot;ira&quot;
@@ -66,7 +66,7 @@
 ? Q(&quot;QAM&quot;).IsEqualTo(&quot;qam&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 1
 0
-0</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/897_string_comparaision_logic_in_stzstring.ring">897_string_comparaision_logic_in_stzstring.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># Trimmed strips surrounding spaces
+0</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/897_string_comparaision_logic_in_stzstring.ring">897_string_comparaision_logic_in_stzstring.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># Trimmed strips surrounding spaces
 ? Q(&quot;  hi  &quot;).Trimmed()
 # IsEqualTo matches identical strings
 ? Q(&quot;abc&quot;).IsEqualTo(&quot;abc&quot;)
@@ -76,7 +76,7 @@
 ? Q(&quot;softanza&quot;).LastNChars(3)</pre></div><div class="out"><div class="lbl">Output</div><pre>hi
 1
 sof
-nza</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/00_string_narrated.ring">00_string_narrated.ring</a></p>
+nza</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/00_string_narrated.ring">00_string_narrated.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#isequalto">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/firstnchars.html">stzString.FirstNChars</a> · <a class="mono" href="../stzstring/isequaltocs.html">stzString.IsEqualToCS</a> · <a class="mono" href="../stzstring/isquietequalto.html">stzString.IsQuietEqualTo</a> · <a class="mono" href="../stzstring/isuppercaseof.html">stzString.IsUppercaseOf</a> · <a class="mono" href="../stzstring/lastnchars.html">stzString.LastNChars</a> · <a class="mono" href="../stzstring/trimmed.html">stzString.Trimmed</a></li></ul>
   </div>

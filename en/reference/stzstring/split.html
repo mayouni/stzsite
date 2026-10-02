@@ -36,12 +36,12 @@
 ? @@( Q(&quot;ONE-TWO-THREE&quot;).Split(&quot;-&quot;) )
 # SplitW at every non-letter is equivalent
 ? @@( Q(&quot;ONE-TWO-THREE&quot;).SplitW(&#x27;{ Q(@char).IsNotLetter() }&#x27;) )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot; ]
-[ &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/438_split.ring">438_split.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
+[ &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/438_split.ring">438_split.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
 big  = new stzString( oAB.Repeated(1000000) )
 oXC = new stzString(&quot;x,&quot;)
 oCSV = new stzString( oXC.Repeated(200000) )  # 200,000 &quot;x,&quot; pairs
 # Split(&#x27;,&#x27;) yields 200,000 parts
-? len(oCSV.Split(&quot;,&quot;))</pre></div><div class="out"><div class="lbl">Output</div><pre>200000</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p>
+? len(oCSV.Split(&quot;,&quot;))</pre></div><div class="out"><div class="lbl">Output</div><pre>200000</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#split">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/splitw.html">stzString.SplitW</a></li></ul>
   </div>

@@ -40,7 +40,7 @@ o2 = new stzString(&quot;bla bla --word-- bla bla --nword- bla --word--&quot;)
 o2.ReplaceXT(&quot;word&quot;, :BoundedBy = &quot;--&quot;, :With = &quot;WORD&quot;)
 # the XT form
 ? o2.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>bla bla --WORD-- bla bla --nword- bla --WORD--
-bla bla --WORD-- bla bla --nword- bla --WORD--</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/575_replacesubstringboundedby.ring">575_replacesubstringboundedby.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;bla bla &lt;&lt;word&gt;&gt; bla bla &lt;&lt;noword&gt;&gt; bla &lt;&lt;word&gt;&gt;&quot;)
+bla bla --WORD-- bla bla --nword- bla --WORD--</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/575_replacesubstringboundedby.ring">575_replacesubstringboundedby.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;bla bla &lt;&lt;word&gt;&gt; bla bla &lt;&lt;noword&gt;&gt; bla &lt;&lt;word&gt;&gt;&quot;)
 o1.ReplaceSubStringBoundedBy(&quot;noword&quot;, [ &quot;&lt;&lt;&quot;, &quot;&gt;&gt;&quot; ], :With = &quot;word&quot;)
 # the method form
 ? o1.Content()
@@ -48,7 +48,7 @@ o2 = new stzString(&quot;bla bla &lt;&lt;word&gt;&gt; bla bla &lt;&lt;noword&gt;
 o2.ReplaceXT(&quot;noword&quot;, :BoundedBy = [&quot;&lt;&lt;&quot;, &quot;&gt;&gt;&quot;], :With = &quot;word&quot;)
 # the XT form
 ? o2.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>bla bla &lt;&lt;word&gt;&gt; bla bla &lt;&lt;word&gt;&gt; bla &lt;&lt;word&gt;&gt;
-bla bla &lt;&lt;word&gt;&gt; bla bla &lt;&lt;word&gt;&gt; bla &lt;&lt;word&gt;&gt;</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/574_content.ring">574_content.ring</a></p>
+bla bla &lt;&lt;word&gt;&gt; bla bla &lt;&lt;word&gt;&gt; bla &lt;&lt;word&gt;&gt;</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/574_content.ring">574_content.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#replacesubstringboundedby">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/replacext.html">stzString.ReplaceXT</a></li></ul>
   </div>

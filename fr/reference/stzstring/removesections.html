@@ -35,11 +35,11 @@
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;1♥♥456♥♥901♥♥4&quot;)
 o1.RemoveSections([ 2:3, 7:8, 12:13 ])
 # the three heart pairs are gone
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>14569014</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/64_removesections.ring">64_removesections.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;PhpRingRingRingPythonRubyRuby&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>14569014</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/64_removesections.ring">64_removesections.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;PhpRingRingRingPythonRubyRuby&quot;)
 aSections = [ [ 8, 11 ], [ 9, 12 ], [ 10, 13 ], [ 11, 14 ], [ 12, 15 ], [ 26, 29 ] ]
 o1.RemoveSections(aSections)
 # the merged spans are removed in one pass
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>PhpRingPythonRuby</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/290_content.ring">290_content.ring</a></p>
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>PhpRingPythonRuby</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/290_content.ring">290_content.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#removesections">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li></ul>
   </div>

@@ -36,22 +36,18 @@
 ? @@( Q(&quot;ONE-TWO-THREE&quot;).Split(&quot;-&quot;) )
 # SplitW at every non-letter is equivalent
 ? @@( Q(&quot;ONE-TWO-THREE&quot;).SplitW(&#x27;{ Q(@char).IsNotLetter() }&#x27;) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot; ]
-[ &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/438_split.ring">438_split.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># / :At every 4th position drops it
-? @@( Q(&quot;RingRingRing&quot;).SplitW(:At = &#x27;@i % 4 = 0&#x27;) )
-# : After every 4th position keeps it
-? @@( Q(&quot;RingRingRing&quot;).SplitW(:After = &#x27;@i % 4 = 0&#x27;) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ &quot;Rin&quot;, &quot;Rin&quot;, &quot;Rin&quot; ]
-[ &quot;Ring&quot;, &quot;Ring&quot;, &quot;Ring&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/440_splitw.ring">440_splitw.ring</a></p><h2>Portée <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># SplitAtCharsW
+[ &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/438_split.ring">438_split.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># SplitAtCharsW
 ? @@( Q(&quot;RingRingRing&quot;).SplitAtCharsW(&#x27;Q(@char).IsUppercase()&#x27;) )
 # SplitW(:AtChars) is the same
 ? @@( Q(&quot;RingRingRing&quot;).SplitW(:AtChars = &#x27;Q(@char).IsUppercase()&#x27;) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ &quot;ing&quot;, &quot;ing&quot;, &quot;ing&quot; ]
-[ &quot;ing&quot;, &quot;ing&quot;, &quot;ing&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/442_splitatcharsw.ring">442_splitatcharsw.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># SplitW at uppercase drops the R&#x27;s
+[ &quot;ing&quot;, &quot;ing&quot;, &quot;ing&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/442_splitatcharsw.ring">442_splitatcharsw.ring</a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># SplitW at uppercase drops the R&#x27;s
 ? @@( Q(&quot;RingRingRing&quot;).SplitW(&#x27;Q(@char).IsUppercase()&#x27;) )
 # SplitAtW is the same
 ? @@( Q(&quot;RingRingRing&quot;).SplitAtW(&#x27;Q(@char).IsUppercase()&#x27;) )
 # the :At named param is the same
 ? @@( Q(&quot;RingRingRing&quot;).SplitW(:At = &#x27;Q(@char).IsUppercase()&#x27;) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ &quot;ing&quot;, &quot;ing&quot;, &quot;ing&quot; ]
 [ &quot;ing&quot;, &quot;ing&quot;, &quot;ing&quot; ]
-[ &quot;ing&quot;, &quot;ing&quot;, &quot;ing&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/439_splitw.ring">439_splitw.ring</a></p>
+[ &quot;ing&quot;, &quot;ing&quot;, &quot;ing&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/439_splitw.ring">439_splitw.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#splitw">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/split.html">stzString.Split</a> · <a class="mono" href="../stzstring/splitatcharsw.html">stzString.SplitAtCharsW</a> · <a class="mono" href="../stzstring/splitatw.html">stzString.SplitAtW</a></li></ul>
   </div>

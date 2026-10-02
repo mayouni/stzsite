@@ -35,22 +35,14 @@
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;123456789&quot;)
 o1.InsertBefore([4, 7], &quot;_&quot;)
 # underscores land before positions 4 and 7
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>123_456_789</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/309_content.ring">309_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;Hello dear!&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>123_456_789</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/309_content.ring">309_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;Hello dear!&quot;)
 o1.InsertBefore(&quot;my &quot;, &quot;dear&quot;)
 # my before dear
 ? o1.Content()
 o1.InsertAfter(&quot; friend&quot;, &quot;dear&quot;)
 # friend after dear
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>Hello my dear!
-Hello my dear friend!</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/912_content.ring">912_content.ring</a></p><h2>Scope <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;Ring language&quot;)
-o1.InsertBefore(&quot;language&quot;, &quot;programming &quot;)
-# inserted before the anchor
-? o1.Content()
-o2 = new stzString(&quot;Ring language&quot;)
-o2.InsertAfter(&quot;Ring&quot;, &quot; programming&quot;)
-# inserted after the anchor
-? o2.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>Ring programming language
-Ring programming language</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/823_content.ring">823_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;ACD&quot;)
+Hello my dear friend!</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/912_content.ring">912_content.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;ACD&quot;)
 o1.Insert(&quot;B&quot;, :BeforePosition = 2)
 # substring-first form
 ? o1.Content()
@@ -63,7 +55,7 @@ o2.InsertBefore(2, &quot;B&quot;)
 # the short forms stack
 ? o2.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>ABCD
 ABCD
-ABBBCD</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/from_list_361_pr.ring">from_list_361_pr.ring</a></p>
+ABBBCD</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/from_list_361_pr.ring">from_list_361_pr.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#insertbefore">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/insert.html">stzString.Insert</a> · <a class="mono" href="../stzstring/insertafter.html">stzString.InsertAfter</a></li></ul>
   </div>

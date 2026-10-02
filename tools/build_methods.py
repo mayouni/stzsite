@@ -12,8 +12,9 @@ output kept every promise their file wrote are shown.
 import json, re, html, collections
 
 def esc(s): return html.escape(str(s), quote=True)
-RING = re.compile(r"\bRing\b")
-def prose(s): return esc(RING.sub("Haro", str(s)).replace("Ring++", "Haro"))
+RING = re.compile(r"\b(?:Ring|RING)\b")
+RING_WORD = re.compile(r"(?<![\w./-])ring(?![\w.])", re.I)   # the word, not a .ring file name
+def prose(s): return esc(RING.sub(lambda m: "HARO" if m.group(0).isupper() else "Haro", str(s)).replace("Ring++", "Haro"))
 SUFFIX = re.compile(r"(?:CS|Q|XT|XTT|Z|ZZ|W|WF|WXT|IB|B|ST|QC)+$")
 ISSUE = re.compile(r"(?i)\b(error|raises?|refus\w*|cannot|can't|invalid|not allowed|incorrect|unsupported|not found)\b")
 
@@ -40,6 +41,10 @@ def load_entries(ROOT):
     entries = collections.defaultdict(list)
     if f.exists():
         for ex in json.loads(f.read_text(encoding="utf-8")):
+            # the site never names the platform's former language; library code is never rewritten,
+            # so an example that shows the word, in its code or its output, is left out
+            if RING_WORD.search(ex["code"]) or RING_WORD.search(ex["out"]):
+                continue
             for cls, meth in ex["methods"]:
                 entries[(cls, meth)].append(ex)
     return entries
@@ -59,6 +64,11 @@ def build_methods(ctx):
     ref = json.loads((ROOT / "data" / "reference.json").read_text(encoding="utf-8"))
     by_class = {c["name"]: c for c in ref["classes"]}
     area_title = {g["slug"]: g for g in json.loads((ROOT / "data" / "atlas-index.json").read_text(encoding="utf-8"))["groups"]}
+    # the entry folders hold nothing but generated pages: clear them, so an entry that no longer qualifies leaves no page
+    import shutil
+    for lang in ("fr", "en"):
+        for d in (ROOT / lang / "reference").glob("*"):
+            if d.is_dir(): shutil.rmtree(d)
     pages = 0
     for lang in ("fr", "en"):
         t = T[lang]

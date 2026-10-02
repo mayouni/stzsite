@@ -39,7 +39,7 @@
 # ...and still gets 100.4 right
 ? (new stzNumber(&quot;100.4&quot;)).RoundedTo(0)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>3
 12.456
-100</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_tie_rule_narrated.ring">numeric_tie_rule_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># 0.5 rounds to 1
+100</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_tie_rule_narrated.ring">numeric_tie_rule_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># 0.5 rounds to 1
 ? (new stzNumber(&quot;0.5&quot;)).RoundedTo(0)
 # 1.5 rounds to 2
 ? (new stzNumber(&quot;1.5&quot;)).RoundedTo(0)
@@ -52,7 +52,7 @@
 2
 3
 4
--2</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rounding_narrated.ring">numeric_rounding_narrated.ring</a></p><h2>Portée <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oPi = new stzNumber(&quot;12.456&quot;)
+-2</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rounding_narrated.ring">numeric_rounding_narrated.ring</a></p><h2>Portée <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oPi = new stzNumber(&quot;12.456&quot;)
 # asking for more places than exist adds none
 ? oPi.RoundedTo(4)
 # ...however many more
@@ -69,7 +69,7 @@
 12.46
 12.5
 12
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rounding_narrated.ring">numeric_rounding_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># ten point four rounds to ten
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rounding_narrated.ring">numeric_rounding_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># ten point four rounds to ten
 ? (new stzNumber(&quot;10.4&quot;)).RoundedTo(0)
 # ...not to one
 ? (new stzNumber(&quot;10.4&quot;)).RoundedTo(0) != &quot;1&quot;
@@ -91,7 +91,7 @@
 0
 21
 1001
--10</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rounding_narrated.ring">numeric_rounding_narrated.ring</a></p>
+-10</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rounding_narrated.ring">numeric_rounding_narrated.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stznumber.html#roundedto">La classe stzNumber</a></li><li><a href="../../guide/numeric.html">Le guide du domaine : Numérique et optimisation</a></li></ul>
   </div>

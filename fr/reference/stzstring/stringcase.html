@@ -39,24 +39,7 @@
 # its dotted capital is uppercase
 ? Q(&quot;İ&quot;).StringCase()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>latin
 lowercase
-uppercase</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/654_script.ring">654_script.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># ring
-? StzStringQ(&quot;ring&quot;).StringCase()
-# RING
-? StzStringQ(&quot;RING&quot;).StringCase()
-# RING and python
-? StzStringQ(&quot;RING and python&quot;).StringCase()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>lowercase
-uppercase
-hybridcase</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/731_stringcase.ring">731_stringcase.ring</a></p><h2>Portée <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># &#x27;RING&#x27; is uppercase
-? Q(&quot;RING&quot;).StringCase()
-# &#x27;ring&#x27; is lowercase
-? Q(&quot;ring&quot;).StringCase()
-# &#x27;Ring&#x27; is capitalcase
-? Q(&quot;Ring&quot;).StringCase()
-# &#x27;Ring is AWOSOME!&#x27; is hybridcase
-? Q(&quot;Ring is AWOSOME!&quot;).StringCase()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>uppercase
-lowercase
-capitalcase
-hybridcase</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/247_stringcase.ring">247_stringcase.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># the script
+uppercase</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/654_script.ring">654_script.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># the script
 ? TQ(&quot;Σίσυφος&quot;).Script()
 # capitalcase
 ? Q(&quot;Σίσυφος&quot;).StringCase()
@@ -78,7 +61,7 @@ uppercase
 ΣΊΣΥΦΟΣ
 Σίσυφοσ
 1
-0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/653_script.ring">653_script.ring</a></p>
+0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/653_script.ring">653_script.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#stringcase">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/capitalcased.html">stzString.CapitalCased</a> · <a class="mono" href="../stzstring/isequaltocs.html">stzString.IsEqualToCS</a> · <a class="mono" href="../stzstring/lowercased.html">stzString.Lowercased</a> · <a class="mono" href="../stzstring/uppercased.html">stzString.Uppercased</a></li></ul>
   </div>

@@ -37,12 +37,12 @@
 ? o1.NumberOfSubStrings()
 # unique substrings
 ? o1.NumberOfUniqueSubStrings()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>153
-120</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/366_findsubstringsw.ring">366_findsubstringsw.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;RINGORIALAND&quot;)
+120</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/366_findsubstringsw.ring">366_findsubstringsw.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;RINGORIALAND&quot;)
 # there are 12*13/2 = 78 substrings
 ? o1.NumberOfSubStrings()
 # SubStrings() returns that many
 ? len( o1.SubStrings() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>78
-78</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/125_numberofsubstrings.ring">125_numberofsubstrings.ring</a></p><h2>Portée <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oA = new stzString(&quot;a&quot;)
+78</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/125_numberofsubstrings.ring">125_numberofsubstrings.ring</a></p><h2>Portée <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oA = new stzString(&quot;a&quot;)
 s = new stzString( oA.Repeated(1000) )
 # NumberOfSubStrings is 500,500 (L(L+1)/2)
 ? s.NumberOfSubStrings()
@@ -51,7 +51,7 @@ s = new stzString( oA.Repeated(1000) )
 # SubStringsU() distinct is 1,000 (a^1..a^1000)
 ? len(s.SubStringsU())</pre></div><div class="out"><div class="lbl">Sortie</div><pre>500500
 500500
-1000</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/998_engine_string_largedata_narrated.ring">998_engine_string_largedata_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oA = new stzString(&quot;a&quot;)
+1000</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/998_engine_string_largedata_narrated.ring">998_engine_string_largedata_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oA = new stzString(&quot;a&quot;)
 s = new stzString( oA.Repeated(100) )
 # NumberOfSubStrings is 5,050
 ? s.NumberOfSubStrings()
@@ -69,7 +69,7 @@ s = new stzString( oA.Repeated(100) )
 100
 50
 3775
-99</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/998_engine_string_largedata_narrated.ring">998_engine_string_largedata_narrated.ring</a></p>
+99</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/998_engine_string_largedata_narrated.ring">998_engine_string_largedata_narrated.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#numberofsubstrings">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/consecutivesubstrings.html">stzString.ConsecutiveSubStrings</a> · <a class="mono" href="../stzstring/duplicatescs.html">stzString.DuplicatesCS</a> · <a class="mono" href="../stzstring/finddupsecutivechars.html">stzString.FindDupSecutiveChars</a> · <a class="mono" href="../stzstring/numberofuniquesubstrings.html">stzString.NumberOfUniqueSubStrings</a> · <a class="mono" href="../stzstring/substrings.html">stzString.SubStrings</a> · <a class="mono" href="../stzstring/substringsu.html">stzString.SubStringsU</a></li></ul>
   </div>

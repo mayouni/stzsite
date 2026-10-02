@@ -33,32 +33,32 @@
   <div class="wrap page-body">
     <h2>The forms of this verb</h2><p><b class="mono">Section</b> · <a class="mono" href="../stzstring.html#sectionq">SectionQ</a> · <a class="mono" href="sectionxt.html">SectionXT</a> · <a class="mono" href="../stzstring.html#sectionxtq">SectionXTQ</a></p>
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># 456
-? StzStringQ(&quot;123456789&quot;).Section(4, 6)</pre></div><div class="out"><div class="lbl">Output</div><pre>456</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/788_section.ring">788_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># chars 1..6
-? Q(&quot;NEXTAV TUNISIA&quot;).Section(:From = 1, :To = 6)</pre></div><div class="out"><div class="lbl">Output</div><pre>NEXTAV</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/521_section.ring">521_section.ring</a></p><h2>Scope <span class="mono">(8)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;216;TUNISIA;227;NIGER&quot;)
+? StzStringQ(&quot;123456789&quot;).Section(4, 6)</pre></div><div class="out"><div class="lbl">Output</div><pre>456</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/788_section.ring">788_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># chars 1..6
+? Q(&quot;NEXTAV TUNISIA&quot;).Section(:From = 1, :To = 6)</pre></div><div class="out"><div class="lbl">Output</div><pre>NEXTAV</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/521_section.ring">521_section.ring</a></p><h2>Scope <span class="mono">(8)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;216;TUNISIA;227;NIGER&quot;)
 # the field after the first ;
-? o1.Section(5, o1.NextOccurrence( :Of = &quot;;&quot;, :StartingAt = 5 ) - 1)</pre></div><div class="out"><div class="lbl">Output</div><pre>TUNISIA</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/698_section.ring">698_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;softanza&quot;)
+? o1.Section(5, o1.NextOccurrence( :Of = &quot;;&quot;, :StartingAt = 5 ) - 1)</pre></div><div class="out"><div class="lbl">Output</div><pre>TUNISIA</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/698_section.ring">698_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;softanza&quot;)
 # Section(4, 6) is &#x27;tan&#x27;
 ? o1.Section(4, 6)
 # Section(6, 4) auto-orders to the same
 ? o1.Section(6, 4)</pre></div><div class="out"><div class="lbl">Output</div><pre>tan
-tan</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/152_section.ring">152_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;12345678&quot;)
+tan</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/152_section.ring">152_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;12345678&quot;)
 # Section(3, 5) spans positions 3..5
 ? o1.Section(3, 5)
 # Section(5, 3) auto-orders to the same span
 ? o1.Section(5, 3)</pre></div><div class="out"><div class="lbl">Output</div><pre>345
-345</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/18_section.ring">18_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;&lt;&lt;♥♥♥&gt;&gt;--&lt;&lt;stars&gt;&gt;--&lt;&lt;♥♥♥&gt;&gt;&quot;)
+345</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/18_section.ring">18_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;&lt;&lt;♥♥♥&gt;&gt;--&lt;&lt;stars&gt;&gt;--&lt;&lt;♥♥♥&gt;&gt;&quot;)
 # BetweenIB(3, 5) is the heart run
 ? o1.BetweenIB(3, 5)
 # Section(3, 5) gives the same
 ? o1.Section(3, 5)</pre></div><div class="out"><div class="lbl">Output</div><pre>♥♥♥
-♥♥♥</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/185_betweenib.ring">185_betweenib.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># 4 mirrored is a single char
+♥♥♥</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/185_betweenib.ring">185_betweenib.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># 4 mirrored is a single char
 ? Q(&quot;SOFTANZA&quot;).Section(4, :@)
 # the 3rd-to-last mirrored
 ? Q(&quot;SOFTANZA&quot;).Section(:NthToLast = 3, :@)
 # both mirrored is everything
 ? Q(&quot;SOFTANZA&quot;).Section(:@, :@)</pre></div><div class="out"><div class="lbl">Output</div><pre>T
 A
-SOFTANZA</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/523_section.ring">523_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;what a &lt;&lt;nice&gt;&gt;&gt; day!&quot;)
+SOFTANZA</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/523_section.ring">523_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;what a &lt;&lt;nice&gt;&gt;&gt; day!&quot;)
 # a single char
 ? o1.Section(3, 3)
 # the word
@@ -66,7 +66,7 @@ SOFTANZA</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the libr
 # reversed indexes auto-order
 ? o1.Section(13, 10)</pre></div><div class="out"><div class="lbl">Output</div><pre>a
 nice
-nice</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/531_section.ring">531_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;eeebxeTuniseee&quot;)
+nice</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/531_section.ring">531_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;eeebxeTuniseee&quot;)
 # first to last is the whole
 ? o1.Section(:FirstChar, :LastChar)
 # plain Section normalizes 7..4
@@ -74,16 +74,16 @@ nice</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library 
 # SectionXT reads it backwards
 ? o1.SectionXT(7, 4)</pre></div><div class="out"><div class="lbl">Output</div><pre>eeebxeTuniseee
 bxeT
-Texb</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/771_section.ring">771_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
+Texb</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/771_section.ring">771_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
 big  = new stzString( oAB.Repeated(1000000) )
 oRev = new stzString( big.Reversed() )
 # Reversed keeps full length
 ? oRev.NumberOfChars()
 # Reversed head is &#x27;ba&#x27;
 ? oRev.Section(1, 2)</pre></div><div class="out"><div class="lbl">Output</div><pre>2000000
-ba</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p><p class="proof">and 8 more in the tests</p>
+ba</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p><p class="proof">and 7 more in the tests</p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzstring.html#section">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/betweenib.html">stzString.BetweenIB</a> · <a class="mono" href="../stzstring/numberofchars.html">stzString.NumberOfChars</a> · <a class="mono" href="../stzstring/numberofoccurrences.html">stzString.NumberOfOccurrences</a> · <a class="mono" href="../stzstring/range.html">stzString.Range</a> · <a class="mono" href="../stzstring/replace.html">stzString.Replace</a> · <a class="mono" href="../stzstring/replaceall.html">stzString.ReplaceAll</a> · <a class="mono" href="../stzstring/replacefirst.html">stzString.ReplaceFirst</a> · <a class="mono" href="../stzstring/sectionxt.html">stzString.SectionXT</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzstring.html#section">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/betweenib.html">stzString.BetweenIB</a> · <a class="mono" href="../stzstring/numberofchars.html">stzString.NumberOfChars</a> · <a class="mono" href="../stzstring/numberofoccurrences.html">stzString.NumberOfOccurrences</a> · <a class="mono" href="../stzstring/replace.html">stzString.Replace</a> · <a class="mono" href="../stzstring/replaceall.html">stzString.ReplaceAll</a> · <a class="mono" href="../stzstring/replacefirst.html">stzString.ReplaceFirst</a> · <a class="mono" href="../stzstring/sectionxt.html">stzString.SectionXT</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

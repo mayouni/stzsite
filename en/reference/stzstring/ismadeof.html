@@ -33,28 +33,28 @@
   <div class="wrap page-body">
     <h2>The forms of this verb</h2><p><b class="mono">IsMadeOf</b> · <a class="mono" href="../stzstring.html#ismadeofcs">IsMadeOfCS</a></p>
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># made of m, a, a, n
-? Q(&quot;maan&quot;).IsMadeOf([ &quot;m&quot;, &quot;a&quot;, &quot;a&quot;, &quot;n&quot; ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/852_ismadeof.ring">852_ismadeof.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># all octal digits qualify
+? Q(&quot;maan&quot;).IsMadeOf([ &quot;m&quot;, &quot;a&quot;, &quot;a&quot;, &quot;n&quot; ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/852_ismadeof.ring">852_ismadeof.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># all octal digits qualify
 ? Q(&quot;01234567&quot;).IsMadeOfSome( OctalChars() )
 # a binary string uses both bits
 ? Q(&quot;001100101&quot;).IsMadeOf( BinaryChars() )</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/848_ismadeofsome.ring">848_ismadeofsome.ring</a></p><h2>Scope <span class="mono">(4)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;10011033001&quot;)
+1</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/848_ismadeofsome.ring">848_ismadeofsome.ring</a></p><h2>Scope <span class="mono">(4)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;10011033001&quot;)
 # made of 1, 0 and 3
 ? o1.IsMadeOf([ &quot;1&quot;, &quot;0&quot;, &quot;3&quot; ])
 # same, said narratively
 ? o1.IsMadeOf([ &quot;1&quot;, &quot;0&quot;, :and = &quot;3&quot; ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/847_ismadeof.ring">847_ismadeof.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;aabbcaacccbb&quot;)
+1</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/847_ismadeof.ring">847_ismadeof.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;aabbcaacccbb&quot;)
 # made of aa, bb and c
 ? o1.IsMadeOf([ &quot;aa&quot;, &quot;bb&quot;, &quot;c&quot; ])
 # made of some of a, b, c, x
 ? o1.IsMadeOfSome([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;x&quot; ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/816_ismadeof.ring">816_ismadeof.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># &#x27;121212&#x27; is made of &#x27;12&#x27;
+1</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/816_ismadeof.ring">816_ismadeof.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># &#x27;121212&#x27; is made of &#x27;12&#x27;
 ? Q(&quot;121212&quot;).IsMadeOf(&quot;12&quot;)
 # &#x27;121212&#x27; is made of [&#x27;1&#x27;,&#x27;2&#x27;]
 ? Q(&quot;121212&quot;).IsMadeOf([ &quot;1&quot;, &quot;2&quot; ])
 # &#x27;984332&#x27; is made of numbers
 ? Q(&quot;984332&quot;).IsMadeOfNumbers()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/254_ismadeof.ring">254_ismadeof.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;سلسبيل&quot;)
+1</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/254_ismadeof.ring">254_ismadeof.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;سلسبيل&quot;)
 # its four letters
 ? o1.IsMadeOf([ &quot;ب&quot;, &quot;ل&quot;, &quot;س&quot;, &quot;ي&quot; ])
 # an unused fifth spoils IsMadeOf
@@ -62,7 +62,7 @@
 # ... but not IsMadeOfSome
 ? o1.IsMadeOfSome([ &quot;ب&quot;, &quot;ل&quot;, &quot;س&quot;, &quot;ي&quot;, &quot;m&quot; ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 0
-1</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/817_ismadeof.ring">817_ismadeof.ring</a></p>
+1</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/817_ismadeof.ring">817_ismadeof.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#ismadeof">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/ismadeofnumbers.html">stzString.IsMadeOfNumbers</a> · <a class="mono" href="../stzstring/ismadeofsome.html">stzString.IsMadeOfSome</a></li></ul>
   </div>

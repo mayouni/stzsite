@@ -32,16 +32,9 @@
   </div></section>
   <div class="wrap page-body">
     <h2>The forms of this verb</h2><p><a class="mono" href="stringifyandreplace.html">StringifyAndReplace</a> · <a class="mono" href="stringifyandreplaceq.html">StringifyAndReplaceQ</a> · <b class="mono">StringifyAndReplaceXT</b> · <a class="mono" href="../stzlist.html#stringifyandreplacextq">StringifyAndReplaceXTQ</a></p>
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;--_--&quot;, [ 12, &quot;--_--&quot;, 10], &quot;--_--&quot;, 9 ])
+    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;--_--&quot;, [ 12, &quot;--_--&quot;, 10], &quot;--_--&quot;, 9 ])
 o1.StringifyAndReplaceXT(&quot;_&quot;, &quot;♥&quot;) # Used by internal staff in Softanza
-? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;--♥--&quot;, &#x27;[ 12, &quot;--♥--&quot;, 10 ]&#x27;, &quot;--♥--&quot;, &quot;9&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/91_stringifyandreplacext.ring">91_stringifyandreplacext.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>aLargeList = [ &quot;--_--&quot;, [ 12, &quot;--_--&quot;, 10], &quot;--_--&quot;, 9 ]
-for i = 1 to 10_000
-	aLargeList + &quot;ring&quot;
-next
-aLargeList + &quot;--_--&quot; + &quot;--_--&quot;
-o1 = new stzList(aLargeList)
-o1.StringifyAndReplaceXT(&quot;_&quot;, &quot;♥&quot;)
-? o1.Content()[2]</pre></div><div class="out"><div class="lbl">Output</div><pre>[ 12, &quot;--♥--&quot;, 10 ]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/97_stringifyandreplacext.ring">97_stringifyandreplacext.ring</a></p>
+? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;--♥--&quot;, &#x27;[ 12, &quot;--♥--&quot;, 10 ]&#x27;, &quot;--♥--&quot;, &quot;9&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/91_stringifyandreplacext.ring">91_stringifyandreplacext.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzlist.html#stringifyandreplacext">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li></ul>
   </div>

@@ -35,11 +35,11 @@
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;1♥♥456♥♥901♥♥4&quot;)
 o1.RemoveSections([ 2:3, 7:8, 12:13 ])
 # the three heart pairs are gone
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>14569014</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/64_removesections.ring">64_removesections.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;PhpRingRingRingPythonRubyRuby&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>14569014</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/64_removesections.ring">64_removesections.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;PhpRingRingRingPythonRubyRuby&quot;)
 aSections = [ [ 8, 11 ], [ 9, 12 ], [ 10, 13 ], [ 11, 14 ], [ 12, 15 ], [ 26, 29 ] ]
 o1.RemoveSections(aSections)
 # the merged spans are removed in one pass
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>PhpRingPythonRuby</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/290_content.ring">290_content.ring</a></p>
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>PhpRingPythonRuby</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/290_content.ring">290_content.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#removesections">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li></ul>
   </div>

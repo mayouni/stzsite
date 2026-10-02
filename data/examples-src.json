@@ -27634,5 +27634,1169 @@
     "CompactForm"
    ]
   ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/01-find-then-apply.en.md",
+  "title": "1. Select the object",
+  "code": "o1 = new stzList([ \"tea\", \"rice\", \"tea\", \"fish\", \"rice\", \"tea\" ])\n? o1.NumberOfItems()",
+  "expected": "6",
+  "methods": [
+   [
+    "stzList",
+    "NumberOfItems"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/01-find-then-apply.en.md",
+  "title": "5. Act on the positions",
+  "code": "? @@( StzListQ([ \"tea\", \"rice\", \"tea\" ]).DuplicatesRemoved() )",
+  "expected": "[ \"tea\", \"rice\" ]",
+  "methods": [
+   [
+    "stzList",
+    "DuplicatesRemoved"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/02-a-first-sentence.en.md",
+  "title": "2. Select the object",
+  "code": "o1 = new stzString(\"the bread was cold and the tea was cold\")\n? o1.NumberOfWords()",
+  "expected": "9",
+  "methods": [
+   [
+    "stzString",
+    "NumberOfWords"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/02-a-first-sentence.en.md",
+  "title": "4. The keyword \"repeat\" belongs to a list",
+  "code": "oW = new stzList( o1.Words() )\n? oW.ContainsDuplicates()\n? oW.NumberOfDuplicates()",
+  "expected": "TRUE\n3",
+  "methods": [
+   [
+    "stzList",
+    "ContainsDuplicates"
+   ],
+   [
+    "stzList",
+    "NumberOfDuplicates"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.en.md",
+  "title": "1. The active form changes the object",
+  "code": "o1 = new stzString(\"RIxxNxG\")\no1.RemoveAll(\"x\")\n? o1.Content()",
+  "expected": "RING",
+  "methods": [
+   [
+    "stzString",
+    "RemoveAll"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.en.md",
+  "title": "2. The passive form gives you a copy",
+  "code": "o1 = new stzString(\"RIxxNxG\")\n? o1.Removed(\"x\")\n? o1.Content()",
+  "expected": "RING\nRIxxNxG",
+  "methods": [
+   [
+    "stzString",
+    "Removed"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.en.md",
+  "title": "3. The fluent form continues the sentence",
+  "code": "? Q(\"rixxnxg\").RemoveQ(\"x\").UppercaseQ().Spacified()",
+  "expected": "R I N G",
+  "methods": [
+   [
+    "stzString",
+    "RemoveQ"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.en.md",
+  "title": "4. A fluent sentence on an object changes it",
+  "code": "o1 = new stzString(\"rixxnxg\")\n? o1.RemoveQ(\"x\").Uppercased()\n? o1.Content()",
+  "expected": "RING\nring",
+  "methods": [
+   [
+    "stzString",
+    "RemoveQ"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.en.md",
+  "title": "5. Say \"on a copy\" with QC",
+  "code": "o1 = new stzString(\"rixxnxg\")\n? o1.RemoveQC(\"x\").Uppercased()\n? o1.Content()",
+  "expected": "RING\nrixxnxg",
+  "methods": [
+   [
+    "stzString",
+    "Content"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.en.md",
+  "title": "6. A named parameter reads as prose",
+  "code": "? Q(\"tea, rice, tea\").Replaced(\"tea\", :With = \"coffee\")",
+  "expected": "coffee, rice, coffee",
+  "methods": [
+   [
+    "stzString",
+    "Replaced"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.en.md",
+  "title": "7. A question is a name that starts with Is",
+  "code": "? Q(\"bread\").IsLowercase()",
+  "expected": "TRUE",
+  "methods": [
+   [
+    "stzString",
+    "IsLowercase"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/05-one-object-any-structure.en.md",
+  "title": "1. The three questions, asked of a string",
+  "code": "oS = new stzString(\"tea rice tea fish\")\n? oS.Contains(\"tea\")\n? oS.NumberOfOccurrence(\"tea\")\n? @@( oS.FindAll(\"tea\") )",
+  "expected": "TRUE\n2\n[ 1, 10 ]",
+  "methods": [
+   [
+    "stzString",
+    "Contains"
+   ],
+   [
+    "stzString",
+    "NumberOfOccurrence"
+   ],
+   [
+    "stzString",
+    "FindAll"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/05-one-object-any-structure.en.md",
+  "title": "2. The same three questions, asked of a list",
+  "code": "oL = new stzList([ \"tea\", \"rice\", \"tea\", \"fish\" ])\n? oL.Contains(\"tea\")\n? oL.NumberOfOccurrence(\"tea\")\n? @@( oL.FindAll(\"tea\") )",
+  "expected": "TRUE\n2\n[ 1, 3 ]",
+  "methods": [
+   [
+    "stzList",
+    "Contains"
+   ],
+   [
+    "stzList",
+    "NumberOfOccurrence"
+   ],
+   [
+    "stzList",
+    "FindAll"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/06-walk-ask-produce-act.en.md",
+  "title": "1. Walk: the positions, then what is there",
+  "code": "aOrders = [ \"tea\", \"rice\", \"tea\", \"fish\", \"rice\", \"tea\", \"soup\", \"tea\", \"rice\" ]\n? @@( StzListQ([ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]).FindW(\"@item % 3 = 1\") )\n? @@( StzListQ(aOrders).ItemsAtPositions([ 1, 4, 7 ]) )",
+  "expected": "[ 1, 4, 7 ]\n[ \"tea\", \"fish\", \"soup\" ]",
+  "methods": [
+   [
+    "stzList",
+    "FindW"
+   ],
+   [
+    "stzList",
+    "ItemsAtPositions"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/06-walk-ask-produce-act.en.md",
+  "title": "2. Ask: a question answers TRUE or FALSE",
+  "code": "? StzListQ(aOrders).Contains(\"soup\")\n? Q(\"cold\").IsLowercase()",
+  "expected": "TRUE\nTRUE",
+  "methods": [
+   [
+    "stzList",
+    "Contains"
+   ],
+   [
+    "stzString",
+    "IsLowercase"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/06-walk-ask-produce-act.en.md",
+  "title": "3. Produce: a yielder makes new values from old ones",
+  "code": "oY = new stzYielder([ 12, 0, 30, -5, 18 ])\n? @@( oY.Filter(:IsPositive) )\n? @@( oY.Map(:Double) )\n? oY.Reduce(:Sum)",
+  "expected": "[ 12, 30, 18 ]\n[ 24, 0, 60, -10, 36 ]\n55",
+  "methods": [
+   [
+    "stzYielder",
+    "Filter"
+   ],
+   [
+    "stzYielder",
+    "Map"
+   ],
+   [
+    "stzYielder",
+    "Reduce"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/06-walk-ask-produce-act.en.md",
+  "title": "5. Act: a verb changes the data",
+  "code": "oL = new stzList(aOrders)\noL.RemoveAll(\"tea\")\n? @@( oL.Content() )",
+  "expected": "[ \"rice\", \"fish\", \"rice\", \"soup\", \"rice\" ]",
+  "methods": [
+   [
+    "stzList",
+    "RemoveAll"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/06-walk-ask-produce-act.en.md",
+  "title": "6. A condition can be handed over as data",
+  "code": "? @@( StzListQ([ 12, 0, 30, -5, 18 ]).ItemsW(\"@item > 0\") )",
+  "expected": "[ 12, 30, 18 ]",
+  "methods": [
+   [
+    "stzList",
+    "ItemsW"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/07-declare-what-not-how.en.md",
+  "title": "1. Find where a condition holds",
+  "code": "o = new stzList([ 4, 7, 10, 3, 8 ])\n? @@( o.FindW(\"{ @item > 5 }\") )\n? @@( o.ItemsW(\"{ @item > 5 }\") )\n? o.CountW(\"{ @item > 5 }\")",
+  "expected": "[ 2, 3, 5 ]\n[ 7, 10, 8 ]\n3",
+  "methods": [
+   [
+    "stzList",
+    "FindW"
+   ],
+   [
+    "stzList",
+    "ItemsW"
+   ],
+   [
+    "stzList",
+    "CountW"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/07-declare-what-not-how.en.md",
+  "title": "3. A rule is data: keep it, and apply it anywhere",
+  "code": "cRule = \"{ @item > 20 }\"\noA = new stzList([ 12, 0, 30, -5, 18, 25 ])\noB = new stzList([ 3, 40, 9 ])\n? oA.CountW(cRule)\n? oB.CountW(cRule)",
+  "expected": "2\n1",
+  "methods": [
+   [
+    "stzList",
+    "CountW"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/07-declare-what-not-how.en.md",
+  "title": "5. The same word on words",
+  "code": "oS = new stzList([ \"ring\", \"PHP\", \"C#\", \"ruby\", \"GO\" ])\n? @@( oS.FindW(\"{ IsUppercase(@item) }\") )\n? @@( oS.ItemsW(\"{ Q(@item).IsLowercase() }\") )",
+  "expected": "[ 2, 3, 5 ]\n[ \"ring\", \"ruby\" ]",
+  "methods": [
+   [
+    "stzList",
+    "FindW"
+   ],
+   [
+    "stzList",
+    "ItemsW"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/08-patterns-in-text.en.md",
+  "title": "2. Somewhere in the text, or the whole text",
+  "code": "? rx(\"[0-9]+\").Match(\"24/09/2026\")\n? rx(\"[0-9]+\").MatchFirst(\"24/09/2026\")\n? @@( Q(\"tea 12, rice 30\").Numbers() )",
+  "expected": "FALSE\nTRUE\n[ \"12\", \"30\" ]",
+  "methods": [
+   [
+    "stzString",
+    "Numbers"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/09-patterns-in-structure.en.md",
+  "title": "4. The shape of a number",
+  "code": "oNx = new stzNumbrex(\"{@Property(Prime)}\")\n? oNx.Match(17)\n? oNx.Match(18)",
+  "expected": "TRUE\nFALSE",
+  "methods": [
+   [
+    "stzNumbrex",
+    "Match"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/09-patterns-in-structure.en.md",
+  "title": "5. Multiples, and digit counts",
+  "code": "oNx5 = new stzNumbrex(\"{@Relation(Mod:5=0)}\")\n? oNx5.Match(10)\n? oNx5.Match(13)\noNx4 = new stzNumbrex(\"{@Digit4}\")\n? oNx4.Match(1234)\n? oNx4.Match(123)",
+  "expected": "TRUE\nFALSE\nTRUE\nFALSE",
+  "methods": [
+   [
+    "stzNumbrex",
+    "Match"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/10-when-code-meets-cells.en.md",
+  "title": "5. A column is a list: ask it the list questions",
+  "code": "? StzListQ(oT.Col(:ORDERS)).Sum()\n? @@( StzListQ(oT.Col(:PRICE)).FindW(\"{ @item > 400 }\") )",
+  "expected": "11\n[ 2, 3 ]",
+  "methods": [
+   [
+    "stzList",
+    "Sum"
+   ],
+   [
+    "stzList",
+    "FindW"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/11-draw-the-answer.en.md",
+  "title": "1. Show where, not only which position",
+  "code": "o1 = new stzString(\"fjringljringdjringg\")\n? @@( o1.FindAll(\"ring\") )\n? o1.vizFind(\"ring\")",
+  "expected": "[ 3, 9, 15 ]\nfjringljringdjringg\n--^-----^-----^----",
+  "methods": [
+   [
+    "stzString",
+    "FindAll"
+   ],
+   [
+    "stzString",
+    "VizFind"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/12-teach-a-world.en.md",
+  "title": "1. State facts",
+  "code": "oKB = new stzKnowledgeGraph(\"menu\")\noKB.Know(\"margherita\", \"dish\").Know(\"tiramisu\", \"dish\").Know(\"pizza\", \"dish\")\noKB.KnowRelation(\"margherita\", \"kind-of\", \"pizza\")\noKB.KnowRelation(\"pizza\", \"kind-of\", \"food\")\noKB.KnowRelation(\"margherita\", \"contains\", \"tomato\")\n? @@( oKB.Query([ \"?x\", \"is-a\", \"dish\" ]) )\n? @@( oKB.Query([ \"margherita\", \"contains\", \"?o\" ]) )",
+  "expected": "[ \"margherita\", \"tiramisu\", \"pizza\" ]\n[ \"tomato\" ]",
+  "methods": [
+   [
+    "stzKnowledgeGraph",
+    "Know"
+   ],
+   [
+    "stzKnowledgeGraph",
+    "KnowRelation"
+   ],
+   [
+    "stzKnowledgeGraph",
+    "Query"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md",
+  "title": "1. Declare a goal",
+  "code": "oRest = new stzKnowledgeGraph(\"restaurant\")\noRest.Know(\"margherita\", \"dish\").Know(\"tiramisu\", \"dish\")\noRest.AddConversationQ(\"setup\").SetGoal(StzGoalQ().RequireEach(\"dish\", \"contains\"))\n? len( oRest.GapsIn(\"setup\") )",
+  "expected": "2",
+  "methods": [
+   [
+    "stzKnowledgeGraph",
+    "Know"
+   ],
+   [
+    "stzKnowledgeGraph",
+    "AddConversationQ"
+   ],
+   [
+    "stzKnowledgeGraph",
+    "GapsIn"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md",
+  "title": "5. Ask the library what it calls the thing you mean",
+  "code": "oDoc = StzSelfDocQ(\"stzList\")\n? oDoc.HowTo(\"remove duplicates\")\n? oDoc.HasMethod(\"DuplicatesRemoved\")",
+  "expected": "Q([...]).RemoveDuplicates()   -- composed by grammar (remove duplicates)\nTRUE",
+  "methods": [
+   [
+    "stzSelfDoc",
+    "HowTo"
+   ],
+   [
+    "stzSelfDoc",
+    "HasMethod"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/14-an-agent-that-cannot-hurt.en.md",
+  "title": "2. The court refuses what says nothing of its reach",
+  "code": "oBad = StzAgentDeclarationQ( StzReplace(cPia, \"coverage: checks the kitchen stock every morning and notes what is low\" + char(10), \"\") )\n? oBad.IsValid()\n? StzLeft( oBad.CiteFindings(), 25 )",
+  "expected": "FALSE\n[pia-coverage @ coverage]",
+  "methods": [
+   [
+    "stzAgentDeclaration",
+    "IsValid"
+   ],
+   [
+    "stzAgentDeclaration",
+    "CiteFindings"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/14-an-agent-that-cannot-hurt.en.md",
+  "title": "3. Propose, never commit: the shape of a safe system",
+  "code": "oGBad = new stzAgentGraph(\"mailer-bad\")\noGBad.AddLLMActor(\"writer\")\noGBad.AddEffect(\"send\")\noGBad.Proposes(\"writer\", \"send\")\n? oGBad.IsSound()\n? oGBad.Violations()[1][:message]",
+  "expected": "FALSE\neffect 'send' has no guardian edge into it -- every effect passes a pi-gate",
+  "methods": [
+   [
+    "stzAgentGraph",
+    "AddLLMActor"
+   ],
+   [
+    "stzAgentGraph",
+    "AddEffect"
+   ],
+   [
+    "stzAgentGraph",
+    "Proposes"
+   ],
+   [
+    "stzAgentGraph",
+    "IsSound"
+   ],
+   [
+    "stzAgentGraph",
+    "Violations"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/14-an-agent-that-cannot-hurt.en.md",
+  "title": "4. The governed shape",
+  "code": "oGOk = new stzAgentGraph(\"mailer\")\noGOk.AddLLMActor(\"writer\")\noGOk.AddGuardian(\"gate\")\noGOk.AddEffect(\"send\")\noGOk.AddTraceSink(\"audit\")\noGOk.Proposes(\"writer\", \"gate\")\noGOk.Guards(\"gate\", \"send\")\noGOk.Feeds(\"gate\", \"send\")\noGOk.Traces(\"send\", \"audit\")\n? oGOk.IsSound()",
+  "expected": "TRUE",
+  "methods": [
+   [
+    "stzAgentGraph",
+    "AddLLMActor"
+   ],
+   [
+    "stzAgentGraph",
+    "AddGuardian"
+   ],
+   [
+    "stzAgentGraph",
+    "AddEffect"
+   ],
+   [
+    "stzAgentGraph",
+    "AddTraceSink"
+   ],
+   [
+    "stzAgentGraph",
+    "Proposes"
+   ],
+   [
+    "stzAgentGraph",
+    "Guards"
+   ],
+   [
+    "stzAgentGraph",
+    "Feeds"
+   ],
+   [
+    "stzAgentGraph",
+    "Traces"
+   ],
+   [
+    "stzAgentGraph",
+    "IsSound"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/elementary-introduction/chapters/15-write-a-narration.en.md",
+  "title": "4. A verdict explains itself",
+  "code": "oNo = new stzExerciseCheck(\"demo\", [ \"3\" ], \"? 42\", [])\n? oNo.Passed()\n? oNo.Why()\noYes = new stzExerciseCheck(\"demo\", [ \"3\" ], \"? 1 + 2\", [])\n? oYes.Why()",
+  "expected": "FALSE\nYour program ran, but what it printed is not yet what the task asks. It printed: 42\nEvery promise of the exercise was kept when your program ran.",
+  "methods": [
+   [
+    "stzExerciseCheck",
+    "Passed"
+   ],
+   [
+    "stzExerciseCheck",
+    "Why"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/01-the-number-line.en.md",
+  "title": "1. Declare the line",
+  "code": "oL = StzMathFigureQ(:NumberLine, [ :on = [ -5, 10 ], :points = [ 3, -2, 7.5 ] ])\n? oL.Why()",
+  "expected": "a number line from -5 to 10: 16 ticks, 3 point(s), 0 jump(s)",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/01-the-number-line.en.md",
+  "title": "4. A jump is a difference",
+  "code": "oJ = StzMathFigureQ(:NumberLine, [ :on = [ 0, 12 ], :jumps = [ [ 9, 4 ] ], :step = 1 ])\n? oJ.Why()\n? 4 - 9",
+  "expected": "a number line from 0 to 12: 13 ticks, 2 point(s), 1 jump(s)\n-5",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/01-the-number-line.en.md",
+  "title": "6. Name a place",
+  "code": "oN = StzMathFigureQ(:NumberLine, [ :on = [ 0, 2 ], :step = 0.5,\n                                   :points = [ [ 0.5, \"half\" ], [ 1.5, \"one and a half\" ] ] ])\n? oN.Why()\n? len( oN.Violations() )",
+  "expected": "a number line from 0 to 2: 5 ticks, 2 point(s), 0 jump(s)\n0",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ],
+   [
+    "stzMathFigure",
+    "Violations"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/02-the-fraction.en.md",
+  "title": "1. Three of four",
+  "code": "oF = StzMathFigureQ(:Fraction, [ :of = [ 3, 4 ], :label = \"three of four\" ])\n? oF.Why()",
+  "expected": "a fraction figure of 1 whole(s) as bars: 3 of 4 shaded",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/02-the-fraction.en.md",
+  "title": "3. Two fractions side by side",
+  "code": "oC = StzMathFigureQ(:Fraction, [ :compare = [ [ 3, 4 ], [ 2, 3 ] ] ])\n? oC.Why()",
+  "expected": "a fraction figure of 2 whole(s) as bars: 3 of 4 shaded, 2 of 3 shaded",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/02-the-fraction.en.md",
+  "title": "5. Two names for one amount",
+  "code": "oE = StzMathFigureQ(:Fraction, [ :compare = [ [ 2, 4 ], [ 1, 2 ] ] ])\n? oE.Why()\n? 2 * 2 = 1 * 4",
+  "expected": "a fraction figure of 2 whole(s) as bars: 2 of 4 shaded, 1 of 2 shaded\n1",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/02-the-fraction.en.md",
+  "title": "6. As discs",
+  "code": "oD = StzMathFigureQ(:Fraction, [ :compare = [ [ 3, 8 ], [ 1, 4 ] ], :as = :disc ])\n? oD.Why()\n? 3 * 4 > 1 * 8",
+  "expected": "a fraction figure of 2 whole(s) as discs: 3 of 8 shaded, 1 of 4 shaded\n1",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/04-a-function-is-a-picture.en.md",
+  "title": "1. Declare the function",
+  "code": "oF = StzMathFigureQ(:Function, [ :f = \"x^2 - 2\", :on = [ -3, 3 ], :mark = [ :zeros, :extrema ] ])\n? oF.Why()",
+  "expected": "a function figure: 400 samples in 1 piece(s), 3 mark(s)",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/04-a-function-is-a-picture.en.md",
+  "title": "6. Other ways to say a curve",
+  "code": "oCircle = StzMathFigureQ(:Function, [ :x = \"cos(t)\", :y = \"sin(t)\", :t = [ 0, 6.2832 ], :label = \"a circle\" ])\n? oCircle.Why()\noRose = StzMathFigureQ(:Function, [ :r = \"cos(3*t)\", :t = [ 0, 3.1416 ], :label = \"a rose\" ])\n? oRose.Why()",
+  "expected": "a function figure: 400 samples in 1 piece(s), 0 mark(s); nothing to lay out\na function figure: 400 samples in 1 piece(s), 0 mark(s); nothing to lay out",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/04-a-function-is-a-picture.en.md",
+  "title": "7. A tangent at a place you name",
+  "code": "oT = StzMathFigureQ(:Function, [ :f = \"sin(x)\", :on = [ -6.3, 6.3 ], :mark = [ :extrema ], :tangent = 1, :maxmarks = 4 ])\n? @@( oT.Marks() )",
+  "expected": "[ \"given\", 1, 0.84 ]",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Marks"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/04-a-function-is-a-picture.en.md",
+  "title": "8. Where the rule breaks",
+  "code": "oP = StzMathFigureQ(:Function, [ :f = \"1 / (x - 1)\", :on = [ -3, 4 ] ])\n? oP.Why()\n? oP.PieceCount()",
+  "expected": "a function figure: 400 samples in 2 piece(s), 0 mark(s), 1 place(s) not finite\n2",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ],
+   [
+    "stzMathFigure",
+    "PieceCount"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/05-a-family-under-a-parameter.en.md",
+  "title": "1. Declare the family",
+  "code": "oM = StzMathMotionQ(:Function, [ :f = \"{a} * sin(x)\", :on = [ -6.3, 6.3 ], :mark = [ :extrema ], :maxmarks = 3 ])\noM.Param(\"a\", 1, 3, 1)\n? oM.Value(\"a\")",
+  "expected": "1",
+  "methods": [
+   [
+    "stzMathMotion",
+    "Param"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/07-a-number-that-says-why.en.md",
+  "title": "2. The exact number",
+  "code": "oS = StzNumberQ(\"0.1\")\noS.Add(\"0.2\")\n? oS.Content()\n? oS.IsExact()\n? oS.Representation()",
+  "expected": "0.3\n1\ndecimal",
+  "methods": [
+   [
+    "stzNumber",
+    "Add"
+   ],
+   [
+    "stzNumber",
+    "IsExact"
+   ],
+   [
+    "stzNumber",
+    "Representation"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/07-a-number-that-says-why.en.md",
+  "title": "4. A division that cannot end",
+  "code": "oT = StzNumberQ(\"1\")\noT.Divide(\"3\")\n? oT.Content()\n? oT.IsExact()\n? oT.WhyNotExact()",
+  "expected": "0.333333\n0\nthe division does not terminate in 6 decimal place(s)",
+  "methods": [
+   [
+    "stzNumber",
+    "Divide"
+   ],
+   [
+    "stzNumber",
+    "IsExact"
+   ],
+   [
+    "stzNumber",
+    "WhyNotExact"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/07-a-number-that-says-why.en.md",
+  "title": "5. Keep it as a fraction, and nothing is lost",
+  "code": "oQ = StzNumberQ(\"1/3\")\n? oQ.Representation()\n? oQ.IsExact()\noQ.Add(\"2/3\")\n? oQ.Content()\n? oQ.Same(1)",
+  "expected": "rational\n1\n1\n1",
+  "methods": [
+   [
+    "stzNumber",
+    "Representation"
+   ],
+   [
+    "stzNumber",
+    "IsExact"
+   ],
+   [
+    "stzNumber",
+    "Add"
+   ],
+   [
+    "stzNumber",
+    "Same"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/07-a-number-that-says-why.en.md",
+  "title": "6. Past the machine's largest odd number",
+  "code": "oB = StzNumberQ(\"9007199254740993\")\n? oB.Representation()\noB.Add(1)\n? oB.Content()\n? 9007199254740993 + 1",
+  "expected": "biginteger\n9007199254740994\n9007199254740992.00",
+  "methods": [
+   [
+    "stzNumber",
+    "Representation"
+   ],
+   [
+    "stzNumber",
+    "Add"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/07-a-number-that-says-why.en.md",
+  "title": "7. Three tenths, three ways",
+  "code": "oM = StzNumberQ(\"0.1\")\noM.MultiplyBy(\"3\")\n? oM.Content()\n? oM.IsExact()\n? 0.1 * 3 = 0.3",
+  "expected": "0.3\n1\n0",
+  "methods": [
+   [
+    "stzNumber",
+    "MultiplyBy"
+   ],
+   [
+    "stzNumber",
+    "IsExact"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/08-matrices-as-pictures.en.md",
+  "title": "1. One grid",
+  "code": "oA = StzMathFigureQ(:Matrix, [ :of = [ [ 1, 2 ], [ 3, 4 ] ], :label = \"A\" ])\n? oA.Why()\n? oA.Fact(:datum, [ \"a2_1\", \"v\" ])[:message]",
+  "expected": "a matrix figure: A (2 x 2), 4 cells\na2_1 carries v = 3",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ],
+   [
+    "stzMathFigure",
+    "Fact"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/08-matrices-as-pictures.en.md",
+  "title": "2. A product, as three grids",
+  "code": "oP = StzMathFigureQ(:Matrix, [ :product = [ [ [ 2, 7, 1, 8 ], [ 2, 8, 1, 8 ], [ 2, 8, 4, 5 ] ],\n                                            [ [ 1, 0 ], [ 0, 1 ], [ 2, 3 ], [ 1, 1 ] ] ], :show = [ 2, 1 ] ])\n? oP.Why()",
+  "expected": "a matrix figure: A (3 x 4) . B (4 x 2) = A . B (3 x 2), 26 cells",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/08-matrices-as-pictures.en.md",
+  "title": "6. Numbers as colour",
+  "code": "oH = StzMathFigureQ(:Matrix, [ :of = [ [ 4, 1, 0 ], [ 1, 4, 1 ], [ 0, 1, 4 ] ], :as = :heat, :label = \"A\" ])\n? oH.Why()\n? oH.Fact(:datum, [ \"a2_2\", \"t\" ])[:message]",
+  "expected": "a matrix figure: A (3 x 3), 9 cells on one ramp\na2_2 carries t = 1",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ],
+   [
+    "stzMathFigure",
+    "Fact"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/09-statistics-as-a-language.en.md",
+  "title": "1. Eight values, two middles",
+  "code": "aV = [ 2, 4, 4, 5, 7, 9, 12, 25 ]\noD = new stzDataSet(aV)\n? oD.Mean()\n? oD.Median()",
+  "expected": "8.50\n6",
+  "methods": [
+   [
+    "stzDataSet",
+    "Mean"
+   ],
+   [
+    "stzDataSet",
+    "Median"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/09-statistics-as-a-language.en.md",
+  "title": "3. The same words, drawn",
+  "code": "oB = StzMathFigureQ(:BoxPlot, [ :of = aV, :label = \"eight values\" ])\n? oB.Why()\n? len( oB.Violations() )",
+  "expected": "a box plot of 1 group(s): n = 8, box 4 | 6 | 9.75, 1 outlier(s)\n0",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ],
+   [
+    "stzMathFigure",
+    "Violations"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/09-statistics-as-a-language.en.md",
+  "title": "6. Two groups side by side",
+  "code": "oG = StzMathFigureQ(:BoxPlot, [ :groups = [ [ \"morning\", [ 12, 15, 14, 18, 16, 15, 13, 40 ] ],\n                                            [ \"evening\", [ 20, 22, 19, 25, 24, 21, 23, 22 ] ] ] ])\n? oG.Why()",
+  "expected": "a box plot of 2 group(s): morning n = 8, box 13.75 | 15 | 16.5, 1 outlier(s); evening n = 8, box 20.75 | 22 | 23.25, 0 outlier(s)",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/10-probability-by-the-continuum.en.md",
+  "title": "4. Sixty rolls of a die",
+  "code": "SeedRandom(3)\naRolls = []\nfor i = 1 to 60\n\taRolls + ( floor( StzRandom01() * 6 ) + 1 )\nnext\noD = new stzDataSet(aRolls)\n? len( oD.FrequencyTable() )\n? @@( oD.FrequencyTable() )",
+  "expected": "6\n[ \"1\", 16 ]",
+  "methods": [
+   [
+    "stzDataSet",
+    "FrequencyTable"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/10-probability-by-the-continuum.en.md",
+  "title": "5. What was seen, on a line",
+  "code": "oL = StzMathFigureQ(:NumberLine, [ :on = [ 0, 1 ], :step = 0.1,\n                                   :points = [ [ 0.5, \"fair\" ], [ nHeads / 1000, \"seen\" ] ] ])\n? oL.Why()",
+  "expected": "a number line from 0 to 1: 11 ticks, 2 point(s), 0 jump(s)",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/10-probability-by-the-continuum.en.md",
+  "title": "6. Ten rolls, as a fraction",
+  "code": "SeedRandom(5)\nnSixes = 0\nfor i = 1 to 10\n\tif floor( StzRandom01() * 6 ) + 1 = 6  nSixes++  ok\nnext\n? nSixes\noF = StzMathFigureQ(:Fraction, [ :of = [ nSixes, 10 ], :label = \"sixes in ten rolls\" ])\n? oF.Why()",
+  "expected": "1\na fraction figure of 1 whole(s) as bars: 1 of 10 shaded",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/12-an-optimisation-model.en.md",
+  "title": "1. The model as an object",
+  "code": "oM = new stzOptimModel()\noM.Vars([ :x = [ 0, 40 ], :y = [ 0, :integer ] ])\noM.Maximize(\"3*x + 2*y\")\noM.SubjectTo([ \"x + y <= 50\", \"2*x + y <= 80\" ])\noM.SolveWith(:auto)\n? oM.StatusWord()\n? oM.Objective()\n? @@( oM.Solution() )",
+  "expected": "optimal\n130\n[ [ \"x\", 30 ], [ \"y\", 20 ] ]",
+  "methods": [
+   [
+    "stzOptimModel",
+    "Vars"
+   ],
+   [
+    "stzOptimModel",
+    "Maximize"
+   ],
+   [
+    "stzOptimModel",
+    "SubjectTo"
+   ],
+   [
+    "stzOptimModel",
+    "SolveWith"
+   ],
+   [
+    "stzOptimModel",
+    "StatusWord"
+   ],
+   [
+    "stzOptimModel",
+    "Objective"
+   ],
+   [
+    "stzOptimModel",
+    "Solution"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/12-an-optimisation-model.en.md",
+  "title": "6. A production plan",
+  "code": "oN = new stzOptimModel()\noN.Vars([ :chairs = [ 0, :integer ], :tables = [ 0, :integer ] ])\noN.Maximize(\"30*chairs + 45*tables\")\noN.SubjectTo([ \"2*chairs + 5*tables <= 250\", \"chairs <= 60\", \"tables <= 60\" ])\noN.Solve()\n? @@( oN.Solution() )\n? oN.Objective()\n? oN.Branched()",
+  "expected": "[ [ \"chairs\", 60 ], [ \"tables\", 26 ] ]\n2970\n1",
+  "methods": [
+   [
+    "stzOptimModel",
+    "Vars"
+   ],
+   [
+    "stzOptimModel",
+    "Maximize"
+   ],
+   [
+    "stzOptimModel",
+    "SubjectTo"
+   ],
+   [
+    "stzOptimModel",
+    "Solve"
+   ],
+   [
+    "stzOptimModel",
+    "Solution"
+   ],
+   [
+    "stzOptimModel",
+    "Objective"
+   ],
+   [
+    "stzOptimModel",
+    "Branched"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/12-an-optimisation-model.en.md",
+  "title": "7. What cannot be done",
+  "code": "oF = new stzOptimModel()\noF.Vars([ :x = [ 0, 10 ] ])\noF.Maximize(\"x\")\noF.SubjectTo([ \"x >= 20\" ])\noF.Solve()\n? oF.StatusWord()",
+  "expected": "infeasible",
+  "methods": [
+   [
+    "stzOptimModel",
+    "Vars"
+   ],
+   [
+    "stzOptimModel",
+    "Maximize"
+   ],
+   [
+    "stzOptimModel",
+    "SubjectTo"
+   ],
+   [
+    "stzOptimModel",
+    "Solve"
+   ],
+   [
+    "stzOptimModel",
+    "StatusWord"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/13-tukeys-first-look.en.md",
+  "title": "1. The hinges and the fourth-spread",
+  "code": "aV = [ 2, 4, 4, 5, 7, 9, 12, 25 ]\noS = StzTukeySummaryQ(aV)\n? oS.Why()\n? @@( oS.Fourths() )\n? oS.FourthSpread()",
+  "expected": "a Tukey summary of 8 value(s) under Tukey's fourths (hinges at depth (floor((n+1)/2)+1)/2): hinges 4 | 6 | 10.5, fourth-spread 6.5, 1 outside, 0 far out\n[ 4, 10.50 ]\n6.50",
+  "methods": [
+   [
+    "stzTukeySummary",
+    "Why"
+   ],
+   [
+    "stzTukeySummary",
+    "Fourths"
+   ],
+   [
+    "stzTukeySummary",
+    "FourthSpread"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/13-tukeys-first-look.en.md",
+  "title": "4. Every digit kept",
+  "code": "oP = StzMathFigureQ(:StemPlot, [ :of = aV ])\n? oP.Text()",
+  "expected": "0 | 2 4 4 5 7 9\nleaf unit 1 -- 1 | 2 means 12",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Text"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/13-tukeys-first-look.en.md",
+  "title": "5. A table fitted by medians",
+  "code": "aDeaths = [ [ 14, 15, 14 ], [ 7, 4, 7 ], [ 8, 2, 10 ], [ 15, 9, 10 ], [ 0, 2, 0 ] ]\noF = StzTukeyFitQ(aDeaths)\noF.Polish()\n? oF.Common()\n? @@( oF.Effects(:Row) )\n? oF.Residual(3, 2)\n? oF.Check()",
+  "expected": "8\n[ 6, -1, 0, 2, -8 ]\n-5\n0",
+  "methods": [
+   [
+    "stzTukeyFit",
+    "Polish"
+   ],
+   [
+    "stzTukeyFit",
+    "Common"
+   ],
+   [
+    "stzTukeyFit",
+    "Effects"
+   ],
+   [
+    "stzTukeyFit",
+    "Residual"
+   ],
+   [
+    "stzTukeyFit",
+    "Check"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/13-tukeys-first-look.en.md",
+  "title": "6. The misfit, drawn",
+  "code": "aNames = [ [ \"1-24\", \"25-74\", \"75-199\", \"200++\", \"NA\" ], [ \"1973\", \"1974\", \"1975\" ] ]\noRes = StzMathFigureQ(:ResidualPlot, [ :of = aDeaths, :names = aNames ])\n? oRes.Why()\n? len( oRes.Violations() )",
+  "expected": "a residual-versus-fit of 5 x 3 cells: common 8, residual fourth-spread 1, 4 beyond the outside fences, 2 far out, 3 ringed on another cell's spot; nothing to lay out -- no rule minted an unknown\n0",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Why"
+   ],
+   [
+    "stzMathFigure",
+    "Violations"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/13-tukeys-first-look.en.md",
+  "title": "7. The same fit, coded",
+  "code": "oC = StzMathFigureQ(:CodedTable, [ :of = aDeaths, :names = aNames ])\n? oC.Text()",
+  "expected": "75-199     .    *    ^\nscale 1 = the residuals' fourth-spread; common 8; hinges: Tukey's fourths",
+  "methods": [
+   [
+    "stzMathFigure",
+    "Text"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/13-tukeys-first-look.en.md",
+  "title": "9. A story that computes nothing",
+  "code": "oSt = StzTukeyStoryQ(oF, oRep)\nacP = oSt.Paragraphs()\n? acP[1]\n? oSt.IsHonest()",
+  "expected": "A table of 5 rows and 3 columns was fitted by median polish, which converged in 2 sweep(s). The common value is 8 and the residuals' fourth-spread, the scale every judgement below is in, is 1.\n1",
+  "methods": [
+   [
+    "stzTukeyStory",
+    "IsHonest"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/14-the-derivative-that-checks.en.md",
+  "title": "1. Compile a function",
+  "code": "oF = new stzMathFunction(\"x^3 - 2*x\", [ \"x\" ])\n? oF.ValueAt([ 2 ])",
+  "expected": "4",
+  "methods": [
+   [
+    "stzMathFunction",
+    "ValueAt"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/14-the-derivative-that-checks.en.md",
+  "title": "6. Two variables, one gradient",
+  "code": "oG = new stzMathFunction(\"x*y + y^2\", [ \"x\", \"y\" ])\n? oG.ValueAt([ 2, 3 ])\n? @@( oG.GradientAt([ 2, 3 ]) )",
+  "expected": "15\n[ 3, 8 ]",
+  "methods": [
+   [
+    "stzMathFunction",
+    "ValueAt"
+   ],
+   [
+    "stzMathFunction",
+    "GradientAt"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/14-the-derivative-that-checks.en.md",
+  "title": "7. The slope of sine at zero",
+  "code": "oS = new stzMathFunction(\"sin(x)\", [ \"x\" ])\n? oS.DerivativeAt(\"x\", [ 0 ])\n? fabs( oS.DerivativeAt(\"x\", [ 0 ]) - cos(0) ) < 0.000000001",
+  "expected": "1\n1",
+  "methods": [
+   [
+    "stzMathFunction",
+    "DerivativeAt"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/14-the-derivative-that-checks.en.md",
+  "title": "8. The marks of chapter 4, confirmed by slopes",
+  "code": "oQ = new stzMathFunction(\"x^2 - 2\", [ \"x\" ])\n? oQ.DerivativeAt(\"x\", [ 0 ])\n? oQ.DerivativeAt(\"x\", [ 1.41421356 ])",
+  "expected": "0\n2.83",
+  "methods": [
+   [
+    "stzMathFunction",
+    "DerivativeAt"
+   ]
+  ]
+ },
+ {
+  "source": "base/education/program/courses/math/chapters/15-an-identity-is-not-a-self-check.en.md",
+  "title": "6. The tape as a third route",
+  "code": "oQ = new stzMathFunction(\"x^2 - 2\", [ \"x\" ])\n? oQ.DerivativeAt(\"x\", [ 0 ])\n? oQ.DerivativeAt(\"x\", [ 1 ])",
+  "expected": "0\n2",
+  "methods": [
+   [
+    "stzMathFunction",
+    "DerivativeAt"
+   ]
+  ]
  }
 ]

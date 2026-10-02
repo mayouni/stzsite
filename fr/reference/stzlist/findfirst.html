@@ -35,19 +35,19 @@
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;ab&quot;, &quot;abnA&quot;, &quot;abAb&quot; ])
 ? o1.Contains(&quot;n&quot;)
 ? o1.FindFirst(&quot;n&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0
-0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/264_contains.ring">264_contains.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 1, 2, 3, &quot;*&quot;, 5, 6, &quot;*&quot;, 8, 9 ])
+0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/264_contains.ring">264_contains.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 1, 2, 3, &quot;*&quot;, 5, 6, &quot;*&quot;, 8, 9 ])
 # findfirst example 1
-? @@( o1.FindFirst(&quot;*&quot;) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>4</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/172_findfirst.ring">172_findfirst.ring</a></p><h2>Portée <span class="mono">(8)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ [1,2], [3, [1], 4], [5,6], [ 2, 10 ], [3,4], [3, [1], 4] ])
+? @@( o1.FindFirst(&quot;*&quot;) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>4</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/172_findfirst.ring">172_findfirst.ring</a></p><h2>Portée <span class="mono">(8)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ [1,2], [3, [1], 4], [5,6], [ 2, 10 ], [3,4], [3, [1], 4] ])
 ? o1.FindAll( [3, [1], 4] )
 ? o1.FindFirst( [3, [1], 4] )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>2
 6
 
-2</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/377_findall.ring">377_findall.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 1, 2, &quot;A&quot;:&quot;C&quot;, 4, 5, &quot;A&quot;:&quot;C&quot;, 7, &quot;A&quot;:&quot;C&quot;])
+2</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/377_findall.ring">377_findall.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 1, 2, &quot;A&quot;:&quot;C&quot;, 4, 5, &quot;A&quot;:&quot;C&quot;, 7, &quot;A&quot;:&quot;C&quot;])
 ? o1.FindFirst(&quot;A&quot;:&quot;C&quot;)
 ? o1.FindNth(2,&quot;A&quot;:&quot;C&quot;)
 ? o1.FindLast(&quot;A&quot;:&quot;C&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>3
 6
-8</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/292_findfirst.ring">292_findfirst.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;ab&quot;, 1:3, &quot;abA&quot;, &quot;abAb&quot;, 1:3 ])
+8</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/292_findfirst.ring">292_findfirst.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;ab&quot;, 1:3, &quot;abA&quot;, &quot;abAb&quot;, 1:3 ])
 ? o1.ContainsCS(&quot;ab&quot;, TRUE)
 ? o1.FindFirstCS(&quot;AB&quot;, FALSE)
 ? o1.FindLastCS(&quot;ABA&quot;, FALSE)
@@ -56,7 +56,7 @@
 2
 4
 3
-6</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/265_containscs.ring">265_containscs.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 1, 2, 3, &quot;*&quot;, 5, 6, &quot;*&quot;, 8 ])
+6</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/265_containscs.ring">265_containscs.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 1, 2, 3, &quot;*&quot;, 5, 6, &quot;*&quot;, 8 ])
 # howmany example 1
 ? @@( o1.HowMany(&quot;*&quot;) )
 # howmany example 2
@@ -64,7 +64,7 @@
 # howmany example 3
 ? @@( o1.FindLast(&quot;*&quot;) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>2
 4
-7</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/211_howmany.ring">211_howmany.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 14, 10, 14, 14, 20 ])
+7</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/211_howmany.ring">211_howmany.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 14, 10, 14, 14, 20 ])
 # findnext example 1
 ? @@( o1.FindNext(14, :StartingAt = 1) )
 # findnext example 2
@@ -72,7 +72,7 @@
 # findnext example 3
 ? @@( o1.FindFirst(4) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>3
 [ 1, 3, 4 ]
-0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/185_findnext.ring">185_findnext.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;_&quot;, &quot;_&quot;, &quot;♥&quot;, &quot;_&quot;, &quot;_&quot;, &quot;♥&quot;, &quot;_&quot; ])
+0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/185_findnext.ring">185_findnext.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;_&quot;, &quot;_&quot;, &quot;♥&quot;, &quot;_&quot;, &quot;_&quot;, &quot;♥&quot;, &quot;_&quot; ])
 ? o1.FindFirst(&quot;♥&quot;)
 ? o1.FindLast(&quot;♥&quot;)
 ? o1.FindNext(&quot;♥&quot;, :StartingAt = 3)
@@ -85,7 +85,7 @@
 3
 0
 6
-3</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/282_findfirst.ring">282_findfirst.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 14, 10, 14, 14, 20 ])
+3</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/282_findfirst.ring">282_findfirst.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 14, 10, 14, 14, 20 ])
 # find example 1
 ? @@( o1.Find(14) )
 # find example 2
@@ -96,7 +96,7 @@
 ? @@( o1.FindNext(14, :StartingAt = 2) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 1, 3, 4 ]
 1
 4
-3</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/177_find.ring">177_find.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;1&quot;, &quot;1&quot;, [ &quot;2&quot;, &quot;♥&quot;, &quot;2&quot;], &quot;1&quot;, [ &quot;2&quot;, [&quot;3&quot;, &quot;🌞&quot;] ] , &quot;3&quot; ])
+3</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/177_find.ring">177_find.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;1&quot;, &quot;1&quot;, [ &quot;2&quot;, &quot;♥&quot;, &quot;2&quot;], &quot;1&quot;, [ &quot;2&quot;, [&quot;3&quot;, &quot;🌞&quot;] ] , &quot;3&quot; ])
 ? o1.FindFirst(&quot;3&quot;)
 ? o1.FindNth(3, &quot;1&quot;)
 ? o1.Contains([ &quot;2&quot;, &quot;♥&quot;, &quot;2&quot;])
@@ -111,7 +111,7 @@
 1
 1
 1
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/326_findfirst.ring">326_findfirst.ring</a></p><p class="proof">et 1 autres dans les tests</p>
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/326_findfirst.ring">326_findfirst.ring</a></p><p class="proof">et 1 autres dans les tests</p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#findfirst">La classe stzList</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlist/contains.html">stzList.Contains</a> · <a class="mono" href="../stzlist/containscs.html">stzList.ContainsCS</a> · <a class="mono" href="../stzlist/deepcontains.html">stzList.DeepContains</a> · <a class="mono" href="../stzlist/deepcontainsboth.html">stzList.DeepContainsBoth</a> · <a class="mono" href="../stzlist/deepcontainsmany.html">stzList.DeepContainsMany</a> · <a class="mono" href="../stzlist/deepcontainsnofthese.html">stzList.DeepContainsNOfThese</a> · <a class="mono" href="../stzlist/deepcontainsoneofthese.html">stzList.DeepContainsOneOfThese</a> · <a class="mono" href="../stzlist/find.html">stzList.Find</a> · <a class="mono" href="../stzlist/findall.html">stzList.FindAll</a> · <a class="mono" href="../stzlist/findfirstcs.html">stzList.FindFirstCS</a> · <a class="mono" href="../stzlist/findlast.html">stzList.FindLast</a> · <a class="mono" href="../stzlist/findlastcs.html">stzList.FindLastCS</a></li></ul>
   </div>

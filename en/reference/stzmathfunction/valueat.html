@@ -32,7 +32,11 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oF = new stzMathFunction(&quot;x*x + x*x&quot;, [ &quot;x&quot; ])
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oF = new stzMathFunction(&quot;x^3 - 2*x&quot;, [ &quot;x&quot; ])
+? oF.ValueAt([ 2 ])</pre></div><div class="out"><div class="lbl">Output</div><pre>4</pre></div></div><p class="ran">run on 2026-10-02 04:25 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/math/chapters/14-the-derivative-that-checks.en.md">14-the-derivative-that-checks.en.md</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oG = new stzMathFunction(&quot;x*y + y^2&quot;, [ &quot;x&quot;, &quot;y&quot; ])
+? oG.ValueAt([ 2, 3 ])
+? @@( oG.GradientAt([ 2, 3 ]) )</pre></div><div class="out"><div class="lbl">Output</div><pre>15
+[ 3, 8 ]</pre></div></div><p class="ran">run on 2026-10-02 04:25 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/math/chapters/14-the-derivative-that-checks.en.md">14-the-derivative-that-checks.en.md</a></p><h2>Scope <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oF = new stzMathFunction(&quot;x*x + x*x&quot;, [ &quot;x&quot; ])
 # f(3) = 18
 ? oF.ValueAt([3])
 # f&#x27;(3) = 12, not 6
@@ -44,7 +48,7 @@ oG = new stzMathFunction(&quot;(x+y)*(x+y)&quot;, [ &quot;x&quot;, &quot;y&quot;
 ? oG.DerivativeAt(&quot;y&quot;, [2,3])</pre></div><div class="out"><div class="lbl">Output</div><pre>18
 12
 10
-10</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_autodiff_narrated.ring">numeric_autodiff_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>acV = [ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e1&quot;, &quot;f&quot;, &quot;g1&quot;, &quot;h&quot;, &quot;i&quot;, &quot;j&quot; ]
+10</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_autodiff_narrated.ring">numeric_autodiff_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>acV = [ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e1&quot;, &quot;f&quot;, &quot;g1&quot;, &quot;h&quot;, &quot;i&quot;, &quot;j&quot; ]
 oF = new stzMathFunction(&quot;a+2*b+3*c+4*d+5*e1+6*f+7*g1+8*h+9*i+10*j&quot;, acV)
 aP = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
 # the value
@@ -61,9 +65,9 @@ aG = oF.GradientAt(aP)
 10
 1
 5
-10</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_autodiff_narrated.ring">numeric_autodiff_narrated.ring</a></p>
+10</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_autodiff_narrated.ring">numeric_autodiff_narrated.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzmathfunction.html#valueat">The class stzMathFunction</a></li><li><a href="../../guide/numeric.html">The area's guide: Numeric &amp; optimization</a></li><li>The other methods in these examples: <a class="mono" href="../stzmathfunction/derivativeat.html">stzMathFunction.DerivativeAt</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzmathfunction.html#valueat">The class stzMathFunction</a></li><li><a href="../../guide/numeric.html">The area's guide: Numeric &amp; optimization</a></li><li>The other methods in these examples: <a class="mono" href="../stzmathfunction/derivativeat.html">stzMathFunction.DerivativeAt</a> · <a class="mono" href="../stzmathfunction/gradientat.html">stzMathFunction.GradientAt</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

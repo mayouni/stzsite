@@ -33,16 +33,16 @@
   <div class="wrap page-body">
     <h2>Les formes de ce verbe</h2><p><b class="mono">IsMadeOfSome</b> · <a class="mono" href="../stzstring.html#ismadeofsomecs">IsMadeOfSomeCS</a></p>
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># all chars are hex digits
-? Q(&quot;4E992&quot;).IsMadeOfSome( HexChars() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/850_ismadeofsome.ring">850_ismadeofsome.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># all octal digits qualify
+? Q(&quot;4E992&quot;).IsMadeOfSome( HexChars() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/850_ismadeofsome.ring">850_ismadeofsome.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># all octal digits qualify
 ? Q(&quot;01234567&quot;).IsMadeOfSome( OctalChars() )
 # a binary string uses both bits
 ? Q(&quot;001100101&quot;).IsMadeOf( BinaryChars() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/848_ismadeofsome.ring">848_ismadeofsome.ring</a></p><h2>Portée <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;aabbcaacccbb&quot;)
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/848_ismadeofsome.ring">848_ismadeofsome.ring</a></p><h2>Portée <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;aabbcaacccbb&quot;)
 # made of aa, bb and c
 ? o1.IsMadeOf([ &quot;aa&quot;, &quot;bb&quot;, &quot;c&quot; ])
 # made of some of a, b, c, x
 ? o1.IsMadeOfSome([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;x&quot; ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/816_ismadeof.ring">816_ismadeof.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;سلسبيل&quot;)
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/816_ismadeof.ring">816_ismadeof.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;سلسبيل&quot;)
 # its four letters
 ? o1.IsMadeOf([ &quot;ب&quot;, &quot;ل&quot;, &quot;س&quot;, &quot;ي&quot; ])
 # an unused fifth spoils IsMadeOf
@@ -50,7 +50,7 @@
 # ... but not IsMadeOfSome
 ? o1.IsMadeOfSome([ &quot;ب&quot;, &quot;ل&quot;, &quot;س&quot;, &quot;ي&quot;, &quot;m&quot; ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
 0
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/817_ismadeof.ring">817_ismadeof.ring</a></p>
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/817_ismadeof.ring">817_ismadeof.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#ismadeofsome">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/ismadeof.html">stzString.IsMadeOf</a></li></ul>
   </div>

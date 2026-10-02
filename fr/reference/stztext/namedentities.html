@@ -37,7 +37,7 @@
 ? @@(t.NeuralEntities())
 # NamedEntities() still works via the rule-based fallback
 ? len(t.NamedEntities()) &gt;= 1</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ ]
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/natural/text_query_layer_narrated.ring">text_query_layer_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oT = new stzText(&quot;John Smith works at Microsoft in Paris&quot;)
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/natural/text_query_layer_narrated.ring">text_query_layer_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oT = new stzText(&quot;John Smith works at Microsoft in Paris&quot;)
 # rule NER sees person / organization / location
 ? @@( oT.NamedEntities() )
 # registering returns how many were NEW
@@ -51,7 +51,7 @@
 3
 [ &quot;person&quot; ]
 [ &quot;organization&quot; ]
-0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/natural/entity_world_narrated.ring">entity_world_narrated.ring</a></p>
+0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/natural/entity_world_narrated.ring">entity_world_narrated.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stztext.html#namedentities">La classe stzText</a></li><li><a href="../../guide/nlp.html">Le guide du domaine : Traitement du langage et linguistique</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stztext/neuralentities.html">stzText.NeuralEntities</a> · <a class="mono" href="../stztext/registernamedentities.html">stzText.RegisterNamedEntities</a></li></ul>
   </div>

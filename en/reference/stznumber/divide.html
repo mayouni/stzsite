@@ -32,7 +32,13 @@
   </div></section>
   <div class="wrap page-body">
     <h2>The forms of this verb</h2><p><b class="mono">Divide</b> · <a class="mono" href="divideq.html">DivideQ</a> · <a class="mono" href="../stznumber.html#divided">Divided</a></p>
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># 1 / 8 is 0.125
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oT = StzNumberQ(&quot;1&quot;)
+oT.Divide(&quot;3&quot;)
+? oT.Content()
+? oT.IsExact()
+? oT.WhyNotExact()</pre></div><div class="out"><div class="lbl">Output</div><pre>0.333333
+0
+the division does not terminate in 6 decimal place(s)</pre></div></div><p class="ran">run on 2026-10-02 04:25 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/math/chapters/07-a-number-that-says-why.en.md">07-a-number-that-says-why.en.md</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># 1 / 8 is 0.125
 ? (new stzNumber(&quot;1&quot;)).DivideQ(&quot;8&quot;).Content()
 # 0.1 / 4 is 0.025
 ? (new stzNumber(&quot;0.1&quot;)).DivideQ(&quot;4&quot;).Content()
@@ -50,9 +56,9 @@ oThird.Divide(&quot;3&quot;)
 2.5
 4.4
 0
-1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_exactness_narrated.ring">numeric_exactness_narrated.ring</a></p>
+1</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_exactness_narrated.ring">numeric_exactness_narrated.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stznumber.html#divide">The class stzNumber</a></li><li><a href="../../guide/numeric.html">The area's guide: Numeric &amp; optimization</a></li><li>The other methods in these examples: <a class="mono" href="../stznumber/divideq.html">stzNumber.DivideQ</a> · <a class="mono" href="../stznumber/isexact.html">stzNumber.IsExact</a> · <a class="mono" href="../stznumber/why.html">stzNumber.Why</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stznumber.html#divide">The class stzNumber</a></li><li><a href="../../guide/numeric.html">The area's guide: Numeric &amp; optimization</a></li><li>The other methods in these examples: <a class="mono" href="../stznumber/divideq.html">stzNumber.DivideQ</a> · <a class="mono" href="../stznumber/isexact.html">stzNumber.IsExact</a> · <a class="mono" href="../stznumber/why.html">stzNumber.Why</a> · <a class="mono" href="../stznumber/whynotexact.html">stzNumber.WhyNotExact</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

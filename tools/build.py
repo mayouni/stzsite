@@ -435,6 +435,13 @@ def showcase_html(lang, slug, heading=True, only=None):
     if not items:
         if not heading: raise SystemExit(f"no run in data/showcase.json for the placeholder SHOWCASE:{slug}")
         return ""
+    # the site never names the platform's former language, and library code is never rewritten:
+    # a run that shows the word in its code or output is left out (a .ring file name does not count)
+    WORD = re.compile(r"(?<![\w./-])ring(?![\w.])", re.I)
+    if any(WORD.search(it["code"]) or WORD.search(it["out"]) for it in items):
+        if only:
+            raise SystemExit(f"SHOWCASE:{slug}: a selected run shows the word; choose another run")
+        items = [it for it in items if not (WORD.search(it["code"]) or WORD.search(it["out"]))]
     if only:
         # a selection by position is only safe when every snippet of the source list kept its run
         src = json.loads((DATA / "showcase-src.json").read_text(encoding="utf-8")).get(slug, [])

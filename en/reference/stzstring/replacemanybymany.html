@@ -31,32 +31,26 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>The forms of this verb</h2><p><b class="mono">ReplaceManyByMany</b> · <a class="mono" href="../stzstring.html#replacemanybymanycs">ReplaceManyByManyCS</a> · <a class="mono" href="replacemanybymanyxt.html">ReplaceManyByManyXT</a></p>
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;ring qt softanza pyhton kandaji csharp ring&quot;)
-o1.ReplaceManyByMany([ &quot;ring&quot;, &quot;softanza&quot;, &quot;kandaji&quot; ], :By = [ &quot;♥&quot;, &quot;♥♥&quot;, &quot;♥♥♥&quot; ])
-# ring/softanza/kandaji -&gt; the heart marks
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>♥ qt ♥♥ pyhton ♥♥♥ csharp ♥</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/60_replacemanybymany.ring">60_replacemanybymany.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># ring/softanza/kandaji -&gt; the heart marks
-o = new stzString(&quot;ring qt softanza pyhton kandaji csharp ring kandaji&quot;)
-o.ReplaceManyByMany([ &quot;ring&quot;, &quot;softanza&quot;, &quot;kandaji&quot; ], :By = [ &quot;♥&quot;, &quot;♥♥&quot;, &quot;♥♥♥&quot; ])
-? o.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>♥ qt ♥♥ pyhton ♥♥♥ csharp ♥ ♥♥♥</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/15_replacemanybymany.ring">15_replacemanybymany.ring</a></p><h2>Scope <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o2 = new stzString(&quot;--[...]---[...]---[...]---[~~~]--[~~~]--&quot;)
+    <h2>The forms of this verb</h2><p><b class="mono">ReplaceManyByMany</b> · <a class="mono" href="../stzstring.html#replacemanybymanycs">ReplaceManyByManyCS</a> · <a class="mono" href="../stzstring.html#replacemanybymanyxt">ReplaceManyByManyXT</a></p>
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o2 = new stzString(&quot;--[...]---[...]---[...]---[~~~]--[~~~]--&quot;)
 o2.ReplaceManyByMany(
 		[ &quot;[...]&quot;, &quot;[...]&quot;, &quot;[~~~]&quot; ],
 		[ &quot;ONE&quot;,    &quot;TWO&quot;,   &quot;THREE&quot;, &quot;FOUR&quot; ]
 	)
 # the extra FOUR is ignored
-? o2.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>--ONE---TWO---[...]---THREE--[~~~]--</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/927_content.ring">927_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o3 = new stzString(&quot;--[...]---[...]---[...]---[~~~]--[~~~]--&quot;)
+? o2.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>--ONE---TWO---[...]---THREE--[~~~]--</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/927_content.ring">927_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o3 = new stzString(&quot;--[...]---[...]---[...]---[~~~]--[~~~]--&quot;)
 o3.ReplaceManyByMany(
 		[ &quot;[...]&quot;, &quot;[...]&quot;, &quot;[~~~]&quot;, &quot;[~~~]&quot; ],
 		[ &quot;ONE&quot;,    &quot;TWO&quot;,   &quot;THREE&quot; ]
 	)
 # the extra old is ignored
-? o3.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>--ONE---TWO---[...]---THREE--[~~~]--</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/927_content.ring">927_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;--[...]---[...]---[...]---[~~~]--[~~~]--&quot;)
+? o3.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>--ONE---TWO---[...]---THREE--[~~~]--</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/927_content.ring">927_content.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;--[...]---[...]---[...]---[~~~]--[~~~]--&quot;)
 o1.ReplaceManyByMany(
 		[ &quot;[...]&quot;, &quot;[...]&quot;, &quot;[~~~]&quot;, &quot;[~~~]&quot; ],
 		[ &quot;ONE&quot;,    &quot;TWO&quot;,   &quot;THREE&quot;, &quot;FOUR&quot; ]
 	)
 # third dots block untouched
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>--ONE---TWO---[...]---THREE--FOUR--</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/927_content.ring">927_content.ring</a></p>
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>--ONE---TWO---[...]---THREE--FOUR--</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/927_content.ring">927_content.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#replacemanybymany">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li></ul>
   </div>

@@ -35,47 +35,47 @@
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;99999999999&quot;)
 o1.SpacifyXT( &quot; &quot;, 3, :Backward )
 # spaces group every 3 from the right
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>99 999 999 999</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/275_content.ring">275_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;99999999999&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>99 999 999 999</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/275_content.ring">275_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;99999999999&quot;)
 o1.SpacifyXT( &quot;_&quot;, 3, :Backward )
 # underscores group every 3 digits from the right
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>99_999_999_999</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/270_content.ring">270_content.ring</a></p><h2>Portée <span class="mono">(8)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;12345269775114&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>99_999_999_999</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/270_content.ring">270_content.ring</a></p><h2>Portée <span class="mono">(8)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;12345269775114&quot;)
 o1.SpacifyXT( [ &quot; &quot;, &quot;.&quot;, :LastChars = 6 ], [ 3, 2 ], :Backward )
 # head-3, tail-2
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>12 345 269.77 51 14</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/282_content.ring">282_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;99999999999&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>12 345 269.77 51 14</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/282_content.ring">282_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;99999999999&quot;)
 o1.SpacifyXT( :Using = &quot; &quot;, :Step = 3, :Going = :Backward )
 # the named-param form groups the same
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>99 999 999 999</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/276_content.ring">276_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;99999999999&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>99 999 999 999</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/276_content.ring">276_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;99999999999&quot;)
 o1.SpacifyXT( :Using = &quot;_&quot;, :Step = 3, :Direction = :Backward )
 # the named-param form groups the same way
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>99_999_999_999</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/271_content.ring">271_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;99999999999999&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>99_999_999_999</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/271_content.ring">271_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;99999999999999&quot;)
 o1.SpacifyXT(
 		:Using     = [ &quot; &quot;, :AndThen = &quot;.&quot;, :LastNChars = 6 ],
 		:Step      = [ 2, :AndThen = 3],
 		:Direction = :Backward
 	)
 # grouped
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>99 99 99 99.999 999</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/285_content.ring">285_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;9999999999&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>99 99 99 99.999 999</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/285_content.ring">285_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;9999999999&quot;)
 o1.SpacifyXT(
 		:Using     = [ &quot; &quot;, :AndThen = &quot;.&quot;, :LastNChars = 2 ],
 		:Step      = [ 3, 2 ],
 		:Direction = [ :Backward, :AndThen = &#x27;forward&#x27; ]
 	)
 # grouped
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>99 999 999.99</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/283_content.ring">283_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;9999999999999999&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>99 999 999.99</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/283_content.ring">283_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;9999999999999999&quot;)
 o1.SpacifyXT(
 		:Separator = [ &quot; &quot;, :AndThen = &quot;.&quot; , :LastNChars = 7 ],
 		:Step      = [ 3, :AndThen = 2 ],
 		:Direction = [ :Backward, :AndThen = :Forward ]
 	)
 # two zones
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>999 999 999.99 99 99 9</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/280_content.ring">280_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;999999999999&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>999 999 999.99 99 99 9</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/280_content.ring">280_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;999999999999&quot;)
 o1.SpacifyXT(
 		:Using     = [ &quot; &quot;, &quot;.&quot; ],
 		:Step      = [ 3, :AndThen = 2, :LastNChars = 5 ],
 		:Direction = [ :Backward, :AndThen = &#x27;forward&#x27; ]
 	)
 # head backward-3, tail forward-2
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>9 999 999.99 99 9</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/284_content.ring">284_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;999999999999&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>9 999 999.99 99 9</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/284_content.ring">284_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;999999999999&quot;)
 o1.SpacifyXT( [ &quot; &quot;, &quot;.&quot; ], [ 3, 2 ], :Backward )
 # mixed separators [&#x27; &#x27;,&#x27;.&#x27;] with steps [3,2] cycle from the right
 ? o1.Content()
@@ -88,7 +88,7 @@ o3.SpacifyXT( &quot; &quot;, 3, [ :Forward, :Backward ] )
 # a direction list groups by 3 as well
 ? o3.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>99.99 999.99 999
 999 999 999 999
-999 999 999 999</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/277_content.ring">277_content.ring</a></p>
+999 999 999 999</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/277_content.ring">277_content.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#spacifyxt">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li></ul>
   </div>

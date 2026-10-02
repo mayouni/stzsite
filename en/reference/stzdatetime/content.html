@@ -33,12 +33,12 @@
   <div class="wrap page-body">
     
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oDateTime = new stzDateTime(&quot;2024-03-15 10:30:00&quot;)
-? oDateTime.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>2024-03-15 10:30:00</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/02_creating_datetime_from_standard_format.ring">02_creating_datetime_from_standard_format.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oDateTime = StzDateTimeQ(&quot;2024-03-15 10:00:00&quot;)
+? oDateTime.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>2024-03-15 10:30:00</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/02_creating_datetime_from_standard_format.ring">02_creating_datetime_from_standard_format.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oDateTime = StzDateTimeQ(&quot;2024-03-15 10:00:00&quot;)
 oDateTime - &quot;2 days&quot;
 ? oDateTime.Content()
 oDateTime - &quot;3 hours&quot;
 ? oDateTime.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>2024-03-13 10:00:00
-2024-03-13 07:00:00</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/14_using_operator_overloading_for_subtraction.ring">14_using_operator_overloading_for_subtraction.ring</a></p><h2>Scope <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oDateTime = StzDateTimeQ(&quot;2024-03-15 10:00:00&quot;)
+2024-03-13 07:00:00</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/14_using_operator_overloading_for_subtraction.ring">14_using_operator_overloading_for_subtraction.ring</a></p><h2>Scope <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oDateTime = StzDateTimeQ(&quot;2024-03-15 10:00:00&quot;)
 oDateTime + &quot;2 days&quot;
 ? oDateTime.Content()
 oDateTime + &quot;3 hours&quot;
@@ -46,7 +46,7 @@ oDateTime + &quot;3 hours&quot;
 oDateTime + &quot;2 days 5 hours&quot;
 ? oDateTime.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>2024-03-17 10:00:00
 2024-03-17 13:00:00
-2024-03-19 18:00:00</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/13_using_operator_overloading_for_addition.ring">13_using_operator_overloading_for_addition.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oDateTime = StzDateTimeQ([
+2024-03-19 18:00:00</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/13_using_operator_overloading_for_addition.ring">13_using_operator_overloading_for_addition.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oDateTime = StzDateTimeQ([
     :Year = 2024,
     :Month = 3,
     :Day = 15,
@@ -54,7 +54,7 @@ oDateTime + &quot;2 days 5 hours&quot;
     :Minute = 30,
     :Second = 45
 ])
-? oDateTime.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>2024-03-15 10:30:45</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/06_creating_datetime_from_hash_format.ring">06_creating_datetime_from_hash_format.ring</a></p>
+? oDateTime.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>2024-03-15 10:30:45</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/06_creating_datetime_from_hash_format.ring">06_creating_datetime_from_hash_format.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzdatetime.html#content">The class stzDateTime</a></li><li><a href="../../guide/i18n.html">The area's guide: Internationalization</a></li></ul>
   </div>

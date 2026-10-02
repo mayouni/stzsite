@@ -32,7 +32,22 @@
   </div></section>
   <div class="wrap page-body">
     <h2>Les formes de ce verbe</h2><p><b class="mono">AddLLMActor</b> · <a class="mono" href="../stzagentgraph.html#addllmactorq">AddLLMActorQ</a></p>
-    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oRep = new stzRuleReport(&quot;clean&quot;)
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oGBad = new stzAgentGraph(&quot;mailer-bad&quot;)
+oGBad.AddLLMActor(&quot;writer&quot;)
+oGBad.AddEffect(&quot;send&quot;)
+oGBad.Proposes(&quot;writer&quot;, &quot;send&quot;)
+? oGBad.IsSound()
+? oGBad.Violations()[1][:message]</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0
+effect &#x27;send&#x27; has no guardian edge into it -- every effect passes a pi-gate</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/14-an-agent-that-cannot-hurt.en.md">14-an-agent-that-cannot-hurt.en.md</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oGOk = new stzAgentGraph(&quot;mailer&quot;)
+oGOk.AddLLMActor(&quot;writer&quot;)
+oGOk.AddGuardian(&quot;gate&quot;)
+oGOk.AddEffect(&quot;send&quot;)
+oGOk.AddTraceSink(&quot;audit&quot;)
+oGOk.Proposes(&quot;writer&quot;, &quot;gate&quot;)
+oGOk.Guards(&quot;gate&quot;, &quot;send&quot;)
+oGOk.Feeds(&quot;gate&quot;, &quot;send&quot;)
+oGOk.Traces(&quot;send&quot;, &quot;audit&quot;)
+? oGOk.IsSound()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/14-an-agent-that-cannot-hurt.en.md">14-an-agent-that-cannot-hurt.en.md</a></p><h2>Portée <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oRep = new stzRuleReport(&quot;clean&quot;)
 oAG = new stzAgentGraph(&quot;ok&quot;)
 oAG.AddLLMActor(&quot;writer&quot;)
 oAG.AddGuardian(&quot;gate&quot;)
@@ -50,7 +65,7 @@ oRep.Collect(oCG)
 ? oRep.NumberOfFindings()
 # ...the gate is sound
 ? oRep.IsSound()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graph/rulereport_narrated.ring">rulereport_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAG = new stzAgentGraph(&quot;bad&quot;)
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graph/rulereport_narrated.ring">rulereport_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAG = new stzAgentGraph(&quot;bad&quot;)
 oAG.AddLLMActor(&quot;writer&quot;)
 oAG.AddEffect(&quot;send&quot;)
 oAG.Proposes(&quot;writer&quot;, &quot;send&quot;)
@@ -73,9 +88,9 @@ oRep.IngestLegacy(aLegacyCode, &quot;code&quot;)
 1
 1
 1
-0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graph/rulereport_narrated.ring">rulereport_narrated.ring</a></p>
+0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graph/rulereport_narrated.ring">rulereport_narrated.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stzagentgraph.html#addllmactor">La classe stzAgentGraph</a></li><li><a href="../../guide/agents.html">Le guide du domaine : Agents et conversation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzagentgraph/addeffect.html">stzAgentGraph.AddEffect</a> · <a class="mono" href="../stzagentgraph/addguardian.html">stzAgentGraph.AddGuardian</a> · <a class="mono" href="../stzagentgraph/addtracesink.html">stzAgentGraph.AddTraceSink</a> · <a class="mono" href="../stzagentgraph/feeds.html">stzAgentGraph.Feeds</a> · <a class="mono" href="../stzagentgraph/guards.html">stzAgentGraph.Guards</a> · <a class="mono" href="../stzagentgraph/proposes.html">stzAgentGraph.Proposes</a> · <a class="mono" href="../stzagentgraph/traces.html">stzAgentGraph.Traces</a> · <a class="mono" href="../stzringcodegraph/scansource.html">stzRingCodeGraph.ScanSource</a> · <a class="mono" href="../stzrulereport/collect.html">stzRuleReport.Collect</a> · <a class="mono" href="../stzrulereport/findings.html">stzRuleReport.Findings</a> · <a class="mono" href="../stzrulereport/findingsofsubject.html">stzRuleReport.FindingsOfSubject</a> · <a class="mono" href="../stzrulereport/ingestlegacy.html">stzRuleReport.IngestLegacy</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stzagentgraph.html#addllmactor">La classe stzAgentGraph</a></li><li><a href="../../guide/agents.html">Le guide du domaine : Agents et conversation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzagentgraph/addeffect.html">stzAgentGraph.AddEffect</a> · <a class="mono" href="../stzagentgraph/addguardian.html">stzAgentGraph.AddGuardian</a> · <a class="mono" href="../stzagentgraph/addtracesink.html">stzAgentGraph.AddTraceSink</a> · <a class="mono" href="../stzagentgraph/feeds.html">stzAgentGraph.Feeds</a> · <a class="mono" href="../stzagentgraph/guards.html">stzAgentGraph.Guards</a> · <a class="mono" href="../stzagentgraph/issound.html">stzAgentGraph.IsSound</a> · <a class="mono" href="../stzagentgraph/proposes.html">stzAgentGraph.Proposes</a> · <a class="mono" href="../stzagentgraph/traces.html">stzAgentGraph.Traces</a> · <a class="mono" href="../stzagentgraph/violations.html">stzAgentGraph.Violations</a> · <a class="mono" href="../stzringcodegraph/scansource.html">stzRingCodeGraph.ScanSource</a> · <a class="mono" href="../stzrulereport/collect.html">stzRuleReport.Collect</a> · <a class="mono" href="../stzrulereport/findings.html">stzRuleReport.Findings</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

@@ -31,23 +31,17 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>Les formes de ce verbe</h2><p><b class="mono">ReplaceByMany</b> · <a class="mono" href="../stzstring.html#replacebymanyq">ReplaceByManyQ</a> · <a class="mono" href="replacebymanyxt.html">ReplaceByManyXT</a> · <a class="mono" href="../stzstring.html#replacebymanyxtq">ReplaceByManyXTQ</a></p>
+    <h2>Les formes de ce verbe</h2><p><b class="mono">ReplaceByMany</b> · <a class="mono" href="../stzstring.html#replacebymanyq">ReplaceByManyQ</a> · <a class="mono" href="../stzstring.html#replacebymanyxt">ReplaceByManyXT</a> · <a class="mono" href="../stzstring.html#replacebymanyxtq">ReplaceByManyXTQ</a></p>
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;--*--*--*--&quot;)
 o1.ReplaceByMany(&quot;*&quot;, [ &quot;ONE&quot;, &quot;TWO&quot;, :And = &quot;THREE&quot; ])
 # one word per star
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>--ONE--TWO--THREE--</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/914_content.ring">914_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;ring php ruby ring python ring&quot;)
-o1.ReplaceByMany(&quot;ring&quot;, [ &quot;X&quot;, &quot;XX&quot;, &quot;XXX&quot; ])
-# each &#x27;ring&#x27; gets the next replacement
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>X php ruby XX python XXX</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/48_replacebymany.ring">48_replacebymany.ring</a></p><h2>Portée <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;ring php ruby ring python ring&quot;)
-o1.ReplaceByMany(&quot;ring&quot;, :By = [ &quot;♥&quot;, &quot;♥♥&quot;, &quot;♥♥♥&quot; ])
-# each &#x27;ring&#x27; gets the next heart-run
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>♥ php ruby ♥♥ python ♥♥♥</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/58_replacebymany.ring">58_replacebymany.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;----^----------^----------^-----&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>--ONE--TWO--THREE--</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/914_content.ring">914_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;----^----------^----------^-----&quot;)
 # the canvas
 ? o1.Content()
 o1.ReplaceByMany(&quot;^&quot;, [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
 # lettered
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>----^----------^----------^-----
-----A----------B----------C-----</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/957_content.ring">957_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;1♥34♥♥&quot;)
+----A----------B----------C-----</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/957_content.ring">957_content.ring</a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;1♥34♥♥&quot;)
 o1.ReplaceByMany(&quot;♥&quot;, [ &quot;2&quot;, &quot;5&quot;, &quot;6&quot; ])
 # ReplaceByMany cycles 2,5,6
 ? o1.Content()
@@ -60,7 +54,7 @@ o3.Replace(&quot;♥&quot;, :ByMany = [ &quot;2&quot;, &quot;5&quot;, &quot;6&qu
 # Replace(:ByMany=list) agrees
 ? o3.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>123456
 123456
-123456</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/56_replacebymany.ring">56_replacebymany.ring</a></p>
+123456</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/56_replacebymany.ring">56_replacebymany.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#replacebymany">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/replace.html">stzString.Replace</a></li></ul>
   </div>

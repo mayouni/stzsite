@@ -11,8 +11,8 @@ function's name, and the tutorials are the narrations that run.
 import json, re, html, collections, pathlib
 
 def esc(s): return html.escape(str(s), quote=True)
-RING = re.compile(r"\bRing\b")
-def prose(s): return esc(RING.sub("Haro", str(s)).replace("Ring++", "Haro"))
+RING = re.compile(r"\b(?:Ring|RING)\b")
+def prose(s): return esc(RING.sub(lambda m: "HARO" if m.group(0).isupper() else "Haro", str(s)).replace("Ring++", "Haro"))
 
 # the families a function belongs to, by the verb that leads its name
 FAMILIES = [

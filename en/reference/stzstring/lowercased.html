@@ -32,11 +32,7 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># Uppercased(&#x27;ring&#x27;) is RING
-? Q(&quot;ring&quot;).Uppercased()
-# Lowercased(&#x27;RING&#x27;) is ring
-? Q(&quot;RING&quot;).Lowercased()</pre></div><div class="out"><div class="lbl">Output</div><pre>RING
-ring</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/00_string_narrated.ring">00_string_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(&quot;ABCABCABC&quot;) / 3	# Remove the last 3 chars
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(&quot;ABCABCABC&quot;) / 3	# Remove the last 3 chars
 ? Q(&quot;ABC-ABC-ABC&quot;) / &quot;-&quot;
 ? ( Q(&quot;ABC-ABC-ABC&quot;) / Q(&quot;-&quot;) ).StzType() + NL
 ? ( Q(&quot;ABC-ABC-ABC&quot;) / Q(&quot;-&quot;)  ).Lowercased()</pre></div><div class="out"><div class="lbl">Output</div><pre>ABC
@@ -51,11 +47,7 @@ stzlist
 
 abc
 abc
-abc</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/422_stztype.ring">422_stztype.ring</a></p><h2>Scope <span class="mono">(7)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># Lowercased drops the case
-? Q(&quot;I BELIEVE IN RING FUTURE AND ENGAGE FOR IT!&quot;).Lowercased()
-# the all-lower string IS lowercase
-? Q(&quot;i believe in ring future and engage for it!&quot;).IsLowercase()</pre></div><div class="out"><div class="lbl">Output</div><pre>i believe in ring future and engage for it!
-1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/249_lowercased.ring">249_lowercased.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(&quot;ABC&quot;) * 3
+abc</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/422_stztype.ring">422_stztype.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(&quot;ABC&quot;) * 3
 ? ( Q(&quot;ABC&quot;) * Q(3) ).StzType() + NL
 ? ( Q(&quot;ABC&quot;) * Q(3) ).Lowercased()
 ? Q(&quot;ABC&quot;) * &quot; -&gt; &quot;
@@ -64,7 +56,7 @@ stzstring
 
 abcabcabc
 A -&gt; B -&gt; C -&gt; 
-a -&gt; b -&gt; c -&gt;</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/419_stztype.ring">419_stztype.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(&quot;ABCDEFGHI&quot;) / 3
+a -&gt; b -&gt; c -&gt;</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/419_stztype.ring">419_stztype.ring</a></p><h2>Scope <span class="mono">(5)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(&quot;ABCDEFGHI&quot;) / 3
 ? ( Q(&quot;ABCDEFGHI&quot;) / Q(3) ).StzType() + NL
 ? ( Q(&quot;ABCDEFGHI&quot;) / Q(3) ).Lowercased()
 ? Q(&quot;ABC&quot;) + &quot;D&quot;
@@ -79,14 +71,14 @@ def
 ghi
 
 ABCD
-abcd</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/418_stztype.ring">418_stztype.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># lowercased
+abcd</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/418_stztype.ring">418_stztype.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># lowercased
 ? Q(&quot;tunis&quot;).Lowercased()
 # uppercased
 ? Q(&quot;tunis&quot;).Uppercased()
 # titlecased
 ? Q(&quot;tunis&quot;).Titlecased()</pre></div><div class="out"><div class="lbl">Output</div><pre>tunis
 TUNIS
-Tunis</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/710_lowercased.ring">710_lowercased.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># minus 3 trims the last three
+Tunis</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/710_lowercased.ring">710_lowercased.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># minus 3 trims the last three
 ? Q(&quot;A**BC***DE***&quot;) - 3
 # minus a string removes it everywhere
 ? Q(&quot;A**BC***DE***&quot;) - &quot;*&quot;
@@ -96,7 +88,7 @@ Tunis</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library
 ? ( Q(&quot;A**BC***DE***&quot;) - Q(&quot;*&quot;) ).Lowercased()</pre></div><div class="out"><div class="lbl">Output</div><pre>A**BC***DE
 ABCDE
 stzstring
-abcde</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/997_minusoperator.ring">997_minusoperator.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># it is lowercase
+abcde</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/997_minusoperator.ring">997_minusoperator.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># it is lowercase
 ? Q(&quot;ß&quot;).CharCase()
 # it uppercases to SS
 ? Q(&quot;ß&quot;).Uppercased()
@@ -109,7 +101,7 @@ abcde</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library
 SS
 DER FLUSS
 ss
-ss</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/657_todo_logical_error_in_qt.ring">657_todo_logical_error_in_qt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># the script
+ss</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/657_todo_logical_error_in_qt.ring">657_todo_logical_error_in_qt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># the script
 ? TQ(&quot;Σίσυφος&quot;).Script()
 # capitalcase
 ? Q(&quot;Σίσυφος&quot;).StringCase()
@@ -131,9 +123,9 @@ uppercase
 ΣΊΣΥΦΟΣ
 Σίσυφοσ
 1
-0</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/653_script.ring">653_script.ring</a></p>
+0</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/653_script.ring">653_script.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzstring.html#lowercased">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/capitalcased.html">stzString.CapitalCased</a> · <a class="mono" href="../stzstring/charcase.html">stzString.CharCase</a> · <a class="mono" href="../stzstring/isequaltocs.html">stzString.IsEqualToCS</a> · <a class="mono" href="../stzstring/islowercase.html">stzString.IsLowercase</a> · <a class="mono" href="../stzstring/lowercasedinlocale.html">stzString.LowercasedInLocale</a> · <a class="mono" href="../stzstring/stringcase.html">stzString.StringCase</a> · <a class="mono" href="../stzstring/stztype.html">stzString.StzType</a> · <a class="mono" href="../stzstring/titlecased.html">stzString.Titlecased</a> · <a class="mono" href="../stzstring/uppercased.html">stzString.Uppercased</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzstring.html#lowercased">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/capitalcased.html">stzString.CapitalCased</a> · <a class="mono" href="../stzstring/charcase.html">stzString.CharCase</a> · <a class="mono" href="../stzstring/isequaltocs.html">stzString.IsEqualToCS</a> · <a class="mono" href="../stzstring/lowercasedinlocale.html">stzString.LowercasedInLocale</a> · <a class="mono" href="../stzstring/stringcase.html">stzString.StringCase</a> · <a class="mono" href="../stzstring/stztype.html">stzString.StzType</a> · <a class="mono" href="../stzstring/titlecased.html">stzString.Titlecased</a> · <a class="mono" href="../stzstring/uppercased.html">stzString.Uppercased</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

@@ -33,11 +33,11 @@
   <div class="wrap page-body">
     
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># IsNumberInString on a space
-? Q(&quot; &quot;).IsNumberInString()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/461_isnumberinstring.ring">461_isnumberinstring.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># the method form
+? Q(&quot; &quot;).IsNumberInString()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/461_isnumberinstring.ring">461_isnumberinstring.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># the method form
 ? Q(&quot;123.98&quot;).IsNumberInString()
 # the global form
 ? IsNumberInString(&quot;123.98&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/458_isnumberinstring.ring">458_isnumberinstring.ring</a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># stzstring
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/458_isnumberinstring.ring">458_isnumberinstring.ring</a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># stzstring
 ? QQ(&quot;normal text&quot;).StzType()
 o1 = new stzString(&quot;normal text&quot;)
 # no number inside
@@ -45,7 +45,7 @@ o1 = new stzString(&quot;normal text&quot;)
 # no list inside
 ? o1.IsListInString()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>stzstring
 0
-0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/993_type.ring">993_type.ring</a></p>
+0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/993_type.ring">993_type.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#isnumberinstring">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/islistinstring.html">stzString.IsListInString</a></li></ul>
   </div>

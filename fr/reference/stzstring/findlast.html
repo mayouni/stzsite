@@ -37,7 +37,7 @@
 ? o1.FindLast(&quot;♥&quot;)
 # FindLast(&#x27;_&#x27;) (absent) is 0
 ? o1.FindLast(&quot;_&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>7
-0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/238_testing_findlast_on_a_small_string.ring">238_testing_findlast_on_a_small_string.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;---***---***---***---&quot;)
+0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/238_testing_findlast_on_a_small_string.ring">238_testing_findlast_on_a_small_string.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;---***---***---***---&quot;)
 # HowMany(&#x27;***&#x27;) is 3
 ? o1.HowMany(&quot;***&quot;)
 # the 3rd &#x27;***&#x27; starts at 16
@@ -45,7 +45,7 @@
 # FindLast(&#x27;***&#x27;) is also 16
 ? o1.FindLast(&quot;***&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>3
 16
-16</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/242_howmany.ring">242_howmany.ring</a></p><h2>Portée <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
+16</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/242_howmany.ring">242_howmany.ring</a></p><h2>Portée <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
 big  = new stzString( oAB.Repeated(1000000) )
 # NumberOfChars is 2,000,000
 ? big.NumberOfChars()
@@ -57,7 +57,7 @@ big  = new stzString( oAB.Repeated(1000000) )
 ? big.FindLast(&quot;ab&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>2000000
 1
 1
-1999999</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;ab_cd_ef_gh&quot;)
+1999999</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;ab_cd_ef_gh&quot;)
 # the first underscore
 ? o1.FindFirst(&quot;_&quot;)
 # a missing star from 4
@@ -74,7 +74,7 @@ big  = new stzString( oAB.Repeated(1000000) )
 3
 9
 0
-6</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/508_findfirst.ring">508_findfirst.ring</a></p>
+6</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/508_findfirst.ring">508_findfirst.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#findlast">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/contains.html">stzString.Contains</a> · <a class="mono" href="../stzstring/findfirst.html">stzString.FindFirst</a> · <a class="mono" href="../stzstring/findfirstst.html">stzString.FindFirstST</a> · <a class="mono" href="../stzstring/findnth.html">stzString.FindNth</a> · <a class="mono" href="../stzstring/howmany.html">stzString.HowMany</a> · <a class="mono" href="../stzstring/nth.html">stzString.Nth</a> · <a class="mono" href="../stzstring/numberofchars.html">stzString.NumberOfChars</a></li></ul>
   </div>

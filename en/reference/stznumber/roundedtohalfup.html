@@ -42,7 +42,7 @@
 ? (new stzNumber(&quot;-0.4&quot;)).RoundedToHalfUp(0)</pre></div><div class="out"><div class="lbl">Output</div><pre>-2
 -2
 0
-0</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_tie_rule_narrated.ring">numeric_tie_rule_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># 9.99 to one place carries into the units
+0</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_tie_rule_narrated.ring">numeric_tie_rule_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># 9.99 to one place carries into the units
 ? (new stzNumber(&quot;9.99&quot;)).RoundedToHalfUp(1)
 # 9.999 to none carries twice
 ? (new stzNumber(&quot;9.999&quot;)).RoundedToHalfUp(0)
@@ -58,7 +58,7 @@
 100.0
 20.00
 1.500
-7.00</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_tie_rule_narrated.ring">numeric_tie_rule_narrated.ring</a></p><h2>Scope <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># 1.005 to two places is 1.01 commercially
+7.00</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_tie_rule_narrated.ring">numeric_tie_rule_narrated.ring</a></p><h2>Scope <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># 1.005 to two places is 1.01 commercially
 ? (new stzNumber(&quot;1.005&quot;)).RoundedToHalfUp(2)
 # ...and 1.00 by banker&#x27;s
 ? (new stzNumber(&quot;1.005&quot;)).RoundedToHalfEven(2)
@@ -74,7 +74,7 @@
 0.13
 0.12
 2.34
-0.14</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_tie_rule_narrated.ring">numeric_tie_rule_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># 0.4 goes down under either
+0.14</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_tie_rule_narrated.ring">numeric_tie_rule_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># 0.4 goes down under either
 ? (new stzNumber(&quot;0.4&quot;)).RoundedToHalfEven(0)
 # ...and half-up agrees
 ? (new stzNumber(&quot;0.4&quot;)).RoundedToHalfUp(0)
@@ -93,7 +93,7 @@
 1
 1
 0
-0</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_tie_rule_narrated.ring">numeric_tie_rule_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># half-up sends 0.5 to 1
+0</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_tie_rule_narrated.ring">numeric_tie_rule_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># half-up sends 0.5 to 1
 ? (new stzNumber(&quot;0.5&quot;)).RoundedToHalfUp(0)
 # ...1.5 to 2
 ? (new stzNumber(&quot;1.5&quot;)).RoundedToHalfUp(0)
@@ -115,7 +115,7 @@
 0
 2
 2
-4</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_tie_rule_narrated.ring">numeric_tie_rule_narrated.ring</a></p>
+4</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_tie_rule_narrated.ring">numeric_tie_rule_narrated.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stznumber.html#roundedtohalfup">The class stzNumber</a></li><li><a href="../../guide/numeric.html">The area's guide: Numeric &amp; optimization</a></li><li>The other methods in these examples: <a class="mono" href="../stznumber/roundedtohalfeven.html">stzNumber.RoundedToHalfEven</a></li></ul>
   </div>

@@ -31,39 +31,26 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>The forms of this verb</h2><p><a class="mono" href="replace.html">Replace</a> · <a class="mono" href="replaceq.html">ReplaceQ</a> · <a class="mono" href="../stzstring.html#replacew">ReplaceW</a> · <a class="mono" href="../stzstring.html#replaced">Replaced</a> · <a class="mono" href="../stzstring.html#replacecs">ReplaceCS</a> · <a class="mono" href="replacewq.html">ReplaceWQ</a> · <b class="mono">ReplaceXT</b> · <a class="mono" href="../stzstring.html#replacecsq">ReplaceCSQ</a> · <a class="mono" href="../stzstring.html#replacextq">ReplaceXTQ</a> · <a class="mono" href="../stzstring.html#replacedcs">ReplacedCS</a></p>
+    <h2>The forms of this verb</h2><p><a class="mono" href="replace.html">Replace</a> · <a class="mono" href="replaceq.html">ReplaceQ</a> · <a class="mono" href="../stzstring.html#replacew">ReplaceW</a> · <a class="mono" href="replaced.html">Replaced</a> · <a class="mono" href="../stzstring.html#replacecs">ReplaceCS</a> · <a class="mono" href="replacewq.html">ReplaceWQ</a> · <b class="mono">ReplaceXT</b> · <a class="mono" href="../stzstring.html#replacecsq">ReplaceCSQ</a> · <a class="mono" href="../stzstring.html#replacextq">ReplaceXTQ</a> · <a class="mono" href="../stzstring.html#replacedcs">ReplacedCS</a></p>
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;~♥/♥\~~&quot;)
 o1.ReplaceXT(&quot;♥&quot;, :At = 2, :With = &quot;~&quot;)
 # the heart at position 2 becomes &#x27;~&#x27;
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>~~/♥\~~</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/192_replacext_at.ring">192_replacext_at.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;_♥♥\__/♥\__/♥\_&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>~~/♥\~~</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/192_replacext_at.ring">192_replacext_at.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;_♥♥\__/♥\__/♥\_&quot;)
 o1.ReplaceXT(:First, &quot;♥&quot;, :With = &quot;/&quot;)
 # the first heart becomes a slash
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>_/♥\__/♥\__/♥\_</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/190_replacext_first.ring">190_replacext_first.ring</a></p><h2>Scope <span class="mono">(8)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;_/♥\__/♥\__/♥♥_&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>_/♥\__/♥\__/♥\_</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/190_replacext_first.ring">190_replacext_first.ring</a></p><h2>Scope <span class="mono">(8)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;_/♥\__/♥\__/♥♥_&quot;)
 o1.ReplaceXT(:Last, &quot;♥&quot;, :With = &quot;\&quot;)
 # the last heart becomes a backslash
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>_/♥\__/♥\__/♥\_</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/191_replacext_last.ring">191_replacext_last.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;~♥/♥\~♥&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>_/♥\__/♥\__/♥\_</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/191_replacext_last.ring">191_replacext_last.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;~♥/♥\~♥&quot;)
 o1.ReplaceXT(&quot;♥&quot;, :AtPositions = [2, 7], :With = &quot;~&quot;)
 # hearts at 2 and 7 become ~
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>~~/♥\~~</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/193_replacext_atpositions.ring">193_replacext_atpositions.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;_/♥\__/♥\__/♥♥__/♥\_&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>~~/♥\~~</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/193_replacext_atpositions.ring">193_replacext_atpositions.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;_/♥\__/♥\__/♥♥__/♥\_&quot;)
 o1.ReplaceXT(:Nth = 4, &quot;♥&quot;, :With = &quot;\&quot;)
 # the 4th heart gets its backslash
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>_/♥\__/♥\__/♥\__/♥\_</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/189_replacext_nth.ring">189_replacext_nth.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;ruby ring php&quot;)
-o1.ReplaceXT(&quot;ring&quot;, :AtPosition = 6, :By = &quot;♥♥♥&quot;)
-# the &#x27;ring&#x27; at position 6 becomes hearts
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>ruby ♥♥♥ php</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/71_replacext_atposition.ring">71_replacext_atposition.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;bla bla &lt;&lt;♥♥♥&gt;&gt; and bla!&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>_/♥\__/♥\__/♥\__/♥\_</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/189_replacext_nth.ring">189_replacext_nth.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;bla bla &lt;&lt;♥♥♥&gt;&gt; and bla!&quot;)
 o1.ReplaceXT( [], :BoundedBy = [&quot;&lt;&lt;&quot;,&quot;&gt;&gt;&quot;], :With = &quot;bla&quot; )
 # the bounded content is replaced
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>bla bla &lt;&lt;bla&gt;&gt; and bla!</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/194_content.ring">194_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;ring ruby ring php ring&quot;)
-o1.ReplaceXT(&quot;ring&quot;, :AtPositions = [ 1, 20 ], :By = &quot;♥♥♥&quot;)
-# only the rings at 1 and 20 change; the one at 11 stays
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>♥♥♥ ruby ring php ♥♥♥</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/72_replacext_atpositions.ring">72_replacext_atpositions.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;♥♥♥ Ring programing language ♥♥♥&quot;)
-o1.ReplaceXT( :Each = &quot;♥&quot;, [], :With = &quot;*&quot;)
-# every heart becomes a star
-? o1.Content()
-o1.ReplaceXT(&quot;*&quot;, :With = &quot;♥&quot;, [])
-# and back again
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>*** Ring programing language ***
-♥♥♥ Ring programing language ♥♥♥</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/188_replacext_each.ring">188_replacext_each.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;bla bla /.../ and bla!&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>bla bla &lt;&lt;bla&gt;&gt; and bla!</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/194_content.ring">194_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;bla bla /.../ and bla!&quot;)
 o1.ReplaceXT( [], :BoundedBy = &#x27;/&#x27;, :With = &quot;bla&quot; )
 # :BoundedBy keeps the bounds
 ? o1.Content()
@@ -71,9 +58,33 @@ o2 = new stzString(&quot;bla bla /.../ and bla!&quot;)
 o2.ReplaceXT( [], :BoundedByIB = &#x27;/&#x27;, :With = &quot;bla&quot; )
 # :BoundedByIB replaces the whole region
 ? o2.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>bla bla /bla/ and bla!
-bla bla bla and bla!</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/199_replacext_boundedby.ring">199_replacext_boundedby.ring</a></p><p class="proof">and 4 more in the tests</p>
+bla bla bla and bla!</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/199_replacext_boundedby.ring">199_replacext_boundedby.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;bla bla --word-- bla bla --nword- bla --word--&quot;)
+o1.ReplaceSubStringBoundedBy(&quot;word&quot;, &quot;--&quot;, :With = &quot;WORD&quot;)
+# the method form
+? o1.Content()
+o2 = new stzString(&quot;bla bla --word-- bla bla --nword- bla --word--&quot;)
+o2.ReplaceXT(&quot;word&quot;, :BoundedBy = &quot;--&quot;, :With = &quot;WORD&quot;)
+# the XT form
+? o2.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>bla bla --WORD-- bla bla --nword- bla --WORD--
+bla bla --WORD-- bla bla --nword- bla --WORD--</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/575_replacesubstringboundedby.ring">575_replacesubstringboundedby.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;bla bla &lt;&lt;word&gt;&gt; bla bla &lt;&lt;word&gt;&gt; bla &lt;&lt;word&gt;&gt;.&quot;)
+o1.ReplaceSubStringBoundedByIB(&quot;word&quot;, [ &quot;&lt;&lt;&quot;, &quot;&gt;&gt;&quot; ], &quot;WORD&quot;)
+# the method form
+? o1.Content()
+o2 = new stzString(&quot;bla bla &lt;&lt;word&gt;&gt; bla bla &lt;&lt;word&gt;&gt; bla &lt;&lt;word&gt;&gt;.&quot;)
+o2.ReplaceXT(&quot;word&quot;, :BoundedByIB = [&quot;&lt;&lt;&quot;, &quot;&gt;&gt;&quot;], :With = &quot;WORD&quot;)
+# the XT form
+? o2.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>bla bla WORD bla bla WORD bla WORD.
+bla bla WORD bla bla WORD bla WORD.</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/576_replacesubstringboundedib.ring">576_replacesubstringboundedib.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;bla bla &lt;&lt;word&gt;&gt; bla bla &lt;&lt;noword&gt;&gt; bla &lt;&lt;word&gt;&gt;&quot;)
+o1.ReplaceSubStringBoundedBy(&quot;noword&quot;, [ &quot;&lt;&lt;&quot;, &quot;&gt;&gt;&quot; ], :With = &quot;word&quot;)
+# the method form
+? o1.Content()
+o2 = new stzString(&quot;bla bla &lt;&lt;word&gt;&gt; bla bla &lt;&lt;noword&gt;&gt; bla &lt;&lt;word&gt;&gt;&quot;)
+o2.ReplaceXT(&quot;noword&quot;, :BoundedBy = [&quot;&lt;&lt;&quot;, &quot;&gt;&gt;&quot;], :With = &quot;word&quot;)
+# the XT form
+? o2.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>bla bla &lt;&lt;word&gt;&gt; bla bla &lt;&lt;word&gt;&gt; bla &lt;&lt;word&gt;&gt;
+bla bla &lt;&lt;word&gt;&gt; bla bla &lt;&lt;word&gt;&gt; bla &lt;&lt;word&gt;&gt;</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/574_content.ring">574_content.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzstring.html#replacext">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/replace.html">stzString.Replace</a> · <a class="mono" href="../stzstring/replacesubstringboundedby.html">stzString.ReplaceSubStringBoundedBy</a> · <a class="mono" href="../stzstring/replacesubstringboundedbyib.html">stzString.ReplaceSubStringBoundedByIB</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzstring.html#replacext">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/replacesubstringboundedby.html">stzString.ReplaceSubStringBoundedBy</a> · <a class="mono" href="../stzstring/replacesubstringboundedbyib.html">stzString.ReplaceSubStringBoundedByIB</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

@@ -32,11 +32,11 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(&quot;(,,)&quot;).Check(:That = &#x27;StzCharQ(@Char).IsPunctuation()&#x27;)</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/global/50_q_check_predicate.ring">50_q_check_predicate.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># 248 chars are even positive numbers (RTL evaluation)
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(&quot;(,,)&quot;).Check(:That = &#x27;StzCharQ(@Char).IsPunctuation()&#x27;)</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/global/50_q_check_predicate.ring">50_q_check_predicate.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># 248 chars are even positive numbers (RTL evaluation)
 ? Q(&quot;248&quot;).AllCharsAreXT([ :Even, :Positive, :Numbers ], :EvaluateFrom = :RTL)
 # every char of 123 passes the raw isnumber check
 ? Q(&quot;123&quot;).Check( &#x27;isnumber( 0+(@char) )&#x27; )</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/481_check_after_reincluding_check.ring">481_check_after_reincluding_check.ring</a></p>
+1</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/481_check_after_reincluding_check.ring">481_check_after_reincluding_check.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#check">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/allcharsarext.html">stzString.AllCharsAreXT</a></li></ul>
   </div>

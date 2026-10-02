@@ -34,7 +34,7 @@
     <h2>The forms of this verb</h2><p><b class="mono">TheseBoundsRemoved</b> · <a class="mono" href="../stzstring.html#theseboundsremovedq">TheseBoundsRemovedQ</a></p>
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;&lt;&lt;Go!&gt;&gt;&quot;)
 # the bounds fall away
-? o1.TheseBoundsRemoved(&quot;&lt;&lt;&quot;, &quot;&gt;&gt;&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>Go!</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/580_theseboundsremoved.ring">580_theseboundsremoved.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oStr = new stzString(&quot;|&lt;--Scope of Life--&gt;|&quot;)
+? o1.TheseBoundsRemoved(&quot;&lt;&lt;&quot;, &quot;&gt;&gt;&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>Go!</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/580_theseboundsremoved.ring">580_theseboundsremoved.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oStr = new stzString(&quot;|&lt;--Scope of Life--&gt;|&quot;)
 ? oStr.IsBoundedBy([ &quot;|&lt;--&quot;, &quot;--&gt;|&quot; ])
 ? oStr.TheseBoundsRemoved( &quot;|&lt;--&quot;, &quot;--&gt;|&quot; )
 oList = new stzList([ &quot;|&lt;--&quot;, &quot;Scope&quot;, &quot;of&quot;, &quot;Life&quot;, &quot;--&gt;|&quot; ])
@@ -44,7 +44,7 @@ Scope of Life
 1
 Scope
 of
-Life</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/515_same_semantics_for_all_softanza_objects.ring">515_same_semantics_for_all_softanza_objects.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;{{{ Scope of Life }}}&quot;)
+Life</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/515_same_semantics_for_all_softanza_objects.ring">515_same_semantics_for_all_softanza_objects.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;{{{ Scope of Life }}}&quot;)
 # begins with {
 ? o1.BeginsWith(&quot;{&quot;)
 # ends with }
@@ -55,7 +55,7 @@ Life</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library 
 ? o1.TheseBoundsRemoved(&quot;{&quot;, &quot;}&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 1
 1
-{{ Scope of Life }}</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/691_beginswith.ring">691_beginswith.ring</a></p>
+{{ Scope of Life }}</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/691_beginswith.ring">691_beginswith.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#theseboundsremoved">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzlist/isboundedby.html">stzList.IsBoundedBy</a> · <a class="mono" href="../stzlist/theseboundsremoved.html">stzList.TheseBoundsRemoved</a> · <a class="mono" href="../stzstring/beginswith.html">stzString.BeginsWith</a> · <a class="mono" href="../stzstring/endswith.html">stzString.EndsWith</a> · <a class="mono" href="../stzstring/isboundedby.html">stzString.IsBoundedBy</a></li></ul>
   </div>

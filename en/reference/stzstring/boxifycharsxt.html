@@ -32,32 +32,12 @@
   </div></section>
   <div class="wrap page-body">
     <h2>The forms of this verb</h2><p><a class="mono" href="boxifychars.html">BoxifyChars</a> · <b class="mono">BoxifyCharsXT</b> · <a class="mono" href="../stzstring.html#boxifycharsxtq">BoxifyCharsXTQ</a></p>
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;SOFTANZA&quot;)
+    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;SOFTANZA&quot;)
 o1.BoxifyCharsXT([])
 # same eight cells
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>┌───┬───┬───┬───┬───┬───┬───┬───┐
 │ S │ O │ F │ T │ A │ N │ Z │ A │
-└───┴───┴───┴───┴───┴───┴───┴───┘</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/905_content.ring">905_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o2 = new stzString(&quot;SOFTANZA~RING&quot;)
-o2.BoxifyCharsXT([
-		:Rounded = FALSE,
-		:Corners = [ :Round, :Rect, :Round, :Rect ],
-		:Numbered = TRUE
-	])
-# all corners rectangular
-? o2.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
-│ S │ O │ F │ T │ A │ N │ Z │ A │ ~ │ R │ I │ N │ G │
-└───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┘
-  1   2   3   4   5   6   7   8   9   10  11  12  13</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/938_content.ring">938_content.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;SOFTANZA~RING&quot;)
-o1.BoxifyCharsXT([
-		:Rounded = TRUE,
-		:Corners = [ :Round, :Rect, :Round, :Rect ],
-		:Numbered = TRUE
-	])
-# cells, corners and numbers
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>╭───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
-│ S │ O │ F │ T │ A │ N │ Z │ A │ ~ │ R │ I │ N │ G │
-└───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───╯
-  1   2   3   4   5   6   7   8   9   10  11  12  13</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/938_content.ring">938_content.ring</a></p>
+└───┴───┴───┴───┴───┴───┴───┴───┘</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/905_content.ring">905_content.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#boxifycharsxt">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li></ul>
   </div>

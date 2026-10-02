@@ -34,12 +34,12 @@
     <h2>The forms of this verb</h2><p><a class="mono" href="section.html">Section</a> · <a class="mono" href="../stzstring.html#sectionq">SectionQ</a> · <b class="mono">SectionXT</b> · <a class="mono" href="../stzstring.html#sectionxtq">SectionXTQ</a></p>
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;123456789&quot;)
 # -3 counts from the end
-? o1.SectionXT(3, -3)</pre></div><div class="out"><div class="lbl">Output</div><pre>34567</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/405_sectionxt.ring">405_sectionxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;123456789&quot;)
+? o1.SectionXT(3, -3)</pre></div><div class="out"><div class="lbl">Output</div><pre>34567</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/405_sectionxt.ring">405_sectionxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;123456789&quot;)
 # 5 to 3 reads backwards
 ? o1.SectionXT(5, 3)
 # 5 with length 3 reads forward
 ? o1.SectionXT(5, -3)</pre></div><div class="out"><div class="lbl">Output</div><pre>543
-567</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/986_sectionxt.ring">986_sectionxt.ring</a></p><h2>Scope <span class="mono">(5)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;eeebxeTuniseee&quot;)
+567</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/986_sectionxt.ring">986_sectionxt.ring</a></p><h2>Scope <span class="mono">(4)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;eeebxeTuniseee&quot;)
 # first to last is the whole
 ? o1.Section(:FirstChar, :LastChar)
 # plain Section normalizes 7..4
@@ -47,7 +47,7 @@
 # SectionXT reads it backwards
 ? o1.SectionXT(7, 4)</pre></div><div class="out"><div class="lbl">Output</div><pre>eeebxeTuniseee
 bxeT
-Texb</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/771_section.ring">771_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;1234567&quot;)
+Texb</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/771_section.ring">771_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;1234567&quot;)
 # Section(3, 5) is &#x27;345&#x27;
 ? o1.Section(3, 5)
 # Section(5, 3) auto-orders to &#x27;345&#x27;
@@ -58,18 +58,7 @@ Texb</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library 
 ? o1.SectionXT(-3, 3)</pre></div><div class="out"><div class="lbl">Output</div><pre>345
 345
 345
-543</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/169_section.ring">169_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;Ring Programming Language&quot;)
-# Section(6, FindNth(3,&#x27;g&#x27;)) reaches the 3rd &#x27;g&#x27;
-? o1.Section(6, o1.FindNth(3, &quot;g&quot;))
-# Section(:From=&#x27;L&#x27;, :To=&#x27;e&#x27;) spans the delimiters
-? o1.Section(:From = &quot;L&quot;, :To = &quot;e&quot;)
-# Range(6, 11) is a Section alias
-? o1.Range(6, 11)
-# SectionXT(6, :UpToNChars=11) takes 11 chars from pos 6
-? o1.SectionXT(6, :UpToNChars = 11)</pre></div><div class="out"><div class="lbl">Output</div><pre>Programming
-Language
-Programming
-Programming</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/49_section.ring">49_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;12345&quot;)
+543</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/169_section.ring">169_section.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;12345&quot;)
 # a plain section
 ? o1.Section(2, 4)
 # negatives belong to the XT form
@@ -83,7 +72,7 @@ Programming</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the l
 234
 12345
 3
-3</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/397_o1_new_stzstring12345.ring">397_o1_new_stzstring12345.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;123456789&quot;)
+3</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/397_o1_new_stzstring12345.ring">397_o1_new_stzstring12345.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;123456789&quot;)
 # Section(3, 5) is the 3..5 span
 ? o1.Section(3, 5)
 # Section(5, 3) auto-orders to the same span
@@ -97,9 +86,9 @@ Programming</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the l
 345
 678
 543
-876</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/46_section.ring">46_section.ring</a></p>
+876</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/46_section.ring">46_section.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzstring.html#sectionxt">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/range.html">stzString.Range</a> · <a class="mono" href="../stzstring/section.html">stzString.Section</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzstring.html#sectionxt">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/section.html">stzString.Section</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

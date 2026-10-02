@@ -40,11 +40,11 @@ FILTER_JS = """<script>(function(){var i=document.getElementById('flt');if(!i)re
 RING = re.compile(r"Ring")
 def esc(s): return html.escape(str(s), quote=True)
 
-RING = re.compile(r"\bRing\b")
+RING = re.compile(r"\b(?:Ring|RING)\b")
 def prose(s):
     """A description is prose the site renders under the language's current name,
     Haro; an identifier is never touched, so a method really named Ring stays Ring."""
-    return esc(RING.sub("Haro", str(s)).replace("Ring++", "Haro"))
+    return esc(RING.sub(lambda m: "HARO" if m.group(0).isupper() else "Haro", str(s)).replace("Ring++", "Haro"))
 
 def split_camel(name):
     s = re.sub(r"([a-z0-9])([A-Z])", r"\1 \2", name)

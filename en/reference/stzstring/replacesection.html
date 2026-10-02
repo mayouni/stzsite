@@ -35,19 +35,19 @@
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;123--67--&quot;)
 o1.ReplaceSection(1, 3, &quot;~&quot;)
 # collapsed
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>~--67--</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/963_content.ring">963_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;--345--89--&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>~--67--</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/963_content.ring">963_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;--345--89--&quot;)
 o1.ReplaceSection(8, 9, &quot;~&quot;)
 # collapsed
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>--345--~--</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/964_content.ring">964_content.ring</a></p><h2>Scope <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;ABC*EF&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>--345--~--</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/964_content.ring">964_content.ring</a></p><h2>Scope <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;ABC*EF&quot;)
 o1.ReplaceSection( 4, 4, &quot;D&quot;)
 # the star became D
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>ABCDEF</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/253_content.ring">253_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;123456789&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>ABCDEF</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/253_content.ring">253_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;123456789&quot;)
 o1.ReplaceSection(4, 6, :With = &quot;***&quot;)
 # stars in place
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>123***789</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/789_content.ring">789_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;123456789&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>123***789</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/789_content.ring">789_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;123456789&quot;)
 o1.ReplaceSection(4, 6, :with = &quot;♥♥♥&quot;)
 # the middle becomes hearts
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>123♥♥♥789</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/374_content.ring">374_content.ring</a></p>
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>123♥♥♥789</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/374_content.ring">374_content.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#replacesection">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li></ul>
   </div>

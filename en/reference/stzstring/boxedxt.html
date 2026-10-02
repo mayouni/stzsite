@@ -31,10 +31,10 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>The forms of this verb</h2><p><a class="mono" href="boxed.html">Boxed</a> · <b class="mono">BoxedXT</b></p>
+    <h2>The forms of this verb</h2><p><a class="mono" href="../stzstring.html#boxed">Boxed</a> · <b class="mono">BoxedXT</b></p>
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? StzStringQ(&quot;CAIRO&quot;).BoxedXT([ :EachChar = TRUE, :AllCorners = :Round ])</pre></div><div class="out"><div class="lbl">Output</div><pre>╭───┬───┬───┬───┬───╮
 │ C │ A │ I │ R │ O │
-╰───┴───┴───┴───┴───╯</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofstrings/91_boxedxt_each_char_round.ring">91_boxedxt_each_char_round.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># one box
+╰───┴───┴───┴───┴───╯</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofstrings/91_boxedxt_each_char_round.ring">91_boxedxt_each_char_round.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># one box
 ? StzStringQ(&quot;SOFTANZA&quot;).BoxedXT([])
 # eight cells
 ? StzStringQ(&quot;SOFTANZA&quot;).BoxedXT([ :EachChar = TRUE ])</pre></div><div class="out"><div class="lbl">Output</div><pre>┌──────────┐
@@ -42,13 +42,7 @@
 └──────────┘
 ┌───┬───┬───┬───┬───┬───┬───┬───┐
 │ S │ O │ F │ T │ A │ N │ Z │ A │
-└───┴───┴───┴───┴───┴───┴───┴───┘</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/754_boxedxt.ring">754_boxedxt.ring</a></p><h2>Scope <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>cExp = &quot;┌──────┐&quot; + NL +
-&quot;│ RING │&quot; + NL +
-&quot;└──────┘&quot;
-# RING boxed
-? StzStringQ(&quot;RING&quot;).BoxedXT([ ])</pre></div><div class="out"><div class="lbl">Output</div><pre>┌──────┐
-│ RING │
-└──────┘</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/750_boxedxt.ring">750_boxedxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>cExp = &quot;╭─────────────────────┐&quot; + NL +
+└───┴───┴───┴───┴───┴───┴───┴───┘</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/754_boxedxt.ring">754_boxedxt.ring</a></p><h2>Scope <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>cExp = &quot;╭─────────────────────┐&quot; + NL +
 &quot;│ SOFTANZA IS AWSOME! │&quot; + NL +
 &quot;└─────────────────────╯&quot;
 # round-rect-round-rect, clockwise
@@ -59,7 +53,7 @@
 			:TextAdjustedTo = :Center
 		])</pre></div><div class="out"><div class="lbl">Output</div><pre>╭─────────────────────┐
 │ SOFTANZA IS AWSOME! │
-└─────────────────────╯</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/749_boxedxt.ring">749_boxedxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>cTop = &quot;╭────────────────────╮&quot;
+└─────────────────────╯</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/749_boxedxt.ring">749_boxedxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>cTop = &quot;╭────────────────────╮&quot;
 cBot = &quot;╰────────────────────╯&quot;
 # centered
 ? StzStringQ(&quot;PARIS&quot;).BoxedXT([ :AllCorners = :Round, :Width = 20, :TextAdjustedTo = :Center ])
@@ -79,7 +73,7 @@ cBot = &quot;╰────────────────────╯&
 ╰────────────────────╯
 ╭────────────────────╮
 │ P    A   R   I   S │
-╰────────────────────╯</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/753_boxedxt.ring">753_boxedxt.ring</a></p>
+╰────────────────────╯</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/753_boxedxt.ring">753_boxedxt.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#boxedxt">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li></ul>
   </div>

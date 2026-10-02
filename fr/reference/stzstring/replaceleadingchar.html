@@ -39,14 +39,14 @@ o1.ReplaceLeadingChar(&quot;o&quot;, :With = &quot;Hi&quot;)
 o1.ReplaceTrailingChar(&quot;-&quot;, :With = &quot;!&quot;)
 # dash-run becomes !
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>Hi Tunisia---
-Hi Tunisia!</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/779_content.ring">779_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;oooTunisia&quot;)
+Hi Tunisia!</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/779_content.ring">779_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;oooTunisia&quot;)
 o1.ReplaceLeadingChar(&quot;O&quot;, :With = &quot;&quot;)
 # case-sensitive: no match
 ? o1.Content()
 o1.ReplaceLeadingCharCS(&quot;O&quot;, :With = &quot;&quot;, :CS = FALSE)
 # case-blind: collapsed away
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>oooTunisia
-Tunisia</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/784_content.ring">784_content.ring</a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;___VAR---&quot;)
+Tunisia</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/784_content.ring">784_content.ring</a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;___VAR---&quot;)
 o1.ReplaceLeadingChar(&quot;_&quot;, :With = &quot;*&quot;)
 # underscores collapsed
 ? o1.Content()
@@ -54,7 +54,7 @@ o2 = new stzString(&quot;___VAR---&quot;)
 o2.ReplaceTrailingChar(&quot;-&quot;, :With = &quot;*&quot;)
 # dashes collapsed
 ? o2.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>*VAR---
-___VAR*</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/774_content.ring">774_content.ring</a></p>
+___VAR*</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/774_content.ring">774_content.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#replaceleadingchar">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/replaceleadingcharcs.html">stzString.ReplaceLeadingCharCS</a> · <a class="mono" href="../stzstring/replacetrailingchar.html">stzString.ReplaceTrailingChar</a></li></ul>
   </div>

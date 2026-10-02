@@ -35,21 +35,21 @@
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzGrid([3, 2])
 o1.MoveTo(1, 1)
 o1.MoveLeft() # Won&#x27;t move and stays on same position
-? @@( o1.Position() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 1, 1 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/08_position.ring">08_position.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzGrid([6, 4])
+? @@( o1.Position() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 1, 1 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/08_position.ring">08_position.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzGrid([6, 4])
 ? @@( o1.SizeXT() )
 o1.MoveTo(6, 1)
 ? @@(o1.Position())
 o1.MoveRight()
 ? @@(o1.Position())</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 6, 4 ]
 [ 6, 1 ]
-[ 6, 1 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/02_testing_hitting_the_right_boundary.ring">02_testing_hitting_the_right_boundary.ring</a></p><h2>Portée <span class="mono">(7)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzGrid([6, 4])
+[ 6, 1 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/02_testing_hitting_the_right_boundary.ring">02_testing_hitting_the_right_boundary.ring</a></p><h2>Portée <span class="mono">(7)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzGrid([6, 4])
 ? @@( o1.SizeXT() )
 o1.MoveToNthNextNode(5)
 ? @@(o1.Position())
 o1.MoveRight()
 ? @@(o1.Position())</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 6, 4 ]
 [ 6, 1 ]
-[ 6, 1 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/11_testing_hitting_the_right_boundary.ring">11_testing_hitting_the_right_boundary.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzGrid([6, 4])
+[ 6, 1 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/11_testing_hitting_the_right_boundary.ring">11_testing_hitting_the_right_boundary.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzGrid([6, 4])
 ? @@( o1.SizeXT() )
 ? @@(o1.Position())
 o1.MoveForwardNNodes(3)
@@ -58,7 +58,7 @@ o1.MoveBackwardNNodes(2)
 ? @@(o1.Position())</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 6, 4 ]
 [ 1, 1 ]
 [ 4, 1 ]
-[ 2, 1 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/10_testing_multi-node_movement.ring">10_testing_multi-node_movement.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzGrid([3, 2])
+[ 2, 1 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/10_testing_multi-node_movement.ring">10_testing_multi-node_movement.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzGrid([3, 2])
 o1.MoveTo(3, 1)
 ? @@( o1.Position() )
 o1.MoveRight() # Won&#x27;t move and stays on last node
@@ -66,7 +66,7 @@ o1.MoveRight() # Won&#x27;t move and stays on last node
 o1.MoveUp() # Idem
 ? @@( o1.Position() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 3, 1 ]
 [ 3, 1 ]
-[ 3, 1 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/07_position.ring">07_position.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzGrid([6, 4])
+[ 3, 1 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/07_position.ring">07_position.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzGrid([6, 4])
 ? @@( o1.SizeXT() )
 o1.MoveDownNNodes(2)
 ? @@(o1.Position())
@@ -78,7 +78,7 @@ o1.MoveUpNNodes(2)
 [ 1, 3 ]
 [ 4, 3 ]
 [ 4, 1 ]
-[ 4, 1 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/12_testing_direction-specific_movements.ring">12_testing_direction-specific_movements.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzGrid([6, 4])
+[ 4, 1 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/12_testing_direction-specific_movements.ring">12_testing_direction-specific_movements.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzGrid([6, 4])
 ? @@( o1.SizeXT() )
 o1.MoveLeftNNodes(1)
 ? @@(o1.Position())
@@ -94,7 +94,7 @@ o1.MoveDownNNodes(1)
 [ 1, 1 ]
 [ 6, 4 ]
 [ 6, 4 ]
-[ 6, 4 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/14_testing_boundary_cases_and_error_handling.ring">14_testing_boundary_cases_and_error_handling.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzGrid([4, 4])
+[ 6, 4 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/14_testing_boundary_cases_and_error_handling.ring">14_testing_boundary_cases_and_error_handling.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzGrid([4, 4])
 o1.MoveTo(2, 2)
 ? o1.Direction()
 o1.SetDirection(:down)
@@ -109,7 +109,7 @@ o1.MoveToNextPosition()
 down
 [ 2, 3 ]
 [ 2, 2 ]
-[ 3, 2 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/09_testing_direction_changes_and_movement_combination.ring">09_testing_direction_changes_and_movement_combination.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzGrid([6, 4])
+[ 3, 2 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/09_testing_direction_changes_and_movement_combination.ring">09_testing_direction_changes_and_movement_combination.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzGrid([6, 4])
 ? @@( o1.SizeXT() )
 o1.MoveToNode(3, 2)
 o1.SetDirection(:Forward)
@@ -126,7 +126,7 @@ forward
 [ 5, 2 ]
 [ 3, 2 ]
 [ 5, 2 ]
-[ 5, 3 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/13_testing_nextprevious_nth_node_methods.ring">13_testing_nextprevious_nth_node_methods.ring</a></p>
+[ 5, 3 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/grid/13_testing_nextprevious_nth_node_methods.ring">13_testing_nextprevious_nth_node_methods.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzgrid.html#position">La classe stzGrid</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzgrid/direction.html">stzGrid.Direction</a> · <a class="mono" href="../stzgrid/movebackwardnnodes.html">stzGrid.MoveBackwardNNodes</a> · <a class="mono" href="../stzgrid/movedownnnodes.html">stzGrid.MoveDownNNodes</a> · <a class="mono" href="../stzgrid/moveforwardnnodes.html">stzGrid.MoveForwardNNodes</a> · <a class="mono" href="../stzgrid/moveleft.html">stzGrid.MoveLeft</a> · <a class="mono" href="../stzgrid/moveleftnnodes.html">stzGrid.MoveLeftNNodes</a> · <a class="mono" href="../stzgrid/moveright.html">stzGrid.MoveRight</a> · <a class="mono" href="../stzgrid/moverightnnodes.html">stzGrid.MoveRightNNodes</a> · <a class="mono" href="../stzgrid/movetonextnthnode.html">stzGrid.MoveToNextNthNode</a> · <a class="mono" href="../stzgrid/movetonextposition.html">stzGrid.MoveToNextPosition</a> · <a class="mono" href="../stzgrid/movetonode.html">stzGrid.MoveToNode</a> · <a class="mono" href="../stzgrid/movetonthnextnode.html">stzGrid.MoveToNthNextNode</a></li></ul>
   </div>

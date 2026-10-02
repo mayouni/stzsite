@@ -32,7 +32,16 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oF = new stzMathFunction(&quot;x*x + x*x&quot;, [ &quot;x&quot; ])
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oQ = new stzMathFunction(&quot;x^2 - 2&quot;, [ &quot;x&quot; ])
+? oQ.DerivativeAt(&quot;x&quot;, [ 0 ])
+? oQ.DerivativeAt(&quot;x&quot;, [ 1 ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0
+2</pre></div></div><p class="ran">exécuté le 2026-10-02 04:25 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/math/chapters/15-an-identity-is-not-a-self-check.en.md">15-an-identity-is-not-a-self-check.en.md</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oQ = new stzMathFunction(&quot;x^2 - 2&quot;, [ &quot;x&quot; ])
+? oQ.DerivativeAt(&quot;x&quot;, [ 0 ])
+? oQ.DerivativeAt(&quot;x&quot;, [ 1.41421356 ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0
+2.83</pre></div></div><p class="ran">exécuté le 2026-10-02 04:25 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/math/chapters/14-the-derivative-that-checks.en.md">14-the-derivative-that-checks.en.md</a></p><h2>Portée <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oS = new stzMathFunction(&quot;sin(x)&quot;, [ &quot;x&quot; ])
+? oS.DerivativeAt(&quot;x&quot;, [ 0 ])
+? fabs( oS.DerivativeAt(&quot;x&quot;, [ 0 ]) - cos(0) ) &lt; 0.000000001</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:25 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/math/chapters/14-the-derivative-that-checks.en.md">14-the-derivative-that-checks.en.md</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oF = new stzMathFunction(&quot;x*x + x*x&quot;, [ &quot;x&quot; ])
 # f(3) = 18
 ? oF.ValueAt([3])
 # f&#x27;(3) = 12, not 6
@@ -44,7 +53,7 @@ oG = new stzMathFunction(&quot;(x+y)*(x+y)&quot;, [ &quot;x&quot;, &quot;y&quot;
 ? oG.DerivativeAt(&quot;y&quot;, [2,3])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>18
 12
 10
-10</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_autodiff_narrated.ring">numeric_autodiff_narrated.ring</a></p>
+10</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_autodiff_narrated.ring">numeric_autodiff_narrated.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzmathfunction.html#derivativeat">La classe stzMathFunction</a></li><li><a href="../../guide/numeric.html">Le guide du domaine : Numérique et optimisation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzmathfunction/valueat.html">stzMathFunction.ValueAt</a></li></ul>
   </div>

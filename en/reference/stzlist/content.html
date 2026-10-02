@@ -34,34 +34,34 @@
     <h2>The forms of this verb</h2><p><b class="mono">Content</b> · <a class="mono" href="../stzlist.html#contentq">ContentQ</a> · <a class="mono" href="contentcs.html">ContentCS</a> · <a class="mono" href="../stzlist.html#contentcsq">ContentCSQ</a></p>
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? @@( Q([&quot;A&quot;, &quot;B&quot; ]) * 3 )
 ? @@( ( Q([&quot;A&quot;, &quot;B&quot; ]) * Q(3) ).Content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot; ]
-[ &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/21_pr.ring">21_pr.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? @@( Q([4, 44, 444 ]) / 3 )
+[ &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/21_pr.ring">21_pr.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? @@( Q([4, 44, 444 ]) / 3 )
 ? @@( ( Q([4, 44, 444 ]) / Q(3) ).Content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ [ 4 ], [ 44 ], [ 444 ] ]
-[ [ 4 ], [ 44 ], [ 444 ] ]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/24_pr.ring">24_pr.ring</a></p><h2>Scope <span class="mono">(8)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([1, &quot;*&quot;, 2, &quot;*&quot;, 3 ]) - &quot;*&quot;
+[ [ 4 ], [ 44 ], [ 444 ] ]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/24_pr.ring">24_pr.ring</a></p><h2>Scope <span class="mono">(8)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([1, &quot;*&quot;, 2, &quot;*&quot;, 3 ]) - &quot;*&quot;
 ? ( Q([1,&quot;*&quot;,  2, &quot;*&quot;, 3 ]) - Q(&quot;*&quot;) ).Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 2
 3
 
 1
 2
-3</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/18_pr.ring">18_pr.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? ( Q([ &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot; ]) * TRUEObject() ).Content()
+3</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/18_pr.ring">18_pr.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? ( Q([ &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot; ]) * TRUEObject() ).Content()
 ? @@( ( Q([ &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot; ]) * Q(2) ).Content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>ONE
 TWO
 THREE
 
-[ &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot;, &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/406_multiply_operator_object.ring">406_multiply_operator_object.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? @@( Q([&quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;, &quot;five&quot;, &quot;six&quot; ]) / 3 ) + NL
+[ &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot;, &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/406_multiply_operator_object.ring">406_multiply_operator_object.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? @@( Q([&quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;, &quot;five&quot;, &quot;six&quot; ]) / 3 ) + NL
 ? @@( ( Q([&quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;, &quot;five&quot;, &quot;six&quot; ]) / Q(3) ).Content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ [ &quot;one&quot;, &quot;two&quot; ], [ &quot;three&quot;, &quot;four&quot; ], [ &quot;five&quot;, &quot;six&quot; ] ]
 
-[ [ &quot;one&quot;, &quot;two&quot; ], [ &quot;three&quot;, &quot;four&quot; ], [ &quot;five&quot;, &quot;six&quot; ] ]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/23_pr.ring">23_pr.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList(1:7)
+[ [ &quot;one&quot;, &quot;two&quot; ], [ &quot;three&quot;, &quot;four&quot; ], [ &quot;five&quot;, &quot;six&quot; ] ]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/23_pr.ring">23_pr.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList(1:7)
 o1 - 4:6
-? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ 1, 2, 3, 4, 5, 6, 7 ]</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/261_minus_operator_range.ring">261_minus_operator_range.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([&quot;file1&quot;, &quot;file2&quot;, &quot;file3&quot; ])
+? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ 1, 2, 3, 4, 5, 6, 7 ]</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/261_minus_operator_range.ring">261_minus_operator_range.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([&quot;file1&quot;, &quot;file2&quot;, &quot;file3&quot; ])
 ? @@( o1 / 3 ) + NL
 ? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ [ &quot;file1&quot; ], [ &quot;file2&quot; ], [ &quot;file3&quot; ] ]
 
-[ &quot;file1&quot;, &quot;file2&quot;, &quot;file3&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/582_divide_operator.ring">582_divide_operator.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? @@( ( Q([1, 2, 3]) + Q([ 4, 5 ]) ).Content() )
+[ &quot;file1&quot;, &quot;file2&quot;, &quot;file3&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/582_divide_operator.ring">582_divide_operator.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? @@( ( Q([1, 2, 3]) + Q([ 4, 5 ]) ).Content() )
 ? @@( Q([1, 2, 3]) + Obj(Q([ 4, 5 ])) )
 ? @@( Q([1, 2, 3]) + ObjQ(Q([ 4, 5 ])) + 6 )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ 1, 2, 3, [ 4, 5 ] ]
 [ 1, 2, 3, @noname ]
-[ 1, 2, 3, @noname, 6 ]</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/410_plus_operator_objects.ring">410_plus_operator_objects.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([&quot;file1&quot;, &quot;file2&quot;, &quot;file3&quot; ])
+[ 1, 2, 3, @noname, 6 ]</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/410_plus_operator_objects.ring">410_plus_operator_objects.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([&quot;file1&quot;, &quot;file2&quot;, &quot;file3&quot; ])
 ? o1 * &quot;.ring&quot;
 ? o1.Content()
 ? o1 + &quot;file4&quot;</pre></div><div class="out"><div class="lbl">Output</div><pre>file1.ring
@@ -75,7 +75,7 @@ file3
 file1
 file2
 file3
-file4</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/581_multiply_operator_string.ring">581_multiply_operator_string.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(1:5) - 3
+file4</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/581_multiply_operator_string.ring">581_multiply_operator_string.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(1:5) - 3
 ? ( Q(1:5) - Q(3) ).Content()
 ? Q([ &quot;A&quot;, &quot;B&quot;, 1:3, &quot;C&quot; ]) - 1:3
 ? ( Q([ &quot;A&quot;, &quot;B&quot;, 1:3, &quot;C&quot; ]) - Q(1:3) ).Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
@@ -94,7 +94,7 @@ C
 
 A
 B
-C</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/400_minus_operator.ring">400_minus_operator.ring</a></p><p class="proof">and 5 more in the tests</p>
+C</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/400_minus_operator.ring">400_minus_operator.ring</a></p><p class="proof">and 5 more in the tests</p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzlist.html#content">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li><li>The other methods in these examples: <a class="mono" href="../stznumber/content.html">stzNumber.Content</a></li></ul>
   </div>

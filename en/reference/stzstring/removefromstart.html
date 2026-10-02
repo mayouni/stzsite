@@ -39,7 +39,7 @@ o1.RemoveFromStart(&quot;{&quot;)
 o1.RemoveFromEnd(&quot;}&quot;)
 # the closing brace goes
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>HELLO}
-HELLO</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/373_content.ring">373_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;let&#x27;s say welcome to everyone!&quot;)
+HELLO</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/373_content.ring">373_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;let&#x27;s say welcome to everyone!&quot;)
 o1.RemoveFromStart(&quot;let&#x27;s say &quot;)
 # LTR
 ? o1.Content()
@@ -47,7 +47,7 @@ o2 = new stzString(&quot;هذه الكلمات الّتي سوف تبقى&quot;)
 o2.RemoveFromStart(&quot;هذه &quot;)
 # RTL, same code
 ? o2.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>welcome to everyone!
-الكلمات الّتي سوف تبقى</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/581_content.ring">581_content.ring</a></p>
+الكلمات الّتي سوف تبقى</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/581_content.ring">581_content.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#removefromstart">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/removefromend.html">stzString.RemoveFromEnd</a></li></ul>
   </div>

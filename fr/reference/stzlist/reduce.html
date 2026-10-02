@@ -32,8 +32,7 @@
   </div></section>
   <div class="wrap page-body">
     <h2>Les formes de ce verbe</h2><p><b class="mono">Reduce</b> · <a class="mono" href="reducext.html">ReduceXT</a></p>
-    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># the parts join into a sentence
-? Q([ &quot;I &quot;, &quot;believe &quot;, &quot;in &quot;, &quot;Ring!&quot; ]).Reduce()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>I believe in Ring!</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/218_reduce.ring">218_reduce.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># Reduce() of [1,2,3,4] is 10 (numeric sum)
+    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># Reduce() of [1,2,3,4] is 10 (numeric sum)
 ? Q([1,2,3,4]).Reduce()
 # ReduceXT(&#x27;@accumulator + @item&#x27;, 0) on [1..4] is 10
 ? Q([1,2,3,4]).ReduceXT(&quot;@accumulator + @item&quot;, 0)
@@ -43,7 +42,7 @@
 ? Q([1,2,3,4]).ReduceNoInit(&quot;@accumulator * @item&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>10
 10
 110
-24</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/00_list_narrated.ring">00_list_narrated.ring</a></p>
+24</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/00_list_narrated.ring">00_list_narrated.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#reduce">La classe stzList</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlist/reducenoinit.html">stzList.ReduceNoInit</a> · <a class="mono" href="../stzlist/reducext.html">stzList.ReduceXT</a></li></ul>
   </div>

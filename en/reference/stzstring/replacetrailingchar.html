@@ -39,7 +39,7 @@ o1.ReplaceLeadingChar(&quot;o&quot;, :With = &quot;Hi&quot;)
 o1.ReplaceTrailingChar(&quot;-&quot;, :With = &quot;!&quot;)
 # dash-run becomes !
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>Hi Tunisia---
-Hi Tunisia!</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/779_content.ring">779_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;___VAR---&quot;)
+Hi Tunisia!</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/779_content.ring">779_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;___VAR---&quot;)
 o1.ReplaceLeadingChar(&quot;_&quot;, :With = &quot;*&quot;)
 # underscores collapsed
 ? o1.Content()
@@ -47,7 +47,7 @@ o2 = new stzString(&quot;___VAR---&quot;)
 o2.ReplaceTrailingChar(&quot;-&quot;, :With = &quot;*&quot;)
 # dashes collapsed
 ? o2.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>*VAR---
-___VAR*</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/774_content.ring">774_content.ring</a></p>
+___VAR*</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/774_content.ring">774_content.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#replacetrailingchar">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/replaceleadingchar.html">stzString.ReplaceLeadingChar</a></li></ul>
   </div>

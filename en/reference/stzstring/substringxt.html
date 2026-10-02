@@ -32,27 +32,14 @@
   </div></section>
   <div class="wrap page-body">
     <h2>The forms of this verb</h2><p><a class="mono" href="../stzstring.html#substringq">SubStringQ</a> · <b class="mono">SubStringXT</b></p>
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># the named-param shape is recognised
+    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># the named-param shape is recognised
 ? Q(:IsBoundedBy = &quot;.&quot;).IsIsBoundedByNamedParam()
 # the direct check
 ? Q(&quot;.♥.&quot;).SubStringIsBoundedBy(&quot;♥&quot;, &quot;.&quot;)
 # the SubStringXT spelling
 ? Q(&quot;.♥.&quot;).SubStringXT(&quot;♥&quot;, :IsBoundedBy = &quot;.&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/370_isisboundedbynamedparam.ring">370_isisboundedbynamedparam.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># hearts bound ring on both sides
-? Q(&quot;.. ♥♥ring♥♥ ..&quot;).SubStringXT(&quot;♥♥&quot;, :IsBoundOf = &quot;ring&quot;)
-# &lt;&lt; is the first bound
-? Q(&quot;.. &lt;&lt;ring&gt;&gt; ..&quot;).SubStringXT(&quot;&lt;&lt;&quot;, :IsFirstBoundOf = &quot;ring&quot;)
-# &gt;&gt; is the last bound
-? Q(&quot;.. &lt;&lt;ring&gt;&gt; ..&quot;).SubStringXT(&quot;&gt;&gt;&quot;, :IsLastBoundOf = &quot;ring&quot;)
-# ... left spelling
-? Q(&quot;.. &lt;&lt;ring&gt;&gt; ..&quot;).SubStringXT(&quot;&lt;&lt;&quot;, :IsLeftBoundOf = &quot;ring&quot;)
-# ... right spelling
-? Q(&quot;.. &lt;&lt;ring&gt;&gt; ..&quot;).SubStringXT(&quot;&gt;&gt;&quot;, :IsRightBoundOf = &quot;ring&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-1
-1
-1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/369_substringxt.ring">369_substringxt.ring</a></p>
+1</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/370_isisboundedbynamedparam.ring">370_isisboundedbynamedparam.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#substringxt">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/substringisboundedby.html">stzString.SubStringIsBoundedBy</a></li></ul>
   </div>

@@ -32,19 +32,24 @@
   </div></section>
   <div class="wrap page-body">
     <h2>Les formes de ce verbe</h2><p><b class="mono">Contains</b> · <a class="mono" href="containscs.html">ContainsCS</a> · <a class="mono" href="containsxt.html">ContainsXT</a></p>
-    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;•••••••••&quot;)
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oS = new stzString(&quot;tea rice tea fish&quot;)
+? oS.Contains(&quot;tea&quot;)
+? oS.NumberOfOccurrence(&quot;tea&quot;)
+? @@( oS.FindAll(&quot;tea&quot;) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+2
+[ 1, 10 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/05-one-object-any-structure.en.md">05-one-object-any-structure.en.md</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;•••••••••&quot;)
 # it does not contain the empty string
 ? o1.Contains(&quot;&quot;)
 # it does contain a bullet
 ? o1.Contains(&quot;•&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/235_contains.ring">235_contains.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># empty contains nothing
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/235_contains.ring">235_contains.ring</a></p><h2>Portée <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># empty contains nothing
 ? Q(&quot;&quot;).Contains(&#x27;&#x27;)
 # ... not even text
 ? Q(&quot;&quot;).Contains(&#x27;text&#x27;)
 # text does not contain it
 ? Q(&quot;text&quot;).Contains(&#x27;&#x27;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0
 0
-0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/612_dealing_in_emptiness_in_softanza.ring">612_dealing_in_emptiness_in_softanza.ring</a></p><h2>Portée <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
+0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/612_dealing_in_emptiness_in_softanza.ring">612_dealing_in_emptiness_in_softanza.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
 big  = new stzString( oAB.Repeated(1000000) )
 # NumberOfChars is 2,000,000
 ? big.NumberOfChars()
@@ -56,23 +61,7 @@ big  = new stzString( oAB.Repeated(1000000) )
 ? big.FindLast(&quot;ab&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>2000000
 1
 1
-1999999</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># a string contains itself
-? Q(&quot;ring&quot;).Contains(&quot;ring&quot;)
-# but empty does not contain empty
-? Q(&quot;&quot;).Contains(&#x27;&#x27;)
-# a list is not INCLUDED in an equal list
-? Q([ 12, 66 ]).IsIncludedIn([ 12, 66 ])
-# its ITEMS are though
-? Q([ 12, 66]).AreInCludedIn([ 12, 66 ])
-# empty list does not contain empty list
-? Q([]).Contains([])
-# but a list can hold one
-? Q([ 1, [], 3 ]).Contains([])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
-0
-0
-1
-0
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/613_contains.ring">613_contains.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
+1999999</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
 big  = new stzString( oAB.Repeated(1000000) )
 oAr = new stzString(&quot;سلام&quot;)
 ar  = new stzString( oAr.Repeated(100000) )
@@ -86,9 +75,9 @@ ar  = new stzString( oAr.Repeated(100000) )
 ? StzLen(ar.Reversed())</pre></div><div class="out"><div class="lbl">Sortie</div><pre>400000
 100000
 1
-400000</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p>
+400000</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#contains">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlist/areincludedin.html">stzList.AreIncludedIn</a> · <a class="mono" href="../stzlist/contains.html">stzList.Contains</a> · <a class="mono" href="../stzlist/isincludedin.html">stzList.IsIncludedIn</a> · <a class="mono" href="../stzstring/findfirst.html">stzString.FindFirst</a> · <a class="mono" href="../stzstring/findlast.html">stzString.FindLast</a> · <a class="mono" href="../stzstring/numberofchars.html">stzString.NumberOfChars</a> · <a class="mono" href="../stzstring/numberofoccurrences.html">stzString.NumberOfOccurrences</a> · <a class="mono" href="../stzstring/reversed.html">stzString.Reversed</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#contains">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/findall.html">stzString.FindAll</a> · <a class="mono" href="../stzstring/findfirst.html">stzString.FindFirst</a> · <a class="mono" href="../stzstring/findlast.html">stzString.FindLast</a> · <a class="mono" href="../stzstring/numberofchars.html">stzString.NumberOfChars</a> · <a class="mono" href="../stzstring/numberofoccurrence.html">stzString.NumberOfOccurrence</a> · <a class="mono" href="../stzstring/numberofoccurrences.html">stzString.NumberOfOccurrences</a> · <a class="mono" href="../stzstring/reversed.html">stzString.Reversed</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

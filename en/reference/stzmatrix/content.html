@@ -43,7 +43,7 @@ oC = new stzMatrix(aB)  oC.AddInCols([1,3], 100)
 # the template it was copied from, still correct
 ? @@(oC.Content())</pre></div><div class="out"><div class="lbl">Output</div><pre>[ [ 101, 102, 103 ], [ 4, 5, 6 ], [ 107, 108, 109 ] ]
 [ [ 101, 102, 103 ], [ 104, 105, 106 ], [ 7, 8, 9 ] ]
-[ [ 101, 2, 103 ], [ 104, 5, 106 ], [ 107, 8, 109 ] ]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/matrix_dead_calls_narrated.ring">matrix_dead_calls_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>aB = [ [11,12,13], [14,15,16], [17,18,19] ]
+[ [ 101, 2, 103 ], [ 104, 5, 106 ], [ 107, 8, 109 ] ]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/matrix_dead_calls_narrated.ring">matrix_dead_calls_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>aB = [ [11,12,13], [14,15,16], [17,18,19] ]
 oT = new stzMatrix(aB)  oT.AddToCol(2, 5)
 # AddToCol
 ? @@(oT.Content())
@@ -55,7 +55,7 @@ oJ = new stzMatrix(aB)  oJ.AddInRow(1, 3)
 # AddToRow is exactly AddInRow
 ? @@(oRow.Content())</pre></div><div class="out"><div class="lbl">Output</div><pre>[ [ 11, 17, 13 ], [ 14, 20, 16 ], [ 17, 23, 19 ] ]
 [ [ 11, 17, 13 ], [ 14, 20, 16 ], [ 17, 23, 19 ] ]
-[ [ 14, 15, 16 ], [ 14, 15, 16 ], [ 17, 18, 19 ] ]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/matrix_dead_calls_narrated.ring">matrix_dead_calls_narrated.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>aB = [ [1,2,3], [4,5,6], [7,8,9] ]
+[ [ 14, 15, 16 ], [ 14, 15, 16 ], [ 17, 18, 19 ] ]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/matrix_dead_calls_narrated.ring">matrix_dead_calls_narrated.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>aB = [ [1,2,3], [4,5,6], [7,8,9] ]
 o1 = new stzMatrix(aB)  o1.AddXT(10, :InCol = 2)
 # :InCol reaches column 2 -- not column 10, as the swapped order did
 ? @@(o1.Content())
@@ -78,7 +78,7 @@ o6 = new stzMatrix(aB)  o6.AddXT(10, :InDiagonal2)
 [ [ 11, 2, 13 ], [ 14, 5, 16 ], [ 17, 8, 19 ] ]
 [ [ 11, 12, 13 ], [ 4, 5, 6 ], [ 17, 18, 19 ] ]
 [ [ 11, 2, 3 ], [ 4, 15, 6 ], [ 7, 8, 19 ] ]
-[ [ 1, 2, 13 ], [ 4, 15, 6 ], [ 17, 8, 9 ] ]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/matrix_dead_calls_narrated.ring">matrix_dead_calls_narrated.ring</a></p>
+[ [ 1, 2, 13 ], [ 4, 15, 6 ], [ 17, 8, 9 ] ]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/matrix_dead_calls_narrated.ring">matrix_dead_calls_narrated.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzmatrix.html#content">The class stzMatrix</a></li><li><a href="../../guide/numeric.html">The area's guide: Numeric &amp; optimization</a></li></ul>
   </div>

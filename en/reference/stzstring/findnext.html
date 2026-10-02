@@ -31,13 +31,13 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>The forms of this verb</h2><p><b class="mono">FindNext</b> · <a class="mono" href="../stzstring.html#findnextcs">FindNextCS</a> · <a class="mono" href="findnextstcs.html">FindNextSTCS</a></p>
+    <h2>The forms of this verb</h2><p><b class="mono">FindNext</b> · <a class="mono" href="../stzstring.html#findnextcs">FindNextCS</a> · <a class="mono" href="../stzstring.html#findnextstcs">FindNextSTCS</a></p>
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;123456789&quot;)
 # nothing at or after 10
-? o1.FindNext(&quot;1&quot;, :startingAt = 10)</pre></div><div class="out"><div class="lbl">Output</div><pre>0</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/987_findnext.ring">987_findnext.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;[••[•[••]•[•]]••[••]]&quot;)
+? o1.FindNext(&quot;1&quot;, :startingAt = 10)</pre></div><div class="out"><div class="lbl">Output</div><pre>0</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/987_findnext.ring">987_findnext.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;[••[•[••]•[•]]••[••]]&quot;)
 ? o1.FindNext(&quot;[&quot;, :StartingAt = 17)
 ? o1.FindPrevious(&quot;]&quot;, :StartingAt = 13)</pre></div><div class="out"><div class="lbl">Output</div><pre>0
-9</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/307_findnext.ring">307_findnext.ring</a></p><h2>Scope <span class="mono">(4)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;12♥♥♥67♥♥♥12♥♥♥&quot;)
+9</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/307_findnext.ring">307_findnext.ring</a></p><h2>Scope <span class="mono">(4)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;12♥♥♥67♥♥♥12♥♥♥&quot;)
 # the 1st from position 3 is 3 itself
 ? o1.FindNthST(1, &quot;♥♥♥&quot;, :StartingAt = 3)
 # the next after 3
@@ -45,7 +45,7 @@
 # the previous before 10 must END before 10
 ? o1.FindPrevious(&quot;♥♥♥&quot;, :StartingAt = 10)</pre></div><div class="out"><div class="lbl">Output</div><pre>3
 8
-3</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/316_findnthst.ring">316_findnthst.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;..•.•..&quot;)
+3</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/316_findnthst.ring">316_findnthst.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;..•.•..&quot;)
 ? o1.FindNext(&quot;•&quot;, :StartingAt = 3)
 ? o1.FindNextNth(2, &quot;•&quot;, :StartingAt = 2)
 ? o1.FindNextNth(2, &quot;•&quot;, :StartingAt = 3)
@@ -58,7 +58,7 @@
 3
 3
 3
-0</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/304_findnext.ring">304_findnext.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;12•4•67&quot;)
+0</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/304_findnext.ring">304_findnext.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;12•4•67&quot;)
 # next after 3
 ? o1.FindNext(&quot;•&quot;, :StartingAt = 3)
 # no 2nd next after 3
@@ -69,7 +69,7 @@
 ? o1.FindPreviousNth(2, &quot;•&quot;, :StartingAt = 5)</pre></div><div class="out"><div class="lbl">Output</div><pre>5
 0
 3
-0</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/989_findnext.ring">989_findnext.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;•••••••••&quot;)
+0</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/989_findnext.ring">989_findnext.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;•••••••••&quot;)
 # FindNext(&#x27;&#x27;) is 0
 ? o1.FindNext(&quot;&quot;, :StartingAt = 1)
 # FindNext(&#x27;x&#x27;) (absent) is 0
@@ -95,7 +95,7 @@
 4
 1
 1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/236_findnext.ring">236_findnext.ring</a></p>
+1</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/236_findnext.ring">236_findnext.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#findnext">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/findnextnth.html">stzString.FindNextNth</a> · <a class="mono" href="../stzstring/findnthnext.html">stzString.FindNthNext</a> · <a class="mono" href="../stzstring/findnthprevious.html">stzString.FindNthPrevious</a> · <a class="mono" href="../stzstring/findnthst.html">stzString.FindNthST</a> · <a class="mono" href="../stzstring/findprevious.html">stzString.FindPrevious</a> · <a class="mono" href="../stzstring/findpreviousnth.html">stzString.FindPreviousNth</a></li></ul>
   </div>

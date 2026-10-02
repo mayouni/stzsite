@@ -32,16 +32,11 @@
   </div></section>
   <div class="wrap page-body">
     <h2>The forms of this verb</h2><p><b class="mono">SpacifyTheseSubStrings</b> · <a class="mono" href="../stzstring.html#spacifythesesubstringsq">SpacifyTheseSubStringsQ</a> · <a class="mono" href="../stzstring.html#spacifythesesubstringsxt">SpacifyTheseSubStringsXT</a></p>
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;MahmoudBertAhmedMansourIlirGalMajdi&quot;)
+    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;MahmoudBertAhmedMansourIlirGalMajdi&quot;)
 o1.SpacifyTheseSubStrings([
 		&quot;Mahmoud&quot;, &quot;Bert&quot;, &quot;Ahmed&quot;, &quot;Mansour&quot;, &quot;Ilir&quot;, &quot;Gal&quot;, &quot;Majdi&quot; ])
 # the names separate with single spaces, no edge spaces
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>Mahmoud Bert Ahmed Mansour Ilir Gal Majdi</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/307_content.ring">307_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;IbelieveinRingfutureandengageforit!&quot;)
-o1.SpacifyTheseSubStrings([
-		&quot;believe&quot;, &quot;in&quot;, &quot;Ring&quot;, &quot;future&quot;, &quot;and&quot;, &quot;engage&quot;, &quot;for&quot;
-	])
-# the sentence reads with single spaces
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>I believe in Ring future and engage for it!</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/306_content.ring">306_content.ring</a></p>
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>Mahmoud Bert Ahmed Mansour Ilir Gal Majdi</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/307_content.ring">307_content.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#spacifythesesubstrings">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li></ul>
   </div>

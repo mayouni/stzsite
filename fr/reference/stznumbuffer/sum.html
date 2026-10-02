@@ -32,35 +32,7 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oBuf = StzNumBufferQ([ 2, 4, 6, 8 ])
-# it knows how many it holds
-? oBuf.Size()
-# ...and can be read one at a time, 1-based
-? oBuf.Item(1)
-# ...to the end
-? oBuf.Item(4)
-# a reduction comes back as a scalar
-? oBuf.Sum()
-# ...and another
-? oBuf.Mean()
-oBuf.Scale(10).AddScalar(1)
-# each was a full pass over resident memory
-? oBuf.Item(1)
-# ...with nothing marshalled between them
-? oBuf.Item(4)
-# the view is taken ONCE, at the end
-? @@(oBuf.ToList())
-oBuf.Free()
-# and it can be released, since Ring has no destructors
-? oBuf.IsFreed()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>4
-2
-8
-20
-5
-21
-81
-[ 21, 41, 61, 81 ]
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_residency_narrated.ring">numeric_residency_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>an = [ number(&quot;1e16&quot;) ]
+    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>an = [ number(&quot;1e16&quot;) ]
 for i = 1 to 1000
 an + 1
 next
@@ -88,9 +60,9 @@ oBuf.Free()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>100000
 1
 1
 1
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_summation_narrated.ring">numeric_summation_narrated.ring</a></p>
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_summation_narrated.ring">numeric_summation_narrated.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stznumbuffer.html#sum">La classe stzNumBuffer</a></li><li><a href="../../guide/numeric.html">Le guide du domaine : Numérique et optimisation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzdataset/mean.html">stzDataSet.Mean</a> · <a class="mono" href="../stzdataset/sum.html">stzDataSet.Sum</a> · <a class="mono" href="../stzlistofnumbers/mean.html">stzListOfNumbers.Mean</a> · <a class="mono" href="../stzlistofnumbers/sum.html">stzListOfNumbers.Sum</a> · <a class="mono" href="../stznumbuffer/free.html">stzNumBuffer.Free</a> · <a class="mono" href="../stznumbuffer/isfreed.html">stzNumBuffer.IsFreed</a> · <a class="mono" href="../stznumbuffer/item.html">stzNumBuffer.Item</a> · <a class="mono" href="../stznumbuffer/mean.html">stzNumBuffer.Mean</a> · <a class="mono" href="../stznumbuffer/scale.html">stzNumBuffer.Scale</a> · <a class="mono" href="../stznumbuffer/size.html">stzNumBuffer.Size</a> · <a class="mono" href="../stznumbuffer/tolist.html">stzNumBuffer.ToList</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stznumbuffer.html#sum">La classe stzNumBuffer</a></li><li><a href="../../guide/numeric.html">Le guide du domaine : Numérique et optimisation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzdataset/mean.html">stzDataSet.Mean</a> · <a class="mono" href="../stzdataset/sum.html">stzDataSet.Sum</a> · <a class="mono" href="../stzlistofnumbers/mean.html">stzListOfNumbers.Mean</a> · <a class="mono" href="../stzlistofnumbers/sum.html">stzListOfNumbers.Sum</a> · <a class="mono" href="../stznumbuffer/free.html">stzNumBuffer.Free</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

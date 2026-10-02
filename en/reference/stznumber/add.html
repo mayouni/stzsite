@@ -32,7 +32,27 @@
   </div></section>
   <div class="wrap page-body">
     <h2>The forms of this verb</h2><p><b class="mono">Add</b> · <a class="mono" href="addq.html">AddQ</a> · <a class="mono" href="../stznumber.html#added">Added</a></p>
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oMix = new stzNumber(&quot;1/4&quot;)
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oS = StzNumberQ(&quot;0.1&quot;)
+oS.Add(&quot;0.2&quot;)
+? oS.Content()
+? oS.IsExact()
+? oS.Representation()</pre></div><div class="out"><div class="lbl">Output</div><pre>0.3
+1
+decimal</pre></div></div><p class="ran">run on 2026-10-02 04:25 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/math/chapters/07-a-number-that-says-why.en.md">07-a-number-that-says-why.en.md</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oB = StzNumberQ(&quot;9007199254740993&quot;)
+? oB.Representation()
+oB.Add(1)
+? oB.Content()
+? 9007199254740993 + 1</pre></div><div class="out"><div class="lbl">Output</div><pre>biginteger
+9007199254740994
+9007199254740992.00</pre></div></div><p class="ran">run on 2026-10-02 04:25 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/math/chapters/07-a-number-that-says-why.en.md">07-a-number-that-says-why.en.md</a></p><h2>Scope <span class="mono">(5)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oQ = StzNumberQ(&quot;1/3&quot;)
+? oQ.Representation()
+? oQ.IsExact()
+oQ.Add(&quot;2/3&quot;)
+? oQ.Content()
+? oQ.Same(1)</pre></div><div class="out"><div class="lbl">Output</div><pre>rational
+1
+1
+1</pre></div></div><p class="ran">run on 2026-10-02 04:25 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/math/chapters/07-a-number-that-says-why.en.md">07-a-number-that-says-why.en.md</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMix = new stzNumber(&quot;1/4&quot;)
 oMix.Add(&quot;0.25&quot;)
 # a quarter plus 0.25 is a half
 ? oMix.Content()
@@ -44,7 +64,7 @@ oMix.Add(&quot;0.25&quot;)
 ? (new stzNumber(&quot;1/3&quot;)).AddQ(&quot;0.5&quot;).Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>1/2
 rational
 1
-5/6</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rationals_narrated.ring">numeric_rationals_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oBig = new stzNumber(&quot;1/99999999999999999999999999999999&quot;)
+5/6</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rationals_narrated.ring">numeric_rationals_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oBig = new stzNumber(&quot;1/99999999999999999999999999999999&quot;)
 # a 32-digit denominator survives construction
 ? oBig.Content()
 # ...and reports as a fraction
@@ -60,26 +80,7 @@ oSum.Add(&quot;1/99999999999999999999999999999999&quot;)
 rational
 2/99999999999999999999999999999999
 1
-1/2</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rationals_narrated.ring">numeric_rationals_narrated.ring</a></p><h2>Scope <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>c20 = &quot;99999999999999999999&quot;
-# ...and it is well past the limit
-? len(c20) &gt; 16
-o = new stzNumber(c20)
-# the string survives intact
-? o.Content()
-# IsExact says so
-? o.IsExact()
-# ...because it is a big integer, not a double
-? o.Representation()
-o.Add(&quot;1&quot;)
-# and it CALCULATES exactly -- a double would answer 1e20
-? o.Content()
-# ...whereas Ring&#x27;s own arithmetic loses the tail
-? (&quot;&quot; + (0 + c20)) = &quot;100000000000000000000&quot;</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-99999999999999999999
-1
-biginteger
-100000000000000000000
-0</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_calculable_narrated.ring">numeric_calculable_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oThird = new stzNumber(&quot;1/3&quot;)
+1/2</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rationals_narrated.ring">numeric_rationals_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oThird = new stzNumber(&quot;1/3&quot;)
 oThird.Add(&quot;2/3&quot;)
 # a third plus two thirds is ONE
 ? oThird.Content()
@@ -109,7 +110,7 @@ oThird.Add(&quot;2/3&quot;)
 2
 1
 1
-1/3</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rationals_narrated.ring">numeric_rationals_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># a small whole number
+1/3</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rationals_narrated.ring">numeric_rationals_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># a small whole number
 ? (new stzNumber(&quot;42&quot;)).Representation()
 # ...negative too
 ? (new stzNumber(&quot;-7&quot;)).Representation()
@@ -139,7 +140,7 @@ decimal
 0
 1
 9007199254740993
-biginteger</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_no_loss_narrated.ring">numeric_no_loss_narrated.ring</a></p>
+biginteger</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_no_loss_narrated.ring">numeric_no_loss_narrated.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stznumber.html#add">The class stzNumber</a></li><li><a href="../../guide/numeric.html">The area's guide: Numeric &amp; optimization</a></li><li>The other methods in these examples: <a class="mono" href="../stznumber/addq.html">stzNumber.AddQ</a> · <a class="mono" href="../stznumber/divideq.html">stzNumber.DivideQ</a> · <a class="mono" href="../stznumber/isbiginteger.html">stzNumber.IsBigInteger</a> · <a class="mono" href="../stznumber/isdecimalnumber.html">stzNumber.IsDecimalNumber</a> · <a class="mono" href="../stznumber/isexact.html">stzNumber.IsExact</a> · <a class="mono" href="../stznumber/multiplybyq.html">stzNumber.MultiplyByQ</a> · <a class="mono" href="../stznumber/representation.html">stzNumber.Representation</a> · <a class="mono" href="../stznumber/same.html">stzNumber.Same</a> · <a class="mono" href="../stznumber/subtractq.html">stzNumber.SubtractQ</a></li></ul>
   </div>

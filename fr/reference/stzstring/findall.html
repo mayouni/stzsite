@@ -32,7 +32,12 @@
   </div></section>
   <div class="wrap page-body">
     <h2>Les formes de ce verbe</h2><p><b class="mono">FindAll</b> · <a class="mono" href="../stzstring.html#findallcs">FindAllCS</a> · <a class="mono" href="../stzstring.html#findallzz">FindAllZZ</a></p>
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oS = new stzString(&quot;tea rice tea fish&quot;)
+? oS.Contains(&quot;tea&quot;)
+? oS.NumberOfOccurrence(&quot;tea&quot;)
+? @@( oS.FindAll(&quot;tea&quot;) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+2
+[ 1, 10 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/05-one-object-any-structure.en.md">05-one-object-any-structure.en.md</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
 big  = new stzString( oAB.Repeated(1000000) )
 # NumberOfOccurrences(&#x27;a&#x27;) is 1,000,000 (&gt; 65536)
 ? big.NumberOfOccurrences(&quot;a&quot;)
@@ -41,9 +46,9 @@ big  = new stzString( oAB.Repeated(1000000) )
 # NumberOfOccurrences(&#x27;ab&#x27;) is 1,000,000
 ? big.NumberOfOccurrences(&quot;ab&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1000000
 1000000
-1000000</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p>
+1000000</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#findall">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/numberofoccurrences.html">stzString.NumberOfOccurrences</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#findall">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/contains.html">stzString.Contains</a> · <a class="mono" href="../stzstring/numberofoccurrence.html">stzString.NumberOfOccurrence</a> · <a class="mono" href="../stzstring/numberofoccurrences.html">stzString.NumberOfOccurrences</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

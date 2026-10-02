@@ -32,7 +32,10 @@
   </div></section>
   <div class="wrap page-body">
     <h2>Les formes de ce verbe</h2><p><b class="mono">ItemsAtPositions</b> · <a class="mono" href="../stzlist.html#itemsatpositionsq">ItemsAtPositionsQ</a></p>
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;ab&quot;, &quot;b&quot;, 1:3, &quot;a&quot;, &quot;ab&quot;, &quot;abc&quot;, &quot;b&quot;, &quot;bc&quot;, 1:3,&quot;c&quot; ])
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>aOrders = [ &quot;tea&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;fish&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;soup&quot;, &quot;tea&quot;, &quot;rice&quot; ]
+? @@( StzListQ([ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]).FindW(&quot;@item % 3 = 1&quot;) )
+? @@( StzListQ(aOrders).ItemsAtPositions([ 1, 4, 7 ]) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 1, 4, 7 ]
+[ &quot;tea&quot;, &quot;fish&quot;, &quot;soup&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/06-walk-ask-produce-act.en.md">06-walk-ask-produce-act.en.md</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;ab&quot;, &quot;b&quot;, 1:3, &quot;a&quot;, &quot;ab&quot;, &quot;abc&quot;, &quot;b&quot;, &quot;bc&quot;, 1:3,&quot;c&quot; ])
 ? o1.FindDuplicates()
 ? @@( o1.ItemsAtPositions( o1.FindDuplicates() ) )
 ? @@( o1.Duplicates() ) + NL
@@ -44,9 +47,9 @@
 [ &quot;a&quot;, &quot;ab&quot;, &quot;b&quot;, [ 1, 2, 3 ] ]
 [ &quot;a&quot;, &quot;ab&quot;, &quot;b&quot;, [ 1, 2, 3 ] ]
 
-[ [ &quot;a&quot;, [ 5 ] ], [ &quot;ab&quot;, [ 6 ] ], [ &quot;b&quot;, [ 8 ] ], [ [ 1, 2, 3 ], [ 10 ] ] ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:05 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/266_findduplicates.ring">266_findduplicates.ring</a></p>
+[ [ &quot;a&quot;, [ 5 ] ], [ &quot;ab&quot;, [ 6 ] ], [ &quot;b&quot;, [ 8 ] ], [ [ 1, 2, 3 ], [ 10 ] ] ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/266_findduplicates.ring">266_findduplicates.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#itemsatpositions">La classe stzList</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlist/duplicates.html">stzList.Duplicates</a> · <a class="mono" href="../stzlist/duplicatesz.html">stzList.DuplicatesZ</a> · <a class="mono" href="../stzlist/findduplicates.html">stzList.FindDuplicates</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#itemsatpositions">La classe stzList</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlist/duplicates.html">stzList.Duplicates</a> · <a class="mono" href="../stzlist/duplicatesz.html">stzList.DuplicatesZ</a> · <a class="mono" href="../stzlist/findduplicates.html">stzList.FindDuplicates</a> · <a class="mono" href="../stzlist/findw.html">stzList.FindW</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

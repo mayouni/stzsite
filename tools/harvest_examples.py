@@ -278,6 +278,30 @@ def main():
             examples.append({"source": f"base/test/{topic}/{f.name}", "title": title, "code": body.strip("\n"),
                              "expected": "\n".join(promises), "methods": methods})
             stats["kept"] += 1
+    # the course chapters: each fenced cell is one example, titled by the section heading above it;
+    # the course's own guard runs every cell, so these are the best-checked examples of the library
+    for course in ("elementary-introduction", "math"):
+        folder = lib / "base" / "education" / "program" / "courses" / course / "chapters"
+        for f in sorted(folder.glob("*.en.md")):
+            text = f.read_text(encoding="utf-8", errors="replace").replace("\r", "")
+            heading = ""
+            for m in re.finditer(r"(?ms)^(#{2,3} [^\n]+)$|^```(?:ring|softanza)\n(.*?)^```", text):
+                if m.group(1):
+                    heading = m.group(1).lstrip("#").strip(); continue
+                stats["files"] += 1
+                code, promises = parse(m.group(2))
+                body = "\n".join(code)
+                if not promises: stats["no promise"] += 1; continue
+                if len(code) > MAX_CODE: stats["too long"] += 1; continue
+                if re.search(r"(?mi)^\s*(func|class|def)\s+\w", body) or re.search(r"(?i)\b(try|catch|done)\b", body) or FORBIDDEN.search(body):
+                    stats["forbidden"] += 1; continue
+                if body in seen: continue
+                methods = methods_of(code, own, lower_cls)
+                if not methods: stats["no method"] += 1; continue
+                seen.add(body)
+                examples.append({"source": f"base/education/program/courses/{course}/chapters/{f.name}", "title": heading,
+                                 "code": body.strip("\n"), "expected": "\n".join(promises), "methods": methods})
+                stats["kept chapters"] = stats.get("kept chapters", 0) + 1
     OUT.write_text(json.dumps(examples, ensure_ascii=False, indent=1), encoding="utf-8")
     pairs = {tuple(p) for e in examples for p in e["methods"]}
     print(stats)

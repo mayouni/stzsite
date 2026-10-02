@@ -32,7 +32,27 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oMix = new stzNumber(&quot;1/4&quot;)
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oS = StzNumberQ(&quot;0.1&quot;)
+oS.Add(&quot;0.2&quot;)
+? oS.Content()
+? oS.IsExact()
+? oS.Representation()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0.3
+1
+decimal</pre></div></div><p class="ran">exécuté le 2026-10-02 04:25 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/math/chapters/07-a-number-that-says-why.en.md">07-a-number-that-says-why.en.md</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oB = StzNumberQ(&quot;9007199254740993&quot;)
+? oB.Representation()
+oB.Add(1)
+? oB.Content()
+? 9007199254740993 + 1</pre></div><div class="out"><div class="lbl">Sortie</div><pre>biginteger
+9007199254740994
+9007199254740992.00</pre></div></div><p class="ran">exécuté le 2026-10-02 04:25 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/math/chapters/07-a-number-that-says-why.en.md">07-a-number-that-says-why.en.md</a></p><h2>Portée <span class="mono">(5)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oQ = StzNumberQ(&quot;1/3&quot;)
+? oQ.Representation()
+? oQ.IsExact()
+oQ.Add(&quot;2/3&quot;)
+? oQ.Content()
+? oQ.Same(1)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>rational
+1
+1
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:25 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/math/chapters/07-a-number-that-says-why.en.md">07-a-number-that-says-why.en.md</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMix = new stzNumber(&quot;1/4&quot;)
 oMix.Add(&quot;0.25&quot;)
 # a quarter plus 0.25 is a half
 ? oMix.Content()
@@ -44,7 +64,7 @@ oMix.Add(&quot;0.25&quot;)
 ? (new stzNumber(&quot;1/3&quot;)).AddQ(&quot;0.5&quot;).Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1/2
 rational
 1
-5/6</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rationals_narrated.ring">numeric_rationals_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oBig = new stzNumber(&quot;1/99999999999999999999999999999999&quot;)
+5/6</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rationals_narrated.ring">numeric_rationals_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oBig = new stzNumber(&quot;1/99999999999999999999999999999999&quot;)
 # a 32-digit denominator survives construction
 ? oBig.Content()
 # ...and reports as a fraction
@@ -60,26 +80,7 @@ oSum.Add(&quot;1/99999999999999999999999999999999&quot;)
 rational
 2/99999999999999999999999999999999
 1
-1/2</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rationals_narrated.ring">numeric_rationals_narrated.ring</a></p><h2>Portée <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>c20 = &quot;99999999999999999999&quot;
-# ...and it is well past the limit
-? len(c20) &gt; 16
-o = new stzNumber(c20)
-# the string survives intact
-? o.Content()
-# IsExact says so
-? o.IsExact()
-# ...because it is a big integer, not a double
-? o.Representation()
-o.Add(&quot;1&quot;)
-# and it CALCULATES exactly -- a double would answer 1e20
-? o.Content()
-# ...whereas Ring&#x27;s own arithmetic loses the tail
-? (&quot;&quot; + (0 + c20)) = &quot;100000000000000000000&quot;</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
-99999999999999999999
-1
-biginteger
-100000000000000000000
-0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_calculable_narrated.ring">numeric_calculable_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># a third is itself
+1/2</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rationals_narrated.ring">numeric_rationals_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># a third is itself
 ? (new stzNumber(&quot;1/3&quot;)).Content()
 # two quarters reduce
 ? (new stzNumber(&quot;2/4&quot;)).Content()
@@ -107,7 +108,7 @@ integer
 -1/2
 rational
 1
-0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rationals_narrated.ring">numeric_rationals_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># a small whole number
+0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_rationals_narrated.ring">numeric_rationals_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># a small whole number
 ? (new stzNumber(&quot;42&quot;)).Representation()
 # ...negative too
 ? (new stzNumber(&quot;-7&quot;)).Representation()
@@ -137,9 +138,9 @@ decimal
 0
 1
 9007199254740993
-biginteger</pre></div></div><p class="ran">exécuté le 2026-10-02 04:06 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_no_loss_narrated.ring">numeric_no_loss_narrated.ring</a></p>
+biginteger</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_no_loss_narrated.ring">numeric_no_loss_narrated.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stznumber.html#representation">La classe stzNumber</a></li><li><a href="../../guide/numeric.html">Le guide du domaine : Numérique et optimisation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stznumber/add.html">stzNumber.Add</a> · <a class="mono" href="../stznumber/addq.html">stzNumber.AddQ</a> · <a class="mono" href="../stznumber/isbiginteger.html">stzNumber.IsBigInteger</a> · <a class="mono" href="../stznumber/isdecimalnumber.html">stzNumber.IsDecimalNumber</a> · <a class="mono" href="../stznumber/isexact.html">stzNumber.IsExact</a> · <a class="mono" href="../stznumber/isrational.html">stzNumber.IsRational</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stznumber.html#representation">La classe stzNumber</a></li><li><a href="../../guide/numeric.html">Le guide du domaine : Numérique et optimisation</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stznumber/add.html">stzNumber.Add</a> · <a class="mono" href="../stznumber/addq.html">stzNumber.AddQ</a> · <a class="mono" href="../stznumber/isbiginteger.html">stzNumber.IsBigInteger</a> · <a class="mono" href="../stznumber/isdecimalnumber.html">stzNumber.IsDecimalNumber</a> · <a class="mono" href="../stznumber/isexact.html">stzNumber.IsExact</a> · <a class="mono" href="../stznumber/isrational.html">stzNumber.IsRational</a> · <a class="mono" href="../stznumber/same.html">stzNumber.Same</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

@@ -38,21 +38,14 @@
 o1.RemoveThisLeadingChar(&quot;0&quot;)
 # the run is gone
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0
-122.12</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/677_leadingchar.ring">677_leadingchar.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;---Ring&quot;)
-o1.RemoveThisLeadingChar(&quot;*&quot;)
-# &#x27;*&#x27; (no match) leaves the string untouched
-? o1.Content()
-o1.RemoveThisLeadingChar(&quot;-&quot;)
-# &#x27;-&#x27; peels the whole leading run
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>---Ring
-Ring</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/35_removethisleadingchar.ring">35_removethisleadingchar.ring</a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;oooTunisia&quot;)
+122.12</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/677_leadingchar.ring">677_leadingchar.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;oooTunisia&quot;)
 o1.RemoveThisLeadingChar(&quot;O&quot;)
 # case-sensitive: no match, no change
 ? o1.Content()
 o1.RemoveThisLeadingCharCS(&quot;O&quot;, :CS = FALSE)
 # case-blind: the run goes
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>oooTunisia
-Tunisia</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/783_content.ring">783_content.ring</a></p>
+Tunisia</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/783_content.ring">783_content.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#removethisleadingchar">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/leadingchar.html">stzString.LeadingChar</a> · <a class="mono" href="../stzstring/removethisleadingcharcs.html">stzString.RemoveThisLeadingCharCS</a></li></ul>
   </div>

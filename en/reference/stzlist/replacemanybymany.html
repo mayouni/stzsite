@@ -34,20 +34,9 @@
     <h2>The forms of this verb</h2><p><b class="mono">ReplaceManyByMany</b> · <a class="mono" href="../stzlist.html#replacemanybymanycs">ReplaceManyByManyCS</a> · <a class="mono" href="replacemanybymanyxt.html">ReplaceManyByManyXT</a></p>
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;*&quot;, &quot;D&quot;, &quot;*&quot;,  &quot;=&quot; ])
 o1.ReplaceManyByMany([ &quot;*&quot;, &quot;=&quot; ], :With = [&quot;C&quot;, &quot;F&quot;])
-? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;C&quot;, &quot;F&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/78_replacemanybymany.ring">78_replacemanybymany.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;3&quot;, &quot;D&quot;, &quot;5&quot;,  &quot;6&quot; ])
+? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;C&quot;, &quot;F&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/78_replacemanybymany.ring">78_replacemanybymany.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;3&quot;, &quot;D&quot;, &quot;5&quot;,  &quot;6&quot; ])
 o1.ReplaceManyByMany([ &quot;3&quot;, &quot;5&quot;, &quot;6&quot;], :With = [&quot;C&quot;, &quot;E&quot;, &quot;F&quot;])
-? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/79_replacemanybymany.ring">79_replacemanybymany.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
-		&quot;ring&quot;, &quot;qt&quot;, &quot;softanza&quot;, &quot;pyhton&quot;, &quot;kandaji&quot;, &quot;csharp&quot;, &quot;ring&quot;, &quot;kandaji&quot; ])
-o1.ReplaceManyByMany([
-		&quot;ring&quot;, &quot;softanza&quot;, &quot;kandaji&quot; ], :By = [ &quot;♥&quot;, &quot;♥♥&quot;, &quot;♥♥♥&quot; ])
-# replacemanybymany example 1
-? @@( o1.Content() )
-# replacemanybymany example 2
-? @@( SectionToRange(3, 7) )
-# replacemanybymany example 3
-? @@( RangeToSection(3, 5) )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;♥&quot;, &quot;qt&quot;, &quot;♥♥&quot;, &quot;pyhton&quot;, &quot;♥♥♥&quot;, &quot;csharp&quot;, &quot;♥&quot;, &quot;♥♥♥&quot; ]
-[ 3, 5 ]
-[ 3, 7 ]</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/10_replacemanybymany.ring">10_replacemanybymany.ring</a></p>
+? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/79_replacemanybymany.ring">79_replacemanybymany.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzlist.html#replacemanybymany">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li></ul>
   </div>

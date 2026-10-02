@@ -32,22 +32,14 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># Uppercased(&#x27;ring&#x27;) is RING
-? Q(&quot;ring&quot;).Uppercased()
-# Lowercased(&#x27;RING&#x27;) is ring
-? Q(&quot;RING&quot;).Lowercased()</pre></div><div class="out"><div class="lbl">Output</div><pre>RING
-ring</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/00_string_narrated.ring">00_string_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># Uppercased raises the case
-? Q(&quot;i believe in ring future and engage for it!&quot;).Uppercased()
-# the all-caps string IS uppercase
-? Q(&quot;I BELIEVE IN RING FUTURE AND ENGAGE FOR IT!&quot;).IsUppercase()</pre></div><div class="out"><div class="lbl">Output</div><pre>I BELIEVE IN RING FUTURE AND ENGAGE FOR IT!
-1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/248_uppercased.ring">248_uppercased.ring</a></p><h2>Scope <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># lowercased
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># lowercased
 ? Q(&quot;tunis&quot;).Lowercased()
 # uppercased
 ? Q(&quot;tunis&quot;).Uppercased()
 # titlecased
 ? Q(&quot;tunis&quot;).Titlecased()</pre></div><div class="out"><div class="lbl">Output</div><pre>tunis
 TUNIS
-Tunis</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/710_lowercased.ring">710_lowercased.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># it is lowercase
+Tunis</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/710_lowercased.ring">710_lowercased.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># it is lowercase
 ? Q(&quot;ß&quot;).CharCase()
 # it uppercases to SS
 ? Q(&quot;ß&quot;).Uppercased()
@@ -60,7 +52,7 @@ Tunis</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library
 SS
 DER FLUSS
 ss
-ss</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/657_todo_logical_error_in_qt.ring">657_todo_logical_error_in_qt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># the script
+ss</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/657_todo_logical_error_in_qt.ring">657_todo_logical_error_in_qt.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># the script
 ? TQ(&quot;Σίσυφος&quot;).Script()
 # capitalcase
 ? Q(&quot;Σίσυφος&quot;).StringCase()
@@ -82,9 +74,9 @@ uppercase
 ΣΊΣΥΦΟΣ
 Σίσυφοσ
 1
-0</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/653_script.ring">653_script.ring</a></p>
+0</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/653_script.ring">653_script.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzstring.html#uppercased">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/capitalcased.html">stzString.CapitalCased</a> · <a class="mono" href="../stzstring/charcase.html">stzString.CharCase</a> · <a class="mono" href="../stzstring/isequaltocs.html">stzString.IsEqualToCS</a> · <a class="mono" href="../stzstring/isuppercase.html">stzString.IsUppercase</a> · <a class="mono" href="../stzstring/lowercased.html">stzString.Lowercased</a> · <a class="mono" href="../stzstring/lowercasedinlocale.html">stzString.LowercasedInLocale</a> · <a class="mono" href="../stzstring/stringcase.html">stzString.StringCase</a> · <a class="mono" href="../stzstring/titlecased.html">stzString.Titlecased</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzstring.html#uppercased">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/capitalcased.html">stzString.CapitalCased</a> · <a class="mono" href="../stzstring/charcase.html">stzString.CharCase</a> · <a class="mono" href="../stzstring/isequaltocs.html">stzString.IsEqualToCS</a> · <a class="mono" href="../stzstring/lowercased.html">stzString.Lowercased</a> · <a class="mono" href="../stzstring/lowercasedinlocale.html">stzString.LowercasedInLocale</a> · <a class="mono" href="../stzstring/stringcase.html">stzString.StringCase</a> · <a class="mono" href="../stzstring/titlecased.html">stzString.Titlecased</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

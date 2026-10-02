@@ -42,7 +42,7 @@ t.AddNode(&quot;X&quot;) t.AddNode(&quot;Y&quot;) t.AddNode(&quot;Z&quot;)
 t.AddEdge(&quot;X&quot;, &quot;Y&quot;) t.AddEdge(&quot;Y&quot;, &quot;Z&quot;) t.AddEdge(&quot;Z&quot;, &quot;X&quot;)
 # a triangle (odd cycle) is not bipartite
 ? t.IsBipartite()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-0</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graph/00_graph_narrated.ring">00_graph_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>m = new stzGraph(&quot;m&quot;)
+0</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graph/00_graph_narrated.ring">00_graph_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>m = new stzGraph(&quot;m&quot;)
 m.AddNode(&quot;A&quot;) m.AddNode(&quot;B&quot;) m.AddNode(&quot;C&quot;) m.AddNode(&quot;D&quot;)
 m.AddEdgeXTT(&quot;A&quot;, &quot;B&quot;, &quot;&quot;, [ :weight = 1 ])
 m.AddEdgeXTT(&quot;B&quot;, &quot;C&quot;, &quot;&quot;, [ :weight = 2 ])
@@ -56,7 +56,7 @@ d.AddNode(&quot;A&quot;) d.AddNode(&quot;B&quot;) d.AddNode(&quot;X&quot;)
 d.AddEdge(&quot;A&quot;, &quot;B&quot;)
 # a graph with no spanning tree returns -1
 ? d.MSTWeight()</pre></div><div class="out"><div class="lbl">Output</div><pre>6
--1</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graph/00_graph_narrated.ring">00_graph_narrated.ring</a></p>
+-1</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graph/00_graph_narrated.ring">00_graph_narrated.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzgraph.html#addnode">The class stzGraph</a></li><li><a href="../../guide/diagramming.html">The area's guide: Diagramming &amp; graphs</a></li><li>The other methods in these examples: <a class="mono" href="../stzgraph/addedge.html">stzGraph.AddEdge</a> · <a class="mono" href="../stzgraph/addedgextt.html">stzGraph.AddEdgeXTT</a> · <a class="mono" href="../stzgraph/isbipartite.html">stzGraph.IsBipartite</a> · <a class="mono" href="../stzgraph/mstweight.html">stzGraph.MSTWeight</a></li></ul>
   </div>

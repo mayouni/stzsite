@@ -32,11 +32,7 @@
   </div></section>
   <div class="wrap page-body">
     <h2>The forms of this verb</h2><p><a class="mono" href="contains.html">Contains</a> · <a class="mono" href="containsw.html">ContainsW</a> · <b class="mono">ContainsCS</b> · <a class="mono" href="../stzlist.html#containswf">ContainsWF</a></p>
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([ &quot;mohannad&quot;, 100, 	&quot;loves&quot;, &quot;ring&quot; ]).ContainsMany([ &quot;amer&quot;, 34 ])
-? Q([ &quot;mohannad&quot;, 100, 	&quot;loves&quot;, &quot;ring&quot; ]).ContainsCS(&quot;amer&quot;, TRUE)
-? Q([ &quot;mohannad&quot;, 100, 	&quot;loves&quot;, &quot;ring&quot; ]).ContainsSubList([ &quot;loves&quot;, &quot;ring&quot; ])</pre></div><div class="out"><div class="lbl">Output</div><pre>0
-0
-1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listoflists/16_containsmany.ring">16_containsmany.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;ab&quot;, 1:3, &quot;abA&quot;, &quot;abAb&quot;, 1:3 ])
+    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;ab&quot;, 1:3, &quot;abA&quot;, &quot;abAb&quot;, 1:3 ])
 ? o1.ContainsCS(&quot;ab&quot;, TRUE)
 ? o1.FindFirstCS(&quot;AB&quot;, FALSE)
 ? o1.FindLastCS(&quot;ABA&quot;, FALSE)
@@ -45,9 +41,9 @@
 2
 4
 3
-6</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/265_containscs.ring">265_containscs.ring</a></p>
+6</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/265_containscs.ring">265_containscs.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzlist.html#containscs">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li><li>The other methods in these examples: <a class="mono" href="../stzlist/containsmany.html">stzList.ContainsMany</a> · <a class="mono" href="../stzlist/containssublist.html">stzList.ContainsSubList</a> · <a class="mono" href="../stzlist/findfirst.html">stzList.FindFirst</a> · <a class="mono" href="../stzlist/findfirstcs.html">stzList.FindFirstCS</a> · <a class="mono" href="../stzlist/findlast.html">stzList.FindLast</a> · <a class="mono" href="../stzlist/findlastcs.html">stzList.FindLastCS</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzlist.html#containscs">The class stzList</a></li><li><a href="../../guide/collections.html">The area's guide: Collections &amp; objects</a></li><li>The other methods in these examples: <a class="mono" href="../stzlist/findfirst.html">stzList.FindFirst</a> · <a class="mono" href="../stzlist/findfirstcs.html">stzList.FindFirstCS</a> · <a class="mono" href="../stzlist/findlast.html">stzList.FindLast</a> · <a class="mono" href="../stzlist/findlastcs.html">stzList.FindLastCS</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

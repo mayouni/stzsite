@@ -34,11 +34,11 @@
     
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? StzStringQ(&quot;ab []    cd&quot;).Simplified()
 ? Q(list2code([ &quot;a&quot;, [ [] ], &quot;b&quot; ])).Simplified()</pre></div><div class="out"><div class="lbl">Output</div><pre>ab [] cd
-[ &quot;a&quot;, [ [ ] ], &quot;b&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/465_simplified.ring">465_simplified.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># SOFTANZA backwards
+[ &quot;a&quot;, [ [ ] ], &quot;b&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/465_simplified.ring">465_simplified.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># SOFTANZA backwards
 ? StzStringQ(&quot;SOFTANZA&quot;).CharsReversed()
 # whitespace squeezed
 ? StzStringQ(&quot; Softanza    Near-natural Programming   &quot;).Simplified()</pre></div><div class="out"><div class="lbl">Output</div><pre>AZNATFOS
-Softanza Near-natural Programming</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/715_charsreversed.ring">715_charsreversed.ring</a></p>
+Softanza Near-natural Programming</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/715_charsreversed.ring">715_charsreversed.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#simplified">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/charsreversed.html">stzString.CharsReversed</a></li></ul>
   </div>

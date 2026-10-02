@@ -39,21 +39,21 @@ oGraph {
 	AddEdgeXT(:a, :b, &quot;Promotes&quot;)
 }
 oGx = new stzGraphex(&quot;{@cs:@Node(User) -&gt; @Edge -&gt; @Node(admin)}&quot;, oGraph)
-? oGx.Match(oGraph)</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphex/06_mixed_case_sensitivity_in_pattern.ring">06_mixed_case_sensitivity_in_pattern.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oGraph = new stzGraph(&quot;Roles&quot;)
+? oGx.Match(oGraph)</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphex/06_mixed_case_sensitivity_in_pattern.ring">06_mixed_case_sensitivity_in_pattern.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oGraph = new stzGraph(&quot;Roles&quot;)
 oGraph {
 	AddNodeXTT(:u1, &quot;User1&quot;, [:role = &quot;admin&quot;])
 	AddNodeXTT(:u2, &quot;User2&quot;, [:role = &quot;user&quot;])
 	AddNodeXTT(:u3, &quot;User3&quot;, [:role = &quot;admin&quot;])
 }
 oGx = new stzGraphex(&quot;{@Node{role:=:admin}}&quot;, oGraph)
-? oGx.Match(oGraph)</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphex/12_property_equality_constraint.ring">12_property_equality_constraint.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oGraph = new stzGraph(&quot;Labels&quot;)
+? oGx.Match(oGraph)</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphex/12_property_equality_constraint.ring">12_property_equality_constraint.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oGraph = new stzGraph(&quot;Labels&quot;)
 oGraph {
 	AddNodeXT(:a, &quot;CamelCaseLabel&quot;)
 	AddNodeXT(:b, &quot;UPPERCASE&quot;)
 	AddEdgeXT(:a, :b, &quot;MixedCase&quot;)
 }
 oGx = new stzGraphex(&quot;{@Node(CamelCaseLabel) -&gt; @Edge(MixedCase) -&gt; @Node(UPPERCASE)}&quot;, oGraph)
-? oGx.Match(oGraph)</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 04:05 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphex/18_parentheses_content_before_lowercasing.ring">18_parentheses_content_before_lowercasing.ring</a></p>
+? oGx.Match(oGraph)</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphex/18_parentheses_content_before_lowercasing.ring">18_parentheses_content_before_lowercasing.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzgraphex.html#match">The class stzGraphex</a></li><li><a href="../../guide/regex.html">The area's guide: Pattern matching</a></li></ul>
   </div>

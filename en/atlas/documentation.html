@@ -42,14 +42,7 @@
 1</pre></div></div><p class="ran">run on 2026-10-01 21:18 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md">base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md</a></p><p style="margin-top:32px"><b>The library explains a method from its own source comment, and plainly refuses a method that does not exist instead of inventing one.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oDoc = StzSelfDocQ(&quot;stzList&quot;)
 ? StzLeft( oDoc.ExplainMethod(&quot;DuplicatesRemoved&quot;), 20 )
 ? oDoc.ExplainMethod(&quot;NoSuchThing&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>DuplicatesRemoved --
-No method &#x27;NoSuchThing&#x27; in stzList.</pre></div></div><p class="ran">run on 2026-10-01 21:18 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md">base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md</a></p><p style="margin-top:32px"><b>A tiny document whose example promises 3 for 1 + 1 is run, and the broken promise is reported rather than hidden.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>cBroken = &quot;# Mini&quot; + char(10) + &quot;```ring&quot; + char(10) + &quot;? 1 + 1&quot; + char(10) + &quot;#--&gt; 3&quot; + char(10) + &quot;```&quot; + char(10)
-cMini2 = &quot;t_mini2_&quot; + ProcessId() + &quot;.en.md&quot;
-write(cMini2, cBroken)
-oCh2 = StzChapterQ(cMini2, &quot;en&quot;)
-oCh2.Run(&quot;&quot;)
-? oCh2.AllPromisesKept()
-? oCh2.CellKept(1)</pre></div><div class="out"><div class="lbl">Output</div><pre>0
-0</pre></div></div><p class="ran">run on 2026-10-01 21:18 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/15-write-a-narration.en.md">base/education/program/courses/elementary-introduction/chapters/15-write-a-narration.en.md</a></p>
+No method &#x27;NoSuchThing&#x27; in stzList.</pre></div></div><p class="ran">run on 2026-10-01 21:18 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md">base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md</a></p>
     <h2>The lanes, one by one</h2>
     <p class="proof">Lanes and their notes are quoted as they were read at the source, on Read from the source on 2026-09-17, from a read-only main worktree -- base/doc/narrations (134), base/meta/stzSelfDoc + stzLibDoc, base/reflect/stzReflectFuncs, base/meta/promises.py over 2,956 #--&gt; files, base/doc/design (44) + SOFTANZA_*_PLAN.md, and stz-doc-system-overview.md.</p>
     

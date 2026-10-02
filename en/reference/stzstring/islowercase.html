@@ -32,21 +32,19 @@
   </div></section>
   <div class="wrap page-body">
     <h2>The forms of this verb</h2><p><b class="mono">IsLowercase</b> · <a class="mono" href="islowercased.html">IsLowercased</a></p>
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># in itself
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(&quot;bread&quot;).IsLowercase()</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.en.md">03-read-the-name-as-a-sentence.en.md</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? StzListQ(aOrders).Contains(&quot;soup&quot;)
+? Q(&quot;cold&quot;).IsLowercase()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+1</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/06-walk-ask-produce-act.en.md">06-walk-ask-produce-act.en.md</a></p><h2>Scope <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># in itself
 ? Q(&quot;date&quot;).IsLowercase()
 # ... and of DATE
 ? Q(&quot;date&quot;).IsLowercaseOf(&quot;DATE&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/652_islowercase.ring">652_islowercase.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># happy-holidays is lowercase
+1</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/652_islowercase.ring">652_islowercase.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># happy-holidays is lowercase
 ? StzStringQ(&quot;happy-holidays&quot;).IsLowercase()
 # HOLIDAYS! is uppercase
 ? StzStringQ(&quot;HOLIDAYS!&quot;).IsUppercase()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-1</pre></div></div><p class="ran">run on 2026-10-02 04:07 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/761_islowercase.ring">761_islowercase.ring</a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># Lowercased drops the case
-? Q(&quot;I BELIEVE IN RING FUTURE AND ENGAGE FOR IT!&quot;).Lowercased()
-# the all-lower string IS lowercase
-? Q(&quot;i believe in ring future and engage for it!&quot;).IsLowercase()</pre></div><div class="out"><div class="lbl">Output</div><pre>i believe in ring future and engage for it!
-1</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/249_lowercased.ring">249_lowercased.ring</a></p>
+1</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/761_islowercase.ring">761_islowercase.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzstring.html#islowercase">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/islowercaseof.html">stzString.IsLowercaseOf</a> · <a class="mono" href="../stzstring/isuppercase.html">stzString.IsUppercase</a> · <a class="mono" href="../stzstring/lowercased.html">stzString.Lowercased</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzstring.html#islowercase">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzlist/contains.html">stzList.Contains</a> · <a class="mono" href="../stzstring/islowercaseof.html">stzString.IsLowercaseOf</a> · <a class="mono" href="../stzstring/isuppercase.html">stzString.IsUppercase</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

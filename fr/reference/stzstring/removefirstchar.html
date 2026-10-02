@@ -31,22 +31,14 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>Les formes de ce verbe</h2><p><b class="mono">RemoveFirstChar</b> · <a class="mono" href="../stzstring.html#removefirstcharq">RemoveFirstCharQ</a> · <a class="mono" href="removefirstcharcs.html">RemoveFirstCharCS</a> · <a class="mono" href="removefirstcharxt.html">RemoveFirstCharXT</a> · <a class="mono" href="../stzstring.html#removefirstcharcsq">RemoveFirstCharCSQ</a> · <a class="mono" href="../stzstring.html#removefirstcharxtq">RemoveFirstCharXTQ</a></p>
+    <h2>Les formes de ce verbe</h2><p><b class="mono">RemoveFirstChar</b> · <a class="mono" href="../stzstring.html#removefirstcharq">RemoveFirstCharQ</a> · <a class="mono" href="../stzstring.html#removefirstcharcs">RemoveFirstCharCS</a> · <a class="mono" href="../stzstring.html#removefirstcharxt">RemoveFirstCharXT</a> · <a class="mono" href="../stzstring.html#removefirstcharcsq">RemoveFirstCharCSQ</a> · <a class="mono" href="../stzstring.html#removefirstcharxtq">RemoveFirstCharXTQ</a></p>
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;1BATISTA&quot;)
 o1.RemoveFirstChar()
 # mutated in place
 ? o1.Content()
 # or functionally
 ? StzStringQ(&quot;1BATISTA&quot;).FirstCharRemoved()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>BATISTA
-BATISTA</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/683_content.ring">683_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;rRing&quot;)
-o1.RemoveFirstChar()
-# RemoveFirstChar() drops the leading &#x27;r&#x27;
-? o1.Content()
-o2 = new stzString(&quot;rRing&quot;)
-o2.RemoveFirstCharCS(TRUE)
-# RemoveFirstCharCS(TRUE) ignores the flag, same result
-? o2.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>Ring
-Ring</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/37_softanza_permissiveness.ring">37_softanza_permissiveness.ring</a></p><h2>Portée <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;_ABC_DE_&quot;)
+BATISTA</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/683_content.ring">683_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;_ABC_DE_&quot;)
 o1.RemoveFirstChar()
 # the leading underscore goes
 ? o1.Content()
@@ -61,29 +53,9 @@ o1.RemoveThisNthChar(3, &quot;_&quot;)
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>ABC_DE_
 BC_DE_
 BC_DE
-BCDE</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/371_content.ring">371_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;-------Ring&quot;)
-o1.RemoveFirstChar()
-# one peeled -&gt; 6 dashes
-? o1.Content()
-o1.RemoveFirstChar()
-# two peeled -&gt; 5 dashes
-? o1.Content()
-o1.RemoveFirstChar()
-# three peeled -&gt; 4 dashes
-? o1.Content()
-o1.RemoveFirstCharXT()
-# the XT form peels the rest in one shot
-? o1.Content()
-o2 = new stzString(&quot;-------Ring&quot;)
-o2.RemoveLeadingChars()
-# RemoveLeadingChars() does it directly
-? o2.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>------Ring
------Ring
-----Ring
-Ring
-Ring</pre></div></div><p class="ran">exécuté le 2026-10-02 04:07 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/29_extended_form_of_removefirstchar.ring">29_extended_form_of_removefirstchar.ring</a></p>
+BCDE</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/371_content.ring">371_content.ring</a></p>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#removefirstchar">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/firstcharremoved.html">stzString.FirstCharRemoved</a> · <a class="mono" href="../stzstring/removefirstcharcs.html">stzString.RemoveFirstCharCS</a> · <a class="mono" href="../stzstring/removefirstcharxt.html">stzString.RemoveFirstCharXT</a> · <a class="mono" href="../stzstring/removeleadingchars.html">stzString.RemoveLeadingChars</a> · <a class="mono" href="../stzstring/removenthchar.html">stzString.RemoveNthChar</a> · <a class="mono" href="../stzstring/removethisfirstcharcs.html">stzString.RemoveThisFirstCharCS</a> · <a class="mono" href="../stzstring/removethisnthchar.html">stzString.RemoveThisNthChar</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#removefirstchar">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/firstcharremoved.html">stzString.FirstCharRemoved</a> · <a class="mono" href="../stzstring/removenthchar.html">stzString.RemoveNthChar</a> · <a class="mono" href="../stzstring/removethisfirstcharcs.html">stzString.RemoveThisFirstCharCS</a> · <a class="mono" href="../stzstring/removethisnthchar.html">stzString.RemoveThisNthChar</a></li></ul>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

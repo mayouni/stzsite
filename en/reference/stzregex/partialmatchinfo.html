@@ -40,7 +40,7 @@
 		&quot;section&quot;,
 		[ 1, 7 ]
 	]
-]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/regex/05_partial_match_detailed_match_information_for_ui_fe.ring">05_partial_match_detailed_match_information_for_ui_fe.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzRegex(&quot;^\d{2}:\d{2}:\d{2}$&quot;)
+]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/regex/05_partial_match_detailed_match_information_for_ui_fe.ring">05_partial_match_detailed_match_information_for_ui_fe.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzRegex(&quot;^\d{2}:\d{2}:\d{2}$&quot;)
 ? @@NL( o1.PartialMatchInfo(&quot;12&quot;) ) + NL
 ? @@NL( o1.PartialMatchInfo(&quot;12:34&quot;) )</pre></div><div class="out"><div class="lbl">Output</div><pre>[
 	[ &quot;matchtype&quot;, &quot;partial&quot; ],
@@ -58,7 +58,7 @@
 		&quot;section&quot;,
 		[ 1, 5 ]
 	]
-]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/regex/10_partial_match_time_format_validation.ring">10_partial_match_time_format_validation.ring</a></p><h2>Scope <span class="mono">(4)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzRegex(&quot;^\d{3}-\d{3}-\d{4}$&quot;)
+]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/regex/10_partial_match_time_format_validation.ring">10_partial_match_time_format_validation.ring</a></p><h2>Scope <span class="mono">(4)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzRegex(&quot;^\d{3}-\d{3}-\d{4}$&quot;)
 ? @@NL( o1.PartialMatchInfo(&quot;123&quot;) ) + NL
 ? @@NL( o1.PartialMatchInfo(&quot;123-456&quot;) )</pre></div><div class="out"><div class="lbl">Output</div><pre>[
 	[ &quot;matchtype&quot;, &quot;partial&quot; ],
@@ -76,7 +76,7 @@
 		&quot;section&quot;,
 		[ 1, 7 ]
 	]
-]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/regex/08_partial_match_phone_number_validation.ring">08_partial_match_phone_number_validation.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzRegex(&quot;^https?://[\w-]+(\.[\w-]+)*\.\w{2,}$&quot;)
+]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/regex/08_partial_match_phone_number_validation.ring">08_partial_match_phone_number_validation.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzRegex(&quot;^https?://[\w-]+(\.[\w-]+)*\.\w{2,}$&quot;)
 ? @@NL( o1.PartialMatchInfo(&quot;http&quot;) ) + NL
 ? @@NL( o1.PartialMatchInfo(&quot;https://example&quot;) )</pre></div><div class="out"><div class="lbl">Output</div><pre>[
 	[ &quot;matchtype&quot;, &quot;partial&quot; ],
@@ -94,7 +94,7 @@
 		&quot;section&quot;,
 		[ 1, 15 ]
 	]
-]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/regex/11_partial_match_url_validation.ring">11_partial_match_url_validation.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzRegex(&quot;^https?://[\w-]+(\.[\w-]+)*\.\w{2,}$&quot;)
+]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/regex/11_partial_match_url_validation.ring">11_partial_match_url_validation.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzRegex(&quot;^https?://[\w-]+(\.[\w-]+)*\.\w{2,}$&quot;)
 ? o1.PartialMatch(&quot;http&quot;)
 ? o1.FindPartialMatch(&quot;http&quot;)
 ? @@( o1.FindPartialMatchZZ(&quot;http&quot;) ) + NL
@@ -109,7 +109,7 @@
 		&quot;section&quot;,
 		[ 1, 4 ]
 	]
-]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/regex/25_findind_partial_matches.ring">25_findind_partial_matches.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzRegex(pat(:url))
+]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/regex/25_findind_partial_matches.ring">25_findind_partial_matches.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzRegex(pat(:url))
 cMyUrl = &quot;https://example&quot;
 ? o1.MatchPartial(cMyUrl)
 ? o1.FindPartialMatch(cMyUrl)
@@ -125,7 +125,7 @@ cMyUrl = &quot;https://example&quot;
 		&quot;section&quot;,
 		[ 1, 15 ]
 	]
-]</pre></div></div><p class="ran">run on 2026-10-02 04:06 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/regex/26_matchpartial.ring">26_matchpartial.ring</a></p>
+]</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/regex/26_matchpartial.ring">26_matchpartial.ring</a></p>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzregex.html#partialmatchinfo">The class stzRegex</a></li><li><a href="../../guide/regex.html">The area's guide: Pattern matching</a></li><li>The other methods in these examples: <a class="mono" href="../stzregex/findpartialmatch.html">stzRegex.FindPartialMatch</a> · <a class="mono" href="../stzregex/findpartialmatchzz.html">stzRegex.FindPartialMatchZZ</a> · <a class="mono" href="../stzregex/matchpartial.html">stzRegex.MatchPartial</a> · <a class="mono" href="../stzregex/partialmatch.html">stzRegex.PartialMatch</a></li></ul>
   </div>
