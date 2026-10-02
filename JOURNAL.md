@@ -693,3 +693,32 @@ next:
   - me:      the how-to pages from the quickers
   - author:  look at Platform > The areas > Agents & conversation on the large screen
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-02 22:43
+
+subject:   how-to pages: 28 of the library's 30 recipes run and published, a new page of Learn
+
+why:       the author asked for the how-to pages, the documentation design's D4: no page of the site answered
+           "how do I...?", and the library's recipes are that answer
+
+did:
+  - wrote tools/howto_run.py: reads base/doc/quickers/recipes (intent, code, explanation, methods, tags, see also)
+    and runs them all in one process inside the library at 0e72e2e2c, each in its own try; an expression carrying a
+    promise without printing it is printed for the run, and the page says so; 12 s
+  - 28 kept their promise, checked by eye beside the outputs and against five wrong values the comparison rejects;
+    2 not run because their code shows the former language's name (section, summarize)
+  - wrote tools/build_howto.py: Learn > How-to lists the recipes by kind (lists, numbers, strings, text); each recipe is
+    a page with the left bar, its code, the run's output and verdict, its explanation, its methods linked to their
+    entries or class pages, its see-also recipes and its search words; intents and short names translated into French
+  - 35 method entries now link to the recipes that use them; the Documentation page has four ways in
+  - checked 1,804 local links on the new pages: none missing; none shows the former name
+
+state:
+  release-1-pass-16: built; the commit carrying this entry is the one after ebe777d
+  perception-gate:   OPEN -- the author has not seen the recipes
+
+next:
+  - me:      the agents' door (Ask, HowTo, ExplainMethod) is the last page type of the design still planned
+  - author:  open Learn > How-to and a recipe, for instance Lists > Filter
+```

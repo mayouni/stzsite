@@ -23,13 +23,13 @@ T = {
   "fr": {"kicker": "Référence", "forms": "Les formes de ce verbe", "basic": "Exemples de base", "scope": "Portée", "issues": "Points d'attention",
          "out": "Sortie", "ran": "exécuté le {d} dans la bibliothèque au commit 0e72e2e2c ; tiré de", "see": "Voir aussi",
          "class": "La classe", "guide": "Le guide du domaine", "also": "Les autres méthodes de ces exemples",
-         "no_desc": "Pas encore d'explication dans la source :", "aka": "aussi",
+         "no_desc": "Pas encore d'explication dans la source :", "aka": "aussi", "howto": "Comment faire",
          "proof": "Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.",
          "more": "et {n} autres dans les tests"},
   "en": {"kicker": "Reference", "forms": "The forms of this verb", "basic": "Basic examples", "scope": "Scope", "issues": "Possible issues",
          "out": "Output", "ran": "run on {d} inside the library at commit 0e72e2e2c; taken from", "see": "See also",
          "class": "The class", "guide": "The area's guide", "also": "The other methods in these examples",
-         "no_desc": "No explanation in the source yet:", "aka": "also",
+         "no_desc": "No explanation in the source yet:", "aka": "also", "howto": "How-to",
          "proof": "Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.",
          "more": "and {n} more in the tests"},
 }
@@ -62,6 +62,8 @@ def run_block(ex, t):
 
 def build_methods(ctx):
     ROOT, head, header, footer, entries = (ctx[k] for k in ("ROOT", "head", "header", "footer", "entries"))
+    howtos = ctx.get("howtos", {})
+    from build_howto import intent as howto_intent, page_name as howto_page
     ref = json.loads((ROOT / "data" / "reference.json").read_text(encoding="utf-8"))
     by_class = {c["name"]: c for c in ref["classes"]}
     by_area = collections.defaultdict(list)
@@ -104,7 +106,10 @@ def build_methods(ctx):
             a = c.get("area")
             guide = f'<li><a href="../../guide/{a}.html">{t["guide"]} : {esc(area_title[a][lang])}</a></li>'.replace(" : ", ": " if lang == "en" else " : ") if a in area_title else ""
             see = (f'<h2>{t["see"]}</h2><ul><li><a href="../{cls.lower()}.html#{esc(meth.lower())}">{t["class"]} {esc(cls)}</a></li>{guide}'
-                   + (f'<li>{t["also"]} : {other_html}</li>'.replace(" : ", ": " if lang == "en" else " : ") if other_html else "") + "</ul>")
+                   + (f'<li>{t["also"]} : {other_html}</li>'.replace(" : ", ": " if lang == "en" else " : ") if other_html else "")
+                   + "".join(f'<li>{t["howto"]} : <a href="../../howto/{howto_page(r)}.html">{esc(howto_intent(r, lang))}</a></li>'.replace(" : ", ": " if lang == "en" else " : ")
+                             for r in howtos.get((cls, meth), []))
+                   + "</ul>")
             lede = prose(desc) if desc else f'{t["no_desc"]} <span class="mono">{esc(split_camel(meth))}</span>'
             aka_html = f'<p class="proof">{t["aka"]}: {prose(aka)}</p>' if aka else ""
             rel = "../../../"

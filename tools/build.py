@@ -21,6 +21,7 @@ from build_guides import build_guides
 from build_methods import build_methods, load_entries
 from build_narration_pages import build_narration_pages, slug as narration_slug
 import level2
+from build_howto import build_howto, load_howtos, howtos_by_method
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -59,6 +60,7 @@ SECTIONS = [
      ("learn", {"fr": "Apprendre", "en": "Learn"}),
      ("book", {"fr": "Le livre", "en": "The book"}),
      ("docs", {"fr": "Documentation", "en": "Documentation"}),
+     ("howto", {"fr": "Comment faire", "en": "How-to"}),
      ("reference", {"fr": "Référence", "en": "Reference"}),
      ("narrations", {"fr": "Narrations", "en": "Narrations"}),
      ("teaching", {"fr": "Enseigner", "en": "Teaching"}),
@@ -70,7 +72,7 @@ SECTIONS = [
   ("start", {"fr": "Démarrer", "en": "Start"}, [
      ("start", {"fr": "Démarrer", "en": "Start"})]),
 ]
-GENERATED = {"reference", "narrations"}   # built by code, not from a .md
+GENERATED = {"reference", "narrations", "howto"}   # built by code, not from a .md
 OWNER = {}                                          # page -> its section
 for sec, _, pages in SECTIONS:
     for slug, _ in pages: OWNER[slug] = sec
@@ -659,7 +661,10 @@ def main():
     build_home(idx, groups)
     ENTRIES = load_entries(ROOT)
     nref, ncls, nown = build_reference({"ROOT": ROOT, "LANGS": LANGS, "head": head, "header": header, "footer": footer, "idx": idx, "groups": groups, "entries": ENTRIES})
-    nmeth = build_methods({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "entries": ENTRIES})
+    HOWTOS = howtos_by_method(load_howtos(ROOT))
+    nmeth = build_methods({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "entries": ENTRIES, "howtos": HOWTOS})
+    nhow, npub = build_howto({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "md": md, "entries": ENTRIES})
+    print(f"how-to: {nhow} pages, {npub} recipes run and published")
     print(f"method entries: {nmeth} pages, {len(ENTRIES)} methods with examples run")
     nguide = build_guides({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "idx": idx, "groups": groups, "heritage": HERITAGE, "entries": ENTRIES})
     print(f"guides: {nguide} pages")

@@ -501,9 +501,12 @@ ul.fnlist .in{color:var(--ink-2);white-space:nowrap}
 .narration .lbl{font-family:"IBM Plex Mono",monospace;font-size:var(--label);font-weight:600;letter-spacing:.06em;color:var(--ink-2)}
 .narration .out pre{border-left:4px solid var(--ink-3)}
 .narration .ran{font-weight:600;margin-top:8px}
-.narration .nv-kept{color:var(--strong)}
-.narration .nv-differs{color:var(--partial)}
-.narration .nv-raised,.narration .nv-unprinted{color:var(--emerging)}
+.nv-kept{color:var(--strong)}
+.nv-differs{color:var(--partial)}
+.nv-raised,.nv-unprinted{color:var(--emerging)}
+.ran[class*="nv-"]{font-weight:600}
+.howto-list li{margin-top:8px}
+.howto-notes{margin-top:32px}
 .narration .ran-out{border-left:4px solid var(--ink-3);margin-top:8px}
 ol.narr .ran{display:inline;margin:0}
 .narration hr{border:0;border-top:1px solid var(--line);margin:40px 0;max-width:920px}

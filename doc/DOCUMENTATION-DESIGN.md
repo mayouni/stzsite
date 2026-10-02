@@ -124,7 +124,7 @@ Rethought, because Softanza already decided differently:
 | Guide (one per area) | What exists here, and which function do I want? | the reference, grouped by leading verb, suffix forms folded | built, 28 × 2 languages |
 | Class reference | What exactly does this class offer? | the doc-comments | built, 618 classes |
 | Method entry with examples | What does this method do, shown? | the library's classic test files, harvested by the site and run before publishing | built 2026-10-02 for 1,428 methods of 59 classes |
-| How-to (workflow) | How do I do this task? | the quickers, with their `# Intent:` line as the title | planned |
+| How-to (workflow) | How do I do this task? | the recipes of `base/doc/quickers/recipes`, their `# Intent:` line as the title, run in one process (`tools/howto_run.py`) | built 2026-10-02: 28 of 30 published, each kept its promise; 2 show the former name |
 | Narration (tutorial) | How does this idea work as a whole? | `base/doc/narrations`, run block after block in one process (`tools/narrations_run.py`) | built 2026-10-02: 8 narrations are pages, each block with its verdict; the other 126 are listed with the reason they stay on GitHub |
 | Book (course) | Teach me, from the start | the Learning System chapters, run | linked |
 | For agents | How does a program ask the library? | `Ask`, `HowTo`, `ExplainMethod` | planned |

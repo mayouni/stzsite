@@ -1,0 +1,1113 @@
+{
+ "list/average.md": {
+  "intent": "Compute the average (mean) of a list of numbers",
+  "blocks": [
+   "Q([ 2, 4, 6 ]).Average()\n#--> 4"
+  ],
+  "notes": "",
+  "methods": [
+   "stzListOfNumbers.Average"
+  ],
+  "tags": [
+   "average",
+   "mean",
+   "avg",
+   "typical value",
+   "arithmetic mean"
+  ],
+  "see": [
+   "max-min",
+   "sum"
+  ],
+  "category": "list",
+  "slug": "average",
+  "file": "list/average.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "4",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "4"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "list/contains.md": {
+  "intent": "Check whether a list contains an item",
+  "blocks": [
+   "Q([ 1, 2, 3 ]).Contains(2)\n#--> TRUE"
+  ],
+  "notes": "",
+  "methods": [
+   "stzList.Contains"
+  ],
+  "tags": [
+   "contains",
+   "includes",
+   "has",
+   "is in",
+   "member of",
+   "present",
+   "is there"
+  ],
+  "see": [
+   "find"
+  ],
+  "category": "list",
+  "slug": "contains",
+  "file": "list/contains.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "TRUE",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "1"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "list/filter.md": {
+  "intent": "Keep only the list items that match a condition",
+  "blocks": [
+   "Q([ 1, 2, 3, 4, 5, 6 ]).FilterQ('{ @item > 3 }').Content()\n#--> [ 4, 5, 6 ]"
+  ],
+  "notes": "The condition is a small engine-evaluated expression where `@item` is each element.",
+  "methods": [
+   "stzList.Filter",
+   "stzList.FilterQ"
+  ],
+  "tags": [
+   "filter",
+   "keep where",
+   "select",
+   "subset",
+   "matching items",
+   "pick out",
+   "retain"
+  ],
+  "see": [
+   "find"
+  ],
+  "category": "list",
+  "slug": "filter",
+  "file": "list/filter.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "[ 4, 5, 6 ]",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "4\n5\n6"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "list/find.md": {
+  "intent": "Find the position of an item in a list",
+  "blocks": [
+   "Q([ 10, 20, 30 ]).Find(20)\n#--> [ 2 ]"
+  ],
+  "notes": "",
+  "methods": [
+   "stzList.Find",
+   "stzList.FindItem"
+  ],
+  "tags": [
+   "find",
+   "position of",
+   "index of",
+   "where is",
+   "locate",
+   "at what index"
+  ],
+  "see": [
+   "contains"
+  ],
+  "category": "list",
+  "slug": "find",
+  "file": "list/find.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "[ 2 ]",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "2"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "list/first-last.md": {
+  "intent": "Get the first or last element of a list",
+  "blocks": [
+   "Q([ 5, 6, 7 ]).FirstItem()\n#--> 5\n\nQ([ 5, 6, 7 ]).LastItem()\n#--> 7"
+  ],
+  "notes": "",
+  "methods": [
+   "stzList.FirstItem",
+   "stzList.LastItem"
+  ],
+  "tags": [
+   "first",
+   "head",
+   "front",
+   "top",
+   "last",
+   "tail",
+   "back",
+   "end",
+   "final element"
+  ],
+  "see": [
+   "find"
+  ],
+  "category": "list",
+  "slug": "first-last",
+  "file": "list/first-last.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "5\n7",
+    "printed": 2,
+    "verdict": "kept",
+    "out": "5\n7"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "list/max-min.md": {
+  "intent": "Get the largest or smallest value in a list",
+  "blocks": [
+   "Q([ 3, 9, 2 ]).Max()\n#--> 9\n\nQ([ 3, 9, 2 ]).Min()\n#--> 2"
+  ],
+  "notes": "",
+  "methods": [
+   "stzListOfNumbers.Max",
+   "stzListOfNumbers.Min"
+  ],
+  "tags": [
+   "max",
+   "largest",
+   "biggest",
+   "highest",
+   "maximum",
+   "min",
+   "smallest",
+   "lowest",
+   "minimum"
+  ],
+  "see": [
+   "average"
+  ],
+  "category": "list",
+  "slug": "max-min",
+  "file": "list/max-min.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "9\n2",
+    "printed": 2,
+    "verdict": "kept",
+    "out": "9\n2"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "list/remove-duplicates.md": {
+  "intent": "Remove duplicate items from a list (keep the unique ones)",
+  "blocks": [
+   "U([ 1, 2, 2, 3, 3, 3 ])\n#--> [ 1, 2, 3 ]"
+  ],
+  "notes": "",
+  "methods": [
+   "stzList.RemoveDuplicates",
+   "stzList.NoDuplicates",
+   "stzListOfNumbers.Unique"
+  ],
+  "tags": [
+   "duplicates",
+   "unique",
+   "distinct",
+   "dedupe",
+   "remove repeats",
+   "deduplicate"
+  ],
+  "see": [
+   "sort"
+  ],
+  "category": "list",
+  "slug": "remove-duplicates",
+  "file": "list/remove-duplicates.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "[ 1, 2, 3 ]",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "1\n2\n3"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "list/reverse.md": {
+  "intent": "Reverse the order of items in a list",
+  "blocks": [
+   "Reverse([ 1, 2, 3 ])\n#--> [ 3, 2, 1 ]"
+  ],
+  "notes": "",
+  "methods": [
+   "stzList.Reverse",
+   "stzList.Reversed"
+  ],
+  "tags": [
+   "reverse",
+   "flip",
+   "invert",
+   "backwards",
+   "reverse order",
+   "last to first"
+  ],
+  "see": [
+   "sort"
+  ],
+  "category": "list",
+  "slug": "reverse",
+  "file": "list/reverse.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "[ 3, 2, 1 ]",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "3\n2\n1"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "list/sort.md": {
+  "intent": "Sort a list into ascending order",
+  "blocks": [
+   "Sort([ 3, 1, 2 ])\n#--> [ 1, 2, 3 ]"
+  ],
+  "notes": "",
+  "methods": [
+   "stzList.Sort",
+   "stzList.SortedInAscending",
+   "stzListOfNumbers.Sorted"
+  ],
+  "tags": [
+   "sort",
+   "order",
+   "arrange",
+   "ascending",
+   "ranking",
+   "sorted",
+   "smallest to largest"
+  ],
+  "see": [
+   "reverse"
+  ],
+  "category": "list",
+  "slug": "sort",
+  "file": "list/sort.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "[ 1, 2, 3 ]",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "1\n2\n3"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "list/sum.md": {
+  "intent": "Add up all the numbers in a list",
+  "blocks": [
+   "Sum([ 1, 2, 3, 4 ])\n#--> 10"
+  ],
+  "notes": "",
+  "methods": [
+   "stzListOfNumbers.Sum",
+   "stzList.Sum"
+  ],
+  "tags": [
+   "sum",
+   "total",
+   "add up",
+   "aggregate",
+   "accumulate",
+   "add numbers"
+  ],
+  "see": [
+   "sort"
+  ],
+  "category": "list",
+  "slug": "sum",
+  "file": "list/sum.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "10",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "10"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "number/even-odd.md": {
+  "intent": "Check whether a number is even or odd",
+  "blocks": [
+   "Q(4).IsEven()\n#--> TRUE",
+   "Q(7).IsOdd()\n#--> TRUE"
+  ],
+  "notes": "",
+  "methods": [
+   "stzNumber.IsEven",
+   "stzNumber.IsOdd"
+  ],
+  "tags": [
+   "even",
+   "odd",
+   "parity",
+   "divisible by two",
+   "is even",
+   "is odd"
+  ],
+  "see": [
+   "is-prime"
+  ],
+  "category": "number",
+  "slug": "even-odd",
+  "file": "number/even-odd.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "TRUE",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "1"
+   },
+   {
+    "promise": "TRUE",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "1"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "number/factors.md": {
+  "intent": "Get all the factors (divisors) of a number",
+  "blocks": [
+   "Q(12).Factors()\n#--> [ 1, 2, 3, 4, 6, 12 ]"
+  ],
+  "notes": "",
+  "methods": [
+   "stzNumber.Factors",
+   "stzNumber.Divisors",
+   "stzNumber.PrimeFactors"
+  ],
+  "tags": [
+   "factors",
+   "divisors",
+   "divides",
+   "factorize",
+   "multiples",
+   "break into factors"
+  ],
+  "see": [
+   "is-prime"
+  ],
+  "category": "number",
+  "slug": "factors",
+  "file": "number/factors.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "[ 1, 2, 3, 4, 6, 12 ]",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "1\n2\n3\n4\n6\n12"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "number/is-prime.md": {
+  "intent": "Check whether a number is prime",
+  "blocks": [
+   "Q(7).IsPrime()\n#--> TRUE"
+  ],
+  "notes": "",
+  "methods": [
+   "stzNumber.IsPrime"
+  ],
+  "tags": [
+   "prime",
+   "primality",
+   "is prime",
+   "prime number",
+   "indivisible"
+  ],
+  "see": [
+   "factors"
+  ],
+  "category": "number",
+  "slug": "is-prime",
+  "file": "number/is-prime.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "TRUE",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "1"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "string/contains.md": {
+  "intent": "Check whether a string contains a substring",
+  "blocks": [
+   "Q(\"hello world\").Contains(\"world\")\n#--> TRUE"
+  ],
+  "notes": "",
+  "methods": [
+   "stzString.Contains",
+   "stzString.FindFirst",
+   "stzString.NumberOfOccurrence"
+  ],
+  "tags": [
+   "contains",
+   "includes",
+   "has",
+   "substring",
+   "search",
+   "find",
+   "present"
+  ],
+  "see": [
+   "split"
+  ],
+  "category": "string",
+  "slug": "contains",
+  "file": "string/contains.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "TRUE",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "1"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "string/count-occurrences.md": {
+  "intent": "Count how many times a substring appears",
+  "blocks": [
+   "Q(\"banana\").NumberOfOccurrences(\"a\")\n#--> 3"
+  ],
+  "notes": "",
+  "methods": [
+   "stzString.NumberOfOccurrences"
+  ],
+  "tags": [
+   "count",
+   "how many times",
+   "occurrences",
+   "tally",
+   "frequency",
+   "appears"
+  ],
+  "see": [
+   "find"
+  ],
+  "category": "string",
+  "slug": "count-occurrences",
+  "file": "string/count-occurrences.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "3",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "3"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "string/find.md": {
+  "intent": "Find where a substring occurs in a string",
+  "blocks": [
+   "Q(\"hello world hello\").FindAll(\"hello\")\n#--> [ 1, 13 ]"
+  ],
+  "notes": "",
+  "methods": [
+   "stzString.FindAll",
+   "stzString.Find",
+   "stzString.FindFirst"
+  ],
+  "tags": [
+   "find",
+   "locate",
+   "search",
+   "position of",
+   "index of",
+   "where is",
+   "occurrences"
+  ],
+  "see": [
+   "contains"
+  ],
+  "category": "string",
+  "slug": "find",
+  "file": "string/find.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "[ 1, 13 ]",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "1\n13"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "string/repeat.md": {
+  "intent": "Repeat a string several times",
+  "blocks": [
+   "Q(\"ab\").Repeated(3)\n#--> \"ababab\""
+  ],
+  "notes": "",
+  "methods": [
+   "stzString.Repeated"
+  ],
+  "tags": [
+   "repeat",
+   "duplicate",
+   "times",
+   "multiply the string",
+   "echo"
+  ],
+  "see": [
+   "reverse"
+  ],
+  "category": "string",
+  "slug": "repeat",
+  "file": "string/repeat.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "\"ababab\"",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "ababab"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "string/replace.md": {
+  "intent": "Replace occurrences of one substring with another",
+  "blocks": [
+   "StzReplace(\"I like cats\", \"cats\", \"dogs\")\n#--> \"I like dogs\""
+  ],
+  "notes": "",
+  "methods": [
+   "stzString.Replace",
+   "stzString.ReplaceCS"
+  ],
+  "tags": [
+   "replace",
+   "substitute",
+   "swap text",
+   "find and replace",
+   "change"
+  ],
+  "see": [
+   "split"
+  ],
+  "category": "string",
+  "slug": "replace",
+  "file": "string/replace.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "\"I like dogs\"",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "I like dogs"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "string/reverse.md": {
+  "intent": "Reverse the characters of a string",
+  "blocks": [
+   "Q(\"Softanza\").Reversed()\n#--> \"aznatfoS\""
+  ],
+  "notes": "",
+  "methods": [
+   "stzString.Reversed"
+  ],
+  "tags": [
+   "reverse",
+   "backwards",
+   "flip",
+   "invert",
+   "mirror characters"
+  ],
+  "see": [
+   "uppercase"
+  ],
+  "category": "string",
+  "slug": "reverse",
+  "file": "string/reverse.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "\"aznatfoS\"",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "aznatfoS"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "string/section.md": {
+  "intent": "Extract a portion (substring) between two positions",
+  "blocks": [
+   "Q(\"I love Ring\").Section(8, 11)\n#--> \"Ring\""
+  ],
+  "notes": "",
+  "methods": [
+   "stzString.Section"
+  ],
+  "tags": [
+   "substring",
+   "slice",
+   "portion",
+   "part",
+   "extract",
+   "characters between",
+   "from to"
+  ],
+  "see": [
+   "split"
+  ],
+  "category": "string",
+  "slug": "section",
+  "file": "string/section.md",
+  "status": "not run",
+  "reason": "names",
+  "parts": []
+ },
+ "string/split.md": {
+  "intent": "Split a string into parts on a delimiter",
+  "blocks": [
+   "Q(\"a,b,c\").Split(\",\")\n#--> [ \"a\", \"b\", \"c\" ]"
+  ],
+  "notes": "",
+  "methods": [
+   "stzString.Split",
+   "stzString.SplitCS"
+  ],
+  "tags": [
+   "split",
+   "separate",
+   "tokenize",
+   "break apart",
+   "delimiter",
+   "parts",
+   "explode"
+  ],
+  "see": [
+   "replace"
+  ],
+  "category": "string",
+  "slug": "split",
+  "file": "string/split.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "[ \"a\", \"b\", \"c\" ]",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "a\nb\nc"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "string/starts-ends-with.md": {
+  "intent": "Check whether a string starts or ends with something",
+  "blocks": [
+   "Q(\"hello world\").StartsWith(\"hello\")\n#--> TRUE\n\nQ(\"hello world\").EndsWith(\"world\")\n#--> TRUE"
+  ],
+  "notes": "",
+  "methods": [
+   "stzString.StartsWith",
+   "stzString.EndsWith"
+  ],
+  "tags": [
+   "starts with",
+   "begins with",
+   "prefix",
+   "ends with",
+   "finishes with",
+   "suffix"
+  ],
+  "see": [
+   "contains"
+  ],
+  "category": "string",
+  "slug": "starts-ends-with",
+  "file": "string/starts-ends-with.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "TRUE\nTRUE",
+    "printed": 2,
+    "verdict": "kept",
+    "out": "1\n1"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "string/trim.md": {
+  "intent": "Remove leading and trailing whitespace from a string",
+  "blocks": [
+   "Q(\"  hi  \").Trimmed()\n#--> \"hi\""
+  ],
+  "notes": "",
+  "methods": [
+   "stzString.Trimmed",
+   "stzString.TrimmedLeft",
+   "stzString.TrimmedRight"
+  ],
+  "tags": [
+   "trim",
+   "strip",
+   "whitespace",
+   "spaces",
+   "clean",
+   "remove padding"
+  ],
+  "see": [
+   "uppercase"
+  ],
+  "category": "string",
+  "slug": "trim",
+  "file": "string/trim.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "\"hi\"",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "hi"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "string/uppercase.md": {
+  "intent": "Convert a string to upper case (or lower case)",
+  "blocks": [
+   "Q(\"hello world\").Uppercased()\n#--> \"HELLO WORLD\"",
+   "Q(\"HELLO\").Lowercased()\n#--> \"hello\""
+  ],
+  "notes": "",
+  "methods": [
+   "stzString.Uppercased",
+   "stzString.Lowercased"
+  ],
+  "tags": [
+   "uppercase",
+   "lowercase",
+   "capitalize",
+   "upper",
+   "lower",
+   "case",
+   "capitals",
+   "make text uppercase",
+   "all caps"
+  ],
+  "see": [
+   "trim"
+  ],
+  "category": "string",
+  "slug": "uppercase",
+  "file": "string/uppercase.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "\"HELLO WORLD\"",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "HELLO WORLD"
+   },
+   {
+    "promise": "\"hello\"",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "hello"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "text/detect-language.md": {
+  "intent": "Detect which natural language a text is written in",
+  "blocks": [
+   "Q(\"The quick brown fox jumps over the lazy dog.\").TextQ().Language()\n#--> \"english\""
+  ],
+  "notes": "",
+  "methods": [
+   "stzText.Language",
+   "stzText.DetectedLanguage"
+  ],
+  "tags": [
+   "language",
+   "which tongue",
+   "idiom",
+   "locale",
+   "detect language",
+   "what language"
+  ],
+  "see": [
+   "normalize-words"
+  ],
+  "category": "text",
+  "slug": "detect-language",
+  "file": "text/detect-language.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "\"english\"",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "english"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "text/entities.md": {
+  "intent": "Find the people, places, and organizations mentioned in text",
+  "blocks": [
+   "Q(\"Alice met Bob in Paris.\").TextQ().NamedEntities()\n#--> [ [ \"Alice\", \"PERSON\" ], [ \"Bob\", \"PERSON\" ], [ \"Paris\", \"LOCATION\" ] ]",
+   "Q(\"Alice met Bob in Paris.\").TextQ().PersonNames()\n#--> [ \"Alice\", \"Bob\" ]"
+  ],
+  "notes": "",
+  "methods": [
+   "stzText.NamedEntities",
+   "stzText.PersonNames",
+   "stzText.Organizations",
+   "stzText.Locations"
+  ],
+  "tags": [
+   "entities",
+   "who is mentioned",
+   "people",
+   "places",
+   "names",
+   "organizations",
+   "companies",
+   "cities"
+  ],
+  "see": [
+   "sentiment"
+  ],
+  "category": "text",
+  "slug": "entities",
+  "file": "text/entities.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "[ [ \"Alice\", \"PERSON\" ], [ \"Bob\", \"PERSON\" ], [ \"Paris\", \"LOCATION\" ] ]",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "Alice\nPERSON\nBob\nPERSON\nParis\nLOCATION"
+   },
+   {
+    "promise": "[ \"Alice\", \"Bob\" ]",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "Alice\nBob"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "text/normalize-words.md": {
+  "intent": "Reduce words to their base or root form (lemmatize / stem)",
+  "blocks": [
+   "Q(\"The children were running happily.\").TextQ().Lemmatized()\n#--> \"The child be run happily.\""
+  ],
+  "notes": "",
+  "methods": [
+   "stzText.Lemmatized",
+   "stzText.Lemma",
+   "stzText.Stemmed",
+   "stzText.AutoLemmatized"
+  ],
+  "tags": [
+   "lemmatize",
+   "stem",
+   "base form",
+   "root word",
+   "dictionary form",
+   "canonical form",
+   "normalize"
+  ],
+  "see": [
+   "detect-language"
+  ],
+  "category": "text",
+  "slug": "normalize-words",
+  "file": "text/normalize-words.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "\"The child be run happily.\"",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "The child be run happily."
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "text/sentiment.md": {
+  "intent": "Detect the emotional tone (positive or negative) of some text",
+  "blocks": [
+   "Q(\"The service was slow, but the food was delicious.\").TextQ().Sentiment()\n#--> \"positive\""
+  ],
+  "notes": "",
+  "methods": [
+   "stzText.Sentiment",
+   "stzText.SentimentScore",
+   "stzText.IsPositive"
+  ],
+  "tags": [
+   "sentiment",
+   "mood",
+   "tone",
+   "emotion",
+   "feeling",
+   "opinion",
+   "positive",
+   "negative"
+  ],
+  "see": [
+   "entities"
+  ],
+  "category": "text",
+  "slug": "sentiment",
+  "file": "text/sentiment.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "\"positive\"",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "positive"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ },
+ "text/summarize.md": {
+  "intent": "Summarize a text down to its most important sentences",
+  "blocks": [
+   "Q(\"Softanza is a library. It makes Ring expressive. Developers love it. The tests pass.\").TextQ().SummarizedIn(1)\n#--> \"Softanza is a library.\""
+  ],
+  "notes": "",
+  "methods": [
+   "stzText.SummarizedIn",
+   "stzText.Summary",
+   "stzText.SummarySentences"
+  ],
+  "tags": [
+   "summarize",
+   "summary",
+   "shorten",
+   "condense",
+   "brief",
+   "tldr",
+   "gist",
+   "key sentences"
+  ],
+  "see": [
+   "topics"
+  ],
+  "category": "text",
+  "slug": "summarize",
+  "file": "text/summarize.md",
+  "status": "not run",
+  "reason": "names",
+  "parts": []
+ },
+ "text/topics.md": {
+  "intent": "Find the main topics or key phrases a text is about",
+  "blocks": [
+   "Q(\"Machine learning models require large training datasets and careful evaluation.\").TextQ().KeyPhrases(2)\n#--> [ \"Machine learning models require large training datasets\", \"careful evaluation\" ]"
+  ],
+  "notes": "",
+  "methods": [
+   "stzText.KeyPhrases",
+   "stzText.RankedKeywords",
+   "stzText.TopKeyPhrase"
+  ],
+  "tags": [
+   "topics",
+   "themes",
+   "subjects",
+   "key phrases",
+   "keywords",
+   "what it is about",
+   "main points"
+  ],
+  "see": [
+   "summarize"
+  ],
+  "category": "text",
+  "slug": "topics",
+  "file": "text/topics.md",
+  "status": "run",
+  "reason": "",
+  "parts": [
+   {
+    "promise": "[ \"Machine learning models require large training datasets\", \"careful evaluation\" ]",
+    "printed": 1,
+    "verdict": "kept",
+    "out": "Machine learning models require large training datasets\ncareful evaluation"
+   }
+  ],
+  "ran": "2026-10-02 22:33"
+ }
+}
