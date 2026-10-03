@@ -10,7 +10,8 @@
   else root.StzSearchCore = factory();
 })(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
-  var STOP = { a: 1, an: 1, the: 1, of: 1, to: 1, in: 1, on: 1, for: 1, from: 1, with: 1, and: 1, or: 1, how: 1, do: 1, i: 1, is: 1, it: 1, my: 1, by: 1, can: 1 };
+  var STOP = { a: 1, an: 1, the: 1, of: 1, to: 1, in: 1, on: 1, for: 1, from: 1, with: 1, and: 1, or: 1, how: 1, do: 1, i: 1, is: 1, it: 1, my: 1, by: 1, can: 1,
+    un: 1, une: 1, le: 1, la: 1, les: 1, de: 1, des: 1, du: 1, par: 1, pour: 1, avec: 1, et: 1, ou: 1, dans: 1, sur: 1, comment: 1, je: 1, mon: 1, ma: 1, mes: 1, au: 1, aux: 1, en: 1 };
 
   function words(name) {
     return name.replace(/([a-z0-9])([A-Z])/g, '$1 $2').replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2').toLowerCase().split(/[^a-z0-9@]+/).filter(Boolean);

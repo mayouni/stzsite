@@ -181,6 +181,7 @@ def head(lang, title, description, rel, extra=""):
 <link rel="apple-touch-icon" href="{rel}assets/img/mark-180.png">
 <link rel="stylesheet" href="{rel}assets/css/fonts.css">
 <link rel="stylesheet" href="{rel}assets/css/site.css">
+<link rel="stylesheet" href="{rel}assets/css/search.css">
 {extra}{THEME_SCRIPT}
 </head>"""
 
@@ -267,7 +268,7 @@ def footer(lang, rel, pagers_html="", nav_rel=None, scripts=True, data_lang=""):
   </div>
 </div></footer>"""
     if scripts:
-        out += f'\n<script src="{rel}assets/js/site.js"></script>{PAGE_PING}\n</body></html>'
+        out += f'\n<script src="{rel}assets/js/site.js"></script><script src="{rel}assets/js/search-core.js"></script><script src="{rel}assets/js/search.js"></script>{PAGE_PING}\n</body></html>'
     return out
 
 # ----------------------------------------------------------------------------
@@ -656,7 +657,7 @@ def build_home(idx, groups):
     heads = "".join(header(l, "index", "", other_href=f"index.html?lang={o}", nav_rel=f"{l}/", data_lang=l) for l, o in (("fr", "en"), ("en", "fr")))
     feet = "".join(footer(l, "", nav_rel=f"{l}/", scripts=False, data_lang=l) for l in LANGS)
     page += "\n<body class=\"home-body over-hero\">\n" + heads + '\n<main id="main">\n' + body + '\n</main>\n' + feet + f"""
-<script src="assets/js/site.js"></script>{PAGE_PING}
+<script src="assets/js/site.js"></script><script src="assets/js/search-core.js"></script><script src="assets/js/search.js"></script>{PAGE_PING}
 </body></html>"""
     (ROOT / "index.html").write_text(page, encoding="utf-8")
 
@@ -741,9 +742,9 @@ def main():
         for f in sorted((ROOT / "assets/img" / sub).glob("*")):
             if f.is_file() and f.suffix.lower() in (".png", ".webp", ".jpg", ".svg"):
                 assets.append({"kind": "image", "path": f"assets/img/{sub}{f.name}"})
-    for f in ("fonts.css", "site.css"):
+    for f in ("fonts.css", "site.css", "search.css"):
         assets.append({"kind": "css", "path": f"assets/css/{f}"})
-    for f in ("site.js", "tour.js"):
+    for f in ("site.js", "tour.js", "search-core.js", "search.js"):
         assets.append({"kind": "script", "path": f"assets/js/{f}"})
     assets.append({"kind": "page", "path": "index.html"})
     for lang in LANGS:

@@ -1,0 +1,35 @@
+/* The search: a magnifier in the header, the field over any page, results as category > class > method.
+   Rows are 44 px tall, the match is bold and underlined in the accent colour (never colour alone), nothing moves. */
+.tools a.sbtn svg{display:block;width:24px;height:24px}
+.srch{position:relative}
+.sp{margin-top:6px;background:var(--paper);border:1px solid var(--line-2);border-radius:10px;overflow:hidden}
+.srch .sp{position:absolute;left:0;right:0;z-index:60;max-height:70vh;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.sp[hidden]{display:none}
+.sp p{max-width:none}
+.sp .sh{margin:0;padding:10px 14px 4px;font-family:"IBM Plex Mono",monospace;font-size:var(--label);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);background:var(--panel)}
+.sp .sn{font-weight:400}
+.sp .sa-h{margin:0;padding:10px 14px 2px;font-weight:700;color:var(--ink)}
+.sp .sc-h{margin:0;padding:0 14px 2px;color:var(--ink)}
+.sp .sq{margin:0;padding:10px 14px;color:var(--ink)}
+.sp .sx{margin:0;padding:4px 14px 8px;color:var(--ink-2)}
+.spath{font-size:var(--label);color:var(--ink-2)}
+.srow{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .6em;min-height:44px;padding:8px 14px;text-decoration:none;color:var(--ink);border-top:1px solid var(--line)}
+.srow:hover,.srow:focus{background:var(--panel);outline:2px solid var(--accent);outline-offset:-2px}
+.srow b{font-weight:700}
+.srow .sd{color:var(--ink-2)}
+.srow .sl{flex-basis:100%;color:var(--ink-2);font-size:var(--label)}
+.srow .sb{font-family:"IBM Plex Mono",monospace;font-size:var(--label);font-weight:600;border:1px solid var(--line-2);border-radius:6px;padding:0 8px;margin-left:auto;color:var(--ink-2)}
+.srow .spath{margin-left:auto}
+mark.sm{background:none;color:var(--accent);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.sbtn2{display:block;width:100%;min-height:44px;padding:8px 14px;font:inherit;font-weight:600;color:var(--accent);background:var(--panel);border:0;border-top:1px solid var(--line);cursor:pointer;text-align:left}
+.sbtn2:hover,.sbtn2:focus{outline:2px solid var(--accent);outline-offset:-2px}
+.sdlg{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.5);display:flex;justify-content:center;align-items:flex-start;padding:8vh 12px 12px}
+.sdlg[hidden]{display:none}
+.sbox{background:var(--paper);border:1px solid var(--line-2);border-radius:12px;width:min(820px,100%);max-height:84vh;display:flex;flex-direction:column;overflow:hidden}
+.sbar{display:flex;gap:8px;padding:12px;border-bottom:1px solid var(--line)}
+.sin{flex:1;min-width:0;min-height:48px;padding:0 14px;font:inherit;color:var(--ink);background:var(--paper);border:2px solid var(--line-2);border-radius:10px}
+.sin:focus{outline:none;border-color:var(--accent)}
+.sx2{min-height:48px;padding:0 16px;font:inherit;font-weight:600;color:var(--ink);background:var(--panel);border:1px solid var(--line-2);border-radius:10px;cursor:pointer}
+.sp-d{margin:0;border:0;border-radius:0;overflow-y:auto;flex:1}
+body.sopen{overflow:hidden}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
