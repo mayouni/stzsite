@@ -27,6 +27,7 @@ import build_ladder
 import qforms
 import build_proof
 import external
+import build_search
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -765,6 +766,8 @@ def main():
     build_deck_check(assets)
     print(f"reference: {nref} pages, {ncls} classes, {nown} own methods")
     for f, why in check_names(): print(f"NAME CHECK FAILED  {f}: {why}")
+    sc, sm, st, sp = build_search.build(ROOT, ENTRIES, groups)
+    print(f"search index: {sc} classes, {sm:,} methods, {st:,} texts, {sp} pages")
     print(f"external links: {external.STATS['links']:,} marked, opening in a new tab, on {external.STATS['pages']:,} pages")
     print(f"built {len(outs)} pages + {2*len(groups)} area pages + atlas + narrations + index.html + deck-check.html; tour scenes fr={len(scenes['fr'])} en={len(scenes['en'])}")
     if LONG:
