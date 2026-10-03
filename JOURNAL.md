@@ -1001,3 +1001,46 @@ next:
   - me:      nothing queued on the site; progressive revelation is the library's to build
   - author:  open Learn > Reference, The extensions
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-03 20:03
+
+subject:   an example on every row, function, index entry and narration of the site
+
+why:       the author, looking at the stzList reference table: "examples must be everywhere in the site! we don't want to let
+           anything abstract ... a strategic asset for softanza adoption, so the reader knows it's a practical technology"
+
+did:
+  - wrote tools/rows_run.py: an example composed from each method's signature and RUN in the library at 0e72e2e2c, on a fresh
+    sample object shown with the example; a first run composed 9,116 methods over 150 classes and kept 5,801, each kept only
+    if a second run in another order printed the same (56 dropped), 10 calls crashed or hung and were isolated; stzListNamedParams
+    (1,927 composed, 1,645 kept) and stzGraph (294 composed, 164 kept) were run again after; 7,446 composed examples in all
+  - wrote tools/rows_mine.py: receivers mined from the library's own tests (single-line constructions with literals only, each
+    tried by running it; empty receivers and paths left out): 149 classes, plus five written by hand from how the tests build them
+  - gave stzListNamedParams (1,913 methods IsXNamedParam) a receiver made from each method's own name, kept only when it answers true
+  - wrote tools/rowex.py: the library's example of the very method first, else the composed one, last a folded form's; the legend
+    of each class page counts them and says what is not run and why
+  - put an example under every row of 618 class pages, every function of the 28 guides, the class index, the A to Z index, and
+    each method of agents/index.json (field example)
+  - wrote tools/narrations_snippets.py: 120 of 134 narrations carry a snippet on the list (25 from a run, 95 as the narration
+    writes it, labelled not run for this page; 7 have no code and say so)
+  - wrote tools/check_examples.py: 29,002 blocks of the built site, 0 failures (no former name, no bare ...Q() statement, an
+    output, a source); 0 dangling among 546,293 local links
+  - found that the harvest read section banners as method descriptions (8,425 rows, 38%): the reference now shows "in the
+    section X" and the share described from the source falls from 74% to 42%
+
+state:
+  release-1-pass-24: built; the commit carrying this entry is the one after de9f587
+  rows with an example: 7,610 of 22,272 (34.2%), on 151 of 618 classes
+  classes not run on purpose: 251 (5,112 rows: files, network, process, clock, chance, sound), each says so
+  classes with no receiver yet: 216 (4,021 rows)
+  perception-gate:   OPEN
+
+waiting:
+  - STZLIB-SELFDOC-BANNER-01: the self-documentation takes the nearest comment above a method, so a section title describes every
+             method under it (stzListNamedParams 1,884, stzDiagram 110, stzDateTime 78) -> stzlib [routed]
+
+next:
+  - me:      write a receiver by hand for the 216 classes the tests never build directly, largest first (stzQuestion, stzGraphPlanner, stzGeoMap)
+  - author:  open Learn > Reference > stzGraph, and Learn > Narrations
+```

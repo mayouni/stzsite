@@ -111,6 +111,7 @@ UI = {
     "narr_note": "Liste lue dans le dossier doc/narrations du dépôt au commit 0e72e2e2c. Le 2026-10-02, chaque narration qui pouvait s'exécuter a été exécutée dans la bibliothèque, bloc après bloc dans un seul processus. Celles dont au moins trois blocs sur quatre tiennent leur promesse sont des pages de ce site, avec le verdict de chaque bloc ; les autres s'ouvrent sur GitHub, et la liste dit pourquoi.",
     "narr_groups": {"page": "Exécutées, pages de ce site", "run": "Exécutées, ne tenant pas encore leurs promesses : sur GitHub", "effects": "Non exécutées, elles touchent aux fichiers, au réseau, à la saisie, à l'horloge ou au hasard : sur GitHub", "names": "Non exécutées, leur code nomme l'ancien langage de la plateforme : sur GitHub", "compile": "Non exécutées, elles ne compilent pas telles qu'écrites : sur GitHub", "nocode": "Sans code à exécuter : sur GitHub"},
     "narr_kept": "{k} blocs sur {n} tiennent leur promesse",
+    "narr_ex_ran": "un exemple de cette narration, exécuté le {d} dans la bibliothèque", "narr_ex_written": "un exemple tel que la narration l'écrit, non exécuté pour cette page", "narr_ex_none": "une narration qui raisonne, sans code à montrer",
     "cov_row": "Domaine", "cov_present": "Présent", "cov_deep": "Deep", "cov_solid": "Solid", "cov_partial": "Partial", "cov_none": "Absent",
   },
   "en": {
@@ -138,6 +139,7 @@ UI = {
     "narr_note": "List read in the repository's doc/narrations folder at commit 0e72e2e2c. On 2026-10-02 every narration that could run was run inside the library, block after block in one process. Those where at least three blocks in four keep their promise are pages of this site, with each block's verdict; the others open on GitHub, and the list says why.",
     "narr_groups": {"page": "Run, pages of this site", "run": "Run, not yet keeping their promises: on GitHub", "effects": "Not run, they touch files, the network, input, the clock or chance: on GitHub", "names": "Not run, their code names the platform's former language: on GitHub", "compile": "Not run, they do not compile as written: on GitHub", "nocode": "No code to run: on GitHub"},
     "narr_kept": "{k} of {n} blocks keep their promise",
+    "narr_ex_ran": "an example of this narration, run on {d} inside the library", "narr_ex_written": "an example as the narration writes it, not run for this page", "narr_ex_none": "a narration that reasons, with no code to show",
     "cov_row": "Domain", "cov_present": "Present", "cov_deep": "Deep", "cov_solid": "Solid", "cov_partial": "Partial", "cov_none": "Absent",
   },
 }
@@ -564,16 +566,24 @@ def build_narrations(lang, published):
         if f in published: return "page"
         if r["status"] == "run": return "run"
         return {"effects": "effects", "names": "names", "does not compile": "compile"}.get(r["reason"], "nocode")
+    snips = json.loads((DATA / "narration-snippets.json").read_text(encoding="utf-8"))["snippets"] if (DATA / "narration-snippets.json").exists() else {}
+    def snippet(f, r):
+        """a few lines of the narration's own code under its title (tools/narrations_snippets.py): never a title alone"""
+        sn = snips.get(f)
+        if not sn: return f'<span class="rx-src">{esc(ui["narr_ex_none"])}</span>'
+        body = esc(sn["code"]) + ("\n" + "\n".join("#--&gt; " + esc(l) for l in sn["out"].split("\n") if l.strip()) if sn["out"] else "")
+        src = ui["narr_ex_ran"].format(d=esc(r.get("ran", ""))) if sn["how"] == "ran" else ui["narr_ex_written"]
+        return f'<pre class="rx">{body}</pre><span class="rx-src">{esc(src)}</span>'
     def item(n):
         title = esc(RING_WORD.sub("Haro", n["title"]).replace("Ring++", "Haro").replace("`", ""))
         r = runs[n["file"]]
         if n["file"] in published:
-            return f'<li><a href="narrations/{narration_slug(n["file"])}.html">{title}</a></li>'
+            return f'<li><a href="narrations/{narration_slug(n["file"])}.html">{title}</a>{snippet(n["file"], r)}</li>'
         kept = ""
         if r["status"] == "run":
             k = sum(1 for b in r["blocks"] if b["verdict"] == "kept")
             kept = f' <span class="ran">{ui["narr_kept"].format(k=k, n=len(r["blocks"]))}</span>'
-        return f'<li><a href="{GH}base/doc/narrations/{esc(n["file"])}">{title}</a>{kept}</li>'
+        return f'<li><a href="{GH}base/doc/narrations/{esc(n["file"])}">{title}</a>{kept}{snippet(n["file"], r)}</li>'
     body = f'<p class="proof">{esc(ui["narr_note"])}</p>'
     for g, label in ui["narr_groups"].items():
         lis = [item(n) for n in items if group(n["file"]) == g]

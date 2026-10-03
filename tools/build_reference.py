@@ -7,7 +7,7 @@ area), fr|en/reference/<class>.html (one page per class) and
 fr|en/reference/methods-<letter>.html (the alphabetical index). Called by build.py
 with its helpers, so the chrome stays one."""
 import json, re, html, collections
-import level2, qforms, extshow
+import level2, qforms, extshow, rowex
 PIN_DATE = re.compile(r"(\d{4}-\d{2}-\d{2})\.</p>")
 def pin(page): return PIN_DATE.sub("2026-10-01.</p>", page)
 
@@ -17,21 +17,21 @@ T = {
   "fr": {"title": "Référence", "kicker": "La bibliothèque se documente elle-même",
          "lede": "Chaque méthode de chaque classe, avec l'explication que la bibliothèque porte dans sa propre source, récoltée par son module d'auto-documentation. Rien ici n'a été écrit pour le site : c'est ce que la bibliothèque répond quand on l'interroge.",
          "desc": "La référence Softanza, générée depuis les explications que la bibliothèque porte dans sa source : 618 classes, {n} méthodes propres.",
-         "examples": "exemples exécutés", "with_ex": "méthodes avec des exemples exécutés", "classes": "classes", "own": "méthodes propres", "entries": "entrées de surface, héritage compris", "described": "décrites depuis la source",
+         "examples": "exemples exécutés", "with_ex": "méthodes avec des exemples exécutés", "rowex": "méthodes avec un exemple sur leur ligne", "classes": "classes", "own": "méthodes propres", "entries": "entrées de surface, héritage compris", "described": "décrites depuis la source",
          "by_area": "Par domaine", "class_h": "Classe", "own_h": "Méthodes", "inherited_h": "Héritées", "area_h": "Domaine",
          "methods_az": "Toutes les méthodes, de A à Z", "letter": "Lettre", "filter": "Filtrer les méthodes…", "filter_classes": "Filtrer les classes…",
          "source": "la source", "inherits": "Hérite aussi de", "method": "Méthode", "explanation": "Explication, telle que la source la porte", "aka": "aussi nommée",
-         "chip_q": "chaînable", "chip_cs": "sensible à la casse", "chip_xt": "étendue", "no_desc": "(sans commentaire dans la source : le nom se lit comme une phrase)",
+         "chip_q": "chaînable", "chip_cs": "sensible à la casse", "chip_xt": "étendue", "no_desc": "(sans commentaire dans la source : le nom se lit comme une phrase)", "section": "dans la section",
          "note": "Les explications sont citées dans la langue de la source, l'anglais. Récolte : {harvested}. Un commentaire absent est signalé plutôt qu'inventé.",
          "area_edu": "Le Système d'apprentissage", "area_other": "Autres", "back": "Toutes les classes", "guide": "Le guide", "count_in": "méthodes propres dans", "page_title": "Référence"},
   "en": {"title": "Reference", "kicker": "The library documents itself",
          "lede": "Every method of every class, with the explanation the library carries in its own source, harvested by its self-documentation module. Nothing here was written for the site: it is what the library answers when asked.",
          "desc": "The Softanza reference, generated from the explanations the library carries in its source: 618 classes, {n} own methods.",
-         "examples": "examples run", "with_ex": "methods with examples run", "classes": "classes", "own": "own methods", "entries": "surface entries, inheritance included", "described": "described from the source",
+         "examples": "examples run", "with_ex": "methods with examples run", "rowex": "methods with an example on their row", "classes": "classes", "own": "own methods", "entries": "surface entries, inheritance included", "described": "described from the source",
          "by_area": "By area", "class_h": "Class", "own_h": "Methods", "inherited_h": "Inherited", "area_h": "Area",
          "methods_az": "Every method, A to Z", "letter": "Letter", "filter": "Filter the methods…", "filter_classes": "Filter the classes…",
          "source": "the source", "inherits": "Also inherits from", "method": "Method", "explanation": "Explanation, as the source carries it", "aka": "also named",
-         "chip_q": "chainable", "chip_cs": "case-sensitive", "chip_xt": "extended", "no_desc": "(no comment in the source: the name reads as a sentence)",
+         "chip_q": "chainable", "chip_cs": "case-sensitive", "chip_xt": "extended", "no_desc": "(no comment in the source: the name reads as a sentence)", "section": "in the section",
          "note": "Explanations are quoted in the language of the source, English. Harvest: {harvested}. A missing comment is reported rather than invented.",
          "area_edu": "The Learning System", "area_other": "Other", "back": "All classes", "guide": "The guide", "count_in": "own methods in", "page_title": "Reference"},
 }
@@ -78,6 +78,8 @@ def build_reference(ctx):
     by_name = {c["name"].lower(): c for c in classes}
     n_own = sum(len(c["own"]) for c in classes)
     n_folded = sum(c["folded"] for c in classes)
+    rdata = rowex.load(ROOT)                      # the example on each row: the library's own, or one composed and run for this site
+    n_rowex = sum(sum(rowex.class_counts(c, entries, rdata)[:2]) for c in classes)
     n_entries = n_own + sum(sum(c["inherited"].values()) for c in classes)
     n_desc = sum(1 for c in classes for m in c["own"] if m[2])
     area_title = {g["slug"]: {l: g[l] for l in LANGS} for g in groups}
@@ -104,7 +106,7 @@ def build_reference(ctx):
             rows = "".join(
                 f'<div class="lane rrow" data-k="{esc(c["name"].lower())}"><div class="ln"><a href="reference/{c["name"].lower()}.html">{esc(c["name"])}</a></div>'
                 f'<div class="lr mono">{len(c["own"])}</div><div class="lt">{esc(", ".join(f"{k} ({v})" for k, v in c["inherited"].items())) if c["inherited"] else "·"}'
-                f'<small>{esc(c["file"])}</small></div></div>' for c in cs)
+                f'<small>{esc(c["file"])}</small>{rowex.example_of_class(c, entries, rdata, lang)}</div></div>' for c in cs)
             sections.append(f'<h2 id="{a or "other"}">{link} <small class="mono">{sum(len(c["own"]) for c in cs)} {t["own"]} · {len(cs)} {t["classes"]}</small></h2>'
                             f'<div class="lanes rtable"><div class="lane rhead"><div class="ln">{t["class_h"]}</div><div class="lr">{t["own_h"]}</div><div class="lt">{t["inherited_h"]}</div></div>{rows}</div>')
         az_links = " ".join(f'<a class="chip solid" href="reference/methods-{L.lower() if L != "#" else "other"}.html">{L}</a>' for L in letters)
@@ -121,6 +123,7 @@ def build_reference(ctx):
       <div class="figure"><b>{n_own:,}</b><span>{t["own"]}</span></div>
       <div class="figure"><b>{n_entries:,}</b><span>{t["entries"]}</span></div>
       <div class="figure"><b>{n_folded:,}</b><span>{extshow.T[lang]["folded"]}</span></div>
+      <div class="figure"><b>{n_rowex:,}</b><span>{t["rowex"]}</span></div>
       <div class="figure"><b>{len(entries):,}</b><span>{t["with_ex"]}</span></div>
       <div class="figure"><b>{round(100*n_desc/max(n_own,1))}%</b><span>{t["described"]}</span></div>
     </div>
@@ -148,6 +151,8 @@ def build_reference(ctx):
                 name, aka, desc = m
                 d = prose(desc) if desc else f'<i>{esc(t["no_desc"])}</i> <span class="mono">{esc(split_camel(name))}</span>'
                 aka_html = f'<small>{t["aka"]}: {prose(aka)}</small>' if aka else ""
+                sec = c["sections"].get(name.lower())          # the harvest read a section title as this method's comment: say it is the section
+                sec_html = f'<small>{t["section"]} <b>{prose(sec)}</b></small>' if sec else ""
                 exs = entries.get((c["name"], name))
                 if exs:
                     href = f'{c["name"].lower()}/{mslug(name)}.html'
@@ -156,7 +161,8 @@ def build_reference(ctx):
                 else:
                     nm, ex_html = esc(name), ""
                 strip = extshow.row_strip(c["variants"].get(name.lower(), []), lang)
-                rows.append(f'<div class="lane lane2 rrow" id="{esc(name.lower())}" data-k="{esc((name + " " + desc).lower())}"><div class="ln mono">{nm}</div><div class="lt">{d}{ex_html}{aka_html}<span class="ext-line">{strip}</span></div></div>')
+                rx = rowex.example_html(c["name"], name, exs, rdata, lang)
+                rows.append(f'<div class="lane lane2 rrow" id="{esc(name.lower())}" data-k="{esc((name + " " + desc).lower())}"><div class="ln mono">{nm}</div><div class="lt">{d}{ex_html}{aka_html}{sec_html}{rx}<span class="ext-line">{strip}</span></div></div>')
             for name, aka, desc, owner in c["extra"]:      # a method of an ancestor to which this class gives extensions
                 exs = entries.get((c["name"], name))
                 nm = f'<a href="{c["name"].lower()}/{mslug(name)}.html">{esc(name)}</a>' if exs else esc(name)
@@ -176,6 +182,7 @@ def build_reference(ctx):
   </div></section>
   <div class="wrap page-body">
     {extshow.legend(lang, "../")}
+    {rowex.legend(c, entries, rdata, lang)}
     <input id="flt" class="flt" type="search" placeholder="{esc(t["filter"])}" aria-label="{esc(t["filter"])}">
     <div class="lanes rtable"><div class="lane lane2 rhead"><div class="ln">{t["method"]}</div><div class="lt">{t["explanation"]}</div></div>{"".join(rows)}</div>
   </div>
@@ -190,7 +197,7 @@ def build_reference(ctx):
             rows = []
             for n in names:
                 links = " · ".join(f'<a href="{cl.lower()}.html#{esc(n.lower())}">{esc(cl)}</a>' for cl in sorted(az[n]))
-                rows.append(f'<div class="lane rrow" data-k="{esc(n.lower())}"><div class="ln mono">{esc(n)}</div><div class="lr mono">{len(az[n])}</div><div class="lt">{links}</div></div>')
+                rows.append(f'<div class="lane rrow" data-k="{esc(n.lower())}"><div class="ln mono">{esc(n)}</div><div class="lr mono">{len(az[n])}</div><div class="lt">{links}{rowex.example_for_method(n, az[n], entries, rdata, lang)}</div></div>')
             rows = "".join(rows)
             page = head(lang, f'{t["methods_az"]} · {L} · Softanza', t["desc"].format(n=f"{n_own:,}" if lang == "en" else f"{n_own:,}".replace(",", " ")), rel2)
             page += '\n<body class="page page-reference-az">\n' + header(lang, "reference", rel2, other_href=f"../../{'en' if lang == 'fr' else 'fr'}/reference/methods-{L.lower() if L != '#' else 'other'}.html", nav_rel="../")

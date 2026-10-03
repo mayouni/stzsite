@@ -1,0 +1,604 @@
+{
+ "snippets": {
+  "Safe-Access-to-Ring-Hashlists-using-HasKey.md": {
+   "code": "aHash = [\n\t:name = \"john\",\n\t:type = \"person\"\n]\nif NOT HasKey(aHash, \"age\")\n\taHash + [ \"age\", 35 ]\nok",
+   "out": "",
+   "how": "written"
+  },
+  "Softanza-Reactive-Programming-Semantics.md": {
+   "code": "ReactiveFunc.CallAsync([data], func result { ? result }, NULL)",
+   "out": "",
+   "how": "written"
+  },
+  "istrue-softanza-truth.md": {
+   "code": "? IsTrue(\"\")       # FALSE\n? IsTrue([])       # FALSE\n? IsTrue([\"Hi\"])   # TRUE",
+   "out": "0\n0\n1",
+   "how": "ran"
+  },
+  "stz-adverb-engine.md": {
+   "code": "? Adverb(\"quick\")\n? Adverb(\"happy\")\n? Adverb(\"gentle\")",
+   "out": "quickly\nhappily\ngently",
+   "how": "ran"
+  },
+  "stz-agents-that-cannot-hurt-you-narration.md": {
+   "code": "oGood = StzAgentDeclarationQ(cGood)\n? \"valid: \" + oGood.IsValid()\n? \"format version: \" + oGood.FormatVersion()\n? \"covers: \" + oGood.CoverageStatement()\n? \"reversibility: \" + oGood.ReversibilityClass()",
+   "out": "valid: 1\nformat version: 2\ncovers: reorders stock when it runs low\nreversibility: compensable",
+   "how": "written"
+  },
+  "stz-auth-the-front-door-narration.md": {
+   "code": "a = new stzAuth()\na.Register(\"dana\", \"pw\")\na.GrantRole(\"dana\", \"admin\")\ntok = a.LoginAt(\"dana\", \"pw\", NOW)\nact = a.ActorOfAt(tok, NOW)\n? \"user        : \" + act.Name()\n? \"capabilities: \" + @@(act.Kinds())\n? \"posture     : \" + act.Posture()",
+   "out": "user        : dana\ncapabilities: [ \"effectful\", \"compute\", \"sensing\" ]\nposture     : trusted",
+   "how": "written"
+  },
+  "stz-bridging-minds-and-code.md": {
+   "code": "if Q(\"SOFTANZA\").\n\tIsAMQ(:String).WhichIsQ().InUppercaseQ().\n\tWhileQ().ContainingQ( TheLetters([ \"F\", :And = \"Z\" ]) ).\n\tTheLetterQ(\"A\").TwiceQ().\n\tAndQ().HavingQ().ItsQM().FirstCharQ().EqualTo(\"S\")\n\t? \"It's me, Softanza!\"\nok",
+   "out": "It's me, Softanza!",
+   "how": "written"
+  },
+  "stz-conditional-code-narration.md": {
+   "code": "o = new stzList([ 4, 7, 10, 3, 8 ])\n? @@( o.FindW('{ @item > 5 }') )\n? @@( o.FindW('{ IsEven(@item) }') )\n? o.CheckW('{ isNumber(@item) }')\n? o.CountW('{ @item > 5 and IsEven(@item) }')",
+   "out": "[ 2, 3, 5 ]\n[ 1, 3, 5 ]\nTRUE\n2",
+   "how": "written"
+  },
+  "stz-deploying-to-target-sites-narration.md": {
+   "code": "oDelivery.SetActor(LLMActor(\"assistant\"))   # may rehearse -- commits NOTHING\noDelivery.SetActor(HumanActor(\"ops\"))       # may commit",
+   "out": "",
+   "how": "written"
+  },
+  "stz-emulating-the-whole-solution-narration.md": {
+   "code": "oPlan = oDelivery.Plan()\n? \"engine caps: \" + @@( oPlan.EngineCapsFor(:phone) )\n? \"wasm groups: \" + @@( StzWasmGroupsFor( oPlan.EngineCapsFor(:phone) ) )",
+   "out": "engine caps: [ \"pivottable\", \"constraintsolver\" ]\nwasm groups: [ \"aggregation\", \"solver\" ]",
+   "how": "ran"
+  },
+  "stz-engine-senses-narration.md": {
+   "code": "s2 = StzPerfSeries(3)\nfor i = 1 to 5\n\ts2.RecordAt(i, i * 100)\nnext\n? \"Count() = \" + s2.Count() + \" ; Size() = \" + s2.Size()\n? \"window  = \" + s2.ValueAt(1) + \", \" + s2.ValueAt(2) + \", \" + s2.ValueAt(3)",
+   "out": "Count() = 5 ; Size() = 3\nwindow  = 300, 400, 500",
+   "how": "ran"
+  },
+  "stz-fastporupdate-narration.md": {
+   "code": "FastProUpdate(aList, :Command = [ parameters... ])",
+   "out": "",
+   "how": "written"
+  },
+  "stz-function-forms-narration.md": {
+   "code": "o1 = new stzString(\"rixxnxg\")\n? o1.Content()\n? Q(\"rixxnxg\").\n    RemoveQ(\"x\").\n    ReplaceQ(\"i\", :With = AHeart()).\n    UppercaseQ().\n    Spacified()",
+   "out": "\"rixxnxg\"\nR ♥ N G",
+   "how": "written"
+  },
+  "stz-functions-as-linguistic-expressions.md": {
+   "code": "? Q(\"rixxnxg\").\n    RemoveQ(\"x\").\n    ReplaceQ(\"i\", :With = AHeart()).\n    UppercaseQ().\n    Spacified()",
+   "out": "R ♥ N G",
+   "how": "written"
+  },
+  "stz-governance-lineage-narration.md": {
+   "code": "oGov.RecordDecisionAt(\"d-101\", \"peak-season pricing adjustment\",\n    \"billing-agent\", \"send-invoice\", $T0)\naD = oGov.LineageOf(\"d-101\")",
+   "out": "[OK] the rationale survives\n  [OK] ...with the authority AT THE TIME\n  [OK] ...the risk at the time\n  [OK] ...and now the moment it was taken\n  [OK] the ACTION is kept beside its tier",
+   "how": "written"
+  },
+  "stz-governing-project-security-narration.md": {
+   "code": "? oStore.Reveal(\"deploy-key\", HumanActor(\"ops\"))     # allowed\noStore.Reveal(\"deploy-key\", LLMActor(\"planner\"))     # refused (raises)",
+   "out": "ssh-ed25519-AAAAlive",
+   "how": "written"
+  },
+  "stz-guarding-secrets-and-credentials-narration.md": {
+   "code": "? oKey.Reveal(oLLM)              # refused",
+   "out": "Refused: actor 'planner' (posture sandboxed) may not reveal secret 'deploy-key'. Only an effectful, non-sandboxed actor can read a secret.",
+   "how": "ran"
+  },
+  "stz-honest-stopwatch-narration.md": {
+   "code": "w = StzStopwatchXT(\"import-orders\")     # StzStopwatch() for unnamed\n? w.ElapsedMs()",
+   "out": "13.42",
+   "how": "written"
+  },
+  "stz-integrating-r-scripts-inside-ring.md": {
+   "code": "R() {\n@('\n    res <- list(\n        numbers = c(1, 2, 3, 4, 5),\n        mean = mean(c(1, 2, 3, 4, 5))\n    )\n')\nRun()\n? @@(Result())\n}",
+   "out": "",
+   "how": "written"
+  },
+  "stz-knowledge-programming-narration.md": {
+   "code": "@Q(\"Apple\").IsA(:Fruit)\n? WhatIs(:Apple)\n? WhatIs(:Fruit)",
+   "out": ":Fruit\n:Undefined",
+   "how": "written"
+  },
+  "stz-lowlevel-system-programming.md": {
+   "code": "oMemory = new stkMemory()\noBuffer = oMemory.CreateBuffer(50)\n? oBuffer.Size()\n? oBuffer.Capacity()\noBuffer.Write(0, \"Hello\")\n? oBuffer.Size()\n? oBuffer.Read(0, 5)",
+   "out": "0 (nothing in it yet)\n50 (but can hold 50 bytes)\n5 (now has 5 bytes)\n\"Hello\"",
+   "how": "written"
+  },
+  "stz-managing-deep-lists-narration.md": {
+   "code": "? IsSubPathOf([2], [2, 3, 4])\n? @@( CommonPath([ [2, 1, 3], [2, 1, 4], [2, 1, 5] ]) )",
+   "out": "1\n[ 2, 1 ]",
+   "how": "ran"
+  },
+  "stz-max-adverb-generation-in-softan.md": {
+   "code": "? Adverb(\"good\")\n? Adverb(\"fast\")\n? Adverb(\"hard\")",
+   "out": "well\nfast\nhard",
+   "how": "ran"
+  },
+  "stz-metrics-monitor-narration.md": {
+   "code": "tFresh = StzMetric(\"fresh.timer\", :Timer)\ntFork = tFresh                   # copied BEFORE any recording\ntFork.Record(9)\n? tFresh.Count()                 # the ORIGINAL sees the copy's record",
+   "out": "1",
+   "how": "written"
+  },
+  "stz-named-vars-narration.md": {
+   "code": "Vr( 'user_' + 123 ) '=' Vl( \"Hussein\" )\n? v( :user_123 )",
+   "out": "Hussein",
+   "how": "written"
+  },
+  "stz-near-natural-language-programming.md": {
+   "code": "? Q(\"text\").Find(\"t\")      # Finds positions in the string\n? Q([1,2,3,2]).Find(2)     # Finds positions in the list\n? Q(12321).Find(2)         # Finds digit positions in the number",
+   "out": "",
+   "how": "written"
+  },
+  "stz-near-natural-language-tutorial.md": {
+   "code": "? Q(\"AnnIE\").Vowels()     # Returns [\"A\", \"I\", \"E\"]\n? Q(\"AnnIE\").VowelN()     # Returns 3 (count)\n? Q(\"AnnIE\").Vowel()      # Returns random vowel",
+   "out": "",
+   "how": "written"
+  },
+  "stz-perf-frame-profiler-narration.md": {
+   "code": "oS.StartSampling(2)          # a 2ms sampler thread\noS.StopSampling()\nsee oS.Folded()",
+   "out": "folded stacks (paste into speedscope.app / flamegraph.pl):\nserve;handle 41\nserve;write 10",
+   "how": "written"
+  },
+  "stz-perf-governed-loop-narration.md": {
+   "code": "oSup.Policy(:nlp, 1, 4).SetWaterMarks(0.25, 0.75)\noSup.FeedLoadFrom(:nlp, oP)              # MEASURED, not believed\naActs = oSup.Decide(aFleetMetrics)",
+   "out": "measured load (X/Xmax) : 0.04\nsupervisor decides     : scaledown (measured load 0.04 < low-water 0.25)",
+   "how": "written"
+  },
+  "stz-perf-judgment-narration.md": {
+   "code": "oSla = StzSla(\"restolean-api\")\noSla.Expect(:ResponseTimeP95).Under(200)\noSla.Expect(:Availability).AtLeast(99.9)\noSla.Expect(:ErrorRate).AtMost(0)\noSla.CheckAgainst(oMon)\noSla.Show()",
+   "out": "SLA restolean-api -- 3 expectation(s), last check: MET.\n  [MET] response-time-p95-under-200: measured 5.97 (must be <= 200)\n  [MET] availability-atleast-99.90: measured 100 (must be >= 99.90)\n  [MET] error-rate-under-0: measured 0 (must be <= 0)",
+   "how": "written"
+  },
+  "stz-perf-labels-narration.md": {
+   "code": "oF = StzMetricFamily(\"checkout.ms\", :Timer, [ \"route\", \"method\" ])\noF.Child([ \"/menu\", \"GET\" ]).Record(12)\noF.Child([ \"/menu\", \"GET\" ]).Record(18)\noF.Child([ \"/pay\", \"POST\" ]).Record(220)\n? oF.Child([ \"/menu\", \"GET\" ]).ExactPercentile(95)\n? oF.Child([ \"/pay\", \"POST\" ]).ExactPercentile(95)",
+   "out": "children     : 3 (incl. the reserved overflow)\n/menu p95    : 18 ms\n/pay  p95    : 220 ms",
+   "how": "written"
+  },
+  "stz-perf-log-trace-narration.md": {
+   "code": "StzOpenTraceScope(\"\")\n$oLog.Info(\"charging the card\")\n$oLog.Record(:warn, \"gateway slow, retrying\", [ [ :gateway, \"stripe\" ] ])\nStzCloseTraceScope()\n$oLog.Info(\"nightly cleanup\")\nsee $oLog.AsText()",
+   "out": "1785482186005 INFO restolean: charging the card  {traceId=6e262c37f3c493b30f6a4297aad02273}\n1785482186005 WARN restolean: gateway slow, retrying  {gateway=stripe, traceId=6e262c37f3c493b30f6a4297aad02273}\n1785482186005 INFO restolean: nightly cleanup",
+   "how": "written"
+  },
+  "stz-perf-profile-narration.md": {
+   "code": "aUC = oP.UtilizationCheck()\n? aUC[:message]",
+   "out": "U computed from anchors = 0.03, U sampled by the monitor = 0.03: the two measurements agree -- the measurement is sound",
+   "how": "written"
+  },
+  "stz-perf-seams-narration.md": {
+   "code": "oPipe.Run(\"scan:acme invoice\")\naD = oPipe.StageDurations()",
+   "out": "ocr : 0.03 ms\nentities : 10.20 ms\nindex : 0.01 ms\ntotal : 10.24 ms",
+   "how": "written"
+  },
+  "stz-perf-tracing-tail-narration.md": {
+   "code": "oMon.EnableTracing(64)          # BEFORE Observe\noSrv.Observe(oMon)\naT = oMon.RecentTraces(3)       # read through OUR face",
+   "out": "traceparent: 00-b2e6b38e093cf3698ec96a1794e02caa-46154b26907506e1-01\n258483c8ac481058348af70b5032b01c  /order  200  6.09 ms\nd58848679f41bda4b23275f3b20de089  /order  200  0.57 ms\nb2e6b38e093cf3698ec96a1794e02caa  /order  200  0.97 ms",
+   "how": "written"
+  },
+  "stz-plotting-system-narration.md": {
+   "code": "oPlot = new stzPlot([ 5, 4, 2, 5, 3, 2, 4 ])\nochart.Show()",
+   "out": "",
+   "how": "written"
+  },
+  "stz-probabilistic-quantifiers-narration.md": {
+   "code": "? All([ \"A\", \"B\", \"C\" ])\n? No([ \"A\", \"B\", \"C\" ])",
+   "out": "A\nB\nC",
+   "how": "ran"
+  },
+  "stz-pycode-bridging-ring-and-python-narration.md": {
+   "code": "py() {\n    @('res = {\"numbers\": [1, 2, 3, 4, 5], \"mean\": sum([1, 2, 3, 4, 5]) / 5}')\n    Execute()\n    ? @@(Result())\n}",
+   "out": "[ [ \"numbers\", [ 1, 2, 3, 4, 5 ] ], [ \"mean\", 3 ] ]",
+   "how": "written"
+  },
+  "stz-random-narrration.md": {
+   "code": "aNumbers = [ 12, 9, 10, 7, 25, 12, 9, 8 ]\n? Some(aNumbers)\n? Few(NumbersIn(-5:5))\n? Most(PositiveNumbersIn(-5:5))\n? Half(OddNumbersIn(-5:5))",
+   "out": "[ 12, 10, 7 ]\n[ 0, -4 ]\n[ 1, 2, 4, 5 ]\n[ 1, 5 ]",
+   "how": "written"
+  },
+  "stz-reaxis-reactive-programming-narration.md": {
+   "code": "Transform(func price { return price * 1.20 })  # Waits for stream activation",
+   "out": "",
+   "how": "written"
+  },
+  "stz-reaxis-simplification-of-complex-reactive-programming.md": {
+   "code": "Rs = new stzReactiveSystem()\noHttpStream = Rs.CreateStream(\"http-requests\")\noHttpStream {\n    OnPassed(func request {\n        processRequest(request)\n    })\n}",
+   "out": "",
+   "how": "written"
+  },
+  "stz-repeat-function-narration.md": {
+   "code": "? Q(\"5\").RepeatedXT(:InA = :List, :OfSize = 2)\n? Q(\"A\").RepeatedInAPair()",
+   "out": "[ \"5\", \"5\" ]\n[ \"A\", \"A\" ]",
+   "how": "written"
+  },
+  "stz-repetition-with-elegance-narration.md": {
+   "code": "? Three(\".\")",
+   "out": ".\n.\n.",
+   "how": "ran"
+  },
+  "stz-rules-as-graph-rules-narration.md": {
+   "code": "aF = StzCheckCode(\"class Foo\" + nl + \"def Bar()\" + nl + \"\tx = substr(s, 2)\" + nl)\nnF = len(aF)\nfor i = 1 to nF\n    ? aF[i][:rule] + \"  @line \" + aF[i][:line] + \"  [\" + aF[i][:severity] + \"]\"\nnext",
+   "out": "engine-first  @line 3  [warning]",
+   "how": "written"
+  },
+  "stz-security-attestation-narration.md": {
+   "code": "? oAtt.MayAttest(LLMActor(\"advisor\"))        # inference only\n? oAtt.MayAttest(GuardianActor(\"auditor\"))   # compute + sensing\n? oAtt.MayAttest(HumanActor(\"mansour\"))      # effectful + sensing",
+   "out": "",
+   "how": "written"
+  },
+  "stz-security-detection-narration.md": {
+   "code": "oD = StzDetection(\"credential-stuffing\")\noD.WhenKind(\"auth.login.failed\").PerActor().Repeats(5).Within(60000)\noD2 = StzDetection(\"guess-then-reach\")\noD2.WhenKind(\"auth.login.failed\").ThenKind(\"secret.reveal.refused\")\n   .BySameActor().Within(300000)\noD3 = StzDetection(\"cloned-authenticator\")\noD3.WhenKind(\"auth.passkey.clone_suspected\").OnAnyOccurrence()",
+   "out": "",
+   "how": "written"
+  },
+  "stz-security-event-narration.md": {
+   "code": "? \"the value 'sk_live...' appears in the event: \" + (StzFindFirst(\"sk_live\", oE.ToOcsfJson()) > 0)\n? \"what the subject says instead   : \" + oE.Subject()",
+   "out": "the value 'sk_live...' appears in the event: 0\nwhat the subject says instead   : <secret 'stripe-live' (secret) from literal>",
+   "how": "written"
+  },
+  "stz-security-incident-narration.md": {
+   "code": "chk(\"a DIFFERENT actor's event joined the story via the shared trace\", ...)\nchk(\"...and the trace id is reported for the log query\", ...)",
+   "out": "",
+   "how": "written"
+  },
+  "stz-security-ledger-narration.md": {
+   "code": "? \"head digest : \" + oLed.Digest()\n? \"verify      : \" + oLed.Verify()[:message]",
+   "out": "head digest : c2441958fcfb2af96c386c55c153450f117616fc896c8bf659bb4709d45ed7bb\nverify      : chain intact over 3 retained entr(ies)",
+   "how": "written"
+  },
+  "stz-security-response-narration.md": {
+   "code": "? oResp.MayCommit(oLlm)                 # the agent that did the analysis\n? oResp.ExecuteOn(oFake, oLlm)          # ...tries anyway",
+   "out": "preflight refuses the inference-only actor\n...and says why: actor 'advisor' is not effectful -- it may propose, not commit\nthe LLM's execution commits NOTHING\n...the responder was never touched\n...and all four actions were audited REFUSED",
+   "how": "written"
+  },
+  "stz-security-seams-2-narration.md": {
+   "code": "oCli = new stzOidcClient(\"https://id.acme.com\", \"shop-app\")\naTok = oCli.VerifyIdTokenAt(\"not-a-jwt\", \"\", $NOW)",
+   "out": "[OK] the client refuses it\n  [OK] ...and the refusal is now REMEMBERED, not just returned\n  [OK] ...naming the issuer that claimed to have signed it\n  the token is not a well-formed JWT",
+   "how": "written"
+  },
+  "stz-security-seams-narration.md": {
+   "code": "chk(\"no ledger is open by default\", NOT StzSecurityLedgerIsOpen())",
+   "out": "",
+   "how": "written"
+  },
+  "stz-security-sentinel-narration.md": {
+   "code": "StzOpenSecurityLedger(512)\noSent = StzSecuritySentinel(StzDefaultDetectionSet())\noSent.OnDetection(func aFinding { ... })\noSent.OnClear(func cWhere { ... })",
+   "out": "quiet system      : 0 alert(s)\nafter five guesses:\n  >> ALERT [error] credential-stuffing/victim\n     5 x auth.login.failed within 60000ms by 'victim' -- repeated authentication failures against one account\nstill under attack:\n  0 new alert(s) -- the story did not restart",
+   "how": "written"
+  },
+  "stz-service-virtualization-code-first-subscribe-later.md": {
+   "code": "oPay = new stzPaymentsSandbox()\naAuth = oPay.Authorize(4200, \"tok_visa\")\n? aAuth[:id]\n? aAuth[:status]\n? oPay.Capture(aAuth[:id])[:ok]\n? oPay.StatusOf(aAuth[:id])",
+   "out": "auth_1\nauthorized\n1\ncaptured",
+   "how": "written"
+  },
+  "stz-string-insert-substrings-narration.md": {
+   "code": "o1 = new stzString(\"All our software versions must be updated!\")\no1.InsertSubStrings( o1.PositionAfter(\"versions\"), [ \"V1\", \"V2\", \"V3\" ])\n? o1.Content()",
+   "out": "All our software versions (V1, V2, V3)  must be updated!",
+   "how": "ran"
+  },
+  "stz-structured-logging-narration.md": {
+   "code": "? \"errors: \" + oLog.CountOfLevel(:error)\n? \"about the api part: \" + len(oLog.Where(:part, \"api\"))",
+   "out": "errors: 1\nabout the api part: 1",
+   "how": "ran"
+  },
+  "stz-system-dev-to-deploy-narration.md": {
+   "code": "o1 = new stzDevSystem()\n? o1.OSName() + \" / \" + o1.Architecture() + \" / \" + o1.BitSize() + \"-bit\"\n? @@( o1.Capabilities() )\n? o1.Lacks(:gpio)",
+   "out": "windows / x64 / 64-bit\n[ \"filesystem\", \"process\", \"network\", \"environment\", \"dynamic_load\", \"threads\", \"clock\" ]\n1",
+   "how": "ran"
+  },
+  "stz-time-programming-intro.md": {
+   "code": "oBirthday = new stzDate(\"15/06/1990\")\n? oBirthday.Age()",
+   "out": "35",
+   "how": "written"
+  },
+  "stz-unfied-item-finding-with-@find.md": {
+   "code": "aMyList = [10, \"hello\", 42, \"world\"]\n? find(aMyList, \"hello\")\n? find(aMyList, 42)",
+   "out": "2\n3",
+   "how": "written"
+  },
+  "stz-unmasking-unicode-lookalities-narration.md": {
+   "code": "? Unicode(\"۱\")\n? Unicode(\"١\")",
+   "out": "1776\n1632",
+   "how": "written"
+  },
+  "stz-vs-qt-unicode-narration.md": {
+   "code": "? Unicode(\"鶊\")",
+   "out": "40330",
+   "how": "ran"
+  },
+  "stz-xml-the-parser-that-says-no.md": {
+   "code": "cXml = '<library xmlns=\"urn:lib\" name=\"City Library\">' +\n       '<book isbn=\"1\"><title>Dune</title><year>1965</year></book>' +\n       '<book isbn=\"2\"><title>Ubik</title><year>1969</year></book>' +\n       '</library>'\n? StzXmlRoot(cXml)\n? StzXmlGet(cXml, \"library/book/title\")\n? StzXmlGet(cXml, \"library/book[2]/title\")\n? StzXmlGet(cXml, \"//year\")",
+   "out": "library\nDune\nUbik\n1965",
+   "how": "ran"
+  },
+  "stzApp-building-your-first-app-narration.md": {
+   "code": "oApp = new stzApp(\"SonibankVisits\")\noApp {\n    Thing(:Account) { Has([ :number, :chapter, :balance ])  IsTrue(:balance) = '@ >= 0' }\n    Thing(:Client)  { Has([ :code, :name, :city ])  Owns(:Account) }\n    Thing(:Visit)   { Of(:Client)  Has([ :agent, :date, :subject ]) }\n    Knows(:Account, :belongsTo, :Client)\n}",
+   "out": "",
+   "how": "written"
+  },
+  "stzDotCode-Graphiz-Dot-Language-Guide.md": {
+   "code": "Dot = new stzDotCode()\nDot.SetCode('\ndigraph MyWorkflow {\n    Start -> Process -> End\n}\n')\nDot.RunAndView()",
+   "out": "",
+   "how": "written"
+  },
+  "stzGraph-Computational-Foundation.md": {
+   "code": "if Explain()[\"cycles\"][1].contains(\"WARNING\")\n    throw(\"Cycles detected—invalid structure\")\nend",
+   "out": "",
+   "how": "written"
+  },
+  "stzGraphDoc.md": {
+   "code": "? oGraph.NodeCount()\n? oGraph.PathExists(:@start, :@end)",
+   "out": "3\nTRUE",
+   "how": "written"
+  },
+  "stzLinearSolver-Empowering-Real-World-Applications with-Linear-Programming.md": {
+   "code": "AddConstraint(\"60*swordsmen + 80*bowmen + 140*horsemen\", \"<=\", 1200) # Food\nMaximize(\"70*swordsmen + 95*bowmen + 230*horsemen\") # Power\nSolve(\"greedy\")",
+   "out": "",
+   "how": "written"
+  },
+  "stzMatrex-Declarative-Pattern-Matching-for-Matrices.md": {
+   "code": "oMx = new stzMatrex(\"{shape(square) & property(symmetric)}\")\n? oMx.Match([\n    [1, 2, 3],\n    [2, 4, 5],\n    [3, 5, 6]\n])",
+   "out": "TRUE",
+   "how": "written"
+  },
+  "stzNumbex-number-patterns-made-simple.md": {
+   "code": "? Nx(\"[@I(0..255)3]\").Match([128, 64, 192])",
+   "out": "true",
+   "how": "written"
+  },
+  "stzOrgChartDoc-BankUseCase.md": {
+   "code": "    ? \"=== REGULATORY VALIDATION ===\"\n    ? Validate(:BCEAO)     # → FAIL with 3 critical issues\n    ? Validate(:SpanOfControl)\n    ? Validate(:SegregationOfDuties)\n    ? Validate(:GDPR)\n    ? Validate(:SOX)\n    ? Validate(:BANKING)",
+   "out": "",
+   "how": "written"
+  },
+  "stzOrgChartDoc.md": {
+   "code": "Default validators:\n[ \"bceao\", \"sod\", \"soc\", \"vacancy\", \"succession\" ]",
+   "out": "",
+   "how": "written"
+  },
+  "stzTimex-A-Pattern-Language-for-Time-in-Softanza.md": {
+   "code": "Tmx = Tmx(\"{@Instant}\")\n? Tmx.Match(StzDateTimeQ(\"2025-10-22 14:30:00\"))\n? Tmx.MatchPartial(StzDateTimeQ(\"2025-10-22 14:30:00\"))",
+   "out": "1\n1",
+   "how": "ran"
+  },
+  "stzappserver-article.md": {
+   "code": "oContext = new stzProcessingContext()\noContext {\n    oStr = new stzString(\"Hello World\")  # Instant access!\n    cResult = oStr.Reversed()\n}",
+   "out": "",
+   "how": "written"
+  },
+  "stzcalendar-time-capacity-planning-in-softanza.md": {
+   "code": "oCal.SetWorkingDays([\"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\"])\noCal {\n? IsWorkingDay(\"2024-10-03\")\n? IsWorkingDay(\"2024-10-05\")\n? HowManWorkingDays()\n}",
+   "out": "1 (TRUE, Thursday)\n0 (FALSE, Saturday)\n23",
+   "how": "written"
+  },
+  "stzdatasetdoc.md": {
+   "code": "oSales = new stzDataSet([120, 150, 89, 200, 175, 95, 180])",
+   "out": "",
+   "how": "written"
+  },
+  "stzdate-date-programming-in-softanza.md": {
+   "code": "o1 = new stzDate(\"\")\n? o1.Date()\n? o1.ToHuman() + NL\no1.SetDate(Tomorrow())\n? o1.Date()\n? o1.ToHuman()",
+   "out": "10/10/2025\ntoday\n11/10/2025\ntomorrow",
+   "how": "written"
+  },
+  "stzdatetime-guide-narration.md": {
+   "code": "? IsDateTime(\"2024-03-15 10:00:00\")\n? IsValidDateTime(\"invalid\")",
+   "out": "TRUE\nFALSE",
+   "how": "written"
+  },
+  "stzduration-measuring-time-in-softanza.md": {
+   "code": "oDur1 = DurationQ(\"2 days\")\noDur2 = DurationQ(\"5 days\")\noDur3 = DurationQ(\"4 days\")\noTotal = oDur1 + oDur2 + oDur3\n? oTotal.ToHuman()\noWithBuffer = oTotal * 1.20\n? oWithBuffer.ToHuman()",
+   "out": "11 days\n13 days, 4 hours, and 48 minutes",
+   "how": "written"
+  },
+  "stzexcis-polyglot-programming-in-ring.md": {
+   "code": "AI = XAI()\nAI.Query(\"List the top 5 African countries by population in 2024\")\ncountries = AI.Result()\n? @@(countries)\nAI.Query(\"Analyze these population figures and suggest infrastructure priorities\")\nanalysis = AI.Result()\n? analysis",
+   "out": "",
+   "how": "written"
+  },
+  "stzexterlib-domain-driven-polyglot-programming.md": {
+   "code": "total = stzPerf.parallelSum([1, 2, 3, 4, 5], 4)",
+   "out": "",
+   "how": "written"
+  },
+  "stzfile-api-narration.md": {
+   "code": "file = fopen(\"data.txt\", \"r\")      # Read mode - can't write\nfile = fopen(\"data.txt\", \"w\")      # Write mode - can't read, truncates\nfile = fopen(\"data.txt\", \"a\")      # Append mode - can't read from start\nfile = fopen(\"data.txt\", \"r+\")     # Read+write - complex positioning",
+   "out": "",
+   "how": "written"
+  },
+  "stzfolder-intelligent-navigation.md": {
+   "code": "oFolder = new stzFolder(\"/my-project\")\n? oFolder.CurrentPath()\noFolder.CreateFolder(\"docs\")\n? oFolder.CurrentPath()\noFolder.CreateFile(\"README.md\", \"# Project Documentation\")\noFolder.CreateFolder(\"assets/images\")\n? oFolder.CurrentPath()",
+   "out": "\"/my-project/\"\n\"/my-project/docs/\"\n\"/my-project/assets/\"",
+   "how": "written"
+  },
+  "stzfolder-natural-navigation.md": {
+   "code": "oFolder.CreateFolder(\"api/routes\")     # Navigate to: /webapp/api/routes/\noFolder.CreateFile(\"users.ring\")       # Navigate to: /webapp/api/routes/",
+   "out": "",
+   "how": "written"
+  },
+  "stzfolder-visual-exploration-and-search.md": {
+   "code": "? o1.VizSearch(\"*.txt\")",
+   "out": "",
+   "how": "written"
+  },
+  "stzgraph-chatgpt-opinion.md": {
+   "code": "AddNode(\"a\")\nAddNode(\"b\")\nConnect(\"a\",\"b\")",
+   "out": "",
+   "how": "written"
+  },
+  "stzgraph-claudeai-opinion.md": {
+   "code": "oGraph.Find(\"nodes\").Where(\"status\", \"=\", \"critical\").Run()\noGraph.InsertNodeBefore(\"review\", \"approval\")",
+   "out": "",
+   "how": "written"
+  },
+  "stzgraph-modeling-knowledge-with-nodes-and-connections.md": {
+   "code": "HasNode(\"a\")         #--> TRUE\nEdgeExists(\"a\",\"b\")  #--> TRUE\nPathExists(\"start\",\"end\") #--> TRUE",
+   "out": "",
+   "how": "written"
+  },
+  "stzgraphplannerdoc.md": {
+   "code": "? Cost()           // How expensive was it?\n? Route()         // What's the route?\n? Explain()        // Why this route?",
+   "out": "",
+   "how": "written"
+  },
+  "stzgraphquery-doc.md": {
+   "code": "? @@( aResults[1][\"node\"][:id] )",
+   "out": "",
+   "how": "written"
+  },
+  "stzgrid-navigator-grid-mastering.md": {
+   "code": "o1 = new stzGrid([5, 5])\n? o1.NumberOfRows()\n? o1.NumberOfColumns()\n? o1.Size()\n? o1.SizeXT()\n? o1.CurrentPosition()",
+   "out": "5\n5\n25\n[5, 5]\n[1, 1]",
+   "how": "written"
+  },
+  "stzlist-diff.md": {
+   "code": "o1 = new stzList([ \"green\", \"red\", \"blue\" ])\n? @@( o1.Common([ \"yellow\", \"red\", \"blue\", \"gray\" ]) )\n? @@( o1.Diff([ \"yellow\", \"red\", \"blue\", \"gray\" ]) )",
+   "out": "[ \"red\", \"blue\" ]\n[ \"green\", \"yellow\", \"gray\" ]",
+   "how": "ran"
+  },
+  "stzlist-in-strings-narration.md": {
+   "code": "? StzStringQ('[1,2,3]').IsListInString()\n? StzStringQ('1:3').IsListInString()\n? StzStringQ(' \"A\":\"C\" ').IsListInString()\n? StzStringQ(' \"ا\":\"ج\" ').IsListInString()",
+   "out": "1\n1\n1\n1",
+   "how": "ran"
+  },
+  "stzlistex-pattern-matching-for-lists.md": {
+   "code": "Lx(\"[@N, @S]\").Match([42, \"hello\"]) #--> TRUE",
+   "out": "",
+   "how": "written"
+  },
+  "stzlocale-locale-management-the-softanza-way.md": {
+   "code": "o1 = new stzLocale(\"ar-TN\")\n? o1.Abbreviation()\n? o1.CountryName()\n? o1.LanguageName()",
+   "out": "ar_TN\ntunisia\narabic",
+   "how": "ran"
+  },
+  "stzmatrix-matrix-computing-in-softanza-narration.md": {
+   "code": "mx.AddCV(2, 5)\t# C stands for Column, V for Value",
+   "out": "",
+   "how": "written"
+  },
+  "stzmax-stzurl-narration.md": {
+   "code": "o1 = new stzUrl(\"https://www.google.com\")\n? o1.IsValid()\n? o1.Content()\no1 = new stzUrl(\"\")\n? o1.IsEmpty()\n? o1.IsValid()\no1.SetUrl(\"www.site.com\")\n? o1.IsValid()",
+   "out": "TRUE\nhttps://www.google.com\nTRUE\nFALSE\nTRUE",
+   "how": "written"
+  },
+  "stznatural-narration.md": {
+   "code": "[:natural = \"uppercase\", :semantic = \"METHOD_UPPERCASE\"],\n[:natural = \"maiɗa\",    :semantic = \"METHOD_UPPERCASE\"],   // Hausa (Latin)\n[:natural = \"ميّرد\",     :semantic = \"METHOD_UPPERCASE\"]    // Hausa (Ajami)",
+   "out": "",
+   "how": "written"
+  },
+  "stznatural-vs-ring-naturallib.md": {
+   "code": "Naturally(\"Create string with 'hello' Uppercase it\")\nNaturallyIn(\"hausa\", \"Yi rubutu dauke 'hello' Maida shi\")\nNaturallyIn(\"hausa-ajami\", \"يي رُوْبُتُ ɗوكي 'hello' مَيْدَ شي\")",
+   "out": "",
+   "how": "written"
+  },
+  "stznumbrex-pattern-language-for-number.md": {
+   "code": "Nx = new stzNumbrex(\"{@Property(Even) & @Property(Prime)}\")\nif Nx.Match(n)",
+   "out": "",
+   "how": "written"
+  },
+  "stzobject-history-narration.md": {
+   "code": "? Q(\"1 AA 2 B 3 CCC 4 DD 5 Z\").\n    RemoveWXTQ('{ Q(@Char).IsNumberInString() }').\n    RemoveSpacesQ().\n    RemoveDuplicatedCharsQ().\n    Content()",
+   "out": "ABCDZ",
+   "how": "written"
+  },
+  "stzreactive-from-sequential-bottlenecks-to-reactive-solutions.md": {
+   "code": "add(5, 3)      # Wait for addition\nsquare(7)      # Wait for squaring\nsum(1:100)     # Wait for summation",
+   "out": "",
+   "how": "written"
+  },
+  "stzregex-mastering-regex-with-softanza-narration.md": {
+   "code": "oQRegex = new QRegularExpression(\"pattern\")\noMatch = oQRegex.match(cStr, 0, 0)\nbMatched = oMatch.hasMatch()\noRegex = new stzRegex(\"pattern\")\nbMatched = oRegex.Match(cStr)",
+   "out": "",
+   "how": "written"
+  },
+  "stzregexdata-library-narration.md": {
+   "code": "rx(pat(:email)).Match(\"mail@mail.com\")  #--> TRUE",
+   "out": "",
+   "how": "written"
+  },
+  "stzregexmaker-making-regex-human-freindly-narration.md": {
+   "code": "rx(\"your-pattern\") {\n    ? Match(\"test-string\")\n}",
+   "out": "0",
+   "how": "ran"
+  },
+  "stzregexuter-regex-as-computational-reactive-medium.md": {
+   "code": "rxAnalyser = new stzRegexAnalyser()\nrxAnalyser {\n    EnableMetrics(:For = \"(\\d+)\")\n    Process(\"Large dataset: 42, 123, 789, 1024\")\n    ? @@(Stats())\n}",
+   "out": "{\nmatches: 4,\ncomplexity: 0.3,\navgMatchTime: 0.002,\nrecommendedOptimization: \"Combine numeric patterns\"\n}",
+   "how": "written"
+  },
+  "stzsections-merging-narration.md": {
+   "code": "Q(\"SOFTANZA\").Section(3, 5) #--> \"TAN\"",
+   "out": "",
+   "how": "written"
+  },
+  "stzstring-duplicates-narration.md": {
+   "code": "? o1.ContainsDuplicates()",
+   "out": "1",
+   "how": "ran"
+  },
+  "stzstring-emptiness-narration.md": {
+   "code": "? Q(\"\").Count(\"\")\n? Q(\"text\").Count(\"\")",
+   "out": "0\n0",
+   "how": "written"
+  },
+  "stzstring-overspaces-narration.md": {
+   "code": "o1 = new stzString(\"   irum epsum     elo  n   \")\no1.RemoveSpaces()\n? @@( o1.Content() )",
+   "out": "\"irumepsumelon\"",
+   "how": "ran"
+  },
+  "stzstring-removefrom-narration.md": {
+   "code": "o1 = new stzString(\"let's say welcome to everyone!\")\no1.RemoveFromLeft(\"let's say \")\n? o1.Content()",
+   "out": "welcome to everyone!",
+   "how": "ran"
+  },
+  "stzstring-sit-narration.md": {
+   "code": "o1 = new stzString(\"what a <<nice>>> day!\")\n? o1.Sit(\n\t:OnSection  = o1.FindAsSection(\"nice\"),\n\t:AndHarvest = [ :NCharsBefore = 2, :NCharsAfter = 3 ]\n)",
+   "out": "<<\n>>>",
+   "how": "ran"
+  },
+  "stzstringart-narration.md": {
+   "code": "SetStringArtStyle(:geo)\n? StringArtXT(\"R\", :flower)\n? DefaultStringArtStyle()",
+   "out": "You get a floral \"R\" like the one showan in the example above\ngeo",
+   "how": "written"
+  },
+  "stzsystemcalldoc.md": {
+   "code": "? stzsystem(\"echo Hello\")\n? stzsystem(\"dir systest/\")\n? stzsystem(\"date /t\")",
+   "out": "Hello\n(file listing)\nCurrent date",
+   "how": "written"
+  },
+  "stztable-when-code-meets-cells.md": {
+   "code": "╭──────────────┬───────╮\n│ Productivity │ Hours │\n├──────────────┼───────┤\n│           10 │     5 │\n│            9 │     4 │\n╰──────────────┴───────╯",
+   "out": "",
+   "how": "written"
+  },
+  "stztablex-pattern-langauge-for-tables.md.md": {
+   "code": "oTx = new stzTablex(\"{cols(3) & unique(id) & @!nulls(email) & avgcol(salary:>40000)}\")\n? oTx.Match(oEmployees)",
+   "out": "TRUE",
+   "how": "written"
+  },
+  "stztime-handling-time-in-softanza.md": {
+   "code": "oTime = new stzTime(\"08:45:00\")\noTime {\n    AddMinutes(20)\n    AddHours(1)\n    ? Content()\n}",
+   "out": "10:05:00",
+   "how": "ran"
+  },
+  "stztimeline-managing-temporal-structures-narration.md": {
+   "code": "oTimeLine = new stzTimeLine(\n    :Start = \"2024-01-01 00:00:00\",\n    :End   = \"2024-12-31 23:59:59\"\n)",
+   "out": "",
+   "how": "written"
+  },
+  "stzwalker-beyond-loops-the -walker-metaphor.md": {
+   "code": "? oWalker.Walk()",
+   "out": "1\n3",
+   "how": "ran"
+  },
+  "stzwalker-walking-at-the-edge-narration.md": {
+   "code": "Wk(10, 50, [1, -2, 10, -5])",
+   "out": "",
+   "how": "written"
+  },
+  "stzwalker2D-walking-second-dimension.md": {
+   "code": "for i = 1 to 5\n    for j = 1 to 5\n        ...\n    next\nnext",
+   "out": "",
+   "how": "written"
+  }
+ }
+}

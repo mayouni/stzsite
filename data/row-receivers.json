@@ -1,0 +1,753 @@
+{
+ "mined": "2026-10-03 12:45",
+ "classes": {
+  "stzRuleReport": {
+   "setup": "o1 = new stzRuleReport(\"structured-output-gate\")",
+   "kind": "str"
+  },
+  "stzKnowledgeGraph": {
+   "setup": "o1 = new stzKnowledgeGraph(\"fluency-space\")",
+   "kind": "str"
+  },
+  "stzGovernance": {
+   "setup": "o1 = new stzGovernance(\"constellation-regime\")",
+   "kind": "str"
+  },
+  "stzBinaryNumber": {
+   "setup": "o1 = new stzBinaryNumber(\"0b00101011000011\")",
+   "kind": "str"
+  },
+  "stzCalendar": {
+   "setup": "o1 = new stzCalendar([2024, \"Q3\"])",
+   "kind": "list"
+  },
+  "stzTimeLine": {
+   "setup": "o1 = new stzTimeLine(\"2025-10-22\", \"2025-10-22\")",
+   "kind": "str"
+  },
+  "stzCCode": {
+   "setup": "o1 = new stzCCode('This[@i] = This[@i + 1] + 5')",
+   "kind": "str"
+  },
+  "stzString": {
+   "setup": "o1 = new stzString(\"Ring programming♥ language\")",
+   "kind": "str"
+  },
+  "stzChar": {
+   "setup": "o1 = new stzChar(\"LATIN LETTER SMALL CAPITAL G\")",
+   "kind": "str"
+  },
+  "stzUnicodeData": {
+   "setup": "o1 = new stzUnicodeData()",
+   "kind": "*"
+  },
+  "stzRateLimiter": {
+   "setup": "o1 = new stzRateLimiter(\"front\")",
+   "kind": "str"
+  },
+  "stzCoeffExtractor": {
+   "setup": "o1 = new stzCoeffExtractor([\"price\", \"quantity\"])",
+   "kind": "strlist"
+  },
+  "stzList": {
+   "setup": "o1 = new stzList([ 1, 2, 3, \"ring\", 5, 6, 7 ])",
+   "kind": "list"
+  },
+  "stzNumber": {
+   "setup": "o1 = new stzNumber([ 981.123456701, :round = 5 ])",
+   "kind": "list"
+  },
+  "stzBytes": {
+   "setup": "o1 = new stzBytes(\"Hello World\")",
+   "kind": "str"
+  },
+  "stzItemCS": {
+   "setup": "o1 = new stzItemCS(\"A\", [ \"A\", \"a\", \"B\", \"a\" ], 0)",
+   "kind": "str"
+  },
+  "stzListOfPairs": {
+   "setup": "o1 = new stzListOfPairs([ [4, 7], [3, 1], [8, 9] ])",
+   "kind": "pairs"
+  },
+  "stzSplitter": {
+   "setup": "o1 = new stzSplitter([ 10, 2 ])",
+   "kind": "list"
+  },
+  "stzStateMachine": {
+   "setup": "o1 = new stzStateMachine(\"idle_only\")",
+   "kind": "str"
+  },
+  "stzCounter": {
+   "setup": "o1 = new stzCounter([ :StartAt = 1, :WhenYouReach = 3, :RestartAt = 1 ])",
+   "kind": "hash"
+  },
+  "stzCurrency": {
+   "setup": "o1 = new stzCurrency(:united_states)",
+   "kind": "*"
+  },
+  "stzDataSet": {
+   "setup": "o1 = new stzDataSet([ 2, 4, 4, 5, 7, 9, 12, 25 ])",
+   "kind": "list"
+  },
+  "stzDate": {
+   "setup": "o1 = new stzDate([ :Year = 2024, :Month = 2, :Day = 29 ])",
+   "kind": "hash"
+  },
+  "stzTime": {
+   "setup": "o1 = new stzTime([ :Hour = 0, :Minute = 0, :Second = 0 ])",
+   "kind": "hash"
+  },
+  "stzDateTime": {
+   "setup": "o1 = new stzDateTime([ :FromEpochHours = 480000 ])",
+   "kind": "hash"
+  },
+  "stzDecimalToBinary": {
+   "setup": "o1 = new stzDecimalToBinary(\"-0.625\")",
+   "kind": "str"
+  },
+  "stzDiagram": {
+   "setup": "o1 = new stzDiagram(\"Department_Management\")",
+   "kind": "str"
+  },
+  "stzDiagramAnnotator": {
+   "setup": "o1 = new stzDiagramAnnotator(:Performance)",
+   "kind": "*"
+  },
+  "stzDuration": {
+   "setup": "o1 = new stzDuration(\"3 hours 25 minutes 42 seconds\")",
+   "kind": "str"
+  },
+  "stzTimex": {
+   "setup": "o1 = new stzTimex(\"{@Duration(1h..2h:15min)}\")",
+   "kind": "str"
+  },
+  "stzSelfDoc": {
+   "setup": "o1 = new stzSelfDoc(\"stzListOfStrings\")",
+   "kind": "str"
+  },
+  "stzEntity": {
+   "setup": "o1 = new stzEntity([ :name = \"toyota\", :type = \"car\" ])",
+   "kind": "hash"
+  },
+  "stzListOfstrings": {
+   "setup": "o1 = new stzListOfstrings([ \"village\", \"قرية\", \"નગર\" ])",
+   "kind": "strlist"
+  },
+  "stzGraph": {
+   "setup": "o1 = new stzGraph(\"performance_tracking\")",
+   "kind": "str"
+  },
+  "stzFlowParser": {
+   "setup": "o1 = new stzFlowParser()",
+   "kind": "*"
+  },
+  "stzOrgChart": {
+   "setup": "o1 = new stzOrgChart(\"Softabank_OrgChart_2025\")",
+   "kind": "str"
+  },
+  "stzOrgRuleSet": {
+   "setup": "o1 = new stzOrgRuleSet()",
+   "kind": "*"
+  },
+  "stzGraphRule": {
+   "setup": "o1 = new stzGraphRule(\"no-llm-effectful-probe\")",
+   "kind": "str"
+  },
+  "stzBPMRuleBase": {
+   "setup": "o1 = new stzBPMRuleBase()",
+   "kind": "*"
+  },
+  "stzGraphRuleSet": {
+   "setup": "o1 = new stzGraphRuleSet(\"sla\")",
+   "kind": "str"
+  },
+  "stzSLARuleBase": {
+   "setup": "o1 = new stzSLARuleBase()",
+   "kind": "*"
+  },
+  "stzSOXRuleBase": {
+   "setup": "o1 = new stzSOXRuleBase()",
+   "kind": "*"
+  },
+  "stzGDPRRuleBase": {
+   "setup": "o1 = new stzGDPRRuleBase()",
+   "kind": "*"
+  },
+  "stzHIPAARuleBase": {
+   "setup": "o1 = new stzHIPAARuleBase()",
+   "kind": "*"
+  },
+  "stzRingCodeGraph": {
+   "setup": "o1 = new stzRingCodeGraph(\"\")",
+   "kind": "str"
+  },
+  "stzWorkflow": {
+   "setup": "o1 = new stzWorkflow(\"affirm65b\")",
+   "kind": "str"
+  },
+  "stzHistogram": {
+   "setup": "o1 = new stzHistogram([ 1, 2, 2, 3, 3, 3, 4, 4, 5 ])",
+   "kind": "list"
+  },
+  "stzFamilyRuleSet": {
+   "setup": "o1 = new stzFamilyRuleSet()",
+   "kind": "*"
+  },
+  "stzCanvas": {
+   "setup": "o1 = new stzCanvas(1240, 1000)",
+   "kind": "*"
+  },
+  "stzGeoProjection": {
+   "setup": "o1 = new stzGeoProjection(:CylindricalEqualArea)",
+   "kind": "*"
+  },
+  "stzMesh": {
+   "setup": "o1 = new stzMesh([ :Torus, 1.5, 0.55, 96, 48 ])",
+   "kind": "list"
+  },
+  "stzScene": {
+   "setup": "o1 = new stzScene(1100, 660)",
+   "kind": "*"
+  },
+  "stzFrameGraph": {
+   "setup": "o1 = new stzFrameGraph(256, 256)",
+   "kind": "*"
+  },
+  "stzMaterialMaker": {
+   "setup": "o1 = new stzMaterialMaker()",
+   "kind": "*"
+  },
+  "stzMaterialGraph": {
+   "setup": "o1 = new stzMaterialGraph()",
+   "kind": "*"
+  },
+  "stzNotation": {
+   "setup": "o1 = new stzNotation(\"ring56\")",
+   "kind": "str"
+  },
+  "stzMathStyle": {
+   "setup": "o1 = new stzMathStyle()",
+   "kind": "*"
+  },
+  "stzErRuleSet": {
+   "setup": "o1 = new stzErRuleSet()",
+   "kind": "*"
+  },
+  "stzPetriRuleSet": {
+   "setup": "o1 = new stzPetriRuleSet()",
+   "kind": "*"
+  },
+  "stzFaultRuleSet": {
+   "setup": "o1 = new stzFaultRuleSet()",
+   "kind": "*"
+  },
+  "stzNetworkRuleSet": {
+   "setup": "o1 = new stzNetworkRuleSet()",
+   "kind": "*"
+  },
+  "stzFamilyTree": {
+   "setup": "o1 = new stzFamilyTree(\"generations\")",
+   "kind": "str"
+  },
+  "stzFaultTree": {
+   "setup": "o1 = new stzFaultTree(\"repeated\")",
+   "kind": "str"
+  },
+  "stzPetriNet": {
+   "setup": "o1 = new stzPetriNet(\"witness\")",
+   "kind": "str"
+  },
+  "stzErDiagram": {
+   "setup": "o1 = new stzErDiagram(\"participation\")",
+   "kind": "str"
+  },
+  "stzNetworkDiagram": {
+   "setup": "o1 = new stzNetworkDiagram(\"witness\")",
+   "kind": "str"
+  },
+  "stzTheme": {
+   "setup": "o1 = new stzTheme(:pro)",
+   "kind": "*"
+  },
+  "stzGrid": {
+   "setup": "o1 = new stzGrid([ 100, 1 ])",
+   "kind": "list"
+  },
+  "stzHashList": {
+   "setup": "o1 = new stzHashList([ [\"one\", 1], [ \"two\", 2] ])",
+   "kind": "pairs"
+  },
+  "stzHexNumber": {
+   "setup": "o1 = new stzHexNumber(\"0xab\")",
+   "kind": "str"
+  },
+  "stzLanguage": {
+   "setup": "o1 = new stzLanguage(\"English\")",
+   "kind": "str"
+  },
+  "stzCountry": {
+   "setup": "o1 = new stzCountry(:american_samoa)",
+   "kind": "*"
+  },
+  "stzDLM": {
+   "setup": "o1 = new stzDLM(\"\")",
+   "kind": "str"
+  },
+  "stzNaiveBayes": {
+   "setup": "o1 = new stzNaiveBayes()",
+   "kind": "*"
+  },
+  "stzKMeans": {
+   "setup": "o1 = new stzKMeans([ [1,1], [1,1], [1,1] ])",
+   "kind": "pairs"
+  },
+  "stzLinearSolver": {
+   "setup": "o1 = new stzLinearSolver()",
+   "kind": "*"
+  },
+  "stzText": {
+   "setup": "o1 = new stzText(\"Barack Obama visited Paris\")",
+   "kind": "str"
+  },
+  "stzCorpus": {
+   "setup": "o1 = new stzCorpus(\"seed document about cats\")",
+   "kind": "str"
+  },
+  "stzDeepList": {
+   "setup": "o1 = new stzDeepList([ \"A\", [ \"h\",\"B\",[ \"C\",\"h\",\"D\",\"h\" ],\"h\",\"E\",\"h\" ], \"E\" ])",
+   "kind": "list"
+  },
+  "stzListOfNumbers": {
+   "setup": "o1 = new stzListOfNumbers([ 12, 10, 98, 3, 23, 98, 7 ])",
+   "kind": "list"
+  },
+  "stzListOfHashLists": {
+   "setup": "o1 = new stzListOfHashLists([])",
+   "kind": "list"
+  },
+  "stzYielder": {
+   "setup": "o1 = new stzYielder([\"hello\", \"WORLD\", \"  mixed  \"])",
+   "kind": "strlist"
+  },
+  "stzListReplacer": {
+   "setup": "o1 = new stzListReplacer([\"Foo\", \"foo\", \"FOO\", \"bar\"])",
+   "kind": "strlist"
+  },
+  "stzListRemover": {
+   "setup": "o1 = new stzListRemover([\"first\", \"second\", \"third\"])",
+   "kind": "strlist"
+  },
+  "stzListChecker": {
+   "setup": "o1 = new stzListChecker([1, \"hello\", 3])",
+   "kind": "list"
+  },
+  "stzListSorter": {
+   "setup": "o1 = new stzListSorter([3, 1, 4, 1, 5, 9, 2, 6])",
+   "kind": "list"
+  },
+  "stzListDuplicates": {
+   "setup": "o1 = new stzListDuplicates([\"a\", \"b\", \"c\", \"a\", \"b\", \"d\"])",
+   "kind": "strlist"
+  },
+  "stzSet": {
+   "setup": "o1 = new stzSet([1, 2, 3, 2, 1])",
+   "kind": "list"
+  },
+  "stzListCounter": {
+   "setup": "o1 = new stzListCounter([1, \"two\", 3, \"four\", 5])",
+   "kind": "list"
+  },
+  "stzListFinder": {
+   "setup": "o1 = new stzListFinder([\"a\", \"b\", \"a\", \"c\", \"a\", \"b\"])",
+   "kind": "strlist"
+  },
+  "stzListGetter": {
+   "setup": "o1 = new stzListGetter([\"a\", \"b\", \"c\", \"d\", \"e\"])",
+   "kind": "strlist"
+  },
+  "stzListLeadTrail": {
+   "setup": "o1 = new stzListLeadTrail([\"hello\", \"world\", \"test\"])",
+   "kind": "strlist"
+  },
+  "stzListMover": {
+   "setup": "o1 = new stzListMover([\"a\", \"b\", \"c\", \"d\", \"e\"])",
+   "kind": "strlist"
+  },
+  "stzListInserter": {
+   "setup": "o1 = new stzListInserter([\"1\", \"2\", \"3\"])",
+   "kind": "strlist"
+  },
+  "stzListPerformer": {
+   "setup": "o1 = new stzListPerformer([1, 2, 3, 4, 5])",
+   "kind": "list"
+  },
+  "stzListStringify": {
+   "setup": "o1 = new stzListStringify([\"hello\", \"world\", \"zig\"])",
+   "kind": "strlist"
+  },
+  "stzListComparator": {
+   "setup": "o1 = new stzListComparator([\"a\", \"b\", \"c\", \"d\"])",
+   "kind": "strlist"
+  },
+  "stzListMerger": {
+   "setup": "o1 = new stzListMerger([1, 2, 3, 4, 5, 6])",
+   "kind": "list"
+  },
+  "stzListFlattener": {
+   "setup": "o1 = new stzListFlattener([[[[1]], [[2, 3]]], [[[4]]]])",
+   "kind": "list"
+  },
+  "stzListTrimmer": {
+   "setup": "o1 = new stzListTrimmer([\"\", \"\", \"x\", \"y\", \"\", \"\"])",
+   "kind": "strlist"
+  },
+  "stzListBounder": {
+   "setup": "o1 = new stzListBounder([\"a\", \"b\", \"c\", \"d\", \"e\"])",
+   "kind": "strlist"
+  },
+  "stzListExtractor": {
+   "setup": "o1 = new stzListExtractor([1, \"a\", 2, \"b\", 3])",
+   "kind": "list"
+  },
+  "stzListWalker": {
+   "setup": "o1 = new stzListWalker([1, 2, 3, 4, 5])",
+   "kind": "list"
+  },
+  "stzListSplits": {
+   "setup": "o1 = new stzListSplits([1, 2, 3, 4, 5, 6, 7, 8])",
+   "kind": "list"
+  },
+  "stzListSections": {
+   "setup": "o1 = new stzListSections([10, 20, 30, 40, 50])",
+   "kind": "list"
+  },
+  "stzList2D": {
+   "setup": "o1 = new stzList2D([ [ 10, 20, 30 ] ])",
+   "kind": "matrix"
+  },
+  "stzListex": {
+   "setup": "o1 = new stzListex(\"[@N+, @S{hello;world}U, @L?]\")",
+   "kind": "str"
+  },
+  "stzListOfBytes": {
+   "setup": "o1 = new stzListOfBytes(\"Hello, World!\")",
+   "kind": "str"
+  },
+  "stzListOfChars": {
+   "setup": "o1 = new stzListOfChars([ \"a\", \"b\", \"c\" ])",
+   "kind": "strlist"
+  },
+  "stzListOfEntities": {
+   "setup": "o1 = new stzListOfEntities([])",
+   "kind": "list"
+  },
+  "stzListOfLists": {
+   "setup": "o1 = new stzListOfLists([[10, 20, 30], [40, 50, 60]])",
+   "kind": "matrix"
+  },
+  "stzLists": {
+   "setup": "o1 = new stzLists([ 1:2, 1:5, 1:3, 1:5 ])",
+   "kind": "list"
+  },
+  "stzNumbers": {
+   "setup": "o1 = new stzNumbers([ 8, 12, 14, 18, 20, 24 ])",
+   "kind": "list"
+  },
+  "stzPairOfNumbers": {
+   "setup": "o1 = new stzPairOfNumbers([ 2.07, 0.39 ])",
+   "kind": "list"
+  },
+  "stzStringList": {
+   "setup": "o1 = new stzStringList([ \"café\", \"résumé\", \"naïve\" ])",
+   "kind": "strlist"
+  },
+  "stzListParser": {
+   "setup": "o1 = new stzListParser([ 1, 2, 3, 4, 5, 6, 7, 8 ])",
+   "kind": "list"
+  },
+  "stzLocale": {
+   "setup": "o1 = new stzLocale([ :Country = :south_africa ])",
+   "kind": "hash"
+  },
+  "stzScript": {
+   "setup": "o1 = new stzScript(:Arabic)",
+   "kind": "*"
+  },
+  "stzMathClaim": {
+   "setup": "o1 = new stzMathClaim(\"3^2 + 4^2 + 1 = 5^2\")",
+   "kind": "str"
+  },
+  "stzMathClaimSet": {
+   "setup": "o1 = new stzMathClaimSet(\"a tampered lesson\")",
+   "kind": "str"
+  },
+  "stzMathFigure": {
+   "setup": "o1 = new stzMathFigure(:Fraction, [ :compare = [ [ 3, 4 ], [ 2, 3 ] ] ])",
+   "kind": "*"
+  },
+  "stzMathMotion": {
+   "setup": "o1 = new stzMathMotion(:Function, [ :f = \"{a} * x\", :on = [ 0, 1 ] ])",
+   "kind": "*"
+  },
+  "stzMatrex": {
+   "setup": "o1 = new stzMatrex(\"{@!property(symmetric)}\")",
+   "kind": "str"
+  },
+  "stzMatrix": {
+   "setup": "o1 = new stzMatrix([ [1, -2, 3], [-4, 5, -6] ])",
+   "kind": "matrix"
+  },
+  "stzPredicateSet": {
+   "setup": "o1 = new stzPredicateSet(\"house\")",
+   "kind": "str"
+  },
+  "stzLibDoc": {
+   "setup": "o1 = new stzLibDoc([ \"stzText\", \"stzListOfTexts\" ])",
+   "kind": "strlist"
+  },
+  "stzCodeRule": {
+   "setup": "o1 = new stzCodeRule(\"no-len-method\")",
+   "kind": "str"
+  },
+  "stzCodeRuleSet": {
+   "setup": "o1 = new stzCodeRuleSet()",
+   "kind": "*"
+  },
+  "stzListOfTexts": {
+   "setup": "o1 = new stzListOfTexts([ \"a\", \"b\" ])",
+   "kind": "strlist"
+  },
+  "stzRetryBudget": {
+   "setup": "o1 = new stzRetryBudget(1, 10)",
+   "kind": "*"
+  },
+  "stzNumBuffer": {
+   "setup": "o1 = new stzNumBuffer([ 2, 4, 4, 4, 5, 5, 7, 9 ])",
+   "kind": "list"
+  },
+  "stzMathFunction": {
+   "setup": "o1 = new stzMathFunction(\"x^2 + 3*x*y\", [ \"x\", \"y\" ])",
+   "kind": "str"
+  },
+  "stzComplex": {
+   "setup": "o1 = new stzComplex(1, -2)",
+   "kind": "*"
+  },
+  "stzFourier": {
+   "setup": "o1 = new stzFourier([3,3,3,3,3,3,3,3])",
+   "kind": "list"
+  },
+  "stzPolynomial": {
+   "setup": "o1 = new stzPolynomial([1, -3, -5, 5, -6, 8])",
+   "kind": "list"
+  },
+  "stzObjective": {
+   "setup": "o1 = new stzObjective(\"-(x-3)^2 + 7\", [ \"x\" ])",
+   "kind": "str"
+  },
+  "stzPCA": {
+   "setup": "o1 = new stzPCA([ [1,2] ])",
+   "kind": "pairs"
+  },
+  "stzSimilarity": {
+   "setup": "o1 = new stzSimilarity()",
+   "kind": "*"
+  },
+  "stzApriori": {
+   "setup": "o1 = new stzApriori([ [ \"bread\", \"milk\" ], [ \"bread\", \"milk\" ] ])",
+   "kind": "pairs"
+  },
+  "stzVectorIndex": {
+   "setup": "o1 = new stzVectorIndex([ [1,2], [3,4] ])",
+   "kind": "pairs"
+  },
+  "stzOctalNumber": {
+   "setup": "o1 = new stzOctalNumber(\"0o377\")",
+   "kind": "str"
+  },
+  "stzNumbrex": {
+   "setup": "o1 = new stzNumbrex(\"{@Property(Prime)}\")",
+   "kind": "str"
+  },
+  "stzBarPlot": {
+   "setup": "o1 = new stzBarPlot([ [ \"A\", 100 ], [ \"B\", 300 ] ])",
+   "kind": "pairs"
+  },
+  "stzVBarPlot": {
+   "setup": "o1 = new stzVBarPlot([ :Small = 1, :Large = 1000 ])",
+   "kind": "hash"
+  },
+  "stzHBarPlot": {
+   "setup": "o1 = new stzHBarPlot([ :Small = 1, :Large = 1000 ])",
+   "kind": "hash"
+  },
+  "stzScatterPlot": {
+   "setup": "o1 = new stzScatterPlot([ [1,2], [3,5], [6,9], [5,4] ])",
+   "kind": "pairs"
+  },
+  "stzRegex": {
+   "setup": "o1 = new stzRegex(\"[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\")",
+   "kind": "str"
+  },
+  "stzRecursiveRegexMaker": {
+   "setup": "o1 = new stzRecursiveRegexMaker()",
+   "kind": "*"
+  },
+  "stzRegexuter": {
+   "setup": "o1 = new stzRegexuter()",
+   "kind": "*"
+  },
+  "stzSortedList": {
+   "setup": "o1 = new stzSortedList([ \"banana\", \"apple\" ])",
+   "kind": "strlist"
+  },
+  "stzPattern": {
+   "setup": "o1 = new stzPattern(\"red ~ blue [green green]\")",
+   "kind": "str"
+  },
+  "stzBarChart": {
+   "setup": "o1 = new stzBarChart([ :a = 3, :b = 5, :c = 2 ])",
+   "kind": "hash"
+  },
+  "stzSurfaceChart": {
+   "setup": "o1 = new stzSurfaceChart([ [1, 2], [3, 4] ])",
+   "kind": "pairs"
+  },
+  "stzSquareChart": {
+   "setup": "o1 = new stzSquareChart([ [1, 2], [3, 4] ])",
+   "kind": "pairs"
+  },
+  "stzScatterChart": {
+   "setup": "o1 = new stzScatterChart([ [1,1], [2,3], [3,2] ])",
+   "kind": "pairs"
+  },
+  "stzMultiBarPlot": {
+   "setup": "o1 = new stzMultiBarPlot([ :A = [ :Q1 = 5, :Q2 = 3 ], :B = [ :Q1 = 2, :Q2 = 4 ] ])",
+   "kind": "hash"
+  },
+  "stzMultiObjectiveSolver": {
+   "setup": "o1 = new stzMultiObjectiveSolver()",
+   "kind": "*"
+  },
+  "stzStochasticSolver": {
+   "setup": "o1 = new stzStochasticSolver()",
+   "kind": "*"
+  },
+  "stzListOfSections": {
+   "setup": "o1 = new stzListOfSections([ [ 8, 11 ], [ 9, 12 ], [ 10, 13 ], [ 11, 14 ], [ 12, 15 ], [ 26, 29 ] ])",
+   "kind": "pairs"
+  },
+  "stzStringCrypto": {
+   "setup": "o1 = new stzStringCrypto(\"plain ascii text\")",
+   "kind": "str"
+  },
+  "stzTablex": {
+   "setup": "o1 = new stzTablex(\"{cols(3) & contains(Tunis)}\")",
+   "kind": "str"
+  },
+  "stzStringText": {
+   "setup": "o1 = new stzStringText(\"The quick brown fox. It jumps!\")",
+   "kind": "str"
+  },
+  "stzStringBounder": {
+   "setup": "o1 = new stzStringBounder(\"<<hello>> and <<world>>\")",
+   "kind": "str"
+  },
+  "stzStringComparator": {
+   "setup": "o1 = new stzStringComparator(\"rest_ababab\")",
+   "kind": "str"
+  },
+  "stzWordStream": {
+   "setup": "o1 = new stzWordStream()",
+   "kind": "*"
+  },
+  "stzStringReplacer": {
+   "setup": "o1 = new stzStringReplacer(\"Hello 123 World 456\")",
+   "kind": "str"
+  },
+  "stzStringRemover": {
+   "setup": "o1 = new stzStringRemover(\"hello <<world>> there\")",
+   "kind": "str"
+  },
+  "stzStringChecker": {
+   "setup": "o1 = new stzStringChecker(\"user@example.com\")",
+   "kind": "str"
+  },
+  "stzStringFinder": {
+   "setup": "o1 = new stzStringFinder(\"hello ring what a nice ring!\")",
+   "kind": "str"
+  },
+  "stzStringFormatter": {
+   "setup": "o1 = new stzStringFormatter(\"hello world\")",
+   "kind": "str"
+  },
+  "stzStringGetter": {
+   "setup": "o1 = new stzStringGetter(\"Hello Ring\")",
+   "kind": "str"
+  },
+  "stzStringCounter": {
+   "setup": "o1 = new stzStringCounter(\"abc 123 def 456 ghi 789\")",
+   "kind": "str"
+  },
+  "stzStringConcat": {
+   "setup": "o1 = new stzStringConcat(\"Hello\")",
+   "kind": "str"
+  },
+  "stzStringLeadTrail": {
+   "setup": "o1 = new stzStringLeadTrail(\"HelloYYY\")",
+   "kind": "str"
+  },
+  "stzStringTrimmer": {
+   "setup": "o1 = new stzStringTrimmer(\"  hello world  \")",
+   "kind": "str"
+  },
+  "stzStringCaseChanger": {
+   "setup": "o1 = new stzStringCaseChanger(\"hello world foo\")",
+   "kind": "str"
+  },
+  "stzStringAligner": {
+   "setup": "o1 = new stzStringAligner(\"hi\")",
+   "kind": "str"
+  },
+  "stzStringWords": {
+   "setup": "o1 = new stzStringWords(\"hello dear world dear\")",
+   "kind": "str"
+  },
+  "stzStringSections": {
+   "setup": "o1 = new stzStringSections(\"ABCDEFGHIJ\")",
+   "kind": "str"
+  },
+  "stzStringInserter": {
+   "setup": "o1 = new stzStringInserter(\"one ring two ring\")",
+   "kind": "str"
+  },
+  "stzStringEncoder": {
+   "setup": "o1 = new stzStringEncoder(\"hello%20world\")",
+   "kind": "str"
+  },
+  "stzStringNumbers": {
+   "setup": "o1 = new stzStringNumbers(\"price is 42 and tax is 8\")",
+   "kind": "str"
+  },
+  "stzStringDuplicates": {
+   "setup": "o1 = new stzStringDuplicates(\"hello world hello\")",
+   "kind": "str"
+  },
+  "stzStringExtractor": {
+   "setup": "o1 = new stzStringExtractor(\"one ring two ring\")",
+   "kind": "str"
+  },
+  "stzListInString": {
+   "setup": "o1 = new stzListInString('[ \"alpha\", \"beta\", \"gamma\" ]')",
+   "kind": "str"
+  },
+  "stzStringSplitter": {
+   "setup": "o1 = new stzStringSplitter(\"one;two,three:four\")",
+   "kind": "str"
+  },
+  "stzListClassifier": {
+   "setup": "o1 = new stzListClassifier([\"x\", \"y\", \"x\", \"z\", \"x\", \"y\"])",
+   "kind": "strlist"
+  }
+ }
+}

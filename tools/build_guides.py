@@ -9,7 +9,7 @@ harvested from the doc-comments), the groups come from the verb that leads each
 function's name, and the tutorials are the narrations that run.
 """
 import json, re, html, collections, pathlib
-import level2, qforms
+import level2, qforms, rowex
 
 def esc(s): return html.escape(str(s), quote=True)
 RING = re.compile(r"\b(?:Ring|RING)\b")
@@ -66,6 +66,7 @@ def family_of(name):
 def build_guides(ctx):
     ROOT, head, header, footer, idx, groups, heritage = (ctx[k] for k in ("ROOT", "head", "header", "footer", "idx", "groups", "heritage"))
     entries = ctx.get("entries", {})
+    rdata = rowex.load(ROOT)        # an example under every function that has one (tools/rowex.py)
     from build_methods import slug as mslug
     GH = "https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/doc/narrations/"
     ref = qforms.reference(ROOT)       # a function is listed once: its ...Q() form is the same function
@@ -95,8 +96,8 @@ def build_guides(ctx):
             fam_html = []
             for label, items in fam.items():
                 if not items: continue
-                shown = sorted(items, key=lambda x: (x[3], len(x[0]), x[0]))[:12]
-                lis = "".join(f'<li><a class="mono" href="{("../reference/" + cl.lower() + "/" + mslug(n) + ".html") if (cl, n) in entries else ("../reference/" + cl.lower() + ".html#" + esc(n.lower()))}">{esc(n)}</a> {prose(d)} <span class="in">{t["in"]} {esc(cl)}</span></li>' for n, d, cl, _ in shown)
+                shown = sorted(items, key=lambda x: (0 if rowex.pick(x[2], x[0], entries.get((x[2], x[0])), rdata) else 1, x[3], len(x[0]), x[0]))[:12]     # the ones with an example first
+                lis = "".join(f'<li><a class="mono" href="{("../reference/" + cl.lower() + "/" + mslug(n) + ".html") if (cl, n) in entries else ("../reference/" + cl.lower() + ".html#" + esc(n.lower()))}">{esc(n)}</a> {prose(d)} <span class="in">{t["in"]} {esc(cl)}</span>{rowex.example_html(cl, n, entries.get((cl, n)), rdata, lang)}</li>' for n, d, cl, _ in shown)
                 more = f'<p class="proof">{t["more"].format(n=len(items) - len(shown))}</p>' if len(items) > len(shown) else ""
                 fam_html.append(f'<h3>{esc(label)}</h3><ul class="fnlist">{lis}</ul>{more}')
             # the narrations

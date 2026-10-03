@@ -159,6 +159,24 @@ def get(ROOT):
     if "q" not in _CACHE: _CACHE["q"] = QForms(ROOT)
     return _CACHE["q"]
 
+JUNK_DESC = re.compile(r"^[=\-#*_.\s]*$|: =+$")
+
+def clean_descriptions(own, banner=8):
+    """A description the harvest took from a banner is not the method's own: the same sentence under `banner` methods or
+    more of one class (stzListNamedParams: 1,884 methods "described" by the banner above them; stzDiagram: 110 by "export"),
+    or a line of rule marks ("=="). The harvest reads the nearest comment above a method, and a section title is the nearest
+    comment for every method below it. Those rows lose the description and keep the section: returns the methods without
+    it, and {method name lower: section title}"""
+    seen = {}
+    for m in own:
+        if m[2]: seen[m[2]] = seen.get(m[2], 0) + 1
+    out, sections = [], {}
+    for m in own:
+        bad = m[2] and (seen[m[2]] >= banner or JUNK_DESC.search(m[2]))
+        if bad and seen[m[2]] >= banner: sections[m[0].lower()] = m[2]
+        out.append([m[0], m[1], "" if bad else m[2]])
+    return out, sections
+
 def reference(ROOT):
     """data/reference.json with every extension folded into its method. Each class lists a method once ('own'),
     and says which extensions it has:
@@ -171,6 +189,8 @@ def reference(ROOT):
     classes = []
     for c in raw["classes"]:
         d = dict(c)
+        own, sections = clean_descriptions(c["own"])
+        c = dict(c, own=own)
         d["own"], d["variants"], extra, own_roots = [], {}, {}, set()
         names = {m[0].lower() for m in c["own"]}
         for m in c["own"]:
@@ -186,6 +206,7 @@ def reference(ROOT):
                 if rec: extra[root.lower()] = rec
         d["extra"] = list(extra.values())
         d["folded"] = len(c["own"]) - len(d["own"])
+        d["sections"] = sections
         d["raw_names"] = names
         classes.append(d)
     by = {c["name"]: c for c in classes}

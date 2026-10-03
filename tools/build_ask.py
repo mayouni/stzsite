@@ -14,7 +14,7 @@ It also writes what an agent reading this site wants instead of pages:
 """
 import json, re, html
 from build_howto import intent as howto_intent, page_name as howto_page, published as howto_published, KINDS, fold_methods
-import qforms, build_proof
+import qforms, build_proof, rowex
 
 def esc(s): return html.escape(str(s), quote=True)
 RING = re.compile(r"\b(?:Ring|RING)\b")
@@ -134,6 +134,7 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
     Q = qforms.get(ROOT)
     narr = json.loads((ROOT / "data" / "narrations-run.json").read_text(encoding="utf-8"))
     classes = []
+    rdata = rowex.load(ROOT)
     for c in ref["classes"]:
         ms = []
         for name, aka, desc in c["own"]:
@@ -144,6 +145,8 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
             have = qforms.extensions_of(vs)
             m["extensions"] = [e for e in qforms.CODES if e in have]          # which extensions exist for this method
             if vs: m["forms"] = sorted({v[0] for v in vs}, key=lambda n: (len(n), n))
+            ex = rowex.pick(c["name"], name, entries.get((c["name"], name)), rdata)      # an example on every method that has one
+            if ex: m["example"] = {"code": ex[0], "output": ex[1].strip(), "from": "library test" if ex[2] == "lib" else "composed from the signature, run in the library"}
             ms.append(m)
         classes.append({"name": c["name"], "area": c["area"], "page": f'{SITE}en/reference/{c["name"].lower()}.html',
                         "source": f'{GH}base/{c["file"]}', "inherits": c["inherited"], "methods": ms})

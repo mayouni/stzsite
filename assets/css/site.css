@@ -581,3 +581,6 @@ mark.ext{background:none;color:var(--accent);font-weight:700;text-decoration:und
 .ext-ex .lbl{font-family:"IBM Plex Mono",monospace;font-size:var(--label);font-weight:600;letter-spacing:.06em;color:var(--ink-2);margin-top:8px}
 .ext-ex pre{margin:4px 0 0;max-width:none}
 .ext-ex pre.ext-out{border-left:4px solid var(--ink-3)}
+/* the example of a row of a reference table: the code, then #--> and what the run printed, and where it comes from */
+pre.rx{margin:10px 0 0;max-width:none}
+.rx-src{display:block;margin-top:4px;font-family:"IBM Plex Mono",monospace;font-size:var(--label);color:var(--ink-2)}
