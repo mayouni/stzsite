@@ -39,8 +39,11 @@ def build(ROOT, entries, groups):
     areas = [[g["slug"], g["en"], g["fr"]] for g in groups] + [["education", "The Learning System", "Le Système d'apprentissage"], ["", "Other", "Autres"]]
     aidx = {a[0]: i for i, a in enumerate(areas)}
     classes, methods, text = [], [], []
-    for ci, c in enumerate(sorted(ref["classes"], key=lambda c: (aidx.get(c["area"], 99), c["name"].lower()))):
-        classes.append([c["name"], aidx.get(c["area"], len(areas) - 1), ",".join(c.get("also_named", [])), len(c["own"])])
+    order = sorted(ref["classes"], key=lambda c: (aidx.get(c["area"], 99), c["name"].lower()))
+    cidx = {c["name"]: i for i, c in enumerate(order)}
+    for ci, c in enumerate(order):
+        anc = ",".join(str(cidx[k]) for k in c["inherited"] if k in cidx)         # the classes it inherits from: their methods are its methods
+        classes.append([c["name"], aidx.get(c["area"], len(areas) - 1), ",".join(c.get("also_named", [])), len(c["own"]), anc])
         for m in sorted(c["own"], key=lambda m: m[0].lower()):
             name, aka, desc = m
             exs = entries.get((c["name"], name))
@@ -56,10 +59,18 @@ def build(ROOT, entries, groups):
             d = " ".join((desc or "").split())[:220]
             if d or code: text.append([mi, d, code, out])
     pages = []
+    RING = re.compile(r"Ring")
+    runs = json.loads((ROOT / "data" / "narrations-run.json").read_text(encoding="utf-8"))
+    from build_narration_pages import slug as nslug
+    GHN = "https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/"
+    for f, r in sorted(runs.items()):                                  # every narration, run or not: the page when there is one, else its file
+        title = RING.sub("Haro", r.get("title") or f).replace("Ring++", "Haro").replace("`", "")
+        page = (ROOT / "en" / "narrations" / f"{nslug(f)}.html")
+        pages.append(["narration", title, title, f"narrations/{nslug(f)}.html" if page.exists() else GHN + f, f[:-3] if f.endswith(".md") else f])
     for lang in ("en", "fr"):
-        for kind, sub in (("guide", "guide"), ("howto", "howto"), ("narration", "narrations"), ("book", "book")):
+        for kind, sub in (("guide", "guide"), ("howto", "howto"), ("book", "book")):
             for k, title, url in page_titles(ROOT, lang, sub, kind):
-                if lang == "en": pages.append([k, title, "", url])
+                if lang == "en": pages.append([k, title, "", url, ""])
                 else:
                     for p in pages:
                         if p[3] == url: p[2] = title
