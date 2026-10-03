@@ -33,107 +33,44 @@
     <p class="proof">aussi: replace  substitute  swap text  find and replace  change all  rename substitute  swap  change  find and replace  put instead</p>
   </div></section>
   <div class="wrap page-body">
-    <h2>Les formes de ce verbe</h2><p><b class="mono">Replace</b> · <a class="mono" href="replacew.html">ReplaceW</a> · <a class="mono" href="replaced.html">Replaced</a> · <a class="mono" href="../stzstring.html#replacecs">ReplaceCS</a> · <a class="mono" href="replacext.html">ReplaceXT</a> · <a class="mono" href="../stzstring.html#replacedcs">ReplacedCS</a></p>
-    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;R I N G&quot;)
+    <h2>Les formes de ce verbe</h2><p><b class="mono">Replace</b> · <a class="mono" href="replaced.html">Replaced</a></p>
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># Q(@char).IsNotLetter() targets the symbols, leaving spaced words
+? Q(&quot;ABC♥DEF★GHI♥JKL&quot;).ReplaceWQ(&#x27;Q(@char).IsNotLetter()&#x27;, :With = &quot; &quot;).Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>ABC DEF GHI JKL</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/395_replacew.ring">395_replacew.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;R I N G&quot;)
 o1.Replace(&quot; &quot;, &quot;-&quot;)
 # Replace() mutates the object
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>R-I-N-G</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/55_replace_ref_vs_copy.ring">55_replace_ref_vs_copy.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;a + b - c / d = 0&quot;)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>R-I-N-G</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/55_replace_ref_vs_copy.ring">55_replace_ref_vs_copy.ring</a></p><h2>Portée <span class="mono">(8)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;~♥/♥\~~&quot;)
+o1.ReplaceXT(&quot;♥&quot;, :At = 2, :With = &quot;~&quot;)
+# the heart at position 2 becomes &#x27;~&#x27;
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>~~/♥\~~</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/192_replacext_at.ring">192_replacext_at.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;_♥♥\__/♥\__/♥\_&quot;)
+o1.ReplaceXT(:First, &quot;♥&quot;, :With = &quot;/&quot;)
+# the first heart becomes a slash
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>_/♥\__/♥\__/♥\_</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/190_replacext_first.ring">190_replacext_first.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;_/♥\__/♥\__/♥♥_&quot;)
+o1.ReplaceXT(:Last, &quot;♥&quot;, :With = &quot;\&quot;)
+# the last heart becomes a backslash
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>_/♥\__/♥\__/♥\_</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/191_replacext_last.ring">191_replacext_last.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;~♥/♥\~♥&quot;)
+o1.ReplaceXT(&quot;♥&quot;, :AtPositions = [2, 7], :With = &quot;~&quot;)
+# hearts at 2 and 7 become ~
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>~~/♥\~~</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/193_replacext_atpositions.ring">193_replacext_atpositions.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;a + b - c / d = 0&quot;)
 o1.Replace( [ &quot;+&quot;, &quot;-&quot;, &quot;/&quot; ], :By = &quot;*&quot; )
 # each operator becomes a star
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>a * b * c * d = 0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/74_replace_many_olds.ring">74_replace_many_olds.ring</a></p><h2>Portée <span class="mono">(5)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
-big  = new stzString( oAB.Repeated(1000000) )
-oRep = new stzString( oAB.Repeated(500000) )   # 1,000,000 chars
-oRep.Replace(&quot;a&quot;, &quot;X&quot;)
-# after Replace, &#x27;a&#x27; is gone
-? oRep.NumberOfOccurrences(&quot;a&quot;)
-# after Replace, &#x27;X&#x27; is 500,000
-? oRep.NumberOfOccurrences(&quot;X&quot;)
-# &#x27;b&#x27; is untouched at 500,000
-? oRep.NumberOfOccurrences(&quot;b&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0
-500000
-500000</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring">999_engine_string_millions_narrated.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;1♥34♥♥&quot;)
-o1.ReplaceByMany(&quot;♥&quot;, [ &quot;2&quot;, &quot;5&quot;, &quot;6&quot; ])
-# ReplaceByMany cycles 2,5,6
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>a * b * c * d = 0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/74_replace_many_olds.ring">74_replace_many_olds.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;_/♥\__/♥\__/♥♥__/♥\_&quot;)
+o1.ReplaceXT(:Nth = 4, &quot;♥&quot;, :With = &quot;\&quot;)
+# the 4th heart gets its backslash
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>_/♥\__/♥\__/♥\__/♥\_</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/189_replacext_nth.ring">189_replacext_nth.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;bla bla &lt;&lt;♥♥♥&gt;&gt; and bla!&quot;)
+o1.ReplaceXT( [], :BoundedBy = [&quot;&lt;&lt;&quot;,&quot;&gt;&gt;&quot;], :With = &quot;bla&quot; )
+# the bounded content is replaced
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>bla bla &lt;&lt;bla&gt;&gt; and bla!</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/194_content.ring">194_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;bla bla /.../ and bla!&quot;)
+o1.ReplaceXT( [], :BoundedBy = &#x27;/&#x27;, :With = &quot;bla&quot; )
+# :BoundedBy keeps the bounds
 ? o1.Content()
-o2 = new stzString(&quot;1♥34♥♥&quot;)
-o2.Replace(&quot;♥&quot;, :By = [ &quot;2&quot;, &quot;5&quot;, &quot;6&quot; ])
-# Replace(:By=list) agrees
-? o2.Content()
-o3 = new stzString(&quot;1♥34♥♥&quot;)
-o3.Replace(&quot;♥&quot;, :ByMany = [ &quot;2&quot;, &quot;5&quot;, &quot;6&quot; ])
-# Replace(:ByMany=list) agrees
-? o3.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>123456
-123456
-123456</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/56_replacebymany.ring">56_replacebymany.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = Q(&quot;Softanza is awosme!&quot;)
-o1.Replace(&quot;awosme&quot;, :with = &quot;wonderful&quot;)
-# replaced
-? o1.Content()
-o1.Undo()
-# undone
-? o1.Content()
-o1.Redo()
-# redone
-? o1.Content()
-o1.InsertXT(&quot;really &quot;, :Before = &quot;wonderful&quot;)
-# emphasized
-? o1.Content()
-o1.Undo()
-# emphasis withdrawn
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>Softanza is wonderful!
-Softanza is awosme!
-Softanza is wonderful!
-Softanza is really wonderful!
-Softanza is wonderful!</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/913_pr.ring">913_pr.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre># replace on empty
-? Q(&quot;&quot;).ReplaceQ(&#x27;&#x27;, &#x27;&#x27;).Content()
-# replace any on empty
-? Q(&quot;&quot;).ReplaceQ(&#x27;any&#x27;, &#x27;&#x27;).Content()
-# replace it by any on empty
-? Q(&quot;&quot;).ReplaceQ(&#x27;&#x27;, &#x27;any&#x27;).Content()
-# replace it in text
-? Q(&quot;text&quot;).ReplaceQ(&#x27;&#x27;, &quot;&quot;).Content()
-# ... by X
-? Q(&quot;text&quot;).ReplaceQ(&#x27;&#x27;, &quot;X&quot;).Content()
-# remove it from empty
-? Q(&quot;&quot;).RemoveQ(&#x27;&#x27;).Content()
-# remove text from empty
-? Q(&quot;&quot;).RemoveQ(&#x27;text&#x27;).Content()
-# remove it from text
-? Q(&quot;text&quot;).RemoveQ(&#x27;&#x27;).Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>
-
-
-text
-text
-
-
-text</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/612_dealing_in_emptiness_in_softanza.ring">612_dealing_in_emptiness_in_softanza.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;Tunisia is back! People united.&quot;)
-o1.ReplaceAll(&quot;People&quot;, &quot;Tunisians&quot;)
-# crowd renamed
-? o1.Content()
-# 3 to 7
-? o1.Section(3, 7)
-# 7 to 3, normalized
-? o1.Section(7, 3)
-# 3 to the end of its word
-? o1.Section(:From = 3, :To = :EndOfWord)
-# 12 to the end of its word (bang included)
-? o1.Section(:From = 12, :To = :EndOfWord)
-# 9 to the end of the sentence
-? o1.Section(:From = 9, :To = :EndOfSentence)
-# first char to end of string
-? o1.Section(:From = :FirstChar, :To = :EndOfString)
-o1.ReplaceFirst(&quot;Tunisia&quot;, :With = &quot;Egypt&quot;)
-o1.Replace(&quot;Tunisians&quot;, :With = &quot;Egyptians&quot;)
-# and a whole new country
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>Tunisia is back! Tunisians united.
-nisia
-nisia
-nisia
-back!
-is back! Tunisians united.
-Tunisia is back! Tunisians united.
-Egypt is back! Egyptians united.</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/793_content.ring">793_content.ring</a></p>
+o2 = new stzString(&quot;bla bla /.../ and bla!&quot;)
+o2.ReplaceXT( [], :BoundedByIB = &#x27;/&#x27;, :With = &quot;bla&quot; )
+# :BoundedByIB replaces the whole region
+? o2.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>bla bla /bla/ and bla!
+bla bla bla and bla!</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/199_replacext_boundedby.ring">199_replacext_boundedby.ring</a></p><p class="proof">et 8 autres dans les tests</p>
+    <h2>Les extensions de cette méthode</h2><p class="proof">Chaque extension, et si elle existe pour cette méthode ; une extension qui existe se compose avec les autres (FindSTCS).</p><div class="lanes rtable"><div class="lane lane3 rhead"><div class="ln">Extension</div><div class="lr">Existe</div><div class="lt">Ce qu'elle ajoute · Les noms</div></div><div class="lane lane3"><div class="ln mono">Q</div><div class="lr"><span class="exts"><i class="y">oui</i></span></div><div class="lt">fait ce que fait la méthode, puis rend l&#x27;objet, pour que l&#x27;appel puisse s&#x27;enchaîner · <span class="mono">ReplaceQ</span>, <span class="mono">ReplaceWQ</span>, <span class="mono">ReplaceCSQ</span>, <span class="mono">ReplaceXTQ</span></div></div><div class="lane lane3"><div class="ln mono">QQ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">enchaîne sur le type d&#x27;objet suivant, plus précis (l&#x27;échelle des Q)</div></div><div class="lane lane3"><div class="ln mono">QQQ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">enchaîne sur le type d&#x27;objet le plus précis (l&#x27;échelle des Q)</div></div><div class="lane lane3"><div class="ln mono">QC</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">enchaîne sur une copie, l&#x27;objet d&#x27;origine reste inchangé</div></div><div class="lane lane3"><div class="ln mono">QRT</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend le résultat comme un objet du type demandé</div></div><div class="lane lane3"><div class="ln mono">CS</div><div class="lr"><span class="exts"><i class="y">oui</i></span></div><div class="lt">prend un indicateur de sensibilité à la casse · <span class="mono">ReplaceCS</span>, <span class="mono">ReplaceCSQ</span></div></div><div class="lane lane3"><div class="ln mono">ST</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend la position de départ (StartingAt)</div></div><div class="lane lane3"><div class="ln mono">IB</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend des bornes incluses (IncludingBounds)</div></div><div class="lane lane3"><div class="ln mono">XT</div><div class="lr"><span class="exts"><i class="y">oui</i></span></div><div class="lt">la forme étendue : plus de paramètres que la méthode de base · <span class="mono">ReplaceXT</span>, <span class="mono">ReplaceXTQ</span></div></div><div class="lane lane3"><div class="ln mono">XTT</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">une forme étendue de plus, après XT</div></div><div class="lane lane3"><div class="ln mono">Z</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">inclut la position dans ce qu&#x27;elle rend</div></div><div class="lane lane3"><div class="ln mono">ZZ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend les positions comme des sections, [début, fin]</div></div><div class="lane lane3"><div class="ln mono">W</div><div class="lr"><span class="exts"><i class="y">oui</i></span></div><div class="lt">choisit selon une condition · <span class="mono">ReplaceW</span>, <span class="mono">ReplaceWQ</span></div></div><div class="lane lane3"><div class="ln mono">WF</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">choisit selon une condition, avec les mots-clés expressifs (@NextItem, @PreviousItem...)</div></div><div class="lane lane3"><div class="ln mono">WXT</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">choisit selon une condition, forme étendue : la condition est un paramètre nommé (:Where = ...)</div></div><div class="lane lane3"><div class="ln mono">U</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend le résultat sans doublon</div></div></div>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
-    <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#replace">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/insertxt.html">stzString.InsertXT</a> · <a class="mono" href="../stzstring/numberofoccurrences.html">stzString.NumberOfOccurrences</a> · <a class="mono" href="../stzstring/redo.html">stzString.Redo</a> · <a class="mono" href="../stzstring/remove.html">stzString.Remove</a> · <a class="mono" href="../stzstring/replaceall.html">stzString.ReplaceAll</a> · <a class="mono" href="../stzstring/replacebymany.html">stzString.ReplaceByMany</a> · <a class="mono" href="../stzstring/replacefirst.html">stzString.ReplaceFirst</a> · <a class="mono" href="../stzstring/section.html">stzString.Section</a> · <a class="mono" href="../stzstring/undo.html">stzString.Undo</a></li><li>Comment faire : <a href="../../howto/string-replace.html">Remplacer les occurrences d&#x27;une sous-chaîne par une autre</a></li></ul>
+    <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#replace">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/insert.html">stzString.Insert</a> · <a class="mono" href="../stzstring/numberofoccurrences.html">stzString.NumberOfOccurrences</a> · <a class="mono" href="../stzstring/redo.html">stzString.Redo</a> · <a class="mono" href="../stzstring/remove.html">stzString.Remove</a> · <a class="mono" href="../stzstring/replaceall.html">stzString.ReplaceAll</a> · <a class="mono" href="../stzstring/replacebymany.html">stzString.ReplaceByMany</a> · <a class="mono" href="../stzstring/replacefirst.html">stzString.ReplaceFirst</a> · <a class="mono" href="../stzstring/replacesubstringboundedby.html">stzString.ReplaceSubStringBoundedBy</a> · <a class="mono" href="../stzstring/section.html">stzString.Section</a> · <a class="mono" href="../stzstring/undo.html">stzString.Undo</a></li><li>Comment faire : <a href="../../howto/string-replace.html">Remplacer les occurrences d&#x27;une sous-chaîne par une autre</a></li></ul>
   </div>
 </main>
 </div>

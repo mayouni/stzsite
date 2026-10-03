@@ -30,7 +30,6 @@ FAMILIES = [
   (("Save", "Write", "Read", "Load", "Open", "Export", "Import"), "Reading and writing", "Lire et écrire"),
   (("Walk", "Each", "Map", "Filter", "Yield", "Apply", "Perform", "Run", "Execute"), "Walking and applying", "Parcourir et appliquer"),
 ]
-SUFFIX = re.compile(r"(?:CS|Q|XT|XTT|Z|ZZ|W|WXT|IB|B|Q[RM])+$")
 
 KEYWORDS = {
   "string": ["string", "text", "char", "unicode"], "regex": ["regex", "pattern"], "collections": ["list", "hashlist", "object", "set", "collection"],
@@ -86,11 +85,8 @@ def build_guides(ctx):
             fam = collections.OrderedDict((fr if lang == "fr" else en, []) for _, en, fr in FAMILIES)
             seen = set()
             for rank, c in enumerate(cs):
-                names = {m[0] for m in c["own"]}
                 for name, aka, desc in c["own"]:
-                    base = SUFFIX.sub("", name) or name
-                    if base != name and base in names: continue          # a suffix form of a function already listed
-                    key = base.lower()
+                    key = name.lower()          # own lists each method once: the extensions are folded into it (tools/qforms.py)
                     if key in seen or not desc or desc.lower().startswith("same as"): continue
                     f = family_of(name)
                     if not f: continue

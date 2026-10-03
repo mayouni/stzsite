@@ -33,8 +33,50 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>The forms of this verb</h2><p><b class="mono">FindNth</b> · <a class="mono" href="findnthw.html">FindNthW</a> · <a class="mono" href="../stzstring.html#findnthz">FindNthZ</a> · <a class="mono" href="../stzstring.html#findnthcs">FindNthCS</a> · <a class="mono" href="findnthst.html">FindNthST</a> · <a class="mono" href="../stzstring.html#findnthxt">FindNthXT</a> · <a class="mono" href="../stzstring.html#findnthzz">FindNthZZ</a> · <a class="mono" href="../stzstring.html#findnthstzz">FindNthSTZZ</a></p>
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;ab_cd_ef_gh&quot;)
+    <h2>The forms of this verb</h2><p><b class="mono">FindNth</b> · <a class="mono" href="../stzstring.html#findnthd">FindNthD</a></p>
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;12*45*78*90&quot;)
+# the 2nd star from 4
+? o1.FindNthST(2, &quot;*&quot;, :StartingAt = 4)
+# the first star from 4
+? o1.FindFirstST(&quot;*&quot;, :StartingAt = 4)</pre></div><div class="out"><div class="lbl">Output</div><pre>9
+6</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/555_findnthst.ring">555_findnthst.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;•♥••••♥••&quot;)
+# the 2nd char equal to &#x27;♥&#x27; is at position 7
+? o1.FindNthW(2, &#x27;@char = &quot;♥&quot;&#x27;)
+# the 2nd substring equal to &#x27;•♥•&#x27; starts at position 6
+? o1.FindNthW(2, &#x27;@substring = &quot;•♥•&quot;&#x27;)</pre></div><div class="out"><div class="lbl">Output</div><pre>7
+6</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/246_findnthw.ring">246_findnthw.ring</a></p><h2>Scope <span class="mono">(5)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;12♥♥♥67♥♥♥12♥♥♥&quot;)
+# the 2nd from 3
+? o1.FindNthST(2, &quot;♥♥♥&quot;, :StartingAt = 3)
+# the first from 5
+? o1.FindFirstST(&quot;♥♥♥&quot;, :StartingAt = 5)
+# the last from 6
+? o1.FindLastST(&quot;♥♥♥&quot;, :StartingAt = 6)</pre></div><div class="out"><div class="lbl">Output</div><pre>8
+8
+13</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/317_using_st_and_std_extension.ring">317_using_st_and_std_extension.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;12♥♥♥67♥♥♥12♥♥♥&quot;)
+# the first from 6
+? o1.FindFirstST(&quot;♥♥♥&quot;, :StartingAt = 6)
+# the last from 6
+? o1.FindLastST(&quot;♥♥♥&quot;, :StartingAt = 6)
+# the 2nd from 6
+? o1.FindNthST(2, &quot;♥♥♥&quot;, :StartingAt = 6)</pre></div><div class="out"><div class="lbl">Output</div><pre>8
+13
+13</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/323_findfirstst.ring">323_findfirstst.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;bla {♥♥♥} blaba bla {♥♥♥} blabla&quot;)
+# the first from 8
+? o1.FindFirstST(&quot;♥♥♥&quot;, :StartingAt = 8)
+# the last from 8
+? o1.FindLastST(&quot;♥♥♥&quot;, :Startingat = 8)
+# the 2nd from 3
+? o1.FindNthST(2, &quot;♥♥♥&quot;, :StartingAt = 3)</pre></div><div class="out"><div class="lbl">Output</div><pre>22
+22
+22</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/351_findfirstst.ring">351_findfirstst.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;12♥♥♥67♥♥♥12♥♥♥&quot;)
+# the 1st from position 3 is 3 itself
+? o1.FindNthST(1, &quot;♥♥♥&quot;, :StartingAt = 3)
+# the next after 3
+? o1.FindNext(&quot;♥♥♥&quot;, :StartingAt = 3)
+# the previous before 10 must END before 10
+? o1.FindPrevious(&quot;♥♥♥&quot;, :StartingAt = 10)</pre></div><div class="out"><div class="lbl">Output</div><pre>3
+8
+3</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/316_findnthst.ring">316_findnthst.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;ab_cd_ef_gh&quot;)
 # the first underscore
 ? o1.FindFirst(&quot;_&quot;)
 # a missing star from 4
@@ -52,8 +94,9 @@
 9
 0
 6</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/508_findfirst.ring">508_findfirst.ring</a></p>
+    <h2>The extensions of this method</h2><p class="proof">Each extension, and whether it exists for this method; an extension that exists combines with the others (FindSTCS).</p><div class="lanes rtable"><div class="lane lane3 rhead"><div class="ln">Extension</div><div class="lr">Exists</div><div class="lt">What it adds · The names</div></div><div class="lane lane3"><div class="ln mono">Q</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">does what the method does, then returns the object, so the call can be chained</div></div><div class="lane lane3"><div class="ln mono">QQ</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">chains on the next, more specific type of object (the Q ladder)</div></div><div class="lane lane3"><div class="ln mono">QQQ</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">chains on the most specific type of object (the Q ladder)</div></div><div class="lane lane3"><div class="ln mono">QC</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">chains on a copy, so the original object stays unchanged</div></div><div class="lane lane3"><div class="ln mono">QRT</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">returns the result as an object of the requested type</div></div><div class="lane lane3"><div class="ln mono">CS</div><div class="lr"><span class="exts"><i class="y">yes</i></span></div><div class="lt">takes a case-sensitivity flag · <span class="mono">FindNthCS</span></div></div><div class="lane lane3"><div class="ln mono">ST</div><div class="lr"><span class="exts"><i class="y">yes</i></span></div><div class="lt">takes the position to start from (StartingAt) · <span class="mono">FindNthST</span>, <span class="mono">FindNthSTZZ</span></div></div><div class="lane lane3"><div class="ln mono">IB</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">takes bounds that are included (IncludingBounds)</div></div><div class="lane lane3"><div class="ln mono">XT</div><div class="lr"><span class="exts"><i class="y">yes</i></span></div><div class="lt">the extended form: more parameters than the base method · <span class="mono">FindNthXT</span></div></div><div class="lane lane3"><div class="ln mono">XTT</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">a further extended form, after XT</div></div><div class="lane lane3"><div class="ln mono">Z</div><div class="lr"><span class="exts"><i class="y">yes</i></span></div><div class="lt">includes the position in what it returns · <span class="mono">FindNthZ</span></div></div><div class="lane lane3"><div class="ln mono">ZZ</div><div class="lr"><span class="exts"><i class="y">yes</i></span></div><div class="lt">returns positions as sections, [start, end] · <span class="mono">FindNthZZ</span>, <span class="mono">FindNthSTZZ</span></div></div><div class="lane lane3"><div class="ln mono">W</div><div class="lr"><span class="exts"><i class="y">yes</i></span></div><div class="lt">selects by a condition · <span class="mono">FindNthW</span></div></div><div class="lane lane3"><div class="ln mono">WF</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">selects by a condition, with the expressive keywords (@NextItem, @PreviousItem...)</div></div><div class="lane lane3"><div class="ln mono">WXT</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">selects by a condition, extended: the condition is a named parameter (:Where = ...)</div></div><div class="lane lane3"><div class="ln mono">U</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">returns the result without duplication</div></div></div>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
-    <h2>See also</h2><ul><li><a href="../stzstring.html#findnth">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/findfirst.html">stzString.FindFirst</a> · <a class="mono" href="../stzstring/findfirstst.html">stzString.FindFirstST</a> · <a class="mono" href="../stzstring/findlast.html">stzString.FindLast</a></li></ul>
+    <h2>See also</h2><ul><li><a href="../stzstring.html#findnth">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/findfirst.html">stzString.FindFirst</a> · <a class="mono" href="../stzstring/findlast.html">stzString.FindLast</a> · <a class="mono" href="../stzstring/findnext.html">stzString.FindNext</a> · <a class="mono" href="../stzstring/findprevious.html">stzString.FindPrevious</a></li></ul>
   </div>
 </main>
 </div>

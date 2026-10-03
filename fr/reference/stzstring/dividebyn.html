@@ -33,8 +33,8 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>Les formes de ce verbe</h2><p><b class="mono">DivideByN</b> · <a class="mono" href="dividebynxt.html">DivideByNXT</a></p>
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;The total is 42 dollars and 13 cents.&quot;)
+    
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;The total is 42 dollars and 13 cents.&quot;)
 o1.MultiplyByN(2)
 # both doubled
 ? o1.Content()
@@ -49,7 +49,23 @@ o1.RetrieveN(12)
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>The total is 84 dollars and 26 cents.
 The total is 42 dollars and 13 cents.
 The total is 50 dollars and 21 cents.
-The total is 38 dollars and 9 cents.</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/from_regexuter_03_pr.ring">from_regexuter_03_pr.ring</a></p>
+The total is 38 dollars and 9 cents.</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/from_regexuter_03_pr.ring">from_regexuter_03_pr.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o2 = new stzString(&quot;The total is 42 dollars and 13 cents.&quot;)
+o2.MultiplyByNXT([2, 3])
+# 42 by 2, 13 by 3
+? o2.Content()
+o2.DivideByNXT([ 2, 3 ])
+# divided back
+? o2.Content()
+o2.AddNXT([ 8, 7 ])
+# 42 plus 8, 13 plus 7
+? o2.Content()
+o2.RetrieveNXT([40, 10])
+# 50 minus 40, 20 minus 10
+? o2.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>The total is 84 dollars and 39 cents.
+The total is 42 dollars and 13 cents.
+The total is 50 dollars and 20 cents.
+The total is 10 dollars and 10 cents.</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/from_regexuter_03_pr.ring">from_regexuter_03_pr.ring</a></p>
+    <h2>Les extensions de cette méthode</h2><p class="proof">Chaque extension, et si elle existe pour cette méthode ; une extension qui existe se compose avec les autres (FindSTCS).</p><div class="lanes rtable"><div class="lane lane3 rhead"><div class="ln">Extension</div><div class="lr">Existe</div><div class="lt">Ce qu'elle ajoute · Les noms</div></div><div class="lane lane3"><div class="ln mono">Q</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">fait ce que fait la méthode, puis rend l&#x27;objet, pour que l&#x27;appel puisse s&#x27;enchaîner</div></div><div class="lane lane3"><div class="ln mono">QQ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">enchaîne sur le type d&#x27;objet suivant, plus précis (l&#x27;échelle des Q)</div></div><div class="lane lane3"><div class="ln mono">QQQ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">enchaîne sur le type d&#x27;objet le plus précis (l&#x27;échelle des Q)</div></div><div class="lane lane3"><div class="ln mono">QC</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">enchaîne sur une copie, l&#x27;objet d&#x27;origine reste inchangé</div></div><div class="lane lane3"><div class="ln mono">QRT</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend le résultat comme un objet du type demandé</div></div><div class="lane lane3"><div class="ln mono">CS</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend un indicateur de sensibilité à la casse</div></div><div class="lane lane3"><div class="ln mono">ST</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend la position de départ (StartingAt)</div></div><div class="lane lane3"><div class="ln mono">IB</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend des bornes incluses (IncludingBounds)</div></div><div class="lane lane3"><div class="ln mono">XT</div><div class="lr"><span class="exts"><i class="y">oui</i></span></div><div class="lt">la forme étendue : plus de paramètres que la méthode de base · <span class="mono">DivideByNXT</span></div></div><div class="lane lane3"><div class="ln mono">XTT</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">une forme étendue de plus, après XT</div></div><div class="lane lane3"><div class="ln mono">Z</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">inclut la position dans ce qu&#x27;elle rend</div></div><div class="lane lane3"><div class="ln mono">ZZ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend les positions comme des sections, [début, fin]</div></div><div class="lane lane3"><div class="ln mono">W</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">choisit selon une condition</div></div><div class="lane lane3"><div class="ln mono">WF</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">choisit selon une condition, avec les mots-clés expressifs (@NextItem, @PreviousItem...)</div></div><div class="lane lane3"><div class="ln mono">WXT</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">choisit selon une condition, forme étendue : la condition est un paramètre nommé (:Where = ...)</div></div><div class="lane lane3"><div class="ln mono">U</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend le résultat sans doublon</div></div></div>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#dividebyn">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzstring/addn.html">stzString.AddN</a> · <a class="mono" href="../stzstring/multiplybyn.html">stzString.MultiplyByN</a> · <a class="mono" href="../stzstring/retrieven.html">stzString.RetrieveN</a></li></ul>
   </div>

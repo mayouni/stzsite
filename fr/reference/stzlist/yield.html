@@ -33,8 +33,23 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>Les formes de ce verbe</h2><p><b class="mono">Yield</b> · <a class="mono" href="../stzlist.html#yieldw">YieldW</a> · <a class="mono" href="../stzlist.html#yieldwf">YieldWF</a> · <a class="mono" href="yieldxt.html">YieldXT</a></p>
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ]).ToNumberW(&#x27;{ @number = len(@list) }&#x27;) # Or ToNumberXT()
+    
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;.&quot;, &quot;.&quot;, &quot;3&quot;, &quot;4&quot;, &quot;.&quot;, &quot;.&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;.&quot;, &quot;.&quot; ])
+? o1.YieldXT( &#x27;@item&#x27;, :FromPosition = 4, :To = -3 )
+? o1.YieldXT( &#x27;@char&#x27;, :StartingAt = 3, :Until = &#x27; @item = &quot;.&quot; &#x27; )
+? o1.YieldXT( &#x27;@char&#x27;, :StartingAt = 3, :UntilXT = &#x27; @item = &quot;.&quot; &#x27; )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>4
+.
+.
+7
+8
+9
+
+3
+4
+
+3
+4
+.</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/333_yieldxt.ring">333_yieldxt.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ]).ToNumberW(&#x27;{ @number = len(@list) }&#x27;) # Or ToNumberXT()
 ? Q([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ]).ToNumberW(&#x27;{
 	@number = QRT(@list, :stzListOfChars).UnicodesQRT(:stzListOfNumbers).Sum()
 }&#x27;)
@@ -50,6 +65,7 @@
 2
 3
 4</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/object/16_tonumberw.ring">16_tonumberw.ring</a></p>
+    <h2>Les extensions de cette méthode</h2><p class="proof">Chaque extension, et si elle existe pour cette méthode ; une extension qui existe se compose avec les autres (FindSTCS).</p><div class="lanes rtable"><div class="lane lane3 rhead"><div class="ln">Extension</div><div class="lr">Existe</div><div class="lt">Ce qu'elle ajoute · Les noms</div></div><div class="lane lane3"><div class="ln mono">Q</div><div class="lr"><span class="exts"><i class="y">oui</i></span></div><div class="lt">fait ce que fait la méthode, puis rend l&#x27;objet, pour que l&#x27;appel puisse s&#x27;enchaîner · <span class="mono">YieldQ</span></div></div><div class="lane lane3"><div class="ln mono">QQ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">enchaîne sur le type d&#x27;objet suivant, plus précis (l&#x27;échelle des Q)</div></div><div class="lane lane3"><div class="ln mono">QQQ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">enchaîne sur le type d&#x27;objet le plus précis (l&#x27;échelle des Q)</div></div><div class="lane lane3"><div class="ln mono">QC</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">enchaîne sur une copie, l&#x27;objet d&#x27;origine reste inchangé</div></div><div class="lane lane3"><div class="ln mono">QRT</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend le résultat comme un objet du type demandé</div></div><div class="lane lane3"><div class="ln mono">CS</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend un indicateur de sensibilité à la casse</div></div><div class="lane lane3"><div class="ln mono">ST</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend la position de départ (StartingAt)</div></div><div class="lane lane3"><div class="ln mono">IB</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend des bornes incluses (IncludingBounds)</div></div><div class="lane lane3"><div class="ln mono">XT</div><div class="lr"><span class="exts"><i class="y">oui</i></span></div><div class="lt">la forme étendue : plus de paramètres que la méthode de base · <span class="mono">YieldXT</span></div></div><div class="lane lane3"><div class="ln mono">XTT</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">une forme étendue de plus, après XT</div></div><div class="lane lane3"><div class="ln mono">Z</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">inclut la position dans ce qu&#x27;elle rend</div></div><div class="lane lane3"><div class="ln mono">ZZ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend les positions comme des sections, [début, fin]</div></div><div class="lane lane3"><div class="ln mono">W</div><div class="lr"><span class="exts"><i class="y">oui</i></span></div><div class="lt">choisit selon une condition · <span class="mono">YieldW</span></div></div><div class="lane lane3"><div class="ln mono">WF</div><div class="lr"><span class="exts"><i class="y">oui</i></span></div><div class="lt">choisit selon une condition, avec les mots-clés expressifs (@NextItem, @PreviousItem...) · <span class="mono">YieldWF</span></div></div><div class="lane lane3"><div class="ln mono">WXT</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">choisit selon une condition, forme étendue : la condition est un paramètre nommé (:Where = ...)</div></div><div class="lane lane3"><div class="ln mono">U</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend le résultat sans doublon</div></div></div>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#yield">La classe stzList</a></li><li><a href="../../guide/collections.html">Le guide du domaine : Collections et objets</a></li></ul>
   </div>

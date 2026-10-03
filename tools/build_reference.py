@@ -7,7 +7,7 @@ area), fr|en/reference/<class>.html (one page per class) and
 fr|en/reference/methods-<letter>.html (the alphabetical index). Called by build.py
 with its helpers, so the chrome stays one."""
 import json, re, html, collections
-import level2, qforms
+import level2, qforms, extshow
 PIN_DATE = re.compile(r"(\d{4}-\d{2}-\d{2})\.</p>")
 def pin(page): return PIN_DATE.sub("2026-10-01.</p>", page)
 
@@ -22,7 +22,7 @@ T = {
          "methods_az": "Toutes les méthodes, de A à Z", "letter": "Lettre", "filter": "Filtrer les méthodes…", "filter_classes": "Filtrer les classes…",
          "source": "la source", "inherits": "Hérite aussi de", "method": "Méthode", "explanation": "Explication, telle que la source la porte", "aka": "aussi nommée",
          "chip_q": "chaînable", "chip_cs": "sensible à la casse", "chip_xt": "étendue", "no_desc": "(sans commentaire dans la source : le nom se lit comme une phrase)",
-         "note": "Les explications sont citées dans la langue de la source, l'anglais. Récolte : {harvested}. Un commentaire absent est signalé plutôt qu'inventé. Un nom qui se termine par Q (QQ, QQQ) est la même méthode : elle fait ce que fait la méthode, puis rend l'objet pour que la phrase continue ; elle n'est pas listée à part.",
+         "note": "Les explications sont citées dans la langue de la source, l'anglais. Récolte : {harvested}. Un commentaire absent est signalé plutôt qu'inventé.",
          "area_edu": "Le Système d'apprentissage", "area_other": "Autres", "back": "Toutes les classes", "guide": "Le guide", "count_in": "méthodes propres dans", "page_title": "Référence"},
   "en": {"title": "Reference", "kicker": "The library documents itself",
          "lede": "Every method of every class, with the explanation the library carries in its own source, harvested by its self-documentation module. Nothing here was written for the site: it is what the library answers when asked.",
@@ -32,7 +32,7 @@ T = {
          "methods_az": "Every method, A to Z", "letter": "Letter", "filter": "Filter the methods…", "filter_classes": "Filter the classes…",
          "source": "the source", "inherits": "Also inherits from", "method": "Method", "explanation": "Explanation, as the source carries it", "aka": "also named",
          "chip_q": "chainable", "chip_cs": "case-sensitive", "chip_xt": "extended", "no_desc": "(no comment in the source: the name reads as a sentence)",
-         "note": "Explanations are quoted in the language of the source, English. Harvest: {harvested}. A missing comment is reported rather than invented. A name ending in Q (QQ, QQQ) is the same method: it does what the method does, then returns the object so the sentence can go on; it is not listed apart.",
+         "note": "Explanations are quoted in the language of the source, English. Harvest: {harvested}. A missing comment is reported rather than invented.",
          "area_edu": "The Learning System", "area_other": "Other", "back": "All classes", "guide": "The guide", "count_in": "own methods in", "page_title": "Reference"},
 }
 
@@ -77,6 +77,7 @@ def build_reference(ctx):
     classes = data["classes"]
     by_name = {c["name"].lower(): c for c in classes}
     n_own = sum(len(c["own"]) for c in classes)
+    n_folded = sum(c["folded"] for c in classes)
     n_entries = n_own + sum(sum(c["inherited"].values()) for c in classes)
     n_desc = sum(1 for c in classes for m in c["own"] if m[2])
     area_title = {g["slug"]: {l: g[l] for l in LANGS} for g in groups}
@@ -119,12 +120,14 @@ def build_reference(ctx):
       <div class="figure"><b>{len(classes)}</b><span>{t["classes"]}</span></div>
       <div class="figure"><b>{n_own:,}</b><span>{t["own"]}</span></div>
       <div class="figure"><b>{n_entries:,}</b><span>{t["entries"]}</span></div>
+      <div class="figure"><b>{n_folded:,}</b><span>{extshow.T[lang]["folded"]}</span></div>
       <div class="figure"><b>{len(entries):,}</b><span>{t["with_ex"]}</span></div>
       <div class="figure"><b>{round(100*n_desc/max(n_own,1))}%</b><span>{t["described"]}</span></div>
     </div>
     <p class="proof">{esc(t["note"].format(harvested=data["harvested"]))} · <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/meta/stzSelfDoc.ring">stzSelfDoc</a></p>
   </div></section>
   <div class="wrap page-body">
+    {extshow.catalogue(lang, ROOT, n_folded)}
     <p class="azrow"><b>{t["methods_az"]}:</b> {az_links}</p>
     <input id="flt" class="flt" type="search" placeholder="{esc(t["filter_classes"])}" aria-label="{esc(t["filter_classes"])}">
     {"".join(sections)}
@@ -152,7 +155,14 @@ def build_reference(ctx):
                     ex_html = f' <a class="ex" href="{href}">{len(exs)} {t["examples"]}</a>'
                 else:
                     nm, ex_html = esc(name), ""
-                rows.append(f'<div class="lane rrow" id="{esc(name.lower())}" data-k="{esc((name + " " + desc).lower())}"><div class="ln mono">{nm}</div><div class="lr">{chips(name, t)}</div><div class="lt">{d}{ex_html}{aka_html}</div></div>')
+                strip = extshow.row_strip(c["variants"].get(name.lower(), []), lang)
+                rows.append(f'<div class="lane lane2 rrow" id="{esc(name.lower())}" data-k="{esc((name + " " + desc).lower())}"><div class="ln mono">{nm}</div><div class="lt">{d}{ex_html}{aka_html}<span class="ext-line">{strip}</span></div></div>')
+            for name, aka, desc, owner in c["extra"]:      # a method of an ancestor to which this class gives extensions
+                exs = entries.get((c["name"], name))
+                nm = f'<a href="{c["name"].lower()}/{mslug(name)}.html">{esc(name)}</a>' if exs else esc(name)
+                d = prose(desc) if desc else f'<i>{esc(t["no_desc"])}</i> <span class="mono">{esc(split_camel(name))}</span>'
+                strip = extshow.row_strip(c["variants"].get(name.lower(), []), lang)
+                rows.append(f'<div class="lane lane2 rrow" id="{esc(name.lower())}" data-k="{esc((name + " " + desc).lower())}"><div class="ln mono">{nm}</div><div class="lt">{d}<small>{extshow.T[lang]["inherited"].format(owner=esc(owner))}</small><span class="ext-line">{strip}</span></div></div>')
             title = c["name"]
             page = head(lang, f'{title} · {t["title"]} · Softanza', f'{title}: {len(c["own"])} {t["own"]}', rel2)
             page += '\n<body class="page page-reference-class">\n' + header(lang, "reference", rel2, other_href=f"../../{'en' if lang == 'fr' else 'fr'}/reference/{c['name'].lower()}.html", nav_rel="../")
@@ -161,12 +171,13 @@ def build_reference(ctx):
   <section class="page-head"><div class="wrap">
     <div class="eyebrow">{esc(t["kicker"])} · {area_link}</div>
     <h1 class="mono-title">{esc(title)}</h1>
-    <p class="thesis">{len(c["own"])} {t["own"]}{(" · " + t["inherits"] + " " + inh) if inh else ""}</p>
+    <p class="thesis">{len(c["own"])} {t["own"]} · {c["folded"]} {extshow.T[lang]["folded"]}{(" · " + t["inherits"] + " " + inh) if inh else ""}</p>
     <p class="proof"><a href="{GH}{esc(c["file"])}">{t["source"]}: base/{esc(c["file"])}</a> · <a href="../reference.html">{t["back"]}</a>{(' · <a href="../guide/' + a + '.html">' + t["guide"] + ' ' + esc(area_title[a][lang]) + '</a>') if a in area_title else ''}</p>
   </div></section>
   <div class="wrap page-body">
+    {extshow.legend(lang, "../")}
     <input id="flt" class="flt" type="search" placeholder="{esc(t["filter"])}" aria-label="{esc(t["filter"])}">
-    <div class="lanes rtable"><div class="lane rhead"><div class="ln">{t["method"]}</div><div class="lr"></div><div class="lt">{t["explanation"]}</div></div>{"".join(rows)}</div>
+    <div class="lanes rtable"><div class="lane lane2 rhead"><div class="ln">{t["method"]}</div><div class="lt">{t["explanation"]}</div></div>{"".join(rows)}</div>
   </div>
 </main>
 """

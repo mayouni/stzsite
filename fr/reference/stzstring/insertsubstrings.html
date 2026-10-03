@@ -33,11 +33,36 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>Les formes de ce verbe</h2><p><b class="mono">InsertSubStrings</b> · <a class="mono" href="insertsubstringsxt.html">InsertSubStringsXT</a></p>
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;All our software versions must be updated!&quot;)
+    
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;All our software versions must be updated!&quot;)
 o1.InsertSubStrings( o1.PositionAfter(&quot;versions&quot;), [ &quot;V1&quot;, &quot;V2&quot;, &quot;V3&quot; ])
 # parenthesized with padding spaces
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>All our software versions (V1, V2, V3)  must be updated!</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/836_content.ring">836_content.ring</a></p>
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>All our software versions (V1, V2, V3)  must be updated!</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/836_content.ring">836_content.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;All our software versions must be updated!&quot;)
+o1.InsertSubStringsXT(
+		o1.PositionAfter(&quot;versions&quot;),
+		[ &quot; V1&quot;, &quot;V2&quot;, &quot;V3&quot; ],
+		[ :MainSeparator = &quot;+&quot; ]
+	)
+# bare join
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>All our software versions V1+V2+V3 must be updated!</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/837_content.ring">837_content.ring</a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;All our software versions must be updated!&quot;)
+nPosition = o1.PositionAfter(&quot;versions&quot;)
+o1.InsertSubstringsXT(
+		nPosition,
+		[ &quot;V1&quot;, &quot;V2&quot;, &quot;V3&quot;, &quot;V4&quot;, &quot;V5&quot; ],
+		[
+			:InsertBeforeOrAfter = :Before,
+			:OpeningChar = &quot;{ &quot;,
+			:ClosingChar = &quot; }&quot;,
+			:MainSeparator = &quot;,&quot;,
+			:AddSpaceAfterSeparator = TRUE,
+			:LastSeparator = &quot;and&quot;,
+			:AddLastToMainSeparator = TRUE,
+			:SpaceOption = :AddLeadingSpace
+		]
+	)
+# the list sits in the sentence
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>All our software versions { V1, V2, V3, V4, and V5 } must be updated!</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/835_inserting_lists_inside_a_string.ring">835_inserting_lists_inside_a_string.ring</a></p>
+    <h2>Les extensions de cette méthode</h2><p class="proof">Chaque extension, et si elle existe pour cette méthode ; une extension qui existe se compose avec les autres (FindSTCS).</p><div class="lanes rtable"><div class="lane lane3 rhead"><div class="ln">Extension</div><div class="lr">Existe</div><div class="lt">Ce qu'elle ajoute · Les noms</div></div><div class="lane lane3"><div class="ln mono">Q</div><div class="lr"><span class="exts"><i class="y">oui</i></span></div><div class="lt">fait ce que fait la méthode, puis rend l&#x27;objet, pour que l&#x27;appel puisse s&#x27;enchaîner · <span class="mono">InsertSubStringsQ</span>, <span class="mono">InsertSubStringsXTQ</span></div></div><div class="lane lane3"><div class="ln mono">QQ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">enchaîne sur le type d&#x27;objet suivant, plus précis (l&#x27;échelle des Q)</div></div><div class="lane lane3"><div class="ln mono">QQQ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">enchaîne sur le type d&#x27;objet le plus précis (l&#x27;échelle des Q)</div></div><div class="lane lane3"><div class="ln mono">QC</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">enchaîne sur une copie, l&#x27;objet d&#x27;origine reste inchangé</div></div><div class="lane lane3"><div class="ln mono">QRT</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend le résultat comme un objet du type demandé</div></div><div class="lane lane3"><div class="ln mono">CS</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend un indicateur de sensibilité à la casse</div></div><div class="lane lane3"><div class="ln mono">ST</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend la position de départ (StartingAt)</div></div><div class="lane lane3"><div class="ln mono">IB</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend des bornes incluses (IncludingBounds)</div></div><div class="lane lane3"><div class="ln mono">XT</div><div class="lr"><span class="exts"><i class="y">oui</i></span></div><div class="lt">la forme étendue : plus de paramètres que la méthode de base · <span class="mono">InsertSubStringsXT</span>, <span class="mono">InsertSubStringsXTQ</span></div></div><div class="lane lane3"><div class="ln mono">XTT</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">une forme étendue de plus, après XT</div></div><div class="lane lane3"><div class="ln mono">Z</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">inclut la position dans ce qu&#x27;elle rend</div></div><div class="lane lane3"><div class="ln mono">ZZ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend les positions comme des sections, [début, fin]</div></div><div class="lane lane3"><div class="ln mono">W</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">choisit selon une condition</div></div><div class="lane lane3"><div class="ln mono">WF</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">choisit selon une condition, avec les mots-clés expressifs (@NextItem, @PreviousItem...)</div></div><div class="lane lane3"><div class="ln mono">WXT</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">choisit selon une condition, forme étendue : la condition est un paramètre nommé (:Where = ...)</div></div><div class="lane lane3"><div class="ln mono">U</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend le résultat sans doublon</div></div></div>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzstring.html#insertsubstrings">La classe stzString</a></li><li><a href="../../guide/string.html">Le guide du domaine : Chaînes de caractères</a></li></ul>
   </div>

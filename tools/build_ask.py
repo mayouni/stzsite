@@ -140,6 +140,10 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
             m = {"name": name, "description": prose(desc)}
             if aka: m["also"] = prose(aka)
             if (c["name"], name) in entries: m["entry"] = f'{SITE}en/reference/{c["name"].lower()}/{mslug(name)}.html'
+            vs = c["variants"].get(name.lower(), [])
+            have = qforms.extensions_of(vs)
+            m["extensions"] = [e for e in qforms.CODES if e in have]          # which extensions exist for this method
+            if vs: m["forms"] = sorted({v[0] for v in vs}, key=lambda n: (len(n), n))
             ms.append(m)
         classes.append({"name": c["name"], "area": c["area"], "page": f'{SITE}en/reference/{c["name"].lower()}.html',
                         "source": f'{GH}base/{c["file"]}', "inherits": c["inherited"], "methods": ms})
@@ -157,7 +161,8 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
             for c in proof["chapters"]] if proof else []
     areas = [{"slug": g["slug"], "title": g["en"], "page": f'{SITE}en/atlas/{g["slug"]}.html', "guide": f'{SITE}en/guide/{g["slug"]}.html'} for g in groups]
     index = {"site": SITE, "library": "https://github.com/mayouni/stzlib", "commit": "0e72e2e2c",
-             "naming": "A method name ending in Q, QQ or QQQ is not listed apart: it is the same method, which returns the object so that a call can be chained.",
+             "naming": "A method name that ends in an extension (Q, CS, XT, Z, ZZ, U, IB, W...) is not listed apart: it is the same method written with one more word. Each method lists the extensions that exist for it and the names of its forms.",
+             "extensions": [{"code": e[0], "adds": e[1], "documented_in": GH + e[3]} for e in qforms.EXTENSIONS],
              "note": "Generated with the Softanza site from the library at commit 0e72e2e2c. Descriptions are the library's own doc-comments. Every recipe's output was produced by running it inside the library.",
              "ask": {"calls": ["Ask(question)", "HowTo(intent)", "ExplainMethod(name)"], "page": f"{SITE}en/ask.html",
                      "measured": {"questions": len(ask["questions"]), "ran": ask["ran"],

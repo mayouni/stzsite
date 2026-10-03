@@ -10,13 +10,12 @@ output kept every promise their file wrote are shown.
     fr|en/reference/<class>/<method>.html
 """
 import json, re, html, collections
-import level2, qforms
+import level2, qforms, extshow
 
 def esc(s): return html.escape(str(s), quote=True)
 RING = re.compile(r"\b(?:Ring|RING)\b")
 RING_WORD = re.compile(r"(?<![\w./-])ring(?![\w.])", re.I)   # the word, not a .ring file name
 def prose(s): return esc(RING.sub(lambda m: "HARO" if m.group(0).isupper() else "Haro", str(s)).replace("Ring++", "Haro"))
-SUFFIX = re.compile(r"(?:CS|Q|XT|XTT|Z|ZZ|W|WF|WXT|IB|B|ST|QC)+$")
 ISSUE = re.compile(r"(?i)\b(error|raises?|refus\w*|cannot|can't|invalid|not allowed|incorrect|unsupported|not found)\b")
 
 T = {
@@ -88,10 +87,12 @@ def build_methods(ctx):
             c = by_class.get(cls)
             if not c: continue
             own = {m[0]: m for m in c["own"]}
-            name, aka, desc = own.get(meth, (meth, "", ""))
-            # the family: the forms of the same verb in this class
-            base = SUFFIX.sub("", meth) or meth
-            fam = [n for n in own if (SUFFIX.sub("", n) or n) in (base, base + "d", base + "ed") or n in (base + "d", base + "ed")]
+            rec = Q.records(cls).get(meth.lower())            # the method may be defined in a class this one inherits from
+            name, aka, desc = (rec[0], rec[1], rec[2]) if rec else (meth, "", "")
+            # the voices of the verb: the active form and its passive twin (Remove, Removed). An extension is not a voice: it is
+            # the same method, and the extensions table says which exist
+            ml = meth.lower()
+            fam = [n for n in own if n.lower() in (ml, ml + "d", ml + "ed") or (ml.endswith("ed") and n.lower() == ml[:-2]) or (ml.endswith("d") and n.lower() == ml[:-1])]
             fam = sorted(set(fam) | {meth}, key=lambda n: (len(n), n))[:18]
             fam_html = " · ".join((f'<b class="mono">{esc(n)}</b>' if n == meth else
                                    f'<a class="mono" href="{slug(n)}.html">{esc(n)}</a>' if (cls, n) in entries else
@@ -133,6 +134,7 @@ def build_methods(ctx):
   <div class="wrap page-body">
     {f'<h2>{t["forms"]}</h2><p>{fam_html}</p>' if len(fam) > 1 else ''}
     {"".join(sections)}
+    {extshow.method_table(c["variants"].get(meth.lower(), []), lang)}
     <p class="proof">{t["proof"]}</p>
     {see}
   </div>

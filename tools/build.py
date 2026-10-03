@@ -344,7 +344,11 @@ def diagram_imgs(body_html, rel):
                 f'<img class="narrow-only" loading="lazy" src="{rel}assets/img/diagrams/{name}-narrow-{lang}.png" alt="{alt}" width="{w}" height="{h}">')
     return re.sub(r'<img src="(?:\.\./)+assets/img/diagrams/([a-z]+)-(fr|en)\.png" alt="([^"]*)"[^>]*>', rep, body_html)
 
+COUNTS = {}                                         # figures read from the data, filled in main() before any page is built
+
 def inject(body_html, lang, idx, groups, rel="../"):
+    fmt = (lambda n: f"{n:,}") if lang == "en" else (lambda n: f"{n:,}".replace(",", " "))
+    body_html = body_html.replace("<!--METHODS-->", fmt(COUNTS["methods"])).replace("<!--ENTRIES-->", fmt(COUNTS["entries"]))
     body_html = body_html.replace("<!--AREAS-->", fmap_html(lang, idx, groups, "atlas/") + tiles_html(lang, idx, groups, "atlas/", rel))
     body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
     body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
@@ -663,6 +667,9 @@ def check_contrast():
 
 def main():
     idx, groups = load_atlas()
+    ENTRIES = load_entries(ROOT)
+    COUNTS["methods"] = sum(len(c["own"]) for c in qforms.reference(ROOT)["classes"])    # a method is listed once: its extensions are folded into it
+    COUNTS["entries"] = len(ENTRIES)
     npages, PUBLISHED = build_narration_pages({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "md": md})
     print(f"narrations: {npages} pages, {len(PUBLISHED)} narrations run and published")
     outs = []
@@ -679,7 +686,6 @@ def main():
             if f.exists(): f.unlink()
     scenes = {lang: build_tour(lang, idx, groups) for lang in LANGS}
     build_home(idx, groups)
-    ENTRIES = load_entries(ROOT)
     nref, ncls, nown = build_reference({"ROOT": ROOT, "LANGS": LANGS, "head": head, "header": header, "footer": footer, "idx": idx, "groups": groups, "entries": ENTRIES})
     HOWTOS = howtos_by_method(load_howtos(ROOT), qforms.get(ROOT))
     nmeth = build_methods({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "entries": ENTRIES, "howtos": HOWTOS})

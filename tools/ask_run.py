@@ -40,10 +40,13 @@ def proposed(howto):
     return calls[-1] if calls else ""
 
 def grade(q):
-    """the same method the recipe names, the same verb in another form, or another method"""
+    """the same method the recipe names (an extension is the same method: FindCS is Find), the same verb in another form, or another method"""
+    import qforms
+    Q = qforms.get(ROOT)
+    mine = {Q.fold(q["class"], x).lower() for x in q["methods"]} | {x.lower() for x in q["methods"]}
     def g(name):
         if not name: return "none"
-        if name.lower() in {x.lower() for x in q["methods"]}: return "same"
+        if name.lower() in mine or Q.fold(q["class"], name).lower() in mine: return "same"
         if any(same_verb(name, x) for x in q["methods"]): return "verb"
         return "other"
     q["howto_method"] = proposed(q.get("howto", ""))

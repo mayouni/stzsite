@@ -33,8 +33,8 @@
     
   </div></section>
   <div class="wrap page-body">
-    <h2>The forms of this verb</h2><p><b class="mono">RetrieveN</b> · <a class="mono" href="retrievenxt.html">RetrieveNXT</a></p>
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;The total is 42 dollars and 13 cents.&quot;)
+    
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;The total is 42 dollars and 13 cents.&quot;)
 o1.MultiplyByN(2)
 # both doubled
 ? o1.Content()
@@ -49,7 +49,23 @@ o1.RetrieveN(12)
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>The total is 84 dollars and 26 cents.
 The total is 42 dollars and 13 cents.
 The total is 50 dollars and 21 cents.
-The total is 38 dollars and 9 cents.</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/from_regexuter_03_pr.ring">from_regexuter_03_pr.ring</a></p>
+The total is 38 dollars and 9 cents.</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/from_regexuter_03_pr.ring">from_regexuter_03_pr.ring</a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o2 = new stzString(&quot;The total is 42 dollars and 13 cents.&quot;)
+o2.MultiplyByNXT([2, 3])
+# 42 by 2, 13 by 3
+? o2.Content()
+o2.DivideByNXT([ 2, 3 ])
+# divided back
+? o2.Content()
+o2.AddNXT([ 8, 7 ])
+# 42 plus 8, 13 plus 7
+? o2.Content()
+o2.RetrieveNXT([40, 10])
+# 50 minus 40, 20 minus 10
+? o2.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>The total is 84 dollars and 39 cents.
+The total is 42 dollars and 13 cents.
+The total is 50 dollars and 20 cents.
+The total is 10 dollars and 10 cents.</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/from_regexuter_03_pr.ring">from_regexuter_03_pr.ring</a></p>
+    <h2>The extensions of this method</h2><p class="proof">Each extension, and whether it exists for this method; an extension that exists combines with the others (FindSTCS).</p><div class="lanes rtable"><div class="lane lane3 rhead"><div class="ln">Extension</div><div class="lr">Exists</div><div class="lt">What it adds · The names</div></div><div class="lane lane3"><div class="ln mono">Q</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">does what the method does, then returns the object, so the call can be chained</div></div><div class="lane lane3"><div class="ln mono">QQ</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">chains on the next, more specific type of object (the Q ladder)</div></div><div class="lane lane3"><div class="ln mono">QQQ</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">chains on the most specific type of object (the Q ladder)</div></div><div class="lane lane3"><div class="ln mono">QC</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">chains on a copy, so the original object stays unchanged</div></div><div class="lane lane3"><div class="ln mono">QRT</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">returns the result as an object of the requested type</div></div><div class="lane lane3"><div class="ln mono">CS</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">takes a case-sensitivity flag</div></div><div class="lane lane3"><div class="ln mono">ST</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">takes the position to start from (StartingAt)</div></div><div class="lane lane3"><div class="ln mono">IB</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">takes bounds that are included (IncludingBounds)</div></div><div class="lane lane3"><div class="ln mono">XT</div><div class="lr"><span class="exts"><i class="y">yes</i></span></div><div class="lt">the extended form: more parameters than the base method · <span class="mono">RetrieveNXT</span></div></div><div class="lane lane3"><div class="ln mono">XTT</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">a further extended form, after XT</div></div><div class="lane lane3"><div class="ln mono">Z</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">includes the position in what it returns</div></div><div class="lane lane3"><div class="ln mono">ZZ</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">returns positions as sections, [start, end]</div></div><div class="lane lane3"><div class="ln mono">W</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">selects by a condition</div></div><div class="lane lane3"><div class="ln mono">WF</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">selects by a condition, with the expressive keywords (@NextItem, @PreviousItem...)</div></div><div class="lane lane3"><div class="ln mono">WXT</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">selects by a condition, extended: the condition is a named parameter (:Where = ...)</div></div><div class="lane lane3"><div class="ln mono">U</div><div class="lr"><span class="exts"><i class="n txt">no</i></span></div><div class="lt">returns the result without duplication</div></div></div>
     <p class="proof">Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.</p>
     <h2>See also</h2><ul><li><a href="../stzstring.html#retrieven">The class stzString</a></li><li><a href="../../guide/string.html">The area's guide: String</a></li><li>The other methods in these examples: <a class="mono" href="../stzstring/addn.html">stzString.AddN</a> · <a class="mono" href="../stzstring/dividebyn.html">stzString.DivideByN</a> · <a class="mono" href="../stzstring/multiplybyn.html">stzString.MultiplyByN</a></li></ul>
   </div>

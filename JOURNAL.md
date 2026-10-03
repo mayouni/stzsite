@@ -884,3 +884,48 @@ next:
   - me:      only progressive revelation remains of Pedagogy's proposals, and it is the library's to build
   - author:  open Learn > The book, at the bottom, then any chapter of the reader and its "Proof of this cell" link
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-03 01:32
+
+subject:   the extension rule: every extension is the same method, so the reference lists a method once and says which
+           extensions exist for it
+
+why:       the author ruled that what was said for Q applies to CS, U and all the other extensions: they are syntax
+           variations of the same method, not other methods; remove them from the reference, and for each method say
+           whether each extension exists
+
+did:
+  - wrote the catalogue in tools/qforms.py: 16 extensions the library documents (Q, QQ, QQQ, QC, QRT, CS, ST, IB, XT, XTT,
+    Z, ZZ, W, WF, WXT, U), each with what it adds in the library's own words and the library file that documents it; a name
+    that is a method plus extensions, stacked in any order (FindSTZZ, ContentCSU), is folded into the method
+  - the reference lists a method once: 22,386 of 26,949 names are listed, 4,563 folded (the Q rule had folded 2,175);
+    class pages, the A to Z index, the guides, the entries, the how-to pages, the Ask page and agents/index.json all list
+    the method once
+  - each row of a class page says, for the standard eight (Q CS XT Z ZZ IB W U), which extensions exist (bold, ticked) and
+    which do not (struck), plus any other that exists, or "no extension"; each entry carries the full table of 16 with the
+    names that carry each; the reference page carries the catalogue with its sources; agents/index.json lists, for every
+    method, its extensions and the names of its forms
+  - 7 methods of an ancestor that a class only gives extensions to are listed in that class as inherited methods
+  - entries merge a method with all its forms: 1,266 methods (it was 1,386); the counts in the content pages now come from
+    the data through placeholders, so they cannot go stale
+  - checked on the built site: no folded name is a row on any class page, none is in the A to Z index, 0 dangling among
+    378,046 local links, and none of 9,242 code blocks shows the former name
+
+state:
+  release-1-pass-21: built; the commit carrying this entry is the one after 9611fe9
+  perception-gate:   OPEN
+
+waiting:
+  - THE AUTHOR: two readings of "all other extensions" are mine and open: (1) passive forms (Removed beside Remove) are
+             kept listed, since they do not do the same thing; (2) only documented extensions are folded, and the endings
+             N (103 names), F (14), D (11), R (7), AP (7), B (5), SF (5) and a few more are left listed because the library
+             does not document them as extensions; they are named on the reference page -> the author decides [routed]
+  - STZLIB-ASK-EXTENSIONS-01: 16 of the 84 answers of Ask are an extension of another answer, and for 12 of the 28
+             recipe questions two of its three answers are one method (FindFirst and FindFirstCS; Reverse and ReverseQ);
+             folding the extensions would free those slots -> stzlib [routed]
+
+next:
+  - me:      Pedagogy's last proposal, progressive revelation, is the library's to build
+  - author:  open Learn > Reference > stzString, then Learn > Reference > stzString > Find
+```

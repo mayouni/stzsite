@@ -560,3 +560,17 @@ ol.narr .ran{display:inline;margin:0}
   .level2 a{white-space:nowrap;border-left:0;border-bottom:3px solid transparent;border-radius:0;padding:8px 8px;min-height:44px;display:flex;align-items:center}
   .level2 a[aria-current]{background:none;border-bottom-color:var(--accent)}
 }
+
+/* the extensions of a method, yes or no: the tick is drawn here, so a row carries almost no extra markup */
+.exts{font-family:"IBM Plex Mono",monospace;font-size:var(--label)}
+.exts i{font-style:normal;margin-right:14px;white-space:nowrap}
+.exts i.y{font-weight:700;color:var(--accent)}
+.exts i.y::before{content:"\2713\00a0"}
+.exts i.n{text-decoration:line-through;color:var(--ink-2)}
+.exts i.n.txt{text-decoration:none}   /* the word "no" is never struck: a strike would negate it */
+.exts.none{font-family:inherit;color:var(--ink-2)}
+.ext-line{display:block;margin-top:8px}
+@media (min-width:761px){
+  .rtable .lane.lane2{grid-template-columns:minmax(200px,1.2fr) 3fr}
+  .rtable .lane.lane3{grid-template-columns:minmax(90px,.4fr) minmax(150px,1fr) 3fr}
+}

@@ -13,7 +13,7 @@ This site was generated from the library at commit 0e72e2e2c. Its method example
 ## Documentation
 
 - [Documentation](https://mayouni.github.io/stzsite/en/docs.html): the whole scope, area by area
-- [Reference](https://mayouni.github.io/stzsite/en/reference.html): 618 classes, each method with the explanation the library gives of itself; 1,386 methods have an entry with examples run
+- [Reference](https://mayouni.github.io/stzsite/en/reference.html): 618 classes, each method with the explanation the library gives of itself; 1,266 methods have an entry with examples run
 - [How-to](https://mayouni.github.io/stzsite/en/howto.html): 28 recipes, each a task, its code and its output, run
 - [Narrations](https://mayouni.github.io/stzsite/en/narrations.html): the library's stories in code; 8 run block by block as pages
 - [The book](https://mayouni.github.io/stzsite/en/book.html): the Elementary Introduction, fifteen chapters in four languages; 15 proof pages show each chapter's cells run, the guard that proves them, and its exercises proving themselves
@@ -40,9 +40,9 @@ This site was generated from the library at commit 0e72e2e2c. Its method example
 - [Find where a substring occurs in a string](https://mayouni.github.io/stzsite/en/howto/string-find.html): stzString.FindAll, stzString.Find, stzString.FindFirst
 - [Remove leading and trailing whitespace from a string](https://mayouni.github.io/stzsite/en/howto/string-trim.html): stzString.Trimmed, stzString.TrimmedLeft, stzString.TrimmedRight
 - [Repeat a string several times](https://mayouni.github.io/stzsite/en/howto/string-repeat.html): stzString.Repeated
-- [Replace occurrences of one substring with another](https://mayouni.github.io/stzsite/en/howto/string-replace.html): stzString.Replace, stzString.ReplaceCS
+- [Replace occurrences of one substring with another](https://mayouni.github.io/stzsite/en/howto/string-replace.html): stzString.Replace
 - [Reverse the characters of a string](https://mayouni.github.io/stzsite/en/howto/string-reverse.html): stzString.Reversed
-- [Split a string into parts on a delimiter](https://mayouni.github.io/stzsite/en/howto/string-split.html): stzString.Split, stzString.SplitCS
+- [Split a string into parts on a delimiter](https://mayouni.github.io/stzsite/en/howto/string-split.html): stzString.Split
 - [Detect the emotional tone (positive or negative) of some text](https://mayouni.github.io/stzsite/en/howto/text-sentiment.html): stzText.Sentiment, stzText.SentimentScore, stzText.IsPositive
 - [Detect which natural language a text is written in](https://mayouni.github.io/stzsite/en/howto/text-detect-language.html): stzText.Language, stzText.DetectedLanguage
 - [Find the main topics or key phrases a text is about](https://mayouni.github.io/stzsite/en/howto/text-topics.html): stzText.KeyPhrases, stzText.RankedKeywords, stzText.TopKeyPhrase

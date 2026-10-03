@@ -1,20 +1,81 @@
-"""The ...Q() forms of Softanza method names, as the author rules them (2026-10-03).
+"""The extensions of Softanza method names, as the author rules them (2026-10-03).
 
-A method's ...Q() form does what the method does, then returns the object so a
-sentence can go on: Q([1, 2, 3]).FilterQ('{ @item > 1 }').Content(). It is a
-syntax detail, not another method. So the site
+A method name can end in extensions: Q, CS, XT, Z, ZZ, U, IB, W, ST and the rest. The
+author's ruling, first for Q and then for all of them: an extension is a SYNTAX
+VARIATION of the same method, never another method. So the site
 
-  - lists a method once: a ...Q() (or ...QQ(), ...QQQ()) form whose plain method
-    exists in the class or a class it inherits from is folded into it;
-  - shows no example that calls a ...Q() form and then does nothing with the
-    result: o1.FilterQ(...) alone on a line is wrong, since o1.Filter(...) does
-    the job. A Q call whose result is chained on, assigned, printed, returned or
-    looped over is right.
+  - lists a method once: a name that is a method plus one or more extensions is folded
+    into that method (FindCS, FindCSZ and FindQ are Find), and each method says which
+    extensions exist for it and which do not;
+  - shows no example that calls a ...Q() form and then does nothing with the result:
+    o1.FilterQ(...) alone on a line is wrong, since o1.Filter(...) does the job. A Q
+    call whose result is chained on, assigned, printed, returned or looped over is right.
 
-A ...Q() name with no plain twin is the method itself (an accessor that returns
-an object) and stays listed.
+Only extensions the library documents are folded (EXTENSIONS below, each with its
+source). A name that ends like an extension but whose ending is not documented stays
+listed, and tools/qforms.py's unknown_endings() reports what was left, so that a doubtful
+ending is a question for the author and not a guess. A name whose base is not a method
+(an accessor ending in Q with no plain twin, say) is the method itself and stays.
+
+Passive forms (Removed beside Remove) are not extensions: they do not do the same thing
+(Remove changes the object, Removed returns a copy), so they stay listed.
 """
 import json, re
+
+# code, what it adds (en), (fr), the library file that documents it
+EXTENSIONS = [
+    ("Q",   "does what the method does, then returns the object, so the call can be chained",
+            "fait ce que fait la méthode, puis rend l'objet, pour que l'appel puisse s'enchaîner",
+            "base/doc/narrations/stz-functions-as-linguistic-expressions.md"),
+    ("QQ",  "chains on the next, more specific type of object (the Q ladder)",
+            "enchaîne sur le type d'objet suivant, plus précis (l'échelle des Q)",
+            "base/common/stzSmallFuncs.ring"),
+    ("QQQ", "chains on the most specific type of object (the Q ladder)",
+            "enchaîne sur le type d'objet le plus précis (l'échelle des Q)",
+            "base/common/stzSmallFuncs.ring"),
+    ("QC",  "chains on a copy, so the original object stays unchanged",
+            "enchaîne sur une copie, l'objet d'origine reste inchangé",
+            "base/doc/narrations/stz-functions-as-linguistic-expressions.md"),
+    ("QRT", "returns the result as an object of the requested type",
+            "rend le résultat comme un objet du type demandé",
+            "base/natural/stzNaturalCode.ring"),
+    ("CS",  "takes a case-sensitivity flag",
+            "prend un indicateur de sensibilité à la casse",
+            "base/doc/narrations/stz-functions-as-linguistic-expressions.md"),
+    ("ST",  "takes the position to start from (StartingAt)",
+            "prend la position de départ (StartingAt)",
+            "base/doc/narrations/stz-functions-as-linguistic-expressions.md"),
+    ("IB",  "takes bounds that are included (IncludingBounds)",
+            "prend des bornes incluses (IncludingBounds)",
+            "base/reflect/stzReflectFuncs.ring"),
+    ("XT",  "the extended form: more parameters than the base method",
+            "la forme étendue : plus de paramètres que la méthode de base",
+            "base/doc/design/STRING_ENGINE_DESIGN_v2.md"),
+    ("XTT", "a further extended form, after XT",
+            "une forme étendue de plus, après XT",
+            "base/reflect/stzReflectFuncs.ring"),
+    ("Z",   "includes the position in what it returns",
+            "inclut la position dans ce qu'elle rend",
+            "base/doc/quickers/stz-notes-quickers.md"),
+    ("ZZ",  "returns positions as sections, [start, end]",
+            "rend les positions comme des sections, [début, fin]",
+            "base/doc/quickers/stz-notes-quickers.md"),
+    ("W",   "selects by a condition",
+            "choisit selon une condition",
+            "base/reflect/stzReflectFuncs.ring"),
+    ("WF",  "selects by a condition, with the expressive keywords (@NextItem, @PreviousItem...)",
+            "choisit selon une condition, avec les mots-clés expressifs (@NextItem, @PreviousItem...)",
+            "base/reflect/stzReflectFuncs.ring"),
+    ("WXT", "selects by a condition, extended: the condition is a named parameter (:Where = ...)",
+            "choisit selon une condition, forme étendue : la condition est un paramètre nommé (:Where = ...)",
+            "base/reflect/stzReflectFuncs.ring"),
+    ("U",   "returns the result without duplication",
+            "rend le résultat sans doublon",
+            "base/list/stzList.ring"),
+]
+CODES = [e[0] for e in EXTENSIONS]
+TOKENS = sorted(CODES, key=len, reverse=True)           # longest first: WXT before W and XT, QRT before Q
+STANDARD = ["Q", "CS", "XT", "Z", "ZZ", "IB", "W", "U"]  # shown yes or no on every method; the others only when they exist
 
 QFORM = re.compile(r"^(.+?)(Q{1,3})$")
 
@@ -22,37 +83,132 @@ class QForms:
     def __init__(self, ROOT):
         ref = json.loads((ROOT / "data" / "reference.json").read_text(encoding="utf-8"))
         self.by = {c["name"]: c for c in ref["classes"]}
-        self._chain = {}
-        self.plain_anywhere = set()          # every plain name some class has
+        self._rec, self._split = {}, {}
+        self.plain_anywhere = set()          # every name that does not end in Q, in any class: for the unchained-call rule
         for c in ref["classes"]:
             for m in c["own"]:
                 if not QFORM.match(m[0]): self.plain_anywhere.add(m[0].lower())
 
-    def names(self, cls):
-        """the method names of a class and of every class it inherits from, lowercased"""
-        if cls in self._chain: return self._chain[cls]
-        out, seen, todo = set(), set(), [cls]
+    def records(self, cls):
+        """the methods of a class and of every class it inherits from: lowercased name -> [name, aka, description, owner class]"""
+        if cls in self._rec: return self._rec[cls]
+        out, seen, todo = {}, set(), [cls]
         while todo:
-            k = todo.pop()
+            k = todo.pop(0)
             if k in seen or k not in self.by: continue
             seen.add(k)
             c = self.by[k]
-            out |= {m[0].lower() for m in c["own"]}
+            for m in c["own"]: out.setdefault(m[0].lower(), [m[0], m[1], m[2], k])
             todo += list(c["inherited"])
-        self._chain[cls] = out
+        self._rec[cls] = out
+        return out
+
+    def names(self, cls): return self.records(cls)
+
+    def split(self, cls, name):
+        """(root, [extensions as written]) when the name is a method plus extensions, else None"""
+        key = (cls, name)
+        if key in self._split: return self._split[key]
+        names = self.records(cls)
+        def rec(n):
+            for t in TOKENS:
+                if n.endswith(t) and len(n) - len(t) >= 2:
+                    rem = n[:-len(t)]
+                    r = rec(rem)                         # the rest may itself be a method plus extensions
+                    if r: return (r[0], r[1] + [t])
+                    if rem.lower() in names: return (rem, [t])
+            return None
+        out = self._split[key] = rec(name)
         return out
 
     def base(self, cls, name):
-        """the plain method a ...Q() form folds into, or None when the name is a method of its own"""
-        m = QFORM.match(name)
-        if not m: return None
-        return m.group(1) if m.group(1).lower() in self.names(cls) else None
+        r = self.split(cls, name)
+        return r[0] if r else None
 
     def fold(self, cls, name):
-        return self.base(cls, name) or name
+        r = self.split(cls, name)
+        return r[0] if r else name
 
     def is_form(self, cls, name):
-        return self.base(cls, name) is not None
+        return self.split(cls, name) is not None
+
+_CACHE = {}
+
+def get(ROOT):
+    """one QForms per run"""
+    if "q" not in _CACHE: _CACHE["q"] = QForms(ROOT)
+    return _CACHE["q"]
+
+def reference(ROOT):
+    """data/reference.json with every extension folded into its method. Each class lists a method once ('own'),
+    and says which extensions it has:
+      c["variants"][root.lower()] = [(name, [extensions]), ...]   every form of the method written with extensions
+      c["extra"] = [[name, aka, description, owner]]               a method of an ancestor that this class gives extensions to
+    The counts of inherited methods are those of the methods listed."""
+    if "ref" in _CACHE: return _CACHE["ref"]
+    raw = json.loads((ROOT / "data" / "reference.json").read_text(encoding="utf-8"))
+    Q = get(ROOT)
+    classes = []
+    for c in raw["classes"]:
+        d = dict(c)
+        d["own"], d["variants"], extra, own_roots = [], {}, {}, set()
+        names = {m[0].lower() for m in c["own"]}
+        for m in c["own"]:
+            r = Q.split(c["name"], m[0])
+            if not r: d["own"].append(m); own_roots.add(m[0].lower())
+        for m in c["own"]:
+            r = Q.split(c["name"], m[0])
+            if not r: continue
+            root, exts = r
+            d["variants"].setdefault(root.lower(), []).append((m[0], exts))
+            if root.lower() not in own_roots and root.lower() not in extra:
+                rec = Q.records(c["name"]).get(root.lower())
+                if rec: extra[root.lower()] = rec
+        d["extra"] = list(extra.values())
+        d["folded"] = len(c["own"]) - len(d["own"])
+        d["raw_names"] = names
+        classes.append(d)
+    by = {c["name"]: c for c in classes}
+    for d in classes:
+        inh = {}
+        for k, v in d["inherited"].items():
+            n = sum(1 for m in by[k]["own"] if m[0].lower() not in d["raw_names"]) if k in by else v
+            if n: inh[k] = n
+        d["inherited"] = inh
+    # a method's variants also come from the classes it inherits: collect them for the roots a class lists
+    for d in classes:
+        for k in d["inherited"]:
+            if k not in by: continue
+            for root, vs in by[k]["variants"].items():
+                d["variants"].setdefault(root, [])
+                have = {v[0] for v in d["variants"][root]}
+                d["variants"][root] += [v for v in vs if v[0] not in have]
+    for d in classes: del d["raw_names"]
+    _CACHE["ref"] = {"harvested": raw["harvested"], "classes": classes}
+    return _CACHE["ref"]
+
+def extensions_of(variants):
+    """{extension: [names that carry it]} for the variants of one method, the simplest names first"""
+    out = {}
+    for name, exts in sorted(variants, key=lambda v: (len(v[1]), len(v[0]), v[0])):
+        for e in dict.fromkeys(exts): out.setdefault(e, []).append(name)
+    return out
+
+def unknown_endings(ROOT, limit=40):
+    """endings that look like extensions (one or two capital letters after a method name) but are not documented:
+    the names that were left listed, counted by ending, for the author to rule on"""
+    Q = get(ROOT)
+    import collections
+    seen = collections.Counter(); sample = {}
+    for cls, c in Q.by.items():
+        for m in c["own"]:
+            n = m[0]
+            if Q.split(cls, n): continue
+            for k in (1, 2, 3):
+                end = n[-k:]
+                if len(n) > k + 2 and end.isalpha() and end.isupper() and (n[:-k]).lower() in Q.records(cls) and end not in CODES:
+                    seen[end] += 1; sample.setdefault(end, (cls, n)); break
+    return [(e, n, sample[e]) for e, n in seen.most_common(limit)]
 
 def statements(code):
     """the statements of a piece of code, comments cut off; a statement goes on while a bracket or a quote is open"""
@@ -127,34 +283,3 @@ def unchained(code, plain_names):
         if end == len(stmt) - 1 and m and m.group(1).lower() in plain_names:
             out.append((name, n))
     return out
-
-_CACHE = {}
-
-def get(ROOT):
-    """one QForms per run"""
-    if "q" not in _CACHE: _CACHE["q"] = QForms(ROOT)
-    return _CACHE["q"]
-
-def reference(ROOT):
-    """data/reference.json with every ...Q() form folded into its plain method: each class lists
-    a method once, and the counts of inherited methods are those of the methods listed"""
-    if "ref" in _CACHE: return _CACHE["ref"]
-    raw = json.loads((ROOT / "data" / "reference.json").read_text(encoding="utf-8"))
-    Q = get(ROOT)
-    classes = []
-    for c in raw["classes"]:
-        d = dict(c)
-        d["own"] = [m for m in c["own"] if not Q.is_form(c["name"], m[0])]
-        d["folded"] = len(c["own"]) - len(d["own"])
-        d["raw_names"] = {m[0].lower() for m in c["own"]}
-        classes.append(d)
-    by = {c["name"]: c for c in classes}
-    for d in classes:
-        inh = {}
-        for k, v in d["inherited"].items():
-            n = sum(1 for m in by[k]["own"] if m[0].lower() not in d["raw_names"]) if k in by else v
-            if n: inh[k] = n
-        d["inherited"] = inh
-    for d in classes: del d["raw_names"]
-    _CACHE["ref"] = {"harvested": raw["harvested"], "classes": classes}
-    return _CACHE["ref"]
