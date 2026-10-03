@@ -582,6 +582,7 @@ ol.narr .ran{display:inline;margin:0}
   .rtable .lane.lane2{grid-template-columns:minmax(200px,1.2fr) 3fr}
   .rtable .lane.lane3{grid-template-columns:minmax(150px,.45fr) minmax(230px,1fr) 3fr}
   .rtable .lane.lane3e{grid-template-columns:minmax(150px,.45fr) minmax(110px,.6fr) 3fr}
+  .rtable .lane.lane4{grid-template-columns:minmax(150px,.6fr) minmax(200px,1fr) minmax(230px,1.2fr) 1.6fr}
 }
 /* the letters of an extension, highlighted in a name: bold, accent and underlined, so colour is never the only cue */
 mark.ext{background:none;color:var(--accent);font-weight:700;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
@@ -594,5 +595,8 @@ pre.rx{margin:10px 0 0;max-width:none}
 .rx-src{display:block;margin-top:4px;font-family:"IBM Plex Mono",monospace;font-size:var(--label);color:var(--ink-2)}
 
 /* a link that leaves the site: an arrow in the link's own colour after its words, drawn by a mask (no image, no glyph the font may lack) */
-.ext{display:inline-block;width:.8em;height:.8em;margin-left:.3em;vertical-align:-.05em;background:currentColor;-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M7 17L17 7M9 7h8v8' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M7 17L17 7M9 7h8v8' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat}
+.xarr{display:inline-block;width:.8em;height:.8em;margin-left:.3em;vertical-align:-.05em;background:currentColor;-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M7 17L17 7M9 7h8v8' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M7 17L17 7M9 7h8v8' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat}
 .sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* an address that jumps to a heading must not hide it under the pinned header */
+[id]{scroll-margin-top:calc(var(--pin,120px) + 12px)}

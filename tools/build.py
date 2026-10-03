@@ -360,7 +360,7 @@ COUNTS = {}                                         # figures read from the data
 
 def inject(body_html, lang, idx, groups, rel="../"):
     fmt = (lambda n: f"{n:,}") if lang == "en" else (lambda n: f"{n:,}".replace(",", " "))
-    body_html = body_html.replace("<!--METHODS-->", fmt(COUNTS["methods"])).replace("<!--ENTRIES-->", fmt(COUNTS["entries"]))
+    body_html = body_html.replace("<!--METHODS-->", fmt(COUNTS["methods"])).replace("<!--CLASSES-->", fmt(COUNTS["classes"])).replace("<!--ENTRIES-->", fmt(COUNTS["entries"]))
     body_html = body_html.replace("<!--AREAS-->", fmap_html(lang, idx, groups, "atlas/") + tiles_html(lang, idx, groups, "atlas/", rel))
     body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
     body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
@@ -701,7 +701,8 @@ def main():
     external.install(ROOT)                 # every page is marked as it is written
     idx, groups = load_atlas()
     ENTRIES = load_entries(ROOT)
-    COUNTS["methods"] = sum(len(c["own"]) for c in qforms.reference(ROOT)["classes"])    # a method is listed once: its extensions are folded into it
+    COUNTS["methods"] = sum(len(c["own"]) for c in qforms.reference(ROOT)["classes"])    # a method is listed once: its extensions and its other names are folded into it
+    COUNTS["classes"] = len(qforms.reference(ROOT)["classes"])        # one class under all its names
     COUNTS["entries"] = len(ENTRIES)
     npages, PUBLISHED = build_narration_pages({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "md": md})
     print(f"narrations: {npages} pages, {len(PUBLISHED)} narrations run and published")

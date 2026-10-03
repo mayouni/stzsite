@@ -67,17 +67,35 @@ def load(ROOT):
     f = ROOT / "data" / "row-examples.json"
     d = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {"examples": {}, "classes": {}, "ran": ""}
     d["plain"] = qforms.get(ROOT).plain_anywhere           # for the Q rule: a ...Q() call whose value nothing uses is not an example
+    d["also"] = {(c["name"], k): v for c in qforms.reference(ROOT)["classes"] for k, v in c["also_written"].items()}   # a method's other names
+    d["detours"] = qforms.names(ROOT).get("detours", {})                                                              # spellings the host language forces
     return d
 
 def out_lines(out, n=4):
     ls = [l.rstrip() for l in str(out).split(NL) if l.strip() != ""]
     return ls[:n] + (["..."] if len(ls) > n else [])
 
-def library_example(exs, name=None):
+NOTE = {"en": "written {w} in the library today: the host language already holds {n}, and Haro removes the detour",
+        "fr": "écrit {w} dans la bibliothèque aujourd'hui : le langage hôte tient déjà {n}, et Haro supprime le détour"}
+
+def natural(code, detours):
+    """The author, 2026-10-03: a spelling the host language forces (IsAChar for IsChar) is not the norm in examples, since Haro will
+    not need it. An example shows the natural name; what it ran as is said under it. Returns (code, [the names it ran as])."""
+    used = []
+    for w, n in (detours or {}).items():
+        rx = re.compile(r"\b" + re.escape(w) + r"((?:QQQ|QQ|Q|CS)?)\b")
+        if rx.search(code):
+            code = rx.sub(lambda m: n + m.group(1), code); used.append(w)
+    return code, used
+
+def detour_note(used, detours, lang):
+    return "; ".join(NOTE[lang].format(w=w + "()", n=detours[w] + "()") for w in used)
+
+def library_example(exs, name=None, also=()):
     """the shortest example of the library's tests that fits a row: a few lines of code, a short output.
     With a name, only an example that calls that very method (the name, then an open parenthesis) counts:
-    an example of FindW is not the example of Find"""
-    call = re.compile(r"\b" + re.escape(name) + r"\s*\(", re.I) if name else None
+    an example of FindW is not the example of Find. A call of one of its other names (also) counts too"""
+    call = re.compile(r"\b(?:" + "|".join(re.escape(n) for n in (name, *also)) + r")\s*\(", re.I) if name else None
     best = None
     for e in exs or []:
         code = e["code"].strip(NL)
@@ -90,9 +108,11 @@ def library_example(exs, name=None):
 
 def pick(cls, name, exs, data):
     """(code, output, source) of the example for one row, or None"""
-    e = library_example(exs, name)
+    also = data.get("also", {}).get((cls, name.lower()), ())          # the method's other names: an example of one is an example of it
+    e = library_example(exs, name, also)
     if e: return e["code"].strip(NL), e["out"], "lib"
-    c = data["examples"].get(cls, {}).get(name)
+    mine = data["examples"].get(cls, {})
+    c = mine.get(name) or next((mine[o] for o in also if o in mine), None)
     if c:
         code = (reflow(c["setup"]) + NL + c["code"]) if c.get("setup") else c["code"]
         if not (WORD.search(code) or WORD.search(c["out"]) or qforms.unchained(code, data.get("plain", ()))): return code, c["out"], "new"
@@ -105,15 +125,17 @@ def example_html(cls, name, exs, data, lang):
     if not ex: return ""
     code, out, src = ex
     if src == "new" and data["classes"].get(cls, {}).get("receiver", "x") == "": src = "named"      # a sentence class: composed from the name
+    code, used = natural(code, data.get("detours"))
     body = esc(code) + NL + NL.join("#--&gt; " + esc(l) for l in out_lines(out))
-    return f'<pre class="rx">{body}</pre><span class="rx-src">{T[lang][src]}</span>'
+    note = (" · " + esc(detour_note(used, data["detours"], lang))) if used else ""
+    return f'<pre class="rx">{body}</pre><span class="rx-src">{T[lang][src]}{note}</span>'
 
 def class_counts(c, entries, data):
     """how many of a class's listed methods have a library example, a composed one, or none"""
     nl = nc = 0
     for m in c["own"]:
         exs = entries.get((c["name"], m[0]))
-        if library_example(exs, m[0]): nl += 1
+        if library_example(exs, m[0], data.get("also", {}).get((c["name"], m[0].lower()), ())): nl += 1
         elif pick(c["name"], m[0], None, data): nc += 1
         elif library_example(exs): nl += 1
     return nl, nc, len(c["own"]) - nl - nc
@@ -129,9 +151,10 @@ def legend(c, entries, data, lang):
     ran = f' {t["ran"].format(d=esc(day))}' if day and nc else ""
     return f'<p class="proof">{text}{ran}</p>'
 
-def _html(code, out, src, lang, on=None):
+def _html(code, out, src, lang, on=None, detours=None):
+    code, used = natural(code, detours)
     body = esc(code) + NL + NL.join("#--&gt; " + esc(l) for l in out_lines(out))
-    label = T[lang][src] + (f" · {on}" if on else "")
+    label = T[lang][src] + (f" · {on}" if on else "") + ((" · " + detour_note(used, detours, lang)) if used else "")
     return f'<pre class="rx">{body}</pre><span class="rx-src">{label}</span>'
 
 def example_for_method(name, classes, entries, data, lang):
@@ -145,7 +168,7 @@ def example_for_method(name, classes, entries, data, lang):
         if best is None or key < best[0]: best = (key, cl, ex)
     if not best: return ""
     _, cl, (code, out, src) = best
-    return _html(code, out, src, lang, on=cl)
+    return _html(code, out, src, lang, on=cl, detours=data.get("detours"))
 
 def example_of_class(c, entries, data, lang):
     """the class index gives each class one example: of its methods, the one whose code is shortest, the library's own first"""
@@ -157,4 +180,4 @@ def example_of_class(c, entries, data, lang):
         if best is None or key < best[0]: best = (key, ex)
     if not best: return ""
     code, out, src = best[1]
-    return _html(code, out, src, lang)
+    return _html(code, out, src, lang, detours=data.get("detours"))

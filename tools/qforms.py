@@ -94,6 +94,7 @@ QFORM = re.compile(r"^(.+?)(Q{1,3})$")
 
 class QForms:
     def __init__(self, ROOT):
+        self.root = ROOT
         ref = json.loads((ROOT / "data" / "reference.json").read_text(encoding="utf-8"))
         self.by = {c["name"]: c for c in ref["classes"]}
         self._rec, self._split = {}, {}
@@ -146,8 +147,10 @@ class QForms:
         return r[0] if r else None
 
     def fold(self, cls, name):
+        """the method a name is listed under: its extensions are folded into it, and so are its other names (the main name)"""
         r = self.split(cls, name)
-        return r[0] if r else name
+        r = r[0] if r else name
+        return main_of(self.root).get((class_root(self.root, cls), r.lower()), r)
 
     def is_form(self, cls, name):
         return self.split(cls, name) is not None
@@ -177,13 +180,25 @@ def clean_descriptions(own, banner=8):
         out.append([m[0], m[1], "" if bad else m[2]])
     return out, sections
 
-def reference(ROOT):
+def names(ROOT):
+    """data/names.json (tools/aliases.py): the classes and methods that are only other names, and the detours; {} before it is built"""
+    if "names" not in _CACHE:
+        f = ROOT / "data" / "names.json"
+        _CACHE["names"] = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+    return _CACHE["names"]
+
+def reference(ROOT, names=True):
     """data/reference.json with every extension folded into its method. Each class lists a method once ('own'),
     and says which extensions it has:
       c["variants"][root.lower()] = [(name, [extensions]), ...]   every form of the method written with extensions
       c["extra"] = [[name, aka, description, owner]]               a method of an ancestor that this class gives extensions to
-    The counts of inherited methods are those of the methods listed."""
-    if "ref" in _CACHE: return _CACHE["ref"]
+    The counts of inherited methods are those of the methods listed.
+    With names=True (the default) a name that is only another name of a method, or of a class, is folded under its root too
+    (tools/aliases.py decides): c["also_written"][root.lower()] = [other names of the method], c["also_named"] = [other names of the
+    class], and ref["class_aliases"] = {other name: class}. names=False is the reference before that, for tools/aliases.py itself."""
+    key = "ref" if names else "ref_raw"
+    if key in _CACHE: return _CACHE[key]
+    NM = globals()["names"](ROOT) if names else {}
     raw = json.loads((ROOT / "data" / "reference.json").read_text(encoding="utf-8"))
     Q = get(ROOT)
     classes = []
@@ -205,16 +220,55 @@ def reference(ROOT):
                 rec = Q.records(c["name"]).get(root.lower())
                 if rec: extra[root.lower()] = rec
         d["extra"] = list(extra.values())
-        d["folded"] = len(c["own"]) - len(d["own"])
+        d["also_written"] = {}
+        table = NM.get("methods", {}).get(c["name"], {}) if NM else {}
+        if table:                                         # a method that only forwards to another is that method under another name
+            held = {m[0].lower() for m in d["own"]}
+            kept, spoken = [], {}
+            for m in d["own"]:
+                r = table.get(m[0].lower())
+                if r and r.lower() in held and r.lower() != m[0].lower():
+                    if m[2] and not m[2].lower().startswith("same as"): spoken.setdefault(r.lower(), m[2])    # an other name that says what the method does
+                    d["also_written"].setdefault(r.lower(), []).append(m[0])
+                    vs = d["variants"].pop(m[0].lower(), [])
+                    if vs: d["variants"].setdefault(r.lower(), []).extend(vs)
+                else: kept.append(m)
+            d["own"] = [[m[0], m[1], spoken[m[0].lower()]] if not m[2] and m[0].lower() in spoken else m for m in kept]      # the main name keeps what its other names say
+            for k, pref in (NM.get("main", {}).get(c["name"], {}) if NM else {}).items():
+                names_ = d["also_written"].get(k.lower(), [])
+                if pref in names_:                        # the sentence the author wants as the main reference: it takes the row, the root becomes an alternative
+                    d["own"] = [[pref] + m[1:] if m[0].lower() == k.lower() else m for m in d["own"]]
+                    d["also_written"][pref.lower()] = [k] + [n for n in names_ if n != pref]
+                    del d["also_written"][k.lower()]
+                    d["variants"][pref.lower()] = d["variants"].pop(k.lower(), []) + d["variants"].get(pref.lower(), [])
+            for k in d["also_written"]: d["also_written"][k].sort(key=lambda n: (len(n), n))
+        d["folded"] = len(c["own"]) - len(d["own"]) - sum(len(v) for v in d["also_written"].values())
         d["sections"] = sections
         d["raw_names"] = names
         classes.append(d)
     by = {c["name"]: c for c in classes}
+    aliases = {}
+    for a_, r_ in (NM.get("classes", {}) if NM else {}).items():      # a class that is only another name of a class is that class
+        if a_ in by and r_ in by and a_ != r_:
+            aliases[a_] = r_; by[r_].setdefault("also_named", []).append(a_)
+    for c in by.values():
+        if "also_named" in c: c["also_named"].sort(key=lambda n: (len(n), n))
+    for a_, r_ in aliases.items():
+        if by[a_]["own"] and by[a_]["name"] != by[r_]["name"]:
+            have = {m[0].lower() for m in by[r_]["own"]}
+            for m in by[a_]["own"]:
+                if m[0].lower() not in have and m[0].lower() != "init": by[r_]["own"].append(m); have.add(m[0].lower())
+            for k, vs in by[a_]["variants"].items(): by[r_]["variants"].setdefault(k, []).extend(v for v in vs if v not in by[r_]["variants"].get(k, []))
+            for k, v in by[a_]["also_written"].items(): by[r_]["also_written"].setdefault(k, []).extend(v)
+            by[r_]["sections"].update(by[a_]["sections"])
+    classes = [c for c in classes if c["name"] not in aliases]
     for d in classes:
         inh = {}
         for k, v in d["inherited"].items():
-            n = sum(1 for m in by[k]["own"] if m[0].lower() not in d["raw_names"]) if k in by else v
-            if n: inh[k] = n
+            k2 = aliases.get(k, k)
+            if k2 == d["name"]: continue
+            n = sum(1 for m in by[k2]["own"] if m[0].lower() not in d["raw_names"]) if k2 in by else v
+            if n: inh[k2] = max(n, inh.get(k2, 0))
         d["inherited"] = inh
     # a method's variants also come from the classes it inherits: collect them for the roots a class lists
     for d in classes:
@@ -225,8 +279,24 @@ def reference(ROOT):
                 have = {v[0] for v in d["variants"][root]}
                 d["variants"][root] += [v for v in vs if v[0] not in have]
     for d in classes: del d["raw_names"]
-    _CACHE["ref"] = {"harvested": raw["harvested"], "classes": classes}
-    return _CACHE["ref"]
+    _CACHE[key] = {"harvested": raw["harvested"], "classes": classes, "class_aliases": aliases}
+    return _CACHE[key]
+
+def main_of(ROOT):
+    """{(class, another name lower): the name the method is listed under}: a method listed once, under its main name"""
+    if "main_of" not in _CACHE:
+        out = {}
+        for c in reference(ROOT)["classes"]:
+            for root_l, others in c["also_written"].items():
+                main = next((m[0] for m in c["own"] if m[0].lower() == root_l), None)
+                if main:
+                    for o in others: out[(c["name"], o.lower())] = main
+        _CACHE["main_of"] = out
+    return _CACHE["main_of"]
+
+def class_root(ROOT, cls):
+    """the class a name belongs to: one class under all its names"""
+    return reference(ROOT).get("class_aliases", {}).get(cls, cls)
 
 def forms_of(variants):
     """{extension: [(name, [extensions as written]), ...]} for the variants of one method, the simplest names first"""

@@ -1112,3 +1112,34 @@ next:
   - me:      wave 2, one name per thing: tools/aliases.py reads the sources, the build folds classes and methods by it
   - author:  open Learn > Reference > String > stzString: the path at the top, one line about extensions, the arrow on the source link
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-04 00:09
+
+subject:   wave 2 of the site plan, one name per thing (built, committed locally; interrupted by a power cut in Niamey before the push)
+
+why:       the author, "go ahead with wave 2"; the author then asked to prepare for a cut of the session
+
+did:
+  - wrote tools/aliases.py: reads the library's sources once into data/names.json: 43 class names that are other names of a class
+    (stz2DList, stzList2D, stzLists... fold under stzListOfLists, the author's own example), 4,026 method names that only forward to
+    another (3,699 folded under a main name in the listed rows), 11 detours (IsAString for IsString...)
+  - folded in tools/qforms.py: the reference lists 575 classes (was 618) and 18,561 methods (was 22,272); each class says "also named",
+    each method "also written", the old class addresses and the entry addresses of other names lead to the main one; HasMoreCharsThan is
+    the main name of HasMoreChars, with the forms it accepts (HasMoreChars(3), (:Then = 3))
+  - added the Names section to the reference index (four kinds: other name of a class, of a method, an extension, a detour)
+  - examples show the natural name (IsChar) and say what they ran as (IsAChar); the agents' index carries also_named and also_written
+  - FOUND AND FIXED: wave 1 gave the external-link arrow the class "ext", which the highlight of the extension letters in the
+    catalogue already used: the highlighted letters collapsed into a tiny arrow on the live site; the arrow is class "xarr" now
+  - 0 failures on the example blocks, 0 dangling among 506,863 local links
+
+state:
+  working tree: built and checked, committed locally; NOT YET PUSHED, NOT YET DEPLOYED
+  live site:    still wave 1 (8fb789ac), WITH the catalogue highlight regression until this is pushed
+  release-1-pass-27: the commit carrying this entry
+
+next:
+  - me:      push, watch the deploy, verify the live catalogue; file memo, CONCLUSIONS, mailbox CLOSE and cost line for waves 1-2 (wave 1 is filed; wave 2 is not)
+  - me:      then wave 3, search (doc/SITE-PLAN-2026-10-03.md)
+  - author:  nothing; the plan, the journal and this entry hold the state
+```

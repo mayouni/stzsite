@@ -28,7 +28,7 @@ def mark(page):
         if SELF in url or "target=" in attrs: return m.group(0)
         attrs = attrs + ' target="_blank" rel="noopener noreferrer"'
         if BLOCK.search(inner): return f"<a{attrs}>{inner}</a>"
-        return f'<a{attrs}>{inner}<span class="ext" aria-hidden="true"></span><span class="sr">{note}</span></a>'
+        return f'<a{attrs}>{inner}<span class="xarr" aria-hidden="true"></span><span class="sr">{note}</span></a>'
     return A.sub(one, page)
 
 STATS = {"pages": 0, "links": 0}

@@ -10,7 +10,7 @@ output kept every promise their file wrote are shown.
     fr|en/reference/<class>/<method>.html
 """
 import json, re, html, collections
-import level2, qforms, extshow
+import level2, qforms, extshow, rowex
 
 def esc(s): return html.escape(str(s), quote=True)
 RING = re.compile(r"\b(?:Ring|RING)\b")
@@ -22,19 +22,21 @@ T = {
   "fr": {"kicker": "Référence", "forms": "Les formes de ce verbe", "basic": "Exemples de base", "scope": "Portée", "issues": "Points d'attention",
          "out": "Sortie", "ran": "exécuté le {d} dans la bibliothèque au commit 0e72e2e2c ; tiré de", "see": "Voir aussi",
          "class": "La classe", "guide": "Le guide du domaine", "also": "Les autres méthodes de ces exemples",
-         "no_desc": "Pas encore d'explication dans la source :", "aka": "aussi", "howto": "Comment faire",
+         "no_desc": "Pas encore d'explication dans la source :", "aka": "aussi", "written": "aussi écrite", "howto": "Comment faire",
          "proof": "Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.",
          "more": "et {n} autres dans les tests"},
   "en": {"kicker": "Reference", "forms": "The forms of this verb", "basic": "Basic examples", "scope": "Scope", "issues": "Possible issues",
          "out": "Output", "ran": "run on {d} inside the library at commit 0e72e2e2c; taken from", "see": "See also",
          "class": "The class", "guide": "The area's guide", "also": "The other methods in these examples",
-         "no_desc": "No explanation in the source yet:", "aka": "also", "howto": "How-to",
+         "no_desc": "No explanation in the source yet:", "aka": "also", "written": "also written", "howto": "How-to",
          "proof": "Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.",
          "more": "and {n} more in the tests"},
 }
 GH = "https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/"
 
 def slug(name): return re.sub(r"[^a-z0-9@_-]", "_", name.lower())
+
+REDIRECTS = set()       # (class, another name, main name): the entry address of an other name goes to the main name's entry
 
 def load_entries(ROOT):
     f = ROOT / "data" / "examples.json"
@@ -49,8 +51,12 @@ def load_entries(ROOT):
             # a ...Q() call whose result nothing uses is not right (the plain form does the job): left out too
             if qforms.unchained(ex["code"], Q.plain_anywhere):
                 continue
-            # a method is listed once: its ...Q() form is the same method, so an example of one is an example of the other
+            # a method is listed once: its ...Q() form is the same method, so an example of one is an example of the other;
+            # so is its other name (Length is NumberOfChars): the entry is the main name's
             for key in {(cls, Q.fold(cls, meth)) for cls, meth in ex["methods"]}:
+                main = qforms.main_of(ROOT).get((key[0], key[1].lower()))
+                if main:
+                    REDIRECTS.add((key[0], key[1], main)); key = (key[0], main)
                 entries[key].append(ex)
     return entries
 
@@ -59,14 +65,19 @@ def entry_href(cls, meth, rel_to_reference):
 
 def split_camel(name): return re.sub(r"(?<=[a-z0-9])(?=[A-Z])", " ", name).lower()
 
+DETOURS = {}          # spellings the host language forces, set by build_methods from data/names.json
+
 def run_block(ex, t):
-    return (f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(ex["code"])}</pre></div>'
+    code, used = rowex.natural(ex["code"], DETOURS)               # the natural name is shown; what it ran as is said under it
+    note = f' · {esc(rowex.detour_note(used, DETOURS, ("fr" if t["out"] == "Sortie" else "en")))}' if used else ""
+    return (f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(code)}</pre></div>'
             f'<div class="out"><div class="lbl">{t["out"]}</div><pre>{esc(ex["out"])}</pre></div></div>'
-            f'<p class="ran">{t["ran"].format(d=esc(ex["ran"]))} <a href="{GH}{esc(ex["source"])}">{esc(ex["source"].split("/")[-1])}</a></p>')
+            f'<p class="ran">{t["ran"].format(d=esc(ex["ran"]))} <a href="{GH}{esc(ex["source"])}">{esc(ex["source"].split("/")[-1])}</a>{note}</p>')
 
 def build_methods(ctx):
     ROOT, head, header, footer, entries = (ctx[k] for k in ("ROOT", "head", "header", "footer", "entries"))
     howtos = ctx.get("howtos", {})
+    DETOURS.update(qforms.names(ROOT).get("detours", {}))
     from build_howto import intent as howto_intent, page_name as howto_page
     ref = qforms.reference(ROOT)
     Q = qforms.get(ROOT)
@@ -119,6 +130,8 @@ def build_methods(ctx):
                    + "</ul>")
             lede = prose(desc) if desc else f'{t["no_desc"]} <span class="mono">{esc(split_camel(meth))}</span>'
             aka_html = f'<p class="proof">{t["aka"]}: {prose(aka)}</p>' if aka else ""
+            written = c["also_written"].get(meth.lower(), [])        # its other names: listed once, here
+            if written: aka_html += f'<p class="proof">{t["written"]}: <span class="mono">{esc(" · ".join(written))}</span></p>'
             rel = "../../../"
             other = "en" if lang == "fr" else "fr"
             page = head(lang, f'{cls}.{meth} · {t["kicker"]} · Softanza', f'{cls}.{meth}: {desc or split_camel(meth)}'[:300], rel)
@@ -147,4 +160,12 @@ def build_methods(ctx):
             out = ROOT / lang / "reference" / cls.lower()
             out.mkdir(parents=True, exist_ok=True)
             (out / f"{slug(meth)}.html").write_text(page, encoding="utf-8"); pages += 1
+        for cls, alias, main in sorted(REDIRECTS):               # the entry address of another name goes to the main name's entry
+            if (cls, main) not in entries: continue
+            d = ROOT / lang / "reference" / cls.lower(); d.mkdir(parents=True, exist_ok=True)
+            href = f"{slug(main)}.html"
+            (d / f"{slug(alias)}.html").write_text(
+                f'<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><title>{esc(cls)}.{esc(alias)} · Softanza</title>'
+                f'<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url={href}"><link rel="canonical" href="{href}"></head>'
+                f'<body><p><a href="{href}">{esc(alias)} : {esc(main)}</a></p></body></html>', encoding="utf-8")
     return pages

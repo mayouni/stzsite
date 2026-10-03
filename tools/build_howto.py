@@ -11,7 +11,7 @@ decided in doc/DOCUMENTATION-DESIGN.md (D4).
     fr|en/howto.html             the list, by kind
     fr|en/howto/<kind>-<slug>.html   one recipe
 """
-import json, re, html
+import json, qforms, re, html
 import level2, qforms
 
 def esc(s): return html.escape(str(s), quote=True)
@@ -102,7 +102,7 @@ def fold_methods(Q, methods):
     for m in methods:
         if "." in m:
             cls, meth = m.split(".", 1)
-            m = f"{cls}.{Q.fold(cls, meth)}"
+            m = f"{qforms.class_root(Q.root, cls)}.{Q.fold(cls, meth)}"
         if m not in out: out.append(m)
     return out
 

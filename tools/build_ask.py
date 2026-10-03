@@ -140,6 +140,7 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
         for name, aka, desc in c["own"]:
             m = {"name": name, "description": prose(desc)}
             if aka: m["also"] = prose(aka)
+            if c["also_written"].get(name.lower()): m["also_written"] = c["also_written"][name.lower()]      # its other names: listed once, here
             if (c["name"], name) in entries: m["entry"] = f'{SITE}en/reference/{c["name"].lower()}/{mslug(name)}.html'
             vs = c["variants"].get(name.lower(), [])
             have = qforms.extensions_of(vs)
@@ -148,7 +149,7 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
             ex = rowex.pick(c["name"], name, entries.get((c["name"], name)), rdata)      # an example on every method that has one
             if ex: m["example"] = {"code": ex[0], "output": ex[1].strip(), "from": "library test" if ex[2] == "lib" else "composed from the signature, run in the library"}
             ms.append(m)
-        classes.append({"name": c["name"], "area": c["area"], "page": f'{SITE}en/reference/{c["name"].lower()}.html',
+        classes.append({"name": c["name"], **({"also_named": c["also_named"]} if c.get("also_named") else {}), "area": c["area"], "page": f'{SITE}en/reference/{c["name"].lower()}.html',
                         "source": f'{GH}base/{c["file"]}', "inherits": c["inherited"], "methods": ms})
     recipes = []
     for r in howto.values():
@@ -164,7 +165,7 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
             for c in proof["chapters"]] if proof else []
     areas = [{"slug": g["slug"], "title": g["en"], "page": f'{SITE}en/atlas/{g["slug"]}.html', "guide": f'{SITE}en/guide/{g["slug"]}.html'} for g in groups]
     index = {"site": SITE, "library": "https://github.com/mayouni/stzlib", "commit": "0e72e2e2c",
-             "naming": "A method name that ends in an extension (Q, CS, XT, Z, ZZ, U, IB, W...) is not listed apart: it is the same method written with one more word. Each method lists the extensions that exist for it and the names of its forms.",
+             "naming": "A name is listed once. A method name that ends in an extension (Q, CS, XT, Z, ZZ, U, IB, W...) is the same method written with one more word: each method lists the extensions that exist for it and the names of its forms. A method that only forwards to another is that method under another name (also_written on the method), and a class with nothing in it but its parent is that class under another name (also_named): ask for the main name.",
              "extensions": [{"code": e[0], "adds": e[1], "documented_in": GH + e[3]} for e in qforms.EXTENSIONS],
              "note": "Generated with the Softanza site from the library at commit 0e72e2e2c. Descriptions are the library's own doc-comments. Every recipe's output was produced by running it inside the library.",
              "ask": {"calls": ["Ask(question)", "HowTo(intent)", "ExplainMethod(name)"], "page": f"{SITE}en/ask.html",
