@@ -1,0 +1,6663 @@
+{
+ "ran": "2026-10-03 00:48",
+ "seconds": 251.5,
+ "course": "elementary-introduction",
+ "chapters": [
+  {
+   "id": "find-then-apply",
+   "n": 1,
+   "title": {
+    "en": "Find, then apply",
+    "fr": "Trouver, puis agir",
+    "ar": "ابحث، ثم طبّق",
+    "ha": "Nemo, sannan ka aiwatar"
+   },
+   "editions": {
+    "en": {
+     "cells": 8,
+     "promises": 7,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    },
+    "fr": {
+     "cells": 8,
+     "promises": 7,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    },
+    "ar": {
+     "cells": 8,
+     "promises": 7,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    },
+    "ha": {
+     "cells": 8,
+     "promises": 7,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    }
+   },
+   "drift": [],
+   "cells": [
+    {
+     "n": 1,
+     "code": "o1 = new stzList([ \"tea\", \"rice\", \"tea\", \"fish\", \"rice\", \"tea\" ])\n? o1.NumberOfItems()\n#--> 6",
+     "promise": "6",
+     "out": "6",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "1. Select the object",
+      "fr": "1. Choisir l'objet",
+      "ar": "1. اختر الكائن",
+      "ha": "1. Zaɓi abin"
+     },
+     "lines": {
+      "en": [
+       13,
+       17
+      ],
+      "fr": [
+       16,
+       20
+      ],
+      "ar": [
+       15,
+       19
+      ],
+      "ha": [
+       15,
+       19
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 2,
+     "code": "? o1.ContainsDuplicates()\n#--> TRUE",
+     "promise": "TRUE",
+     "out": "1",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "2. Ask the containment question",
+      "fr": "2. Poser la question de la présence",
+      "ar": "2. اطرح سؤال الاحتواء",
+      "ha": "2. Yi tambayar \"ko yana ɗauke\""
+     },
+     "lines": {
+      "en": [
+       23,
+       26
+      ],
+      "fr": [
+       26,
+       29
+      ],
+      "ar": [
+       25,
+       28
+      ],
+      "ha": [
+       25,
+       28
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 3,
+     "code": "? o1.NumberOfDuplicates()\n#--> 3",
+     "promise": "3",
+     "out": "3",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "3. Ask the count question",
+      "fr": "3. Poser la question du nombre",
+      "ar": "3. اطرح سؤال العدد",
+      "ha": "3. Yi tambayar \"guda nawa\""
+     },
+     "lines": {
+      "en": [
+       30,
+       33
+      ],
+      "fr": [
+       33,
+       36
+      ],
+      "ar": [
+       32,
+       35
+      ],
+      "ha": [
+       32,
+       35
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 4,
+     "code": "? @@( o1.FindDuplicates() )\n#--> [ 3, 5, 6 ]",
+     "promise": "[ 3, 5, 6 ]",
+     "out": "[ 3, 5, 6 ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "4. Ask for the positions",
+      "fr": "4. Demander les positions",
+      "ar": "4. اسأل عن المواضع",
+      "ha": "4. Tambayi wurare"
+     },
+     "lines": {
+      "en": [
+       37,
+       40
+      ],
+      "fr": [
+       40,
+       43
+      ],
+      "ar": [
+       39,
+       42
+      ],
+      "ha": [
+       39,
+       42
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 5,
+     "code": "o1.RemoveItemsAtPositions( o1.FindDuplicates() )\n? @@( o1.Content() )\n#--> [ \"tea\", \"rice\", \"fish\" ]",
+     "promise": "[ \"tea\", \"rice\", \"fish\" ]",
+     "out": "[ \"tea\", \"rice\", \"fish\" ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "5. Act on the positions",
+      "fr": "5. Agir sur les positions",
+      "ar": "5. تصرّف في المواضع",
+      "ha": "5. Aiwatar a wuraren"
+     },
+     "lines": {
+      "en": [
+       46,
+       50
+      ],
+      "fr": [
+       49,
+       53
+      ],
+      "ar": [
+       48,
+       52
+      ],
+      "ha": [
+       48,
+       52
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 6,
+     "code": "? @@( StzListQ([ \"tea\", \"rice\", \"tea\" ]).DuplicatesRemoved() )\n#--> [ \"tea\", \"rice\" ]",
+     "promise": "[ \"tea\", \"rice\" ]",
+     "out": "[ \"tea\", \"rice\" ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "5. Act on the positions",
+      "fr": "5. Agir sur les positions",
+      "ar": "5. تصرّف في المواضع",
+      "ha": "5. Aiwatar a wuraren"
+     },
+     "lines": {
+      "en": [
+       54,
+       57
+      ],
+      "fr": [
+       57,
+       60
+      ],
+      "ar": [
+       56,
+       59
+      ],
+      "ha": [
+       56,
+       59
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 7,
+     "code": "o2 = new stzList( EduWorldObjects(\"requested\") )\n? EduWorldName()\n? o2.ContainsDuplicates()\n? o2.NumberOfDuplicates()\n? @@( o2.DuplicatesRemoved() )",
+     "promise": "",
+     "out": "bella-cucina (restaurant)\n1\n3\n[ \"margherita\", \"tiramisu\", \"lasagna\" ]",
+     "error": "",
+     "ran": true,
+     "kept": -1,
+     "heading": {
+      "en": "6. The same questions, on your workplace",
+      "fr": "6. Les mêmes questions, sur votre lieu de travail",
+      "ar": "6. الأسئلة نفسها، على مكان عملك",
+      "ha": "6. Tambayoyi iri ɗaya, a wurin aikinka"
+     },
+     "lines": {
+      "en": [
+       64,
+       70
+      ],
+      "fr": [
+       67,
+       73
+      ],
+      "ar": [
+       66,
+       72
+      ],
+      "ha": [
+       66,
+       72
+      ]
+     },
+     "kept_in": {
+      "en": -1,
+      "fr": -1,
+      "ar": -1,
+      "ha": -1
+     }
+    },
+    {
+     "n": 8,
+     "code": "? @@( Naturally(\"Create a list with [ 5, 3, 5, 1 ] and remove its duplicates\").Result() )\n#--> [ 5, 3, 1 ]",
+     "promise": "[ 5, 3, 1 ]",
+     "out": "[ 5, 3, 1 ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "7. Say it in your own words",
+      "fr": "7. Le dire avec vos propres mots",
+      "ar": "7. قلها بكلماتك",
+      "ha": "7. Faɗe shi da kalmominka"
+     },
+     "lines": {
+      "en": [
+       76,
+       79
+      ],
+      "fr": [
+       79,
+       82
+      ],
+      "ar": [
+       78,
+       81
+      ],
+      "ha": [
+       78,
+       81
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ex-01-01",
+     "wrong": 3,
+     "wrong_refused": 3,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-prints-the-orders.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-sorts-first.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "03-calls-a-missing-method.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-the-shortcut.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-find-then-apply.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 1.1 · The kitchen's list",
+      "fr": "Exercice 1.1 · La liste de la cuisine",
+      "ar": "التمرين 1.1 · قائمة المطبخ",
+      "ha": "Aiki na 1.1 · Jerin kicin"
+     }
+    }
+   ],
+   "file": {
+    "en": "base/education/program/courses/elementary-introduction/chapters/01-find-then-apply.en.md",
+    "fr": "base/education/program/courses/elementary-introduction/chapters/01-find-then-apply.fr.md",
+    "ar": "base/education/program/courses/elementary-introduction/chapters/01-find-then-apply.ar.md",
+    "ha": "base/education/program/courses/elementary-introduction/chapters/01-find-then-apply.ha.md"
+   }
+  },
+  {
+   "id": "a-first-sentence",
+   "n": 2,
+   "title": {
+    "en": "A first sentence",
+    "fr": "Une première phrase",
+    "ar": "جملة أولى",
+    "ha": "Jimla ta farko"
+   },
+   "editions": {
+    "en": {
+     "cells": 5,
+     "promises": 6,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      }
+     ]
+    },
+    "fr": {
+     "cells": 5,
+     "promises": 6,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      }
+     ]
+    },
+    "ar": {
+     "cells": 5,
+     "promises": 6,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      }
+     ]
+    },
+    "ha": {
+     "cells": 5,
+     "promises": 6,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      }
+     ]
+    }
+   },
+   "drift": [],
+   "cells": [
+    {
+     "n": 1,
+     "code": "o1 = new stzString(\"the bread was cold and the tea was cold\")\n? o1.NumberOfWords()\n#--> 9",
+     "promise": "9",
+     "out": "9",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "2. Select the object",
+      "fr": "2. Choisir l'objet",
+      "ar": "2. اختر الكائن",
+      "ha": "2. Zaɓi abin"
+     },
+     "lines": {
+      "en": [
+       18,
+       22
+      ],
+      "fr": [
+       21,
+       25
+      ],
+      "ar": [
+       19,
+       23
+      ],
+      "ha": [
+       20,
+       24
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 2,
+     "code": "? @@( o1.Words() )\n#--> [ \"the\", \"bread\", \"was\", \"cold\", \"and\", \"the\", \"tea\", \"was\", \"cold\" ]",
+     "promise": "[ \"the\", \"bread\", \"was\", \"cold\", \"and\", \"the\", \"tea\", \"was\", \"cold\" ]",
+     "out": "[ \"the\", \"bread\", \"was\", \"cold\", \"and\", \"the\", \"tea\", \"was\", \"cold\" ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "3. Ask the string for its words",
+      "fr": "3. Demander ses mots à la chaîne",
+      "ar": "3. اسأل النص عن كلماته",
+      "ha": "3. Tambayi rubutun kalmominsa"
+     },
+     "lines": {
+      "en": [
+       26,
+       29
+      ],
+      "fr": [
+       29,
+       32
+      ],
+      "ar": [
+       27,
+       30
+      ],
+      "ha": [
+       28,
+       31
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 3,
+     "code": "oW = new stzList( o1.Words() )\n? oW.ContainsDuplicates()\n#--> TRUE\n? oW.NumberOfDuplicates()\n#--> 3",
+     "promise": "TRUE\n3",
+     "out": "1\n3",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "4. The keyword \"repeat\" belongs to a list",
+      "fr": "4. Le mot-clé « répéter » appartient à une liste",
+      "ar": "4. الكلمة المفتاحية «تكرار» تنتمي إلى قائمة",
+      "ha": "4. Babbar kalmar \"maimaitawa\" ta jeri ce"
+     },
+     "lines": {
+      "en": [
+       35,
+       41
+      ],
+      "fr": [
+       38,
+       44
+      ],
+      "ar": [
+       36,
+       42
+      ],
+      "ha": [
+       37,
+       43
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 4,
+     "code": "? @@( oW.FindDuplicates() )\n#--> [ 6, 8, 9 ]\n? @@( oW.DuplicatesRemoved() )\n#--> [ \"the\", \"bread\", \"was\", \"cold\", \"and\", \"tea\" ]",
+     "promise": "[ 6, 8, 9 ]\n[ \"the\", \"bread\", \"was\", \"cold\", \"and\", \"tea\" ]",
+     "out": "[ 6, 8, 9 ]\n[ \"the\", \"bread\", \"was\", \"cold\", \"and\", \"tea\" ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "5. Find, then apply",
+      "fr": "5. Trouver, puis agir",
+      "ar": "5. ابحث، ثم طبّق",
+      "ha": "5. Nemo, sannan ka aiwatar"
+     },
+     "lines": {
+      "en": [
+       45,
+       50
+      ],
+      "fr": [
+       48,
+       53
+      ],
+      "ar": [
+       46,
+       51
+      ],
+      "ha": [
+       47,
+       52
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 5,
+     "code": "aReq = EduWorldObjects(\"requested\")\n? Q(aReq).Joined(\", \")\n? Q( Q(aReq).Joined(\" \") ).NumberOfWords()",
+     "promise": "",
+     "out": "margherita, tiramisu, margherita, lasagna, tiramisu, margherita\n6",
+     "error": "",
+     "ran": true,
+     "kept": -1,
+     "heading": {
+      "en": "6. Your workplace, as a sentence",
+      "fr": "6. Votre lieu de travail, en une phrase",
+      "ar": "6. مكان عملك، في جملة",
+      "ha": "6. Wurin aikinka, a matsayin jimla"
+     },
+     "lines": {
+      "en": [
+       57,
+       61
+      ],
+      "fr": [
+       60,
+       64
+      ],
+      "ar": [
+       58,
+       62
+      ],
+      "ha": [
+       59,
+       63
+      ]
+     },
+     "kept_in": {
+      "en": -1,
+      "fr": -1,
+      "ar": -1,
+      "ha": -1
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ex-02-01",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-counts-every-word.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-counts-the-repeats.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-remove-then-count.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-the-passive-form.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 2.1 · The complaint",
+      "fr": "Exercice 2.1 · La réclamation",
+      "ar": "التمرين 2.1 · الشكوى",
+      "ha": "Aiki na 2.1 · Ƙorafin"
+     }
+    }
+   ],
+   "file": {
+    "en": "base/education/program/courses/elementary-introduction/chapters/02-a-first-sentence.en.md",
+    "fr": "base/education/program/courses/elementary-introduction/chapters/02-a-first-sentence.fr.md",
+    "ar": "base/education/program/courses/elementary-introduction/chapters/02-a-first-sentence.ar.md",
+    "ha": "base/education/program/courses/elementary-introduction/chapters/02-a-first-sentence.ha.md"
+   }
+  },
+  {
+   "id": "read-the-name-as-a-sentence",
+   "n": 3,
+   "title": {
+    "en": "Read the name as a sentence",
+    "fr": "Lire le nom comme une phrase",
+    "ar": "اقرأ الاسم كجملة",
+    "ha": "Karanta sunan kamar jimla"
+   },
+   "editions": {
+    "en": {
+     "cells": 7,
+     "promises": 10,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    },
+    "fr": {
+     "cells": 7,
+     "promises": 10,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    },
+    "ar": {
+     "cells": 7,
+     "promises": 10,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    },
+    "ha": {
+     "cells": 7,
+     "promises": 10,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    }
+   },
+   "drift": [],
+   "cells": [
+    {
+     "n": 1,
+     "code": "o1 = new stzString(\"RIxxNxG\")\no1.RemoveAll(\"x\")\n? o1.Content()\n#--> RING",
+     "promise": "RING",
+     "out": "RING",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "1. The active form changes the object",
+      "fr": "1. La forme active change l'objet",
+      "ar": "1. الصيغة الفاعلة تغيّر الكائن",
+      "ha": "1. Sigar aiki tana canza abin"
+     },
+     "lines": {
+      "en": [
+       13,
+       18
+      ],
+      "fr": [
+       15,
+       20
+      ],
+      "ar": [
+       14,
+       19
+      ],
+      "ha": [
+       15,
+       20
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 2,
+     "code": "o1 = new stzString(\"RIxxNxG\")\n? o1.Removed(\"x\")\n#--> RING\n? o1.Content()\n#--> RIxxNxG",
+     "promise": "RING\nRIxxNxG",
+     "out": "RING\nRIxxNxG",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "2. The passive form gives you a copy",
+      "fr": "2. La forme passive vous donne une copie",
+      "ar": "2. الصيغة المفعولة تعطيك نسخة",
+      "ha": "2. Sigar abin da aka yi tana ba ka kwafi"
+     },
+     "lines": {
+      "en": [
+       25,
+       31
+      ],
+      "fr": [
+       27,
+       33
+      ],
+      "ar": [
+       25,
+       31
+      ],
+      "ha": [
+       27,
+       33
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 3,
+     "code": "? Q(\"rixxnxg\").RemoveQ(\"x\").UppercaseQ().Spacified()\n#--> R I N G",
+     "promise": "R I N G",
+     "out": "R I N G",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "3. The fluent form continues the sentence",
+      "fr": "3. La forme fluide continue la phrase",
+      "ar": "3. الصيغة المتصلة تكمل الجملة",
+      "ha": "3. Siga mai gudana tana ci gaba da jimlar"
+     },
+     "lines": {
+      "en": [
+       37,
+       40
+      ],
+      "fr": [
+       39,
+       42
+      ],
+      "ar": [
+       37,
+       40
+      ],
+      "ha": [
+       39,
+       42
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 4,
+     "code": "o1 = new stzString(\"rixxnxg\")\n? o1.RemoveQ(\"x\").Uppercased()\n#--> RING\n? o1.Content()\n#--> ring",
+     "promise": "RING\nring",
+     "out": "RING\nring",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "4. A fluent sentence on an object changes it",
+      "fr": "4. Une phrase fluide sur un objet le modifie",
+      "ar": "4. الجملة المتصلة على كائن تغيّره",
+      "ha": "4. Jimla mai gudana a kan abu tana canza shi"
+     },
+     "lines": {
+      "en": [
+       44,
+       50
+      ],
+      "fr": [
+       46,
+       52
+      ],
+      "ar": [
+       44,
+       50
+      ],
+      "ha": [
+       46,
+       52
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 5,
+     "code": "o1 = new stzString(\"rixxnxg\")\n? o1.RemoveQC(\"x\").Uppercased()\n#--> RING\n? o1.Content()\n#--> rixxnxg",
+     "promise": "RING\nrixxnxg",
+     "out": "RING\nrixxnxg",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "5. Say \"on a copy\" with QC",
+      "fr": "5. Dire « sur une copie » avec QC",
+      "ar": "5. قل «على نسخة» بـ QC",
+      "ha": "5. Faɗi \"a kan kwafi\" da QC"
+     },
+     "lines": {
+      "en": [
+       56,
+       62
+      ],
+      "fr": [
+       58,
+       64
+      ],
+      "ar": [
+       56,
+       62
+      ],
+      "ha": [
+       58,
+       64
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 6,
+     "code": "? Q(\"tea, rice, tea\").Replaced(\"tea\", :With = \"coffee\")\n#--> coffee, rice, coffee",
+     "promise": "coffee, rice, coffee",
+     "out": "coffee, rice, coffee",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "6. A named parameter reads as prose",
+      "fr": "6. Un paramètre nommé se lit comme de la prose",
+      "ar": "6. المعامل المسمّى يُقرأ كنثر",
+      "ha": "6. Sigar da aka sa wa suna tana karantuwa kamar magana"
+     },
+     "lines": {
+      "en": [
+       66,
+       69
+      ],
+      "fr": [
+       68,
+       71
+      ],
+      "ar": [
+       66,
+       69
+      ],
+      "ha": [
+       68,
+       71
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 7,
+     "code": "? Q(\"bread\").IsLowercase()\n#--> TRUE",
+     "promise": "TRUE",
+     "out": "1",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "7. A question is a name that starts with Is",
+      "fr": "7. Une question est un nom qui commence par Is",
+      "ar": "7. السؤال اسم يبدأ بـ Is",
+      "ha": "7. Tambaya suna ne da yake farawa da Is"
+     },
+     "lines": {
+      "en": [
+       73,
+       76
+      ],
+      "fr": [
+       75,
+       78
+      ],
+      "ar": [
+       73,
+       76
+      ],
+      "ha": [
+       75,
+       78
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ex-03-01",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-changes-the-object.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-forgets-the-proof.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-on-a-copy.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-the-passive-form.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 3.1 · Untouched",
+      "fr": "Exercice 3.1 · Intact",
+      "ar": "التمرين 3.1 · دون مساس",
+      "ha": "Aiki na 3.1 · Ba a taɓa ba"
+     }
+    }
+   ],
+   "file": {
+    "en": "base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.en.md",
+    "fr": "base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.fr.md",
+    "ar": "base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.ar.md",
+    "ha": "base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.ha.md"
+   }
+  },
+  {
+   "id": "say-it-in-your-language",
+   "n": 4,
+   "title": {
+    "en": "Say it in your language",
+    "fr": "Le dire dans votre langue",
+    "ar": "قلها بلغتك",
+    "ha": "Faɗe shi da harshenka"
+   },
+   "editions": {
+    "en": {
+     "cells": 6,
+     "promises": 10,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    },
+    "fr": {
+     "cells": 6,
+     "promises": 10,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    },
+    "ar": {
+     "cells": 6,
+     "promises": 10,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    },
+    "ha": {
+     "cells": 6,
+     "promises": 10,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    }
+   },
+   "drift": [],
+   "cells": [
+    {
+     "n": 1,
+     "code": "? @@( StzNaturalLanguages() )\n#--> [ \"en\", \"ha\", \"fr\", \"ar\", \"tr\" ]",
+     "promise": "[ \"en\", \"ha\", \"fr\", \"ar\", \"tr\" ]",
+     "out": "[ \"en\", \"ha\", \"fr\", \"ar\", \"tr\" ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "1. The languages Softanza speaks today",
+      "fr": "1. Les langues que Softanza parle aujourd'hui",
+      "ar": "1. اللغات التي تتكلمها سوفتانزا اليوم",
+      "ha": "1. Harsunan da Softanza take magana yau"
+     },
+     "lines": {
+      "en": [
+       11,
+       14
+      ],
+      "fr": [
+       13,
+       16
+      ],
+      "ar": [
+       12,
+       15
+      ],
+      "ha": [
+       13,
+       16
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 2,
+     "code": "oN = Naturally(\"Create a list with [ 4, 4, 9 ] and remove its duplicates\")\n? @@( oN.Result() )\n#--> [ 4, 9 ]\n? oN.Understood()\n#--> create a list with [ 4, 4, 9 ] -> remove duplicates",
+     "promise": "[ 4, 9 ]\ncreate a list with [ 4, 4, 9 ] -> remove duplicates",
+     "out": "[ 4, 9 ]\ncreate a list with [ 4, 4, 9 ] -> remove duplicates",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "2. English",
+      "fr": "2. Anglais",
+      "ar": "2. الإنجليزية",
+      "ha": "2. Turanci"
+     },
+     "lines": {
+      "en": [
+       21,
+       27
+      ],
+      "fr": [
+       23,
+       29
+      ],
+      "ar": [
+       21,
+       27
+      ],
+      "ha": [
+       23,
+       29
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 3,
+     "code": "oF = NaturallyIn(\"fr\", \"Crée une liste avec [ 4, 4, 9 ] et enlève les doublons\")\n? @@( oF.Result() )\n#--> [ 4, 9 ]\n? oF.Understood()\n#--> crée liste avec [ 4, 4, 9 ] -> enlève les doublons",
+     "promise": "[ 4, 9 ]\ncrée liste avec [ 4, 4, 9 ] -> enlève les doublons",
+     "out": "[ 4, 9 ]\ncrée liste avec [ 4, 4, 9 ] -> enlève les doublons",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "3. French",
+      "fr": "3. Français",
+      "ar": "3. الفرنسية",
+      "ha": "3. Faransanci"
+     },
+     "lines": {
+      "en": [
+       31,
+       37
+      ],
+      "fr": [
+       33,
+       39
+      ],
+      "ar": [
+       31,
+       37
+      ],
+      "ha": [
+       33,
+       39
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 4,
+     "code": "oA = NaturallyIn(\"ar\", \"أنشئ قائمة مع [ 4, 4, 9 ] أزل التكرارات\")\n? @@( oA.Result() )\n#--> [ 4, 9 ]\n? oA.Understood()\n#--> أنشئ قائمة بـ [ 4, 4, 9 ] -> أزل التكرارات",
+     "promise": "[ 4, 9 ]\nأنشئ قائمة بـ [ 4, 4, 9 ] -> أزل التكرارات",
+     "out": "[ 4, 9 ]\nأنشئ قائمة بـ [ 4, 4, 9 ] -> أزل التكرارات",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "4. Arabic",
+      "fr": "4. Arabe",
+      "ar": "4. العربية",
+      "ha": "4. Larabci"
+     },
+     "lines": {
+      "en": [
+       41,
+       47
+      ],
+      "fr": [
+       43,
+       49
+      ],
+      "ar": [
+       41,
+       47
+      ],
+      "ha": [
+       43,
+       49
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 5,
+     "code": "oH = NaturallyIn(\"ha\", \"Yi jeri dauke [ 4, 4, 9 ] cire maimaitattu\")\n? @@( oH.Result() )\n#--> [ 4, 9 ]\n? oH.Understood()\n#--> yi jeri dauke [ 4, 4, 9 ] -> cire maimaitattu",
+     "promise": "[ 4, 9 ]\nyi jeri dauke [ 4, 4, 9 ] -> cire maimaitattu",
+     "out": "[ 4, 9 ]\nyi jeri dauke [ 4, 4, 9 ] -> cire maimaitattu",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "5. Hausa",
+      "fr": "5. Haoussa",
+      "ar": "5. الهوسا",
+      "ha": "5. Hausa"
+     },
+     "lines": {
+      "en": [
+       51,
+       57
+      ],
+      "fr": [
+       53,
+       59
+      ],
+      "ar": [
+       51,
+       57
+      ],
+      "ha": [
+       53,
+       59
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 6,
+     "code": "? @@( StzNaturalLintIn(\"fr\", \"Crée une liste avec [ 4, 4, 9 ] et danse la salsa\") )\n#--> [ [ \"understood\", 0 ], [ \"unresolved\", [ [ \"danse\", \"\" ], [ \"salsa\", \"sans\" ] ] ] ]",
+     "promise": "[ [ \"understood\", 0 ], [ \"unresolved\", [ [ \"danse\", \"\" ], [ \"salsa\", \"sans\" ] ] ] ]",
+     "out": "[ [ \"understood\", 0 ], [ \"unresolved\", [ [ \"danse\", \"\" ], [ \"salsa\", \"sans\" ] ] ] ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "6. When it does not understand, it says which word",
+      "fr": "6. Quand il ne comprend pas, il dit quel mot",
+      "ar": "6. حين لا تفهم، تقول أيّ كلمة",
+      "ha": "6. Idan ba ta fahimta ba, tana faɗin wace kalma"
+     },
+     "lines": {
+      "en": [
+       64,
+       67
+      ],
+      "fr": [
+       66,
+       69
+      ],
+      "ar": [
+       63,
+       66
+      ],
+      "ha": [
+       66,
+       69
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ex-04-01",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 3,
+     "right_accepted": 3,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-not-understood.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-forgets-the-second-half.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-in-french.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-in-hausa.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "03-in-arabic.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 4.1 · In your own words",
+      "fr": "Exercice 4.1 · Avec vos mots",
+      "ar": "التمرين 4.1 · بكلماتك",
+      "ha": "Aiki na 4.1 · Da kalmominka"
+     }
+    }
+   ],
+   "file": {
+    "en": "base/education/program/courses/elementary-introduction/chapters/04-say-it-in-your-language.en.md",
+    "fr": "base/education/program/courses/elementary-introduction/chapters/04-say-it-in-your-language.fr.md",
+    "ar": "base/education/program/courses/elementary-introduction/chapters/04-say-it-in-your-language.ar.md",
+    "ha": "base/education/program/courses/elementary-introduction/chapters/04-say-it-in-your-language.ha.md"
+   }
+  },
+  {
+   "id": "one-object-any-structure",
+   "n": 5,
+   "title": {
+    "en": "One object, any structure",
+    "fr": "Un objet, toute structure",
+    "ar": "كائن واحد، أي بنية",
+    "ha": "Abu ɗaya, kowane tsari"
+   },
+   "editions": {
+    "en": {
+     "cells": 6,
+     "promises": 12,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      }
+     ]
+    },
+    "fr": {
+     "cells": 6,
+     "promises": 12,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      }
+     ]
+    },
+    "ar": {
+     "cells": 6,
+     "promises": 12,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      }
+     ]
+    },
+    "ha": {
+     "cells": 6,
+     "promises": 12,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      }
+     ]
+    }
+   },
+   "drift": [],
+   "cells": [
+    {
+     "n": 1,
+     "code": "oS = new stzString(\"tea rice tea fish\")\n? oS.Contains(\"tea\")\n#--> TRUE\n? oS.NumberOfOccurrence(\"tea\")\n#--> 2\n? @@( oS.FindAll(\"tea\") )\n#--> [ 1, 10 ]",
+     "promise": "TRUE\n2\n[ 1, 10 ]",
+     "out": "1\n2\n[ 1, 10 ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "1. The three questions, asked of a string",
+      "fr": "1. Les trois questions, posées à une chaîne",
+      "ar": "1. الأسئلة الثلاثة، مطروحة على نص",
+      "ha": "1. Tambayoyi uku, an yi wa rubutu"
+     },
+     "lines": {
+      "en": [
+       10,
+       18
+      ],
+      "fr": [
+       12,
+       20
+      ],
+      "ar": [
+       12,
+       20
+      ],
+      "ha": [
+       12,
+       20
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 2,
+     "code": "oL = new stzList([ \"tea\", \"rice\", \"tea\", \"fish\" ])\n? oL.Contains(\"tea\")\n#--> TRUE\n? oL.NumberOfOccurrence(\"tea\")\n#--> 2\n? @@( oL.FindAll(\"tea\") )\n#--> [ 1, 3 ]",
+     "promise": "TRUE\n2\n[ 1, 3 ]",
+     "out": "1\n2\n[ 1, 3 ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "2. The same three questions, asked of a list",
+      "fr": "2. Les trois mêmes questions, posées à une liste",
+      "ar": "2. الأسئلة الثلاثة نفسها، مطروحة على قائمة",
+      "ha": "2. Tambayoyi uku ɗin nan, an yi wa jeri"
+     },
+     "lines": {
+      "en": [
+       22,
+       30
+      ],
+      "fr": [
+       24,
+       32
+      ],
+      "ar": [
+       24,
+       32
+      ],
+      "ha": [
+       24,
+       32
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 3,
+     "code": "? StzLen(\"tea rice tea fish\")\n#--> 17\n? oL.NumberOfItems()\n#--> 4",
+     "promise": "17\n4",
+     "out": "17\n4",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "3. Same words, different units",
+      "fr": "3. Mêmes mots, unités différentes",
+      "ar": "3. الكلمات نفسها، والوحدات مختلفة",
+      "ha": "3. Kalmomi iri ɗaya, ma'auni daban"
+     },
+     "lines": {
+      "en": [
+       37,
+       42
+      ],
+      "fr": [
+       39,
+       44
+      ],
+      "ar": [
+       38,
+       43
+      ],
+      "ha": [
+       39,
+       44
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 4,
+     "code": "? @@( StzFind(\"tea\", \"tea rice tea fish\") )\n#--> [ 1, 10 ]\n? @@( StzFind(\"tea\", [ \"tea\", \"rice\", \"tea\", \"fish\" ]) )\n#--> [ 1, 3 ]",
+     "promise": "[ 1, 10 ]\n[ 1, 3 ]",
+     "out": "[ 1, 10 ]\n[ 1, 3 ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "4. One function for both",
+      "fr": "4. Une seule fonction pour les deux",
+      "ar": "4. دالة واحدة لكليهما",
+      "ha": "4. Aiki ɗaya ga duka biyun"
+     },
+     "lines": {
+      "en": [
+       48,
+       53
+      ],
+      "fr": [
+       50,
+       55
+      ],
+      "ar": [
+       49,
+       54
+      ],
+      "ha": [
+       50,
+       55
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 5,
+     "code": "? @@( oS.Removed(\"tea\") )\n#--> \" rice  fish\"\noL.RemoveAll(\"tea\")\n? @@( oL.Content() )\n#--> [ \"rice\", \"fish\" ]",
+     "promise": "\" rice  fish\"\n[ \"rice\", \"fish\" ]",
+     "out": "\" rice  fish\"\n[ \"rice\", \"fish\" ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "5. Act the same way, and read the result carefully",
+      "fr": "5. Agir de la même façon, et lire le résultat avec soin",
+      "ar": "5. تصرّف بالطريقة نفسها، واقرأ النتيجة بعناية",
+      "ha": "5. Aiwatar ta hanya ɗaya, ka karanta sakamakon da kyau"
+     },
+     "lines": {
+      "en": [
+       60,
+       66
+      ],
+      "fr": [
+       62,
+       68
+      ],
+      "ar": [
+       61,
+       67
+      ],
+      "ha": [
+       62,
+       68
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 6,
+     "code": "aReq = EduWorldObjects(\"requested\")\n? StzListQ(aReq).NumberOfOccurrence(aReq[1])\n? Q( Q(aReq).Joined(\" \") ).NumberOfOccurrence(aReq[1])",
+     "promise": "",
+     "out": "3\n3",
+     "error": "",
+     "ran": true,
+     "kept": -1,
+     "heading": {
+      "en": "6. Your workplace, both ways",
+      "fr": "6. Votre lieu de travail, des deux façons",
+      "ar": "6. مكان عملك، بالطريقتين",
+      "ha": "6. Wurin aikinka, ta hanyoyi biyu"
+     },
+     "lines": {
+      "en": [
+       73,
+       77
+      ],
+      "fr": [
+       75,
+       79
+      ],
+      "ar": [
+       74,
+       78
+      ],
+      "ha": [
+       75,
+       79
+      ]
+     },
+     "kept_in": {
+      "en": -1,
+      "fr": -1,
+      "ar": -1,
+      "ha": -1
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ex-05-01",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-counts-the-words.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-counts-the-items.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-same-question-twice.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-one-function-for-both.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 5.1 · Same question, two shapes",
+      "fr": "Exercice 5.1 · Même question, deux formes",
+      "ar": "التمرين 5.1 · السؤال نفسه، شكلان",
+      "ha": "Aiki na 5.1 · Tambaya ɗaya, siffofi biyu"
+     }
+    }
+   ],
+   "file": {
+    "en": "base/education/program/courses/elementary-introduction/chapters/05-one-object-any-structure.en.md",
+    "fr": "base/education/program/courses/elementary-introduction/chapters/05-one-object-any-structure.fr.md",
+    "ar": "base/education/program/courses/elementary-introduction/chapters/05-one-object-any-structure.ar.md",
+    "ha": "base/education/program/courses/elementary-introduction/chapters/05-one-object-any-structure.ha.md"
+   }
+  },
+  {
+   "id": "walk-ask-produce-act",
+   "n": 6,
+   "title": {
+    "en": "Walk, ask, produce, act",
+    "fr": "Marcher, demander, produire, agir",
+    "ar": "سِر، اسأل، أنتِج، افعل",
+    "ha": "Tafiya, tambaya, samarwa, aiki"
+   },
+   "editions": {
+    "en": {
+     "cells": 6,
+     "promises": 10,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    },
+    "fr": {
+     "cells": 6,
+     "promises": 10,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    },
+    "ar": {
+     "cells": 6,
+     "promises": 10,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    },
+    "ha": {
+     "cells": 6,
+     "promises": 10,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    }
+   },
+   "drift": [],
+   "cells": [
+    {
+     "n": 1,
+     "code": "aOrders = [ \"tea\", \"rice\", \"tea\", \"fish\", \"rice\", \"tea\", \"soup\", \"tea\", \"rice\" ]\n? @@( StzListQ([ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]).FindW(\"@item % 3 = 1\") )\n#--> [ 1, 4, 7 ]\n? @@( StzListQ(aOrders).ItemsAtPositions([ 1, 4, 7 ]) )\n#--> [ \"tea\", \"fish\", \"soup\" ]",
+     "promise": "[ 1, 4, 7 ]\n[ \"tea\", \"fish\", \"soup\" ]",
+     "out": "[ 1, 4, 7 ]\n[ \"tea\", \"fish\", \"soup\" ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "1. Walk: the positions, then what is there",
+      "fr": "1. Marcher : les positions, puis ce qui s'y trouve",
+      "ar": "1. السير: المواضع، ثم ما فيها",
+      "ha": "1. Tafiya: wurare, sannan abin da ke can"
+     },
+     "lines": {
+      "en": [
+       13,
+       19
+      ],
+      "fr": [
+       15,
+       21
+      ],
+      "ar": [
+       14,
+       20
+      ],
+      "ha": [
+       15,
+       21
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 2,
+     "code": "? StzListQ(aOrders).Contains(\"soup\")\n#--> TRUE\n? Q(\"cold\").IsLowercase()\n#--> TRUE",
+     "promise": "TRUE\nTRUE",
+     "out": "1\n1",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "2. Ask: a question answers TRUE or FALSE",
+      "fr": "2. Demander : une question répond TRUE ou FALSE",
+      "ar": "2. السؤال: يجيب السؤال بـ TRUE أو FALSE",
+      "ha": "2. Tambaya: tambaya tana amsa TRUE ko FALSE"
+     },
+     "lines": {
+      "en": [
+       23,
+       28
+      ],
+      "fr": [
+       25,
+       30
+      ],
+      "ar": [
+       24,
+       29
+      ],
+      "ha": [
+       25,
+       30
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 3,
+     "code": "oY = new stzYielder([ 12, 0, 30, -5, 18 ])\n? @@( oY.Filter(:IsPositive) )\n#--> [ 12, 30, 18 ]\n? @@( oY.Map(:Double) )\n#--> [ 24, 0, 60, -10, 36 ]\n? oY.Reduce(:Sum)\n#--> 55",
+     "promise": "[ 12, 30, 18 ]\n[ 24, 0, 60, -10, 36 ]\n55",
+     "out": "[ 12, 30, 18 ]\n[ 24, 0, 60, -10, 36 ]\n55",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "3. Produce: a yielder makes new values from old ones",
+      "fr": "3. Produire : un producteur fabrique de nouvelles valeurs à partir des anciennes",
+      "ar": "3. الإنتاج: المنتِج يصنع قيمًا جديدة من القديمة",
+      "ha": "3. Samarwa: mai samarwa yana yin sababbin daraja daga tsofaffi"
+     },
+     "lines": {
+      "en": [
+       35,
+       43
+      ],
+      "fr": [
+       37,
+       45
+      ],
+      "ar": [
+       35,
+       43
+      ],
+      "ha": [
+       37,
+       45
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 4,
+     "code": "? oY.FilterQ(:IsPositive).Reduce(:Sum)\n#--> 60",
+     "promise": "60",
+     "out": "60",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "4. The moves chain",
+      "fr": "4. Les gestes s'enchaînent",
+      "ar": "4. الحركات تتسلسل",
+      "ha": "4. Motsin suna haɗuwa"
+     },
+     "lines": {
+      "en": [
+       49,
+       52
+      ],
+      "fr": [
+       51,
+       54
+      ],
+      "ar": [
+       49,
+       52
+      ],
+      "ha": [
+       51,
+       54
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 5,
+     "code": "oL = new stzList(aOrders)\noL.RemoveAll(\"tea\")\n? @@( oL.Content() )\n#--> [ \"rice\", \"fish\", \"rice\", \"soup\", \"rice\" ]",
+     "promise": "[ \"rice\", \"fish\", \"rice\", \"soup\", \"rice\" ]",
+     "out": "[ \"rice\", \"fish\", \"rice\", \"soup\", \"rice\" ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "5. Act: a verb changes the data",
+      "fr": "5. Agir : un verbe change les données",
+      "ar": "5. الفعل: الفعل يغيّر البيانات",
+      "ha": "5. Aiki: aikatau yana canza bayanai"
+     },
+     "lines": {
+      "en": [
+       56,
+       61
+      ],
+      "fr": [
+       58,
+       63
+      ],
+      "ar": [
+       56,
+       61
+      ],
+      "ha": [
+       58,
+       63
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 6,
+     "code": "? @@( StzListQ([ 12, 0, 30, -5, 18 ]).ItemsW(\"@item > 0\") )\n#--> [ 12, 30, 18 ]",
+     "promise": "[ 12, 30, 18 ]",
+     "out": "[ 12, 30, 18 ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "6. A condition can be handed over as data",
+      "fr": "6. Une condition peut être transmise comme une donnée",
+      "ar": "6. يمكن تسليم الشرط كبيانات",
+      "ha": "6. Ana iya miƙa sharaɗi a matsayin bayanai"
+     },
+     "lines": {
+      "en": [
+       67,
+       70
+      ],
+      "fr": [
+       69,
+       72
+      ],
+      "ar": [
+       67,
+       70
+      ],
+      "ha": [
+       69,
+       72
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ex-06-01",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-adds-the-refund.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-filters-and-stops.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-filter-then-reduce.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-the-condition-as-data.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 6.1 · The day's takings",
+      "fr": "Exercice 6.1 · La recette du jour",
+      "ar": "التمرين 6.1 · إيراد اليوم",
+      "ha": "Aiki na 6.1 · Kuɗin shigar rana"
+     }
+    }
+   ],
+   "file": {
+    "en": "base/education/program/courses/elementary-introduction/chapters/06-walk-ask-produce-act.en.md",
+    "fr": "base/education/program/courses/elementary-introduction/chapters/06-walk-ask-produce-act.fr.md",
+    "ar": "base/education/program/courses/elementary-introduction/chapters/06-walk-ask-produce-act.ar.md",
+    "ha": "base/education/program/courses/elementary-introduction/chapters/06-walk-ask-produce-act.ha.md"
+   }
+  },
+  {
+   "id": "declare-what-not-how",
+   "n": 7,
+   "title": {
+    "en": "Declare what, not how",
+    "fr": "Déclarer le quoi, pas le comment",
+    "ar": "صرّح بما لا بكيف",
+    "ha": "Bayyana me, ba yadda ba"
+   },
+   "editions": {
+    "en": {
+     "cells": 5,
+     "promises": 11,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    },
+    "fr": {
+     "cells": 5,
+     "promises": 11,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    },
+    "ar": {
+     "cells": 5,
+     "promises": 11,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    },
+    "ha": {
+     "cells": 5,
+     "promises": 11,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    }
+   },
+   "drift": [],
+   "cells": [
+    {
+     "n": 1,
+     "code": "o = new stzList([ 4, 7, 10, 3, 8 ])\n? @@( o.FindW(\"{ @item > 5 }\") )\n#--> [ 2, 3, 5 ]\n? @@( o.ItemsW(\"{ @item > 5 }\") )\n#--> [ 7, 10, 8 ]\n? o.CountW(\"{ @item > 5 }\")\n#--> 3",
+     "promise": "[ 2, 3, 5 ]\n[ 7, 10, 8 ]\n3",
+     "out": "[ 2, 3, 5 ]\n[ 7, 10, 8 ]\n3",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "1. Find where a condition holds",
+      "fr": "1. Trouver où une condition est vraie",
+      "ar": "1. ابحث حيث يصدق الشرط",
+      "ha": "1. Nemo inda sharaɗi yake gaskiya"
+     },
+     "lines": {
+      "en": [
+       13,
+       21
+      ],
+      "fr": [
+       16,
+       24
+      ],
+      "ar": [
+       15,
+       23
+      ],
+      "ha": [
+       15,
+       23
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 2,
+     "code": "? @@( o.FindW(\"{ IsEven(@item) }\") )\n#--> [ 1, 3, 5 ]\n? o.CheckW(\"{ isNumber(@item) }\")\n#--> TRUE",
+     "promise": "[ 1, 3, 5 ]\nTRUE",
+     "out": "[ 1, 3, 5 ]\n1",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "2. Any question can be the condition",
+      "fr": "2. N'importe quelle question peut être la condition",
+      "ar": "2. أيّ سؤال يصلح شرطًا",
+      "ha": "2. Kowace tambaya na iya zama sharaɗin"
+     },
+     "lines": {
+      "en": [
+       25,
+       30
+      ],
+      "fr": [
+       28,
+       33
+      ],
+      "ar": [
+       27,
+       32
+      ],
+      "ha": [
+       27,
+       32
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 3,
+     "code": "cRule = \"{ @item > 20 }\"\noA = new stzList([ 12, 0, 30, -5, 18, 25 ])\noB = new stzList([ 3, 40, 9 ])\n? oA.CountW(cRule)\n#--> 2\n? oB.CountW(cRule)\n#--> 1",
+     "promise": "2\n1",
+     "out": "2\n1",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "3. A rule is data: keep it, and apply it anywhere",
+      "fr": "3. Une règle est une donnée : gardez-la, appliquez-la partout",
+      "ar": "3. القاعدة بيانات: احفظها، وطبّقها في أي مكان",
+      "ha": "3. Doka bayanai ce: ajiye ta, ka yi amfani da ita a ko'ina"
+     },
+     "lines": {
+      "en": [
+       36,
+       44
+      ],
+      "fr": [
+       40,
+       48
+      ],
+      "ar": [
+       38,
+       46
+      ],
+      "ha": [
+       39,
+       47
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 4,
+     "code": "? @@( oA.ItemsW(cRule) )\n#--> [ 30, 25 ]\noA.RemoveW(cRule)\n? @@( oA.Content() )\n#--> [ 12, 0, -5, 18 ]",
+     "promise": "[ 30, 25 ]\n[ 12, 0, -5, 18 ]",
+     "out": "[ 30, 25 ]\n[ 12, 0, -5, 18 ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "4. Act where the rule holds",
+      "fr": "4. Agir là où la règle est vraie",
+      "ar": "4. تصرّف حيث تصدق القاعدة",
+      "ha": "4. Aiwatar inda dokar take gaskiya"
+     },
+     "lines": {
+      "en": [
+       48,
+       54
+      ],
+      "fr": [
+       52,
+       58
+      ],
+      "ar": [
+       50,
+       56
+      ],
+      "ha": [
+       51,
+       57
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 5,
+     "code": "oS = new stzList([ \"ring\", \"PHP\", \"C#\", \"ruby\", \"GO\" ])\n? @@( oS.FindW(\"{ IsUppercase(@item) }\") )\n#--> [ 2, 3, 5 ]\n? @@( oS.ItemsW(\"{ Q(@item).IsLowercase() }\") )\n#--> [ \"ring\", \"ruby\" ]",
+     "promise": "[ 2, 3, 5 ]\n[ \"ring\", \"ruby\" ]",
+     "out": "[ 2, 3, 5 ]\n[ \"ring\", \"ruby\" ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "5. The same word on words",
+      "fr": "5. Le même mot sur des mots",
+      "ar": "5. الكلمة نفسها على كلمات",
+      "ha": "5. Kalma ɗaya a kan kalmomi"
+     },
+     "lines": {
+      "en": [
+       58,
+       64
+      ],
+      "fr": [
+       62,
+       68
+      ],
+      "ar": [
+       60,
+       66
+      ],
+      "ha": [
+       61,
+       67
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ex-07-01",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-gives-the-items.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-wrong-boundary.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-find-where.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-without-braces.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 7.1 · Where the big amounts are",
+      "fr": "Exercice 7.1 · Où sont les gros montants",
+      "ar": "التمرين 7.1 · أين المبالغ الكبيرة",
+      "ha": "Aiki na 7.1 · Inda manyan kuɗi suke"
+     }
+    },
+    {
+     "id": "ex-07-02",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-two-rules.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-prints-the-rule.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-one-rule-twice.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-count-the-items.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 7.2 · One rule, two days",
+      "fr": "Exercice 7.2 · Une règle, deux journées",
+      "ar": "التمرين 7.2 · قاعدة واحدة، يومان",
+      "ha": "Aiki na 7.2 · Doka ɗaya, kwanaki biyu"
+     }
+    }
+   ],
+   "file": {
+    "en": "base/education/program/courses/elementary-introduction/chapters/07-declare-what-not-how.en.md",
+    "fr": "base/education/program/courses/elementary-introduction/chapters/07-declare-what-not-how.fr.md",
+    "ar": "base/education/program/courses/elementary-introduction/chapters/07-declare-what-not-how.ar.md",
+    "ha": "base/education/program/courses/elementary-introduction/chapters/07-declare-what-not-how.ha.md"
+   }
+  },
+  {
+   "id": "patterns-in-text",
+   "n": 8,
+   "title": {
+    "en": "Patterns in text",
+    "fr": "Les motifs dans le texte",
+    "ar": "الأنماط في النص",
+    "ha": "Siffofi a cikin rubutu"
+   },
+   "editions": {
+    "en": {
+     "cells": 4,
+     "promises": 9,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    },
+    "fr": {
+     "cells": 4,
+     "promises": 9,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    },
+    "ar": {
+     "cells": 4,
+     "promises": 9,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    },
+    "ha": {
+     "cells": 4,
+     "promises": 9,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    }
+   },
+   "drift": [],
+   "cells": [
+    {
+     "n": 1,
+     "code": "? rx(\"[0-9]{4}-[0-9]{2}-[0-9]{2}\").Match(\"2026-09-24\")\n#--> TRUE\n? rx(\"[0-9]{4}-[0-9]{2}-[0-9]{2}\").Match(\"24/09/2026\")\n#--> FALSE",
+     "promise": "TRUE\nFALSE",
+     "out": "1\n0",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "1. A date has a shape",
+      "fr": "1. Une date a une forme",
+      "ar": "1. للتاريخ شكل",
+      "ha": "1. Kwanan wata yana da siffa"
+     },
+     "lines": {
+      "en": [
+       14,
+       19
+      ],
+      "fr": [
+       17,
+       22
+      ],
+      "ar": [
+       14,
+       19
+      ],
+      "ha": [
+       16,
+       21
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 2,
+     "code": "? rx(\"[0-9]+\").Match(\"24/09/2026\")\n#--> FALSE\n? rx(\"[0-9]+\").MatchFirst(\"24/09/2026\")\n#--> TRUE\n? @@( Q(\"tea 12, rice 30\").Numbers() )\n#--> [ \"12\", \"30\" ]",
+     "promise": "FALSE\nTRUE\n[ \"12\", \"30\" ]",
+     "out": "0\n1\n[ \"12\", \"30\" ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "2. Somewhere in the text, or the whole text",
+      "fr": "2. Quelque part dans le texte, ou le texte entier",
+      "ar": "2. في مكان ما من النص، أم النص كله",
+      "ha": "2. Wani wuri a cikin rubutun, ko dukan rubutun"
+     },
+     "lines": {
+      "en": [
+       25,
+       32
+      ],
+      "fr": [
+       28,
+       35
+      ],
+      "ar": [
+       25,
+       32
+      ],
+      "ha": [
+       28,
+       35
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 3,
+     "code": "cPhone = \"^\\+227 [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}$\"\n? rx(cPhone).Match(\"+227 90 12 34 56\")\n#--> TRUE\n? rx(cPhone).Match(\"90 12 34 56\")\n#--> FALSE",
+     "promise": "TRUE\nFALSE",
+     "out": "1\n0",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "3. A phone number in Niger",
+      "fr": "3. Un numéro de téléphone au Niger",
+      "ar": "3. رقم هاتف في النيجر",
+      "ha": "3. Lambar waya a Nijar"
+     },
+     "lines": {
+      "en": [
+       38,
+       44
+      ],
+      "fr": [
+       41,
+       47
+      ],
+      "ar": [
+       38,
+       44
+      ],
+      "ha": [
+       41,
+       47
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 4,
+     "code": "cTwice = \"\\b(?P<word>\\w+)[\\s]*(?P=word)\\b\"\n? rx(cTwice).Match(\"the the\")\n#--> TRUE\n? rx(cTwice).Match(\"the that\")\n#--> FALSE",
+     "promise": "TRUE\nFALSE",
+     "out": "1\n0",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "4. A word said twice",
+      "fr": "4. Un mot dit deux fois",
+      "ar": "4. كلمة قيلت مرتين",
+      "ha": "4. Kalmar da aka faɗa sau biyu"
+     },
+     "lines": {
+      "en": [
+       51,
+       57
+      ],
+      "fr": [
+       54,
+       60
+      ],
+      "ar": [
+       51,
+       57
+      ],
+      "ha": [
+       54,
+       60
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ex-08-01",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-too-loose.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-only-one-date.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-digits-and-dashes.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-the-short-form.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 8.1 · The shape of a date",
+      "fr": "Exercice 8.1 · La forme d'une date",
+      "ar": "التمرين 8.1 · شكل التاريخ",
+      "ha": "Aiki na 8.1 · Siffar kwanan wata"
+     }
+    }
+   ],
+   "file": {
+    "en": "base/education/program/courses/elementary-introduction/chapters/08-patterns-in-text.en.md",
+    "fr": "base/education/program/courses/elementary-introduction/chapters/08-patterns-in-text.fr.md",
+    "ar": "base/education/program/courses/elementary-introduction/chapters/08-patterns-in-text.ar.md",
+    "ha": "base/education/program/courses/elementary-introduction/chapters/08-patterns-in-text.ha.md"
+   }
+  },
+  {
+   "id": "patterns-in-structure",
+   "n": 9,
+   "title": {
+    "en": "Patterns in structure",
+    "fr": "Les motifs dans la structure",
+    "ar": "الأنماط في البنية",
+    "ha": "Siffofi a cikin tsari"
+   },
+   "editions": {
+    "en": {
+     "cells": 5,
+     "promises": 11,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 4
+      }
+     ]
+    },
+    "fr": {
+     "cells": 5,
+     "promises": 11,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 4
+      }
+     ]
+    },
+    "ar": {
+     "cells": 5,
+     "promises": 11,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 4
+      }
+     ]
+    },
+    "ha": {
+     "cells": 5,
+     "promises": 11,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 4
+      }
+     ]
+    }
+   },
+   "drift": [],
+   "cells": [
+    {
+     "n": 1,
+     "code": "? Lx(\"[@N, @S]\").Match([ 42, \"hello\" ])\n#--> TRUE\n? Lx(\"[@N, @S]\").Match([ \"hello\", 42 ])\n#--> FALSE",
+     "promise": "TRUE\nFALSE",
+     "out": "1\n0",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "1. The shape of a list",
+      "fr": "1. La forme d'une liste",
+      "ar": "1. شكل القائمة",
+      "ha": "1. Siffar jeri"
+     },
+     "lines": {
+      "en": [
+       13,
+       18
+      ],
+      "fr": [
+       15,
+       20
+      ],
+      "ar": [
+       14,
+       19
+      ],
+      "ha": [
+       15,
+       20
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 2,
+     "code": "? Lx(\"[@N1-3, @S]\").Match([ 1, 2, \"end\" ])\n#--> TRUE\n? Lx(\"[@N1-3, @S]\").Match([ 4, 5, 6, 7, \"extra\" ])\n#--> FALSE",
+     "promise": "TRUE\nFALSE",
+     "out": "1\n0",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "2. How many of each",
+      "fr": "2. Combien de chaque",
+      "ar": "2. كم من كل نوع",
+      "ha": "2. Nawa na kowanne"
+     },
+     "lines": {
+      "en": [
+       24,
+       29
+      ],
+      "fr": [
+       26,
+       31
+      ],
+      "ar": [
+       25,
+       30
+      ],
+      "ha": [
+       26,
+       31
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 3,
+     "code": "? Lx(\"[@N, [@N2], @N]\").Match([ 1, [ 2, 3 ], 4 ])\n#--> TRUE",
+     "promise": "TRUE",
+     "out": "1",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "3. A shape inside a shape",
+      "fr": "3. Une forme dans une forme",
+      "ar": "3. شكل داخل شكل",
+      "ha": "3. Siffa a cikin siffa"
+     },
+     "lines": {
+      "en": [
+       33,
+       36
+      ],
+      "fr": [
+       35,
+       38
+      ],
+      "ar": [
+       34,
+       37
+      ],
+      "ha": [
+       35,
+       38
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 4,
+     "code": "oNx = new stzNumbrex(\"{@Property(Prime)}\")\n? oNx.Match(17)\n#--> TRUE\n? oNx.Match(18)\n#--> FALSE",
+     "promise": "TRUE\nFALSE",
+     "out": "1\n0",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "4. The shape of a number",
+      "fr": "4. La forme d'un nombre",
+      "ar": "4. شكل الرقم",
+      "ha": "4. Siffar lamba"
+     },
+     "lines": {
+      "en": [
+       42,
+       48
+      ],
+      "fr": [
+       44,
+       50
+      ],
+      "ar": [
+       43,
+       49
+      ],
+      "ha": [
+       44,
+       50
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 5,
+     "code": "oNx5 = new stzNumbrex(\"{@Relation(Mod:5=0)}\")\n? oNx5.Match(10)\n#--> TRUE\n? oNx5.Match(13)\n#--> FALSE\noNx4 = new stzNumbrex(\"{@Digit4}\")\n? oNx4.Match(1234)\n#--> TRUE\n? oNx4.Match(123)\n#--> FALSE",
+     "promise": "TRUE\nFALSE\nTRUE\nFALSE",
+     "out": "1\n0\n1\n0",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "5. Multiples, and digit counts",
+      "fr": "5. Multiples, et nombre de chiffres",
+      "ar": "5. المضاعفات، وعدد الأرقام",
+      "ha": "5. Ninki, da adadin lambobi"
+     },
+     "lines": {
+      "en": [
+       52,
+       63
+      ],
+      "fr": [
+       54,
+       65
+      ],
+      "ar": [
+       53,
+       64
+      ],
+      "ha": [
+       54,
+       65
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ex-09-01",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-reversed-shape.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-only-one-line.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-number-then-text.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-the-shape-as-data.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 9.1 · The shape of an order line",
+      "fr": "Exercice 9.1 · La forme d'une ligne de commande",
+      "ar": "التمرين 9.1 · شكل سطر الطلبية",
+      "ha": "Aiki na 9.1 · Siffar layin oda"
+     }
+    }
+   ],
+   "file": {
+    "en": "base/education/program/courses/elementary-introduction/chapters/09-patterns-in-structure.en.md",
+    "fr": "base/education/program/courses/elementary-introduction/chapters/09-patterns-in-structure.fr.md",
+    "ar": "base/education/program/courses/elementary-introduction/chapters/09-patterns-in-structure.ar.md",
+    "ha": "base/education/program/courses/elementary-introduction/chapters/09-patterns-in-structure.ha.md"
+   }
+  },
+  {
+   "id": "when-code-meets-cells",
+   "n": 10,
+   "title": {
+    "en": "When code meets cells",
+    "fr": "Quand le code rencontre les cellules",
+    "ar": "حين يلتقي الكود بالخلايا",
+    "ha": "Lokacin da lamba ta haɗu da ɗakuna"
+   },
+   "editions": {
+    "en": {
+     "cells": 5,
+     "promises": 9,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    },
+    "fr": {
+     "cells": 5,
+     "promises": 9,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    },
+    "ar": {
+     "cells": 5,
+     "promises": 9,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    },
+    "ha": {
+     "cells": 5,
+     "promises": 9,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    }
+   },
+   "drift": [],
+   "cells": [
+    {
+     "n": 1,
+     "code": "oT = new stzTable([\n\t[ :DISH, :PRICE, :ORDERS ],\n\t[ \"tea\",  200, 6 ],\n\t[ \"rice\", 500, 3 ],\n\t[ \"fish\", 900, 2 ]\n])\noT.Show()",
+     "promise": "",
+     "out": "╭──────┬───────┬────────╮\n│ Dish │ Price │ Orders │\n├──────┼───────┼────────┤\n│ tea  │   200 │      6 │\n│ rice │   500 │      3 │\n│ fish │   900 │      2 │\n╰──────┴───────┴────────╯",
+     "error": "",
+     "ran": true,
+     "kept": -1,
+     "heading": {
+      "en": "1. Build the table, and look at it",
+      "fr": "1. Construire la table, et la regarder",
+      "ar": "1. ابنِ الجدول، وانظر إليه",
+      "ha": "1. Gina teburin, ka dube shi"
+     },
+     "lines": {
+      "en": [
+       13,
+       21
+      ],
+      "fr": [
+       15,
+       23
+      ],
+      "ar": [
+       14,
+       22
+      ],
+      "ha": [
+       15,
+       23
+      ]
+     },
+     "kept_in": {
+      "en": -1,
+      "fr": -1,
+      "ar": -1,
+      "ha": -1
+     }
+    },
+    {
+     "n": 2,
+     "code": "? oT.NumberOfRows()\n#--> 3\n? oT.NumberOfCols()\n#--> 3\n? @@( oT.ColNames() )\n#--> [ \"dish\", \"price\", \"orders\" ]",
+     "promise": "3\n3\n[ \"dish\", \"price\", \"orders\" ]",
+     "out": "3\n3\n[ \"dish\", \"price\", \"orders\" ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "2. Its shape",
+      "fr": "2. Sa forme",
+      "ar": "2. شكله",
+      "ha": "2. Siffarsa"
+     },
+     "lines": {
+      "en": [
+       25,
+       32
+      ],
+      "fr": [
+       27,
+       34
+      ],
+      "ar": [
+       26,
+       33
+      ],
+      "ha": [
+       27,
+       34
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 3,
+     "code": "? @@( oT.Col(:PRICE) )\n#--> [ 200, 500, 900 ]\n? @@( oT.Row(2) )\n#--> [ \"rice\", 500, 3 ]",
+     "promise": "[ 200, 500, 900 ]\n[ \"rice\", 500, 3 ]",
+     "out": "[ 200, 500, 900 ]\n[ \"rice\", 500, 3 ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "3. A column, a row",
+      "fr": "3. Une colonne, une ligne",
+      "ar": "3. عمود، وصف",
+      "ha": "3. Shafi, layi"
+     },
+     "lines": {
+      "en": [
+       36,
+       41
+      ],
+      "fr": [
+       38,
+       43
+      ],
+      "ar": [
+       37,
+       42
+      ],
+      "ha": [
+       38,
+       43
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 4,
+     "code": "? oT.Cell(:PRICE, 3)\n#--> 900\n? @@( oT.FindInCol(:DISH, \"fish\") )\n#--> [ 3 ]",
+     "promise": "900\n[ 3 ]",
+     "out": "900\n[ 3 ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "4. A cell, and where a value is",
+      "fr": "4. Une cellule, et où se trouve une valeur",
+      "ar": "4. خلية، وأين قيمة ما",
+      "ha": "4. Ɗaki, da inda daraja take"
+     },
+     "lines": {
+      "en": [
+       45,
+       50
+      ],
+      "fr": [
+       47,
+       52
+      ],
+      "ar": [
+       46,
+       51
+      ],
+      "ha": [
+       47,
+       52
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 5,
+     "code": "? StzListQ(oT.Col(:ORDERS)).Sum()\n#--> 11\n? @@( StzListQ(oT.Col(:PRICE)).FindW(\"{ @item > 400 }\") )\n#--> [ 2, 3 ]",
+     "promise": "11\n[ 2, 3 ]",
+     "out": "11\n[ 2, 3 ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "5. A column is a list: ask it the list questions",
+      "fr": "5. Une colonne est une liste : posez-lui les questions des listes",
+      "ar": "5. العمود قائمة: اسأله أسئلة القوائم",
+      "ha": "5. Shafi jeri ne: yi masa tambayoyin jeri"
+     },
+     "lines": {
+      "en": [
+       54,
+       59
+      ],
+      "fr": [
+       56,
+       61
+      ],
+      "ar": [
+       55,
+       60
+      ],
+      "ha": [
+       56,
+       61
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ex-10-01",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-the-whole-row.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-rows-not-orders.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-cell-and-sum.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-by-position.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 10.1 · The menu",
+      "fr": "Exercice 10.1 · Le menu",
+      "ar": "التمرين 10.1 · قائمة الطعام",
+      "ha": "Aiki na 10.1 · Menu"
+     }
+    }
+   ],
+   "file": {
+    "en": "base/education/program/courses/elementary-introduction/chapters/10-when-code-meets-cells.en.md",
+    "fr": "base/education/program/courses/elementary-introduction/chapters/10-when-code-meets-cells.fr.md",
+    "ar": "base/education/program/courses/elementary-introduction/chapters/10-when-code-meets-cells.ar.md",
+    "ha": "base/education/program/courses/elementary-introduction/chapters/10-when-code-meets-cells.ha.md"
+   }
+  },
+  {
+   "id": "draw-the-answer",
+   "n": 11,
+   "title": {
+    "en": "Draw the answer",
+    "fr": "Dessiner la réponse",
+    "ar": "ارسم الجواب",
+    "ha": "Zana amsar"
+   },
+   "editions": {
+    "en": {
+     "cells": 5,
+     "promises": 13,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 4
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    },
+    "fr": {
+     "cells": 5,
+     "promises": 13,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 4
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    },
+    "ar": {
+     "cells": 5,
+     "promises": 13,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 4
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    },
+    "ha": {
+     "cells": 5,
+     "promises": 13,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 4
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      }
+     ]
+    }
+   },
+   "drift": [],
+   "cells": [
+    {
+     "n": 1,
+     "code": "o1 = new stzString(\"fjringljringdjringg\")\n? @@( o1.FindAll(\"ring\") )\n#--> [ 3, 9, 15 ]\n? o1.vizFind(\"ring\")\n#--> fjringljringdjringg\n#--> --^-----^-----^----",
+     "promise": "[ 3, 9, 15 ]\nfjringljringdjringg\n--^-----^-----^----",
+     "out": "[ 3, 9, 15 ]\nfjringljringdjringg\n--^-----^-----^----",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "1. Show where, not only which position",
+      "fr": "1. Montrer où, pas seulement quelle position",
+      "ar": "1. أظهر أين، لا الموضع فقط",
+      "ha": "1. Nuna ina, ba wuri kawai ba"
+     },
+     "lines": {
+      "en": [
+       11,
+       18
+      ],
+      "fr": [
+       13,
+       20
+      ],
+      "ar": [
+       12,
+       19
+      ],
+      "ha": [
+       13,
+       20
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 2,
+     "code": "? o1.vizFindXT(\"ring\", [ :Numbered = TRUE ])\n#--> fjringljringdjringg\n#--> --^-----^-----^----\n#--> 3     9     15",
+     "promise": "fjringljringdjringg\n--^-----^-----^----\n3     9     15",
+     "out": "fjringljringdjringg\n--^-----^-----^----\n  3     9     15",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "2. With the numbers under the marks",
+      "fr": "2. Avec les nombres sous les marques",
+      "ar": "2. مع الأرقام تحت العلامات",
+      "ha": "2. Da lambobin a ƙarƙashin alamomin"
+     },
+     "lines": {
+      "en": [
+       22,
+       27
+      ],
+      "fr": [
+       24,
+       29
+      ],
+      "ar": [
+       23,
+       28
+      ],
+      "ha": [
+       24,
+       29
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 3,
+     "code": "oG = new stzGraph(\"kitchen\")\noG {\n\tAddNodeXT(\"order\", \"Order\")\n\tAddNodeXT(\"kitchen\", \"Kitchen\")\n\tAddNodeXT(\"table\", \"Table\")\n\tConnect(\"order\", \"kitchen\")\n\tConnect(\"kitchen\", \"table\")\n}\n? oG.PathExists(\"order\", \"table\")\n#--> TRUE\n? @@( oG.Neighbors(\"kitchen\") )\n#--> [ \"table\" ]\noG.Show()\n#--> │ Order │\n#--> │ Table │",
+     "promise": "TRUE\n[ \"table\" ]\n│ Order │\n│ Table │",
+     "out": "1\n[ \"table\" ]\n        ╭───────╮        \n        │ Order │        \n        ╰───────╯        \n            |            \n            v            \n      ╭───────────╮      \n      │ !Kitchen! │      \n      ╰───────────╯      \n            |            \n            v            \n        ╭───────╮        \n        │ Table │        \n        ╰───────╯",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "3. A graph is a picture of relations",
+      "fr": "3. Un graphe est une image de relations",
+      "ar": "3. الرسم البياني صورة للعلاقات",
+      "ha": "3. Zane hoton alaƙa ne"
+     },
+     "lines": {
+      "en": [
+       34,
+       50
+      ],
+      "fr": [
+       36,
+       52
+      ],
+      "ar": [
+       34,
+       50
+      ],
+      "ha": [
+       35,
+       51
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 4,
+     "code": "oP = new stzHBarPlot([ :tea = 6, :rice = 3, :fish = 2 ])\noP.Show()\n#--> Tea │ ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇\n#--> Fish │ ▇▇▇▇▇▇",
+     "promise": "Tea │ ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇\nFish │ ▇▇▇▇▇▇",
+     "out": "▲                   \n Tea │ ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇\nRice │ ▇▇▇▇▇▇▇▇▇         \nFish │ ▇▇▇▇▇▇            \n     ╰──────────────────►",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "4. How much: a bar for each dish",
+      "fr": "4. Combien : une barre par plat",
+      "ar": "4. كم: عمود لكل طبق",
+      "ha": "4. Nawa: sanda ɗaya ga kowane abinci"
+     },
+     "lines": {
+      "en": [
+       54,
+       59
+      ],
+      "fr": [
+       56,
+       61
+      ],
+      "ar": [
+       54,
+       59
+      ],
+      "ha": [
+       55,
+       60
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 5,
+     "code": "oP2 = new stzVBarPlot([ :tea = 6, :rice = 3, :fish = 2 ])\noP2.SetHeight(4)\noP2.Show()\n#--> Tea Rice Fish",
+     "promise": "Tea Rice Fish",
+     "out": "▲                \n│ ██             \n│ ██             \n│ ██   ██   ██   \n│ ██   ██   ██   \n╰───────────────►\n  Tea Rice Fish",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "5. The same bars, standing up",
+      "fr": "5. Les mêmes barres, debout",
+      "ar": "5. الأعمدة نفسها، واقفة",
+      "ha": "5. Sanduna ɗin nan, a tsaye"
+     },
+     "lines": {
+      "en": [
+       63,
+       68
+      ],
+      "fr": [
+       65,
+       70
+      ],
+      "ar": [
+       63,
+       68
+      ],
+      "ha": [
+       64,
+       69
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ex-11-01",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-positions-only.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-the-wrong-word.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-vizfind.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-in-one-sentence.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 11.1 · Show where tea is",
+      "fr": "Exercice 11.1 · Montrer où est le thé",
+      "ar": "التمرين 11.1 · أظهر أين الشاي",
+      "ha": "Aiki na 11.1 · Nuna inda shayi yake"
+     }
+    },
+    {
+     "id": "ex-11-02",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-standing-bars.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-forgets-a-dish.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-lying-bars.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-the-block-form.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 11.2 · How much of each",
+      "fr": "Exercice 11.2 · Combien de chaque",
+      "ar": "التمرين 11.2 · كم من كل طبق",
+      "ha": "Aiki na 11.2 · Nawa na kowanne"
+     }
+    }
+   ],
+   "file": {
+    "en": "base/education/program/courses/elementary-introduction/chapters/11-draw-the-answer.en.md",
+    "fr": "base/education/program/courses/elementary-introduction/chapters/11-draw-the-answer.fr.md",
+    "ar": "base/education/program/courses/elementary-introduction/chapters/11-draw-the-answer.ar.md",
+    "ha": "base/education/program/courses/elementary-introduction/chapters/11-draw-the-answer.ha.md"
+   }
+  },
+  {
+   "id": "teach-a-world",
+   "n": 12,
+   "title": {
+    "en": "Teach a world",
+    "fr": "Enseigner un monde",
+    "ar": "علّم عالمًا",
+    "ha": "Koyar da duniya"
+   },
+   "editions": {
+    "en": {
+     "cells": 5,
+     "promises": 9,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 4
+      },
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      }
+     ]
+    },
+    "fr": {
+     "cells": 5,
+     "promises": 9,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 4
+      },
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      }
+     ]
+    },
+    "ar": {
+     "cells": 5,
+     "promises": 9,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 4
+      },
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      }
+     ]
+    },
+    "ha": {
+     "cells": 5,
+     "promises": 9,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 4
+      },
+      {
+       "ran": true,
+       "kept": -1,
+       "promises": 0
+      }
+     ]
+    }
+   },
+   "drift": [],
+   "cells": [
+    {
+     "n": 1,
+     "code": "oKB = new stzKnowledgeGraph(\"menu\")\noKB.Know(\"margherita\", \"dish\").Know(\"tiramisu\", \"dish\").Know(\"pizza\", \"dish\")\noKB.KnowRelation(\"margherita\", \"kind-of\", \"pizza\")\noKB.KnowRelation(\"pizza\", \"kind-of\", \"food\")\noKB.KnowRelation(\"margherita\", \"contains\", \"tomato\")\n? @@( oKB.Query([ \"?x\", \"is-a\", \"dish\" ]) )\n#--> [ \"margherita\", \"tiramisu\", \"pizza\" ]\n? @@( oKB.Query([ \"margherita\", \"contains\", \"?o\" ]) )\n#--> [ \"tomato\" ]",
+     "promise": "[ \"margherita\", \"tiramisu\", \"pizza\" ]\n[ \"tomato\" ]",
+     "out": "[ \"margherita\", \"tiramisu\", \"pizza\" ]\n[ \"tomato\" ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "1. State facts",
+      "fr": "1. Énoncer des faits",
+      "ar": "1. صرّح بالحقائق",
+      "ha": "1. Faɗi gaskiya"
+     },
+     "lines": {
+      "en": [
+       13,
+       23
+      ],
+      "fr": [
+       17,
+       27
+      ],
+      "ar": [
+       15,
+       25
+      ],
+      "ha": [
+       17,
+       27
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 2,
+     "code": "? @@( oKB.Query([ \"margherita\", \"kind-of\", \"?o\" ]) )\n#--> [ \"pizza\" ]",
+     "promise": "[ \"pizza\" ]",
+     "out": "[ \"pizza\" ]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "2. A query answers from what was recorded",
+      "fr": "2. Une requête répond d'après ce qui a été enregistré",
+      "ar": "2. الاستعلام يجيب مما سُجّل",
+      "ha": "2. Tambaya tana amsawa daga abin da aka rubuta"
+     },
+     "lines": {
+      "en": [
+       29,
+       32
+      ],
+      "fr": [
+       33,
+       36
+      ],
+      "ar": [
+       31,
+       34
+      ],
+      "ha": [
+       33,
+       36
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 3,
+     "code": "oKB.ConstrainRelation(\"kind-of\", :Transitive)\naProof = oKB.Prove([ \"margherita\", \"kind-of\", \"food\" ])\n? aProof[:verdict]\n#--> TRUE\n? aProof[:narration]\n#--> proved: margherita kind-of pizza kind-of food",
+     "promise": "TRUE\nproved: margherita kind-of pizza kind-of food",
+     "out": "1\nproved: margherita kind-of pizza kind-of food",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "3. A law makes reasoning possible",
+      "fr": "3. Une loi rend le raisonnement possible",
+      "ar": "3. القانون يجعل الاستدلال ممكنًا",
+      "ha": "3. Doka tana sa tunani ya yiwu"
+     },
+     "lines": {
+      "en": [
+       39,
+       46
+      ],
+      "fr": [
+       43,
+       50
+      ],
+      "ar": [
+       41,
+       48
+      ],
+      "ha": [
+       43,
+       50
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 4,
+     "code": "? oKB.ExportToKnow()\n#--> knowledge \"menu\"\n#--> margherita | is-a | dish\n#--> margherita | contains | tomato\n#--> kind-of | transitive",
+     "promise": "knowledge \"menu\"\nmargherita | is-a | dish\nmargherita | contains | tomato\nkind-of | transitive",
+     "out": "knowledge \"menu\"\n\nfacts\n    margherita | is-a | dish\n    tiramisu | is-a | dish\n    pizza | is-a | dish\n    margherita | kind-of | pizza\n    pizza | kind-of | food\n    margherita | contains | tomato\n\nontology\n    kind-of | transitive",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "4. A world is a file you can read",
+      "fr": "4. Un monde est un fichier que vous pouvez lire",
+      "ar": "4. العالم ملف تستطيع قراءته",
+      "ha": "4. Duniya fayil ne da za ka iya karantawa"
+     },
+     "lines": {
+      "en": [
+       50,
+       56
+      ],
+      "fr": [
+       54,
+       60
+      ],
+      "ar": [
+       52,
+       58
+      ],
+      "ha": [
+       54,
+       60
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 5,
+     "code": "? EduWorldName()\n? @@( EduWorld().Query([ \"?o\", \"requested\", \"?d\" ]) )",
+     "promise": "",
+     "out": "bella-cucina (restaurant)\n[ [ \"order-1\", \"margherita\" ], [ \"order-2\", \"tiramisu\" ], [ \"order-3\", \"margherita\" ], [ \"order-4\", \"lasagna\" ], [ \"order-5\", \"tiramisu\" ], [ \"order-6\", \"margherita\" ] ]",
+     "error": "",
+     "ran": true,
+     "kept": -1,
+     "heading": {
+      "en": "5. The world this course runs over",
+      "fr": "5. Le monde sur lequel ce cours s'exécute",
+      "ar": "5. العالم الذي يجري عليه هذا الدرس",
+      "ha": "5. Duniyar da wannan darasin yake gudana a kai"
+     },
+     "lines": {
+      "en": [
+       63,
+       66
+      ],
+      "fr": [
+       67,
+       70
+      ],
+      "ar": [
+       64,
+       67
+      ],
+      "ha": [
+       67,
+       70
+      ]
+     },
+     "kept_in": {
+      "en": -1,
+      "fr": -1,
+      "ar": -1,
+      "ha": -1
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ex-12-01",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-one-dish.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-words-in-the-wrong-order.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-know.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-know-relation.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 12.1 · Two facts",
+      "fr": "Exercice 12.1 · Deux faits",
+      "ar": "التمرين 12.1 · حقيقتان",
+      "ha": "Aiki na 12.1 · Gaskiya biyu"
+     }
+    },
+    {
+     "id": "ex-12-02",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-asks-instead-of-proving.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-prints-the-verdict-only.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-declare-then-prove.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-from-a-world-text.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 12.2 · Prove it",
+      "fr": "Exercice 12.2 · Prouvez-le",
+      "ar": "التمرين 12.2 · أثبته",
+      "ha": "Aiki na 12.2 · Tabbatar da shi"
+     }
+    }
+   ],
+   "file": {
+    "en": "base/education/program/courses/elementary-introduction/chapters/12-teach-a-world.en.md",
+    "fr": "base/education/program/courses/elementary-introduction/chapters/12-teach-a-world.fr.md",
+    "ar": "base/education/program/courses/elementary-introduction/chapters/12-teach-a-world.ar.md",
+    "ha": "base/education/program/courses/elementary-introduction/chapters/12-teach-a-world.ha.md"
+   }
+  },
+  {
+   "id": "the-gap-question",
+   "n": 13,
+   "title": {
+    "en": "The gap question",
+    "fr": "La question du manque",
+    "ar": "سؤال الفجوة",
+    "ha": "Tambayar giɓi"
+   },
+   "editions": {
+    "en": {
+     "cells": 6,
+     "promises": 10,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    },
+    "fr": {
+     "cells": 6,
+     "promises": 10,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    },
+    "ar": {
+     "cells": 6,
+     "promises": 10,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    },
+    "ha": {
+     "cells": 6,
+     "promises": 10,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    }
+   },
+   "drift": [],
+   "cells": [
+    {
+     "n": 1,
+     "code": "oRest = new stzKnowledgeGraph(\"restaurant\")\noRest.Know(\"margherita\", \"dish\").Know(\"tiramisu\", \"dish\")\noRest.AddConversationQ(\"setup\").SetGoal(StzGoalQ().RequireEach(\"dish\", \"contains\"))\n? len( oRest.GapsIn(\"setup\") )\n#--> 2",
+     "promise": "2",
+     "out": "2",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "1. Declare a goal",
+      "fr": "1. Déclarer un objectif",
+      "ar": "1. أعلن هدفًا",
+      "ha": "1. Bayyana manufa"
+     },
+     "lines": {
+      "en": [
+       13,
+       19
+      ],
+      "fr": [
+       16,
+       22
+      ],
+      "ar": [
+       15,
+       21
+      ],
+      "ha": [
+       16,
+       22
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 2,
+     "code": "aQ = oRest.AskInXT(\"setup\")\n? aQ[:question]\n#--> What does 'margherita' have for 'contains'?  (why: every dish needs 'contains')",
+     "promise": "What does 'margherita' have for 'contains'?  (why: every dish needs 'contains')",
+     "out": "What does 'margherita' have for 'contains'?  (why: every dish needs 'contains')",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "2. Softanza asks, and says why",
+      "fr": "2. Softanza demande, et dit pourquoi",
+      "ar": "2. تسأل سوفتانزا، وتقول لماذا",
+      "ha": "2. Softanza tana tambaya, ta faɗi dalili"
+     },
+     "lines": {
+      "en": [
+       23,
+       27
+      ],
+      "fr": [
+       26,
+       30
+      ],
+      "ar": [
+       25,
+       29
+      ],
+      "ha": [
+       26,
+       30
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 3,
+     "code": "aV = oRest.ReplyIn(\"setup\", \"tomato and mozzarella\")\n? @@( aV[:admitted] )\n#--> [ \"tomato\", \"mozzarella\" ]\n? @@( oRest.Query([ \"margherita\", \"contains\", \"?o\" ]) )\n#--> [ \"tomato\", \"mozzarella\" ]\n? len( oRest.GapsIn(\"setup\") )\n#--> 1",
+     "promise": "[ \"tomato\", \"mozzarella\" ]\n[ \"tomato\", \"mozzarella\" ]\n1",
+     "out": "[ \"tomato\", \"mozzarella\" ]\n[ \"tomato\", \"mozzarella\" ]\n1",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "3. You answer in words, and the world grows",
+      "fr": "3. Vous répondez avec des mots, et le monde grandit",
+      "ar": "3. تجيب بالكلمات، فينمو العالم",
+      "ha": "3. Ka amsa da kalmomi, duniyar ta girma"
+     },
+     "lines": {
+      "en": [
+       31,
+       39
+      ],
+      "fr": [
+       34,
+       42
+      ],
+      "ar": [
+       33,
+       41
+      ],
+      "ha": [
+       34,
+       42
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 4,
+     "code": "aQ2 = oRest.AskInXT(\"setup\")\n? aQ2[:question]\n#--> Which 'contains' does 'tiramisu' have? (1) tomato  (2) mozzarella -- or answer freely.  (why: every dish needs 'contains')",
+     "promise": "Which 'contains' does 'tiramisu' have? (1) tomato  (2) mozzarella -- or answer freely.  (why: every dish needs 'contains')",
+     "out": "Which 'contains' does 'tiramisu' have? (1) tomato  (2) mozzarella -- or answer freely.  (why: every dish needs 'contains')",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "4. The next question offers what it already knows",
+      "fr": "4. La question suivante propose ce qu'elle sait déjà",
+      "ar": "4. السؤال التالي يعرض ما يعرفه من قبلُ",
+      "ha": "4. Tambaya ta gaba tana ba da abin da ta riga ta sani"
+     },
+     "lines": {
+      "en": [
+       43,
+       47
+      ],
+      "fr": [
+       46,
+       50
+      ],
+      "ar": [
+       45,
+       49
+      ],
+      "ha": [
+       46,
+       50
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 5,
+     "code": "oDoc = StzSelfDocQ(\"stzList\")\n? oDoc.HowTo(\"remove duplicates\")\n#--> Q([...]).RemoveDuplicates()   -- composed by grammar (remove duplicates)\n? oDoc.HasMethod(\"DuplicatesRemoved\")\n#--> TRUE",
+     "promise": "Q([...]).RemoveDuplicates()   -- composed by grammar (remove duplicates)\nTRUE",
+     "out": "Q([...]).RemoveDuplicates()   -- composed by grammar (remove duplicates)\n1",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "5. Ask the library what it calls the thing you mean",
+      "fr": "5. Demander à la bibliothèque comment elle appelle ce que vous voulez dire",
+      "ar": "5. اسأل المكتبة بماذا تسمّي ما تقصده",
+      "ha": "5. Tambayi ɗakin karatu abin da yake kiran abin da kake nufi"
+     },
+     "lines": {
+      "en": [
+       53,
+       59
+      ],
+      "fr": [
+       57,
+       63
+      ],
+      "ar": [
+       55,
+       61
+      ],
+      "ha": [
+       56,
+       62
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 6,
+     "code": "? StzLeft( oDoc.ExplainMethod(\"DuplicatesRemoved\"), 20 )\n#--> DuplicatesRemoved --\n? oDoc.ExplainMethod(\"NoSuchThing\")\n#--> No method 'NoSuchThing' in stzList.",
+     "promise": "DuplicatesRemoved --\nNo method 'NoSuchThing' in stzList.",
+     "out": "DuplicatesRemoved --\nNo method 'NoSuchThing' in stzList.",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "6. Explain a method, and refuse an unknown one",
+      "fr": "6. Expliquer une méthode, et refuser une méthode inconnue",
+      "ar": "6. اشرح دالة، وارفض دالة مجهولة",
+      "ha": "6. Bayyana hanya, ka ƙi wadda ba a sani ba"
+     },
+     "lines": {
+      "en": [
+       63,
+       68
+      ],
+      "fr": [
+       67,
+       72
+      ],
+      "ar": [
+       65,
+       70
+      ],
+      "ha": [
+       66,
+       71
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ex-13-01",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-never-answers.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-prints-the-question.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-answer-in-words.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-answer-with-a-list.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 13.1 · Close one gap",
+      "fr": "Exercice 13.1 · Combler un manque",
+      "ar": "التمرين 13.1 · سدّ فجوة واحدة",
+      "ha": "Aiki na 13.1 · Rufe giɓi ɗaya"
+     }
+    },
+    {
+     "id": "ex-13-02",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-another-intent.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-explains-instead.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-howto.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-howto-on-an-object.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 13.2 · Ask the library",
+      "fr": "Exercice 13.2 · Demandez à la bibliothèque",
+      "ar": "التمرين 13.2 · اسأل المكتبة",
+      "ha": "Aiki na 13.2 · Tambayi ɗakin karatu"
+     }
+    }
+   ],
+   "file": {
+    "en": "base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md",
+    "fr": "base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.fr.md",
+    "ar": "base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.ar.md",
+    "ha": "base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.ha.md"
+   }
+  },
+  {
+   "id": "an-agent-that-cannot-hurt",
+   "n": 14,
+   "title": {
+    "en": "An agent that cannot hurt",
+    "fr": "Un agent qui ne peut pas nuire",
+    "ar": "وكيل لا يستطيع أن يؤذي",
+    "ha": "Wakilin da ba zai iya cutarwa ba"
+   },
+   "editions": {
+    "en": {
+     "cells": 7,
+     "promises": 14,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    },
+    "fr": {
+     "cells": 7,
+     "promises": 14,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    },
+    "ar": {
+     "cells": 7,
+     "promises": 14,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    },
+    "ha": {
+     "cells": 7,
+     "promises": 14,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      }
+     ]
+    }
+   },
+   "drift": [],
+   "cells": [
+    {
+     "n": 1,
+     "code": "cPia = \"pia: 1\nname: stock-watcher\nkind: pi\ncoverage: checks the kitchen stock every morning and notes what is low\nreversibility: reversible\nschedule:\n  timer: 20\nmemory:\n  - stock level unknown\nskills:\n  - name: check-stock\n    when: always\n    does: learn stock level checked\n    verify: fact stock level checked\n\"\noDecl = StzAgentDeclarationQ(cPia)\n? oDecl.IsValid()\n#--> TRUE\n? oDecl.ReversibilityClass()\n#--> reversible",
+     "promise": "TRUE\nreversible",
+     "out": "1\nreversible",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "1. Declare an agent, and let the court judge it",
+      "fr": "1. Déclarer un agent, et laisser la cour le juger",
+      "ar": "1. صرّح بوكيل، ودع المحكمة تحكم عليه",
+      "ha": "1. Bayyana wakili, ka bar kotu ta hukunta shi"
+     },
+     "lines": {
+      "en": [
+       13,
+       34
+      ],
+      "fr": [
+       17,
+       38
+      ],
+      "ar": [
+       15,
+       36
+      ],
+      "ha": [
+       16,
+       37
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 2,
+     "code": "oBad = StzAgentDeclarationQ( StzReplace(cPia, \"coverage: checks the kitchen stock every morning and notes what is low\" + char(10), \"\") )\n? oBad.IsValid()\n#--> FALSE\n? StzLeft( oBad.CiteFindings(), 25 )\n#--> [pia-coverage @ coverage]",
+     "promise": "FALSE\n[pia-coverage @ coverage]",
+     "out": "0\n[pia-coverage @ coverage]",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "2. The court refuses what says nothing of its reach",
+      "fr": "2. La cour refuse ce qui ne dit rien de sa portée",
+      "ar": "2. ترفض المحكمة ما لا يقول شيئًا عن مداه",
+      "ha": "2. Kotu tana ƙin abin da bai faɗi komai game da iyakarsa ba"
+     },
+     "lines": {
+      "en": [
+       38,
+       44
+      ],
+      "fr": [
+       42,
+       48
+      ],
+      "ar": [
+       40,
+       46
+      ],
+      "ha": [
+       41,
+       47
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 3,
+     "code": "oGBad = new stzAgentGraph(\"mailer-bad\")\noGBad.AddLLMActor(\"writer\")\noGBad.AddEffect(\"send\")\noGBad.Proposes(\"writer\", \"send\")\n? oGBad.IsSound()\n#--> FALSE\n? oGBad.Violations()[1][:message]\n#--> effect 'send' has no guardian edge into it -- every effect passes a pi-gate",
+     "promise": "FALSE\neffect 'send' has no guardian edge into it -- every effect passes a pi-gate",
+     "out": "0\neffect 'send' has no guardian edge into it -- every effect passes a pi-gate",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "3. Propose, never commit: the shape of a safe system",
+      "fr": "3. Proposer, jamais valider : la forme d'un système sûr",
+      "ar": "3. اقترح ولا تنفّذ: شكل النظام الآمن",
+      "ha": "3. Ba da shawara, kada ka aiwatar: siffar tsari mai aminci"
+     },
+     "lines": {
+      "en": [
+       51,
+       60
+      ],
+      "fr": [
+       55,
+       64
+      ],
+      "ar": [
+       52,
+       61
+      ],
+      "ha": [
+       54,
+       63
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 4,
+     "code": "oGOk = new stzAgentGraph(\"mailer\")\noGOk.AddLLMActor(\"writer\")\noGOk.AddGuardian(\"gate\")\noGOk.AddEffect(\"send\")\noGOk.AddTraceSink(\"audit\")\noGOk.Proposes(\"writer\", \"gate\")\noGOk.Guards(\"gate\", \"send\")\noGOk.Feeds(\"gate\", \"send\")\noGOk.Traces(\"send\", \"audit\")\n? oGOk.IsSound()\n#--> TRUE",
+     "promise": "TRUE",
+     "out": "1",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "4. The governed shape",
+      "fr": "4. La forme gouvernée",
+      "ar": "4. الشكل المحكوم",
+      "ha": "4. Siffar da ake mulka"
+     },
+     "lines": {
+      "en": [
+       66,
+       78
+      ],
+      "fr": [
+       70,
+       82
+      ],
+      "ar": [
+       67,
+       79
+      ],
+      "ha": [
+       69,
+       81
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 5,
+     "code": "oAg = oDecl.ToAgent()\noAg.GiveWorkbench()\ncHere = StzReplace(currentdir(), char(92), \"/\")\ncNote = cHere + \"/t_edu_note_\" + ProcessId() + \".txt\"\noAg.WorkbenchQ().WriteFile(cNote, \"stock is low\")\n? fexists(cNote)\n#--> FALSE\n? oAg.WorkbenchQ().ContentOf(cNote)\n#--> stock is low\noPlan = oAg.GenerateUpdatePlan()\n? oPlan.NumberOfOperations()\n#--> 1",
+     "promise": "FALSE\nstock is low\n1",
+     "out": "0\nstock is low\n1",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "5. Rehearse in a safe world",
+      "fr": "5. Répéter dans un monde sûr",
+      "ar": "5. تدرّب في عالم آمن",
+      "ha": "5. Yi gwaji a duniya mai aminci"
+     },
+     "lines": {
+      "en": [
+       85,
+       98
+      ],
+      "fr": [
+       89,
+       102
+      ],
+      "ar": [
+       85,
+       98
+      ],
+      "ha": [
+       88,
+       101
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 6,
+     "code": "oPlan.SetExecutor( LLMActor(\"helper\") )\naMay = oPlan.MayCommit()\n? aMay[1]\n#--> FALSE\n? aMay[2]\n#--> actor 'helper' cannot commit -- it lacks the 'effectful' capability (required by operation 1)",
+     "promise": "FALSE\nactor 'helper' cannot commit -- it lacks the 'effectful' capability (required by operation 1)",
+     "out": "0\nactor 'helper' cannot commit -- it lacks the 'effectful' capability (required by operation 1)",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "6. An AI cannot commit the plan",
+      "fr": "6. Une IA ne peut pas valider le plan",
+      "ar": "6. لا يستطيع ذكاء اصطناعي أن ينفّذ الخطة",
+      "ha": "6. AI ba za ta iya aiwatar da tsarin ba"
+     },
+     "lines": {
+      "en": [
+       102,
+       109
+      ],
+      "fr": [
+       106,
+       113
+      ],
+      "ar": [
+       102,
+       109
+      ],
+      "ha": [
+       105,
+       112
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 7,
+     "code": "oPlan2 = oAg.GenerateUpdatePlan()\noPlan2.SetExecutor( PIActor(\"committer\") )\noScope = new stzCommitScope()\noScope.AllowUnder(cHere)\noPlan2.SetScope(oScope)\naRes = oPlan2.Execute()\n? aRes[1][2]\n#--> TRUE\n? fexists(cNote)\n#--> TRUE\nremove(cNote)",
+     "promise": "TRUE\nTRUE",
+     "out": "1\n1",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "7. Only a committing actor, inside its scope, changes reality",
+      "fr": "7. Seul un acteur de validation, dans sa portée, change la réalité",
+      "ar": "7. لا يغيّر الواقع إلا ممثل تنفيذ، داخل نطاقه",
+      "ha": "7. Mai aiwatarwa kaɗai, a cikin iyakarsa, yake canza gaskiya"
+     },
+     "lines": {
+      "en": [
+       116,
+       128
+      ],
+      "fr": [
+       120,
+       132
+      ],
+      "ar": [
+       116,
+       128
+      ],
+      "ha": [
+       119,
+       131
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ex-14-01",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-says-nothing-of-its-reach.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-cannot-be-undone-cleanly.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-declare.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-from-a-template.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 14.1 · Declare a watcher",
+      "fr": "Exercice 14.1 · Déclarer un veilleur",
+      "ar": "التمرين 14.1 · صرّح بمراقب",
+      "ha": "Aiki na 14.1 · Bayyana mai sa ido"
+     }
+    },
+    {
+     "id": "ex-14-02",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-only-the-bad-shape.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-counts-violations.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-two-shapes.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-other-names.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 14.2 · Two shapes",
+      "fr": "Exercice 14.2 · Deux formes",
+      "ar": "التمرين 14.2 · شكلان",
+      "ha": "Aiki na 14.2 · Siffofi biyu"
+     }
+    },
+    {
+     "id": "ex-14-03",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-writes-for-real.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-reads-the-bench-instead.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-rehearse.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-another-file.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 14.3 · What would it have done?",
+      "fr": "Exercice 14.3 · Qu'aurait-il fait ?",
+      "ar": "التمرين 14.3 · ماذا كان سيفعل؟",
+      "ha": "Aiki na 14.3 · Me da ya yi?"
+     }
+    }
+   ],
+   "file": {
+    "en": "base/education/program/courses/elementary-introduction/chapters/14-an-agent-that-cannot-hurt.en.md",
+    "fr": "base/education/program/courses/elementary-introduction/chapters/14-an-agent-that-cannot-hurt.fr.md",
+    "ar": "base/education/program/courses/elementary-introduction/chapters/14-an-agent-that-cannot-hurt.ar.md",
+    "ha": "base/education/program/courses/elementary-introduction/chapters/14-an-agent-that-cannot-hurt.ha.md"
+   }
+  },
+  {
+   "id": "write-a-narration",
+   "n": 15,
+   "title": {
+    "en": "Write a narration",
+    "fr": "Écrire une narration",
+    "ar": "اكتب سردًا",
+    "ha": "Rubuta labari"
+   },
+   "editions": {
+    "en": {
+     "cells": 4,
+     "promises": 8,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      }
+     ]
+    },
+    "fr": {
+     "cells": 4,
+     "promises": 8,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      }
+     ]
+    },
+    "ar": {
+     "cells": 4,
+     "promises": 8,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      }
+     ]
+    },
+    "ha": {
+     "cells": 4,
+     "promises": 8,
+     "stored_output": false,
+     "all_ran": true,
+     "all_kept": true,
+     "cell_flags": [
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 2
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 1
+      },
+      {
+       "ran": true,
+       "kept": 1,
+       "promises": 3
+      }
+     ]
+    }
+   },
+   "drift": [],
+   "cells": [
+    {
+     "n": 1,
+     "code": "cDoc = \"# Mini\" + char(10) + \"```ring\" + char(10) + \"? 1 + 1\" + char(10) + \"#--> 2\" + char(10) + \"```\" + char(10)\ncMini = \"t_mini_\" + ProcessId() + \".en.md\"\nwrite(cMini, cDoc)\noCh = StzChapterQ(cMini, \"en\")\noCh.Run(\"\")\n? oCh.NumberOfCells()\n#--> 1\n? oCh.AllPromisesKept()\n#--> TRUE",
+     "promise": "2\" + char(10) + \"```\" + char(10)\n1\nTRUE",
+     "out": "1\n1",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "1. A narration is a text file with promises",
+      "fr": "1. Une narration est un fichier texte avec des promesses",
+      "ar": "1. السرد ملف نصي فيه وعود",
+      "ha": "1. Labari fayil na rubutu ne mai alkawura"
+     },
+     "lines": {
+      "en": [
+       13,
+       23
+      ],
+      "fr": [
+       16,
+       26
+      ],
+      "ar": [
+       14,
+       24
+      ],
+      "ha": [
+       16,
+       26
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 2,
+     "code": "cBroken = \"# Mini\" + char(10) + \"```ring\" + char(10) + \"? 1 + 1\" + char(10) + \"#--> 3\" + char(10) + \"```\" + char(10)\ncMini2 = \"t_mini2_\" + ProcessId() + \".en.md\"\nwrite(cMini2, cBroken)\noCh2 = StzChapterQ(cMini2, \"en\")\noCh2.Run(\"\")\n? oCh2.AllPromisesKept()\n#--> FALSE\n? oCh2.CellKept(1)\n#--> FALSE",
+     "promise": "3\" + char(10) + \"```\" + char(10)\nFALSE\nFALSE",
+     "out": "0\n0",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "2. A broken promise is caught, not hidden",
+      "fr": "2. Une promesse rompue est attrapée, pas cachée",
+      "ar": "2. الوعد المكسور يُضبط ولا يُخفى",
+      "ha": "2. Alkawarin da aka karya ana kama shi, ba a ɓoye shi"
+     },
+     "lines": {
+      "en": [
+       29,
+       39
+      ],
+      "fr": [
+       32,
+       42
+      ],
+      "ar": [
+       30,
+       40
+      ],
+      "ha": [
+       32,
+       42
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 3,
+     "code": "? oCh.AllPromisesKept() = 1 and oCh2.AllPromisesKept() = 0\n#--> TRUE\nremove(cMini)\nremove(cMini2)",
+     "promise": "TRUE",
+     "out": "1",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "3. A guard has a positive case and a negative case",
+      "fr": "3. Une garde a un cas positif et un cas négatif",
+      "ar": "3. للحارس حالة إيجابية وحالة سلبية",
+      "ha": "3. Mai tsaro yana da yanayi mai kyau da mara kyau"
+     },
+     "lines": {
+      "en": [
+       46,
+       51
+      ],
+      "fr": [
+       49,
+       54
+      ],
+      "ar": [
+       47,
+       52
+      ],
+      "ha": [
+       49,
+       54
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    },
+    {
+     "n": 4,
+     "code": "oNo = new stzExerciseCheck(\"demo\", [ \"3\" ], \"? 42\", [])\n? oNo.Passed()\n#--> FALSE\n? oNo.Why()\n#--> Your program ran, but what it printed is not yet what the task asks. It printed: 42\noYes = new stzExerciseCheck(\"demo\", [ \"3\" ], \"? 1 + 2\", [])\n? oYes.Why()\n#--> Every promise of the exercise was kept when your program ran.",
+     "promise": "FALSE\nYour program ran, but what it printed is not yet what the task asks. It printed: 42\nEvery promise of the exercise was kept when your program ran.",
+     "out": "0\nYour program ran, but what it printed is not yet what the task asks. It printed: 42\nEvery promise of the exercise was kept when your program ran.",
+     "error": "",
+     "ran": true,
+     "kept": 1,
+     "heading": {
+      "en": "4. A verdict explains itself",
+      "fr": "4. Un verdict s'explique lui-même",
+      "ar": "4. الحكم يشرح نفسه",
+      "ha": "4. Hukunci yana bayyana kansa"
+     },
+     "lines": {
+      "en": [
+       58,
+       67
+      ],
+      "fr": [
+       61,
+       70
+      ],
+      "ar": [
+       59,
+       68
+      ],
+      "ha": [
+       61,
+       70
+      ]
+     },
+     "kept_in": {
+      "en": 1,
+      "fr": 1,
+      "ar": 1,
+      "ha": 1
+     }
+    }
+   ],
+   "exercises": [
+    {
+     "id": "ex-15-01",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-a-wrong-promise.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-asks-before-running.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-write-and-run.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-another-cell.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 15.1 · Your first narration",
+      "fr": "Exercice 15.1 · Votre première narration",
+      "ar": "التمرين 15.1 · سردك الأول",
+      "ha": "Aiki na 15.1 · Labarinka na farko"
+     }
+    },
+    {
+     "id": "ex-15-02",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-only-the-positive-case.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-two-good-documents.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-both-cases.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-cell-verdicts.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 15.2 · A positive and a negative case",
+      "fr": "Exercice 15.2 · Un cas positif et un cas négatif",
+      "ar": "التمرين 15.2 · حالة إيجابية وحالة سلبية",
+      "ha": "Aiki na 15.2 · Yanayi mai kyau da mara kyau"
+     }
+    },
+    {
+     "id": "ex-15-03",
+     "wrong": 2,
+     "wrong_refused": 2,
+     "right": 2,
+     "right_accepted": 2,
+     "samples": [
+      {
+       "kind": "wrong",
+       "name": "01-prints-the-verdict.ring",
+       "passed": false
+      },
+      {
+       "kind": "wrong",
+       "name": "02-a-check-that-passed.ring",
+       "passed": false
+      },
+      {
+       "kind": "right",
+       "name": "01-why.ring",
+       "passed": true
+      },
+      {
+       "kind": "right",
+       "name": "02-why-in-english.ring",
+       "passed": true
+      }
+     ],
+     "title": {
+      "en": "Exercise 15.3 · Why did it say no?",
+      "fr": "Exercice 15.3 · Pourquoi a-t-il dit non ?",
+      "ar": "التمرين 15.3 · لماذا قال لا؟",
+      "ha": "Aiki na 15.3 · Me ya sa ya ce a'a?"
+     }
+    }
+   ],
+   "file": {
+    "en": "base/education/program/courses/elementary-introduction/chapters/15-write-a-narration.en.md",
+    "fr": "base/education/program/courses/elementary-introduction/chapters/15-write-a-narration.fr.md",
+    "ar": "base/education/program/courses/elementary-introduction/chapters/15-write-a-narration.ar.md",
+    "ha": "base/education/program/courses/elementary-introduction/chapters/15-write-a-narration.ha.md"
+   }
+  }
+ ]
+}

@@ -36,3 +36,7 @@ The library's natural layer understands an instruction in the four languages of 
 [ 5, 3, 1 ]
 [ 5, 3, 1 ]</pre></div></div>
 <p class="ran">run on 2026-09-30 at 23:10 by <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">demo</a>, last line "DEMO: 20 proved, 0 not proved", in 49 seconds</p>
+
+## The proof of each chapter {#proof}
+
+<!--PROOF-->

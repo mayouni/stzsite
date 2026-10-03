@@ -39,6 +39,7 @@ LABELS = {
     "narrations": {"fr": "Les narrations exécutées", "en": "The narrations run"},
     "classes":    {"fr": "Les classes du domaine", "en": "The area's classes"},
     "letters":    {"fr": "Les méthodes de A à Z", "en": "Methods from A to Z"},
+    "chapters":   {"fr": "Les chapitres du livre", "en": "The chapters of the book"},
 }
 
 def area_groups(idx, lang, current, href=lambda slug: f"{slug}.html"):

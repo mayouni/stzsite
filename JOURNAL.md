@@ -837,3 +837,50 @@ next:
   - me:      the two other proposals of Pedagogy remain: progressive revelation, and from the cell to its proof
   - author:  open Learn > Reference > stzList, then Learn > Reference > stzNumber > Add
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-03 01:02
+
+subject:   from a cell of the book to its proof: 30 proof pages and a bridge inside the reader
+
+why:       Pedagogy proposed Zin's "pro bridge", one gesture from any cell of the book to the guard that proves it; the
+           author said to continue, and it is the one of the two open proposals a static site can build
+
+did:
+  - wrote tools/proof_run.py: runs the Elementary Introduction exactly as the library's own guard
+    (test/education/course_narrated.ring) does, with RunChapterInQ, which supplies the teaching world; one process inside
+    the library, 252 s: 15 chapters, 60 editions (4 languages), 336 cell runs, 149 promises; every edition ran with every
+    promise kept and no stored output; the four editions make the same promises cell for cell; the 23 exercises each
+    proved themselves (47 of 47 wrong answers refused, 47 of 47 right ones accepted)
+  - my first version called Run with no world, which made the cells that read the world raise: caught at the raw output
+    before any page was built, and replaced by the guard's own call
+  - wrote tools/build_proof.py: 30 pages, en and fr, Learn > The book > one chapter, each with the chapter's verdict, the
+    guard and how to run it alone, every cell with its code, its promise, what it printed and whether it kept it (and the
+    link to its line in the four chapter files), and each exercise with its samples; the book page lists the 15
+  - the bridge inside the reader: under each of the 60 chapter titles a verdict line, on each of the 336 cells a link to its
+    place on its proof page, on each of the 92 exercises a line saying it proves itself; 488 injections, between markers, so
+    a rebuild replaces them; the reader is otherwise byte-identical (checked); ar and ha carry only the library's own names
+    and numbers
+  - 9 cells show the former language's name as sample text (RING), so the proof page shows their verdict and links, not
+    their code
+  - fixed my own slips on the way: a pattern that tested code and output as one string let "RING" + "RING" through (the
+    sweep of all 9,594 code blocks of the site is clean); the reader had carried a duplicate ladder style block since the
+    ladder was added, now removed by marker so an edited style never stacks again
+  - Pedagogy: two of the three proposals are built; progressive revelation stays proposed and says why a static site
+    cannot build it
+
+state:
+  release-1-pass-20: built; the commit carrying this entry is the one after c422f1a
+  perception-gate:   OPEN
+
+waiting:
+  - STZLIB-COURSE-WORD-01: 9 cells of the course use RING as sample text (read-the-name-as-a-sentence 1, 2, 4, 5;
+             declare-what-not-how 5; draw-the-answer 1, 2; write-a-narration 1, 2), so the site cannot show them -> stzlib
+             [routed]
+  - STZLIB-READER-LADDER-01 (widened): the reader generator could draw the rung line, the proof line, the cell links and
+             the exercise lines itself, so the site's added copy retires -> stzlib [routed]
+
+next:
+  - me:      only progressive revelation remains of Pedagogy's proposals, and it is the library's to build
+  - author:  open Learn > The book, at the bottom, then any chapter of the reader and its "Proof of this cell" link
+```

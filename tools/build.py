@@ -25,6 +25,7 @@ from build_howto import build_howto, load_howtos, howtos_by_method
 from build_ask import build_ask
 import build_ladder
 import qforms
+import build_proof
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -82,6 +83,7 @@ for sec, _, pages in SECTIONS:
     for slug, _ in pages: OWNER[slug] = sec
 OWNER["atlas-group"] = "platform"
 OWNER["guide"] = "learn"                            # a guide page sits under Documentation
+OWNER["book-proof"] = "learn"                       # the proof of a chapter sits under The book
 
 UI = {
   "fr": {
@@ -195,7 +197,7 @@ def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_l
     if nav_rel is None: nav_rel = nav_prefix(rel, lang)
     key = page_key or slug
     sec = OWNER.get(key)
-    current_page = {"atlas-group": "areas", "guide": "docs"}.get(key, key)
+    current_page = {"atlas-group": "areas", "guide": "docs", "book-proof": "book"}.get(key, key)
     links = "".join(f'<a href="{nav_rel}{pages[0][0]}.html"{" aria-current=page" if s == sec else ""}>{esc(lab[lang])}</a>'
                     for s, lab, pages in SECTIONS)
     other = ui["other_code"]
@@ -347,6 +349,10 @@ def inject(body_html, lang, idx, groups, rel="../"):
     body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
     body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
     body_html = body_html.replace("<!--DOCS-SCOPE-->", scope_html(lang, idx, groups))
+    if "<!--PROOF-->" in body_html:
+        proof = build_proof.load(ROOT)
+        if not proof: raise SystemExit("<!--PROOF--> needs data/proof-run.json: run tools/proof_run.py")
+        body_html = body_html.replace("<!--PROOF-->", build_proof.proof_list_html(lang, proof))
     if "<!--LADDER-->" in body_html:
         ladder = build_ladder.load(ROOT)
         if not ladder: raise SystemExit("<!--LADDER--> needs data/ladder-run.json: run tools/ladder_run.py")
@@ -679,6 +685,8 @@ def main():
     nmeth = build_methods({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "entries": ENTRIES, "howtos": HOWTOS})
     nhow, npub = build_howto({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "md": md, "entries": ENTRIES})
     print(f"how-to: {nhow} pages, {npub} recipes run and published")
+    nproof, nproven = build_proof.build_proof({"ROOT": ROOT, "head": head, "header": header, "footer": footer})
+    print(f"book proof: {nproof} pages, {nproven} chapters proven")
     nask, (hs, hv, ho, ag, nq) = build_ask({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "entries": ENTRIES,
                                             "groups": json.loads((DATA / "atlas-index.json").read_text(encoding="utf-8"))["groups"], "page_shell": page_shell})
     print(f"ask: {nask} pages; of {nq} recipe intents, HowTo same method {hs}, same verb {hv}, other {ho}; Ask top three {ag}; llms.txt and agents/index.json")
@@ -708,6 +716,10 @@ def main():
         r = r0 if "stzsite:'page'" in r0 else r0.replace("</body>", PAGE_PING + "</body>", 1)
         ladder = build_ladder.load(ROOT)
         if ladder: r = build_ladder.inject_reader(r, ladder)      # the rung of every chapter, under its title
+        proof = build_proof.load(ROOT)
+        if proof:                                                  # the bridge from each cell to its proof
+            r = build_proof.inject_reader(r, proof)
+            for w in build_proof.inject_reader.skipped: print("reader bridge skipped:", w)
         if r != r0: reader.write_text(r, encoding="utf-8")
         assets.append({"kind": "page", "path": "reader.html"})
     build_deck_check(assets)

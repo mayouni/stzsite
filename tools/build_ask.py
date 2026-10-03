@@ -14,7 +14,7 @@ It also writes what an agent reading this site wants instead of pages:
 """
 import json, re, html
 from build_howto import intent as howto_intent, page_name as howto_page, published as howto_published, KINDS, fold_methods
-import qforms
+import qforms, build_proof
 
 def esc(s): return html.escape(str(s), quote=True)
 RING = re.compile(r"\b(?:Ring|RING)\b")
@@ -92,7 +92,7 @@ def build_ask(ctx):
         shows = []
         for s, key in zip(ask["shown"], ("c_ask", "c_howto", "c_explain", "c_ask2")):
             code = SHOW_CODE[(s["call"], s["class"])]
-            assert not WORD.search(code + s["out"]), "a shown answer names the word"
+            assert not (WORD.search(code) or WORD.search(s["out"])), "a shown answer names the word"
             shows.append(f'<h3>{t[key]}</h3><div class="run"><div><div class="lbl">Softanza</div><pre>{esc(code)}</pre></div>'
                          f'<div class="out"><div class="lbl">{t["out"]}</div><pre>{esc(s["out"])}</pre></div></div>')
         rows = []
@@ -151,6 +151,10 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
                         "words": r["tags"], "ran": r["ran"]})
     narrations = [{"title": prose(x["title"]).replace("`", ""), "page": f"{SITE}en/narrations/{nslug(f)}.html", "ran": x["ran"]}
                   for f, x in sorted(narr.items()) if publishable(x)]
+    proof = build_proof.load(ROOT)
+    book = [{"chapter": c["n"], "title": c["title"].get("en", c["id"]), "page": f'{SITE}en/book/{c["id"]}.html', "cells": len(c["cells"]),
+             "promises": c["editions"]["en"]["promises"], "proven": build_proof.proven(c), "exercises": len(c["exercises"]), "ran": proof["ran"]}
+            for c in proof["chapters"]] if proof else []
     areas = [{"slug": g["slug"], "title": g["en"], "page": f'{SITE}en/atlas/{g["slug"]}.html', "guide": f'{SITE}en/guide/{g["slug"]}.html'} for g in groups]
     index = {"site": SITE, "library": "https://github.com/mayouni/stzlib", "commit": "0e72e2e2c",
              "naming": "A method name ending in Q, QQ or QQQ is not listed apart: it is the same method, which returns the object so that a call can be chained.",
@@ -160,7 +164,7 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
                                   "howto_same_method": sum(1 for q in ask["questions"] if q.get("howto_grade") == "same"),
                                   "howto_same_verb": sum(1 for q in ask["questions"] if q.get("howto_grade") == "verb"),
                                   "ask_top3_hit": sum(1 for q in ask["questions"] if q.get("ask_grade") in ("same", "verb"))}},
-             "areas": areas, "recipes": recipes, "narrations": narrations, "classes": classes}
+             "areas": areas, "recipes": recipes, "narrations": narrations, "book": book, "classes": classes}
     # prose is mapped as on the pages; identifiers and file names stay as the library spells them
     text = json.dumps(index, ensure_ascii=False, separators=(",", ":"))
     (ROOT / "agents").mkdir(exist_ok=True)
@@ -177,7 +181,8 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
          f"- [Documentation]({SITE}en/docs.html): the whole scope, area by area",
          f"- [Reference]({SITE}en/reference.html): {len(ref['classes'])} classes, each method with the explanation the library gives of itself; {len(entries):,} methods have an entry with examples run",
          f"- [How-to]({SITE}en/howto.html): {len(recipes)} recipes, each a task, its code and its output, run",
-         f"- [Narrations]({SITE}en/narrations.html): the library's stories in code; {len(narrations)} run block by block as pages", "",
+         f"- [Narrations]({SITE}en/narrations.html): the library's stories in code; {len(narrations)} run block by block as pages", 
+         f"- [The book]({SITE}en/book.html): the Elementary Introduction, fifteen chapters in four languages; {len(book)} proof pages show each chapter's cells run, the guard that proves them, and its exercises proving themselves", "",
          "## How-to", ""]
     for k in KINDS:
         for r in sorted((x for x in recipes if x["kind"] == k), key=lambda x: x["intent"]):

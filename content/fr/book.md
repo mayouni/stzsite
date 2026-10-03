@@ -36,3 +36,7 @@ La couche naturelle de la bibliothèque comprend une instruction dans les quatre
 [ 5, 3, 1 ]
 [ 5, 3, 1 ]</pre></div></div>
 <p class="ran">exécuté le 2026-09-30 à 23:10 par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">demo</a>, dernière ligne « DEMO: 20 proved, 0 not proved », en 49 secondes</p>
+
+## La preuve de chaque chapitre {#proof}
+
+<!--PROOF-->

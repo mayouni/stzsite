@@ -115,7 +115,7 @@ STRIP_CSS = ("<style>/*stz-ladder*/.stz-ladder{border:1px solid var(--line);bord
 def inject_reader(text, run):
     """the rung of each chapter, under its title, in each of the four languages"""
     text = re.sub(r"<!--stz-ladder-->.*?<!--/stz-ladder-->", "", text, flags=re.S)
-    text = text.replace(STRIP_CSS, "")
+    text = re.sub(r"<style>/\*stz-ladder\*/.*?</style>", "", text, flags=re.S)       # by marker, so an edited style never stacks
     text = text.replace("</head>", STRIP_CSS + "</head>", 1)
     rungs = rung_of(run)
     def strip(lang, n):

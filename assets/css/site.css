@@ -507,6 +507,11 @@ ul.fnlist .in{color:var(--ink-2);white-space:nowrap}
 .ran[class*="nv-"]{font-weight:600}
 .howto-list li{margin-top:8px}
 .howto-notes{margin-top:32px}
+.proof-page .lede-verdict{font-size:var(--read);max-width:var(--measure);margin-top:0}
+.proofcell{border-top:1px solid var(--line);padding:20px 0}
+.proofcell p{margin:0;max-width:none}
+.proofcell .cell-h{margin-bottom:8px;font-weight:600}
+.proofcell .run{margin-top:0}
 .ask-rows{margin-top:24px;max-width:1120px}
 .ask-row{border-top:1px solid var(--line);padding:16px 0}
 .page-body .ask-row p{margin:0;max-width:none}

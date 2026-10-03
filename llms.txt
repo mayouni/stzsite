@@ -16,6 +16,7 @@ This site was generated from the library at commit 0e72e2e2c. Its method example
 - [Reference](https://mayouni.github.io/stzsite/en/reference.html): 618 classes, each method with the explanation the library gives of itself; 1,386 methods have an entry with examples run
 - [How-to](https://mayouni.github.io/stzsite/en/howto.html): 28 recipes, each a task, its code and its output, run
 - [Narrations](https://mayouni.github.io/stzsite/en/narrations.html): the library's stories in code; 8 run block by block as pages
+- [The book](https://mayouni.github.io/stzsite/en/book.html): the Elementary Introduction, fifteen chapters in four languages; 15 proof pages show each chapter's cells run, the guard that proves them, and its exercises proving themselves
 
 ## How-to
 
