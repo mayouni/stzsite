@@ -1143,3 +1143,38 @@ next:
   - me:      then wave 3, search (doc/SITE-PLAN-2026-10-03.md)
   - author:  nothing; the plan, the journal and this entry hold the state
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-04 00:47
+
+subject:   wave 3 of the site plan, the search: one field, category > class > method
+
+why:       the author, "resume with wave 3": the search field of the reference is impractical; it should find classes, methods,
+           descriptions and the code of examples, quickly and visually, always as category > class > method
+
+did:
+  - tools/build_search.py: an index built with the site: assets/search/names.js (575 classes, 18,561 methods with their other names and
+    the forms written with extensions, 205 pages: guides, how-to, narrations, book; 118 KB compressed) and assets/search/text.js (every
+    description and the first lines of every example; 329 KB compressed, loaded only when the reader asks, and the choice remembered)
+  - assets/js/search-core.js: the matching, one file for the page and for node: Class.Method read as a class and a method, a class
+    named in a sentence, a method found through its class's descendants (hash list finds stzList's Sort), tokens weighted by how telling
+    they are and by position, stop words in English and French
+  - tools/search_check.mjs: 13 questions a reader asks, 13 answered in the first results (remove duplicates, FindW, ContainsCS,
+    stzString.Find, list of pairs, palindrome, sort hash list by value, banana split...), 3 to 21 ms each
+  - assets/js/search.js and assets/css/search.css: a magnifier in the header (and / and Ctrl+K) opens the field over any page; the
+    reference's own field gets the same results under it and keeps filtering its page; rows are 44 px, the match is bold and underlined,
+    nothing moves; tools/search_ui.mjs drives it in headless Chrome and keeps the picture
+  - found on the way: a second class collision (sr for the screen-reader text of external links and for result rows): renamed
+
+state:
+  release-1-pass-28: built; the commit carrying this entry is the one after d1f5ab44
+  checks: 13 of 13 search questions; 0 failures on the example blocks; 0 dangling among 518,388 local links
+  perception-gate:   OPEN (the author has not used the search yet)
+
+waiting:
+  - STZLIB-DOCREFORM-01: the documentation session has not reported; its record will feed the descriptions the search shows
+
+next:
+  - me:      push and verify live; wave 4, learning, teaching and pedagogic design as one flow (doc/SITE-PLAN-2026-10-03.md)
+  - author:  open any reference page, press / and type: find, sort a hash list, banana split
+```
