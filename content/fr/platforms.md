@@ -39,7 +39,7 @@ La construction existe dans la bibliothèque, et sa propre garde la juge. La voi
 ## Honnête sur le stade {#stage}
 
 - **La construction est construite.** Un monde et une constellation de mondes tournent dans la bibliothèque, et les exécutions ci-dessus viennent de leur garde.
-- **Une même coque porte déjà plusieurs métiers.** Dans Zin, construit, la même coque porte des paquets de domaine, de la banque à la vérification préalable d'une ONG : la même coque, un autre métier, aucun code changé.
+- **Une même coque porte déjà plusieurs métiers.** Dans les applications de Softanza, la même coque porte des paquets de domaine, de la banque à la vérification préalable d'une ONG : la même coque, un autre métier, aucun code changé.
 - **Les plateformes des clients tournent aujourd'hui sur des piles web ordinaires.** Leurs mondes, leurs liens et leurs règles sont écrits, ou en train de l'être, comme des déclarations Softanza : les faire passer sur le moteur de Softanza est un changement de moteur, pas de plan.
 - **Aucune plateforme n'écrit encore sa fiche de garanties.** L'étoile polaire demande à chaque solution cinq lignes, une par système auquel elle répond : technique, social, écologique, économique et culturel. C'est la prochaine étape pour chacune.
 

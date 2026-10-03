@@ -171,7 +171,8 @@ def build_reference(ctx):
                 rows.append(f'<div class="lane lane2 rrow" id="{esc(name.lower())}" data-k="{esc((name + " " + desc).lower())}"><div class="ln mono">{nm}</div><div class="lt">{d}<small>{extshow.T[lang]["inherited"].format(owner=esc(owner))}</small><span class="ext-line">{strip}</span></div></div>')
             title = c["name"]
             page = head(lang, f'{title} · {t["title"]} · Softanza', f'{title}: {len(c["own"])} {t["own"]}', rel2)
-            page += '\n<body class="page page-reference-class">\n' + header(lang, "reference", rel2, other_href=f"../../{'en' if lang == 'fr' else 'fr'}/reference/{c['name'].lower()}.html", nav_rel="../")
+            page += '\n<body class="page page-reference-class">\n' + header(lang, "reference", rel2, other_href=f"../../{'en' if lang == 'fr' else 'fr'}/reference/{c['name'].lower()}.html", nav_rel="../",
+                                                                                  tail=[(area_name(c["area"], lang, area_title), f"../reference.html#{c['area'] or 'other'}"), (c["name"], None)])
             page += f"""
 <main id="main">
   <section class="page-head"><div class="wrap">
@@ -200,7 +201,8 @@ def build_reference(ctx):
                 rows.append(f'<div class="lane rrow" data-k="{esc(n.lower())}"><div class="ln mono">{esc(n)}</div><div class="lr mono">{len(az[n])}</div><div class="lt">{links}{rowex.example_for_method(n, az[n], entries, rdata, lang)}</div></div>')
             rows = "".join(rows)
             page = head(lang, f'{t["methods_az"]} · {L} · Softanza', t["desc"].format(n=f"{n_own:,}" if lang == "en" else f"{n_own:,}".replace(",", " ")), rel2)
-            page += '\n<body class="page page-reference-az">\n' + header(lang, "reference", rel2, other_href=f"../../{'en' if lang == 'fr' else 'fr'}/reference/methods-{L.lower() if L != '#' else 'other'}.html", nav_rel="../")
+            page += '\n<body class="page page-reference-az">\n' + header(lang, "reference", rel2, other_href=f"../../{'en' if lang == 'fr' else 'fr'}/reference/methods-{L.lower() if L != '#' else 'other'}.html", nav_rel="../",
+                                                                                  tail=[(t["methods_az"], "methods-a.html"), (f'{t["letter"]} {L}', None)])
             page += f"""
 <main id="main">
   <section class="page-head"><div class="wrap">

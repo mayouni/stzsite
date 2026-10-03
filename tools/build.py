@@ -26,6 +26,7 @@ from build_ask import build_ask
 import build_ladder
 import qforms
 import build_proof
+import external
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -89,7 +90,7 @@ UI = {
   "fr": {
     "slogan": "La plateforme des makers à l'ère agentique", "second": "Née en Afrique. Utile au monde !",
     "skip": "Aller au contenu", "other_lang": "English", "other_code": "en",
-    "present": "Présenter le site en diaporama", "github": "Le dépôt Softanza sur GitHub", "menu": "Menu principal", "path": "Pages de la section",
+    "present": "Présenter le site en diaporama", "github": "Le dépôt Softanza sur GitHub", "menu": "Menu principal", "path": "Pages de la section", "here": "Vous êtes ici",
     "proof_law": "Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.",
     "fonts": "Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s'ouvre sans réseau.",
     "made": "Les textes de ce site ont été rédigés avec un assistant d'IA, Claude, sous la direction de l'auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)",
@@ -117,7 +118,7 @@ UI = {
   "en": {
     "slogan": "The Makers Platform of the Agentic Age", "second": "Born in Africa. Useful to the World!",
     "skip": "Skip to content", "other_lang": "Français", "other_code": "fr",
-    "present": "Present the site as a slideshow", "github": "The Softanza repository on GitHub", "menu": "Main menu", "path": "Pages of the section",
+    "present": "Present the site as a slideshow", "github": "The Softanza repository on GitHub", "menu": "Main menu", "path": "Pages of the section", "here": "You are here",
     "proof_law": "Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.",
     "fonts": "Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network.",
     "made": "The prose of this site was drafted with an AI assistant, Claude, under the author's direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)",
@@ -193,8 +194,9 @@ def wordmark(rel):
     return (f'<img class="wm-light" src="{rel}assets/img/wordmark.png" alt="Softanza" width="660" height="105">'
             f'<img class="wm-dark" src="{rel}assets/img/wordmark-dark.png" alt="" width="660" height="105">')
 
-def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_lang=""):
-    """the main menu, and under it the path of the current section"""
+def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_lang="", tail=None):
+    """the main menu, and under it the path of the current section. A page deeper than the section's own pages passes its
+    `tail`, [(label, href or None)], and the header pins where the reader is: Learn > Reference > String > stzString"""
     ui = UI[lang]
     if nav_rel is None: nav_rel = nav_prefix(rel, lang)
     key = page_key or slug
@@ -211,6 +213,14 @@ def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_l
             path = ('\n  <nav class="path" aria-label="' + esc(ui["path"]) + '"><div class="path-in">'
                     + "".join(f'<a href="{nav_rel}{p}.html"{" aria-current=page" if p == current_page else ""}>{esc(lab[lang])}</a>' for p, lab in pages)
                     + '</div></nav>')
+    crumbs = ""
+    if tail and sec:
+        first = next(p for s_, _, p in SECTIONS if s_ == sec)
+        items = [(next(lab for s_, lab, _ in SECTIONS if s_ == sec)[lang], f"{nav_rel}{first[0][0]}.html")]
+        if current_page != first[0][0]: items.append((next(lab for p_, lab in first if p_ == current_page)[lang], f"{nav_rel}{current_page}.html"))
+        items += list(tail)
+        lis = "".join((f'<li><a href="{h}">{esc(l)}</a></li>' if h and k < len(items) - 1 else f'<li aria-current="page">{esc(l)}</li>') for k, (l, h) in enumerate(items))
+        crumbs = f'\n  <nav class="crumbs" aria-label="{esc(ui["here"])}"><ol class="crumbs-in">{lis}</ol></nav>'
     dl = f' data-lang="{data_lang}"' if data_lang else ""
     home = f"{rel}index.html" + (f"?lang={lang}" if rel else "")
     tools = (f'<div class="tools"><a class="present" href="{nav_rel}tour.html" aria-label="{esc(ui["present"])}" title="{esc(ui["present"])}">{PRESENT_SVG}</a>'
@@ -226,7 +236,7 @@ def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_l
     {brand}
     <nav class="nav" aria-label="{esc(ui["menu"])}">{links}</nav>
     {tools}
-  </div>{path}
+  </div>{path}{crumbs}
 </header>"""
 
 def footer(lang, rel, pagers_html="", nav_rel=None, scripts=True, data_lang=""):
@@ -377,9 +387,9 @@ def check_reading_arc(slug, lang, body_html):
         t = re.sub(r"<[^>]+>", "", p)
         if len(t) > 800: LONG.append(f"{lang}/{slug}: {len(t)} chars: {t[:60]}...")
 
-def page_shell(lang, slug, title, description, kicker, title_html, lede, body_html, rel="../", page_key=None, other_href=None, body_class=None):
+def page_shell(lang, slug, title, description, kicker, title_html, lede, body_html, rel="../", page_key=None, other_href=None, body_class=None, tail=None):
     page = head(lang, f'{title} · Softanza', description, rel)
-    page += f'\n<body class="{body_class or "page page-" + slug}">\n' + header(lang, slug, rel, other_href=other_href, page_key=page_key)
+    page += f'\n<body class="{body_class or "page page-" + slug}">\n' + header(lang, slug, rel, other_href=other_href, page_key=page_key, tail=tail)
     page += f"""
 <main id="main">
   <section class="page-head"><div class="wrap">
@@ -550,7 +560,7 @@ def build_group_page(lang, idx, groups, i):
     {note}
     <div class="lanes">{lanes}</div>"""
     page = page_shell(lang, "atlas", g[lang], g["line_" + lang], esc(band[lang]), esc(g[lang]), esc(g["line_" + lang]), body,
-                      rel=rel, page_key="atlas-group", other_href=f"../../{ui['other_code']}/atlas/{g['slug']}.html", body_class="page page-atlas-group")
+                      rel=rel, page_key="atlas-group", other_href=f"../../{ui['other_code']}/atlas/{g['slug']}.html", body_class="page page-atlas-group", tail=[(g[lang], None)])
     page = level2.wrap(page, level2.nav(level2.LABELS["areas"][lang], level2.area_groups(idx, lang, g["slug"])))
     out = ROOT / lang / "atlas" / f"{g['slug']}.html"
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -675,7 +685,20 @@ def check_contrast():
         print(f"  contrast {'ok ' if c >= float(need) else 'LOW'} {c:5.2f} >= {need}  {label} ({fg} on {bg})")
     return ok
 
+BANNED = [(re.compile(r"Zin"), "Zin: its innovations are Softanza's now, and the site never names it (the author, 2026-10-03)")]
+
+def check_names():
+    """the names the site does not say, looked for at the SOURCE (the markdown, the data, the diagrams), where a mention starts;
+    reading the 4,000 built pages for it would cost minutes. Returns the list of (file, rule)."""
+    bad = []
+    for f in list((ROOT / "content").rglob("*.md")) + list((ROOT / "data").glob("*.json")) + list((ROOT / "tools" / "diagrams").glob("*.py")):
+        text = f.read_text(encoding="utf-8", errors="replace")
+        for rx, why in BANNED:
+            if rx.search(text): bad.append((f.relative_to(ROOT).as_posix(), why))
+    return bad
+
 def main():
+    external.install(ROOT)                 # every page is marked as it is written
     idx, groups = load_atlas()
     ENTRIES = load_entries(ROOT)
     COUNTS["methods"] = sum(len(c["own"]) for c in qforms.reference(ROOT)["classes"])    # a method is listed once: its extensions are folded into it
@@ -740,6 +763,8 @@ def main():
         assets.append({"kind": "page", "path": "reader.html"})
     build_deck_check(assets)
     print(f"reference: {nref} pages, {ncls} classes, {nown} own methods")
+    for f, why in check_names(): print(f"NAME CHECK FAILED  {f}: {why}")
+    print(f"external links: {external.STATS['links']:,} marked, opening in a new tab, on {external.STATS['pages']:,} pages")
     print(f"built {len(outs)} pages + {2*len(groups)} area pages + atlas + narrations + index.html + deck-check.html; tour scenes fr={len(scenes['fr'])} en={len(scenes['en'])}")
     if LONG:
         print("reading arc (Rule 123), paragraphs past 800 characters:")

@@ -122,7 +122,8 @@ def build_methods(ctx):
             rel = "../../../"
             other = "en" if lang == "fr" else "fr"
             page = head(lang, f'{cls}.{meth} · {t["kicker"]} · Softanza', f'{cls}.{meth}: {desc or split_camel(meth)}'[:300], rel)
-            page += '\n<body class="page page-reference-method">\n' + header(lang, "reference", rel, other_href=f"../../../{other}/reference/{cls.lower()}/{slug(meth)}.html", nav_rel="../../")
+            page += '\n<body class="page page-reference-method">\n' + header(lang, "reference", rel, other_href=f"../../../{other}/reference/{cls.lower()}/{slug(meth)}.html", nav_rel="../../",
+                                                                                 tail=([(area_title[a][lang], f"../../reference.html#{a}")] if a in area_title else []) + [(cls, f"../{cls.lower()}.html"), (f"{meth}()", None)])
             page += f"""
 <main id="main">
   <section class="page-head"><div class="wrap">

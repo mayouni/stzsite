@@ -307,6 +307,10 @@ def main():
             r = vres.get(i)
             if not (r and r[0] == "ok" and r[1].strip() == kept[k]["out"]): del kept[k]; stats["unstable"] += 1
         print(f"verify: {stats['unstable']} dropped because a second run, in another order, printed something else", flush=True)
+        # @@() shows a list; a number, a string or a boolean is printed with ? alone (the author, 2026-10-03)
+        from rows_plain import plainize
+        changed, asked = plainize(work, kept)
+        print(f"plain: {changed} of {asked} examples that print no list now use ? alone", flush=True)
     finally:
         shutil.rmtree(work, ignore_errors=True)
     seconds = round((datetime.datetime.now() - t0).total_seconds(), 1)

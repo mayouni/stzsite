@@ -30,7 +30,6 @@ A product that does not exist yet says so. The stage is a word you can check: <b
 <div class="card"><h3>Harobanda</h3><p class="stage">built</p><p>The declared machine, MIT, boots in an emulator. No production workload yet, and it says so.</p><p class="proof"><a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a></p></div>
 <div class="card"><h3>HaroBase</h3><p class="stage">specification</p><p>The governed data store: plain SQLite, in the process, governed. Charter ratified 2026-09-29; first layers built. Private for now.</p></div>
 <div class="card"><h3>Aïcha</h3><p class="stage">named</p><p>The coming intelligence layer and conversational agent. No product ships under that name today.</p></div>
-<div class="card"><h3>Zin</h3><p class="stage">built</p><p>The enterprise's constitutional compiler and agentic platform: business logic, governance and organisation as compilation concerns. Commercial, private.</p></div>
 <div class="card"><h3>Zui</h3><p class="stage">built</p><p>The interface constitution: 122 rules a machine can refuse to violate, 22 verbs. Repository not public yet.</p></div>
 <div class="card"><h3>Refine</h3><p class="stage">specification</p><p>Refinement-oriented programming: a corpus of specifications, a prototype, a book in manuscript.</p></div>
 <div class="card"><h3>Takamba</h3><p class="stage">built</p><p>The harness, formerly Bangalo: how Softanza builds Softanza. Repository not public yet.</p></div>

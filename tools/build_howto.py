@@ -168,7 +168,7 @@ def build_howto(ctx):
                     + (f'<p class="proof">{t["lang_note"]}</p>' if t["lang_note"] else ""))
             title = intent(rec, lang)
             page = head(lang, f'{title} · {t["title"]} · Softanza', title, "../../")
-            page += '\n<body class="page page-howto-recipe">\n' + header(lang, "howto", "../../", other_href=f"../../{other}/howto/{page_name(rec)}.html", nav_rel="../")
+            page += '\n<body class="page page-howto-recipe">\n' + header(lang, "howto", "../../", other_href=f"../../{other}/howto/{page_name(rec)}.html", nav_rel="../", tail=[(title, None)])
             page += f"""
 <main id="main">
   <section class="page-head"><div class="wrap">

@@ -115,7 +115,7 @@ def build_guides(ctx):
                     + (f'<li>{t["same"]} : {same}</li>' if lang == "fr" and same else (f'<li>{t["same"]}: {same}</li>' if same else "")) + '</ul>')
             title = g[lang]
             page = head(lang, f'{title} · {t["kicker"]} · Softanza', g["line_" + lang], "../../")
-            page += '\n<body class="page page-guide">\n' + header(lang, "docs", "../../", other_href=f"../../{'en' if lang == 'fr' else 'fr'}/guide/{slug}.html", nav_rel="../", page_key="guide")
+            page += '\n<body class="page page-guide">\n' + header(lang, "docs", "../../", other_href=f"../../{'en' if lang == 'fr' else 'fr'}/guide/{slug}.html", nav_rel="../", page_key="guide", tail=[(title, None)])
             page += f"""
 <main id="main">
   <section class="page-head"><div class="wrap">

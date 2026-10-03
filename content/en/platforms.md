@@ -39,7 +39,7 @@ The construction exists in the library and is judged by its own guard. Here it i
 ## Honest about the stage {#stage}
 
 - **The construction is built.** A world and a constellation of worlds run in the library, and the runs above come from their guard.
-- **One shell already carries several domains.** In Zin, built, the same shell holds domain packs from banking to an NGO's due diligence: the same shell, a different domain, no code change.
+- **One shell already carries several domains.** In Softanza's applications, the same shell holds domain packs from banking to an NGO's due diligence: the same shell, a different domain, no code change.
 - **The customer platforms run today on ordinary web stacks.** Their worlds, bonds and rules are written, or being written, as Softanza declarations, so moving them onto the Softanza engine is a change of engine, not of plan.
 - **No platform writes its guarantee sheet yet.** The north star asks every solution for five rows, one per system it answers to: technical, social, ecological, economic and cultural. That is the next step for each of them.
 

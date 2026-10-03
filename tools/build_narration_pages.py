@@ -131,7 +131,7 @@ def build_narration_pages(ctx):
             rel = "../../"
             other = "en" if lang == "fr" else "fr"
             page = head(lang, f"{title} · {t['kicker']} · Softanza", title, rel)
-            page += '\n<body class="page page-narration">\n' + header(lang, "narrations", rel, other_href=f"../../{other}/narrations/{slug(f)}.html", nav_rel="../")
+            page += '\n<body class="page page-narration">\n' + header(lang, "narrations", rel, other_href=f"../../{other}/narrations/{slug(f)}.html", nav_rel="../", tail=[(title, None)])
             # only the counts that are not zero, each in its singular or plural form
             def part(v):
                 forms = t["parts"][v].split("|"); form = forms[0] if c[v] == 1 or len(forms) == 1 else forms[1]

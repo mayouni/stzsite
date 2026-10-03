@@ -1081,3 +1081,34 @@ next:
              calls that raised or printed nothing
   - author:  open Learn > Reference > stzQuestion, and stzGeoMap
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-03 23:25
+
+subject:   wave 1 of the plan after the author's review: external links, the extension reminder, the pinned path, @@() for lists only, Zin gone
+
+why:       the author, "go ahead with wave 1" (doc/SITE-PLAN-2026-10-03.md)
+
+did:
+  - marked every link that leaves the site (19,992 on 4,083 pages): a new tab, an arrow drawn in the link's own colour, the words
+    "(opens in a new tab)" for a screen reader; the pass runs as each page is written, because reading the 4,000 pages a second time
+    cost four minutes where the build costs sixteen seconds
+  - reduced the extension paragraph that opened 618 class pages to one line, and gave each letter of a strip its meaning as a title
+  - pinned the path under the menu on every page deeper than its section: Learn > Reference > String > stzString > Find()
+  - ran 6,852 composed examples again in the plain form: 6,836 now print with ? alone, the 1,993 that print a list keep @@()
+  - removed Zin from the estate, platforms and pedagogy pages (the pedagogy page now says what the learning system is made of, not
+    where it came from), regenerated the four diagrams that named it, and made the build refuse the name at the source
+  - kept Zui: it names a law of Softanza and the sources never showed Zin on it (the plan said to rename it; corrected)
+
+state:
+  release-1-pass-26: built; the commit carrying this entry is the one after ac63d0a2
+  external links: 19,992 marked; examples with ? alone: 6,836 of 8,829; Zin in the built site: 0
+  perception-gate:   OPEN
+
+waiting:
+  - STZLIB-DOCREFORM-01: the documentation session has not reported; the alias fold (wave 2) reads its record when it comes
+
+next:
+  - me:      wave 2, one name per thing: tools/aliases.py reads the sources, the build folds classes and methods by it
+  - author:  open Learn > Reference > String > stzString: the path at the top, one line about extensions, the arrow on the source link
+```

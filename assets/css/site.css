@@ -110,13 +110,21 @@ code,pre,kbd{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
 .path-in{max-width:var(--maxw);margin:0 auto;padding:4px var(--gutter);display:flex;flex-wrap:wrap;gap:0 28px}
 .path a{font-size:1.1875rem;color:var(--ink-2);text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;min-height:44px}
 .path a[aria-current]{color:var(--accent);font-weight:700}
+.crumbs{border-top:1px solid var(--line);background:var(--paper)}
+.crumbs-in{max-width:var(--maxw);margin:0 auto;padding:2px var(--gutter);display:flex;flex-wrap:wrap;list-style:none}
+.crumbs li{display:inline-flex;align-items:center;min-height:44px;font-size:1.1875rem;color:var(--ink);font-weight:700}
+.crumbs li+li::before{content:"";display:inline-block;width:.5em;height:.5em;margin:0 .9em 0 .5em;border-top:2px solid var(--ink-2);border-right:2px solid var(--ink-2);transform:rotate(45deg)}
+.crumbs a{color:var(--ink-2);font-weight:500;text-decoration:none}
+.crumbs a:hover{color:var(--accent);text-decoration:underline}
 /* below the width where the six entries and the tools fit on one line, the menu
    becomes its own scrollable row (Rule 27), and so does the path: both stay visible */
 @media (max-width:1160px){
   .topbar{flex-wrap:wrap;gap:0 16px;padding-top:6px}
   .tools{margin-left:auto}
   .nav{order:3;flex:1 0 100%;margin-left:0;overflow-x:auto;flex-wrap:nowrap;gap:0 22px;scrollbar-width:thin;padding-bottom:2px}
-  .path-in{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}
+  .path-in,.crumbs-in{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}
+  .crumbs li{white-space:nowrap}
+  .crumbs li{min-height:40px}
 }
 @media (max-width:760px){
   .brand img{height:22px}
@@ -584,3 +592,7 @@ mark.ext{background:none;color:var(--accent);font-weight:700;text-decoration:und
 /* the example of a row of a reference table: the code, then #--> and what the run printed, and where it comes from */
 pre.rx{margin:10px 0 0;max-width:none}
 .rx-src{display:block;margin-top:4px;font-family:"IBM Plex Mono",monospace;font-size:var(--label);color:var(--ink-2)}
+
+/* a link that leaves the site: an arrow in the link's own colour after its words, drawn by a mask (no image, no glyph the font may lack) */
+.ext{display:inline-block;width:.8em;height:.8em;margin-left:.3em;vertical-align:-.05em;background:currentColor;-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M7 17L17 7M9 7h8v8' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M7 17L17 7M9 7h8v8' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}

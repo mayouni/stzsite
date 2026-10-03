@@ -103,7 +103,7 @@ class Narrow(Col):
 def technology(lang):
     T = {
      "en": dict(t="ONE ESTATE · DECLARE · JUDGE · GOVERN", rows=[
-        ("Applications", "Zin, built · Studio, specified · COBOL workbench, proposed", "old", False),
+        ("Applications", "Studio, specified · COBOL workbench, proposed", "old", False),
         ("Aïcha", "the intelligence layer: knowledge, models and agents on your device · named", "old", False),
         ("Softanza", "the computational foundation: one engine, 28 areas, everything judged by running · built", "machine", True),
         ("Haro", "the language of languages: you declare yours, it runs it · in construction", "machine", False),
@@ -112,7 +112,7 @@ def technology(lang):
         side=("Takamba", "the harness, beside the stack: how all of this is built, many sessions on one body of work · built"),
         cap="stages as read in the repositories on 2026-10-01"),
      "fr": dict(t="UN SEUL DOMAINE · DÉCLARER · JUGER · GOUVERNER", rows=[
-        ("Applications", "Zin, construit · Studio, spécifié · atelier COBOL, proposé", "old", False),
+        ("Applications", "Studio, spécifié · atelier COBOL, proposé", "old", False),
         ("Aïcha", "la couche d'intelligence : savoirs, modèles et agents sur votre machine · nommée", "old", False),
         ("Softanza", "la fondation de calcul : un moteur, 28 domaines, tout jugé en s'exécutant · construite", "machine", True),
         ("Haro", "la langue des langues : vous déclarez la vôtre, il l'exécute · en construction", "machine", False),

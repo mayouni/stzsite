@@ -20,6 +20,7 @@ T = {
          "label": "Extensions", "none": "aucune extension", "folded": "formes avec extensions, rangées sous leur méthode",
          "legend": "Une extension s'écrit à la fin du nom d'une méthode : c'est la même méthode, avec un mot de plus, jamais une autre méthode. Chaque méthode dit ci-dessous lesquelles existent : un nom en gras et coché existe pour elle, un nom barré n'existe pas.",
          "legend_link": "Les extensions et leur sens",
+         "remind": "Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas.",
          "h": "Les extensions", "p": "Un nom qui se termine par une extension est la même méthode écrite avec un mot de plus, jamais une autre méthode : la référence liste la méthode une seule fois, et dit pour chacune quelles extensions existent et lesquelles n'existent pas. Seules les extensions que la bibliothèque documente sont rangées ainsi : les {n} ci-dessous ; les formes passives (Removed à côté de Remove) ne sont pas des extensions, car elles ne font pas la même chose : Remove change l'objet, Removed rend une copie.",
          "code": "Extension", "adds": "Ce qu'elle ajoute", "source": "Documentée dans", "exists": "Existe", "yes": "oui", "no": "non", "names": "Les noms",
          "more": "et {n} autres", "for": "Les extensions de cette méthode", "forp": "Chaque extension, et si elle existe pour cette méthode ; une extension qui existe se compose avec les autres (FindSTCS).",
@@ -31,6 +32,7 @@ T = {
          "label": "Extensions", "none": "no extension", "folded": "forms written with extensions, listed under their method",
          "legend": "An extension is written at the end of a method's name: it is the same method with one more word, never another method. Each method says below which exist: a bold, ticked name exists for it, a struck name does not.",
          "legend_link": "The extensions and what they mean",
+         "remind": "Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not.",
          "h": "The extensions", "p": "A name that ends in an extension is the same method written with one more word, never another method: the reference lists the method once, and says for each which extensions exist and which do not. Only the extensions the library documents are folded this way: the {n} below; passive forms (Removed beside Remove) are not extensions, since they do not do the same thing: Remove changes the object, Removed returns a copy.",
          "code": "Extension", "adds": "What it adds", "source": "Documented in", "exists": "Exists", "yes": "yes", "no": "no", "names": "The names",
          "more": "and {n} more", "for": "The extensions of this method", "forp": "Each extension, and whether it exists for this method; an extension that exists combines with the others (FindSTCS).",
@@ -39,21 +41,25 @@ T = {
          "inherited": "defined in {owner}; its extensions here", "table_of": "extensions of"},
 }
 
-def strip(variants):
-    """the strip on one row: yes or no for the standard extensions, and any other that exists; 'none' when the method has none"""
+def strip(variants, lang="en"):
+    """the strip on one row: yes or no for the standard extensions, and any other that exists; 'none' when the method has none.
+    Each letter carries its meaning as a title: the paragraph that used to open every page is one line now"""
     if not variants: return "none"
     have = qforms.extensions_of(variants)
     codes = qforms.STANDARD + [e for e in qforms.CODES if e in have and e not in qforms.STANDARD]
-    return '<span class="exts">' + "".join(f'<i class="{"y" if e in have else "n"}">{e}</i>' for e in codes) + "</span>"
+    def title(e):
+        w = SHORT[lang].get(e) or next((x[1] if lang == "en" else x[2] for x in qforms.EXTENSIONS if x[0] == e), "")
+        return f'{e}: {w}' + ("" if e in have else (" (does not exist for this method)" if lang == "en" else " (n'existe pas pour cette méthode)"))
+    return '<span class="exts">' + "".join(f'<i class="{"y" if e in have else "n"}" title="{esc(title(e))}">{e}</i>' for e in codes) + "</span>"
 
 def row_strip(variants, lang):
-    s = strip(variants)
+    s = strip(variants, lang)
     return f'<span class="exts none">{T[lang]["none"]}</span>' if s == "none" else s
 
 def legend(lang, rel):
+    """the reminder above a table: one line, since the meaning is said once, in the catalogue of the index"""
     t = T[lang]
-    words = " · ".join(f"<b>{c}</b> {SHORT[lang][c]}" for c in qforms.STANDARD)
-    return f'<p class="proof">{t["legend"]} {words} · <a href="{rel}reference.html#extensions">{t["legend_link"]}</a></p>'
+    return f'<p class="proof">{t["remind"]} <a href="{rel}reference.html#extensions">{t["legend_link"]}</a></p>'
 
 def meaning(code, lang):
     e = next(x for x in qforms.EXTENSIONS if x[0] == code)

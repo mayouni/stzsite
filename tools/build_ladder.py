@@ -15,7 +15,7 @@ samples, and asked where a new learner stands. This module turns that run into
     rather than stacking it. The Arabic and Hausa lines use only the library's
     own text (the project's brief in that language), no translation by the site.
 
-Pedagogy proposed it as "the ladder always visible" (Zin's principle); decided
+Pedagogy proposed it as "the ladder always visible"; decided
 by the author on 2026-10-03.
 """
 import json, re, html

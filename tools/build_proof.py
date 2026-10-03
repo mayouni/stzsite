@@ -1,6 +1,6 @@
 """From a cell of the book to its proof, in one gesture.
 
-Pedagogy proposed it from Zin's "pro bridge": one gesture from any cell of the
+Pedagogy proposed it as a "pro bridge": one gesture from any cell of the
 book to the guard that proves it. The reader is the library's page and stores no
 output, by the course's own law, so the proof is a run, and a page of this site
 records one: tools/proof_run.py ran every chapter in its four editions, each in
@@ -141,7 +141,7 @@ def chapter_page(ch, lang, data, ctx):
     bar = level2.nav(level2.LABELS["chapters"][lang],
                      [("", [(f'{c["id"]}.html', f'{c["n"]} · {title_of(c, lang)}', "page" if c is ch else "") for c in data["chapters"]])])
     page = head(lang, f'{title} · {t["title_suffix"]} · Softanza', f'{title}: {t["title_suffix"].lower()}', rel)
-    page += '\n<body class="page page-book-proof">\n' + header(lang, "book", rel, other_href=f"../../{other}/book/{ch['id']}.html", nav_rel="../", page_key="book-proof")
+    page += '\n<body class="page page-book-proof">\n' + header(lang, "book", rel, other_href=f"../../{other}/book/{ch['id']}.html", nav_rel="../", page_key="book-proof", tail=[(title, None)])
     page += f"""
 <main id="main">
   <section class="page-head"><div class="wrap">

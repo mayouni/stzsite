@@ -38,7 +38,7 @@ def stage(d, x, y, label, fill=NEW_LINE):
 def technology(lang):
     L = {
       "en": dict(k="ONE ESTATE  ·  DECLARE  ·  JUDGE  ·  GOVERN",
-                 bands=[("Applications and products", "Zin, built · Studio, specified · COBOL workbench, proposed", "", OLD_FILL, OLD_LINE, OLD_TEXT),
+                 bands=[("Applications and products", "Studio, specified · COBOL workbench, proposed", "", OLD_FILL, OLD_LINE, OLD_TEXT),
                         ("Aïcha, the intelligence layer", "knowledge · models · agents, on your device", "named", OLD_FILL, OLD_LINE, OLD_TEXT),
                         ("Softanza, the computational foundation", "one engine, 28 areas, everything judged by running", "built", NEW_FILL, NEW_LINE, NEW_TEXT),
                         ("Haro, the language of languages", "you declare yours; it runs it, in one binary", "in construction", NEW_FILL, NEW_LINE, NEW_TEXT),
@@ -47,7 +47,7 @@ def technology(lang):
                  side=("Takamba", "the harness", ["how all of this", "is built: many", "sessions, one body", "of work, and laws", "cited to the", "incident that", "paid for them"], "built"),
                  cap="stages as read in the repositories on 2026-10-01"),
       "fr": dict(k="UN SEUL DOMAINE  ·  DÉCLARER  ·  JUGER  ·  GOUVERNER",
-                 bands=[("Applications et produits", "Zin, construit · Studio, spécifié · atelier COBOL, proposé", "", OLD_FILL, OLD_LINE, OLD_TEXT),
+                 bands=[("Applications et produits", "Studio, spécifié · atelier COBOL, proposé", "", OLD_FILL, OLD_LINE, OLD_TEXT),
                         ("Aïcha, la couche d'intelligence", "savoirs · modèles · agents, sur votre machine", "nommée", OLD_FILL, OLD_LINE, OLD_TEXT),
                         ("Softanza, la fondation de calcul", "un moteur, 28 domaines, tout jugé en s'exécutant", "construite", NEW_FILL, NEW_LINE, NEW_TEXT),
                         ("Haro, la langue des langues", "vous déclarez la vôtre ; il l'exécute, en un binaire", "en construction", NEW_FILL, NEW_LINE, NEW_TEXT),
