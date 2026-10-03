@@ -54,9 +54,9 @@ EXTENSIONS = [
     ("XT",  "the extended form: more parameters than the base method",
             "la forme étendue : plus de paramètres que la méthode de base",
             "base/doc/design/STRING_ENGINE_DESIGN_v2.md"),
-    ("XTT", "a further extended form, after XT",
-            "une forme étendue de plus, après XT",
-            "base/reflect/stzReflectFuncs.ring"),
+    ("XTT", "yet another extension: a further extended form, after XT",
+            "encore une extension : une forme étendue de plus, après XT",
+            "base/doc/narrations/stzlist-diff.md"),
     ("Z",   "includes the position in what it returns",
             "inclut la position dans ce qu'elle rend",
             "base/doc/quickers/stz-notes-quickers.md"),
@@ -68,9 +68,6 @@ EXTENSIONS = [
             "base/reflect/stzReflectFuncs.ring"),
     ("WF",  "selects by a condition, with the expressive keywords (@NextItem, @PreviousItem...)",
             "choisit selon une condition, avec les mots-clés expressifs (@NextItem, @PreviousItem...)",
-            "base/reflect/stzReflectFuncs.ring"),
-    ("WXT", "selects by a condition, extended: the condition is a named parameter (:Where = ...)",
-            "choisit selon une condition, forme étendue : la condition est un paramètre nommé (:Where = ...)",
             "base/reflect/stzReflectFuncs.ring"),
     ("D",   "takes a direction, forward or backward (Directional)",
             "prend une direction, en avant ou en arrière (Directional)",
@@ -90,6 +87,7 @@ EXTENSIONS = [
 ]
 CODES = [e[0] for e in EXTENSIONS]
 TOKENS = sorted(CODES, key=len, reverse=True)           # longest first: WXT before W and XT, QRT before Q
+GENERIC = {"QC"}          # works on any method through the library's immutable-form dispatch: no method name carries it, so a per-method yes/no would mislead
 STANDARD = ["Q", "CS", "XT", "Z", "ZZ", "IB", "W", "U"]  # shown yes or no on every method; the others only when they exist
 
 QFORM = re.compile(r"^(.+?)(Q{1,3})$")
@@ -208,6 +206,13 @@ def reference(ROOT):
     for d in classes: del d["raw_names"]
     _CACHE["ref"] = {"harvested": raw["harvested"], "classes": classes}
     return _CACHE["ref"]
+
+def forms_of(variants):
+    """{extension: [(name, [extensions as written]), ...]} for the variants of one method, the simplest names first"""
+    out = {}
+    for name, exts in sorted(variants, key=lambda v: (len(v[1]), len(v[0]), v[0])):
+        for e in dict.fromkeys(exts): out.setdefault(e, []).append((name, exts))
+    return out
 
 def extensions_of(variants):
     """{extension: [names that carry it]} for the variants of one method, the simplest names first"""

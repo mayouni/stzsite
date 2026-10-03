@@ -572,5 +572,12 @@ ol.narr .ran{display:inline;margin:0}
 .ext-line{display:block;margin-top:8px}
 @media (min-width:761px){
   .rtable .lane.lane2{grid-template-columns:minmax(200px,1.2fr) 3fr}
-  .rtable .lane.lane3{grid-template-columns:minmax(90px,.4fr) minmax(150px,1fr) 3fr}
+  .rtable .lane.lane3{grid-template-columns:minmax(150px,.45fr) minmax(230px,1fr) 3fr}
+  .rtable .lane.lane3e{grid-template-columns:minmax(150px,.45fr) minmax(110px,.6fr) 3fr}
 }
+/* the letters of an extension, highlighted in a name: bold, accent and underlined, so colour is never the only cue */
+mark.ext{background:none;color:var(--accent);font-weight:700;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+.ext-ex{margin-top:12px}
+.ext-ex .lbl{font-family:"IBM Plex Mono",monospace;font-size:var(--label);font-weight:600;letter-spacing:.06em;color:var(--ink-2);margin-top:8px}
+.ext-ex pre{margin:4px 0 0;max-width:none}
+.ext-ex pre.ext-out{border-left:4px solid var(--ink-3)}

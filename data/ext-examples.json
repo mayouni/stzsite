@@ -1,0 +1,119 @@
+{
+ "ran": "2026-10-03 12:04",
+ "examples": {
+  "Q": {
+   "name": "UppercaseQ",
+   "code": "? Q(\"softanza\").UppercaseQ().Content()",
+   "out": "SOFTANZA",
+   "error": ""
+  },
+  "QQ": {
+   "name": "WordsQQ",
+   "code": "? Q(\"one two three\").WordsQ().ClassName()\n? Q(\"one two three\").WordsQQ().ClassName()",
+   "out": "stzlist\nstzstringlist",
+   "error": ""
+  },
+  "QQQ": {
+   "name": "SentencesQQQ",
+   "code": "? Q(\"It is. It works.\").SentencesQ().ClassName()\n? Q(\"It is. It works.\").SentencesQQ().ClassName()\n? Q(\"It is. It works.\").SentencesQQQ().ClassName()",
+   "out": "stzlist\nstzstringlist\nstzstringlist",
+   "error": ""
+  },
+  "QC": {
+   "name": "RemoveQC",
+   "code": "o1 = new stzString(\"softanza\")\n? o1.RemoveQC(\"a\").Content()\n? o1.Content()",
+   "out": "softnz\nsoftanza",
+   "error": ""
+  },
+  "QRT": {
+   "name": "MultiplesUntilQRT",
+   "code": "? Q(25).MultiplesUntilQRT(100, :stzListOfNumbers).ClassName()",
+   "out": "stzlistofnumbers",
+   "error": ""
+  },
+  "CS": {
+   "name": "ContainsCS",
+   "code": "? Q(\"Softanza\").ContainsCS(\"SOFT\", FALSE)",
+   "out": "1",
+   "error": ""
+  },
+  "ST": {
+   "name": "FindFirstST",
+   "code": "? Q(\"banana\").FindFirstST(\"a\", :StartingAt = 3)",
+   "out": "4",
+   "error": ""
+  },
+  "IB": {
+   "name": "RemoveBetweenIB",
+   "code": "o1 = new stzString(\"a[b]c\")\no1.RemoveBetweenIB(\"[\", \"]\")\n? o1.Content()",
+   "out": "ac",
+   "error": ""
+  },
+  "D": {
+   "name": "FindD",
+   "code": "? @@( Q(\"banana\").FindD(\"a\", :Backward) )",
+   "out": "[ 6, 4, 2 ]",
+   "error": ""
+  },
+  "XT": {
+   "name": "TypesXT",
+   "code": "? @@( Q([ \"AB\", 12, [ \"A\", \"B\" ] ]).TypesXT() )",
+   "out": "[ [ \"AB\", \"STRING\" ], [ 12, \"NUMBER\" ], [ [ \"A\", \"B\" ], \"LIST\" ] ]",
+   "error": ""
+  },
+  "XTT": {
+   "name": "DiffXTT",
+   "code": "? @@( StzListQ([ \"a\", \"b\" ]).DiffXTT([ \"b\", \"c\" ]) )",
+   "out": "[ [ \"added\", [ \"c\" ] ], [ \"removed\", [ \"a\" ] ], [ \"modified\", [ ] ] ]",
+   "error": ""
+  },
+  "Z": {
+   "name": "FindZ",
+   "code": "? @@( Q(\"banana\").FindZ(\"an\") )",
+   "out": "[ 2, 4 ]",
+   "error": ""
+  },
+  "ZZ": {
+   "name": "FindZZ",
+   "code": "? @@( Q(\"banana\").FindZZ(\"an\") )",
+   "out": "[ [ 2, 3 ], [ 4, 5 ] ]",
+   "error": ""
+  },
+  "W": {
+   "name": "ItemsW",
+   "code": "? @@( StzListQ([ 12, 0, 30, -5, 18 ]).ItemsW(\"@item > 0\") )",
+   "out": "[ 12, 30, 18 ]",
+   "error": ""
+  },
+  "WF": {
+   "name": "FindWF",
+   "code": "o1 = new stzList([ 1, \"a\", 2, \"b\", 3, \"c\" ])\n? @@( o1.FindWF( func x { return isString(x) } ) )",
+   "out": "[ 2, 4, 6 ]",
+   "error": ""
+  },
+  "F": {
+   "name": "CheckWF",
+   "code": "o1 = new stzList([ 1:3, 1:3, 1:3 ])\n? o1.CheckWF( func x { return isList(x) and len(x) = 3 } )",
+   "out": "1",
+   "error": ""
+  },
+  "Many": {
+   "name": "MultiplyByMany",
+   "code": "o1 = new stzNumber(11)\no1.MultiplyByMany([ 2, 3 ])\n? o1.Value()",
+   "out": "66",
+   "error": ""
+  },
+  "Except": {
+   "name": "RemoveAllExcept",
+   "code": "o1 = new stzString(\"s-o-f-t\")\no1.RemoveAllExcept(\"-\")\n? o1.Content()",
+   "out": "---",
+   "error": ""
+  },
+  "U": {
+   "name": "ContentU",
+   "code": "? @@( StzListQ([ 1, 2, 2, 3, 1 ]).ContentU() )",
+   "out": "[ 1, 2, 3 ]",
+   "error": ""
+  }
+ }
+}

@@ -966,3 +966,38 @@ next:
   - me:      Pedagogy's last proposal, progressive revelation, is the library's to build; nothing else is queued here
   - author:  open Learn > Reference > stzString > Remove, and its table of 20 extensions
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-03 12:10
+
+subject:   an example for each extension, with its letters highlighted, in the reference catalogue
+
+why:       the author, looking at the catalogue: "very good! add an example for each with extension letters highlighted"
+           (under each extension's description), and the header "EXTENSIO N" broke across two lines
+
+did:
+  - wrote tools/ext_examples_run.py: one small example per extension, composed from the usage the library documents (its
+    tests, narrations and descriptions) with real method names, every one RUN in one process inside the library at
+    0e72e2e2c; 19 of 19 ran; the output shown is the run's (RemoveQC leaves the original "softanza" untouched, FindD goes
+    backward, FindZZ returns [ [ 2, 3 ], [ 4, 5 ] ], WordsQ then WordsQQ shows the Q ladder)
+  - the catalogue shows, under each extension's description, the example with the called name's extension letters
+    highlighted (bold, accent, underlined, so colour is not the only cue) and what it printed
+  - the entry tables highlight the extension's letters in every name they list (FindManyCS, FindZZCS, FindStD)
+  - the first column no longer breaks EXTENSION: it is wide enough; checked at 390 px, no overflow
+  - WXT leaves the catalogue (the parser lists it, no method carries it, its call does not run), and QC stays documented but is
+    left out of the per-method yes/no (no method name carries it: the library gives it to any method through a generic dispatch)
+  - XTT now uses the library's own words, "yet another extension" (stzlist-diff.md)
+
+state:
+  release-1-pass-23: built; the commit carrying this entry is the one after 72495fd
+  perception-gate:   OPEN
+
+waiting:
+  - STZLIB-QLADDER-01: Q("It is. It works.").SentencesQQQ().ClassName() answers stzstringlist, the same class as SentencesQQ, where
+             the Q ladder rule says QQQ is the most specific type (stzListOfTexts for sentences); the only name that carries QQQ is
+             SentencesQQQ -> stzlib [routed]
+
+next:
+  - me:      nothing queued on the site; progressive revelation is the library's to build
+  - author:  open Learn > Reference, The extensions
+```
