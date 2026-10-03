@@ -21,14 +21,16 @@ def esc(s): return html.escape(str(s), quote=True)
 WORD = re.compile(r"(?<![\w./-])ring(?![\w.])", re.I)
 
 T = {
-  "fr": {"lib": "test de la bibliothèque", "new": "composé à partir de la signature, exécuté pour cette page",
+  "fr": {"named": "composé à partir du nom de la méthode, exécuté pour cette page", "lib": "test de la bibliothèque", "new": "composé à partir de la signature, exécuté pour cette page",
          "legend": "Chaque méthode porte un exemple quand les tests de la bibliothèque, ou cette page, ont pu en exécuter un. {nl} viennent des tests de la bibliothèque ; {nc} ont été composés à partir de la signature de la méthode et exécutés pour cette page, sur un objet neuf, par exemple : <span class=\"mono\">{recv}</span>. {nn} méthodes n'ont pas encore d'exemple.",
+         "legend_chain": "Chaque méthode porte un exemple quand les tests de la bibliothèque, ou cette page, ont pu en exécuter un. {nl} viennent des tests de la bibliothèque ; {nc} ont été composés à partir du nom de la méthode, comme un mot d'une phrase fermée par Of(...), et exécutés pour cette page. {nn} méthodes n'ont pas encore d'exemple.",
          "legend_lib": "Chaque méthode porte un exemple quand les tests de la bibliothèque ont pu en exécuter un : {nl} en ont un ; {nn} n'en ont pas encore.",
          "legend_effects": "Aucune méthode de cette classe n'est exécutée sur cette page : la classe touche aux fichiers, au réseau, aux processus, à l'horloge, au hasard ou au son, et un exemple exécuté ici ne serait que l'exemple de ses effets. Chaque méthode porte l'explication que la bibliothèque donne d'elle-même.",
          "legend_none": "Aucune méthode de cette classe n'a encore d'exemple : la page ne sait pas encore construire un objet de cette classe, ni composer les arguments de ses méthodes.",
          "ran": "Exemples exécutés le {d} dans la bibliothèque au commit 0e72e2e2c."},
-  "en": {"lib": "library test", "new": "composed from the signature, run for this page",
+  "en": {"named": "composed from the method's name, run for this page", "lib": "library test", "new": "composed from the signature, run for this page",
          "legend": "Each method carries an example when the library's tests, or this page, could run one. {nl} come from the library's tests; {nc} were composed from the method's signature and run for this page, on a fresh object, for example: <span class=\"mono\">{recv}</span>. {nn} methods have no example yet.",
+         "legend_chain": "Each method carries an example when the library's tests, or this page, could run one. {nl} come from the library's tests; {nc} were composed from the method's name, as a word of a sentence closed by Of(...), and run for this page. {nn} methods have no example yet.",
          "legend_lib": "Each method carries an example when the library's tests could run one: {nl} do; {nn} have none yet.",
          "legend_effects": "No method of this class is run on this page: the class reaches files, the network, processes, the clock, chance or sound, and an example run here would only be an example of its effects. Each method carries the explanation the library gives of itself.",
          "legend_none": "No method of this class has an example yet: the page cannot build an object of this class yet, nor compose the arguments of its methods.",
@@ -102,6 +104,7 @@ def example_html(cls, name, exs, data, lang):
     ex = pick(cls, name, exs, data)
     if not ex: return ""
     code, out, src = ex
+    if src == "new" and data["classes"].get(cls, {}).get("receiver", "x") == "": src = "named"      # a sentence class: composed from the name
     body = esc(code) + NL + NL.join("#--&gt; " + esc(l) for l in out_lines(out))
     return f'<pre class="rx">{body}</pre><span class="rx-src">{T[lang][src]}</span>'
 
@@ -120,7 +123,8 @@ def legend(c, entries, data, lang):
     nl, nc, nn = class_counts(c, entries, data)
     if nl + nc == 0: return f'<p class="proof">{t["legend_effects"] if effects(c) else t["legend_none"]}</p>'
     recv = data["classes"].get(c["name"], {}).get("receiver", "").replace(NL, " ")
-    text = t["legend"].format(nl=nl, nc=nc, nn=nn, recv=esc(recv)) if nc else t["legend_lib"].format(nl=nl, nn=nn)
+    if nc and not recv: text = t["legend_chain"].format(nl=nl, nc=nc, nn=nn)
+    else: text = t["legend"].format(nl=nl, nc=nc, nn=nn, recv=esc(recv)) if nc else t["legend_lib"].format(nl=nl, nn=nn)
     day = data["classes"].get(c["name"], {}).get("ran") or data.get("ran")
     ran = f' {t["ran"].format(d=esc(day))}' if day and nc else ""
     return f'<p class="proof">{text}{ran}</p>'

@@ -748,6 +748,121 @@
   "stzListClassifier": {
    "setup": "o1 = new stzListClassifier([\"x\", \"y\", \"x\", \"z\", \"x\", \"y\"])",
    "kind": "strlist"
+  },
+  "stzRefinableCode": {
+   "setup": "cCfg = 'vat = <R:PARAM name=\"vat\" value=\"0.10\" min=\"0\" max=\"0.25\">'\no1 = new stzRefinableCode(cCfg)",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzStringWalker": {
+   "setup": "cWalk = StzChar(1605) + StzChar(1585) + StzChar(1581)\no1 = new stzStringWalker(cWalk)",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzDataWrangler": {
+   "setup": "o1 = new stzDataWrangler([ [ \"  John \", \"25\", \"sales\" ], [ \"John\", \"25\", \"sales\" ], [ \"mary\", \"\", \"mkt\" ] ], [ \"Name\", \"Age\", \"Dept\" ])",
+   "kind": "list",
+   "arranged": true
+  },
+  "stzProgram": {
+   "setup": "o1 = StzProgramQ(\"../../education/program\")",
+   "kind": "str",
+   "arranged": true
+  },
+  "stzLearner": {
+   "setup": "cL = \"t_edu_levels/zara\"\no1 = StzLearnerQ(cL)",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzMathSubstance": {
+   "setup": "o1 = new stzMathSubstance(StzDotDomain())",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzGraphPlanner": {
+   "setup": "g = new stzGraph(\"linear\")\no1 = new stzGraphPlanner(g)",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzGraphQuery": {
+   "setup": "oG = new stzGraph(\"g\")\noG.AddNode(\"a\")\noG.AddNode(\"b\")\noG.Connect(\"a\", \"b\")\no1 = new stzGraphQuery(oG)",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzDecisionTree": {
+   "setup": "oDTS = new stzTrainingSet([])\noDTS.AddExample([ 1, 1 ], \"yes\")\noDTS.AddExample([ 1, 0 ], \"yes\")\noDTS.AddExample([ 0, 1 ], \"no\")\noDTS.AddExample([ 0, 0 ], \"no\")\no1 = new stzDecisionTree(oDTS)",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzVBarChart": {
+   "setup": "aData = [ :a = 3, :b = 5, :c = 2 ]\no1 = new stzVBarChart(aData)",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzHBarChart": {
+   "setup": "aData = [ :a = 3, :b = 5, :c = 2 ]\no1 = new stzHBarChart(aData)",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzMBarChart": {
+   "setup": "aMulti = [ :s1 = [ :a = 3, :b = 5 ], :s2 = [ :a = 2, :b = 4 ] ]\no1 = new stzMBarChart(aMulti)",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzMultiBarChart": {
+   "setup": "aMulti = [ :s1 = [ :a = 3, :b = 5 ], :s2 = [ :a = 2, :b = 4 ] ]\no1 = new stzMultiBarChart(aMulti)",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzStringLines": {
+   "setup": "cDup = \"aaa\" + NL + \"bbb\" + NL + \"aaa\"\no1 = new stzStringLines(cDup)",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzTimeLines": {
+   "setup": "o1 = new stzTimeLines([\n:Lanes = [ \"Dev\", \"QA\" ],\n:From  = \"2024-10-10\",\n:To    = \"2024-10-22 16:40:00\"\n])",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzListOfTimeLines": {
+   "setup": "o1 = new stzListOfTimeLines([\n:Lanes = [ \"single\" ],\n:From  = \"2026-06-01 00:00:00\",\n:To    = \"2026-06-30 23:59:59\"\n])",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzOptimSentence": {
+   "setup": "o1 = StzOptimSentenceQ(\"maximize x\nwhere x is between 0 and 5\nand keeping x somewhere near 3\")",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzSurfacePlot": {
+   "setup": "o1 = new stzSurfacePlot([\n:Total = 100\n])",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzTableAggregator": {
+   "setup": "o1 = new stzTableAggregator([\n[ :X, [ 5, 6 ] ],\n[ :Y, [ 7, 8 ] ]\n])",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzTableSorter": {
+   "setup": "o1 = new stzTableSorter([\n[ :NAME,    :AGE ],\n[ \"Charlie\", 30  ],\n[ \"Alice\",   25  ],\n[ \"Bob\",     35  ]\n])",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzTableSearch": {
+   "setup": "o1 = new stzTableSearch([\n[ :NAME,    :CITY,     :ROLE ],\n[ \"Ali\",    \"Tunis\",   \"Dev\" ],\n[ \"Dania\",  \"Cairo\",   \"Dev\" ],\n[ \"Han\",    \"Beijing\", \"PM\"  ],\n[ \"Ali\",    \"Niamey\",  \"QA\"  ]\n])",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzTableStructure": {
+   "setup": "o1 = new stzTableStructure([\n:A = [ 1, 2 ],\n:B = [ 3, 4 ]\n])",
+   "kind": "*",
+   "arranged": true
+  },
+  "stzTree": {
+   "setup": "o1 = new stzTree(\n:root = [\n:node1 = [ \"X\", :node11 = [ \"A\", \"B\", \"C\", \"D\", \"X\" ] ],\n:node2 = [ 1, 2, 3 ],\n:node3 = [ \"X\", 4, 5 ]\n]\n)",
+   "kind": "*",
+   "arranged": true
   }
  }
 }

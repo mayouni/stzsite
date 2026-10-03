@@ -52,6 +52,7 @@ KNOWN = {
     "nwidth": {"*": "12"}, "cfillchar": {"*": '"*"'}, "anpos": {"*": "[ 1, 2 ]"}, "asections": {"*": "[ [ 1, 3 ] ]"},
     "nfrom": {"*": "2"}, "nstart": {"*": "2"}, "nvalue": {"*": "3"}, "nmin": {"*": "1"}, "nmax": {"*": "5"}, "ncol": {"*": "2"},
     "anumbers": {"*": "[ 1, 2, 3 ]"}, "c": {"*": '"a"'}, "pother": {"*": "3"},
+    "pstart": {"*": "2"}, "pend": {"*": "4"}, "p1": {"*": "3"}, "p2": {"*": "4"}, "pnrow": {"*": "2"}, "pnindex": {"*": "2"}, "pnstep": {"*": "2"},
 }
 
 # receivers the library's tests build in steps (or only build empty): written by hand, from how the tests use them
@@ -63,6 +64,9 @@ HAND = {
     "stzHexNumber":    {"setup": 'o1 = new stzHexNumber("0xff")', "content": None, "kind": "*"},
     "stzBytes":        {"setup": 'o1 = new stzBytes("Hello")', "content": None, "kind": "str"},
     "stzListNamedParams": {"setup": 'o1 = new stzListNamedParams([ :Step, 3 ])', "content": None, "kind": "*"},
+    # a question is a SENTENCE, not an object to call: each of its 1,078 methods is a word of the chain, closed by Of(...).
+    # The frames are tried in turn (a noun of text, a noun of number, then the same after the copula) and the first that answers is kept
+    "stzQuestion":     {"setup": "", "alt": "", "alt2": "", "alt3": "", "content": None, "kind": "*", "make": "question"},
 }
 EMPTY_RECEIVER = re.compile(r"""\(\s*(""|''|\[\s*\]|0)?\s*\)$""")
 
@@ -78,6 +82,13 @@ def named_param_setup(name):
     word = re.split(r"(?<=[a-z])Or(?=[A-Z])", m.group(1))[0]          # IsOverOrOverNumber: the first of the words it accepts
     return f"o1 = new stzListNamedParams([ :{word}, 3 ])" if word.isidentifier() else None
 
+FRAMES = {"setup": 'WhatQ().TheQ().{n}().Of("Softanza")', "alt": "WhatQ().TheQ().{n}().Of(12)",
+          "alt2": 'IsQ().TheQ().{n}().Of("Softanza")', "alt3": "IsQ().TheQ().{n}().Of(12)"}
+
+def make_code(R, name, stage):
+    """the code of a class whose methods are words of a sentence"""
+    return "? @@( " + FRAMES[stage].format(n=name) + " )"
+
 def mined():
     """the receivers mined from the library's tests (tools/rows_mine.py), for the classes with no hand-written one;
     a receiver built from nothing (an empty string, an empty list) says nothing about its methods and is left out"""
@@ -86,11 +97,17 @@ def mined():
     got = json.loads(f.read_text(encoding="utf-8"))["classes"]
     out = {c: {"setup": v["setup"], "kind": v["kind"], "content": None, "mined": True} for c, v in got.items() if c not in CLASSES and not EMPTY_RECEIVER.search(v["setup"])}
     out.update({c: dict(v, mined=True) for c, v in HAND.items() if c not in CLASSES})
+    h = ROOT / "data" / "row-receivers-hand.json"                  # written by hand, probed by tools/rows_probe.py: an empty construction is meant
+    if h.exists():
+        out.update({c: {"setup": v["setup"], "kind": v["kind"], "content": None, "mined": True} for c, v in json.loads(h.read_text(encoding="utf-8"))["classes"].items() if c not in CLASSES})
     return out
 
 def sample(p, nth, kind):
     """the sample argument for a parameter (nth: how many numeric parameters came before it), or None when its name says nothing"""
-    q = p.strip("_").lower()
+    p0 = p.strip("_")
+    q = p0.lower()
+    m0 = re.match(r"([cnab])([A-Z]\w*)$", p0)               # cStr, nRow, aToken, bShow: the same prefixes as pcStr, pnRow, paToken, pbShow
+    if m0: q = ("p" + m0.group(1) + m0.group(2)).lower()
     if kind == "graph":
         core = re.sub(r"^(pc|pn|pa|pb|c|n)", "", q)
         if core in ("from", "source", "start", "root", "node", "nodeid", "id", "node1", "a", "name"): return '"A"'
@@ -135,6 +152,10 @@ def candidates(lib, ref, only):
         S = signatures(lib, c)
         for m in c["own"]:
             name = m[0]
+            if R.get("make"):
+                if name.lower() in ("init", "thesameasq", "of", "in", "ornot", "is", "why") or name.endswith("Q") is False or FORBIDDEN.search(name) or EXTRA_FORBIDDEN.search(name):
+                    skipped["not a noun of the sentence"] += 1; continue
+                out.append((c["name"], name, [("A", "")])); continue
             if c["name"] in REQUIRE:
                 st = named_param_setup(name)
                 if not st: skipped["not a keyword question"] += 1; continue
@@ -247,14 +268,15 @@ def main():
         rj = [(i, CLASSES[c]["setup"], f"? @@( {CLASSES[c]['content']} )") for i, c in enumerate(classes)]
         rres, _ = run_all(work, rj)
         recv = {c: rres[i][1].strip() for i, c in enumerate(classes) if i in rres and rres[i][0] == "ok"}
-        for stage in ("setup", "alt"):
+        for stage in ("setup", "alt", "alt2", "alt3"):
             jobs, meta = [], {}
             for cls, name, variants in cands:
                 if (cls, name) in kept: continue
                 R = CLASSES[cls]
-                setup = (OVERRIDE.get((cls, name)) or R["setup"]) if stage == "setup" else R.get("alt")
-                if not setup: continue
+                setup = (OVERRIDE.get((cls, name)) or R["setup"]) if stage == "setup" else R.get(stage)
+                if setup is None or (not setup and not R.get("make")): continue
                 for v, code in variants:
+                    if R.get("make"): code = make_code(R, name, stage)
                     jid = len(jobs); jobs.append((jid, setup, code)); meta[jid] = (cls, name, v, setup, code)
             if not jobs: continue
             # first the plain call (A); the content variant (B) only for what printed nothing

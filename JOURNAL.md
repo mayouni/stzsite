@@ -1044,3 +1044,40 @@ next:
   - me:      write a receiver by hand for the 216 classes the tests never build directly, largest first (stzQuestion, stzGraphPlanner, stzGeoMap)
   - author:  open Learn > Reference > stzGraph, and Learn > Narrations
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-03 20:52
+
+subject:   sample objects for the classes the tests never build directly, and an example for each of stzQuestion's words
+
+why:       the author, "ok do it", on the next step of the examples pass: write a receiver by hand for the classes with no example
+
+did:
+  - wrote tools/rows_context.py: a construction from variables or over several lines, with the lines that arrange it, mined from
+    the library's tests and run before it is accepted; 23 classes (the graph planner and query, the bar charts, the decision tree,
+    the data wrangler, the table classes, the tree, the list of timelines...)
+  - wrote data/row-receivers-hand.json and tools/rows_probe.py: 58 sample objects from how the library builds each class (the geo
+    map from a one-polygon GeoJSON, the pivot table, the diagram, the org chart, kNN and logistic regression from a training set...)
+  - composed stzQuestion's methods as words of a sentence, WhatQ().TheQ().<Noun>Q().Of("Softanza"): 712 of 1,048 ran and kept an example
+  - recognised the cStr, nRow, aToken spelling of parameters, which blocked 1,257 methods, and re-ran the 30 classes with the most rows lacking one
+  - found four classes the library cannot build with the obvious arguments: stzListOfSets calls IsListOfSets, which does not exist;
+    stzTextStream needs a class QTextStream that is not there; stzSetOfSections refuses [ [ 1, 3 ], [ 5, 8 ] ]; stzGridNav("g", 3, 3)
+    answers "Engine returned error"
+  - rebuilt: 34,356 example blocks checked, 0 failures, 0 dangling among 546,293 local links
+
+state:
+  release-1-pass-25: built; the commit carrying this entry is the one after 03318455
+  rows with an example: 8,991 of 22,272 (40.4%, was 34.2%), on 215 of 618 classes
+  classes not run on purpose: 251 (5,112 rows)
+  classes with no receiver yet: 103 (1,295 rows)
+  perception-gate:   OPEN
+
+waiting:
+  - STZLIB-RECEIVERS-01: four classes cannot be built with the obvious arguments (stzListOfSets, stzTextStream, stzSetOfSections, stzGridNav)
+             -> stzlib [routed]
+
+next:
+  - me:      the solvers, the string finders and the courses are the largest of the 103 classes left; what remains in the others is
+             calls that raised or printed nothing
+  - author:  open Learn > Reference > stzQuestion, and stzGeoMap
+```

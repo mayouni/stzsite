@@ -1,0 +1,237 @@
+{
+ "note": "Sample objects written by hand, from how the library's tests and sources build each class; tools/rows_probe.py tries them, tools/rows_run.py reads them",
+ "classes": {
+  "stzFalseObject": {
+   "setup": "o1 = StzFalseObjectQ()",
+   "kind": "*"
+  },
+  "stzChainOfValue": {
+   "setup": "o1 = new stzChainOfValue(\"x\")",
+   "kind": "*"
+  },
+  "stzStringCharList": {
+   "setup": "o1 = new stzStringCharList(\"hello\")",
+   "kind": "str"
+  },
+  "stzGeoEllipsoid": {
+   "setup": "o1 = new stzGeoEllipsoid(:WGS84)",
+   "kind": "*"
+  },
+  "stzStringLocale": {
+   "setup": "o1 = new stzStringLocale(\"fr_FR\")",
+   "kind": "str"
+  },
+  "stzTruthChain": {
+   "setup": "o1 = new stzTruthChain(1)",
+   "kind": "*"
+  },
+  "stzPair": {
+   "setup": "o1 = new stzPair([ 1, 2 ])",
+   "kind": "list"
+  },
+  "stzPairOfLists": {
+   "setup": "o1 = new stzPairOfLists([ 1, 2 ], [ 3, 4 ])",
+   "kind": "list"
+  },
+  "stzSection": {
+   "setup": "o1 = new stzSection(2, 5, 10)",
+   "kind": "*"
+  },
+  "stzOrdinal": {
+   "setup": "o1 = new stzOrdinal(3)",
+   "kind": "*"
+  },
+  "stzStringBoxed": {
+   "setup": "o1 = new stzStringBoxed(\"hello\")",
+   "kind": "str"
+  },
+  "stzStringCode": {
+   "setup": "o1 = new stzStringCode(\"hello\")",
+   "kind": "str"
+  },
+  "stzStringIO": {
+   "setup": "o1 = new stzStringIO(\"hello\")",
+   "kind": "str"
+  },
+  "stzStringVisualizer": {
+   "setup": "o1 = new stzStringVisualizer(\"hello\")",
+   "kind": "str"
+  },
+  "stzStringPerformer": {
+   "setup": "o1 = new stzStringPerformer(\"hello\")",
+   "kind": "str"
+  },
+  "stzStringUnicodeList": {
+   "setup": "o1 = new stzStringUnicodeList([ 97, 98, 99 ])",
+   "kind": "*"
+  },
+  "stzStringSubString": {
+   "setup": "o1 = new stzStringSubString(\"an\", \"banana\")",
+   "kind": "str"
+  },
+  "stzStringSubStringCS": {
+   "setup": "o1 = new stzStringSubStringCS(\"an\", \"banana\", TRUE)",
+   "kind": "str"
+  },
+  "stzOccurrences": {
+   "setup": "o1 = new stzOccurrences([ 2, 4 ], \"an\", \"banana\")",
+   "kind": "*"
+  },
+  "stzItem": {
+   "setup": "o1 = new stzItem(\"a\", \"banana\")",
+   "kind": "*"
+  },
+  "stzListProvidedAsString": {
+   "setup": "o1 = new stzListProvidedAsString(\"[ 1, 2, 3 ]\")",
+   "kind": "str"
+  },
+  "stzUMAP": {
+   "setup": "o1 = new stzUMAP([ [ 1, 2 ], [ 2, 3 ], [ 8, 9 ], [ 9, 8 ], [ 1, 1 ], [ 8, 8 ] ])",
+   "kind": "*"
+  },
+  "stzTSNE": {
+   "setup": "o1 = new stzTSNE([ [ 1, 2 ], [ 2, 3 ], [ 8, 9 ], [ 9, 8 ], [ 1, 1 ], [ 8, 8 ] ])",
+   "kind": "*"
+  },
+  "stzGraphGoal": {
+   "setup": "o1 = new stzGraphGoal(\"fast\")",
+   "kind": "*"
+  },
+  "stzMathDomain": {
+   "setup": "o1 = StzGraphDomain()",
+   "kind": "*"
+  },
+  "stzScopedRule": {
+   "setup": "o1 = new stzScopedRule(\"r\")",
+   "kind": "*"
+  },
+  "stzRuleGovernance": {
+   "setup": "o1 = new stzRuleGovernance(\"g\")",
+   "kind": "*"
+  },
+  "stzMathDiagram": {
+   "setup": "o1 = new stzMathDiagram(StzGraphDomain(), new stzMathSubstance(StzGraphDomain()), StzCurvedGraphStyle())",
+   "kind": "*"
+  },
+  "stzNaturalEngine": {
+   "setup": "o1 = new stzNaturalEngine(\"en\", \"\", [], \"\")",
+   "kind": "*"
+  },
+  "stzGeoFeatures": {
+   "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\no1 = StzGeoFeaturesFromJson(cJ)",
+   "kind": "*"
+  },
+  "stzGeoMap": {
+   "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noF = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoMap(new stzGeoProjection(:mercator), oF)",
+   "kind": "*"
+  },
+  "stzGeoAtlas": {
+   "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noF = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoAtlas(oF)",
+   "kind": "*"
+  },
+  "stzPivotTable": {
+   "setup": "oTab = new stzTable([ [ :Region, :Product, :Sales ], [ \"N\", \"A\", 10 ], [ \"N\", \"B\", 30 ], [ \"S\", \"A\", 40 ], [ \"S\", \"B\", 50 ] ])\no1 = new stzPivotTable(oTab)",
+   "kind": "*"
+  },
+  "stzKnn": {
+   "setup": "oDS = new stzTrainingSet([])\noDS.AddExample([ 1, 1 ], \"yes\")\noDS.AddExample([ 1, 0 ], \"yes\")\noDS.AddExample([ 0, 1 ], \"no\")\noDS.AddExample([ 0, 0 ], \"no\")\no1 = new stzKnn(oDS)",
+   "kind": "*"
+  },
+  "stzLogisticRegression": {
+   "setup": "oDS = new stzTrainingSet([])\noDS.AddExample([ 1, 1 ], \"yes\")\noDS.AddExample([ 1, 0 ], \"yes\")\noDS.AddExample([ 0, 1 ], \"no\")\noDS.AddExample([ 0, 0 ], \"no\")\no1 = new stzLogisticRegression(oDS)",
+   "kind": "*"
+  },
+  "stzMathStyle": {
+   "setup": "o1 = StzCurvedGraphStyle()",
+   "kind": "*"
+  },
+  "stzTrueObject": {
+   "setup": "o1 = StzTrueObjectQ()",
+   "kind": "*"
+  },
+  "stzNullObject": {
+   "setup": "o1 = StzNullObjectQ()",
+   "kind": "*"
+  },
+  "stzForEachObject": {
+   "setup": "o1 = new stzForEachObject(\"x\", :In = [ 1, 2, 3 ])",
+   "kind": "*"
+  },
+  "stzRelation": {
+   "setup": "o1 = new stzRelation()",
+   "kind": "*"
+  },
+  "stzSequence": {
+   "setup": "o1 = new stzSequence(\"s\", 1, 2, 1)",
+   "kind": "*"
+  },
+  "stzEngineTimeline": {
+   "setup": "o1 = new stzEngineTimeline()",
+   "kind": "*"
+  },
+  "stzLatencyHistogram": {
+   "setup": "o1 = new stzLatencyHistogram()",
+   "kind": "*"
+  },
+  "stzTraceContext": {
+   "setup": "o1 = new stzTraceContext()",
+   "kind": "*"
+  },
+  "stzColorResolver": {
+   "setup": "o1 = new stzColorResolver()",
+   "kind": "*"
+  },
+  "stzValidator": {
+   "setup": "o1 = new stzValidator()",
+   "kind": "*"
+  },
+  "stzRegexLookaroundMaker": {
+   "setup": "o1 = new stzRegexLookaroundMaker()",
+   "kind": "*"
+  },
+  "stzStylParser": {
+   "setup": "o1 = new stzStylParser()",
+   "kind": "*"
+  },
+  "stzParser": {
+   "setup": "o1 = new stzParser(\"a + b\")",
+   "kind": "*"
+  },
+  "stzParseTree": {
+   "setup": "o1 = new stzParseTree(\"S\")",
+   "kind": "*"
+  },
+  "stzCan": {
+   "setup": "o1 = new stzCan(1)",
+   "kind": "*"
+  },
+  "stzMust": {
+   "setup": "o1 = new stzMust(\"number\")",
+   "kind": "*"
+  },
+  "stzSupposition": {
+   "setup": "o1 = new stzSupposition(\"s\")",
+   "kind": "*"
+  },
+  "stzGraphView": {
+   "setup": "oG = new stzGraph(\"g\")\noG.AddNode(\"A\") oG.AddNode(\"B\") oG.AddNode(\"C\") oG.AddNode(\"D\")\noG.AddEdge(\"A\", \"B\") oG.AddEdge(\"A\", \"C\") oG.AddEdge(\"B\", \"D\")\no1 = new stzGraphView(oG, [ \"A\", \"B\" ])",
+   "kind": "graph"
+  },
+  "stzGraphFinder": {
+   "setup": "oG = new stzGraph(\"g\")\noG.AddNode(\"A\") oG.AddNode(\"B\") oG.AddNode(\"C\") oG.AddNode(\"D\")\noG.AddEdge(\"A\", \"B\") oG.AddEdge(\"A\", \"C\") oG.AddEdge(\"B\", \"D\")\no1 = new stzGraphFinder(oG, \"A\")",
+   "kind": "graph"
+  },
+  "stzGraphAsciiVisualizer": {
+   "setup": "oG = new stzGraph(\"g\")\noG.AddNode(\"A\") oG.AddNode(\"B\") oG.AddNode(\"C\") oG.AddNode(\"D\")\noG.AddEdge(\"A\", \"B\") oG.AddEdge(\"A\", \"C\") oG.AddEdge(\"B\", \"D\")\no1 = new stzGraphAsciiVisualizer(oG)",
+   "kind": "graph"
+  },
+  "stzDiagram": {
+   "setup": "o1 = new stzDiagram(\"flow\")\no1.AddNode(\"A\") o1.AddNode(\"B\") o1.AddNode(\"C\") o1.AddNode(\"D\")\no1.AddEdge(\"A\", \"B\") o1.AddEdge(\"A\", \"C\") o1.AddEdge(\"B\", \"D\")",
+   "kind": "graph"
+  },
+  "stzOrgChart": {
+   "setup": "o1 = new stzOrgChart(\"firm\")\no1.AddPositionXTT(\"ceo\", \"CEO\", [ :level = \"executive\" ])\no1.AddPositionXTT(\"cfo\", \"CFO\", [ :level = \"senior\", :reportsTo = \"ceo\" ])\no1.AddPositionXTT(\"clerk\", \"Clerk\", [ :level = \"staff\", :reportsTo = \"cfo\" ])",
+   "kind": "*"
+  }
+ }
+}
