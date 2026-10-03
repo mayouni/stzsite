@@ -12,9 +12,12 @@ VARIATION of the same method, never another method. So the site
     call whose result is chained on, assigned, printed, returned or looped over is right.
 
 Only extensions the library documents are folded (EXTENSIONS below, each with its
-source). A name that ends like an extension but whose ending is not documented stays
-listed, and tools/qforms.py's unknown_endings() reports what was left, so that a doubtful
-ending is a question for the author and not a guess. A name whose base is not a method
+source: the forms document, stz-functions-as-linguistic-expressions.md, and the library's own
+descriptions). A name that ends like an extension but whose ending is not documented stays
+listed, and unknown_endings() reports what was left, so that a doubtful ending is named
+on the reference page and not guessed. FF (the free form) and the prefixes (@, rnd, viz, Deep...) are generic mechanisms of the forms document, not name suffixes of the reference. S is left: it is used for seconds in ElapsedS and for
+a start position in NthStzS, two meanings in six names. X, the statement form, is left: three of
+its four endings are unrelated words (IsMacOSX). A name whose base is not a method
 (an accessor ending in Q with no plain twin, say) is the method itself and stays.
 
 Passive forms (Removed beside Remove) are not extensions: they do not do the same thing
@@ -69,6 +72,18 @@ EXTENSIONS = [
     ("WXT", "selects by a condition, extended: the condition is a named parameter (:Where = ...)",
             "choisit selon une condition, forme étendue : la condition est un paramètre nommé (:Where = ...)",
             "base/reflect/stzReflectFuncs.ring"),
+    ("D",   "takes a direction, forward or backward (Directional)",
+            "prend une direction, en avant ou en arrière (Directional)",
+            "base/string/stzString.ring"),
+    ("F",   "takes a function (the condition or the update is given as a function); the forms document also uses F for the future form, which defers the action",
+            "prend une fonction (la condition ou la mise à jour est donnée comme une fonction) ; le document des formes emploie aussi F pour la forme future, qui diffère l'action",
+            "base/doc/narrations/stz-functions-as-linguistic-expressions.md"),
+    ("Many", "works on a collection of items instead of one (the plural form)",
+             "travaille sur une collection d'éléments au lieu d'un seul (la forme plurielle)",
+             "base/doc/narrations/stz-functions-as-linguistic-expressions.md"),
+    ("Except", "takes exceptions, what to leave out (the exceptional form)",
+               "prend des exceptions, ce qu'il faut laisser de côté (la forme exceptionnelle)",
+               "base/doc/narrations/stz-functions-as-linguistic-expressions.md"),
     ("U",   "returns the result without duplication",
             "rend le résultat sans doublon",
             "base/list/stzList.ring"),
@@ -116,7 +131,14 @@ class QForms:
                     rem = n[:-len(t)]
                     r = rec(rem)                         # the rest may itself be a method plus extensions
                     if r: return (r[0], r[1] + [t])
-                    if rem.lower() in names: return (rem, [t])
+                    if rem.lower() in names:
+                        # the language is case-insensitive: the rest may be written FindSt for the method FindST,
+                        # which is itself Find + ST. Resolve it to the spelling the library gave it, and fold that
+                        real = names[rem.lower()][0]
+                        if real != rem:
+                            r = rec(real)
+                            if r: return (r[0], r[1] + [t])
+                        return (real, [t])
             return None
         out = self._split[key] = rec(name)
         return out

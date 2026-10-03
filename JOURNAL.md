@@ -929,3 +929,40 @@ next:
   - me:      Pedagogy's last proposal, progressive revelation, is the library's to build
   - author:  open Learn > Reference > stzString, then Learn > Reference > stzString > Find
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-03 11:42
+
+subject:   the extension catalogue grounded in the author's own forms grammar: 20 extensions, and the questions I had put to
+           the author answered by the sources instead
+
+why:       my last report ended on two questions for the author, against the standing rule to decide and move; the answer
+           was in the estate's own record: the Haro spike (ringpp, 2026-10-03 00:11) had declared "principle 7's
+           function-name grammar" from the library's forms document, with the parameter suffixes cs st xt ib d z zz s w f many
+           except, fluent Q, passive ed, statement X
+
+did:
+  - read the forms document (stz-functions-as-linguistic-expressions.md) and stzv_v12.haro: Many (the plural form), Except
+    (the exceptional form), D (directional), F (takes a function; also the future form) are documented forms of the same verb,
+    so the catalogue grows from 16 to 20 and 114 more names fold: 22,272 methods listed, 4,677 folded
+  - decided, not asked: passive forms stay listed (they do not do the same thing, and the document names them a form of
+    their own); S stays (seconds in ElapsedS, a start position in NthStzS, six names, two meanings); X stays (three of its four
+    endings are unrelated words); FF and the prefixes are generic mechanisms, not name suffixes of the reference
+  - fixed on the way: the language is case-insensitive, so FindStD was folded onto "FindSt", which is the method FindST, itself
+    Find plus ST; that left a spurious inherited row; the remainder is now resolved to the library's own spelling and folded in
+    turn (FindStD is Find with ST and D); a sample of 56 folded names shows each under the method it extends
+  - checked on the built site: no folded name is a row on any class page, 0 dangling among 375,358 local links, none of
+    9,198 code blocks shows the former name; stzString.Remove shows Many and CS existing, Except, D, F not
+
+state:
+  release-1-pass-22: built; the commit carrying this entry is the one after 5bd8ee6
+  perception-gate:   OPEN
+
+waiting:
+  - STZLIB-F-SUFFIX-01: F means "takes a function" (WF, UpdateNodesF) and "future" (UppercasingFQ); the forms document's own
+             principle is one meaning per suffix, and the Haro spike found the same clash (HARO-FORMS-01) -> stzlib [routed]
+
+next:
+  - me:      Pedagogy's last proposal, progressive revelation, is the library's to build; nothing else is queued here
+  - author:  open Learn > Reference > stzString > Remove, and its table of 20 extensions
+```
