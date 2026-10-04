@@ -48,9 +48,9 @@ Say the stage as it is: Haro is the platform's language, its virtual machine and
 
 <<< scene id="platforms" page="platforms.html" label="Platform of platforms" >>>
 <div class="eyebrow">The language of languages, and the platform of platforms · the construction runs in the library</div>
-<figure class="diagram"><img src="../assets/img/diagrams/platforms-en.png" alt="RestoLean, Organizium, a customs school, and yours: each declares its platform in its own words; Softanza gives every one the platform." width="1376" height="700"></figure>
+<figure class="diagram"><img src="../assets/img/diagrams/platforms-en.png" alt="RestoLean, Organizium, DIKO Hub, and yours: each declares its platform in its own words; Softanza gives every one the platform." width="1376" height="700"></figure>
 ```notes
-"Haro is the language of languages. Softanza is the platform of platforms." A restaurant network, a bank, a school: each declares its own platform in its own words, a shared ground, a world per person and device, bonds, rules, roles. Softanza gives every one a grammar and its court, every screen, data with undo, and agents held to the same rules. Say the stage: the construction runs in the library; the customer platforms run today on ordinary web stacks, and moving them onto the engine is a change of engine, not of plan.
+"Haro is the language of languages. Softanza is the platform of platforms." A restaurant network, a bank, an organisation in Niger: each declares its own platform in its own words, a shared ground, a world per person and device, bonds, rules, roles. Softanza gives every one a grammar and its court, every screen, data with undo, and agents held to the same rules. Say the stage: the construction runs in the library; the customer platforms run today on ordinary web stacks, and moving them onto the engine is a change of engine, not of plan.
 ```
 
 <<< scene id="atlas" page="areas.html" label="The areas" >>>
@@ -125,7 +125,7 @@ Open the reader from the link, switch to Hausa, then to Arabic (right to left). 
 <div class="eyebrow">Born in Africa</div>
 <figure><img src="../assets/img/niger-density.png" alt="Population density map of Niger by region, rendered by the engine." width="1500" height="1240"><figcaption>"Where Niger lives": rendered by the engine in 5.9 seconds from the official borders and the 2012 census; the areas are measured by Softanza's geodesic routine.</figcaption></figure>
 ```notes
-"Agadez is 52% of the territory and 2.8% of the people. That number was not copied from a table: the library measured every region's area on the ellipsoid." Then the roots: Sonibank, the customs school, RestoLean; the course in Hausa; Harobanda, the name of the Niamey bridge.
+"Agadez is 52% of the territory and 2.8% of the people. That number was not copied from a table: the library measured every region's area on the ellipsoid." Then the roots: Sonibank, RestoLean, the DIKO study; the course in Hausa; Harobanda, the name of the Niamey bridge.
 ```
 
 <<< scene id="start" page="start.html" label="Start" >>>

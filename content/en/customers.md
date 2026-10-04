@@ -2,7 +2,7 @@
 title: Customers
 title_html: <i>Customers</i>, and how to write
 kicker: References, each with its document
-lede: Nothing is a reference until a document proves it. Three are, today. And every question goes through one place.
+lede: Nothing is a reference until a document proves it. Two are, today. And every question goes through one place.
 description: Softanza's customer references, each attested by a document, and how to write.
 ---
 
@@ -10,11 +10,10 @@ description: Softanza's customer references, each attested by a document, and ho
 
 <div class="cards">
 <div class="card"><h3>Sonibank, Niamey</h3><p>Organizium Standard Edition, under licence, installed on the bank's internal network. The installation guide delivered to the bank attests the reference.</p></div>
-<div class="card"><h3>The National Customs School, Tunisia</h3><p>Four requirements, documented one by one, turned an assessment tool into an organisational platform.</p></div>
 <div class="card"><h3>RestoLean, Lyon</h3><p>A platform for neighbourhood commerce, carried by the owner of a couscous restaurant. Amendment no. 1 closed on 4 August 2026; its ergonomic rule is "at most two gestures per action".</p></div>
 </div>
 
-Nothing else is a reference until a document proves it. This site quotes no number of countries and no number of developers.
+Nothing else is a reference until a document proves it. A third project, DIKO, is a design study and not a delivery: <a href="forged.html#diko">Forged in projects</a> says what it asks of the library. This site quotes no number of countries and no number of developers.
 
 ## Write {#write}
 

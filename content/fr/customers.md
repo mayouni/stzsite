@@ -2,7 +2,7 @@
 title: Clients
 title_html: <i>Clients</i>, et comment écrire
 kicker: Des références, chacune avec son document
-lede: Rien n'est une référence tant qu'un document ne le prouve pas. Trois le sont, aujourd'hui. Et toute question passe par un seul endroit.
+lede: Rien n'est une référence tant qu'un document ne le prouve pas. Deux le sont, aujourd'hui. Et toute question passe par un seul endroit.
 description: Les références clients de Softanza, chacune attestée par un document, et comment écrire.
 ---
 
@@ -10,11 +10,10 @@ description: Les références clients de Softanza, chacune attestée par un docu
 
 <div class="cards">
 <div class="card"><h3>Sonibank, Niamey</h3><p>Organizium Standard Edition, sous licence, installé sur le réseau interne de la banque. Le guide d'installation livré à la banque atteste la référence.</p></div>
-<div class="card"><h3>L'École nationale des douanes, Tunisie</h3><p>Quatre exigences, documentées une à une, ont transformé un outil d'évaluation en plateforme organisationnelle.</p></div>
 <div class="card"><h3>RestoLean, Lyon</h3><p>Une plateforme pour le commerce de quartier, portée par le propriétaire d'un restaurant de couscous. L'avenant n° 1 a été clos le 4 août 2026 ; sa règle ergonomique est « au plus deux gestes par action ».</p></div>
 </div>
 
-Rien d'autre n'est une référence tant qu'un document ne le prouve pas. Ce site ne cite aucun nombre de pays et aucun nombre de développeurs.
+Rien d'autre n'est une référence tant qu'un document ne le prouve pas. Un troisième projet, DIKO, est une étude de conception et non une livraison : <a href="forged.html#diko">Forgée en projets</a> dit ce qu'il demande à la bibliothèque. Ce site ne cite aucun nombre de pays et aucun nombre de développeurs.
 
 ## Écrire {#write}
 

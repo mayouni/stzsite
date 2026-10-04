@@ -2,7 +2,7 @@
 title: Née en Afrique
 title_html: Née <i>en Afrique</i>
 kicker: Utile au monde
-lede: Softanza est conçue par un Tunisien, entre la Tunisie, Niamey et Paris. Ses références sont une banque, une école des douanes et un restaurant, chacune attestée par un document. Son cours parle haoussa, et attend un relecteur natif. Sa machine, Harobanda, porte le nom du pont sur le fleuve Niger qui joint les deux rives de Niamey, « parce que la machine joint de même les promesses d'une solution au matériel qui les tient ».
+lede: Softanza est conçue par un Tunisien, entre la Tunisie, Niamey et Paris. Ses références sont une banque et un restaurant, chacune attestée par un document. Son cours parle haoussa, et attend un relecteur natif. Sa machine, Harobanda, porte le nom du pont sur le fleuve Niger qui joint les deux rives de Niamey, « parce que la machine joint de même les promesses d'une solution au matériel qui les tient ».
 description: Les racines africaines de Softanza : les lieux, les références, le cours en haoussa et la carte du Niger rendue par le moteur.
 ---
 
@@ -10,7 +10,6 @@ description: Les racines africaines de Softanza : les lieux, les références, l
 
 <div class="cards">
 <div class="card"><h3>Sonibank, Niamey</h3><p>Organizium Standard Edition, sous licence, sur le réseau interne de la banque. Le guide d'installation livré à la banque atteste la référence.</p></div>
-<div class="card"><h3>L'École nationale des douanes, Tunisie</h3><p>Quatre exigences, documentées une à une, ont transformé un outil d'évaluation en plateforme organisationnelle.</p></div>
 <div class="card"><h3>RestoLean, Lyon</h3><p>Une plateforme pour le commerce de quartier, portée par le propriétaire d'un restaurant de couscous. Sa règle ergonomique : au plus deux gestes par action.</p></div>
 </div>
 

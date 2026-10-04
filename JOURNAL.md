@@ -1255,3 +1255,37 @@ next:
   - me:      push and verify the page live; then the 103 classes without receivers, or the rebuild if the documentation session reports
   - author:  read Vision > Forged in projects, rule on the wording of the DIKO section, and answer SITE-CUSTOMS-01
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-04 06:32
+
+subject:   SITE-CUSTOMS-01 closed: the customs school is no longer cited anywhere on the site
+
+why:       the author, "sweep the customs school out of the five older pages", after ruling that the new Forged page must not cite it
+
+did:
+  - removed the school's card from Customers and from Africa, and its mention from the Africa lede and the Principles card
+    (the references now read: a bank and a restaurant), in fr and en
+  - replaced it on Platforms, in the text, the third card and the diagram's alt text, by DIKO Hub, written as what it is, a design study
+    that is not built, and linked it to the DIKO section of Forged in projects; the stage section now says DIKO Hub is not built
+  - redrew the platforms diagram, wide and narrow, in both languages (four images): the third box reads DIKO Hub, designed; the French
+    label first overflowed its box and the build refused it, so it was shortened; looked at the French wide diagram and the English wide one on the rendered page; the top half of both narrow ones, where the third box sits, is read too (the rest of them did not change)
+  - kept Customers honest: it says "two are, today" and points to Forged in projects for DIKO, a design study and not a delivery
+  - rewrote the Tour speaker notes and slide text the same way; re-rendered the proof images of the five pages
+  - rewrote the plan's three lines about the school; the two older journal entries about it (before today) are history and are left as written
+  - checked: 0 failures on the example blocks, 0 dangling links, no built page cites the school; the word sweep is clean but for the
+    course in reader.html (STZLIB-COURSE-WORD-01)
+
+state:
+  release-1-pass-31: built; the commit carrying this entry is the one after cfaf65aa
+  customs-school:    cited on no page of the site; still named in this repository's git history and in older journal lines
+  perception-gate:   OPEN (the author has not read the redrawn Platforms page or Customers)
+
+waiting:
+  - STZLIB-DOCREFORM-01: the documentation session has not reported; a FOR STZSITE line in CONCLUSIONS would mean rebuild on its record
+             [routed]
+
+next:
+  - me:      push and verify live; then the 103 classes without receivers, or the rebuild if the documentation session reports
+  - author:  open Platform > Platform of platforms and Offering > Customers; say if DIKO Hub as a design study reads right in the diagram
+```

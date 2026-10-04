@@ -306,7 +306,7 @@ def platforms(lang):
     T = {
      "en": dict(t="A PLATFORM OF PLATFORMS · ONE CONSTRUCTION, MANY WORLDS",
         tops=[("RestoLean", "neighbourhood commerce · Lyon"), ("Organizium", "a bank's organisation · Niamey"),
-              ("Customs school", "assessment become organisation, Tunisia")],
+              ("DIKO Hub", "tools linked, Niger · designed")],
         yours=("Yours", "declared in your own words"),
         decl=("Each declares, in its own words", "a shared ground · a world per person and device · bonds · rules · roles"),
         give=("Softanza gives every one the platform", "a grammar and its court · web, phone, desktop, server and device · data with an audit trail and undo · agents held to the same rules"),
@@ -314,7 +314,7 @@ def platforms(lang):
         cap="a world: stzApp · a constellation of worlds: stzSuperApp"),
      "fr": dict(t="UNE PLATEFORME DE PLATEFORMES · UNE CONSTRUCTION, DES MONDES",
         tops=[("RestoLean", "commerce de quartier · Lyon"), ("Organizium", "l'organisation d'une banque · Niamey"),
-              ("École des douanes", "l'évaluation devenue organisation, Tunisie")],
+              ("DIKO Hub", "outils reliés, Niger · conçu")],
         yours=("La vôtre", "déclarée dans vos propres mots"),
         decl=("Chacune déclare, dans ses propres mots", "un socle commun · un monde par personne et appareil · liens · règles · rôles"),
         give=("Softanza donne à chacune la plateforme", "une grammaire et son tribunal · web, téléphone, bureau, serveur, appareil · des données avec journal et retour arrière · des agents tenus aux mêmes règles"),

@@ -48,9 +48,9 @@ Dire le stade tel qu'il est : Haro est la langue de la plateforme, sa machine vi
 
 <<< scene id="platforms" page="platforms.html" label="Plateforme de plateformes" >>>
 <div class="eyebrow">La langue des langues, et la plateforme des plateformes · la construction tourne dans la bibliothèque</div>
-<figure class="diagram"><img src="../assets/img/diagrams/platforms-fr.png" alt="RestoLean, Organizium, une école des douanes, et la vôtre : chacune déclare sa plateforme dans ses propres mots ; Softanza donne à chacune la plateforme." width="1376" height="700"></figure>
+<figure class="diagram"><img src="../assets/img/diagrams/platforms-fr.png" alt="RestoLean, Organizium, DIKO Hub, et la vôtre : chacune déclare sa plateforme dans ses propres mots ; Softanza donne à chacune la plateforme." width="1376" height="700"></figure>
 ```notes
-« Haro est la langue des langues. Softanza est la plateforme des plateformes. » Un réseau de restaurants, une banque, une école : chacun déclare sa propre plateforme dans ses propres mots, un socle commun, un monde par personne et appareil, des liens, des règles, des rôles. Softanza donne à chacune une grammaire et son tribunal, tous les écrans, des données avec retour arrière, et des agents tenus aux mêmes règles. Dire le stade : la construction tourne dans la bibliothèque ; les plateformes des clients tournent aujourd'hui sur des piles web ordinaires, et les passer sur le moteur est un changement de moteur, pas de plan.
+« Haro est la langue des langues. Softanza est la plateforme des plateformes. » Un réseau de restaurants, une banque, une organisation au Niger : chacun déclare sa propre plateforme dans ses propres mots, un socle commun, un monde par personne et appareil, des liens, des règles, des rôles. Softanza donne à chacune une grammaire et son tribunal, tous les écrans, des données avec retour arrière, et des agents tenus aux mêmes règles. Dire le stade : la construction tourne dans la bibliothèque ; les plateformes des clients tournent aujourd'hui sur des piles web ordinaires, et les passer sur le moteur est un changement de moteur, pas de plan.
 ```
 
 <<< scene id="atlas" page="areas.html" label="Les domaines" >>>
@@ -125,7 +125,7 @@ Ouvrir le lecteur par le lien, passer en haoussa, puis en arabe (de droite à ga
 <div class="eyebrow">Née en Afrique</div>
 <figure><img src="../assets/img/niger-density.png" alt="Carte de densité de population du Niger par région, rendue par le moteur." width="1500" height="1240"><figcaption>« Où vit le Niger » : rendue par le moteur en 5,9 secondes à partir des frontières officielles et du recensement de 2012 ; les superficies sont mesurées par la routine géodésique de Softanza.</figcaption></figure>
 ```notes
-« Agadez, c'est 52 % du territoire et 2,8 % des habitants. Ce chiffre n'a pas été copié d'une table : la bibliothèque a mesuré la superficie de chaque région sur l'ellipsoïde. » Puis les racines : Sonibank, l'école des douanes, RestoLean ; le cours en haoussa ; Harobanda, le nom du pont de Niamey.
+« Agadez, c'est 52 % du territoire et 2,8 % des habitants. Ce chiffre n'a pas été copié d'une table : la bibliothèque a mesuré la superficie de chaque région sur l'ellipsoïde. » Puis les racines : Sonibank, RestoLean, l'étude DIKO ; le cours en haoussa ; Harobanda, le nom du pont de Niamey.
 ```
 
 <<< scene id="start" page="start.html" label="Démarrer" >>>

@@ -18,5 +18,5 @@ description: Les douze principes de Softanza, chacun en une phrase.
 <div class="card"><h3>9 · Honnête par conception</h3><p>L'Atlas montre les notes basses à côté des hautes ; chaque produit porte son stade ; aucun chiffre sans fichier.</p></div>
 <div class="card"><h3>10 · Souveraine par construction</h3><p>Rien que quiconque puisse retirer : un verdict par dépendance, du texte brut que vous gardez, une machine que vous déclarez.</p></div>
 <div class="card"><h3>11 · Programmer par cœur</h3><p>Ce que vous pensez est ce que vous écrivez. Le tribunal est sévère pour que la surface reste chaleureuse ; un tuteur demande et ne donne jamais la réponse.</p></div>
-<div class="card"><h3>12 · Née en Afrique</h3><p>Conçue entre la Tunisie, Niamey et Paris ; une banque, une école des douanes et un restaurant comme références ; une machine nommée d'après un pont.</p></div>
+<div class="card"><h3>12 · Née en Afrique</h3><p>Conçue entre la Tunisie, Niamey et Paris ; une banque et un restaurant comme références ; une machine nommée d'après un pont.</p></div>
 </div>
