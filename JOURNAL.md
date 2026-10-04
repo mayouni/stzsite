@@ -1289,3 +1289,46 @@ next:
   - me:      push and verify live; then the 103 classes without receivers, or the rebuild if the documentation session reports
   - author:  open Platform > Platform of platforms and Offering > Customers; say if DIKO Hub as a design study reads right in the diagram
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-04 07:42
+
+subject:   the last classes without a sample object: 28 of 101 now carry examples, and the journal no longer names the withdrawn reference
+
+why:       the author, "go ahead with the 103 remaining classes", and "older journal lines naming the customs school should be scrubbed too"
+
+did:
+  - scrubbed this repository's journal and plan of the withdrawn reference (renamed its task SITE-REFERENCE-01); the git history keeps the
+    older wording, and Central's own memos, CONCLUSIONS and mailbox name it too, which are Central's files and not mine to edit
+  - recounted the open classes from the tool's own skip lists: 101 classes in the areas that may be composed had no receiver
+    (the last report said 103; I did not find which two differ)
+  - wrote 37 sample objects by hand from how the library's tests and sources build each class, the solvers, regex makers, geo
+    classes, org-chart reporters and diagram converters among them; all 37 build; three more were tried and dropped: stzWorldGraph
+    (its class is not in the library's load), stzListOfTables (it refuses what the tests give it) and stzWorkflowSimulation (no constructor)
+  - wrote data/row-calls-hand.json: sample arguments per class where a parameter's NAME says nothing (a solver's expression,
+    operator, varName), calls written whole where a sequence is the example (Solve then Status), and a list of 62 methods I read and refused
+  - taught tools/rows_run.py to read that file, to show a method that returns the object itself by the object's content afterwards,
+    and to refuse an object's name inside a list as an answer
+  - read every kept example as a reader would, before keeping it: removed an internal helper shown with a meaningless argument
+    (the solvers' tableau and population helpers), a method spelled as a typo (Shwo), and an example that said SetCaseSensitive empties the
+    word stream (rewritten as the sequence a reader needs: set it, feed "Cat cat", two distinct words)
+  - result: 209 examples added, 8,829 -> 9,038; classes with an example 213 -> 241; 28 of the 101 classes (635 rows in them)
+  - rebuilt: 0 failures on the example blocks, 0 dangling links, the word sweep clean but for the course in reader.html
+
+state:
+  release-1-pass-32: built; the commit carrying this entry is the one after 3fc39d07
+  classes without a receiver: 73 of the 101 -- 34 have no method that could be composed (a rule base is an init and nothing else, the seven
+                       table accessors have no method of their own), 39 have methods and remain
+  the 39:              file-based (the education classes, the code graphs, the font), four that cannot be built (STZLIB-RECEIVERS-01),
+                       the planner's comparison helpers, three diagram converters whose output is longer than an example may be, and a few small ones
+  perception-gate:     OPEN (the examples were read by the agent; the author has not read them)
+
+waiting:
+  - STZLIB-RECEIVERS-02: findings from composing, for the stzlib session, not routed yet -> stzlib [not routed; in CONCLUSIONS now]
+  - STZLIB-DOCREFORM-01: the documentation session has not reported; a FOR STZSITE line in CONCLUSIONS would mean rebuild on its record
+             [routed]
+
+next:
+  - me:      push and verify live; then the file-based classes only if the author wants a path shown in an example, otherwise stop here
+  - author:  open Learn > Reference > stzLinearSolver and stzUnicodeData, and say whether the examples read as examples
+```

@@ -68,6 +68,18 @@ HAND = {
     # The frames are tried in turn (a noun of text, a noun of number, then the same after the copula) and the first that answers is kept
     "stzQuestion":     {"setup": "", "alt": "", "alt2": "", "alt3": "", "content": None, "kind": "*", "make": "question"},
 }
+HAND_CALLS = ROOT / "data" / "row-calls-hand.json"
+HANDX = {}
+
+def hand_calls():
+    """what the author wrote by hand where a parameter's NAME says nothing (a solver's `expression`, `operator`, `varName`):
+    {"samples": {class: {parameter: sample}}, "calls": {class: {method: "o1.Method(args)" | {"call": ..., "setup": ...}}}, "skip": {class: [method, ...]}}.
+    "skip" is what the author read and refused: an internal helper, a typo spelled as a method, a call whose sample argument makes it say nothing.
+    A call written here is still RUN, still dropped when it raises or prints nothing, and still run again in another order"""
+    if not HAND_CALLS.exists(): return {"samples": {}, "calls": {}}
+    d = json.loads(HAND_CALLS.read_text(encoding="utf-8"))
+    return {"samples": {c: {k.strip("_").lower(): v for k, v in m.items()} for c, m in d.get("samples", {}).items()}, "calls": d.get("calls", {}), "skip": d.get("skip", {})}
+
 EMPTY_RECEIVER = re.compile(r"""\(\s*(""|''|\[\s*\]|0)?\s*\)$""")
 
 # a class whose every method is the same question put to a different word: the receiver is made from the method's own name.
@@ -99,13 +111,15 @@ def mined():
     out.update({c: dict(v, mined=True) for c, v in HAND.items() if c not in CLASSES})
     h = ROOT / "data" / "row-receivers-hand.json"                  # written by hand, probed by tools/rows_probe.py: an empty construction is meant
     if h.exists():
-        out.update({c: {"setup": v["setup"], "kind": v["kind"], "content": None, "mined": True} for c, v in json.loads(h.read_text(encoding="utf-8"))["classes"].items() if c not in CLASSES})
+        out.update({c: {"setup": v["setup"], "kind": v["kind"], "content": v.get("content"), "mined": True} for c, v in json.loads(h.read_text(encoding="utf-8"))["classes"].items() if c not in CLASSES})
     return out
 
-def sample(p, nth, kind):
+def sample(p, nth, kind, cls=None):
     """the sample argument for a parameter (nth: how many numeric parameters came before it), or None when its name says nothing"""
     p0 = p.strip("_")
     q = p0.lower()
+    own = HANDX.get("samples", {}).get(cls, {}) if cls else {}
+    if q in own: return own[q]
     m0 = re.match(r"([cnab])([A-Z]\w*)$", p0)               # cStr, nRow, aToken, bShow: the same prefixes as pcStr, pnRow, paToken, pbShow
     if m0: q = ("p" + m0.group(1) + m0.group(2)).lower()
     if kind == "graph":
@@ -152,6 +166,15 @@ def candidates(lib, ref, only):
         S = signatures(lib, c)
         for m in c["own"]:
             name = m[0]
+            if name in HANDX.get("skip", {}).get(c["name"], []):
+                skipped["read and refused"] += 1; continue
+            hc = HANDX.get("calls", {}).get(c["name"], {}).get(name)
+            if hc:
+                call, setup = (hc, None) if isinstance(hc, str) else (hc.get("call"), hc.get("setup"))
+                if setup: OVERRIDE[(c["name"], name)] = setup
+                if call is None:                                 # {"code": ...}: whole statements, printed by the author
+                    out.append((c["name"], name, [("A", hc["code"])])); continue
+                out.append((c["name"], name, [("A", f"? @@( {call} )")] + ([("B", f"{call}\n? @@( {R['content']} )")] if R.get("content") else []))); continue
             if R.get("make"):
                 if name.lower() in ("init", "thesameasq", "of", "in", "ornot", "is", "why") or name.endswith("Q") is False or FORBIDDEN.search(name) or EXTRA_FORBIDDEN.search(name):
                     skipped["not a noun of the sentence"] += 1; continue
@@ -167,7 +190,7 @@ def candidates(lib, ref, only):
             if not s: skipped["no signature"] += 1; continue
             args, nnum = [], 0
             for p in s[1]:
-                args.append(sample(p, nnum, R["kind"]))
+                args.append(sample(p, nnum, R["kind"], c["name"]))
                 q = p.strip("_").lower()
                 if args[-1] is not None and re.fullmatch(r"-?\d+", args[-1]) and not q.startswith(("pitem", "pvalue", "pval", "pother", "pnumber", "nnumber")): nnum += 1
             if any(a is None for a in args): skipped["parameter not understood"] += 1; continue
@@ -223,7 +246,8 @@ EMPTY = ("", '""', "[ ]", "NULL")
 # for a query (Find, Value, Is...) that returned nothing, the content would read as the result
 MUTATOR = (r"(Remove|Replace|Add|Insert|Set|Update|Reverse|Sort|Uppercase|Lowercase|Clear|Trim|Swap|Move|Extend|Shorten|Simplify|Normalize|"
            r"Capitalize|Capitalise|Append|Prepend|Push|Pop|Delete|Erase|Fill|Merge|Shuffle|Rotate|Repeat|Transform|Convert|Increment|Decrement|"
-           r"Negate|Double|Halve|Pad|Strip|Truncate|Wrap|Unwrap|Compact|Flatten|Duplicate|Rename|Change|Make|Turn|Cut|Split|Join|Mutate)(?=[A-Z]|$)")
+           r"Negate|Double|Halve|Pad|Strip|Truncate|Wrap|Unwrap|Compact|Flatten|Duplicate|Rename|Change|Make|Turn|Cut|Split|Join|Mutate|"
+           r"If|Then|Else|Trigger|Takes|Emits|Maximize|Minimize|Train|Feed|Enable|Disable|Solve|Process|Compute|Reset|ForEach)(?=[A-Z]|$)")
 
 def keep(out, receiver="", cls=""):
     """an example says something: not nothing, not the object's own content again, not a wall of text"""
@@ -231,12 +255,13 @@ def keep(out, receiver="", cls=""):
     if cls in REQUIRE: return t == "1"
     if t in EMPTY or t == receiver or len(t) > 220 or t.count("\n") > 6: return False
     if re.fullmatch(r'[\[\]\s,"]*', t): return False                       # [ "", "" ] or [ [ ], [ ] ]: nothing in it
-    if re.search(r"(?i)\berror\b|exception|^object|not defined|without definition", t) or re.match(r"@\w+$", t): return False   # an object's name is not an answer
+    if re.search(r"(?i)\berror\b|exception|^object|not defined|without definition", t) or re.match(r"@\w+$", t) or "@noname" in t: return False   # an object's name is not an answer
     return not WORD.search(t)
 
 def main():
     if len(sys.argv) < 2:
         print(__doc__); sys.exit(2)
+    HANDX.update(hand_calls())
     lib = pathlib.Path(sys.argv[1]).resolve()
     args = [a for a in sys.argv[2:] if not a.startswith("--")]
     limit = next((int(a.split("=")[1]) for a in sys.argv[2:] if a.startswith("--limit=")), 0)
@@ -257,6 +282,7 @@ def main():
         for i, c in enumerate(names):
             for k, acc in enumerate(("Content", "Value")):
                 r = pres.get(i * 2 + k)
+                if CLASSES[c].get("content"): break
                 if r and r[0] == "ok" and r[1].strip() not in EMPTY:
                     CLASSES[c]["content"] = f"o1.{acc}()"; break
         print(f"{len(names)} mined classes; {sum(1 for c in names if CLASSES[c]['content'])} show their content", flush=True)
@@ -289,7 +315,7 @@ def main():
                 cls, name, v, st, cd = meta[jid]
                 r = res.get(jid)
                 if r and r[0] == "ok" and keep(r[1], recv.get(cls, ""), cls): kept[(cls, name)] = {"setup": st, "code": cd, "out": r[1].strip(), "variant": "A", "stage": stage}
-                elif r and r[0] == "ok" and r[1].strip() in ("", '""', "NULL") and re.match(MUTATOR, name) and (cls, name) in bjob:
+                elif r and r[0] == "ok" and (r[1].strip() in ("", '""', "NULL") or re.fullmatch(r"@\w+", r[1].strip())) and re.match(MUTATOR, name[:1].upper() + name[1:]) and (cls, name) in bjob:
                     b_jobs.append(bjob[(cls, name)])
             res_b, crashed_b = run_all(work, b_jobs)
             stats["crashed"] += len(crashed_b)

@@ -37,9 +37,27 @@
   </div></section>
   <div class="wrap page-body">
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>
-    <p class="proof">Aucune méthode de cette classe n'a encore d'exemple : la page ne sait pas encore construire un objet de cette classe, ni composer les arguments de ses méthodes.</p>
+    <p class="proof">Exemples : 0 viennent des tests de la bibliothèque ; 2 ont été composés à partir de la signature de chaque méthode et exécutés pour cette page, sur un objet neuf, par exemple <span class="mono">oD = new stzDiagram(&quot;flow&quot;) oD.AddNodeXTT(&quot;start&quot;, &quot;Begin&quot;, [ :type = &quot;start&quot; ]) oD.AddNodeXTT(&quot;done&quot;, &quot;Complete&quot;, [ :type = &quot;endpoint&quot; ]) oD.Connect(&quot;start&quot;, &quot;done&quot;) o1 = new stzDiagramToMermaid(oD)</span>. 3 méthodes n'en ont pas encore. Exemples exécutés le 2026-10-04 07:31 dans la bibliothèque au commit 0e72e2e2c.</p>
     <input id="flt" class="flt" type="search" placeholder="Filtrer les méthodes…" aria-label="Filtrer les méthodes…">
-    <div class="lanes rtable"><div class="lane lane2 rhead"><div class="ln">Méthode</div><div class="lt">Explication, telle que la source la porte</div></div><div class="lane lane2 rrow" id="init" data-k="init  "><div class="ln mono">init</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">init</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="code" data-k="code  "><div class="ln mono">Code</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">code</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="mermaidcode" data-k="mermaidcode  "><div class="ln mono">MermaidCode</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">mermaid code</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="content" data-k="content  "><div class="ln mono">Content</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">content</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="writetofile" data-k="writetofile  "><div class="ln mono">WriteToFile</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">write to file</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div></div>
+    <div class="lanes rtable"><div class="lane lane2 rhead"><div class="ln">Méthode</div><div class="lt">Explication, telle que la source la porte</div></div><div class="lane lane2 rrow" id="init" data-k="init  "><div class="ln mono">init</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">init</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="code" data-k="code  "><div class="ln mono">Code</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">code</span><pre class="rx">oD = new stzDiagram(&quot;flow&quot;)
+oD.AddNodeXTT(&quot;start&quot;, &quot;Begin&quot;, [ :type = &quot;start&quot; ])
+oD.AddNodeXTT(&quot;done&quot;, &quot;Complete&quot;, [ :type = &quot;endpoint&quot; ])
+oD.Connect(&quot;start&quot;, &quot;done&quot;)
+o1 = new stzDiagramToMermaid(oD)
+? o1.Code()
+#--&gt; graph TD
+#--&gt;     node_start([&quot;Begin&quot;])
+#--&gt;     done([&quot;Complete&quot;])
+#--&gt;     node_start --&gt; done</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="mermaidcode" data-k="mermaidcode  "><div class="ln mono">MermaidCode</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">mermaid code</span><pre class="rx">oD = new stzDiagram(&quot;flow&quot;)
+oD.AddNodeXTT(&quot;start&quot;, &quot;Begin&quot;, [ :type = &quot;start&quot; ])
+oD.AddNodeXTT(&quot;done&quot;, &quot;Complete&quot;, [ :type = &quot;endpoint&quot; ])
+oD.Connect(&quot;start&quot;, &quot;done&quot;)
+o1 = new stzDiagramToMermaid(oD)
+? o1.MermaidCode()
+#--&gt; graph TD
+#--&gt;     node_start([&quot;Begin&quot;])
+#--&gt;     done([&quot;Complete&quot;])
+#--&gt;     node_start --&gt; done</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="content" data-k="content  "><div class="ln mono">Content</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">content</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="writetofile" data-k="writetofile  "><div class="ln mono">WriteToFile</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">write to file</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div></div>
   </div>
 </main>
 </div>

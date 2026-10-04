@@ -1,6 +1,6 @@
 {
- "ran": "2026-10-03 20:51",
- "seconds": 22.2,
+ "ran": "2026-10-04 07:35",
+ "seconds": 14.7,
  "classes": {
   "stzApriori": {
    "receiver": "o1 = new stzApriori([ [ \"bread\", \"milk\" ], [ \"bread\", \"milk\" ] ])",
@@ -1066,6 +1066,146 @@
    "receiver": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noF = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoMap(new stzGeoProjection(:mercator), oF)",
    "content": "o1.Content()",
    "ran": "2026-10-03 20:51"
+  },
+  "stzConditionalRegexMaker": {
+   "receiver": "o1 = new stzConditionalRegexMaker()",
+   "content": "o1.Pattern()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzDLM": {
+   "receiver": "o1 = new stzDLM(\"restaurant\")",
+   "content": "o1.Content()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzDiagramToMermaid": {
+   "receiver": "oD = new stzDiagram(\"flow\")\noD.AddNodeXTT(\"start\", \"Begin\", [ :type = \"start\" ])\noD.AddNodeXTT(\"done\", \"Complete\", [ :type = \"endpoint\" ])\noD.Connect(\"start\", \"done\")\no1 = new stzDiagramToMermaid(oD)",
+   "content": "len(o1.Content())",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzExerciseCheck": {
+   "receiver": "o1 = new stzExerciseCheck(\"demo\", [ \"3\" ], \"? 1 + 2\", [])",
+   "content": "o1.Content()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzGeoField": {
+   "receiver": "o1 = StzGeoField([ 0, 0, 1, 1, 3, 3 ], [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ])",
+   "content": "o1.Content()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzGeoPoints": {
+   "receiver": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+   "content": "o1.Content()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzGeoSamples": {
+   "receiver": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoSamples([ 1, 1, 10, 2, 2, 20, 3, 3, 30 ], oW)",
+   "content": "o1.Content()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzGraphComparison": {
+   "receiver": "g1 = new stzGraph(\"base\")\ng1.AddNode(\"A\") g1.AddNode(\"B\")\ng1.AddEdge(\"A\", \"B\")\ng2 = new stzGraph(\"other\")\ng2.AddNode(\"A\") g2.AddNode(\"B\") g2.AddNode(\"C\")\ng2.AddEdge(\"A\", \"B\") g2.AddEdge(\"B\", \"C\")\no1 = new stzGraphComparison(g1, [ g2 ])",
+   "content": null,
+   "ran": "2026-10-04 07:31"
+  },
+  "stzGraphex": {
+   "receiver": "g = new stzGraph(\"g\")\ng.AddNode(\"a\")\ng.AddNode(\"b\")\ng.AddEdge(\"a\", \"b\")\no1 = new stzGraphex(\"{@Node(a)}\", g)",
+   "content": "o1.Content()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzLinearSolver": {
+   "receiver": "o1 = new stzLinearSolver()\no1.AddIntegerVariable(\"x\", 0, 100)\no1.AddIntegerVariable(\"y\", 0, 100)\no1.AddConstraint(\"2*x + y\", \"<=\", 100)\no1.Maximize(\"3*x + 2*y\")",
+   "content": "o1.variableNames()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzListOfEntities": {
+   "receiver": "o1 = new stzListOfEntities([ [ :name = \"alice\", :type = \"person\", :age = 30 ], [ :name = \"bob\", :type = \"person\", :age = 25 ], [ :name = \"ferrari\", :type = \"car\", :brand = \"ferrari\" ] ])",
+   "content": "o1.Content()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzListexuter": {
+   "receiver": "o1 = new stzListexuter()\no1.AddTrigger(:ListOfNumbers = \"[@N3]\")\no1.AddCode(:ListOfNumbers, '{ @list + [ :Sum = @Sum(@list) ] }')\no1.Process([ [ 42, \"hello\" ], [ 10, 20, 30 ], [ 1, 2, 3, 4, 5 ] ])",
+   "content": "o1.Results()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzMBarPlot": {
+   "receiver": "o1 = new stzMBarPlot([ :Mali = [ :y2020 = 42, :y2022 = 18 ], :Niger = [ :y2020 = 87, :y2022 = 40 ] ])",
+   "content": "o1.Content()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzMaterialGraph": {
+   "receiver": "o1 = new stzMaterialGraph()\no1.TakesColor(:warm)\no1.TakesColor(:cool)\no1.TakesScalar(:sharp)\no1.AddNode(:final, [ :Op = :Mix, :In = [ :shaded, :warm, :rim ] ])\no1.AddNode(:rim, [ :Op = :Fresnel, :In = [ :sharp ] ])\no1.AddNode(:shaded, [ :Op = :Multiply, :In = [ :cool, :lit ] ])\no1.AddNode(:lit, [ :Op = :Lit, :In = [ 0.25 ] ])\no1.Emits(:final)\no1.Compile()",
+   "content": "o1.Order()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzMaterialMaker": {
+   "receiver": "o1 = new stzMaterialMaker()\no1.TakesColor(:tint)\no1.ForEachFragment('{ @out = tint * @lambert }')",
+   "content": "o1.ColorNames()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzMultiObjectiveSolver": {
+   "receiver": "o1 = new stzMultiObjectiveSolver()\no1.AddVariable(\"x\", 0, 10)\no1.Maximize(\"x\")\no1.Minimize(\"x\")",
+   "content": "o1.status()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzNaiveBayes": {
+   "receiver": "o1 = new stzNaiveBayes()\no1.Train(\"free money now\", \"spam\")\no1.Train(\"meeting at noon\", \"work\")\no1.Train(\"win free prizes\", \"spam\")",
+   "content": "o1.NumberOfDocuments()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzObjectGuard": {
+   "receiver": "oL = new stzList([ 1, 2 ])\no1 = new stzObjectGuard(oL, :Pair)",
+   "content": "o1.Content()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzOrgChartReporter": {
+   "receiver": "oC = new stzOrgChart(\"bank\")\noC.AddPositionXTT(\"ceo\", \"Chief Executive\", [ :department = \"executive\" ])\noC.AddPositionXTT(\"audit\", \"Internal Audit\", [ :department = \"audit\", :reportsTo = \"ceo\" ])\no1 = new stzOrgChartReporter(oC)",
+   "content": "o1.Content()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzOrgChartSODValidator": {
+   "receiver": "oC = new stzOrgChart(\"bank\")\noC.AddPositionXTT(\"ceo\", \"Chief Executive\", [ :department = \"executive\" ])\noC.AddPositionXTT(\"audit\", \"Internal Audit\", [ :department = \"audit\", :reportsTo = \"ceo\" ])\no1 = new stzOrgChartSODValidator(oC)",
+   "content": "o1.Content()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzRecursiveRegexMaker": {
+   "receiver": "o1 = new stzRecursiveRegexMaker()\no1.AddLevel(\"outer\", \"[(]\")\no1.AddChildLevel(\"outer\", \"inner\", \"[0-9]+\")",
+   "content": "o1.Info()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzRegexMaker": {
+   "receiver": "o1 = new stzRegexMaker()\no1.AddWordBoundary(:start)\no1.AddCapturingGroup(\"digits\", \"\\d+\")\no1.AddWordBoundary(:end)",
+   "content": "o1.Pattern()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzRegexuter": {
+   "receiver": "o1 = new stzRegexuter()\no1.Trigger([ \"numbers\", \"\\d+\" ])\no1.Trigger([ \"words\", \"[a-zA-Z]+\" ])\no1.AddCode(\"numbers\", \"{ @value = number(@value) * 2 }\")\no1.AddCode(\"words\", \"{ @value = upper(@value) }\")\no1.Process(\"hello 123 world 456\")",
+   "content": "o1.Triggers()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzSimilarity": {
+   "receiver": "o1 = new stzSimilarity()",
+   "content": "o1.Content()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzStochasticSolver": {
+   "receiver": "o1 = new stzStochasticSolver()\no1.AddVariable(\"x\", 0, 10)\no1.AddScenario(\"good\", \"high demand\", [ :d = 8 ], 0.6)\no1.AddScenario(\"bad\", \"low demand\", [ :d = 3 ], 0.4)\no1.Maximize(\"x\")",
+   "content": "o1.status()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzUnicodeData": {
+   "receiver": "o1 = new stzUnicodeData()",
+   "content": "o1.Content()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzWordStream": {
+   "receiver": "o1 = new stzWordStream()\no1.Feed(\"the cat saw the dog and the cat ran\")",
+   "content": "o1.NumberOfWords()",
+   "ran": "2026-10-04 07:31"
+  },
+  "stzBpmnDiagram": {
+   "receiver": "oW = new stzWorkflow(\"order\")\noW.SetWorkflowType(\"bpmn\")\noW.AddStepXTT(\"s\", \"\", [ :type = \"entry\" ])\noW.AddStepXTT(\"g\", \"G\", [ :type = \"gateway\" ])\noW.AddStepXTT(\"e\", \"End\", [ :type = \"terminal\" ])\noW.Connect(\"s\", \"g\")\noW.Connect(\"g\", \"e\")\no1 = new stzBpmnDiagram(oW)",
+   "content": "o1.Content()",
+   "ran": "2026-10-04 07:35"
   }
  },
  "examples": {
@@ -63294,6 +63434,1525 @@
     "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noF = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoMap(new stzGeoProjection(:mercator), oF)",
     "code": "? o1.FeatureAt(2, 5)",
     "out": "0",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzConditionalRegexMaker": {
+   "ThenMatch": {
+    "setup": "o1 = new stzConditionalRegexMaker()",
+    "code": "o1.IfMatch(\"[0-9]+\")\no1.ThenMatch(\"[a-z]+\")\no1.ElseMatch(\"x\")\n? o1.Pattern()",
+    "out": "(?(?=[0-9]+)[a-z]+|x)",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "ElseMatch": {
+    "setup": "o1 = new stzConditionalRegexMaker()",
+    "code": "o1.IfMatch(\"[0-9]+\")\no1.ThenMatch(\"[a-z]+\")\no1.ElseMatch(\"x\")\n? o1.Pattern()",
+    "out": "(?(?=[0-9]+)[a-z]+|x)",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Pattern": {
+    "setup": "o1 = new stzConditionalRegexMaker()",
+    "code": "o1.IfMatch(\"[0-9]+\")\no1.ThenMatch(\"[a-z]+\")\no1.ElseMatch(\"x\")\n? o1.Pattern()",
+    "out": "(?(?=[0-9]+)[a-z]+|x)",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "IfMatch": {
+    "setup": "o1 = new stzConditionalRegexMaker()",
+    "code": "o1.IfMatch(\"[0-9]+\")\n? o1.Pattern()",
+    "out": "(?(?=[0-9]+))",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "IfNotMatch": {
+    "setup": "o1 = new stzConditionalRegexMaker()",
+    "code": "o1.IfNotMatch(\"[0-9]+\")\n? o1.Pattern()",
+    "out": "(?(?![0-9]+))",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "IfStartsWith": {
+    "setup": "o1 = new stzConditionalRegexMaker()",
+    "code": "o1.IfStartsWith(\"http\")\n? o1.Pattern()",
+    "out": "(?(?=^http))",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "IfEndsWith": {
+    "setup": "o1 = new stzConditionalRegexMaker()",
+    "code": "o1.IfEndsWith(\"http\")\n? o1.Pattern()",
+    "out": "(?(?=http$))",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "IfContains": {
+    "setup": "o1 = new stzConditionalRegexMaker()",
+    "code": "o1.IfContains(\"http\")\n? o1.Pattern()",
+    "out": "(?(?=.*http.*))",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "IfPrecededBy": {
+    "setup": "o1 = new stzConditionalRegexMaker()",
+    "code": "o1.IfPrecededBy(\"[0-9]+\")\n? o1.Pattern()",
+    "out": "(?(?=(?<=[0-9]+)))",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "IfFollowedBy": {
+    "setup": "o1 = new stzConditionalRegexMaker()",
+    "code": "o1.IfFollowedBy(\"[0-9]+\")\n? o1.Pattern()",
+    "out": "(?(?=(?=[0-9]+)))",
+    "variant": "B",
+    "stage": "setup"
+   }
+  },
+  "stzDLM": {
+   "Domain": {
+    "setup": "o1 = new stzDLM(\"restaurant\")",
+    "code": "? o1.Domain()",
+    "out": "restaurant",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzDiagramToMermaid": {
+   "Code": {
+    "setup": "oD = new stzDiagram(\"flow\")\noD.AddNodeXTT(\"start\", \"Begin\", [ :type = \"start\" ])\noD.AddNodeXTT(\"done\", \"Complete\", [ :type = \"endpoint\" ])\noD.Connect(\"start\", \"done\")\no1 = new stzDiagramToMermaid(oD)",
+    "code": "? o1.Code()",
+    "out": "graph TD\n    node_start([\"Begin\"])\n    done([\"Complete\"])\n\n    node_start --> done",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "MermaidCode": {
+    "setup": "oD = new stzDiagram(\"flow\")\noD.AddNodeXTT(\"start\", \"Begin\", [ :type = \"start\" ])\noD.AddNodeXTT(\"done\", \"Complete\", [ :type = \"endpoint\" ])\noD.Connect(\"start\", \"done\")\no1 = new stzDiagramToMermaid(oD)",
+    "code": "? o1.MermaidCode()",
+    "out": "graph TD\n    node_start([\"Begin\"])\n    done([\"Complete\"])\n\n    node_start --> done",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzExerciseCheck": {
+   "Id": {
+    "setup": "o1 = new stzExerciseCheck(\"demo\", [ \"3\" ], \"? 1 + 2\", [])",
+    "code": "? o1.Id()",
+    "out": "demo",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Passed": {
+    "setup": "o1 = new stzExerciseCheck(\"demo\", [ \"3\" ], \"? 1 + 2\", [])",
+    "code": "? o1.Passed()",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Output": {
+    "setup": "o1 = new stzExerciseCheck(\"demo\", [ \"3\" ], \"? 1 + 2\", [])",
+    "code": "? o1.Output()",
+    "out": "3",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Report": {
+    "setup": "o1 = new stzExerciseCheck(\"demo\", [ \"3\" ], \"? 1 + 2\", [])",
+    "code": "? @@( o1.Report() )",
+    "out": "[ [ \"3\", 1 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Hash": {
+    "setup": "o1 = new stzExerciseCheck(\"demo\", [ \"3\" ], \"? 1 + 2\", [])",
+    "code": "? o1.Hash()",
+    "out": "8d7de805aa133c433e3890529add6aa842d90ed60ba4a2f66878737a57815393",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Why": {
+    "setup": "o1 = new stzExerciseCheck(\"demo\", [ \"3\" ], \"? 1 + 2\", [])",
+    "code": "? o1.Why()",
+    "out": "Every promise of the exercise was kept when your program ran.",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "WhyIn": {
+    "setup": "o1 = new stzExerciseCheck(\"demo\", [ \"3\" ], \"? 1 + 2\", [])",
+    "code": "? o1.WhyIn(\"en\")",
+    "out": "Every promise of the exercise was kept when your program ran.",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzGeoField": {
+   "Grid": {
+    "setup": "o1 = StzGeoField([ 0, 0, 1, 1, 3, 3 ], [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ])",
+    "code": "? @@( o1.Grid() )",
+    "out": "[ 0, 0, 1, 1, 3, 3 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Values": {
+    "setup": "o1 = StzGeoField([ 0, 0, 1, 1, 3, 3 ], [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ])",
+    "code": "? @@( o1.Values() )",
+    "out": "[ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "ColumnCount": {
+    "setup": "o1 = StzGeoField([ 0, 0, 1, 1, 3, 3 ], [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ])",
+    "code": "? o1.ColumnCount()",
+    "out": "3",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "RowCount": {
+    "setup": "o1 = StzGeoField([ 0, 0, 1, 1, 3, 3 ], [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ])",
+    "code": "? o1.RowCount()",
+    "out": "3",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "CellSizeDegrees": {
+    "setup": "o1 = StzGeoField([ 0, 0, 1, 1, 3, 3 ], [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ])",
+    "code": "? @@( o1.CellSizeDegrees() )",
+    "out": "[ 1, 1 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Bounds": {
+    "setup": "o1 = StzGeoField([ 0, 0, 1, 1, 3, 3 ], [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ])",
+    "code": "? @@( o1.Bounds() )",
+    "out": "[ 0, 0, 2, 2 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Stats": {
+    "setup": "o1 = StzGeoField([ 0, 0, 1, 1, 3, 3 ], [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ])",
+    "code": "? @@( o1.Stats() )",
+    "out": "[ [ \"min\", 1 ], [ \"max\", 9 ], [ \"known\", 9 ], [ \"unknown\", 0 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Min": {
+    "setup": "o1 = StzGeoField([ 0, 0, 1, 1, 3, 3 ], [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ])",
+    "code": "? o1.Min()",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Max": {
+    "setup": "o1 = StzGeoField([ 0, 0, 1, 1, 3, 3 ], [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ])",
+    "code": "? o1.Max()",
+    "out": "9",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "LevelsEvery": {
+    "setup": "o1 = StzGeoField([ 0, 0, 1, 1, 3, 3 ], [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ])",
+    "code": "? @@( o1.LevelsEvery(2) )",
+    "out": "[ 3.67, 6.33 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "ContourAt": {
+    "setup": "o1 = StzGeoField([ 0, 0, 1, 1, 3, 3 ], [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ])",
+    "code": "? @@( o1.ContourAt(2) )",
+    "out": "[ [ 0, 0.33, 1, 0 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "IsSound": {
+    "setup": "o1 = StzGeoField([ 0, 0, 1, 1, 3, 3 ], [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ])",
+    "code": "? o1.IsSound()",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzGeoPoints": {
+   "Points": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? @@( o1.Points() )",
+    "out": "[ 1, 1, 2, 2, 3, 3 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Count": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? o1.Count()",
+    "out": "3",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "WindowRings": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? @@( o1.WindowRings() )",
+    "out": "[ [ 0, 0, 4, 0, 4, 4, 0, 4, 0, 0 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "AreaKm2": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? o1.AreaKm2()",
+    "out": "196869.60",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "WindowBox": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? @@( o1.WindowBox() )",
+    "out": "[ 0, 0, 4, 4 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "BoxAreaKm2": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? o1.BoxAreaKm2()",
+    "out": "196869.60",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "PerimeterKm": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? o1.PerimeterKm()",
+    "out": "1778.04",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Outside": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? o1.Outside()",
+    "out": "0",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "DensityPerKm2": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? o1.DensityPerKm2()",
+    "out": "0.00",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "NearestNeighbourKm": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? @@( o1.NearestNeighbourKm() )",
+    "out": "[ 157.23, 157.18, 157.18 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "ClarkEvans": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? @@( o1.ClarkEvans() )",
+    "out": "[ [ \"r\", 0.91 ], [ \"z\", -0.26 ], [ \"observed\", 157.19 ], [ \"expected\", 172.58 ], [ \"verdict\", \"random\" ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "ClarkEvansUncorrected": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? @@( o1.ClarkEvansUncorrected() )",
+    "out": "[ [ \"r\", 1.23 ], [ \"z\", 0.74 ], [ \"observed\", 157.19 ], [ \"expected\", 128.09 ], [ \"verdict\", \"random\" ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "RipleyK": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? @@( o1.RipleyK([ 100, 200, 300 ]) )",
+    "out": "[ 0, 131246.40, 131246.40 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "L": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? @@( o1.L([ 100, 200, 300 ]) )",
+    "out": "[ -100, 4.39, -95.61 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "G": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? @@( o1.G([ 100, 200, 300 ]) )",
+    "out": "[ 0, 1, 1 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "MeanCentre": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? @@( o1.MeanCentre() )",
+    "out": "[ 2.00, 2.00 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "SpatialMedian": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? @@( o1.SpatialMedian() )",
+    "out": "[ 2.00, 2.00 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Ellipse": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? @@( o1.Ellipse() )",
+    "out": "[ [ \"lon\", 2.00 ], [ \"lat\", 2.00 ], [ \"sd\", 128.36 ], [ \"major\", 181.53 ], [ \"minor\", 0.07 ], [ \"bearing\", 44.98 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "EllipseRing": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? @@( o1.EllipseRing(2) )",
+    "out": "[ 3.15, 3.15, 1.42, 1.42, 1.42, 1.42 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Sample": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? @@( o1.Sample(2, 5) )",
+    "out": "[ 1.13, 2.91, 0.31, 0.13 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "SampleClustered": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? @@( o1.SampleClustered(2, 5, 2, 2) )",
+    "out": "[ 2.53, 3.97, 2.54, 3.98, 2.53, 3.97, 2.54, 3.98, 2.52, 3.98, 3.19, 1.86, 3.20, 1.88, 3.21, 1.85, 3.20, 1.85, 3.20, 1.88 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "SampleDispersed": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? @@( o1.SampleDispersed(2, 5, 2) )",
+    "out": "[ 0.70, 0.13, 1.19, 0.00 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "IsSound": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+    "code": "? o1.IsSound()",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzGeoSamples": {
+   "Samples": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoSamples([ 1, 1, 10, 2, 2, 20, 3, 3, 30 ], oW)",
+    "code": "? @@( o1.Samples() )",
+    "out": "[ 1, 1, 10, 2, 2, 20, 3, 3, 30 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Count": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoSamples([ 1, 1, 10, 2, 2, 20, 3, 3, 30 ], oW)",
+    "code": "? o1.Count()",
+    "out": "3",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "WindowRings": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoSamples([ 1, 1, 10, 2, 2, 20, 3, 3, 30 ], oW)",
+    "code": "? @@( o1.WindowRings() )",
+    "out": "[ [ 0, 0, 4, 0, 4, 4, 0, 4, 0, 0 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Outside": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoSamples([ 1, 1, 10, 2, 2, 20, 3, 3, 30 ], oW)",
+    "code": "? o1.Outside()",
+    "out": "0",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "ValueOf": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoSamples([ 1, 1, 10, 2, 2, 20, 3, 3, 30 ], oW)",
+    "code": "? o1.ValueOf(2)",
+    "out": "20",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "PlaceOf": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoSamples([ 1, 1, 10, 2, 2, 20, 3, 3, 30 ], oW)",
+    "code": "? @@( o1.PlaceOf(2) )",
+    "out": "[ 2, 2 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Values": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoSamples([ 1, 1, 10, 2, 2, 20, 3, 3, 30 ], oW)",
+    "code": "? @@( o1.Values() )",
+    "out": "[ 10, 20, 30 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "MinValue": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoSamples([ 1, 1, 10, 2, 2, 20, 3, 3, 30 ], oW)",
+    "code": "? o1.MinValue()",
+    "out": "10",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "MaxValue": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoSamples([ 1, 1, 10, 2, 2, 20, 3, 3, 30 ], oW)",
+    "code": "? o1.MaxValue()",
+    "out": "30",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "IsSound": {
+    "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoSamples([ 1, 1, 10, 2, 2, 20, 3, 3, 30 ], oW)",
+    "code": "? o1.IsSound()",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzGraphComparison": {
+   "Summary": {
+    "setup": "g1 = new stzGraph(\"base\")\ng1.AddNode(\"A\") g1.AddNode(\"B\")\ng1.AddEdge(\"A\", \"B\")\ng2 = new stzGraph(\"other\")\ng2.AddNode(\"A\") g2.AddNode(\"B\") g2.AddNode(\"C\")\ng2.AddEdge(\"A\", \"B\") g2.AddEdge(\"B\", \"C\")\no1 = new stzGraphComparison(g1, [ g2 ])",
+    "code": "? o1.Summary()",
+    "out": "Baseline: base\nVariations compared: 1\n\n• V1: Added 1 node(s) and 1 edge(s)",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "MostImpactful": {
+    "setup": "g1 = new stzGraph(\"base\")\ng1.AddNode(\"A\") g1.AddNode(\"B\")\ng1.AddEdge(\"A\", \"B\")\ng2 = new stzGraph(\"other\")\ng2.AddNode(\"A\") g2.AddNode(\"B\") g2.AddNode(\"C\")\ng2.AddEdge(\"A\", \"B\") g2.AddEdge(\"B\", \"C\")\no1 = new stzGraphComparison(g1, [ g2 ])",
+    "code": "? o1.MostImpactful()",
+    "out": "V1",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "LeastImpactful": {
+    "setup": "g1 = new stzGraph(\"base\")\ng1.AddNode(\"A\") g1.AddNode(\"B\")\ng1.AddEdge(\"A\", \"B\")\ng2 = new stzGraph(\"other\")\ng2.AddNode(\"A\") g2.AddNode(\"B\") g2.AddNode(\"C\")\ng2.AddEdge(\"A\", \"B\") g2.AddEdge(\"B\", \"C\")\no1 = new stzGraphComparison(g1, [ g2 ])",
+    "code": "? o1.LeastImpactful()",
+    "out": "V1",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Recommend": {
+    "setup": "g1 = new stzGraph(\"base\")\ng1.AddNode(\"A\") g1.AddNode(\"B\")\ng1.AddEdge(\"A\", \"B\")\ng2 = new stzGraph(\"other\")\ng2.AddNode(\"A\") g2.AddNode(\"B\") g2.AddNode(\"C\")\ng2.AddEdge(\"A\", \"B\") g2.AddEdge(\"B\", \"C\")\no1 = new stzGraphComparison(g1, [ g2 ])",
+    "code": "? @@( o1.Recommend() )",
+    "out": "[ [ \"recommended\", \"V1\" ], [ \"reason\", \"Best balance of structure, connectivity, and acyclicity\" ] ]",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzGraphex": {
+   "NormalizePattern": {
+    "setup": "g = new stzGraph(\"g\")\ng.AddNode(\"a\")\ng.AddNode(\"b\")\ng.AddEdge(\"a\", \"b\")\no1 = new stzGraphex(\"{@Node(a)}\", g)",
+    "code": "? o1.NormalizePattern(\"{@Node(a)}\")",
+    "out": "{@Node(a)}",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "ParsePattern": {
+    "setup": "g = new stzGraph(\"g\")\ng.AddNode(\"a\")\ng.AddNode(\"b\")\ng.AddEdge(\"a\", \"b\")\no1 = new stzGraphex(\"{@Node(a)}\", g)",
+    "code": "? @@( o1.ParsePattern(\"{@Node(a)}\") )",
+    "out": "[ [ [ \"type\", \"node\" ], [ \"label\", \"a\" ], [ \"properties\", \"\" ], [ \"min\", 1 ], [ \"max\", 1 ], [ \"setvalues\", [ ] ], [ \"unique\", 0 ], [ \"negated\", 0 ], [ \"cs\", 0 ] ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "ParseSingleToken": {
+    "setup": "g = new stzGraph(\"g\")\ng.AddNode(\"a\")\ng.AddNode(\"b\")\ng.AddEdge(\"a\", \"b\")\no1 = new stzGraphex(\"{@Node(a)}\", g)",
+    "code": "? @@( o1.ParseSingleToken(\"@Node(a)\") )",
+    "out": "[ [ \"type\", \"node\" ], [ \"label\", \"a\" ], [ \"properties\", \"\" ], [ \"min\", 1 ], [ \"max\", 1 ], [ \"setvalues\", [ ] ], [ \"unique\", 0 ], [ \"negated\", 0 ], [ \"cs\", 0 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "ListifyGraph": {
+    "setup": "g = new stzGraph(\"g\")\ng.AddNode(\"a\")\ng.AddNode(\"b\")\ng.AddEdge(\"a\", \"b\")\no1 = new stzGraphex(\"{@Node(a)}\", g)",
+    "code": "? @@( o1.ListifyGraph(g) )",
+    "out": "[ [ \"a\", \"\", \"b\" ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Match": {
+    "setup": "g = new stzGraph(\"g\")\ng.AddNode(\"a\")\ng.AddNode(\"b\")\ng.AddEdge(\"a\", \"b\")\no1 = new stzGraphex(\"{@Node(a)}\", g)",
+    "code": "? o1.Match(g)",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "CacheStats": {
+    "setup": "g = new stzGraph(\"g\")\ng.AddNode(\"a\")\ng.AddNode(\"b\")\ng.AddEdge(\"a\", \"b\")\no1 = new stzGraphex(\"{@Node(a)}\", g)",
+    "code": "? @@( o1.CacheStats() )",
+    "out": "[ [ \"entries\", 0 ], [ \"hits\", 0 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "CacheEntries": {
+    "setup": "g = new stzGraph(\"g\")\ng.AddNode(\"a\")\ng.AddNode(\"b\")\ng.AddEdge(\"a\", \"b\")\no1 = new stzGraphex(\"{@Node(a)}\", g)",
+    "code": "? o1.CacheEntries()",
+    "out": "0",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "CacheInfo": {
+    "setup": "g = new stzGraph(\"g\")\ng.AddNode(\"a\")\ng.AddNode(\"b\")\ng.AddEdge(\"a\", \"b\")\no1 = new stzGraphex(\"{@Node(a)}\", g)",
+    "code": "? @@( o1.CacheInfo() )",
+    "out": "[ [ \"entries\", 0 ], [ \"maxsize\", 100 ], [ \"hits\", 0 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "ListifyPatternGraph": {
+    "setup": "g = new stzGraph(\"g\")\ng.AddNode(\"a\")\ng.AddNode(\"b\")\ng.AddEdge(\"a\", \"b\")\no1 = new stzGraphex(\"{@Node(a)}\", g)",
+    "code": "? @@( o1.ListifyPatternGraph() )",
+    "out": "[ [ \"node(a)\" ] ]",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzLinearSolver": {
+   "variables": {
+    "setup": "o1 = new stzLinearSolver()\no1.AddIntegerVariable(\"x\", 0, 100)\no1.AddIntegerVariable(\"y\", 0, 100)\no1.AddConstraint(\"2*x + y\", \"<=\", 100)\no1.Maximize(\"3*x + 2*y\")",
+    "code": "? @@( o1.variables() )",
+    "out": "[ [ [ \"name\", \"x\" ], [ \"lowerbound\", 0 ], [ \"upperbound\", 100 ], [ \"type\", \"integer\" ] ], [ [ \"name\", \"y\" ], [ \"lowerbound\", 0 ], [ \"upperbound\", 100 ], [ \"type\", \"integer\" ] ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "objective": {
+    "setup": "o1 = new stzLinearSolver()\no1.AddIntegerVariable(\"x\", 0, 100)\no1.AddIntegerVariable(\"y\", 0, 100)\no1.AddConstraint(\"2*x + y\", \"<=\", 100)\no1.Maximize(\"3*x + 2*y\")",
+    "code": "? o1.objective()",
+    "out": "3*x + 2*y",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "objectiveType": {
+    "setup": "o1 = new stzLinearSolver()\no1.AddIntegerVariable(\"x\", 0, 100)\no1.AddIntegerVariable(\"y\", 0, 100)\no1.AddConstraint(\"2*x + y\", \"<=\", 100)\no1.Maximize(\"3*x + 2*y\")",
+    "code": "? o1.objectiveType()",
+    "out": "maximize",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "solve": {
+    "setup": "o1 = new stzLinearSolver()\no1.AddIntegerVariable(\"x\", 0, 100)\no1.AddIntegerVariable(\"y\", 0, 100)\no1.AddConstraint(\"2*x + y\", \"<=\", 100)\no1.Maximize(\"3*x + 2*y\")",
+    "code": "o1.Solve(\"greedy\")\n? o1.Status()",
+    "out": "optimal",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "solveWithGreedy": {
+    "setup": "o1 = new stzLinearSolver()\no1.AddIntegerVariable(\"x\", 0, 100)\no1.AddIntegerVariable(\"y\", 0, 100)\no1.AddConstraint(\"2*x + y\", \"<=\", 100)\no1.Maximize(\"3*x + 2*y\")",
+    "code": "? @@( o1.solveWithGreedy() )",
+    "out": "[ [ \"x\", 0 ], [ \"y\", 100 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "GetSolutionValue": {
+    "setup": "o1 = new stzLinearSolver()\no1.AddIntegerVariable(\"x\", 0, 100)\no1.AddIntegerVariable(\"y\", 0, 100)\no1.AddConstraint(\"2*x + y\", \"<=\", 100)\no1.Maximize(\"3*x + 2*y\")",
+    "code": "o1.Solve(\"greedy\")\n? o1.GetSolutionValue(o1.Solution(), \"x\")",
+    "out": "0",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "isIntegerSolution": {
+    "setup": "o1 = new stzLinearSolver()\no1.AddIntegerVariable(\"x\", 0, 100)\no1.AddIntegerVariable(\"y\", 0, 100)\no1.AddConstraint(\"2*x + y\", \"<=\", 100)\no1.Maximize(\"3*x + 2*y\")",
+    "code": "o1.Solve(\"greedy\")\n? o1.isIntegerSolution(o1.Solution())",
+    "out": "0",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "IsFeasible": {
+    "setup": "o1 = new stzLinearSolver()\no1.AddIntegerVariable(\"x\", 0, 100)\no1.AddIntegerVariable(\"y\", 0, 100)\no1.AddConstraint(\"2*x + y\", \"<=\", 100)\no1.Maximize(\"3*x + 2*y\")",
+    "code": "o1.Solve(\"greedy\")\n? o1.IsFeasible(o1.Solution())",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Solution": {
+    "setup": "o1 = new stzLinearSolver()\no1.AddIntegerVariable(\"x\", 0, 100)\no1.AddIntegerVariable(\"y\", 0, 100)\no1.AddConstraint(\"2*x + y\", \"<=\", 100)\no1.Maximize(\"3*x + 2*y\")",
+    "code": "o1.Solve(\"greedy\")\n? @@( o1.Solution() )",
+    "out": "[ [ \"x\", 0 ], [ \"y\", 100 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "solutionValue": {
+    "setup": "o1 = new stzLinearSolver()\no1.AddIntegerVariable(\"x\", 0, 100)\no1.AddIntegerVariable(\"y\", 0, 100)\no1.AddConstraint(\"2*x + y\", \"<=\", 100)\no1.Maximize(\"3*x + 2*y\")",
+    "code": "o1.Solve(\"greedy\")\n? o1.SolutionValue(\"x\")",
+    "out": "0",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "status": {
+    "setup": "o1 = new stzLinearSolver()\no1.AddIntegerVariable(\"x\", 0, 100)\no1.AddIntegerVariable(\"y\", 0, 100)\no1.AddConstraint(\"2*x + y\", \"<=\", 100)\no1.Maximize(\"3*x + 2*y\")",
+    "code": "o1.Solve(\"greedy\")\n? o1.Status()",
+    "out": "optimal",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "validateProblem": {
+    "setup": "o1 = new stzLinearSolver()\no1.AddIntegerVariable(\"x\", 0, 100)\no1.AddIntegerVariable(\"y\", 0, 100)\no1.AddConstraint(\"2*x + y\", \"<=\", 100)\no1.Maximize(\"3*x + 2*y\")",
+    "code": "? o1.validateProblem()",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "addVariable": {
+    "setup": "o1 = new stzLinearSolver()\no1.AddIntegerVariable(\"x\", 0, 100)\no1.AddIntegerVariable(\"y\", 0, 100)\no1.AddConstraint(\"2*x + y\", \"<=\", 100)\no1.Maximize(\"3*x + 2*y\")",
+    "code": "o1.addVariable(\"z\", 0, 50)\n? @@( o1.variableNames() )",
+    "out": "[ \"x\", \"y\", \"z\" ]",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "addIntegerVariable": {
+    "setup": "o1 = new stzLinearSolver()\no1.AddIntegerVariable(\"x\", 0, 100)\no1.AddIntegerVariable(\"y\", 0, 100)\no1.AddConstraint(\"2*x + y\", \"<=\", 100)\no1.Maximize(\"3*x + 2*y\")",
+    "code": "o1.addIntegerVariable(\"z\", 0, 50)\n? @@( o1.variableNames() )",
+    "out": "[ \"x\", \"y\", \"z\" ]",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "addBinaryVariable": {
+    "setup": "o1 = new stzLinearSolver()\no1.AddIntegerVariable(\"x\", 0, 100)\no1.AddIntegerVariable(\"y\", 0, 100)\no1.AddConstraint(\"2*x + y\", \"<=\", 100)\no1.Maximize(\"3*x + 2*y\")",
+    "code": "o1.addBinaryVariable(\"z\")\n? @@( o1.variableNames() )",
+    "out": "[ \"x\", \"y\", \"z\" ]",
+    "variant": "B",
+    "stage": "setup"
+   }
+  },
+  "stzListOfEntities": {
+   "EntitiesNames": {
+    "setup": "o1 = new stzListOfEntities([ [ :name = \"alice\", :type = \"person\", :age = 30 ], [ :name = \"bob\", :type = \"person\", :age = 25 ], [ :name = \"ferrari\", :type = \"car\", :brand = \"ferrari\" ] ])",
+    "code": "? @@( o1.EntitiesNames() )",
+    "out": "[ \"alice\", \"bob\", \"ferrari\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "EntitiesTypes": {
+    "setup": "o1 = new stzListOfEntities([ [ :name = \"alice\", :type = \"person\", :age = 30 ], [ :name = \"bob\", :type = \"person\", :age = 25 ], [ :name = \"ferrari\", :type = \"car\", :brand = \"ferrari\" ] ])",
+    "code": "? @@( o1.EntitiesTypes() )",
+    "out": "[ \"person\", \"person\", \"car\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "UniqueTypes": {
+    "setup": "o1 = new stzListOfEntities([ [ :name = \"alice\", :type = \"person\", :age = 30 ], [ :name = \"bob\", :type = \"person\", :age = 25 ], [ :name = \"ferrari\", :type = \"car\", :brand = \"ferrari\" ] ])",
+    "code": "? @@( o1.UniqueTypes() )",
+    "out": "[ \"person\", \"car\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "EntityN": {
+    "setup": "o1 = new stzListOfEntities([ [ :name = \"alice\", :type = \"person\", :age = 30 ], [ :name = \"bob\", :type = \"person\", :age = 25 ], [ :name = \"ferrari\", :type = \"car\", :brand = \"ferrari\" ] ])",
+    "code": "? @@( o1.EntityN(2) )",
+    "out": "[ [ \"name\", \"bob\" ], [ \"type\", \"person\" ], [ \"age\", 25 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "FirstEntity": {
+    "setup": "o1 = new stzListOfEntities([ [ :name = \"alice\", :type = \"person\", :age = 30 ], [ :name = \"bob\", :type = \"person\", :age = 25 ], [ :name = \"ferrari\", :type = \"car\", :brand = \"ferrari\" ] ])",
+    "code": "? @@( o1.FirstEntity() )",
+    "out": "[ [ \"name\", \"alice\" ], [ \"type\", \"person\" ], [ \"age\", 30 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "LastEntity": {
+    "setup": "o1 = new stzListOfEntities([ [ :name = \"alice\", :type = \"person\", :age = 30 ], [ :name = \"bob\", :type = \"person\", :age = 25 ], [ :name = \"ferrari\", :type = \"car\", :brand = \"ferrari\" ] ])",
+    "code": "? @@( o1.LastEntity() )",
+    "out": "[ [ \"name\", \"ferrari\" ], [ \"type\", \"car\" ], [ \"brand\", \"ferrari\" ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "NumberOfEntities": {
+    "setup": "o1 = new stzListOfEntities([ [ :name = \"alice\", :type = \"person\", :age = 30 ], [ :name = \"bob\", :type = \"person\", :age = 25 ], [ :name = \"ferrari\", :type = \"car\", :brand = \"ferrari\" ] ])",
+    "code": "? o1.NumberOfEntities()",
+    "out": "3",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "IsEmpty": {
+    "setup": "o1 = new stzListOfEntities([ [ :name = \"alice\", :type = \"person\", :age = 30 ], [ :name = \"bob\", :type = \"person\", :age = 25 ], [ :name = \"ferrari\", :type = \"car\", :brand = \"ferrari\" ] ])",
+    "code": "? o1.IsEmpty()",
+    "out": "0",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "FindEntityByName": {
+    "setup": "o1 = new stzListOfEntities([ [ :name = \"alice\", :type = \"person\", :age = 30 ], [ :name = \"bob\", :type = \"person\", :age = 25 ], [ :name = \"ferrari\", :type = \"car\", :brand = \"ferrari\" ] ])",
+    "code": "? o1.FindEntityByName(\"bob\")",
+    "out": "2",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "ContainsName": {
+    "setup": "o1 = new stzListOfEntities([ [ :name = \"alice\", :type = \"person\", :age = 30 ], [ :name = \"bob\", :type = \"person\", :age = 25 ], [ :name = \"ferrari\", :type = \"car\", :brand = \"ferrari\" ] ])",
+    "code": "? o1.ContainsName(\"bob\")",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "ContainsType": {
+    "setup": "o1 = new stzListOfEntities([ [ :name = \"alice\", :type = \"person\", :age = 30 ], [ :name = \"bob\", :type = \"person\", :age = 25 ], [ :name = \"ferrari\", :type = \"car\", :brand = \"ferrari\" ] ])",
+    "code": "? o1.ContainsType(\"car\")",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "CountByType": {
+    "setup": "o1 = new stzListOfEntities([ [ :name = \"alice\", :type = \"person\", :age = 30 ], [ :name = \"bob\", :type = \"person\", :age = 25 ], [ :name = \"ferrari\", :type = \"car\", :brand = \"ferrari\" ] ])",
+    "code": "? o1.CountByType(\"person\")",
+    "out": "2",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "RemoveEntityN": {
+    "setup": "o1 = new stzListOfEntities([ [ :name = \"alice\", :type = \"person\", :age = 30 ], [ :name = \"bob\", :type = \"person\", :age = 25 ], [ :name = \"ferrari\", :type = \"car\", :brand = \"ferrari\" ] ])",
+    "code": "o1.RemoveEntityN(2)\n? @@( o1.Content() )",
+    "out": "[ [ [ \"name\", \"alice\" ], [ \"type\", \"person\" ], [ \"age\", 30 ] ], [ [ \"name\", \"ferrari\" ], [ \"type\", \"car\" ], [ \"brand\", \"ferrari\" ] ] ]",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "SortByType": {
+    "setup": "o1 = new stzListOfEntities([ [ :name = \"alice\", :type = \"person\", :age = 30 ], [ :name = \"bob\", :type = \"person\", :age = 25 ], [ :name = \"ferrari\", :type = \"car\", :brand = \"ferrari\" ] ])",
+    "code": "o1.SortByType()\n? @@( o1.Content() )",
+    "out": "[ [ [ \"name\", \"ferrari\" ], [ \"type\", \"car\" ], [ \"brand\", \"ferrari\" ] ], [ [ \"name\", \"alice\" ], [ \"type\", \"person\" ], [ \"age\", 30 ] ], [ [ \"name\", \"bob\" ], [ \"type\", \"person\" ], [ \"age\", 25 ] ] ]",
+    "variant": "B",
+    "stage": "setup"
+   }
+  },
+  "stzListexuter": {
+   "Triggers": {
+    "setup": "o1 = new stzListexuter()\no1.AddTrigger(:ListOfNumbers = \"[@N3]\")\no1.AddCode(:ListOfNumbers, '{ @list + [ :Sum = @Sum(@list) ] }')\no1.Process([ [ 42, \"hello\" ], [ 10, 20, 30 ], [ 1, 2, 3, 4, 5 ] ])",
+    "code": "? @@( o1.Triggers() )",
+    "out": "[ \"listofnumbers\", \"listofnumbers\", \"listofnumbers\", \"listofnumbers\", \"listofnumbers\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Matches": {
+    "setup": "o1 = new stzListexuter()\no1.AddTrigger(:ListOfNumbers = \"[@N3]\")\no1.AddCode(:ListOfNumbers, '{ @list + [ :Sum = @Sum(@list) ] }')\no1.Process([ [ 42, \"hello\" ], [ 10, 20, 30 ], [ 1, 2, 3, 4, 5 ] ])",
+    "code": "? @@( o1.Matches() )",
+    "out": "[ [ 10, 20, 30 ], [ 10, 20, 30 ], [ 1, 2, 3 ], [ 2, 3, 4 ], [ 3, 4, 5 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Process": {
+    "setup": "o1 = new stzListexuter()\no1.AddTrigger(:ListOfNumbers = \"[@N3]\")\no1.AddCode(:ListOfNumbers, '{ @list + [ :Sum = @Sum(@list) ] }')\no1.Process([ [ 42, \"hello\" ], [ 10, 20, 30 ], [ 1, 2, 3, 4, 5 ] ])",
+    "code": "o1.Process([ [ 10, 20, 30 ], [ 7, \"x\" ] ])\n? @@( o1.Results() )",
+    "out": "[ [ 10, 20, 30, [ [ \"sum\", 60 ] ] ], [ 10, 20, 30, [ [ \"sum\", 60 ] ] ] ]",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "Compute": {
+    "setup": "o1 = new stzListexuter()\no1.AddTrigger(:ListOfNumbers = \"[@N3]\")\no1.AddCode(:ListOfNumbers, '{ @list + [ :Sum = @Sum(@list) ] }')\no1.Process([ [ 42, \"hello\" ], [ 10, 20, 30 ], [ 1, 2, 3, 4, 5 ] ])",
+    "code": "o1.Compute([ [ 10, 20, 30 ], [ 7, \"x\" ] ])\n? @@( o1.Results() )",
+    "out": "[ [ 10, 20, 30, [ [ \"sum\", 60 ] ] ], [ 10, 20, 30, [ [ \"sum\", 60 ] ] ] ]",
+    "variant": "B",
+    "stage": "setup"
+   }
+  },
+  "stzMBarPlot": {
+   "SeriesNames": {
+    "setup": "o1 = new stzMBarPlot([ :Mali = [ :y2020 = 42, :y2022 = 18 ], :Niger = [ :y2020 = 87, :y2022 = 40 ] ])",
+    "code": "? @@( o1.SeriesNames() )",
+    "out": "[ \"mali\", \"niger\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Categories": {
+    "setup": "o1 = new stzMBarPlot([ :Mali = [ :y2020 = 42, :y2022 = 18 ], :Niger = [ :y2020 = 87, :y2022 = 40 ] ])",
+    "code": "? @@( o1.Categories() )",
+    "out": "[ \"y2020\", \"y2022\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "SeriesCount": {
+    "setup": "o1 = new stzMBarPlot([ :Mali = [ :y2020 = 42, :y2022 = 18 ], :Niger = [ :y2020 = 87, :y2022 = 40 ] ])",
+    "code": "? o1.SeriesCount()",
+    "out": "2",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "CategoryCount": {
+    "setup": "o1 = new stzMBarPlot([ :Mali = [ :y2020 = 42, :y2022 = 18 ], :Niger = [ :y2020 = 87, :y2022 = 40 ] ])",
+    "code": "? o1.CategoryCount()",
+    "out": "2",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzMaterialGraph": {
+   "NodeCount": {
+    "setup": "o1 = new stzMaterialGraph()\no1.TakesColor(:warm)\no1.TakesColor(:cool)\no1.TakesScalar(:sharp)\no1.AddNode(:final, [ :Op = :Mix, :In = [ :shaded, :warm, :rim ] ])\no1.AddNode(:rim, [ :Op = :Fresnel, :In = [ :sharp ] ])\no1.AddNode(:shaded, [ :Op = :Multiply, :In = [ :cool, :lit ] ])\no1.AddNode(:lit, [ :Op = :Lit, :In = [ 0.25 ] ])\no1.Emits(:final)\no1.Compile()",
+    "code": "? o1.NodeCount()",
+    "out": "4",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "OutputNode": {
+    "setup": "o1 = new stzMaterialGraph()\no1.TakesColor(:warm)\no1.TakesColor(:cool)\no1.TakesScalar(:sharp)\no1.AddNode(:final, [ :Op = :Mix, :In = [ :shaded, :warm, :rim ] ])\no1.AddNode(:rim, [ :Op = :Fresnel, :In = [ :sharp ] ])\no1.AddNode(:shaded, [ :Op = :Multiply, :In = [ :cool, :lit ] ])\no1.AddNode(:lit, [ :Op = :Lit, :In = [ 0.25 ] ])\no1.Emits(:final)\no1.Compile()",
+    "code": "? o1.OutputNode()",
+    "out": "final",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Uses": {
+    "setup": "o1 = new stzMaterialGraph()\no1.TakesColor(:warm)\no1.TakesColor(:cool)\no1.TakesScalar(:sharp)\no1.AddNode(:final, [ :Op = :Mix, :In = [ :shaded, :warm, :rim ] ])\no1.AddNode(:rim, [ :Op = :Fresnel, :In = [ :sharp ] ])\no1.AddNode(:shaded, [ :Op = :Multiply, :In = [ :cool, :lit ] ])\no1.AddNode(:lit, [ :Op = :Lit, :In = [ 0.25 ] ])\no1.Emits(:final)\no1.Compile()",
+    "code": "? @@( o1.Uses() )",
+    "out": "[ [ \"final\", 0 ], [ \"rim\", 1 ], [ \"shaded\", 1 ], [ \"lit\", 1 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Affects": {
+    "setup": "o1 = new stzMaterialGraph()\no1.TakesColor(:warm)\no1.TakesColor(:cool)\no1.TakesScalar(:sharp)\no1.AddNode(:final, [ :Op = :Mix, :In = [ :shaded, :warm, :rim ] ])\no1.AddNode(:rim, [ :Op = :Fresnel, :In = [ :sharp ] ])\no1.AddNode(:shaded, [ :Op = :Multiply, :In = [ :cool, :lit ] ])\no1.AddNode(:lit, [ :Op = :Lit, :In = [ 0.25 ] ])\no1.Emits(:final)\no1.Compile()",
+    "code": "? @@( o1.Affects(:rim) )",
+    "out": "[ \"final\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "ImpactOf": {
+    "setup": "o1 = new stzMaterialGraph()\no1.TakesColor(:warm)\no1.TakesColor(:cool)\no1.TakesScalar(:sharp)\no1.AddNode(:final, [ :Op = :Mix, :In = [ :shaded, :warm, :rim ] ])\no1.AddNode(:rim, [ :Op = :Fresnel, :In = [ :sharp ] ])\no1.AddNode(:shaded, [ :Op = :Multiply, :In = [ :cool, :lit ] ])\no1.AddNode(:lit, [ :Op = :Lit, :In = [ 0.25 ] ])\no1.Emits(:final)\no1.Compile()",
+    "code": "? o1.ImpactOf(:rim)",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "IsSound": {
+    "setup": "o1 = new stzMaterialGraph()\no1.TakesColor(:warm)\no1.TakesColor(:cool)\no1.TakesScalar(:sharp)\no1.AddNode(:final, [ :Op = :Mix, :In = [ :shaded, :warm, :rim ] ])\no1.AddNode(:rim, [ :Op = :Fresnel, :In = [ :sharp ] ])\no1.AddNode(:shaded, [ :Op = :Multiply, :In = [ :cool, :lit ] ])\no1.AddNode(:lit, [ :Op = :Lit, :In = [ 0.25 ] ])\no1.Emits(:final)\no1.Compile()",
+    "code": "? o1.IsSound()",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzMaterialMaker": {
+   "Spec": {
+    "setup": "o1 = new stzMaterialMaker()\no1.TakesColor(:tint)\no1.ForEachFragment('{ @out = tint * @lambert }')",
+    "code": "? o1.Spec()",
+    "out": "color tint\nbody { @out = tint * @lambert }",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "TakesColor": {
+    "setup": "o1 = new stzMaterialMaker()\no1.TakesColor(:tint)\no1.ForEachFragment('{ @out = tint * @lambert }')",
+    "code": "o1.TakesColor(:accent)\n? @@( o1.ColorNames() )",
+    "out": "[ \"tint\", \"accent\" ]",
+    "variant": "B",
+    "stage": "setup"
+   }
+  },
+  "stzMultiObjectiveSolver": {
+   "Variables": {
+    "setup": "o1 = new stzMultiObjectiveSolver()\no1.AddVariable(\"x\", 0, 10)\no1.Maximize(\"x\")\no1.Minimize(\"x\")",
+    "code": "? @@( o1.Variables() )",
+    "out": "[ [ [ \"name\", \"x\" ], [ \"lowerbound\", 0 ], [ \"upperbound\", 10 ], [ \"type\", \"continuous\" ] ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Vars": {
+    "setup": "o1 = new stzMultiObjectiveSolver()\no1.AddVariable(\"x\", 0, 10)\no1.Maximize(\"x\")\no1.Minimize(\"x\")",
+    "code": "? @@( o1.Vars() )",
+    "out": "[ [ [ \"name\", \"x\" ], [ \"lowerbound\", 0 ], [ \"upperbound\", 10 ], [ \"type\", \"continuous\" ] ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "VariableNames": {
+    "setup": "o1 = new stzMultiObjectiveSolver()\no1.AddVariable(\"x\", 0, 10)\no1.Maximize(\"x\")\no1.Minimize(\"x\")",
+    "code": "? @@( o1.VariableNames() )",
+    "out": "[ \"x\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "objectives": {
+    "setup": "o1 = new stzMultiObjectiveSolver()\no1.AddVariable(\"x\", 0, 10)\no1.Maximize(\"x\")\no1.Minimize(\"x\")",
+    "code": "? @@( o1.objectives() )",
+    "out": "[ [ [ \"expression\", \"x\" ], [ \"type\", \"maximize\" ] ], [ [ \"expression\", \"x\" ], [ \"type\", \"minimize\" ] ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "solve": {
+    "setup": "o1 = new stzMultiObjectiveSolver()\no1.AddVariable(\"x\", 0, 10)\no1.Maximize(\"x\")\no1.Minimize(\"x\")",
+    "code": "o1.Solve(\"nsga_ii\")\n? o1.Status()",
+    "out": "optimal",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "paretoSolutions": {
+    "setup": "o1 = new stzMultiObjectiveSolver()\no1.AddVariable(\"x\", 0, 10)\no1.Maximize(\"x\")\no1.Minimize(\"x\")",
+    "code": "o1.Solve(\"nsga_ii\")\n? len(o1.ParetoSolutions())",
+    "out": "50",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "bestCompromiseSolution": {
+    "setup": "o1 = new stzMultiObjectiveSolver()\no1.AddVariable(\"x\", 0, 10)\no1.Maximize(\"x\")\no1.Minimize(\"x\")",
+    "code": "o1.Solve(\"nsga_ii\")\n? @@( o1.BestCompromiseSolution() )",
+    "out": "[ [ \"solution\", [ [ \"x\", 0 ] ] ], [ \"objectives\", [ 0, 0 ] ], [ \"rank\", 1 ], [ \"crowdingdistance\", 999999 ], [ \"dominatedsolutions\", [ ] ], [ \"dominationcount\", 0 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "status": {
+    "setup": "o1 = new stzMultiObjectiveSolver()\no1.AddVariable(\"x\", 0, 10)\no1.Maximize(\"x\")\no1.Minimize(\"x\")",
+    "code": "o1.Solve(\"nsga_ii\")\n? o1.Status()",
+    "out": "optimal",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzNaiveBayes": {
+   "Labels": {
+    "setup": "o1 = new stzNaiveBayes()\no1.Train(\"free money now\", \"spam\")\no1.Train(\"meeting at noon\", \"work\")\no1.Train(\"win free prizes\", \"spam\")",
+    "code": "? @@( o1.Labels() )",
+    "out": "[ \"spam\", \"work\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "VocabularySize": {
+    "setup": "o1 = new stzNaiveBayes()\no1.Train(\"free money now\", \"spam\")\no1.Train(\"meeting at noon\", \"work\")\no1.Train(\"win free prizes\", \"spam\")",
+    "code": "? o1.VocabularySize()",
+    "out": "8",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Classify": {
+    "setup": "o1 = new stzNaiveBayes()\no1.Train(\"free money now\", \"spam\")\no1.Train(\"meeting at noon\", \"work\")\no1.Train(\"win free prizes\", \"spam\")",
+    "code": "? o1.Classify(\"win free money\")",
+    "out": "spam",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Train": {
+    "setup": "o1 = new stzNaiveBayes()\no1.Train(\"free money now\", \"spam\")\no1.Train(\"meeting at noon\", \"work\")\no1.Train(\"win free prizes\", \"spam\")",
+    "code": "o1.Train(\"win free money\", \"spam\")\n? o1.NumberOfDocuments()",
+    "out": "4",
+    "variant": "B",
+    "stage": "setup"
+   }
+  },
+  "stzObjectGuard": {
+   "Keyword": {
+    "setup": "oL = new stzList([ 1, 2 ])\no1 = new stzObjectGuard(oL, :Pair)",
+    "code": "? o1.Keyword()",
+    "out": "pair",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Where": {
+    "setup": "oL = new stzList([ 1, 2 ])\no1 = new stzObjectGuard(oL, :Pair)",
+    "code": "? o1.Where(\"@pair[1] = 1\")",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzOrgChartReporter": {
+   "SuccessionReport": {
+    "setup": "oC = new stzOrgChart(\"bank\")\noC.AddPositionXTT(\"ceo\", \"Chief Executive\", [ :department = \"executive\" ])\noC.AddPositionXTT(\"audit\", \"Internal Audit\", [ :department = \"audit\", :reportsTo = \"ceo\" ])\no1 = new stzOrgChartReporter(oC)",
+    "code": "? @@( o1.SuccessionReport() )",
+    "out": "[ [ \"title\", \"Succession Risk Report\" ], [ \"date\", \"04/10/2026\" ], [ \"highriskcount\", 0 ], [ \"details\", [ ] ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "SpanOfControlReport": {
+    "setup": "oC = new stzOrgChart(\"bank\")\noC.AddPositionXTT(\"ceo\", \"Chief Executive\", [ :department = \"executive\" ])\noC.AddPositionXTT(\"audit\", \"Internal Audit\", [ :department = \"audit\", :reportsTo = \"ceo\" ])\no1 = new stzOrgChartReporter(oC)",
+    "code": "? @@( o1.SpanOfControlReport() )",
+    "out": "[ [ \"title\", \"Span of Control Analysis\" ], [ \"date\", \"04/10/2026\" ], [ \"details\", [ [ [ \"position\", \"ceo\" ], [ \"title\", \"Chief Executive\" ], [ \"directreports\", 1 ], [ \"status\", \"underutilized\" ] ] ] ] ]",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzOrgChartSODValidator": {
+   "Validate": {
+    "setup": "oC = new stzOrgChart(\"bank\")\noC.AddPositionXTT(\"ceo\", \"Chief Executive\", [ :department = \"executive\" ])\noC.AddPositionXTT(\"audit\", \"Internal Audit\", [ :department = \"audit\", :reportsTo = \"ceo\" ])\no1 = new stzOrgChartSODValidator(oC)",
+    "code": "? @@( o1.Validate() )",
+    "out": "[ [ \"status\", \"pass\" ], [ \"domain\", \"segregation_of_duties\" ], [ \"issuecount\", 0 ], [ \"issues\", [ ] ] ]",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzRecursiveRegexMaker": {
+   "LevelNames": {
+    "setup": "o1 = new stzRecursiveRegexMaker()\no1.AddLevel(\"outer\", \"[(]\")\no1.AddChildLevel(\"outer\", \"inner\", \"[0-9]+\")",
+    "code": "? @@( o1.LevelNames() )",
+    "out": "[ \"outer\", \"inner\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "NumberOfLevels": {
+    "setup": "o1 = new stzRecursiveRegexMaker()\no1.AddLevel(\"outer\", \"[(]\")\no1.AddChildLevel(\"outer\", \"inner\", \"[0-9]+\")",
+    "code": "? o1.NumberOfLevels()",
+    "out": "2",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "HasLevel": {
+    "setup": "o1 = new stzRecursiveRegexMaker()\no1.AddLevel(\"outer\", \"[(]\")\no1.AddChildLevel(\"outer\", \"inner\", \"[0-9]+\")",
+    "code": "? o1.HasLevel(\"outer\")",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "LevelChildren": {
+    "setup": "o1 = new stzRecursiveRegexMaker()\no1.AddLevel(\"outer\", \"[(]\")\no1.AddChildLevel(\"outer\", \"inner\", \"[0-9]+\")",
+    "code": "? @@( o1.LevelChildren(\"outer\") )",
+    "out": "[ \"inner\" ]",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzRegexMaker": {
+   "Fragments": {
+    "setup": "o1 = new stzRegexMaker()\no1.AddWordBoundary(:start)\no1.AddCapturingGroup(\"digits\", \"\\d+\")\no1.AddWordBoundary(:end)",
+    "code": "? @@( o1.Fragments() )",
+    "out": "[ \"\\b\", \"(?P<\", \"digits\", \">\", \"\\d+\", \")\", \"\\b\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "NumberOfFragements": {
+    "setup": "o1 = new stzRegexMaker()\no1.AddWordBoundary(:start)\no1.AddCapturingGroup(\"digits\", \"\\d+\")\no1.AddWordBoundary(:end)",
+    "code": "? o1.NumberOfFragements()",
+    "out": "7",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Fragment": {
+    "setup": "o1 = new stzRegexMaker()\no1.AddWordBoundary(:start)\no1.AddCapturingGroup(\"digits\", \"\\d+\")\no1.AddWordBoundary(:end)",
+    "code": "? o1.Fragment(1)",
+    "out": "\\b",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "AddRange": {
+    "setup": "o1 = new stzRegexMaker()\no1.AddWordBoundary(:start)\no1.AddCapturingGroup(\"digits\", \"\\d+\")\no1.AddWordBoundary(:end)",
+    "code": "o1.AddRange(:Digits, \"a-f\", :OneOrMore, 2, 5)\n? o1.Pattern()",
+    "out": "\\b(?P<digits>\\d+)\\b[a-f]",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "AddAmongChars": {
+    "setup": "o1 = new stzRegexMaker()\no1.AddWordBoundary(:start)\no1.AddCapturingGroup(\"digits\", \"\\d+\")\no1.AddWordBoundary(:end)",
+    "code": "o1.AddAmongChars(\"abc\", :OneOrMore, 2, 5)\n? o1.Pattern()",
+    "out": "\\b(?P<digits>\\d+)\\b[abc]",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "AddAmongDigits": {
+    "setup": "o1 = new stzRegexMaker()\no1.AddWordBoundary(:start)\no1.AddCapturingGroup(\"digits\", \"\\d+\")\no1.AddWordBoundary(:end)",
+    "code": "o1.AddAmongDigits(\"123\", :OneOrMore, 2, 5)\n? o1.Pattern()",
+    "out": "\\b(?P<digits>\\d+)\\b[123]",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "AddNotAmongChars": {
+    "setup": "o1 = new stzRegexMaker()\no1.AddWordBoundary(:start)\no1.AddCapturingGroup(\"digits\", \"\\d+\")\no1.AddWordBoundary(:end)",
+    "code": "o1.AddNotAmongChars(\"abc\", :OneOrMore, 2, 5)\n? o1.Pattern()",
+    "out": "\\b(?P<digits>\\d+)\\b[^abc]",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "AddNotAmongDigits": {
+    "setup": "o1 = new stzRegexMaker()\no1.AddWordBoundary(:start)\no1.AddCapturingGroup(\"digits\", \"\\d+\")\no1.AddWordBoundary(:end)",
+    "code": "o1.AddNotAmongDigits(\"123\", :OneOrMore, 2, 5)\n? o1.Pattern()",
+    "out": "\\b(?P<digits>\\d+)\\b[^123]",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "AddCharsRange": {
+    "setup": "o1 = new stzRegexMaker()\no1.AddWordBoundary(:start)\no1.AddCapturingGroup(\"digits\", \"\\d+\")\no1.AddWordBoundary(:end)",
+    "code": "o1.AddCharsRange(\"a-f\", :OneOrMore, 2, 5)\n? o1.Pattern()",
+    "out": "\\b(?P<digits>\\d+)\\b[a-f]",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "AddDigitsRange": {
+    "setup": "o1 = new stzRegexMaker()\no1.AddWordBoundary(:start)\no1.AddCapturingGroup(\"digits\", \"\\d+\")\no1.AddWordBoundary(:end)",
+    "code": "o1.AddDigitsRange(\"123\", :OneOrMore, 2, 5)\n? o1.Pattern()",
+    "out": "\\b(?P<digits>\\d+)\\b[123]",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "AddLiteral": {
+    "setup": "o1 = new stzRegexMaker()\no1.AddWordBoundary(:start)\no1.AddCapturingGroup(\"digits\", \"\\d+\")\no1.AddWordBoundary(:end)",
+    "code": "o1.AddLiteral(\"a\")\n? o1.Pattern()",
+    "out": "\\b(?P<digits>\\d+)\\ba",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "AddBackReference": {
+    "setup": "o1 = new stzRegexMaker()\no1.AddWordBoundary(:start)\no1.AddCapturingGroup(\"digits\", \"\\d+\")\no1.AddWordBoundary(:end)",
+    "code": "o1.AddBackReference(\"a\")\n? o1.Pattern()",
+    "out": "\\b(?P<digits>\\d+)\\b(?P=a)",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "AddCapturingGroup": {
+    "setup": "o1 = new stzRegexMaker()\no1.AddWordBoundary(:start)\no1.AddCapturingGroup(\"digits\", \"\\d+\")\no1.AddWordBoundary(:end)",
+    "code": "o1.AddCapturingGroup(\"a\", \"a\")\n? o1.Pattern()",
+    "out": "\\b(?P<digits>\\d+)\\b(?P<a>a)",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "AddComment": {
+    "setup": "o1 = new stzRegexMaker()\no1.AddWordBoundary(:start)\no1.AddCapturingGroup(\"digits\", \"\\d+\")\no1.AddWordBoundary(:end)",
+    "code": "o1.AddComment(\"a\")\n? o1.Pattern()",
+    "out": "\\b(?P<digits>\\d+)\\b(?#a)",
+    "variant": "B",
+    "stage": "setup"
+   }
+  },
+  "stzRegexuter": {
+   "Process": {
+    "setup": "o1 = new stzRegexuter()\no1.Trigger([ \"numbers\", \"\\d+\" ])\no1.Trigger([ \"words\", \"[a-zA-Z]+\" ])\no1.AddCode(\"numbers\", \"{ @value = number(@value) * 2 }\")\no1.AddCode(\"words\", \"{ @value = upper(@value) }\")\no1.Process(\"hello 123 world 456\")",
+    "code": "o1.Process(\"abc 7\")\n? @@( o1.Results() )",
+    "out": "[ 14, \"ABC\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "getAffectedTriggers": {
+    "setup": "o1 = new stzRegexuter()\no1.Trigger([ \"numbers\", \"\\d+\" ])\no1.Trigger([ \"words\", \"[a-zA-Z]+\" ])\no1.AddCode(\"numbers\", \"{ @value = number(@value) * 2 }\")\no1.AddCode(\"words\", \"{ @value = upper(@value) }\")\no1.Process(\"hello 123 world 456\")",
+    "code": "? @@( o1.getAffectedTriggers(\"numbers\") )",
+    "out": "[ \"numbers\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Matches": {
+    "setup": "o1 = new stzRegexuter()\no1.Trigger([ \"numbers\", \"\\d+\" ])\no1.Trigger([ \"words\", \"[a-zA-Z]+\" ])\no1.AddCode(\"numbers\", \"{ @value = number(@value) * 2 }\")\no1.AddCode(\"words\", \"{ @value = upper(@value) }\")\no1.Process(\"hello 123 world 456\")",
+    "code": "? @@( o1.Matches() )",
+    "out": "[ \"123\", \"456\", \"hello\", \"world\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Positions": {
+    "setup": "o1 = new stzRegexuter()\no1.Trigger([ \"numbers\", \"\\d+\" ])\no1.Trigger([ \"words\", \"[a-zA-Z]+\" ])\no1.AddCode(\"numbers\", \"{ @value = number(@value) * 2 }\")\no1.AddCode(\"words\", \"{ @value = upper(@value) }\")\no1.Process(\"hello 123 world 456\")",
+    "code": "? @@( o1.Positions() )",
+    "out": "[ 7, 17, 1, 11 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Results": {
+    "setup": "o1 = new stzRegexuter()\no1.Trigger([ \"numbers\", \"\\d+\" ])\no1.Trigger([ \"words\", \"[a-zA-Z]+\" ])\no1.AddCode(\"numbers\", \"{ @value = number(@value) * 2 }\")\no1.AddCode(\"words\", \"{ @value = upper(@value) }\")\no1.Process(\"hello 123 world 456\")",
+    "code": "? @@( o1.Results() )",
+    "out": "[ 246, 912, \"HELLO\", \"WORLD\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "ResultXT": {
+    "setup": "o1 = new stzRegexuter()\no1.Trigger([ \"numbers\", \"\\d+\" ])\no1.Trigger([ \"words\", \"[a-zA-Z]+\" ])\no1.AddCode(\"numbers\", \"{ @value = number(@value) * 2 }\")\no1.AddCode(\"words\", \"{ @value = upper(@value) }\")\no1.Process(\"hello 123 world 456\")",
+    "code": "? @@( o1.ResultXT() )",
+    "out": "[ [ 246, \"123\" ], [ 912, \"456\" ], [ \"HELLO\", \"hello\" ], [ \"WORLD\", \"world\" ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "ResultsAndMatches": {
+    "setup": "o1 = new stzRegexuter()\no1.Trigger([ \"numbers\", \"\\d+\" ])\no1.Trigger([ \"words\", \"[a-zA-Z]+\" ])\no1.AddCode(\"numbers\", \"{ @value = number(@value) * 2 }\")\no1.AddCode(\"words\", \"{ @value = upper(@value) }\")\no1.Process(\"hello 123 world 456\")",
+    "code": "? @@( o1.ResultsAndMatches() )",
+    "out": "[ [ 246, \"123\" ], [ 912, \"456\" ], [ \"HELLO\", \"hello\" ], [ \"WORLD\", \"world\" ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "ResultsAndTheirMatches": {
+    "setup": "o1 = new stzRegexuter()\no1.Trigger([ \"numbers\", \"\\d+\" ])\no1.Trigger([ \"words\", \"[a-zA-Z]+\" ])\no1.AddCode(\"numbers\", \"{ @value = number(@value) * 2 }\")\no1.AddCode(\"words\", \"{ @value = upper(@value) }\")\no1.Process(\"hello 123 world 456\")",
+    "code": "? @@( o1.ResultsAndTheirMatches() )",
+    "out": "[ [ 246, \"123\" ], [ 912, \"456\" ], [ \"HELLO\", \"hello\" ], [ \"WORLD\", \"world\" ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "MatchedValuesXT": {
+    "setup": "o1 = new stzRegexuter()\no1.Trigger([ \"numbers\", \"\\d+\" ])\no1.Trigger([ \"words\", \"[a-zA-Z]+\" ])\no1.AddCode(\"numbers\", \"{ @value = number(@value) * 2 }\")\no1.AddCode(\"words\", \"{ @value = upper(@value) }\")\no1.Process(\"hello 123 world 456\")",
+    "code": "? @@( o1.MatchedValuesXT() )",
+    "out": "[ [ \"123\", 246 ], [ \"456\", 912 ], [ \"hello\", \"HELLO\" ], [ \"world\", \"WORLD\" ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "MatchesAndResults": {
+    "setup": "o1 = new stzRegexuter()\no1.Trigger([ \"numbers\", \"\\d+\" ])\no1.Trigger([ \"words\", \"[a-zA-Z]+\" ])\no1.AddCode(\"numbers\", \"{ @value = number(@value) * 2 }\")\no1.AddCode(\"words\", \"{ @value = upper(@value) }\")\no1.Process(\"hello 123 world 456\")",
+    "code": "? @@( o1.MatchesAndResults() )",
+    "out": "[ [ \"123\", 246 ], [ \"456\", 912 ], [ \"hello\", \"HELLO\" ], [ \"world\", \"WORLD\" ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "MatchesAndTheirResults": {
+    "setup": "o1 = new stzRegexuter()\no1.Trigger([ \"numbers\", \"\\d+\" ])\no1.Trigger([ \"words\", \"[a-zA-Z]+\" ])\no1.AddCode(\"numbers\", \"{ @value = number(@value) * 2 }\")\no1.AddCode(\"words\", \"{ @value = upper(@value) }\")\no1.Process(\"hello 123 world 456\")",
+    "code": "? @@( o1.MatchesAndTheirResults() )",
+    "out": "[ [ \"123\", 246 ], [ \"456\", 912 ], [ \"hello\", \"HELLO\" ], [ \"world\", \"WORLD\" ] ]",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzSimilarity": {
+   "Euclidean3": {
+    "setup": "o1 = new stzSimilarity()",
+    "code": "? o1.Euclidean3(1, 0, 0, 1, 1, 0)",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Manhattan3": {
+    "setup": "o1 = new stzSimilarity()",
+    "code": "? o1.Manhattan3(1, 0, 0, 1, 1, 0)",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "DotProduct3": {
+    "setup": "o1 = new stzSimilarity()",
+    "code": "? o1.DotProduct3(1, 0, 0, 1, 1, 0)",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "ManhattanFromLists": {
+    "setup": "o1 = new stzSimilarity()",
+    "code": "? o1.ManhattanFromLists([ 3, 4 ], [ 2, 3 ])",
+    "out": "2",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "DotProductFromLists": {
+    "setup": "o1 = new stzSimilarity()",
+    "code": "? o1.DotProductFromLists([ 3, 4 ], [ 2, 3 ])",
+    "out": "18",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "MagnitudeOf": {
+    "setup": "o1 = new stzSimilarity()",
+    "code": "? o1.MagnitudeOf([ 3, 4 ])",
+    "out": "5",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzStochasticSolver": {
+   "variables": {
+    "setup": "o1 = new stzStochasticSolver()\no1.AddVariable(\"x\", 0, 10)\no1.AddScenario(\"good\", \"high demand\", [ :d = 8 ], 0.6)\no1.AddScenario(\"bad\", \"low demand\", [ :d = 3 ], 0.4)\no1.Maximize(\"x\")",
+    "code": "? @@( o1.variables() )",
+    "out": "[ [ [ \"name\", \"x\" ], [ \"lowerbound\", 0 ], [ \"upperbound\", 10 ], [ \"type\", \"continuous\" ] ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "variableNames": {
+    "setup": "o1 = new stzStochasticSolver()\no1.AddVariable(\"x\", 0, 10)\no1.AddScenario(\"good\", \"high demand\", [ :d = 8 ], 0.6)\no1.AddScenario(\"bad\", \"low demand\", [ :d = 3 ], 0.4)\no1.Maximize(\"x\")",
+    "code": "? @@( o1.variableNames() )",
+    "out": "[ \"x\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "validateScenarios": {
+    "setup": "o1 = new stzStochasticSolver()\no1.AddVariable(\"x\", 0, 10)\no1.AddScenario(\"good\", \"high demand\", [ :d = 8 ], 0.6)\no1.AddScenario(\"bad\", \"low demand\", [ :d = 3 ], 0.4)\no1.Maximize(\"x\")",
+    "code": "o1.ValidateScenarios()\n? \"the probabilities sum to 1\"",
+    "out": "the probabilities sum to 1",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "objective": {
+    "setup": "o1 = new stzStochasticSolver()\no1.AddVariable(\"x\", 0, 10)\no1.AddScenario(\"good\", \"high demand\", [ :d = 8 ], 0.6)\no1.AddScenario(\"bad\", \"low demand\", [ :d = 3 ], 0.4)\no1.Maximize(\"x\")",
+    "code": "? o1.objective()",
+    "out": "x",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "objectiveType": {
+    "setup": "o1 = new stzStochasticSolver()\no1.AddVariable(\"x\", 0, 10)\no1.AddScenario(\"good\", \"high demand\", [ :d = 8 ], 0.6)\no1.AddScenario(\"bad\", \"low demand\", [ :d = 3 ], 0.4)\no1.Maximize(\"x\")",
+    "code": "? o1.objectiveType()",
+    "out": "maximize",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "solve": {
+    "setup": "o1 = new stzStochasticSolver()\no1.AddVariable(\"x\", 0, 10)\no1.AddScenario(\"good\", \"high demand\", [ :d = 8 ], 0.6)\no1.AddScenario(\"bad\", \"low demand\", [ :d = 3 ], 0.4)\no1.Maximize(\"x\")",
+    "code": "o1.Solve()\n? o1.Status()",
+    "out": "optimal",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "solveExpectedValue": {
+    "setup": "o1 = new stzStochasticSolver()\no1.AddVariable(\"x\", 0, 10)\no1.AddScenario(\"good\", \"high demand\", [ :d = 8 ], 0.6)\no1.AddScenario(\"bad\", \"low demand\", [ :d = 3 ], 0.4)\no1.Maximize(\"x\")",
+    "code": "? @@( o1.solveExpectedValue() )",
+    "out": "[ [ \"x\", 0 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "solveMonteCarlo": {
+    "setup": "o1 = new stzStochasticSolver()\no1.AddVariable(\"x\", 0, 10)\no1.AddScenario(\"good\", \"high demand\", [ :d = 8 ], 0.6)\no1.AddScenario(\"bad\", \"low demand\", [ :d = 3 ], 0.4)\no1.Maximize(\"x\")",
+    "code": "? @@( o1.solveMonteCarlo() )",
+    "out": "[ [ \"x\", 10 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "analyzeScenarios": {
+    "setup": "o1 = new stzStochasticSolver()\no1.AddVariable(\"x\", 0, 10)\no1.AddScenario(\"good\", \"high demand\", [ :d = 8 ], 0.6)\no1.AddScenario(\"bad\", \"low demand\", [ :d = 3 ], 0.4)\no1.Maximize(\"x\")",
+    "code": "o1.Solve()\n? @@( o1.AnalyzeScenarios() )",
+    "out": "[ [ [ \"scenario\", \"good\" ], [ \"probability\", 0.6000 ], [ \"objectivevalue\", 0 ], [ \"feasible\", 1 ] ], [ [ \"scenario\", \"bad\" ], [ \"probability\", 0.4000 ], [ \"objectivevalue\", 0 ], [ \"feasible\", 1 ] ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "status": {
+    "setup": "o1 = new stzStochasticSolver()\no1.AddVariable(\"x\", 0, 10)\no1.AddScenario(\"good\", \"high demand\", [ :d = 8 ], 0.6)\no1.AddScenario(\"bad\", \"low demand\", [ :d = 3 ], 0.4)\no1.Maximize(\"x\")",
+    "code": "o1.Solve()\n? o1.Status()",
+    "out": "optimal",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "solverType": {
+    "setup": "o1 = new stzStochasticSolver()\no1.AddVariable(\"x\", 0, 10)\no1.AddScenario(\"good\", \"high demand\", [ :d = 8 ], 0.6)\no1.AddScenario(\"bad\", \"low demand\", [ :d = 3 ], 0.4)\no1.Maximize(\"x\")",
+    "code": "? o1.solverType()",
+    "out": "expected",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzUnicodeData": {
+   "ContainsCharName": {
+    "setup": "o1 = new stzUnicodeData()",
+    "code": "? o1.ContainsCharName(\"LATIN SMALL LETTER A\")",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "FindCharName": {
+    "setup": "o1 = new stzUnicodeData()",
+    "code": "? o1.FindCharName(\"LATIN SMALL LETTER A\")",
+    "out": "1",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "CharByName": {
+    "setup": "o1 = new stzUnicodeData()",
+    "code": "? o1.CharByName(\"LATIN SMALL LETTER A\")",
+    "out": "a",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "CharHexCodeByName": {
+    "setup": "o1 = new stzUnicodeData()",
+    "code": "? o1.CharHexCodeByName(\"LATIN SMALL LETTER A\")",
+    "out": "0x61",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "CharUnicodeByName": {
+    "setup": "o1 = new stzUnicodeData()",
+    "code": "? o1.CharUnicodeByName(\"LATIN SMALL LETTER A\")",
+    "out": "97",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "CharByHexCode": {
+    "setup": "o1 = new stzUnicodeData()",
+    "code": "? o1.CharByHexCode(\"0041\")",
+    "out": "A",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "CharByUnicode": {
+    "setup": "o1 = new stzUnicodeData()",
+    "code": "? o1.CharByUnicode(65)",
+    "out": "A",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "CharNameByHexCode": {
+    "setup": "o1 = new stzUnicodeData()",
+    "code": "? o1.CharNameByHexCode(\"0041\")",
+    "out": "LATIN CAPITAL LETTER A",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "CharNameByUnicode": {
+    "setup": "o1 = new stzUnicodeData()",
+    "code": "? o1.CharNameByUnicode(65)",
+    "out": "LATIN CAPITAL LETTER A",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "UnicodesOfCharsContaining": {
+    "setup": "o1 = new stzUnicodeData()",
+    "code": "? @@( o1.UnicodesOfCharsContaining(\"CHECK MARK\") )",
+    "out": "[ 9083, 9989, 10003, 10004, 65794, 128504, 129969 ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "CharsContaining": {
+    "setup": "o1 = new stzUnicodeData()",
+    "code": "? @@( o1.CharsContaining(\"CHECK MARK\") )",
+    "out": "[ \"⍻\", \"✅\", \"✓\", \"✔\", \"𐄂\", \"🗸\", \"🮱\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "CharsNamesContaining": {
+    "setup": "o1 = new stzUnicodeData()",
+    "code": "? @@( o1.CharsNamesContaining(\"CHECK MARK\") )",
+    "out": "[ \"NOT CHECK MARK\", \"WHITE HEAVY CHECK MARK\", \"CHECK MARK\", \"HEAVY CHECK MARK\", \"AEGEAN CHECK MARK\", \"LIGHT CHECK MARK\", \"INVERSE CHECK MARK\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "CharNamesContaining": {
+    "setup": "o1 = new stzUnicodeData()",
+    "code": "? @@( o1.CharNamesContaining(\"CHECK MARK\") )",
+    "out": "[ \"NOT CHECK MARK\", \"WHITE HEAVY CHECK MARK\", \"CHECK MARK\", \"HEAVY CHECK MARK\", \"AEGEAN CHECK MARK\", \"LIGHT CHECK MARK\", \"INVERSE CHECK MARK\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "NumberOfUnicodeChars": {
+    "setup": "o1 = new stzUnicodeData()",
+    "code": "? o1.NumberOfUnicodeChars()",
+    "out": "34939",
+    "variant": "A",
+    "stage": "setup"
+   }
+  },
+  "stzWordStream": {
+   "SetCaseSensitive": {
+    "setup": "o1 = new stzWordStream()",
+    "code": "o1.SetCaseSensitive(TRUE)\no1.Feed(\"Cat cat\")\n? o1.DistinctWords()",
+    "out": "2",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "TopWords": {
+    "setup": "o1 = new stzWordStream()\no1.Feed(\"the cat saw the dog and the cat ran\")",
+    "code": "? @@( o1.TopWords(2) )",
+    "out": "[ [ \"the\", 3 ], [ \"cat\", 2 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "WordsAndTheirCounts": {
+    "setup": "o1 = new stzWordStream()\no1.Feed(\"the cat saw the dog and the cat ran\")",
+    "code": "? @@( o1.WordsAndTheirCounts() )",
+    "out": "[ [ \"the\", 3 ], [ \"cat\", 2 ], [ \"saw\", 1 ], [ \"dog\", 1 ], [ \"and\", 1 ], [ \"ran\", 1 ] ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "MostFrequentWords": {
+    "setup": "o1 = new stzWordStream()\no1.Feed(\"the cat saw the dog and the cat ran\")",
+    "code": "? @@( o1.MostFrequentWords(2) )",
+    "out": "[ \"the\", \"cat\" ]",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "MostFrequentWord": {
+    "setup": "o1 = new stzWordStream()\no1.Feed(\"the cat saw the dog and the cat ran\")",
+    "code": "? o1.MostFrequentWord()",
+    "out": "the",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "DistinctWords": {
+    "setup": "o1 = new stzWordStream()\no1.Feed(\"the cat saw the dog and the cat ran\")",
+    "code": "? o1.DistinctWords()",
+    "out": "6",
+    "variant": "A",
+    "stage": "setup"
+   },
+   "Feed": {
+    "setup": "o1 = new stzWordStream()\no1.Feed(\"the cat saw the dog and the cat ran\")",
+    "code": "o1.Feed(\"one two two three\")\n? o1.NumberOfWords()",
+    "out": "13",
+    "variant": "B",
+    "stage": "setup"
+   },
+   "FeedChunks": {
+    "setup": "o1 = new stzWordStream()\no1.Feed(\"the cat saw the dog and the cat ran\")",
+    "code": "o1.FeedChunks([ \"one two\", \"two three\" ])\n? o1.NumberOfWords()",
+    "out": "13",
+    "variant": "B",
+    "stage": "setup"
+   }
+  },
+  "stzBpmnDiagram": {
+   "EntryStep": {
+    "setup": "oW = new stzWorkflow(\"order\")\noW.SetWorkflowType(\"bpmn\")\noW.AddStepXTT(\"s\", \"\", [ :type = \"entry\" ])\noW.AddStepXTT(\"g\", \"G\", [ :type = \"gateway\" ])\noW.AddStepXTT(\"e\", \"End\", [ :type = \"terminal\" ])\noW.Connect(\"s\", \"g\")\noW.Connect(\"g\", \"e\")\no1 = new stzBpmnDiagram(oW)",
+    "code": "? o1.EntryStep()",
+    "out": "s",
     "variant": "A",
     "stage": "setup"
    }

@@ -232,6 +232,170 @@
   "stzOrgChart": {
    "setup": "o1 = new stzOrgChart(\"firm\")\no1.AddPositionXTT(\"ceo\", \"CEO\", [ :level = \"executive\" ])\no1.AddPositionXTT(\"cfo\", \"CFO\", [ :level = \"senior\", :reportsTo = \"ceo\" ])\no1.AddPositionXTT(\"clerk\", \"Clerk\", [ :level = \"staff\", :reportsTo = \"cfo\" ])",
    "kind": "*"
+  },
+  "stzRegexMaker": {
+   "setup": "o1 = new stzRegexMaker()\no1.AddWordBoundary(:start)\no1.AddCapturingGroup(\"digits\", \"\\d+\")\no1.AddWordBoundary(:end)",
+   "kind": "*",
+   "content": "o1.Pattern()"
+  },
+  "stzConditionalRegexMaker": {
+   "setup": "o1 = new stzConditionalRegexMaker()",
+   "kind": "*",
+   "content": "o1.Pattern()"
+  },
+  "stzRecursiveRegexMaker": {
+   "setup": "o1 = new stzRecursiveRegexMaker()\no1.AddLevel(\"outer\", \"[(]\")\no1.AddChildLevel(\"outer\", \"inner\", \"[0-9]+\")",
+   "kind": "*",
+   "content": "o1.Info()"
+  },
+  "stzRegexuter": {
+   "setup": "o1 = new stzRegexuter()\no1.Trigger([ \"numbers\", \"\\d+\" ])\no1.Trigger([ \"words\", \"[a-zA-Z]+\" ])\no1.AddCode(\"numbers\", \"{ @value = number(@value) * 2 }\")\no1.AddCode(\"words\", \"{ @value = upper(@value) }\")\no1.Process(\"hello 123 world 456\")",
+   "kind": "*",
+   "content": "o1.Triggers()"
+  },
+  "stzListexuter": {
+   "setup": "o1 = new stzListexuter()\no1.AddTrigger(:ListOfNumbers = \"[@N3]\")\no1.AddCode(:ListOfNumbers, '{ @list + [ :Sum = @Sum(@list) ] }')\no1.Process([ [ 42, \"hello\" ], [ 10, 20, 30 ], [ 1, 2, 3, 4, 5 ] ])",
+   "kind": "*",
+   "content": "o1.Results()"
+  },
+  "stzMaterialGraph": {
+   "setup": "o1 = new stzMaterialGraph()\no1.TakesColor(:warm)\no1.TakesColor(:cool)\no1.TakesScalar(:sharp)\no1.AddNode(:final, [ :Op = :Mix, :In = [ :shaded, :warm, :rim ] ])\no1.AddNode(:rim, [ :Op = :Fresnel, :In = [ :sharp ] ])\no1.AddNode(:shaded, [ :Op = :Multiply, :In = [ :cool, :lit ] ])\no1.AddNode(:lit, [ :Op = :Lit, :In = [ 0.25 ] ])\no1.Emits(:final)\no1.Compile()",
+   "kind": "*",
+   "content": "o1.Order()"
+  },
+  "stzMaterialMaker": {
+   "setup": "o1 = new stzMaterialMaker()\no1.TakesColor(:tint)\no1.ForEachFragment('{ @out = tint * @lambert }')",
+   "kind": "*",
+   "content": "o1.ColorNames()"
+  },
+  "stzUnicodeData": {
+   "setup": "o1 = new stzUnicodeData()",
+   "kind": "*"
+  },
+  "stzSimilarity": {
+   "setup": "o1 = new stzSimilarity()",
+   "kind": "*"
+  },
+  "stzKnowParser": {
+   "setup": "o1 = new stzKnowParser()",
+   "kind": "*"
+  },
+  "stzFlowParser": {
+   "setup": "o1 = new stzFlowParser()",
+   "kind": "*"
+  },
+  "stzWordStream": {
+   "setup": "o1 = new stzWordStream()\no1.Feed(\"the cat saw the dog and the cat ran\")",
+   "kind": "*",
+   "content": "o1.NumberOfWords()"
+  },
+  "stzNaiveBayes": {
+   "setup": "o1 = new stzNaiveBayes()\no1.Train(\"free money now\", \"spam\")\no1.Train(\"meeting at noon\", \"work\")\no1.Train(\"win free prizes\", \"spam\")",
+   "kind": "*",
+   "content": "o1.NumberOfDocuments()"
+  },
+  "stzListOfHashLists": {
+   "setup": "o1 = new stzListOfHashLists([ [ :name = \"Aya\", :age = 30 ], [ :name = \"Moussa\", :age = 25 ] ])",
+   "kind": "*"
+  },
+  "stzLinearSolver": {
+   "setup": "o1 = new stzLinearSolver()\no1.AddIntegerVariable(\"x\", 0, 100)\no1.AddIntegerVariable(\"y\", 0, 100)\no1.AddConstraint(\"2*x + y\", \"<=\", 100)\no1.Maximize(\"3*x + 2*y\")",
+   "kind": "*",
+   "content": "o1.variableNames()"
+  },
+  "stzStochasticSolver": {
+   "setup": "o1 = new stzStochasticSolver()\no1.AddVariable(\"x\", 0, 10)\no1.AddScenario(\"good\", \"high demand\", [ :d = 8 ], 0.6)\no1.AddScenario(\"bad\", \"low demand\", [ :d = 3 ], 0.4)\no1.Maximize(\"x\")",
+   "kind": "*",
+   "content": "o1.status()"
+  },
+  "stzMultiObjectiveSolver": {
+   "setup": "o1 = new stzMultiObjectiveSolver()\no1.AddVariable(\"x\", 0, 10)\no1.Maximize(\"x\")\no1.Minimize(\"x\")",
+   "kind": "*",
+   "content": "o1.status()"
+  },
+  "stzGraphex": {
+   "setup": "g = new stzGraph(\"g\")\ng.AddNode(\"a\")\ng.AddNode(\"b\")\ng.AddEdge(\"a\", \"b\")\no1 = new stzGraphex(\"{@Node(a)}\", g)",
+   "kind": "*"
+  },
+  "stzGeoPoints": {
+   "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)",
+   "kind": "*"
+  },
+  "stzGeoSamples": {
+   "setup": "cJ = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\noW = StzGeoFeaturesFromJson(cJ)\no1 = StzGeoSamples([ 1, 1, 10, 2, 2, 20, 3, 3, 30 ], oW)",
+   "kind": "*"
+  },
+  "stzGeoField": {
+   "setup": "o1 = StzGeoField([ 0, 0, 1, 1, 3, 3 ], [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ])",
+   "kind": "*"
+  },
+  "stzMBarPlot": {
+   "setup": "o1 = new stzMBarPlot([ :Mali = [ :y2020 = 42, :y2022 = 18 ], :Niger = [ :y2020 = 87, :y2022 = 40 ] ])",
+   "kind": "*"
+  },
+  "stzListOfEntities": {
+   "setup": "o1 = new stzListOfEntities([ [ :name = \"alice\", :type = \"person\", :age = 30 ], [ :name = \"bob\", :type = \"person\", :age = 25 ], [ :name = \"ferrari\", :type = \"car\", :brand = \"ferrari\" ] ])",
+   "kind": "*"
+  },
+  "stzDLM": {
+   "setup": "o1 = new stzDLM(\"restaurant\")",
+   "kind": "*"
+  },
+  "stzChainOfTruth": {
+   "setup": "o1 = new stzChainOfTruth(5)",
+   "kind": "*"
+  },
+  "stzExerciseCheck": {
+   "setup": "o1 = new stzExerciseCheck(\"demo\", [ \"3\" ], \"? 1 + 2\", [])",
+   "kind": "*"
+  },
+  "stzGraphComparison": {
+   "setup": "g1 = new stzGraph(\"base\")\ng1.AddNode(\"A\") g1.AddNode(\"B\")\ng1.AddEdge(\"A\", \"B\")\ng2 = new stzGraph(\"other\")\ng2.AddNode(\"A\") g2.AddNode(\"B\") g2.AddNode(\"C\")\ng2.AddEdge(\"A\", \"B\") g2.AddEdge(\"B\", \"C\")\no1 = new stzGraphComparison(g1, [ g2 ])",
+   "kind": "*"
+  },
+  "stzDiagramToDot": {
+   "setup": "oD = new stzDiagram(\"flow\")\noD.AddNodeXTT(\"start\", \"Begin\", [ :type = \"start\" ])\noD.AddNodeXTT(\"done\", \"Complete\", [ :type = \"endpoint\" ])\noD.Connect(\"start\", \"done\")\no1 = new stzDiagramToDot(oD)",
+   "kind": "*",
+   "content": "len(o1.Content())"
+  },
+  "stzDiagramToJSON": {
+   "setup": "oD = new stzDiagram(\"flow\")\noD.AddNodeXTT(\"start\", \"Begin\", [ :type = \"start\" ])\noD.AddNodeXTT(\"done\", \"Complete\", [ :type = \"endpoint\" ])\noD.Connect(\"start\", \"done\")\no1 = new stzDiagramToJSON(oD)",
+   "kind": "*",
+   "content": "len(o1.Content())"
+  },
+  "stzDiagramToMermaid": {
+   "setup": "oD = new stzDiagram(\"flow\")\noD.AddNodeXTT(\"start\", \"Begin\", [ :type = \"start\" ])\noD.AddNodeXTT(\"done\", \"Complete\", [ :type = \"endpoint\" ])\noD.Connect(\"start\", \"done\")\no1 = new stzDiagramToMermaid(oD)",
+   "kind": "*",
+   "content": "len(o1.Content())"
+  },
+  "stzDiagramToStzDiag": {
+   "setup": "oD = new stzDiagram(\"flow\")\noD.AddNodeXTT(\"start\", \"Begin\", [ :type = \"start\" ])\noD.AddNodeXTT(\"done\", \"Complete\", [ :type = \"endpoint\" ])\noD.Connect(\"start\", \"done\")\no1 = new stzDiagramToStzDiag(oD)",
+   "kind": "*",
+   "content": "len(o1.Content())"
+  },
+  "stzBpmnDiagram": {
+   "setup": "oW = new stzWorkflow(\"order\")\noW.SetWorkflowType(\"bpmn\")\noW.AddStepXTT(\"s\", \"\", [ :type = \"entry\" ])\noW.AddStepXTT(\"g\", \"G\", [ :type = \"gateway\" ])\noW.AddStepXTT(\"e\", \"End\", [ :type = \"terminal\" ])\noW.Connect(\"s\", \"g\")\noW.Connect(\"g\", \"e\")\no1 = new stzBpmnDiagram(oW)",
+   "kind": "*"
+  },
+  "stzOrgChartReporter": {
+   "setup": "oC = new stzOrgChart(\"bank\")\noC.AddPositionXTT(\"ceo\", \"Chief Executive\", [ :department = \"executive\" ])\noC.AddPositionXTT(\"audit\", \"Internal Audit\", [ :department = \"audit\", :reportsTo = \"ceo\" ])\no1 = new stzOrgChartReporter(oC)",
+   "kind": "*"
+  },
+  "stzOrgChartSimulation": {
+   "setup": "oC = new stzOrgChart(\"bank\")\noC.AddPositionXTT(\"ceo\", \"Chief Executive\", [ :department = \"executive\" ])\noC.AddPositionXTT(\"audit\", \"Internal Audit\", [ :department = \"audit\", :reportsTo = \"ceo\" ])\no1 = new stzOrgChartSimulation(oC)",
+   "kind": "*"
+  },
+  "stzOrgChartSODValidator": {
+   "setup": "oC = new stzOrgChart(\"bank\")\noC.AddPositionXTT(\"ceo\", \"Chief Executive\", [ :department = \"executive\" ])\noC.AddPositionXTT(\"audit\", \"Internal Audit\", [ :department = \"audit\", :reportsTo = \"ceo\" ])\no1 = new stzOrgChartSODValidator(oC)",
+   "kind": "*"
+  },
+  "stzOrgChartBCEAOValidator": {
+   "setup": "oC = new stzOrgChart(\"bank\")\noC.AddPositionXTT(\"ceo\", \"Chief Executive\", [ :department = \"executive\" ])\noC.AddPositionXTT(\"audit\", \"Internal Audit\", [ :department = \"audit\", :reportsTo = \"ceo\" ])\no1 = new stzOrgChartBCEAOValidator(oC)",
+   "kind": "*"
+  },
+  "stzObjectGuard": {
+   "setup": "oL = new stzList([ 1, 2 ])\no1 = new stzObjectGuard(oL, :Pair)",
+   "kind": "*"
   }
  }
 }

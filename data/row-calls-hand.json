@@ -1,0 +1,315 @@
+{
+ "note": "Written by hand where a parameter's NAME says nothing to tools/rows_run.py (a solver's expression, operator, varName; a regex maker's pattern). samples: {class: {parameter: the argument}}; calls: {class: {method: the call, or {call, setup}, or {code}}}. Every call is still RUN, dropped when it raises or prints nothing, and run again in another order.",
+ "samples": {
+  "stzLinearSolver": {
+   "varName": "\"z\"",
+   "lowerBound": "0",
+   "upperBound": "50",
+   "expression": "\"x + y\"",
+   "operator": "\"<=\"",
+   "value": "80",
+   "cSolver": "\"greedy\""
+  },
+  "stzStochasticSolver": {
+   "varName": "\"z\"",
+   "lowerBound": "0",
+   "upperBound": "50",
+   "expression": "\"x + z\"",
+   "operator": "\"<=\"",
+   "value": "80",
+   "name": "\"mid\"",
+   "description": "\"average demand\"",
+   "probability": "0.2",
+   "scenarioName": "\"good\"",
+   "confidenceLevel": "0.9",
+   "cType": "\"robust\"",
+   "nFactor": "0.5",
+   "nLevel": "0.95"
+  },
+  "stzMultiObjectiveSolver": {
+   "varName": "\"y\"",
+   "lowerBound": "0",
+   "upperBound": "10",
+   "expression": "\"x + y\"",
+   "operator": "\"<=\"",
+   "value": "12",
+   "type": "\"max\"",
+   "cMethod": "\"nsga_ii\"",
+   "populationSize": "20",
+   "generations": "10",
+   "mutationRate": "0.1",
+   "crossoverRate": "0.8",
+   "n": "42"
+  },
+  "stzRegexMaker": {
+   "n": "1",
+   "pRepeat": "2",
+   "p": "\"a\"",
+   "cType": ":Digits",
+   "cQuant": ":OneOrMore",
+   "nTimes1": "2",
+   "cChars": "\"abc\"",
+   "cDigits": "\"123\"",
+   "cRange": "\"a-f\""
+  },
+  "stzConditionalRegexMaker": {
+   "pcPattern": "\"[0-9]+\"",
+   "pcText": "\"http\"",
+   "pcGroupName": "\"year\""
+  },
+  "stzRecursiveRegexMaker": {
+   "cName": "\"outer\"",
+   "cParentName": "\"outer\"",
+   "cChildName": "\"leaf\"",
+   "cPattern": "\"[a-z]+\"",
+   "cLevelName": "\"outer\"",
+   "cQuant": "\"+\""
+  },
+  "stzRegexuter": {
+   "cText": "\"hello 123 world 456\"",
+   "aTrigger": "[ \"spaces\", \"[ ]+\" ]",
+   "cTriggerName": "\"numbers\"",
+   "cCode": "\"{ @value = number(@value) * 2 }\""
+  },
+  "stzListexuter": {
+   "aList": "[ [ 10, 20, 30 ], [ 7, \"x\" ] ]",
+   "aTrigger": ":Words = \"[@S]\"",
+   "cTriggerName": ":ListOfNumbers",
+   "cCode": "'{ @list + [ :Sum = @Sum(@list) ] }'"
+  },
+  "stzMaterialGraph": {
+   "pcName": ":warm",
+   "paSpec": "[ :Op = :Lit, :In = [ 0.5 ] ]",
+   "pcNode": ":rim"
+  },
+  "stzMaterialMaker": {
+   "pcName": ":accent",
+   "pcW": "'{ @out = tint * @lambert }'"
+  },
+  "stzUnicodeData": {
+   "pcCharName": "\"LATIN SMALL LETTER A\"",
+   "pcHex": "\"0041\"",
+   "cPartOfName": "\"CHECK MARK\"",
+   "pcPartOfName": "\"CHECK MARK\"",
+   "nUnicode": "65"
+  },
+  "stzSimilarity": {
+   "a1": "1",
+   "a2": "0",
+   "a3": "0",
+   "b1": "1",
+   "b2": "1",
+   "b3": "0",
+   "paA": "[ 3, 4 ]"
+  },
+  "stzWordStream": {
+   "pcChunk": "\"one two two three\"",
+   "paChunks": "[ \"one two\", \"two three\" ]",
+   "pCaseSensitive": "TRUE"
+  },
+  "stzNaiveBayes": {
+   "pcText": "\"win free money\"",
+   "pcLabel": "\"spam\""
+  },
+  "stzGraphex": {
+   "_cPattern_": "\"{@Node(a)}\"",
+   "_cTokenStr_": "\"@Node(a)\"",
+   "oGraph": "g",
+   "oTargetGraph": "g",
+   "nSize": "10",
+   "pOnOff": "TRUE"
+  }
+ },
+ "calls": {
+  "stzLinearSolver": {
+   "solve": {
+    "code": "o1.Solve(\"greedy\")\n? o1.Status()"
+   },
+   "Solution": {
+    "code": "o1.Solve(\"greedy\")\n? @@( o1.Solution() )"
+   },
+   "solutionValue": {
+    "code": "o1.Solve(\"greedy\")\n? o1.SolutionValue(\"x\")"
+   },
+   "status": {
+    "code": "o1.Solve(\"greedy\")\n? o1.Status()"
+   },
+   "GetSolutionValue": {
+    "code": "o1.Solve(\"greedy\")\n? o1.GetSolutionValue(o1.Solution(), \"x\")"
+   },
+   "IsFeasible": {
+    "code": "o1.Solve(\"greedy\")\n? o1.IsFeasible(o1.Solution())"
+   },
+   "isIntegerSolution": {
+    "code": "o1.Solve(\"greedy\")\n? o1.isIntegerSolution(o1.Solution())"
+   }
+  },
+  "stzMultiObjectiveSolver": {
+   "solve": {
+    "code": "o1.Solve(\"nsga_ii\")\n? o1.Status()"
+   },
+   "paretoSolutions": {
+    "code": "o1.Solve(\"nsga_ii\")\n? len(o1.ParetoSolutions())"
+   },
+   "status": {
+    "code": "o1.Solve(\"nsga_ii\")\n? o1.Status()"
+   },
+   "addObjective": "o1.addObjective(\"x + y\", \"maximize\")",
+   "bestCompromiseSolution": {
+    "code": "o1.Solve(\"nsga_ii\")\n? @@( o1.BestCompromiseSolution() )"
+   }
+  },
+  "stzStochasticSolver": {
+   "scenarios": "o1.Scenarios()",
+   "validateScenarios": {
+    "code": "o1.ValidateScenarios()\n? \"the probabilities sum to 1\""
+   },
+   "solve": {
+    "code": "o1.Solve()\n? o1.Status()"
+   },
+   "status": {
+    "code": "o1.Solve()\n? o1.Status()"
+   },
+   "analyzeScenarios": {
+    "code": "o1.Solve()\n? @@( o1.AnalyzeScenarios() )"
+   }
+  },
+  "stzNaiveBayes": {
+   "Why": {
+    "code": "? o1.Classify(\"free prizes\")\n? @@( o1.Why() )"
+   }
+  },
+  "stzObjectGuard": {
+   "Where": "o1.Where(\"@pair[1] = 1\")"
+  },
+  "stzRegexuter": {
+   "Process": {
+    "code": "o1.Process(\"abc 7\")\n? @@( o1.Results() )"
+   }
+  },
+  "stzConditionalRegexMaker": {
+   "Pattern": {
+    "code": "o1.IfMatch(\"[0-9]+\")\no1.ThenMatch(\"[a-z]+\")\no1.ElseMatch(\"x\")\n? o1.Pattern()"
+   },
+   "ThenMatch": {
+    "code": "o1.IfMatch(\"[0-9]+\")\no1.ThenMatch(\"[a-z]+\")\no1.ElseMatch(\"x\")\n? o1.Pattern()"
+   },
+   "ElseMatch": {
+    "code": "o1.IfMatch(\"[0-9]+\")\no1.ThenMatch(\"[a-z]+\")\no1.ElseMatch(\"x\")\n? o1.Pattern()"
+   }
+  },
+  "stzWordStream": {
+   "SetCaseSensitive": {
+    "setup": "o1 = new stzWordStream()",
+    "code": "o1.SetCaseSensitive(TRUE)\no1.Feed(\"Cat cat\")\n? o1.DistinctWords()"
+   }
+  },
+  "stzGeoPoints": {
+   "RipleyK": "o1.RipleyK([ 100, 200, 300 ])",
+   "L": "o1.L([ 100, 200, 300 ])",
+   "G": "o1.G([ 100, 200, 300 ])"
+  },
+  "stzListOfEntities": {
+   "FindEntityByName": "o1.FindEntityByName(\"bob\")",
+   "ContainsName": "o1.ContainsName(\"bob\")",
+   "ContainsType": "o1.ContainsType(\"car\")",
+   "CountByType": "o1.CountByType(\"person\")"
+  }
+ },
+ "skip": {
+  "stzRegexMaker": [
+   "DefineGroup",
+   "FindGroup"
+  ],
+  "stzConditionalRegexMaker": [
+   "IfCaptured",
+   "Info"
+  ],
+  "stzRegexuter": [
+   "TriggerNameExists"
+  ],
+  "stzListexuter": [
+   "TriggerNameExists",
+   "getAffectedTriggers"
+  ],
+  "stzListOfHashLists": [
+   "Shwo"
+  ],
+  "stzLinearSolver": [
+   "extractCoefficient",
+   "calculateResourceCost",
+   "isBetter",
+   "BuildSimplexTableau",
+   "HasNegativeCoefficient",
+   "FindPivotColumn",
+   "FindPivotRow",
+   "PivotTableau",
+   "ExtractSimplexSolution",
+   "Crossover",
+   "iterations",
+   "solveTime",
+   "isValidVariableName",
+   "parseObjectiveCoefficients",
+   "InitializePopulation",
+   "TournamentSelection",
+   "solveWithSimplex"
+  ],
+  "stzStochasticSolver": [
+   "extractCoefficient",
+   "parseObjectiveCoefficients",
+   "calculateExpectedResourceCost",
+   "calculateWorstCaseResourceCost",
+   "calculateChanceResourceCost",
+   "calculateExpectedMaxValue",
+   "calculateRobustMaxValue",
+   "calculateChanceMaxValue",
+   "getWorstCaseObjective",
+   "iterations",
+   "solveTime"
+  ],
+  "stzMultiObjectiveSolver": [
+   "crossover",
+   "calculateEpsilonRanges",
+   "calculateObjectiveBound",
+   "extractCoefficient",
+   "Seed",
+   "iterations",
+   "solveTime"
+  ],
+  "stzGraphex": [
+   "IsSubsequenceSimple",
+   "IsSubsequence",
+   "TokensToListexPattern"
+  ],
+  "stzGeoPoints": [
+   "F",
+   "Envelope",
+   "EnvelopeL"
+  ],
+  "stzListOfEntities": [
+   "ContainsEntity",
+   "AppendEntity"
+  ],
+  "stzDLM": [
+   "Lexicon",
+   "Tokenizer",
+   "Tokenize",
+   "RunGoldens",
+   "IsNeuralTrained"
+  ],
+  "stzChainOfTruth": [
+   "ShouldBeNegated",
+   "ShouldContinue",
+   "ShouldReturnTRUE",
+   "ShouldReturnFALSE"
+  ],
+  "stzDiagramToStzDiag": [
+   "DataToString"
+  ],
+  "stzBpmnDiagram": [
+   "EndingId",
+   "IsEnding",
+   "EndingKind"
+  ]
+ }
+}
