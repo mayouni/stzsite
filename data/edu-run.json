@@ -1,0 +1,21 @@
+{
+ "ran": "2026-10-04 01:18",
+ "commit": "0e72e2e2c",
+ "segments": [
+  {
+   "name": "cohort",
+   "code": "StzEngineDirCreatePath(\"cohorts/niamey-2026\")\nwrite(\"cohorts/niamey-2026/cohort.zknw\", 'knowledge \"niamey-2026\"' + char(10) + char(10) + \"facts\" + char(10) +\n        \"    niamey-2026 | is-a | cohort\" + char(10) + \"    niamey-2026 | follows | elementary-introduction\" + char(10))\noCohort = StzCohortQ(\"cohorts/niamey-2026\")\noCohort.AddLearner(\"amina\")\noCohort.AddLearner(\"moussa\")\n? @@( oCohort.LearnerIds() )",
+   "out": "[ \"amina\", \"moussa\" ]"
+  },
+  {
+   "name": "exercise",
+   "code": "oProgram = oCohort.ProgramQ(\"../../education/program\")\noExercise = oProgram.CourseQ(\"elementary-introduction\").ExerciseQ(\"ex-01-01\")\n? oExercise.Task(\"en\")\n? @@( oExercise.Promises() )\n? oExercise.Check( read(oExercise.WrongAnswers()[1]) ).Passed()\n? oExercise.Check( read(oExercise.RightAnswers()[1]) ).Passed()",
+   "out": "### Exercise 1.1 · The kitchen's list\n\nThe kitchen received these orders today:\n\n    [ \"tea\", \"rice\", \"tea\", \"fish\", \"rice\", \"tea\" ]\n\nPrint the list of dishes to cook, each one once, in the order in which it was first ordered.\n\nYour answer is checked by running your program. Nobody reads it and compares it with a model answer.\n\n[ '[ \"tea\", \"rice\", \"fish\" ]' ]\n0\n1"
+  },
+  {
+   "name": "report",
+   "code": "oCohort.LearnerQ(\"amina\").Submit( oExercise, read(oExercise.RightAnswers()[1]) )\n? read( oCohort.WriteReport(\"../../education/program\", \"\") )",
+   "out": "# Progress of cohort niamey-2026\n\n*Course elementary-introduction, overlay (none), 2 learners, 23 exercises. Every figure below is a promise beside the cell that computes it: run this file through StzChapterQ, and it says whether it is still true.*\n\n| Learner | Exercises passed | Levels earned |\n|---|---|---|\n| amina | 1 of 23 | none |\n| moussa | 0 of 23 | none |\n\n[...]"
+  }
+ ]
+}

@@ -35,4 +35,16 @@ Trois habitudes complètent le modèle. Une méthode qui finit en <b>-ed</b> ren
 
 <!--LADDER-->
 
+## Apprendre, enseigner, diriger un programme {#education}
+
+Softanza s'enseigne avec le système que cette page a montré, et le même système sert un enseignant et une institution. Prenez la porte qui est la vôtre :
+
+<div class="doors doors-wide">
+<a class="door big" href="education-self.html"><div class="who">J'apprends seul</div><div class="what">Le chemin, le bureau, l'échelle</div><div class="how">De la première phrase à un projet qui gagne un niveau, avec un tuteur qui questionne.</div></a>
+<a class="door big" href="education-teach.html"><div class="who">J'enseigne, ou je conçois des cours</div><div class="what">Une cohorte, un exercice, un chapitre à vous</div><div class="how">Ce que fait l'enseignant, ce que fait le programme, et comment un cours s'écrit.</div></a>
+<a class="door big" href="education-programme.html"><div class="who">Je dirige un programme ou une institution</div><div class="what">Une surcouche, des cohortes, la propriété</div><div class="how">Votre monde et vos langues sur un seul cœur, un tribunal qui refuse une fourche, et une démonstration de quinze minutes.</div></a>
+</div>
+
+<p class="proof"><a href="education.html">Éducation</a>.</p>
+
 <p class="way"><span>La manière Softanza</span> L'humain est l'analyseur. Une ligne se lit comme une phrase parce qu'elle a été conçue pour être lue, et pas seulement exécutée.</p>

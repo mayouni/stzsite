@@ -70,8 +70,7 @@ SECTIONS = [
      ("reference", {"fr": "Référence", "en": "Reference"}),
      ("ask", {"fr": "Interroger", "en": "Ask the library"}),
      ("narrations", {"fr": "Narrations", "en": "Narrations"}),
-     ("teaching", {"fr": "Enseigner", "en": "Teaching"}),
-     ("pedagogy", {"fr": "Pédagogie", "en": "Pedagogy"})]),
+     ("education", {"fr": "Éducation", "en": "Education"})]),
   ("offering", {"fr": "Offre", "en": "Offering"}, [
      ("offering", {"fr": "Audiences", "en": "Audiences"}),
      ("editions", {"fr": "Éditions", "en": "Editions"}),
@@ -79,10 +78,17 @@ SECTIONS = [
   ("start", {"fr": "Démarrer", "en": "Start"}, [
      ("start", {"fr": "Démarrer", "en": "Start"})]),
 ]
+# Education is one page with three doors (the author, 2026-10-03: learning, teaching and pedagogic design are one flow, not Teaching and
+# Pedagogy): the doors are pages of the Learn section one level below it, shown in the left bar, never a third entry of the path
+SUBPAGES = {"education-self": "education", "education-teach": "education", "education-programme": "education"}
+EDU_BAR = {"fr": ("Éducation", [("education", "Les trois portes"), ("education-self", "J'apprends seul"), ("education-teach", "J'enseigne ou je conçois"), ("education-programme", "Je dirige un programme")]),
+           "en": ("Education", [("education", "The three doors"), ("education-self", "I learn by myself"), ("education-teach", "I teach or design"), ("education-programme", "I run a programme")])}
+OLD_PAGES = {"teaching": "education", "pedagogy": "education"}        # the old addresses lead to the new page
 GENERATED = {"reference", "narrations", "howto", "ask"}   # built by code, not from a .md
 OWNER = {}                                          # page -> its section
 for sec, _, pages in SECTIONS:
     for slug, _ in pages: OWNER[slug] = sec
+for _sp in SUBPAGES: OWNER[_sp] = "learn"
 OWNER["atlas-group"] = "platform"
 OWNER["guide"] = "learn"                            # a guide page sits under Documentation
 OWNER["book-proof"] = "learn"                       # the proof of a chapter sits under The book
@@ -91,7 +97,7 @@ UI = {
   "fr": {
     "slogan": "La plateforme des makers à l'ère agentique", "second": "Née en Afrique. Utile au monde !",
     "skip": "Aller au contenu", "other_lang": "English", "other_code": "en",
-    "present": "Présenter le site en diaporama", "github": "Le dépôt Softanza sur GitHub", "menu": "Menu principal", "path": "Pages de la section", "here": "Vous êtes ici",
+    "present": "Présenter le site en diaporama", "github": "Le dépôt Softanza sur GitHub", "menu": "Menu principal", "path": "Pages de la section", "here": "Vous êtes ici", "moved": "Cette page est devenue Éducation",
     "proof_law": "Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.",
     "fonts": "Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s'ouvre sans réseau.",
     "made": "Les textes de ce site ont été rédigés avec un assistant d'IA, Claude, sous la direction de l'auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)",
@@ -119,7 +125,7 @@ UI = {
   "en": {
     "slogan": "The Makers Platform of the Agentic Age", "second": "Born in Africa. Useful to the World!",
     "skip": "Skip to content", "other_lang": "Français", "other_code": "fr",
-    "present": "Present the site as a slideshow", "github": "The Softanza repository on GitHub", "menu": "Main menu", "path": "Pages of the section", "here": "You are here",
+    "present": "Present the site as a slideshow", "github": "The Softanza repository on GitHub", "menu": "Main menu", "path": "Pages of the section", "here": "You are here", "moved": "This page became Education",
     "proof_law": "Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.",
     "fonts": "Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network.",
     "made": "The prose of this site was drafted with an AI assistant, Claude, under the author's direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)",
@@ -203,7 +209,7 @@ def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_l
     if nav_rel is None: nav_rel = nav_prefix(rel, lang)
     key = page_key or slug
     sec = OWNER.get(key)
-    current_page = {"atlas-group": "areas", "guide": "docs", "book-proof": "book"}.get(key, key)
+    current_page = {"atlas-group": "areas", "guide": "docs", "book-proof": "book", **SUBPAGES}.get(key, key)
     links = "".join(f'<a href="{nav_rel}{pages[0][0]}.html"{" aria-current=page" if s == sec else ""}>{esc(lab[lang])}</a>'
                     for s, lab, pages in SECTIONS)
     other = ui["other_code"]
@@ -367,6 +373,16 @@ def inject(body_html, lang, idx, groups, rel="../"):
     body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
     body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
     body_html = body_html.replace("<!--DOCS-SCOPE-->", scope_html(lang, idx, groups))
+    if "<!--EDU:" in body_html:
+        edu = json.loads((DATA / "edu-run.json").read_text(encoding="utf-8")) if (DATA / "edu-run.json").exists() else None
+        if not edu: raise SystemExit("<!--EDU:...--> needs data/edu-run.json: run tools/edu_run.py")
+        def edu_block(m):
+            seg = next(s for s in edu["segments"] if s["name"] == m.group(1))
+            ran = {"fr": "exécuté le {d} dans la bibliothèque au commit {c}", "en": "run on {d} inside the library at commit {c}"}[lang].format(d=edu["ran"], c=edu["commit"])
+            lbl = {"fr": "Sortie", "en": "Output"}[lang]
+            return (f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(seg["code"])}</pre></div>'
+                    f'<div class="out"><div class="lbl">{lbl}</div><pre>{esc(seg["out"])}</pre></div></div><p class="ran">{ran}</p>')
+        body_html = re.sub(r"<!--EDU:(\w+)-->", edu_block, body_html)
     if "<!--PROOF-->" in body_html:
         proof = build_proof.load(ROOT)
         if not proof: raise SystemExit("<!--PROOF--> needs data/proof-run.json: run tools/proof_run.py")
@@ -419,6 +435,9 @@ def build_page(lang, slug, idx, groups):
     check_reading_arc(slug, lang, body_html)
     page = page_shell(lang, slug, title, meta.get("description", ""), esc(meta.get("kicker", "")),
                       meta.get("title_html", esc(title)), BOLD_RX.sub(BOLD_TO, meta.get("lede", "")), body_html)
+    if slug == "education" or slug in SUBPAGES:
+        label, items = EDU_BAR[lang]
+        page = level2.wrap(page, level2.nav(label, [("", [(f"{s}.html", n, "page" if s == slug else "") for s, n in items])]))
     out = ROOT / lang / f"{slug}.html"
     out.parent.mkdir(exist_ok=True)
     out.write_text(page, encoding="utf-8")
@@ -714,6 +733,13 @@ def main():
             for slug, _ in pages:
                 if slug in GENERATED: continue
                 outs.append(build_page(lang, slug, idx, groups))
+        for slug in SUBPAGES:
+            outs.append(build_page(lang, slug, idx, groups))
+        for old, new in OLD_PAGES.items():                              # Teaching and Pedagogy became Education: the old address says so and goes there
+            (ROOT / lang / f"{old}.html").write_text(
+                f'<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><title>{esc(UI[lang]["moved"])} · Softanza</title><meta name="robots" content="noindex">'
+                f'<meta http-equiv="refresh" content="0;url={new}.html"><link rel="canonical" href="{new}.html"></head>'
+                f'<body><p><a href="{new}.html">{esc(UI[lang]["moved"])}</a></p></body></html>', encoding="utf-8")
         build_narrations(lang, PUBLISHED)
         for i in range(len(groups)):
             build_group_page(lang, idx, groups, i)

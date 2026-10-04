@@ -35,4 +35,16 @@ Three habits complete the model. A method that ends in <b>-ed</b> returns a copy
 
 <!--LADDER-->
 
+## Learning, teaching, running a programme {#education}
+
+Softanza teaches itself with the system this page has shown, and the same system serves a teacher and an institution. Take the door that is yours:
+
+<div class="doors doors-wide">
+<a class="door big" href="education-self.html"><div class="who">I learn by myself</div><div class="what">The path, the desk, the ladder</div><div class="how">From the first sentence to a project that earns a level, with a tutor that asks.</div></a>
+<a class="door big" href="education-teach.html"><div class="who">I teach, or I design courses</div><div class="what">A cohort, an exercise, a chapter of your own</div><div class="how">What the teacher does, what the program does, and how a course is written.</div></a>
+<a class="door big" href="education-programme.html"><div class="who">I run a programme or an institution</div><div class="what">An overlay, cohorts, ownership</div><div class="how">Your world and your languages over one core, a court that refuses a fork, and a fifteen-minute demo.</div></a>
+</div>
+
+<p class="proof"><a href="education.html">Education</a>.</p>
+
 <p class="way"><span>The Softanza way</span> The human is the parser. A line reads like a sentence because it was designed to be read, not only to be executed.</p>

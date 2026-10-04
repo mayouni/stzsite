@@ -1178,3 +1178,40 @@ next:
   - me:      push and verify live; wave 4, learning, teaching and pedagogic design as one flow (doc/SITE-PLAN-2026-10-03.md)
   - author:  open any reference page, press / and type: find, sort a hash list, banana split
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-04 01:27
+
+subject:   wave 4 of the site plan, learning, teaching and pedagogic design as one flow: Education
+
+why:       the author, "go ahead with wave 4": the Teaching page was confusing about its goal, mechanism and concepts (is the tutor a
+           person or a program?), Zin is not to be named, and Teaching versus Pedagogy hid what Softanza offers education
+
+did:
+  - replaced the two pages Teaching and Pedagogy by one, Education, in the Learn menu, with three doors one level under it (a left bar):
+    I learn by myself, I teach or design courses, I run a programme or an institution; the old addresses lead to Education
+  - the landing page says what it is in a paragraph, who does what (learner, teacher, tutor, checker, court, institution: the tutor is
+    a program of the library, never a person and never a language model), six things no course gives by default each tied to the
+    library's own law and test, the three doors, and what is not done
+  - the doors, read from the library's own charter, overlay guide, demo guide and the learner's desk: the path, the desk and the five
+    rungs with the project each guard judges; a teacher's steps and a course designer's chapter format; an overlay's five steps, cohorts,
+    languages, governed AI, the fifteen-minute demonstration
+  - wrote tools/edu_run.py: the teacher's door run in the library (a cohort of two learners, an exercise judged by running, the
+    cohort's report) into data/edu-run.json; the page shows code and output side by side with the run's date and commit
+  - added the three doors to the Learn page and pointed the educator door of Offering at Education; Education is searchable
+  - kept the word rule: the desk's commands are written without the interpreter's name (the file learn.ring, then the verb)
+  - English and French of every page; Arabic and Hausa are not written (the site is fr and en)
+  - a slip: I staged wholesale and the project's hook refused it, as it should; staged by explicit path after
+
+state:
+  release-1-pass-29: built; the commit carrying this entry is the one after 04df8989
+  checks: 0 failures on the example blocks; 0 dangling links; the word sweep clean but for the course in reader.html (STZLIB-COURSE-WORD-01)
+  perception-gate:   OPEN (the author has not read the Education pages)
+
+waiting:
+  - STZLIB-DOCREFORM-01: the documentation session has not reported
+
+next:
+  - me:      push and verify live; wave 5, forged in projects (RestoLean, Organizium, the customs school, the knowledge hub, the learning programme)
+  - author:  read Learn > Education and its three doors; rule on the wording of the six claims
+```

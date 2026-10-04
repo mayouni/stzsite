@@ -78,7 +78,7 @@ TOTAL: 27 assertions, 27 pass, 0 fail</pre></div></div>
 <div class="kicker">Door 5</div>
 ### An educator, linguist, author or knowledge architect
 
-**What you declare:** a course, an overlay for your institution, an edition in your language, a world of knowledge. **What you get:** a plain-text program where every cell runs and every exercise is checked by running, a tutor that asks, cohorts whose report is a narration. **Where to start:** Learn, and the overlay guide.
+**What you declare:** a course, an overlay for your institution, an edition in your language, a world of knowledge. **What you get:** a plain-text program where every cell runs and every exercise is checked by running, a tutor that asks, cohorts whose report is a narration. **Where to start:** <a href="education.html">Education</a>, with its three doors: learn, teach, run a programme.
 
 <div class="run"><div><div class="lbl">Zara, 9, answers Mission 1 in Hausa</div><pre>? len( NaturallyIn("ha",
    'Yi jeri dauke [ "Ibrahim", "Fatima", "Ibrahim",

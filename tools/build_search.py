@@ -27,9 +27,9 @@ def page_titles(ROOT, lang, sub, kind):
     out = []
     d = ROOT / lang / sub
     if not d.exists(): return out
-    for f in sorted(d.glob("*.html")):
+    for f in sorted(d.glob("education*.html" if kind == "education" else "*.html")):
         m = TITLE.search(f.read_text(encoding="utf-8", errors="replace")[:4000])
-        if m: out.append((kind, html.unescape(m.group(1)).strip(), f"{sub}/{f.name}"))
+        if m: out.append((kind, html.unescape(m.group(1)).strip(), f"{sub}/{f.name}" if sub else f.name))
     return out
 
 def build(ROOT, entries, groups):
@@ -68,7 +68,7 @@ def build(ROOT, entries, groups):
         page = (ROOT / "en" / "narrations" / f"{nslug(f)}.html")
         pages.append(["narration", title, title, f"narrations/{nslug(f)}.html" if page.exists() else GHN + f, f[:-3] if f.endswith(".md") else f])
     for lang in ("en", "fr"):
-        for kind, sub in (("guide", "guide"), ("howto", "howto"), ("book", "book")):
+        for kind, sub in (("guide", "guide"), ("howto", "howto"), ("book", "book"), ("education", "")):
             for k, title, url in page_titles(ROOT, lang, sub, kind):
                 if lang == "en": pages.append([k, title, "", url, ""])
                 else:

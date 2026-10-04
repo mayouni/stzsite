@@ -78,7 +78,7 @@ TOTAL: 27 assertions, 27 pass, 0 fail</pre></div></div>
 <div class="kicker">Porte 5</div>
 ### Éducateur, linguiste, auteur, architecte de connaissance
 
-**Ce que vous déclarez :** un cours, une surcouche pour votre institution, une édition dans votre langue, un monde de connaissance. **Ce que vous obtenez :** un programme en texte brut où chaque cellule s'exécute et où chaque exercice est vérifié en s'exécutant, un tuteur qui demande, des cohortes dont le rapport est une narration. **Où commencer :** Apprendre, et le guide de la surcouche.
+**Ce que vous déclarez :** un cours, une surcouche pour votre institution, une édition dans votre langue, un monde de connaissance. **Ce que vous obtenez :** un programme en texte brut où chaque cellule s'exécute et où chaque exercice est vérifié en s'exécutant, un tuteur qui demande, des cohortes dont le rapport est une narration. **Où commencer :** <a href="education.html">Éducation</a>, avec ses trois portes : apprendre, enseigner, diriger un programme.
 
 <div class="run"><div><div class="lbl">Zara, 9 ans, répond à la mission 1 en haoussa</div><pre>? len( NaturallyIn("ha",
    'Yi jeri dauke [ "Ibrahim", "Fatima", "Ibrahim",
