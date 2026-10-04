@@ -1,0 +1,16 @@
+{
+ "ran": "2026-10-04 01:42",
+ "commit": "0e72e2e2c",
+ "segments": [
+  {
+   "name": "orgchart",
+   "code": "oOrg = new stzOrgChart(\"bank\")\noOrg.AddPositionXTT(\"ceo\", \"Chief Executive\", [ :department = \"executive\" ])\noOrg.AddPositionXTT(\"audit\", \"Internal Audit\", [ :department = \"audit\", :reportsTo = \"ceo\" ])\n? @@( oOrg.ValidateBCEAOGovernance() )",
+   "out": "[ [ \"status\", \"fail\" ], [ \"domain\", \"BCEAO_governance\" ], [ \"issuecount\", 3 ], [ \"issues\", [ \"BCEAO-001: No Board of Directors found\", \"BCEAO-002: Audit reports to non-board position\", \"BCEAO-003: No dedicated Risk Management function\" ] ] ]"
+  },
+  {
+   "name": "registry",
+   "code": "oReg = new stzServiceRegistry(\"restolean\")\noReg.Declare(:mail)\noReg.Bind(:mail, new stzMailSandbox())\noReg.SetPhase(:production)\n? oReg.IsSound()\n? @@( oReg.Findings() )",
+   "out": "0\n[ [ [ \"invariant\", \"sandbox-in-production\" ], [ \"severity\", \"error\" ], [ \"where\", \"restolean/mail\" ], [ \"message\", \"still bound to a SANDBOX in a production phase -- a fake must never ship\" ] ] ]"
+  }
+ ]
+}

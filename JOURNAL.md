@@ -1215,3 +1215,43 @@ next:
   - me:      push and verify live; wave 5, forged in projects (RestoLean, Organizium, the customs school, the knowledge hub, the learning programme)
   - author:  read Learn > Education and its three doors; rule on the wording of the six claims
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-04 01:53
+
+subject:   wave 5 of the site plan, the page "Forged in projects": what RestoLean, Organizium and Sonibank, and DIKO taught the library
+
+why:       the author, "go ahead with wave 5", then "Name Diko and don't cite the customs school": the site had to tell that the library was
+           built by use, and tell it only as far as a file of the library, or a document of the project, attests
+
+did:
+  - wrote the page Forged in projects (fr and en) under Vision: three rules to read it by, a dated order of events, then one section per
+    project, each need tied to the library file that carries it or to the gap it names
+  - RestoLean: the method lesson (a specification is not a delivery), the Lock, four needs (payments tried without a subscription, the whole
+    solution seen before it is built, a constellation of worlds, a speed budget as a promise); the emulation and deployment designs are
+    marked "example", not "origin"
+  - Organizium and Sonibank: the BCEAO governance validators of the organisation chart, and the web layer born in that repository
+    (quoted only as far as its existence and date: the repository is private)
+  - DIKO, named as the author ruled: six asks of a platform, each tied to a piece of the library or to a gap the study names; offline by
+    default is said to be a gap, not a lesson; DIKO Hub is said to be a design, not a product
+  - wrote tools/forged_run.py and data/forged-run.json: two lessons run in the library at 0e72e2e2c, a registry that refuses a fake in
+    production (is sound: 0, finding sandbox-in-production) and a bank chart that fails three BCEAO rules; the page prints each run's date
+  - left out on purpose: no price, no client figure, no name of a person; the customs school is not cited on this page
+  - checked: 0 failures on the example blocks, 0 dangling links, the word sweep clean but for the course in reader.html
+    (STZLIB-COURSE-WORD-01), no standalone Zin on the page, both languages rendered and read at laptop and phone width
+
+state:
+  release-1-pass-30: built; the commit carrying this entry is the one after 186ffd46
+  perception-gate:   OPEN (the author has not read the Forged page; the French was read by the agent only)
+  customs-school:    still cited on Customers, Africa, Platforms (and its diagram image), Principles and Tour -- not changed, for the author to rule
+
+waiting:
+  - SITE-CUSTOMS-01: sweep the customs school out of the five older pages? -> the author
+             [not routed; asked in chat]
+  - STZLIB-DOCREFORM-01: the documentation session has not reported; a FOR STZSITE line in CONCLUSIONS would mean rebuild on its record
+             [routed]
+
+next:
+  - me:      push and verify the page live; then the 103 classes without receivers, or the rebuild if the documentation session reports
+  - author:  read Vision > Forged in projects, rule on the wording of the DIKO section, and answer SITE-CUSTOMS-01
+```

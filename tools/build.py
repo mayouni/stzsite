@@ -51,6 +51,7 @@ SECTIONS = [
      ("principles", {"fr": "Douze principes", "en": "Twelve principles"}),
      ("estate", {"fr": "Le domaine", "en": "The estate"}),
      ("history", {"fr": "Depuis les principes", "en": "From first principles"}),
+     ("forged", {"fr": "Forgée en projets", "en": "Forged in projects"}),
      ("sovereignty", {"fr": "Souveraineté", "en": "Sovereignty"}),
      ("africa", {"fr": "Née en Afrique", "en": "Born in Africa"})]),
   ("agentic", {"fr": "Agentique", "en": "Agentic"}, [
@@ -373,16 +374,17 @@ def inject(body_html, lang, idx, groups, rel="../"):
     body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
     body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
     body_html = body_html.replace("<!--DOCS-SCOPE-->", scope_html(lang, idx, groups))
-    if "<!--EDU:" in body_html:
-        edu = json.loads((DATA / "edu-run.json").read_text(encoding="utf-8")) if (DATA / "edu-run.json").exists() else None
-        if not edu: raise SystemExit("<!--EDU:...--> needs data/edu-run.json: run tools/edu_run.py")
-        def edu_block(m):
-            seg = next(s for s in edu["segments"] if s["name"] == m.group(1))
-            ran = {"fr": "exécuté le {d} dans la bibliothèque au commit {c}", "en": "run on {d} inside the library at commit {c}"}[lang].format(d=edu["ran"], c=edu["commit"])
-            lbl = {"fr": "Sortie", "en": "Output"}[lang]
-            return (f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(seg["code"])}</pre></div>'
-                    f'<div class="out"><div class="lbl">{lbl}</div><pre>{esc(seg["out"])}</pre></div></div><p class="ran">{ran}</p>')
-        body_html = re.sub(r"<!--EDU:(\w+)-->", edu_block, body_html)
+    for tag, data_file in (("EDU", "edu-run.json"), ("FORGED", "forged-run.json")):      # code the library ran for the page, beside what it printed
+        if f"<!--{tag}:" in body_html or f"<!--{tag}-RAN-->" in body_html:
+            run = json.loads((DATA / data_file).read_text(encoding="utf-8")) if (DATA / data_file).exists() else None
+            if not run: raise SystemExit(f"<!--{tag}:...--> needs data/{data_file}: run its tool (tools/{'edu_run' if tag == 'EDU' else 'forged_run'}.py)")
+            def run_block(m, run=run):
+                seg = next(s for s in run["segments"] if s["name"] == m.group(1))
+                ran = {"fr": "exécuté le {d} dans la bibliothèque au commit {c}", "en": "run on {d} inside the library at commit {c}"}[lang].format(d=run["ran"], c=run["commit"])
+                lbl = {"fr": "Sortie", "en": "Output"}[lang]
+                return (f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(seg["code"])}</pre></div>'
+                        f'<div class="out"><div class="lbl">{lbl}</div><pre>{esc(seg["out"])}</pre></div></div><p class="ran">{ran}</p>')
+            body_html = re.sub(r"<!--" + tag + r":(\w+)-->", run_block, body_html).replace(f"<!--{tag}-RAN-->", run["ran"])
     if "<!--PROOF-->" in body_html:
         proof = build_proof.load(ROOT)
         if not proof: raise SystemExit("<!--PROOF--> needs data/proof-run.json: run tools/proof_run.py")
