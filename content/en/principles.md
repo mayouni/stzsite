@@ -13,7 +13,7 @@ description: Softanza's twelve principles, each in one sentence.
 <div class="card"><h3>4 · Agents that cannot hurt you</h3><p>A model proposes; a workbench rehearses; a court judges; only a governed actor commits.</p></div>
 <div class="card"><h3>5 · Knowledge of your world</h3><p>Softanza knows your world, not the world's facts in general: its entities, rules, actors and flows, declared in plain text.</p></div>
 <div class="card"><h3>6 · Code that reads</h3><p>The human is the parser: find first, then apply; names are verbs; a natural-language instruction runs.</p></div>
-<div class="card"><h3>7 · In your language</h3><p>The course speaks English, French, Arabic and Hausa; the engine counts letters, not bytes; the same instruction runs in the four languages.</p></div>
+<div class="card"><h3>7 · In your language</h3><p>The course has four editions, English, French, Arabic and Hausa, the last three still drafts (<a href="education-record.html#limits">0 of 35 units reviewed</a>); the engine counts letters, not bytes; the same instruction runs in the four languages.</p></div>
 <div class="card"><h3>8 · Exact by default</h3><p>An integer is exact at any size; a decimal says it is decimal; the algebra is proven against an oracle.</p></div>
 <div class="card"><h3>9 · Honest by design</h3><p>The Atlas shows the low ratings beside the high ones; every product carries its stage; no figure without a file.</p></div>
 <div class="card"><h3>10 · Sovereign by construction</h3><p>Nothing anyone else can withdraw: a verdict per dependency, plain text you keep, a machine you declare.</p></div>

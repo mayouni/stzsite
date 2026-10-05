@@ -1,0 +1,36 @@
+{
+ "ran": "2026-10-05 21:34",
+ "commit": "4a184e6f0",
+ "segments": [
+  {
+   "name": "status",
+   "code": "learn.ring ada status",
+   "out": "LEARNER ada  (en, world: workplace)\nON chapter 1: find-then-apply -- Find, then apply\nPASSED 0 of 23 exercises\nLEVEL s0: missing 5 -- ex-01-01, ex-02-01, ex-03-01, ex-04-01, project-s0\nLEVEL s1: missing 9\nLEVEL s2: missing 14\nLEVEL s3: missing 21\nLEVEL s4: missing 24"
+  },
+  {
+   "name": "refused",
+   "code": "# wrong.ring\n# Selects the object, and stops there: nothing was applied.\no1 = new stzList([ \"tea\", \"rice\", \"tea\", \"fish\", \"rice\", \"tea\" ])\n? @@( o1.Content() )\n\nlearn.ring ada submit ex-01-01 wrong.ring",
+   "out": "REFUSED ex-01-01: Your program ran, but what it printed is not yet what the task asks. It printed: [\"tea\",\"rice\",\"tea\",\"fish\",\"rice\",\"tea\"]"
+  },
+  {
+   "name": "passed",
+   "code": "# right.ring\n# The dedicated word for the whole move.\n? @@( StzListQ([ \"tea\", \"rice\", \"tea\", \"fish\", \"rice\", \"tea\" ]).DuplicatesRemoved() )\n\nlearn.ring ada submit ex-01-01 right.ring",
+   "out": "PASSED ex-01-01: Every promise of the exercise was kept when your program ran."
+  },
+  {
+   "name": "status2",
+   "code": "learn.ring ada status",
+   "out": "LEARNER ada  (en, world: workplace)\nON chapter 2: a-first-sentence -- A first sentence\nPASSED 1 of 23 exercises: ex-01-01\nLEVEL s0: missing 4 -- ex-02-01, ex-03-01, ex-04-01, project-s0\nLEVEL s1: missing 8\nLEVEL s2: missing 13\nLEVEL s3: missing 20\nLEVEL s4: missing 23"
+  },
+  {
+   "name": "tutor",
+   "code": "learn.ring ada ask ex-02-01 \"How do I use KnowRelation to teach a world?\"",
+   "out": "That belongs to chapter 12, 'Teach a world'. You are on chapter 2, and the later chapter stands on what this one teaches, so I will not explain it yet. Which step of your current exercise is still open?"
+  },
+  {
+   "name": "review",
+   "code": "review_sheet.ring sheet.md --lang fr\nreview_sheet.ring sheet.md --lang ar\nreview_sheet.ring sheet.md --lang ha",
+   "out": "REVIEW SHEET fr: 0 of 35 units reviewed\nREVIEW SHEET ar: 0 of 35 units reviewed\nREVIEW SHEET ha: 0 of 35 units reviewed"
+  }
+ ]
+}

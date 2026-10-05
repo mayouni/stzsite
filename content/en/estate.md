@@ -25,7 +25,7 @@ A product that does not exist yet says so. The stage is a word you can check: <b
 
 <div class="cards">
 <div class="card"><h3>Softanza</h3><p class="stage">built</p><p>The foundation: the library and its Zig engine, public. Everything else stands on it.</p><p class="proof"><a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a></p></div>
-<div class="card"><h3>The Learning System</h3><p class="stage">built</p><p>Two courses of fifteen chapters in four languages, missions, projects, overlays, cohorts, a tutor; eleven guards.</p></div>
+<div class="card"><h3>The Learning System</h3><p class="stage">built</p><p>Two courses of fifteen chapters in four languages, missions, projects, overlays, cohorts, a tutor; fourteen guards, 716 assertions. <b>Beside it:</b> <a href="education-record.html#limits">three limits</a>: French, Arabic and Hausa are drafts (0 of 35 units reviewed), the cells run on the desktop, no institution has adopted it.</p></div>
 <div class="card"><h3>Haro</h3><p class="stage">in construction</p><p>The language of languages, on a sovereign virtual machine and compiler in Zig. Charter of 2026-09-26 awaiting ratification.</p></div>
 <div class="card"><h3>Harobanda</h3><p class="stage">built</p><p>The declared machine, MIT, boots in an emulator. No production workload yet, and it says so.</p><p class="proof"><a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a></p></div>
 <div class="card"><h3>HaroBase</h3><p class="stage">specification</p><p>The governed data store: plain SQLite, in the process, governed. Charter ratified 2026-09-29; first layers built. Private for now.</p></div>

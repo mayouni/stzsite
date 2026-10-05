@@ -106,7 +106,7 @@ Read the stack bottom-up: ordinary hardware; Harobanda, the declared machine, bu
 ```
 
 <<< scene id="learn" page="book.html" label="Learn" >>>
-<div class="eyebrow">The Learning System · 15 chapters × 4 languages, every cell ran</div>
+<div class="eyebrow">The Learning System · 15 chapters × 4 languages, every cell ran · fr, ar, ha are drafts · desktop only · no adopter yet</div>
 ## Three steps: <i>introduction, book, documentation</i>
 <div class="pair">
 <div><h4>Hausa · Nemo, sannan ka aiwatar</h4><p>Kowane wurin aiki yana karɓar buƙatu: gidan abinci yana karɓar oda, banki yana karɓar tikiti.</p><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
@@ -118,7 +118,7 @@ Read the stack bottom-up: ordinary hardware; Harobanda, the declared machine, bu
 </div>
 <p><a href="../reader.html">Open the reader</a> · en · fr · ar · ha · built in 3 minutes 22 seconds, every cell green</p>
 ```notes
-Open the reader from the link, switch to Hausa, then to Arabic (right to left). Say: "This reader was built in three minutes twenty-two: every cell of every chapter in every language was run, and the build would be red if one had failed." Then: "Zarma is not in it. That is your invitation."
+Open the reader from the link, switch to Hausa, then to Arabic (right to left). Say: "This reader was built in three minutes thirty-seven: every cell of every chapter in every language was run, and the build would be red if one had failed." Then: "Zarma is not in it. That is your invitation." Say the limits before the questions come: French, Arabic and Hausa are drafts, none of their 35 units read yet by a native speaker; the cells run on the desktop, not in the browser; no institution has adopted it.
 ```
 
 <<< scene id="africa" page="africa.html" label="Africa" >>>

@@ -2,7 +2,7 @@
 title: Born in Africa
 title_html: Born <i>in Africa</i>
 kicker: Useful to the world
-lede: Softanza is designed by a Tunisian, between Tunisia, Niamey and Paris. Its references are a bank and a restaurant, each attested by a document. Its course speaks Hausa, and awaits a native reviewer. Its machine, Harobanda, is named for the bridge across the Niger River that joins the two banks of Niamey, "because the machine likewise joins a solution's promises to the hardware that keeps them".
+lede: Softanza is designed by a Tunisian, between Tunisia, Niamey and Paris. Its references are a bank and a restaurant, each attested by a document. Its course has a Hausa edition, a draft that awaits a native reviewer: none of its 35 units has been reviewed yet. Its machine, Harobanda, is named for the bridge across the Niger River that joins the two banks of Niamey, "because the machine likewise joins a solution's promises to the hardware that keeps them".
 description: Softanza's African roots: the places, the references, the Hausa course and the map of Niger rendered by the engine.
 ---
 

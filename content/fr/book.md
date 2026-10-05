@@ -2,7 +2,7 @@
 title: Le livre
 title_html: Le <i>livre</i> interactif
 kicker: Étape 2 sur 3 · quinze chapitres, quatre langues
-lede: L'Introduction élémentaire est un cours de quinze chapitres, en anglais, français, arabe et haoussa. On le lit dans **le lecteur**, une page de ce site construite en exécutant chaque cellule de chaque chapitre dans chaque langue : la construction est rouge si une cellule échoue ou si la promesse d'un exercice n'est pas tenue.
+lede: L'Introduction élémentaire est un cours de quinze chapitres, en anglais, français, arabe et haoussa. Les trois dernières sont des brouillons : aucun locuteur natif n'a encore relu une seule de leurs 35 unités. On le lit dans **le lecteur**, une page de ce site construite en exécutant chaque cellule de chaque chapitre dans chaque langue : la construction est rouge si une cellule échoue ou si la promesse d'un exercice n'est pas tenue.
 description: Le livre interactif de Softanza : quinze chapitres en anglais, français, arabe et haoussa, chaque cellule exécutée.
 ---
 
@@ -14,10 +14,10 @@ description: Le livre interactif de Softanza : quinze chapitres en anglais, fran
 <div class="figure"><b>15 × 4</b><span>chapitres × langues, l'Introduction élémentaire</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters">chapters/</a></div>
 <div class="figure"><b>15 × 4</b><span>chapitres × langues, le cours de mathématiques</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/education/program/courses/math/chapters">math/chapters/</a></div>
 <div class="figure"><b>3</b><span>mondes d'enseignement : le restaurant, la coopérative, l'école</span></div>
-<div class="figure"><b>11</b><span>gardes qui jugent le système d'apprentissage lui-même</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/test/education">test/education</a></div>
+<div class="figure"><b>14</b><span>gardes qui jugent le système d'apprentissage lui-même, 716 assertions, exécutés par les auteurs du module</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/test/education">test/education</a></div>
 </div>
 
-Le même chapitre s'ouvre par la même phrase dans les quatre langues, et la même cellule s'exécute dans chacune. Les éditions française, arabe et haoussa portent la note qu'elles attendent la relecture d'un locuteur natif : c'est écrit sur la page, pas caché.
+Le même chapitre s'ouvre par la même phrase dans les quatre langues, et la même cellule s'exécute dans chacune. Les éditions française, arabe et haoussa portent, sur chaque chapitre et chaque page de monde, une note dans leur propre langue disant qu'elles attendent la relecture d'un locuteur natif : 0 unité sur 35 a été relue (<a href="education-record.html#limits">le bilan</a>). C'est écrit sur la page, pas caché.
 
 <div class="pair">
 <div><h4>Haoussa · Nemo, sannan ka aiwatar</h4><p>Kowane wurin aiki yana karɓar buƙatu: gidan abinci yana karɓar oda, banki yana karɓar tikiti, kuma buƙata ɗaya takan zo fiye da sau ɗaya.</p><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])

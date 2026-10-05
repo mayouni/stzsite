@@ -106,7 +106,7 @@ Lire la pile de bas en haut : du matériel ordinaire ; Harobanda, la machine dé
 ```
 
 <<< scene id="learn" page="book.html" label="Apprendre" >>>
-<div class="eyebrow">Le système d'apprentissage · 15 chapitres × 4 langues, chaque cellule a tourné</div>
+<div class="eyebrow">Le système d'apprentissage · 15 chapitres × 4 langues, chaque cellule a tourné · fr, ar, ha : brouillons · bureau seulement · aucun adoptant</div>
 ## Trois étapes : <i>introduction, livre, documentation</i>
 <div class="pair">
 <div><h4>Haoussa · Nemo, sannan ka aiwatar</h4><p>Kowane wurin aiki yana karɓar buƙatu: gidan abinci yana karɓar oda, banki yana karɓar tikiti.</p><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
@@ -118,7 +118,7 @@ Lire la pile de bas en haut : du matériel ordinaire ; Harobanda, la machine dé
 </div>
 <p><a href="../reader.html">Ouvrir le lecteur</a> · en · fr · ar · ha · construit en 3 minutes 22 secondes, chaque cellule verte</p>
 ```notes
-Ouvrir le lecteur par le lien, passer en haoussa, puis en arabe (de droite à gauche). Dire : « Ce lecteur a été construit en trois minutes vingt-deux : chaque cellule de chaque chapitre dans chaque langue a été exécutée, et la construction serait rouge si une seule avait échoué. » Puis : « Le zarma n'y est pas. C'est votre invitation. »
+Ouvrir le lecteur par le lien, passer en haoussa, puis en arabe (de droite à gauche). Dire : « Ce lecteur a été construit en trois minutes trente-sept : chaque cellule de chaque chapitre dans chaque langue a été exécutée, et la construction serait rouge si une seule avait échoué. » Puis : « Le zarma n'y est pas. C'est votre invitation. » Dire les limites avant les questions : le français, l'arabe et le haoussa sont des brouillons, aucune de leurs 35 unités n'est encore relue par un locuteur natif ; les cellules s'exécutent sur le bureau, pas dans le navigateur ; aucune institution ne l'a adopté.
 ```
 
 <<< scene id="africa" page="africa.html" label="Afrique" >>>

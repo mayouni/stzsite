@@ -41,7 +41,7 @@ A cohort is a folder of learners who follow one course under one overlay. Its pr
 
 ## Languages {#languages}
 
-The course runs in English, French, Arabic (laid out right to left) and Hausa, from the first page; every chapter's guard runs in all four, and a missing translation is a failing guard, not a fallback to English. The French, Arabic and Hausa editions are drafts that await native reviewers, and every page says so. A fifth language is a data-only pack, and the institution's own words go in its overlay.
+The course runs in English, French, Arabic (laid out right to left) and Hausa, from the first page; every chapter's guard runs in all four, and a missing translation is a failing guard, not a fallback to English. The French, Arabic and Hausa editions are drafts that await native reviewers (<a href="education-record.html#limits">0 of 35 units reviewed</a>), and every translated chapter and world page says so. A fifth language is a data-only pack, and the institution's own words go in its overlay.
 
 ## Governed AI for learners {#governed}
 
@@ -66,4 +66,4 @@ The presenter's guide gives a scene for each minute, runs on one laptop offline,
 
 ## What an institution should know before it starts {#honest}
 
-The interactive reader runs on the desktop; a browser runtime for the cells is not built yet, and the page says so on every cell. The French, Arabic and Hausa editions await native reviewers; Zarma is not yet a language of the course. There is no language model in the loop and none is required: one may be added later as an option, never as the mind of the tutor.
+The interactive reader runs on the desktop; a browser runtime for the cells is not built yet, and the page says so on every cell. The French, Arabic and Hausa editions await native reviewers (0 of 35 units reviewed); Zarma is not yet a language of the course. No institution has adopted the system yet: the bank's and the university's overlays in the library are references written to show what an overlay is. The tutor is rule-based, not AI. There is no language model in the loop and none is required: one may be added later as an option, never as the mind of the tutor.

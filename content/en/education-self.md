@@ -16,7 +16,7 @@ The fifteen chapters of the book are one story, told in cells you can run. Read 
 
 <p class="proof">Open <a href="../reader.html">the interactive book</a>, or read <a href="book.html">the book's page</a>: each chapter has a <a href="book.html#proof">proof page</a> that records its run, cell by cell, in its four editions. Chapter 12 is where you build a world of your own, and chapter 15 is where you write a chapter.</p>
 
-You choose three things, and can change them at any time: **the language** of the chapters, the checker and the tutor (English, French, Arabic, Hausa); **the world** the examples reason over (a restaurant, a cooperative, or a school); and **the pace**. The mental model in five questions is on the <a href="learn.html">Learn page</a>.
+You choose three things, and can change them at any time: **the language** of the chapters, the checker and the tutor (English, French, Arabic, Hausa; the last three are drafts, <a href="education-record.html#limits">0 of 35 units reviewed by a native speaker</a>); **the world** the examples reason over (a restaurant, a cooperative, or a school); and **the pace**. The mental model in five questions is on the <a href="learn.html">Learn page</a>.
 
 ## The desk {#desk}
 

@@ -16,7 +16,7 @@ Les quinze chapitres du livre sont une seule histoire, racontée en cellules que
 
 <p class="proof">Ouvrez <a href="../reader.html">le livre interactif</a>, ou lisez <a href="book.html">la page du livre</a> : chaque chapitre a une <a href="book.html#proof">page de preuve</a> qui consigne son exécution, cellule par cellule, dans ses quatre éditions. Au chapitre 12 vous construisez un monde à vous, et au chapitre 15 vous écrivez un chapitre.</p>
 
-Vous choisissez trois choses, et pouvez en changer à tout moment : **la langue** des chapitres, du vérificateur et du tuteur (anglais, français, arabe, haoussa) ; **le monde** sur lequel les exemples raisonnent (un restaurant, une coopérative ou une école) ; et **le rythme**. Le modèle mental en cinq questions est sur la <a href="learn.html">page Apprendre</a>.
+Vous choisissez trois choses, et pouvez en changer à tout moment : **la langue** des chapitres, du vérificateur et du tuteur (anglais, français, arabe, haoussa ; les trois derniers sont des brouillons, <a href="education-record.html#limits">0 unité sur 35 relue par un locuteur natif</a>) ; **le monde** sur lequel les exemples raisonnent (un restaurant, une coopérative ou une école) ; et **le rythme**. Le modèle mental en cinq questions est sur la <a href="learn.html">page Apprendre</a>.
 
 ## Le bureau {#desk}
 

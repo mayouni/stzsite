@@ -81,9 +81,9 @@ SECTIONS = [
 ]
 # Education is one page with three doors (the author, 2026-10-03: learning, teaching and pedagogic design are one flow, not Teaching and
 # Pedagogy): the doors are pages of the Learn section one level below it, shown in the left bar, never a third entry of the path
-SUBPAGES = {"education-self": "education", "education-teach": "education", "education-programme": "education"}
-EDU_BAR = {"fr": ("Éducation", [("education", "Les trois portes"), ("education-self", "J'apprends seul"), ("education-teach", "J'enseigne ou je conçois"), ("education-programme", "Je dirige un programme")]),
-           "en": ("Education", [("education", "The three doors"), ("education-self", "I learn by myself"), ("education-teach", "I teach or design"), ("education-programme", "I run a programme")])}
+SUBPAGES = {"education-self": "education", "education-teach": "education", "education-programme": "education", "education-record": "education"}
+EDU_BAR = {"fr": ("Éducation", [("education", "Les trois portes"), ("education-self", "J'apprends seul"), ("education-teach", "J'enseigne ou je conçois"), ("education-programme", "Je dirige un programme"), ("education-record", "Ce qui est prouvé")]),
+           "en": ("Education", [("education", "The three doors"), ("education-self", "I learn by myself"), ("education-teach", "I teach or design"), ("education-programme", "I run a programme"), ("education-record", "What is proved")])}
 OLD_PAGES = {"teaching": "education", "pedagogy": "education"}        # the old addresses lead to the new page
 GENERATED = {"reference", "narrations", "howto", "ask"}   # built by code, not from a .md
 OWNER = {}                                          # page -> its section
@@ -374,15 +374,16 @@ def inject(body_html, lang, idx, groups, rel="../"):
     body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
     body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
     body_html = body_html.replace("<!--DOCS-SCOPE-->", scope_html(lang, idx, groups))
-    for tag, data_file in (("EDU", "edu-run.json"), ("FORGED", "forged-run.json")):      # code the library ran for the page, beside what it printed
+    for tag, data_file in (("EDU", "edu-run.json"), ("FORGED", "forged-run.json"), ("EDUREC", "edu-record-run.json")):      # code the library ran for the page, beside what it printed
         if f"<!--{tag}:" in body_html or f"<!--{tag}-RAN-->" in body_html:
             run = json.loads((DATA / data_file).read_text(encoding="utf-8")) if (DATA / data_file).exists() else None
-            if not run: raise SystemExit(f"<!--{tag}:...--> needs data/{data_file}: run its tool (tools/{'edu_run' if tag == 'EDU' else 'forged_run'}.py)")
+            if not run: raise SystemExit(f"<!--{tag}:...--> needs data/{data_file}: run its tool (tools/{ {'EDU': 'edu_run', 'FORGED': 'forged_run', 'EDUREC': 'edu_record_run'}[tag] }.py)")
             def run_block(m, run=run):
                 seg = next(s for s in run["segments"] if s["name"] == m.group(1))
                 ran = {"fr": "exécuté le {d} dans la bibliothèque au commit {c}", "en": "run on {d} inside the library at commit {c}"}[lang].format(d=run["ran"], c=run["commit"])
                 lbl = {"fr": "Sortie", "en": "Output"}[lang]
-                return (f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(seg["code"])}</pre></div>'
+                lcode = {"EDUREC": {"fr": "En ligne de commande", "en": "At the command line"}}.get(tag, {}).get(lang, "Softanza")
+                return (f'<div class="run"><div><div class="lbl">{lcode}</div><pre>{esc(seg["code"])}</pre></div>'
                         f'<div class="out"><div class="lbl">{lbl}</div><pre>{esc(seg["out"])}</pre></div></div><p class="ran">{ran}</p>')
             body_html = re.sub(r"<!--" + tag + r":(\w+)-->", run_block, body_html).replace(f"<!--{tag}-RAN-->", run["ran"])
     if "<!--PROOF-->" in body_html:

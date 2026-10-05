@@ -1332,3 +1332,50 @@ next:
   - me:      push and verify live; then the file-based classes only if the author wants a path shown in an example, otherwise stop here
   - author:  open Learn > Reference > stzLinearSolver and stzUnicodeData, and say whether the examples read as examples
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-05 21:41
+
+subject:   STZSITE-EDUCATION-REFRESH-01: the Learning System on the site, with its three limits beside every claim
+
+why:       the stzlib-education report of 2026-10-05 20:51, read from stzlib at 4a184e6f0 (the commit it names, on origin/main), after the fact sheet, DEMO.md and CHARTER.md
+
+did:
+  - placed it: Education stays the home, and gets a fourth page, "What is proved, and what is not" (fr and en), in its left bar; the
+    three limits come first, then ten figures each beside its guard and its limit, then the learner's desk and the reviewer's sheet
+    run for real, how a draft stops being one, and what the page does not claim
+  - quoted only the fact sheet's figures; two I read from the library rather than took on trust: a "unit" is a chapter with its
+    exercises, a world page, the skills or the tutor's texts (the comment of ReviewUnits), which is what the 35 are
+  - wrote tools/edu_record_run.py: six runs at 4a184e6f0, in a temporary learner's folder and never in the library's (the worktree
+    was clean before and after): status, a wrong answer refused, a right one passed, status again, the tutor refusing to spoil
+    chapter 12, and the count of reviewed units in fr, ar and ha (0 of 35 in each); the first and the tutor's match the memo word for word
+  - put the limits beside the claim in every other place the site says "four languages" or describes the system: the Education
+    landing and its learner and programme doors, the Book page, the estate card, Principles, Sovereignty, Editions (and the
+    enterprise offer: no adopter yet), the Tour (slide eyebrow and speaker notes), Born in Africa, Audiences; both languages
+  - replaced "149 promises in the English edition" and "eleven guards" by the sheet's figures (60 editions, 249 assertions; 14 guards, 716
+    assertions), and the tour's "three minutes twenty-two" by what this machine measured, three minutes thirty-seven
+  - FOUND AND FIXED a falsehood of the site's own: the reader page, built on 2026-10-03, carried none of the draft notices the library
+    added later, while the Book page said it did. Rebuilt it from the library: 15 chapters in four languages and 3 world pages all ran
+    green. Removing the 54 notices (18 units x 3 languages, each in its own language) returns the old page byte for byte
+  - checked: 0 failures on the example blocks, 0 dangling links, the word sweep clean but for the course in reader.html
+    (STZLIB-COURSE-WORD-01); looked at most of the English page and the top of the French one on a render
+
+state:
+  education-record: built, fr and en; live once pushed
+  the three limits: 0 of 35 units reviewed in fr, ar and ha; cells run on the desktop only; no institution has adopted it -- each beside every claim
+  not re-measured by the site: the 14 guards (about twenty minutes), the 716 assertions, the 20 demo claims; the page says so
+  one number did not reproduce: the reader builds in 217 s here, the sheet says about 100 s; a different machine under load, not a defect, and the page quotes the sheet only for its own run
+  perception-gate:   OPEN (nobody but the agent has read the page; the Arabic and Hausa notices are only counted)
+
+waiting:
+  - EDU-ATLAS-01: the Atlas rating of the Learning System -> compass [not mine; the site's Atlas is unchanged]
+  - STZSITE-PIN-01: the worktree the site used to pin the library for its runs, D:\GitHub\_wts at 0e72e2e2c, is now the security desk's
+             (security/week1), so the pin no longer holds; today's runs went to the education worktree, read-only
+             -> Central or the author, who own worktrees [not routed; in CONCLUSIONS now]
+  - STZLIB-DOCREFORM-01: the documentation session has not reported [routed]
+
+next:
+  - me:      push, verify the new page and the rebuilt reader live
+  - author:  read Learn > Education > What is proved, and what is not, and say whether the limits sit where a reader meets the claim
+  - stzlib-education: nothing is owed; every figure that was checked matched
+```

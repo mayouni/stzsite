@@ -13,7 +13,7 @@ description: Les douze principes de Softanza, chacun en une phrase.
 <div class="card"><h3>4 · Des agents qui ne peuvent pas nuire</h3><p>Un modèle propose ; un atelier répète ; un tribunal juge ; seul un acteur gouverné commet.</p></div>
 <div class="card"><h3>5 · La connaissance de votre monde</h3><p>Softanza connaît votre monde, et non les faits du monde en général : ses entités, ses règles, ses acteurs et ses flux, déclarés en texte brut.</p></div>
 <div class="card"><h3>6 · Un code qui se lit</h3><p>L'humain est l'analyseur : trouver d'abord, agir ensuite ; les noms sont des verbes ; une instruction en langue naturelle s'exécute.</p></div>
-<div class="card"><h3>7 · Dans votre langue</h3><p>Le cours parle anglais, français, arabe et haoussa ; le moteur compte des lettres, pas des octets ; la même instruction s'exécute dans les quatre langues.</p></div>
+<div class="card"><h3>7 · Dans votre langue</h3><p>Le cours a quatre éditions, anglais, français, arabe et haoussa, les trois dernières encore des brouillons (<a href="education-record.html#limits">0 unité sur 35 relue</a>) ; le moteur compte des lettres, pas des octets ; la même instruction s'exécute dans les quatre langues.</p></div>
 <div class="card"><h3>8 · Exact par défaut</h3><p>Un entier est exact à toute taille ; un décimal dit qu'il est décimal ; l'algèbre est prouvée contre un oracle.</p></div>
 <div class="card"><h3>9 · Honnête par conception</h3><p>L'Atlas montre les notes basses à côté des hautes ; chaque produit porte son stade ; aucun chiffre sans fichier.</p></div>
 <div class="card"><h3>10 · Souveraine par construction</h3><p>Rien que quiconque puisse retirer : un verdict par dépendance, du texte brut que vous gardez, une machine que vous déclarez.</p></div>

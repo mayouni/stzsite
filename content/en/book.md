@@ -2,7 +2,7 @@
 title: The book
 title_html: The interactive <i>book</i>
 kicker: Step 2 of 3 · fifteen chapters, four languages
-lede: The Elementary Introduction is a course of fifteen chapters, in English, French, Arabic and Hausa. It is read in **the reader**, a page of this site built by running every cell of every chapter in every language: the build is red if one cell fails or one exercise's promise is not kept.
+lede: The Elementary Introduction is a course of fifteen chapters, in English, French, Arabic and Hausa. The last three are drafts: no native speaker has reviewed any of their 35 units yet. It is read in **the reader**, a page of this site built by running every cell of every chapter in every language: the build is red if one cell fails or one exercise's promise is not kept.
 description: The Softanza interactive book: fifteen chapters in English, French, Arabic and Hausa, every cell run.
 ---
 
@@ -14,10 +14,10 @@ description: The Softanza interactive book: fifteen chapters in English, French,
 <div class="figure"><b>15 × 4</b><span>chapters × languages, the Elementary Introduction</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters">chapters/</a></div>
 <div class="figure"><b>15 × 4</b><span>chapters × languages, the mathematics course</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/education/program/courses/math/chapters">math/chapters/</a></div>
 <div class="figure"><b>3</b><span>teaching worlds: the restaurant, the cooperative, the school</span></div>
-<div class="figure"><b>11</b><span>guards that judge the learning system itself</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/test/education">test/education</a></div>
+<div class="figure"><b>14</b><span>guards that judge the learning system itself, 716 assertions, run by the module's authors</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/test/education">test/education</a></div>
 </div>
 
-The same chapter opens with the same sentence in the four languages, and the same cell runs in each. The French, Arabic and Hausa editions carry the note that they await review by a native speaker: it is written on the page, not hidden.
+The same chapter opens with the same sentence in the four languages, and the same cell runs in each. The French, Arabic and Hausa editions carry, on every chapter and world page, a note in their own language that they await review by a native speaker: 0 of 35 units have been reviewed (<a href="education-record.html#limits">the record</a>). It is written on the page, not hidden.
 
 <div class="pair">
 <div><h4>Hausa · Nemo, sannan ka aiwatar</h4><p>Kowane wurin aiki yana karɓar buƙatu: gidan abinci yana karɓar oda, banki yana karɓar tikiti, kuma buƙata ɗaya takan zo fiye da sau ɗaya.</p><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])

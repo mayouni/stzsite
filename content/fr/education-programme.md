@@ -41,7 +41,7 @@ Une cohorte est un dossier d'apprenants qui suivent un cours sous une surcouche.
 
 ## Les langues {#languages}
 
-Le cours tourne en anglais, en français, en arabe (écrit de droite à gauche) et en haoussa, dès la première page ; le garde de chaque chapitre s'exécute dans les quatre, et une traduction manquante est un garde en échec, pas un repli sur l'anglais. Les éditions française, arabe et haoussa sont des brouillons qui attendent leurs relecteurs natifs, et chaque page le dit. Une cinquième langue est un paquet de données seulement, et les mots propres de l'institution vont dans sa surcouche.
+Le cours tourne en anglais, en français, en arabe (écrit de droite à gauche) et en haoussa, dès la première page ; le garde de chaque chapitre s'exécute dans les quatre, et une traduction manquante est un garde en échec, pas un repli sur l'anglais. Les éditions française, arabe et haoussa sont des brouillons qui attendent leurs relecteurs natifs (<a href="education-record.html#limits">0 unité sur 35 relue</a>), et chaque chapitre et chaque page de monde traduits le disent. Une cinquième langue est un paquet de données seulement, et les mots propres de l'institution vont dans sa surcouche.
 
 ## L'IA gouvernée pour les apprenants {#governed}
 
@@ -66,4 +66,4 @@ Le guide du présentateur donne une scène par minute, tourne sur un seul ordina
 
 ## Ce qu'une institution doit savoir avant de commencer {#honest}
 
-Le lecteur interactif tourne sur le bureau ; un exécutant navigateur pour les cellules n'est pas encore construit, et la page le dit sur chaque cellule. Les éditions française, arabe et haoussa attendent des relecteurs natifs ; le zarma n'est pas encore une langue du cours. Il n'y a aucun modèle de langage dans la boucle et aucun n'est requis : on pourra en ajouter un plus tard comme option, jamais comme l'esprit du tuteur.
+Le lecteur interactif tourne sur le bureau ; un exécutant navigateur pour les cellules n'est pas encore construit, et la page le dit sur chaque cellule. Les éditions française, arabe et haoussa attendent des relecteurs natifs (0 unité sur 35 relue) ; le zarma n'est pas encore une langue du cours. Aucune institution n'a encore adopté le système : les surcouches de la banque et de l'université dans la bibliothèque sont des références écrites pour montrer ce qu'est une surcouche. Le tuteur est fondé sur des règles, pas une IA. Il n'y a aucun modèle de langage dans la boucle et aucun n'est requis : on pourra en ajouter un plus tard comme option, jamais comme l'esprit du tuteur.
