@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conversations · Softanza</title>
+<meta name="description" content="Conversations as a first-class interface in Softanza: the governed conversation that exists, the text-message cost law run in the library, and the messaging channels, sessions and templates that are designed or absent.">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../assets/img/mark-180.png">
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-conversations">
+<a class="skip" href="#main">Skip to content</a>
+<div class="brandrow"><a class="brand" href="../index.html?lang=en" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="tour.html" aria-label="Present the site as a slideshow" title="Present the site as a slideshow"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="The Softanza repository on GitHub" title="The Softanza repository on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../fr/conversations.html" lang="fr" hreflang="fr">Français</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../index.html?lang=en" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Main menu"><a href="platform.html" aria-current=page>Platform</a><a href="compare.html">Compared</a><a href="narrations.html">Narrations</a><a href="vision.html">Vision</a><a href="agentic.html">Agentic</a><a href="learn.html">Learn</a><a href="offering.html">Offering</a><a href="start.html">Start</a></nav>
+    <div class="tools"><a class="present" href="tour.html" aria-label="Present the site as a slideshow" title="Present the site as a slideshow"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="The Softanza repository on GitHub" title="The Softanza repository on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../fr/conversations.html" lang="fr" hreflang="fr">Français</a></div>
+  </div>
+  <nav class="path" aria-label="Pages of the section"><div class="path-in"><a href="platform.html">Platform</a><a href="platforms.html" aria-current=page>Platform of platforms</a><a href="architecture.html">Architecture</a><a href="craft.html">The craft</a><a href="areas.html">The areas</a><a href="code.html">The code</a></div></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Platform of platforms"><div class="l2-in"><div class="l2-group"><ul><li><a href="platforms.html">Platform of platforms</a></li><li><a href="conversations.html" aria-current=page>Conversations</a></li><li><a href="environment.html">The environment</a></li><li><a href="polyglot.html">Seven languages, one door</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">A direction, with its stages</div>
+    <h1><i>Conversations</i></h1>
+    <p class="lede">Your users keep their medium. A world declared once could reach them in the messaging app on their phone, in a text menu on any phone, or by voice, with the same court judging every sentence. This page says what exists for that, what is designed, and what is absent.</p>
+  </div></section>
+  <div class="wrap page-body">
+<h2 id="why">Why</h2>
+<p>Messaging is a gap twice: as a computational unit, the message, and as a medium, the app a person already uses. The people Softanza serves already have a medium. A restaurant owner's tools were his memory, a paper notebook, a spreadsheet and some apps, among them a messaging app, and his requirement was an interface in French, simple as a messaging app, never more than two gestures. The first demonstration of that project ran on a real phone, by the owner himself, over a messaging app, in August 2026.</p>
+<p>The aim is conversations that happen programmatically by default, so that a designer has them as a first-class interface and does not oblige users to change their habits.</p>
+<h2 id="built">What exists</h2>
+<div class="cards">
+<div class="card"><h3>The governed conversation <b>(built)</b></h3><p>A multi-turn exchange with state, inside a knowledge space. The gap between the shape the knowledge needs and what it holds generates the next question. The floor is deterministic and needs no model. It runs on the <a href="wise.html">wise coding page</a>.</p></div>
+<div class="card"><h3>The transcript and the goal <b>(built)</b></h3><p>Every line has a speaker, a text and a certainty. A goal is the gap that generates the questions.</p></div>
+<div class="card"><h3>Ports with sandboxes <b>(built)</b></h3><p>A text-message port is any object that can send a number and a text. Its sandbox records what would have been sent and delivers nothing, so the outbox becomes something a test can assert on. The mail port is the same shape.</p></div>
+<div class="card"><h3>A registry that refuses a fake <b>(built)</b></h3><p>A service is declared, a sandbox is bound to it while developing, the live service at deployment, and production refuses the fake.</p></div>
+<div class="card"><h3>Natural language and voice <b>(built)</b></h3><p>The natural layer reads English, French, Arabic, Hausa and Turkish. Speech synthesis exists in the engine.</p></div>
+</div>
+
+<h2 id="bill">The bill, run</h2>
+<p>A text message is billed per segment, and the segment count is not the character count: it depends on the alphabet. The sandbox counts the bill and names the encoding, so a defect that hides in a template shows up before a campaign is paid for.</p>
+<p style="margin-top:32px"><b>The honesty figure: a text message is billed per segment, and one emoji added to a message of 100 characters doubles its cost, as does Arabic past 70 letters. The sandbox counts the bill before any subscription exists.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>cAdded = StzRepeatStr(&quot;a&quot;, 100) + StzUnicodeToChar(128512)
+# 100 plain characters
+? StzSmsSegments(StzRepeatStr(&quot;a&quot;, 100))[:segments]
+# the same message with one emoji added
+? StzSmsSegments(cAdded)[:segments]
+? StzSmsSegments(cAdded)[:encoding]
+# 71 Arabic letters
+? StzSmsSegments(StzRepeatStr(StzUnicodeToChar(1605), 71))[:segments]</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+2
+ucs2
+2</pre></div></div><p class="ran">run on 2026-10-09 00:32 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/system/sms_port_narrated.ring" target="_blank" rel="noopener noreferrer">base/test/system/sms_port_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
+
+<h2 id="bridge">The bridge</h2>
+<p>The interface law of this site states that its grammar is closed: a new medium adds renderings, never verbs. A conversation renders the same verbs the interface has. To discover is a menu. To select is "reply 2". To confirm is "reply YES". To undo is "reply CANCEL". To scroll is "reply MORE". A messaging thread, a text-menu screen and a voice prompt are media, and a world declared once would project to them as it projects to the web and the phone.</p>
+<div class="cards">
+<div class="card"><h3>The commons service <b>(designed)</b></h3><p>The constellation's design lists messaging among the commons: identity, ledger, payments, messaging. It is one line in a design, and no code carries the word yet.</p></div>
+<div class="card"><h3>A facet per medium <b>(designed)</b></h3><p>Each medium is a target of the world, with a matrix as its court: a verb a medium cannot render is a red cell that demands a fallback, never a silent omission.</p></div>
+<div class="card"><h3>The court of what is said <b>(designed)</b></h3><p>Approved templates as a closed grammar, an agent allowed to emit only admitted sentences, and the transcript kept as evidence in the ledger.</p></div>
+</div>
+
+<h2 id="absent">What is absent</h2>
+<ul>
+<li>The message as a unit: its parts, its reply, its medium, its status.</li>
+<li>The channel ports and their sandboxes for a messaging app, a text menu on any phone, voice and web chat. A text menu is a session of short screens with a timeout, which a text message is not.</li>
+<li>A session with its window and its timeout as states, consent as data, and approved templates.</li>
+<li>Speech to text and telephony.</li>
+<li>Zarma and Fulfulde in the natural layer.</li>
+</ul>
+<p class="proof"><b>in construction</b> No conversational medium is a target today: the application layer targets the mobile, the desktop and the web. This page is a direction and says so. The inventory was read from the library's files by an outside assessment on 2026-10-07 and counted by name; only the text-message cost law above was run.</p>
+
+<p class="proof">Sources: the scenario guard <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/system/sms_port_narrated.ring" target="_blank" rel="noopener noreferrer">sms_port_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a>; the conversation on the <a href="wise.html">wise coding page</a>; the constellation on <a href="platforms.html">the platform of platforms page</a>.</p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Platform</h3><ul><li><a href="platform.html">Platform</a></li><li><a href="platforms.html">Platform of platforms</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="craft.html">The craft</a></li><li><a href="areas.html">The areas</a></li><li><a href="code.html">The code</a></li></ul></div><div><h3>Compared</h3><ul><li><a href="compare.html">Compared</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="narrations.html">Narrations</a></li><li><a href="narrations-performance.html">Performance series</a></li><li><a href="narrations-security.html">Security series</a></li><li><a href="narrations-delivery.html">Delivery series</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="vision.html">The north star</a></li><li><a href="principles.html">Twelve principles</a></li><li><a href="estate.html">The estate</a></li><li><a href="history.html">From first principles</a></li><li><a href="forged.html">Forged in projects</a></li><li><a href="sovereignty.html">Sovereignty</a></li><li><a href="africa.html">Born in Africa</a></li></ul></div><div><h3>Agentic</h3><ul><li><a href="agentic.html">Agentic</a></li><li><a href="wise.html">Wise coding</a></li><li><a href="languages.html">Language of languages</a></li><li><a href="zui.html">Zui</a></li><li><a href="refinement.html">Refinement</a></li><li><a href="agents.html">For agents</a></li><li><a href="coding-agents.html">Coding agents</a></li><li><a href="security.html">Security</a></li></ul></div><div><h3>Learn</h3><ul><li><a href="learn.html">Learn</a></li><li><a href="book.html">The book</a></li><li><a href="docs.html">Documentation</a></li><li><a href="howto.html">How-to</a></li><li><a href="reference.html">Reference</a></li><li><a href="ask.html">Ask the library</a></li><li><a href="education.html">Education</a></li></ul></div><div><h3>Offering</h3><ul><li><a href="offering.html">Audiences</a></li><li><a href="journeys.html">Journeys</a></li><li><a href="editions.html">Editions</a></li><li><a href="customers.html">Customers</a></li></ul></div><div><h3>Start</h3><ul><li><a href="start.html">Start</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">The repository on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></li><li><a href="tour.html">Presentation mode</a></li><li><a href="../deck-check.html">Check offline</a></li><li><a href="../index.html?lang=fr" lang="fr">Français</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../index.html" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">The Software Crafters Platform of the AI Age. Born in Africa. Useful to the World!</p><div class="themes" role="group" aria-label="Display"><button type="button" data-set-theme="light">Use the light theme</button><button type="button" data-set-theme="dark">Use the dark theme</button><button type="button" data-set-theme="auto">Follow the system</button></div></div>
+    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-09.</p></div>
+  </div>
+</div></footer>
+<script src="../assets/js/site.js"></script><script src="../assets/js/search-core.js"></script><script src="../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

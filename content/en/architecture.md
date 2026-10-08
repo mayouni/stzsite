@@ -16,6 +16,24 @@ Softanza speaks one vocabulary at three depths. Core holds the lean essentials, 
 
 The same question gets the same verb at both depths; base simply knows more ways to ask it.
 
+## Which layer do I load {#which}
+
+The three layers are the architecture's one dependency rule, applied to depth of capability and not to concern. A solution is placed at the layer that is enough and not higher, so it embeds only what it uses. Core is for small devices and lean binaries: system artefacts and simple features at the minimum load. Base holds the basic features, with Softanza's gymnastics and stylistic innovations, enough for most requirements. Max holds the strong innovations. A layer is a folder, a prefix, an entry file and a set of libraries, with no ceremony of adapters.
+
+<div class="cards">
+<div class="card"><h3>A device, or a lean binary</h3><p>Load <b>core</b>. At the commit read for this page it is broken: two of its classes call twelve engine names that no engine file registers, and nine test files guard it where base has more than five thousand. Reported to the library.</p></div>
+<div class="card"><h3>Most solutions</h3><p>Load <b>base</b>. It is the whole platform, and everything else on this site describes it.</p></div>
+<div class="card"><h3>Walkers, big numbers, multilingual strings, the test framework</h3><p>Load <b>max</b>, which is what max actually holds. Its prefix is a minority: most of its classes still carry the base prefix.</p></div>
+</div>
+
+The convention is a name: <code>stkString</code> in core, <code>stzString</code> in base, <code>stxString</code> in max. In practice base does not inherit core. <code>stzString</code> inherits the library's root object, core carries a parallel hierarchy of its own, and the seven domains they share are implemented twice over the same engine. One vocabulary at three depths is true of the names and of the loading, and it is not true of the inheritance.
+
+At the build, the goal is one library per engine domain and not per class: a client that needs only string operations loads only the string library. That holds in the engine today, and for the web a group list is fixed at compile time, so an unused group is not in the compilation at all; measured on one solution, the full edge is 12.5 KB and the kiosk 8.6 KB. A loader that brings one domain of base without the others, and a third set of libraries for max, are directions and not built.
+
+<p class="way"><span>The Softanza way</span> A layer is chosen by the file that is loaded. A switch flag was tried and removed: the load directive pulls in every file it sees whatever the branch, so a flag that silently does nothing is the part that misleads. A mechanism that could not keep the rule was replaced by one that cannot break it, and the reason was written where the next reader stands.</p>
+
+<p class="proof"><b>in construction</b> Under the pressure of time everything went into base while the engine, the planes and the customers advanced. Base holds 93.2 per cent of the lines of the three layers and 44 domain folders where the contract placed 23. The project's method, to deliver small and let the foundations mature without blocking a delivery, makes that defensible exactly as long as the debt is visible; a folder for what is not yet placed, with a promotion path, is that method as a mechanism. No document names the re-layering yet, and which classes belong in max is the author's decision. The counts were read from the files at library commit 93d7a39 by an outside assessment on 2026-10-07; nothing was run.</p>
+
 ## The engine beneath {#engine}
 
 Beneath the three layers is one engine, written in Zig and compiled to machine code: 89 modules built from 401 source files, four for core and 85 for base. Each module has two doors. One is a plain C interface of 752 functions, which any language able to call C can use. The other is the face the library calls, with 2,652 functions registered for it. When the library loads, it opens each module and picks the right file for the system it runs on.

@@ -886,5 +886,65 @@
    "what_en": "What exists today: the library finds a method from the words of a need, with no model. Finding it from an example of the need is the next step, not built.",
    "what_fr": "Ce qui existe aujourd'hui : la bibliothèque trouve une méthode à partir des mots d'un besoin, sans modèle. La trouver à partir d'un exemple du besoin est l'étape suivante, pas encore construite."
   }
+ ],
+ "goals": [
+  {
+   "code": "o1 = new stzList(L(' \"♥1\" : \"♥3\" '))\n# the passive form returns a copy and keeps the original\n? @@( o1.ItemsReversed() )\n? @@( o1.Content() )\n# the active form changes the list itself\no1.Reverse()\n? @@( o1.Content() )\n# the fluent form changes it and lets the sentence go on\no1 = new stzList(L(' \"♥1\" : \"♥3\" '))\n? o1.ReverseQ().ToStzListOfStrings().ConcatenatedUsing(\"~\")",
+   "expected": "[ \"♥3\", \"♥2\", \"♥1\" ]\n[ \"♥1\", \"♥2\", \"♥3\" ]\n[ \"♥3\", \"♥2\", \"♥1\" ]\n♥3~♥2~♥1",
+   "source": "base/test/list/69_understanding_the_ed_and_q_function_forms.ring",
+   "what_en": "Expressiveness: one verb in three forms, each saying what happens to the list.",
+   "what_fr": "Expressivité : un verbe sous trois formes, chacune disant ce qui arrive à la liste."
+  },
+  {
+   "code": "o1 = new stzList([ \"arem\", \"mohsen\", \"AREM\" ])\n? o1.FindNth(2, \"arem\")\n? o1.FindNthCS(2, \"arem\", :CS = FALSE)",
+   "expected": "0\n3",
+   "source": "base/test/list/372_findall.ring",
+   "what_en": "Flexibility: a suffix adds one dial to the same verb, here the case.",
+   "what_fr": "Flexibilité : un suffixe ajoute un réglage au même verbe, ici la casse."
+  },
+  {
+   "code": "? Q(\"سلام ♥\").NumberOfChars()\n? Q(\"Niamey ♥\").NumberOfChars()\n? Q(\"字符数\").NumberOfChars()",
+   "expected": "6\n8\n3",
+   "source": "base/doc/narrations/stz-functions-as-linguistic-expressions.md",
+   "what_en": "Reliability: a length counts characters in Arabic, Latin and Chinese, not the bytes each takes.",
+   "what_fr": "Fiabilité : une longueur compte des caractères en arabe, en latin et en chinois, pas les octets que chacun occupe."
+  },
+  {
+   "code": "? Q(\"tea, rice\").FindFirst(\"rice\")\n? Q([ \"tea\", \"rice\" ]).FindFirst(\"rice\")",
+   "expected": "6\n2",
+   "source": "base/doc/narrations/stz-mental-mode-narration.md",
+   "what_en": "Consistency: the same verb finds a piece in a string and in a list; the answer is a position in both.",
+   "what_fr": "Cohérence : le même verbe trouve un morceau dans une chaîne et dans une liste ; la réponse est une position dans les deux."
+  },
+  {
+   "code": "oY = new stzYielder([ 12, 0, 30, -5, 18 ])\n? @@( oY.Filter(:IsPositive) )\n? @@( oY.Map(:Double) )\n? oY.Reduce(:Sum)",
+   "expected": "[ 12, 30, 18 ]\n[ 24, 0, 60, -10, 36 ]\n55",
+   "source": "base/education/program/courses/elementary-introduction/chapters/06-walk-ask-produce-act.en.md",
+   "what_en": "Human-centric metaphors: the yielder filters, transforms and reduces, three moves with their own names.",
+   "what_fr": "Métaphores centrées sur l'humain : le producteur filtre, transforme et réduit, trois gestes qui portent leur nom."
+  },
+  {
+   "code": "o = new stzList([ 4, 7, 10, 3, 8 ])\n? @@( o.FindW(\"{ @item > 5 }\") )\n? @@( o.ItemsW(\"{ @item > 5 }\") )\n? o.CountW(\"{ @item > 5 }\")",
+   "expected": "[ 2, 3, 5 ]\n[ 7, 10, 8 ]\n3",
+   "source": "base/education/program/courses/elementary-introduction/chapters/07-declare-what-not-how.en.md",
+   "what_en": "Practical abstractions: a condition travels as a short text and the engine compiles it.",
+   "what_fr": "Abstractions pratiques : une condition voyage comme un court texte et le moteur la compile."
+  },
+  {
+   "code": "try\n\tStzRaise([ :Where = \"Greeting()\", :What = \"no name was given\", :Why = \"a greeting needs someone to greet\", :Todo = \"pass the name as the first parameter\" ])\ncatch\n\t? cCatchError\ndone",
+   "expected": "",
+   "source": "base/test/string/593_stzraise.ring",
+   "what_en": "Manageability: an error says where it happened, what, why, and what to do about it.",
+   "what_fr": "Gouvernabilité : une erreur dit où elle s'est produite, quoi, pourquoi, et que faire."
+  }
+ ],
+ "conversations": [
+  {
+   "code": "cAdded = StzRepeatStr(\"a\", 100) + StzUnicodeToChar(128512)\n# 100 plain characters\n? StzSmsSegments(StzRepeatStr(\"a\", 100))[:segments]\n# the same message with one emoji added\n? StzSmsSegments(cAdded)[:segments]\n? StzSmsSegments(cAdded)[:encoding]\n# 71 Arabic letters\n? StzSmsSegments(StzRepeatStr(StzUnicodeToChar(1605), 71))[:segments]",
+   "expected": "1\n2\nucs2\n2",
+   "source": "base/test/system/sms_port_narrated.ring",
+   "what_en": "The honesty figure: a text message is billed per segment, and one emoji added to a message of 100 characters doubles its cost, as does Arabic past 70 letters. The sandbox counts the bill before any subscription exists.",
+   "what_fr": "Le chiffre d'honnêteté : un SMS se facture par segment, et un seul émoji ajouté à un message de 100 caractères double son coût, comme l'arabe au-delà de 70 lettres. Le bac à sable compte la facture avant qu'aucun abonnement n'existe."
+  }
  ]
 }

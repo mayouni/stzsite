@@ -2,7 +2,7 @@
 title: Audiences
 title_html: Pour <i>qui</i>
 kicker: Six portes, une seule histoire
-lede: Softanza raconte une seule histoire à six sortes d'artisans du logiciel. Chaque porte ci-dessous dit ce que ce lecteur déclare et ce qu'il obtient, et montre un exemple exécuté le soir de la publication.
+lede: Softanza raconte une seule histoire à six sortes d'artisans du logiciel, et chaque porte mène à un parcours, avec un neuvième, <a href="journey-architect.html">celui de l'architecte de plateforme</a>, à leurs côtés. Chaque porte ci-dessous dit ce que ce lecteur déclare et ce qu'il obtient, et montre un exemple exécuté le soir de la publication.
 description: Les six publics de Softanza, du programmeur à l'agent : ce que chacun déclare et obtient, avec un vrai exemple.
 ---
 
@@ -16,7 +16,7 @@ Un artisan du logiciel transforme ce qu'il sait d'un monde en quelque chose qui 
 <div class="kicker">Porte 1</div>
 ### Programmeur ou programmeuse, seul·e ou en petite équipe
 
-**Ce que vous déclarez :** votre intention, dans une bibliothèque qui se lit comme une phrase : on trouve d'abord, on agit ensuite. **Ce que vous obtenez :** un moteur Zig sous chaque appel, correct en Unicode, et des narrations qui racontent ses idées en code. **Où commencer :** la page Démarrer, puis le chapitre 1 du cours.
+**Ce que vous déclarez :** votre intention, dans une bibliothèque qui se lit comme une phrase : on trouve d'abord, on agit ensuite. **Ce que vous obtenez :** un moteur Zig sous chaque appel, correct en Unicode, et des narrations qui racontent ses idées en code. **Où commencer :** la page Démarrer, puis le chapitre 1 du cours. **Le parcours :** <a href="journey-programmer.html">Le parcours du programmeur</a>.
 
 <div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
 ? o1.ContainsDuplicates()
@@ -33,7 +33,7 @@ Un artisan du logiciel transforme ce qu'il sait d'un monde en quelque chose qui 
 <div class="kicker">Porte 2</div>
 ### Analyste fonctionnel ou data
 
-**Ce que vous déclarez :** les entités, les règles et les flux de votre organisation, dans un fichier de connaissance en texte brut. **Ce que vous obtenez :** un monde interrogeable, où le graphe des dépendances et la table des symboles sont le même graphe, plus des tables et des statistiques calculées par le moteur. **Où commencer :** le chapitre 12 du cours, « Enseigner un monde », dans [le lecteur](../reader.html).
+**Ce que vous déclarez :** les entités, les règles et les flux de votre organisation, dans un fichier de connaissance en texte brut. **Ce que vous obtenez :** un monde interrogeable, où le graphe des dépendances et la table des symboles sont le même graphe, plus des tables et des statistiques calculées par le moteur. **Où commencer :** le chapitre 12 du cours, « Enseigner un monde », dans [le lecteur](../reader.html). **Le parcours :** <a href="journey-dataanalyst.html">Le parcours de l'analyste de données</a> ; <a href="journey-analyst.html">celui de l'analyste</a>.
 
 <div class="run"><div><div class="lbl">Softanza</div><pre>o = new stzTable([ [ :region, :population ],
     [ "Agadez", 487620 ], [ "Maradi", 3402094 ], [ "Zinder", 3539764 ] ])
@@ -51,7 +51,7 @@ o.Show()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>╭──
 <div class="kicker">Porte 3</div>
 ### Designer UI, UX, CX
 
-**Ce que vous déclarez :** une image, une carte, un écran, comme un programme. **Ce que vous obtenez :** un rendu produit par le moteur, reproductible à l'octet, et une constitution des interfaces de 122 règles et 22 verbes qu'une machine peut vérifier. **Où commencer :** le chapitre 11 du cours, « Dessiner la réponse », et la constitution Zui.
+**Ce que vous déclarez :** une image, une carte, un écran, comme un programme. **Ce que vous obtenez :** un rendu produit par le moteur, reproductible à l'octet, et une constitution des interfaces de 122 règles et 22 verbes qu'une machine peut vérifier. **Où commencer :** le chapitre 11 du cours, « Dessiner la réponse », et la constitution Zui. **Le parcours :** <a href="journey-analyst.html">Le parcours de l'analyste et du concepteur</a>.
 
 <figure><img src="../assets/img/areas/graphics.webp" alt="Une image rendue par le moteur pour le domaine du graphisme." width="1100" height="660"><figcaption>Une des vingt-huit images de la page Plateforme, chacune produite par la plateforme elle-même ; la carte du Niger sur la page Vision en est une autre.</figcaption></figure>
 </div>
@@ -60,7 +60,7 @@ o.Show()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>╭──
 <div class="kicker">Porte 4</div>
 ### CTO, gouvernement, startup, entreprise
 
-**Ce que vous déclarez :** votre monde, votre gouvernance, et ce que chaque acteur, humain ou agent, peut commettre. **Ce que vous obtenez :** des agents qui ne peuvent pas vous nuire, un modèle de menace de trente-huit garanties avec leurs gardes, un confinement mesuré, et la propriété de tout : code, configuration, données, en texte brut. **Où commencer :** le paradigme agentique, puis [les éditions ci-dessous](editions.html#editions).
+**Ce que vous déclarez :** votre monde, votre gouvernance, et ce que chaque acteur, humain ou agent, peut commettre. **Ce que vous obtenez :** des agents qui ne peuvent pas vous nuire, un modèle de menace de trente-huit garanties avec leurs gardes, un confinement mesuré, et la propriété de tout : code, configuration, données, en texte brut. **Où commencer :** le paradigme agentique, puis [les éditions ci-dessous](editions.html#editions). **Le parcours :** <a href="journey-leader.html">Le parcours du responsable technique</a> ; <a href="journey-architect.html">celui de l'architecte de plateforme</a>.
 
 <div class="run"><div><div class="lbl">Un analyste de banque déclare un agent</div><pre>A bank analyst declares a stock-watcher agent,
 first without saying what it covers:
@@ -78,7 +78,7 @@ TOTAL: 27 assertions, 27 pass, 0 fail</pre></div></div>
 <div class="kicker">Porte 5</div>
 ### Éducateur, linguiste, auteur, architecte de connaissance
 
-**Ce que vous déclarez :** un cours, une surcouche pour votre institution, une édition dans votre langue, un monde de connaissance. **Ce que vous obtenez :** un programme en texte brut où chaque cellule s'exécute et où chaque exercice est vérifié en s'exécutant, un tuteur qui demande, des cohortes dont le rapport est une narration. **Où commencer :** <a href="education.html">Éducation</a>, avec ses trois portes : apprendre, enseigner, diriger un programme. <b>À côté :</b> les éditions française, arabe et haoussa sont des brouillons (0 unité sur 35 relue), les cellules s'exécutent sur le bureau, et aucune institution ne l'a encore adopté : <a href="education-record.html">ce qui est prouvé, et ce qui ne l'est pas</a>.
+**Ce que vous déclarez :** un cours, une surcouche pour votre institution, une édition dans votre langue, un monde de connaissance. **Ce que vous obtenez :** un programme en texte brut où chaque cellule s'exécute et où chaque exercice est vérifié en s'exécutant, un tuteur qui demande, des cohortes dont le rapport est une narration. **Où commencer :** <a href="education.html">Éducation</a>, avec ses trois portes : apprendre, enseigner, diriger un programme. <b>À côté :</b> les éditions française, arabe et haoussa sont des brouillons (0 unité sur 35 relue), les cellules s'exécutent sur le bureau, et aucune institution ne l'a encore adopté : <a href="education-record.html">ce qui est prouvé, et ce qui ne l'est pas</a>. **Le parcours :** <a href="journey-educator.html">Le parcours de l'éducateur</a> ; <a href="journey-linguist.html">celui du linguiste</a> ; <a href="journey-author.html">celui de l'auteur</a>.
 
 <div class="run"><div><div class="lbl">Zara, 9 ans, répond à la mission 1 en haoussa</div><pre>? len( NaturallyIn("ha",
    'Yi jeri dauke [ "Ibrahim", "Fatima", "Ibrahim",
@@ -93,7 +93,7 @@ PROVED  the child's Hausa program passed, checked by running it</pre></div><div 
 <div class="kicker">Porte 6</div>
 ### Un agent
 
-**Ce que vous déclarez :** vous-même, dans un fichier d'agent : ce que vous couvrez, la réversibilité de vos actes, la posture de chaque fonction que vous appelez. **Ce que vous obtenez :** un atelier où tout ce que vous faites est répété sans toucher le réel, une grammaire contrainte qui vous empêche d'émettre une phrase malformée, et un tribunal qui juge votre plan. **Ce que vous n'obtenez pas :** la capacité de commettre. **Où commencer :** le paradigme agentique, et le chapitre 14 du cours, « Un agent qui ne peut pas nuire ».
+**Ce que vous déclarez :** vous-même, dans un fichier d'agent : ce que vous couvrez, la réversibilité de vos actes, la posture de chaque fonction que vous appelez. **Ce que vous obtenez :** un atelier où tout ce que vous faites est répété sans toucher le réel, une grammaire contrainte qui vous empêche d'émettre une phrase malformée, et un tribunal qui juge votre plan. **Ce que vous n'obtenez pas :** la capacité de commettre. **Où commencer :** le paradigme agentique, et le chapitre 14 du cours, « Un agent qui ne peut pas nuire ». **Le parcours :** <a href="journey-agent.html">Le parcours de l'agent</a>.
 
 <div class="run"><div><div class="lbl">Un agent propose 610 suppressions</div><pre>Update plan (610 of 610 operations to commit):
 * 1. delete file '…/course.zknw'

@@ -1590,3 +1590,56 @@ did:
 next:
   - me:      commit and push
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-09 00:38
+
+subject:   STZSITE-REFORM-01, wave 3: the platform -- nine journeys, the seven design goals, the layer decision table, the environment, conversations, seven languages and one door, and Compared in the top menu
+
+why:       the author, "go ahead with wave 3"; the assessment's 12.8 to 12.11 and 12.18 to 12.21 and 12.24 found a method (the user flows), a skeleton (the goals), a dependency rule (the layers) and four directions that the library holds and the site does not tell
+
+did:
+  - declared the journeys once (data/journeys.json) and generated from it a hub and nine pages in two languages: the programmer, the educator,
+    the linguist and knowledge architect, the analyst and designer, the data analyst, the technical leader, the agent, the author and the
+    platform architect; every step carries its stage in the Estate page's own words and a page of this site that shows it; the Offering
+    page's six doors now link to their journeys and to the ninth
+  - made the platform architect's journey the page for the vertical: nine steps from the guarantee sheet to operating, four of them built
+    with guards, two built and only emulated, one a specification with two rungs built, one a name, one with no instance; it says so in
+    its own positioning sentence, and it does not use the word "architecture", which the library's layers page already owns
+  - added the layer decision table to the Architecture page: which layer to load, the naming convention, the fact that base does not
+    inherit core, the build goal with the two web sizes, the lesson of the entry files as a callout, and the debt in one paragraph
+    (93.2 per cent of the lines in base, 44 folders against 23 placed); the core's breakage is reported there as read, not asserted as current
+  - published "Seven design goals": the thirty-three features of the 2022 slide against their state today (24 built, 4 transformed, 2 changed
+    form, 1 partial, 1 archived, 1 a name only), one run per goal, and the decision owed on manageability, which is the author's
+  - published "The environment": the grammar six efforts converged on, the efforts with their stages (one ships, a listening bench), the two
+    shells with their named costs, and one sentence saying no environment of this family ships today
+  - published "Conversations" as a direction: what exists (the governed conversation, ports with sandboxes, the registry that refuses a fake),
+    the text-message cost law run in the library, what is designed, and what is absent; no conversational medium is a target today
+  - published "Seven languages, one door": the rationale as the spine, the two doors, the difference between a facet of Haro and a door to a
+    runtime, and the honest state of the door, with no run on the page because the door's own guards cannot say whether it works
+  - made Compared a section of the top menu beside The code, and gave it, in words, where the others lead on the nine rows where Softanza is
+    partial or absent, and the five rules by which the site compares; the area-level Compared block is not built (below)
+  - put the three new families in left bars: goals and the paradigms under Craft, conversations, environment and the door under the platform
+    of platforms, the journeys under Offering
+  - ran 8 new snippets in the library at 4a184e6f0 (clean before and after); FOUND on the way: the library counts a woman-technologist emoji
+    as four characters (its parts), not one; the page's Unicode run uses Arabic, Latin and Chinese, where a character is unambiguous
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,241 files, the former name in the code of 0 files, search 13 of 13, and
+    0 texts under the 16 px floor or under contrast on the new pages in both languages and both themes
+
+state:
+  gates:             all green, as above
+  not done, on purpose: the Compared block on each Atlas area (it needs a register of comparisons the library does not hold as data: B39),
+                     the Compared layer column per area, the business matrix on the polyglot page, the three screenshots of the environment
+                     (none exists on this machine), the Seven design goals run for each of the 33 features
+  perception-gate:   OPEN (the agent looked at the goals, compared, journey and architecture renders; the author has not)
+
+waiting:
+  - REFORM-RULING-01: D1, D2, D3 -> the author [asked 19:45, not answered]
+  - the register of comparisons as data (B39), the layer court (B19), the goals court (B16), the inheritance decision (B20), the journey
+    guard (B10), the door's promises made judgeable (B61), the messaging unit and channel (B46) -> stzlib [routed now in CONCLUSIONS]
+  - the manageability decision (revive the decorators or declare the class form final) -> the author [asked on the goals page]
+
+next:
+  - me:      wave 4 on the author's word
+  - author:  open the journeys from the Offering page, walk the architect's nine steps, and say whether the stage words are the ones you would put
+```

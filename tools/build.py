@@ -45,7 +45,8 @@ SECTIONS = [
      ("architecture", {"fr": "Architecture", "en": "Architecture"}),
      ("craft", {"fr": "Le métier", "en": "The craft"}),
      ("areas", {"fr": "Les domaines", "en": "The areas"}),
-     ("code", {"fr": "Le code", "en": "The code"}),
+     ("code", {"fr": "Le code", "en": "The code"})]),
+  ("compare", {"fr": "Comparée", "en": "Compared"}, [
      ("compare", {"fr": "Comparée", "en": "Compared"})]),
   ("narrations", {"fr": "Narrations", "en": "Narrations"}, [
      ("narrations", {"fr": "Narrations", "en": "Narrations"}),
@@ -79,6 +80,7 @@ SECTIONS = [
      ("education", {"fr": "Éducation", "en": "Education"})]),
   ("offering", {"fr": "Offre", "en": "Offering"}, [
      ("offering", {"fr": "Audiences", "en": "Audiences"}),
+     ("journeys", {"fr": "Parcours", "en": "Journeys"}),
      ("editions", {"fr": "Éditions", "en": "Editions"}),
      ("customers", {"fr": "Clients", "en": "Customers"})]),
   ("start", {"fr": "Démarrer", "en": "Start"}, [
@@ -90,14 +92,17 @@ SUBPAGES = {"education-self": "education", "education-teach": "education", "educ
 EDU_BAR = {"fr": ("Éducation", [("education", "Les trois portes"), ("education-self", "J'apprends seul"), ("education-teach", "J'enseigne ou je conçois"), ("education-programme", "Je dirige un programme"), ("education-record", "Ce qui est prouvé")]),
            "en": ("Education", [("education", "The three doors"), ("education-self", "I learn by myself"), ("education-teach", "I teach or design"), ("education-programme", "I run a programme"), ("education-record", "What is proved")])}
 # The Craft page is the style's page (12.12) and the paradigms that follow from it are its chapters, shown in the same left bar
-SUBPAGES.update({p: "craft" for p in ("way", "natural", "byexample", "softanzuter", "innovations")})
-CRAFT_BAR = {"fr": ("Comment Softanza s'écrit", [("craft", "Comment Softanza s'écrit"), ("way", "La manière Softanza"), ("natural", "Naturel, et exécutable"), ("byexample", "Par l'exemple"),
+SUBPAGES.update({p: "platforms" for p in ("conversations", "environment", "polyglot")})
+SUBPAGES.update({p: "craft" for p in ("goals", "way", "natural", "byexample", "softanzuter", "innovations")})
+CRAFT_BAR = {"fr": ("Comment Softanza s'écrit", [("craft", "Comment Softanza s'écrit"), ("goals", "Sept buts de conception"), ("way", "La manière Softanza"), ("natural", "Naturel, et exécutable"), ("byexample", "Par l'exemple"),
                                                     ("softanzuter", "Le Softanzuter"), ("innovations", "Les innovations")]),
-             "en": ("How Softanza is written", [("craft", "How Softanza is written"), ("way", "The Softanza way"), ("natural", "Natural, and executable"), ("byexample", "By example"),
+             "en": ("How Softanza is written", [("craft", "How Softanza is written"), ("goals", "Seven design goals"), ("way", "The Softanza way"), ("natural", "Natural, and executable"), ("byexample", "By example"),
                                                 ("softanzuter", "The Softanzuter"), ("innovations", "Innovations")])}
-BARS = {"education": EDU_BAR, "craft": CRAFT_BAR}
+PLATFORMS_BAR = {"fr": ("Plateforme de plateformes", [("platforms", "Plateforme de plateformes"), ("conversations", "Conversations"), ("environment", "L'environnement"), ("polyglot", "Sept langues, une porte")]),
+                 "en": ("Platform of platforms", [("platforms", "Platform of platforms"), ("conversations", "Conversations"), ("environment", "The environment"), ("polyglot", "Seven languages, one door")])}
+BARS = {"education": EDU_BAR, "craft": CRAFT_BAR, "platforms": PLATFORMS_BAR}
 OLD_PAGES = {"teaching": "education", "pedagogy": "education"}        # the old addresses lead to the new page
-GENERATED = {"reference", "narrations", "howto", "ask", "narrations-performance", "narrations-security", "narrations-delivery"}   # built by code, not from a .md
+GENERATED = {"reference", "narrations", "howto", "ask", "journeys", "narrations-performance", "narrations-security", "narrations-delivery"}   # built by code, not from a .md
 OWNER = {}                                          # page -> its section
 for sec, _, pages in SECTIONS:
     for slug, _ in pages: OWNER[slug] = sec
@@ -387,7 +392,7 @@ def inject(body_html, lang, idx, groups, rel="../"):
     body_html = body_html.replace("<!--METHODS-->", fmt(COUNTS["methods"])).replace("<!--CLASSES-->", fmt(COUNTS["classes"])).replace("<!--ENTRIES-->", fmt(COUNTS["entries"]))
     body_html = body_html.replace("<!--AREAS-->", fmap_html(lang, idx, groups, "atlas/") + tiles_html(lang, idx, groups, "atlas/", rel))
     body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
-    for tag, fn in (("RULES", rules_html), ("STEPS", steps_html), ("INNOVATIONS", innovations_html)):
+    for tag, fn in (("LEADS", leads_html), ("RULES", rules_html), ("STEPS", steps_html), ("INNOVATIONS", innovations_html), ("GOALS", goals_html)):
         if f"<!--{tag}-->" in body_html: body_html = body_html.replace(f"<!--{tag}-->", fn(lang))
     body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
     body_html = body_html.replace("<!--DOCS-SCOPE-->", scope_html(lang, idx, groups))
@@ -733,7 +738,7 @@ def evidence(lang, e):
     for a, b in EVIDENCE_FR: e = re.sub(a, b, e)
     return e
 
-PAGE_NAMES = {"softanzuter": {"fr": "Le Softanzuter", "en": "The Softanzuter"}, "natural": {"fr": "Naturel, et exécutable", "en": "Natural, and executable"},
+PAGE_NAMES = {"conversations": {"fr": "Conversations", "en": "Conversations"}, "environment": {"fr": "L'environnement", "en": "The environment"}, "polyglot": {"fr": "Sept langues, une porte", "en": "Seven languages, one door"}, "goals": {"fr": "Sept buts de conception", "en": "Seven design goals"}, "softanzuter": {"fr": "Le Softanzuter", "en": "The Softanzuter"}, "natural": {"fr": "Naturel, et exécutable", "en": "Natural, and executable"},
               "byexample": {"fr": "Par l'exemple", "en": "By example"}, "craft": {"fr": "Comment Softanza s'écrit", "en": "How Softanza is written"},
               "refinement": {"fr": "Raffinement", "en": "Refinement"}, "wise": {"fr": "Wise coding", "en": "Wise coding"}, "agentic": {"fr": "Agentique", "en": "Agentic"},
               "languages": {"fr": "Langue des langues", "en": "Language of languages"}, "ask": {"fr": "Interroger la bibliothèque", "en": "Ask the library"},
@@ -761,6 +766,115 @@ def innovations_html(lang):
                        f'<span class="rx-src">{ev} : {esc(evidence(lang, evid))}</span><br><span class="rx-src">{told} : </span>{tl}</li>')
         out.append(f'<h2>{esc(en if lang == "en" else fr)}</h2><ul class="narr research">{"".join(lis)}</ul>')
     return "".join(out)
+
+# ----------------------------------------------------------------------------
+# the journeys (data/journeys.json): who you are and what you are doing, with the anatomy underneath each step
+STAGE_FR = {"built": "construit", "in construction": "en construction", "designed": "conçu", "specification": "spécification", "named": "nommé"}
+STAGE_EN = {k: k for k in STAGE_FR}
+JOURNEY_UI = {
+  "fr": {"kicker": "Parcours", "hub_title": "Les parcours", "hub_title_html": "Les <i>parcours</i>",
+         "hub_lede": "Une bibliothèque se présente d'ordinaire par son anatomie. Softanza se présente aussi par ce que vous êtes et ce que vous faites : un parcours par personne, ses étapes dans l'ordre où elle les prend, et sous chaque étape la partie de Softanza qui la sert, son étape de construction et une page qui la montre.",
+         "hub_desc": "Neuf parcours, du programmeur à l'architecte de plateforme : pour chacun, des étapes dans l'ordre, la partie de Softanza qui sert chaque étape et son état.",
+         "stage_intro": "Chaque étape porte son état, avec les mots de la page Domaine : construit, en construction, spécification, conçu, nommé. Un parcours peut paraître avec des étapes qui ne sont pas construites ; il le dit à chaque pas.",
+         "focus_h": "Un focus, sans restriction", "focus": "Softanza sert n'importe quel besoin algorithmique, et l'Atlas en est la preuve d'étendue. Elle est mieux faite pour les domaines où ses couloirs sont forts, et ce focus est une mesure qui bouge avec la bibliothèque : les parcours s'appuient sur ces domaines, et l'Atlas garde les autres atteignables.",
+         "steps_h": "Les étapes", "start_h": "Par où commencer", "pos_h": "La phrase de positionnement", "back": "Tous les parcours", "see": "voir",
+         "doors_h": "Neuf parcours", "n_steps": "{n} étapes : {t}", "hub_p": "Les six portes de la page Audiences disent ce que chaque lecteur déclare et obtient ; les parcours disent comment il y va.",
+         "arch_h": "Le neuvième", "arch": "Le parcours de l'architecte de plateforme est celui qui traverse toute la verticale, de la machine à l'organisation. C'est celui dont dépend l'offre commerciale : le directeur technique achète auprès d'un architecte."},
+  "en": {"kicker": "Journey", "hub_title": "The journeys", "hub_title_html": "The <i>journeys</i>",
+         "hub_lede": "A library is usually presented by its anatomy. Softanza is also presented by who you are and what you are doing: one journey per person, the steps in the order they take them, and under each step the part of Softanza that serves it, its stage of construction and a page that shows it.",
+         "hub_desc": "Nine journeys, from the programmer to the platform architect: for each, the steps in order, the part of Softanza that serves each step, and its stage.",
+         "stage_intro": "Every step carries its stage, in the words of the Estate page: built, in construction, specification, designed, named. A journey may be published with steps that are not built; it says so at every one.",
+         "focus_h": "Focus without restriction", "focus": "Softanza serves any algorithmic need, and the Atlas is the proof of breadth. It is best made for the domains where its lanes are strong, and that focus is a measurement that moves with the library: the journeys stand on those domains and the Atlas keeps the rest reachable.",
+         "steps_h": "The steps", "start_h": "Where to start", "pos_h": "The positioning sentence", "back": "All the journeys", "see": "see",
+         "doors_h": "Nine journeys", "n_steps": "{n} steps: {t}", "hub_p": "The six doors of the Audiences page say what each reader declares and gets; the journeys say how they get there.",
+         "arch_h": "The ninth", "arch": "The platform architect's journey is the one that crosses the whole vertical, from the machine up to the organisation. It is the journey the commercial offer depends on: the technical leader buys from an architect."},
+}
+def page_label(lang, page):
+    """the name of a page of this site, as a reader meets it: the menu's word, the Atlas area's name, the article's title"""
+    if page.startswith("narrations/"):
+        from build_narration_pages import title_of
+        runs = load_json("narrations-run.json")
+        for f, r in runs.items():
+            if "text" in r and narration_slug(f) == page[len("narrations/"):-5]: return title_of(r)
+    elif page.startswith("atlas/") or page.startswith("guide/"):
+        slug = page.split("/")[1][:-5]
+        for g in load_atlas()[1]:
+            if g["slug"] == slug: return g[lang] if page.startswith("atlas/") else {"fr": "Guide : ", "en": "Guide: "}[lang] + g[lang]
+    else:
+        slug = page[:-5]
+        for j in load_json("journeys.json")["journeys"]:
+            if slug == "journey-" + j["id"]: return j["name"][lang]
+        for _, _, pages in SECTIONS:
+            for sl, lab in pages:
+                if sl == slug: return lab[lang]
+        if slug in PAGE_NAMES: return PAGE_NAMES[slug][lang]
+        if slug in ("education-record", "education-teach", "natural", "wise", "estate", "education", "start", "agents", "zui"): return {"education-record": {"fr": "Ce qui est prouvé", "en": "What is proved"}, "education-teach": {"fr": "J'enseigne ou je conçois", "en": "I teach or design"}}.get(slug, {}).get(lang, slug)
+    return page
+
+def journey_bar(lang, current):
+    jd = load_json("journeys.json")
+    ui = JOURNEY_UI[lang]
+    items = [("journeys.html", ui["hub_title"], "page" if current == "journeys" else "")]
+    items += [(f"journey-{j['id']}.html", j["name"][lang], "page" if current == "journey-" + j["id"] else "") for j in jd["journeys"]]
+    return level2.nav(ui["hub_title"], [("", items)])
+
+def stage_tally(lang, steps):
+    names = STAGE_FR if lang == "fr" else STAGE_EN
+    order = ["built", "in construction", "specification", "designed", "named"]
+    return ", ".join(f"{sum(1 for st in steps if st['stage'] == k)} {names[k]}" for k in order if any(st["stage"] == k for st in steps))
+
+def build_journeys(lang, idx, groups):
+    jd = load_json("journeys.json")
+    ui = JOURNEY_UI[lang]; names = STAGE_FR if lang == "fr" else STAGE_EN
+    cards = "".join(f'<div class="card"><h3><a href="journey-{j["id"]}.html">{esc(j["name"][lang])}</a></h3><p>{esc(j["promise"][lang])}</p>'
+                    f'<p class="rx-src">{esc(ui["n_steps"].format(n=len(j["steps"]), t=stage_tally(lang, j["steps"])))}</p></div>' for j in jd["journeys"])
+    body = (f'<p>{ui["hub_p"]}</p><p>{ui["stage_intro"]}</p><h2>{ui["doors_h"]}</h2><div class="cards">{cards}</div>'
+            f'<h2>{ui["focus_h"]}</h2><p>{ui["focus"]}</p>')
+    page = page_shell(lang, "journeys", ui["hub_title"], ui["hub_desc"], esc(ui["kicker"]), ui["hub_title_html"], esc(ui["hub_lede"]), body, page_key="journeys")
+    (ROOT / lang / "journeys.html").write_text(level2.wrap(page, journey_bar(lang, "journeys")), encoding="utf-8")
+    for j in jd["journeys"]:
+        lis = []
+        for n, st in enumerate(j["steps"], 1):
+            lis.append(f'<li value="{n}"><b>{esc(st[lang])}</b> <span class="rx-src">{names[st["stage"]]} · {ui["see"]}: <a href="{st["page"]}">{esc(page_label(lang, st["page"]))}</a></span></li>')
+        pos = f'<h2>{ui["pos_h"]}</h2><p>{esc(j["positioning"][lang])}</p>' if j.get("positioning") else ""
+        extra = f'<h2>{ui["arch_h"]}</h2><p>{ui["arch"]} <a href="journey-architect.html">{esc(jd["journeys"][-1]["name"][lang])}</a>.</p>' if j["id"] == "leader" else ""
+        body = (f'<p class="rx-src">{esc(j["who"][lang])}</p><h2>{ui["steps_h"]}</h2><ol class="steps">{"".join(lis)}</ol>'
+                f'<h2>{ui["start_h"]}</h2><p>{esc(j["start"][lang])}: <a href="{j["start"]["page"]}">{esc(page_label(lang, j["start"]["page"]))}</a>.</p>'
+                f'{pos}{extra}<p><a href="journeys.html">{ui["back"]}</a></p>')
+        page = page_shell(lang, f"journey-{j['id']}", j["name"][lang], j["promise"][lang], esc(ui["kicker"]), esc(j["name"][lang]), esc(j["promise"][lang]), body, page_key="journeys")
+        (ROOT / lang / f"journey-{j['id']}.html").write_text(level2.wrap(page, journey_bar(lang, "journey-" + j["id"])), encoding="utf-8")
+
+GOAL_UI = {"fr": {"tally": "Sur {n} fonctions : {t}.", "see": "ce que la fonction devient aujourd'hui", "ran": "Une exécution"},
+           "en": {"tally": "Of {n} features: {t}.", "see": "what the feature is today", "ran": "A run"}}
+def goals_html(lang):
+    d = load_json("goals.json"); i = 0 if lang == "en" else 1
+    ui = GOAL_UI[lang]
+    counts = {}
+    for g in d["goals"]:
+        for f in g["features"]: counts[f[2]] = counts.get(f[2], 0) + 1
+    n = sum(counts.values())
+    order = ["built", "transformed", "changed", "partial", "archived", "name"]
+    tally = ", ".join(f"{counts[k]} {d['states'][k][i]}" for k in order if k in counts)
+    out = [f'<p class="proof">{esc(ui["tally"].format(n=n, t=tally))}</p>']
+    for k, g in enumerate(d["goals"], 1):
+        lis = "".join(f'<li><b>{esc(f[i])}</b> <span class="rx-src">{esc(d["states"][f[2]][i])} · {esc(f[4] if lang == "fr" else f[3])}</span></li>' for f in g["features"])
+        out.append(f'<h2 id="{g["id"]}">{k} · {esc(g["name"][i])}</h2><p>{esc(g["why"][i])}</p><ul class="narr">{lis}</ul>'
+                   + showcase_html(lang, "goals", heading=False, only=[k]))
+    return "".join(out)
+
+def leads_html(lang):
+    cov = json.loads((DATA / "coverage.json").read_text(encoding="utf-8"))
+    word = {"deep": {"fr": "de premier rang", "en": "deep"}, "solid": {"fr": "solide", "en": "solid"}, "partial": {"fr": "partiel", "en": "partial"}, "none": {"fr": "absent", "en": "absent"}}
+    lis = []
+    for g in cov["groups"]:
+        for r in g["rows"]:
+            if r["r"][0] not in ("partial", "none"): continue
+            lead = [f'{cov["platforms"][k][1]}' for k in range(1, len(cov["platforms"])) if r["r"][k] == "deep"]
+            who = ", ".join(lead) if lead else {"fr": "aucune des quatre n'est de premier rang", "en": "none of the four is deep"}[lang]
+            link = (' <a href="polyglot.html">' + {"fr": "Et quand il faut Python lui-même", "en": "And when you need Python itself"}[lang] + "</a>.") if r["en"].startswith("Interop") else ""
+            col = " :" if lang == "fr" else ":"
+            lis.append(f'<li><b>{esc(r[lang])}</b> <span class="rx-src">Softanza{col} {word[r["r"][0]][lang]}</span> {({"fr": "Ils mènent", "en": "Where they lead"}[lang])}{col} {esc(who)}.{link}</li>')
+    return f'<ul class="narr">{"".join(lis)}</ul>'
 
 # ----------------------------------------------------------------------------
 # the tour: scenes separated by <<< scene ... >>> lines, notes in ```notes fences
@@ -895,6 +1009,7 @@ def main():
                 f'<meta http-equiv="refresh" content="0;url={new}.html"><link rel="canonical" href="{new}.html"></head>'
                 f'<body><p><a href="{new}.html">{esc(UI[lang]["moved"])}</a></p></body></html>', encoding="utf-8")
         build_narrations(lang, PUBLISHED)
+        build_journeys(lang, idx, groups)
         for i in range(len(groups)):
             build_group_page(lang, idx, groups, i)
         for old in ("why", "govern", "makers", "products"):

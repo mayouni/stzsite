@@ -1,0 +1,60 @@
+{
+ "about": "The seven design goals of the 2022 deck laid against their thirty-three features, each with its state today. Counts are text readings of the library at commit 93d7a39 by an outside assessment on 2026-10-07, not runs; every 'built' is a definition found by name.",
+ "states": {"built": ["built", "construit"], "transformed": ["transformed with the project", "transformé avec le projet"], "changed": ["changed form", "forme changée"], "partial": ["partial", "partiel"], "archived": ["archived", "archivé"], "name": ["a name only", "un nom seulement"]},
+ "goals": [
+  {"id": "expressiveness", "name": ["Expressiveness", "Expressivité"],
+   "why": ["Say what you mean in the shortest honest sentence.", "Dire ce que l'on veut dire dans la phrase honnête la plus courte."],
+   "features": [
+    ["Fluent design", "Conception fluide", "built", "956 fluent-form tags; RemoveQ()", "956 balises de forme fluide ; RemoveQ()"],
+    ["Semantic precision", "Précision sémantique", "built", "the case dial and the suffix grammar; the error catalogue", "le réglage de casse et la grammaire des suffixes ; le catalogue d'erreurs"],
+    ["Named parameters", "Paramètres nommés", "built", "94 test files; the hash form of the error raiser", "94 fichiers de test ; la forme à clés de l'émetteur d'erreurs"],
+    ["Alternative functions", "Fonctions alternatives", "built", "4,489 alternative-form tags", "4 489 balises de forme alternative"],
+    ["Multilingual functions", "Fonctions multilingues", "archived", "names only in the monolithic archive", "des noms seulement dans l'archive monolithique"]]},
+  {"id": "flexibility", "name": ["Flexibility", "Flexibilité"],
+   "why": ["One verb, many ways to call it, without a new verb for each.", "Un verbe, plusieurs façons de l'appeler, sans un nouveau verbe pour chacune."],
+   "features": [
+    ["Function suffixes", "Suffixes de fonction", "built", "CS, ST, XT, Z, ZZ", "CS, ST, XT, Z, ZZ"],
+    ["Function prefixes", "Préfixes de fonction", "built", "viz, rnd, dft, inf", "viz, rnd, dft, inf"],
+    ["Function free form", "Forme libre de fonction", "built", "one collision, FF with FX", "une collision, FF avec FX"],
+    ["Default parameters", "Paramètres par défaut", "built", "the dft prefix", "le préfixe dft"],
+    ["Parameters in any order", "Paramètres dans n'importe quel ordre", "built", "named parameters in any order, guard 646", "paramètres nommés dans n'importe quel ordre, garde 646"]]},
+  {"id": "reliability", "name": ["Reliability", "Fiabilité"],
+   "why": ["Be right in every script, on every machine, with the functions already on the shelf.", "Être juste dans toutes les écritures, sur toutes les machines, avec les fonctions déjà sur l'étagère."],
+   "features": [
+    ["Augmentation of the host's types", "Augmentation des types de l'hôte", "transformed", "the host moves to Haro; the fixtures carry the expectations unadapted", "l'hôte passe à Haro ; les cas de test portent les attentes sans adaptation"],
+    ["Functions in nine domains", "Fonctions dans neuf domaines", "transformed", "44 folders, 28 Atlas areas", "44 dossiers, 28 domaines de l'Atlas"],
+    ["Functions on the shelf", "Fonctions sur l'étagère", "built", "the how-to recipes", "les recettes du comment faire"],
+    ["Unicode", "Unicode", "built", "characters counted by the engine", "caractères comptés par le moteur"],
+    ["ISO locales", "Locales ISO", "partial", "the locale class, 23 files; the area rates no strong lane", "la classe de locale, 23 fichiers ; le domaine n'a aucun couloir fort"]]},
+  {"id": "consistency", "name": ["Consistency", "Cohérence"],
+   "why": ["What works on a string works on a list; one vocabulary, everywhere.", "Ce qui marche sur une chaîne marche sur une liste ; un seul vocabulaire, partout."],
+   "features": [
+    ["With the host's type system", "Avec le système de types de l'hôte", "transformed", "becomes consistency with Haro's, with the same fixtures", "devient la cohérence avec celui de Haro, avec les mêmes cas de test"],
+    ["Experience over the earlier GUI binding", "Expérience sur l'ancienne liaison graphique", "transformed", "retired with its host; the GUI area is now a different engine", "retirée avec son hôte ; le domaine graphique repose maintenant sur un autre moteur"],
+    ["Experience over Softanza itself", "Expérience sur Softanza elle-même", "built", "the same verbs for every structure", "les mêmes verbes pour toute structure"],
+    ["A consistent vocabulary", "Un vocabulaire cohérent", "built", "one vocabulary at three depths; Ask()", "un seul vocabulaire à trois profondeurs ; Ask()"]]},
+  {"id": "metaphors", "name": ["Human-centric metaphors", "Métaphores centrées sur l'humain"],
+   "why": ["Replace the loop that hides its move with the move's own name.", "Remplacer la boucle qui cache son geste par le nom du geste."],
+   "features": [
+    ["The walker", "Le marcheur", "built", "string and list walkers; a two-dimensional walker in max", "marcheurs de chaînes et de listes ; un marcheur à deux dimensions dans le max"],
+    ["The checker", "Le vérificateur", "built", "string and list checkers", "vérificateurs de chaînes et de listes"],
+    ["The yielder", "Le producteur", "built", "its core runs in the engine", "son cœur tourne dans le moteur"],
+    ["The performer", "L'exécutant", "built", "string and list performers", "exécutants de chaînes et de listes"]]},
+  {"id": "abstractions", "name": ["Practical abstractions", "Abstractions pratiques"],
+   "why": ["Ideas the field has had for decades, scaled down until a person can use them in one line.", "Des idées que le domaine connaît depuis des décennies, réduites jusqu'à ce qu'une personne les utilise en une ligne."],
+   "features": [
+    ["Conditional functions", "Fonctions conditionnelles", "built", "W and WF in every conditional seat", "W et WF à chaque place conditionnelle"],
+    ["Visual orientation", "Orientation visuelle", "built", "77 files with the viz prefix; Boxed(); the plots", "77 fichiers au préfixe viz ; Boxed() ; les tracés"],
+    ["Constraint programming", "Programmation par contraintes", "built", "86 files; graph-rule constraints; optimisation", "86 fichiers ; contraintes de règles de graphe ; optimisation"],
+    ["Natural-language programming", "Programmation en langage naturel", "built", "the natural layer, 20 files", "la couche naturelle, 20 fichiers"],
+    ["Knowledge programming", "Programmation par la connaissance", "built", "the knowledge graph, 71 files; knowledge files", "le graphe de connaissance, 71 fichiers ; les fichiers de connaissance"]]},
+  {"id": "manageability", "name": ["Manageability", "Gouvernabilité"],
+   "why": ["Know why it failed, how fast it ran, and what it did, without leaving the code.", "Savoir pourquoi cela a échoué, à quelle vitesse cela a tourné, et ce que cela a fait, sans quitter le code."],
+   "features": [
+    ["Informative error messages", "Messages d'erreur informatifs", "built", "an error carries Where, What, Why and Todo", "une erreur porte Où, Quoi, Pourquoi et Que faire"],
+    ["Visualised call stack", "Pile d'appels visualisée", "name", "no file builds it; the trace-context module is a different thing", "aucun fichier ne la construit ; le module de contexte de trace est autre chose"],
+    ["Measurable performance", "Performance mesurable", "built", "the performance plane, six strong lanes; the profiler", "le plan de performance, six couloirs forts ; le profileur"],
+    ["Cachable functions and objects", "Fonctions et objets cachables", "changed", "the decorators are gone; a cache class and an engine cache replace them", "les décorateurs ont disparu ; une classe de cache et un cache du moteur les remplacent"],
+    ["Loggable functions", "Fonctions journalisables", "changed", "the decorators are gone; a log class is used in 30 files", "les décorateurs ont disparu ; une classe de journal sert dans 30 fichiers"]]}
+ ]
+}

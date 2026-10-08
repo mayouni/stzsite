@@ -16,6 +16,24 @@ Softanza parle un seul vocabulaire à trois profondeurs. Core contient l'essenti
 
 La même question reçoit le même verbe aux deux profondeurs ; base connaît simplement plus de façons de la poser.
 
+## Quelle couche charger {#which}
+
+Les trois couches sont l'unique règle de dépendance de l'architecture, appliquée à la profondeur de capacité et pas à la préoccupation. Une solution se place à la couche qui suffit et pas plus haut, pour n'embarquer que ce qu'elle utilise. Le noyau est pour les petits appareils et les binaires légers : artefacts système et fonctions simples au chargement minimal. La base tient les fonctions de base, avec la gymnastique et les innovations de style de Softanza, assez pour la plupart des besoins. Le max tient les innovations fortes. Une couche est un dossier, un préfixe, un fichier d'entrée et un ensemble de bibliothèques, sans cérémonie d'adaptateurs.
+
+<div class="cards">
+<div class="card"><h3>Un appareil, ou un binaire léger</h3><p>Chargez le <b>noyau</b>. Au commit lu pour cette page, il est cassé : deux de ses classes appellent douze noms du moteur qu'aucun fichier du moteur n'enregistre, et neuf fichiers de test le gardent là où la base en a plus de cinq mille. Signalé à la bibliothèque.</p></div>
+<div class="card"><h3>La plupart des solutions</h3><p>Chargez la <b>base</b>. C'est toute la plateforme, et tout le reste de ce site la décrit.</p></div>
+<div class="card"><h3>Marcheurs, grands nombres, chaînes multilingues, cadre de test</h3><p>Chargez le <b>max</b>, qui est ce que le max contient réellement. Son préfixe est minoritaire : la plupart de ses classes portent encore le préfixe de la base.</p></div>
+</div>
+
+La convention est un nom : <code>stkString</code> dans le noyau, <code>stzString</code> dans la base, <code>stxString</code> dans le max. En pratique la base n'hérite pas du noyau. <code>stzString</code> hérite de l'objet racine de la bibliothèque, le noyau porte sa propre hiérarchie parallèle, et les sept domaines qu'ils partagent sont implémentés deux fois au-dessus du même moteur. Un seul vocabulaire à trois profondeurs est vrai des noms et du chargement, et n'est pas vrai de l'héritage.
+
+À la construction, le but est une bibliothèque par domaine du moteur et pas par classe : un client qui n'a besoin que des opérations sur les chaînes ne charge que la bibliothèque des chaînes. C'est le cas dans le moteur aujourd'hui, et pour le web une liste de groupes est fixée à la compilation, de sorte qu'un groupe inutilisé n'est pas du tout dans la compilation ; mesuré sur une solution, le bord complet pèse 12,5 Ko et le kiosque 8,6 Ko. Un chargeur qui amène un domaine de la base sans les autres, et un troisième jeu de bibliothèques pour le max, sont des directions et pas construits.
+
+<p class="way"><span>La manière Softanza</span> Une couche se choisit par le fichier que l'on charge. Un drapeau d'interrupteur a été essayé puis retiré : la directive de chargement tire chaque fichier qu'elle voit quelle que soit la branche, si bien qu'un drapeau qui ne fait silencieusement rien est la partie qui trompe. Un mécanisme qui ne pouvait pas tenir la règle a été remplacé par un qui ne peut pas la rompre, et la raison a été écrite là où le lecteur suivant se tient.</p>
+
+<p class="proof"><b>en construction</b> Sous la pression du temps, tout est allé dans la base pendant que le moteur, les plans et les clients avançaient. La base tient 93,2 pour cent des lignes des trois couches et 44 dossiers de domaine là où le contrat en plaçait 23. La méthode du projet, livrer petit et laisser les fondations mûrir sans bloquer une livraison, rend cela défendable exactement tant que la dette est visible ; un dossier pour ce qui n'est pas encore placé, avec un chemin de promotion, est cette méthode en mécanisme. Aucun document ne nomme encore le redécoupage, et les classes qui vont dans le max sont une décision de l'auteur. Les décomptes ont été lus dans les fichiers au commit 93d7a39 de la bibliothèque par une évaluation extérieure le 2026-10-07 ; rien n'a été exécuté.</p>
+
 ## Le moteur en dessous {#engine}
 
 Sous les trois couches se trouve un seul moteur, écrit en Zig et compilé en code machine : 89 modules construits à partir de 401 fichiers sources, quatre pour core et 85 pour base. Chaque module a deux portes. L'une est une interface C simple de 752 fonctions, que tout langage capable d'appeler du C peut utiliser. L'autre est le visage qu'appelle la bibliothèque, avec 2 652 fonctions enregistrées pour lui. Au chargement, la bibliothèque ouvre chaque module et choisit le bon fichier pour le système sur lequel elle tourne.
