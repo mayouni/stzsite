@@ -251,11 +251,11 @@ def trajectory(lang):
     T = {
      "en": dict(t="ON GITHUB SINCE 2022-03-12", k="COMMITS PER YEAR ON MAIN", note="2026 counts to 1 October",
         left=("end of 2024, no engine yet", "348,000 lines of library · 63,000 lines of tests · 1,697 commits, one author"),
-        right=("2026-10-01", "531,000 lines of library · 179,000 lines of engine in Zig · 306,000 lines of tests, 501 narrated guards"),
+        right=("2026-10-01", "531,000 lines of library · 179,000 lines of engine in Zig · 306,000 lines of tests, 501 scenario guards"),
         sep=","),
      "fr": dict(t="SUR GITHUB DEPUIS LE 2022-03-12", k="COMMITS PAR AN SUR MAIN", note="2026 compté jusqu'au 1er octobre",
         left=("fin 2024, pas encore de moteur", "348 000 lignes de bibliothèque · 63 000 lignes de tests · 1 697 commits, un seul auteur"),
-        right=("2026-10-01", "531 000 lignes de bibliothèque · 179 000 lignes de moteur en Zig · 306 000 lignes de tests, 501 gardes narrés"),
+        right=("2026-10-01", "531 000 lignes de bibliothèque · 179 000 lignes de moteur en Zig · 306 000 lignes de tests, 501 gardes-scénario"),
         sep=" "),
     }[lang]
     c = Narrow(26)

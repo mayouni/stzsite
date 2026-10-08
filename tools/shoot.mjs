@@ -64,7 +64,7 @@ class CDP {
   async until(method, ms) { const t0 = Date.now(); while (Date.now() - t0 < ms) { const i = this.events.findIndex(e => e.method === method); if (i >= 0) { this.events.splice(0, i + 1); return true; } await sleep(30); } return false; }
 }
 function name(page, size, theme, full) {
-  return page.replace(/\//g, '-').replace('.html', '').replace(/[?#=]/g, '-') + `--${size}-${theme}${full ? '-full' : ''}.webp`;
+  return page.replace(/\//g, '-').replace('.html', '').replace(/[?#=:]/g, '-') + `--${size}-${theme}${full ? '-full' : ''}.webp`;
 }
 async function main() {
   mkdirSync(resolve(ROOT, 'proofs'), { recursive: true });

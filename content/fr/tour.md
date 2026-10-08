@@ -8,7 +8,7 @@ help: → ou clic : suivant · ← : précédent · n : notes · h : menu · Éc
 <img class="bg" src="../assets/img/onboarding-elder.webp" alt="Un ancien en turban blanc lit une feuille de code dans une cour ; le mot SOFTANZA est peint sur le mur derrière lui.">
 <div class="caption">
 <div class="eyebrow">Softanza</div>
-<p><b>La plateforme des makers à l'ère agentique.</b></p>
+<p><b>La plateforme des makers du logiciel à l'ère de l'IA.</b></p>
 <p>Née en Afrique. Utile au monde !</p>
 </div>
 ```notes

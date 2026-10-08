@@ -15,7 +15,8 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import qforms
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-WORD = re.compile(r"(?<![\w./-])ring(?![\w.])", re.I)
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent))
+from haro import FORMER as WORD      # the former name, standing alone; a name the library owns (```ring, learn.ring, Ring++) is not it
 RX = re.compile(r'<pre class="rx">(.*?)</pre>(<span class="rx-src">(.*?)</span>)?', re.S)
 
 def main():

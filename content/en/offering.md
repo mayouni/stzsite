@@ -60,7 +60,7 @@ o.Show()</pre></div><div class="out"><div class="lbl">Output</div><pre>╭──
 <div class="kicker">Door 4</div>
 ### A CTO, a government, a startup, a business
 
-**What you declare:** your world, your governance, and what each actor, human or agent, may commit. **What you get:** agents that cannot hurt you, a threat model of thirty-eight guarantees with their guards, measured containment, and ownership of everything: code, configuration, data, in plain text. **Where to start:** the agentic paradigm, then [the editions below](#editions).
+**What you declare:** your world, your governance, and what each actor, human or agent, may commit. **What you get:** agents that cannot hurt you, a threat model of thirty-eight guarantees with their guards, measured containment, and ownership of everything: code, configuration, data, in plain text. **Where to start:** the agentic paradigm, then [the editions below](editions.html#editions).
 
 <div class="run"><div><div class="lbl">A bank analyst declares an agent</div><pre>A bank analyst declares a stock-watcher agent,
 first without saying what it covers:

@@ -22,7 +22,7 @@ These run today inside the library. An agent can already reach them by writing a
 
 ## What an agent reaches today {#today}
 
-- **Inside, the judges are deep.** The library explains every method from its own source. House rules and a whole-program checker judge the code. Thousands of written promises and five hundred narrated guards state what the code must print. A change can be rehearsed and then committed through gates, and a schema can hold a local model's answers to a shape.
+- **Inside, the judges are deep.** The library explains every method from its own source. House rules and a whole-program checker judge the code. Thousands of written promises and five hundred scenario guards state what the code must print. A change can be rehearsed and then committed through gates, and a schema can hold a local model's answers to a shape.
 - **From outside, little reaches.** An agent can run a script, but it cannot yet call a command that answers, judges or plans. A failure does not yet show as an exit code, so no hook can trust a pass, and no instruction file is written for agents.
 - **That gap is the finding.** Softanza's own review of the question rated the capability as deep and the reach as almost nil. The work is not new machinery; it is a door.
 

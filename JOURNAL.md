@@ -1379,3 +1379,59 @@ next:
   - author:  read Learn > Education > What is proved, and what is not, and say whether the limits sit where a reader meets the claim
   - stzlib-education: nothing is owed; every figure that was checked matched
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-08 20:27
+
+subject:   STZSITE-REFORM-01, wave 0: the hero line, the code shown in Haro's name, scenario guards, the runtime said once, and four defects of the site's own
+
+why:       the author, "go ahead with wave 0", after the reconcile memo of 19:45; D1 to D4 were not ruled, so the memo's defaults were applied
+           and are named below for the author to overturn
+
+did:
+  - put the new hero line in its eight places (build.py's two slogans and the home's title, the tour in two languages, the README, the
+    home's two h1): "The Software Makers Platform of the AI Age", "La plateforme des makers du logiciel à l'ère de l'IA"; the second line
+    unchanged; the home's word-by-word definitions now define "a software maker" and "the AI age" (D1: my wording, the author's to change)
+  - built the rename that shows code in Haro's name (B37): tools/haro.py renames the name and nothing else, leaves what the library owns
+    (file names, ring_len, ring:, Ring++, a ```ring fence tag the narration reader parses), and an audit refuses any other difference;
+    four data strings that spell the name inside a value (RIxxNxG, rixxnxg, "R I N G", fjringljringdjringg) are declared pairs, each
+    found because the renamed chapter ran red without it
+  - rebuilt the course reader from a renamed COPY of the program (tools/reader_run.py): every cell of the 15 chapters ran green in four
+    languages and the three world pages, 99 lines renamed in 21 files, published in data/haro-rename.json; the exercise checkers were
+    renamed with their tasks, so what the page shows and what proves it are one program
+  - re-ran the book's proof on that copy (tools/proof_run.py --haro): 60 editions with every promise kept, 23 of 23 exercises prove
+    themselves; the cells the proof pages used to hide for the old name are shown, with one sentence saying the name was changed and
+    nothing else; the proof data now carries the commit it ran at instead of a typed one
+  - "narrated guards" became "scenario guards" in the prose of 10 pages (en and fr) and in the four trajectory diagrams
+  - printed the runtime once (D4 as proposed): on Platform's Haro section and the first screen of Start, the sentence "Softanza runs today
+    on its Ring face ... Ring++ is the bridge, in construction. Haro is the destination", written once in the build; a new build rule
+    refuses the name anywhere else in the prose
+  - FOUND AND FIXED a dead guard: the build's rule refusing the name Zin held two backspace bytes in its regex and had never matched
+    since 2026-10-03 (the bash-heredoc trap); repaired, and it finds nothing today
+  - FOUND AND FIXED the zero-byte reader proofs: a ':' in the render's file name opened a hidden NTFS stream; names fixed, renders redone
+  - fixed the dead #editions anchor on Audiences (en and fr)
+  - brought reader.html and deck-check.html to the floor: measured with a new instrument on the paint (tools/floor_check.mjs, size and
+    contrast per visible text, light and dark): 0 texts under 16 px and 0 under contrast on four reader chapters (en, ar, ha) and on the
+    deck check, which had 2 and 1 left after the first fix; before, the assessment counted about 2,730 and 417
+  - the two gates (the example checker, the proof pages) now read the rename's own pattern; seven other copies of the old pattern
+    remain in tools that filter rather than judge, to fold in wave 1;
+    the word sweep finds the former name in the code of 0 files, the first time since the site began (the reader's long-standing hit,
+    STZLIB-COURSE-WORD-01, is closed by the rename, not by the library)
+  - checked: 0 failures on the example blocks, 0 dangling links; looked at the home, Start and the reader on a render
+
+state:
+  release-2-pass-1: built; the commit carrying this entry is the one after fa8e1e60
+  library pin:      the runs read the education worktree at 4a184e6f0 (clean before and after); STZSITE-PIN-01 still open
+  perception-gate:  OPEN (the agent looked; the author has not)
+  not done in wave 0, on purpose: the glossary (wave 4); the StzWeb sweep (68 generated pages from the library's own comments, B19)
+
+waiting:
+  - REFORM-RULING-01: D1 (the definitions' wording), D2, D3 -> the author [asked 19:45]
+  - B19, the drift list, for StzWeb on 68 generated pages -> stzlib [routed now in CONCLUSIONS]
+  - the reader's own small sizes and its dark link colour, fixed today only in the site's copy -> stzlib-education [routed now]
+  - the book's hero line, which must match the site's -> the book session through Central [routed now]
+
+next:
+  - me:      push, check the deploy once, then wave 1 (the research section) on the author's word
+  - author:  read the home's three definitions and the runtime sentence on Start; rule D1 to D3
+```

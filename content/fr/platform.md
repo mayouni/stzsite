@@ -16,7 +16,7 @@ La plupart des logiciels sont assemblés à partir de nombreuses bibliothèques 
 <div class="figure"><b>28</b><span>domaines de calcul, 334 couloirs notés</span></div>
 <div class="figure"><b>401</b><span>fichiers source du moteur Zig, 179 000 lignes</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/engine/src">engine/src</a></div>
 <div class="figure"><b>531 000</b><span>lignes de bibliothèque, 1 227 fichiers, hors tests et archives</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base">base/</a></div>
-<div class="figure"><b>501</b><span>gardes narrés, 306 000 lignes de tests</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/test">base/test</a></div>
+<div class="figure"><b>501</b><span>gardes de scénario, 306 000 lignes de tests</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/test">base/test</a></div>
 <div class="figure"><b><!--CLASSES--></b><span>classes, <!--METHODS--> méthodes, chacune expliquée par la bibliothèque elle-même</span></div>
 <div class="figure"><b>5 824</b><span>commits sur la branche principale depuis le 12 mars 2022</span><a href="https://github.com/mayouni/stzlib/commits/main">commits/main</a></div>
 </div>
@@ -46,7 +46,7 @@ arabic
 
 Haro est la langue de la plateforme. Elle est conçue pour qu'un humain la lise comme une phrase et qu'un agent l'écrive sous une grammaire qui interdit les phrases malformées. Elle n'est pas achevée : sa route est une machine virtuelle à registres et un compilateur écrits en Zig, vers lesquels le code de la plateforme est en train de passer. Sa charte, un brouillon du 26 septembre 2026, attend la ratification de l'auteur.
 
-<p class="proof"><b>en construction</b> Ce site ne dira pas que Haro est disponible avant qu'il le soit. Chaque bloc de code de ce site est du code Softanza tel qu'il tourne sur la plateforme aujourd'hui.</p>
+<p class="proof"><b>en construction</b> <!--RUNTIME--> Ce site ne dira pas que Haro est disponible avant qu'il le soit. Le code qu'il montre porte le nom de Haro : là où un texte a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre, et le code a été exécuté de nouveau.</p>
 
 La bibliothèque se documente elle-même : un objet connaît ses méthodes et peut expliquer chacune. Une chaîne seule répond avec 5 384 méthodes. C'est ainsi que la référence de ce site a été générée, à partir des explications de la bibliothèque et non d'un manuel écrit à la main.
 

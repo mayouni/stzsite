@@ -1,0 +1,544 @@
+{
+ "ran": "2026-10-08 20:13",
+ "commit": "4a184e6f0",
+ "rule": "the name changed and nothing else, plus the declared data pairs; every renamed file audited and run",
+ "files": {
+  "courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.ar.md": [
+   [
+    15,
+    "o1 = new stzString(\"RIxxNxG\")",
+    "o1 = new stzString(\"HAxxRxO\")"
+   ],
+   [
+    18,
+    "#--> RING",
+    "#--> HARO"
+   ],
+   [
+    26,
+    "o1 = new stzString(\"RIxxNxG\")",
+    "o1 = new stzString(\"HAxxRxO\")"
+   ],
+   [
+    28,
+    "#--> RING",
+    "#--> HARO"
+   ],
+   [
+    30,
+    "#--> RIxxNxG",
+    "#--> HAxxRxO"
+   ],
+   [
+    38,
+    "? Q(\"rixxnxg\").RemoveQ(\"x\").UppercaseQ().Spacified()",
+    "? Q(\"haxxrxo\").RemoveQ(\"x\").UppercaseQ().Spacified()"
+   ],
+   [
+    39,
+    "#--> R I N G",
+    "#--> H A R O"
+   ],
+   [
+    45,
+    "o1 = new stzString(\"rixxnxg\")",
+    "o1 = new stzString(\"haxxrxo\")"
+   ],
+   [
+    47,
+    "#--> RING",
+    "#--> HARO"
+   ],
+   [
+    49,
+    "#--> ring",
+    "#--> haro"
+   ],
+   [
+    57,
+    "o1 = new stzString(\"rixxnxg\")",
+    "o1 = new stzString(\"haxxrxo\")"
+   ],
+   [
+    59,
+    "#--> RING",
+    "#--> HARO"
+   ],
+   [
+    61,
+    "#--> rixxnxg",
+    "#--> haxxrxo"
+   ]
+  ],
+  "courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.en.md": [
+   [
+    14,
+    "o1 = new stzString(\"RIxxNxG\")",
+    "o1 = new stzString(\"HAxxRxO\")"
+   ],
+   [
+    17,
+    "#--> RING",
+    "#--> HARO"
+   ],
+   [
+    26,
+    "o1 = new stzString(\"RIxxNxG\")",
+    "o1 = new stzString(\"HAxxRxO\")"
+   ],
+   [
+    28,
+    "#--> RING",
+    "#--> HARO"
+   ],
+   [
+    30,
+    "#--> RIxxNxG",
+    "#--> HAxxRxO"
+   ],
+   [
+    38,
+    "? Q(\"rixxnxg\").RemoveQ(\"x\").UppercaseQ().Spacified()",
+    "? Q(\"haxxrxo\").RemoveQ(\"x\").UppercaseQ().Spacified()"
+   ],
+   [
+    39,
+    "#--> R I N G",
+    "#--> H A R O"
+   ],
+   [
+    45,
+    "o1 = new stzString(\"rixxnxg\")",
+    "o1 = new stzString(\"haxxrxo\")"
+   ],
+   [
+    47,
+    "#--> RING",
+    "#--> HARO"
+   ],
+   [
+    49,
+    "#--> ring",
+    "#--> haro"
+   ],
+   [
+    57,
+    "o1 = new stzString(\"rixxnxg\")",
+    "o1 = new stzString(\"haxxrxo\")"
+   ],
+   [
+    59,
+    "#--> RING",
+    "#--> HARO"
+   ],
+   [
+    61,
+    "#--> rixxnxg",
+    "#--> haxxrxo"
+   ]
+  ],
+  "courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.fr.md": [
+   [
+    16,
+    "o1 = new stzString(\"RIxxNxG\")",
+    "o1 = new stzString(\"HAxxRxO\")"
+   ],
+   [
+    19,
+    "#--> RING",
+    "#--> HARO"
+   ],
+   [
+    28,
+    "o1 = new stzString(\"RIxxNxG\")",
+    "o1 = new stzString(\"HAxxRxO\")"
+   ],
+   [
+    30,
+    "#--> RING",
+    "#--> HARO"
+   ],
+   [
+    32,
+    "#--> RIxxNxG",
+    "#--> HAxxRxO"
+   ],
+   [
+    40,
+    "? Q(\"rixxnxg\").RemoveQ(\"x\").UppercaseQ().Spacified()",
+    "? Q(\"haxxrxo\").RemoveQ(\"x\").UppercaseQ().Spacified()"
+   ],
+   [
+    41,
+    "#--> R I N G",
+    "#--> H A R O"
+   ],
+   [
+    47,
+    "o1 = new stzString(\"rixxnxg\")",
+    "o1 = new stzString(\"haxxrxo\")"
+   ],
+   [
+    49,
+    "#--> RING",
+    "#--> HARO"
+   ],
+   [
+    51,
+    "#--> ring",
+    "#--> haro"
+   ],
+   [
+    59,
+    "o1 = new stzString(\"rixxnxg\")",
+    "o1 = new stzString(\"haxxrxo\")"
+   ],
+   [
+    61,
+    "#--> RING",
+    "#--> HARO"
+   ],
+   [
+    63,
+    "#--> rixxnxg",
+    "#--> haxxrxo"
+   ]
+  ],
+  "courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.ha.md": [
+   [
+    16,
+    "o1 = new stzString(\"RIxxNxG\")",
+    "o1 = new stzString(\"HAxxRxO\")"
+   ],
+   [
+    19,
+    "#--> RING",
+    "#--> HARO"
+   ],
+   [
+    28,
+    "o1 = new stzString(\"RIxxNxG\")",
+    "o1 = new stzString(\"HAxxRxO\")"
+   ],
+   [
+    30,
+    "#--> RING",
+    "#--> HARO"
+   ],
+   [
+    32,
+    "#--> RIxxNxG",
+    "#--> HAxxRxO"
+   ],
+   [
+    40,
+    "? Q(\"rixxnxg\").RemoveQ(\"x\").UppercaseQ().Spacified()",
+    "? Q(\"haxxrxo\").RemoveQ(\"x\").UppercaseQ().Spacified()"
+   ],
+   [
+    41,
+    "#--> R I N G",
+    "#--> H A R O"
+   ],
+   [
+    47,
+    "o1 = new stzString(\"rixxnxg\")",
+    "o1 = new stzString(\"haxxrxo\")"
+   ],
+   [
+    49,
+    "#--> RING",
+    "#--> HARO"
+   ],
+   [
+    51,
+    "#--> ring",
+    "#--> haro"
+   ],
+   [
+    59,
+    "o1 = new stzString(\"rixxnxg\")",
+    "o1 = new stzString(\"haxxrxo\")"
+   ],
+   [
+    61,
+    "#--> RING",
+    "#--> HARO"
+   ],
+   [
+    63,
+    "#--> rixxnxg",
+    "#--> haxxrxo"
+   ]
+  ],
+  "courses/elementary-introduction/chapters/07-declare-what-not-how.ar.md": [
+   [
+    61,
+    "oS = new stzList([ \"ring\", \"PHP\", \"C#\", \"ruby\", \"GO\" ])",
+    "oS = new stzList([ \"haro\", \"PHP\", \"C#\", \"ruby\", \"GO\" ])"
+   ],
+   [
+    65,
+    "#--> [ \"ring\", \"ruby\" ]",
+    "#--> [ \"haro\", \"ruby\" ]"
+   ]
+  ],
+  "courses/elementary-introduction/chapters/07-declare-what-not-how.en.md": [
+   [
+    59,
+    "oS = new stzList([ \"ring\", \"PHP\", \"C#\", \"ruby\", \"GO\" ])",
+    "oS = new stzList([ \"haro\", \"PHP\", \"C#\", \"ruby\", \"GO\" ])"
+   ],
+   [
+    63,
+    "#--> [ \"ring\", \"ruby\" ]",
+    "#--> [ \"haro\", \"ruby\" ]"
+   ]
+  ],
+  "courses/elementary-introduction/chapters/07-declare-what-not-how.fr.md": [
+   [
+    63,
+    "oS = new stzList([ \"ring\", \"PHP\", \"C#\", \"ruby\", \"GO\" ])",
+    "oS = new stzList([ \"haro\", \"PHP\", \"C#\", \"ruby\", \"GO\" ])"
+   ],
+   [
+    67,
+    "#--> [ \"ring\", \"ruby\" ]",
+    "#--> [ \"haro\", \"ruby\" ]"
+   ]
+  ],
+  "courses/elementary-introduction/chapters/07-declare-what-not-how.ha.md": [
+   [
+    62,
+    "oS = new stzList([ \"ring\", \"PHP\", \"C#\", \"ruby\", \"GO\" ])",
+    "oS = new stzList([ \"haro\", \"PHP\", \"C#\", \"ruby\", \"GO\" ])"
+   ],
+   [
+    66,
+    "#--> [ \"ring\", \"ruby\" ]",
+    "#--> [ \"haro\", \"ruby\" ]"
+   ]
+  ],
+  "courses/elementary-introduction/chapters/11-draw-the-answer.ar.md": [
+   [
+    7,
+    "`[ 3, 9, 15 ]` جواب صحيح عن «أين ring؟». لكنه ليس جوابًا سريعًا. الصورة تضع الجواب حيث العين أصلًا. ترسم",
+    "`[ 3, 9, 15 ]` جواب صحيح عن «أين haro؟». لكنه ليس جوابًا سريعًا. الصورة تضع الجواب حيث العين أصلًا. ترسم"
+   ],
+   [
+    13,
+    "o1 = new stzString(\"fjringljringdjringg\")",
+    "o1 = new stzString(\"fjharoljharodjharog\")"
+   ],
+   [
+    14,
+    "? @@( o1.FindAll(\"ring\") )",
+    "? @@( o1.FindAll(\"haro\") )"
+   ],
+   [
+    16,
+    "? o1.vizFind(\"ring\")",
+    "? o1.vizFind(\"haro\")"
+   ],
+   [
+    17,
+    "#--> fjringljringdjringg",
+    "#--> fjharoljharodjharog"
+   ],
+   [
+    24,
+    "? o1.vizFindXT(\"ring\", [ :Numbered = TRUE ])",
+    "? o1.vizFindXT(\"haro\", [ :Numbered = TRUE ])"
+   ],
+   [
+    25,
+    "#--> fjringljringdjringg",
+    "#--> fjharoljharodjharog"
+   ]
+  ],
+  "courses/elementary-introduction/chapters/11-draw-the-answer.en.md": [
+   [
+    5,
+    "`[ 3, 9, 15 ]` is a correct answer to \"where is ring?\". It is not a quick one. A picture puts the answer",
+    "`[ 3, 9, 15 ]` is a correct answer to \"where is haro?\". It is not a quick one. A picture puts the answer"
+   ],
+   [
+    12,
+    "o1 = new stzString(\"fjringljringdjringg\")",
+    "o1 = new stzString(\"fjharoljharodjharog\")"
+   ],
+   [
+    13,
+    "? @@( o1.FindAll(\"ring\") )",
+    "? @@( o1.FindAll(\"haro\") )"
+   ],
+   [
+    15,
+    "? o1.vizFind(\"ring\")",
+    "? o1.vizFind(\"haro\")"
+   ],
+   [
+    16,
+    "#--> fjringljringdjringg",
+    "#--> fjharoljharodjharog"
+   ],
+   [
+    23,
+    "? o1.vizFindXT(\"ring\", [ :Numbered = TRUE ])",
+    "? o1.vizFindXT(\"haro\", [ :Numbered = TRUE ])"
+   ],
+   [
+    24,
+    "#--> fjringljringdjringg",
+    "#--> fjharoljharodjharog"
+   ]
+  ],
+  "courses/elementary-introduction/chapters/11-draw-the-answer.fr.md": [
+   [
+    7,
+    "`[ 3, 9, 15 ]` est une réponse correcte à « où est ring ? ». Ce n'est pas une réponse rapide. Une image met",
+    "`[ 3, 9, 15 ]` est une réponse correcte à « où est haro ? ». Ce n'est pas une réponse rapide. Une image met"
+   ],
+   [
+    14,
+    "o1 = new stzString(\"fjringljringdjringg\")",
+    "o1 = new stzString(\"fjharoljharodjharog\")"
+   ],
+   [
+    15,
+    "? @@( o1.FindAll(\"ring\") )",
+    "? @@( o1.FindAll(\"haro\") )"
+   ],
+   [
+    17,
+    "? o1.vizFind(\"ring\")",
+    "? o1.vizFind(\"haro\")"
+   ],
+   [
+    18,
+    "#--> fjringljringdjringg",
+    "#--> fjharoljharodjharog"
+   ],
+   [
+    25,
+    "? o1.vizFindXT(\"ring\", [ :Numbered = TRUE ])",
+    "? o1.vizFindXT(\"haro\", [ :Numbered = TRUE ])"
+   ],
+   [
+    26,
+    "#--> fjringljringdjringg",
+    "#--> fjharoljharodjharog"
+   ]
+  ],
+  "courses/elementary-introduction/chapters/11-draw-the-answer.ha.md": [
+   [
+    7,
+    "`[ 3, 9, 15 ]` amsa ce daidai ga \"ina ring yake?\". Ba amsa ce mai sauri ba. Hoto yana sanya amsar inda ido",
+    "`[ 3, 9, 15 ]` amsa ce daidai ga \"ina haro yake?\". Ba amsa ce mai sauri ba. Hoto yana sanya amsar inda ido"
+   ],
+   [
+    14,
+    "o1 = new stzString(\"fjringljringdjringg\")",
+    "o1 = new stzString(\"fjharoljharodjharog\")"
+   ],
+   [
+    15,
+    "? @@( o1.FindAll(\"ring\") )",
+    "? @@( o1.FindAll(\"haro\") )"
+   ],
+   [
+    17,
+    "? o1.vizFind(\"ring\")",
+    "? o1.vizFind(\"haro\")"
+   ],
+   [
+    18,
+    "#--> fjringljringdjringg",
+    "#--> fjharoljharodjharog"
+   ],
+   [
+    25,
+    "? o1.vizFindXT(\"ring\", [ :Numbered = TRUE ])",
+    "? o1.vizFindXT(\"haro\", [ :Numbered = TRUE ])"
+   ],
+   [
+    26,
+    "#--> fjringljringdjringg",
+    "#--> fjharoljharodjharog"
+   ]
+  ],
+  "courses/elementary-introduction/exercises/ex-03-01/promise.ring": [
+   [
+    2,
+    "#--> RING",
+    "#--> HARO"
+   ],
+   [
+    3,
+    "#--> rixxnxg",
+    "#--> haxxrxo"
+   ]
+  ],
+  "courses/elementary-introduction/exercises/ex-03-01/right/01-on-a-copy.ring": [
+   [
+    1,
+    "o1 = new stzString(\"rixxnxg\")",
+    "o1 = new stzString(\"haxxrxo\")"
+   ]
+  ],
+  "courses/elementary-introduction/exercises/ex-03-01/right/02-the-passive-form.ring": [
+   [
+    1,
+    "o1 = new stzString(\"rixxnxg\")",
+    "o1 = new stzString(\"haxxrxo\")"
+   ]
+  ],
+  "courses/elementary-introduction/exercises/ex-03-01/task.ar.md": [
+   [
+    6,
+    "ابدأ من `o1 = new stzString(\"rixxnxg\")`. اطبع `RING` بجملة واحدة موجهة إلى `o1`، ثم اطبع محتوى `o1` لتثبت أنه لم يتغير.",
+    "ابدأ من `o1 = new stzString(\"haxxrxo\")`. اطبع `HARO` بجملة واحدة موجهة إلى `o1`، ثم اطبع محتوى `o1` لتثبت أنه لم يتغير."
+   ]
+  ],
+  "courses/elementary-introduction/exercises/ex-03-01/task.en.md": [
+   [
+    4,
+    "Start from `o1 = new stzString(\"rixxnxg\")`. Print `RING` in one sentence spoken to `o1`, then print `o1`'s content to prove that `o1` was not changed.",
+    "Start from `o1 = new stzString(\"haxxrxo\")`. Print `HARO` in one sentence spoken to `o1`, then print `o1`'s content to prove that `o1` was not changed."
+   ]
+  ],
+  "courses/elementary-introduction/exercises/ex-03-01/task.fr.md": [
+   [
+    6,
+    "Partez de `o1 = new stzString(\"rixxnxg\")`. Affichez `RING` en une seule phrase adressée à `o1`, puis affichez le contenu de `o1` pour prouver qu'il n'a pas été modifié.",
+    "Partez de `o1 = new stzString(\"haxxrxo\")`. Affichez `HARO` en une seule phrase adressée à `o1`, puis affichez le contenu de `o1` pour prouver qu'il n'a pas été modifié."
+   ]
+  ],
+  "courses/elementary-introduction/exercises/ex-03-01/task.ha.md": [
+   [
+    6,
+    "Fara daga `o1 = new stzString(\"rixxnxg\")`. Buga `RING` da jimla ɗaya da aka yi wa `o1`, sannan ka buga abin da ke cikin `o1` don ka tabbatar cewa ba a canza shi ba.",
+    "Fara daga `o1 = new stzString(\"haxxrxo\")`. Buga `HARO` da jimla ɗaya da aka yi wa `o1`, sannan ka buga abin da ke cikin `o1` don ka tabbatar cewa ba a canza shi ba."
+   ]
+  ],
+  "courses/elementary-introduction/exercises/ex-03-01/wrong/01-changes-the-object.ring": [
+   [
+    2,
+    "o1 = new stzString(\"rixxnxg\")",
+    "o1 = new stzString(\"haxxrxo\")"
+   ]
+  ],
+  "courses/elementary-introduction/exercises/ex-03-01/wrong/02-forgets-the-proof.ring": [
+   [
+    1,
+    "# Prints RING, but never shows that o1 survived.",
+    "# Prints HARO, but never shows that o1 survived."
+   ],
+   [
+    2,
+    "o1 = new stzString(\"rixxnxg\")",
+    "o1 = new stzString(\"haxxrxo\")"
+   ]
+  ]
+ }
+}

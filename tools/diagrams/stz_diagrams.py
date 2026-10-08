@@ -265,11 +265,11 @@ def trajectory(lang):
     L = {
       "en": dict(k="ON GITHUB SINCE 2022-03-12  ·  COMMITS PER YEAR ON THE MAIN BRANCH",
                  left=("end of 2024, no engine yet", ["348,000 lines of library", "63,000 lines of tests", "1,697 commits, one author"]),
-                 right=("2026-10-01", ["531,000 lines of library", "179,000 lines of engine, in Zig", "306,000 lines of tests, 501 narrated guards"]),
+                 right=("2026-10-01", ["531,000 lines of library", "179,000 lines of engine, in Zig", "306,000 lines of tests, 501 scenario guards"]),
                  note="2026 counts to 1 October", cap="counted in the repository at main; the files are listed on the Vision page"),
       "fr": dict(k="SUR GITHUB DEPUIS LE 2022-03-12  ·  COMMITS PAR AN SUR MAIN",
                  left=("fin 2024, pas encore de moteur", ["348 000 lignes de bibliothèque", "63 000 lignes de tests", "1 697 commits, un seul auteur"]),
-                 right=("2026-10-01", ["531 000 lignes de bibliothèque", "179 000 lignes de moteur, en Zig", "306 000 lignes de tests, 501 gardes narrés"]),
+                 right=("2026-10-01", ["531 000 lignes de bibliothèque", "179 000 lignes de moteur, en Zig", "306 000 lignes de tests, 501 gardes-scénario"]),
                  note="2026 compté jusqu'au 1er octobre", cap="compté dans le dépôt sur main ; les fichiers sont listés sur la page Vision"),
     }[lang]
     img, d = canvas(16)

@@ -16,7 +16,7 @@ Most software is assembled from many separate libraries, each written by differe
 <div class="figure"><b>28</b><span>areas of computation, 334 rated lanes</span></div>
 <div class="figure"><b>401</b><span>source files in the Zig engine, 179,000 lines</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/engine/src">engine/src</a></div>
 <div class="figure"><b>531,000</b><span>lines of library code, 1,227 files, outside tests and archives</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base">base/</a></div>
-<div class="figure"><b>501</b><span>narrated guards, 306,000 lines of tests</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/test">base/test</a></div>
+<div class="figure"><b>501</b><span>scenario guards, 306,000 lines of tests</span><a href="https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/base/test">base/test</a></div>
 <div class="figure"><b><!--CLASSES--></b><span>classes, <!--METHODS--> methods, each explained by the library itself</span></div>
 <div class="figure"><b>5,824</b><span>commits on the main branch since 12 March 2022</span><a href="https://github.com/mayouni/stzlib/commits/main">commits/main</a></div>
 </div>
@@ -46,7 +46,7 @@ arabic
 
 Haro is the platform's language. It is designed so that a human can read it like a sentence and an agent can write it under a grammar that forbids malformed sentences. It is not finished: its road is a register virtual machine and a compiler written in Zig, onto which the platform's code is being moved. Its charter, a draft of 26 September 2026, awaits the author's ratification.
 
-<p class="proof"><b>in construction</b> This site will not call Haro available before it is. Every code block on this site is Softanza code as it runs on the platform today.</p>
+<p class="proof"><b>in construction</b> <!--RUNTIME--> This site will not call Haro available before it is. The code it shows is in Haro's name: where a text was written before the language took its present name, the name was changed and nothing else, and the code was run again.</p>
 
 The library documents itself: an object knows its methods and can explain each one. A string alone answers with 5,384 methods. That is how the reference on this site was generated, from the library's own explanations and not from a hand-written manual.
 

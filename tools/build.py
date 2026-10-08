@@ -96,7 +96,7 @@ OWNER["book-proof"] = "learn"                       # the proof of a chapter sit
 
 UI = {
   "fr": {
-    "slogan": "La plateforme des makers à l'ère agentique", "second": "Née en Afrique. Utile au monde !",
+    "slogan": "La plateforme des makers du logiciel à l'ère de l'IA", "second": "Née en Afrique. Utile au monde !",
     "skip": "Aller au contenu", "other_lang": "English", "other_code": "en",
     "present": "Présenter le site en diaporama", "github": "Le dépôt Softanza sur GitHub", "menu": "Menu principal", "path": "Pages de la section", "here": "Vous êtes ici", "moved": "Cette page est devenue Éducation",
     "proof_law": "Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.",
@@ -124,7 +124,7 @@ UI = {
     "cov_row": "Domaine", "cov_present": "Présent", "cov_deep": "Deep", "cov_solid": "Solid", "cov_partial": "Partial", "cov_none": "Absent",
   },
   "en": {
-    "slogan": "The Makers Platform of the Agentic Age", "second": "Born in Africa. Useful to the World!",
+    "slogan": "The Software Makers Platform of the AI Age", "second": "Born in Africa. Useful to the World!",
     "skip": "Skip to content", "other_lang": "Français", "other_code": "fr",
     "present": "Present the site as a slideshow", "github": "The Softanza repository on GitHub", "menu": "Main menu", "path": "Pages of the section", "here": "You are here", "moved": "This page became Education",
     "proof_law": "Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.",
@@ -173,6 +173,8 @@ def md(text):
 def esc(s): return html.escape(str(s), quote=True)
 
 THEME_SCRIPT = """<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>"""
+READER_FLOOR = ("<style>/*stz-floor*/figure.cell figcaption,.out,nav.chapters,.note,p.draft,p.reviewed,p.stz-proof-ex"
+                "{font-size:16px!important}a{color:var(--accent)}</style>")      # important: the reader styles some of these more specifically
 PAGE_PING = """<script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>"""
 
 def head(lang, title, description, rel, extra=""):
@@ -368,6 +370,7 @@ def diagram_imgs(body_html, rel):
 COUNTS = {}                                         # figures read from the data, filled in main() before any page is built
 
 def inject(body_html, lang, idx, groups, rel="../"):
+    body_html = body_html.replace("<!--RUNTIME-->", RUNTIME[lang])
     fmt = (lambda n: f"{n:,}") if lang == "en" else (lambda n: f"{n:,}".replace(",", " "))
     body_html = body_html.replace("<!--METHODS-->", fmt(COUNTS["methods"])).replace("<!--CLASSES-->", fmt(COUNTS["classes"])).replace("<!--ENTRIES-->", fmt(COUNTS["entries"]))
     body_html = body_html.replace("<!--AREAS-->", fmap_html(lang, idx, groups, "atlas/") + tiles_html(lang, idx, groups, "atlas/", rel))
@@ -673,7 +676,7 @@ def build_home(idx, groups):
     body = (CONTENT / "home.html").read_text(encoding="utf-8")
     for lang in LANGS:
         body = body.replace(f"<!--AREAS-{lang.upper()}-->", fmap_html(lang, idx, groups, f"{lang}/atlas/") + tiles_html(lang, idx, groups, f"{lang}/atlas/", "", hl="h3"))
-    page = head("fr", "Softanza · La plateforme des makers à l'ère agentique · The Makers Platform of the Agentic Age",
+    page = head("fr", "Softanza · La plateforme des makers du logiciel à l'ère de l'IA · The Software Makers Platform of the AI Age",
                 "Softanza: declare a language for your world, run it on one engine, let agents speak it safely. Born in Africa. Useful to the World.", "")
     page = page.replace('<html lang="fr" data-lang="fr">', '<html lang="fr" data-lang="fr" class="home">')
     heads = "".join(header(l, "index", "", other_href=f"index.html?lang={o}", nav_rel=f"{l}/", data_lang=l) for l, o in (("fr", "en"), ("en", "fr")))
@@ -709,7 +712,18 @@ def check_contrast():
         print(f"  contrast {'ok ' if c >= float(need) else 'LOW'} {c:5.2f} >= {need}  {label} ({fg} on {bg})")
     return ok
 
-BANNED = [(re.compile(r"Zin"), "Zin: its innovations are Softanza's now, and the site never names it (the author, 2026-10-03)")]
+BANNED = [(re.compile(r"\bZin\b"), "Zin: its innovations are Softanza's now, and the site never names it (the author, 2026-10-03)")]
+
+# The runtime, said plainly (ruled by the author 2026-10-07, 12.6 of the external assessment): the one sentence in which the site's
+# prose names the former language and its bridge. It is written HERE, once, and a page says <!--RUNTIME--> where it stands; the
+# rule below refuses the name anywhere else in the prose, so the exception stays one sentence (and, when it is written, the page
+# that tells why Softanza leaves it, 12.7, named in RING_PAGES).
+RUNTIME = {"en": "Softanza runs today on its Ring face, kept so that the code already written keeps working. Ring++ is the bridge, "
+                 "in construction. Haro is the destination.",
+           "fr": "Softanza tourne aujourd'hui sur sa face Ring, gardée pour que le code déjà écrit continue de fonctionner. Ring++ est "
+                 "le pont, en construction. Haro est la destination."}
+RING_PAGES = set()
+PROSE_RING = re.compile(r"(?<![\w./`-])Ring(?![\w.])")
 
 def check_names():
     """the names the site does not say, looked for at the SOURCE (the markdown, the data, the diagrams), where a mention starts;
@@ -719,6 +733,8 @@ def check_names():
         text = f.read_text(encoding="utf-8", errors="replace")
         for rx, why in BANNED:
             if rx.search(text): bad.append((f.relative_to(ROOT).as_posix(), why))
+        if f.suffix == ".md" and f.parent.parent.name == "content" and f.stem not in RING_PAGES and PROSE_RING.search(text):
+            bad.append((f.relative_to(ROOT).as_posix(), "names the former language: the prose says it only in the runtime's sentence (<!--RUNTIME-->)"))
     return bad
 
 def main():
@@ -785,6 +801,8 @@ def main():
     if reader.exists():
         r0 = reader.read_text(encoding="utf-8")
         r = r0 if "stzsite:'page'" in r0 else r0.replace("</body>", PAGE_PING + "</body>", 1)
+        r = re.sub(r"<style>/[*]stz-floor[*]/.*?</style>", "", r, flags=re.S)       # the floor (Rules 105, 107): one stylesheet, by marker
+        r = r.replace("</head>", READER_FLOOR + "</head>", 1)
         ladder = build_ladder.load(ROOT)
         if ladder: r = build_ladder.inject_reader(r, ladder)      # the rung of every chapter, under its title
         proof = build_proof.load(ROOT)

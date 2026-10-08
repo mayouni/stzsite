@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>elementary-introduction</title>
-<style>:root{--paper:#f7f6f2;--panel:#ffffff;--ink:#1d2320;--ink2:#46504b;--line:#d9ddd9;--accent:#1b6b72;--code:#f1f3f1;--desk:#8a5a12;--desk-bg:#f7ecd8;--web:#2e7d5b;--web-bg:#e3f1e9}@media (prefers-color-scheme:dark){:root{--paper:#131715;--panel:#1b201e;--ink:#e9ede9;--ink2:#b5beb9;--line:#303935;--accent:#63b6bc;--code:#171c1a;--desk:#e0b268;--desk-bg:#322712;--web:#6cc095;--web-bg:#1a2f24}}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 system-ui,-apple-system,'Segoe UI',Tahoma,sans-serif}header{position:sticky;top:0;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--panel);border-bottom:1px solid var(--line)}.brand{font-weight:700;color:var(--accent)}nav a{margin-inline-end:14px;color:var(--ink2);text-decoration:none;font-weight:600}nav a.on{color:var(--accent);text-decoration:underline}main{max-width:820px;margin:0 auto;padding:16px}article{display:none}article.on{display:block}h1{font-size:2rem;line-height:1.2}h2{margin-top:2rem}code{font-family:ui-monospace,Consolas,monospace;background:var(--code);padding:1px 5px;border-radius:4px}pre{background:var(--code);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;margin:0}pre code{background:none;padding:0}bdi{font-family:system-ui,'Segoe UI',Tahoma,sans-serif}figure.cell{margin:14px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}figure.cell figcaption{font-size:14px;font-weight:700;padding:6px 12px}figure[data-where=desktop] figcaption{color:var(--desk);background:var(--desk-bg)}figure[data-where=browser] figcaption{color:var(--web);background:var(--web-bg)}figure.cell pre{border:0;border-radius:0}.out{padding:8px 12px;color:var(--ink2);border-top:1px dashed var(--line);font-size:15px}nav.chapters{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0 0 18px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);font-size:15px}nav.chapters a{color:var(--ink2);text-decoration:none;font-weight:600}nav.chapters a.on{color:var(--accent);text-decoration:underline}aside.exercise{border-inline-start:4px solid var(--accent);background:var(--panel);padding:4px 16px 8px;margin:22px 0;border-radius:8px}.note{color:var(--ink2);font-size:15px}blockquote{margin:10px 0;padding:6px 12px;border-inline-start:3px solid var(--line);color:var(--ink2)}.qa{border-top:1px solid var(--line);margin-top:30px}p.draft{border:1px dashed var(--desk);background:var(--desk-bg);color:var(--desk);padding:6px 12px;border-radius:8px;font-size:15px;font-weight:600}p.reviewed{color:var(--web);font-size:15px;font-weight:600}@media print{header{position:static}article{display:block;page-break-after:always}}</style><style>/*stz-ladder*/.stz-ladder{border:1px solid var(--line);border-inline-start:4px solid var(--accent);background:var(--panel);padding:8px 14px;border-radius:8px;margin:4px 0 16px;color:var(--ink)}.stz-ladder b,.stz-ladder a{color:var(--accent)}.stz-ladder bdi{white-space:nowrap;font-family:ui-monospace,Consolas,monospace}</style><style>/*stz-proof*/figure.cell figcaption a.stz-proof-link{margin-inline-start:14px;font-weight:700;color:inherit;text-decoration:underline}p.stz-proof-ex{font-size:15px}</style></head><body>
+<style>:root{--paper:#f7f6f2;--panel:#ffffff;--ink:#1d2320;--ink2:#46504b;--line:#d9ddd9;--accent:#1b6b72;--code:#f1f3f1;--desk:#8a5a12;--desk-bg:#f7ecd8;--web:#2e7d5b;--web-bg:#e3f1e9}@media (prefers-color-scheme:dark){:root{--paper:#131715;--panel:#1b201e;--ink:#e9ede9;--ink2:#b5beb9;--line:#303935;--accent:#63b6bc;--code:#171c1a;--desk:#e0b268;--desk-bg:#322712;--web:#6cc095;--web-bg:#1a2f24}}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 system-ui,-apple-system,'Segoe UI',Tahoma,sans-serif}header{position:sticky;top:0;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--panel);border-bottom:1px solid var(--line)}.brand{font-weight:700;color:var(--accent)}nav a{margin-inline-end:14px;color:var(--ink2);text-decoration:none;font-weight:600}nav a.on{color:var(--accent);text-decoration:underline}main{max-width:820px;margin:0 auto;padding:16px}article{display:none}article.on{display:block}h1{font-size:2rem;line-height:1.2}h2{margin-top:2rem}code{font-family:ui-monospace,Consolas,monospace;background:var(--code);padding:1px 5px;border-radius:4px}pre{background:var(--code);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;margin:0}pre code{background:none;padding:0}bdi{font-family:system-ui,'Segoe UI',Tahoma,sans-serif}figure.cell{margin:14px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}figure.cell figcaption{font-size:14px;font-weight:700;padding:6px 12px}figure[data-where=desktop] figcaption{color:var(--desk);background:var(--desk-bg)}figure[data-where=browser] figcaption{color:var(--web);background:var(--web-bg)}figure.cell pre{border:0;border-radius:0}.out{padding:8px 12px;color:var(--ink2);border-top:1px dashed var(--line);font-size:15px}nav.chapters{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0 0 18px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);font-size:15px}nav.chapters a{color:var(--ink2);text-decoration:none;font-weight:600}nav.chapters a.on{color:var(--accent);text-decoration:underline}aside.exercise{border-inline-start:4px solid var(--accent);background:var(--panel);padding:4px 16px 8px;margin:22px 0;border-radius:8px}.note{color:var(--ink2);font-size:15px}blockquote{margin:10px 0;padding:6px 12px;border-inline-start:3px solid var(--line);color:var(--ink2)}.qa{border-top:1px solid var(--line);margin-top:30px}p.draft{border:1px dashed var(--desk);background:var(--desk-bg);color:var(--desk);padding:6px 12px;border-radius:8px;font-size:15px;font-weight:600}p.reviewed{color:var(--web);font-size:15px;font-weight:600}@media print{header{position:static}article{display:block;page-break-after:always}}</style><style>/*stz-floor*/figure.cell figcaption,.out,nav.chapters,.note,p.draft,p.reviewed,p.stz-proof-ex{font-size:16px!important}a{color:var(--accent)}</style><style>/*stz-ladder*/.stz-ladder{border:1px solid var(--line);border-inline-start:4px solid var(--accent);background:var(--panel);padding:8px 14px;border-radius:8px;margin:4px 0 16px;color:var(--ink)}.stz-ladder b,.stz-ladder a{color:var(--accent)}.stz-ladder bdi{white-space:nowrap;font-family:ui-monospace,Consolas,monospace}</style><style>/*stz-proof*/figure.cell figcaption a.stz-proof-link{margin-inline-start:14px;font-weight:700;color:inherit;text-decoration:underline}p.stz-proof-ex{font-size:15px}</style></head><body>
 <header><div class="brand">Softanza &middot; elementary-introduction</div><nav><a href="#en" data-go="en">English</a><a href="#fr" data-go="fr">Fran&ccedil;ais</a><a href="#ar" data-go="ar">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</a><a href="#ha" data-go="ha">Hausa</a></nav></header>
 <main>
 <article id="en-1" data-lang="en" lang="en" dir="ltr">
@@ -436,38 +436,38 @@
 <p>A Softanza method name is a sentence spoken to an object. Its grammar tells you what will happen before you run it. This chapter teaches the three forms you will meet on every page: the active, the passive and the fluent.</p>
 <h2>1. The active form changes the object</h2>
 <p><code>RemoveAll</code> is an order. The object obeys and is changed.</p>
-<figure class="cell" data-where="desktop"><figcaption>Runs on the desktop with Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-1">Proof of this cell</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;RIxxNxG&quot;)
+<figure class="cell" data-where="desktop"><figcaption>Runs on the desktop with Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-1">Proof of this cell</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;HAxxRxO&quot;)
 o1.RemoveAll(&quot;x&quot;)
 ? o1.Content()
-#--&gt; RING
+#--&gt; HARO
 </code></pre><div class="out">This page stores no output. Run the cell to see what it prints.</div></figure>
 <h2>2. The passive form gives you a copy</h2>
 <p><code>Removed</code> is a past participle: <em>the string, with x removed</em>. It answers with a new value and leaves the object as it was.</p>
-<figure class="cell" data-where="desktop"><figcaption>Runs on the desktop with Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-2">Proof of this cell</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;RIxxNxG&quot;)
+<figure class="cell" data-where="desktop"><figcaption>Runs on the desktop with Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-2">Proof of this cell</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;HAxxRxO&quot;)
 ? o1.Removed(&quot;x&quot;)
-#--&gt; RING
+#--&gt; HARO
 ? o1.Content()
-#--&gt; RIxxNxG
+#--&gt; HAxxRxO
 </code></pre><div class="out">This page stores no output. Run the cell to see what it prints.</div></figure>
 <h2>3. The fluent form continues the sentence</h2>
 <p>A <code>Q</code> at the end of a name means <em>and then</em>. The sentence goes on until a passive closes it.</p>
-<figure class="cell" data-where="desktop"><figcaption>Runs on the desktop with Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-3">Proof of this cell</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? Q(&quot;rixxnxg&quot;).RemoveQ(&quot;x&quot;).UppercaseQ().Spacified()
-#--&gt; R I N G
+<figure class="cell" data-where="desktop"><figcaption>Runs on the desktop with Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-3">Proof of this cell</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? Q(&quot;haxxrxo&quot;).RemoveQ(&quot;x&quot;).UppercaseQ().Spacified()
+#--&gt; H A R O
 </code></pre><div class="out">This page stores no output. Run the cell to see what it prints.</div></figure>
 <h2>4. A fluent sentence on an object changes it</h2>
-<figure class="cell" data-where="desktop"><figcaption>Runs on the desktop with Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-4">Proof of this cell</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;rixxnxg&quot;)
+<figure class="cell" data-where="desktop"><figcaption>Runs on the desktop with Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-4">Proof of this cell</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;haxxrxo&quot;)
 ? o1.RemoveQ(&quot;x&quot;).Uppercased()
-#--&gt; RING
+#--&gt; HARO
 ? o1.Content()
-#--&gt; ring
+#--&gt; haro
 </code></pre><div class="out">This page stores no output. Run the cell to see what it prints.</div></figure>
 <h2>5. Say &quot;on a copy&quot; with QC</h2>
 <p><code>QC</code> means <em>and then, on a copy</em>. The original is untouched.</p>
-<figure class="cell" data-where="desktop"><figcaption>Runs on the desktop with Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-5">Proof of this cell</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;rixxnxg&quot;)
+<figure class="cell" data-where="desktop"><figcaption>Runs on the desktop with Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-5">Proof of this cell</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;haxxrxo&quot;)
 ? o1.RemoveQC(&quot;x&quot;).Uppercased()
-#--&gt; RING
+#--&gt; HARO
 ? o1.Content()
-#--&gt; rixxnxg
+#--&gt; haxxrxo
 </code></pre><div class="out">This page stores no output. Run the cell to see what it prints.</div></figure>
 <h2>6. A named parameter reads as prose</h2>
 <figure class="cell" data-where="desktop"><figcaption>Runs on the desktop with Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-6">Proof of this cell</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? Q(&quot;tea, rice, tea&quot;).Replaced(&quot;tea&quot;, :With = &quot;coffee&quot;)
@@ -478,7 +478,7 @@ o1.RemoveAll(&quot;x&quot;)
 #--&gt; TRUE
 </code></pre><div class="out">This page stores no output. Run the cell to see what it prints.</div></figure>
 <aside class="exercise"><h3>Exercise 3.1 · Untouched</h3>
-<p>Start from <code>o1 = new stzString(&quot;rixxnxg&quot;)</code>. Print <code>RING</code> in one sentence spoken to <code>o1</code>, then print <code>o1</code>'s content to prove that <code>o1</code> was not changed.</p>
+<p>Start from <code>o1 = new stzString(&quot;haxxrxo&quot;)</code>. Print <code>HARO</code> in one sentence spoken to <code>o1</code>, then print <code>o1</code>'s content to prove that <code>o1</code> was not changed.</p>
 <p>Your answer is checked by running your program. Nobody reads it and compares it with a model answer.</p>
 <p class="note">Checked by running your program on the desktop, never by reading it.</p><!--stz-proof--><p class="note stz-proof-ex">This exercise proves itself: 2 of 2 wrong answers refused, 2 of 2 right answers accepted · <a href="en/book/read-the-name-as-a-sentence.html#ex-ex-03-01">the proof</a></p><!--/stz-proof--></aside>
 <h2>Recap</h2>
@@ -493,38 +493,38 @@ o1.RemoveAll(&quot;x&quot;)
 <p>Un nom de méthode Softanza est une phrase adressée à un objet. Sa grammaire vous dit ce qui va se passer avant même de l'exécuter. Ce chapitre enseigne les trois formes que vous rencontrerez à chaque page : la forme active, la forme passive et la forme fluide.</p>
 <h2>1. La forme active change l'objet</h2>
 <p><code>RemoveAll</code> est un ordre. L'objet obéit et il est modifié.</p>
-<figure class="cell" data-where="desktop"><figcaption>S'exécute sur l'ordinateur avec Softanza<!--stz-proof--><a class="stz-proof-link" href="fr/book/read-the-name-as-a-sentence.html#cell-1">Preuve de cette cellule</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;RIxxNxG&quot;)
+<figure class="cell" data-where="desktop"><figcaption>S'exécute sur l'ordinateur avec Softanza<!--stz-proof--><a class="stz-proof-link" href="fr/book/read-the-name-as-a-sentence.html#cell-1">Preuve de cette cellule</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;HAxxRxO&quot;)
 o1.RemoveAll(&quot;x&quot;)
 ? o1.Content()
-#--&gt; RING
+#--&gt; HARO
 </code></pre><div class="out">Cette page ne stocke aucun résultat. Exécutez la cellule pour voir ce qu'elle affiche.</div></figure>
 <h2>2. La forme passive vous donne une copie</h2>
 <p><code>Removed</code> est un participe passé : <em>la chaîne, les x retirés</em>. Elle répond par une nouvelle valeur et laisse l'objet tel qu'il était.</p>
-<figure class="cell" data-where="desktop"><figcaption>S'exécute sur l'ordinateur avec Softanza<!--stz-proof--><a class="stz-proof-link" href="fr/book/read-the-name-as-a-sentence.html#cell-2">Preuve de cette cellule</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;RIxxNxG&quot;)
+<figure class="cell" data-where="desktop"><figcaption>S'exécute sur l'ordinateur avec Softanza<!--stz-proof--><a class="stz-proof-link" href="fr/book/read-the-name-as-a-sentence.html#cell-2">Preuve de cette cellule</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;HAxxRxO&quot;)
 ? o1.Removed(&quot;x&quot;)
-#--&gt; RING
+#--&gt; HARO
 ? o1.Content()
-#--&gt; RIxxNxG
+#--&gt; HAxxRxO
 </code></pre><div class="out">Cette page ne stocke aucun résultat. Exécutez la cellule pour voir ce qu'elle affiche.</div></figure>
 <h2>3. La forme fluide continue la phrase</h2>
 <p>Un <code>Q</code> à la fin d'un nom signifie <em>et puis</em>. La phrase continue jusqu'à ce qu'un passif la ferme.</p>
-<figure class="cell" data-where="desktop"><figcaption>S'exécute sur l'ordinateur avec Softanza<!--stz-proof--><a class="stz-proof-link" href="fr/book/read-the-name-as-a-sentence.html#cell-3">Preuve de cette cellule</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? Q(&quot;rixxnxg&quot;).RemoveQ(&quot;x&quot;).UppercaseQ().Spacified()
-#--&gt; R I N G
+<figure class="cell" data-where="desktop"><figcaption>S'exécute sur l'ordinateur avec Softanza<!--stz-proof--><a class="stz-proof-link" href="fr/book/read-the-name-as-a-sentence.html#cell-3">Preuve de cette cellule</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? Q(&quot;haxxrxo&quot;).RemoveQ(&quot;x&quot;).UppercaseQ().Spacified()
+#--&gt; H A R O
 </code></pre><div class="out">Cette page ne stocke aucun résultat. Exécutez la cellule pour voir ce qu'elle affiche.</div></figure>
 <h2>4. Une phrase fluide sur un objet le modifie</h2>
-<figure class="cell" data-where="desktop"><figcaption>S'exécute sur l'ordinateur avec Softanza<!--stz-proof--><a class="stz-proof-link" href="fr/book/read-the-name-as-a-sentence.html#cell-4">Preuve de cette cellule</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;rixxnxg&quot;)
+<figure class="cell" data-where="desktop"><figcaption>S'exécute sur l'ordinateur avec Softanza<!--stz-proof--><a class="stz-proof-link" href="fr/book/read-the-name-as-a-sentence.html#cell-4">Preuve de cette cellule</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;haxxrxo&quot;)
 ? o1.RemoveQ(&quot;x&quot;).Uppercased()
-#--&gt; RING
+#--&gt; HARO
 ? o1.Content()
-#--&gt; ring
+#--&gt; haro
 </code></pre><div class="out">Cette page ne stocke aucun résultat. Exécutez la cellule pour voir ce qu'elle affiche.</div></figure>
 <h2>5. Dire « sur une copie » avec QC</h2>
 <p><code>QC</code> signifie <em>et puis, sur une copie</em>. L'original n'est pas touché.</p>
-<figure class="cell" data-where="desktop"><figcaption>S'exécute sur l'ordinateur avec Softanza<!--stz-proof--><a class="stz-proof-link" href="fr/book/read-the-name-as-a-sentence.html#cell-5">Preuve de cette cellule</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;rixxnxg&quot;)
+<figure class="cell" data-where="desktop"><figcaption>S'exécute sur l'ordinateur avec Softanza<!--stz-proof--><a class="stz-proof-link" href="fr/book/read-the-name-as-a-sentence.html#cell-5">Preuve de cette cellule</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;haxxrxo&quot;)
 ? o1.RemoveQC(&quot;x&quot;).Uppercased()
-#--&gt; RING
+#--&gt; HARO
 ? o1.Content()
-#--&gt; rixxnxg
+#--&gt; haxxrxo
 </code></pre><div class="out">Cette page ne stocke aucun résultat. Exécutez la cellule pour voir ce qu'elle affiche.</div></figure>
 <h2>6. Un paramètre nommé se lit comme de la prose</h2>
 <figure class="cell" data-where="desktop"><figcaption>S'exécute sur l'ordinateur avec Softanza<!--stz-proof--><a class="stz-proof-link" href="fr/book/read-the-name-as-a-sentence.html#cell-6">Preuve de cette cellule</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? Q(&quot;tea, rice, tea&quot;).Replaced(&quot;tea&quot;, :With = &quot;coffee&quot;)
@@ -536,7 +536,7 @@ o1.RemoveAll(&quot;x&quot;)
 </code></pre><div class="out">Cette page ne stocke aucun résultat. Exécutez la cellule pour voir ce qu'elle affiche.</div></figure>
 <aside class="exercise"><h3>Exercice 3.1 · Intact</h3>
 <blockquote>Traduction provisoire, en attente de relecture par un locuteur natif.</blockquote>
-<p>Partez de <code>o1 = new stzString(&quot;rixxnxg&quot;)</code>. Affichez <code>RING</code> en une seule phrase adressée à <code>o1</code>, puis affichez le contenu de <code>o1</code> pour prouver qu'il n'a pas été modifié.</p>
+<p>Partez de <code>o1 = new stzString(&quot;haxxrxo&quot;)</code>. Affichez <code>HARO</code> en une seule phrase adressée à <code>o1</code>, puis affichez le contenu de <code>o1</code> pour prouver qu'il n'a pas été modifié.</p>
 <p>Votre réponse est vérifiée en exécutant votre programme. Personne ne la lit pour la comparer à un corrigé.</p>
 <p class="note">Vérifié en exécutant votre programme sur l'ordinateur, jamais en le lisant.</p><!--stz-proof--><p class="note stz-proof-ex">Cet exercice s'éprouve lui-même : 2 mauvaises réponses refusées sur 2, 2 bonnes acceptées sur 2 · <a href="fr/book/read-the-name-as-a-sentence.html#ex-ex-03-01">la preuve</a></p><!--/stz-proof--></aside>
 <h2>Récapitulatif</h2>
@@ -551,38 +551,38 @@ o1.RemoveAll(&quot;x&quot;)
 <p>اسم الدالة في سوفتانزا جملة تُقال لكائن. وقواعده تخبرك بما سيحدث قبل أن تشغّله. يعلّمك هذا الفصل الصيغ الثلاث التي ستلقاها في كل صفحة: الفاعلة، والمفعولة، والمتصلة.</p>
 <h2>1. الصيغة الفاعلة تغيّر الكائن</h2>
 <p><code>RemoveAll</code> أمر. يطيعه الكائن ويتغيّر.</p>
-<figure class="cell" data-where="desktop"><figcaption>تعمل على الحاسوب مع سوفتانزا<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-1">↗ 1/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;RIxxNxG&quot;)
+<figure class="cell" data-where="desktop"><figcaption>تعمل على الحاسوب مع سوفتانزا<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-1">↗ 1/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;HAxxRxO&quot;)
 o1.RemoveAll(&quot;x&quot;)
 ? o1.Content()
-#--&gt; RING
+#--&gt; HARO
 </code></pre><div class="out">لا تخزّن هذه الصفحة أي نتيجة. شغّل الخلية لترى ما تطبعه.</div></figure>
 <h2>2. الصيغة المفعولة تعطيك نسخة</h2>
 <p><code>Removed</code> اسم مفعول: <em>النص، وقد أزيلت منه x</em>. تجيب بقيمة جديدة وتترك الكائن كما كان.</p>
-<figure class="cell" data-where="desktop"><figcaption>تعمل على الحاسوب مع سوفتانزا<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-2">↗ 2/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;RIxxNxG&quot;)
+<figure class="cell" data-where="desktop"><figcaption>تعمل على الحاسوب مع سوفتانزا<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-2">↗ 2/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;HAxxRxO&quot;)
 ? o1.Removed(&quot;x&quot;)
-#--&gt; RING
+#--&gt; HARO
 ? o1.Content()
-#--&gt; RIxxNxG
+#--&gt; HAxxRxO
 </code></pre><div class="out">لا تخزّن هذه الصفحة أي نتيجة. شغّل الخلية لترى ما تطبعه.</div></figure>
 <h2>3. الصيغة المتصلة تكمل الجملة</h2>
 <p>حرف <code>Q</code> في آخر الاسم يعني <em>ثم</em>. تستمر الجملة حتى تغلقها صيغة مفعولة.</p>
-<figure class="cell" data-where="desktop"><figcaption>تعمل على الحاسوب مع سوفتانزا<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-3">↗ 3/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? Q(&quot;rixxnxg&quot;).RemoveQ(&quot;x&quot;).UppercaseQ().Spacified()
-#--&gt; R I N G
+<figure class="cell" data-where="desktop"><figcaption>تعمل على الحاسوب مع سوفتانزا<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-3">↗ 3/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? Q(&quot;haxxrxo&quot;).RemoveQ(&quot;x&quot;).UppercaseQ().Spacified()
+#--&gt; H A R O
 </code></pre><div class="out">لا تخزّن هذه الصفحة أي نتيجة. شغّل الخلية لترى ما تطبعه.</div></figure>
 <h2>4. الجملة المتصلة على كائن تغيّره</h2>
-<figure class="cell" data-where="desktop"><figcaption>تعمل على الحاسوب مع سوفتانزا<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-4">↗ 4/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;rixxnxg&quot;)
+<figure class="cell" data-where="desktop"><figcaption>تعمل على الحاسوب مع سوفتانزا<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-4">↗ 4/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;haxxrxo&quot;)
 ? o1.RemoveQ(&quot;x&quot;).Uppercased()
-#--&gt; RING
+#--&gt; HARO
 ? o1.Content()
-#--&gt; ring
+#--&gt; haro
 </code></pre><div class="out">لا تخزّن هذه الصفحة أي نتيجة. شغّل الخلية لترى ما تطبعه.</div></figure>
 <h2>5. قل «على نسخة» بـ QC</h2>
 <p><code>QC</code> تعني <em>ثم، على نسخة</em>. الأصل لا يُمسّ.</p>
-<figure class="cell" data-where="desktop"><figcaption>تعمل على الحاسوب مع سوفتانزا<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-5">↗ 5/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;rixxnxg&quot;)
+<figure class="cell" data-where="desktop"><figcaption>تعمل على الحاسوب مع سوفتانزا<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-5">↗ 5/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;haxxrxo&quot;)
 ? o1.RemoveQC(&quot;x&quot;).Uppercased()
-#--&gt; RING
+#--&gt; HARO
 ? o1.Content()
-#--&gt; rixxnxg
+#--&gt; haxxrxo
 </code></pre><div class="out">لا تخزّن هذه الصفحة أي نتيجة. شغّل الخلية لترى ما تطبعه.</div></figure>
 <h2>6. المعامل المسمّى يُقرأ كنثر</h2>
 <figure class="cell" data-where="desktop"><figcaption>تعمل على الحاسوب مع سوفتانزا<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-6">↗ 6/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? Q(&quot;tea, rice, tea&quot;).Replaced(&quot;tea&quot;, :With = &quot;coffee&quot;)
@@ -594,7 +594,7 @@ o1.RemoveAll(&quot;x&quot;)
 </code></pre><div class="out">لا تخزّن هذه الصفحة أي نتيجة. شغّل الخلية لترى ما تطبعه.</div></figure>
 <aside class="exercise"><h3>التمرين 3.1 · دون مساس</h3>
 <blockquote>ترجمة أولية، في انتظار مراجعة متحدث أصلي.</blockquote>
-<p>ابدأ من <code>o1 = new stzString(&quot;rixxnxg&quot;)</code>. اطبع <code>RING</code> بجملة واحدة موجهة إلى <code>o1</code>، ثم اطبع محتوى <code>o1</code> لتثبت أنه لم يتغير.</p>
+<p>ابدأ من <code>o1 = new stzString(&quot;haxxrxo&quot;)</code>. اطبع <code>HARO</code> بجملة واحدة موجهة إلى <code>o1</code>، ثم اطبع محتوى <code>o1</code> لتثبت أنه لم يتغير.</p>
 <p>يُتحقق من جوابك بتشغيل برنامجك. لا أحد يقرؤه ليقارنه بجواب نموذجي.</p>
 <p class="note">يُتحقق منه بتشغيل برنامجك على الحاسوب، لا بقراءته أبدًا.</p><!--stz-proof--><p class="note stz-proof-ex">2/2 · 2/2 · <a href="en/book/read-the-name-as-a-sentence.html#ex-ex-03-01">↗ <bdi>ex-03-01</bdi></a></p><!--/stz-proof--></aside>
 <h2>الخلاصة</h2>
@@ -609,38 +609,38 @@ o1.RemoveAll(&quot;x&quot;)
 <p>Sunan hanya na Softanza jimla ce da aka yi wa abu. Nahawunsa yana faɗa maka abin da zai faru kafin ka gudanar da shi. Wannan babin yana koyar da sigogi uku da za ka haɗu da su a kowane shafi: siga ta aiki, siga ta abin da aka yi, da siga mai gudana.</p>
 <h2>1. Sigar aiki tana canza abin</h2>
 <p><code>RemoveAll</code> umarni ne. Abin yana bi, kuma an canza shi.</p>
-<figure class="cell" data-where="desktop"><figcaption>Tana gudana a kwamfuta tare da Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-1">↗ 1/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;RIxxNxG&quot;)
+<figure class="cell" data-where="desktop"><figcaption>Tana gudana a kwamfuta tare da Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-1">↗ 1/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;HAxxRxO&quot;)
 o1.RemoveAll(&quot;x&quot;)
 ? o1.Content()
-#--&gt; RING
+#--&gt; HARO
 </code></pre><div class="out">Wannan shafin ba ya ajiye sakamako. Gudanar da ɗakin don ganin abin da yake bugawa.</div></figure>
 <h2>2. Sigar abin da aka yi tana ba ka kwafi</h2>
 <p><code>Removed</code> siga ce ta abin da ya wuce: <em>rubutun, an cire x</em>. Tana amsawa da sabuwar daraja ta bar abin kamar yadda yake.</p>
-<figure class="cell" data-where="desktop"><figcaption>Tana gudana a kwamfuta tare da Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-2">↗ 2/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;RIxxNxG&quot;)
+<figure class="cell" data-where="desktop"><figcaption>Tana gudana a kwamfuta tare da Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-2">↗ 2/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;HAxxRxO&quot;)
 ? o1.Removed(&quot;x&quot;)
-#--&gt; RING
+#--&gt; HARO
 ? o1.Content()
-#--&gt; RIxxNxG
+#--&gt; HAxxRxO
 </code></pre><div class="out">Wannan shafin ba ya ajiye sakamako. Gudanar da ɗakin don ganin abin da yake bugawa.</div></figure>
 <h2>3. Siga mai gudana tana ci gaba da jimlar</h2>
 <p><code>Q</code> a ƙarshen suna yana nufin <em>sannan</em>. Jimlar tana ci gaba har sai sigar abin da aka yi ta rufe ta.</p>
-<figure class="cell" data-where="desktop"><figcaption>Tana gudana a kwamfuta tare da Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-3">↗ 3/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? Q(&quot;rixxnxg&quot;).RemoveQ(&quot;x&quot;).UppercaseQ().Spacified()
-#--&gt; R I N G
+<figure class="cell" data-where="desktop"><figcaption>Tana gudana a kwamfuta tare da Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-3">↗ 3/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? Q(&quot;haxxrxo&quot;).RemoveQ(&quot;x&quot;).UppercaseQ().Spacified()
+#--&gt; H A R O
 </code></pre><div class="out">Wannan shafin ba ya ajiye sakamako. Gudanar da ɗakin don ganin abin da yake bugawa.</div></figure>
 <h2>4. Jimla mai gudana a kan abu tana canza shi</h2>
-<figure class="cell" data-where="desktop"><figcaption>Tana gudana a kwamfuta tare da Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-4">↗ 4/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;rixxnxg&quot;)
+<figure class="cell" data-where="desktop"><figcaption>Tana gudana a kwamfuta tare da Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-4">↗ 4/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;haxxrxo&quot;)
 ? o1.RemoveQ(&quot;x&quot;).Uppercased()
-#--&gt; RING
+#--&gt; HARO
 ? o1.Content()
-#--&gt; ring
+#--&gt; haro
 </code></pre><div class="out">Wannan shafin ba ya ajiye sakamako. Gudanar da ɗakin don ganin abin da yake bugawa.</div></figure>
 <h2>5. Faɗi &quot;a kan kwafi&quot; da QC</h2>
 <p><code>QC</code> yana nufin <em>sannan, a kan kwafi</em>. Ba a taɓa na asali ba.</p>
-<figure class="cell" data-where="desktop"><figcaption>Tana gudana a kwamfuta tare da Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-5">↗ 5/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;rixxnxg&quot;)
+<figure class="cell" data-where="desktop"><figcaption>Tana gudana a kwamfuta tare da Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-5">↗ 5/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;haxxrxo&quot;)
 ? o1.RemoveQC(&quot;x&quot;).Uppercased()
-#--&gt; RING
+#--&gt; HARO
 ? o1.Content()
-#--&gt; rixxnxg
+#--&gt; haxxrxo
 </code></pre><div class="out">Wannan shafin ba ya ajiye sakamako. Gudanar da ɗakin don ganin abin da yake bugawa.</div></figure>
 <h2>6. Sigar da aka sa wa suna tana karantuwa kamar magana</h2>
 <figure class="cell" data-where="desktop"><figcaption>Tana gudana a kwamfuta tare da Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/read-the-name-as-a-sentence.html#cell-6">↗ 6/7</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? Q(&quot;tea, rice, tea&quot;).Replaced(&quot;tea&quot;, :With = &quot;coffee&quot;)
@@ -652,7 +652,7 @@ o1.RemoveAll(&quot;x&quot;)
 </code></pre><div class="out">Wannan shafin ba ya ajiye sakamako. Gudanar da ɗakin don ganin abin da yake bugawa.</div></figure>
 <aside class="exercise"><h3>Aiki na 3.1 · Ba a taɓa ba</h3>
 <blockquote>Fassarar farko ce, tana jiran bita daga mai magana da Hausa a matsayin harshen uwa.</blockquote>
-<p>Fara daga <code>o1 = new stzString(&quot;rixxnxg&quot;)</code>. Buga <code>RING</code> da jimla ɗaya da aka yi wa <code>o1</code>, sannan ka buga abin da ke cikin <code>o1</code> don ka tabbatar cewa ba a canza shi ba.</p>
+<p>Fara daga <code>o1 = new stzString(&quot;haxxrxo&quot;)</code>. Buga <code>HARO</code> da jimla ɗaya da aka yi wa <code>o1</code>, sannan ka buga abin da ke cikin <code>o1</code> don ka tabbatar cewa ba a canza shi ba.</p>
 <p>Ana tabbatar da amsarka ta hanyar gudanar da shirinka. Babu wanda zai karanta ta don ya kwatanta ta da amsar misali.</p>
 <p class="note">Ana tabbatarwa ta hanyar gudanar da shirinka a kwamfuta, ba ta hanyar karanta shi ba.</p><!--stz-proof--><p class="note stz-proof-ex">2/2 · 2/2 · <a href="en/book/read-the-name-as-a-sentence.html#ex-ex-03-01">↗ <bdi>ex-03-01</bdi></a></p><!--/stz-proof--></aside>
 <h2>Taƙaitawa</h2>
@@ -1388,11 +1388,11 @@ oA.RemoveW(cRule)
 #--&gt; [ 12, 0, -5, 18 ]
 </code></pre><div class="out">This page stores no output. Run the cell to see what it prints.</div></figure>
 <h2>5. The same word on words</h2>
-<figure class="cell" data-where="desktop"><figcaption>Runs on the desktop with Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/declare-what-not-how.html#cell-5">Proof of this cell</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>oS = new stzList([ &quot;ring&quot;, &quot;PHP&quot;, &quot;C#&quot;, &quot;ruby&quot;, &quot;GO&quot; ])
+<figure class="cell" data-where="desktop"><figcaption>Runs on the desktop with Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/declare-what-not-how.html#cell-5">Proof of this cell</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>oS = new stzList([ &quot;haro&quot;, &quot;PHP&quot;, &quot;C#&quot;, &quot;ruby&quot;, &quot;GO&quot; ])
 ? @@( oS.FindW(&quot;{ IsUppercase(@item) }&quot;) )
 #--&gt; [ 2, 3, 5 ]
 ? @@( oS.ItemsW(&quot;{ Q(@item).IsLowercase() }&quot;) )
-#--&gt; [ &quot;ring&quot;, &quot;ruby&quot; ]
+#--&gt; [ &quot;haro&quot;, &quot;ruby&quot; ]
 </code></pre><div class="out">This page stores no output. Run the cell to see what it prints.</div></figure>
 <aside class="exercise"><h3>Exercise 7.1 · Where the big amounts are</h3>
 <p>The till recorded:</p>
@@ -1449,11 +1449,11 @@ oA.RemoveW(cRule)
 #--&gt; [ 12, 0, -5, 18 ]
 </code></pre><div class="out">Cette page ne stocke aucun résultat. Exécutez la cellule pour voir ce qu'elle affiche.</div></figure>
 <h2>5. Le même mot sur des mots</h2>
-<figure class="cell" data-where="desktop"><figcaption>S'exécute sur l'ordinateur avec Softanza<!--stz-proof--><a class="stz-proof-link" href="fr/book/declare-what-not-how.html#cell-5">Preuve de cette cellule</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>oS = new stzList([ &quot;ring&quot;, &quot;PHP&quot;, &quot;C#&quot;, &quot;ruby&quot;, &quot;GO&quot; ])
+<figure class="cell" data-where="desktop"><figcaption>S'exécute sur l'ordinateur avec Softanza<!--stz-proof--><a class="stz-proof-link" href="fr/book/declare-what-not-how.html#cell-5">Preuve de cette cellule</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>oS = new stzList([ &quot;haro&quot;, &quot;PHP&quot;, &quot;C#&quot;, &quot;ruby&quot;, &quot;GO&quot; ])
 ? @@( oS.FindW(&quot;{ IsUppercase(@item) }&quot;) )
 #--&gt; [ 2, 3, 5 ]
 ? @@( oS.ItemsW(&quot;{ Q(@item).IsLowercase() }&quot;) )
-#--&gt; [ &quot;ring&quot;, &quot;ruby&quot; ]
+#--&gt; [ &quot;haro&quot;, &quot;ruby&quot; ]
 </code></pre><div class="out">Cette page ne stocke aucun résultat. Exécutez la cellule pour voir ce qu'elle affiche.</div></figure>
 <aside class="exercise"><h3>Exercice 7.1 · Où sont les gros montants</h3>
 <blockquote>Traduction provisoire, en attente de relecture par un locuteur natif.</blockquote>
@@ -1512,11 +1512,11 @@ oA.RemoveW(cRule)
 #--&gt; [ 12, 0, -5, 18 ]
 </code></pre><div class="out">لا تخزّن هذه الصفحة أي نتيجة. شغّل الخلية لترى ما تطبعه.</div></figure>
 <h2>5. الكلمة نفسها على كلمات</h2>
-<figure class="cell" data-where="desktop"><figcaption>تعمل على الحاسوب مع سوفتانزا<!--stz-proof--><a class="stz-proof-link" href="en/book/declare-what-not-how.html#cell-5">↗ 5/5</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>oS = new stzList([ &quot;ring&quot;, &quot;PHP&quot;, &quot;C#&quot;, &quot;ruby&quot;, &quot;GO&quot; ])
+<figure class="cell" data-where="desktop"><figcaption>تعمل على الحاسوب مع سوفتانزا<!--stz-proof--><a class="stz-proof-link" href="en/book/declare-what-not-how.html#cell-5">↗ 5/5</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>oS = new stzList([ &quot;haro&quot;, &quot;PHP&quot;, &quot;C#&quot;, &quot;ruby&quot;, &quot;GO&quot; ])
 ? @@( oS.FindW(&quot;{ IsUppercase(@item) }&quot;) )
 #--&gt; [ 2, 3, 5 ]
 ? @@( oS.ItemsW(&quot;{ Q(@item).IsLowercase() }&quot;) )
-#--&gt; [ &quot;ring&quot;, &quot;ruby&quot; ]
+#--&gt; [ &quot;haro&quot;, &quot;ruby&quot; ]
 </code></pre><div class="out">لا تخزّن هذه الصفحة أي نتيجة. شغّل الخلية لترى ما تطبعه.</div></figure>
 <aside class="exercise"><h3>التمرين 7.1 · أين المبالغ الكبيرة</h3>
 <blockquote>ترجمة أولية، في انتظار مراجعة متحدث أصلي.</blockquote>
@@ -1575,11 +1575,11 @@ oA.RemoveW(cRule)
 #--&gt; [ 12, 0, -5, 18 ]
 </code></pre><div class="out">Wannan shafin ba ya ajiye sakamako. Gudanar da ɗakin don ganin abin da yake bugawa.</div></figure>
 <h2>5. Kalma ɗaya a kan kalmomi</h2>
-<figure class="cell" data-where="desktop"><figcaption>Tana gudana a kwamfuta tare da Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/declare-what-not-how.html#cell-5">↗ 5/5</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>oS = new stzList([ &quot;ring&quot;, &quot;PHP&quot;, &quot;C#&quot;, &quot;ruby&quot;, &quot;GO&quot; ])
+<figure class="cell" data-where="desktop"><figcaption>Tana gudana a kwamfuta tare da Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/declare-what-not-how.html#cell-5">↗ 5/5</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>oS = new stzList([ &quot;haro&quot;, &quot;PHP&quot;, &quot;C#&quot;, &quot;ruby&quot;, &quot;GO&quot; ])
 ? @@( oS.FindW(&quot;{ IsUppercase(@item) }&quot;) )
 #--&gt; [ 2, 3, 5 ]
 ? @@( oS.ItemsW(&quot;{ Q(@item).IsLowercase() }&quot;) )
-#--&gt; [ &quot;ring&quot;, &quot;ruby&quot; ]
+#--&gt; [ &quot;haro&quot;, &quot;ruby&quot; ]
 </code></pre><div class="out">Wannan shafin ba ya ajiye sakamako. Gudanar da ɗakin don ganin abin da yake bugawa.</div></figure>
 <aside class="exercise"><h3>Aiki na 7.1 · Inda manyan kuɗi suke</h3>
 <blockquote>Fassarar farko ce, tana jiran bita daga mai magana da Hausa a matsayin harshen uwa.</blockquote>
@@ -2200,18 +2200,18 @@ oT.Show()
 <nav class="chapters"><a href="#en:1">1 · Find, then apply</a><a href="#en:2">2 · A first sentence</a><a href="#en:3">3 · Read the name as a sentence</a><a href="#en:4">4 · Say it in your language</a><a href="#en:5">5 · One object, any structure</a><a href="#en:6">6 · Walk, ask, produce, act</a><a href="#en:7">7 · Declare what, not how</a><a href="#en:8">8 · Patterns in text</a><a href="#en:9">9 · Patterns in structure</a><a href="#en:10">10 · When code meets cells</a><a href="#en:11" class="on">11 · Draw the answer</a><a href="#en:12">12 · Teach a world</a><a href="#en:13">13 · The gap question</a><a href="#en:14">14 · An agent that cannot hurt</a><a href="#en:15">15 · Write a narration</a><a href="#en:16">World · The cooperative</a><a href="#en:17">World · The school</a><a href="#en:18">World · The restaurant</a></nav>
 <h1>Draw the answer</h1><!--stz-ladder--><p class="stz-ladder"><b>S2</b> · Craftsperson · this chapter belongs to this rung, earned when chapters 1 to 11 and <bdi>project-s2</bdi> have passed: A report over a real data file, with patterns, a table and a picture. <a href="en/learn.html#ladder">The ladder</a></p><!--/stz-ladder--><!--stz-proof--><p class="stz-ladder">Proof · 5 cells ran, 13 promises kept, in each of the four editions · <a href="en/book/draw-the-answer.html">the proof of this chapter</a></p><!--/stz-proof-->
 <p><em>Elementary Introduction · Chapter 11 · Skills SE-01 &quot;Would a picture answer this faster than a number?&quot; and SE-02 &quot;Where, and how much?&quot;</em></p>
-<p><code>[ 3, 9, 15 ]</code> is a correct answer to &quot;where is ring?&quot;. It is not a quick one. A picture puts the answer where the eye already is. Softanza draws answers in text, so a drawing is something a program can print, a page can hold and a guard can check, line by line.</p>
+<p><code>[ 3, 9, 15 ]</code> is a correct answer to &quot;where is haro?&quot;. It is not a quick one. A picture puts the answer where the eye already is. Softanza draws answers in text, so a drawing is something a program can print, a page can hold and a guard can check, line by line.</p>
 <h2>1. Show where, not only which position</h2>
-<figure class="cell" data-where="desktop"><figcaption>Runs on the desktop with Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/draw-the-answer.html#cell-1">Proof of this cell</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;fjringljringdjringg&quot;)
-? @@( o1.FindAll(&quot;ring&quot;) )
+<figure class="cell" data-where="desktop"><figcaption>Runs on the desktop with Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/draw-the-answer.html#cell-1">Proof of this cell</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;fjharoljharodjharog&quot;)
+? @@( o1.FindAll(&quot;haro&quot;) )
 #--&gt; [ 3, 9, 15 ]
-? o1.vizFind(&quot;ring&quot;)
-#--&gt; fjringljringdjringg
+? o1.vizFind(&quot;haro&quot;)
+#--&gt; fjharoljharodjharog
 #--&gt; --^-----^-----^----
 </code></pre><div class="out">This page stores no output. Run the cell to see what it prints.</div></figure>
 <h2>2. With the numbers under the marks</h2>
-<figure class="cell" data-where="desktop"><figcaption>Runs on the desktop with Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/draw-the-answer.html#cell-2">Proof of this cell</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? o1.vizFindXT(&quot;ring&quot;, [ :Numbered = TRUE ])
-#--&gt; fjringljringdjringg
+<figure class="cell" data-where="desktop"><figcaption>Runs on the desktop with Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/draw-the-answer.html#cell-2">Proof of this cell</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? o1.vizFindXT(&quot;haro&quot;, [ :Numbered = TRUE ])
+#--&gt; fjharoljharodjharog
 #--&gt; --^-----^-----^----
 #--&gt; 3     9     15
 </code></pre><div class="out">This page stores no output. Run the cell to see what it prints.</div></figure>
@@ -2263,18 +2263,18 @@ oP2.Show()
 <h1>Dessiner la réponse</h1><!--stz-ladder--><p class="stz-ladder"><b>S2</b> · Artisan · ce chapitre appartient à ce barreau, gagné quand les chapitres 1 à 11 et <bdi>project-s2</bdi> sont réussis : Un rapport sur un vrai fichier de données, avec des motifs, une table et une image. <a href="fr/learn.html#ladder">L'échelle</a></p><!--/stz-ladder--><!--stz-proof--><p class="stz-ladder">Preuve · 5 cellules exécutées, 13 promesses tenues, dans chacune des quatre éditions · <a href="fr/book/draw-the-answer.html">la preuve de ce chapitre</a></p><!--/stz-proof-->
 <p><em>Introduction élémentaire · Chapitre 11 · Compétences SE-01 « Une image répondrait-elle plus vite qu'un nombre ? » et SE-02 « Où, et combien ? »</em></p>
 <blockquote>Traduction provisoire, en attente de relecture par un locuteur natif.</blockquote>
-<p><code>[ 3, 9, 15 ]</code> est une réponse correcte à « où est ring ? ». Ce n'est pas une réponse rapide. Une image met la réponse là où l'œil est déjà. Softanza dessine ses réponses en texte : un dessin est donc quelque chose qu'un programme peut afficher, qu'une page peut porter et qu'une garde peut vérifier, ligne par ligne.</p>
+<p><code>[ 3, 9, 15 ]</code> est une réponse correcte à « où est haro ? ». Ce n'est pas une réponse rapide. Une image met la réponse là où l'œil est déjà. Softanza dessine ses réponses en texte : un dessin est donc quelque chose qu'un programme peut afficher, qu'une page peut porter et qu'une garde peut vérifier, ligne par ligne.</p>
 <h2>1. Montrer où, pas seulement quelle position</h2>
-<figure class="cell" data-where="desktop"><figcaption>S'exécute sur l'ordinateur avec Softanza<!--stz-proof--><a class="stz-proof-link" href="fr/book/draw-the-answer.html#cell-1">Preuve de cette cellule</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;fjringljringdjringg&quot;)
-? @@( o1.FindAll(&quot;ring&quot;) )
+<figure class="cell" data-where="desktop"><figcaption>S'exécute sur l'ordinateur avec Softanza<!--stz-proof--><a class="stz-proof-link" href="fr/book/draw-the-answer.html#cell-1">Preuve de cette cellule</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;fjharoljharodjharog&quot;)
+? @@( o1.FindAll(&quot;haro&quot;) )
 #--&gt; [ 3, 9, 15 ]
-? o1.vizFind(&quot;ring&quot;)
-#--&gt; fjringljringdjringg
+? o1.vizFind(&quot;haro&quot;)
+#--&gt; fjharoljharodjharog
 #--&gt; --^-----^-----^----
 </code></pre><div class="out">Cette page ne stocke aucun résultat. Exécutez la cellule pour voir ce qu'elle affiche.</div></figure>
 <h2>2. Avec les nombres sous les marques</h2>
-<figure class="cell" data-where="desktop"><figcaption>S'exécute sur l'ordinateur avec Softanza<!--stz-proof--><a class="stz-proof-link" href="fr/book/draw-the-answer.html#cell-2">Preuve de cette cellule</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? o1.vizFindXT(&quot;ring&quot;, [ :Numbered = TRUE ])
-#--&gt; fjringljringdjringg
+<figure class="cell" data-where="desktop"><figcaption>S'exécute sur l'ordinateur avec Softanza<!--stz-proof--><a class="stz-proof-link" href="fr/book/draw-the-answer.html#cell-2">Preuve de cette cellule</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? o1.vizFindXT(&quot;haro&quot;, [ :Numbered = TRUE ])
+#--&gt; fjharoljharodjharog
 #--&gt; --^-----^-----^----
 #--&gt; 3     9     15
 </code></pre><div class="out">Cette page ne stocke aucun résultat. Exécutez la cellule pour voir ce qu'elle affiche.</div></figure>
@@ -2328,18 +2328,18 @@ oP2.Show()
 <h1>ارسم الجواب</h1><!--stz-ladder--><p class="stz-ladder"><b>S2</b> · 1 – 11 · <bdi>project-s2</bdi> · تقرير على ملف بيانات حقيقي، بأنماط وجدول وصورة. <a href="en/learn.html#ladder">S0 – S4</a></p><!--/stz-ladder--><!--stz-proof--><p class="stz-ladder"><bdi>course_narrated</bdi> · 5/5 · <a href="en/book/draw-the-answer.html">↗</a></p><!--/stz-proof-->
 <p><em>مدخل أساسي · الفصل 11 · المهارتان SE-01 «هل تجيب صورة عن هذا أسرع من رقم؟» وSE-02 «أين، وكم؟»</em></p>
 <blockquote>ترجمة أولية، في انتظار مراجعة متحدث أصلي.</blockquote>
-<p><code>[ 3, 9, 15 ]</code> جواب صحيح عن «أين ring؟». لكنه ليس جوابًا سريعًا. الصورة تضع الجواب حيث العين أصلًا. ترسم سوفتانزا الأجوبة نصًا، فالرسم شيء يستطيع البرنامج طبعه، والصفحة حمله، والحارس التحقق منه سطرًا سطرًا.</p>
+<p><code>[ 3, 9, 15 ]</code> جواب صحيح عن «أين haro؟». لكنه ليس جوابًا سريعًا. الصورة تضع الجواب حيث العين أصلًا. ترسم سوفتانزا الأجوبة نصًا، فالرسم شيء يستطيع البرنامج طبعه، والصفحة حمله، والحارس التحقق منه سطرًا سطرًا.</p>
 <h2>1. أظهر أين، لا الموضع فقط</h2>
-<figure class="cell" data-where="desktop"><figcaption>تعمل على الحاسوب مع سوفتانزا<!--stz-proof--><a class="stz-proof-link" href="en/book/draw-the-answer.html#cell-1">↗ 1/5</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;fjringljringdjringg&quot;)
-? @@( o1.FindAll(&quot;ring&quot;) )
+<figure class="cell" data-where="desktop"><figcaption>تعمل على الحاسوب مع سوفتانزا<!--stz-proof--><a class="stz-proof-link" href="en/book/draw-the-answer.html#cell-1">↗ 1/5</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;fjharoljharodjharog&quot;)
+? @@( o1.FindAll(&quot;haro&quot;) )
 #--&gt; [ 3, 9, 15 ]
-? o1.vizFind(&quot;ring&quot;)
-#--&gt; fjringljringdjringg
+? o1.vizFind(&quot;haro&quot;)
+#--&gt; fjharoljharodjharog
 #--&gt; --^-----^-----^----
 </code></pre><div class="out">لا تخزّن هذه الصفحة أي نتيجة. شغّل الخلية لترى ما تطبعه.</div></figure>
 <h2>2. مع الأرقام تحت العلامات</h2>
-<figure class="cell" data-where="desktop"><figcaption>تعمل على الحاسوب مع سوفتانزا<!--stz-proof--><a class="stz-proof-link" href="en/book/draw-the-answer.html#cell-2">↗ 2/5</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? o1.vizFindXT(&quot;ring&quot;, [ :Numbered = TRUE ])
-#--&gt; fjringljringdjringg
+<figure class="cell" data-where="desktop"><figcaption>تعمل على الحاسوب مع سوفتانزا<!--stz-proof--><a class="stz-proof-link" href="en/book/draw-the-answer.html#cell-2">↗ 2/5</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? o1.vizFindXT(&quot;haro&quot;, [ :Numbered = TRUE ])
+#--&gt; fjharoljharodjharog
 #--&gt; --^-----^-----^----
 #--&gt; 3     9     15
 </code></pre><div class="out">لا تخزّن هذه الصفحة أي نتيجة. شغّل الخلية لترى ما تطبعه.</div></figure>
@@ -2393,18 +2393,18 @@ oP2.Show()
 <h1>Zana amsar</h1><!--stz-ladder--><p class="stz-ladder"><b>S2</b> · 1 – 11 · <bdi>project-s2</bdi> · Rahoto a kan fayil na bayanai na gaske, mai siffofi, tebur da hoto. <a href="en/learn.html#ladder">S0 – S4</a></p><!--/stz-ladder--><!--stz-proof--><p class="stz-ladder"><bdi>course_narrated</bdi> · 5/5 · <a href="en/book/draw-the-answer.html">↗</a></p><!--/stz-proof-->
 <p><em>Gabatarwa ta Farko · Babi na 11 · Fasahohi SE-01 &quot;Shin hoto zai amsa wannan da sauri fiye da lamba?&quot; da SE-02 &quot;Ina, kuma nawa?&quot;</em></p>
 <blockquote>Fassarar farko ce, tana jiran bita daga mai magana da Hausa a matsayin harshen uwa.</blockquote>
-<p><code>[ 3, 9, 15 ]</code> amsa ce daidai ga &quot;ina ring yake?&quot;. Ba amsa ce mai sauri ba. Hoto yana sanya amsar inda ido yake tuni. Softanza tana zana amsoshi da rubutu, saboda haka zane abu ne da shiri zai iya bugawa, shafi zai iya riƙewa, kuma mai tsaro zai iya dubawa, layi bayan layi.</p>
+<p><code>[ 3, 9, 15 ]</code> amsa ce daidai ga &quot;ina haro yake?&quot;. Ba amsa ce mai sauri ba. Hoto yana sanya amsar inda ido yake tuni. Softanza tana zana amsoshi da rubutu, saboda haka zane abu ne da shiri zai iya bugawa, shafi zai iya riƙewa, kuma mai tsaro zai iya dubawa, layi bayan layi.</p>
 <h2>1. Nuna ina, ba wuri kawai ba</h2>
-<figure class="cell" data-where="desktop"><figcaption>Tana gudana a kwamfuta tare da Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/draw-the-answer.html#cell-1">↗ 1/5</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;fjringljringdjringg&quot;)
-? @@( o1.FindAll(&quot;ring&quot;) )
+<figure class="cell" data-where="desktop"><figcaption>Tana gudana a kwamfuta tare da Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/draw-the-answer.html#cell-1">↗ 1/5</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>o1 = new stzString(&quot;fjharoljharodjharog&quot;)
+? @@( o1.FindAll(&quot;haro&quot;) )
 #--&gt; [ 3, 9, 15 ]
-? o1.vizFind(&quot;ring&quot;)
-#--&gt; fjringljringdjringg
+? o1.vizFind(&quot;haro&quot;)
+#--&gt; fjharoljharodjharog
 #--&gt; --^-----^-----^----
 </code></pre><div class="out">Wannan shafin ba ya ajiye sakamako. Gudanar da ɗakin don ganin abin da yake bugawa.</div></figure>
 <h2>2. Da lambobin a ƙarƙashin alamomin</h2>
-<figure class="cell" data-where="desktop"><figcaption>Tana gudana a kwamfuta tare da Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/draw-the-answer.html#cell-2">↗ 2/5</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? o1.vizFindXT(&quot;ring&quot;, [ :Numbered = TRUE ])
-#--&gt; fjringljringdjringg
+<figure class="cell" data-where="desktop"><figcaption>Tana gudana a kwamfuta tare da Softanza<!--stz-proof--><a class="stz-proof-link" href="en/book/draw-the-answer.html#cell-2">↗ 2/5</a><!--/stz-proof--></figcaption><pre dir="ltr"><code>? o1.vizFindXT(&quot;haro&quot;, [ :Numbered = TRUE ])
+#--&gt; fjharoljharodjharog
 #--&gt; --^-----^-----^----
 #--&gt; 3     9     15
 </code></pre><div class="out">Wannan shafin ba ya ajiye sakamako. Gudanar da ɗakin don ganin abin da yake bugawa.</div></figure>

@@ -18,11 +18,12 @@ and right answers. From that run this module writes
     replaces them rather than stacking them. Arabic and Hausa get only the
     library's own names and numbers, never a sentence written by the site.
 """
-import json, re, html
+import json, re, html, sys
 import level2
 
 def esc(s): return html.escape(str(s), quote=True)
-WORD = re.compile(r"(?<![\w./-])ring(?![\w.])", re.I)
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent))
+from haro import FORMER as WORD      # the former name, standing alone; a name the library owns (```ring, learn.ring, Ring++) is not it
 GH = "https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/"
 GUARD = GH + "base/test/education/course_narrated.ring"
 NATIVE = {"en": "English", "fr": "Français", "ar": "العربية", "ha": "Hausa"}
@@ -35,7 +36,8 @@ T = {
          "g_h": "Le garde", "g_p": "Le garde du cours est <a href=\"{u}\">course_narrated.ring</a> : il exécute chaque chapitre dans les quatre langues, compare les promesses d'une édition à l'autre, et fait prouver chaque exercice sur ses mauvaises et ses bonnes réponses. Cette page a posé les mêmes questions aux mêmes objets, dans un seul processus à l'intérieur de la bibliothèque, au commit 0e72e2e2c. Pour prouver ce chapitre seul, depuis votre copie du dépôt :",
          "g_cmd": "# exécutez course_narrated avec le moteur d'exécution du dépôt, pour ce chapitre :",
          "g_law": "Le lecteur ne stocke aucune sortie, par la loi du cours ; cette page est le compte rendu d'une exécution, faite pour elle.",
-         "ran": "exécuté le {d} dans la bibliothèque au commit 0e72e2e2c, en {s} s pour tout le livre",
+         "ran": "exécuté le {d} dans la bibliothèque au commit {c}, en {s} s pour tout le livre",
+         "haro": "Le code est montré au nom de Haro : là où le chapitre a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre, et le chapitre a été exécuté de nouveau ainsi. Le lien vers la source mène au texte tel qu'il a été écrit.",
          "cells_h": "Les cellules, exécutées", "cell": "Cellule", "out": "Sortie de cette exécution",
          "hidden": "Le code de cette cellule montre l'ancien nom du langage de la plateforme, que ce site ne montre pas. Elle a été exécutée ; son verdict est ci-dessous, et sa place dans le chapitre est liée.",
          "kept": "exécutée : la promesse est tenue", "kept_all": "dans les quatre éditions", "nopromise": "exécutée : cette cellule n'écrit aucune promesse",
@@ -56,7 +58,8 @@ T = {
          "g_h": "The guard", "g_p": "The course's guard is <a href=\"{u}\">course_narrated.ring</a>: it runs every chapter in all four languages, compares the promises from one edition to the next, and has every exercise prove itself on its wrong and right answers. This page asked the same questions of the same objects, in one process inside the library, at commit 0e72e2e2c. To prove this chapter alone, from your copy of the repository:",
          "g_cmd": "# run course_narrated with the repository's runtime, for this chapter:",
          "g_law": "The reader stores no output, by the course's own law; this page is the record of a run, made for it.",
-         "ran": "run on {d} inside the library at commit 0e72e2e2c, in {s} s for the whole book",
+         "ran": "run on {d} inside the library at commit {c}, in {s} s for the whole book",
+         "haro": "The code is shown in Haro's name: where the chapter was written before the language took its present name, the name was changed and nothing else, and the chapter was run again that way. The source link leads to the text as it was written.",
          "cells_h": "The cells, run", "cell": "Cell", "out": "Output of this run",
          "hidden": "This cell's code shows the former name of the platform's language, which this site does not show. It was run; its verdict is below, and its place in the chapter is linked.",
          "kept": "ran: the promise is kept", "kept_all": "in all four editions", "nopromise": "ran: this cell writes no promise",
@@ -135,8 +138,10 @@ def chapter_page(ch, lang, data, ctx):
     colon = ":" if lang == "en" else " :"
     body = (f'<p class="lede-verdict">{verdict}</p><h2>{t["g_h"]}</h2><p>{t["g_p"].format(u=GUARD)}</p>'
             f'<pre>cd libraries/stzlib/base/test/education\n{t["g_cmd"]}\n#   course_narrated {esc(ch["id"])}</pre>'
-            f'<p class="ran">{t["ran"].format(d=esc(data["ran"]), s=data["seconds"])} · {t["files"]}{colon} {files}</p>'
-            f'<p class="proof">{t["g_law"]} {t["lang_note"]}</p><h2>{t["cells_h"]}</h2>{"".join(cells)}'
+            f'<p class="ran">{t["ran"].format(d=esc(data["ran"]), s=data["seconds"], c=esc(data.get("commit", "0e72e2e2c")))} · {t["files"]}{colon} {files}</p>'
+            f'<p class="proof">{t["g_law"]} {t["lang_note"]}'
+            + (f' {t["haro"]}' if data.get("names") == "haro" and any(re.search(r"\bharo\b", c["code"], re.I) for c in ch["cells"]) else "")
+            + f'</p><h2>{t["cells_h"]}</h2>{"".join(cells)}'
             + (f'<h2>{t["ex_h"]}</h2><p>{t["ex_p"]}</p>' + "".join(exs) if exs else ""))
     bar = level2.nav(level2.LABELS["chapters"][lang],
                      [("", [(f'{c["id"]}.html', f'{c["n"]} · {title_of(c, lang)}', "page" if c is ch else "") for c in data["chapters"]])])
@@ -174,7 +179,7 @@ def proof_list_html(lang, data):
     t = T[lang]
     rows = "".join(f'<li><a href="book/{c["id"]}.html">{c["n"]} · {esc(title_of(c, lang))}</a> <span class="ran">{t["list_row"].format(c=len(c["cells"]), k=n_promises(c), x=len(c["exercises"]))}'
                    f'{"" if proven(c) else " · " + esc(why_not(c, t))}</span></li>' for c in data["chapters"])
-    return f'<p>{t["list_p"]}</p><ol class="howto-list">{rows}</ol><p class="ran">{t["ran"].format(d=esc(data["ran"]), s=data["seconds"])}</p>'
+    return f'<p>{t["list_p"]}</p><ol class="howto-list">{rows}</ol><p class="ran">{t["ran"].format(d=esc(data["ran"]), s=data["seconds"], c=esc(data.get("commit", "0e72e2e2c")))}</p>'
 
 PROOF_CSS = ("<style>/*stz-proof*/figure.cell figcaption a.stz-proof-link{margin-inline-start:14px;font-weight:700;color:inherit;text-decoration:underline}"
              "p.stz-proof-ex{font-size:15px}</style>")

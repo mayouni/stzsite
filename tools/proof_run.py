@@ -19,7 +19,7 @@ the temporary folder created in the library is removed at the end.
 
     python tools/proof_run.py <path to libraries/stzlib>
 """
-import json, re, sys, pathlib, subprocess, datetime, shutil
+import json, re, sys, pathlib, subprocess, datetime, shutil, tempfile
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "proof-run.json"
@@ -131,10 +131,21 @@ def main():
     prog = lib / "base" / "education" / "program" / "courses" / COURSE
     if not (prog / "chapters").is_dir():
         sys.exit(f"not the library folder: {lib}")
+    script, renamed = SCRIPT, None
+    if "--haro" in sys.argv:
+        # the code is shown in Haro's name (ruled 2026-10-07): the proof runs on a renamed COPY of the program, so what each cell
+        # printed is the renamed cell's own output; the file links and line numbers stay the library's (a rename keeps the lines)
+        sys.path.insert(0, str(ROOT / "tools"))
+        import haro
+        renamed = pathlib.Path(tempfile.mkdtemp(prefix="stzsite_proof_"))
+        haro.rename_program(lib / "base" / "education" / "program", renamed / "program")
+        prog = renamed / "program" / "courses" / COURSE
+        script = SCRIPT.replace('"../../education/program"', '"' + str(renamed / "program").replace(chr(92), "/") + '"')
     work = lib / "base" / "test" / "_stzsite_proof"
     work.mkdir(parents=True, exist_ok=True)
-    (work / "proof.ring").write_text(SCRIPT, encoding="utf-8")
+    (work / "proof.ring").write_text(script, encoding="utf-8")
     t0 = datetime.datetime.now()
+    commit = subprocess.run(["git", "-C", str(lib.parent.parent), "rev-parse", "--short=9", "HEAD"], capture_output=True, text=True).stdout.strip()
     try:
         p = subprocess.run(["ring", "proof.ring"], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=3000)
         out = (p.stdout or "").replace("\r", "")
@@ -190,7 +201,9 @@ def main():
                 if tf.exists(): ex["title"][lang] = first_heading(tf)
             ch["exercises"].append(ex)
         chapters.append(ch)
-    res = {"ran": t0.strftime("%Y-%m-%d %H:%M"), "seconds": seconds, "course": COURSE, "chapters": chapters}
+    res = {"ran": t0.strftime("%Y-%m-%d %H:%M"), "seconds": seconds, "course": COURSE, "commit": commit, "names": "haro" if renamed else "as written",
+           "chapters": chapters}
+    if renamed: shutil.rmtree(renamed, ignore_errors=True)
     OUT.write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
     cells = sum(len(c["cells"]) for c in chapters)
     kept = sum(1 for c in chapters for x in c["cells"] if x["kept"] == 1)

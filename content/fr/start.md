@@ -6,6 +6,8 @@ lede: Un dépôt public, une installation en deux commandes, un premier programm
 description: Comment démarrer avec Softanza : le dépôt GitHub, l'installation, le premier programme, la première narration, le lecteur du cours, et où écrire.
 ---
 
+<p class="proof"><b>L'exécution, en clair</b> <!--RUNTIME--></p>
+
 ## Le dépôt {#repository}
 
 Tout est au même endroit : la fondation, son moteur, ses gardes, ses narrations et son cours.

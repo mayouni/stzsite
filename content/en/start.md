@@ -6,6 +6,8 @@ lede: One public repository, an install in two commands, a first program, the co
 description: How to start with Softanza: the GitHub repository, the install, the first program, the first narration, the course reader, and where to write.
 ---
 
+<p class="proof"><b>The runtime, plainly</b> <!--RUNTIME--></p>
+
 ## The repository {#repository}
 
 Everything is in one place: the foundation, its engine, its guards, its narrations and its course.

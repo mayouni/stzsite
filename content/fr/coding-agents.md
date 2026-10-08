@@ -22,7 +22,7 @@ Ils s'exécutent aujourd'hui dans la bibliothèque. Un agent peut déjà les att
 
 ## Ce qu'un agent atteint aujourd'hui {#today}
 
-- **À l'intérieur, les juges sont profonds.** La bibliothèque explique chaque méthode à partir de son propre code. Des règles maison et un vérificateur de programme entier jugent le code. Des milliers de promesses écrites et cinq cents gardes racontées disent ce que le code doit afficher. Un changement peut être répété puis validé à travers des portes, et un schéma peut tenir les réponses d'un modèle local dans une forme.
+- **À l'intérieur, les juges sont profonds.** La bibliothèque explique chaque méthode à partir de son propre code. Des règles maison et un vérificateur de programme entier jugent le code. Des milliers de promesses écrites et cinq cents gardes de scénario disent ce que le code doit afficher. Un changement peut être répété puis validé à travers des portes, et un schéma peut tenir les réponses d'un modèle local dans une forme.
 - **De l'extérieur, peu de choses passent.** Un agent peut lancer un script, mais il ne peut pas encore appeler une commande qui répond, juge ou planifie. Un échec ne se traduit pas encore en code de sortie, aucun hook ne peut donc se fier à une réussite, et aucun fichier d'instructions n'est écrit pour les agents.
 - **Cet écart est le constat.** La revue que Softanza a faite de la question a jugé la capacité profonde et la portée presque nulle. Le travail n'est pas une nouvelle machinerie ; c'est une porte.
 

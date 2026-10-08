@@ -60,7 +60,7 @@ o.Show()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>╭──
 <div class="kicker">Porte 4</div>
 ### CTO, gouvernement, startup, entreprise
 
-**Ce que vous déclarez :** votre monde, votre gouvernance, et ce que chaque acteur, humain ou agent, peut commettre. **Ce que vous obtenez :** des agents qui ne peuvent pas vous nuire, un modèle de menace de trente-huit garanties avec leurs gardes, un confinement mesuré, et la propriété de tout : code, configuration, données, en texte brut. **Où commencer :** le paradigme agentique, puis [les éditions ci-dessous](#editions).
+**Ce que vous déclarez :** votre monde, votre gouvernance, et ce que chaque acteur, humain ou agent, peut commettre. **Ce que vous obtenez :** des agents qui ne peuvent pas vous nuire, un modèle de menace de trente-huit garanties avec leurs gardes, un confinement mesuré, et la propriété de tout : code, configuration, données, en texte brut. **Où commencer :** le paradigme agentique, puis [les éditions ci-dessous](editions.html#editions).
 
 <div class="run"><div><div class="lbl">Un analyste de banque déclare un agent</div><pre>A bank analyst declares a stock-watcher agent,
 first without saying what it covers:
