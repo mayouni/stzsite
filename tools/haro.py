@@ -30,6 +30,10 @@ DATA_RX = re.compile(r"\b(" + "|".join(map(re.escape, sorted(DATA, key=len, reve
 TOKEN = re.compile(r"\w+|\W")
 # the former name as the site's gates look for it, in any case, with the same exceptions as the rename: one pattern, not nine copies
 FORMER = re.compile(NAME.pattern, re.I)
+# the former name in code shown AS THE LIBRARY WROTE IT (method examples, recipes, rows), which is never renamed: a STRICTER pattern,
+# because `"ring---"` in a test's data is the name to a reader and nothing renames it. Folding these filters into FORMER on 2026-10-08
+# let two such examples through, and the gate could not see it because it reads FORMER too: two meanings, two patterns, one file
+SHOWN = re.compile(r"(?<![\w./-])ring(?![\w.])", re.I)
 
 def rename(text):
     """the text with the former name changed to Haro's, and the number of changes"""

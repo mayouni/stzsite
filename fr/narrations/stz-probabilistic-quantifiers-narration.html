@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Probabilistic Quantifiers in Softanza: Natural Proportions Meet Logical Precision · Narrations · Softanza</title>
+<meta name="description" content="Softanza introduces probabilistic quantifiers like Few(), Some(), Most(), and All(), allowing for more intuitive data manipulation by reflecting natural language.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stz-probabilistic-quantifiers-narration.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stz-probabilistic-quantifiers-narration.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">Probabilistic Quantifiers in Softanza: Natural Proportions Meet Logical Precision</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stz-probabilistic-quantifiers-narration.html" aria-current=page>Probabilistic Quantifiers in Softanza: Natural Proportions Meet Logical Precision</a></li><li><a href="stzmatrix-matrix-computing-in-softanza-narration.html">Matrix Computing in Softanza with stzMatrix</a></li><li><a href="stzlinearsolver-empowering-real-world-applications-with-linear-programming.html">Empowering Real-World Applications with Softanza&#x27;s Linear Solver for Haro</a></li><li><a href="stz-random-narrration.html">Practical Randomness in Softanza</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>Probabilistic Quantifiers in Softanza: Natural Proportions Meet Logical Precision</h1>
+    <p class="lede">Softanza introduces <strong>probabilistic quantifiers</strong> like <code>Few()</code>, <code>Some()</code>, <code>Most()</code>, and <code>All()</code>, allowing for more intuitive data manipulation by reflecting natural language. These quantifiers map conversational terms to precise proportions, making code both expressive and clear.</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2025-01-13 · essai de fonction · domaine <a href="../atlas/numeric.html">Numérique et optimisation</a></p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+<figure><img src="../../assets/img/narrations/stz-probabilistic-quantifiers.webp" alt="Probabilistic Quantifiers in Softanza" loading="lazy"><figcaption>Probabilistic Quantifiers in Softanza</figcaption></figure>
+<p><img alt="Probabilistic Quantifiers in Softanza" src="../../assets/img/narrations/stz-probabilistic-quantifiers.webp" />
+<em>A continuous path leading toward a grand pyramid structure.</em></p>
+<hr />
+<h2 id="basic-examples">Basic Examples</h2>
+<p>Here’s how these quantifiers can be used in practice:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>load &quot;stzlib.ring&quot;
+
+? Some( NumbersIn( -5 : 5 ) )
+#--&gt; [ -1, -4, -5, 3 ]
+
+? Most( PositiveNumbersIn( -5 : 5 ) )
+#--&gt; [ 1, 2, 4, 5 ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>Each probabilistic quantifier corresponds to a default proportion of items:
+- <code>Few()</code> → 10%
+- <code>Some()</code> → 30%
+- <code>Most()</code> → 90%</p>
+<p>You can also customize these proportions using commands like <code>SetFew(0.15)</code> or <code>SetMost(0.85)</code>.</p>
+<h2 id="the-probabiliistic-continuum">The Probabiliistic Continuum</h2>
+<p>These quantifiers form a continuum:<br />
+<strong><code>No()</code> → <code>Few()</code> → <code>Some()</code> → <code>Half()</code> → <code>Many()</code> → <code>Most()</code> → <code>All()</code></strong></p>
+<p>They’re especially powerful when used in probabilistic and random contexts, like so:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>SetSome(0.4)
+
+? Some( RandomNumbersIn(1:10) )
+#--&gt; [ 5, 2, 7, 9 ]
+
+? Few( RandomNumbersInU(1:10) ) # &quot;U&quot; for Unique items
+#--&gt; [ 1, 4 ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>For completeness, the <code>All()</code> and <code>No()</code> quantifiers are straightforward:
+- <code>All()</code> returns all items in a list.
+- <code>No()</code> returns an empty list.</p>
+<p>Example:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? All([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
+#--&gt; [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ]
+
+? No([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
+#--&gt; []</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:42 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+<h2 id="a-sense-of-semantic-beauty">A Sense of Semantic Beauty</h2>
+<p>For semantic convenience, alternative function names like <code>AllOf()</code>, <code>NoOne()</code>, and <code>NoOneOf()</code> are provided, making the expressions more natural:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Them = [ &quot;Andy&quot;, &quot;Bill&quot;, &quot;Chris&quot; ]
+
+? AllOf(Them)
+#--&gt; [ &quot;Andy&quot;, &quot;Bill&quot;, &quot;Chris&quot; ]
+
+? NoOneOf(Them)
+#--&gt; [ ]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:42 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+<p>Softanza also supports fluent forms of these functions, which can enhance code readability. By using the <code>Q()</code> suffix, we get more natural expressions:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>MyExamNotes = [ 12, 17, 18, 16, 19 ]
+Them = MyExamNotes # Semantic alias for clarity
+Average = 10
+
+? AllOfQQ(MyExamNotes).ArePositive()
+#--&gt; TRUE
+
+? AllOfQQ(Them).AreGreaterThan(Average)
+#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<blockquote>
+<p><strong>NOTE</strong>: The <code>Q(aList)</code> function promotes <code>aList</code> to a <code>stzListObject</code>, and <code>QQ(aList)</code> promotes it to a specific type of Softanza list, like <code>QQ([1, 2, 3])</code>, which returns a <code>stzListOfNumbers</code> object. This allows the use of specialized functions like <code>ArePositive()</code>, <code>AreGreaterThan()</code>, etc.</p>
+</blockquote>
+<h2 id="logical-magic-with-quantifiers">Logical Magic with Quantifiers</h2>
+<p>I'll show you the case of <code>NothingIn()</code> quantifier, which is an exact alternative of the <code>No()</code> quantifier we saw earlier.</p>
+<p>I’ll prefix it with <code>QQ()</code> because I’m working with a list of email addresses and want to promote it to a <code>stzListOfStrings</code> object to check the emails against a regular expression pattern using the <code>Macth()</code> function.</p>
+<p>Now, here’s where it gets even more exciting—I’ll add the magical <code>X()</code> suffix!</p>
+<p>The <code>X()</code> suffix offers a powerful mechanism to express logical statements declaratively and verify them directly. In this case:
+- <code>NothingInQQX()</code> checks whether <strong>none</strong> of the elements in the list satisfy a condition.
+- <code>EverythingInQQX()</code> checks whether <strong>all</strong> of them do.</p>
+<p>Here’s an example of how it works:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? NothingInQQX([ &quot;aee@net&quot;, &quot;@com.com&quot;, &quot;--?mail@org&quot; ]).MatchesX(rxp(:eMail))
+#--&gt; TRUE  # No element in the list matches the email pattern.
+
+? NothingInQQX([ &quot;aee@net&quot;, &quot;@com.com&quot;, &quot;--?mail@org&quot;, &quot;info@mail.com&quot; ]).MatchesX(rxp(:eMail))
+#--&gt; FALSE # At least one element matches the email pattern.
+
+? EverythingInQQX([ &quot;hello@mail.com&quot;, &quot;info@mail.org&quot; ]).MatchesX(rxp(:eMail))
+#--&gt; TRUE  # All elements match the email pattern.
+
+? EverythingInQQX([ &quot;hello@mail.com&quot;, &quot;info@mail.org&quot;, &quot;~;@com&quot; ]).MatchesX(rxp(:eMail))
+#--&gt; FALSE # Not all elements match the email pattern.</pre><p class="ran nv-illus">illustration</p></div>
+<p>This approach combines intuitive expression with precise logic, allowing for clear and concise condition validation.</p>
+<blockquote>
+<p><strong>NOTE</strong>: The <code>rxp(:email)</code> utility returns the regular expression pattern for a valid email: <code>"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"</code>.</p>
+</blockquote>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>Probabilistic quantifiers in Softanza enhance coding fluency, bridging the gap between natural language and precise logic. They enable expressive, easy-to-read code while still maintaining the power of rigorous validation. </p>
+<p>See them in action in Haro Notepad hereafter:</p>
+<p><img alt="Probabilistic Quantifiers in Softanza in Action" src="../../assets/img/narrations/stz-probabilistic-quantifiers-code.webp" /></p>
+<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « Probabilistic Quantifiers in Softanza: Natural Proportions Meet Logical Precision ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stz-probabilistic-quantifiers-narration.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-08 20:42 dans la bibliothèque au commit 4a184e6f0, bloc après bloc dans un seul processus : 2 bloc(s) sur 6 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-probabilistic-quantifiers-narration.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

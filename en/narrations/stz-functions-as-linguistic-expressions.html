@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writability vs. Readability of Computer Code— Softanza Asks: Why NOT Both? · Narrations · Softanza</title>
+<meta name="description" content="Imagine writing code that flows as naturally as your thoughts, where programming constructs mirror the linguistic patterns of human communication.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Skip to content</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=en" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Present the site as a slideshow" title="Present the site as a slideshow"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="The Softanza repository on GitHub" title="The Softanza repository on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../fr/narrations/stz-functions-as-linguistic-expressions.html" lang="fr" hreflang="fr">Français</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=en" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Main menu"><a href="../platform.html">Platform</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentic</a><a href="../learn.html">Learn</a><a href="../offering.html">Offering</a><a href="../start.html">Start</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Present the site as a slideshow" title="Present the site as a slideshow"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="The Softanza repository on GitHub" title="The Softanza repository on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../fr/narrations/stz-functions-as-linguistic-expressions.html" lang="fr" hreflang="fr">Français</a></div>
+  </div>
+  <nav class="path" aria-label="Pages of the section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Performance series</a><a href="../narrations-security.html">Security series</a><a href="../narrations-delivery.html">Delivery series</a></div></nav>
+  <nav class="crumbs" aria-label="You are here"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">Writability vs. Readability of Computer Code— Softanza Asks: Why NOT Both?</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="The narrations run"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">All the narrations</a></li><li><a href="stz-mental-mode-narration.html">A Guided Path to Problem-Solving: The Softanza Mental Model</a></li><li><a href="stz-bridging-minds-and-code.html">Softanza: Bridging Minds and Code - A Humanistic Approach to Programming</a></li><li><a href="stz-knowledge-programming-narration.html">Softanza Knowledge Porgramming: Crafting the Semantics of Thought</a></li><li><a href="stz-functions-as-linguistic-expressions.html" aria-current=page>Writability vs. Readability of Computer Code— Softanza Asks: Why NOT Both?</a></li><li><a href="stzfolder-natural-navigation.html">Natural Folder Navigation in Softanza</a></li><li><a href="stz-near-natural-language-programming.html">Near-Natural Programming: Bridging Human Thought and Code Execution</a></li><li><a href="stz-near-natural-language-tutorial.html">Softanza Near-Natural Programming Tutorial</a></li><li><a href="stz-function-forms-narration.html">Softanza: Functions as Linguistic Artifacts - A Comprehensive Narration</a></li><li><a href="stznatural-narration.html">**Natural Language Programming, Reimagined: The stzNatural Class in Softanza**</a></li><li><a href="stznatural-vs-ring-naturallib.html">Why I Built stzNatural: A Journey from Haro&#x27;s NaturalLib to Softanza&#x27;s Natural System</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Research · narration</div>
+    <h1>Writability vs. Readability of Computer Code— Softanza Asks: Why NOT Both?</h1>
+    <p class="lede">Imagine writing code that flows as naturally as your thoughts, where programming constructs mirror the linguistic patterns of human communication. This is the core philosophy of Softanza, a foundation library for the Haro programming language, yet a <em>computational thinking frameowork</em> that transforms code from a technical syntax into an expressive, intuitive language.</p>
+    <p class="proof">by Mansour Ayouni · in the repository since 2024-12-18 · comparison · area <a href="../atlas/nlp.html">NLP &amp; linguistics</a></p>
+    
+  </div></section>
+  <div class="wrap page-body narration">
+<figure><img src="../../assets/img/narrations/stz-functions-alterforms-namedparams.webp" alt="An Arabic scholar writing his scientific discovery in a beautiful, readable, and artistic calligraphic style. By M.Ayouni, using Microsoft Image AI" loading="lazy"><figcaption>An Arabic scholar writing his scientific discovery in a beautiful, readable, and artistic calligraphic style. By M.Ayouni, using Microsoft Image AI</figcaption></figure>
+<p><img alt="An Arabic scholar **writing** his scientific discovery in a beautiful, **readable**, and artistic calligraphic style. By M.Ayouni, using Microsoft Image AI" src="../../assets/img/narrations/stz-functions-alterforms-namedparams.webp" />
+<em>An Arabic scholar </em><em>writing</em><em> his scientific discovery in a beautiful, </em><em>readable</em><em>, and artistic calligraphic style.</em></p>
+<p><em>By Mansour Ayouni (Creator of Softanza).</em></p>
+<hr />
+<h2 id="introduction-functions-as-linguistic-expressions">Introduction: Functions as Linguistic Expressions</h2>
+<p>Softanza redefines programming by treating functions as <em>linguistic expressions</em>, offering developers unparalleled flexibility in how they <strong>write</strong> and <strong>read</strong> code.</p>
+<p>By reimagining function names and parameters through the lens of natural language patterns, Softanza creates an intuitive programming experience that closely mirrors how humans naturally think and communicate.</p>
+<p>But don’t just take my word for it—see it in action as we explore the set of innovative features in this article!</p>
+<blockquote>
+<p><strong>NOTE</strong>: In Softanza, as in Haro, the term <code>function</code> is used to refer to both functions and methods.</p>
+</blockquote>
+<h2 id="function-active-form-functions-as-imperative-actions">Function Active Form: Functions as Imperative Actions</h2>
+<p>In Softanza, functions are by default expressed in their <strong>active form</strong>, directly acting upon objects <em>like imperative verbs in a sentence</em>. Consider a string manipulation example:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>load &quot;stzlib.ring&quot;
+
+o1 = new stzString(&quot;HAxxRxO&quot;)
+o1.RemoveAll(&quot;x&quot;)  # Actively modifies the object
+? o1.Content()
+#--&gt; HARO</pre><p class="ran nv-illus">illustration</p></div>
+<p>The <code>RemoveAll()</code> function exemplifies this active approach by directly acting on the object, akin to how a verb conveys immediate action in natural language.</p>
+<p>Implicitly, the interaction adopts a <em>conversational</em> style: the program communicates with the <code>stzString</code> object, <code>o1</code>, as if addressing a person. It's as though saying, <strong>"o1, remove all 'x's, please!"</strong>—reminiscent of calling someone by name to request an action, as in, "<strong>Dan! Remove these from the floor, please.</strong>"</p>
+<h2 id="function-passive-form-transformations-without-side-effects">Function Passive Form: Transformations Without Side Effects</h2>
+<p>Sometimes, you want to perform an operation without altering the original object. Softanza's <strong>passive form</strong> provides this capability:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzString(&quot;HAxxRxO&quot;)
+? o1.AllRemoved(&quot;x&quot;)  # Returns a new transformed string
+#--&gt; HARO
+
+? o1.Content()  # Original object remains unchanged
+#--&gt; HAxxRxO</pre><p class="ran nv-illus">illustration</p></div>
+<p>The <code>Removed()</code> function returns a new string while preserving the original object unchanged.</p>
+<p>In natural language, the <em>past participle</em> often emphasizes a state rather than the action itself. For example, "If you find the door closed, then these are the keys" shifts focus from the act of closing to the <em>desired</em> condition of the door being closed. </p>
+<p>Similarly, in Softanza function design: </p>
+<ol>
+<li><strong><code>o1.Remove()</code></strong> performs the action, altering <code>o1</code>'s state directly.  </li>
+<li><strong><code>o1.Removed()</code></strong>, like the past participle, represents <code>o1</code> in the <em>desired</em> state as if the removal occurred, without altering its actual state.  </li>
+</ol>
+<p>This distinction mirrors human language grammar, making code semantics intuitive and state-focused.</p>
+<h2 id="function-fluent-form-sculpting-transformations-with-precision">Function Fluent Form: Sculpting Transformations with Precision</h2>
+<p>In Softanza, functions can be seamlessly chained to create a fluent sequence of transformations. For example:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;haxxrxo&quot;).
+    RemoveQ(&quot;x&quot;).
+    ReplaceQ(&quot;i&quot;, :With = AHeart()).
+    UppercaseQ().
+    Spacified()
+
+#--&gt; R ♥ N G</pre><p class="ran nv-illus">illustration</p></div>
+<p>This example begins with the string <code>"haxxrxo"</code>, which is converted into an <code>stzString</code> object using the <code>Q()</code> function. The string undergoes a series of transformations: removing the character <code>"x"</code>, replacing <code>"i"</code> with a heart symbol (<code>♥</code>), converting the result to uppercase, and finally adding spaces between characters. The chain concludes with the <code>Spacified()</code> function, which produces the final native Haro string, <code>"R ♥ N G"</code>.</p>
+<p>The <code>Q()</code> construct lies at the heart of this <strong><em>Chain of Actions</em></strong>, enabling fluent transformations by continuously returning the updated <code>stzString</code> object. This approach makes complex string manipulations intuitive and expressive.</p>
+<h2 id="function-immutable-form-transforming-without-altering">Function Immutable Form: Transforming Without Altering</h2>
+<p>In the previous section, we explored the elegant chaining of actions on an initial <code>stzString</code> object using the versatile <code>Q()</code> construct.</p>
+<p>To better understand the internal workings of this process, we can isolate the initial <code>stzString</code> object into a distinct variable, <code>o1</code>, and observe how its value <em>actually changes</em> after the transformations are applied:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzString(&quot;haxxrxo&quot;)
+
+? o1.RemoveQ(&quot;x&quot;).
+    ReplaceQ(&quot;i&quot;, :With = AHeart()).
+    UppercaseQ().
+    Spacified()
+
+#--&gt; R ♥ N G
+
+# The original object is altered
+? o1.Content()
+#--&gt; R ♥ N G</pre><p class="ran nv-illus">illustration</p></div>
+<p>But what if we want to <em>safeguard the integrity of the original object</em>, ensuring it remains unchanged no matter how many transformations are applied? Enter <code>QC()</code>, the <strong>immutable</strong> counterpart to <code>Q()</code>!</p>
+<p>This construct provides a state-safe alternative by creating a copy of the <code>o1</code> object, leaving the original untouched.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzString(&quot;haxxrxo&quot;)
+
+? o1.RemoveQC(&quot;x&quot;).     # Here a copy of o1, not o1 itself, is returned
+    ReplaceQ(&quot;i&quot;, :With = AHeart()).
+    UppercaseQ().
+    Spacified()
+
+#--&gt; R ♥ N G
+
+# The original object remains intact
+? o1.Content()
+#--&gt; &quot;haxxrxo&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>This can also be written more explicitly by inserting a <code>Copy()</code> function after the <code>Q()</code>, like this:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? o1.RemoveQ(&quot;x&quot;).
+    Copy().      # Here, a copy of o1 is returned and chained over
+    ReplaceQ(&quot;i&quot;, :With = AHeart()).
+    UppercaseQ().
+    Spacified()
+
+#--&gt; R ♥ N G</pre><p class="ran nv-illus">illustration</p></div>
+<p>With <code>QC()</code>, transformations occur in a controlled and isolated manner, making it ideal for workflows where preserving the initial state is paramount. Whether you prefer the fluid adaptability of <code>Q()</code> or the immutability of <code>QC()</code>, Softanza empowers developers with the freedom to choose the style that best suits their needs. This flexibility, combined with intuitive design, ensures both expressive fluency and robust control over state—a hallmark of thoughtful and modern programming.</p>
+<h2 id="function-partial-form-opening-a-second-avenue-in-the-transformation-chain">Function Partial Form: Opening a Second Avenue in the Transformation Chain</h2>
+<p>In the example in the Section <em>Function Passive Form: Transformations Without Side Effects</em> above, we wrote <code>o1.AllRemoved("x")</code> and demonstrated the power of using the <code>@PassiveForm</code> of the <code>Remove()</code> function.</p>
+<p>However, this expression is not as linguistically elegant as natural language discourse. In fact, we would prefer to say: <em>All "x" removed</em>, in that order, rather than <em>"x" all removed!</em> – the latter sounds awkward, doesn't it?</p>
+<p>This issue stems from how computer languages are inherently designed regarding objects and methods acting upon them. In all object-oriented programming languages, methods invoked on an object (e.g., <code>o1.Removed("x")</code>) operate on the object itself (<code>o1</code>) rather than on the parameter (<code>"x"</code>), which is merely part of the object's content.</p>
+<p>Softanza <em>resolves</em> this limitation elegantly by allowing values like <code>"x"</code> to be interpreted <em>in context</em> of the main string, as a list of sections refelcting its occurrences in the string, temporarily stored in a hidden space during the chain. Using the <code>@Removed()</code> function, you instruct the Chain to <em>restore</em> the sections and <em>remove</em> them from the string. Thus, we can write:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzString(&quot;HAxxRxO&quot;)
+? o1.@(&quot;x&quot;).@Removed()
+#--&gt; HARO
+
+# Or alternatively:
+? o1.@All(&quot;x&quot;).@Removed()</pre><p class="ran nv-illus">illustration</p></div>
+<p>This <code>@Removed()</code> function form is called <code>@FunctionPartialForm</code>. It enables Fluent Chains of Actions to open a <em>second avenue</em> of data manipulation, applying transformations not to the main object of the chain but to a <strong>part</strong> of it, mimicking natural language.</p>
+<p>Switching between the two avenues is intuitive:
+- When you use <em>normal</em> function forms (active or passive), you are transforming the main object (the <code>stzString "HAxxRxO"</code> in this case).
+- When you use the <em>partial</em> form <code>@Removed()</code>, or any other function prefixed by <code>@</code>, you are <strong>transforming the part</strong>.</p>
+<p>That's it.</p>
+<p>Of course, the part must <em>exist</em> within the object's content (e.g., <code>"x"</code> in <code>"HAxxRxO"</code>). Otherwise, nothing happens.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? o1.@All(&quot;z&quot;).@Removed()
+#--&gt; HAxxRxO</pre><p class="ran nv-illus">illustration</p></div>
+<p>Here’s an example of a more elaborated chain that <em>combines</em> both main functions and <em>partial</em> functions:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzString(&quot;__Ri__ng__&quot;)
+? o1.@(&quot;__&quot;).
+    @RemoveItQ().
+    AndThenQ().
+    UppercaseQ().TheString()
+
+    #--&gt; HARO</pre><p class="ran nv-illus">illustration</p></div>
+<p>Which we can write in even more elegant form without o1, and using an alternative of @() called @Take():</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;__Ri__ng__&quot;).
+    @Take(&quot;__&quot;).
+    @RemoveItQ().
+    AndThenQ().
+    UppercaseQ().TheString()
+
+    #--&gt; HARO</pre><p class="ran nv-illus">illustration</p></div>
+<p>Curious how the magic works? There’s no actual magic—just thoughtful design.</p>
+<ul>
+<li>
+<p>The <code>@("__")</code> small function identifies the substring <code>"__"</code> inside the main string and stores its positions as sections <code>[[1, 2], [5, 6], [9, 10]]</code> in Softanza’s temporary memory.</p>
+</li>
+<li>
+<p>When the <code>@RemoveItQ()</code> partial function is invoked with its <code>@</code> prefix, it removes those sections from the main object. The updated <code>stzString</code> (now containing just <code>"Haro"</code>) is passed along the chain, thanks to the <code>Q()</code> suffix in <code>@RemoveItQ()</code>.</p>
+</li>
+<li>
+<p><code>AndThenQ()</code> acts as a linguistic connector, further passing the updated <code>stzString</code> to the next function, <code>UppercaseQ()</code>. This main function operates on the main string, converting it to <code>"HARO"</code>.</p>
+</li>
+<li>
+<p>Finally, <code>TheString()</code> serves as a linguistic <em>terminator</em> for the chain, returning the value <code>"HARO"</code>.</p>
+</li>
+</ul>
+<h2 id="function-plural-form-pushing-the-boundaries-of-singularity">Function Plural Form: Pushing the Boundaries of Singularity</h2>
+<p>In Softanza, whenever a function operates on a <em>singular</em> element (e.g., a string, list, or number), it is guaranteed to have a counterpart that operates on collections of those elements (e.g., a list of strings, numbers, or lists). This design is both practical and efficient, eliminating the need for explicit loops and simplifying code and logic.</p>
+<p>Let’s illustrate this with an example. Suppose we have a scrambled string that needs to be cleaned of special characters like <code>_</code>, <code>~</code>, or <code>*</code>. The solution involves identifying the sections occupied by these characters and removing them. While describing this process is quick, implementing it step-by-step can be more involved:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzString(&quot;__R~~~IN***G__&quot;)
+
+# Finding the positions of the special characters
+
+aSections1 = o1.FindAsSections(&quot;__&quot;) # Or o1.FindZZ(&quot;__&quot;)
+? @@(aSections1)
+#--&gt; [ [1, 2], [13, 14] ]
+
+aSections2 = o1.FindZZ(&quot;~~~&quot;)
+? @@(aSections2)
+#--&gt; [ [4, 6] ]
+
+aSections3 = o1.FindZZ(&quot;***&quot;)
+? @@(aSections3)
+#--&gt; [ [9, 11] ]
+
+# Merging all the sections into one list
+
+aSections = Merge([ aSections1, aSections2, aSections3 ])
+? @@(aSections)
+#--&gt; [ [1, 2], [4, 6], [9, 11], [13, 14] ]
+
+# Removing the sections from the string
+
+o1.RemoveSections(aSections)
+? o1.Content()
+#--&gt; &quot;HARO&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>Now, let’s explore the power of the <code>@PluralForm</code> for <code>Remove()</code> and see how it simplifies the same task in significantly fewer lines of code.</p>
+<p><strong>Option 1: Using the Plural Form of the <code>Find()</code> Function</strong></p>
+<p>First, we can use the plural version of the <code>Find()</code> function, called <code>FindMany()</code>:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzString(&quot;__R~~~IN***G__&quot;)
+
+# Getting the positions of special characters as sections
+
+aSections = o1.FindManyZZ([&quot;__&quot;, &quot;~~~&quot;, &quot;***&quot;])
+? @@(aSections)
+#--&gt; [ [1, 2], [4, 6], [9, 11], [13, 14] ]
+
+# Removing the sections from the string
+
+o1.RemoveSections(aSections)
+? o1.Content()
+#--&gt; &quot;HARO&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>Here, we’ve reduced the number of lines while achieving the same result. But we can go even further by using the plural form of <code>Remove()</code> directly, skipping the intermediate step with <code>FindMany()</code>.</p>
+<blockquote>
+<p><strong>NOTE</strong>: You got it! <em>Many</em> is the <em>suffix</em> used by Softanza to decorate functions and tranform them into their @PluralForm.</p>
+</blockquote>
+<p><strong>Option 2: Using the <code>RemoveMany()</code> Function</strong></p>
+<p>With <code>RemoveMany()</code>, we can directly remove the specified characters from the string:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzString(&quot;__R~~~IN***G__&quot;)
+
+# Removing the special characters from the string
+
+o1.RemoveMany([&quot;_&quot;, &quot;~&quot;, &quot;*&quot;])
+? o1.Content()
+#--&gt; &quot;HARO&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>This approach eliminates the need for intermediate steps entirely, showcasing the elegance and power of the <code>@FunctionPluralForm</code> in Softanza.</p>
+<blockquote>
+<p>*<em>NOTE</em>: In the next section, you discover yet an other function that does the same job.</p>
+</blockquote>
+<h2 id="function-exceptionalform-handling-real-world-exceptions">Function ExceptionalForm: Handling Real-World Exceptions</h2>
+<p>In many real-world scenarios, we encounter cases where simple string processing fails to meet nuanced requirements. For example, consider the task of removing non-letter characters from the string <code>"__R~~~IN***G__"</code>. Using the standard <code>RemoveNonLetters()</code> function from the <code>stzString</code> class, this can be elegantly achieved:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzString(&quot;__R~~~IN***G__&quot;)
+o1.RemoveNonLetters()
+
+? o1.Content()
+#--&gt; &quot;HARO&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>What if the goal was to preserve the boundary characters <code>"__"</code> while still removing other non-letter symbols?</p>
+<p>This is where the <code>@ExceptionalForm</code> of the <code>RemoveNonLetters()</code> function proves invaluable. By leveraging <code>RemoveNonLettersExcept()</code>, you can specify exceptions to the removal rule.</p>
+<p>Let’s consider the same string, but this time, retaining the underscore characters:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzString(&quot;__R~~~IN***G__&quot;)
+o1.RemoveNonLettersExcept(&quot;_&quot;)
+
+? o1.Content()
+#--&gt; &quot;__RING__&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>Additionally, a function with the <strong>ExceptionalForm</strong>, indicated by the <code>Exception()</code> suffix, can also be conjugated in its <strong>PluralForm</strong>. Here’s an example:  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzString(&quot;__R~~~IN***G---&quot;)
+o1.RemoveNonLettersExceptMany([ &quot;_&quot;, &quot;-&quot; ])
+
+? o1.Content()
+#--&gt; &quot;__RING__&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>This enhancement significantly expands the function's utility, enabling it to handle multiple exceptions simultaneously.  </p>
+<p>The @PluralForm of a function is always inferred automatically by Softanza from its normal form. For instance, in the code above, you could simply write:  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.RemoveNonLettersExcept([ &quot;_&quot;, &quot;-&quot; ])</pre><p class="ran nv-illus">illustration</p></div>
+<p>This concise form clearly conveys your intent to handle multiple exceptional characters, rather than just one.  </p>
+<h2 id="function-negative-form-intuitive-logical-negations">Function Negative Form: Intuitive Logical Negations</h2>
+<p>Softanza simplifies logical <strong>negations</strong> by introducing direct negative function forms:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Traditional approach
+? NOT Q(&quot;*&quot;).IsLetter()
+#--&gt; TRUE
+
+# Softanza&#x27;s natural approach
+? Q(&quot;*&quot;).IsNotLetter()
+#--&gt; TRUE
+
+# Or even with an additional &#x27;A&#x27; for semantic precision
+? Q(&quot;*&quot;).IsNotALetter()
+#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<p>This approach makes logical expressions more readable and closer to natural language, particularly when transforming complex logic like this:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzList([ &quot;R&quot;, &quot;I&quot;, &quot;N&quot;, &quot;G&quot; ])
+
+if NOT (o1.IsString() and o1.IsLowercase() and o1.Contains(&quot;♥&quot;)) and
+   o1.NumberOfChars() &lt; 5 and
+   NOT o1.NumberOfChars().IsOdd()
+
+    ? &quot;It&#x27;s ok!&quot;
+else
+    ? &quot;Oops!&quot;
+ok</pre><p class="ran nv-illus">illustration</p></div>
+<p>Into a streamlined, linguistically intuitive expression like this:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzList([ &quot;R&quot;, &quot;I&quot;, &quot;N&quot;, &quot;G&quot; ])
+
+if o1.IsNotAString() and
+   o1.IsNotInLowercase() and
+   o1.DoesNotContain(&quot;♥&quot;) and
+
+   o1.NumberOfChars() &lt; 5 and
+   o1.NumberOfCharsQ().IsNotOdd()
+
+    ? &quot;It&#x27;s ok!&quot;
+else  
+    ? &quot;Oops!&quot;
+ok
+#--? &quot;It&#x27;s ok!&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>Which version do you find cleaner and more expressive?</p>
+<blockquote>
+<p><strong>NOTE</strong>: Function negative forms are not currently supported in all Softanza functions, but this is planned for the future.</p>
+</blockquote>
+<h2 id="function-alternative-forms-flexibility-in-expression">Function Alternative Forms: Flexibility in Expression</h2>
+<p>Softanza recognizes that developers, as human beings, think in diverse ways and therefore provides multiple approaches to express the same operation.</p>
+<p>For example, consider an unordered list that needs to be ordered:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzList([ &quot;C&quot;, &quot;B&quot;, &quot;A&quot; ])
+
+# Traditional approach
+o1.Swap(1, 3)
+
+? o1.Content()
+#--&gt; [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>Alternatively, a more descriptive approach could be:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzList([ &quot;C&quot;, &quot;B&quot;, &quot;A&quot; ])
+o1.SwapItems(1, 3)
+
+? o1.Content()
+#--&gt; [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>Here, we used <code>SwapItems()</code> instead of <code>Swap()</code>.</p>
+<p>However, this flexibility isn't just a decorative feature—it's a solution for <em>semantic precision</em>, where the meaning can change depending on the intent:</p>
+<ul>
+<li>
+<p>If we ara talking to someone who lacks context about the data and how it's stored (i.e., they don't know it's a list), using <code>SwapItems(1, 3)</code> is preferable, as the word <em>item</em> implies the container is a <em>list</em>.</p>
+</li>
+<li>
+<p>However, since the items are <em>characters</em>, we might want to communicate our specific intent more clearly by using <code>SwapChars(1, 3)</code> instead.</p>
+</li>
+<li>
+<p>Initially, if the reader of the code has the necessary context, a concise <code>Swap()</code> would be the most straightforward choice.</p>
+</li>
+</ul>
+<p>Similarly, <code>@FunctionAlternativeForms</code> feature offer flexibility in the function name composition itself:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzList([ 1, 2, &quot;♥&quot;, 4, 5, &quot;♥&quot;, &quot;♥&quot; ])
+
+# Both are valid and equivalent
+
+? o1.FindNthNext(2, &quot;♥&quot;) #--&gt; 6
+? o1.FindNextNth(2, &quot;♥&quot;) #--&gt; 6</pre><p class="ran nv-illus">illustration</p></div>
+<p>This means you won’t be blocked by an error message just because you wrote <code>Nth</code> before <code>Next</code> or vice versa—since both variations convey the same meaning to anyone!</p>
+<h2 id="function-named-parameters-code-as-narrative">Function Named Parameters: Code as Narrative</h2>
+<p>In the previous section, we wrote <code>o1.SwapItems(1, 3)</code>. What if we further illuminate the reader by explaining that <code>1</code> and <code>3</code> are the positions of the items within <code>o1</code> that are to be swapped?</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Instead of cryptic 1 and 3 number
+o1.SwapItems( :AtPositions = 1, :And = 3 )</pre><p class="ran nv-illus">illustration</p></div>
+<p>The parameters names <code>:AtPositions</code> and <code>:And</code> make the code's intention immediately clear, reading almost like a natural language sentence.</p>
+<p>The feature not only improves communication by clarifying the meaning of your code, but also serves as a <em>productivity tool</em> by eliminating the need to write separate documentation files to explain its use to other programmers. In fact, the code becomes <em>self-documenting</em>, readable, and understandable, as long as a human can read plain, natural language.</p>
+<blockquote>
+<p><strong>NOTE</strong>: Softanza provides thousands of named parameters essential for practical use and can be easily extended to support additional ones as needed.</p>
+</blockquote>
+<h2 id="function-conditional-form-the-magic-of-w">Function Conditional Form: The Magic of W()</h2>
+<p>In Softanza, you can decorate functions with the <code>W()</code> suffix (W for <em>Where</em>), transforming them into <em>conditional</em> functions. Instead of providing parameters, you pass a condition in a string, making the logic more readable and concise.</p>
+<p>For example:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzString(&quot;SOooooFTAaaannnNZA&quot;)
+o1.RemoveWXT(&#x27;Q(@char).isLowercase()&#x27;) # remove all lowercase characters
+
+? o1.Content()
+#--&gt; &quot;SOFTANZA&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>Here, the condition removes all lowercase characters, making the code clear and expressive.</p>
+<p>In contrast, the traditional method involves looping through the string <em>in reverse</em> to avoid position shifts when removing characters:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzString(&quot;SOooooFTAaaannnNZA&quot;)
+for i = o1.Content().Length() - 1 to 0 step -1
+    if o1.Content()[i].isLowercase() then
+        o1.Remove(i)
+end
+
+? o1.Content()
+#--&gt; &quot;SOFTANZA&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>While both approaches achieve the same result, the conditional approach in Softanza enhances your code by making it more <em>readable</em>, intuitive, and focused on the "what" of your goal, rather than the "how" of the computer's implementation.</p>
+<p>Additionally, it is significantly more <em>writable</em>, reducing five lines of code to just one!</p>
+<h2 id="function-prefixes-unlock-function-superpowers-with-three-simple-letters">Function Prefixes: Unlock Function Superpowers with Three Simple Letters</h2>
+<p>In Softanza, as we saw previously, you can easily find the positions of a character inside a string using the <code>FindAll</code> function:  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;RINGORIALAND&quot;).FindAll(&quot;I&quot;)
+# --&gt; [2, 7]</pre><p class="ran nv-illus">illustration</p></div>
+<p>If you'd like to see those positions visually represented, the <code>viz</code> prefix provides a powerful enhancement:  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;RINGORIALAND&quot;).vizFindAll(&quot;I&quot;)
+# --&gt; RINGORIALAND
+#     -^----^-----</pre><p class="ran nv-illus">illustration</p></div>
+<p>The <code>viz</code> prefix adds a visual dimension to the output, making it more intuitive to locate the positions directly within the string.  </p>
+<p>For an even more detailed visualization, the <code>vizFindBoxed</code> method displays the string in a boxed format, clearly highlighting the character:  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;RINGORIALAND&quot;).vizFindBoxed(&quot;I&quot;) + NL
+# --&gt;
+# ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
+# │ R │ I │ N │ G │ O │ R │ I │ A │ L │ A │ N │ D │
+# └───┴─•─┴───┴───┴───┴───┴─•─┴───┴───┴───┴───┴───┘</pre><p class="ran nv-illus">illustration</p></div>
+<p>This feature is particularly useful for debugging and enhancing the programmer experience. By visually pinpointing specific characters or patterns, developers can better understand and analyze string data, making their workflows more efficient and error-free.</p>
+<blockquote>
+<p><strong>NOTE</strong>: Later in this article, you’ll discover two more powerful prefixes: <code>dft</code> and <code>inf</code>. Until then, take a moment to guess what they might do!</p>
+</blockquote>
+<h2 id="function-suffixes-master-parameters-from-the-function-name">Function Suffixes: Master Parameters from the Function Name</h2>
+<p>Programming often involves working with functions that have multiple parameters whose purpose isn't immediately clear from the function names alone. Consider these common scenarios:</p>
+<p>**Ambiguities in Parameter Meanings</p>
+<div class="lbl">Javascript, shown for comparison, not run</div><pre>// In JavaScript
+arrayUtils.slice(array, 0, 10, false);</pre>
+<p>Developers often ask:
+- Does <code>10</code> represent a length or an end position?
+- Is the end position inclusive or exclusive?
+- What behavior does the boolean flag control?</p>
+<div class="lbl">Cpp, shown for comparison, not run</div><pre>// In C++ (originally via Qt, now handled by the Softanza Engine)
+QString str = &quot;example&quot;;
+int position = str.indexOf(&quot;e&quot;, 0, 3, 0);</pre>
+<p>Similar questions arise here:
+- Does <code>3</code> indicate a count of characters to search or an end position?
+- What does the final <code>0</code> represent—a flag, an option, or something else?
+- Is case sensitivity being controlled somewhere?</p>
+<p>These examples highlight how numeric parameters and boolean flags can obscure a function's intent, often requiring developers to consult documentation or resort to trial and error.</p>
+<p><strong>How Softanza Addresses This Challenge</strong></p>
+<p>Softanza introduces a system that uses suffixes in function names to provide clarity about the parameters. Let’s use the <code>CS</code> suffix (indicating case sensitivity) to demonstrate this approach:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>// Basic removal of lowercase characters
+str = new stzString(&quot;SOOooooFFfffTANNnnnZA&quot;)
+str.RemoveMany([&quot;o&quot;, &quot;f&quot;, &quot;n&quot;])
+// --&gt; &quot;SOOFFTANNZA&quot;
+
+// Adding the &#x27;CS&#x27; suffix to indicate case sensitivity
+str = new stzString(&quot;SOOooooFFfffTANNnnnZA&quot;)
+str.RemoveManyCS([&quot;o&quot;, &quot;f&quot;, &quot;n&quot;], FALSE)
+// --&gt; &quot;SOFTANZA&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>By including the <code>CS</code> suffix, the function name <code>RemoveManyCS()</code> conveys key information about its parameters. From the three components of the name—<code>Remove</code>, <code>Many</code>, and <code>CS</code>—we infer the following:</p>
+<ol>
+<li>A list of substrings to be removed, as suggested by the word <code>Many</code>.</li>
+<li>A boolean flag to configure case sensitivity, as indicated by the suffix <code>CS</code>.</li>
+</ol>
+<p><strong>Order and Structure of Parameters</strong></p>
+<p>Not only does the function name tell us what parameters to provide, but it also indicates the order in which they should be written: <code>Many</code> &gt; <code>CS</code> implies the list of substrings <code>[ "o", "f", "n" ]</code> comes first, followed by the boolean flag <code>FALSE</code>.</p>
+<p>This becomes particularly useful when functions have multiple parameters. Consider this example:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzString(&quot;123456789RING&quot;)
+
+# Finding the next occurrence of &quot;haro&quot; starting at position 5
+
+? o1.FindNextSTCS(&quot;haro&quot;, 5, FALSE)
+#--&gt; 10</pre><p class="ran nv-illus">illustration</p></div>
+<p>From the name, we know we must provide parameters that relate to each part of the function name, in the specified order:</p>
+<ul>
+<li>
+<p><code>Next</code>: We ask, "Next what?"—the next substring, of course. Hence, the first parameter is the substring being searched for. In our case, it's the <code>"haro"</code> param.</p>
+</li>
+<li>
+<p><code>ST</code> (StartingAt): Indicates the position from which the search should start, represented by a numeric value. In our case, it's the <code>5</code> param.</p>
+</li>
+<li>
+<p><code>CS</code> (CaseSensitivity): Specifies whether the search is case-sensitive, using a boolean. In our case, it's the <code>FALSE</code> param.</p>
+</li>
+</ul>
+<p>For improved clarity, this line can also be written using an alternative function name and named parameters:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.FindNextSubStringSTIBCS(&quot;haro&quot;, :StartingAt = 5, :CaseSensitivity = FALSE)</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Programmer Exprience by Design</strong></p>
+<p>From a <em>writability</em> perspective, Softanza establishes a <strong>mutual contract</strong> between programmers and the system. Programmers explicitly define their intentions through <strong>suffixes</strong>, while Softanza enforces the parameter structure using its type system.</p>
+<p>From a <em>readability</em> perspective, the suffixes immediately communicate the nature and behavior of the parameters, effectively creating a <strong>self-documenting API</strong>. This eliminates the need for external references, improving code clarity and making it easier for developers to understand and use functions.</p>
+<p>Softanza’s approach ensures a smooth <strong>Programmer Experience by Design</strong>. Developers can focus on solving problems instead of deciphering ambiguous function signatures. This system bridges the gap between intention and implementation, making code more intuitive and expressive.</p>
+<blockquote>
+<p><strong>NOTE</strong>: Softanza includes many other powerful suffixes (and prefixes), which will be explored in a dedicated article.</p>
+</blockquote>
+<h2 id="small-functions-with-grand-potential">Small Functions, With Grand Potential</h2>
+<p>You've already encountered some of them in the sections above: <code>Q()</code>, <code>@()</code>, and <code>@@()</code>. Let's revisit these while introducing some new ones.</p>
+<ul>
+<li><strong><code>Q(val)</code></strong>: Elevates the value <code>val</code> to the corresponding <code>stzObject</code>. For example:</li>
+<li><code>Q(5)</code> is equivalent to <code>new stzNumber(5)</code>.</li>
+<li><code>Q("Hi!")</code> becomes <code>new stzString("Hi!")</code>.</li>
+<li><code>Q([1, 2, 3])</code> results in <code>new stzList([1, 2, 3])</code>.</li>
+</ul>
+<p>The letter <code>Q</code> signifies making the object <em>Queryable</em>, like when we say:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Q(&quot;Hi!&quot;).Count()
+#--&gt; 3</pre><p class="ran nv-illus">illustration</p></div>
+<p>It also places the object in a <em>Queue of Actions</em> (or chain of actions), as in:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Q(&quot;Hi!&quot;).RemoveQ(&quot;!&quot;).UppercaseQ().Content()
+#--&gt; &quot;HI&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<ul>
+<li><strong><code>@@(val)</code></strong>: Like a pair of glasses providing clarity, this function delivers a readable string representation of the value <code>val</code>. It is especially helpful for lists, particularly deep ones:</li>
+</ul>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@([1, [2, 3], 4])
+#--&gt; &quot;[ 1, [ 2, 3 ], 4 ]&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<blockquote>
+<p><strong>NOTE</strong>: Without <code>@@()</code>, the console displays a less readable, vertical list.</p>
+</blockquote>
+<ul>
+<li><strong><code>@(val)</code></strong>: Used in Fluent Chains of Actions, this function introduces a partial value of the main object. The partial value can later be processed using a <code>@PartialFunction</code>, as explained in the related section above. Example:</li>
+</ul>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;__RING__&quot;).@(&quot;_&quot;).Removed() #--&gt; &quot;HARO&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<ul>
+<li><strong><code>QH()</code> and <code>QHH()</code></strong>: These derivatives of <code>Q()</code> generate a step-by-step trace of the object’s transformation within a chain of actions, making it easier to debug and understand the flow. Example:</li>
+</ul>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Qh(12500).
+AddQ(500).
+RetrieveQ(1500).
+DivideByQ(500).
+MultiplyByQ(2).
+History()
+
+#--&gt; [ 13000, 11500, 23, 46 ]</pre><p class="ran nv-illus">illustration</p></div>
+<ul>
+<li>
+<p><strong>Quick Creators</strong>: Handy shortcuts for creating native Haro values. For instance:</p>
+</li>
+<li>
+<p><code>L('"♥1" : "♥3"')</code> produces <code>[ "♥1", "♥2", "♥3" ]</code>.</p>
+</li>
+<li><code>S([ 1, 2, 3 ])</code> generates the stringified form <code>"[ 1, 2, 3 ]"</code>.</li>
+<li>
+<p><code>N("-12500")</code> creates the number <code>-12500</code> from the string <code>"-12500"</code>.</p>
+</li>
+<li>
+<p><strong>Other Utility Functions</strong>: Functions such as <code>v()</code>, <code>Vr()</code>, <code>Vl()</code>, <code>VrVl()</code>, <code>Obj()</code>, and <code>@0()</code> simplify specific tasks. These will be covered in future articles in the documentation.</p>
+</li>
+</ul>
+<p>Primarily designed for <em>writeability</em>, these small functions aim to minimize the mental load of repetitive syntactic commands, fostering rapid coding reflexes. They empower developers to focus on solving problems and achieving objectives rather than being bogged down by complex syntax.</p>
+<p>With such versatile tools, coding becomes not just efficient but genuinely enjoyable.</p>
+<h2 id="function-future-form-programming-the-future-with-softanza">Function Future Form: Programming the Future with Softanza</h2>
+<p>The following Haro code demonstrates a sequence of actions designed with foresight:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? BeforeQ(&#x27;&#x27;).UppercasingFQ(&quot;ringo&quot;).
+	RemoveFFQ(&quot;o&quot;).FromItQ().
+	SpacifyItQ().
+	AndThenQ().ReturnIt()
+
+    #--&gt; H A R O</pre><p class="ran nv-illus">illustration</p></div>
+<p>Here’s what happened behind the scenes:</p>
+<ol>
+<li>
+<p>The process begins with an empty string elevated by <code>Q()</code> into an empty <code>stzString</code> object. This sets the stage for subsequent transformations.</p>
+</li>
+<li>
+<p>The <code>UppercasingFQ("ringo")</code> introduces two suffixes:</p>
+</li>
+<li><code>F()</code> stands for <strong>Future</strong>, instructing Softanza to defer the <code>Uppercasing</code> action.</li>
+<li>
+<p><code>Q()</code> ensures the object remains in an elevated state for chaining.<br />
+   This action isn’t executed immediately but stored for a future moment in the chain.</p>
+</li>
+<li>
+<p>The <code>RemoveFFQ("o")</code> function signals that it depends on any pending actions preceding it. The <em>doubled</em> <code>FF()</code> suffix triggers the execution of all deferred actions before performing the removal. Result: <code>Uppercasing</code> converts <code>"ringo"</code> to <code>"HARO"</code>, and then <code>RemoveFF</code> eliminates <code>"o"</code> from it, leaving <code>"HARO"</code>.</p>
+</li>
+<li>
+<p><code>FromItQ()</code> acts as a bridge, passing the processed <code>stzString</code> ("HARO") to the next step.</p>
+</li>
+<li>
+<p><code>SpacifyItQ()</code> adds spaces between characters, transforming "HARO" into <code>"H A R O"</code>. The chain concludes with <code>AndThenQ().ReturnIt()</code>, which finalizes the sequence and outputs the resulting string.</p>
+</li>
+</ol>
+<p>This feature introduces <strong>algorithmic clarity and time-oriented thinking</strong> into code by allowing developers to design solutions in a natural, human-like manner. By mapping actions along the axis of time, Softanza bridges the gap between <em>thought and execution</em>, providing:</p>
+<ul>
+<li><strong>Clarity in Execution:</strong> Each action clearly expresses when and how it will occur.</li>
+<li><strong>Readable Workflow:</strong> Chains are easy to understand, making code more maintainable.</li>
+<li><strong>Natural Thinking:</strong> The flow reflects how we plan and describe solutions in real life.</li>
+</ul>
+<p>This elegant synergy of <em>structure</em> and <em>foresight</em> exemplifies how <strong>Function Future Form</strong> transforms Softanza into a powerful tool for natural programming.</p>
+<h2 id="function-random-form-gamification-for-free">Function Random Form: Gamification for Free</h2>
+<p>In this section, Softanza introduces an interesting feature called <code>@FunctionRandomForm</code>, which is made possible simply by adding a <code>rnd</code> prefix to (any) function. This powerful feature allows you to manipulate and interact with data in a fun and flexible way.</p>
+<p>Let's imagine a scenario where we have a list of playing cards. The list is easily accessed and displayed as follows:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzList(Cards())
+
+? @@NL(o1.Content()) + NL
+#--&gt; [
+#   &quot;🂡&quot;,
+#   &quot;🂢&quot;,
+#   &quot;🂣&quot;,
+#   &quot;🂤&quot;,
+#   &quot;🂥&quot;,
+#   &quot;🂦&quot;,
+#   &quot;🂧&quot;,
+#   &quot;🂨&quot;,
+#   &quot;🂩&quot;,
+#   &quot;🂪&quot;,
+#   &quot;🂫&quot;,
+#   &quot;🂭&quot;,
+#   &quot;🂮&quot;
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>With <code>rndItems()</code>, we can retrieve random cards from the list:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@(o1.rndItems())
+#--&gt; [ &quot;🂫&quot; ]
+
+? @@(o1.rndItems()) + NL
+#--&gt; [ &quot;🂨&quot;, &quot;🂥&quot;, &quot;🂡&quot;, &quot;🂧&quot; ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>We can also specify how many random cards we want to retrieve using <code>rndNItems(n)</code>:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@(o1.rndNItems(3))
+#--&gt; [ &quot;🂤&quot;, &quot;🂨&quot;, &quot;🂧&quot; ]
+
+? @@(o1.rndNItems(3)) + NL
+#--&gt; [ &quot;🂧&quot;, &quot;🂨&quot;, &quot;🂡&quot; ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>Not only can we retrieve random cards, but we can also remove a random number of cards from the list using <code>rndRemoveItems()</code>:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.rndRemoveItems()
+? @@(o1.Content())
+#--&gt; [ &quot;🂡&quot;, &quot;🂢&quot;, &quot;🂤&quot;, &quot;🂥&quot;, &quot;🂦&quot;, &quot;🂧&quot;, &quot;🂨&quot;, &quot;🂩&quot;, &quot;🂪&quot;, &quot;🂮&quot; ]
+
+o1.rndRemoveItems()
+? @@(o1.Content())
+#--&gt; [ &quot;🂤&quot;, &quot;🂥&quot;, &quot;🂦&quot;, &quot;🂧&quot;, &quot;🂨&quot;, &quot;🂩&quot;, &quot;🂮&quot; ]
+
+o1.rndRemoveItems()
+? @@(o1.Content()) + NL
+#--&gt; [ &quot;🂥&quot;, &quot;🂧&quot;, &quot;🂨&quot;, &quot;🂩&quot;, &quot;🂮&quot; ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>If we want to remove a specific number of random cards, we can use <code>rndRemoveNItems(n)</code>:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.rndRemoveNItems(3) + NL
+? @@(o1.Content())
+#--&gt; [ &quot;🂩&quot;, &quot;🂪&quot; ]</pre><p class="ran nv-illus">illustration</p></div>
+<blockquote>
+<p><strong>NOTE</strong>: Currently, a few functions, including <code>rndItems()</code> and <code>rndRemove()</code>, have their @RandomForm implemented. Ultimately, Softanza will include these randomization features in all its functions, making gamification a first-class citizen in the design of the library.</p>
+</blockquote>
+<p>To add more fun to the game, you can work with cards by their names and symbols. Using <code>CardsXT()</code>, that adds an <code>XT</code> suffix to the <code>Cards()</code> function, we can generate an eXTended list like this:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzList(CardsXT())
+? @@NL(o1.Content())
+#--&gt; [
+#   [ &quot;ace&quot;, &quot;🂡&quot; ],
+#   [ &quot;two&quot;, &quot;🂢&quot; ],
+#   [ &quot;three&quot;, &quot;🂣&quot; ],
+#   [ &quot;four&quot;, &quot;🂤&quot; ],
+#   [ &quot;five&quot;, &quot;🂥&quot; ],
+#   [ &quot;six&quot;, &quot;🂦&quot; ],
+#   [ &quot;seven&quot;, &quot;🂧&quot; ],
+#   [ &quot;eight&quot;, &quot;🂨&quot; ],
+#   [ &quot;nine&quot;, &quot;🂩&quot; ],
+#   [ &quot;ten&quot;, &quot;🂪&quot; ],
+#   [ &quot;jack&quot;, &quot;🂫&quot; ],
+#   [ &quot;queen&quot;, &quot;🂭&quot; ],
+#   [ &quot;king&quot;, &quot;🂮&quot; ]
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>This randomization feature makes Softanza extremely versatile, whether you’re playing a card game or dealing with more complex data manipulation tasks!</p>
+<h2 id="function-deep-form-recrusiveness-made-simple">Function Deep Form: Recrusiveness Made Simple</h2>
+<p>Softanza dives effortlessly into the depths of any list, no matter how deeply <em>nested</em> it is. It can locate items—whether they are numbers, strings, lists, or (named) objects—within a list and all its inner structures. The results are returned as precise <em>paths</em>, offering a clear roadmap to each instance.</p>
+<p>Imagine a nested list containing the word <code>"you"</code> at various levels:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>load &quot;stzlib.ring&quot;
+
+o1 = new stzList([
+	&quot;you&quot;,
+	&quot;other&quot;,
+	[ &quot;other&quot;, &quot;you&quot;, [ &quot;you&quot; ], &quot;other&quot; ],
+	&quot;other&quot;,
+	&quot;you&quot;
+])
+
+? @@( o1.DeepFind(&quot;you&quot;) )
+#--&gt; [ [ 1 ], [ 3, 2 ], [ 3, 3, 1 ], [ 5 ] ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>The paths returned pinpoint the locations of the word <code>"you"</code> within the structure:<br />
+- <strong>[ 1 ]</strong> → The 1st item of the outer list.<br />
+- <strong>[ 3, 2 ]</strong> → The 2nd item in the list located at the 3rd position of the outer list.<br />
+- <strong>[ 3, 3, 1 ]</strong> → The 1st item in the list nested within the list at the 3rd position of the outer list.<br />
+- <strong>[ 5 ]</strong> → The 5th item of the outer list.  </p>
+<p>These paths can be used effortlessly to <em>retrieve</em>, <em>modify</em>, or <em>remove</em> items. For instance, replacing every occurrence of <code>"you"</code> with <code>"♥"</code> is as simple as calling the <code>DeepReplace()</code> method:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.DeepReplace(&quot;you&quot;, :By = &quot;♥&quot;)
+
+? @@NL( o1.Content() )
+# #--&gt; [
+#	&quot;♥&quot;,
+#	&quot;other&quot;,
+#	[ &quot;other&quot;, &quot;♥&quot;, [ &quot;♥&quot; ], &quot;other&quot; ],
+#	&quot;other&quot;,
+#	&quot;♥&quot;
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>Transformations are just as straightforward. To <em>uppercase</em> all occurrences of the word <code>"other"</code>, use the <code>DeepUppercase()</code> method. Softanza propagates the change throughout the structure automatically:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.DeepUppercaseString(&quot;other&quot;)
+
+? @@NL( o1.Content() )
+#--&gt; [
+#	&quot;♥&quot;,
+#	&quot;OTHER&quot;,
+#	[ &quot;OTHER&quot;, &quot;♥&quot;, [ &quot;♥&quot; ], &quot;OTHER&quot; ],
+#	&quot;OTHER&quot;,
+#	&quot;♥&quot;
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>The same simplicity applies to removing items. Calling <code>DeepRemove()</code> with the desired value eliminates all its occurrences while preserving the structure's integrity:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.DeepRemove(&quot;OTHER&quot;)
+
+? @@( o1.Content() )
+#--&gt; [ &quot;♥&quot;, [ &quot;♥&quot;, [ &quot;♥&quot; ] ], &quot;♥&quot; ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>Softanza’s <code>@DeepFunctionForms</code> showcase the power and elegance of working with complex, nested data structures. By <em>abstracting away recursion</em>, these methods allow developers to manipulate lists efficiently, accurately, and without the pitfalls of manual traversal.</p>
+<h2 id="multilingual-function-forms-let-any-human-speak-in-code">Multilingual Function Forms: Let Any Human Speak in Code</h2>
+<p>In writing program code, English is no longer the only option—you can now communicate with Softanza in any language!  </p>
+<p>Your code can be entirely in Arabic, Chinese, or even a mix of different languages within the same program.  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>    Q(&quot;SOFTANZA&quot;) {
+
+        # Get the first character in English code
+        ? FirstChar()
+        #--&gt; &quot;S&quot;
+
+        # Get the last character in French code (LastChar() in English)
+        ? DernierCaractère()
+        #--&gt; &quot;A&quot;
+
+        # Get the last character in Arabic code
+        ? الحرف_الأخير()
+        #--&gt; &quot;َA&quot;
+
+        # Get the number of characters in Chinese code (NumberOfChars() in English)
+        ? 字符数()
+        #--&gt; 8
+    }</pre><p class="ran nv-illus">illustration</p></div>
+<blockquote>
+<p><strong>Note</strong>: Not all Softanza functions have been translated yet. However, a user-friendly translation mechanism is planned for the future to make this process seamless.  </p>
+</blockquote>
+<h2 id="function-free-form-freedom-to-define-power-to-execute">Function Free Form: Freedom to Define, Power to Execute</h2>
+<p>In Softanza, extracting a section from a string is simple:  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;I love Haro&quot;).Section(8, 11)
+#--&gt; &quot;Haro&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>Alternatively, you can use named parameters for clarity:  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;I love Haro&quot;).Section(:From = 8, :To = 11)
+#--&gt; &quot;Haro&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>But what if you forget the parameters or don't know their order? That's where <strong>Function Free Forms (FF)</strong> come in:  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;I love Haro&quot;).SectionFF([])
+#--&gt; &quot;I love Haro&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>Softanza, by default, returns the entire string (positions 1 to the end). You can also specify only some parameters:  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;I love Haro&quot;).SectionFF([:From = 8])
+#--&gt; &quot;Haro&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>Even if you invert the parameter order, it works seamlessly:  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;I love Haro&quot;).SectionFF([:To = 11, :From = 8])
+#--&gt; &quot;Haro&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>Now, consider the following string:  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzString(&quot;haro php haro ruby haro&quot;)</pre><p class="ran nv-illus">illustration</p></div>
+<p>Using <code>ReplaceNextOccurrence</code>, you can replace the first occurrence of a substring. Normally, the function requires three parameters:  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.ReplaceNextOccurrence(:Of = &quot;haro&quot;, :StartingAt = 1, :With = &quot;♥&quot;)
+? Content()
+#--&gt; ♥ php haro ruby haro</pre><p class="ran nv-illus">illustration</p></div>
+<p>With the <strong>FF</strong> suffix, you can reduce the parameters and still get the same result:  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.ReplaceNextOccurrenceFF([&quot;haro&quot;, :With = &quot;♥&quot;])
+#--&gt; ♥ php haro ruby haro</pre><p class="ran nv-illus">illustration</p></div>
+<p>You can reorder the parameters as you like:  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.ReplaceNextOccurrenceFF([:Of = &quot;haro&quot;, :With = &quot;♥&quot;, :StartingAt = 1])
+#--&gt; ♥ php haro ruby haro</pre><p class="ran nv-illus">illustration</p></div>
+<p>Or omit all parameters, letting Softanza infer the defaults:  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.ReplaceNextOccurrenceFF([])
+#--&gt; ♥ php haro ruby haro</pre><p class="ran nv-illus">illustration</p></div>
+<p>Here, Softanza intelligently defaults the <code>:Of</code> parameter to the first substring it encounters ("haro" in this case).  </p>
+<p><strong>Function Free Forms</strong> make Softanza functions flexible and intuitive, allowing users to define parameters in any order—or none at all—and achieve consistent results.  </p>
+<h2 id="function-default-form-default-params-values-made-computable">Function Default Form: Default Params Values, Made Computable!</h2>
+<p>In Softanza, using a function with its default values is straightforward. You have two flexible options:  </p>
+<ol>
+<li>Add the <code>FF</code> suffix with <code>[]</code>, as shown in the previous section.  </li>
+<li>Use the <code>dft</code> prefix, like this:  </li>
+</ol>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;I love Haro&quot;).dftRange()
+# --&gt; &quot;I love Haro&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>This allows you to quickly apply a function while keeping its default values intact.  </p>
+<p>If you want to gain insight into the parameters and their default values, Softanza provides another handy feature: the <code>inf</code> prefix. It provides a clear description of the parameters, their names, types, and default values:  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;I love Haro&quot;).infRange()
+# --&gt; [
+#   [ :Param = &quot;pnStart&quot;, :Name = &quot;from&quot;, :Type = &quot;NUMBER&quot;, :Default = 1 ],
+#   [ :Param = &quot;pnRange&quot;, :Name = &quot;to&quot;,   :Type = &quot;NUMBER&quot;, :Default = 11 ]
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>This makes it easy to understand how a function works and what defaults are available, simplifying the process of coding efficiently and relegating the need for documentation to a supporting role.</p>
+<h2 id="function-parameters-free-order-parameters-your-way">Function Parameters Free Order: Parameters Your Way!</h2>
+<p>A small but valuable feature in practice: when a function contains two parameters of different types, you can provide these parameters in any order.</p>
+<p>For example:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>  Q(&quot;haro php haro python haro&quot;) {
+    
+    # You can place the number of occurrences before the substring
+    ? FindNthOccurrence(2, &quot;haro&quot;)
+    #--&gt; 10
+
+    # Or place the substring before the number of occurrences
+    ? FindNthOccurrence(&quot;haro&quot;, 2)
+    #--&gt; 10
+  }</pre><p class="ran nv-illus">illustration</p></div>
+<p>Regardless of the order, you still get the same result.</p>
+<blockquote>
+<p><strong>NOTE</strong>: Not all functions with two parameters support this feature yet, but it is planned for a future release.</p>
+</blockquote>
+<h2 id="function-misspelled-form-functions-that-just-work">Function Misspelled Form: Functions that Just Work</h2>
+<p>In Softanza, when you write:  </p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;   Haro &quot;).WithoutSapces()
+#--&gt; Haro
+
+? Q(&quot;bla {♥♥♥} blaba bla {♥♥♥} blabla&quot;).FindLasteAsSection(&quot;♥♥♥&quot;)
+#--&gt; [ 22, 24 ]
+
+? QQ([ 2, 7, 18, 18, 10, 12, 25, 4 ]).NearstTo(10)
+#--&gt; 12</pre><p class="ran nv-illus">illustration</p></div>
+<p>You get what you want, but here’s the twist: all the function names are misspelled!</p>
+<p>Look closely. This functionality, usually found in advanced IDE tools, is seamlessly integrated into Softanza library. The library recognizes and corrects minor typos in function names, mapping them to the closest valid definitions.</p>
+<p>This feature dramatically improves the coding experience by reducing disruptions caused by trivial errors. It saves time, lowers frustration, and enhances accessibility for developers of all skill levels, especially those working in non-native languages.</p>
+<p>Additionally, it simplifies the integration of such features into IDEs, as the intelligence resides in the library itself.</p>
+<h2 id="function-statement-form-the-magic-of-x">Function Statement Form: The Magic of X()</h2>
+<p>In everyday speech, we express logical statements using various constructs. For example, we might say "<em>All readers of this page are programmers</em>." Such statements eventually face a moment of truth when tested against reality, revealing their actual truth value.</p>
+<p>At the language design level, this concept manifests through two crucial elements: the <em>statement</em> itself and a <em>verification</em> function that evaluates its truth.</p>
+<p>In Softanza, the elegant <code>X()</code> suffix enables programmers to articulate statements about their code with precision. Consider this example:</p>
+<pre>AllNumbersInQX([ -2, -4, -21 ])</pre>
+<p>Here, Softanza interprets the programmer's intent clearly: they're making an assertion about <em>every</em> number in the list, not just some subset.</p>
+<p>But what exactly are we asserting about these numbers? This is where the second <code>X()</code> comes into play, serving as a prefix to the method that completes our logical statement:</p>
+<pre>? AllNumbersInQQX([ -2, -4, -21 ]).AreNegativeX()
+#--&gt; TRUE
+
+? AllNumbersInQQX([ -2, 8, -4, -21 ]).AreNegativeX()
+#--&gt; FALSE</pre>
+<p>The truth-checking mechanism maintains its elegance even when expressing negative assertions:</p>
+<pre>? NoNumberInQQX([ -2, -4, -21 ]).IsPositiveX()
+#--&gt; TRUE
+
+? NoNumberInQQX([  -2, -4, -21, 10800 ]).IsPositiveX()
+#--&gt; FALSE</pre>
+<p>This syntax pattern proves invaluable in real-world scenarios. When validating financial transactions, you might need to ensure all amounts are positive. In security systems, you could verify that no ports in a certain range are open. Data integrity checks might require confirming that all database records meet specific criteria. The <code>X()</code> syntax thus bridges the gap between human logical thinking and programmatic expression, making code both more readable and more reliable in production environments.</p>
+<h2 id="more-forms-to-come-in-the-future">More Forms to Come in the Future</h2>
+<ul>
+<li><code>@FunctionTimedForm</code>: A rule of nature to let functions be born, live, and gracefully die!</li>
+<li><code>@FunctionCashedForm</code>: Enable your functions to remember things.</li>
+<li><code>@FunctionVersionedForm</code>: For truly agile software architectures.</li>
+</ul>
+<h2 id="why-it-matters-the-dual-benefits-of-writable-and-readable-code">Why It Matters: The Dual Benefits of Writable and Readable Code</h2>
+<p>Softanza's approach offers multiple advantages:</p>
+<ul>
+<li>
+<p><strong>Accelerated Writability</strong>: Developers experience reduced cognitive load, allowing them to express their ideas naturally in code.</p>
+</li>
+<li>
+<p><strong>Enhanced Readability</strong>: Code becomes self-documenting and intuitive, making it easier for others and for your future self to understand.</p>
+</li>
+<li>
+<p><strong>Computational Thinking Flexibility</strong>: Multiple ways to express the same logic cater to different thinking styles, freeing programmers from the constraints of rigid syntax.</p>
+</li>
+<li>
+<p><strong>Reduced Errors</strong>: Clear, descriptive functions minimize misunderstandings, leading to more reliable, error-resistant code.</p>
+</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Readability and writability are often perceived as <em>conflicting</em> goals in programming. Softanza’s innovative approach challenges this assumption, demonstrating that these two objectives can not only coexist but thrive <em>harmoniously</em>. By reimagining the concept of a <em>function</em> as a programmatic construct through the lens of human natural language, Softanza transforms functions into powerful artifacts. Each function hosts its own embedded domain-specific language, harnessing the structure, semantics, and behavior of its name, parameters, their order and types, as well as its overall output.  </p>
+<p>This paradigm liberates developers from the constraints of rigid syntactical rules, empowering them to express their logic as intuitively and fluidly as they might in natural conversation. The result is a synthesis of clarity and efficiency, where code communicates intent as seamlessly as it executes tasks.</p>
+<h2>Related reading</h2><ul><li><a href="stz-near-natural-language-programming.html">Near-Natural Programming: Bridging Human Thought and Code Execution</a></li><li><a href="stzobject-history-narration.html">The Narrative of Transformations: Tracking Object History in Softanza</a></li><li><a href="stz-near-natural-language-tutorial.html">Softanza Near-Natural Programming Tutorial</a></li><li><a href="stz-mental-mode-narration.html">A Guided Path to Problem-Solving: The Softanza Mental Model</a></li></ul><h2>Cite</h2><p class="mono cite">Mansour Ayouni. "Writability vs. Readability of Computer Code— Softanza Asks: Why NOT Both?". Softanza narrations, 2024. https://mayouni.github.io/stzsite/en/narrations/stz-functions-as-linguistic-expressions.html</p><p class="proof">Not run: its code touches files, the network, the clock or chance. The article is published as written; its blocks are illustrations. The code of the articles is Haro code. Where an article was written before the language took its present name, the name was changed and nothing else. Genre, area and series read from the file's name, the year from its first commit: derived, until the article carries its own header. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-functions-as-linguistic-expressions.md" target="_blank" rel="noopener noreferrer">The file on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Platform</h3><ul><li><a href="../platform.html">Platform</a></li><li><a href="../platforms.html">Platform of platforms</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">The craft</a></li><li><a href="../areas.html">The areas</a></li><li><a href="../code.html">The code</a></li><li><a href="../compare.html">Compared</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Performance series</a></li><li><a href="../narrations-security.html">Security series</a></li><li><a href="../narrations-delivery.html">Delivery series</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">The north star</a></li><li><a href="../principles.html">Twelve principles</a></li><li><a href="../estate.html">The estate</a></li><li><a href="../history.html">From first principles</a></li><li><a href="../forged.html">Forged in projects</a></li><li><a href="../sovereignty.html">Sovereignty</a></li><li><a href="../africa.html">Born in Africa</a></li></ul></div><div><h3>Agentic</h3><ul><li><a href="../agentic.html">Agentic</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Language of languages</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Refinement</a></li><li><a href="../agents.html">For agents</a></li><li><a href="../coding-agents.html">Coding agents</a></li><li><a href="../security.html">Security</a></li></ul></div><div><h3>Learn</h3><ul><li><a href="../learn.html">Learn</a></li><li><a href="../book.html">The book</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">How-to</a></li><li><a href="../reference.html">Reference</a></li><li><a href="../ask.html">Ask the library</a></li><li><a href="../education.html">Education</a></li></ul></div><div><h3>Offering</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Editions</a></li><li><a href="../customers.html">Customers</a></li></ul></div><div><h3>Start</h3><ul><li><a href="../start.html">Start</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">The repository on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></li><li><a href="../tour.html">Presentation mode</a></li><li><a href="../../deck-check.html">Check offline</a></li><li><a href="../../index.html?lang=fr" lang="fr">Français</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">The Software Makers Platform of the AI Age. Born in Africa. Useful to the World!</p><div class="themes" role="group" aria-label="Display"><button type="button" data-set-theme="light">Use the light theme</button><button type="button" data-set-theme="dark">Use the dark theme</button><button type="button" data-set-theme="auto">Follow the system</button></div></div>
+    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

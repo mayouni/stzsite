@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stzDateTime: Elegant DateTime Operations in Softanza · Narrations · Softanza</title>
+<meta name="description" content="DateTime manipulation is a universal programming challenge—combining date and time logic while handling formats, timezones, and arithmetic.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzdatetime-guide-narration.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzdatetime-guide-narration.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">stzDateTime: Elegant DateTime Operations in Softanza</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stzgrid-navigator-grid-mastering.html">The Navigator&#x27;s Grid: Mastering stzGrid in the Softanza Library</a></li><li><a href="stzdatetime-guide-narration.html" aria-current=page>stzDateTime: Elegant DateTime Operations in Softanza</a></li><li><a href="stzcalendar-time-capacity-planning-in-softanza.html">Time Capacity Planning in Softanza: Mastering Constraints with stzCalendar</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>stzDateTime: Elegant DateTime Operations in Softanza</h1>
+    <p class="lede">Softanza's temporal system comprises a suite of interconnected classes, each addressing specific aspects of time handling to avoid conceptual overlap while enabling seamless integration:</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2025-10-02 · tutoriel · sans domaine de l'Atlas</p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+
+<p>DateTime manipulation is a universal programming challenge—combining date and time logic while handling formats, timezones, and arithmetic. The <code>stzDateTime</code> class from Softanza transforms this complexity into an intuitive, expressive experience built on the Softanza Engine's robust foundation.</p>
+<h2 id="the-temporal-class-suite-stzdate-stztime-stzdatetime-stzduration-stztimeline-and-stzcalendar">The Temporal Class Suite: stzDate, stzTime, stzDateTime, stzDuration, stzTimeline, and stzCalendar</h2>
+<ul>
+<li><strong>stzDate</strong>: Pure calendar operations (birthdays, deadlines, historical events).</li>
+<li><strong>stzTime</strong>: Clock-based logic (business hours, durations, scheduling).</li>
+<li><strong>stzDateTime</strong>: Combined operations requiring both date and time (logging, event scheduling, timestamps).</li>
+<li><strong>stzDuration</strong>: Dedicated handling of time spans independently of specific dates/times, with arithmetic, unit conversions, and formatting (e.g., "2 days 3 hours" as an object).</li>
+<li><strong>stzTimeline</strong>: Management of sequences or series of temporal events, supporting interval calculations, overlaps, timelines, and event ordering.</li>
+<li><strong>stzCalendar</strong>: #TODO</li>
+</ul>
+<p>This modular design mirrors real-world reasoning: Use stzDateTime for timestamps, extract stzDate or stzTime for specialized ops via DateQ() or TimeQ(), wrap durations in stzDuration for reusable spans, and organize events with stzTimeline. The classes interoperate fluidly—e.g., adding a stzDuration to a stzDateTime or building a stzTimeline from stzDateTime instances.</p>
+<h2 id="creating-datetime-objects-flexibility-by-design">Creating DateTime Objects: Flexibility by Design</h2>
+<p>Softanza accepts multiple input styles because your data comes from various sources. Whether parsing user input, deserializing APIs, or working with Unix timestamps, there's a natural path:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Current moment - empty string or dedicated functions
+? NowXT()  # Or NowDateTime()
+#--&gt; 2025-10-04 21:30:44
+
+oNow = StzDateTimeQ(&quot;&quot;)
+? oNow.Content() 		# Or ToString() or DateTime()
+#--&gt; 2025-10-02 14:30:45
+
+# String parsing - auto-detects common formats
+oMeeting = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
+? oMeeting.DateTime()
+#--&gt; 2024-03-15 14:30:45
+
+# Explicit hash - perfect for programmatic construction
+oDeadline = StzDateTimeQ([
+    :Year = 2024, :Month = 12, :Day = 31,
+    :Hour = 23, :Minute = 59, :Second = 59
+])
+? oDeadline.ToString()
+#--&gt; 2024-12-31 23:59:59
+
+# Unix timestamp - seamless API integration
+oEpoch = StzDateTimeQ(1710511845)
+? oEpoch.Content()
+#--&gt; 2024-03-15 14:30:45</pre><p class="ran nv-illus">illustration</p></div>
+<p>Validation ensures robustness:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? IsDateTime(&quot;2024-03-15 10:00:00&quot;)  #--&gt; TRUE
+? IsValidDateTime(&quot;invalid&quot;)         #--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+<p>This flexibility eliminates boilerplate—no manual parsing, no format juggling. Just natural instantiation.</p>
+<h2 id="arithmetic-where-operators-become-language">Arithmetic: Where Operators Become Language</h2>
+<p>The hallmark of great API design is making code read like thought. Softanza's operator overloading achieves this by understanding context:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oStart = StzDateTimeQ(&quot;2024-03-15 14:30:00&quot;)
+
+# Add seconds numerically
+oPlus5 = oStart + 5
+? oPlus5.Content()
+#--&gt; 2024-03-15 14:30:05
+
+# Or use natural language
+oFuture = oStart + &quot;2 days 3 hours&quot;
+? oFuture.Content()
+#--&gt; 2024-03-17 17:30:00
+
+# Explicit natural methods for complex durations
+oStart.AddNatural(&quot;2 days 3 hours 30 minutes 28 seconds 540 milliseconds&quot;)
+? oStart.ToStringXT(&quot;yyyy-MM-dd hh:mm:ss.zzz&quot;)
+#--&gt; 2024-03-17 17:30:28.540
+
+oStart.SubtractNatural(&quot;1 day 2 hours&quot;)
+? oStart.Content()
+#--&gt; 2024-03-16 15:30:28.540</pre><p class="ran nv-illus">illustration</p></div>
+<p>Notice how the <code>+</code> operator adapts? With a number, it adds seconds. With a string, it parses duration syntax. This polymorphism mirrors human reasoning—you don't think "I'll add 172800 seconds," you think "add 2 days."</p>
+<p>Subtraction reveals duration automatically:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oEnd = StzDateTimeQ(&quot;2024-03-17 17:30:00&quot;)
+nSeconds = oEnd - oStart
+? nSeconds
+#--&gt; 183600  # Total seconds between moments
+
+# Comparisons work exactly as expected
+? oStart &lt; oEnd      #--&gt; TRUE
+? oStart &lt;= oStart   #--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<p>Chaining enhances fluidity:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oStart.AddDaysQ(5).AddHoursQ(3).AddMinutesQ(30).ToString()
+#--&gt; 2024-03-20 17:30:30</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="duration-calculations-from-seconds-to-stories">Duration Calculations: From Seconds to Stories</h2>
+<p>When you need granular breakdowns, <code>DurationTo()</code> delivers complete temporal distance analysis:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oProject = StzDateTimeQ(&quot;2024-01-01 09:00:00&quot;)
+oLaunch = StzDateTimeQ(&quot;2024-03-15 14:30:45.123&quot;)
+
+aDuration = oProject.DurationTo(oLaunch)
+? aDuration
+#--&gt; [
+#    :Days = 74,
+#    :Hours = 5,
+#    :Minutes = 30,
+#    :Seconds = 45,
+#    :Milliseconds = 123
+# ]
+
+# Specialized units
+? oProject.DurationTo(oLaunch, :In = :Weeks)  #--&gt; 10 (approx.)
+? oProject.DurationTo(oLaunch, :InYears)      #--&gt; 0</pre><p class="ran nv-illus">illustration</p></div>
+<p>This hash format makes it trivial to build user-facing messages: "Your project took 74 days, 5 hours, and 30 minutes." For quick math, specialized methods bypass the hash:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oProject.DaysTo(oLaunch)      #--&gt; 74
+? oProject.HoursTo(oLaunch)     #--&gt; 1781
+? oProject.MinutesTo(oLaunch)   #--&gt; 106870</pre><p class="ran nv-illus">illustration</p></div>
+<p>Each method returns total units—<code>HoursTo()</code> gives 1781, not just the 5 hours within the final day. This flexibility lets you choose precision versus simplicity based on context.</p>
+<h2 id="formatting-a-hierarchical-philosophy">Formatting: A Hierarchical Philosophy</h2>
+<p>Softanza's formatting system reflects a deliberate design: <strong>Time System → Localization → Precision → Verbosity</strong>. This hierarchy gives you control without complexity. Defaults to 24-hour for precision, with easy 12-hour variants.</p>
+<h3 id="named-formats-24-hour-default">Named Formats: 24-Hour Default</h3>
+<p>The library defaults to 24-hour time for precision and international clarity, with formats organized by use case:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oEvent = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
+
+# ISO formats - for data interchange and logs
+? oEvent.ToISO()
+#--&gt; 2024-03-15 14:30:45
+
+? oEvent.ToISO8601()
+#--&gt; 2024-03-15T14:30:45
+
+# Compact - when space matters
+? oEvent.ToCompact()
+#--&gt; 2024-03-15 14:30
+
+# Localized conventions
+? oEvent.ToStandard()    # European DD/MM/YYYY
+#--&gt; 15/03/2024 14:30:45
+
+? oEvent.ToAmerican()    # US MM/DD/YYYY
+#--&gt; 03/15/2024 14:30:45
+
+# Verbose - full human readability
+? oEvent.ToVerbose()
+#--&gt; Friday, March 15, 2024 14:30:45</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="12-hour-variants-one-suffix-universal-application">12-Hour Variants: One Suffix, Universal Application</h3>
+<p>Want AM/PM? Simply append <code>12h</code> to any format name. This consistent pattern eliminates memorization and supports locale-aware AM/PM text:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oEvent.ToISO12h()
+#--&gt; 2024-03-15 02:30:45 PM
+
+? oEvent.ToStandard12h()
+#--&gt; 15/03/2024 02:30:45 PM
+
+? oEvent.ToVerbose12h()
+#--&gt; Friday, March 15, 2024 02:30:45 PM</pre><p class="ran nv-illus">illustration</p></div>
+<p>Edge cases like midnight/noon and single-digit hours are handled gracefully:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oMidnight = StzDateTimeQ(&quot;2024-03-15 00:00:00&quot;)
+? oMidnight.ToString12h()
+#--&gt; 2024-03-15 12:00:00 AM
+
+oSingle = StzDateTimeQ(&quot;2024-03-15 03:05:00&quot;)
+? oSingle.ToStringXT(&quot;h:mm AP&quot;)
+#--&gt; 3:05 AM</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="convenience-formats-balanced-defaults">Convenience Formats: Balanced Defaults</h3>
+<p>For common scenarios, convenience formats provide balanced presets with variants:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oEvent.ToSimple()
+#--&gt; 15/03/2024 2:30 PM
+
+? oEvent.ToSimple24h()
+#--&gt; 15/03/2024 14:30
+
+? oEvent.ToMedium12h()
+#--&gt; Fri, Mar 15 2:30 PM
+
+? oEvent.ToShort24h()
+#--&gt; 15/03 14:30
+
+? oEvent.ToLong()
+#--&gt; Friday, March 15, 2024 2:30:45 PM
+
+? oEvent.ToLongDate()  # Date-only verbose
+#--&gt; Friday, March 15, 2024</pre><p class="ran nv-illus">illustration</p></div>
+<p>These formats automatically use 12-hour time because they're designed for user-facing contexts where AM/PM convention dominates. Error handling is built-in:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oEvent.ToStringXT(:NonExistentFormat)
+#--&gt; ERROR: The pattern name you provided does not exist in stzRegexData file.</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="custom-patterns-engine-power-simplified">Custom Patterns: Engine Power, Simplified</h3>
+<p>When presets don't fit, the engine's format string syntax or symbolic names give unlimited control:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Engine format string - leverage the full power
+? oEvent.ToStringXT(&quot;yyyy-MM-dd HH:mm:ss.zzz&quot;)
+#--&gt; 2024-03-15 14:30:45.000
+
+# Symbolic name - readable and reusable
+? oEvent.ToStringXT(:ISOWithMs)
+#--&gt; 2024-03-15 14:30:45.000
+
+# Creative patterns
+? oEvent.ToStringXT(&quot;dddd &#x27;at&#x27; h:mm AP&quot;)
+#--&gt; Friday at 2:30 PM</pre><p class="ran nv-illus">illustration</p></div>
+<p>This layered approach means you start simple and reach for power only when needed.</p>
+<h2 id="component-extraction-direct-access-without-parsing">Component Extraction: Direct Access Without Parsing</h2>
+<p>Need a specific part? Direct accessor methods bypass string manipulation:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oDateTime = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
+
+? oDateTime.Year()      #--&gt; 2024
+? oDateTime.Month()     #--&gt; March
+? oDateTime.MonthN()    #--&gt; 3
+? oDateTime.Day()       #--&gt; Friday
+? oDateTime.DayN()      #--&gt; 15
+? oDateTime.Hours()     #--&gt; 14
+? oDateTime.Minutes()   #--&gt; 30
+? oDateTime.Seconds()   #--&gt; 45
+
+# Access specialized objects for date/time-specific operations
+oDate = oDateTime.DateQ()  # Returns stzDate
+oTime = oDateTime.TimeQ()  # Returns stzTime</pre><p class="ran nv-illus">illustration</p></div>
+<p>The <code>DateQ()</code> and <code>TimeQ()</code> methods demonstrate the architecture's power—extract components as fully-functional objects when you need their specialized methods.</p>
+<h2 id="comparison-operators-and-methods-in-harmony">Comparison: Operators and Methods in Harmony</h2>
+<p>Softanza provides both operators for conciseness and methods for clarity. Choose based on context:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oNow = StzDateTimeQ(&quot;&quot;)
+oFuture = oNow + &quot;5 days&quot;
+oPast = oNow - &quot;5 days&quot;
+
+# Operators - compact in conditionals
+if oNow &lt; oFuture
+    ? &quot;Time moves forward&quot;
+ok
+
+# Methods - readable in complex logic
+if oNow.IsBefore(oFuture) and oNow.IsAfter(oPast)
+    ? &quot;Present is between past and future&quot;
+ok
+
+# Named checks for semantic clarity
+? oNow.IsToday()      #--&gt; TRUE
+? oNow.IsNow()        #--&gt; TRUE
+? oNow.IsBetween(oPast, :and = oFuture)  #--&gt; TRUE
+? (oNow + &quot;1 day&quot;).IsTomorrow()  #--&gt; TRUE
+? (oNow - &quot;1 day&quot;).IsYesterday() #--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<p>The named parameter <code>:and</code> in <code>IsBetween()</code> makes range checks self-documenting—no guessing which parameter is the upper bound.</p>
+<h2 id="human-readable-output-bridging-technical-and-natural">Human-Readable Output: Bridging Technical and Natural</h2>
+<p>Technical timestamps serve machines; human formats serve people. Softanza makes the bridge seamless:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oEvent = StzDateTimeQ(&quot;2024-12-25 18:00:00&quot;)
+
+? oEvent.ToHuman()
+#--&gt; Christmas Day, 2024 at 6:00 PM  # (Enhanced with ordinals and phrasing like &quot;Half past 2 PM&quot; where applicable)
+
+# Relative time - context-aware phrasing
+oRecent = StzDateTimeQ(&quot;&quot;) - &quot;2 hours&quot;
+? oRecent.ToRelative()
+#--&gt; 2 hours ago
+
+oUpcoming = StzDateTimeQ(&quot;&quot;) + &quot;3 days&quot;
+? oUpcoming.ToRelative()
+#--&gt; in 3 days</pre><p class="ran nv-illus">illustration</p></div>
+<p>These methods understand tense and phrasing conventions, generating grammatically correct output for UI display.</p>
+<h2 id="time-zones-and-unix-timestamps-global-compatibility">Time Zones and Unix Timestamps: Global Compatibility</h2>
+<p>Modern applications operate globally. Softanza handles timezone conversion and epoch timestamps naturally:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oLocal = StzDateTimeQ(&quot;&quot;)
+? oLocal.Content()
+#--&gt; 2025-10-02 14:30:45
+
+# Convert to UTC for storage/APIs
+oUTC = oLocal.ToUTC()
+? oUTC
+#--&gt; 2025-10-02 12:30:45  # Adjusted for local offset
+
+# Unix timestamps for interop
+? oLocal.ToUnixTimeStamp()
+#--&gt; 1727876445
+
+? oLocal.ToUnixTimeStampMs()  # Millisecond precision
+#--&gt; 1727876445000</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="epoch-conversions-multiple-time-scales">Epoch Conversions: Multiple Time Scales</h3>
+<p>Beyond basic Unix timestamps, Softanza provides epoch conversions in multiple time units. Each method has semantic aliases for clarity in different contexts:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oEvent = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
+
+# Seconds - the standard Unix timestamp
+? oEvent.ToSecondsSinceEpoch() # Or ToEpochSeconds() or ToUnixTimestamp() 
+#--&gt; 1710511845
+
+# Milliseconds - for high-precision APIs
+? oEvent.ToMillisecondsSinceEpoch() # or ToEpochMilliseconds() or ToUnixTimestampMs()
+#--&gt; 1710511845000
+
+# Minutes - useful for session tracking
+? oEvent.ToMinutesSinceEpoch() # or ToEpochMinutes()
+#--&gt; 28508530
+
+# Hours - for analytics and aggregation
+? oEvent.ToHoursSinceEpoch() # or ToEpochHours()
+#--&gt; 475142
+
+# Days - for date-based comparisons
+? oEvent.ToDaysSinceEpoch() # or ToEpochDays()
+#--&gt; 19797
+
+# Weeks - for weekly reporting periods
+? oEvent.ToWeeksSinceEpoch() # or ToEpochWeeks() 
+#--&gt; 2828
+
+# Months - calendar-aware calculation
+? oEvent.ToMonthsSinceEpoch() # or ToEpochMonths() 
+#--&gt; 649  # Accounts for variable month lengths
+
+# Years - handles leap years correctly
+? oEvent.ToYearsSinceEpoch() # or ToEpochYears()
+#--&gt; 54
+
+# Decades - for historical analysis
+? oEvent.ToDecadesSinceEpoch() # or ToEpochDecades()
+#--&gt; 5
+
+# Centuries - for very long-term data
+? oEvent.ToCenturiesSinceEpoch() # or ToEpochCenturies()
+#--&gt; 0</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Why Multiple Time Scales?</strong></p>
+<p>Different domains need different granularity:
+- <strong>Seconds/Milliseconds</strong>: API interchange, logging, precise timing
+- <strong>Minutes</strong>: Session duration, cache expiration, polling intervals<br />
+- <strong>Hours</strong>: Hourly analytics, time-slot booking systems
+- <strong>Days</strong>: Date-based bucketing, retention policies, daily aggregates
+- <strong>Weeks</strong>: Weekly reports, sprint planning, subscription cycles
+- <strong>Months</strong>: Billing cycles, subscription periods, contract durations (calendar-aware)
+- <strong>Years</strong>: Historical analysis, age validation, multi-year trends (handles leap years)
+- <strong>Decades</strong>: Generational studies, long-term business cycles, demographic analysis
+- <strong>Centuries</strong>: Archaeological data, historical timelines, climate research</p>
+<p>The semantic aliases (<code>ToEpochSeconds()</code>, <code>ToUnixTimestamp()</code>) let you choose terminology that matches your domain—financial systems might prefer "epoch," while web developers might prefer "Unix timestamp."</p>
+<h2 id="historical-epochs-and-origin-based-calculations">Historical Epochs and Origin-Based Calculations</h2>
+<p>Softanza extends epoch handling to historical and cultural origins, enabling timeline-based applications. Create datetimes by counting forward from predefined points:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># From epoch units
+oDateTime = new stzDateTime([ :FromEpochSeconds = 1609459200 ])
+? oDateTime.ToString()
+#--&gt; 2021-01-01 00:00:00
+
+oDateTime = new stzDateTime([ :FromEpochDays = 20000 ])
+? oDateTime.ToStringXT(:Standard)
+#--&gt; 2024-10-04 00:00:00
+
+# Natural language with &quot;from epoch&quot;
+oDateTime = new stzDateTime(&quot;54 years 9 months 3 days from epoch&quot;)
+? oDateTime.ToVerbose()
+#--&gt; Sunday, October 3, 2024 00:00:00  # (Adjusted for example)
+
+# Hash-based duration from epoch
+oDateTime = new stzDateTime([
+    :FromEpochDuration = [
+        :Years = 54, :Months = 9, :Days = 3,
+        :Hours = 14, :Minutes = 30
+    ]
+])
+? oDateTime.ToISO()
+#--&gt; 2024-10-03 14:30:00
+
+# Other units
+oDateTime = new stzDateTime([ :FromEpochWeeks = 2857 ])
+? oDateTime.ToStringXT(:Compact)
+#--&gt; 2024-10-03 00:00
+
+oDateTime = new stzDateTime([ :FromEpochMilliseconds = 1609459200500 ])
+? oDateTime.ToStringXT(:ISOWithMs)
+#--&gt; 2021-01-01 00:00:00.500
+
+# Historical origins
+oDateTime = new stzDateTime([ :CountingFromYearOne = 63113904000 ])  # Seconds from Year 1 AD
+? oDateTime.Content()
+#--&gt; 2001-01-01 00:00:00
+
+oDateTime = new stzDateTime([
+    :CountingFromIslamicCalendar = [ :Years = 1400 ]
+])
+? oDateTime.Content()
+#--&gt; 2020-08-09 00:00:00  # Approx. from Hijra
+
+oDateTime = new stzDateTime(&quot;5 years 3 months counting from space age&quot;)
+? oDateTime.Content()
+#--&gt; 1962-01-12 00:00:00  # Space Age start: 1957-10-04 (Sputnik)
+
+oDateTime = new stzDateTime([
+    :CountingFromUSIndependence = [ :Years = 248, :Months = 3 ]
+])
+? oDateTime.Content()
+#--&gt; 2024-10-04 00:00:00  # From 1776-07-04
+
+oDateTime = new stzDateTime(&quot;79 years 2 months counting from atomic age&quot;)
+? oDateTime.Content()
+#--&gt; 2024-09-16 00:00:00  # Atomic Age: 1945-07-16 (Trinity test)
+
+# Custom origin with hash
+oDateTime = new stzDateTime([
+    :CountingFrom = [ :Origin = :UnixStart, :Years = 50, :Days = 100 ]
+])
+? oDateTime.Content()
+#--&gt; 2020-04-10 00:00:00</pre><p class="ran nv-illus">illustration</p></div>
+<p>Query durations from these origins to now:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oNow = new stzDateTime(&quot;&quot;)
+
+? oNow.YearsSince(:YearOne)                #--&gt; 2025 (from 1 AD)
+? oNow.SecondsSince(:Epoch)                #--&gt; ~1759588945 (Unix epoch)
+? oNow.DurationSince(:IslamicHijra, :In = :Centuries)  #--&gt; 14 (from 622 AD)
+? oNow.SecondsSince(:SpaceAge)             #--&gt; Massive number (from 1957)
+? oNow.YearsSince(:InternetAge)            #--&gt; 56 (from 1969 ARPANET)
+? oNow.WeeksSince(:FrenchRevolution)       #--&gt; ~12159 (from 1789)
+? oNow.YearsSince(&quot;1976-08-01&quot;)            #--&gt; 49</pre><p class="ran nv-illus">illustration</p></div>
+<p>Supported origins include <code>:YearOne</code>, <code>:Epoch</code> (Unix), <code>:IslamicHijra</code>, <code>:SpaceAge</code>, <code>:AtomicAge</code>, <code>:USIndependence</code>, <code>:FrenchRevolution</code>, <code>:InternetAge</code>, and custom dates. This feature supports historical simulations, cultural calendars, and educational tools.</p>
+<h3 id="practical-example-multi-scale-time-tracking">Practical Example: Multi-Scale Time Tracking</h3>
+<div class="nblock"><div class="lbl">Haro</div><pre>oStart = StzDateTimeQ(&quot;2024-01-01 00:00:00&quot;)
+oEnd = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
+
+# Calculate project duration in different scales
+? &quot;Project duration:&quot;
+? &quot;  Days: &quot; + (oEnd.ToEpochDays() - oStart.ToEpochDays())
+#--&gt; Days: 74
+
+? &quot;  Weeks: &quot; + (oEnd.ToEpochWeeks() - oStart.ToEpochWeeks())
+#--&gt; Weeks: 10
+
+? &quot;  Hours: &quot; + (oEnd.ToEpochHours() - oStart.ToEpochHours())
+#--&gt; Hours: 1790
+
+# Store as milliseconds for database precision
+nTimestampMs = oEnd.ToUnixTimestampMs()
+? &quot;Stored timestamp: &quot; + nTimestampMs
+#--&gt; Stored timestamp: 1710511845000
+
+# Later: reconstruct from milliseconds
+oReconstructed = StzDateTimeQ(nTimestampMs / 1000)
+? oReconstructed.Content()
+#--&gt; 2024-03-15 14:30:45</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="millisecond-precision-when-microseconds-matter">Millisecond Precision: When Microseconds Matter</h2>
+<p>For high-precision logging, performance measurement, or financial timestamps, millisecond operations maintain accuracy:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oPrecise = StzDateTimeQ(&quot;2024-03-15 14:30:45.123&quot;)
+
+? oPrecise.MilliSeconds()
+#--&gt; 123
+
+oAdded = oPrecise.AddMilliseconds(877)
+? oAdded
+#--&gt; 2024-03-15 14:30:46.000  # Rolled to next second
+
+nMs = oPrecise.MSecsTo(&quot;2024-03-15 14:30:46.000&quot;)
+? nMs
+#--&gt; 877</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="real-world-example-event-scheduling-system">Real-World Example: Event Scheduling System</h2>
+<p>Let's see these capabilities unified in a practical scheduler:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Create a webinar event
+oWebinar = StzDateTimeQ([
+    :Year = 2024, :Month = 6, :Day = 20,
+    :Hour = 15, :Minute = 0, :Second = 0
+])
+
+# Calculate reminder times using natural syntax
+oReminder1 = oWebinar - &quot;1 day&quot;
+oReminder2 = oWebinar - &quot;1 hour&quot;
+
+# Generate user-friendly notifications
+? &quot;Webinar: &quot; + oWebinar.ToLong()
+#--&gt; Webinar: Thursday, June 20, 2024 3:00:00 PM
+
+? &quot;First reminder: &quot; + oReminder1.ToMedium()
+#--&gt; First reminder: Wed, Jun 19 3:00 PM
+
+? &quot;Final reminder: &quot; + oReminder2.ToSimple()
+#--&gt; Final reminder: 20/06/2024 2:00 PM
+
+# Check proximity and generate countdown
+oNow = StzDateTimeQ(&quot;&quot;)
+if oNow &lt; oWebinar
+    nDays = oNow.DaysTo(oWebinar)
+    nHours = oNow.HoursTo(oWebinar) % 24
+    ? &quot;Webinar in &quot; + nDays + &quot; days, &quot; + nHours + &quot; hours&quot;
+ok</pre><p class="ran nv-illus">illustration</p></div>
+<p>This example demonstrates the API's coherence—creation, arithmetic, formatting, and comparison work together naturally.</p>
+<h2 id="softanza-advantage">Softanza Advantage</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>stzDateTime (Softanza)</th>
+<th>Moment.js</th>
+<th>Luxon</th>
+<th>Python datetime</th>
+<th>Java LocalDateTime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Operator Overloading</strong></td>
+<td><code>+</code>, <code>-</code>, <code>&lt;</code>, <code>&lt;=</code>, etc.</td>
+<td>No</td>
+<td>No</td>
+<td>Limited (<code>-</code> only)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Natural Language Parsing</strong></td>
+<td><code>+ "2 days 3 hours"</code>, AddNatural()</td>
+<td>plugin required</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Unified Format System</strong></td>
+<td>24h default + <code>12h</code> suffix</td>
+<td>Mixed methods</td>
+<td>Mixed methods</td>
+<td>strftime codes</td>
+<td>DateTimeFormatter</td>
+</tr>
+<tr>
+<td><strong>Duration Objects</strong></td>
+<td>Hash with named keys</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>timedelta</td>
+<td>Duration</td>
+</tr>
+<tr>
+<td><strong>Component Extraction</strong></td>
+<td>Direct methods + <code>DateQ()</code>/<code>TimeQ()</code></td>
+<td>Direct methods</td>
+<td>Direct properties</td>
+<td>Direct properties</td>
+<td>Direct methods</td>
+</tr>
+<tr>
+<td><strong>Timezone Handling</strong></td>
+<td><code>ToUTC()</code>, auto-convert</td>
+<td>Good (deprecated)</td>
+<td>Excellent</td>
+<td>pytz required</td>
+<td>ZonedDateTime</td>
+</tr>
+<tr>
+<td><strong>Millisecond Precision</strong></td>
+<td>Built-in</td>
+<td>Built-in</td>
+<td>Built-in</td>
+<td>microsecond level</td>
+<td>nanosecond level</td>
+</tr>
+<tr>
+<td><strong>Relative Formatting</strong></td>
+<td><code>ToRelative()</code></td>
+<td><code>.fromNow()</code></td>
+<td><code>.toRelative()</code></td>
+<td>Manual</td>
+<td>Manual</td>
+</tr>
+<tr>
+<td><strong>Historical Origins</strong></td>
+<td>Built-in (:YearOne, :IslamicHijra, etc.)</td>
+<td>No</td>
+<td>Limited</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Immutability</strong></td>
+<td>Mutable</td>
+<td>Mutable (Luxon fixes)</td>
+<td>Immutable</td>
+<td>Immutable</td>
+<td>Immutable</td>
+</tr>
+<tr>
+<td><strong>Underlying Engine</strong></td>
+<td>Softanza Engine (Zig)</td>
+<td>Native JS Date</td>
+<td>Native JS Intl</td>
+<td>C implementation</td>
+<td>Java Time API</td>
+</tr>
+<tr>
+<td><strong>Learning Curve</strong></td>
+<td>Low (intuitive syntax)</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Low-Medium</td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Differentiators:</strong>
+- <strong>Operator overloading</strong>: Only stzDateTime lets you write <code>oEnd - oStart</code> for duration
+- <strong>Natural language</strong>: <code>+ "2 days"</code> is unique to Softanza's parsing
+- <strong>Format suffix pattern</strong>: The <code>12h</code> convention is more systematic than other libraries' multiple method names
+- <strong>Historical epochs</strong>: Unique support for origin-based creation and queries
+- <strong>Native engine</strong>: Inherits the Softanza Engine's maturity and cross-platform consistency</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The <code>stzDateTime</code> class exemplifies Softanza's philosophy: make common operations effortless while keeping advanced capabilities accessible. By leveraging the Softanza Engine's robust foundation through the Haro FFI bridge and wrapping it in Haro's expressive syntax, Softanza delivers datetime handling that feels natural yet powerful. With new historical epoch features, it's now even better suited for global and timeline-based applications.</p>
+<h2>Lectures liées</h2><ul><li><a href="stzduration-measuring-time-in-softanza.html">stzDuration: Measuring Time in Softanza</a></li><li><a href="stz-time-programming-intro.html">Time Programming in Softanza: A Gentle Introduction</a></li><li><a href="stzdate-date-programming-in-softanza.html">Date Programming Made Easy in Softanza</a></li><li><a href="stztimex-a-pattern-language-for-time-in-softanza.html">stzTimex: A Pattern Language for Time in Softanza</a></li></ul><h2>Citer</h2><p class="mono cite">Mansour Ayouni. « stzDateTime: Elegant DateTime Operations in Softanza ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stzdatetime-guide-narration.html</p><p class="proof">Non exécuté : son code touche aux fichiers, au réseau, à l'horloge ou au hasard. L'article est publié tel qu'il est écrit ; ses blocs sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzdatetime-guide-narration.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

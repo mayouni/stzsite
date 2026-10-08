@@ -1435,3 +1435,59 @@ next:
   - me:      push, check the deploy once, then wave 1 (the research section) on the author's word
   - author:  read the home's three definitions and the runtime sentence on Start; rule D1 to D3
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-08 21:27
+
+subject:   STZSITE-REFORM-01, wave 1: the narrations become the research section -- every article a page, a card, a filter, a citation
+
+why:       the author, "go ahead with wave 1"; the assessment's 12.16 asks that the author's articles be published as research, and
+           B36 that a run annotate an article rather than decide whether it is shown
+
+did:
+  - published all 135 articles, where 8 were published before: the run is now a note on the page, never a gate (B36)
+  - ran every article in Haro's name inside the library at 4a184e6f0 (tools/narrations_run.py renames each article, the name and nothing
+    else, audits the rename, then runs it): 55 ran, 123 of their 423 blocks kept their promise; 56 were not run because their code touches
+    files, the network, the clock or chance; 18 do not load as written; 6 carry no code. Each page says which, block by block
+  - FOUND AND FIXED a defect of the site's own: five articles indent their code fences under list items, and the runner and the page both
+    read fences at the margin only, so that code was neither run nor shown as code (the mental-model article, the one Learn points to, read
+    as "no code"; four pages showed the fence tag as text). Fences are brought to the margin before parsing; the mental-model article now
+    keeps 4 of its 7 blocks. A --only option re-runs named articles in seconds instead of all 135 in 336
+  - derived a card for every article (tools/narr_meta.py -> data/narrations-meta.json): abstract, genre, series, Atlas area, year of first
+    commit, author, guards named, related reading; every derived field says it is derived on the page, until the articles carry their own
+    header (B34, routed to stzlib)
+  - gave each article a page in the research form: eyebrow, title, lede taken from its first paragraph, the card line, the hero picture
+    (32 articles open on one; 64 pictures hosted in all), the body with each code block labelled Haro, then "Proved by" (the guards it names, linked), related
+    reading, a citation block, and the proof line with the commit
+  - made Narrations a top-level section beside Platform, with the three series as pages read in order (performance 11, security 14,
+    delivery 5); the index lists paradigm essays first, then by date, with filters by genre, area and year; the family filter shows
+    "designed, not yet built" (B30)
+  - listed each Atlas area's articles on its page; pointed Learn at the mental-model article's page instead of the file on GitHub
+  - changed the footer's law (D7): "Every code block that runs was run on the night of publication and its output sits beside it; the
+    others say so" -- on all 4,110 pages that carry it
+  - folded the seven old copies of the name pattern into tools/haro.py, and found the fold was wrong before committing it: the narrower
+    rename pattern let two method examples showing "ring---" as test data through, and the gate could not see it because it reads the
+    same pattern. Two meanings now have two names in one file -- FORMER (what the rename treats as the name) and SHOWN (the stricter filter
+    for code shown as the library wrote it) -- and the method pages are back to 1,177
+  - dropped an empty-label link in one article that pointed at an article that does not exist; it showed the reader nothing
+  - checked: 0 failures on the example blocks; 0 dangling links in 4,203 files; the former name in the code of 0 files and in the text of
+    0 narration or Atlas pages; the floor (16 px, contrast) held on the index, a series page, an article, an area page and Learn, light and
+    dark; the filters answer in both languages (135, 25 paradigm essays, 3 of them from 2026, 14 in security); looked at the index, an
+    article's top, body and tail on a render
+
+state:
+  research section:  built; 270 article pages + an index + 3 series pages per language
+  library pin:       every run read the education worktree at 4a184e6f0, clean before and after; STZSITE-PIN-01 still open
+  perception-gate:   OPEN (the agent looked; the author has not)
+  derived, not ruled: the genre and area of each article come from its file name -- 12 articles point to several areas and say so
+
+waiting:
+  - REFORM-RULING-01: D1, D2, D3 -> the author [asked 19:45, not yet answered]
+  - B34, a front-matter header in each article (abstract, genre, series, area, guards), which replaces every derived field
+    -> stzlib [routed now in CONCLUSIONS]
+  - B30, the article families, which the family filter waits on -> stzlib [routed now in CONCLUSIONS]
+
+next:
+  - me:      push, check the deploy once; then wave 2 on the author's word
+  - author:  open the narrations index, try the filters, read one article to its citation; say whether the genres read right
+```

@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Softanza Reactive Programming Semantics: A Conceptual Framework · Narrations · Softanza</title>
+<meta name="description" content="One of Softanza&#x27;s core missions is simplification through semantic clarity. The programming world is cluttered with overlapping, confusing terminologies that create unnecessary cognitive overhead.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/softanza-reactive-programming-semantics.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/softanza-reactive-programming-semantics.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">Softanza Reactive Programming Semantics: A Conceptual Framework</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stzreactive-from-sequential-bottlenecks-to-reactive-solutions.html">From Sequential Bottlenecks to Reactive Solutions: A Programming Journey</a></li><li><a href="softanza-reactive-objects-narration.html">Softanza Reactive Objects: A Complete Beginner&#x27;s Tutorial</a></li><li><a href="softanza-reactive-programming-semantics.html" aria-current=page>Softanza Reactive Programming Semantics: A Conceptual Framework</a></li><li><a href="stz-reaxis-reactive-programming-narration.html">Reaxis: A Natural Model for Reactive Programming in Haro, by Softanza</a></li><li><a href="stz-reaxis-simplification-of-complex-reactive-programming.html">The Great Simplification: How Reaxis Dissolves Decades of Reactive Programming Complexity</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>Softanza Reactive Programming Semantics: A Conceptual Framework</h1>
+    <p class="lede">The landscape of modern programming is filled with terms that sound different but often describe the same underlying concepts. This creates a massive barrier to entry and slows down even experienced developers.</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2025-08-21 · essai de paradigme · domaine <a href="../atlas/concurrency.html">Concurrence et distribution</a></p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+
+<p>One of Softanza's core missions is <strong>simplification through semantic clarity</strong>. The programming world is cluttered with overlapping, confusing terminologies that create unnecessary cognitive overhead. We've made deliberate choices to cut through this confusion and establish a coherent, intuitive mental model for reactive programming.</p>
+<h2 id="the-problem-terminological-chaos">The Problem: Terminological Chaos</h2>
+<p><strong>Confusing Overlapping Terms:</strong>
+- Reactive vs Event-Driven vs Observer Pattern
+- Concurrent vs Parallel vs Asynchronous
+- Non-blocking vs Async vs Multi-threaded
+- Functional Reactive vs Stream Processing
+- Push vs Pull vs Publish-Subscribe
+- Observables vs Promises vs Futures vs Streams
+- Callbacks vs Handlers vs Listeners vs Subscribers
+- Coroutines vs Green Threads vs Fibers vs Tasks</p>
+<h3 id="the-hidden-cost-of-complexity">The Hidden Cost of Complexity</h3>
+<p>This terminological chaos has real consequences:</p>
+<ul>
+<li><strong>Learning Paralysis</strong>: Developers spend months learning terms before writing code</li>
+<li><strong>Framework Confusion</strong>: Each library uses different words for identical concepts</li>
+<li><strong>Team Miscommunication</strong>: Terms mean different things to different people</li>
+<li><strong>Architecture Debates</strong>: Teams argue about patterns that are functionally equivalent</li>
+<li><strong>Documentation Overhead</strong>: Every project needs its own "terminology guide"</li>
+</ul>
+<h2 id="our-solution-opinionated-semantic-choices">Our Solution: Opinionated Semantic Choices</h2>
+<p>We've made clear, opinionated decisions about terminology to reduce mental overhead and focus on what actually matters: <strong>building reactive systems that solve real problems</strong>.</p>
+<h3 id="core-principle-natural-language-programming">Core Principle: Natural Language Programming</h3>
+<p>Instead of describing <em>how</em> something works internally, we use everyday language that describes <em>what</em> you want to accomplish. Softanza's reactive API reads like natural English instructions.</p>
+<h3 id="1-reactive-making-things-respond-automatically">1. <strong>"Reactive" - Making Things Respond Automatically</strong></h3>
+<p><strong>We chose "Reactive"</strong> because it describes the functional value you get from the system:</p>
+<ul>
+<li>✅ <strong>Reactive</strong>: Your system reacts to changes automatically</li>
+<li>❌ <strong>Event-Driven</strong>: Implementation detail, not user benefit</li>
+<li>❌ <strong>Observer Pattern</strong>: Design pattern, not user experience</li>
+<li>❌ <strong>Concurrent/Parallel</strong>: Describes internal architecture</li>
+</ul>
+<p><strong>The Reactive Mental Model</strong>: Think of reactive programming like a living spreadsheet where changing a cell automatically updates all dependent cells. In Softanza, you can make any function, object, or data structure reactive.</p>
+<p><strong>Simple Softanza Example:</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Make a function reactive and run it in background
+ReactiveFunc.CallAsync([data], func result { ? result }, NULL)</pre><p class="ran nv-illus">illustration</p></div>
+<p><em>Note: Code examples in this article are minimal samples to illustrate natural language principles. The complete Softanza feature set and tutorial are covered in a separate comprehensive guide.</em></p>
+<h3 id="2-natural-method-names-english-instructions">2. <strong>Natural Method Names - English Instructions</strong></h3>
+<p><strong>Softanza uses everyday English:</strong>
+- <code>Watch()</code> - Pay attention to changes
+- <code>Start()</code> - Begin the reactive system<br />
+- <code>CallAsync()</code> - Run something in background</p>
+<p><strong>Simple example:</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Watch(:data, func { ? &quot;Data changed!&quot; })</pre><p class="ran nv-illus">illustration</p></div>
+<p><em>Note: This article focuses on semantic principles. Complete features and tutorials are covered separately.</em></p>
+<h3 id="3-natural-language-approach">3. <strong>Natural Language Approach</strong></h3>
+<p>Instead of complex reactive streams or observables, Softanza uses natural English to describe what should happen when data changes.</p>
+<h3 id="4-error-handling-made-simple">4. <strong>Error Handling Made Simple</strong></h3>
+<p>Network requests and async operations use straightforward success/error callbacks without complex error propagation.</p>
+<h3 id="5-time-based-operations">5. <strong>Time-Based Operations</strong></h3>
+<p>Time-based operations use familiar terms without complex timer management.</p>
+<h2 id="the-complete-softanza-mental-model">The Complete Softanza Mental Model</h2>
+<h3 id="traditional-imperative-thinking">Traditional Imperative Thinking:</h3>
+<ol>
+<li>Do this</li>
+<li>Then do that  </li>
+<li>Then do the other thing</li>
+<li>Check if something changed</li>
+<li>If so, manually update everything that cares</li>
+<li>Hope you didn't miss anything</li>
+<li>Debug why something didn't update</li>
+</ol>
+<h3 id="softanza-reactive-thinking">Softanza Reactive Thinking:</h3>
+<ol>
+<li>Define what should happen WHEN things change (<code>Watch</code>)</li>
+<li>Define what should be computed automatically (<code>Computed</code>)</li>
+<li>Set up timers for time-based reactions (<code>SetTimeout</code>, <code>SetInterval</code>)</li>
+<li>Start the reactive system (<code>Start()</code>)</li>
+<li>Make changes to your data - everything else happens automatically</li>
+</ol>
+<h3 id="real-world-pattern-automatic-updates">Real-World Pattern: Automatic Updates</h3>
+<p>Traditional approach - manual coordination:
+- Check for changes
+- Update UI manually
+- Update database manually
+- Handle errors manually</p>
+<p>Softanza reactive approach:
+- Define what should react to changes
+- System handles all coordination automatically</p>
+<h2 id="advanced-reactive-concepts-made-simple">Advanced Reactive Concepts Made Simple</h2>
+<p>Softanza handles complex coordination automatically while providing simple, natural interfaces for common patterns like parallel execution, reactive data structures, and error handling.</p>
+<h2 id="comprehensive-semantic-mapping">Comprehensive Semantic Mapping</h2>
+<table>
+<thead>
+<tr>
+<th>Traditional Term</th>
+<th>Softanza Term</th>
+<th>Why We Changed</th>
+<th>Mental Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Execution Models</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Event-Driven Programming</td>
+<td>Reactive</td>
+<td>Describes user value, not implementation</td>
+<td>"Things react to changes"</td>
+</tr>
+<tr>
+<td>Asynchronous Programming</td>
+<td>CallAsync</td>
+<td>Natural English verb</td>
+<td>"Run this in background"</td>
+</tr>
+<tr>
+<td>Concurrent Programming</td>
+<td>(Handled by libuv)</td>
+<td>Users don't need to think about it</td>
+<td>"System optimizes automatically"</td>
+</tr>
+<tr>
+<td>Non-blocking I/O</td>
+<td>HttpGet/CallAsync</td>
+<td>Describes what you want to do</td>
+<td>"Don't wait around"</td>
+</tr>
+<tr>
+<td><strong>Patterns &amp; Abstractions</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Observer Pattern</td>
+<td>Watch</td>
+<td>Natural English verb</td>
+<td>"Pay attention to changes"</td>
+</tr>
+<tr>
+<td>Publish-Subscribe</td>
+<td>Watch + Computed</td>
+<td>Simpler, direct connections</td>
+<td>"Changes trigger reactions"</td>
+</tr>
+<tr>
+<td>Event Emitters</td>
+<td>Reactive Objects</td>
+<td>What they are - objects that react</td>
+<td>"Smart data that notifies"</td>
+</tr>
+<tr>
+<td>Event Listeners</td>
+<td>Watch functions</td>
+<td>What they do - watch for changes</td>
+<td>"Code that pays attention"</td>
+</tr>
+<tr>
+<td><strong>Data Handling</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Observables</td>
+<td>Computed Properties</td>
+<td>Familiar concept, automatic dependencies</td>
+<td>"Values that update themselves"</td>
+</tr>
+<tr>
+<td>Promises/Futures</td>
+<td>Callback Functions</td>
+<td>Direct, simple approach</td>
+<td>"Code to run when done"</td>
+</tr>
+<tr>
+<td>Subscribers</td>
+<td>Watch Functions</td>
+<td>Consistent terminology</td>
+<td>"Code that reacts to changes"</td>
+</tr>
+<tr>
+<td><strong>Control Flow</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Timers/Intervals</td>
+<td>SetTimeout/SetInterval</td>
+<td>Familiar JavaScript naming</td>
+<td>"Do something later/repeatedly"</td>
+</tr>
+<tr>
+<td>Async Coordination</td>
+<td>Start/Stop</td>
+<td>Simple lifecycle control</td>
+<td>"Turn the system on/off"</td>
+</tr>
+<tr>
+<td>Error Propagation</td>
+<td>Error Callbacks</td>
+<td>Direct error handling</td>
+<td>"Code to run when things fail"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="common-patterns-in-softanza">Common Patterns in Softanza</h2>
+<p>Softanza follows consistent patterns that use natural language and handle complexity automatically behind the scenes.</p>
+<h2 id="debugging-reactive-systems">Debugging Reactive Systems</h2>
+<p>Softanza's natural language approach makes debugging intuitive:</p>
+<ol>
+<li><strong>Clear naming</strong>: Function names tell you exactly what they do</li>
+<li><strong>Linear flow</strong>: Even async code reads top-to-bottom</li>
+<li><strong>Explicit dependencies</strong>: Computed properties list their dependencies</li>
+<li><strong>Simple error handling</strong>: Error callbacks are right next to success callbacks</li>
+</ol>
+<h2 id="performance-implications">Performance Implications</h2>
+<h3 id="automatic-optimizations">Automatic Optimizations</h3>
+<ul>
+<li><strong>libuv coordination</strong>: Optimal thread/process management without user complexity</li>
+<li><strong>Dependency tracking</strong>: Only recompute what actually changed</li>
+<li><strong>Batch updates</strong>: Multiple rapid changes get automatically batched</li>
+</ul>
+<h3 id="natural-performance-patterns">Natural Performance Patterns</h3>
+<p>Softanza's API naturally guides you toward performant patterns:
+- Async operations are the obvious choice (<code>CallAsync</code>)
+- Dependencies are explicit (computed property dependency lists)
+- Cleanup is automatic (reactive system lifecycle)</p>
+<h2 id="migration-strategy-from-traditional-to-reactive">Migration Strategy: From Traditional to Reactive</h2>
+<h3 id="step-1-identify-manual-coordination">Step 1: Identify Manual Coordination</h3>
+<p>Look for code where you manually update multiple things when data changes.</p>
+<h3 id="step-2-convert-to-watch-patterns">Step 2: Convert to Watch Patterns</h3>
+<p>Replace manual updates with <code>Watch</code> functions that respond to changes.</p>
+<h3 id="step-3-use-computed-properties">Step 3: Use Computed Properties</h3>
+<p>Replace manually calculated values with <code>Computed</code> properties that update automatically.</p>
+<h3 id="step-4-embrace-async-patterns">Step 4: Embrace Async Patterns</h3>
+<p>Use <code>CallAsync</code> for any operation that might take time, even if it's currently synchronous.</p>
+<h2 id="best-practices-for-softanza-reactive-design">Best Practices for Softanza Reactive Design</h2>
+<h3 id="start-with-data-flow">Start with Data Flow</h3>
+<p>Map what data changes and what should react to those changes.</p>
+<h3 id="use-natural-language">Use Natural Language</h3>
+<p>Your code should read like instructions you'd give to another person.</p>
+<h3 id="keep-reactions-simple">Keep Reactions Simple</h3>
+<p>Each <code>Watch</code> function should do one clear thing.</p>
+<h3 id="make-dependencies-explicit">Make Dependencies Explicit</h3>
+<p>List all dependencies in computed properties - don't rely on hidden connections.</p>
+<h3 id="handle-errors-locally">Handle Errors Locally</h3>
+<p>Provide error callbacks for async operations rather than global error handling.</p>
+<h2 id="the-future-even-more-natural-programming">The Future: Even More Natural Programming</h2>
+<p>Softanza's semantic approach enables:</p>
+<ul>
+<li><strong>Natural Language Programming</strong>: Code that reads like plain English</li>
+<li><strong>Visual Programming</strong>: Graphical reactive flow design</li>
+<li><strong>AI-Assisted Development</strong>: AI can understand and suggest Softanza patterns more easily</li>
+</ul>
+<h2 id="conclusion-programming-that-thinks-like-you-do">Conclusion: Programming That Thinks Like You Do</h2>
+<p>Softanza's reactive semantics eliminate the gap between what you want to accomplish and how you express it in code. Instead of learning complex async patterns, dependency management, or reactive programming theories, you use natural English to describe what should happen when.</p>
+<p>The result is code that:
+- <strong>Reads like instructions</strong>: Anyone can understand what it does
+- <strong>Works like you think</strong>: Natural cause-and-effect relationships<br />
+- <strong>Scales automatically</strong>: libuv handles the complex coordination
+- <strong>Fails gracefully</strong>: Errors are handled locally and explicitly</p>
+<p><strong>The ultimate goal</strong>: Programming that feels as natural as having a conversation, where your intent translates directly into working, reactive systems without the cognitive overhead of complex coordination patterns.</p>
+<hr />
+<p><em>"The best programming languages don't just make programs easier to write—they make programs easier to think about."</em> - This is the guiding principle behind Softanza's semantic choices.</p>
+<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « Softanza Reactive Programming Semantics: A Conceptual Framework ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/softanza-reactive-programming-semantics.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-08 20:40 dans la bibliothèque au commit 4a184e6f0, bloc après bloc dans un seul processus : 0 bloc(s) sur 2 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/Softanza-Reactive-Programming-Semantics.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

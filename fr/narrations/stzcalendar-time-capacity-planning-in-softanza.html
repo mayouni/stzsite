@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Time Capacity Planning in Softanza: Mastering Constraints with stzCalendar · Narrations · Softanza</title>
+<meta name="description" content="Most scheduling tools treat time as a grid—a static calendar of slots you fill with events, often leading to manual guesswork and overlooked conflicts.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzcalendar-time-capacity-planning-in-softanza.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzcalendar-time-capacity-planning-in-softanza.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">Time Capacity Planning in Softanza: Mastering Constraints with stzCalendar</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stzgrid-navigator-grid-mastering.html">The Navigator&#x27;s Grid: Mastering stzGrid in the Softanza Library</a></li><li><a href="stzdatetime-guide-narration.html">stzDateTime: Elegant DateTime Operations in Softanza</a></li><li><a href="stzcalendar-time-capacity-planning-in-softanza.html" aria-current=page>Time Capacity Planning in Softanza: Mastering Constraints with stzCalendar</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>Time Capacity Planning in Softanza: Mastering Constraints with stzCalendar</h1>
+    <p class="lede">Softanza's stzCalendar rethinks this with a pragmatic intuition: <strong>time as a finite, constraint-driven resource</strong>, much like a computational budget. You declare rules—boundaries, working days, holidays, breaks—and the system computes realistic, usable capacity automatically. Events plug in via stzTimeLine, which handles timelines and spans, while stzCalendar acts as the <strong>constraint engine</strong>, ensuring events fit available slots or reveal impossibilities upfront.</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2025-10-12 · tutoriel · sans domaine de l'Atlas</p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+
+<p>Most scheduling tools treat time as a <strong>grid</strong>—a static calendar of slots you fill with events, often leading to manual guesswork and overlooked conflicts.</p>
+<p>This declarative approach eliminates tedious calculations, fostering <strong>transparent, auditable planning</strong>. It elevates calendars from passive date trackers to active reasoning tools, aligning with Softanza's philosophy of intent-based, composable constructs that mirror natural thinking in code.</p>
+<hr />
+<h2 id="a-paradigm-shift-from-events-to-constraint-composition">A Paradigm Shift: From Events to Constraint Composition</h2>
+<p>In stzCalendar, available time emerges layer by layer, like stacking filters in a query pipeline:</p>
+<p>text</p>
+<pre>constraint input → filter/reduce → output → next layer input</pre>
+<p>Each layer refines capacity from the prior one—declarative, automatic, and traceable.</p>
+<ol>
+<li><strong>Boundary</strong> – Set your calendar's scope to prevent leaks.</li>
+<li><strong>Filter</strong> – Exclude non-working days like weekends and holidays.</li>
+<li><strong>Quantify</strong> – Convert days to hours based on business schedules.</li>
+<li><strong>Subtract</strong> – Deduct breaks, meetings, or maintenance windows.</li>
+<li><strong>Query</strong> – Probe any layer to trace the logic.</li>
+</ol>
+<p>This isn't abstract; it's a practical mental model for composable time reasoning, where constraints build meaning without complexity.</p>
+<p>Here’s what it looks like in practice:</p>
+<pre>╭──────────────────────────────────────────────────────────────────────╮
+│ CALENDAR BOUNDARY: [2024-10-01 to 2024-10-31] = 31 days                  
+│                                                                           
+│ ╭────────────────────────────────────────────────────────────────╮  
+│ │ LAYER 2: WORKING DAYS FILTER (Mon-Fri)                                
+│ │ Input: 31 days → Output: 23 days (weekends: 8 removed)               
+│ │                                                                      
+│ │ ╭─────────────────────────────────────────────────────────────╮ 
+│ │ │ LAYER 3: HOLIDAYS FILTER (Oct 5 = Independence Day)                
+│ │ │ Input: 23 days → Output: 23 days (Oct 5 is already weekend)      
+│ │ │                                                             
+│ │ │ ╭─────────────────────────────────────────────────────────╮
+│ │ │ │ LAYER 4: BUSINESS HOURS (09:00-17:00 = 8h/day)          
+│ │ │ │ Input: 23 days × 8h → Output: 184 hours                 
+│ │ │ │                                                           
+│ │ │ │ ╭────────────────────────────────────────────────────╮ 
+│ │ │ │ │ LAYER 5: BREAKS (Lunch 12:00-13:00 = -1h/day)          
+│ │ │ │ │ Input: 184 hours → Output: 161 hours                 
+│ │ │ │ │ (23 days × 7 hours/day after lunch)                  
+│ │ │ │ │                                                         
+│ │ │ │ │ ╭────────────────────────────────────────────────╮ 
+│ │ │ │ │ │ LAYER 6: CUSTOM CONSTRAINTS
+│ │ │ │ │ │ (Maintenance: Wed 14:00-16:00 = -2h/day)
+│ │ │ │ │ │ Wednesdays: 7h - 2h = 5h usable
+│ │ │ │ │ │ Other days: 7h (unchanged)
+│ │ │ │ │ │
+│ │ │ │ │ │ ╭───────────────────────────────────────────╮
+│ │ │ │ │ │ │ FINAL CAPACITY
+│ │ │ │ │ │ │ Total: 161h (with maintenance accounted for)
+│ │ │ │ │ │ │ Per day: 5-7h (depending on day of week)
+│ │ │ │ │ │ │ Auditable: Every number traced to constraints
+│ │ │ │ │ │ ╰───────────────────────────────────────────╯
+│ │ │ │ │ ╰────────────────────────────────────────────────╯
+│ │ │ │ ╰────────────────────────────────────────────────────╯
+│ │ │ ╰────────────────────────────────────────────────────────╯
+│ │ ╰────────────────────────────────────────────────────────────╯
+│ ╰────────────────────────────────────────────────────────────────╯
+│                                                                
+╰─────────────────────────────────────────────────────────────────────╯</pre>
+<p><strong>Key insight:</strong>
+<strong>Key insight:</strong> Alter any rule—a new holiday, adjusted break, or custom constraint—and capacity recalculates instantly. The model ensures full traceability, turning scheduling into a logical, feasibility-checked process rather than improvisation.</p>
+<p>In the next section, we’ll build this same logic in code and watch how each layer interacts, starting with the simplest boundary definition.</p>
+<h2 id="the-layered-constraint-model">The Layered Constraint Model</h2>
+<p>Time availability isn't binary—it's layered. Start with a month, peel away weekends, remove holidays, subtract breaks, then apply custom maintenance windows. Each layer reduces capacity; all layers compound into your final, auditable answer.</p>
+<p><strong>Layer 1: The Calendar Boundary</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oCal = new stzCalendar([2024, 10])
+
+oCal {
+    ? Start()
+    #--&gt; 2024-10-01
+    ? StartQ().DayName()
+    #--&gt; Tuesday
+
+    ? End_()
+    #--&gt; 2024-10-31
+    ? EndQ().DayName()
+    #--&gt; Thursday
+
+    ? Year()
+    #--&gt; 2024
+    
+    ? MonthName()
+    #--&gt; October
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>October 2024 spans 31 days, Tuesday to Thursday. This <em>fences</em> your scope—you can't accidentally leak into September or November. All queries stay within this boundary.</p>
+<p><strong>Layer 2: Working Days</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oCal.SetWorkingDays([&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;])
+
+oCal {
+    ? IsWorkingDay(&quot;2024-10-03&quot;)  #--&gt; 1 (TRUE, Thursday)
+    ? IsWorkingDay(&quot;2024-10-05&quot;)  #--&gt; 0 (FALSE, Saturday)
+    ? HowManWorkingDays()         #--&gt; 23
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>October 2024 has 31 days, but only <strong>23 are working days</strong> (Mon-Fri). Weekends (Oct 5-6, 12-13, 19-20, 26-27 = 8 days) are auto-filtered. All downstream calculations skip weekends automatically.</p>
+<p><strong>Layer 3: Holidays</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oCal {
+    AddHoliday(&quot;2024-10-05&quot;, &quot;Independence Day&quot;)
+    AddHoliday(&quot;2024-10-15&quot;, &quot;National Day&quot;)
+    
+    ? IsHoliday(&quot;2024-10-05&quot;)     #--&gt; 1 (TRUE)
+    ? HolidayName(&quot;2024-10-05&quot;)   #--&gt; Independence Day
+    ? HowManyHolidays()           #--&gt; 2
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>Oct 5 is a Saturday (already excluded as a weekend), so adding it as a holiday doesn't further reduce working days—it's logged for context. Oct 15 is a Tuesday, which would reduce working days to <strong>22</strong> if it fell mid-week. Holidays layer on top of weekends.</p>
+<p><strong>Layer 4: Business Hours and Breaks</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oCal {
+    SetBusinessHours(&quot;09:00:00&quot;, &quot;17:00:00&quot;)
+    AddBreak(&quot;12:00:00&quot;, &quot;13:00:00&quot;, &quot;Lunch&quot;)
+    
+    ? AvailableHoursN()  #--&gt; 161
+    ? AvailableDaysN()   #--&gt; 23
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>With 8-hour days (9-17) minus 1-hour lunch breaks:</p>
+<ul>
+<li>23 working days × 7 hours/day = <strong>161 total available hours</strong></li>
+</ul>
+<p>Each working day yields 7 usable hours. This compounds through layers: start with 31 calendar days → filter to 23 working → multiply by 7 hours per day = 161.</p>
+<p><strong>Layer 5: Custom Constraints</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oCal {
+    AddConstraint(&quot;MaintWindow&quot;, [:Every, :Wednesday, :From, &quot;14:00&quot;, :To, &quot;16:00&quot;])
+    
+    ? ApplyConstraints(&quot;2024-10-09&quot;)  #--&gt; 5 (not 7)
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>Oct 9 is a Wednesday. Normally 7 hours (9-17, minus lunch). But the maintenance window (2-4pm, 2 hours) further reduces it to <strong>5 usable hours</strong>. Constraints layer recursively.</p>
+<p><strong>Synthesis: Query Usable Time Across Ranges</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oCal {
+    ? AvailableHoursOn(&quot;2024-10-10&quot;)              #--&gt; 7 (Thursday, no constraints)
+    ? AvailableHoursBetween(&quot;2024-10-01&quot;, &quot;2024-10-15&quot;)  #--&gt; 77
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>Oct 1-15 spans 15 calendar days, but only 11 are working days (excluding 4 weekends), yielding 11 × 7 = <strong>77 available hours</strong>. Every number is justified by the constraint stack.</p>
+<hr />
+<h2 id="task-fitting-making-decisions">Task Fitting: Making Decisions</h2>
+<p>With capacity quantified, fit tasks objectively:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oCal {
+    ? CanFit(&quot;2024-10-10&quot;, &quot;5&quot;)   #--&gt; TRUE (7 hours available)
+    ? CanFit(&quot;2024-10-10&quot;, &quot;10&quot;)  #--&gt; FALSE (only 7 available)
+    ? @@NL(FirstAvailableSlot(&quot;4&quot;))
+    #--&gt; [ &quot;2024-10-01 09:00:00&quot;, &quot;2024-10-01 13:00:00&quot; ]
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>A 5-hour task fits on Oct 10 (7 hours available). A 10-hour task doesn't. A 4-hour task starts Oct 1 at 9am, ends at 1pm (after lunch break). Decisions are transparent and auditable.</p>
+<h2 id="visualization-making-time-tangible">Visualization: Making Time Tangible</h2>
+<p>Three views help spot bottlenecks and communicate constraints to teams.</p>
+<p><strong>Grid View</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oCal.Show()
+#--&gt;
+                October 2024
+╭─────────────────────────────────────────╮
+│ Mon   Tue   Wed   Thu   Fri   Sat   Sun │
+├─────────────────────────────────────────┤
+│        1     2     3     4    [5]   ░░  │
+│  7     8     9     10    11   ░░    ░░  │
+│  14    15    16    17    18   ░░    ░░  │
+│  21    22    23    24    25   ░░    ░░  │
+│  28    29    30    31                   │
+╰─────────────────────────────────────────╯
+
+Legend:
+  [D] = Holiday
+  ░ = Weekend</pre><p class="ran nv-illus">illustration</p></div>
+<p>The grid shows at a glance: weekends (â–') form a repeating pattern, Oct 5 is marked [D] (holiday on weekend). Working days are clean. Easy to spot the rhythm.</p>
+<p><strong>Heatmap: Weekly Capacity</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>October 2024 - Capacity Heat Map
+
+Week 1:  ▓▓▓▓▓ (5/5 days available)
+Week 2:  ▓▓▓▓▓ (5/5 days available)
+Week 3:  ▓▓▓▓▓ (5/5 days available)
+Week 4:  ▓▓▓▓▓ (5/5 days available)
+Week 5:  ▓▓▓░░ (3/5 days available)
+
+Legend:
+  ▓ = Available working day
+  ░ = Weekend or holiday</pre><p class="ran nv-illus">illustration</p></div>
+<p>Week 5 dips to 3/5 days (Oct 28-31: Mon-Thu), ideal for light tasks or buffers.</p>
+<p><strong>Detailed Table: Day-by-Day</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oCal.ShowTable()
+#--&gt;
+October 2024 - Detailed View
+
+╭────────────┬───────────┬───────────────────┬───────────────────┬───────────╮
+│    Date    │    Day    │     Business      │      Breaks       │ Available │
+├────────────┼───────────┼───────────────────┼───────────────────┼───────────┤
+│ 2024-10-01 │ Tuesday   │ 09:00:00-17:00:00 │ 12:00:00-13:00:00 │ 7h        │
+│ 2024-10-02 │ Wednesday │ 09:00:00-17:00:00 │ 12:00:00-13:00:00 │ 7h        │
+│ 2024-10-03 │ Thursday  │ 09:00:00-17:00:00 │ 12:00:00-13:00:00 │ 7h        │
+│ 2024-10-04 │ Friday    │ 09:00:00-17:00:00 │ 12:00:00-13:00:00 │ 7h        │
+│ 2024-10-05 │ Saturday  │ HOLIDAY           │                   │ 0h        │
+│ 2024-10-06 │ Sunday    │ WEEKEND           │                   │ 0h        │
+     ...          ...            ...                  ...          ...
+│ 2024-10-28 │ Monday    │ 09:00:00-17:00:00 │ 12:00:00-13:00:00 │ 7h        │
+│ 2024-10-29 │ Tuesday   │ 09:00:00-17:00:00 │ 12:00:00-13:00:00 │ 7h        │
+│ 2024-10-30 │ Wednesday │ 09:00:00-17:00:00 │ 12:00:00-13:00:00 │ 7h        │
+│ 2024-10-31 │ Thursday  │ 09:00:00-17:00:00 │ 12:00:00-13:00:00 │ 7h        │
+╰────────────┴───────────┴───────────────────┴───────────────────┴───────────╯
+
+Summary:
+  Total Days: 31
+  Working Days: 23
+  Available Hours: 161</pre><p class="ran nv-illus">illustration</p></div>
+<p>Each row shows exactly why hours are available (or zero). HOLIDAY and WEEKEND labels make exclusions explicit.</p>
+<h2 id="comparison-and-navigation">Comparison and Navigation</h2>
+<p><strong>What If: Compare Two Periods</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oCal1 = new stzCalendar([2024, 10])
+oCal1.SetWorkingDays([&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;])
+
+oCal2 = oCal1.Copy()
+oCal2.GotoNextMonth()
+
+? oCal1.Current()  #--&gt; October 2024
+? oCal2.Current()  #--&gt; November 2024
+
+? @@NL(oCal1.CompareWith(oCal2))
+#--&gt;
+# [
+#     [ &quot;Metric&quot;, &quot;This Calendar&quot;, &quot;Other Calendar&quot;, &quot;Difference&quot; ],
+#     [ &quot;Total Days&quot;, 31, 30, 1 ],
+#     [ &quot;Working Days&quot;, 23, 21, 2 ],
+#     [ &quot;Available Hours&quot;, 184, 168, 16 ],
+#     [ &quot;Holidays&quot;, 0, 0, 0 ],
+#     [ &quot;Total Weeks&quot;, 5, 5, 0 ]
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>October has 31 days (23 working), November has 30 (21 working). That's a 16-hour gap (2 fewer working days × 8 hours). Use this for sprint planning: tighter capacity in November means fewer stories.</p>
+<h2 id="timeline-integration-events-meet-constraints">Timeline Integration: Events Meet Constraints</h2>
+<p>Overlay events to detect conflicts against constraints:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oCal = new stzCalendar([2024, 10])
+oCal {
+    SetWorkingDays([&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;])
+    AddHoliday(&quot;2024-10-05&quot;, &quot;Independence Day&quot;)
+}
+
+oTimeline = new stzTimeLine(&quot;2024-10-01&quot;, &quot;2024-10-31&quot;)
+oTimeline.AddPoint(&quot;STANDUP&quot;, &quot;2024-10-10 09:00:00&quot;)
+oTimeline.AddSpan(&quot;PROJECT&quot;, &quot;2024-10-15&quot;, &quot;2024-10-20&quot;)
+
+oCal.MarkTimeline(oTimeline)
+oCal.Show()
+#--&gt;
+&#x27;
+                October 2024
+╭─────────────────────────────────────────╮
+│ Mon   Tue   Wed   Thu   Fri   Sat   Sun │
+├─────────────────────────────────────────┤
+│        1     2     3     4    ░░    ░░  │
+│  7     8     9    ●10    11   ░░    ░░  │
+│  14   ▬15   ▬16   ▬17   ▬18   ▬░░   ▬░░ │
+│  21    22    23    24    25   ░░    ░░  │
+│  28    29    30    31                   │
+╰─────────────────────────────────────────╯
+
+Legend:
+  ░ = Weekend
+  ● = Timeline-event
+  ▬ = Timeline-span
+
+╭───────────────────────┬─────────────────────╮
+│        Metric         │        Value        │
+├───────────────────────┼─────────────────────┤
+│ Total Days            │                  31 │
+│ Working Days          │                  23 │
+│ Weekend Days          │                   8 │
+│ Holidays              │                   0 │
+│ Total Available Hours │                 184 │
+│ Average Hours Per Day │                   8 │
+│ First Working Day     │ 2024-10-01          │
+│ Last Working Day      │ 2024-10-31          │
+│ Business Hours        │ 09:00:00 - 17:00:00 │
+╰───────────────────────┴─────────────────────╯</pre><p class="ran nv-illus">illustration</p></div>
+<p>The STANDUP event (●) lands on Oct 10, a Thursday (working day). The PROJECT span (▬) runs Oct 15-20, crossing into weekend days (19-20, marked ▬░░). The visualization immediately shows the conflict—the project touches non-working days, requiring awareness.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oCal.ConflictsWith(oTimeline)          #--&gt; TRUE
+? @@NL(oCal.TimelineEvents())
+#--&gt;
+# [
+#     [ &quot;points&quot;, [ [ &quot;STANDUP&quot;, &quot;2024-10-10 09:00:00&quot; ] ] ],
+#     [ &quot;spans&quot;, [ [ &quot;PROJECT&quot;, &quot;2024-10-15 00:00:00&quot;, &quot;2024-10-20 00:00:00&quot; ] ] ]
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>No silent failures—if a milestone touches a weekend or holiday, <code>ConflictsWith()</code> flags it explicitly.</p>
+<h2 id="real-world-scenario-sprint-feasibility">Real-World Scenario: Sprint Feasibility</h2>
+<p>Combine layers to validate sprints:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oCal = new stzCalendar([2024, 10])
+oCal {
+    SetWorkingDays([&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;])
+    SetBusinessHours(&quot;09:00:00&quot;, &quot;17:00:00&quot;)
+    AddBreak(&quot;12:00:00&quot;, &quot;13:00:00&quot;, &quot;Lunch&quot;)
+    AddHoliday(&quot;2024-10-05&quot;, &quot;Independence Day&quot;)
+}
+
+aTasks = [
+    [&quot;Design&quot;, 40],
+    [&quot;Development&quot;, 80],
+    [&quot;Testing&quot;, 32]
+]
+
+nRequired = 0
+for aTask in aTasks
+    nRequired += aTask[2]
+next
+
+nAvailable = oCal.AvailableHoursN()
+
+if nRequired &lt;= nAvailable
+    ? &quot;âœ&quot; Sprint fits: &quot; + nRequired + &quot;h needed, &quot; + nAvailable + &quot;h available&quot;
+    #--&gt; âœ&quot; Sprint fits: 152h needed, 161h available
+else
+    ? &quot;âœ— Capacity exceeded by &quot; + (nRequired - nAvailable) + &quot; hours&quot;
+ok</pre><p class="ran nv-illus">illustration</p></div>
+<p>152 hours required; 161 available (23 working days × 7 hours). Sprint fits with 9-hour buffer. This calculation is bulletproof: every hour is justified by the constraint stack.</p>
+<h2 id="querying-details-drilling-deeper">Querying Details: Drilling Deeper</h2>
+<p><strong>Single Date Info</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oCal {
+    ? @@NL(DateInfo(&quot;2024-10-03&quot;))
+    #--&gt;
+    # [
+    #     [ &quot;date&quot;, &quot;2024-10-03&quot; ],
+    #     [ &quot;isWorkingDay&quot;, 1 ],
+    #     [ &quot;isHoliday&quot;, 0 ],
+    #     [ &quot;availableHours&quot;, 7 ]
+    # ]
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>Oct 3 is Thursday (working day, 7 hours). Use this for scheduling individual tasks.</p>
+<p><strong>Range Summary</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@NL(RangeInfo(&quot;2024-10-01&quot;, &quot;2024-10-15&quot;))
+#--&gt;
+# [
+#     [ &quot;startDate&quot;, &quot;2024-10-01&quot; ],
+#     [ &quot;endDate&quot;, &quot;2024-10-15&quot; ],
+#     [ &quot;totalDays&quot;, 15 ],
+#     [ &quot;workingDays&quot;, 11 ],
+#     [ &quot;weekendDays&quot;, 4 ],
+#     [ &quot;holidays&quot;, 0 ],
+#     [ &quot;availableHours&quot;, 77 ],
+#     [ &quot;overlappingEvents&quot;, [ ] ]
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>First half of October: 15 days span, but only 11 are working (4 weekend days excluded), yielding 77 hours. Events field shows conflicts if timeline is marked.</p>
+<h2 id="data-export-and-integration">Data Export and Integration</h2>
+<p><strong>Hash Export</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@NL(oCal.ToHash())
+#--&gt;
+# [
+#     [ &quot;startdate&quot;, &quot;2024-10-01&quot; ],
+#     [ &quot;enddate&quot;, &quot;2024-10-31&quot; ],
+#     [ &quot;year&quot;, 2024 ],
+#     [ &quot;month&quot;, 10 ],
+#     [ &quot;totaldays&quot;, 31 ],
+#     [ &quot;workingdays&quot;, 23 ],
+#     [ &quot;availablehours&quot;, 184 ],
+#     [ &quot;workingdayslist&quot;, [ 1, 2, 3, 4, 5 ] ],
+#     [ &quot;holidays&quot;, [ [ &quot;2024-10-05&quot;, &quot;Independence Day&quot; ] ] ],
+#     [ &quot;breaks&quot;, [ [ &quot;12:00:00&quot;, &quot;13:00:00&quot;, &quot;Lunch&quot; ] ] ],
+#     [ &quot;businessstart&quot;, &quot;09:00:00&quot; ],
+#     [ &quot;businessend&quot;, &quot;17:00:00&quot; ]
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>Full config exported as a hash—load into reports, APIs, or databases.</p>
+<p><strong>Statistics</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@NL(oCal.Stats())
+#--&gt;
+# [
+#     [ &quot;metric&quot;, &quot;value&quot; ],
+#     [ &quot;Total Days&quot;, 31 ],
+#     [ &quot;Working Days&quot;, 23 ],
+#     [ &quot;Weekend Days&quot;, 7 ],
+#     [ &quot;Holidays&quot;, 1 ],
+#     [ &quot;Total Available Hours&quot;, 161 ],
+#     [ &quot;Average Hours Per Day&quot;, 7 ],
+#     [ &quot;First Working Day&quot;, &quot;2024-10-01&quot; ],
+#     [ &quot;Last Working Day&quot;, &quot;2024-10-31&quot; ]
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>One-line stats for dashboards or reports.</p>
+<h2 id="natural-language-orientation-intuitive-api-design">Natural Language Orientation: Intuitive API Design</h2>
+<p>Softanza prioritizes methods that read like English, with consistent naming conventions.</p>
+<p><strong>Pattern: Base, Count, Existence</strong></p>
+<p>For collections (days, holidays, breaks):</p>
+<ul>
+<li>Base method (e.g., <code>WorkingDays()</code>) returns a <strong>list</strong></li>
+<li>Suffixed variant (e.g., <code>WorkingDaysN()</code>) returns the <strong>count</strong></li>
+<li>Prefixed variant (e.g., <code>ContainsWorkingDays()</code> or alias <code>HasWorkingDays()</code>) returns a <strong>boolean</strong></li>
+</ul>
+<div class="nblock"><div class="lbl">Haro</div><pre>oCal {
+    aWorkingDays = WorkingDays()                  # List of dates
+    nWorkingDays = WorkingDaysN()                 # Count: 23
+    bHasWorking = ContainsWorkingDays()           # Boolean: 1 (TRUE)
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>This is <strong>consistent</strong> across the API:</p>
+<table>
+<thead>
+<tr>
+<th>Collection</th>
+<th>List</th>
+<th>Count</th>
+<th>Boolean</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Working Days</td>
+<td><code>WorkingDays()</code></td>
+<td><code>WorkingDaysN()</code></td>
+<td><code>ContainsWorkingDays()</code></td>
+</tr>
+<tr>
+<td>Holidays</td>
+<td><code>Holidays()</code></td>
+<td><code>HolidaysN()</code></td>
+<td><code>ContainsHolidays()</code></td>
+</tr>
+<tr>
+<td>Breaks</td>
+<td><code>Breaks()</code></td>
+<td><code>BreaksN()</code></td>
+<td><code>ContainsBreaks()</code></td>
+</tr>
+<tr>
+<td>Available Days</td>
+<td><code>AvailableDays()</code></td>
+<td><code>AvailableDaysN()</code></td>
+<td><code>ContainsAvailableDays()</code></td>
+</tr>
+<tr>
+<td>Weekends</td>
+<td><code>Weekends()</code></td>
+<td><code>WeekendsN()</code></td>
+<td><code>ContainsWeekends()</code> / <code>HasWeekends()</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Power of Consistency</strong>: Your code reads naturally. No guessing whether a method returns a number or a list. If you see the N suffix, you know it's a count. If you see <code>Contains</code> or <code>Has</code>, you know it's a boolean check.</p>
+<h2 id="comparative-analysis-stzcalendar-vs-other-ecosystems">Comparative Analysis: stzCalendar vs. Other Ecosystems</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Softanza (stzCalendar)</th>
+<th>Python (calendar + pandas)</th>
+<th>JavaScript (Luxon + FullCalendar)</th>
+<th>Java (Joda-Time)</th>
+<th>Ruby (ActiveSupport)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Calendar Boundaries</strong></td>
+<td>✅ Validated scopes</td>
+<td>◯ Manual ranges</td>
+<td>✅ Luxon intervals</td>
+<td>✅ JodaTime intervals</td>
+<td>✅ Date ranges</td>
+</tr>
+<tr>
+<td><strong>Working Days Config</strong></td>
+<td>✅ Declarative, recalculates auto</td>
+<td>◯ Custom loops</td>
+<td>✅ FullCalendar business hours</td>
+<td>◯ Custom code</td>
+<td>◯ Extensions</td>
+</tr>
+<tr>
+<td><strong>Holiday Management</strong></td>
+<td>✅ Add, query, name</td>
+<td>◯ External libs (holidays)</td>
+<td>◯ Event overlays</td>
+<td>◯ Custom code</td>
+<td>✅ holidays gem</td>
+</tr>
+<tr>
+<td><strong>Business Hours/Breaks</strong></td>
+<td>✅ Granular, auto-subtracted</td>
+<td>◯ timedeltas (manual)</td>
+<td>✅FullCalendar constraints</td>
+<td>◯ Durations only</td>
+<td>◯ Manual math</td>
+</tr>
+<tr>
+<td><strong>Capacity Calculations</strong></td>
+<td>✅ Hours/days/ranges, task fitting</td>
+<td>◯ Custom scripts</td>
+<td>◯ Event durations only</td>
+<td>✅ Basic arithmetic</td>
+<td>◯ Manual time math</td>
+</tr>
+<tr>
+<td><strong>Visualizations</strong></td>
+<td>✅ Grid + heatmap + table (ASCII)</td>
+<td>◯ Matplotlib plots</td>
+<td>✅FullCalendar UI</td>
+<td>✅ Text dump only</td>
+<td>✅ CLI text</td>
+</tr>
+<tr>
+<td><strong>Timeline Integration</strong></td>
+<td>✅ Mark events, detect conflicts</td>
+<td>◯ Pandas timelines (post-hoc)</td>
+<td>✅FullCalendar events</td>
+<td>◯ Intervals (no conflicts)</td>
+<td>◯ Ranges only</td>
+</tr>
+<tr>
+<td><strong>Multi-Calendar Compare</strong></td>
+<td>✅ Side-by-side metrics</td>
+<td>◯ DataFrame diffs</td>
+<td>◯ Not standard</td>
+<td>◯ Not standard</td>
+<td>◯ Not standard</td>
+</tr>
+<tr>
+<td><strong>Export Formats</strong></td>
+<td>✅ Hash/JSON/CSV</td>
+<td>✅CSV/JSON</td>
+<td>◯ JSON only</td>
+<td>◯ String serialization</td>
+<td>✅ JSON</td>
+</tr>
+<tr>
+<td><strong>Planning-First Design</strong></td>
+<td>✅ Built-in reasoning engine</td>
+<td>◯ Requires assembly</td>
+<td>◯ UI-centric, not code-centric</td>
+<td>✅ Low-level primitives</td>
+<td>◯ Extension-based</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Differences</strong>:</p>
+<ul>
+<li><strong>Softanza</strong>: Constraints are first-class, baked into every query. Capacity is computed on demand, not manually. Visualizations are integrated. Timeline conflicts are detected automatically.</li>
+<li><strong>Python</strong>: Powerful data manipulation, but requires glue code to tie calendar, holidays, and business hours together. <code>pandas</code> excels at analysis but has no capacity-planning primitives.</li>
+<li><strong>JavaScript</strong>: FullCalendar dominates UI-based scheduling. Luxon handles date math well. But reasoning about constraints is delegated to application code; no built-in capacity engine.</li>
+<li><strong>Java/Joda-Time</strong>: Low-level, precise, but verbose. You build calendars from primitives—no opinions, no shortcuts.</li>
+<li><strong>Ruby</strong>: ActiveSupport provides helpers, but capacity planning requires external gems or custom code.</li>
+</ul>
+<p><strong>The Paradigm Gap:</strong></p>
+<p>Softanza's key differentiator isn't features—it's <em>philosophy</em>. Other tools treat constraints as data to manage; Softanza treats them as a <strong>composable reasoning engine</strong>. When you add a holiday or break, everything recalculates because the constraints are wired into the model, not bolted on. Python, JS, Java, Ruby all require you to build that wiring yourself. This makes Softanza ideal for time-driven applications where capacity must be continuously queryable and justified.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>stzCalendar reimagines time as a concrete, queryable asset rather than an abstract liability, much like Softanza's intent-based paradigms in file handling or data crafting. Its layered constraints (boundaries → working days → holidays → business hours → breaks → custom rules) compound predictably, surfacing usable capacity while detecting hidden losses. Visualizations highlight patterns, comparisons uncover trade-offs, and exports enable seamless integration.</p>
+<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « Time Capacity Planning in Softanza: Mastering Constraints with stzCalendar ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stzcalendar-time-capacity-planning-in-softanza.html</p><p class="proof">Non exécuté : son code touche aux fichiers, au réseau, à l'horloge ou au hasard. L'article est publié tel qu'il est écrit ; ses blocs sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzcalendar-time-capacity-planning-in-softanza.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Graphviz DOT Language Guide: Using stzDotCode · Narrations · Softanza</title>
+<meta name="description" content="Graphviz has been integrated into the Softanza ExerCode framework to provide a powerful, code-driven approach to creating professional diagrams.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzdotcode-graphiz-dot-language-guide.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzdotcode-graphiz-dot-language-guide.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">Graphviz DOT Language Guide: Using stzDotCode</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stzdotcode-graphiz-dot-language-guide.html" aria-current=page>Graphviz DOT Language Guide: Using stzDotCode</a></li><li><a href="stzgraph-computational-foundation.html">stzGraph: Computational Foundation and Design</a></li><li><a href="stzgraphdoc.html">stzGraph: The Art of Connected Thinking</a></li><li><a href="stzgraph-modeling-knowledge-with-nodes-and-connections.html">stzGraph — Modeling Knowledge Through Structure</a></li><li><a href="stzorgchartdoc.html">Introducing stzOrgChart - The Strategic Organizational Intelligence Platform</a></li><li><a href="stzorgchartdoc-bankusecase.html">Organizational Intelligence in Action</a></li><li><a href="stzgraph-chatgpt-opinion.html">What ChatGPT Thinks of the stzGraph Module in the Softanza Library</a></li><li><a href="stzgraph-claudeai-opinion.html">ClaudeAI Opinion on stzGraph design</a></li><li><a href="stzgraph-vs-other-graph-libraries.html">Softanza stzGraph vs. Modern Graph Ecosystem</a></li><li><a href="stzgraphplannerdoc.html">Intelligence in Motion: Graph Planning in Softanza</a></li><li><a href="stzgraphquery-doc.html">stzGraphQuery: Asking Questions to Your Graph</a></li><li><a href="stz-rules-as-graph-rules-narration.html">Rules That See the Whole Picture</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>Graphviz DOT Language Guide: Using stzDotCode</h1>
+    <p class="lede">Graphviz has been integrated into the Softanza ExerCode framework to provide a powerful, code-driven approach to creating professional diagrams. Rather than building visualizations through UI interactions, Graphviz allows developers to <strong>define diagrams as structured text</strong>, making them version-controllable, reproducible, and programmatically generated.</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2025-10-16 · tutoriel · domaine <a href="../atlas/diagramming.html">Diagrammes et graphes</a></p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+<figure><img src="../../assets/img/narrations/graph1.webp" alt="graph1.png" loading="lazy"><figcaption>graph1.png</figcaption></figure>
+<h2 id="introduction-why-graphviz-in-softanza">Introduction: Why Graphviz in Softanza?</h2>
+<h3 id="basic-usage-pattern">Basic Usage Pattern</h3>
+<div class="nblock"><div class="lbl">Haro</div><pre>Dot = new stzDotCode()
+Dot.SetCode(&#x27;digraph MyGraph { A -&gt; B; }&#x27;)
+Dot.ExecuteAndView()</pre><p class="ran nv-illus">illustration</p></div>
+<p><img alt="graph1.png" src="../../assets/img/narrations/graph1.webp" /></p>
+<h2 id="core-concepts">Core Concepts</h2>
+<h3 id="graph-types">Graph Types</h3>
+<p>DOT supports two fundamental structures:</p>
+<p><strong>Directed Graphs</strong> - For workflows, hierarchies, and dependencies:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Dot = new stzDotCode()
+
+Dot.SetCode(&#x27;
+digraph MyWorkflow {
+    Start -&gt; Process -&gt; End
+}
+&#x27;)
+
+Dot.RunAndView()</pre><p class="ran nv-illus">illustration</p></div>
+<p><img alt="graph2.png" src="../../assets/img/narrations/graph2.webp" /></p>
+<p><strong>Undirected Graphs</strong> - For networks, relationships, and physical connections:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Dot = new stzDotCode()
+
+Dot.SetCode(&#x27;
+graph MyNetwork {
+    ServerA -- ServerB
+    ServerB -- ServerC
+}
+&#x27;)
+
+Dot.Run()
+Dot.View()</pre><p class="ran nv-illus">illustration</p></div>
+<p><img alt="graph3.png" src="../../assets/img/narrations/graph3.webp" /></p>
+<h3 id="the-three-levels-of-attributes">The Three Levels of Attributes</h3>
+<p>Graphviz styling works hierarchically:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Dot = new stzDotCode()
+
+Dot.SetCode(&#x27;
+digraph G {
+    # Graph-level: affects entire diagram
+    graph [rankdir=LR, bgcolor=white]
+    
+    # Node-level: affects all nodes
+    node [shape=box, style=filled, fillcolor=lightblue]
+    
+    # Edge-level: affects all edges
+    edge [color=gray, penwidth=2]
+    
+    # Individual node: overrides defaults
+    Important [fillcolor=orange]
+    
+    # Individual edge: overrides defaults
+    Important -&gt; Critical [color=darkred, penwidth=4]
+}
+&#x27;)
+
+Dot.ExecuteXT()</pre><p class="ran nv-illus">illustration</p></div>
+<p><img alt="graph4.png" src="../../assets/img/narrations/graph4.webp" />
+The more specific level always wins. An individual node's <code>fillcolor</code> overrides the default node attribute.</p>
+<h2 id="node-shapes-building-your-visual-language">Node Shapes: Building Your Visual Language</h2>
+<p>Nodes are the "nouns" of your diagram. Shape choice communicates meaning.</p>
+<h3 id="common-shapes-and-their-purposes">Common Shapes and Their Purposes</h3>
+<table>
+<thead>
+<tr>
+<th>Shape</th>
+<th>Haro Code</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box</td>
+<td><code>shape=box</code></td>
+<td>Processes, tasks, events</td>
+</tr>
+<tr>
+<td>Circle</td>
+<td><code>shape=circle</code></td>
+<td>States, simple items</td>
+</tr>
+<tr>
+<td>Ellipse</td>
+<td><code>shape=ellipse</code></td>
+<td>Start/end points, default</td>
+</tr>
+<tr>
+<td>Diamond</td>
+<td><code>shape=diamond</code></td>
+<td>Decisions, conditions</td>
+</tr>
+<tr>
+<td>Record</td>
+<td><code>shape=record</code></td>
+<td>Data structures, tables</td>
+</tr>
+<tr>
+<td>Cylinder</td>
+<td><code>shape=cylinder</code></td>
+<td>Databases, storage</td>
+</tr>
+<tr>
+<td>Component</td>
+<td><code>shape=component</code></td>
+<td>Hardware, modules</td>
+</tr>
+<tr>
+<td>Trapezium</td>
+<td><code>shape=trapezium</code></td>
+<td>Input/output</td>
+</tr>
+<tr>
+<td>Parallelogram</td>
+<td><code>shape=parallelogram</code></td>
+<td>Data input</td>
+</tr>
+</tbody>
+</table>
+<h3 id="shape-example">Shape Example</h3>
+<div class="nblock"><div class="lbl">Haro</div><pre>Dot = new stzDotCode()
+
+Dot.SetCode(&#x27;
+digraph Shapes {
+    graph [rankdir=LR]
+    node [style=filled, fontname=&quot;Arial&quot;]
+    
+    box_node [shape=box, fillcolor=lightblue, label=&quot;Process&quot;]
+    circle_node [shape=circle, fillcolor=lightgreen, label=&quot;State&quot;]
+    decision [shape=diamond, fillcolor=yellow, label=&quot;Decision?&quot;]
+    
+    box_node -&gt; circle_node -&gt; decision
+}
+&#x27;)
+
+Dot.SetOutputFile(&quot;shapes.svg&quot;)
+Dot.ExecuteAndView()</pre><p class="ran nv-illus">illustration</p></div>
+<p><img alt="graph5.png" src="../../assets/img/narrations/graph5.webp" />
+A horizontal diagram showing three different node shapes connected by arrows.</p>
+<h2 id="edges-connecting-your-ideas">Edges: Connecting Your Ideas</h2>
+<p>Edges represent relationships. Their styling communicates the nature of that relationship.</p>
+<h3 id="edge-styling-options">Edge Styling Options</h3>
+<div class="nblock"><div class="lbl">Haro</div><pre>Dot = new stzDotCode()
+
+Dot.SetCode(&#x27;
+digraph EdgeStyles {
+    graph [rankdir=TB, nodesep=0.8]
+    node [shape=box, style=&quot;rounded,filled&quot;, fillcolor=lightblue]
+    
+    A [label=&quot;Node A&quot;]
+    B [label=&quot;Node B&quot;]
+    C [label=&quot;Node C&quot;]
+    D [label=&quot;Node D&quot;]
+    
+    # Normal solid edge
+    A -&gt; B [label=&quot;Normal&quot;]
+    
+    # Dashed: optional or weak connection
+    A -&gt; C [label=&quot;Optional&quot;, style=dashed]
+    
+    # Bold: strong or primary path
+    A -&gt; D [label=&quot;Primary&quot;, style=bold, penwidth=3]
+}
+&#x27;)
+
+Dot.RunAndView()</pre><p class="ran nv-illus">illustration</p></div>
+<p><img alt="graph6.png" src="../../assets/img/narrations/graph6.webp" /></p>
+<h3 id="arrow-types">Arrow Types</h3>
+<p>haro</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Dot = new stzDotcode()
+
+Dot.SetCode(&#x27;
+digraph ArrowTypes {
+    graph [rankdir=LR, nodesep=0.8]
+    node [shape=box, style=&quot;rounded,filled&quot;, fillcolor=lightblue]
+    edge [fontname=&quot;Arial&quot;, fontsize=10]
+    
+    A [label=&quot;Node A&quot;]
+    B [label=&quot;Normal&quot;]
+    C [label=&quot;Dot&quot;]
+    D [label=&quot;Diamond&quot;]
+    E [label=&quot;Both&quot;]
+    F [label=&quot;Back&quot;]
+    G [label=&quot;None&quot;]
+    
+    A -&gt; B [arrowhead=normal, label=&quot;normal&quot;]
+    A -&gt; C [arrowhead=dot, label=&quot;dot&quot;]
+    A -&gt; D [arrowhead=diamond, label=&quot;diamond&quot;]
+    A -&gt; E [dir=both, label=&quot;both&quot;]
+    A -&gt; F [dir=back, label=&quot;back&quot;]
+    A -&gt; G [dir=none, label=&quot;none&quot;]
+}
+&#x27;)
+Dot.SetOutputFile(&quot;arrow_types.svg&quot;)
+Dot.ExecuteAndView()</pre><p class="ran nv-illus">illustration</p></div>
+<p><img alt="graph7.png" src="../../assets/img/narrations/graph7.webp" />
+Seven edges from Node A to different target nodes, each demonstrating a different arrow style.</p>
+<h2 id="layout-control-directing-flow">Layout Control: Directing Flow</h2>
+<p>The layout determines how your diagram reads.</p>
+<h3 id="rank-direction-rankdir">Rank Direction (rankdir)</h3>
+<p>haro</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>graph [rankdir=TB]  # Top to Bottom (default) - natural reading
+graph [rankdir=LR]  # Left to Right - timelines, processes
+graph [rankdir=BT]  # Bottom to Top - dependencies building upward
+graph [rankdir=RL]  # Right to Left - uncommon, reverse flow</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Choosing rankdir:</strong></p>
+<ul>
+<li><strong>TB</strong>: Hierarchies, org charts, processes (most intuitive)</li>
+<li><strong>LR</strong>: Timelines, sequences, system architectures (left-to-right reading)</li>
+<li><strong>BT</strong>: Dependency trees (showing what feeds into what)</li>
+<li><strong>RL</strong>: Alternative direction (rarely used)</li>
+</ul>
+<h3 id="alignment-same-rank">Alignment: Same Rank</h3>
+<p>Force nodes onto the same horizontal or vertical level:</p>
+<p>haro</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>dot = new stzDotCode()
+
+Dot.SetCode(&#x27;
+digraph Timeline {
+    graph [rankdir=LR]
+    node [shape=box]
+    
+    # Time markers on same rank
+    {rank=same; t1, t2, t3, t4}
+    t1 [label=&quot;Week 1&quot;]
+    t2 [label=&quot;Week 2&quot;]
+    t3 [label=&quot;Week 3&quot;]
+    t4 [label=&quot;Week 4&quot;]
+    
+    # Tasks aligned with times
+    {rank=same; t1, task1}
+    task1 [label=&quot;Planning&quot;]
+    
+    {rank=same; t2, task2}
+    task2 [label=&quot;Development&quot;]
+    
+    t1 -&gt; t2 -&gt; t3 -&gt; t4
+    task1 -&gt; task2
+}
+&#x27;)
+
+Dot.RunAndView()</pre><p class="ran nv-illus">illustration</p></div>
+<p><img alt="graph8.png" src="../../assets/img/narrations/graph8.webp" /></p>
+<h2 id="clusters-grouping-related-nodes">Clusters: Grouping Related Nodes</h2>
+<p>Clusters create visual groupings with boundaries. They're essential for showing organizational structure, system layers, or process phases.</p>
+<h3 id="creating-clusters">Creating Clusters</h3>
+<p>haro</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Dot.SetCode(&#x27;
+digraph Architecture {
+    graph [rankdir=TB, compound=true]
+    node [shape=box, style=&quot;rounded,filled&quot;]
+    
+    # Frontend cluster
+    subgraph cluster_frontend {
+        label=&quot;Frontend Layer&quot;
+        style=filled
+        fillcolor=lightblue
+        color=blue
+        
+        ui [label=&quot;User Interface&quot;, fillcolor=skyblue]
+        controller [label=&quot;Controller&quot;, fillcolor=skyblue]
+        ui -&gt; controller
+    }
+    
+    # Backend cluster
+    subgraph cluster_backend {
+        label=&quot;Backend Layer&quot;
+        style=filled
+        fillcolor=lightgreen
+        color=green
+        
+        api [label=&quot;REST API&quot;, fillcolor=palegreen]
+        logic [label=&quot;Business Logic&quot;, fillcolor=palegreen]
+        api -&gt; logic
+    }
+    
+    # Cross-cluster connections
+    controller -&gt; api [lhead=cluster_backend, label=&quot;HTTP&quot;]
+}
+&#x27;)</pre><p class="ran nv-illus">illustration</p></div>
+<p><img alt="graph9.png" src="../../assets/img/narrations/graph9.webp" />
+<strong>Key points:</strong></p>
+<ul>
+<li>Cluster names must start with <code>cluster_</code> to get a visual box</li>
+<li>Use <code>lhead</code> and <code>ltail</code> for clean cross-cluster connections</li>
+<li>Set <code>compound=true</code> at graph level to enable these features</li>
+</ul>
+<h2 id="color-and-style-visual-communication">Color and Style: Visual Communication</h2>
+<p>Color choices convey meaning and hierarchy.</p>
+<h3 id="built-in-color-schemes">Built-in Color Schemes</h3>
+<p>Rather than random colors, use schemes for consistency:</p>
+<p>haro</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>node [colorscheme=blues9]
+A [fillcolor=1]   # Lightest blue
+B [fillcolor=5]   # Medium blue
+C [fillcolor=9]   # Darkest blue, fontcolor=white for readability</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Popular schemes:</strong></p>
+<ul>
+<li><code>blues9, reds9, greens9</code> - Monochromatic, 9 shades</li>
+<li><code>paired12</code> - Complementary pairs</li>
+<li><code>set19</code> - Distinct colors for categories</li>
+</ul>
+<h3 id="style-combinations">Style Combinations</h3>
+<p>haro</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>node [style=&quot;filled&quot;]              # Just fill color
+node [style=&quot;rounded,filled&quot;]      # Rounded corners + fill
+node [style=&quot;dashed&quot;]              # Dashed outline
+node [style=&quot;bold,filled&quot;]         # Thicker outline + fill</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="color-psychology">Color Psychology</h3>
+<p>Use colors consistently:</p>
+<ul>
+<li><strong>Green</strong> - Success, approval, "go"</li>
+<li><strong>Red</strong> - Error, stop, critical</li>
+<li><strong>Yellow/Orange</strong> - Warning, caution</li>
+<li><strong>Blue</strong> - Information, process, neutral</li>
+<li><strong>Gray</strong> - Inactive, optional, deprecated</li>
+</ul>
+<hr />
+<h2 id="advanced-record-shapes">Advanced: Record Shapes</h2>
+<p>Record shapes create multi-part nodes useful for data structures, class diagrams, or complex information.</p>
+<p>haro</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Dot.SetCode(&#x27;
+digraph Records {
+    graph [rankdir=LR]
+    node [fontname=&quot;Courier&quot;]
+    
+    # Simple record with vertical sections
+    simple [shape=record, label=&quot;Header|Body|Footer&quot;]
+    
+    # Record with named ports
+    struct [shape=record, 
+            label=&quot;&lt;name&gt;User|&lt;email&gt;john@example.com|&lt;id&gt;EMP-123&quot;]
+    
+    # Complex record
+    class [shape=record, style=filled, fillcolor=lightblue,
+           label=&quot;{&lt;title&gt;MyClass|&lt;attrs&gt;- id: int\l- name: string\l|&lt;methods&gt;+ getData()\l+ setData()\l}&quot;]
+}
+&#x27;)</pre><p class="ran nv-illus">illustration</p></div>
+<p><img alt="graph10.png" src="../../assets/img/narrations/graph10.webp" />
+Port notation:</p>
+<ul>
+<li><code>|</code> separates vertical sections</li>
+<li><code>&lt;name&gt;</code> creates a named connection point</li>
+<li><code>{}</code> subdivides sections horizontally</li>
+</ul>
+<h2 id="practical-patterns">Practical Patterns</h2>
+<h3 id="organization-chart">Organization Chart</h3>
+<p>haro</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Do = new stzDotCode()
+
+Dot.SetCode(&#x27;
+digraph Hierarchy {
+    graph [rankdir=TB, splines=ortho, nodesep=0.6, ranksep=0.8]
+    node [shape=box, style=&quot;rounded,filled&quot;, fontname=&quot;Arial&quot;]
+    edge [color=gray40, arrowsize=0.8]
+    
+    # Force same rank for specific nodes
+    {rank=same; CEO}
+    {rank=same; VP_Sales, VP_Eng, VP_Ops}
+    {rank=same; Sales_A, Sales_B, Dev_A, Dev_B, Ops_A, Ops_B}
+    
+    CEO [fillcolor=gold, fontcolor=black, label=&quot;CEO&quot;]
+    
+    VP_Sales [fillcolor=lightcoral, label=&quot;VP Sales&quot;]
+    VP_Eng [fillcolor=lightblue, label=&quot;VP Engineering&quot;]
+    VP_Ops [fillcolor=lightgreen, label=&quot;VP Operations&quot;]
+    
+    Sales_A [fillcolor=mistyrose, label=&quot;Sales Rep A&quot;]
+    Sales_B [fillcolor=mistyrose, label=&quot;Sales Rep B&quot;]
+    Dev_A [fillcolor=lightcyan, label=&quot;Developer A&quot;]
+    Dev_B [fillcolor=lightcyan, label=&quot;Developer B&quot;]
+    Ops_A [fillcolor=honeydew, label=&quot;Ops Staff A&quot;]
+    Ops_B [fillcolor=honeydew, label=&quot;Ops Staff B&quot;]
+    
+    CEO -&gt; {VP_Sales, VP_Eng, VP_Ops} [penwidth=2]
+    VP_Sales -&gt; {Sales_A, Sales_B}
+    VP_Eng -&gt; {Dev_A, Dev_B}
+    VP_Ops -&gt; {Ops_A, Ops_B}
+}
+
+Dot.RunAndView()</pre><p class="ran nv-illus">illustration</p></div>
+<p><img alt="graph11.png" src="../../assets/img/narrations/graph11.webp" /></p>
+<h3 id="state-machine">State Machine</h3>
+<p>haro</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Do = new stzDotCode()
+
+Dot.SetCode(&#x27;
+digraph StateMachine {
+    graph [rankdir=LR, bgcolor=white, fontname=&quot;Arial&quot;]
+    node [fontname=&quot;Arial&quot;, style=filled]
+    edge [fontname=&quot;Arial&quot;, fontsize=10]
+    
+    # Special states
+    start [shape=circle, fillcolor=black, width=0.3, label=&quot;&quot;]
+    end [shape=doublecircle, fillcolor=black, width=0.3, label=&quot;&quot;]
+    
+    # Regular states
+    idle [shape=circle, fillcolor=lightblue, label=&quot;Idle&quot;]
+    processing [shape=circle, fillcolor=yellow, label=&quot;Processing&quot;]
+    waiting [shape=circle, fillcolor=orange, label=&quot;Waiting&quot;]
+    complete [shape=circle, fillcolor=lightgreen, label=&quot;Complete&quot;]
+    error [shape=circle, fillcolor=red, fontcolor=white, label=&quot;Error&quot;]
+    
+    # Transitions
+    start -&gt; idle [label=&quot;init&quot;]
+    idle -&gt; processing [label=&quot;start()&quot;]
+    processing -&gt; waiting [label=&quot;wait_for_input()&quot;]
+    processing -&gt; complete [label=&quot;success&quot;]
+    processing -&gt; error [label=&quot;exception&quot;]
+    waiting -&gt; processing [label=&quot;input_received()&quot;]
+    waiting -&gt; error [label=&quot;timeout&quot;]
+    error -&gt; idle [label=&quot;retry()&quot;, style=dashed]
+    complete -&gt; end [label=&quot;finalize&quot;]
+    
+    # Self-loop
+    idle -&gt; idle [label=&quot;ping()&quot;, style=dotted]
+}
+&#x27;)
+
+Dot.SetOutputFile(&quot;state_machine.svg&quot;)
+Dot.ExecuteAndView()</pre><p class="ran nv-illus">illustration</p></div>
+<p><img alt="graph12.png" src="../../assets/img/narrations/graph12.webp" /></p>
+<h3 id="process-workflow">Process Workflow</h3>
+<p>haro</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Dot.SetCode(&#x27;
+digraph Workflow {
+    graph [rankdir=LR, splines=ortho]
+    node [shape=box, style=&quot;rounded,filled&quot;]
+    
+    start [shape=circle, fillcolor=green, label=&quot;Start&quot;]
+    input [fillcolor=lightblue, label=&quot;Input Data&quot;]
+    process [fillcolor=lightyellow, label=&quot;Process&quot;]
+    decision [shape=diamond, fillcolor=gold, label=&quot;Valid?&quot;]
+    output [fillcolor=lightgreen, label=&quot;Output&quot;]
+    error [fillcolor=lightcoral, label=&quot;Error&quot;]
+    end [shape=circle, fillcolor=red, label=&quot;End&quot;]
+    
+    start -&gt; input -&gt; process -&gt; decision
+    decision -&gt; output [label=&quot;Yes&quot;]
+    decision -&gt; error [label=&quot;No&quot;]
+    output -&gt; end
+    error -&gt; end
+}
+&#x27;)
+Dot.SetOutputFile(&quot;workflow.svg&quot;)
+Dot.ExecuteAndView()</pre><p class="ran nv-illus">illustration</p></div>
+<p><img alt="graph13.png" src="../../assets/img/narrations/graph13.webp" /></p>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="1-start-simple-build-complexity">1. Start Simple, Build Complexity</h3>
+<p>Begin with basic nodes and edges, then add styling and structure.</p>
+<p>haro</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Version 1: Structure
+Dot.SetCode(&#x27;
+digraph G {
+    A -&gt; B -&gt; C
+}
+&#x27;)
+
+# Version 2: Styling
+Dot.SetCode(&#x27;
+digraph G {
+    node [shape=box, style=filled]
+    A [fillcolor=lightblue]
+    B [fillcolor=lightgreen]
+    C [fillcolor=lightyellow]
+    A -&gt; B -&gt; C
+}
+&#x27;)</pre><p class="ran nv-illus">illustration</p></div>
+<p><img alt="graph14.png" src="../../assets/img/narrations/graph14.webp" /></p>
+<h3 id="2-use-consistent-styling">2. Use Consistent Styling</h3>
+<p>Group similar elements with the same appearance:</p>
+<p>haro</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Dot.SetCode(&#x27;
+digraph G {
+    # All processes: blue boxes
+    node [shape=box, fillcolor=lightblue]
+    process1; process2; process3
+    
+    # All decisions: gold diamonds
+    node [shape=diamond, fillcolor=gold]
+    decision1; decision2
+    
+    # All endpoints: circles
+    node [shape=circle, fillcolor=green]
+    start; end
+}
+&#x27;)</pre><p class="ran nv-illus">illustration</p></div>
+<p><img alt="graph15.png" src="../../assets/img/narrations/graph15.webp" /></p>
+<h3 id="3-label-everything">3. Label Everything</h3>
+<p>Clear labels are essential for understanding:</p>
+<p>haro</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Bad: unclear
+A [label=&quot;X&quot;]
+
+# Good: descriptive
+user_input [label=&quot;User\nEnters Data&quot;]</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="4-use-rankdir-intentionally">4. Use rankdir Intentionally</h3>
+<p>Match the reading direction to your audience's expectations:</p>
+<p>haro</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Org chart: top-down
+graph [rankdir=TB]
+
+# Timeline: left-to-right
+graph [rankdir=LR]
+
+# Build process: bottom-up
+graph [rankdir=BT]</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="5-limit-density">5. Limit Density</h3>
+<p>Too many connections or nodes creates visual chaos:</p>
+<ul>
+<li>Use clusters to group related items</li>
+<li>Use separate diagrams for different aspects</li>
+<li>Consider breaking complex flows into stages</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="diagram-not-rendering">Diagram Not Rendering</h3>
+<p><strong>Issue:</strong> stzDotCode throws an error or file isn't created.</p>
+<p><strong>Check:</strong></p>
+<ol>
+<li>Graphviz is installed (<code>dot.exe</code> exists at specified path)</li>
+<li>DOT code has matching braces <code>{ }</code></li>
+<li>No syntax errors (semicolons at line ends)</li>
+<li>Output directory exists and is writable</li>
+</ol>
+<h3 id="nodes-overlapping">Nodes Overlapping</h3>
+<p><strong>Issue:</strong> Nodes are cramped together.</p>
+<p><strong>Solutions:</strong></p>
+<p>haro</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>graph [rankdir=TB, nodesep=0.8, ranksep=1.0]  # More spacing
+graph [splines=ortho]  # Right-angle edges, less overlap
+graph [overlap=false]  # Force layout algorithm to avoid overlaps</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="edges-too-complicated">Edges Too Complicated</h3>
+<p><strong>Issue:</strong> Lines cross and tangle.</p>
+<p><strong>Solutions:</strong></p>
+<ul>
+<li>Use <code>splines=ortho</code> for clean right-angle lines</li>
+<li>Use <code>rankdir=LR</code> instead of TB for certain hierarchies</li>
+<li>Break into multiple clusters</li>
+<li>Consider separate diagrams for different aspects</li>
+</ul>
+<h3 id="output-file-not-where-expected">Output File Not Where Expected</h3>
+<p>Remember the directory structure:</p>
+<p>haro</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Dot.SetOutputDir(&quot;output&quot;)          # Sets base directory
+Dot.SetOutputFile(&quot;diagram.svg&quot;)    # Creates output/diagram.svg
+Dot.SetOutputFile(&quot;subdir/diagram.svg&quot;)  # Creates output/subdir/diagram.svg</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="summary">Summary</h2>
+<p>Graphviz's text-based approach to diagram creation enables:</p>
+<p>✓ <strong>Version Control</strong> - Diagrams in Git alongside code ✓ <strong>Automation</strong> - Generate diagrams from data programmatically ✓ <strong>Reproducibility</strong> - Same input always produces same output ✓ <strong>Scale</strong> - Create hundreds of diagrams without UI interaction ✓ <strong>Integration</strong> - Embed diagram generation into applications</p>
+<p>stzDotCode is your programmatic bridge to this power. Master the DOT language fundamentals, and you unlock the ability to create professional, maintainable diagram infrastructure within SoftAnza.</p>
+<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « Graphviz DOT Language Guide: Using stzDotCode ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stzdotcode-graphiz-dot-language-guide.html</p><p class="proof">Non exécuté : son code touche aux fichiers, au réseau, à l'horloge ou au hasard. L'article est publié tel qu'il est écrit ; ses blocs sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzDotCode-Graphiz-Dot-Language-Guide.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

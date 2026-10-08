@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stzDataSet: Statistics as a Language of Thought · Narrations · Softanza</title>
+<meta name="description" content="In Softanza, statistics isn&#x27;t just formulas—it&#x27;s a way of thinking about data. When a statistician examines data, he doesn&#x27;t see numbers; he sees questions waiting for answers. His intent shapes which analytical lens he reaches for:">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzdatasetdoc.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzdatasetdoc.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">stzDataSet: Statistics as a Language of Thought</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stztable-when-code-meets-cells.html">&quot;Code Meets Cells&quot;: The Spreadsheet Metaphor in Softanza&#x27;s stzTable</a></li><li><a href="stzdatasetdoc.html" aria-current=page>stzDataSet: Statistics as a Language of Thought</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>stzDataSet: Statistics as a Language of Thought</h1>
+    <p class="lede">The <code>stzDataSet</code> class from Softanza's STATS module embeds this cognitive model directly into Haro code, transforming raw numbers into meaningful narratives. This same four-pillar framework extends across all of Softanza's data analytics modules—from statistics to visualization—creating a <strong>universal language</strong> for understanding data.</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2026-01-04 · tutoriel · domaine <a href="../atlas/tables.html">Tables et données</a></p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+
+<p>In Softanza, statistics isn't just formulas—it's a way of thinking about data. When a statistician examines data, he doesn't see numbers; he sees questions waiting for answers. His intent shapes which analytical lens he reaches for:</p>
+<ul>
+<li><strong>Comparison</strong>: How do values compare against each other?</li>
+<li><strong>Composition</strong>: What elements make up this whole, and in what proportions?</li>
+<li><strong>Distribution</strong>: How are values spread, shaped, and distorted across their range?</li>
+<li><strong>Relation</strong>: How do variables connect to one another?</li>
+</ul>
+<h2 id="prologue-data-arrives-questions-begin">Prologue — Data Arrives, Questions Begin</h2>
+<p>A data analyst opens a file. No theory, no assumptions — just values.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oSales = new stzDataSet([120, 150, 89, 200, 175, 95, 180])</pre><p class="ran nv-illus">illustration</p></div>
+<p>From the first line, the dataset already knows it is numeric and usable. The analyst’s first reflex is not <em>"Which formula?"</em> but <em>"What can this data tell me about itself?"</em></p>
+<h2 id="step-1-finding-a-typical-value-mean-median">Step 1 — Finding a Typical Value (Mean &amp; Median)</h2>
+<p>The analyst asks: <em>What value best represents this dataset?</em></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oSales.Mean()
+#--&gt; 144.14</pre><p class="ran nv-illus">illustration</p></div>
+<p>The <strong>mean</strong> is the arithmetic average: add all values and divide by how many there are.</p>
+<p>Now a second question: <em>What is the middle value if I sort the data?</em></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oSales.Median()
+#--&gt; 150</pre><p class="ran nv-illus">illustration</p></div>
+<p>The <strong>median</strong> is the central value. When mean and median are close, the data is usually balanced. When they differ, extreme values may be pulling the mean.</p>
+<p>Already, the analyst learns something concrete: sales tend to cluster around ~145–150.</p>
+<h2 id="step-2-measuring-how-spread-the-data-is-standard-deviation">Step 2 — Measuring How Spread the Data Is (Standard Deviation)</h2>
+<p>Next question: <em>Are values tightly grouped or widely spread?</em></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oSales.StandardDeviation()
+#--&gt; 38.62</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Standard deviation</strong> measures how far values typically are from the mean. Here, sales usually differ by about 39 units from the average.</p>
+<p>To make this easier to interpret, Softanza also offers a relative measure:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oSales.CoefficientOfVariation()
+#--&gt; 26.79</pre><p class="ran nv-illus">illustration</p></div>
+<p>This means variation is about <strong>27% of the average</strong>, which is moderate for business data.</p>
+<h2 id="step-3-looking-at-the-data-in-chunks-quartiles-iqr">Step 3 — Looking at the Data in Chunks (Quartiles &amp; IQR)</h2>
+<p>The analyst now asks: <em>How is the data distributed from low to high?</em></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@(oSales.Quartiles())
+#--&gt; [92, 150, 187.5]</pre><p class="ran nv-illus">illustration</p></div>
+<p>These are <strong>quartiles</strong>:</p>
+<ul>
+<li>Q1 (92): 25% of values are below this</li>
+<li>Q2 (150): the median</li>
+<li>Q3 (187.5): 75% of values are below this</li>
+</ul>
+<p>The analyst then checks how wide the middle of the data is:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oSales.IQR()
+#--&gt; 95.5</pre><p class="ran nv-illus">illustration</p></div>
+<p>The <strong>Interquartile Range (IQR)</strong> is Q3 − Q1. It represents the spread of the middle 50% of the data — a robust measure that ignores extremes.</p>
+<h2 id="step-4-checking-symmetry-skewness">Step 4 — Checking Symmetry (Skewness)</h2>
+<p>Now a practical question: <em>Is the data pulled more to one side?</em></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oSales.Skewness()
+#--&gt; 0.21</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Skewness</strong> measures asymmetry:</p>
+<ul>
+<li>Near 0 → roughly symmetric</li>
+<li>Positive → longer tail on the right</li>
+<li>Negative → longer tail on the left</li>
+</ul>
+<p>Here, 0.21 means the distribution is almost symmetric, with a slight pull toward higher values.</p>
+<h2 id="step-5-detecting-unusual-values-outliers">Step 5 — Detecting Unusual Values (Outliers)</h2>
+<p>The analyst wonders: <em>Are some values unusually far from the rest?</em></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@(oSales.Outliers())
+#--&gt; []</pre><p class="ran nv-illus">illustration</p></div>
+<p>No outliers detected. Softanza uses the IQR rule internally and explains the result directly through behavior, not formulas.</p>
+<h2 id="step-6-understanding-position-with-z-scores">Step 6 — Understanding Position with Z-Scores</h2>
+<p>To compare individual values, the analyst asks: <em>How far is each value from the average?</em></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@(oSales.ZScores())
+#--&gt; [-0.63, 0.15, -1.43, 1.45, 0.80, -1.27, 0.93]</pre><p class="ran nv-illus">illustration</p></div>
+<p>A <strong>Z-score</strong> tells how many standard deviations a value is away from the mean:</p>
+<ul>
+<li>0 → exactly average</li>
+<li>±1 → one standard deviation away</li>
+<li>Large absolute values → unusual observations</li>
+</ul>
+<p>Here, none exceed ±2, confirming the absence of extreme values.</p>
+<h2 id="step-7-letting-softanza-summarize-insights-recommendations">Step 7 — Letting Softanza Summarize (Insights &amp; Recommendations)</h2>
+<p>Instead of interpreting everything manually, the analyst asks the dataset itself:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@NL(oSales.Insights())</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Output:</strong></p>
+<pre>[
+  &quot;Moderate variability detected (CV ≈ 27%).&quot;,
+  &quot;Distribution is approximately symmetric.&quot;,
+  &quot;No significant outliers detected.&quot;
+]</pre>
+<p>Insights summarize <em>what the data looks like</em>.</p>
+<p>The next question is more practical:</p>
+<blockquote>
+<p><em>What should I do with this information?</em></p>
+</blockquote>
+<p>That is where <strong>recommendations</strong> come in.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@NL(oSales.Recommendations())</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Output:</strong></p>
+<pre>[
+  &quot;Data shows acceptable stability; mean-based indicators are reliable.&quot;,
+  &quot;No outlier treatment required.&quot;,
+  &quot;Standard statistical methods can be safely applied.&quot;
+]</pre>
+<p>While insights describe the situation, <strong>recommendations suggest actions or safe analytical choices</strong>. They transform statistics from observation into guidance.</p>
+<h2 id="step-8-introducing-plans-why-they-exist">Step 8 — Introducing Plans (Why They Exist)</h2>
+<p>After repeating these steps many times, the analyst realizes something:</p>
+<blockquote>
+<p>“I always do the same reasoning in the same order.”</p>
+</blockquote>
+<p>That is <strong>why Plans exist</strong> in Softanza.</p>
+<p>A <strong>Plan</strong> is a reusable analysis path that executes concrete steps and explains them.</p>
+<hr />
+<h2 id="step-9-running-a-builtin-plan">Step 9 — Running a Built‑in Plan</h2>
+<div class="nblock"><div class="lbl">Haro</div><pre>oSales.ExecutePlan(:EDA)</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Output:</strong></p>
+<pre>• Data type: numeric
+• Sample size: 7
+• Mean: 144.14
+• Median: 150
+• Std Dev: 38.62
+• Quartiles: [92, 150, 187.5]
+• Skewness: 0.21
+• Outliers: none</pre>
+<p>This is not abstraction — it is the <strong>same concrete steps</strong>, executed, ordered, and narrated.</p>
+<h2 id="step-10-creating-a-personal-plan">Step 10 — Creating a Personal Plan</h2>
+<p>The analyst now defines what <em>they</em> care about:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>aBusinessPlan = [
+  [:function = &quot;Mean&quot;, :description = &quot;Typical sales&quot;],
+  [:function = &quot;CoefficientOfVariation&quot;, :description = &quot;Stability&quot;],
+  [:condition = &quot;ContainsOutliers()&quot;,
+   :function = &quot;Outliers&quot;,
+   :description = &quot;Risk events&quot;]
+]
+
+oSales.AddPlan(:Business, &quot;Business Overview&quot;, &quot;Quick decision view&quot;, aBusinessPlan)
+
+oSales.ExecutePlan(:Business)</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Output:</strong></p>
+<pre>• Typical sales: 144.14
+• Stability (CV): 26.79%
+• Risk events: none</pre>
+<p>Plans turn personal reasoning into executable knowledge.</p>
+<h2 id="the-softanza-advantage">The Softanza Advantage</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Softanza (Haro)</th>
+<th>Python (pandas/scipy)</th>
+<th>R</th>
+<th>Julia</th>
+<th>JavaScript</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Natural language methods</strong></td>
+<td>✅ Full</td>
+<td>⚠️ Partial</td>
+<td>⚠️ Partial</td>
+<td>❌ Limited</td>
+<td>❌ Limited</td>
+</tr>
+<tr>
+<td><strong>Auto type detection</strong></td>
+<td>✅ Automatic</td>
+<td>⚠️ Manual</td>
+<td>⚠️ Manual</td>
+<td>⚠️ Manual</td>
+<td>❌ Manual</td>
+</tr>
+<tr>
+<td><strong>Narrative insights</strong></td>
+<td>✅ Built-in</td>
+<td>❌ None</td>
+<td>❌ None</td>
+<td>❌ None</td>
+<td>❌ None</td>
+</tr>
+<tr>
+<td><strong>Analysis plans</strong></td>
+<td>✅ Native</td>
+<td>❌ None</td>
+<td>❌ None</td>
+<td>❌ None</td>
+<td>❌ None</td>
+</tr>
+<tr>
+<td><strong>Adaptive workflows</strong></td>
+<td>✅ Yes</td>
+<td>❌ Manual</td>
+<td>❌ Manual</td>
+<td>❌ Manual</td>
+<td>❌ Manual</td>
+</tr>
+<tr>
+<td><strong>Learning curve</strong></td>
+<td>✅ Gentle</td>
+<td>⚠️ Steep</td>
+<td>⚠️ Steep</td>
+<td>⚠️ Steep</td>
+<td>⚠️ Moderate</td>
+</tr>
+<tr>
+<td><strong>Semantic cache</strong></td>
+<td>✅ Automatic</td>
+<td>❌ Manual</td>
+<td>❌ Manual</td>
+<td>❌ Manual</td>
+<td>❌ Manual</td>
+</tr>
+<tr>
+<td><strong>Domain rules</strong></td>
+<td>✅ Extensible</td>
+<td>❌ None</td>
+<td>❌ None</td>
+<td>❌ None</td>
+<td>❌ None</td>
+</tr>
+<tr>
+<td><strong>Four-pillar model</strong></td>
+<td>✅ Native</td>
+<td>❌ None</td>
+<td>❌ None</td>
+<td>❌ None</td>
+<td>❌ None</td>
+</tr>
+</tbody>
+</table>
+<p>Softanza transforms statistics from computation to conversation:</p>
+<ol>
+<li><strong>Self-describing data</strong>: Datasets explain themselves through insights</li>
+<li><strong>Contextual interpretation</strong>: Methods adapt to data type automatically</li>
+<li><strong>Narrative layer</strong>: Results come with meaning, not just numbers</li>
+<li><strong>Guided exploration</strong>: Plans suggest next steps based on findings</li>
+<li><strong>Learning-friendly</strong>: Methods read like natural questions</li>
+<li><strong>Unified framework</strong>: Same model for statistics and visualization</li>
+</ol>
+<p>What in <strong>Python</strong> takes 14 lines of code to achive:</p>
+<div class="lbl">Python, montré pour comparaison, non exécuté</div><pre>import pandas as pd
+import scipy.stats as stats
+
+df = pd.DataFrame({&#x27;value&#x27;: data})
+print(f&quot;Mean: {df[&#x27;value&#x27;].mean()}&quot;)
+print(f&quot;Median: {df[&#x27;value&#x27;].median()}&quot;)
+print(f&quot;Std: {df[&#x27;value&#x27;].std()}&quot;)
+
+Q1 = df[&#x27;value&#x27;].quantile(0.25)
+Q3 = df[&#x27;value&#x27;].quantile(0.75)
+IQR = Q3 - Q1
+outliers = df[(df[&#x27;value&#x27;] &lt; Q1 - 1.5*IQR) | (df[&#x27;value&#x27;] &gt; Q3 + 1.5*IQR)]
+print(f&quot;Outliers: {len(outliers)}&quot;)
+
+skew = stats.skew(df[&#x27;value&#x27;])
+kurt = stats.kurtosis(df[&#x27;value&#x27;])
+print(f&quot;Skewness: {skew}, Kurtosis: {kurt}&quot;)</pre>
+<p><strong>Softanza</strong> can make it in two lines:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oData = new stzDataSet(data)
+oData.ExecutePlan(:EDA)</pre><p class="ran nv-illus">illustration</p></div>
+<p>The plan executes comprehensive analysis with narrative output, actionable insights, and recommendations—all in one line.</p>
+<h2 id="conclusion-statistics-as-intent">Conclusion: Statistics as Intent</h2>
+<p>The <code>stzDataSet</code> class reimagines statistics not as formulas to memorize, but as a <strong>language of thought</strong> embedded in code. It doesn't just calculate—it:</p>
+<ul>
+<li><strong>Understands</strong> data nature through automatic type detection</li>
+<li><strong>Adapts</strong> methods to context based on data characteristics</li>
+<li><strong>Narrates</strong> findings meaningfully through insights and recommendations</li>
+<li><strong>Guides</strong> analytical workflows via intelligent plans</li>
+<li><strong>Educates</strong> through natural language interfaces</li>
+<li><strong>Unifies</strong> statistics and visualization under one cognitive model</li>
+</ul>
+<p>The class guides the analyst through <strong>seven pragmatic layers</strong> that every experienced data analyst <strong>applies</strong> to statistical work</p>
+<pre>1. Statistical Primitives (Mean, Median, StdDev)
+          ↓
+2. Semantic Interpretation (Type detection, validation)
+          ↓
+3. Distribution Analysis (Quartiles, skewness, outliers)
+          ↓
+4. Relational Analysis (Correlation, regression)
+          ↓
+5. Narrative Layer (Insights, recommendations)
+          ↓
+6. Orchestrated Plans (EDA, Quality, Trends)
+          ↓
+7. Visualization (Bar, Surface, Histogram, Scatter, using the Softanza Plotting classes)</pre>
+<p>Each layer builds on the previous, creating a <strong>thinking system</strong> rather than a calculation tool.</p>
+<p>Statistics becomes intent. Code becomes dialogue. Data becomes knowledge. And that transformation—from numbers to narrative, from computation to cognition—is what makes Softanza not just a library, but a way of thinking about data.</p>
+<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « stzDataSet: Statistics as a Language of Thought ». Softanza narrations, 2026. https://mayouni.github.io/stzsite/fr/narrations/stzdatasetdoc.html</p><p class="proof">Non exécuté : son code touche aux fichiers, au réseau, à l'horloge ou au hasard. L'article est publié tel qu'il est écrit ; ses blocs sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzdatasetdoc.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

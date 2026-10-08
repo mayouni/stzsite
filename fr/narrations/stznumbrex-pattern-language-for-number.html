@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stzNumbrex: A Pattern Language for Numbers in Softanza · Narrations · Softanza</title>
+<meta name="description" content="Numbers aren’t just quantities — they embody structure, logic, and identity. A number like 42 is not merely a scalar: it’s even, composite, divisible by 3 and 7, and composed of digits [4, 2].">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stznumbrex-pattern-language-for-number.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stznumbrex-pattern-language-for-number.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">stzNumbrex: A Pattern Language for Numbers in Softanza</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stzregex-mastering-regex-with-softanza-narration.html">Mastering Regular Expressions with Softanza: A Modern Approach to Pattern Matching</a></li><li><a href="stzregexdata-library-narration.html">Simplifying Regular Expressions with the Enhanced stzRegexData Library</a></li><li><a href="stzregexmaker-making-regex-human-freindly-narration.html">The Softanza RegexMaker: Making Regex Human-Friendly</a></li><li><a href="stzregexuter-regex-as-computational-reactive-medium.html">Softanza Regexuter: Regex as Computational Reactive Medium</a></li><li><a href="stzlistex-pattern-matching-for-lists.html">Softanza Listex: Bringing Pattern Matching to Lists</a></li><li><a href="stznumbex-number-patterns-made-simple.html">stzNumbrex: A Pattern Language for Numbers</a></li><li><a href="stztimex-a-pattern-language-for-time-in-softanza.html">stzTimex: A Pattern Language for Time in Softanza</a></li><li><a href="stznumbrex-pattern-language-for-number.html" aria-current=page>stzNumbrex: A Pattern Language for Numbers in Softanza</a></li><li><a href="stzmatrex-declarative-pattern-matching-for-matrices.html">stzMatrex: Declarative Pattern Matching for Matrices in Softanza</a></li><li><a href="stztablex-pattern-langauge-for-tables.html">stzTablex: Declarative Pattern Matching for Tables in Softanza</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>stzNumbrex: A Pattern Language for Numbers in Softanza</h1>
+    <p class="lede">Numbers aren’t just quantities — they embody structure, logic, and identity.
+A number like <strong>42</strong> is not merely a scalar: it’s even, composite, divisible by 3 and 7, and composed of digits <code>[4, 2]</code>.
+Yet in most programming languages, numbers are treated as inert values. Developers must loop, test, and branch endlessly to uncover their nature.</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2025-10-26 · essai de paradigme · domaine <a href="../atlas/regex.html">Recherche de motifs</a></p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+
+<h2 id="introduction">Introduction</h2>
+<p>Softanza’s <strong>stzNumbrex</strong> reimagines this relationship.
+Inspired by the philosophy behind regular expressions for strings, it introduces a <strong>pattern language for numbers</strong> — a declarative syntax that lets developers describe numeric properties, structures, and relationships with clarity and intent.</p>
+<h2 id="numbers-as-patterns-not-procedures">Numbers as Patterns, Not Procedures</h2>
+<p>While traditional math libraries (like Python’s <code>math</code> or Java’s <code>BigInteger</code>) focus on <em>operations</em>, <strong>stzNumbrex</strong> focuses on <em>meaning</em>.
+Instead of instructing the machine <em>how</em> to test a condition, you simply state <em>what</em> you mean.</p>
+<p>For example, instead of writing:</p>
+<div class="lbl">Python, montré pour comparaison, non exécuté</div><pre>if n % 2 == 0 and is_prime(n):</pre>
+<p>you can now declare:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Nx = new stzNumbrex(&quot;{@Property(Even) &amp; @Property(Prime)}&quot;)
+if Nx.Match(n)</pre><p class="ran nv-illus">illustration</p></div>
+<p>Softanza treats a number as a <strong>pattern subject</strong> that can reveal:</p>
+<ul>
+<li><strong>Properties</strong> – such as Prime, Perfect, Fibonacci, or Palindrome</li>
+<li><strong>Digit structures</strong> – describing ranges, counts, or uniqueness</li>
+<li><strong>Factor compositions</strong> – including divisibility and multiplicity</li>
+<li><strong>Relations</strong> – like modular congruences or parity rules</li>
+</ul>
+<p>This shift transforms numeric programming from a procedural exercise into a form of <strong>semantic expression</strong>.</p>
+<h2 id="syntax-overview">Syntax Overview</h2>
+<p>A <strong>stzNumbrex</strong> pattern is always enclosed in <code>{}</code> and built from readable, meaningful tokens:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>{@Property(Prime)}                  # Simple property
+{@Digit(1-5)+}                      # Digit range pattern
+{@Property(Even) | @Property(Prime)}# OR logic
+{@Property(Even) &amp; @Digit3}         # AND logic
+{@!Property(Perfect)}               # NOT logic
+{@Relation(Mod:5=0)}                # Modular test</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Core Token Types</strong></p>
+<ul>
+<li><code>@Property</code> → Prime, Even, Odd, Perfect, Fibonacci, Palindrome, Square</li>
+<li><code>@Digit</code> → Digit ranges, counts, sets, or uniqueness</li>
+<li><code>@Factor</code> → Divisibility and factor count</li>
+<li><code>@Relation</code> → Modular or comparative arithmetic</li>
+<li><code>@Approx</code> → Fuzzy matching for real numbers</li>
+<li><code>@Part</code> → Integer or fractional part (planned for future versions)</li>
+</ul>
+<p><strong>Operators:</strong> <code>|</code> (OR), <code>&amp;</code> (AND), <code>!</code> (NOT)
+<strong>Quantifiers:</strong> <code>+</code> (1+), <code>*</code> (0+), <code>?</code> (optional), <code>n</code>, <code>n-m</code> (bounded count)</p>
+<h2 id="property-recognition">Property Recognition</h2>
+<p>With <strong>stzNumbrex</strong>, mathematical properties become instantly recognizable and expressible through concise patterns:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Nx = new stzNumbrex(&quot;{@Property(Prime)}&quot;)
+? Nx.Match(17)  #--&gt; TRUE
+? Nx.Match(18)  #--&gt; FALSE
+
+Nx = new stzNumbrex(&quot;{@Property(Perfect)}&quot;)
+? Nx.Match(6)   #--&gt; TRUE  (1+2+3=6)
+? Nx.Match(28)  #--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<p>This approach is particularly valuable in contexts such as cryptography, number theory classification, or mathematical validation.</p>
+<h2 id="digit-structures">Digit Structures</h2>
+<p>Digits carry their own structure — their count, range, and uniqueness can all define meaningful patterns.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Nx = new stzNumbrex(&quot;{@Digit4}&quot;)
+? Nx.Match(1234)  #--&gt; TRUE
+
+Nx = new stzNumbrex(&quot;{@Digit(1-5)+}&quot;)
+? Nx.Match(1234)  #--&gt; TRUE
+? Nx.Match(1267)  #--&gt; FALSE
+
+Nx = new stzNumbrex(&quot;{@Digit(:unique)+}&quot;)
+? Nx.Match(1234)  #--&gt; TRUE
+? Nx.Match(1223)  #--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+<p>Such expressiveness is ideal for <strong>PIN validation</strong>, <strong>lottery systems</strong>, or <strong>code pattern detection</strong>, where digit composition carries meaning beyond value.</p>
+<h2 id="factor-decomposition">Factor Decomposition</h2>
+<p>Divisibility and factor structures can also be captured declaratively — all in a single line.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Nx = new stzNumbrex(&quot;{@Factor4}&quot;)
+? Nx.Match(6)   #--&gt; TRUE  (1,2,3,6)
+? Nx.Match(15)  #--&gt; TRUE
+
+Nx = new stzNumbrex(&quot;{@Factor2-5}&quot;)
+? Nx.Match(6)   #--&gt; TRUE
+? Nx.Match(12)  #--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+<p>This makes it easy to define <strong>structural filters</strong> for cryptographic applications or for classifying numeric families based on their factor patterns.</p>
+<h2 id="logical-composition">Logical Composition</h2>
+<p>Complex logic becomes elegantly composable.</p>
+<h3 id="alternation-or">Alternation (OR)</h3>
+<div class="nblock"><div class="lbl">Haro</div><pre>Nx = new stzNumbrex(&quot;{@Property(Even) | @Property(Prime)}&quot;)
+? Nx.Match(2)  #--&gt; TRUE
+? Nx.Match(4)  #--&gt; TRUE
+? Nx.Match(7)  #--&gt; TRUE
+? Nx.Match(9)  #--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="conjunction-and">Conjunction (AND)</h3>
+<div class="nblock"><div class="lbl">Haro</div><pre>Nx = new stzNumbrex(&quot;{@Property(Palindrome) &amp; @Property(Square)}&quot;)
+? Nx.Match(121)  #--&gt; TRUE (11²)
+? Nx.Match(144)  #--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="negation-not">Negation (NOT)</h3>
+<div class="nblock"><div class="lbl">Haro</div><pre>Nx = new stzNumbrex(&quot;{@!Property(Prime)}&quot;)
+? Nx.Match(4)  #--&gt; TRUE
+? Nx.Match(7)  #--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+<p>These logical connectors allow for <strong>composable numeric reasoning</strong>, making filters, rule-based checks, and exception logic naturally expressive.</p>
+<h2 id="modular-relations">Modular Relations</h2>
+<p>Modular arithmetic constraints can be written in a way that’s both readable and declarative.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Nx = new stzNumbrex(&quot;{@Relation(Mod:5=0)}&quot;)
+? Nx.Match(10)  #--&gt; TRUE
+? Nx.Match(13)  #--&gt; FALSE
+
+Nx = new stzNumbrex(&quot;{@Relation(Mod:3=1)}&quot;)
+? Nx.Match(10)  #--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<p>Such expressions simplify use cases like <strong>cyclical scheduling</strong>, <strong>remainder systems</strong>, or <strong>cryptographic algorithms</strong> that rely on modular logic.</p>
+<h2 id="structural-extraction">Structural Extraction</h2>
+<p><strong>stzNumbrex</strong> goes beyond returning a simple boolean.
+Once a match is performed, you can not only know <em>if</em> a number satisfies a pattern, but also <em>why</em>. The class exposes a structural view of the number through both <strong>comprehensive</strong> and <strong>direct</strong> access methods.</p>
+<p>The most complete representation is given by <code>MatchedParts()</code>, which returns the entire anatomy of the matched number:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oNx = new stzNumbrex(&quot;{@Property(Even)}&quot;)
+if oNx.Match(42)
+	? MatchedParts()
+ok
+#--&gt; [
+#  &quot;Digits&quot;, [4,2],
+#  &quot;Factors&quot;, [1,2,3,6,7,14,21,42],
+#  &quot;Properties&quot;, [&quot;Even&quot;],
+#  &quot;Value&quot;, 42
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>In practice, you often don’t need the full structure at once.
+stzNumbrex therefore provides <strong>direct accessors</strong> — <code>Digits()</code>, <code>Factors()</code>, <code>Properties()</code>, and <code>Value()</code> — each of which retrieves the corresponding element from the underlying matched data:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oNx.Digits()      #--&gt; [4,2]
+? oNx.Factors()     #--&gt; [1,2,3,6,7,14,21,42]
+? oNx.Properties()  #--&gt; [&quot;Even&quot;]
+? oNx.Value()       #--&gt; 42</pre><p class="ran nv-illus">illustration</p></div>
+<p>These methods give you immediate access to the number’s inner structure while maintaining full consistency with the data contained in <code>MatchedParts()</code>.</p>
+<h2 id="expressive-matching-functions">Expressive Matching Functions</h2>
+<p>In the redesigned version, <strong>FindNext()</strong> and <strong>FindInSection()</strong> have evolved into more expressive counterparts:</p>
+<ul>
+<li><code>MatchingNumberAfter()</code> → finds the next number matching the pattern <em>after</em> a given value (short form: <code>MatchingAfter()</code>).</li>
+<li><code>MatchingNumbersBetween()</code> → finds all matching numbers <em>between</em> two given bounds (short form: <code>MatchingBetween()</code>).</li>
+</ul>
+<p>This design reflects a more declarative intent and aligns with Softanza’s naming philosophy.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Nx = new stzNumbrex(&quot;{@Property(Prime)}&quot;)
+? Nx.MatchingAfter(10)          #--&gt; 11
+? Nx.MatchingBetween(10, 20)    #--&gt; [11, 13, 17, 19]</pre><p class="ran nv-illus">illustration</p></div>
+<p>These methods allow <strong>navigational reasoning</strong> through numeric domains using the same pattern semantics — making it easy to query sequences or ranges declaratively.</p>
+<h2 id="pattern-explanation">Pattern Explanation</h2>
+<p>Every pattern can also describe itself — making its internal meaning explicit.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Nx = new stzNumbrex(&quot;{@Property(Even) &amp; @Digit3 &amp; @Relation(Mod:5=0)}&quot;)
+? @@(Nx.Explain())</pre><p class="ran nv-illus">illustration</p></div>
+<p>This self-explanatory nature enhances <strong>debugging, auditability, and transparency</strong>, turning patterns into readable specifications rather than opaque logic.</p>
+<h2 id="debug-tracing">Debug Tracing</h2>
+<p>When debugging, you can follow the reasoning step by step.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Nx = new stzNumbrex(&quot;{@Property(Prime)}&quot;)
+Nx.EnableDebug()
+? Nx.Match(17)
+# Logs internal operations: divisor tests, decision trace.</pre><p class="ran nv-illus">illustration</p></div>
+<p>This feature is invaluable for learners, testers, and performance optimizers who want to observe how the pattern engine reasons internally.</p>
+<h2 id="comparative-analysis-stznumbrex-vs-other-ecosystems">Comparative Analysis: stzNumbrex vs. Other Ecosystems</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Softanza (stzNumbrex)</th>
+<th>Python</th>
+<th>JavaScript</th>
+<th>Java</th>
+<th>Ruby</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Declarative Number Patterns</strong></td>
+<td>✅ Native <code>{@Property(Prime)}</code></td>
+<td>❌ Procedural checks</td>
+<td>❌ Imperative</td>
+<td>❌ Verbose methods</td>
+<td>❌ Chained calls</td>
+</tr>
+<tr>
+<td><strong>Property Detection</strong></td>
+<td>✅ Built-in</td>
+<td>⚠️ <code>sympy</code></td>
+<td>❌ Manual</td>
+<td>⚠️ External</td>
+<td>⚠️ Gems</td>
+</tr>
+<tr>
+<td><strong>Digit Pattern Matching</strong></td>
+<td>✅ Declarative</td>
+<td>❌ String loops</td>
+<td>❌ Regex tricks</td>
+<td>❌ Manual</td>
+<td>❌ Manual</td>
+</tr>
+<tr>
+<td><strong>Factor Analysis</strong></td>
+<td>✅ Structural</td>
+<td>⚠️ Loops</td>
+<td>❌ None</td>
+<td>⚠️ BigInteger only</td>
+<td>❌ None</td>
+</tr>
+<tr>
+<td><strong>Logical Composition</strong></td>
+<td>✅ <code>&amp;!</code> syntax</td>
+<td>❌ Code logic</td>
+<td>❌ Nested ifs</td>
+<td>❌ Methods</td>
+<td>❌ Methods</td>
+</tr>
+<tr>
+<td><strong>Modular Relations</strong></td>
+<td>✅ <code>{@Relation(Mod:5=0)}</code></td>
+<td>✅ Verbose</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong>Pattern Negation</strong></td>
+<td>✅ Built-in</td>
+<td>❌ <code>not ...</code></td>
+<td>❌ <code>!isPrime()</code></td>
+<td>❌ <code>!prime()</code></td>
+<td>❌ <code>!method</code></td>
+</tr>
+<tr>
+<td><strong>Information Extraction</strong></td>
+<td>✅ Structured output</td>
+<td>❌ Manual</td>
+<td>❌ Manual</td>
+<td>❌ Manual</td>
+<td>❌ Manual</td>
+</tr>
+<tr>
+<td><strong>Pattern Explanation</strong></td>
+<td>✅ Introspectable</td>
+<td>❌ None</td>
+<td>❌ None</td>
+<td>❌ None</td>
+<td>❌ None</td>
+</tr>
+<tr>
+<td><strong>Debug Tracing</strong></td>
+<td>✅ Engine-level</td>
+<td>⚠️ Prints</td>
+<td>⚠️ Console</td>
+<td>⚠️ Debugger</td>
+<td>⚠️ puts</td>
+</tr>
+<tr>
+<td><strong>Composability</strong></td>
+<td>✅ Full</td>
+<td>❌ Functions</td>
+<td>❌ Chains</td>
+<td>❌ Chains</td>
+<td>❌ Chains</td>
+</tr>
+<tr>
+<td><strong>Self-Documentation</strong></td>
+<td>✅ Pattern-as-spec</td>
+<td>❌ Comments</td>
+<td>❌ Comments</td>
+<td>❌ JavaDoc</td>
+<td>❌ RDoc</td>
+</tr>
+<tr>
+<td><strong>Type Safety</strong></td>
+<td>✅ Structural</td>
+<td>⚠️ Dynamic</td>
+<td>❌ Weak</td>
+<td>✅ Static</td>
+<td>⚠️ Duck</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>✅ Intent-optimized</td>
+<td>✅ Fast</td>
+<td>⚠️ Engine-based</td>
+<td>✅ JVM</td>
+<td>⚠️ Interpreted</td>
+</tr>
+<tr>
+<td><strong>Learning Curve</strong></td>
+<td>⚠️ New paradigm</td>
+<td>✅ Familiar</td>
+<td>✅ Familiar</td>
+<td>✅ Familiar</td>
+<td>✅ Familiar</td>
+</tr>
+<tr>
+<td><strong>Integration</strong></td>
+<td>✅ Unified Softanza</td>
+<td>❌ Fragmented</td>
+<td>❌ Fragmented</td>
+<td>⚠️ Framework-based</td>
+<td>⚠️ Gem-based</td>
+</tr>
+<tr>
+<td><strong>Real-Number Support</strong></td>
+<td>✅ <code>@Approx</code> (planned)</td>
+<td>✅ <code>isclose()</code></td>
+<td>✅ ε-checks</td>
+<td>✅ BigDecimal</td>
+<td>✅ Float</td>
+</tr>
+<tr>
+<td><strong>Prime Generation</strong></td>
+<td>🔄 Future: built-in</td>
+<td>✅ <code>sympy</code></td>
+<td>⚠️ Manual</td>
+<td>✅ BigInteger</td>
+<td>⚠️ Gems</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conclusion">Conclusion</h2>
+<p><strong>stzNumbrex</strong> reshapes how programmers perceive numbers.
+They cease to be simple operands and become <strong>semantic entities</strong> — objects that can be matched, described, and explored declaratively.</p>
+<ul>
+<li>Declarative rather than procedural</li>
+<li>Structural rather than scalar</li>
+<li>Extractable rather than opaque</li>
+</ul>
+<p>Softanza’s vision goes beyond mere syntax. It’s about treating data as language — one that can be read, reasoned about, and evolved.
+With <strong>stzNumbrex</strong>, numbers don’t just compute — they finally <strong>express their structure</strong>.</p>
+<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « stzNumbrex: A Pattern Language for Numbers in Softanza ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stznumbrex-pattern-language-for-number.html</p><p class="proof">Non exécuté : son code ne se charge pas tel qu'il est écrit. L'article est publié tel qu'il est écrit ; ses blocs sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stznumbrex-pattern-language-for-number.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

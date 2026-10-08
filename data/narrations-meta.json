@@ -1,0 +1,2333 @@
+{
+ "commit": "4a184e6f0",
+ "derived": "genre, series, area: from the file name and the title; year: the first commit that added the file; abstract: the first paragraph. The articles' own header (B34) replaces each.",
+ "articles": {
+  "Safe-Access-to-Ring-Hashlists-using-HasKey.md": {
+   "title": "Safe Access to Haro Hashlists: How Softanza Solves a Common Problem",
+   "abstract": "Haro's hashlist is a powerful and flexible data structure, but it has a subtle yet dangerous behavior that can lead to hard-to-debug errors.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "collections",
+   "date": "2025-10-10",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "Softanza-Reactive-Programming-Semantics.md": {
+   "title": "Softanza Reactive Programming Semantics: A Conceptual Framework",
+   "abstract": "One of Softanza's core missions is simplification through semantic clarity. The programming world is cluttered with overlapping, confusing terminologies that create unnecessary cognitive overhead.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "concurrency",
+   "date": "2025-08-21",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "istrue-softanza-truth.md": {
+   "title": "DeepContains still reports that \"X\" exists down inside the nested list",
+   "abstract": "In Haro, truth is pure and direct — a language-level agreement between logic and simplicity. An empty string is false, a non-empty one is true. An empty list is false, while a non-empty list is true. Objects, by their very existence, are true.",
+   "genre": "design essay",
+   "series": null,
+   "area": "collections",
+   "date": "2025-10-22",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "softanza-reactive-objects-narration.md": {
+   "title": "Softanza Reactive Objects: A Complete Beginner's Tutorial",
+   "abstract": "Imagine you're using a spreadsheet like Excel. When you change a number in one cell, all the connected formulas update instantly without you having to do anything extra.",
+   "genre": "tutorial",
+   "series": null,
+   "area": "concurrency",
+   "date": "2025-08-21",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-adverb-engine.md": {
+   "title": "From \"Quick\" to \"Quickly\": Programmatic Adverb Formation",
+   "abstract": "Softanza Adverb() function transforms (any) word into its proper adverbial form, handling English morphology complexities for programmers generating natural language messages.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "agents",
+   "date": "2025-09-16",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-agents-that-cannot-hurt-you-narration.md": {
+   "title": "Agents That Cannot Hurt You",
+   "abstract": "Everyone building agents in 2026 is handed roughly the same shopping list: a Python project, a model provider, a graph framework, a vector store, a set of tools with typed schemas, a tracing service, and a chapter of safety advice — allowlists, sandboxes, h...",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "agents",
+   "date": "2026-08-22",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "agentfile_narrated.ring",
+     "path": "base/test/agentic/agentfile_narrated.ring"
+    },
+    {
+     "name": "governance_narrated.ring",
+     "path": "base/test/governance/governance_narrated.ring"
+    },
+    {
+     "name": "safeworld_narrated.ring",
+     "path": "base/test/agentic/safeworld_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": []
+  },
+  "stz-auth-the-front-door-narration.md": {
+   "title": "The Front Door",
+   "abstract": "Every application eventually needs to answer \"who is this?\" And almost every application answers it badly the first time, not through carelessness but because the field is full of details that look optional and are not.",
+   "genre": "series",
+   "series": "security",
+   "area": "security",
+   "date": "2026-07-25",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stz-security-drill-narration.md"
+   ]
+  },
+  "stz-bridging-minds-and-code.md": {
+   "title": "Softanza: Bridging Minds and Code - A Humanistic Approach to Programming",
+   "abstract": "Softanza is an innovative approach to programming that dissolves the complexity of code, offering an inclusive pathway for individuals—regardless of their technical background—to transform their ideas into working software.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "nlp",
+   "date": "2024-12-15",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stz-for-the-rest-of-us.webp",
+    "alt": "A multi-generational family joyfully sitting around a bag of vibrant flowers"
+   },
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzobject-history-narration.md",
+    "stz-near-natural-language-tutorial.md",
+    "stz-near-natural-language-programming.md",
+    "stz-mental-mode-narration.md"
+   ]
+  },
+  "stz-built-on-real-world-need.md": {
+   "title": "Softanza Library: Built on Real-World Needs",
+   "abstract": "You may think Softanza's large feature set is daunting, but believe me, each singular function has its story rooted in a real-world need, shapeing every aspect of the library—from its features and programming style to its data structures and documentation.",
+   "genre": "use case",
+   "series": null,
+   "area": null,
+   "date": "2025-01-13",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stz-built-on-real-world.webp",
+    "alt": "A wife standing on her husband's back to work on a computer"
+   },
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzstring-duplicates-narration.md",
+    "stzobject-history-narration.md",
+    "stz-near-natural-language-tutorial.md",
+    "stz-near-natural-language-programming.md"
+   ]
+  },
+  "stz-conditional-code-narration.md": {
+   "title": "Conditional Code in Softanza — Constraining Functions with `W` and `WF`",
+   "abstract": "Many Softanza functions accept a constraint: a small piece of logic that decides, per item, whether it qualifies. \"Find the items that are uppercase\", \"count the even numbers\", \"keep the strings longer than 3 characters\".",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": null,
+   "date": "2026-06-18",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-deploying-to-target-sites-narration.md": {
+   "title": "Deploying to the Target Sites",
+   "abstract": "The emulator answered the hard question: does it work? Every part ran its real engine in the browser, so you know the solution is sound. But sound isn't shipped.",
+   "genre": "series",
+   "series": "delivery",
+   "area": "system",
+   "date": "2026-07-22",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [
+    "stz-emulating-the-whole-solution-narration.md",
+    "stz-guarding-secrets-and-credentials-narration.md"
+   ],
+   "related": [
+    "stz-emulating-the-whole-solution-narration.md",
+    "stz-guarding-secrets-and-credentials-narration.md",
+    "stz-planning-and-provisioning-a-deployment-narration.md",
+    "stz-governing-project-security-narration.md"
+   ]
+  },
+  "stz-emulating-the-whole-solution-narration.md": {
+   "title": "Emulating the Whole Solution",
+   "abstract": "Most stacks let you run a part in isolation and simulate the rest. You boot the phone app in an emulator that talks to a mocked backend; you flash firmware to a dev board wired to a fake sensor.",
+   "genre": "series",
+   "series": "delivery",
+   "area": "system",
+   "date": "2026-07-22",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-engine-senses-narration.md": {
+   "title": "The Engine Senses",
+   "abstract": "Before P1, the Softanza engine could tell time with nanosecond precision -- and nothing else about itself. No process memory, no system memory, no CPU time.",
+   "genre": "design essay",
+   "series": null,
+   "area": "system",
+   "date": "2026-07-29",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "engine_senses_narrated.ring",
+     "path": "base/test/perf/engine_senses_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": [
+    "stz-metrics-monitor-narration.md"
+   ]
+  },
+  "stz-eye-sees-the-inivisible-narration.md": {
+   "title": "Softanza Eye Sees the Invisible: Unmasking Hidden Unicode Characters",
+   "abstract": "Invisible characters are a fascinating aspect of Unicode that often go unnoticed but can significantly impact text processing. The Softanza library provides robust tools for working with these hidden characters.",
+   "genre": "design essay",
+   "series": null,
+   "area": "graphics",
+   "date": "2025-03-19",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-fastporupdate-narration.md": {
+   "title": "FastProUpdate(): A Semantic Rengineering of RingFastPro extension",
+   "abstract": "RingFastPro extension, by Mahmoud Fayed, provides essential high-performance list operations in Haro through C-based optimization.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "collections",
+   "date": "2025-03-29",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-function-forms-narration.md": {
+   "title": "Softanza: Functions as Linguistic Artifacts - A Comprehensive Narration",
+   "abstract": "Imagine a programming language where code reads like natural conversation, where functions adapt to human thought patterns rather than forcing programmers into rigid syntactic constraints.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "nlp",
+   "date": "2025-09-24",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [
+    "stz-conditional-code-narration.md"
+   ],
+   "related": [
+    "stz-conditional-code-narration.md",
+    "stzstring-duplicates-narration.md",
+    "stzobject-history-narration.md",
+    "stz-near-natural-language-tutorial.md"
+   ]
+  },
+  "stz-functions-as-linguistic-expressions.md": {
+   "title": "Writability vs. Readability of Computer Code— Softanza Asks: Why NOT Both?",
+   "abstract": "Imagine writing code that flows as naturally as your thoughts, where programming constructs mirror the linguistic patterns of human communication.",
+   "genre": "comparison",
+   "series": null,
+   "area": "nlp",
+   "date": "2024-12-18",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stz-functions-alterforms-namedparams.webp",
+    "alt": "An Arabic scholar writing his scientific discovery in a beautiful, readable, and artistic calligraphic style. By M.Ayouni, using Microsoft Image AI"
+   },
+   "guards": [],
+   "links": [],
+   "related": [
+    "stz-near-natural-language-programming.md",
+    "stzobject-history-narration.md",
+    "stz-near-natural-language-tutorial.md",
+    "stz-mental-mode-narration.md"
+   ]
+  },
+  "stz-fututure-actions.md": {
+   "title": "Programming the Future, Litterally, in Softanza",
+   "abstract": "Programming traditionally forces immediate execution - each action happens as soon as you call it. Future Actions let you plan a sequence first, then execute it all at once with natural timing control.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": null,
+   "date": "2025-09-16",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-getting-paid-and-paying-narration.md": {
+   "title": "Getting Paid and Paying",
+   "abstract": "A platform that sells in Niger is paid in francs CFA, by people who hold an account at a bank or a mobile-money operator that is not its own.",
+   "genre": "use case",
+   "series": null,
+   "area": "web",
+   "date": "2026-10-05",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-governance-lineage-narration.md": {
+   "title": "Answerable Forever",
+   "abstract": "stzGovernance.RecordDecision carried this comment:",
+   "genre": "series",
+   "series": "security",
+   "area": "security",
+   "date": "2026-07-31",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "governance_lineage_narrated.ring",
+     "path": "base/test/governance/governance_lineage_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": []
+  },
+  "stz-governing-project-security-narration.md": {
+   "title": "Governing a Project's Security",
+   "abstract": "The secrets narration showed a single stzSecret — a value that redacts itself and reveals only to an effectful actor. A real project has many secrets, several sites, and more than one actor, and the risk isn't one leaked key — it's the scatter: keys created...",
+   "genre": "series",
+   "series": "security",
+   "area": "security",
+   "date": "2026-07-23",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [
+    "stz-guarding-secrets-and-credentials-narration.md"
+   ],
+   "related": [
+    "stz-guarding-secrets-and-credentials-narration.md",
+    "stz-service-virtualization-code-first-subscribe-later.md",
+    "stz-security-seams-narration.md",
+    "stz-security-response-narration.md"
+   ]
+  },
+  "stz-guarding-secrets-and-credentials-narration.md": {
+   "title": "Guarding Secrets & Credentials",
+   "abstract": "When you deployed to the target sites, one line carried a promise we hadn't yet kept:",
+   "genre": "series",
+   "series": "security",
+   "area": "security",
+   "date": "2026-07-22",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "secret_narrated.ring",
+     "path": "base/test/system/secret_narrated.ring"
+    }
+   ],
+   "links": [
+    "stz-deploying-to-target-sites-narration.md"
+   ],
+   "related": [
+    "stz-deploying-to-target-sites-narration.md",
+    "stz-governing-project-security-narration.md"
+   ]
+  },
+  "stz-honest-stopwatch-narration.md": {
+   "title": "The Honest Stopwatch",
+   "abstract": "Most timing code starts casually -- a clock() before, a clock() after, a subtraction -- and inherits three quiet defects. The clock is coarse (CLOCKSPERSEC granularity).",
+   "genre": "design essay",
+   "series": null,
+   "area": "performance",
+   "date": "2026-07-29",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "stopwatch_narrated.ring",
+     "path": "base/test/perf/stopwatch_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": []
+  },
+  "stz-integrating-r-scripts-inside-ring.md": {
+   "title": "R() in Ring: Statistical Power, One Call Away",
+   "abstract": "Softanza makes it easy to integrate R, a powerful language for statistics and visualization, into Ring. The R() function allows you to run R scripts directly within Haro, bringing R’s analytical capabilities into your workflow without switching environments.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "extensibility",
+   "date": "2025-02-24",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stz-r-plot.webp",
+    "alt": "DataViz Generated by R Inside Haro"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-knowledge-programming-narration.md": {
+   "title": "Softanza Knowledge Porgramming: Crafting the Semantics of Thought",
+   "abstract": "Imagine a world where information isn't just stored, but intelligently connected. Where concepts aren't static labels, but dynamic, interrelated entities that can be queried, expanded, and understood in context.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "nlp",
+   "date": "2024-12-17",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stz-knowledge-programming.webp",
+    "alt": "A Wise and Revered Sufi Scholar from Niger Exploring Computer Code in a Traditional Study Room"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-lowlevel-system-programming.md": {
+   "title": "Your First Taste of Systems Programming - Without the Fear",
+   "abstract": "How Softanza's Complete Low-Level Framework Takes You from Buffers to OS Integration",
+   "genre": "feature essay",
+   "series": null,
+   "area": "system",
+   "date": "2025-07-12",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-managing-deep-lists-narration.md": {
+   "title": "Taming Deep Lists with Softanza",
+   "abstract": "Softanza, Mastering Depths from the Heart.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "collections",
+   "date": "2025-03-20",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stz-deep-lists.webp",
+    "alt": "Softanza, Mastering the Depths"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-max-adverb-generation-in-softan.md": {
+   "title": "Smart Adverb Generation in Softanza",
+   "abstract": "The Softanza library introduces an intelligent Adverb() function that transforms adjectives and nouns into contextually appropriate adverbs using a priority-based rule system.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "agents",
+   "date": "2025-06-13",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-mental-mode-narration.md": {
+   "title": "A Guided Path to Problem-Solving: The Softanza Mental Model",
+   "abstract": "The Softanza Mental Model is a guiding principle for solving problems step-by-step through progressive exploration and manipulation of data.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "nlp",
+   "date": "2024-12-15",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stz-mental-model.webp",
+    "alt": ""
+   },
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzobject-history-narration.md",
+    "stz-near-natural-language-tutorial.md",
+    "stz-near-natural-language-programming.md",
+    "stz-functions-as-linguistic-expressions.md"
+   ]
+  },
+  "stz-metrics-monitor-narration.md": {
+   "title": "Metrics and the Monitor",
+   "abstract": "P1 gave the engine senses -- it can read its own memory and CPU. But a sense is not an instrument: nothing named the readings, nothing kept them, nothing watched on a cadence. P2 adds the two missing objects.",
+   "genre": "series",
+   "series": "performance",
+   "area": "performance",
+   "date": "2026-07-29",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "metrics_monitor_narrated.ring",
+     "path": "base/test/perf/metrics_monitor_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": [
+    "stz-security-sentinel-narration.md",
+    "stz-engine-senses-narration.md"
+   ]
+  },
+  "stz-named-vars-narration.md": {
+   "title": "Named Variables in Softanza: the What, Why and How!",
+   "abstract": "Softanza’s Named Variables feature makes it possible to construct variable names dynamically at runtime. This is especially powerful for generating variables with systematic naming patterns (e.g., name1, name2, …, name100), or variables whose names are deri...",
+   "genre": "feature essay",
+   "series": null,
+   "area": "collections",
+   "date": "2025-09-15",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzstring-duplicates-narration.md",
+    "stzobject-history-narration.md",
+    "stz-near-natural-language-tutorial.md",
+    "stz-near-natural-language-programming.md"
+   ]
+  },
+  "stz-near-natural-language-programming.md": {
+   "title": "Near-Natural Programming: Bridging Human Thought and Code Execution",
+   "abstract": "How the Softanza library enables executable code that reads like everyday language, powered by elegant design in the Haro programming language",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "nlp",
+   "date": "2025-09-24",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stz-functions-as-linguistic-expressions.md",
+    "stzobject-history-narration.md",
+    "stz-near-natural-language-tutorial.md",
+    "stz-mental-mode-narration.md"
+   ]
+  },
+  "stz-near-natural-language-tutorial.md": {
+   "title": "Softanza Near-Natural Programming Tutorial",
+   "abstract": "Learn to write code that reads like English (or any other human language) using Softanza's NNP features.",
+   "genre": "tutorial",
+   "series": null,
+   "area": "nlp",
+   "date": "2025-09-24",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzobject-history-narration.md",
+    "stz-near-natural-language-programming.md",
+    "stz-mental-mode-narration.md",
+    "stz-functions-as-linguistic-expressions.md"
+   ]
+  },
+  "stz-perf-driven-load-narration.md": {
+   "title": "The Driven Load",
+   "abstract": "P7 ruled the R-vs-X harness out honestly: the knee -- response time exploding as throughput nears its ceiling -- is queueing's signature, queueing needs CONCURRENT arrivals, and a serial in-process harness cannot produce them.",
+   "genre": "series",
+   "series": "performance",
+   "area": "performance",
+   "date": "2026-07-31",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "driven_load_narrated.ring",
+     "path": "base/test/perf/driven_load_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": []
+  },
+  "stz-perf-frame-profiler-narration.md": {
+   "title": "The Frame Profiler",
+   "abstract": "The senses (P1) say WHETHER the process computes; the metrics (P2) say what each operation costs in aggregate. Neither says WHERE inside your own code the time lives. That is a profiler's question, and P10 answers it two honest ways at once.",
+   "genre": "series",
+   "series": "performance",
+   "area": "performance",
+   "date": "2026-07-31",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "frame_profiler_narrated.ring",
+     "path": "base/test/perf/frame_profiler_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": []
+  },
+  "stz-perf-governed-loop-narration.md": {
+   "title": "The Governed Loop",
+   "abstract": "The notebook's pipeline ends where the stakes begin: Monitor -> Alert -> Analyze -> Optimize. The first three verbs only read; the fourth scales fleets, drains workers, restarts processes.",
+   "genre": "series",
+   "series": "performance",
+   "area": "performance",
+   "date": "2026-07-29",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "governed_loop_narrated.ring",
+     "path": "base/test/perf/governed_loop_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": []
+  },
+  "stz-perf-judgment-narration.md": {
+   "title": "Judgment",
+   "abstract": "The industry adds performance thresholds after the incident, in a monitoring tool, in that tool's language. Softanza's position is the notebook's original two words -- SLA: design -- the promise is part of the program, stated in the operational vocabulary n...",
+   "genre": "series",
+   "series": "performance",
+   "area": "performance",
+   "date": "2026-07-29",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "judgment_narrated.ring",
+     "path": "base/test/perf/judgment_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": []
+  },
+  "stz-perf-labels-narration.md": {
+   "title": "Labels and Dimensions",
+   "abstract": "The vs-the-field document called flat metric names this system's most consequential absence: http.request.ms measured everything, so \"which route is slow?\" had no direct answer.",
+   "genre": "series",
+   "series": "performance",
+   "area": "performance",
+   "date": "2026-07-31",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "labels_narrated.ring",
+     "path": "base/test/perf/labels_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": []
+  },
+  "stz-perf-log-trace-narration.md": {
+   "title": "Log-Trace Correlation",
+   "abstract": "After P8 the system had spans, metrics and logs -- but the logs stood apart: a log line knew when but not for which request. The field solves this with context propagation frameworks;",
+   "genre": "series",
+   "series": "performance",
+   "area": "performance",
+   "date": "2026-07-31",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "log_trace_narrated.ring",
+     "path": "base/test/perf/log_trace_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": []
+  },
+  "stz-perf-profile-narration.md": {
+   "title": "The Profile",
+   "abstract": "Everything before P5 measures: the stopwatch times, the senses read, the metrics keep, the seams attribute, the SLA judges.",
+   "genre": "series",
+   "series": "performance",
+   "area": "performance",
+   "date": "2026-07-29",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "profile_narrated.ring",
+     "path": "base/test/perf/profile_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": []
+  },
+  "stz-perf-seams-narration.md": {
+   "title": "The Seams",
+   "abstract": "P2 built the instruments; until now they measured what you handed them. P3 attaches them to the places where requests actually flow, so R (response time) and X (throughput) stop being examples and become your server's numbers. The whole attachment is one verb:",
+   "genre": "series",
+   "series": "performance",
+   "area": "performance",
+   "date": "2026-07-29",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "seams_narrated.ring",
+     "path": "base/test/perf/seams_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": []
+  },
+  "stz-perf-tracing-tail-narration.md": {
+   "title": "The Tail",
+   "abstract": "P4 admitted a limit honestly: alerts did not carry the trace ids of the requests that tripped them, because nothing captured traces per request. P2 owed the OTLP metrics batch a sibling for spans.",
+   "genre": "series",
+   "series": "performance",
+   "area": "performance",
+   "date": "2026-07-29",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "tracing_tail_narrated.ring",
+     "path": "base/test/perf/tracing_tail_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": []
+  },
+  "stz-planning-and-provisioning-a-deployment-narration.md": {
+   "title": "Planning and Provisioning a Deployment",
+   "abstract": "Deploying the target sites taught the verbs: store, launch, report, all governed. But real rollouts are rarely one step. The backend must come up before the frontend that calls it. A health check must pass before you proceed.",
+   "genre": "series",
+   "series": "delivery",
+   "area": "system",
+   "date": "2026-07-22",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [
+    "stz-deploying-to-target-sites-narration.md"
+   ],
+   "related": [
+    "stz-deploying-to-target-sites-narration.md",
+    "stz-structured-logging-narration.md"
+   ]
+  },
+  "stz-plotting-system-narration.md": {
+   "title": "Softanza Ploting System: Where AsciiArt Meets DataViz",
+   "abstract": "Data visualization turns raw numbers into understanding. The Softanza Ploting System elevates that idea by transforming numbers into expressive, text-based visual stories.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "graphics",
+   "date": "2025-06-08",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-probabilistic-quantifiers-narration.md": {
+   "title": "Probabilistic Quantifiers in Softanza: Natural Proportions Meet Logical Precision",
+   "abstract": "Softanza introduces probabilistic quantifiers like Few(), Some(), Most(), and All(), allowing for more intuitive data manipulation by reflecting natural language.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "numeric",
+   "date": "2025-01-13",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stz-probabilistic-quantifiers.webp",
+    "alt": "Probabilistic Quantifiers in Softanza"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-pycode-bridging-ring-and-python-narration.md": {
+   "title": "Expanding Haro’s Horizons: Unlocking New Possibilities with Python",
+   "abstract": "The Haro programming language, on which Softanza is built, is known for its simplicity and innovative capabilities. Now, Haro has taken a significant leap forward with the introduction of py(), a powerful feature from the Softanza library.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "extensibility",
+   "date": "2025-02-23",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stz-pycode.webp",
+    "alt": "Python Code Running Inside Haro"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-random-narrration.md": {
+   "title": "Practical Randomness in Softanza",
+   "abstract": "Softanza builds on Haro’s C-based random engine by offering semantic APIs that cover the most common randomness needs in programming.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "numeric",
+   "date": "2025-09-14",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-reaxis-reactive-programming-narration.md": {
+   "title": "Reaxis: A Natural Model for Reactive Programming in Haro, by Softanza",
+   "abstract": "Reactive programming suffers from a profound semantic crisis. We've borrowed metaphors from plumbing (\"backpressure\"), event management (\"handlers\"), telephone systems (\"callbacks\"), and publishing (\"subscribers/producers\").",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "concurrency",
+   "date": "2025-08-31",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-reaxis-simplification-of-complex-reactive-programming.md": {
+   "title": "The Great Simplification: How Reaxis Dissolves Decades of Reactive Programming Complexity",
+   "abstract": "On January 10th, 2024, a developer named Mark Maker posted a question to the libuv Google Group that would inadvertently demonstrate one of the most significant breakthroughs in reactive programming paradigms.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "concurrency",
+   "date": "2025-08-31",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-repeat-function-narration.md": {
+   "title": "The Symphony of Repetition: A Coding Journey in Softanza",
+   "abstract": "Softanza introduces a remarkable function, Repeat(), along with its eXTended form RepeatXT(), that transforms value repetition into an elegant, flexible coding technique.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "collections",
+   "date": "2024-12-11",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stz-repeat-function.webp",
+    "alt": "Symphony of Repetition in Softanza, by Microsoft Image AI"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-repetition-with-elegance-narration.md": {
+   "title": "Repetition with Elegance: Exploring @N() and @NXT() Smart Builders in Softanza",
+   "abstract": "In the hands of a painter, repetition is not mundane—it’s an art form. Each stroke, though seemingly similar, contributes to the greater beauty of the canvas. Similarly, in programming, crafting repetitive patterns can elevate code from functional to elegant.",
+   "genre": "design essay",
+   "series": null,
+   "area": "collections",
+   "date": "2024-12-13",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stz-repetition-with-elegance.webp",
+    "alt": "Repetition with Elegance in Softanza, by Microsoft Image AI"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-rules-as-graph-rules-narration.md": {
+   "title": "Rules That See the Whole Picture",
+   "abstract": "Softanza used to check its house rules with a text scanner: read the source line by line, and if a line looks like def len(, complain. That is a grep with a nicer return type.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "diagramming",
+   "date": "2026-07-24",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzgraphplannerdoc.md",
+    "stzOrgChartDoc.md"
+   ]
+  },
+  "stz-security-attestation-narration.md": {
+   "title": "Attestation and Export",
+   "abstract": "I1 made the ledger hash-chained and sealable, which makes a file tamper-evident. That is necessary and not sufficient. An auditor holding the file still has to ask: who exported this, when, over what range, under which key, and how do I check it? Those ques...",
+   "genre": "series",
+   "series": "security",
+   "area": "security",
+   "date": "2026-07-31",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "security_attest_narrated.ring",
+     "path": "base/test/system/security_attest_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": []
+  },
+  "stz-security-detection-narration.md": {
+   "title": "Detection over Sequences",
+   "abstract": "Softanza is full of rules. A graph rule asks whether a sandboxed actor can reach an effectful capability. A posture invariant asks what is true of the system right now. An org rule asks whether one position both approves and executes.",
+   "genre": "series",
+   "series": "security",
+   "area": "security",
+   "date": "2026-07-31",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "security_detection_narrated.ring",
+     "path": "base/test/system/security_detection_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": [
+    "stz-service-virtualization-code-first-subscribe-later.md",
+    "stz-security-seams-narration.md",
+    "stz-security-response-narration.md",
+    "stz-governing-project-security-narration.md"
+   ]
+  },
+  "stz-security-drill-narration.md": {
+   "title": "The Drill",
+   "abstract": "Seven phases built a system that witnesses, judges, correlates, contains and attests. Every one of them was guarded — but always with events the guard itself created.",
+   "genre": "series",
+   "series": "security",
+   "area": "security",
+   "date": "2026-07-31",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "security_drill_narrated.ring",
+     "path": "base/test/system/security_drill_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": [
+    "stz-security-seams-narration.md",
+    "stz-auth-the-front-door-narration.md"
+   ]
+  },
+  "stz-security-event-narration.md": {
+   "title": "The Security Event",
+   "abstract": "Softanza detects a great deal. A WebAuthn signature counter that fails to advance — the textbook cloned-credential signal. A SAML assertion presented twice. An HMAC that does not match. A nonce reused for the same key.",
+   "genre": "series",
+   "series": "security",
+   "area": "security",
+   "date": "2026-07-31",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "security_event_narrated.ring",
+     "path": "base/test/system/security_event_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": []
+  },
+  "stz-security-incident-narration.md": {
+   "title": "The Incident",
+   "abstract": "I4's case says what fired and photographs the moment. That is the right thing to keep, and the wrong thing to hand a human. An investigator needs the story: who, in what order, how far they could have gone, what is exposed, and what has been done about it.",
+   "genre": "series",
+   "series": "security",
+   "area": "security",
+   "date": "2026-07-31",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "security_incident_narrated.ring",
+     "path": "base/test/system/security_incident_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": []
+  },
+  "stz-security-ledger-narration.md": {
+   "title": "The Security Ledger",
+   "abstract": "It usually means a text file. Anyone who can write to it can rewrite it, and nothing about the file objects. \"Trust me, it's in the log\" is not a security property — which is why the industry built hash chains, transparency logs and WORM storage around the...",
+   "genre": "series",
+   "series": "security",
+   "area": "security",
+   "date": "2026-07-31",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "security_ledger_narrated.ring",
+     "path": "base/test/system/security_ledger_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": []
+  },
+  "stz-security-response-narration.md": {
+   "title": "The Governed Response",
+   "abstract": "Witness, detect, reconstruct — none of those change anything. Contain does: it revokes a session, locks an account, rotates a secret. This is where a security system is most useful and most dangerous, and it is exactly where the library already has a doctrine:",
+   "genre": "series",
+   "series": "security",
+   "area": "security",
+   "date": "2026-07-31",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "security_response_narrated.ring",
+     "path": "base/test/system/security_response_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": [
+    "stz-security-seams-narration.md",
+    "stz-security-detection-narration.md",
+    "stz-governing-project-security-narration.md"
+   ]
+  },
+  "stz-security-seams-2-narration.md": {
+   "title": "The Rest of the Seams",
+   "abstract": "I2's first pass wired six classes and stopped. The design doc's section 7 table kept the rest of the rows in plain sight, and the completion document said so as the system's largest honest gap: a detection sees only what a seam emits.",
+   "genre": "series",
+   "series": "security",
+   "area": "security",
+   "date": "2026-07-31",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "security_seams2_narrated.ring",
+     "path": "base/test/system/security_seams2_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": []
+  },
+  "stz-security-seams-narration.md": {
+   "title": "The Seams",
+   "abstract": "Three unrelated things happen to a running application: someone probes a signed-request gateway, someone guesses at the login door, and a sandboxed agent reaches for a production secret. Every one of those was already detected by Softanza.",
+   "genre": "series",
+   "series": "security",
+   "area": "security",
+   "date": "2026-07-31",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "security_seams_narrated.ring",
+     "path": "base/test/system/security_seams_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": [
+    "stz-security-response-narration.md",
+    "stz-security-drill-narration.md",
+    "stz-security-detection-narration.md",
+    "stz-governing-project-security-narration.md"
+   ]
+  },
+  "stz-security-sentinel-narration.md": {
+   "title": "The Sentinel",
+   "abstract": "I3's detections judge when asked. Somebody still has to ask, and an investigation that begins with \"did anyone look at the ledger today?\" has already lost. The sentinel asks on a cadence — and, crucially, speaks only when something changes.",
+   "genre": "series",
+   "series": "security",
+   "area": "security",
+   "date": "2026-07-31",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "security_sentinel_narrated.ring",
+     "path": "base/test/system/security_sentinel_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": [
+    "stz-metrics-monitor-narration.md"
+   ]
+  },
+  "stz-service-virtualization-code-first-subscribe-later.md": {
+   "title": "Code First, Subscribe Later",
+   "abstract": "You have decided to build a small shop. You will need a payment gateway, a database, somewhere to keep uploaded images, an SMS sender for one-time codes, a model to summarise reviews, and a currency-rates API. Six vendors.",
+   "genre": "series",
+   "series": "delivery",
+   "area": "system",
+   "date": "2026-07-25",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stz-security-detection-narration.md",
+    "stz-governing-project-security-narration.md"
+   ]
+  },
+  "stz-string-insert-substrings-narration.md": {
+   "title": "InsertSubstrings(): A Powerful String Manipulation Tool in Softanza",
+   "abstract": "Developers often face the challenge of inserting a list of formatted substrings into existing text. Softanza, a foundation library for Haro programming language, offers a powerful solution to this problem with its InsertSubstrings() feature.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "string",
+   "date": "2024-10-07",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stzstring-insert-substrings.webp",
+    "alt": "Inserting Substrings in a Sring in Softanza, by Microsoft Image Create AI"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-structured-logging-narration.md": {
+   "title": "Structured Logging with stzLog",
+   "abstract": "Most logging ends the same way: a wall of text, and a grep the next morning. The trouble is that the moment you format an entry into a line, you throw away its structure — the level, the category, the fields — and spend the rest of its life trying to parse...",
+   "genre": "series",
+   "series": "performance",
+   "area": "performance",
+   "date": "2026-07-23",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "log_narrated.ring",
+     "path": "base/test/common/log_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": [
+    "stz-planning-and-provisioning-a-deployment-narration.md"
+   ]
+  },
+  "stz-system-dev-to-deploy-narration.md": {
+   "title": "From Dev to Deploy Without Leaving Your Editor",
+   "abstract": "Building a product that runs on more than one machine is, in most stacks, an exercise in tool management. A backend that deploys to a Linux server, a phone app that ships to Android, firmware that flashes to a microcontroller — each is a different world, re...",
+   "genre": "series",
+   "series": "delivery",
+   "area": "system",
+   "date": "2026-07-20",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-time-programming-intro.md": {
+   "title": "Time Programming in Softanza: A Gentle Introduction",
+   "abstract": "Time is everywhere in software. Birthdays, deadlines, business hours, event timestamps—each scenario needs a different lens. Softanza recognizes this with three specialized classes that work together seamlessly.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": null,
+   "date": "2025-10-02",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [
+    "stzdate-date-programming-in-softanza.md",
+    "stztime-handling-time-in-softanza.md",
+    "stzdatetime-guide-narration.md"
+   ],
+   "related": [
+    "stzdate-date-programming-in-softanza.md",
+    "stztime-handling-time-in-softanza.md",
+    "stzdatetime-guide-narration.md",
+    "stzduration-measuring-time-in-softanza.md"
+   ]
+  },
+  "stz-unfied-item-finding-with-@find.md": {
+   "title": "The Unified @Find() Function in Softanza",
+   "abstract": "Haro provides multiple approaches for finding different data types, each effective for its specific use case. However, this fragmented experience requires programmers to navigate different abstraction levels and conceptual domains, creating cognitive overhe...",
+   "genre": "feature essay",
+   "series": null,
+   "area": "collections",
+   "date": "2025-09-13",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-unmasking-unicode-lookalities-narration.md": {
+   "title": "Unmasking Unicode Lookalikes",
+   "abstract": "The world of Unicode characters is vast, and sometimes tricky, especially when visually similar characters are actually different. Let's explore this with examples and see how Softanza offers a solution.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "string",
+   "date": "2024-12-31",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stz-unmasking-unicode-lookalities.webp",
+    "alt": "SoftanzaLib, unmasking unicode lookalities"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-vs-qt-unicode-narration.md": {
+   "title": "Softanza: Simplifying the Power of C++ Backends for Unicode Handling",
+   "abstract": "In programming in general, there's often a trade-off between power and simplicity. Softanza, a library for the Haro programming language, aims to bridge this gap by leveraging robust native backends while providing developers with a unified, accessible inte...",
+   "genre": "comparison",
+   "series": null,
+   "area": "string",
+   "date": "2024-10-08",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stz-vs-qt-unicode.webp",
+    "alt": "Softanza Simplifies Qt, by Microsoft Image Create AI"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stz-xml-the-parser-that-says-no.md": {
+   "title": "The Parser That Says No",
+   "abstract": "Softanza had no XML at all. It now has one, and it arrived from a direction nobody planned: the digital-signature work needed a parser it could trust, and a parser you can trust turns out to be exactly the parser an application wants.",
+   "genre": "design essay",
+   "series": null,
+   "area": "files",
+   "date": "2026-07-25",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [
+    {
+     "name": "xml_narrated.ring",
+     "path": "base/test/file/xml_narrated.ring"
+    }
+   ],
+   "links": [],
+   "related": [
+    "stzmax-stzurl-narration.md"
+   ]
+  },
+  "stzApp-building-your-first-app-narration.md": {
+   "title": "Your First App with stzApp: A World That Lives, and Wants",
+   "abstract": "Aïcha builds a tool for a bank in Niamey. Field agents visit clients. She doesn't think \"database, screens, deployment.\" In Softanza she thinks about a small world — what lives in it, what's true of it, how it moves, what it's for, and where it endures.",
+   "genre": "tutorial",
+   "series": null,
+   "area": "web",
+   "date": "2026-07-09",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzgraphplannerdoc.md",
+    "stzgraph-modeling-knowledge-with-nodes-and-connections.md",
+    "stzGraphDoc.md"
+   ]
+  },
+  "stzDotCode-Graphiz-Dot-Language-Guide.md": {
+   "title": "Graphviz DOT Language Guide: Using stzDotCode",
+   "abstract": "Graphviz has been integrated into the Softanza ExerCode framework to provide a powerful, code-driven approach to creating professional diagrams.",
+   "genre": "tutorial",
+   "series": null,
+   "area": "diagramming",
+   "date": "2025-10-16",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "graph1.webp",
+    "alt": "graph1.png"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzGraph-Computational-Foundation.md": {
+   "title": "stzGraph: Computational Foundation and Design",
+   "abstract": "stzGraph separates structure (how things connect) from semantics (what connections mean). This single decision enables reuse across workflows, org hierarchies, data flows, service maps, and language models.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "diagramming",
+   "date": "2025-10-17",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzgraphplannerdoc.md",
+    "stzgraph-modeling-knowledge-with-nodes-and-connections.md",
+    "stzOrgChartDoc.md",
+    "stzGraphDoc.md"
+   ]
+  },
+  "stzGraphDoc.md": {
+   "title": "stzGraph: The Art of Connected Thinking",
+   "abstract": "A graph is an elegant yet profound concept in computer science—a structure of nodes (entities) and edges (relationships) that illuminates how systems connect, interact, and evolve.",
+   "genre": "tutorial",
+   "series": null,
+   "area": "diagramming",
+   "date": "2025-10-18",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzgraphplannerdoc.md",
+    "stzgraph-modeling-knowledge-with-nodes-and-connections.md",
+    "stzOrgChartDoc.md",
+    "stzGraph-Computational-Foundation.md"
+   ]
+  },
+  "stzLinearSolver-Empowering-Real-World-Applications with-Linear-Programming.md": {
+   "title": "Empowering Real-World Applications with Softanza's Linear Solver for Haro",
+   "abstract": "Imagine you're building an app that helps a pizza shop decide how many pizzas and salads to make daily to maximize profit. Or perhaps you're designing a game where players allocate resources to build the ultimate fantasy army.",
+   "genre": "use case",
+   "series": null,
+   "area": "numeric",
+   "date": "2025-06-19",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzMatrex-Declarative-Pattern-Matching-for-Matrices.md": {
+   "title": "stzMatrex: Declarative Pattern Matching for Matrices in Softanza",
+   "abstract": "Matrices are not just collections of numbers — they embody structure, geometry, and mathematical meaning. Recognizing whether a matrix is square, symmetric, diagonal, or identity is often more significant than performing arithmetic operations on it.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "regex",
+   "date": "2025-10-27",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzNumbex-number-patterns-made-simple.md": {
+   "title": "stzNumbrex: A Pattern Language for Numbers",
+   "abstract": "Validating numbers can be a chore. Take RGB colors—three integers from 0 to 255. Usually, you'd write lots of code: check the list length, loop through each number, confirm it’s an integer, not negative, and not over 255.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "regex",
+   "date": "2025-10-22",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzOrgChartDoc-BankUseCase.md": {
+   "title": "Organizational Intelligence in Action",
+   "abstract": "This article follows a real-world journey at a Softabank (Virtual bank name, BCEAO-regulated). We deliberately start with a realistically flawed, non-compliant structure — exactly what you often inherit in practice — then use stzOrgChart’s intelligence laye...",
+   "genre": "use case",
+   "series": null,
+   "area": "diagramming",
+   "date": "2025-11-28",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "orchchart-bank-1.webp",
+    "alt": "orchchart-bank-1.png"
+   },
+   "guards": [],
+   "links": [
+    "stzOrgChartDoc.md"
+   ],
+   "related": [
+    "stzOrgChartDoc.md",
+    "stzgraphplannerdoc.md"
+   ]
+  },
+  "stzOrgChartDoc.md": {
+   "title": "Introducing stzOrgChart - The Strategic Organizational Intelligence Platform",
+   "abstract": "In Softanza, understanding organizational structure transcends simple box-and-line diagrams. Organizations need dynamic tools that can model, analyze, and visualize their human infrastructure with precision and depth.",
+   "genre": "tutorial",
+   "series": null,
+   "area": "diagramming",
+   "date": "2025-11-25",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "orgchart1.webp",
+    "alt": "orgchart1.png"
+   },
+   "guards": [],
+   "links": [
+    "stzGraphDoc.md"
+   ],
+   "related": [
+    "stzGraphDoc.md",
+    "stzgraphplannerdoc.md",
+    "stzgraph-modeling-knowledge-with-nodes-and-connections.md",
+    "stzOrgChartDoc-BankUseCase.md"
+   ]
+  },
+  "stzTimex-A-Pattern-Language-for-Time-in-Softanza.md": {
+   "title": "stzTimex: A Pattern Language for Time in Softanza",
+   "abstract": "Working with time in code is often a tangle of arithmetic and conditions — subtracting timestamps, looping through events, comparing durations, checking overlaps. The logic sprawls, becomes brittle, and hides intent.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "regex",
+   "date": "2025-10-23",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzduration-measuring-time-in-softanza.md",
+    "stzdatetime-guide-narration.md"
+   ]
+  },
+  "stzappserver-article.md": {
+   "title": "stzAppServer: The Persistent Computational Web Engine Revolution",
+   "abstract": "Imagine you're building a web API that needs to analyze text, process complex strings, or perform linguistic computations. In the traditional web server model, every single request follows this painful cycle:",
+   "genre": "feature essay",
+   "series": null,
+   "area": "web",
+   "date": "2025-09-08",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzcalendar-time-capacity-planning-in-softanza.md": {
+   "title": "Time Capacity Planning in Softanza: Mastering Constraints with stzCalendar",
+   "abstract": "Most scheduling tools treat time as a grid—a static calendar of slots you fill with events, often leading to manual guesswork and overlooked conflicts.",
+   "genre": "tutorial",
+   "series": null,
+   "area": null,
+   "date": "2025-10-12",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzdatasetdoc.md": {
+   "title": "stzDataSet: Statistics as a Language of Thought",
+   "abstract": "In Softanza, statistics isn't just formulas—it's a way of thinking about data. When a statistician examines data, he doesn't see numbers; he sees questions waiting for answers. His intent shapes which analytical lens he reaches for:",
+   "genre": "tutorial",
+   "series": null,
+   "area": "tables",
+   "date": "2026-01-04",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzdate-date-programming-in-softanza.md": {
+   "title": "Date Programming Made Easy in Softanza",
+   "abstract": "You're building a project timeline tracker. The client wants to see \"in 2 weeks\" instead of \"14/10/2025\". You need to add three months to a contract start date, but only if it falls on a weekday.",
+   "genre": "feature essay",
+   "series": null,
+   "area": null,
+   "date": "2025-09-30",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzdatetime-guide-narration.md"
+   ]
+  },
+  "stzdatetime-guide-narration.md": {
+   "title": "stzDateTime: Elegant DateTime Operations in Softanza",
+   "abstract": "DateTime manipulation is a universal programming challenge—combining date and time logic while handling formats, timezones, and arithmetic.",
+   "genre": "tutorial",
+   "series": null,
+   "area": null,
+   "date": "2025-10-02",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzduration-measuring-time-in-softanza.md",
+    "stz-time-programming-intro.md",
+    "stzdate-date-programming-in-softanza.md",
+    "stzTimex-A-Pattern-Language-for-Time-in-Softanza.md"
+   ]
+  },
+  "stzduration-measuring-time-in-softanza.md": {
+   "title": "stzDuration: Measuring Time in Softanza",
+   "abstract": "You're building a project tracker. Three tasks took \"2 days\", \"5 days\", and \"4 days\" respectively. How long is the project? Add a 20% buffer and show it in human terms.",
+   "genre": "feature essay",
+   "series": null,
+   "area": null,
+   "date": "2025-10-03",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzdatetime-guide-narration.md",
+    "stzTimex-A-Pattern-Language-for-Time-in-Softanza.md",
+    "stz-time-programming-intro.md"
+   ]
+  },
+  "stzexcis-performance-battle.md": {
+   "title": "The Performance Battle: A Window into EXCIS system in Softanza",
+   "abstract": "Softanza EXCIS, built on the stzExtCode class, makes it effortless to embed and execute code from multiple languages within a Haro program.",
+   "genre": "comparison",
+   "series": null,
+   "area": "performance",
+   "date": "2025-04-18",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzexcis-polyglot-programming-in-ring.md": {
+   "title": "Softanza EXCIS: Orchestrating a Polyglot Symphony",
+   "abstract": "Modern software development requires a broad spectrum of capabilities: high-performance computing for speed, machine learning for intelligence, statistical analysis for insights, and rule-based systems for logic.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "extensibility",
+   "date": "2025-04-18",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stz-excis-system.webp",
+    "alt": "Softanza EXCIS technical workflow"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzexterlib-domain-driven-polyglot-programming.md": {
+   "title": "Softanza ExterLib: A Foundation for Domain-Driven Polyglot Programming",
+   "abstract": "In an era where artificial intelligence increasingly promises to automate programming itself, a fundamental question emerges: what is the evolving role of human developers? As large language models generate entire functions and applications, some argue that...",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "extensibility",
+   "date": "2025-04-23",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzfile-api-narration.md": {
+   "title": "Beyond File Modes: The Softanza Intent-Based Paradigm",
+   "abstract": "Programming languages have universally adopted the C-style file handling paradigm, forcing developers to think in terms of technical \"modes\" rather than natural intentions.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "files",
+   "date": "2025-07-17",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzfolder-intelligent-navigation.md": {
+   "title": "Intelligent Folder Navigation in Softanza",
+   "abstract": "In Softanza, folder navigation follows a simple but powerful principle: your mental location follows your actions. When you perform an operation in a folder, the system intelligently updates your current position to reflect where you just worked.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "files",
+   "date": "2025-07-31",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzfolder-natural-navigation.md": {
+   "title": "Natural Folder Navigation in Softanza",
+   "abstract": "In Softanza, your mental location follows your actions. When you perform an operation in a folder, the system naturally updates your current position to reflect where you just worked. This eliminates the cognitive overhead of manually tracking your location.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "nlp",
+   "date": "2025-08-02",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzfolder-visual-exploration-and-search.md": {
+   "title": "Softanza's stzFolder: A Journey Through Intelligent Directory Navigation",
+   "abstract": "This article examines the stzFolder class from the Softanza library for Haro, demonstrating its directory navigation capabilities through practical examples.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "files",
+   "date": "2025-07-30",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzgraph-chatgpt-opinion.md": {
+   "title": "What ChatGPT Thinks of the `stzGraph` Module in the Softanza Library",
+   "abstract": "I shared the stzGraphTest.ring file with ChatGPT and asked a simple question:",
+   "genre": "comparison",
+   "series": null,
+   "area": "diagramming",
+   "date": "2025-12-22",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzgraph-claudeai-opinion.md": {
+   "title": "ClaudeAI Opinion on stzGraph design",
+   "abstract": "I shared the full codebase of the stzGraph module (across several classes) with ClaudeAI and asked for an entirely objective assessment.",
+   "genre": "comparison",
+   "series": null,
+   "area": "diagramming",
+   "date": "2025-12-25",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzgraph-modeling-knowledge-with-nodes-and-connections.md": {
+   "title": "stzGraph — Modeling Knowledge Through Structure",
+   "abstract": "Software systems today are built on relationships: microservices depend on one another, workflows move across steps, configurations link modules to environments, and business rules weave threads between entities that must interact correctly.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "diagramming",
+   "date": "2025-11-23",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzgraphplannerdoc.md",
+    "stzGraphDoc.md",
+    "stzOrgChartDoc.md",
+    "stzGraph-Computational-Foundation.md"
+   ]
+  },
+  "stzgraph-vs-other-graph-libraries.md": {
+   "title": "Softanza stzGraph vs. Modern Graph Ecosystem",
+   "abstract": "The rule system is particularly innovative - rules are first-class citizens that can be stored, versioned, and applied dynamically.",
+   "genre": "comparison",
+   "series": null,
+   "area": "diagramming",
+   "date": "2025-12-26",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzgraphplannerdoc.md": {
+   "title": "Intelligence in Motion: Graph Planning in Softanza",
+   "abstract": "Softanza's Graph Module already gives you powerful tools for representing connected systems. With stzGraph, you model networks of nodes and edges. With stzDiagram, you visualize relationships.",
+   "genre": "tutorial",
+   "series": null,
+   "area": "diagramming",
+   "date": "2025-12-28",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "srzgraphplanner-img01.webp",
+    "alt": "srzgraphplanner-img01.png"
+   },
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzOrgChartDoc.md",
+    "stzgraph-modeling-knowledge-with-nodes-and-connections.md",
+    "stzGraphDoc.md",
+    "stzOrgChartDoc-BankUseCase.md"
+   ]
+  },
+  "stzgraphquery-doc.md": {
+   "title": "stzGraphQuery: Asking Questions to Your Graph",
+   "abstract": "When working with graphs, a moment inevitably arrives when the graph stops being just a structure of nodes and edges and starts becoming a world you want to explore.",
+   "genre": "tutorial",
+   "series": null,
+   "area": "diagramming",
+   "date": "2026-03-08",
+   "year": "2026",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzgrid-navigator-grid-mastering.md": {
+   "title": "The Navigator's Grid: Mastering stzGrid in the Softanza Library",
+   "abstract": "The stzGrid class is a powerful navigational framework in the Softanza library, offering elegant solutions for working with two-dimensional grid structures. This article uses visual examples and practical applications to help you fully grasp its capabilities.",
+   "genre": "tutorial",
+   "series": null,
+   "area": null,
+   "date": "2025-05-01",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzlist-diff.md": {
+   "title": "When “different” is not enough: the story behind `Diff()`, `DiffXT()` and `DiffXTT()` in stzList",
+   "abstract": "In most programming libraries, diff is treated as a simple operation: compare two collections and list what is not the same.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "collections",
+   "date": "2025-12-25",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzlist-in-strings-narration.md": {
+   "title": "Unlocking the Power of Lists-in-Strings with Softanza",
+   "abstract": "It’s a calm day in the development lab, and you’re faced with an intriguing problem: you need to work with lists hosted inside strings.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "collections",
+   "date": "2024-12-06",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stzlist-in-strings.webp",
+    "alt": "Softanza Lists-in-Strings, by Microsoft Image Create AI"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzlistex-pattern-matching-for-lists.md": {
+   "title": "Softanza Listex: Bringing Pattern Matching to Lists",
+   "abstract": "Pattern matching has revolutionized data validation and manipulation across various programming paradigms. While traditional regex excels at string matching, structured data—especially deeply nested lists—requires a more expressive approach.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "regex",
+   "date": "2025-02-13",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzlocale-locale-management-the-softanza-way.md": {
+   "title": "Software Global Reach: Locale Management the Softanza Way",
+   "abstract": "The Softanza library for Haro brings a refreshingly intuitive approach to locale management, wrapping the Softanza Engine's powerful internationalization capabilities in an API that feels natural and expressive.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "i18n",
+   "date": "2025-10-01",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzmatrix-matrix-computing-in-softanza-narration.md": {
+   "title": "Matrix Computing in Softanza with stzMatrix",
+   "abstract": "Matrices are the unsung heroes of computational problem-solving, powering everything from data analysis to image processing and machine learning.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "numeric",
+   "date": "2025-04-06",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzmax-stzurl-narration.md": {
+   "title": "Mastering URL Manipulation with stzUrl: A Complete Guide",
+   "abstract": "The stzUrl class is part of the web-wings module in the MAX layer of the Softanza library for Ring. Alongside other web-focused classes like stzJson and stzHtml, it provides sophisticated URL manipulation capabilities built on top of the Softanza Engine's n...",
+   "genre": "tutorial",
+   "series": null,
+   "area": "web",
+   "date": "2025-07-16",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stz-xml-the-parser-that-says-no.md"
+   ]
+  },
+  "stznatural-narration.md": {
+   "title": "**Natural Language Programming, Reimagined: The `stzNatural` Class in Softanza**",
+   "abstract": "In a world increasingly seduced by large language models and AI-generated code, stzNatural class—part of the Softanza library for the Haro programming language—offers a radical yet refreshingly pragmatic alternative: natural language programming that actual...",
+   "genre": "feature essay",
+   "series": null,
+   "area": "nlp",
+   "date": "2025-11-02",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stznatural-english.webp",
+    "alt": "stznatural-english.png"
+   },
+   "guards": [],
+   "links": [],
+   "related": [
+    "stznatural-vs-ring-naturallib.md",
+    "stz-bridging-minds-and-code.md"
+   ]
+  },
+  "stznatural-vs-ring-naturallib.md": {
+   "title": "Why I Built `stzNatural`: A Journey from Haro's NaturalLib to Softanza's Natural System",
+   "abstract": "By Mansour Ayouni, Creator of Softanza library",
+   "genre": "comparison",
+   "series": null,
+   "area": "nlp",
+   "date": "2025-11-02",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stztable-when-code-meets-cells.md",
+    "stznatural-narration.md",
+    "stz-bridging-minds-and-code.md"
+   ]
+  },
+  "stznumbrex-pattern-language-for-number.md": {
+   "title": "stzNumbrex: A Pattern Language for Numbers in Softanza",
+   "abstract": "Numbers aren’t just quantities — they embody structure, logic, and identity. A number like 42 is not merely a scalar: it’s even, composite, divisible by 3 and 7, and composed of digits [4, 2].",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "regex",
+   "date": "2025-10-26",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzobject-history-narration.md": {
+   "title": "The Narrative of Transformations: Tracking Object History in Softanza",
+   "abstract": "In programming, data transformations often happen inside variables in the blink of an eye, leaving no trace of their journey. Softanza challenges this paradigm with a groundbreaking feature that captures the entire lifecycle of object modifications.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "collections",
+   "date": "2024-12-05",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stzobject-history.webp",
+    "alt": "Tracking Object History in Softanza, by Microsoft Image Create AI"
+   },
+   "guards": [],
+   "links": [],
+   "related": [
+    "stz-mental-mode-narration.md",
+    "stz-near-natural-language-tutorial.md",
+    "stz-near-natural-language-programming.md",
+    "stz-functions-as-linguistic-expressions.md"
+   ]
+  },
+  "stzpolycode-refinement-centered_programming.md": {
+   "title": "Refinement-Centered Programming with stzPolyCode",
+   "abstract": "Software development has traditionally been split between exploratory coding and rigid production environments. The Softanza library introduces a groundbreaking approach with its stzPolyCode framework: Refinement-Centered Programming.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "extensibility",
+   "date": "2025-04-23",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzreactive-from-sequential-bottlenecks-to-reactive-solutions.md": {
+   "title": "From Sequential Bottlenecks to Reactive Solutions: A Programming Journey",
+   "abstract": "Imagine you're building an application that needs to perform three independent calculations: adding two numbers, squaring a value, and summing an array. Your first instinct is to write straightforward sequential code:",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "concurrency",
+   "date": "2025-08-08",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzregex-mastering-regex-with-softanza-narration.md": {
+   "title": "Mastering Regular Expressions with Softanza: A Modern Approach to Pattern Matching",
+   "abstract": "Regular expressions are a powerful tool for pattern matching and text processing, but their traditional syntax and behavior can be complex and unintuitive.",
+   "genre": "tutorial",
+   "series": null,
+   "area": "regex",
+   "date": "2025-02-04",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzregexdata-library-narration.md": {
+   "title": "Simplifying Regular Expressions with the Enhanced stzRegexData Library",
+   "abstract": "Regular expressions (regex) have become indispensable tools for handling text-based data. They are used across a wide array of domains, from user interface (UI) applications and natural language processing (NLP) to code generation and data parsing.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "regex",
+   "date": "2025-02-04",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzregexmaker-making-regex-human-freindly-narration.md": {
+   "title": "The Softanza RegexMaker: Making Regex Human-Friendly",
+   "abstract": "Regular expressions (regex) are powerful but notorious for their cryptic syntax. The Softanza RegexMaker class reimagines regex creation with a declarative, human-readable approach.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "regex",
+   "date": "2025-02-04",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzregexuter-regex-as-computational-reactive-medium.md": {
+   "title": "Softanza Regexuter: Regex as Computational Reactive Medium",
+   "abstract": "The stzRegexuter class extends traditional pattern matching into a sophisticated system for reactive computational processing.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "regex",
+   "date": "2025-02-07",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stztable-when-code-meets-cells.md"
+   ]
+  },
+  "stzsections-merging-narration.md": {
+   "title": "Understanding Section Merging Features in Softanza",
+   "abstract": "Softanza library provides three sophisticated methods for merging sections (mainly in the stzListOfSections class): MergeInclusive(), MergeOverlapping(), and MergeSections().",
+   "genre": "feature essay",
+   "series": null,
+   "area": "collections",
+   "date": "2024-10-30",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stzsections-merging.webp",
+    "alt": "Merging Sections in Softanza, by Microsoft Image Create AI"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzstring-duplicates-narration.md": {
+   "title": "Decoding Duplicates: Exploring Duplicate Detection and Removal with Softanza",
+   "abstract": "Let’s dive into an engaging exploration of how Softanza handles duplicate detection and management in strings. Consider this illustrative string:",
+   "genre": "feature essay",
+   "series": null,
+   "area": "string",
+   "date": "2024-12-11",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stzstring-duplicates.webp",
+    "alt": "Manging Duplicates in Softanza, by Microsoft Image Create AI"
+   },
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzobject-history-narration.md",
+    "stz-near-natural-language-tutorial.md",
+    "stz-near-natural-language-programming.md",
+    "stz-named-vars-narration.md"
+   ]
+  },
+  "stzstring-emptiness-narration.md": {
+   "title": "Emptiness in Strings, Clear Rules: The Softanza Way",
+   "abstract": "In programming, emptiness—represented as the empty string \"\"—is often mishandled, leading to unexpected results, bugs, and inconsistencies.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "string",
+   "date": "2024-12-07",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stzstring-emptiness.webp",
+    "alt": "Emptiness, by Microsoft Image Create AI"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzstring-overspaces-narration.md": {
+   "title": "Managing Over Spaces in Softanza: Beyond Simplify, Trim, and RemoveSpaces",
+   "abstract": "Managing spaces in strings is a common task in programming, especially when dealing with user input, text formatting, or data cleaning.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "string",
+   "date": "2024-12-15",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stzstring-overspaces.webp",
+    "alt": "A scholar exploring the mysteries of \"Over Spaces\" within an ancient, mystical library setting. By Microsoft Image AI"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzstring-removefrom-narration.md": {
+   "title": "Simplifying Orientation in String Removal with Softanza",
+   "abstract": "In text manipulation, removing a substring from the left or right of a string is a common task, but it can quickly become tricky when handling languages with different orientations, such as Arabic.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "string",
+   "date": "2024-12-07",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stzstring-removefrom.webp",
+    "alt": "Softanza Lists-in-Strings, by Microsoft Image Create AI"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzstring-sit-narration.md": {
+   "title": "Mastering Precision with the `Sit()` Function",
+   "abstract": "The Sit() function stands out as a surgical tool for precision string manipulation. Whether you’re designing advanced text editors, processing linguistic data, or debugging complex parsers, Sit() adapts to your needs with unparalleled flexibility.",
+   "genre": "tutorial",
+   "series": null,
+   "area": "string",
+   "date": "2024-12-07",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stzstring-sit.webp",
+    "alt": "Sit Function in Softanza, by Microsoft Image Create AI"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzstring-slah-operator-narration.md": {
+   "title": "Five Practical Applications on Strings of the `/` Operator in Softanza",
+   "abstract": "The Softanza library for the Haro programming language introduces a groundbreaking set of features centered around the / operator, transforming the way strings (and lists) are manipulated.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "string",
+   "date": "2024-11-29",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stzstring-slah-operator.webp",
+    "alt": "Softanza Lists-in-Strings, by Microsoft Image Create AI"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzstring-vizfind-narration.md": {
+   "title": "Visual Sequence Finding in Softanza",
+   "abstract": "Softanza transforms string sequence finding in Haro language from a basic search operation into a visually rich experience. Let's explore its features through practical examples.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "string",
+   "date": "2024-11-08",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stzstring-vizfind.webp",
+    "alt": "Sit Function in Softanza, by Microsoft Image Create AI"
+   },
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzstringart-narration.md": {
+   "title": "An overview of String Art support in Softanza",
+   "abstract": "Softanza library for Haro language introduces string art texts and paintings, enhancing the programming experience in code narrations, educational examples, and console text-based games.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "string",
+   "date": "2024-10-11",
+   "year": "2024",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stzstringart.webp",
+    "alt": "String in Art in Softanza"
+   },
+   "guards": [],
+   "links": [],
+   "related": [
+    "stztable-when-code-meets-cells.md",
+    "stzobject-history-narration.md",
+    "stz-mental-mode-narration.md"
+   ]
+  },
+  "stzsystemcalldoc.md": {
+   "title": "Softanza's System Call : Built on the System Process API",
+   "abstract": "Haro's native system() function works well for cross-platform command execution. Softanza enhances this foundation through stzsystem() function and stzSystemCall class , leveraging the Softanza Engine's system process API for:",
+   "genre": "tutorial",
+   "series": null,
+   "area": "system",
+   "date": "2025-12-07",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stztable-when-code-meets-cells.md": {
+   "title": "\"Code Meets Cells\": The Spreadsheet Metaphor in Softanza's stzTable",
+   "abstract": "Data tables are essential for many programming tasks, from data storage to complex analyses. Softanza's stzTable class for the Haro programming language provides an intuitive and powerful way to work with tabular data.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "tables",
+   "date": "2025-05-06",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": {
+    "src": "stz-knowledge-programming.webp",
+    "alt": "A Wise and Revered Sufi Scholar from Niger Exploring Computer Code in a Traditional Study Room"
+   },
+   "guards": [],
+   "links": [],
+   "related": [
+    "stztablex-pattern-langauge-for-tables.md.md",
+    "stzstringart-narration.md",
+    "stzregexuter-regex-as-computational-reactive-medium.md",
+    "stzobject-history-narration.md"
+   ]
+  },
+  "stztablex-pattern-langauge-for-tables.md.md": {
+   "title": "stzTablex: Declarative Pattern Matching for Tables in Softanza",
+   "abstract": "Tables are everywhere in programming—from CSV imports to database results, from spreadsheet data to configuration files. But validating table structure, checking data quality, and filtering table collections often requires verbose conditional logic that obs...",
+   "genre": "feature essay",
+   "series": null,
+   "area": "regex",
+   "date": "2025-10-28",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stztable-when-code-meets-cells.md"
+   ]
+  },
+  "stztime-handling-time-in-softanza.md": {
+   "title": "Time Handling in Softanza",
+   "abstract": "In applications such as scheduling tools or timers, developers often face repetitive tasks when handling time. These include converting between 12-hour and 24-hour formats, calculating durations with potential carry-overs across hours or days, and performin...",
+   "genre": "feature essay",
+   "series": null,
+   "area": null,
+   "date": "2025-10-01",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stztimeline-managing-temporal-structures-narration.md": {
+   "title": "**Time Modeling in Softanza using `stzTimeLine`**",
+   "abstract": "Imagine you’re planning a product launch. You’ve got milestones, sprints, blackout dates for holidays, and three HR reviews scattered across the year. In most systems, that’s a spreadsheet or a calendar invite.",
+   "genre": "feature essay",
+   "series": null,
+   "area": null,
+   "date": "2025-10-06",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stztimeline-temporal-design-philosophy-in-softanza.md": {
+   "title": "Temporal Design Philosophy of stzTimeLine",
+   "abstract": "Most time-handling libraries across ecosystems (Python’s datetime, Java’s java.time, JavaScript’s Luxon, etc.) treat time as scalar values to be parsed, formatted, or arithmetically manipulated. They stop at representation and calculation.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": null,
+   "date": "2025-10-09",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzwalker-beyond-loops-the -walker-metaphor.md": {
+   "title": "Beyond Loops: The Walker Metaphor in Softanza",
+   "abstract": "Softanza’s stzWalker classes redefine iterative processing by evolving the traditional loop construct into a rich, intelligent navigation system.",
+   "genre": "paradigm essay",
+   "series": null,
+   "area": "collections",
+   "date": "2025-04-10",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzwalker2D-walking-second-dimension.md"
+   ]
+  },
+  "stzwalker-walking-at-the-edge-narration.md": {
+   "title": "Walking at the Edge — A Naturally-Oriented and Practical Design",
+   "abstract": "The stzWalker class introduces a subtle but powerful principle: Walking at the Edge. This principle governs how the walker behaves when a step would take it outside the permitted walkable range.",
+   "genre": "design essay",
+   "series": null,
+   "area": "collections",
+   "date": "2025-04-15",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": []
+  },
+  "stzwalker2D-walking-second-dimension.md": {
+   "title": "Beyond Inner Loops: Walking on the Second Dimension in Softanza",
+   "abstract": "Building upon the innovative stzWalker paradigm, Softanza's stzWalker2D elevates traversal to new dimensions by providing an elegant alternative to nested loops for two-dimensional data structures.",
+   "genre": "feature essay",
+   "series": null,
+   "area": "collections",
+   "date": "2025-04-24",
+   "year": "2025",
+   "author": "Mansour Ayouni",
+   "hero": null,
+   "guards": [],
+   "links": [],
+   "related": [
+    "stzwalker-beyond-loops-the -walker-metaphor.md"
+   ]
+  }
+ }
+}

@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stzTablex: Declarative Pattern Matching for Tables in Softanza · Narrations · Softanza</title>
+<meta name="description" content="Tables are everywhere in programming—from CSV imports to database results, from spreadsheet data to configuration files. But validating table structure, checking data quality, and filtering table collections often requires verbose conditional logic that obs...">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Skip to content</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=en" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Present the site as a slideshow" title="Present the site as a slideshow"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="The Softanza repository on GitHub" title="The Softanza repository on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../fr/narrations/stztablex-pattern-langauge-for-tables.html" lang="fr" hreflang="fr">Français</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=en" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Main menu"><a href="../platform.html">Platform</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentic</a><a href="../learn.html">Learn</a><a href="../offering.html">Offering</a><a href="../start.html">Start</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Present the site as a slideshow" title="Present the site as a slideshow"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="The Softanza repository on GitHub" title="The Softanza repository on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../fr/narrations/stztablex-pattern-langauge-for-tables.html" lang="fr" hreflang="fr">Français</a></div>
+  </div>
+  <nav class="path" aria-label="Pages of the section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Performance series</a><a href="../narrations-security.html">Security series</a><a href="../narrations-delivery.html">Delivery series</a></div></nav>
+  <nav class="crumbs" aria-label="You are here"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">stzTablex: Declarative Pattern Matching for Tables in Softanza</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="The narrations run"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">All the narrations</a></li><li><a href="stzregex-mastering-regex-with-softanza-narration.html">Mastering Regular Expressions with Softanza: A Modern Approach to Pattern Matching</a></li><li><a href="stzregexdata-library-narration.html">Simplifying Regular Expressions with the Enhanced stzRegexData Library</a></li><li><a href="stzregexmaker-making-regex-human-freindly-narration.html">The Softanza RegexMaker: Making Regex Human-Friendly</a></li><li><a href="stzregexuter-regex-as-computational-reactive-medium.html">Softanza Regexuter: Regex as Computational Reactive Medium</a></li><li><a href="stzlistex-pattern-matching-for-lists.html">Softanza Listex: Bringing Pattern Matching to Lists</a></li><li><a href="stznumbex-number-patterns-made-simple.html">stzNumbrex: A Pattern Language for Numbers</a></li><li><a href="stztimex-a-pattern-language-for-time-in-softanza.html">stzTimex: A Pattern Language for Time in Softanza</a></li><li><a href="stznumbrex-pattern-language-for-number.html">stzNumbrex: A Pattern Language for Numbers in Softanza</a></li><li><a href="stzmatrex-declarative-pattern-matching-for-matrices.html">stzMatrex: Declarative Pattern Matching for Matrices in Softanza</a></li><li><a href="stztablex-pattern-langauge-for-tables.html" aria-current=page>stzTablex: Declarative Pattern Matching for Tables in Softanza</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Research · narration</div>
+    <h1>stzTablex: Declarative Pattern Matching for Tables in Softanza</h1>
+    <p class="lede">Tables are everywhere in programming—from CSV imports to database results, from spreadsheet data to configuration files. But validating table structure, checking data quality, and filtering table collections often requires verbose conditional logic that obscures intent.</p>
+    <p class="proof">by Mansour Ayouni · in the repository since 2025-10-28 · feature essay · area <a href="../atlas/regex.html">Pattern matching</a></p>
+    
+  </div></section>
+  <div class="wrap page-body narration">
+
+<h2 id="introduction">Introduction</h2>
+<p><strong>stzTablex</strong> brings pattern matching to tabular data, offering a declarative language that reads like natural specifications:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTx = new stzTablex(&quot;{cols(3) &amp; unique(id) &amp; @!nulls(email) &amp; avgcol(salary:&gt;40000)}&quot;)
+
+? oTx.Match(oEmployees)
+#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<p>In one readable expression, you've defined a complete validation rule: exactly three columns, unique IDs, no missing emails, and salaries averaging above 40,000. Let's explore how this pattern language transforms table validation from procedural code into semantic descriptions.</p>
+<hr />
+<h2 id="1-matching-table-structure">1. Matching Table Structure</h2>
+<p>The foundation of any table pattern is its <strong>structural shape</strong>—the number of columns and rows that define its dimensions.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTable = new stzTable([
+    [ :NAME, :AGE, :JOB ],
+    [ &quot;Ali&quot;, 28, &quot;Teacher&quot; ],
+    [ &quot;Sara&quot;, 32, &quot;Engineer&quot; ]
+])
+
+oTx = new stzTablex(&quot;{cols(3) &amp; rows(2)}&quot;)
+? oTx.Match(oTable)
+#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<p>Structure patterns accept exact values or comparison operators:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTx = new stzTablex(&quot;{cols(&gt;3) &amp; rows(&lt;100)}&quot;)
+
+? oTx.Match(oLargeTable)
+#--&gt; TRUE if more than 3 columns and fewer than 100 rows</pre><p class="ran nv-illus">illustration</p></div>
+<p>This structural foundation ensures your code operates on tables of the expected shape before processing their content.</p>
+<hr />
+<h2 id="2-verifying-column-existence">2. Verifying Column Existence</h2>
+<p>Beyond structure, patterns can verify that specific columns exist by name:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTable = new stzTable([
+    [ :EMPLOYEE, :SALARY, :DEPARTMENT ],
+    [ &quot;Ali&quot;, 45000, &quot;IT&quot; ],
+    [ &quot;Sara&quot;, 52000, &quot;HR&quot; ]
+])
+
+oTx = new stzTablex(&quot;{colname(employee) &amp; colname(salary)}&quot;)
+? oTx.Match(oTable)
+#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<p>The <code>hascol()</code> token provides an alternative syntax:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTx = new stzTablex(&quot;{hascol(employee) &amp; hascol(department)}&quot;)
+? oTx.Match(oTable)
+#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<p>This column verification is essential when working with dynamic data sources where column presence cannot be guaranteed.</p>
+<hr />
+<h2 id="3-content-matching-with-case-control">3. Content Matching with Case Control</h2>
+<p>The <code>contains()</code> token searches for values anywhere in the table:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTable1 = new stzTable([
+    [ :NAME, :CITY ],
+    [ &quot;Ali&quot;, &quot;Tunis&quot; ],
+    [ &quot;Sara&quot;, &quot;Paris&quot; ]
+])
+
+oTable2 = new stzTable([
+    [ :NAME, :CITY ],
+    [ &quot;Omar&quot;, &quot;Cairo&quot; ]
+])
+
+oTx = new stzTablex(&quot;{contains(Tunis)}&quot;)
+? oTx.Match(oTable1)  #--&gt; TRUE
+? oTx.Match(oTable2)  #--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+<p>By default, matching is <strong>case-insensitive</strong>. Use the <code>@cs:</code> prefix for exact case matching:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTable = new stzTable([
+    [ :NAME ],
+    [ &quot;ali&quot; ],
+    [ &quot;ALI&quot; ]
+])
+
+oTx = new stzTablex(&quot;{contains(Ali)}&quot;)
+? oTx.Match(oTable)
+#--&gt; TRUE (case-insensitive)
+
+oTx = new stzTablex(&quot;{@cs:contains(Ali)}&quot;)
+? oTx.Match(oTable)
+#--&gt; FALSE (neither &quot;ali&quot; nor &quot;ALI&quot; matches exactly)</pre><p class="ran nv-illus">illustration</p></div>
+<p>This case control is crucial when working with user-generated data where capitalization varies.</p>
+<hr />
+<h2 id="4-enforcing-data-uniqueness">4. Enforcing Data Uniqueness</h2>
+<p>Unique constraints are fundamental to data integrity. The <code>unique()</code> token verifies column uniqueness:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTable = new stzTable([
+    [ :ID, :NAME, :DEPT ],
+    [ 1, &quot;Ali&quot;, &quot;IT&quot; ],
+    [ 2, &quot;Sara&quot;, &quot;IT&quot; ],
+    [ 3, &quot;Omar&quot;, &quot;HR&quot; ]
+])
+
+oTx = new stzTablex(&quot;{unique(id)}&quot;)
+? oTx.Match(oTable)
+#--&gt; TRUE
+
+oTx = new stzTablex(&quot;{unique(dept)}&quot;)
+? oTx.Match(oTable)
+#--&gt; FALSE (IT appears twice)</pre><p class="ran nv-illus">illustration</p></div>
+<p>The inverse—detecting duplicates—uses the <code>duplicates()</code> token:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTable = new stzTable([
+    [ :EMAIL ],
+    [ &quot;ali@mail.com&quot; ],
+    [ &quot;sara@mail.com&quot; ],
+    [ &quot;ali@mail.com&quot; ]
+])
+
+oTx = new stzTablex(&quot;{duplicates(email)}&quot;)
+? oTx.Match(oTable)
+#--&gt; TRUE
+
+oTx = new stzTablex(&quot;{@!duplicates(email)}&quot;)
+? oTx.Match(oTable)
+#--&gt; FALSE (negated—we DO have duplicates)</pre><p class="ran nv-illus">illustration</p></div>
+<hr />
+<h2 id="5-type-validation">5. Type Validation</h2>
+<p>Type constraints ensure columns contain the expected data types:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTable = new stzTable([
+    [ :NAME, :AGE, :TAGS ],
+    [ &quot;Ali&quot;, 28, [&quot;dev&quot;, &quot;lead&quot;] ],
+    [ &quot;Sara&quot;, 32, [&quot;hr&quot;, &quot;manager&quot;] ]
+])
+
+oTx = new stzTablex(&quot;{coltype(age:number) &amp; coltype(name:string) &amp; coltype(tags:list)}&quot;)
+? oTx.Match(oTable)
+#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<p>For simpler checks, use the shorthand tokens:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTx = new stzTablex(&quot;{numeric(age) &amp; alphabetic(name)}&quot;)
+? oTx.Match(oTable)
+#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<p>Type validation catches data import errors early, before they propagate through your application logic.</p>
+<hr />
+<h2 id="6-statistical-constraints">6. Statistical Constraints</h2>
+<p>Statistical patterns validate numeric column aggregates:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTable = new stzTable([
+    [ :PRODUCT, :SALES ],
+    [ &quot;A&quot;, 10000 ],
+    [ &quot;B&quot;, 20000 ],
+    [ &quot;C&quot;, 30000 ]
+])
+
+# Sum must equal 60000
+oTx = new stzTablex(&quot;{sumcol(sales:60000)}&quot;)
+? oTx.Match(oTable)
+#--&gt; TRUE
+
+# Sum must exceed 50000
+oTx = new stzTablex(&quot;{sumcol(sales:&gt;50000)}&quot;)
+? oTx.Match(oTable)
+#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<p>The same constraint syntax applies to averages, minimums, and maximums:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTable = new stzTable([
+    [ :NAME, :SCORE ],
+    [ &quot;Ali&quot;, 80 ],
+    [ &quot;Sara&quot;, 90 ],
+    [ &quot;Omar&quot;, 70 ]
+])
+
+oTx = new stzTablex(&quot;{avgcol(score:&gt;75) &amp; mincol(score:&gt;60) &amp; maxcol(score:&lt;100)}&quot;)
+? oTx.Match(oTable)
+#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<p>These statistical patterns enable validation of business rules: "average salary must exceed $40,000," "no price below cost," "all grades between 0 and 100."</p>
+<hr />
+<h2 id="7-data-quality-assessment">7. Data Quality Assessment</h2>
+<p>Real-world data is messy. Quality patterns detect missing or incomplete data:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTable = new stzTable([
+    [ :NAME, :EMAIL ],
+    [ &quot;Ali&quot;, &quot;ali@mail.com&quot; ],
+    [ &quot;Sara&quot;, &quot;&quot; ]  # Missing email
+])
+
+# Detect null/empty values
+oTx = new stzTablex(&quot;{nulls(email)}&quot;)
+? oTx.Match(oTable)
+#--&gt; TRUE
+
+# Ensure no nulls
+oTx = new stzTablex(&quot;{@!nulls(email)}&quot;)
+? oTx.Match(oTable)
+#--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+<p>The <code>completeness()</code> token quantifies data coverage:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTable = new stzTable([
+    [ :NAME, :PHONE ],
+    [ &quot;Ali&quot;, &quot;123456&quot; ],
+    [ &quot;Sara&quot;, &quot;789012&quot; ],
+    [ &quot;Omar&quot;, &quot;345678&quot; ],
+    [ &quot;Fatma&quot;, &quot;&quot; ]  # Missing
+])
+
+# Require 75% completeness
+oTx = new stzTablex(&quot;{completeness(phone:75)}&quot;)
+? oTx.Match(oTable)
+#--&gt; TRUE (3 out of 4 = 75%)
+
+oTx = new stzTablex(&quot;{completeness(phone:90)}&quot;)
+? oTx.Match(oTable)
+#--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+<p>These quality checks surface data issues during ETL processes or API validations.</p>
+<hr />
+<h2 id="8-calculated-column-recognition">8. Calculated Column Recognition</h2>
+<p>Tables often contain derived columns—totals, percentages, computed values. The <code>calculated()</code> token identifies them:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTable = new stzTable([
+    [ :PRICE, :QTY ],
+    [ 100, 5 ],
+    [ 200, 3 ]
+])
+
+oTable.AddCalculatedCol(:TOTAL, &#x27;@(:PRICE) * @(:QTY)&#x27;)
+
+oTx = new stzTablex(&quot;{calculated(total)}&quot;)
+? oTx.Match(oTable)
+#--&gt; TRUE
+
+oTx = new stzTablex(&quot;{calculated(price)}&quot;)
+? oTx.Match(oTable)
+#--&gt; FALSE (price is not calculated)</pre><p class="ran nv-illus">illustration</p></div>
+<p>The <code>aggregated()</code> token detects any calculated rows or columns:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTx = new stzTablex(&quot;{aggregated()}&quot;)
+? oTx.Match(oTable)
+#--&gt; TRUE (has calculated column)</pre><p class="ran nv-illus">illustration</p></div>
+<hr />
+<h2 id="9-logical-composition">9. Logical Composition</h2>
+<p>Patterns combine through logical operators: <code>&amp;</code> (AND), <code>|</code> (OR), and <code>@!</code> (NOT).</p>
+<p><strong>Conjunction</strong> enforces multiple requirements:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTx = new stzTablex(&quot;{cols(3) &amp; rows(&gt;10) &amp; unique(id) &amp; @!nulls(email)}&quot;)</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Alternation</strong> accepts multiple possibilities:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTx = new stzTablex(&quot;{(cols(3) | cols(4)) &amp; rows(&gt;5)}&quot;)</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Negation</strong> inverts conditions:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTx = new stzTablex(&quot;{@!duplicates(email) &amp; @!nulls(phone)}&quot;)</pre><p class="ran nv-illus">illustration</p></div>
+<p>These operators nest arbitrarily:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTx = new stzTablex(&quot;{
+    (cols(3) | cols(4)) &amp; 
+    unique(id) &amp; 
+    (@!nulls(email) | completeness(email:90)) &amp;
+    (avgcol(salary:&gt;40000) | avgcol(age:&gt;30))
+}&quot;)</pre><p class="ran nv-illus">illustration</p></div>
+<p>This compositional power transforms complex validation rules into readable specifications.</p>
+<hr />
+<h2 id="10-multi-table-operations">10. Multi-Table Operations</h2>
+<p>When working with table collections, stzTablex provides batch operations:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTable1 = new stzTable([[ :A, :B, :C ], [ 1, 2, 3 ]])
+oTable2 = new stzTable([[ :A, :B ], [ 4, 5 ]])
+oTable3 = new stzTable([[ :A, :B, :C ], [ 6, 7, 8 ]])
+
+aTables = [ oTable1, oTable2, oTable3 ]
+
+oTx = new stzTablex(&quot;{cols(3)}&quot;)
+
+# Count matches
+? oTx.CountMatchingTablesIn(aTables)
+#--&gt; 2
+
+# Retrieve matches
+aMatches = oTx.MatchingTablesIn(aTables)
+? len(aMatches)
+#--&gt; 2</pre><p class="ran nv-illus">illustration</p></div>
+<p>This enables filtering data lake tables, validating batch imports, or finding conformant datasets in heterogeneous collections.</p>
+<hr />
+<h2 id="11-pattern-composition-and-reuse">11. Pattern Composition and Reuse</h2>
+<p>Patterns are first-class objects that can be combined programmatically:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oStructure = new stzTablex(&quot;{cols(3) &amp; rows(&gt;5)}&quot;)
+oQuality = new stzTablex(&quot;{unique(id) &amp; @!nulls(email)}&quot;)
+
+# Combine with AND
+oComplete = oStructure.And_(oQuality)
+? oComplete.Pattern()
+#--&gt; {cols(3) &amp; rows(&gt;5) &amp; unique(id) &amp; @!nulls(email)}
+
+# Combine with OR
+oFlexible = oStructure.Or_(oQuality)
+? oFlexible.Pattern()
+#--&gt; {cols(3) &amp; rows(&gt;5) | unique(id) &amp; @!nulls(email)}
+
+# Negate
+oInverse = oQuality.Not_()
+? oInverse.Pattern()
+#--&gt; {@!unique(id) &amp; @!nulls(email)}</pre><p class="ran nv-illus">illustration</p></div>
+<p>This compositional approach encourages pattern libraries—reusable validation rules across your application.</p>
+<hr />
+<h2 id="12-advanced-table-specific-patterns">12. Advanced Table-Specific Patterns</h2>
+<p>Beyond basics, stzTablex recognizes table-specific properties:</p>
+<p><strong>Grouping detection:</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Detect grouped data (consecutive duplicates)
+oTx = new stzTablex(&quot;{grouped(department)}&quot;)</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Filtering indicators:</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Detect gaps in sequential data
+oTx = new stzTablex(&quot;{filtered(id)}&quot;)</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Transposition hints:</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre># More columns than rows
+oTx = new stzTablex(&quot;{transposed()}&quot;)</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Pattern matching:</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Email format validation
+oTx = new stzTablex(&quot;{colpattern(email:@EMAIL)}&quot;)</pre><p class="ran nv-illus">illustration</p></div>
+<p>These specialized patterns expose table semantics that traditional validation misses.</p>
+<hr />
+<h2 id="13-debugging-and-introspection">13. Debugging and Introspection</h2>
+<p>For transparency, stzTablex provides introspection tools:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTx = new stzTablex(&quot;{cols(3) &amp; unique(id) &amp; avgcol(salary:&gt;40000)}&quot;)
+
+? oTx.Pattern()
+#--&gt; {cols(3) &amp; unique(id) &amp; avgcol(salary:&gt;40000)}
+
+? len(oTx.Tokens())
+#--&gt; 1 (conjunction token containing conditions)
+
+oTx.EnableDebug()
+oTx.Match(oTable)  # Shows parsing details</pre><p class="ran nv-illus">illustration</p></div>
+<p>The <code>Explain()</code> method provides structured analysis:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTx.Match(oTable)
+aExplain = oTx.Explain()
+
+? @@(aExplain[1])
+#--&gt; [&quot;Pattern&quot;, &quot;{cols(3) &amp; unique(id)}&quot;]
+
+? @@(aExplain[2])
+#--&gt; [&quot;TokenCount&quot;, 1]</pre><p class="ran nv-illus">illustration</p></div>
+<hr />
+<h2 id="14-real-world-validation-scenarios">14. Real-World Validation Scenarios</h2>
+<p><strong>Employee database integrity:</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTx = new stzTablex(&quot;{
+    unique(id) &amp; 
+    @!nulls(email) &amp; 
+    coltype(salary:number) &amp;
+    avgcol(salary:&gt;40000) &amp; 
+    avgcol(salary:&lt;60000)
+}&quot;)
+
+? oTx.Match(oEmployees)
+#--&gt; Ensures: unique IDs, valid emails, numeric salaries in reasonable range</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Sales data quality:</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTx = new stzTablex(&quot;{
+    cols(4) &amp; 
+    @!nulls(product) &amp; 
+    mincol(amount:&gt;0) &amp; 
+    completeness(customer:95)
+}&quot;)
+
+? oTx.Match(oSales)
+#--&gt; Validates: structure, products exist, positive amounts, 95%+ customer coverage</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>ETL pipeline validation:</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oTx = new stzTablex(&quot;{
+    hascol(load_date) &amp; 
+    hascol(source) &amp; 
+    completeness(source:100) &amp; 
+    sumcol(record_count:&gt;5000)
+}&quot;)
+
+? oTx.Match(oWarehouse)
+#--&gt; Checks: required columns present, complete metadata, sufficient data volume</pre><p class="ran nv-illus">illustration</p></div>
+<hr />
+<h2 id="15-comparative-advantages">15. Comparative Advantages</h2>
+<p>Where other frameworks require procedural validation code, stzTablex provides declarative specifications:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th><strong>stzTablex</strong></th>
+<th>Pandas</th>
+<th>SQL CHECK</th>
+<th>Manual Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Declarative syntax</strong></td>
+<td>✅ <code>{cols(3) &amp; unique(id)}</code></td>
+<td>❌ Procedural</td>
+<td>⚠️ Limited</td>
+<td>❌ Verbose</td>
+</tr>
+<tr>
+<td><strong>Multi-table filtering</strong></td>
+<td>✅ Native</td>
+<td>⚠️ Manual loops</td>
+<td>❌ N/A</td>
+<td>⚠️ Complex</td>
+</tr>
+<tr>
+<td><strong>Case sensitivity control</strong></td>
+<td>✅ <code>@cs:</code> prefix</td>
+<td>⚠️ Parameters</td>
+<td>❌</td>
+<td>⚠️ String ops</td>
+</tr>
+<tr>
+<td><strong>Statistical constraints</strong></td>
+<td>✅ <code>avgcol(salary:&gt;40000)</code></td>
+<td>⚠️ Separate checks</td>
+<td>✅ Aggregates</td>
+<td>❌ Manual calc</td>
+</tr>
+<tr>
+<td><strong>Quality metrics</strong></td>
+<td>✅ <code>completeness()</code>, <code>nulls()</code></td>
+<td>⚠️ <code>isnull()</code></td>
+<td>⚠️ Manual</td>
+<td>⚠️ Loops</td>
+</tr>
+<tr>
+<td><strong>Pattern composition</strong></td>
+<td>✅ <code>And_()</code>, <code>Or_()</code>, <code>Not_()</code></td>
+<td>❌</td>
+<td>❌</td>
+<td>⚠️ Nested ifs</td>
+</tr>
+<tr>
+<td><strong>Type validation</strong></td>
+<td>✅ <code>coltype(age:number)</code></td>
+<td>✅ <code>dtype</code></td>
+<td>⚠️ Limited</td>
+<td>⚠️ Manual</td>
+</tr>
+<tr>
+<td><strong>Calculated column detection</strong></td>
+<td>✅ <code>calculated()</code>, <code>aggregated()</code></td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>Readable validation rules</strong></td>
+<td>✅ Self-documenting</td>
+<td>⚠️ Code comments</td>
+<td>⚠️ SQL</td>
+<td>❌ Verbose</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>stzTablex transforms table validation from imperative verification into declarative specification. Where traditional approaches scatter validation logic across conditional statements, stzTablex consolidates it into readable patterns that double as documentation.</p>
+<p>By expressing requirements as:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>{unique(id) &amp; @!nulls(email) &amp; completeness(phone:90) &amp; avgcol(salary:&gt;40000)}</pre><p class="ran nv-illus">illustration</p></div>
+<p>instead of nested loops and conditionals, your code becomes self-explanatory. Table validation becomes pattern recognition—semantic, composable, and maintainable.</p>
+<p>Together with <code>stzTable</code> for manipulation and <code>stzPivotTable</code> for analysis, <code>stzTablex</code> completes Softanza's vision of tabular data as a first-class programming abstraction—where structure, semantics, and validation are expressed in the language of the domain rather than the mechanics of implementation.</p>
+<h2>Related reading</h2><ul><li><a href="stztable-when-code-meets-cells.html">&quot;Code Meets Cells&quot;: The Spreadsheet Metaphor in Softanza&#x27;s stzTable</a></li></ul><h2>Cite</h2><p class="mono cite">Mansour Ayouni. "stzTablex: Declarative Pattern Matching for Tables in Softanza". Softanza narrations, 2025. https://mayouni.github.io/stzsite/en/narrations/stztablex-pattern-langauge-for-tables.html</p><p class="proof">Not run: its code does not load as written. The article is published as written; its blocks are illustrations. The code of the articles is Haro code. Where an article was written before the language took its present name, the name was changed and nothing else. Genre, area and series read from the file's name, the year from its first commit: derived, until the article carries its own header. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stztablex-pattern-langauge-for-tables.md.md" target="_blank" rel="noopener noreferrer">The file on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Platform</h3><ul><li><a href="../platform.html">Platform</a></li><li><a href="../platforms.html">Platform of platforms</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">The craft</a></li><li><a href="../areas.html">The areas</a></li><li><a href="../code.html">The code</a></li><li><a href="../compare.html">Compared</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Performance series</a></li><li><a href="../narrations-security.html">Security series</a></li><li><a href="../narrations-delivery.html">Delivery series</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">The north star</a></li><li><a href="../principles.html">Twelve principles</a></li><li><a href="../estate.html">The estate</a></li><li><a href="../history.html">From first principles</a></li><li><a href="../forged.html">Forged in projects</a></li><li><a href="../sovereignty.html">Sovereignty</a></li><li><a href="../africa.html">Born in Africa</a></li></ul></div><div><h3>Agentic</h3><ul><li><a href="../agentic.html">Agentic</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Language of languages</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Refinement</a></li><li><a href="../agents.html">For agents</a></li><li><a href="../coding-agents.html">Coding agents</a></li><li><a href="../security.html">Security</a></li></ul></div><div><h3>Learn</h3><ul><li><a href="../learn.html">Learn</a></li><li><a href="../book.html">The book</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">How-to</a></li><li><a href="../reference.html">Reference</a></li><li><a href="../ask.html">Ask the library</a></li><li><a href="../education.html">Education</a></li></ul></div><div><h3>Offering</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Editions</a></li><li><a href="../customers.html">Customers</a></li></ul></div><div><h3>Start</h3><ul><li><a href="../start.html">Start</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">The repository on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></li><li><a href="../tour.html">Presentation mode</a></li><li><a href="../../deck-check.html">Check offline</a></li><li><a href="../../index.html?lang=fr" lang="fr">Français</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">The Software Makers Platform of the AI Age. Born in Africa. Useful to the World!</p><div class="themes" role="group" aria-label="Display"><button type="button" data-set-theme="light">Use the light theme</button><button type="button" data-set-theme="dark">Use the dark theme</button><button type="button" data-set-theme="auto">Follow the system</button></div></div>
+    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

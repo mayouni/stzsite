@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Refinement-Centered Programming with stzPolyCode · Narrations · Softanza</title>
+<meta name="description" content="Software development has traditionally been split between exploratory coding and rigid production environments. The Softanza library introduces a groundbreaking approach with its stzPolyCode framework: Refinement-Centered Programming.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzpolycode-refinement-centered-programming.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzpolycode-refinement-centered-programming.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">Refinement-Centered Programming with stzPolyCode</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stz-pycode-bridging-ring-and-python-narration.html">Expanding Haro’s Horizons: Unlocking New Possibilities with Python</a></li><li><a href="stz-integrating-r-scripts-inside-ring.html">R() in Haro: Statistical Power, One Call Away</a></li><li><a href="stzexcis-polyglot-programming-in-ring.html">Softanza EXCIS: Orchestrating a Polyglot Symphony</a></li><li><a href="stzpolycode-refinement-centered-programming.html" aria-current=page>Refinement-Centered Programming with stzPolyCode</a></li><li><a href="stzexterlib-domain-driven-polyglot-programming.html">Softanza ExterLib: A Foundation for Domain-Driven Polyglot Programming</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>Refinement-Centered Programming with stzPolyCode</h1>
+    <p class="lede">Imagine you've asked an AI to generate code for you. Traditionally, you'd either accept the entire solution or manually edit it line by line. Refinement points offer a different approach: they're marked sections within code that serve as built-in "adjustment knobs" for easy modification.</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2025-04-23 · essai de paradigme · domaine <a href="../atlas/extensibility.html">Extensibilité et code étranger</a></p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+
+<p>Software development has traditionally been split between exploratory coding and rigid production environments. The Softanza library introduces a groundbreaking approach with its stzPolyCode framework: Refinement-Centered Programming. This paradigm creates a structured yet flexible middle ground where code can evolve through targeted modifications rather than complete rewrites.</p>
+<h2 id="understanding-refinement-points">Understanding Refinement Points</h2>
+<p>Here's a simple example:</p>
+<div class="lbl">Python, montré pour comparaison, non exécuté</div><pre>def greet_user(name):
+    &lt;R:PARAM name=&quot;greeting&quot; value=&quot;Hello&quot; type=&quot;str&quot; desc=&quot;Greeting word&quot;&gt;
+    &lt;R:PARAM name=&quot;punctuation&quot; value=&quot;!&quot; type=&quot;str&quot; desc=&quot;Ending punctuation&quot;&gt;
+    
+    return f&quot;{greeting}, {name}{punctuation}&quot;</pre>
+<p>Instead of editing the function directly, you can simply use:</p>
+<div class="lbl">Python, montré pour comparaison, non exécuté</div><pre>refinementView.SetParam(&quot;greeting&quot;, &quot;Welcome&quot;)</pre>
+<p>And the function updates automatically.</p>
+<h2 id="a-playful-introduction-birthday-card-generator">A Playful Introduction: Birthday Card Generator</h2>
+<p>Let's see this concept in action with a simple birthday card generator:</p>
+<div class="lbl">Python, montré pour comparaison, non exécuté</div><pre>stzPolyCode(&quot;BirthdayCardGenerator&quot;) {
+    # --- EXPLORATION PHASE ---
+    XAi() {
+        RunCode(&#x27;
+            Create a function that generates a birthday message
+            with the recipient\&#x27;s name and age
+        &#x27;)
+        
+        generatedCode = PyCode()
+    }
+    
+    # --- REFINEMENT PHASE ---
+    refinementView = RefineCode(generatedCode)
+    
+    # The system displays:
+    /*
+    def generate_birthday_card(name, age):
+        &lt;R:PARAM name=&quot;greeting&quot; value=&quot;Happy Birthday&quot; type=&quot;str&quot; desc=&quot;Birthday greeting&quot;&gt;
+        &lt;R:BLOCK name=&quot;message_template&quot; desc=&quot;The message template&quot;&gt;
+        message = f&quot;{greeting}, {name}! Congratulations on turning {age}!&quot;
+        &lt;/R:BLOCK&gt;
+        
+        &lt;R:ALGO name=&quot;style&quot; options=&quot;formal,casual,funny&quot; selected=&quot;casual&quot;&gt;
+        # Casual style
+        message += f&quot;\nWishing you a fantastic day filled with joy and laughter!&quot;
+        &lt;/R:ALGO&gt;
+        
+        return message
+    */
+    
+    # Now let&#x27;s make some refinements
+    refinementView.SetParam(&quot;greeting&quot;, &quot;Many Happy Returns&quot;)
+    refinementView.SetAlgo(&quot;style&quot;, &quot;funny&quot;, &quot;&quot;&quot;
+    # Funny style
+    message += f&quot;\nAnother year older, but don&#x27;t worry—you&#x27;re still younger than you&#x27;ll be next year! Have a great day!&quot;
+    &quot;&quot;&quot;)
+    
+    refinedCode = refinementView.Apply()
+    
+    # --- PRODUCTION PHASE ---
+    birthdayService = XPy() {
+        SetCode(refinedCode)
+    }
+    
+    func CreateBirthdayMessage(recipientName, age) {
+        return birthdayService.Run(&quot;generate_birthday_card&quot;, [recipientName, age])
+    }
+}</pre>
+<p>This example shows several key benefits:
+1. We can modify specific parts (the greeting and style) without touching the rest of the code
+2. The system presents predefined style options (formal, casual, funny)
+3. The refinement points clearly indicate what can be customized</p>
+<h2 id="the-three-phases-of-refinement-centered-programming">The Three Phases of Refinement-Centered Programming</h2>
+<p>This approach bridges the gap between experimental coding and production-ready solutions through three distinct phases:</p>
+<ol>
+<li><strong>Exploration</strong>: Initial code generation through AI or human creativity</li>
+<li><strong>Refinement</strong>: Structured modification through clearly marked points</li>
+<li><strong>Production</strong>: Deployment of the refined code with business interfaces</li>
+</ol>
+<h2 id="types-of-refinement-points">Types of Refinement Points</h2>
+<p>The stzPolyCode framework offers several types of refinement points:</p>
+<h3 id="1-parameter-refinements-rparam">1. Parameter Refinements (<code>&lt;R:PARAM&gt;</code>)</h3>
+<p>For modifying simple values:</p>
+<div class="lbl">Python, montré pour comparaison, non exécuté</div><pre>&lt;R:PARAM name=&quot;threshold&quot; value=&quot;0.5&quot; type=&quot;float&quot; desc=&quot;Detection threshold&quot;&gt;</pre>
+<h3 id="2-block-refinements-rblock">2. Block Refinements (<code>&lt;R:BLOCK&gt;</code>)</h3>
+<p>For replacing entire code blocks:</p>
+<div class="lbl">Python, montré pour comparaison, non exécuté</div><pre>&lt;R:BLOCK name=&quot;preprocessing&quot; desc=&quot;Data preprocessing steps&quot;&gt;
+# Preprocess input data
+data = data.lower()
+data = re.sub(r&#x27;[^\w\s]&#x27;, &#x27;&#x27;, data)
+&lt;/R:BLOCK&gt;</pre>
+<h3 id="3-algorithm-refinements-ralgo">3. Algorithm Refinements (<code>&lt;R:ALGO&gt;</code>)</h3>
+<p>For switching between alternative approaches:</p>
+<div class="lbl">Python, montré pour comparaison, non exécuté</div><pre>&lt;R:ALGO name=&quot;sorting&quot; options=&quot;quicksort,mergesort,heapsort&quot; selected=&quot;quicksort&quot;&gt;
+# Quicksort implementation
+def sort(arr):
+    if len(arr) &lt;= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x &lt; pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x &gt; pivot]
+    return sort(left) + middle + sort(right)
+&lt;/R:ALGO&gt;</pre>
+<h3 id="4-function-refinements-rfunc">4. Function Refinements (<code>&lt;R:FUNC&gt;</code>)</h3>
+<p>For modifying function signatures and implementations:</p>
+<div class="lbl">Python, montré pour comparaison, non exécuté</div><pre>&lt;R:FUNC name=&quot;calculate_discount&quot; params=&quot;price, customer_tier=&#x27;regular&#x27;&quot;&gt;
+def calculate_discount(price, customer_tier=&#x27;regular&#x27;):
+    if customer_tier == &#x27;premium&#x27;:
+        return price * 0.2
+    elif customer_tier == &#x27;gold&#x27;:
+        return price * 0.15
+    else:
+        return price * 0.05
+&lt;/R:FUNC&gt;</pre>
+<h2 id="a-practical-example-weather-data-analysis">A Practical Example: Weather Data Analysis</h2>
+<p>Let's examine a more practical example that shows how refinement points enable natural customization:</p>
+<div class="lbl">Python, montré pour comparaison, non exécuté</div><pre>stzPolyCode(&quot;WeatherAnalyzer&quot;) {
+    # --- EXPLORATION PHASE ---
+    XAi() {
+        RunCode(&#x27;
+            Create a function that analyzes daily temperature data,
+            identifies unusual patterns, and generates a summary report
+        &#x27;)
+        
+        generatedCode = PyCode()
+    }
+    
+    # --- REFINEMENT PHASE ---
+    refinementView = RefineCode(generatedCode)
+    
+    # Let&#x27;s explore what we can refine
+    refinementView.ShowAllRefinements()
+    
+    /*
+    AVAILABLE REFINEMENTS:
+    +-------------------+------------------+--------------------------------------------+
+    | LOCATION          | TYPE             | DESCRIPTION                                |
+    +-------------------+------------------+--------------------------------------------+
+    | temp_threshold    | PARAM (float)    | Temperature anomaly threshold (°C)         |
+    | preprocessing     | BLOCK (code)     | Data preprocessing steps                   |
+    | anomaly_detection | ALGO (selection) | Algorithm for detecting unusual patterns   |
+    | generate_report   | FUNC (function)  | Function to generate the summary report    |
+    +-------------------+------------------+--------------------------------------------+
+    */
+    
+    # Let&#x27;s learn more about the anomaly detection options
+    refinementView.Explore(&quot;anomaly_detection&quot;)
+    
+    /*
+    REFINEMENT DETAILS: &quot;anomaly_detection&quot;
+    Type: ALGO (Algorithm selection)
+    Description: Algorithm for detecting unusual patterns in temperature data
+    
+    CURRENT VALUE:
+```python
+    # Statistical approach
+    mean_temp = np.mean(temperatures)
+    std_temp = np.std(temperatures)
+    anomalies = [i for i, temp in enumerate(temperatures) if abs(temp - mean_temp) &gt; temp_threshold * std_temp]</pre>
+<p>AVAILABLE ALTERNATIVES:
++------------------+----------------------------------------+-------------------------------+
+| OPTION           | STRENGTHS                              | WHEN TO USE                   |
++------------------+----------------------------------------+-------------------------------+
+| statistical      | - Simple and fast                      | - Normal distribution assumed |
+|                  | - Works well with clean data           | - For quick analysis          |
+|                  | - Easy to explain                      | - Limited outliers            |
++------------------+----------------------------------------+-------------------------------+
+| moving_average   | - Considers local trends               | - Time series data            |
+|                  | - Less affected by seasonal changes    | - When trends matter          |
+|                  | - Better for cyclic patterns           | - Daily/weekly patterns       |
++------------------+----------------------------------------+-------------------------------+
+| isolation_forest | - No distribution assumptions          | - Complex patterns            |
+|                  | - Handles multivariate data            | - Unknown data distribution   |
+|                  | - Good with high-dimensional data      | - More rigorous analysis      |
++------------------+----------------------------------------+-------------------------------+
+*/</p>
+<h1 id="lets-ask-for-guidance">Let's ask for guidance</h1>
+<p>refinementView.Ask("Our temperature data has seasonal patterns. Which approach is best?")</p>
+<p>/*
+REFINEMENT GUIDANCE:</p>
+<p>For data with seasonal patterns, the 'moving_average' approach would be most appropriate because:</p>
+<ol>
+<li>It establishes a baseline that adapts to seasonal changes</li>
+<li>It detects anomalies relative to recent trends rather than overall statistics</li>
+<li>It's less likely to flag seasonal variations as anomalies</li>
+</ol>
+<p>I recommend switching to the moving_average algorithm and adjusting the window size
+based on your seasonal period (e.g., 7 for weekly patterns, 30 for monthly).</p>
+<p>Would you like me to implement this suggestion?
+*/</p>
+<h1 id="apply-the-suggestion">Apply the suggestion</h1>
+<p>refinementView.SetAlgo("anomaly_detection", "moving_average", """</p>
+<h1 id="moving-average-approach">Moving average approach</h1>
+<p>window_size = 7  # One week window
+moving_avg = np.convolve(temperatures, np.ones(window_size)/window_size, mode='valid')
+padded_avg = np.pad(moving_avg, (window_size-1, 0), 'edge')  # Pad beginning</p>
+<p>anomalies = [i for i, (temp, avg) in enumerate(zip(temperatures, padded_avg)) 
+            if abs(temp - avg) &gt; temp_threshold]
+""")</p>
+<h1 id="make-some-additional-refinements">Make some additional refinements</h1>
+<p>refinementView.SetParam("temp_threshold", 3.5)  # More sensitive detection</p>
+<h1 id="document-our-changes">Document our changes</h1>
+<p>refinementView.Comment("anomaly_detection", "Switched to moving average to handle seasonal patterns")</p>
+<h1 id="apply-all-refinements">Apply all refinements</h1>
+<p>refinedCode = refinementView.Apply()</p>
+<h1 id="-production-phase-">--- PRODUCTION PHASE ---</h1>
+<p>weatherService = XPy() {
+    SetCode(refinedCode)
+}</p>
+<p>func AnalyzeWeatherData(dates, temperatures, location) {
+    return weatherService.Run("analyze_weather", [dates, temperatures, location])
+}
+}</p>
+<pre>
+This demonstrates how developers can:
+1. Discover all available modification points
+2. Explore details about specific refinement options
+3. Get AI-powered recommendations for specific scenarios
+4. Make targeted changes only where needed
+5. Document why changes were made
+
+## Extended Refinement Toolkit
+
+Beyond the basic refinement points, the framework offers more specialized types:
+
+### 5. Pipeline Refinements (`&lt;R:PIPELINE&gt;`)
+For restructuring data processing pipelines:
+
+```python
+&lt;R:PIPELINE name=&quot;image_processing&quot; steps=&quot;resize,denoise,enhance,convert&quot;&gt;
+# Resize image
+img = resize(img, (800, 600))
+
+# Remove noise
+img = denoise(img, strength=0.3)
+
+# Enhance contrast
+img = enhance_contrast(img, factor=1.5)
+
+# Convert to grayscale
+img = to_grayscale(img)
+&lt;/R:PIPELINE&gt;</pre>
+<h3 id="6-variable-type-refinements-rvartype">6. Variable Type Refinements (<code>&lt;R:VARTYPE&gt;</code>)</h3>
+<p>For changing variable types and validation:</p>
+<div class="lbl">Python, montré pour comparaison, non exécuté</div><pre>&lt;R:VARTYPE name=&quot;user_id&quot; type=&quot;str&quot; validation=&quot;len(x) &gt;= 5&quot; desc=&quot;User identifier&quot;&gt;</pre>
+<h3 id="7-library-selection-refinements-rlib">7. Library Selection Refinements (<code>&lt;R:LIB&gt;</code>)</h3>
+<p>For switching between alternative libraries:</p>
+<div class="lbl">Python, montré pour comparaison, non exécuté</div><pre>&lt;R:LIB name=&quot;data_parser&quot; options=&quot;pandas,numpy,csv&quot; selected=&quot;pandas&quot;&gt;
+import pandas as pd
+
+def load_data(filename):
+    return pd.read_csv(filename)
+
+def process_data(data):
+    return data.groupby(&#x27;category&#x27;).mean()
+&lt;/R:LIB&gt;</pre>
+<h2 id="interactive-discovery-and-guidance">Interactive Discovery and Guidance</h2>
+<p>What truly sets Refinement-Centered Programming apart is its interactive guidance system:</p>
+<div class="lbl">Python, montré pour comparaison, non exécuté</div><pre># Discover all refinement points
+refinementView.ShowAllRefinements()  
+
+# Explore a specific refinement
+refinementView.Explore(&quot;data_parser&quot;)  
+
+# Get AI guidance
+refinementView.Ask(&quot;How would I optimize this for large files?&quot;)  
+
+# Test a refinement before applying
+refinementView.TestRefinement(&quot;data_parser&quot;, &quot;numpy&quot;)  
+
+# Document decisions
+refinementView.Comment(&quot;data_parser&quot;, &quot;Switched to numpy for better memory efficiency&quot;)</pre>
+<h2 id="benefits-of-refinement-centered-programming">Benefits of Refinement-Centered Programming</h2>
+<p>This paradigm offers several profound advantages:</p>
+<ol>
+<li>
+<p><strong>Reduced Development Friction</strong>: Structured modification points eliminate the need to "start from scratch" when customizing code. Developers can make targeted changes to exactly the parts they need to customize.</p>
+</li>
+<li>
+<p><strong>Knowledge Transfer</strong>: The system educates developers about options and trade-offs, effectively transferring domain knowledge from the framework to the developer. This happens through the exploration and guidance features.</p>
+</li>
+<li>
+<p><strong>Incremental Improvement</strong>: Changes can be tested and applied incrementally, reducing the risk of introducing bugs or breaking existing functionality. Each refinement can be validated independently.</p>
+</li>
+<li>
+<p><strong>Documentation as Process</strong>: Refinement comments become part of the code, explaining why choices were made and preserving the decision-making process for future developers.</p>
+</li>
+<li>
+<p><strong>Collaboration Enhancement</strong>: Team members can suggest refinements in a structured format rather than making scattered changes throughout the codebase, making code reviews more focused and productive.</p>
+</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>Refinement-Centered Programming represents a paradigm shift in software development. By providing structured refinement points across multiple aspects of code, it creates a new middle ground between AI-generated solutions and human expertise.</p>
+<p>This approach recognizes that neither pure AI generation nor manual coding is optimal for complex problems. Instead, it creates a structured dialogue between AI systems and human developers, allowing each to contribute their strengths. AI provides initial solutions and alternatives, while humans apply domain knowledge and judgment through targeted refinements.</p>
+<p>The stzPolyCode framework demonstrates how refinement points can transform development from disconnected phases into a seamless, integrated workflow. The exploration phase generates initial solutions, the refinement phase allows structured customization, and the production phase deploys the refined code as part of business systems.</p>
+<p>As we increasingly incorporate AI into development workflows, approaches like Refinement-Centered Programming will be essential for creating effective human-AI partnerships that produce high-quality, reliable, and maintainable code. The structured nature of refinements also creates natural documentation and knowledge sharing, addressing key challenges in modern software development.</p>
+<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « Refinement-Centered Programming with stzPolyCode ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stzpolycode-refinement-centered-programming.html</p><p class="proof">Cet article ne contient pas de code. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzpolycode-refinement-centered_programming.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

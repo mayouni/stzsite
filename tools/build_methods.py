@@ -11,10 +11,11 @@ output kept every promise their file wrote are shown.
 """
 import json, re, html, collections
 import level2, qforms, extshow, rowex
+from haro import SHOWN
 
 def esc(s): return html.escape(str(s), quote=True)
 RING = re.compile(r"\b(?:Ring|RING)\b")
-RING_WORD = re.compile(r"(?<![\w./-])ring(?![\w.])", re.I)   # the word, not a .ring file name
+RING_WORD = SHOWN   # the former name in code shown as the library wrote it (tools/haro.py)   # the word, not a .ring file name
 def prose(s): return esc(RING.sub(lambda m: "HARO" if m.group(0).isupper() else "Haro", str(s)).replace("Ring++", "Haro"))
 ISSUE = re.compile(r"(?i)\b(error|raises?|refus\w*|cannot|can't|invalid|not allowed|incorrect|unsupported|not found)\b")
 

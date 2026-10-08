@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stzGraph: The Art of Connected Thinking · Narrations · Softanza</title>
+<meta name="description" content="A graph is an elegant yet profound concept in computer science—a structure of nodes (entities) and edges (relationships) that illuminates how systems connect, interact, and evolve.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Skip to content</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=en" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Present the site as a slideshow" title="Present the site as a slideshow"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="The Softanza repository on GitHub" title="The Softanza repository on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../fr/narrations/stzgraphdoc.html" lang="fr" hreflang="fr">Français</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=en" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Main menu"><a href="../platform.html">Platform</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentic</a><a href="../learn.html">Learn</a><a href="../offering.html">Offering</a><a href="../start.html">Start</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Present the site as a slideshow" title="Present the site as a slideshow"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="The Softanza repository on GitHub" title="The Softanza repository on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../fr/narrations/stzgraphdoc.html" lang="fr" hreflang="fr">Français</a></div>
+  </div>
+  <nav class="path" aria-label="Pages of the section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Performance series</a><a href="../narrations-security.html">Security series</a><a href="../narrations-delivery.html">Delivery series</a></div></nav>
+  <nav class="crumbs" aria-label="You are here"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">stzGraph: The Art of Connected Thinking</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="The narrations run"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">All the narrations</a></li><li><a href="stzdotcode-graphiz-dot-language-guide.html">Graphviz DOT Language Guide: Using stzDotCode</a></li><li><a href="stzgraph-computational-foundation.html">stzGraph: Computational Foundation and Design</a></li><li><a href="stzgraphdoc.html" aria-current=page>stzGraph: The Art of Connected Thinking</a></li><li><a href="stzgraph-modeling-knowledge-with-nodes-and-connections.html">stzGraph — Modeling Knowledge Through Structure</a></li><li><a href="stzorgchartdoc.html">Introducing stzOrgChart - The Strategic Organizational Intelligence Platform</a></li><li><a href="stzorgchartdoc-bankusecase.html">Organizational Intelligence in Action</a></li><li><a href="stzgraph-chatgpt-opinion.html">What ChatGPT Thinks of the stzGraph Module in the Softanza Library</a></li><li><a href="stzgraph-claudeai-opinion.html">ClaudeAI Opinion on stzGraph design</a></li><li><a href="stzgraph-vs-other-graph-libraries.html">Softanza stzGraph vs. Modern Graph Ecosystem</a></li><li><a href="stzgraphplannerdoc.html">Intelligence in Motion: Graph Planning in Softanza</a></li><li><a href="stzgraphquery-doc.html">stzGraphQuery: Asking Questions to Your Graph</a></li><li><a href="stz-rules-as-graph-rules-narration.html">Rules That See the Whole Picture</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Research · narration</div>
+    <h1>stzGraph: The Art of Connected Thinking</h1>
+    <p class="lede">A <strong>graph</strong> is an elegant yet profound concept in computer science—a structure of <strong>nodes</strong> (entities) and <strong>edges</strong> (relationships) that illuminates how systems connect, interact, and evolve. Whether modeling <strong>workflows</strong>, <strong>codebases</strong>, <strong>data schemas</strong>, or <strong>conversational logic</strong>, <code>stzGraph</code> transforms intricate dependencies into intuitive understanding. With syntax that mirrors human reasoning, it makes relationships not just visible but <strong>explorable and actionable</strong>—directly from your terminal.</p>
+    <p class="proof">by Mansour Ayouni · in the repository since 2025-10-18 · tutorial · area <a href="../atlas/diagramming.html">Diagramming &amp; graphs</a></p>
+    
+  </div></section>
+  <div class="wrap page-body narration">
+
+<h2 id="the-beauty-of-graphs">The Beauty of Graphs</h2>
+<p><code>stzGraph</code> transcends being a mere tool; it's a paradigm for <strong>systems thinking</strong>, where flows of influence, chains of causality, and cycles of interdependence become transparent and navigable. Its lightweight, dependency-free design combined with powerful analytical capabilities makes it a universal foundation for reasoning about any relational system.</p>
+<hr />
+<h2 id="quick-start-from-vision-to-reality">Quick Start: From Vision to Reality</h2>
+<p>Build, visualize, query, and annotate a graph in moments:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oGraph = new stzGraph(&quot;MyFlow&quot;)
+oGraph {
+    AddNode(:@start, &quot;Start&quot;)
+    AddNode(:@middle, &quot;Process&quot;)
+    AddNode(:@end, &quot;End&quot;)
+    
+    AddEdge(:@start, :@middle, &quot;flows&quot;)
+    AddEdge(:@middle, :@end, &quot;completes&quot;)
+    
+    Show()
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>        ╭───────╮        
+        │ Start │        
+        ╰───────╯        
+            |            
+          flows          
+            |            
+            v            
+      ╭───────────╮      
+      │ !Process! │      
+      ╰───────────╯      
+            |            
+        completes        
+            |            
+            v            
+         ╭─────╮         
+         │ End │         
+         ╰─────╯</pre>
+<p>Visualize horizontally with <code>ShowH()</code>:</p>
+<pre>╭───────╮          ╭───────────╮              ╭─────╮
+│ Start │--flows--&gt;│ !Process! │--completes--&gt;│ End │
+╰───────╯          ╰───────────╯              ╰─────╯</pre>
+<p>Query with precision:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oGraph.NodeCount()                #--&gt; 3
+? oGraph.PathExists(:@start, :@end) #--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<p>Enrich nodes with contextual metadata:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oGraph.AddNodeXT(:@middle, &quot;Process&quot;, [
+    :priority = &quot;high&quot;,
+    :owner = &quot;team-a&quot;
+])</pre><p class="ran nv-illus">illustration</p></div>
+<p><code>stzGraph</code> feels like a dialogue with your system—declare relationships, receive insights. No boilerplate, no dependencies, just <strong>connected reasoning</strong>.</p>
+<h2 id="a-natural-api-code-that-mirrors-intuition">A Natural API: Code That Mirrors Intuition</h2>
+<p>The <code>stzGraph</code> API is architected to align with how you naturally think about systems. Every method answers a direct question:</p>
+<table>
+<thead>
+<tr>
+<th>Your Question</th>
+<th>Method</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Can A reach B?</td>
+<td><code>PathExists(:@a, :@b)</code></td>
+<td>TRUE / FALSE</td>
+</tr>
+<tr>
+<td>What are all paths from A to B?</td>
+<td><code>FindAllPaths(:@a, :@b)</code></td>
+<td>Array of paths</td>
+</tr>
+<tr>
+<td>Are there loops?</td>
+<td><code>CyclicDependencies()</code></td>
+<td>TRUE / FALSE</td>
+</tr>
+<tr>
+<td>What does X influence?</td>
+<td><code>ReachableFrom(:@x)</code></td>
+<td>Array of nodes</td>
+</tr>
+<tr>
+<td>Which nodes are critical?</td>
+<td><code>BottleneckNodes()</code></td>
+<td>Array of IDs</td>
+</tr>
+<tr>
+<td>How connected is the graph?</td>
+<td><code>NodeDensity()</code></td>
+<td>% (0–100)</td>
+</tr>
+<tr>
+<td>What's the longest chain?</td>
+<td><code>LongestPath()</code></td>
+<td>Edge count</td>
+</tr>
+<tr>
+<td>What connects to X?</td>
+<td><code>NeighborsOf(:@x)</code></td>
+<td>Array of nodes</td>
+</tr>
+<tr>
+<td>What leads to X?</td>
+<td><code>IncomingTo(:@x)</code></td>
+<td>Array of nodes</td>
+</tr>
+<tr>
+<td>Describe the graph</td>
+<td><code>Explain()</code></td>
+<td>Structured analysis</td>
+</tr>
+<tr>
+<td>Does this exist?</td>
+<td><code>NodeExists(:@id)</code> / <code>EdgeExists(:@from, :@to)</code></td>
+<td>TRUE / FALSE</td>
+</tr>
+<tr>
+<td>Show vertical view</td>
+<td><code>Show()</code> / <code>ShowV()</code></td>
+<td>ASCII diagram</td>
+</tr>
+<tr>
+<td>Show horizontal view</td>
+<td><code>ShowH()</code> / <code>ShowHorizontal()</code></td>
+<td>ASCII diagram</td>
+</tr>
+<tr>
+<td>Show with annotations</td>
+<td><code>ShowWithLegend()</code></td>
+<td>ASCII + legend</td>
+</tr>
+</tbody>
+</table>
+<p>The API speaks your language—thoughts translate to code with zero friction.</p>
+<h2 id="connectivity-mapping-the-possible">Connectivity: Mapping the Possible</h2>
+<p>Every system tells a story. <code>stzGraph</code> reveals whether critical outcomes are reachable:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oWorkflow = new stzGraph(&quot;ApprovalProcess&quot;)
+oWorkflow {
+    AddNode(:@request, &quot;Request&quot;)
+    AddNode(:@manager, &quot;Manager&quot;)
+    AddNode(:@approved, &quot;Approved&quot;)
+    
+    AddEdge(:@request, :@manager, &quot;submit&quot;)
+    AddEdge(:@manager, :@approved, &quot;finalize&quot;)
+    
+    Show()
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>       ╭─────────╮       
+       │ Request │       
+       ╰─────────╯       
+            |            
+         submit          
+            |            
+            v            
+      ╭───────────╮      
+      │ !Manager! │      
+      ╰───────────╯      
+            |            
+        finalize         
+            |            
+            v            
+      ╭──────────╮       
+      │ Approved │       
+      ╰──────────╯  </pre>
+<p>Query with confidence:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oWorkflow.PathExists(:@request, :@approved)  #--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="alternative-routes-exploring-complexity">Alternative Routes: Exploring Complexity</h2>
+<p>Real systems rarely follow a single path. <code>stzGraph</code> exposes every possibility:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oProcess = new stzGraph(&quot;MultiPathProcess&quot;)
+oProcess {
+    AddNode(:@start, &quot;Start&quot;)
+    AddNode(:@fast, &quot;Fast Path&quot;)
+    AddNode(:@standard, &quot;Standard Path&quot;)
+    AddNode(:@end, &quot;Complete&quot;)
+    
+    AddEdge(:@start, :@fast, &quot;expedited&quot;)
+    AddEdge(:@start, :@standard, &quot;normal&quot;)
+    AddEdge(:@fast, :@end, &quot;finish&quot;)
+    AddEdge(:@standard, :@end, &quot;finish&quot;)
+    
+    Show()
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output (branches clearly demarcated):</p>
+<pre>        ╭───────╮        
+        │ Start │        
+        ╰───────╯        
+            |            
+        expedited        
+            |            
+            v            
+      ╭───────────╮      
+      │ Fast Path │      
+      ╰───────────╯      
+            |            
+         finish          
+            |            
+            v            
+      ╭──────────╮       
+      │ Complete │       
+      ╰──────────╯       
+
+          ////
+
+        ╭───────╮  ↑
+        │ Start │──╯
+        ╰───────╯        
+            |            
+         normal          
+            |            
+            v            
+    ╭───────────────╮    
+    │ Standard Path │    
+    ╰───────────────╯    
+            |            
+         finish          
+            |            
+            v            
+      ╭──────────╮       
+      │ Complete │       
+      ╰──────────╯       </pre>
+<p>Quantify the complexity:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>aPaths = oProcess.FindAllPaths(:@start, :@end)
+? len(aPaths)  #--&gt; 2</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="parallel-execution-unlocking-concurrency">Parallel Execution: Unlocking Concurrency</h2>
+<p>Identify branches that execute independently to optimize workflows:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oProcess.ParallelizableBranches()  #--&gt; [[:@fast, :@standard]]
+? oProcess.DependencyFreeNodes()    #--&gt; [:@start]</pre><p class="ran nv-illus">illustration</p></div>
+<p>This intelligence empowers architects to unlock parallelism—from concurrent task scheduling to modular microservice design.</p>
+<h2 id="cyclic-dependencies-visualizing-feedback-loops">Cyclic Dependencies: Visualizing Feedback Loops</h2>
+<p>Cycles aren't errors; they're feedback systems. <code>stzGraph</code> reveals their structure with clarity:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oCyclic = new stzGraph(&quot;CyclicStructure&quot;)
+oCyclic {
+    AddNode(:@p1, &quot;P1&quot;)
+    AddNode(:@p2, &quot;P2&quot;)
+    AddNode(:@p3, &quot;P3&quot;)
+    
+    AddEdge(:@p1, :@p2, &quot;&quot;)
+    AddEdge(:@p2, :@p3, &quot;&quot;)
+    AddEdge(:@p3, :@p1, &quot;&quot;)
+    
+    Show()
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output (cycle highlighted with precision):</p>
+<pre>         ╭────╮          
+         │ P1 │          
+         ╰────╯          
+            |            
+            v            
+         ╭────╮          
+         │ P2 │          
+         ╰────╯          
+            |            
+            v            
+         ╭────╮          
+         │ P3 │          
+         ╰────╯          
+            |            
+      &lt;CYCLE: &gt;   
+            |           ↑
+            ╰──&gt; [P1] ──╯</pre>
+<p>Programmatic detection:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oCyclic.CyclicDependencies()  #--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="structural-constraints-enforcing-integrity">Structural Constraints: Enforcing Integrity</h2>
+<p>Embed design rules directly into your model to prevent structural flaws:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oGraph = new stzGraph(&quot;DAGStructure&quot;)
+oGraph {
+    AddNode(:@a, &quot;A&quot;)
+    AddNode(:@b, &quot;B&quot;)
+    AddNode(:@c, &quot;C&quot;)
+    
+    AddConstraint(&quot;ACYCLIC&quot;)
+    AddConstraint(&quot;CONNECTED&quot;)
+    
+    AddCustomConstraint(&quot;NO_ORPHANS&quot;, func {
+        return len(This.DependencyFreeNodes()) = 1
+    })
+    
+    AddEdge(:@a, :@b, &quot;&quot;)
+    AddEdge(:@b, :@c, &quot;&quot;)
+}
+
+? oGraph.ValidateConstraints()  #--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<p>Built-in constraints like <code>ACYCLIC</code> and <code>CONNECTED</code>, combined with custom rules (e.g., <code>NO_ORPHANS</code>), enforce your design intentions early, catching violations before they propagate.</p>
+<h2 id="reachability-measuring-influence">Reachability: Measuring Influence</h2>
+<p>Identify nodes that disproportionately influence system behavior:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oHierarchy = new stzGraph(&quot;TypeSystem&quot;)
+oHierarchy {
+    AddNode(:@entity, &quot;Entity&quot;)
+    AddNode(:@person, &quot;Person&quot;)
+    AddNode(:@employee, &quot;Employee&quot;)
+    AddNode(:@manager, &quot;Manager&quot;)
+    
+    AddEdge(:@entity, :@person, &quot;is_a&quot;)
+    AddEdge(:@person, :@employee, &quot;is_a&quot;)
+    AddEdge(:@employee, :@manager, &quot;is_a&quot;)
+    
+    Show()
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>       ╭────────╮        
+       │ Entity │        
+       ╰────────╯        
+            |            
+          is_a           
+            |            
+            v            
+      ╭──────────╮       
+      │ !Person! │       
+      ╰──────────╯       
+            |            
+          is_a           
+            |            
+            v            
+     ╭────────────╮      
+     │ !Employee! │      
+     ╰────────────╯      
+            |            
+          is_a           
+            |            
+            v            
+       ╭─────────╮       
+       │ Manager │       
+       ╰─────────╯  </pre>
+<p>Extract insights:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oHierarchy.ReachableFrom(:@person)  #--&gt; [:@person, :@employee, :@manager]
+? oHierarchy.Explain()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>Graph: TypeSystem
+Nodes: 4 | Edges: 3
+Bottleneck nodes: @person, @employee
+No cycles - DAG
+Density: 25% | Longest path: 3 hops</pre>
+<h2 id="bottlenecks-locating-critical-convergence">Bottlenecks: Locating Critical Convergence</h2>
+<p>Spot nodes where multiple paths converge—often the weakest link in system resilience:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oGraph = new stzGraph(&quot;BottleneckTest&quot;)
+oGraph {
+    AddNode(:@a, &quot;A&quot;)
+    AddNode(:@b, &quot;B&quot;)
+    AddNode(:@c, &quot;C&quot;)
+    AddNode(:@hub, &quot;Hub&quot;)
+    
+    AddEdge(:@a, :@hub, &quot;&quot;)
+    AddEdge(:@b, :@hub, &quot;&quot;)
+    AddEdge(:@c, :@hub, &quot;&quot;)
+    
+    ShowWithLegend()
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>The <code>!Hub!</code> marker signals a critical convergence point. Query it:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oGraph.BottleneckNodes()  #--&gt; [:@hub]</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="impact-analysis-quantifying-risk-propagation">Impact Analysis: Quantifying Risk Propagation</h2>
+<p>Model how failures cascade through dependencies—essential for resilience planning:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oSystem = new stzGraph(&quot;SystemDependencies&quot;)
+oSystem {
+    AddNode(:@database, &quot;Database&quot;)
+    AddNode(:@api, &quot;API&quot;)
+    AddNode(:@worker1, &quot;Worker1&quot;)
+    AddNode(:@worker2, &quot;Worker2&quot;)
+    
+    AddEdge(:@database, :@api, &quot;&quot;)
+    AddEdge(:@api, :@worker1, &quot;&quot;)
+    AddEdge(:@api, :@worker2, &quot;&quot;)
+}
+
+? oSystem.ImpactOf(:@api)       #--&gt; 2
+? oSystem.FailureScope(:@api)   #--&gt; [:@worker1, :@worker2]
+? oSystem.MostCriticalNodes(2)  #--&gt; [:@api, :@database]</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="complexity-metrics-assessing-architectural-health">Complexity Metrics: Assessing Architectural Health</h2>
+<p>Quantify coupling and latency risk through system-wide metrics:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oGraph.NodeDensity()  #--&gt; % (0–100, tight vs. modular)
+? oGraph.LongestPath()  #--&gt; Edge count (latency indicator)</pre><p class="ran nv-illus">illustration</p></div>
+<p>High density reveals tight coupling; lengthy paths suggest latency bottlenecks. Use these signals to guide refactoring decisions.</p>
+<h2 id="direct-dependencies-granular-visibility">Direct Dependencies: Granular Visibility</h2>
+<p>While global queries reveal system-wide patterns, local inspection provides essential precision. <code>stzGraph</code> exposes immediate neighbors—both outgoing (what this node influences) and incoming (what depends on it)—without traversing the entire graph. This granular view is invaluable for microservice isolation, module boundary verification, or root-cause analysis during incidents.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oGraph = new stzGraph(&quot;Services&quot;)
+oGraph {
+    AddNode(:@api, &quot;API&quot;)
+    AddNode(:@auth, &quot;Auth&quot;)
+    AddNode(:@db, &quot;DB&quot;)
+    
+    AddEdge(:@api, :@auth, &quot;&quot;)
+    AddEdge(:@api, :@db, &quot;&quot;)
+}
+
+? oGraph.NeighborsOf(:@api)  #--&gt; [:@auth, :@db]
+? oGraph.IncomingTo(:@auth)  #--&gt; [:@api]</pre><p class="ran nv-illus">illustration</p></div>
+<p>These queries answer: "What does API directly touch?" and "What depends directly on Auth?"—questions that scale better than full reachability analysis for operational troubleshooting or design review.</p>
+<h2 id="rich-querying-domain-aware-discovery">Rich Querying: Domain-Aware Discovery</h2>
+<p>Annotate nodes with metadata, then query contextually for domain-specific insights:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oGraph = new stzGraph(&quot;Codebase&quot;)
+oGraph {
+    AddNodeXT(:@fn1, &quot;function1&quot;, [:type = &quot;function&quot;])
+    AddNodeXT(:@fn2, &quot;function2&quot;, [:type = &quot;function&quot;])
+    AddNodeXT(:@mod1, &quot;module1&quot;, [:type = &quot;module&quot;])
+    
+    AddEdge(:@fn1, :@fn2, &quot;calls&quot;)
+    AddEdge(:@fn2, :@mod1, &quot;imports&quot;)
+}
+
+? oGraph.Query([:nodeType = &quot;function&quot;])  #--&gt; [:@fn1, :@fn2]
+? oGraph.FindNodesWhere(func node {
+    return substr(node[&quot;label&quot;], &quot;function&quot;) &gt; 0
+})  #--&gt; [:@fn1, :@fn2]</pre><p class="ran nv-illus">illustration</p></div>
+<p>Metadata transforms your graph into a semantic model, enabling precise queries tailored to your domain.</p>
+<h2 id="inference-extensible-reasoning-engines">Inference: Extensible Reasoning Engines</h2>
+<p><code>stzGraph</code> moves beyond static relationship recording to become a dynamic reasoning engine. Built-in inference rules (<code>TRANSITIVITY</code>, <code>SYMMETRY</code>, <code>COMPOSITION</code>) handle common patterns, but the true power emerges through <strong>custom inference logic</strong>—where you encode domain-specific reasoning as executable rules.</p>
+<p>Consider organizational hierarchy: explicit edges capture direct reporting relationships, but organizational reality demands understanding chains of command. Rather than manually computing transitive closure, you register an inference rule once, and the graph continuously applies it to new data. This transforms static models into <strong>self-evolving systems</strong>.</p>
+<p>Anonymous functions (deferred code blocks) enable this paradigm—you pass logic to the graph system, which executes it when needed, not when defined. The rule operates on current graph state and injects derived knowledge back, creating a feedback loop of insight.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oGraph = new stzGraph(&quot;Organization&quot;)
+oGraph {
+    AddNode(:@alice, &quot;Alice&quot;)
+    AddNode(:@bob, &quot;Bob&quot;)
+    AddNode(:@carol, &quot;Carol&quot;)
+    AddNode(:@david, &quot;David&quot;)
+    
+    AddEdge(:@alice, :@bob, &quot;manages&quot;)
+    AddEdge(:@bob, :@carol, &quot;manages&quot;)
+    AddEdge(:@carol, :@david, &quot;manages&quot;)
+    
+    RegisterInferenceRule(&quot;CHAIN_OF_COMMAND&quot;, func oGraph {
+        nInferred = 0
+        acEdges = oGraph.AllEdges()
+        acNewEdges = []
+        
+        # Nested loop: for each pair of edges, check if one&#x27;s &quot;to&quot; matches the other&#x27;s &quot;from&quot;
+        nLen = len(acEdges)
+        for i = 1 to nLen
+            aEdge1 = acEdges[i]
+            cMidpoint = aEdge1[&quot;to&quot;]  # End point of first edge
+            
+            for j = 1 to nLen
+                aEdge2 = acEdges[j]
+                # Found a transitive pair: A -&gt; B -&gt; C means A can reach C
+                if aEdge2[&quot;from&quot;] = cMidpoint
+                    cFrom = aEdge1[&quot;from&quot;]
+                    cTo = aEdge2[&quot;to&quot;]
+                    
+                    # Avoid duplicates: only add if edge doesn&#x27;t already exist
+                    if NOT oGraph.EdgeExists(cFrom, cTo)
+                        if find(acNewEdges, [cFrom, cTo]) = 0
+                            acNewEdges + [cFrom, cTo]
+                            nInferred += 1
+                        ok
+                    ok
+                ok
+            end
+        end
+        
+        # Add all inferred edges to the graph
+        nNewLen = len(acNewEdges)
+        for i = 1 to nNewLen
+            aNewEdge = acNewEdges[i]
+            oGraph.AddEdge(aNewEdge[1], aNewEdge[2], &quot;(chain-inferred)&quot;)
+        end
+        
+        return nInferred
+    })
+    
+    ? ApplyCustomInference(&quot;CHAIN_OF_COMMAND&quot;)  #--&gt; 3 new relationships inferred
+    ? EdgeExists(:@alice, :@carol)             #--&gt; TRUE (now discoverable)
+    ? CustomInferenceRules()                   #--&gt; [&quot;CHAIN_OF_COMMAND&quot;]
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>The rule automatically surfaces hidden authority—Alice now provably manages Carol and David, even though no explicit edge existed. <strong>Three inferred edges emerge from two inputs</strong>: the graph becomes a reasoning substrate, not a passive map. Extend with domain logic; let the system derive consequences. This pattern scales to regulatory compliance (transitive obligation chains), supply chains (implicit dependencies), and codebase analysis (inferred coupling through composition).</p>
+<h2 id="temporal-evolution-versioning-change">Temporal Evolution: Versioning Change</h2>
+<p>Capture graph states at key moments for auditing, comparison, or rollback:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oGraph = new stzGraph(&quot;DatabaseSchema&quot;)
+oGraph {
+    AddNode(:@users, &quot;users&quot;)
+    AddNode(:@orders, &quot;orders&quot;)
+    AddEdge(:@users, :@orders, &quot;has_many&quot;)
+    
+    Snapshot(&quot;v1.0&quot;)
+    
+    AddNode(:@payments, &quot;payments&quot;)
+    AddEdge(:@orders, :@payments, &quot;has_many&quot;)
+    
+    ? Snapshots()  #--&gt; [&quot;v1.0&quot;]
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>Snapshots enable safe exploration—revisit or compare states as your system evolves.</p>
+<h2 id="export-and-interoperability-building-resilient-systems-through-extensibility">Export and Interoperability: Building Resilient Systems Through Extensibility</h2>
+<p>Static formats suffocate complex systems. <code>stzGraph</code> solves this through <strong>pluggable exporters</strong>—a mechanism to serialize your graph into any format, on-demand, for any ecosystem. Standard formats (DOT, JSON, YAML) handle common needs, but the extensibility model empowers you to encode domain-specific knowledge into serialization itself.</p>
+<p>Imagine integrating with visualization tools, compliance audits, or CI/CD pipelines—each demands different representations of the same underlying graph. Rather than maintaining parallel models or writing ad-hoc conversion scripts, you register exporters once, then invoke them dynamically. The graph becomes a <strong>unified source of truth</strong> that speaks every language.</p>
+<p>Anonymous functions make this elegant: pass transformation logic to the graph system, which applies it to current state and returns the result. New tools, new formats, new requirements—extend without touching core logic.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oGraph.RegisterExporter(&quot;MERMAID&quot;, func {
+    acNodes = oGraph.AllNodes()
+    acEdges = oGraph.AllEdges()
+    cMermaid = &quot;graph LR;&quot; + nl
+    
+    # Build node definitions
+    for i = 1 to len(acNodes)
+        aNode = acNodes[i]
+        cMermaid += &quot;  &quot; + aNode[&quot;id&quot;] + &quot;[&quot; + aNode[&quot;label&quot;] + &quot;]&quot; + nl
+    end
+    
+    # Build edge connections
+    for i = 1 to len(acEdges)
+        aEdge = acEdges[i]
+        cMermaid += &quot;  &quot; + aEdge[&quot;from&quot;] + &quot; --&gt; &quot; + aEdge[&quot;to&quot;] + nl
+    end
+    
+    return cMermaid
+})
+
+? oGraph.ExportUsing(&quot;MERMAID&quot;)
+#--&gt; 
+# graph LR;
+#   input[Input]
+#   process[Process]
+#   output[Output]
+#   input --&gt; process
+#   process --&gt; output</pre><p class="ran nv-illus">illustration</p></div>
+<p>Register an exporter in the morning, paste output into <a href="https://mermaid.live" target="_blank" rel="noopener noreferrer">Mermaid Live Editor<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> by afternoon, deploy interactive documentation by evening—no backend changes, no format wrestling. A single <code>stzGraph</code> instance now powers visualization, documentation, auditing, and system validation across teams. This is <strong>extensibility as resilience</strong>: when requirements shift, your foundation adapts, not fractures.</p>
+<h2 id="visualization-ascii-as-strategic-clarity">Visualization: ASCII as Strategic Clarity</h2>
+<p>You've encountered rich graphs throughout this document. Here's why we <strong>chose ASCII over sophisticated rendering</strong>: pragmatism over eye candy.</p>
+<p>Sophisticated diagrams seduce—but they seduce <em>after</em> the work is done. In the moment of design and discovery, you need <strong>thinking speed</strong>, not presentation polish. ASCII visualization enforces abstraction: no colors to distract, no fonts to fuss over, no layout engines to configure. You see structure naked—nodes, edges, patterns—without the cognitive load of graphic rendering.</p>
+<p>More importantly, ASCII visualization is <strong>instant and embedded</strong>. Your terminal. Your REPL. Your notebook. No external tools, no context-switching, no waiting for GraphQL rendering (stzDiagram provides that power for publication; we chose ASCII for <em>thinking</em>). This proximity collapses the design cycle: modify your graph, hit Enter, see consequence immediately. Rapid prototyping becomes a natural rhythm.</p>
+<p><strong>Layout Modes</strong> serve specific analytical lenses:</p>
+<ul>
+<li>
+<p><strong>Vertical (<code>Show()</code> / <code>ShowV()</code>)</strong> — Hierarchical flows cascade top-to-bottom, mirroring causal reasoning. Workflows, dependency chains, inheritance hierarchies—sequence-driven thinking.</p>
+</li>
+<li>
+<p><strong>Horizontal (<code>ShowH()</code> / <code>ShowHorizontal()</code>)</strong> — Parallel branches spread left-to-right. Compare alternatives, reveal concurrent paths, spot symmetric structures at a glance.</p>
+</li>
+<li>
+<p><strong>Annotated (<code>ShowWithLegend()</code>)</strong> — Semantic markers overlay structural analysis: <code>!bottleneck!</code> flags convergence zones, <code>~cycle~</code> highlights feedback, <code>////</code> partitions branches. What queries would surface, visualization makes immediate.</p>
+</li>
+</ul>
+<p><strong>Markers encode system properties</strong>:
+- <code>!label!</code> — bottleneck (multiple paths converge)
+- <code>~label~</code> — cycle participant
+- <code>!~label~!</code> — cyclic bottleneck (compound risk)
+- <code>&lt;CYCLE: label&gt;</code> — feedback loop marker
+- <code>[Node]</code> — cycle member
+- <code>////</code> — branch boundary</p>
+<p>ASCII transforms <code>stzGraph</code> from a data structure into a <strong>thinking partner</strong>—tactile, responsive, uncluttered. When clarity matters more than pixels, constraints become features.</p>
+<h2 id="foundation-for-domain-specific-reasoning">Foundation for Domain-Specific Reasoning</h2>
+<p><code>stzGraph</code> serves as the <strong>architectural foundation</strong> for specialized abstractions built atop graph semantics:</p>
+<ul>
+<li><strong>stzWorkflow</strong> — task dependencies and orchestration</li>
+<li><strong>stzDecisionTree</strong> — branching logic and outcomes</li>
+<li><strong>stzSemanticModel</strong> — concept relationships and meaning</li>
+<li><strong>stzDataModel</strong> — schema cardinality and constraints</li>
+<li><strong>stzCodeModel</strong> — module and function dependencies</li>
+<li><strong>stzNaturalLanguage</strong> — semantic role networks</li>
+</ul>
+<p>Each inherits <code>stzGraph</code>'s analytical power while introducing domain-specific vocabulary. <strong>Graph structure is universal; semantics are domain-specific.</strong></p>
+<h2 id="softanza-advantage">Softanza Advantage</h2>
+<p><code>stzGraph</code> elevates relationships from implementation details to first-class language constructs—concise, visual, and analytically rich. It's a developer-first tool for systems reasoning without the overhead of heavy frameworks or proprietary lock-in.</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>stzGraph</th>
+<th>NetworkX</th>
+<th>Neo4j</th>
+<th>GraphQL</th>
+<th>Wolfram Language Graphs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Structure Validation</strong></td>
+<td>✅ <code>.Explain()</code> facts: cycles, bottlenecks</td>
+<td>◯ Manual analysis</td>
+<td>◯ Query-based</td>
+<td>◯ Schema only</td>
+<td>✅ Built-in (e.g., <code>IsAcyclicGraphQ</code>)</td>
+</tr>
+<tr>
+<td><strong>Custom Constraints</strong></td>
+<td>✅ Built-in + user-defined rules</td>
+<td>✗ None</td>
+<td>◯ Query validation</td>
+<td>🟠 Schema-based</td>
+<td>◯ Compute conditions</td>
+</tr>
+<tr>
+<td><strong>Inference Rules</strong></td>
+<td>✅ Extensible (transitivity, composition, custom)</td>
+<td>◯ Manual computation</td>
+<td>🟠 Query-based only</td>
+<td>✗ None</td>
+<td>✅ Symbolic derivation</td>
+</tr>
+<tr>
+<td><strong>Development Speed</strong></td>
+<td>✅ Instant—no dependencies</td>
+<td>◯ <code>pip install</code> + setup</td>
+<td>🟠 Server required</td>
+<td>🟠 Endpoint + schema</td>
+<td>🟠 Proprietary install + learning curve</td>
+</tr>
+<tr>
+<td><strong>Language Integration</strong></td>
+<td>✅ Native Haro fluency</td>
+<td>◯ Python idiomatic</td>
+<td>🟠 Java/Cypher</td>
+<td>🟠 JSON/REST layer</td>
+<td>✅ Wolfram-native, symbolic</td>
+</tr>
+<tr>
+<td><strong>Visualization</strong></td>
+<td>✅ ASCII instant (stzDiagram: Graphviz layouts)</td>
+<td>🟠 Matplotlib</td>
+<td>◯ Web UI</td>
+<td>✗ Results only</td>
+<td>✅ Rich (e.g., <code>GraphPlot</code>, interactive)</td>
+</tr>
+<tr>
+<td><strong>Introspection</strong></td>
+<td>✅ Programmatic data arrays</td>
+<td>◯ Manual traversal</td>
+<td>🟠 Query results</td>
+<td>◯ Schema tools</td>
+<td>✅ Deep symbolic queries</td>
+</tr>
+<tr>
+<td><strong>Temporal Tracking</strong></td>
+<td>✅ Snapshots + change history</td>
+<td>◯ Attribute-based</td>
+<td>🟠 Transaction logs</td>
+<td>✗ None</td>
+<td>◯ Versioning via notebooks</td>
+</tr>
+<tr>
+<td><strong>Custom Exporters</strong></td>
+<td>✅ Pluggable format serialization</td>
+<td>◯ Format-specific</td>
+<td>🟠 Cypher only</td>
+<td>✗ Schema-bound</td>
+<td>◯ Export to images/formats</td>
+</tr>
+<tr>
+<td><strong>Reusability</strong></td>
+<td>✅ One codebase across domains</td>
+<td>◯ Research focus</td>
+<td>◯ Graph DB specific</td>
+<td>🟠 API-specific</td>
+<td>◯ Computation-heavy apps</td>
+</tr>
+<tr>
+<td><strong>Best For</strong></td>
+<td>✅ Validate and extend systems</td>
+<td>✅ Algorithm research</td>
+<td>✅ Persistent queries</td>
+<td>◯ Data APIs</td>
+<td>✅ Scientific/computational modeling</td>
+</tr>
+</tbody>
+</table>
+<p>While Wolfram Language excels at symbolic computation and scientific visualization, <code>stzGraph</code> wins through instant accessibility, domain agnosticism, and a deep commitment to systems validation—ideal for developers facing real-world complexity.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Every developer encounters that moment when systems feel alive—dependencies interweave, logic branches unexpectedly, and outcomes hinge on invisible connections. Graphs are the cartography for that terrain.</p>
+<p><code>stzGraph</code> renders invisible relationships into visible order, empowering you to <strong>think in flows</strong>, <strong>reason through dependencies</strong>, and <strong>master cycles</strong>. Its arsenal—from custom inference and constraint validation to snapshots and extensible exporters—transforms it from a visualization tool into a <strong>reasoning engine</strong>.</p>
+<p>From the first node through the final export, <code>stzGraph</code> invites you to <strong>think like a graph</strong>, unlocking clarity and command in any domain.</p>
+<h2>Related reading</h2><ul><li><a href="stzgraphplannerdoc.html">Intelligence in Motion: Graph Planning in Softanza</a></li><li><a href="stzgraph-modeling-knowledge-with-nodes-and-connections.html">stzGraph — Modeling Knowledge Through Structure</a></li><li><a href="stzorgchartdoc.html">Introducing stzOrgChart - The Strategic Organizational Intelligence Platform</a></li><li><a href="stzgraph-computational-foundation.html">stzGraph: Computational Foundation and Design</a></li></ul><h2>Cite</h2><p class="mono cite">Mansour Ayouni. "stzGraph: The Art of Connected Thinking". Softanza narrations, 2025. https://mayouni.github.io/stzsite/en/narrations/stzgraphdoc.html</p><p class="proof">Not run: its code touches files, the network, the clock or chance. The article is published as written; its blocks are illustrations. The code of the articles is Haro code. Where an article was written before the language took its present name, the name was changed and nothing else. Genre, area and series read from the file's name, the year from its first commit: derived, until the article carries its own header. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzGraphDoc.md" target="_blank" rel="noopener noreferrer">The file on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Platform</h3><ul><li><a href="../platform.html">Platform</a></li><li><a href="../platforms.html">Platform of platforms</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">The craft</a></li><li><a href="../areas.html">The areas</a></li><li><a href="../code.html">The code</a></li><li><a href="../compare.html">Compared</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Performance series</a></li><li><a href="../narrations-security.html">Security series</a></li><li><a href="../narrations-delivery.html">Delivery series</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">The north star</a></li><li><a href="../principles.html">Twelve principles</a></li><li><a href="../estate.html">The estate</a></li><li><a href="../history.html">From first principles</a></li><li><a href="../forged.html">Forged in projects</a></li><li><a href="../sovereignty.html">Sovereignty</a></li><li><a href="../africa.html">Born in Africa</a></li></ul></div><div><h3>Agentic</h3><ul><li><a href="../agentic.html">Agentic</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Language of languages</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Refinement</a></li><li><a href="../agents.html">For agents</a></li><li><a href="../coding-agents.html">Coding agents</a></li><li><a href="../security.html">Security</a></li></ul></div><div><h3>Learn</h3><ul><li><a href="../learn.html">Learn</a></li><li><a href="../book.html">The book</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">How-to</a></li><li><a href="../reference.html">Reference</a></li><li><a href="../ask.html">Ask the library</a></li><li><a href="../education.html">Education</a></li></ul></div><div><h3>Offering</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Editions</a></li><li><a href="../customers.html">Customers</a></li></ul></div><div><h3>Start</h3><ul><li><a href="../start.html">Start</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">The repository on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></li><li><a href="../tour.html">Presentation mode</a></li><li><a href="../../deck-check.html">Check offline</a></li><li><a href="../../index.html?lang=fr" lang="fr">Français</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">The Software Makers Platform of the AI Age. Born in Africa. Useful to the World!</p><div class="themes" role="group" aria-label="Display"><button type="button" data-set-theme="light">Use the light theme</button><button type="button" data-set-theme="dark">Use the dark theme</button><button type="button" data-set-theme="auto">Follow the system</button></div></div>
+    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

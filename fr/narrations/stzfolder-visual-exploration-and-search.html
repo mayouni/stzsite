@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Softanza&#x27;s stzFolder: A Journey Through Intelligent Directory Navigation · Narrations · Softanza</title>
+<meta name="description" content="This article examines the stzFolder class from the Softanza library for Haro, demonstrating its directory navigation capabilities through practical examples.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzfolder-visual-exploration-and-search.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzfolder-visual-exploration-and-search.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">Softanza&#x27;s stzFolder: A Journey Through Intelligent Directory Navigation</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stzfile-api-narration.html">Beyond File Modes: The Softanza Intent-Based Paradigm</a></li><li><a href="stzfolder-visual-exploration-and-search.html" aria-current=page>Softanza&#x27;s stzFolder: A Journey Through Intelligent Directory Navigation</a></li><li><a href="stzfolder-intelligent-navigation.html">Intelligent Folder Navigation in Softanza</a></li><li><a href="stz-xml-the-parser-that-says-no.html">The Parser That Says No</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>Softanza&#x27;s stzFolder: A Journey Through Intelligent Directory Navigation</h1>
+    <p class="lede">This article examines the <code>stzFolder</code> class from the Softanza library for Haro, demonstrating its directory navigation capabilities through practical examples. We'll explore the class's visual representation features, expansion controls, statistical displays, and state management. The analysis includes a comparison with other directory handling frameworks to highlight distinctive approaches.</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2025-07-30 · essai de fonction · domaine <a href="../atlas/files.html">Fichiers et formats</a></p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+
+<h2 id="introduction">Introduction</h2>
+<p>The examples follow a sequential workflow, showing how the class handles basic display, customization, selective expansion, and comprehensive tree exploration.</p>
+<h2 id="starting-simple-visual-tree-structure">Starting Simple: Visual Tree Structure</h2>
+<p>We begin by creating a folder object and immediately see Softanza's visual philosophy in action:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzFolder(&quot;c:/testarea&quot;)
+? o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>🗀 testarea
+├─ 🗋 test.txt
+├─🗀 docs
+├─🖿 images
+├─🗀 music
+├─🖿 tempo
+╰─🗀 videos</pre>
+<p>The output uses Unicode symbols to indicate file types and folder states: <code>🗋</code> for files, <code>🗀</code> for empty folders, and <code>🖿</code> for folders containing items.</p>
+<h2 id="enhanced-mode-statistics-that-matter">Enhanced Mode: Statistics That Matter</h2>
+<p>The <code>ShowXT()</code> method reveals another layer of thoughtful design:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? o1.ShowXT()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>📁 testarea (6)
+├─ 🗋 test.txt
+├─🗀 Docs
+├─🖿 images (4)
+├─🗀 music
+├─🖿 tempo (2)
+╰─🗀 videos</pre>
+<p>The XT mode switches to a folder icon (📁) and adds numerical counts showing elements at each level. The root contains 6 elements total, while subfolders like images (4) and tempo (2) display their own counts. The statistics follow a default pattern, but Softanza's flexibility allows complete customization.</p>
+<h2 id="customization-your-statistics-your-way">Customization: Your Statistics, Your Way</h2>
+<p>Checking the current display pattern:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? o1.DisplayStat() + NL
+#--&gt; &quot;@count&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>Now let's make it more descriptive:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.SetDisplayStat(&#x27;@CountFiles files, @CountFolders folders&#x27;)
+? o1.ShowXT()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>📁 testarea (1 files, 5 folders)   # Your stats displayed here
+├─ 🗋 test.txt
+├─🗀 docs
+├─🖿 images (2 files, 2 folders)   # And here
+├─🗀 music
+├─🖿 tempo (2 files)               # And here
+╰─🗀 videos</pre>
+<p>The custom statistics now appear throughout the tree, providing context at each level. This customization allows the same tool to serve different analysis requirements.</p>
+<h2 id="granular-insights-deep-vs-surface-counts">Granular Insights: Deep vs. Surface Counts</h2>
+<p>For comprehensive analysis, we can distinguish between immediate and recursive counts:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.SetDisplayStat(&#x27;
+	@CountFiles:@DeepCountFiles files,
+	@CountFolders:@DeepCountFolders folders
+&#x27;)
+? o1.ShowXT()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>📁 testarea (1:7 files, 5:7 folders)
+├─ 🗋 test.txt
+├─🗀 docs
+├─🖿 images (2:4 files, 2:2 folders)
+├─🗀 music
+├─🖿 tempo (2:2 files)
+╰─🗀 videos</pre>
+<p>The notation reveals the distinction between immediate and deep counts. The main folder contains 7 files across all levels, with only 1 at the root. Similarly, it has 7 subfolders total, with 5 at the root level.</p>
+<h2 id="surgical-exploration-targeted-expansion">Surgical Exploration: Targeted Expansion</h2>
+<p>Rather than overwhelming with full tree dumps, Softanza provides surgical precision:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.ExpandFolder(&quot;/images/&quot;)
+? o1.ShowXT()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>📁 testarea (1:7 files, 5:7 folders)
+├─ 🗋 test.txt
+├─🗀 docs
+├─🗁 images (2:4 files, 2:2 folders)   # Only this folder expanded
+│ ├─ 🗋 image1.png
+│ ├─ 🗋 image2.png
+│ ├─🗀 more
+│ ╰─🖿 notes (2:2 files)               # It&#x27;s subfolder are kept collapsed
+├─🗀 music
+├─🖿 tempo (2:2 files)
+╰─🗀 videos</pre>
+<p>The expanded folder changes its icon to 🗁, indicating its current state. Only the images folder opens while others remain collapsed, and subfolders maintain their distinct visual indicators.</p>
+<h2 id="multi-target-expansion-efficiency-in-action">Multi-Target Expansion: Efficiency in Action</h2>
+<p>Expanding multiple folders simultaneously demonstrates the API's practical design:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.ExpandFolders([ &quot;images&quot;, &quot;tempo&quot; ])
+? o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>🗀 testarea
+├─ 🗋 test.txt
+├─🗀 docs
+├─🗁 images         # Expanded
+│ ├─ 🗋 image1.png
+│ ├─ 🗋 image2.png
+│ ├─🗀 more
+│ ╰─🖿 notes
+├─🗀 music
+├─🗁 tempo          # Also expanded
+│ ├─ 🗋 temp1.txt
+│ ╰─ 🗋 temp2.txt
+╰─🗀 videos</pre>
+<h2 id="stateful-intelligence-persistent-exploration">Stateful Intelligence: Persistent Exploration</h2>
+<p>A crucial aspect of developer experience—the library remembers your exploration state:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? o1.Show()
+#--&gt; Same output as the previous one</pre><p class="ran nv-illus">illustration</p></div>
+<p>This stateful behavior preserves the exploration context across operations, eliminating the need to reconfigure display settings.</p>
+<h2 id="nested-exploration-deep-directory-diving">Nested Exploration: Deep Directory Diving</h2>
+<p>For complex hierarchies, we can expand nested paths precisely:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.Collapse()
+o1.ExpandFolders([ &quot;/images/&quot;, &quot;/images/notes/&quot; ])
+? o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>🗀 testarea
+├─ 🗋 test.txt
+├─🗀 docs
+├─🗁 images         # Expanded
+│ ├─ 🗋 image1.png
+│ ├─ 🗋 image2.png
+│ ├─🗀 more
+│ ╰─🗁 notes        # Also expanded
+│   ├─ 🗋 howto.txt
+│   ╰─ 🗋 sources.txt
+├─🗀 music
+├─🖿 tempo
+╰─🗀 videos</pre>
+<h2 id="deep-expansion-branch-level-exploration">Deep Expansion: Branch-Level Exploration</h2>
+<p>When you need to see everything within a specific branch:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.Collapse()
+o1.DeepExpandFolder(&quot;Images&quot;)
+? o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>🗀 testarea
+├─ 🗋 test.txt
+├─🗀 Docs
+├─🗁 Images            # Folder expanded
+│ ├─ 🗋 image1.png
+│ ├─ 🗋 image2.png
+│ ├─🗁 more            # As well as this (empty) subfolder
+│ ╰─🗁 notes           # Idem
+│   ├─ 🗋 howto.txt
+│   ╰─ 🗋 sources.txt
+├─🗀 Music
+├─🗀 Videos
+╰─🖿 tempo</pre>
+<h2 id="complete-revelation-full-tree-expansion">Complete Revelation: Full Tree Expansion</h2>
+<p>For comprehensive analysis, expand everything at once:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.DeepExpandAll()
+? o1.ShowXT()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>📁 testarea (1:7 files, 5:7 folders)
+├─ 🗋 test.txt
+├─🗁 docs
+├─🗁 images (2:4 files, 2:2 folders)
+│ ├─ 🗋 image1.png
+│ ├─ 🗋 image2.png
+│ ├─🗁 more
+│ ╰─🗁 notes (2:2 files)
+│   ├─ 🗋 howto.txt
+│   ╰─ 🗋 sources.txt
+├─🗁 music
+├─🗁 tempo (2:2 files)
+│ ├─ 🗋 temp1.txt
+│ ╰─ 🗋 temp2.txt
+╰─🗁 videos</pre>
+<h2 id="visual-search-finding-files-with-context">Visual Search: Finding Files with Context</h2>
+<p>Softanza extends beyond navigation to include visual search capabilities:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? o1.VizSearch(&quot;*.txt&quot;)</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>🗀 testarea (🎯 1 matches for &#x27;*.txt&#x27;) # We&#x27;ve got 1 file at the root
+├─ 🗋👉 test.txt
+├─🗀 docs
+├─📂 images  # May contain matches search covers only the root!
+├─🗀 music
+├─📂 tempo   # Idem, see next section for searching deep in the tree...
+╰─🗀 videos</pre>
+<p>The search results maintain the tree structure while highlighting matches with the pointing finger icon (👉) and adding a target emoji (🎯) in the statistics.</p>
+<h2 id="deep-search-comprehensive-file-discovery">Deep Search: Comprehensive File Discovery</h2>
+<p>For searches across the entire directory hierarchy we add <code>Deep</code> to the search method:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? o1.VizDeepSearch(&quot;*.txt&quot;)</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>🗀 testarea (🎯5 matches for &#x27;*.txt&#x27;)
+├─ 🗋👉 test.txt	
+├─🗀 docs
+├─📂 images (2)
+│ ├─ 🗋 image1.png
+│ ├─ 🗋 image2.png
+│ ├─🗀 more
+│ ╰─📂 notes (2)
+│   ├─ 🗋👉 howto.txt
+│   ╰─ 🗋👉 sources.txt
+├─🗀 music
+├─📂 tempo (2)
+│ ├─ 🗋👉 temp1.txt
+│ ╰─ 🗋👉 temp2.txt
+╰─🗀 videos</pre>
+<p>The deep search reveals all matching files throughout the hierarchy, automatically expanding necessary folders and highlighting each match. The statistics update to show the total count across all levels.</p>
+<blockquote>
+<p><strong>Note:</strong> All <code>VizSearch</code> methods also work without the <code>Viz</code> prefix, in which case they return a simple list of paths. This behavior will be covered in a separate article.</p>
+</blockquote>
+<h2 id="clean-reset-back-to-beginning">Clean Reset: Back to Beginning</h2>
+<p>When exploration is complete, easily return to the initial state:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.CollapseAll()
+? o1.ShowXT()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>📁 testarea (1:7 files, 5:7 folders)
+├─ 🗋 test.txt
+├─🗀 docs
+├─🖿 images (2:4 files, 2:2 folders)
+├─🗀 music
+├─🖿 tempo (2:2 files)
+╰─🗀 videos</pre>
+<h2 id="the-softanza-advantage">The Softanza Advantage</h2>
+<p>Softanza's approach to directory navigation stands apart from conventional file system tools:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Softanza stzFolder</th>
+<th>Node.js fs</th>
+<th>Python pathlib</th>
+<th>Java Files API</th>
+<th>.NET DirectoryInfo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Visual Feedback</strong></td>
+<td>Unicode icons (🗀🖿🗁)</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+<td>None</td>
+</tr>
+<tr>
+<td><strong>Stateful Exploration</strong></td>
+<td>Maintains expansion state</td>
+<td>Stateless</td>
+<td>Stateless</td>
+<td>Stateless</td>
+<td>Stateless</td>
+</tr>
+<tr>
+<td><strong>Customizable Statistics</strong></td>
+<td>Flexible patterns (@CountFiles:@DeepCountFiles)</td>
+<td>Manual calculation</td>
+<td>Manual calculation</td>
+<td>Manual calculation</td>
+<td>Basic properties</td>
+</tr>
+<tr>
+<td><strong>Selective Expansion</strong></td>
+<td>Single/multiple/recursive control</td>
+<td>Manual traversal</td>
+<td>Manual traversal</td>
+<td>Manual traversal</td>
+<td>Manual traversal</td>
+</tr>
+<tr>
+<td><strong>Dual Count Display</strong></td>
+<td>Surface:total notation (1:7 files)</td>
+<td>Single level only</td>
+<td>Single level only</td>
+<td>Single level only</td>
+<td>Single level only</td>
+</tr>
+<tr>
+<td><strong>Method Naming</strong></td>
+<td>Intuitive (Show(), ShowXT())</td>
+<td>Verbose (readdir, readdirSync)</td>
+<td>Mixed (iterdir, glob)</td>
+<td>Verbose (list, walk)</td>
+<td>Mixed (GetFiles, GetDirectories)</td>
+</tr>
+<tr>
+<td><strong>Case Handling</strong></td>
+<td>Automatic normalization</td>
+<td>OS-dependent</td>
+<td>OS-dependent</td>
+<td>OS-dependent</td>
+<td>OS-dependent</td>
+</tr>
+<tr>
+<td><strong>Tree Visualization</strong></td>
+<td>Built-in formatted output</td>
+<td>Manual formatting</td>
+<td>Manual formatting</td>
+<td>Manual formatting</td>
+<td>Manual formatting</td>
+</tr>
+<tr>
+<td><strong>Visual Search</strong></td>
+<td>Integrated search with highlighting (👉)</td>
+<td>Separate search utilities</td>
+<td>Separate search utilities</td>
+<td>Separate search utilities</td>
+<td>Separate search utilities</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note</strong>: The <code>stzFolder</code> class also provides comprehensive file and folder management operations including add, append, delete, move, copy, and content search functionality, which will be covered in a separate article.</p>
+</blockquote>
+<h2 id="summary">Summary</h2>
+<p>This examination of <code>stzFolder</code> demonstrates its approach to directory navigation through visual representation, flexible statistics, selective expansion controls, and persistent state management. The class provides built-in tree visualization with customizable display patterns, distinguishing it from standard file system APIs that require manual formatting and traversal logic.</p>
+<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « Softanza&#x27;s stzFolder: A Journey Through Intelligent Directory Navigation ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stzfolder-visual-exploration-and-search.html</p><p class="proof">Non exécuté : son code touche aux fichiers, au réseau, à l'horloge ou au hasard. L'article est publié tel qu'il est écrit ; ses blocs sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzfolder-visual-exploration-and-search.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

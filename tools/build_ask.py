@@ -15,10 +15,11 @@ It also writes what an agent reading this site wants instead of pages:
 import json, re, html
 from build_howto import intent as howto_intent, page_name as howto_page, published as howto_published, KINDS, fold_methods
 import qforms, build_proof, rowex
+from haro import SHOWN
 
 def esc(s): return html.escape(str(s), quote=True)
 RING = re.compile(r"\b(?:Ring|RING)\b")
-WORD = re.compile(r"(?<![\w./-])ring(?![\w.])", re.I)
+WORD = SHOWN   # the former name in code shown as the library wrote it (tools/haro.py)
 def prose(s): return RING.sub(lambda m: "HARO" if m.group(0).isupper() else "Haro", str(s)).replace("Ring++", "Haro")
 SITE = "https://mayouni.github.io/stzsite/"
 GH = "https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/"
@@ -157,7 +158,9 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
         recipes.append({"intent": r["intent"], "kind": r["category"], "page": f'{SITE}en/howto/{howto_page(r)}.html',
                         "code": r["blocks"], "output": [p["out"] for p in r["parts"]], "methods": fold_methods(Q, r["methods"]),
                         "words": r["tags"], "ran": r["ran"]})
-    narrations = [{"title": prose(x["title"]).replace("`", ""), "page": f"{SITE}en/narrations/{nslug(f)}.html", "ran": x["ran"]}
+    narrations = [{"title": prose(x["title"]).replace("`", ""), "page": f"{SITE}en/narrations/{nslug(f)}.html",
+                   **({"ran": x["ran"], "kept": sum(1 for b in x["blocks"] if b["verdict"] == "kept"), "blocks": len(x["blocks"])}
+                      if x.get("ran") and x.get("blocks") else {"run": x.get("reason") or x.get("status") or "not run"})}
                   for f, x in sorted(narr.items()) if publishable(x)]
     proof = build_proof.load(ROOT)
     book = [{"chapter": c["n"], "title": c["title"].get("en", c["id"]), "page": f'{SITE}en/book/{c["id"]}.html', "cells": len(c["cells"]),

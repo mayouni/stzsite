@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>R() in Haro: Statistical Power, One Call Away · Narrations · Softanza</title>
+<meta name="description" content="Softanza makes it easy to integrate R, a powerful language for statistics and visualization, into Ring. The R() function allows you to run R scripts directly within Haro, bringing R’s analytical capabilities into your workflow without switching environments.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stz-integrating-r-scripts-inside-ring.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stz-integrating-r-scripts-inside-ring.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">R() in Haro: Statistical Power, One Call Away</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stz-pycode-bridging-ring-and-python-narration.html">Expanding Haro’s Horizons: Unlocking New Possibilities with Python</a></li><li><a href="stz-integrating-r-scripts-inside-ring.html" aria-current=page>R() in Haro: Statistical Power, One Call Away</a></li><li><a href="stzexcis-polyglot-programming-in-ring.html">Softanza EXCIS: Orchestrating a Polyglot Symphony</a></li><li><a href="stzpolycode-refinement-centered-programming.html">Refinement-Centered Programming with stzPolyCode</a></li><li><a href="stzexterlib-domain-driven-polyglot-programming.html">Softanza ExterLib: A Foundation for Domain-Driven Polyglot Programming</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>R() in Haro: Statistical Power, One Call Away</h1>
+    <p class="lede">Here’s how you can use <code>R()</code> in Softanza to execute R scripts, retrieve structured results, and work seamlessly between the two languages.</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2025-02-24 · essai de fonction · domaine <a href="../atlas/extensibility.html">Extensibilité et code étranger</a></p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+<figure><img src="../../assets/img/narrations/stz-r-plot.webp" alt="DataViz Generated by R Inside Haro" loading="lazy"><figcaption>DataViz Generated by R Inside Haro</figcaption></figure>
+<p>Softanza makes it easy to integrate R, a powerful language for statistics and visualization, into Haro. The <code>R()</code> function allows you to run R scripts directly within Haro, bringing R’s analytical capabilities into your workflow without switching environments.</p>
+<blockquote>
+<p>NOTE: For the feature to work, R must be installed on your system and accessible from the system's PATH.
+.</p>
+</blockquote>
+<h2 id="running-basic-numeric-operations">Running Basic Numeric Operations</h2>
+<p>The simplest use of <code>R()</code> is running a short R script and retrieving the results. Here’s an example that calculates the mean of a set of numbers:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>pr()
+
+R() {
+@(&#x27;    
+    res &lt;- list(
+        numbers = c(1, 2, 3, 4, 5),
+        mean = mean(c(1, 2, 3, 4, 5))
+    )
+&#x27;)
+
+Run()
+? @@(Result())
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>[
+    [ &quot;numbers&quot;, [1, 2, 3, 4, 5] ],
+    [ &quot;mean&quot;, 3 ]
+]</pre>
+<blockquote>
+<p><strong>Note:</strong> As you see in the R code, the result variable name must be is<code>res</code>. This is configurable within the class and you can change it by modifying the <code>@cResultVar</code> attribute to any name you prefer.</p>
+</blockquote>
+<h2 id="handling-nested-lists-with-different-data-types">Handling Nested Lists with Different Data Types</h2>
+<p>R supports complex data structures like nested lists. Softanza’s <code>R()</code> function lets you work with these easily:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>pr()
+
+R = new stzRCode
+R.SetCode(&#x27;
+    numbers &lt;- c(12, 15, 18, 22, 25)
+    res &lt;- list(
+        basic_stats = list(
+            numbers = numbers,
+            mean = mean(numbers),
+            median = median(numbers),
+            has_outliers = FALSE
+        ),
+        metadata = list(
+            description = &quot;Sample dataset&quot;,
+            date_created = format(Sys.Date(), &quot;%Y-%m-%d&quot;)
+        )
+    )
+&#x27;)
+
+R.Execute()
+? @@( R.Result() )</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>[
+    [&quot;basic_stats&quot;,
+        [ [ &quot;numbers&quot;, [12, 15, 18, 22, 25] ],
+          [ &quot;mean&quot;, 18.40 ],
+          [ &quot;median&quot;, 18 ],
+          [ &quot;has_outliers&quot;, 0 ] ]
+    ],
+    [&quot;metadata&quot;,
+        [ [ &quot;description&quot;, &quot;Sample dataset&quot; ],
+          [ &quot;date_created&quot;, &quot;2025-02-24&quot; ] ]
+    ]
+]</pre>
+<h2 id="handling-missing-values-na">Handling Missing Values (NA)</h2>
+<p>R offers built-in tools for handling missing data. Here’s how Softanza lets you integrate that functionality:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>pr()
+
+R() {
+@(&#x27;    
+    measurements &lt;- c(23.5, NA, 22.1, 24.3, NA, 21.8)
+    res &lt;- list(
+        measurements = measurements,
+        analysis = list(
+            complete_cases = sum(!is.na(measurements)),
+            mean_without_na = mean(measurements, na.rm = TRUE),
+            na_positions = which(is.na(measurements))
+        )
+&#x27;)
+
+Run()
+? @@( Output() )
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>[
+    [ &quot;measurements&quot;, [ 23.50, &quot;&quot;, 22.10, 24.30, &quot;&quot;, 21.80 ] ],
+    [ &quot;analysis&quot;,
+        [ [ &quot;complete_cases&quot;, 4 ],
+          [ &quot;mean_without_na&quot;, 22.93 ],
+          [ &quot;na_positions&quot;, [2, 5] ] ]
+    ]
+]</pre>
+<h2 id="statistical-calculations">Statistical Calculations</h2>
+<p>You can also use <code>R()</code> for more complex statistical analysis, such as computing summary statistics and quartiles:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>pr()
+
+R = R()
+
+R.SetCode(&#x27;
+    temperatures &lt;- c(18.2, 19.5, 22.1, 23.4, 25.8, 26.9, 27.5, 28.1, 26.8, 25.2)
+    res &lt;- list(
+        raw_data = temperatures,
+        statistics = list(
+            mean = mean(temperatures),
+            sd = sd(temperatures),
+            quartiles = quantile(temperatures, probs = c(0.25, 0.5, 0.75)),
+            range = range(temperatures)
+        ),
+        analysis = list(
+            above_25 = sum(temperatures &gt; 25),
+            percent_above_25 = mean(temperatures &gt; 25) * 100
+        )
+    )
+&#x27;)
+
+R.Execute()
+? @@( R.Result() )</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>[
+    [ &quot;raw_data&quot;, [ 18.20, 19.50, 22.10, 23.40, 25.80, 26.90, 27.50, 28.10, 26.80, 25.20 ] ],
+    [ &quot;statistics&quot;,
+        [ [ &quot;mean&quot;, 24.35 ],
+          [ &quot;sd&quot;, 3.44 ],
+          [ &quot;quartiles&quot;, [ 22.43, 25.50, 26.88 ] ],
+          [ &quot;range&quot;, [ 18.20, 28.10 ] ] ]
+    ],
+    [ &quot;analysis&quot;, [ [ &quot;above_25&quot;, 6 ], [ &quot;percent_above_25&quot;, 60 ] ] ]
+]</pre>
+<h2 id="nested-calculations-with-custom-functions">Nested Calculations with Custom Functions</h2>
+<p>Softanza’s <code>R()</code> function lets you define and execute custom R functions seamlessly within Haro. Here’s an example where we analyze two numerical groups, compute key metrics, and compare them:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>pr()
+
+R = new stzRCode
+
+R.SetCode(&#x27;
+group_a &lt;- c(15, 18, 21, 24, 27)
+group_b &lt;- c(22, 25, 28, 31, 34)
+calculate_metrics &lt;- function(values) {
+    list(
+        mean = mean(values),
+        variance = var(values),
+        coefficient_variation = sd(values) / mean(values) * 100
+    )
+}
+
+res &lt;- list(
+    groups = list(
+        group_a = group_a,
+        group_b = group_b
+    ),
+    metrics = list(
+        group_a_metrics = calculate_metrics(group_a),
+        group_b_metrics = calculate_metrics(group_b)
+    ),
+    comparison = list(
+        mean_difference = mean(group_b) - mean(group_a),
+        ratio = mean(group_b) / mean(group_a)
+    )
+)
+&#x27;)
+
+R.Execute()
+? @@( R.Result() )
+
+proff()
+# Executed in 0.32 second(s) in Haro 1.22</pre><p class="ran nv-illus">illustration</p></div>
+<p>The result gives a structured view of the data, metrics, and comparisons, all computed in a single <code>R()</code> call:</p>
+<pre>[
+	[
+		&quot;groups&quot;,
+		[
+			[ &quot;group_a&quot;, [ 15, 18, 21, 24, 27 ] ],
+			[ &quot;group_b&quot;, [ 22, 25, 28, 31, 34 ] ]
+		]
+	],
+	[
+		&quot;metrics&quot;,
+		[
+			[
+				&quot;group_a_metrics&quot;,
+				[ [ &quot;mean&quot;, 21 ], [ &quot;variance&quot;, 22.50 ], [ &quot;coefficient_variation&quot;, 22.59 ] ]
+			],
+			[
+				&quot;group_b_metrics&quot;,
+				[ [ &quot;mean&quot;, 28 ], [ &quot;variance&quot;, 22.50 ], [ &quot;coefficient_variation&quot;, 16.94 ] ]
+			]
+		]
+	],
+	[
+		&quot;comparison&quot;,
+		[ [ &quot;mean_difference&quot;, 7 ], [ &quot;ratio&quot;, 1.33 ] ]
+	]
+]</pre>
+<h2 id="time-series-analysis-and-aggregation">Time Series Analysis and Aggregation</h2>
+<p>With <code>R()</code>, working with time series data is effortless. The following example generates synthetic daily values over a month, computes weekly means and standard deviations, and extracts trend indicators:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>pr()
+
+R() {
+
+SetCode(&#x27;
+dates &lt;- as.Date(&quot;2024-01-01&quot;) + 0:29  
+values &lt;- rnorm(30, mean = 100, sd = 15)
+res &lt;- list(
+    time_series = list(
+        dates = format(dates, &quot;%Y-%m-%d&quot;),
+        values = values
+    ),
+    weekly_stats = list(
+        week_means = tapply(values, ceiling(seq_along(values)/7), mean),
+        week_sds = tapply(values, ceiling(seq_along(values)/7), sd)
+    ),
+    trends = list(
+        overall_trend = coef(lm(values ~ seq_along(values))),
+        volatility = sd(diff(values))
+    )
+)
+&#x27;)
+
+Execute()
+? @@( Result() )
+
+} 
+
+proff()
+# Executed in 0.32 second(s) in Haro 1.22</pre><p class="ran nv-illus">illustration</p></div>
+<p>This example showcases how <code>R()</code> enables time series manipulation and statistical aggregation in one integrated step:</p>
+<pre>[
+	[
+		&quot;time_series&quot;,
+		[
+			[ &quot;dates&quot;, [ &quot;2024-01-01&quot;, &quot;2024-01-02&quot;, ...,  &quot;2024-01-30&quot; ] ],
+			[ &quot;values&quot;, [ 116.31, 98.84, ..., 87.77, 92.12 ] ]
+		]
+	],
+	[
+		&quot;weekly_stats&quot;,
+		[
+			[ &quot;week_means&quot;, [ 99.69, 108.34, 92.70, 91.40, 89.95 ] ],
+			[ &quot;week_sds&quot;, [ 10.97, 16.15, 6.34, 15.47, 3.08 ] ]
+		]
+	],
+	[
+		&quot;trends&quot;,
+		[
+			[ &quot;overall_trend&quot;, [ 106.51, -0.58 ] ],
+			[ &quot;volatility&quot;, 18.97 ]
+		]
+	]
+]</pre>
+<h2 id="advanced-data-visualization-complex-scatter-plot-with-density">Advanced Data Visualization – Complex Scatter Plot with Density</h2>
+<p>When working with R’s powerful visualization tools, <code>R()</code> gives you full access to <code>ggplot2</code>, <code>plotly</code>, and more. The following example generates a complex scatter plot with density contours and trend lines, saving it as an image:</p>
+<blockquote>
+<p>NOTE: The libraries mentioned above should have been installed on your R instance first.</p>
+</blockquote>
+<div class="nblock"><div class="lbl">Haro</div><pre>pr()
+
+R = new stzRCode
+
+R.SetCode(&#x27;
+library(&quot;ggplot2&quot;)
+library(&quot;plotly&quot;)
+library(&quot;viridis&quot;)
+
+set.seed(123)
+n_points &lt;- 200
+x &lt;- rnorm(n_points, mean = 0, sd = 1.5)
+y &lt;- x^2 + rnorm(n_points, mean = 0, sd = 2)
+categories &lt;- factor(sample(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;), n_points, replace = TRUE))
+sizes &lt;- runif(n_points, 1, 5)
+
+df &lt;- data.frame(
+    x = x,
+    y = y,
+    category = categories,
+    size = sizes
+)
+
+p &lt;- ggplot(df, aes(x = x, y = y, color = category)) +
+    geom_point(aes(size = size), alpha = 0.6) +
+    geom_smooth(method = &quot;loess&quot;, se = TRUE) +
+    stat_density_2d(aes(fill = after_stat(level)), geom = &quot;polygon&quot;, alpha = 0.1) +
+    labs(
+        title = &quot;Complex 2D Visualization&quot;,
+        subtitle = &quot;Scatter plot with density contours and trend lines&quot;,
+        x = &quot;X Variable&quot;,
+        y = &quot;Y Variable&quot;,
+        color = &quot;Category&quot;,
+        size = &quot;Size&quot;
+    ) +
+    theme_minimal()
+
+ggsave(&quot;output.png&quot;, p, width = 10, height = 8, dpi = 300)
+
+res &lt;- list(
+    plot_info = list(
+        filename = &quot;output.png&quot;,
+        dimensions = list(
+            width = 10,
+            height = 8,
+            dpi = 300
+        ),
+        data_points = n_points
+    ),
+    statistics = list(
+        x = list(
+            mean = mean(x),
+            sd = sd(x),
+            range = range(x)
+        ),
+        y = list(
+            mean = mean(y),
+            sd = sd(y),
+            range = range(y)
+        ),
+        correlation = cor(x, y)
+    ),
+    categories = list(
+        levels = levels(categories),
+        counts = as.list(table(categories))
+    )
+)
+&#x27;)
+
+R.Execute()
+View(&quot;output.png&quot;) # Opens the datviz image in the default system viewer
+
+proff()
+# Executed in 2.92 second(s) in Haro 1.22</pre><p class="ran nv-illus">illustration</p></div>
+<p>A sleek and dynamic visualization is automatically crafted and seamlessly saved as an image:</p>
+<p><img alt="DataViz Generated by R Inside Haro" src="../../assets/img/narrations/stz-r-plot.webp" /></p>
+<h2 id="everything-r-can-do-r-can-too">Everything R Can Do, R() Can Too</h2>
+<p>These examples demonstrate a simple truth: <strong>everything possible in R is possible in <code>R()</code></strong>. Whether you're working with data frames, time series, custom functions, or advanced graphics, <code>R()</code> integrates seamlessly into Haro, unlocking the full potential of statistical computing with minimal effort.</p>
+<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « R() in Ring: Statistical Power, One Call Away ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stz-integrating-r-scripts-inside-ring.html</p><p class="proof">Non exécuté : son code touche aux fichiers, au réseau, à l'horloge ou au hasard. L'article est publié tel qu'il est écrit ; ses blocs sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-integrating-r-scripts-inside-ring.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

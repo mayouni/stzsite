@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Narrative of Transformations: Tracking Object History in Softanza · Narrations · Softanza</title>
+<meta name="description" content="In programming, data transformations often happen inside variables in the blink of an eye, leaving no trace of their journey. Softanza challenges this paradigm with a groundbreaking feature that captures the entire lifecycle of object modifications.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzobject-history-narration.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzobject-history-narration.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">The Narrative of Transformations: Tracking Object History in Softanza</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stzsections-merging-narration.html">Understanding Section Merging Features in Softanza</a></li><li><a href="stzobject-history-narration.html" aria-current=page>The Narrative of Transformations: Tracking Object History in Softanza</a></li><li><a href="stzlist-in-strings-narration.html">Unlocking the Power of Lists-in-Strings with Softanza</a></li><li><a href="stz-repeat-function-narration.html">The Symphony of Repetition: A Coding Journey in Softanza</a></li><li><a href="stz-repetition-with-elegance-narration.html">Repetition with Elegance: Exploring @N() and @NXT() Smart Builders in Softanza</a></li><li><a href="stz-managing-deep-lists-narration.html">Taming Deep Lists with Softanza</a></li><li><a href="stz-fastporupdate-narration.html">FastProUpdate(): A Semantic Rengineering of RingFastPro extension</a></li><li><a href="stzwalker-beyond-loops-the-walker-metaphor.html">Beyond Loops: The Walker Metaphor in Softanza</a></li><li><a href="stzwalker-walking-at-the-edge-narration.html">Walking at the Edge — A Naturally-Oriented and Practical Design</a></li><li><a href="stzwalker2d-walking-second-dimension.html">Beyond Inner Loops: Walking on the Second Dimension in Softanza</a></li><li><a href="stz-unfied-item-finding-with-find.html">The Unified @Find() Function in Softanza</a></li><li><a href="stz-named-vars-narration.html">Named Variables in Softanza: the What, Why and How!</a></li><li><a href="safe-access-to-ring-hashlists-using-haskey.html">Safe Access to Haro Hashlists: How Softanza Solves a Common Problem</a></li><li><a href="istrue-softanza-truth.html">DeepContains still reports that &quot;X&quot; exists down inside the nested list</a></li><li><a href="stzlist-diff.html">When “different” is not enough: the story behind Diff(), DiffXT() and DiffXTT() in stzList</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>The Narrative of Transformations: Tracking Object History in Softanza</h1>
+    <p class="lede">In programming, data transformations often happen inside variables in the blink of an eye, leaving no trace of their journey. Softanza challenges this paradigm with a groundbreaking feature that captures the entire lifecycle of object modifications.</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2024-12-05 · essai de fonction · domaine <a href="../atlas/collections.html">Collections et objets</a></p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+<figure><img src="../../assets/img/narrations/stzobject-history.webp" alt="Tracking Object History in Softanza, by Microsoft Image Create AI" loading="lazy"><figcaption>Tracking Object History in Softanza, by Microsoft Image Create AI</figcaption></figure>
+<p><img alt="Tracking Object History in Softanza, by Microsoft Image Create AI" src="../../assets/img/narrations/stzobject-history.webp" /></p>
+<hr />
+<h2 id="the-initial-approach-transformation-without-history">The Initial Approach: Transformation Without History</h2>
+<p>Consider this basic string transformation chain in Softanza:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>load &quot;stzlib.ring&quot;
+
+? Q(&quot;1 AA 2 B 3 CCC 4 DD 5 Z&quot;).
+    RemoveWXTQ(&#x27;{ Q(@Char).IsNumberInString() }&#x27;).
+    RemoveSpacesQ().
+    RemoveDuplicatedCharsQ().
+    Content()
+
+#--&gt; ABCDZ</pre><p class="ran nv-illus">illustration</p></div>
+<p>Here, we process the string, removing numbers, spaces, and duplicate characters. The result is clear, but the path is forgotten.</p>
+<blockquote>
+<p><strong>NOTE</strong>: The <code>Q(val)</code> small function elevates the value <code>val</code>, whatever type it has, to the corresponding Softanza object. In our case, it creates a <code>stzString</code> object from the string <code>"1 AA 2 B 3 CCC 4 DD 5 Z"</code>.</p>
+</blockquote>
+<h2 id="the-challenge-preserving-the-transformation-trail">The Challenge: Preserving the Transformation Trail</h2>
+<p>What if we could capture each step of this transformation? Imagine a programming feature that doesn't just give you the final result, but tells you the entire story of how that result was achieved.</p>
+<h2 id="the-solution-introducing-qh-small-function">The Solution: Introducing <code>QH()</code> small function</h2>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@NL( QH(&quot;1 AA 2 B 3 CCC 4 DD 5 Z&quot;).
+    RemoveWXTQ(&#x27;{ Q(@Char).IsNumberInString() }&#x27;).
+    RemoveSpacesQ().
+    RemoveDuplicatedCharsQ().
+    History() )
+
+#--&gt; [
+#	&quot;1 AA 2 B 3 CCC 4 DD 5 Z&quot;,      # Original
+#	&quot; AA  B  CCC  DD  Z&quot;,           # After removing numbers
+#	&quot;AABCCCDDZ&quot;,                    # After removing spaces
+#	&quot;ABCDZ&quot;                         # Final result
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>Yet an other example around numbers:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q(12500).
+	AddQ(500).
+	RetrieveQ(1500).
+	DivideByQ(500).
+	MultiplyByQ(2).
+	Value()
+
+	#--&gt; 45
+
+? @@( Qh(12500).
+	AddQ(500).
+	RetrieveQ(1500).
+	DivideByQ(500).
+	MultiplyByQ(2).
+	History() )
+
+	#--&gt; [ 13000, 11500, 23, 46 ]</pre><p class="ran nv-illus">illustration</p></div>
+<blockquote>
+<p><strong>NOTE 1</strong>: All other Softanza objects—not just <code>stzString</code> and <code>stzNumber</code>, as demonstrated—are supported and can retain their historic values. This includes <code>stzList</code>, <code>stzObjects</code>, <code>stzTable</code>, and more.</p>
+<p><strong>NOTE 2</strong>: <code>@@(val)</code> is a Softanza small function, akin to a <strong>pair of glasses</strong> that enhance vision, designed to produce a readable string representation of any value <code>val</code>. Specifically, when <code>val</code> is a list, it is rendered with brackets ([, ]) and commas (,), like you see in <code>[ 13000, 11500, 23, 46 ]</code> above, accurately representing the list structure regardless of its depth.</p>
+</blockquote>
+<h2 id="cherry-on-the-cake-more-information-with-the-qhh-small-function">Cherry on the Cake: More Information with the <code>QHH()</code> Small Function</h2>
+<p>By adding an extra <code>H</code> suffix to <code>QH()</code>, Softanza reveals all its secrets and informs us not only about the updated values in the chain but also their <strong>types</strong> and <strong>execution times</strong>.</p>
+<p>To demonstrate this, let’s use a more elaborate example that takes some time to execute. Hence, the chain of actions starts with the word "LIFE" and ends with the word <code>"L ♥ F E"</code>:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;LIFE&quot;).
+	LowercaseQ().
+	SpacifyQ().
+
+	CharsQ().
+	RemoveSpacesQ().
+	UppercaseQ().
+
+	JoinQ().
+	SpacifyQ().
+	ReplaceQ(&quot;I&quot;, :With = AHeart()).
+
+	Content() + NL
+	#--&gt; L ♥ F E</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:44 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+<p>Let’s add the <code>H()</code> suffix, as shown previously, to observe the updated values:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@NL(
+	QH(&quot;LIFE&quot;).
+	LowercaseQ().
+	SpacifyQ().
+	CharsQ().
+	RemoveSpacesQ().
+	UppercaseQ().
+	JoinQ().
+	SpacifyQ().
+	ReplaceQ(&quot;I&quot;, :With = AHeart()).
+	History()
+)
+
+#--&gt; [
+#	&quot;LIFE&quot;,
+#	&quot;life&quot;,
+#	&quot;l i f e&quot;,
+#
+#	[ &quot;l&quot;, &quot;i&quot;, &quot;f&quot;, &quot;e&quot; ],
+#	[ &quot;L&quot;, &quot;I&quot;, &quot;F&quot;, &quot;E&quot; ],
+#	[ &quot;L&quot;, &quot;I&quot;, &quot;F&quot;, &quot;E&quot; ],
+#
+#	&quot;L I F E&quot;,
+#	&quot;L ♥ F E&quot;
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>Now, instead of using just <code>H()</code>, we use a double <code>HH()</code> suffix to obtain more information about the types of intermediate objects updated, the execution time taken by each update, and their size in megabytes within the Haro VM.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@NL(
+	QHH(&quot;LIFE&quot;).
+	LowercaseQ().
+	SpacifyQ().
+	CharsQ().
+
+	RemoveSpacesQ().
+	LoopNTimesQ(100_000). # Just to add time add see it traced
+	UppercaseQ().
+	JoinQ().
+
+	SpacifyQ().
+	LoopNTimesQ(100_000).
+	ReplaceQ(&quot;I&quot;, :With = AHeart()).
+	History()
+)
+
+#--&gt; [
+#	[ &quot;LIFE&quot;, &quot;stzstring&quot;, 0, 435 ],
+#	[ &quot;life&quot;, &quot;stzstring&quot;, 0.02, 435 ],
+#	[ &quot;l i f e&quot;, &quot;stzstring&quot;, 0.04, 435 ],
+#
+#	[ [ &quot;l&quot;, &quot; &quot;, &quot;i&quot;, &quot; &quot;, &quot;f&quot;, &quot; &quot;, &quot;e&quot; ], &quot;stzlist&quot;, 0, 322 ],
+#	[ [ &quot;l&quot;, &quot;i&quot;, &quot;f&quot;, &quot;e&quot; ], &quot;stzlist&quot;, 0, 319 ],
+#	[ [ &quot;l&quot;, &quot;i&quot;, &quot;f&quot;, &quot;e&quot; ], &quot;stzlist&quot;, 0.01, 319 ],
+#	[ [ &quot;L&quot;, &quot;I&quot;, &quot;F&quot;, &quot;E&quot; ], &quot;stzlist&quot;, 0, 319 ],
+#	[ [ &quot;L&quot;, &quot;I&quot;, &quot;F&quot;, &quot;E&quot; ], &quot;stzlist&quot;, 0.01, 319 ],
+#	[ [ &quot;L&quot;, &quot;I&quot;, &quot;F&quot;, &quot;E&quot; ], &quot;stzlist&quot;, 0, 319 ],
+#
+#	[ &quot;LIFE&quot;, &quot;stzstring&quot;, 0, 435 ],
+#	[ &quot;L I F E&quot;, &quot;stzstring&quot;, 0.02, 435 ],
+#
+#	[ [ &quot;with&quot;, &quot;♥&quot; ], &quot;stzlist&quot;, 0, 322 ],
+#
+#	[ &quot;L ♥ F E&quot;, &quot;stzstring&quot;, 0.01, 435 ]
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>Here's a detailed explanation of what happened in the code execution:</p>
+<ul>
+<li>Started with <code>"LIFE"</code> as a <code>stzString</code> object, initial size <code>435 bytes</code></li>
+<li>Converted to lowercase <code>"life"</code>, taking almost <code>0s</code>, maintaining same size of <code>435 bytes</code></li>
+<li>
+<p>Added spaces between chars <code>"l i f e"</code>, taking almost <code>0s</code>, maintaining same size of <code>435 bytes</code></p>
+</li>
+<li>
+<p>Transformed to a list of characters <code>["l", " ", "i", " ", "f", " ", "e"]</code>, becoming a <code>stzlist</code> object, taking <code>0.02s</code>, with a size of <code>322 bytes</code></p>
+</li>
+<li>Removed spaces from the list <code>["l", "i", "f", "e"]</code>, taking <code>0.02s</code>, witht a size of <code>319 bytes</code></li>
+<li>
+<p>Converted all characters of the list to uppercase <code>["L", "I", "F", "E"]</code>, taking <code>0.03s</code>, and maintaining the same size of <code>319 bytes</code></p>
+</li>
+<li>
+<p>Joined the list back into a string <code>"LIFE"</code>, converting back to <code>stzstring</code>, taking almost <code>0s</code>, with the size of <code>435 bytes</code></p>
+</li>
+<li>Added spaces between characters <code>"L I F E"</code>, inside the same <code>stzString</code> object, taking almost <code>0s</code>, and maintaining the same size of <code>435 bytes</code></li>
+<li>Replaced the <code>"I"</code> in <code>"LIFE"</code> with a heart character, taking taking almost <code>0s</code>, and maintaining the same size of <code>435 bytes</code></li>
+</ul>
+<p>The operations alternated between <code>stzstring</code> and <code>stzlist</code> objects, with strings opeations beeing faster (due to the use of the native Zig engine internally), while lists generally having smaller memory footprints. Most operations completed very quickly, with only a few taking measurable time.</p>
+<blockquote>
+<p><strong>NOTE</strong>: The <code>@@NL()</code> small function generates a readable string representation of the list, just like <code>@@()</code>, but with the added distinction of displaying each item on a separate line.</p>
+</blockquote>
+<h2 id="customizing-the-history-output">Customizing the History Output</h2>
+<p>While the complete output of <code>QHH()</code> provides comprehensive information, there might be times when you only need specific aspects of the transformation history. Softanza accommodates this need through its flexible function <em>suffix system</em> that lets you choose exactly what information to display.</p>
+<p>The suffix system uses single letters to represent different types of information:
+- <code>V</code>: Value of the transformation
+- <code>T</code>: Type of the object
+- <code>M</code>: Time taken for the transformation
+- <code>S</code>: Size of the object in memory</p>
+<p>For example, if you're only interested in monitoring execution time and memory usage, you can use the <code>MS</code> suffix:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@NL(
+    QHHMS(&quot;LIFE&quot;). # M for Time and S for Size
+    LowercaseQ().
+    SpacifyQ().
+    CharsQ().
+    
+    RemoveSpacesQ().
+    UppercaseQ().
+    JoinQ().
+    
+    SpacifyQ().
+    ReplaceQ(&quot;I&quot;, :With = AHeart()).
+    History()
+) + NL
+
+#--&gt; [
+#	[ 0, 435 ],
+#	[ 0.02, 435 ],
+#	[ 0.04, 435 ],
+#	[ 0, 322 ],
+#	[ 0, 319 ],
+#	[ 0.01, 319 ],
+#	[ 0, 319 ],
+#	[ 0.01, 319 ],
+#	[ 0, 319 ],
+#	[ 0, 435 ],
+#	[ 0.02, 435 ],
+#	[ 0, 322 ],
+#	[ 0.01, 435 ]
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>Or if you need to track values, types, and memory usage but not execution time, you can use the <code>VTS</code> suffix:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@NL(
+    QHHVTS(&quot;LIFE&quot;). # V for Value, T for Type and S for Size
+    LowercaseQ().
+    SpacifyQ().
+    CharsQ().
+    
+    RemoveSpacesQ().
+    UppercaseQ().
+    JoinQ().
+    
+    SpacifyQ().
+    ReplaceQ(&quot;I&quot;, :With = AHeart()).
+    History()
+)
+
+#--&gt; [
+#   [ &quot;LIFE&quot;, &quot;stzstring&quot;, 435 ],
+#   [ &quot;life&quot;, &quot;stzstring&quot;, 435 ],
+#   [ &quot;l i f e&quot;, &quot;stzstring&quot;, 435 ],
+#   [ [ &quot;l&quot;, &quot; &quot;, &quot;i&quot;, &quot; &quot;, &quot;f&quot;, &quot; &quot;, &quot;e&quot; ], &quot;stzlist&quot;, 322 ],
+#   [ [ &quot;l&quot;, &quot;i&quot;, &quot;f&quot;, &quot;e&quot; ], &quot;stzlist&quot;, 319 ],
+#   [ [ &quot;l&quot;, &quot;i&quot;, &quot;f&quot;, &quot;e&quot; ], &quot;stzlist&quot;, 319 ],
+#   [ [ &quot;L&quot;, &quot;I&quot;, &quot;F&quot;, &quot;E&quot; ], &quot;stzlist&quot;, 319 ],
+#   [ [ &quot;L&quot;, &quot;I&quot;, &quot;F&quot;, &quot;E&quot; ], &quot;stzlist&quot;, 319 ],
+#   [ [ &quot;L&quot;, &quot;I&quot;, &quot;F&quot;, &quot;E&quot; ], &quot;stzlist&quot;, 319 ],
+#   [ &quot;LIFE&quot;, &quot;stzstring&quot;, 435 ],
+#   [ &quot;L I F E&quot;, &quot;stzstring&quot;, 435 ],
+#   [ [ &quot;with&quot;, &quot;♥&quot; ], &quot;stzlist&quot;, 322 ],
+#   [ &quot;L ♥ F E&quot;, &quot;stzstring&quot;, 435 ]
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>This flexible suffix system allows you to focus on the specific aspects of transformation history that matter most for your current task, whether it's debugging memory usage, analyzing performance, or tracking type changes.</p>
+<h2 id="key-benefits">Key Benefits</h2>
+<p>The <code>QH()</code> and <code>QHH()</code> small functions may appear <em>small</em>, but they have <em>big</em> impacts:</p>
+<ul>
+<li>
+<p><strong>Debugging Insight</strong>: Trace exactly how your data transformed, making it easier to pinpoint issues during data processing or model training.</p>
+</li>
+<li>
+<p><strong>Educational Tool</strong>: Visualize complex manipulation processes, helping to understand how data is processed at each stage.</p>
+</li>
+<li>
+<p><strong>Audit Trail</strong>: Maintain a comprehensive log of object mutations, ensuring transparency and compliance in workflows.</p>
+</li>
+<li>
+<p><strong>Data Analytics Pipelines</strong>: Track data transformations through each step, aiding in debugging, model evaluation, and reproducibility.</p>
+</li>
+<li>
+<p><strong>Business Workflows</strong>: Provide visibility into how data flows through business processes, helping to identify inefficiencies and improve decision-making</p>
+</li>
+</ul>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>Thanks to its thoughtful design centered around visibility, clarity, and explainability of code, Softanza transforms data processing from a black box into a transparent, narratable journey.</p>
+<h2>Lectures liées</h2><ul><li><a href="stz-mental-mode-narration.html">A Guided Path to Problem-Solving: The Softanza Mental Model</a></li><li><a href="stz-near-natural-language-tutorial.html">Softanza Near-Natural Programming Tutorial</a></li><li><a href="stz-near-natural-language-programming.html">Near-Natural Programming: Bridging Human Thought and Code Execution</a></li><li><a href="stz-functions-as-linguistic-expressions.html">Writability vs. Readability of Computer Code— Softanza Asks: Why NOT Both?</a></li></ul><h2>Citer</h2><p class="mono cite">Mansour Ayouni. « The Narrative of Transformations: Tracking Object History in Softanza ». Softanza narrations, 2024. https://mayouni.github.io/stzsite/fr/narrations/stzobject-history-narration.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-08 20:44 dans la bibliothèque au commit 4a184e6f0, bloc après bloc dans un seul processus : 1 bloc(s) sur 8 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzobject-history-narration.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

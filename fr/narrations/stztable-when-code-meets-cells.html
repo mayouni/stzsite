@@ -1,0 +1,1450 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>&quot;Code Meets Cells&quot;: The Spreadsheet Metaphor in Softanza&#x27;s stzTable · Narrations · Softanza</title>
+<meta name="description" content="Data tables are essential for many programming tasks, from data storage to complex analyses. Softanza&#x27;s stzTable class for the Haro programming language provides an intuitive and powerful way to work with tabular data.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stztable-when-code-meets-cells.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stztable-when-code-meets-cells.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">&quot;Code Meets Cells&quot;: The Spreadsheet Metaphor in Softanza&#x27;s stzTable</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stztable-when-code-meets-cells.html" aria-current=page>&quot;Code Meets Cells&quot;: The Spreadsheet Metaphor in Softanza&#x27;s stzTable</a></li><li><a href="stzdatasetdoc.html">stzDataSet: Statistics as a Language of Thought</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>&quot;Code Meets Cells&quot;: The Spreadsheet Metaphor in Softanza&#x27;s stzTable</h1>
+    <p class="lede">Data tables are essential for many programming tasks, from data storage to complex analyses. Softanza's <code>stzTable</code> class for the Haro programming language provides an intuitive and powerful way to work with tabular data.
+What makes <code>stzTable</code> unique is its <strong>spreadsheet-like metaphor</strong>, offering an extensive API with naturally-named methods that follow how people think about tables. This allows for concise, precise, and flexible data manipulation with a human-readable interface.</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2025-05-06 · essai de fonction · domaine <a href="../atlas/tables.html">Tables et données</a></p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+<figure><img src="../../assets/img/narrations/stz-knowledge-programming.webp" alt="A Wise and Revered Sufi Scholar from Niger Exploring Computer Code in a Traditional Study Room" loading="lazy"><figcaption>A Wise and Revered Sufi Scholar from Niger Exploring Computer Code in a Traditional Study Room</figcaption></figure>
+<p><img alt="A Wise and Revered Sufi Scholar from Niger Exploring Computer Code in a Traditional Study Room" src="../../assets/img/narrations/stz-knowledge-programming.webp" />
+<em>A Wise and Revered Sufi Scholar from Niger Exploring Computer Code in a Traditional Study Room.</em></p>
+<h2 id="introduction">Introduction</h2>
+<h2 id="creating-tables-with-stztable">Creating Tables with stzTable</h2>
+<p>One of the first things you'll appreciate about <code>stzTable</code> is the variety of ways you can create a table. This flexibility means you can choose the method that best suits your data and your workflow. Let's explore each creation method with examples.</p>
+<h3 id="creating-an-empty-table">Creating an Empty Table</h3>
+<p>Sometimes, you just need a blank slate to start building your table. <code>stzTable</code> allows you to create an empty table with a single column and row, containing an empty cell.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzTable([])
+o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭──────╮
+│ Col1 │
+├──────┤
+│      │
+╰──────╯</pre>
+<p>This creates a table with one column named "COL1" and one row with an empty string. It's a minimal starting point, perfect for dynamically building tables from scratch.</p>
+<h3 id="creating-a-table-with-specified-dimensions">Creating a Table with Specified Dimensions</h3>
+<p>If you know in advance how many columns and rows you need, you can specify the dimensions directly.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzTable([3, 2])
+o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭──────┬──────┬──────╮
+│ Col1 │ Col2 │ Col3 │
+├──────┼──────┼──────┤
+│      │      │      │
+│      │      │      │
+╰──────┴──────┴──────╯</pre>
+<p>This creates a table with 3 columns (named "COL1", "COL2", "COL3") and 2 rows, each cell initialized to an empty string. This is handy when you have a fixed structure in mind.</p>
+<h3 id="creating-a-table-from-lists-of-lists">Creating a Table from Lists of Lists</h3>
+<p>Perhaps the most intuitive way to create a table is by providing a list of lists, where the first list represents the column names and subsequent lists are the rows of data.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzTable([
+    [ :ID, :EMPLOYEE, :SALARY ],
+    [ 10, &quot;Ali&quot;, 35000 ],
+    [ 20, &quot;Dania&quot;, 28900 ],
+    [ 30, &quot;Han&quot;, 25982 ],
+    [ 40, &quot;Ali&quot;, 12870 ]
+])
+o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭────┬──────────┬────────╮
+│ Id │ Employee │ Salary │
+├────┼──────────┼────────┤
+│ 10 │ Ali      │  35000 │
+│ 20 │ Dania    │  28900 │
+│ 30 │ Han      │  25982 │
+│ 40 │ Ali      │  12870 │
+╰────┴──────────┴────────╯</pre>
+<p>This method is straightforward and mirrors how tables are often represented in code. If you omit the column names, <code>stzTable</code> will automatically generate them as <code>:COL1</code>, <code>:COL2</code>, etc.</p>
+<h3 id="creating-a-table-from-a-hash-list">Creating a Table from a Hash List</h3>
+<p>For those who prefer a dictionary-like structure, <code>stzTable</code> supports creation from a hash list where keys are column names and values are lists of data for each column.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzTable([
+    :NAME   = [ &quot;Ali&quot;, &quot;Dania&quot;, &quot;Han&quot; ],
+    :JOB    = [ &quot;Programmer&quot;, &quot;Manager&quot;, &quot;Doctor&quot; ],
+    :SALARY = [ 35000, 50000, 62500 ]
+])
+o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭───────┬────────────┬────────╮
+│ Name  │    Job     │ Salary │
+├───────┼────────────┼────────┤
+│ Ali   │ Programmer │  35000 │
+│ Dania │ Manager    │  50000 │
+│ Han   │ Doctor     │  62500 │
+╰───────┴────────────┴────────╯</pre>
+<p>This approach can be particularly valuable when your data is already organized by columns.</p>
+<h3 id="importing-and-exporting-csv">Importing and exporting CSV</h3>
+<p>In real-world applications, data often comes from external sources like CSV files. <code>stzTable</code> can load data directly from such files, making it easy to work with existing datasets.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzTable(:FromFile = &quot;mytable.csv&quot;)
+o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭─────────┬──────────┬─────────┬───────────╮
+│ Nation  │ Language │ Capital │ Continent │
+├─────────┼──────────┼─────────┼───────────┤
+│ Tunisia │ Arabic   │ Tunis   │ Africa    │
+│ France  │ French   │ Paris   │ Europe    │
+│ Egypt   │ English  │ Cairo   │ Africa    │
+│ Belgium │ French   │ Brussel │ Europe    │
+│ Yemen   │ Arabic   │ Sanaa   │ Asia      │
+╰─────────┴──────────┴─────────┴───────────╯</pre>
+<p>This loads the table from a CSV string, automatically handling the column names and data rows. For simplicity, Softanza supports this standard <code>;</code> separator based format:</p>
+<p><img alt="csv-format-stztable.png" src="../../assets/img/narrations/csv-format-stztable.webp" /></p>
+<p>To export the content of the table back in a CSV string, you just do:</p>
+<pre>? o1.ToCSV()
+#--&gt;
+&#x27;nation;language;capital;continent
+Tunisia;Arabic;Tunis;Africa
+France;French;Paris;Europe
+Egypt;English;Cairo;Africa
+Belgium;French;Brussel;Europe
+Yemen;Arabic;Sanaa;Asia&#x27;</pre>
+<blockquote>
+<p><strong>Note:</strong> <code>stzTable</code> does not deal directly with files. To read the content of a file named <code>"mydata.csv"</code>, first load it into a string variable using <code>str = read("mydata.csv")</code>, then pass that string to the <code>stzTable</code> object. Similarly, after exporting the content of a <code>stzTable</code> object to a CSV-formatted string, you can save it to a file using <code>write("mydata.csv", str)</code>.</p>
+<p>Or you can use the <code>stzCSVFile</code> class to do that in an object-oriented way.</p>
+</blockquote>
+<h3 id="importing-and-exporting-json">Importing and Exporting JSON</h3>
+<p>The <code>stzTable</code> class enables seamless JSON import and export for integration with JSON-based data sources. The <code>ToJson()</code> method converts an <code>stzTable</code> into a compact JSON string, while <code>FromJson()</code> creates a table from a valid JSON string.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>
+cJson = &#x27;{&quot;product&quot;:[&quot;Apple&quot;,&quot;Orange&quot;,&quot;Banana&quot;],&quot;price&quot;:[&quot;$1.50&quot;,&quot;$1.20&quot;,&quot;$0.80&quot;],&quot;stock&quot;:[&quot;100&quot;,&quot;150&quot;,&quot;200&quot;]}&#x27;
+
+o1 = new stzTable([])
+o1.FromJson(cJson)
+o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭─────────┬───────┬───────╮
+│ Product │ Price │ Stock │
+├─────────┼───────┼───────┤
+│ Apple   │ $1.50 │   100 │
+│ Orange  │ $1.20 │   150 │
+│ Banana  │ $0.80 │   200 │
+╰─────────┴───────┴───────╯</pre>
+<p>The <code>ToJson()</code> method generates a compact JSON string, preserving column names and data. For a formatted output with newlines and indentation, use <code>ToJsonXT()</code>. The <code>IsJson()</code> function, available via <code>stzString</code> (e.g., <code>Q(cJson).IsJson()</code>), validates JSON input before import. These methods facilitate working with APIs or JSON files, streamlining data integration into <code>stzTable</code> for further analysis.</p>
+<pre>aData = [
+	[ &quot;product&quot;, [ &quot;Apple&quot;, &quot;Orange&quot;, &quot;Banana&quot; ] ],
+	[ &quot;price&quot;,   [ &quot;$1.50&quot;, &quot;$1.20&quot;, &quot;$0.80&quot; ] ],
+	[ &quot;stock&quot;,   [ &quot;100&quot;, &quot;150&quot;, &quot;200&quot; ] ]
+]
+
+o1 = new stzTable(aData)
+
+? o1.ToJson()
+#--&gt; {&quot;product&quot;:[&quot;Apple&quot;,&quot;Orange&quot;,&quot;Banana&quot;],&quot;price&quot;:[&quot;$1.50&quot;,&quot;$1.20&quot;,&quot;$0.80&quot;],&quot;stock&quot;:[&quot;100&quot;,&quot;150&quot;,&quot;200&quot;]}
+
+
+
+? o1.ToJsonXT()
+&#x27;
+{
+	&quot;product&quot;: [
+		&quot;Apple&quot;,
+		&quot;Orange&quot;,
+		&quot;Banana&quot;
+	],
+	&quot;price&quot;: [
+		&quot;$1.50&quot;,
+		&quot;$1.20&quot;,
+		&quot;$0.80&quot;
+	],
+	&quot;stock&quot;: [
+		&quot;100&quot;,
+		&quot;150&quot;,
+		&quot;200&quot;
+	]
+}
+&#x27;</pre>
+<h3 id="importing-and-exporting-html-tables">Importing and exporting HTML Tables</h3>
+<p>The <code>stzTable</code> class supports importing HTML tables, enabling integration of web-based data into Haro applications. Using <code>stzString</code>, you can verify HTML table markup and convert it into an <code>stzTable</code> object with the <code>FromHtml()</code> method, which extracts column headers from <code>&lt;thead&gt;</code> and data from <code>&lt;tbody&gt;</code>.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>cHtmlStr = &#x27;
+    &lt;table class=&quot;data&quot; id=&quot;products&quot;&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th scope=&quot;col&quot;&gt;Product&lt;/th&gt;
+                &lt;th scope=&quot;col&quot;&gt;Price&lt;/th&gt;
+                &lt;th scope=&quot;col&quot;&gt;Stock&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr class=&quot;row&quot;&gt;
+                &lt;td&gt;Apple&lt;/td&gt;
+                &lt;td&gt;$1.50&lt;/td&gt;
+                &lt;td&gt;100&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;row&quot;&gt;
+                &lt;td&gt;Orange&lt;/td&gt;
+                &lt;td&gt;$1.20&lt;/td&gt;
+                &lt;td&gt;150&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;row&quot;&gt;
+                &lt;td&gt;Banana&lt;/td&gt;
+                &lt;td&gt;$0.80&lt;/td&gt;
+                &lt;td&gt;200&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;row&quot;&gt;
+                &lt;td&gt;Grape&lt;/td&gt;
+                &lt;td&gt;$2.00&lt;/td&gt;
+                &lt;td&gt;80&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;row&quot;&gt;
+                &lt;td&gt;Mango&lt;/td&gt;
+                &lt;td&gt;$3.00&lt;/td&gt;
+                &lt;td&gt;50&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&#x27;
+
+? Q(cHtmlStr).IsHtmlTable()
+#--&gt; TRUE
+
+o1 = new stzTable([])
+o1.FromHtml(cHtmlStr)
+o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭─────────┬───────┬───────╮
+│ Product │ Price │ Stock │
+├─────────┼───────┼───────┤
+│ Apple   │ $1.50 │   100 │
+│ Orange  │ $1.20 │   150 │
+│ Banana  │ $0.80 │   200 │
+│ Grape   │ $2.00 │    80 │
+│ Mango   │ $3.00 │    50 │
+╰─────────┴───────┴───────╯</pre>
+<p>The <code>IsHtmlTable()</code> method validates the HTML table, and <code>FromHtml()</code> creates an <code>stzTable</code> object, ready for further manipulation and analysis, ideal for web-scraped data or HTML reports.</p>
+<p>In a similar fashion, <code>stzTable</code> is capable of exporting its content to HTML with ease:</p>
+<pre>aData = [
+	[
+		&quot;product&quot;,
+		[ &quot;Apple&quot;, &quot;Orange&quot;, &quot;Banana&quot; ]
+	],
+	[
+		&quot;price&quot;,
+		[ &quot;$1.50&quot;, &quot;$1.20&quot;, &quot;$0.80&quot; ]
+	],
+	[
+		&quot;stock&quot;,
+		[ &quot;100&quot;, &quot;150&quot;, &quot;200&quot; ]
+	]
+]
+
+o1 = new stzTable(aData)
+? o1.ToHtmlXT() # Without XT you get a compact versio of the html string
+#--&gt;
+&#x27;
+&lt;table class=&quot;data&quot; id=&quot;products&quot;&gt;
+&lt;thead&gt;
+
+&lt;tr&gt;
+            &lt;th scope=&quot;col&quot;&gt;product&lt;/th&gt;
+            &lt;th scope=&quot;col&quot;&gt;price&lt;/th&gt;
+            &lt;th scope=&quot;col&quot;&gt;stock&lt;/th&gt;
+&lt;/tr&gt;
+
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+
+&lt;tr class=&quot;row&quot;&gt;
+        &lt;td&gt;Apple&lt;/td&gt;
+        &lt;td&gt;$1.50&lt;/td&gt;
+        &lt;td&gt;100&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr class=&quot;row&quot;&gt;
+        &lt;td&gt;Orange&lt;/td&gt;
+        &lt;td&gt;$1.20&lt;/td&gt;
+        &lt;td&gt;150&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;tr class=&quot;row&quot;&gt;
+        &lt;td&gt;Banana&lt;/td&gt;
+        &lt;td&gt;$0.80&lt;/td&gt;
+        &lt;td&gt;200&lt;/td&gt;
+
+&lt;/tr&gt;
+
+&lt;/tbody&gt;
+&lt;/table&gt;
+&#x27;</pre>
+<h2 id="navigating-and-querying-data">Navigating and Querying Data</h2>
+<p><code>stzTable</code> truly shines in its implementation of the <strong>spreadsheet metaphor</strong>, providing an intuitive way to navigate and manipulate your data. This section explores the comprehensive and thoughtfully designed API for accessing and inspecting your data.</p>
+<h3 id="columns-and-rows-navigation">Columns and Rows Navigation</h3>
+<p><code>stzTable</code> offers a rich set of methods for working with columns and rows, making it easy to navigate your data structure:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzTable([
+	[ :ID,	 :EMPLOYEE,    	:SALARY	],
+	#-------------------------------#
+	[ 10,	 &quot;Ali&quot;,		35000	],
+	[ 20,	 &quot;Dania&quot;,	28900	],
+	[ 30,	 &quot;Han&quot;,		25982	],
+	[ 40,	 &quot;Ali&quot;,		12870	]
+])
+
+# Getting basic information
+
+? o1.NumberOfColumns()
+#--&gt; 3
+
+? o1.NumberOfRows()
+#--&gt; 4
+
+? o1.Columns()
+#--&gt; :[ &quot;id&quot;, &quot;employee&quot;, &quot;salary&quot; ]
+
+? o1.Rows()             
+#--&gt; &#x27;
+[
+	[ 10,	 &quot;Ali&quot;,		35000	],
+	[ 20,	 &quot;Dania&quot;,	28900	],
+	[ 30,	 &quot;Han&quot;,		25982	],
+	[ 40,	 &quot;Ali&quot;,		12870	]
+]
+&#x27;
+# Checking for specific columns
+
+? o1.HasColumn(:EMPLOYEE)
+#--&gt; TRUE
+
+? o1.HasColumns([:ID, :SALARY])
+#--&gt; TRUE
+
+# Finding columns and rows
+
+? o1.FindColumnByName(:SALARY)   # Or simply FindCol(:SALARY)
+#--&gt; [ 3 ]
+
+? o1.FindRowByValue([ 30, &quot;Han&quot;, 25982 ]) # Or simply FindRow(...)
+#--&gt; [ 3 ]</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="cell-access-and-navigation">Cell Access and Navigation</h3>
+<p><code>stzTable</code> provides powerful and flexible ways to access individual cells or groups of cells:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Continuing with the same o1 object and getting it displayed
+
+o1.Show()
+#--&gt;
+&#x27;
+ ╭────┬──────────┬────────╮
+ │ Id │ Employee │ Salary │
+ ├────┼──────────┼────────┤
+ │ 10 │ Ali      │  35000 │
+ │ 20 │ Dania    │  28900 │
+ │ 30 │ Han      │  25982 │
+ │ 40 │ Ali      │  12870 │
+ ╰────┴──────────┴────────╯
+&#x27;
+# Accessing individual cells
+
+? o1.Cell(:SALARY, 2)  // Gets the value in the SALARY column, row 2
+#--&gt; 28900
+    
+? o1.CellZ(:EMPLOYEE, 3)  // or CellAndPosition() ~&gt; Gets both value and position
+#--&gt; [ &quot;Han&quot;, [2, 3] ]
+    
+# Getting a section or range of cells
+
+? o1.Section([:ID, 1], [:EMPLOYEE, 2])  # Gets a rectangular section of cells
+#--&gt; [ 10, &quot;Ali&quot;, 20, &quot;Dania&quot; ]
+    
+? o1.Range(:SALARY, 1, 3)  # Gets a range of cells in a column
+#--&gt; [ 35000, 28900, 25982 ]
+    
+# Getting all cells in a column or row
+
+? o1.Col(:EMPLOYEE)
+#--&gt; [ &quot;Ali&quot;, &quot;Dania&quot;, &quot;Han&quot;, &quot;Ali&quot; ]
+    
+? o1.Row(2)
+#--&gt; [ 20, &quot;Dania&quot;, 28900 ]</pre><p class="ran nv-illus">illustration</p></div>
+<blockquote>
+<p><strong>Note</strong>: In the example above, if you need to get the cells of the column <code>:EMPLOYEE</code> without duplication of the string <code>"Ali"</code>, then use the <code>U()</code> small function like this: <code>U( o1.Col(:EMPLOYEE) )</code> to get just <code>[ "Ali", "Dania", "Han" ]</code>.</p>
+</blockquote>
+<h3 id="smart-position-handling">Smart Position Handling</h3>
+<p>A unique feature of <code>stzTable</code> is its flexible handling of positions and ranges:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Let&#x27;s recall our o1 table object and display it
+
+o1.Show()
+#--&gt;
+&#x27;
+ ╭────┬──────────┬────────╮
+ │ Id │ Employee │ Salary │
+ ├────┼──────────┼────────┤
+ │ 10 │ Ali      │  35000 │
+ │ 20 │ Dania    │  28900 │
+ │ 30 │ Han      │  25982 │
+ │ 40 │ Ali      │  12870 │
+ ╰────┴──────────┴────────╯
+&#x27;
+# First, last, and specific positions
+
+? o1.FirstColName() // Returns the name of the first column
+#--&gt; &quot;id&quot;
+
+? o1.LastCol() // Returns the cells in the last column
+#--&gt; [ 35000, 28900, 25982, 12870 ]
+
+? o1.LastColXT() // Returns the last column name and its cells
+#--&gt; [ &quot;salary&quot;, [ 35000, 28900, 25982, 12870 ] ]
+
+? o1.NthCol(2) // Returns the nth column cells
+#--&gt; #--&gt; [ &quot;Ali&quot;, &quot;Dania&quot;, &quot;Han&quot;, &quot;Ali&quot; ]
+
+// Getting specific cells positions in a column or row
+
+? o1.FindCellsInCol(:SALARY)	// or CellsPositionsInColumn(:SALARY) 
+#--&gt; [ [3, 1], [3, 2], [3, 3], [3, 4] ]
+
+? o1.FindCellsInRow(2)
+#--&gt; [ [ 1, 2], [2, 2], [3, 2]</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="finding-cells-throughout-the-table">Finding Cells Throughout the Table</h3>
+<p><code>stzTable</code> offers a multitude of methods for finding cells based on their values:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Again, we show our o1 object content
+
+o1.Show()
+#--&gt;
+&#x27;
+ ╭────┬──────────┬────────╮
+ │ Id │ Employee │ Salary │
+ ├────┼──────────┼────────┤
+ │ 10 │ Ali      │  35000 │
+ │ 20 │ Dania    │  28900 │
+ │ 30 │ Han      │  25982 │
+ │ 40 │ Ali      │  12870 │
+ ╰────┴──────────┴────────╯
+&#x27;
+# Finding cells by value
+
+? o1.Find(&quot;Ali&quot;)  	// Finds all positions where &quot;Ali&quot; appears
+#--&gt; [ [2, 1], [2, 4] ]
+
+? o1.FindMany([&quot;Ali&quot;, 35000])  // Finds multiple values
+#--&gt; [ [2, 1], [3, 1], [2, 4 ] ]
+
+? o1.FindAllExcept([&quot;Ali&quot;, &quot;Dania&quot;])  // Finds all cells except specified values
+#--&gt; [ [1, 1], [ 3,1], [1, 2], [3, 2], [1, 3], [2, 3], [3, 3], [1, 4], [3, 4] ]
+
+# Finding by occurrence
+
+? o1.FindNth(&quot;Ali&quot;, 2)  // Finds the 2nd occurrence of &quot;Ali&quot;
+#--&gt; [ 2, 4 ]
+
+? o1.FindFirst(35000)   // Finds the first occurrence of 35000
+#--&gt; [ 3, 1 ]
+
+? o1.FindLast(&quot;Dania&quot;)  // Finds the last occurrence of &quot;Dania&quot;, which is also the only and first!
+#--&gt; [ 2, 2 ]
+
+# Counting occurrences using thre alternatives
+
+? o1.NumberOfOccurrence(&quot;Ali&quot;)  // Counts occurrences of &quot;Ali&quot;
+#--&gt; 2
+
+? Count(&quot;Dania&quot;)
+#--&gt; 1
+
+? HowMany(&quot;Mansour&quot;)
+#--&gt; 0</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="finding-subvalues-inside-cells">Finding Subvalues Inside Cells</h3>
+<p>A notable feature is the ability to search for partial matches within cells:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzTable([
+	[ :ID,	:EMPLOYEE,	:SALARY	],
+
+	[ 10,	&quot;Ali&quot;,		35000	],
+	[ 20,	&quot;Dania&quot;,	28900	],
+	[ 30,	&quot;Ben&quot;,		25982	],
+	[ 40,	&quot;ali&quot;,		&quot;Ali&quot;	]
+])
+
+? o1.Contains( :Cell = &quot;Ali&quot; ) # same as ? o1.ContainsCell(&quot;Ali&quot;)
+#--&gt; TRUE
+
+? o1.Contains( :SubValue = &quot;a&quot; ) # same as ? o1.ContainsSubValue(&quot;a&quot;)
+#--&gt; TRUE
+
+# Using case sensitivity in the search
+
+? @@( o1.FindCellCS(&quot;Ali&quot;, FALSE) )
+#--&gt; [ [ 2, 1 ], [ 2, 4 ], [ 3, 4 ] ]
+#--&gt; One occurrence of &quot;Ali&quot; in the cell [2, 1]
+
+? @@NL( o1.FindSubValueCS(&quot;a&quot;, :CaseSensitive = FALSE) )
+#--&gt; [
+#	[ [ 2, 1 ], [ 1 ] ],
+#	[ [ 2, 2 ], [ 2, 5 ] ],
+#	[ [ 2, 4 ], [ 1 ] ],
+#	[ [ 3, 4 ], [ 1 ] ]
+# ]
+#--&gt; 5 occurrences of &quot;a&quot; (or &quot;A&quot;):
+#	- 1 occurrence in cell [2, 1] (&quot;Ali&quot;), in position 1,
+#	- 2 occurrences in cell [2, 2] (&quot;Dania&quot;), in positions 2 and 5
+#	- 1 occurrence in cell [2, 4] (&quot;ali&quot;), in position 1, and finally
+#	- 1 occurrence in cell [3, 4], (&quot;Ali&quot;), also in position 1</pre><p class="ran nv-illus">illustration</p></div>
+<p>This subvalue search capability is exceptionally useful for text analysis and data exploration tasks, especially when working with free-form text fields.</p>
+<blockquote>
+<p><strong>Note</strong>: In Softanza, case sensitivity is consistently supported across all library classes and functions—not just in string-related classes like <code>stzString</code>.</p>
+</blockquote>
+<h3 id="targeted-searching">Targeted Searching</h3>
+<p><code>stzTable</code> takes searching to another level by allowing you to target specific columns, rows, or cell sections:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Searching within columns (note how CS, for CaseSensitive, is FALSE)
+
+? o1.FindInColCS(:EMPLOYEE, &quot;Ali&quot;, FALSE)  // Finds &quot;Ali&quot; in the EMPLOYEE column in whatever case
+#-- [ [2, 1], [ 2, 4 ] ]
+
+? o1.FindSubValueInColCS(:EMPLOYYE, &quot;A&quot;, FALSE)  // Finds cells containing &quot;A&quot; or &quot;a&quot; in that column
+#--&gt; [
+#	[ [2, 1], [1] ],		// 1st char in &quot;Ali&quot; in cell [2, 1]
+#	[ [2, 2], [2, 5] ], 	// 2nd and 5th chars in &quot;Dania&quot; in cell [2, 2]
+#	[ [2, 4], [1]  ]		// 1st char in &quot;ali&quot; (because CS = FALSE) in cell [2, 4]		
+# ]
+
+# Searching within rows
+
+? o1.FindInRowCS(4, &quot;ALI&quot;)  // Finds &quot;ALI&quot; (in whatever case it is written) in row 4
+#--&gt; [ [2, 4], [3, 4] ]
+
+? o1.FindSubValueInRow(4, &quot;li&quot;)  // Finds cells containing &quot;li&quot; in row 4
+#--&gt; [
+#	[ [2, 4], 2 ], 	// &quot;li&quot; starts at position 2 in &quot;ali&quot; in cell [2, 4]
+#	[ [3, 4], 2 ]	// &quot;li&quot; starts at position 2 in &quot;Ali&quot; in cell [3, 4]
+# ]
+
+# Searching &quot;Ali&quot; (in whatever case it is written) in a specific section
+
+? o1.FindInSectionCS([:ID, 1], [:SALARY, 3], &quot;ali&quot;, FALSE)
+#--&gt; [ [2, 1], [2, 4], [3, 4] ]
+
+# Finding a cell relative to other cells
+
+? o1.FindNthInColCS(:EMPLOYEE, &quot;Ali&quot;, 2, FALSE)  // Finds the 2nd &quot;Ali&quot; in EMPLOYEE column
+#--&gt; [ [2, 1], [2, 4] ]
+
+? o1.FindFirstInRow(3, &quot;Ben&quot;)  // Finds the first occurrence of &quot;Ben&quot; in row 3
+#--&gt; [ 2, 3 ]
+
+# Checking containement
+
+? o1.ColContains(:SALARY, 35000)  // Checks if SALARY column contains 35000
+#--&gt; TRUE
+
+? o1.RowContains(2, &quot;Dania&quot;)  // Checks if row 2 contains &quot;Dania&quot;
+#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<p>The intuitive naming scheme embraced clearly distinguishes between searching for exact values — <code>Find(val)</code>, which locates entire cells equal to <code>val</code> — and partial matches — <code>FindInCells(subval)</code>, which finds any occurrence of <code>subval</code> within the content of the cells.</p>
+<h2 id="filtering-data">Filtering Data</h2>
+<p>The <code>stzTable</code> class provides powerful filtering capabilities that let you extract specific subsets of data based on one or more conditions. This is similar to applying filters in spreadsheet applications, but with programmatic flexibility.</p>
+<h3 id="filtering-by-one-column">Filtering by One Column</h3>
+<p>The <code>FilterBy()</code> method permanently updates the table content to show only data that matches your specified criteria. If you want to preserve the original table while viewing filtered results, you can use the <code>FilterByCQ()</code> method ("C" stands for "Copy" and "Q" is used in Softanza to return an object for futrther processing), which returns a new filtered table without modifying the original.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Filter by a single condition, modifying the original table
+o1.FilterBy([ :Region = &quot;North&quot; ])
+o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭────────┬───────────┬─────────┬───────┬───────╮
+│ Region │  Product  │ Quarter │ Sales │ Units │
+├────────┼───────────┼─────────┼───────┼───────┤
+│ North  │ Product A │ Q1      │ 10000 │   100 │
+│ North  │ Product B │ Q2      │  8000 │    80 │
+╰────────┴───────────┴─────────┴───────┴───────╯</pre>
+<div class="nblock"><div class="lbl">Haro</div><pre># Filter by a single condition, returning a new table without modifying the original
+o1.FilterByCQ([ :Region = &quot;North&quot;, :Quarter = &quot;Q2&quot; ]).Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭────────┬───────────┬─────────┬───────┬───────╮
+│ Region │  Product  │ Quarter │ Sales │ Units │
+├────────┼───────────┼─────────┼───────┼───────┤
+│ North  │ Product B │ Q2      │  8000 │    80 │
+╰────────┴───────────┴─────────┴───────┴───────╯</pre>
+<p>The filtering criteria use an intuitive syntax where you specify column names and their expected values in a list. This human-readable approach makes your code more maintainable and easier to understand.</p>
+<h3 id="filtering-by-multiple-columns">Filtering by Multiple Columns</h3>
+<p>You can combine multiple conditions in a single filter operation, creating more complex queries:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Filter with multiple columns as criteria
+o1.FilterByCQ([ 
+    :Region = &quot;East&quot;, 
+    :Quarter = &quot;Q1&quot;
+]).Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭────────┬───────────┬─────────┬───────┬───────╮
+│ Region │  Product  │ Quarter │ Sales │ Units │
+├────────┼───────────┼─────────┼───────┼───────┤
+│ East   │ Product A │ Q1      │ 11000 │   110 │
+│ East   │ Product B │ Q1      │  7500 │    75 │
+╰────────┴───────────┴─────────┴───────┴───────╯</pre>
+<p>For even more flexibility, you can specify multiple acceptable values for a single column:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Filter with multiple possible values for a column
+o1.FilterByCQ([ 
+    :Region = [ &quot;East&quot;, &quot;West&quot; ], 
+    :Product = &quot;Product A&quot;
+]).Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭────────┬───────────┬─────────┬───────┬───────╮
+│ Region │  Product  │ Quarter │ Sales │ Units │
+├────────┼───────────┼─────────┼───────┼───────┤
+│ East   │ Product A │ Q1      │ 11000 │   110 │
+│ West   │ Product A │ Q1      │ 13000 │   130 │
+╰────────┴───────────┴─────────┴───────┴───────╯</pre>
+<p>This multi-value support lets you create sophisticated filtering criteria without having to chain multiple filter operations, making your code cleaner and more efficient.</p>
+<h3 id="conditional-filtering">Conditional Filtering</h3>
+<p>The <code>stzTable</code> class allows you to define conditions using a string that contains plain Haro code. To see this in action, let’s take a table <code>o1</code> with two columns: <code>Productivity</code> and <code>Hours</code>. After displaying the full dataset, we apply filters to extract the rows that meet specific criteria.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzTable([
+    [ :Productivity, :Hours ],
+    [ 10, 5 ],
+    [ 7, 3 ],
+    [ 9, 4 ]
+])
+
+o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭──────────────┬───────╮
+│ Productivity │ Hours │
+├──────────────┼───────┤
+│           10 │     5 │
+│            7 │     3 │
+│            9 │     4 │
+╰──────────────┴───────╯</pre>
+<p>First, we filter for rows where <code>Productivity</code> is greater than 8:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.FilterWQ(&#x27;@(:Productivity) &gt; 8&#x27;).Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>This returns only the rows with <code>Productivity</code> values of 10 and 9.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>╭──────────────┬───────╮
+│ Productivity │ Hours │
+├──────────────┼───────┤
+│           10 │     5 │
+│            9 │     4 │
+╰──────────────┴───────╯</pre><p class="ran nv-illus">illustration</p></div>
+<p>Then, we add a second condition: only include rows where <code>Hours</code> is also greater than or equal to 5:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.FilterWQ(&#x27;@(:Productivity) &gt; 8 and @(:Hours) &gt;= 5&#x27;).Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Now, only one row remains—where <code>Productivity</code> is 10 and <code>Hours</code> is 5.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>╭──────────────┬───────╮
+│ Productivity │ Hours │
+├──────────────┼───────┤
+│           10 │     5 │
+╰──────────────┴───────╯</pre><p class="ran nv-illus">illustration</p></div>
+<p>This demonstrates how <strong>complex conditions</strong> can be expressed in a clear and concise way using the <code>FilterW()</code> method.</p>
+<h2 id="manipulating-and-restructuring-data">Manipulating and Restructuring Data</h2>
+<p>Along with <strong>navigation</strong> and <strong>search</strong>, <code>stzTable</code> truly excels in <strong>data manipulation</strong>. Its rich set of methods allows you to transform your table in virtually any way imaginable.</p>
+<h3 id="replacing-data">Replacing Data</h3>
+<p><code>stzTable</code> offers numerous ways to replace data, from individual cells to entire sections:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Replacing individual cells
+
+o1.ReplaceCell(:SALARY, 2, 30000)  // Replaces a single cell value
+o1.ReplaceCells([[:SALARY, 2], [:SALARY, 3]], 30000)  // Replaces multiple cells with the same value
+o1.ReplaceCellsXT([[:SALARY, 2], [:SALARY, 3]], [30000, 31000])  // Replaces multiple cells with different values
+
+# Replacing based on value
+
+o1.ReplaceCellValue(&quot;Ali&quot;, &quot;Alexander&quot;)  // Replaces all occurrences of &quot;Ali&quot; with &quot;Alexander&quot;
+o1.ReplaceNthCellValue(&quot;Ali&quot;, &quot;Alexander&quot;, 2)  // Replaces the 2nd occurrence of &quot;Ali&quot;
+
+# Replacing columns and rows
+
+o1.ReplaceColumn(:SALARY, [40000, 35000, 42000, 38000])  // Replaces an entire column
+o1.ReplaceRow(2, [20, &quot;Daniel&quot;, 32000])  // Replaces an entire row</pre><p class="ran nv-illus">illustration</p></div>
+<p>It's possible to replace subvalues by adding the <code>In</code> to any of the methods above. For example:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.ReplaceInCol(:EMPLOYEE, &quot;a&quot;, &quot;A&quot;) // Replace all the lowercase &quot;a&quot;s in the EMPLOYEE column by an uppercase &quot;A&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="adding-and-removing-data">Adding and Removing Data</h3>
+<p><code>stzTable</code> makes it simple to modify your table structure by adding or removing elements:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Adding columns and rows
+
+o1.AddCol(:DEPARTMENT, [&quot;Sales&quot;, &quot;IT&quot;, &quot;HR&quot;, &quot;Marketing&quot;])  // Adds a new column
+o1.AddRow([50, &quot;NewGuy&quot;, 30000, &quot;Finance&quot;])  // Adds a new row
+
+# Removing columns and rows
+
+o1.RemoveCol(:SALARY)  // Removes the SALARY column
+o1.RemoveRow(3)  // Removes row 3
+o1.RemoveColsExcept([:ID, :EMPLOYEE])  // Keeps only specified columns
+o1.RemoveRowsExcept([1, 2])  // Keeps only specified rows</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="restructuring-your-table">Restructuring Your Table</h3>
+<p><code>stzTable</code> provides powerful methods for restructuring your table:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Moving elements
+
+o1.MoveRow(2, 4)  // Moves row 2 to position 4
+o1.MoveColumn(:ID, 3)  // Moves the ID column to position 3
+
+# Swapping elements
+
+o1.SwapRows(1, 3)  // Swaps rows 1 and 3
+o1.SwapColumns(:ID, :SALARY)  // Swaps the ID and SALARY columns
+
+# Renaming columns
+
+o1.RenameColumn(:EMPLOYEE, :NAME)  // Renames the EMPLOYEE column to NAME</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="transposing-tables">Transposing Tables</h3>
+<p>The <code>stzTable</code> class offers a flexible <code>Transpose()</code> method to swap rows and columns, enabling you to reorient your data for analysis or presentation. This is particularly useful when you need to change the perspective of your dataset, such as switching between row-based and column-based views.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzTable([
+	[ :ID,	 :AGE,    :SALARY	],
+	#----------------------------------#
+	[ 10,	 32,		35000	],
+	[ 20,	 27,		28900	],
+	[ 30,	 24,		25982	],
+	[ 40,	 22,		12870	]
+])
+
+o1.Show()
+#--&gt;
+&#x27;
+ ╭────┬─────┬────────╮
+ │ Id │ Age │ Salary │
+ ├────┼─────┼────────┤
+ │ 10 │  32 │  35000 │
+ │ 20 │  27 │  28900 │
+ │ 30 │  24 │  25982 │
+ │ 40 │  22 │  12870 │
+ ╰────┴─────┴────────╯
+&#x27;
+o1.Transpose()
+o1.Show()
+#--&gt;
+&#x27;
+ ╭────────┬───────┬───────┬───────┬───────╮
+ │  Col1  │ Col2  │ Col3  │ Col4  │ Col5  │
+ ├────────┼───────┼───────┼───────┼───────┤
+ │ id     │    10 │    20 │    30 │    40 │
+ │ age    │    32 │    27 │    24 │    22 │
+ │ salary │ 35000 │ 28900 │ 25982 │ 12870 │
+ ╰────────┴───────┴───────┴───────┴───────╯
+&#x27;
+o1.TransposeBack()
+o1.Show()
+#--&gt;
+&#x27;
+ ╭────┬─────┬────────╮
+ │ Id │ Age │ Salary │
+ ├────┼─────┼────────┤
+ │ 10 │  32 │  35000 │
+ │ 20 │  27 │  28900 │
+ │ 30 │  24 │  25982 │
+ │ 40 │  22 │  12870 │
+ ╰────┴─────┴────────╯
+ &#x27;</pre><p class="ran nv-illus">illustration</p></div>
+<p>For cases where you want to include the original column names in the transposition, the <code>TransposeXT()</code> method extends this functionality by incorporating the column names as part of the transposed data. This ensures that the table's metadata remains intact, making it ideal for scenarios where preserving column context is crucial for reporting or further processing. The <code>TransposeBack()</code> method allows you to revert to the original table structure, providing flexibility to experiment with different data orientations without losing the initial configuration.</p>
+<h3 id="advanced-manipulation">Advanced Manipulation</h3>
+<p><code>stzTable</code> goes beyond basic operations with advanced manipulation capabilities:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Inserting at specific positions
+
+o1.InsertColumn(:DEPARTMENT, [&quot;Sales&quot;, &quot;IT&quot;, &quot;HR&quot;, &quot;Marketing&quot;], :At = 2)  // Inserts a column at position 2
+o1.InsertRow([50, &quot;NewGuy&quot;, 30000, &quot;Finance&quot;], :At = 3)  // Inserts a row at position 3
+
+# Erasing (clearing) data without removing structure
+
+o1.EraseColumn(:NOTES)  // Clears all values in the NOTES column
+o1.EraseRow(4)  // Clears all values in row 4
+o1.EraseSection([:ID, 2], [:SALARY, 4])  // Clears a section of the table
+
+# Filling with values
+
+o1.Fill(&quot;N/A&quot;)  // Fills the entire table with &quot;N/A&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<p>The distinction between <em>removing</em> (which changes the table structure) and <em>erasing</em> (which keeps the structure but clears values) highlights the thoughtful design of the API.</p>
+<h3 id="creating-subtables">Creating Subtables</h3>
+<p><code>stzTable</code> makes it easy to extract portions of your data as new tables:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzTable([
+	[ :ID,	:EMPLOYEE,	:SALARY,	:JOB 	],
+	[ 10,	&quot;Ali&quot;,		35000,		&quot;job1&quot;	],
+	[ 20,	&quot;Dan&quot;,		28900,		&quot;job2&quot;	],
+	[ 30,	&quot;Ben&quot;,		25982,		&quot;job3&quot;	]
+])
+
+o1.Show()
+#--&gt;
+&#x27;
+ ╭────┬──────────┬────────┬──────╮
+ │ Id │ Employee │ Salary │ Job  │
+ ├────┼──────────┼────────┼──────┤
+ │ 10 │ Ali      │  35000 │ job1 │
+ │ 20 │ Dan      │  28900 │ job2 │
+ │ 30 │ Ben      │  25982 │ job3 │
+ ╰────┴──────────┴────────┴──────╯
+&#x27;
+# Getting the content of the subtable
+
+? @@NL( o1.SubTable([ :EMPLOYEE, :SALARY ]) ) + NL
+#--&gt; [
+#	[ &quot;employee&quot;, [ &quot;Ali&quot;, &quot;Dan&quot;, &quot;Ben&quot; ] ],
+#	[ &quot;salary&quot;  , [ 35000, 28900, 25982 ] ]
+# ]
+
+# Casting the subtable into a stzTable object and showing it
+
+o1.SubTableQRT([ :EMPLOYEE, :SALARY ], :stzTable).Show()
+#--&gt;
+&#x27;
+ ╭──────────┬────────╮
+ │ Employee │ Salary │
+ ├──────────┼────────┤
+ │ Ali      │  35000 │
+ │ Dan      │  28900 │
+ │ Ben      │  25982 │
+ ╰────────┴────────╯
+ &#x27;</pre><p class="ran nv-illus">illustration</p></div>
+<p>This capability is invaluable for isolating specific subsets of your data, returning them as <code>stzTable</code> objects ready for further analysis or presentation.</p>
+<h3 id="conditional-methods">Conditional Methods</h3>
+<p><code>stzTable</code> includes a powerful "Conditional Method" system that adds a W() suffix to existing methods, enabling conditional filtering:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Get all cells in the SALARY column where value is &gt; 30000
+? o1.CellsW(&#x27;ToNumber(@Cell) &gt; 30000&#x27;)
+
+# Find employees with names shorter than 5 characters
+? o1.FindInColW(:EMPLOYEE, &#x27;isString(@Cell) and len(@Cell) &lt; 5&#x27;)
+
+# Replace only numeric cells in a column
+o1.ReplaceCellsInColW(:ID, &#x27;isNumber(@Cell)&#x27;, &quot;ID-&quot; + @Cell)</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="spreadsheet-like-calculations-and-sorting">Spreadsheet-Like Calculations and Sorting</h2>
+<p>What sets <code>stzTable</code> apart from many other table implementations is its incorporation of <strong>spreadsheet-like</strong> functionality, allowing for calculations, sorting, and other advanced operations directly within your code.</p>
+<h3 id="calculated-columns-and-rows">Calculated Columns and Rows</h3>
+<p>One of <code>stzTable</code>'s most powerful features is the ability to add calculated columns and rows:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzTable([
+
+	[ &quot;COUNTRY&quot;,  &quot;INCOME&quot;,	&quot;POPULATION&quot; ],
+	#------------------------------------#
+	[ &quot;USA&quot;,         25450,       340.1	 ],
+	[ &quot;China&quot;,       18150,      1430.1	 ],
+	[ &quot;Japan&quot;,        5310,       123^.2	 ],
+	[ &quot;Germany&quot;,      4490,        83.3  ],
+	[ &quot;India&quot;,        3370,      1430.2  ]
+
+])
+
+# Adding a calculated row (at the end of the table)
+
+o1.AddCalculatedCol(:PERCAPITA, &#x27;@(:INCOME) / @(:POPULATION)&#x27;)
+o1.Show()
+#--&gt;
+&#x27;
+ ╭─────────┬────────┬────────────┬───────────╮
+ │ Country │ Income │ Population │ Percapita │
+ ├─────────┼────────┼────────────┼───────────┤
+ │ USA     │  25450 │     340.10 │     74.83 │
+ │ China   │  18150 │    1430.10 │     12.69 │
+ │ Japan   │   5310 │     123.20 │     43.10 │
+ │ Germany │   4490 │      83.30 │     53.90 │
+ │ India   │   3370 │    1430.20 │      2.36 │
+ ╰─────────┴────────┴────────────┴───────────╯
+&#x27;
+# Inserting a calculated column at position 2 (using the `stzCountry` class and its `CurrencyAbbreviation()` method)
+
+o1.InsertCalculatedCol(2, :CURRENCY, &#x27;StzCountryQ(@(:COUNTRY)).CurrencyAbbreviation()&#x27;)
+? o1.Show()
+#--&gt;
+&#x27;
+ ╭─────────┬──────────┬────────┬────────────┬───────────╮
+ │ Country │ Currency │ Income │ Population │ Percapita │
+ ├─────────┼──────────┼────────┼────────────┼───────────┤
+ │ USA     │ USD      │  25450 │     340.10 │     74.83 │
+ │ China   │ CNY      │  18150 │    1430.10 │     12.69 │
+ │ Japan   │ JPY      │   5310 │     123.20 │     43.10 │
+ │ Germany │ EUR      │   4490 │      83.30 │     53.90 │
+ │ India   │ INR      │   3370 │    1430.20 │      2.36 │
+ ╰─────────┴──────────┴────────┴────────────┴───────────╯
+ &#x27;</pre><p class="ran nv-illus">illustration</p></div>
+<p>After adding calculated columns you can find them easily:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>
+? @@( o1.FindCalculatedCols() ) + NL
+#--&gt; [ 2, 4 ]
+
+? o1.CalculatedColNames()
+#--&gt; [ &quot;currency&quot;, &quot;population&quot; ]
+
+? @@NL( o1.CalculatedCols() ) + NL
+#--&gt; [
+#	[ &quot;USD&quot;, &quot;CNY&quot;, &quot;JPY&quot;, &quot;EUR&quot;, &quot;INR&quot; ],
+#	[ 340.10, 1430.10, 123.20, 83.30, 1430.20 ]
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>The same thing can be done with calculated rows:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Adding a calculated row (at the end of the table)
+
+o1.AddCalculatedRow([
+&#x27;&#x27;, &#x27;&#x27;, &#x27;@Sum( @(:INCOME) )&#x27;, &#x27;@Sum( @(:POPULATION) )&#x27;, &#x27;@Average( @(:PERCAPITA) )&#x27;
+])
+
+? o1.Show()
+#--&gt;
+&#x27;
+ ╭─────────┬──────────┬────────┬────────────┬───────────╮
+ │ Country │ Currency │ Income │ Population │ Percapita │
+ ├─────────┼──────────┼────────┼────────────┼───────────┤
+ │ USA     │ USD      │  25450 │     340.10 │     74.83 │
+ │ China   │ CNY      │  18150 │    1430.10 │     12.69 │
+ │ Japan   │ JPY      │   5310 │     123.20 │     43.10 │
+ │ Germany │ EUR      │   4490 │      83.30 │     53.90 │
+ │ India   │ INR      │   3370 │    1430.20 │      2.36 │
+ │         │          │  56770 │    3406.90 │     37.38 │ ~&gt; Here is the row we added
+ ╰─────────┴──────────┴────────┴────────────┴───────────╯
+&#x27;
+? @@( o1.FindCalculatedRows() ) + NL
+#--&gt; [ 6 ]
+
+? @@( o1.CalculatedRows() ) + NL
+#--&gt; [ [ &quot; &quot;, &quot; &quot;, 56770, 3406.90, 37.38 ] ]</pre><p class="ran nv-illus">illustration</p></div>
+<blockquote>
+<p><strong>Note</strong>: There is a better way to display the table along with its total at the bottom—by using the <code>showXT()</code> function, as demonstrated later in the article.</p>
+</blockquote>
+<h3 id="excel-like-functions">Excel-Like Functions</h3>
+<p><code>stzTable</code> implements many familiar <strong>spreadsheet functions</strong> for performing calculations on ranges of cells.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzTable([
+
+	[ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ],
+
+	[  12,  10,   8 ],
+	[  10,  14,  24 ],
+	[   7,   4,   8 ]
+
+])
+
+? o1.KOUNT([ :A, 1 ], [ :C, 3 ]) # We use &quot;K&quot; because we have an other Count() method alternative of len()
+#--&gt; 9
+
+? o1.SUM([ :A, 1 ], [ :C, 3 ])
+#--&gt; 97
+
+? o1.AVERAGE([ :A, 1 ], [ :C, 3 ])
+#--&gt; 10.78
+
+? o1.PRODUCT([ :A, 1 ], [ :C, 3 ])
+#--&gt; 722_534_400
+
+? o1.MAX([ :A, 1 ], [ :C, 3 ])
+#--&gt; 24
+
+? o1.MIN([ :A, 1 ], [ :C, 3 ])
+#--&gt; 4</pre><p class="ran nv-illus">illustration</p></div>
+<blockquote>
+<p><strong>Note</strong> : More functions are planned for future updates, aiming to deliver a fully Excel-like experience inside your Haro code.</p>
+</blockquote>
+<h3 id="sorting-capabilities">Sorting Capabilities</h3>
+<p><code>stzTable</code> provides comprehensive sorting options for organizing your data:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>// Basic sorting
+o1.Sort()  // Sorts the entire table in ascending order
+o1.SortDown()  // Sorts in descending order
+
+// Sorting on specific columns
+o1.SortOn(:SALARY)  // Sorts the table based on the SALARY column
+o1.SortOnDown(:SALARY)  // Sorts in descending order based on SALARY</pre><p class="ran nv-illus">illustration</p></div>
+<p>It also supports an advanced expression-based sorting on a given column using <code>SortOnBy()</code> method, both in acending and descending orders:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzTable([
+	[ :ID,	:NAME,		:AGE 	],
+	#-------------------------------#
+	[ 10,	&quot;Abdelkarim&quot;,	52   	],
+	[ 20,	&quot;Hatem&quot;, 	46	],
+	[ 30,	&quot;Abraham&quot;,	48	]
+])
+
+o1.SortOnBy(:NAME, &#x27;len(@cell)&#x27;)
+
+o1.Show()
+#--&gt;
+&#x27;
+ ╭────┬────────────┬─────╮
+ │ Id │    Name    │ Age │
+ ├────┼────────────┼─────┤
+ │ 20 │ Hatem      │  46 │
+ │ 30 │ Abraham    │  48 │
+ │ 10 │ Abdelkarim │  52 │
+ ╰────┴────────────┴─────╯
+&#x27;
+o1.SortOnByDown(:NAME, &#x27;len(@cell)&#x27;)
+o1.Show()
+#--&gt;
+&#x27;
+ ╭────┬────────────┬─────╮
+ │ Id │    Name    │ Age │
+ ├────┼────────────┼─────┤
+ │ 10 │ Abdelkarim │  52 │
+ │ 30 │ Abraham    │  48 │
+ │ 20 │ Hatem      │  46 │
+ ╰────┴────────────┴─────╯
+ &#x27;</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="grouping-and-aggregating-data">Grouping and Aggregating Data</h2>
+<p>Grouping is a powerful technique for summarizing and analyzing data by categories. The <code>stzTable</code> class makes this process straightforward with its <code>GroupBy()</code> method.</p>
+<h3 id="single-column-grouping">Single Column Grouping</h3>
+<p>You can group your data by a single column to organize related information:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Group by Region
+o1.GroupBy([ :Region ])
+o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭────────┬───────────┬─────────┬───────┬───────╮
+│ Region │  Product  │ Quarter │ Sales │ Units │
+├────────┼───────────┼─────────┼───────┼───────┤
+│ North  │ Product A │ Q1      │ 10000 │   100 │
+│ South  │ Product A │ Q1      │ 15000 │   150 │
+│ East   │ Product A │ Q1      │ 11000 │   110 │
+│ West   │ Product A │ Q1      │ 13000 │   130 │
+╰────────┴───────────┴─────────┴───────┴───────╯</pre>
+<p>This transforms your table to show unique values in the specified column, with the first occurrence of each value displayed in the result.</p>
+<h3 id="multi-column-grouping-with-aggregations">Multi-Column Grouping with Aggregations</h3>
+<p>For more advanced analysis, you can group by multiple columns and simultaneously apply aggregation functions to numeric columns using the extended form <code>GroupByXT(aCols, aAggregations)</code>, as shown below:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Group by Product and Region with aggregations
+o1.GroupByXT([ :Product, :Region ], [ :Sales = &#x27;Sum&#x27;, :Units = &#x27;Average&#x27; ])
+o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭────────┬───────────┬────────┬───────────┬─────────┬───────┬───────╮
+│ Region │  Product  │ Region │  Product  │ Quarter │ Sales │ Units │
+├────────┼───────────┼────────┼───────────┼─────────┼───────┼───────┤
+│ North  │ Product A │ North  │ Product A │ Q1      │ 10000 │   100 │
+│ South  │ Product A │ South  │ Product A │ Q1      │ 15000 │   150 │
+│ East   │ Product A │ East   │ Product A │ Q1      │ 11000 │   110 │
+│ West   │ Product A │ West   │ Product A │ Q1      │ 13000 │   130 │
+│ North  │ Product B │ North  │ Product B │ Q2      │  8000 │    80 │
+│ South  │ Product B │ South  │ Product B │ Q1      │  9500 │    95 │
+│ East   │ Product B │ East   │ Product B │ Q2      │  7500 │    75 │
+│ West   │ Product B │ West   │ Product B │ Q1      │  9000 │    90 │
+╰────────┴───────────┴────────┴───────────┴─────────┴───────┴───────╯</pre>
+<p>This creates a hierarchical grouping with the primary column (Product) and secondary column (Region), while calculating the sum of Sales and the average of Units for each group.</p>
+<h3 id="enhanced-visualization-with-row-numbers-and-subtotals">Enhanced Visualization with Row Numbers and Subtotals</h3>
+<p>The <code>ShowXT()</code> method with the <code>:SubTotal</code> and <code>:GrandTotal</code> parameters provides a more comprehensive view of your grouped data:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.ShowXT([ :RowNumber = TRUE, :SubTotal = TRUE, :GrandTotal = TRUE ])</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭─────────────────────┬────────┬────────────┬────────────╮
+│ # │     Product     │ Region │ Sum(sales) │ Sum(units) │
+├─────────────────────┼────────┼────────────┼────────────┤
+│ 1 │ Product A       │ North  │      10000 │        100 │
+│ 2 │ Product A       │ South  │      15000 │        150 │
+│ 3 │ Product A       │ East   │      11000 │        110 │
+│ 4 │ Product A       │ West   │      13000 │        130 │
+│ ------------------- │ ------ │ ---------- │ ---------- │
+│           Sub-total │        │      49000 │        490 │
+│                     │        │            │            │
+│ 5 │ Product B       │ North  │       8000 │         80 │
+│ 6 │ Product B       │ South  │       9500 │         95 │
+│ 7 │ Product B       │ East   │       7500 │         75 │
+│ 8 │ Product B       │ West   │       9000 │         90 │
+│ ------------------- │ ------ │ ---------- │ ---------- │
+│           Sub-total │        │      34000 │        340 │
+├─────────────────────┼────────┼────────────┼────────────┤
+│         GRAND-TOTAL │        │      83000 │        830 │
+╰─────────────────────┴────────┴────────────┴────────────╯</pre>
+<p>This displays shows raws numbers, intermediate subtotals for each primary group and a grand total at the bottom, making it easier to analyze hierarchical data relationships.</p>
+<h3 id="grouping-on-list-valued-columns">Grouping on List-Valued Columns</h3>
+<p>A powerful feature of <code>stzTable</code> is its built-in support for <strong>grouping by values inside list-based cells</strong>. In many real-world datasets, a single cell might contain multiple tags, roles, or labels—for example, a user’s skills, a product’s categories, or a task list. Rather than forcing you to pre-normalize your data, <code>stzTable</code> handles the heavy lifting automatically.</p>
+<p>Suppose you have a CSV file (<code>team.csv</code>) that looks like this:</p>
+<p><img alt="team-csv.png" src="../../assets/img/narrations/team-csv.webp" /></p>
+<p>Load it into an <code>stzTable</code> and inspect:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzTable(:FromFile = &quot;team.csv&quot;)
+o1.ShowXT([ :RowNumber = TRUE ])</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>╭───┬─────────────────┬───────────┬────────────────────────────────┬──────────────╮
+│ # │    Employee     │   Role    │              Task              │ Productivity │
+├───┼─────────────────┼───────────┼────────────────────────────────┼──────────────┤
+│ 1 │ Sara            │ Developer │ [ &quot;Coding&quot;, &quot;Debugging&quot; ]      │         8.50 │
+│ 2 │ Mike            │ Manager   │ [ &quot;Planning&quot;, &quot;Review&quot; ]       │         7.20 │
+│ 3 │ Lena            │ Designer  │ [ &quot;UI&quot;, &quot;Prototyping&quot; ]        │            9 │
+│ 4 │ Omar            │ Developer │ [ &quot;Coding&quot;, &quot;Testing&quot; ]        │            8 │
+│ 5 │ Tara            │ Manager   │ [ &quot;Planning&quot;, &quot;Coordination&quot; ] │         7.80 │
+│ 6 │ Alex            │ Designer  │ [ &quot;UI&quot;, &quot;Animation&quot; ]          │         8.70 │
+╰───┴─────────────────┴───────────┴────────────────────────────────┴──────────────╯</pre><p class="ran nv-illus">illustration</p></div>
+<p>Now, if you call <code>GroupBy(:Task)</code>:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.GroupBy(:Task)
+o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p><code>stzTable</code> will <strong>explode</strong> the list in each cell of the <code>Task</code> column, and treat each individual entry as its own group:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>╭──────────────┬──────────┬───────────┬──────────────╮
+│     Task     │ Employee │   Role    │ Productivity │
+├──────────────┼──────────┼───────────┼──────────────┤
+│ Coding       │ Sara     │ Developer │         8.50 │
+│ Coding       │ Omar     │ Developer │            8 │
+│ Debugging    │ Sara     │ Developer │         8.50 │
+│ Planning     │ Mike     │ Manager   │         7.20 │
+│ Planning     │ Tara     │ Manager   │         7.80 │
+│ Review       │ Mike     │ Manager   │         7.20 │
+│ UI           │ Lena     │ Designer  │            9 │
+│ UI           │ Alex     │ Designer  │         8.70 │
+│ Prototyping  │ Lena     │ Designer  │            9 │
+│ Testing      │ Omar     │ Developer │            8 │
+│ Coordination │ Tara     │ Manager   │         7.80 │
+│ Animation    │ Alex     │ Designer  │         8.70 │
+╰──────────────┴──────────┴───────────┴──────────────╯</pre><p class="ran nv-illus">illustration</p></div>
+<p>This automatic “explode-and-group” behavior makes <code>stzTable</code> ideal for:</p>
+<ul>
+<li><strong>Tag-based</strong> analyses (e.g., keywords, categories)</li>
+<li><strong>Multi-skill</strong> or <strong>multi-role</strong> team reports</li>
+<li><strong>Keyword</strong> or <strong>label</strong> frequency counts</li>
+</ul>
+<p>Simply specify any column that holds lists of values—<code>GroupBy()</code> does the rest.</p>
+<h3 id="aggregating-data">Aggregating Data</h3>
+<p>Aggregation functions allow you to perform calculations across rows to derive meaningful insights from your data. The <code>stzTable</code> class offers a variety of aggregation methods that work seamlessly with its other features.</p>
+<h4 id="basic-aggregation">Basic Aggregation</h4>
+<p>The simplest form of aggregation calculates a single metric across all rows:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Calculate the sum of Sales
+o1.Aggregate([ :Sales = &#x27;SUM&#x27; ])
+o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭────────────╮
+│ Sum(sales) │
+├────────────┤
+│      83000 │
+╰────────────╯</pre>
+<p>This reduces your entire table to a single value—the total sales across all records.</p>
+<h4 id="multiple-aggregations">Multiple Aggregations</h4>
+<p>You can apply different aggregation functions to multiple columns simultaneously:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Apply multiple aggregation functions
+o1.Aggregate([
+    :Sales   = &#x27;SUM&#x27;,
+    :Units   = &#x27;AVERAGE&#x27;,
+    :Product = &#x27;COUNT&#x27;
+])
+o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭────────────┬────────────────┬────────────────╮
+│ Sum(sales) │ Average(units) │ Count(product) │
+├────────────┼────────────────┼────────────────┤
+│      83000 │         103.75 │              8 │
+╰────────────┴────────────────┴────────────────╯</pre>
+<p>This creates a concise summary table showing the total sales, average units, and count of products—all in a single operation.</p>
+<h4 id="combined-grouping-and-aggregation">Combined Grouping and Aggregation</h4>
+<p>The true power of <code>stzTable</code> becomes evident when combining grouping and aggregation, using the <code>GroupByXT(aColsToBeGroupped, aColsToBeAggregated)</code> function:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Group by Region with sum aggregation
+oCopy.GroupByXT([ :Region ], [ :Sales = &#x27;Sum&#x27;, :Units = &#x27;Sum&#x27; ]) # Or GroupByAndAggregate() if you prefer
+oCopy.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭────────┬────────────┬───────────╮
+│ Region │ Sum(Sales) │ Sum(Units)│
+├────────┼────────────┼───────────┤
+│ North  │     39500  │       395 │
+│ South  │     52000  │       520 │
+│ East   │     39500  │       395 │
+│ West   │     47000  │       470 │
+╰────────┴────────────┴───────────╯</pre>
+<div class="nblock"><div class="lbl">Haro</div><pre># Group by Product and Quarter with sums
+oCopy.GroupByXT([ :Product, :Quarter ], [ :Sales = &#x27;Sum&#x27;, :Units = &#x27;Sum&#x27; ])
+oCopy.Show()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<pre>╭───────────┬─────────┬────────────┬───────────╮
+│ Product   │ Quarter │ Sum(Sales) │ Sum(Units)│
+├───────────┼─────────┼────────────┼───────────┤
+│ Product A │ Q1      │     49000  │       490 │
+│ Product A │ Q2      │     55500  │       555 │
+│ Product B │ Q1      │     34000  │       340 │
+│ Product B │ Q2      │     39500  │       395 │
+╰───────────┴─────────┴────────────┴───────────╯</pre>
+<p>These combinations let you create insightful data summaries that reveal patterns and trends across different dimensions of your data. Notice how the group-by columns and the aggregated columns are clearly separated in the output, making the results easy to interpret.</p>
+<h2 id="advanced-data-analysis-with-pivot-tables">Advanced Data Analysis with Pivot Tables</h2>
+<p><code>stzTable</code> serves as the foundation for the powerful <code>stzPivotTable</code> class, which enables sophisticated multi-dimensional data analysis and interactive exploration. With <code>stzPivotTable</code>, you can transform your tabular data into dynamic cross-tabulations with aggregated insights across multiple dimensions.</p>
+<p>The seamless integration between these classes lets you convert any <code>stzTable</code> object into a pivot table with a fluent interface that's both powerful and intuitive:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Starting with employee data in a stzTable
+o1 = new stzTable([
+    [ :Department, :Location,   :Gender,  :Experience,  :Salary   ],
+    # ------------------------------------------------------------ #
+    [ &quot;Sales&quot;,     &quot;New York&quot;,  &quot;Male&quot;,   &quot;Junior&quot;,      45000    ],
+    [ &quot;Sales&quot;,     &quot;New York&quot;,  &quot;Female&quot;, &quot;Junior&quot;,      46000    ],
+    [ &quot;IT&quot;,        &quot;Chicago&quot;,   &quot;Male&quot;,   &quot;Junior&quot;,      50000    ],
+    [ &quot;IT&quot;,        &quot;Chicago&quot;,   &quot;Female&quot;, &quot;Senior&quot;,      83000    ],
+    [ &quot;HR&quot;,        &quot;New York&quot;,  &quot;Female&quot;, &quot;Senior&quot;,      69000    ],
+    # ...and more records
+])
+
+# Transform into a pivot table with multi-dimensional analysis
+o1.ToStzPivotTable() {
+    Analyze([ :Salary ], :Using = :SUM)       # What to analyze and how
+    SetRowsBy([ :Department, :Location ])     # Two-level row grouping
+    SetColsBy([ :Experience, :Gender ])       # Two-level column grouping
+    
+    Show()  # Display the formatted pivot table
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>This produces a richly formatted pivot table with hierarchical row and column headers:</p>
+<pre>╭───────────────────────┬─────────────────────┬─────────────────────┬─────────╮
+│                       │       Junior        │       Senior        │         │
+├────────────┬──────────┼──────────┬──────────┼──────────┬──────────┤         │
+│ Department │ Location │  Female  │   Male   │  Female  │   Male   │ AVERAGE │
+├────────────┼──────────┼──────────┼──────────┼──────────┼──────────┼─────────┤
+│ Sales      │ New York │    46000 │          │    76000 │    75000 │  197000 │
+│            │ Chicago  │    43000 │    42000 │    73000 │    72000 │  230000 │
+│            │          │          │          │          │          │         │
+│ IT         │ New York │    53000 │    52000 │    86000 │    85000 │  276000 │
+│            │ Chicago  │    51000 │    50000 │    83000 │    82000 │  266000 │
+│            │          │          │          │          │          │         │
+│ HR         │ New York │    43000 │    42000 │    69000 │    68000 │  222000 │
+│            │ Chicago  │    41000 │    40000 │    66000 │    65000 │  212000 │
+╰────────────┴──────────┴──────────┴──────────┴──────────┴──────────┴─────────╯
+                AVERAGE │   277000 │   226000 │   453000 │   447000 │ 1403000 </pre>
+<p>The <code>stzPivotTable</code> class supports various aggregation functions (SUM, AVG, MIN, MAX, COUNT), flexible dimension configuration, and automatic subtotals. This makes it an invaluable tool for data analysis tasks like:</p>
+<ul>
+<li>Comparing performance metrics across different business dimensions</li>
+<li>Analyzing trends in hierarchical or categorical data</li>
+<li>Creating financial summaries with multi-level breakdowns</li>
+<li>Generating cross-tabulated reports with aggregated metrics</li>
+</ul>
+<p>The fluent interface style allows you to build complex pivot tables in a readable, chainable syntax that clearly expresses your analytical intent.</p>
+<h2 id="regular-expression-support">Regular Expression Support</h2>
+<p><code>stzTable</code> integrates with <code>stzRegex</code> and <code>stzListex</code> classes to provide powerful pattern matching capabilities. To use them, you just need to add the <code>RX</code> suffix to any method in the class.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Find all cells matching a regex pattern
+? o1.FindCellsRX(&quot;^A.*i$&quot;)  // Finds cells starting with &quot;A&quot; and ending with &quot;i&quot;
+
+# Extract email of EMLOYEE column using regex and storing it in a new column called EMPLOYEE
+o1.AddCalculatedColRX(:EMAIL, &#x27;Rx(pat(:eMail).Matches(@(:EMPLOYEE))[1]&#x27;)
+
+# Obfuscating any email in the EMPLOYEE column using &quot;***&quot;
+o1.ReplaceInColXT(:EMPLOYEE, pat(:eMail), &quot;***&quot;)</pre><p class="ran nv-illus">illustration</p></div>
+<blockquote>
+<p><strong>Note</strong>: In Softanza, <code>pat(:eMail)</code> returns the regex pattern of an email so you don't have to write it by hand. Dozens of other named regexes are available through the <code>stzRegexData</code> class.</p>
+</blockquote>
+<h2 id="softanza-advantage-a-comparative-analysis">Softanza Advantage: A Comparative Analysis</h2>
+<p>Softanza's <code>stzTable</code> "spreadsheet metaphor" approach stands out when compared to other table manipulation libraries and traditional data frames.</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th><code>stzTable</code> (Haro)</th>
+<th>pandas (Python)</th>
+<th>data.frame (R)</th>
+<th>SQL Tables (SQLite)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Core API and Usability</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Natural Language API</strong></td>
+<td>✅ <strong>Comprehensive</strong> (FindColumnByName, ReplaceCell)</td>
+<td>Limited (loc, iloc)</td>
+<td>Limited (subset)</td>
+<td>SQL syntax (SELECT, WHERE)</td>
+</tr>
+<tr>
+<td><strong>Intuitive Method Naming</strong></td>
+<td>✅ <strong>Self-explanatory</strong> (AddRow, RemoveCol)</td>
+<td>Technical (concat, drop)</td>
+<td>Technical (rbind, cbind)</td>
+<td>SQL keywords (INSERT, DELETE)</td>
+</tr>
+<tr>
+<td><strong>Learning Curve</strong></td>
+<td>✅ <strong>Gentle</strong> (meaningful method names)</td>
+<td>Steep (API complexity)</td>
+<td>Steep (syntax)</td>
+<td>Moderate (SQL knowledge required)</td>
+</tr>
+<tr>
+<td><strong>Implementation Complexity</strong></td>
+<td>✅ <strong>Simple</strong> (1-2 lines per operation)</td>
+<td>Medium (multiple steps)</td>
+<td>Medium (multiple steps)</td>
+<td>SQL query construction</td>
+</tr>
+<tr>
+<td><strong>Data Access and Navigation</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Positional Awareness</strong></td>
+<td>✅ <strong>Native</strong> (FirstCol, LastRow)</td>
+<td>Index-based</td>
+<td>Index-based</td>
+<td>No direct positional access</td>
+</tr>
+<tr>
+<td><strong>Section Manipulation</strong></td>
+<td>✅ <strong>Direct syntax</strong> (Section, Range)</td>
+<td>iloc slicing</td>
+<td>Matrix notation</td>
+<td>LIMIT/OFFSET combinations</td>
+</tr>
+<tr>
+<td><strong>Subvalue Search</strong></td>
+<td>✅ <strong>Built-in</strong> (FindSubValueInCol)</td>
+<td>Requires regex</td>
+<td>Requires regex</td>
+<td>LIKE operator with wildcards</td>
+</tr>
+<tr>
+<td><strong>Automatic Column Name Generation</strong></td>
+<td>✅ <strong>Auto-generated symbolic column names</strong> (<code>:COL1</code>, <code>:COL2</code>)</td>
+<td>Numeric or default names; less descriptive</td>
+<td>Numeric or default names; similar to pandas</td>
+<td>Requires explicit column definitions</td>
+</tr>
+<tr>
+<td><strong>Data Manipulation</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Calculated Fields</strong></td>
+<td>✅ <strong>Formula support</strong> with @() syntax</td>
+<td>Requires explicit apply()</td>
+<td>Requires explicit apply()</td>
+<td>SQL expressions</td>
+</tr>
+<tr>
+<td><strong>Distinction Between Removing and Erasing</strong></td>
+<td>✅ <strong>Distinct remove/erase operations</strong> for structure vs. content</td>
+<td>Combines via <code>drop</code> or assignment; less granular</td>
+<td>Combines via subsetting or <code>NULL</code>; less granular</td>
+<td><code>DELETE</code>/<code>UPDATE</code> for content, <code>DROP</code> for structure</td>
+</tr>
+<tr>
+<td><strong>Subtable Creation</strong></td>
+<td>✅ <strong>Native subtable creation</strong> with <code>SubTable</code> returning <code>stzTable</code></td>
+<td>Column/row selection returns DataFrame; extra steps</td>
+<td>Subsetting returns data.frame; similar to pandas</td>
+<td><code>SELECT</code> queries return result sets; not object-oriented</td>
+</tr>
+<tr>
+<td><strong>Flexibility with Data Types</strong></td>
+<td>✅ <strong>Seamless</strong> mixed types</td>
+<td>Requires type casting</td>
+<td>Requires type casting</td>
+<td>Schema enforcement</td>
+</tr>
+<tr>
+<td><strong>Filtering and Searching</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FilterW() (Conditional Filtering)</strong></td>
+<td>✅ <strong>Programmatic filtering</strong> with Haro code (e.g., <code>@(:Productivity) &gt; 8</code>)</td>
+<td><code>query()</code> or boolean indexing; less flexible syntax</td>
+<td><code>subset()</code> or boolean indexing; less flexible</td>
+<td><code>WHERE</code> clauses; query-based</td>
+</tr>
+<tr>
+<td><strong>Conditional Methods</strong></td>
+<td>✅ <strong>W() suffix</strong> for any method (e.g., FindInColW)</td>
+<td><code>query()</code> or boolean indexing</td>
+<td><code>subset()</code> or boolean indexing</td>
+<td><code>WHERE</code> clauses</td>
+</tr>
+<tr>
+<td><strong>Integration with Regex</strong></td>
+<td>✅ <strong>Direct</strong> (RX methods, e.g., FindCellsRX)</td>
+<td>Separate regex functions</td>
+<td>Separate regex functions</td>
+<td>Limited REGEXP support</td>
+</tr>
+<tr>
+<td><strong>Grouping and Aggregation</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Grouping on List-Valued Columns</strong></td>
+<td>✅ <strong>Automatic explode-and-group</strong> (e.g., <code>GroupBy(:Task)</code> for lists)</td>
+<td>❌ Requires <code>explode()</code> + <code>groupby</code></td>
+<td>❌ Requires <code>unnest()</code> or manual flattening</td>
+<td>❌ Not supported; requires normalization</td>
+</tr>
+<tr>
+<td><strong>Excel-Like Functions</strong></td>
+<td>✅ <strong>Native Excel-like functions</strong> (SUM, AVERAGE, MAX, etc.)</td>
+<td>Requires <code>apply</code> or aggregation; less intuitive</td>
+<td>Requires <code>sapply</code> or <code>aggregate</code>; not spreadsheet-oriented</td>
+<td>Aggregate functions (SUM, AVG); query-based</td>
+</tr>
+<tr>
+<td><strong>Combined Grouping and Aggregation</strong></td>
+<td>✅ <strong>Seamless</strong> with <code>GroupByXT</code> for multi-column grouping</td>
+<td><code>groupby</code> with <code>agg</code>; complex syntax</td>
+<td><code>dplyr</code> or <code>aggregate</code>; multi-step</td>
+<td><code>GROUP BY</code> with aggregates; query-based</td>
+</tr>
+<tr>
+<td><strong>Advanced Analysis</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Pivot Table Support</strong></td>
+<td>✅ <strong>Integrated fluent API</strong> (ToStzPivotTable)</td>
+<td><code>pivot_table()</code> with complex parameters</td>
+<td><code>pivot_wider/pivot_longer</code> with multiple steps</td>
+<td>Complex <code>GROUP BY</code> with <code>CASE</code></td>
+</tr>
+<tr>
+<td><strong>Multi-dimensional Analysis</strong></td>
+<td>✅ <strong>Intuitive hierarchy</strong> with nested groupings</td>
+<td>MultiIndex; less intuitive syntax</td>
+<td>Requires add-on packages</td>
+<td>Limited hierarchical support</td>
+</tr>
+<tr>
+<td><strong>Advanced Sorting Capabilities</strong></td>
+<td>✅ <strong>Advanced sorting</strong> with expression-based <code>SortOnBy</code></td>
+<td>Custom sorting via <code>sort_values(key=...)</code>; requires function</td>
+<td>Custom sorting via <code>order</code>; requires logic</td>
+<td><code>ORDER BY</code> with expressions; query-based</td>
+</tr>
+<tr>
+<td><strong>Data Input and Presentation</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Support for External File Input</strong></td>
+<td>✅ <strong>Direct CSV import</strong> with planned JSON/HTML/SQL</td>
+<td>Robust file import (<code>read_csv</code>, <code>read_json</code>); mature</td>
+<td>File import (<code>read.csv</code>, <code>read_json</code>); similar to pandas</td>
+<td><code>IMPORT</code> or <code>COPY</code> for CSV; schema required</td>
+</tr>
+<tr>
+<td><strong>Modern Display Formatting</strong></td>
+<td>✅ <strong>Rich visual presentation</strong> with borders, alignment</td>
+<td>Requires styling plugins</td>
+<td>Basic console output</td>
+<td>Plain text or external tools</td>
+</tr>
+<tr>
+<td><strong>Visual Orientation</strong></td>
+<td>✅ <strong>Design priority</strong> with spreadsheet-like output</td>
+<td>Primarily functional</td>
+<td>Statistical focus</td>
+<td>No inherent visual presentation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conclusion">Conclusion</h2>
+<p><code>stzTable</code> transforms data manipulation in Haro with its intuitive, spreadsheet-like interface. Its comprehensive API covers everything from basic access to advanced calculations while maintaining an elegant, readable syntax.</p>
+<p>The class excels with its conditional methods, regex integration, and seamless pivot table capabilities through <code>stzPivotTable</code>, enabling sophisticated multi-dimensional analysis with a fluent, chainable interface. This integration provides an exceptional advantage for analytical tasks that would require multiple steps or additional packages in other frameworks.</p>
+<p>Whether you're managing simple datasets, performing sophisticated analytics, or creating complex hierarchical reports, the <code>stzTable</code> ecosystem provides a powerful yet approachable foundation for your data work, bridging the gap between code and visual data management in a way that prioritizes readability and intuitive design.</p>
+<h2>Lectures liées</h2><ul><li><a href="stztablex-pattern-langauge-for-tables.html">stzTablex: Declarative Pattern Matching for Tables in Softanza</a></li><li><a href="stzstringart-narration.html">An overview of String Art support in Softanza</a></li><li><a href="stzregexuter-regex-as-computational-reactive-medium.html">Softanza Regexuter: Regex as Computational Reactive Medium</a></li><li><a href="stzobject-history-narration.html">The Narrative of Transformations: Tracking Object History in Softanza</a></li></ul><h2>Citer</h2><p class="mono cite">Mansour Ayouni. « &quot;Code Meets Cells&quot;: The Spreadsheet Metaphor in Softanza&#x27;s stzTable ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stztable-when-code-meets-cells.html</p><p class="proof">Non exécuté : son code touche aux fichiers, au réseau, à l'horloge ou au hasard. L'article est publié tel qu'il est écrit ; ses blocs sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stztable-when-code-meets-cells.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

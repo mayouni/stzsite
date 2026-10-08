@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Rest of the Seams · Narrations · Softanza</title>
+<meta name="description" content="I2&#x27;s first pass wired six classes and stopped. The design doc&#x27;s section 7 table kept the rest of the rows in plain sight, and the completion document said so as the system&#x27;s largest honest gap: a detection sees only what a seam emits.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stz-security-seams-2-narration.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stz-security-seams-2-narration.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">The Rest of the Seams</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stz-guarding-secrets-and-credentials-narration.html">Guarding Secrets &amp; Credentials</a></li><li><a href="stz-governing-project-security-narration.html">Governing a Project&#x27;s Security</a></li><li><a href="stz-auth-the-front-door-narration.html">The Front Door</a></li><li><a href="stz-governance-lineage-narration.html">Answerable Forever</a></li><li><a href="stz-security-attestation-narration.html">Attestation and Export</a></li><li><a href="stz-security-detection-narration.html">Detection over Sequences</a></li><li><a href="stz-security-drill-narration.html">The Drill</a></li><li><a href="stz-security-response-narration.html">The Governed Response</a></li><li><a href="stz-security-incident-narration.html">The Incident</a></li><li><a href="stz-security-seams-2-narration.html" aria-current=page>The Rest of the Seams</a></li><li><a href="stz-security-seams-narration.html">The Seams</a></li><li><a href="stz-security-event-narration.html">The Security Event</a></li><li><a href="stz-security-ledger-narration.html">The Security Ledger</a></li><li><a href="stz-security-sentinel-narration.html">The Sentinel</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>The Rest of the Seams</h1>
+    <p class="lede">I2's first pass wired six classes and stopped. The design doc's section 7
+table kept the rest of the rows in plain sight, and the completion
+document said so as the system's largest honest gap: <em>a detection sees
+only what a seam emits</em>. The kinds were in the catalog; the calls were
+not written.</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2026-07-31 · série · <a href="../narrations-security.html">la série sécurité</a> · domaine <a href="../atlas/security.html">Sécurité et gouvernance</a></p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+
+<h3 id="a-detection-can-only-ever-see-what-a-seam-emits">A detection can only ever see what a seam emits</h3>
+<blockquote>
+<p>Every code block below is real, and every output block is its actual
+output (the run is <code>base/test/system/security_seams2_narrated.ring</code>,
+41 assertions, ~0.3 seconds). Incident analysis I2, second pass —
+<code>doc/design/SOFTANZA_INCIDENT_ANALYSIS.md</code>.</p>
+</blockquote>
+<h2 id="the-gap-that-was-listed-not-hidden">The gap that was listed, not hidden</h2>
+<p>This pass writes them. Ten more places where the library already knew
+something and forgot it one call later.</p>
+<h2 id="an-id-token-and-the-one-slot-that-held-it">An id-token, and the one slot that held it</h2>
+<div class="nblock"><div class="lbl">Haro</div><pre>oCli = new stzOidcClient(&quot;https://id.acme.com&quot;, &quot;shop-app&quot;)
+aTok = oCli.VerifyIdTokenAt(&quot;not-a-jwt&quot;, &quot;&quot;, $NOW)</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>  [OK] the client refuses it
+  [OK] ...and the refusal is now REMEMBERED, not just returned
+  [OK] ...naming the issuer that claimed to have signed it
+  the token is not a well-formed JWT</pre></div>
+<p><code>@cLastWhy</code> holds exactly one of these. Ten in a row — a botched key
+rotation, or a forged-token campaign — read identically from any single
+call to <code>Why()</code>.</p>
+<h2 id="the-distinction-the-provider-could-not-make">The distinction the provider could not make</h2>
+<p>The catalog has always had an <code>oauth.code.replayed</code> kind: <em>an
+authorization code was redeemed twice</em>. The provider could not honestly
+emit it. Its refusal read <strong>"unknown or already-used authorization
+code"</strong>, because a spent code is deleted, so a stolen code replayed and a
+code nobody ever issued arrive as exactly the same miss.</p>
+<p>So the provider now remembers the codes it has spent — bounded, and
+they are single-use and short-lived, so an old entry has nothing left to
+protect:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>aAuth = oOp.AuthorizeAt([ :clientId = &quot;shop-app&quot;, ... ], &quot;dana&quot;, $NOW)
+oOp.ExchangeCodeAt(&quot;shop-app&quot;, &quot;s3cret&quot;, aAuth[:code], ...)   # succeeds
+oOp.ExchangeCodeAt(&quot;shop-app&quot;, &quot;s3cret&quot;, aAuth[:code], ...)   # the replay
+oOp.ExchangeCodeAt(&quot;shop-app&quot;, &quot;s3cret&quot;, &quot;a-code-nobody-issued&quot;, ...)</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>  [OK] the second is refused
+  [OK] ...and recorded as a REPLAY, the error it is
+  [OK] a code that was never issued is NOT called a replay
+  [OK] ...it is a rejected client, the warning it is
+  the answer to both is identical -- only the ledger tells them apart</pre></div>
+<p>The refusal returned to the caller stays byte-identical, so an attacker
+learns nothing from the difference. The distinction exists only in
+evidence — which is exactly where it belongs.</p>
+<h2 id="one-place-not-nine">One place, not nine</h2>
+<p>There are nine <code>Status(401, ...)</code> sites inside <code>stzAppServer.ring</code> alone,
+and every application adds more. Wiring each one would have produced a
+seam that saw the library's own refusals and missed the ones an
+application wrote — the more interesting half.</p>
+<p>The verdict is read once, where the response is final:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oSrv.Get_(&quot;/vault&quot;, func oReq, oResp {
+    oResp.Status(403, &quot;Forbidden&quot;).Json([ &quot;error&quot;, &quot;not yours&quot; ]) })</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>  [OK] a real 403 came back over a real socket
+  [OK] ...and the refusal reached the ledger from a USER&#x27;s route
+  [OK] ...naming the method and path, and nothing from the headers
+  GET /vault
+  [OK] a 200 writes nothing -- a 404 is a typo and a 500 is a bug</pre></div>
+<p>Only 401 and 403 carry a security meaning. And nothing from the request
+body or its headers is written, so a credential in an <code>Authorization</code>
+header cannot reach the ledger through this door.</p>
+<h2 id="what-a-counter-cannot-say">What a counter cannot say</h2>
+<div class="nblock"><div class="lbl">Haro</div><pre>oRl.SetLimit(&quot;scraper&quot;, 1, 1)
+oRl.Allow(&quot;scraper&quot;)   # x3</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>  [OK] the counter says how many were shed
+  [OK] ...the ledger says when each one was
+  [OK] a shed is INFO -- the limiter working, not a failure</pre></div>
+<p>A steady trickle and a sudden flood read the same from <code>RejectedCount()</code>.
+The times are what turns a burst of sheds into a detection — and a shed
+is deliberately <code>info</code>, because shedding is the limiter doing its job.</p>
+<h2 id="the-refusals-that-were-only-ever-a-return-value">The refusals that were only ever a return value</h2>
+<p>Cross-world crossings, federated calls, the production door, and the bare
+secret's reveal gate all knew and all forgot. The federation's four
+refusal points — an SSRF-shaped path, a facet nobody offers, a missing
+bond, the capability lattice — each wrote <code>@cWhy</code> and returned <code>""</code>; they
+now share one door, which also removed four copies of the timing
+bookkeeping.</p>
+<pre>  [OK] an unbonded caller is refused
+  [OK] ...and so is an SSRF-shaped path -- the same door
+  unsafe path rejected (must start with &#x27;/&#x27;, no CRLF): http://evil.example/x</pre>
+<p>The production door records <strong>one event per unsound service</strong>, not one
+per refused deploy, so an incident's <code>Subjects()</code> names which services
+were still fake:</p>
+<pre>  [OK] one event per UNSOUND SERVICE, not one per refused deploy
+  service:shop/payments -- sandbox-in-production: still bound to a SANDBOX
+  in a production phase -- a fake must never ship</pre>
+<p>...and it is recorded at the <strong>refusal</strong>, never inside <code>MayGoLive()</code>.
+That one is a preflight anyone may ask speculatively, and a predicate
+that writes evidence fills the ledger with questions instead of events.</p>
+<p>The bare secret's gate refuses by raising, which reaches whoever wrote
+the <code>try/catch</code> and nobody else:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>try
+    oSec.Reveal(oBot)      # an LLM actor: inference-only, sandboxed
+catch
+done</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>  [OK] the raise still fires
+  [OK] ...and the attempt survives it
+  [OK] the secret&#x27;s NAME is written -- never its value
+  [OK] ...and the value appears nowhere in the exported chain</pre></div>
+<p>The guard's own empty <code>catch</code> is exactly the caller that used to erase
+the attempt.</p>
+<h2 id="a-verb-not-a-side-effect">A verb, not a side effect</h2>
+<p><code>ReachesEffectful()</code> was the obvious place to record an escalation, and
+it is the wrong one. An investigation asks the reachability questions
+dozens of times while reconstructing an incident; a question that writes
+evidence chains the investigator's own curiosity.</p>
+<p>So the recording is a deliberate act:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oGr.AddActor(&quot;billing-agent&quot;, &quot;sandboxed&quot;)
+oGr.Uses(&quot;billing-agent&quot;, &quot;deploy-tool&quot;)
+oGr.Grants(&quot;deploy-tool&quot;, &quot;effectful&quot;)
+aEsc = oGr.AuditEscalations()</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>  [OK] the query alone writes NOTHING -- an investigator may ask freely
+  [OK] the audit finds the sandboxed actor that reaches effectful
+  [OK] ...and records it
+  [OK] the PATH is named, not merely the risk
+  a sandboxed actor reaches effectful via billing-agent -&gt; deploy-tool -&gt; effectful</pre></div>
+<p>"billing-agent can reach effectful" names a risk. "billing-agent →
+deploy-tool → effectful" names the edge to cut.</p>
+<h2 id="the-seam-that-changed-the-vocabulary">The seam that changed the vocabulary</h2>
+<p>Sessions end, and the row that proved they existed is deleted. So the
+event is written first:</p>
+<pre>  [OK] revoking it is remembered
+  [OK] the TOKEN is never written -- it is a bearer credential
+  [OK] ...the user is, because that is what an investigation asks</pre>
+<p>Writing the token into evidence would turn the evidence file into a way
+in. The user and the address are descriptors; the token is not.</p>
+<p>But an expiring session is <strong>neither granted nor refused</strong>. No gate ran;
+nobody was told no. The outcome vocabulary had three verdicts and no way
+to say "this simply happened", so a fourth arrived — <code>Observed</code> — and
+finding a home for it exposed a live defect in two places:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>def IsRefusal()
+    return @cOutcome != &quot;granted&quot;      # both here and in Refusals()</pre><p class="ran nv-illus">illustration</p></div>
+<p>Read that with a fourth outcome in the world and an expired session is a
+refusal. In a system whose entire argument is that a warning should mean
+something, routine housekeeping would have been counted as attacks in
+every pivot. Both are now positive lists:</p>
+<pre>  [OK] its outcome is OBSERVED -- no gate ran, nobody was told no
+  [OK] ...so the ledger&#x27;s own refusal pivot skips it
+  [OK] an observed event reports itself as no refusal
+  [OK] ...while a failure still is</pre>
+<p>The negative form is the bug. <code>!= granted</code> was correct for exactly as
+long as there were three outcomes, and it failed silently the moment
+there were four.</p>
+<h2 id="the-honest-limit-that-does-not-close">The honest limit that does not close</h2>
+<pre>  [OK] every event this guard wrote is chained
+  15 events across ten newly-wired seams</pre>
+<p>Every row of the design doc's seam table now emits. What remains is not
+a phase — it is the permanent shape of the caveat: <strong>all of this
+witnesses what the library's gates decide.</strong> Application code that
+refuses on its own terms, without passing a Softanza gate and without
+answering 401 or 403, is still invisible. No amount of wiring inside the
+library reaches it; only an application choosing to record its own
+refusals does.</p>
+<hr />
+<p>Ten seams, 41 assertions, one new outcome, and two defects that had been
+sitting in a negative comparison since I0.</p>
+<h2>Prouvé par</h2><p>L'article nomme ces gardes de scénario de la bibliothèque :</p><ul><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/system/security_seams2_narrated.ring" target="_blank" rel="noopener noreferrer">security_seams2_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li></ul><h2>Citer</h2><p class="mono cite">Mansour Ayouni. « The Rest of the Seams ». Softanza narrations, 2026. https://mayouni.github.io/stzsite/fr/narrations/stz-security-seams-2-narration.html</p><p class="proof">Non exécuté : son code ne se charge pas tel qu'il est écrit. L'article est publié tel qu'il est écrit ; ses blocs sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-security-seams-2-narration.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

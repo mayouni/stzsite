@@ -16,9 +16,10 @@ row, and the legend of the page counts how many rows have which.
 import json, html, re, sys, pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import qforms
+from haro import SHOWN
 
 def esc(s): return html.escape(str(s), quote=True)
-WORD = re.compile(r"(?<![\w./-])ring(?![\w.])", re.I)
+WORD = SHOWN   # the former name in code shown as the library wrote it (tools/haro.py)
 
 T = {
   "fr": {"named": "composé à partir du nom de la méthode, exécuté pour cette page", "lib": "test de la bibliothèque", "new": "composé à partir de la signature, exécuté pour cette page",

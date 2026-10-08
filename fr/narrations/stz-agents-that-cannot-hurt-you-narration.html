@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agents That Cannot Hurt You · Narrations · Softanza</title>
+<meta name="description" content="Everyone building agents in 2026 is handed roughly the same shopping list: a Python project, a model provider, a graph framework, a vector store, a set of tools with typed schemas, a tracing service, and a chapter of safety advice — allowlists, sandboxes, h...">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stz-agents-that-cannot-hurt-you-narration.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stz-agents-that-cannot-hurt-you-narration.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">Agents That Cannot Hurt You</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stz-max-adverb-generation-in-softan.html">Smart Adverb Generation in Softanza</a></li><li><a href="stz-adverb-engine.html">From &quot;Quick&quot; to &quot;Quickly&quot;: Programmatic Adverb Formation</a></li><li><a href="stz-agents-that-cannot-hurt-you-narration.html" aria-current=page>Agents That Cannot Hurt You</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>Agents That Cannot Hurt You</h1>
+    <p class="lede">Everyone building agents in 2026 is handed roughly the same shopping list: a Python
+project, a model provider, a graph framework, a vector store, a set of tools with typed
+schemas, a tracing service, and a chapter of safety advice — allowlists, sandboxes,
+human approvals, retry caps, injection defences. It is competent advice. It is also
+what you must assemble, yourself, correctly, every time.</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2026-08-22 · essai de paradigme · domaine <a href="../atlas/agents.html">Agents et conversation</a></p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+
+<h3 id="what-softanza-does-differently-from-the-2026-agentic-stack-for-programmers-not-ai-specialists">What Softanza does differently from the 2026 agentic stack — for programmers, not AI specialists</h3>
+<p>This narration walks Softanza's answer and explains each idea before using it. You do
+not need to know what ReAct, a capability lattice or a trust posture is — that is the
+narration's job. <strong>Every code block below is real, and every output block is its actual
+output.</strong></p>
+<p>If you take one idea away, take this: <strong>the industry builds safe agents. Softanza builds
+a safe world and lets an ordinary agent loose inside it.</strong></p>
+<hr />
+<h2 id="the-premise-everybody-shares-and-the-one-we-do-not">The premise everybody shares — and the one we do not</h2>
+<p>The mainstream stack assumes the agent <em>is</em> a language model in a loop. The model
+decides, so every safety mechanism exists to constrain a stochastic decision-maker:
+budget its context, judge its output with another model, cap its loops, log everything
+so you can reconstruct what it did. That is a large amount of engineering, and it is
+priced per decision, forever.</p>
+<p>Softanza revokes that premise. Intelligence here is knowledge plus search plus
+optimization plus rules plus learning — running locally, explaining itself, costing
+nothing. A language model is <strong>one tier</strong> of the ladder, never its definition.</p>
+<p>The consequence is not philosophical, it is structural. If the deciding part is
+deterministic, the safety problem stops being <em>"constrain a guesser everywhere"</em> and
+becomes <em>"govern the one narrow door where a proposal turns into an effect."</em> Almost
+everything below follows from that single move.</p>
+<hr />
+<h2 id="first-idea-an-agent-is-a-file-and-the-file-is-judged-before-it-runs">First idea: an agent is a file, and the file is judged before it runs</h2>
+<p>In Softanza an agent is not a class you subclass or a graph you wire. It is a
+declaration — a <code>.pia</code> file — dropped in a folder. And it is <strong>judged at load</strong>, not
+discovered at the first tick.</p>
+<p>Here is an agent that reorders stock. It names a Haro function to do the work:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>cBad = &quot;pia: 2
+name: restocker
+kind: pi
+coverage: reorders stock when it runs low
+reversibility: compensable
+schedule:
+  timer: 50
+skills:
+  - name: reorder
+    when: fact stock level low
+    does: ring:PlaceTheOrder
+    verify: fact stock level ordered
+&quot;
+oBad = StzAgentDeclarationQ(cBad)
+? &quot;valid: &quot; + oBad.IsValid()
+? oBad.CiteFindings()</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>valid: 0
+[pia-posture @ skills.reorder] this skill runs the Haro function &#x27;PlaceTheOrder&#x27; and declares no execution posture. pia 2 requires &#x27;posture: trusted | external | sandboxed&#x27; on any skill with a ring: clause -- the load gate says the function EXISTS; the posture says on what TERMS it may run (5.8).</pre></div>
+<p>Read the refusal carefully, because it is the house style: it names the rule
+(<code>pia-posture</code>), the place (<code>skills.reorder</code>), what is missing, and <em>why the rule
+exists</em>. Nothing was guessed and nothing ran.</p>
+<p>Note what the file already had to say before anyone asked about safety: what it
+<strong>covers</strong>, and how <strong>reversible</strong> its work is. Add the missing line and it is admitted:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># the same file, plus one line:  posture: trusted
+oGood = StzAgentDeclarationQ(cGood)
+? &quot;valid: &quot; + oGood.IsValid()
+? &quot;format version: &quot; + oGood.FormatVersion()
+? &quot;covers: &quot; + oGood.CoverageStatement()
+? &quot;reversibility: &quot; + oGood.ReversibilityClass()</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>valid: 1
+format version: 2
+covers: reorders stock when it runs low
+reversibility: compensable</pre></div>
+<p>The industry equivalent of this file is a Python module plus a graph definition plus a
+tool schema plus a policy document. Here it is one artefact a non-programmer can read,
+and a court that refuses it out loud.</p>
+<hr />
+<h2 id="second-idea-two-different-questions-asked-at-different-moments">Second idea: two different questions, asked at different moments</h2>
+<p>Most stacks ask one safety question — <em>may this action run?</em> — at the moment the action
+runs. Softanza asks two, and the first one is asked when the answer is still free.</p>
+<p><strong>May this agent exist in the loop at all?</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oGov = new stzGovernance(&quot;shop&quot;)
+? &quot;no coverage stated -&gt; &quot; + oGov.MayRegister(&quot;mystery&quot;, &quot;&quot;, &quot;reversible&quot;)
+? &quot;  &quot; + oGov.Why()
+? &quot;no reversal declared -&gt; &quot; + oGov.MayRegister(&quot;mystery&quot;, &quot;reorders stock&quot;, &quot;&quot;)
+? &quot;  &quot; + oGov.Why()
+? &quot;both stated -&gt; &quot; + oGov.MayRegister(&quot;mystery&quot;, &quot;reorders stock&quot;, :Compensable)</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>no coverage stated -&gt; 0
+  AGENTLOOP-R4: agent &#x27;mystery&#x27; declares no coverage statement. Registration refuses it. Say what this agent covers, in one sentence, before the loop will run it. Law 18: nothing schedules what nobody has stated the reach of.
+no reversal declared -&gt; 0
+  AGENTLOOP-R5: agent &#x27;mystery&#x27; declares no reversibility class. Registration refuses it. Declare one of: reversible | compensable | irreversible. Law 18: an agent whose reversal nobody stated cannot be scheduled by something that cannot undo it.
+both stated -&gt; 1</pre></div>
+<p>An agent nobody can describe cannot be scheduled. That question has no counterpart in
+the mainstream stack at all — there, an agent exists because someone constructed one.</p>
+<p><strong>And separately: may this actor perform this action, now?</strong> That is <code>MayProceed</code>, and
+it composes three things a stack usually keeps in three different places — what the
+actor <em>may</em> do, what it <em>should</em> do, and how dangerous the action is:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oG2 = new stzGovernance(&quot;billing&quot;)
+oG2.DeclareRisk(&quot;send-invoice&quot;, 3)
+oG2.GrantPermission(&quot;billing-agent&quot;, &quot;send-invoice&quot;)
+oG2.SetAuthority(&quot;billing-agent&quot;, :Delegated)
+? &quot;may it proceed? &quot; + oG2.MayProceed(&quot;billing-agent&quot;, &quot;send-invoice&quot;)
+? &quot;  &quot; + oG2.Why()</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>may it proceed? 0
+  refused: &#x27;billing-agent&#x27; holds &#x27;delegated&#x27; authority (level 2) but &#x27;send-invoice&#x27; is risk tier 3 (SHOULD does not cover it)</pre></div>
+<p>Permission is not authority. The agent <em>had</em> the permission and was still refused,
+because its standing did not cover the danger of the act. Raise the standing and the
+same call is allowed, for a stated reason:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oG2.SetAuthority(&quot;billing-agent&quot;, :Autonomous)
+? &quot;after raising the authority: &quot; + oG2.MayProceed(&quot;billing-agent&quot;, &quot;send-invoice&quot;)
+? &quot;  &quot; + oG2.Why()</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>after raising the authority: 1
+  allowed: permission held AND &#x27;autonomous&#x27; authority (level 3) covers risk tier 3</pre></div>
+<p>And an action nobody declared never proceeds at all:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? &quot;may it do something nobody declared? &quot; + oG2.MayProceed(&quot;billing-agent&quot;, &quot;delete-ledger&quot;)
+? &quot;  &quot; + oG2.Why()</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>may it do something nobody declared? 0
+  refused: &#x27;delete-ledger&#x27; has NO declared risk tier (undeclared actions never proceed)</pre></div>
+<p>That is fail-closed by construction. The usual failure — an agent doing something nobody
+thought to forbid — is not reachable here, because the default is refusal.</p>
+<hr />
+<h2 id="third-idea-how-undoable-an-act-is-not-just-how-risky">Third idea: how <em>undoable</em> an act is, not just how risky</h2>
+<p>Risk and reversibility are different axes, and conflating them is a common and
+expensive mistake. A low-risk action you cannot take back can deserve more ceremony
+than a high-risk one you can.</p>
+<p>So Softanza asks who is allowed to do work of a given undoability. The rule is one
+sentence, and every door quotes it rather than paraphrasing:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? StzPostureReversibilityRefusal(&quot;sandboxed&quot;, &quot;irreversible&quot;)
+? &quot;reversible: &#x27;&quot; + StzPostureReversibilityRefusal(&quot;sandboxed&quot;, &quot;reversible&quot;) + &quot;&#x27;&quot;</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>a &#x27;sandboxed&#x27; posture does not cover &#x27;irreversible&#x27; work -- the harder an act is to undo, the more trusted the code performing it must be (reversibility x posture, ruling 3.2)
+reversible: &#x27;&#x27; (empty = allowed)</pre></div>
+<p>Trusted code may do anything; out-of-process code may do anything it can compensate for;
+LLM-composed code may only do what anyone can take back. In the mainstream stack this
+distinction lives in a paragraph of a design document, if it lives anywhere.</p>
+<hr />
+<h2 id="fourth-idea-the-proposer-cannot-commit-by-construction">Fourth idea: the proposer cannot commit — by construction</h2>
+<p>Every serious 2026 guide recommends separating planning from execution: let the model
+propose, let a validated executor act. It is good advice, and it is advice — a pattern
+you implement, and can forget to implement.</p>
+<p>In Softanza it is not a pattern. An LLM actor's effect-capability set is <em>empty</em>:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oLLM = LLMActor(&quot;summarizer&quot;)
+? &quot;capabilities: &quot; + @@(oLLM.Kinds())
+? &quot;posture     : &quot; + oLLM.Posture()
+? &quot;can cause effects: &quot; + oLLM.IsEffectful()</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>capabilities: [ &quot;inference&quot; ]
+posture     : sandboxed
+can cause effects: 0</pre></div>
+<p>There is no configuration in which that actor commits anything. It can propose, and a
+deterministic gate disposes. <strong>Creativity is free; admission is governed.</strong></p>
+<hr />
+<h2 id="fifth-idea-the-agent-works-and-the-world-does-not-move">Fifth idea: the agent works, and the world does not move</h2>
+<p>This is the part with no mainstream equivalent, and it is the heart of the thing.</p>
+<p>Here is an ordinary agent whose job is to write a price list to disk. Nothing about it
+is special — it names a Haro function, exactly as before. The only new call is
+<code>GiveWorkbench()</code>, which hands it a <strong>virtual file system</strong> instead of reality:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oAg.GiveWorkbench()
+? &quot;cycle fired skills: &quot; + oAg.Cycle()
+? &quot;agent believes it wrote them: &quot; + oAg.MemoryQ().Fact(&quot;prices&quot;, &quot;were&quot;, &quot;written&quot;)
+? &quot;the real file exists: &quot; + StzFileExists($cNarrOut)
+? &quot;the workbench holds it: &quot; + oAg.WorkbenchQ().Exists($cNarrOut)</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>cycle fired skills: 1
+agent believes it wrote them: 1
+the real file exists: 0
+the workbench holds it: 1</pre></div>
+<p>Look at those four lines. The agent ran. Its skill fired and <em>verified</em>. Its memory says
+the prices were written — and from the agent's point of view they were. <strong>The disk did
+not move.</strong> The work is real, complete and inspectable, and reality is untouched.</p>
+<p>The function it ran was not written specially for this. It is the same code that would
+write to disk outside a workbench; it asks for the ambient bench and rehearses into it.</p>
+<hr />
+<h2 id="sixth-idea-the-plan-is-the-only-thing-that-crosses">Sixth idea: the plan is the only thing that crosses</h2>
+<p>A tick's sole export toward reality is a plan — and a plan narrates itself, ranks its
+own risks, and can be argued with:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oPlan = oAg.GenerateUpdatePlan()
+? oPlan.Narration()</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>Update plan (1 of 1 operations to commit):
+  * 1. write 29 bytes to &#x27;.../_narr-fixture/prices.csv&#x27;</pre></div>
+<p>Hand it to the proposer and ask whether it may commit — the answer arrives <em>before</em>
+anything is attempted:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oPlan.SetExecutor(LLMActor(&quot;summarizer&quot;))
+aMay = oPlan.MayCommit()
+? &quot;may the LLM commit? &quot; + aMay[1]
+? &quot;  &quot; + aMay[2]</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>may the LLM commit? 0
+  actor &#x27;summarizer&#x27; cannot commit -- it lacks the &#x27;effectful&#x27; capability (required by operation 1)</pre></div>
+<p>Now a committing actor, working inside a declared scope:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oPlan2.SetExecutor(PIActor(&quot;shop-committer&quot;))
+oScope = new stzCommitScope()
+oScope.AllowUnder(cFx)
+oPlan2.SetScope(oScope)
+aRes = oPlan2.Execute()
+? &quot;committed: &quot; + aRes[1][2] + &quot;, skipped: &quot; + aRes[2][2]
+? &quot;the real file exists NOW: &quot; + StzFileExists($cNarrOut)
+? &quot;its content: &quot; + StzFileRead($cNarrOut)
+? &quot;audit trail: &quot; + @@(oPlan2.AuditTrail())</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>committed: 1, skipped: 0
+the real file exists NOW: 1
+its content: espresso,2.40
+flat-white,3.10
+audit trail: [ [ 1, &quot;committed&quot;, &quot;write_file&quot;, &quot;shop-committer&quot; ] ]</pre></div>
+<p><em>That</em> is the moment reality changed — one place, by a named actor, with an audit line.</p>
+<p>And the scope is not decoration. The same plan, committed under a scope that does not
+cover the path:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oScope2.AllowUnder(&quot;/somewhere/else&quot;)
+aRes3 = oPlan3.Execute()
+? &quot;committed: &quot; + aRes3[1][2] + &quot;, skipped: &quot; + aRes3[2][2]
+? &quot;reason: &quot; + aLog[1][2] + &quot; -- &quot; + aLog[1][3]</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>committed: 0, skipped: 1
+reason: REFUSED-BY-SCOPE -- path &#x27;.../_narr-fixture/prices.csv&#x27; is outside the allowed scope</pre></div>
+<p>A reviewer can also reject a single step with <code>RejectOperation(n, :Because)</code>, re-validate
+the plan against a reality that may have moved since rehearsal, or read its ranked risks
+before deciding. The plan is a <strong>negotiation medium</strong>, not a verdict.</p>
+<hr />
+<h2 id="how-this-compares-honestly">How this compares, honestly</h2>
+<table>
+<thead>
+<tr>
+<th>The question</th>
+<th>The mainstream 2026 answer</th>
+<th>Softanza</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What is an agent?</td>
+<td>A model in a loop, wired in a framework graph</td>
+<td>A declared file over a deterministic cycle; the model is one optional tier</td>
+</tr>
+<tr>
+<td>When is it checked?</td>
+<td>At runtime, by validators you add</td>
+<td>At <strong>load</strong>, by a court that names the rule it refused under</td>
+</tr>
+<tr>
+<td>May it exist?</td>
+<td>Not asked</td>
+<td><code>MayRegister</code> — no coverage, no reversal, no schedule</td>
+</tr>
+<tr>
+<td>May it act?</td>
+<td>Policy code you write per tool</td>
+<td><code>MayProceed</code> — permission × authority × risk, fail-closed</td>
+</tr>
+<tr>
+<td>Can the model act directly?</td>
+<td>Yes, unless you prevent it</td>
+<td><strong>Never</strong> — empty effect-capability set, structurally</td>
+</tr>
+<tr>
+<td>How does it touch the world?</td>
+<td>Tool call, immediately</td>
+<td>Rehearse → plan → a committing actor commits under a scope</td>
+</tr>
+<tr>
+<td>Structured output</td>
+<td>Validate after generation, retry on failure</td>
+<td>Constrained decoding — the violating token cannot be emitted</td>
+</tr>
+<tr>
+<td>Cost of a decision</td>
+<td>An API call</td>
+<td>Zero, offline, deterministic</td>
+</tr>
+<tr>
+<td>Testing</td>
+<td>Golden sets, model-as-judge, snapshots</td>
+<td>Ordinary assertions — the floor is deterministic</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where the industry is genuinely ahead, and it matters:</strong></p>
+<ul>
+<li><strong>Connectors.</strong> OAuth'd Slack, Drive, Jira; hosted vector stores; streaming chat UIs.
+  Reachable from here, not paved.</li>
+<li><strong>Retrieval over open unstructured corpora.</strong> Hybrid search, re-ranking and freshness
+  pipelines are mature there. Softanza's answer inverts the problem — curate knowledge
+  and <em>derive</em> — which wins on a curated domain and loses on the open web.</li>
+<li><strong>Frontier reasoning.</strong> That stack orchestrates the largest models per call.</li>
+<li><strong>Ecosystem and hiring.</strong> There is a labour market for that stack and none for this one.</li>
+</ul>
+<hr />
+<h2 id="when-to-reach-for-which">When to reach for which</h2>
+<p>Reach for the mainstream stack when the task <strong>is</strong> open-ended language work over
+material you cannot curate: summarising arbitrary documents, conversational products,
+research over the open web.</p>
+<p>Reach for Softanza's agentic layer when actions have <strong>consequences</strong> and someone will
+eventually ask <em>why did it do that</em> — allocation, scheduling, back-office automation,
+regulated or audited work, anything that runs unattended, and anything that must keep
+working offline at zero marginal cost.</p>
+<p>The two are not exclusive. The point of the capability lattice is precisely that a
+language model can sit inside a Softanza system as a <strong>proposer</strong> — creative, useful,
+and structurally unable to commit — while a deterministic gate decides what becomes
+real. That is the whole design in one sentence, and it is why an ordinary agent, loose
+in this world, cannot hurt you.</p>
+<hr />
+<p><em>The mechanisms shown here are guarded by <code>base/test/agentic/safeworld_narrated.ring</code>
+(76 assertions), <code>base/test/agentic/agentfile_narrated.ring</code> (88) and
+<code>base/test/governance/governance_narrated.ring</code> (19). The doctrine is
+<code>base/doc/design/Softaza and Agents That Cannot Hurt You.md</code>; the ruling that bound the
+safe world to the agents is §3.2 of <code>SOFTANZA_INTELLIGENCE_ARCHITECTURE.md</code>. The
+industry positions summarised above are drawn from a 2026 agentic-AI engineering
+roadmap, paraphrased throughout.</em></p>
+<h2>Prouvé par</h2><p>L'article nomme ces gardes de scénario de la bibliothèque :</p><ul><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/agentic/agentfile_narrated.ring" target="_blank" rel="noopener noreferrer">agentfile_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/governance/governance_narrated.ring" target="_blank" rel="noopener noreferrer">governance_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/agentic/safeworld_narrated.ring" target="_blank" rel="noopener noreferrer">safeworld_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li></ul><h2>Citer</h2><p class="mono cite">Mansour Ayouni. « Agents That Cannot Hurt You ». Softanza narrations, 2026. https://mayouni.github.io/stzsite/fr/narrations/stz-agents-that-cannot-hurt-you-narration.html</p><p class="proof">Non exécuté : son code touche aux fichiers, au réseau, à l'horloge ou au hasard. L'article est publié tel qu'il est écrit ; ses blocs sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

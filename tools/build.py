@@ -28,6 +28,7 @@ import qforms
 import build_proof
 import external
 import build_search
+from haro import SHOWN
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -46,6 +47,11 @@ SECTIONS = [
      ("areas", {"fr": "Les domaines", "en": "The areas"}),
      ("code", {"fr": "Le code", "en": "The code"}),
      ("compare", {"fr": "Comparée", "en": "Compared"})]),
+  ("narrations", {"fr": "Narrations", "en": "Narrations"}, [
+     ("narrations", {"fr": "Narrations", "en": "Narrations"}),
+     ("narrations-performance", {"fr": "Série performance", "en": "Performance series"}),
+     ("narrations-security", {"fr": "Série sécurité", "en": "Security series"}),
+     ("narrations-delivery", {"fr": "Série livraison", "en": "Delivery series"})]),
   ("vision", {"fr": "Vision", "en": "Vision"}, [
      ("vision", {"fr": "L'étoile polaire", "en": "The north star"}),
      ("principles", {"fr": "Douze principes", "en": "Twelve principles"}),
@@ -70,7 +76,6 @@ SECTIONS = [
      ("howto", {"fr": "Comment faire", "en": "How-to"}),
      ("reference", {"fr": "Référence", "en": "Reference"}),
      ("ask", {"fr": "Interroger", "en": "Ask the library"}),
-     ("narrations", {"fr": "Narrations", "en": "Narrations"}),
      ("education", {"fr": "Éducation", "en": "Education"})]),
   ("offering", {"fr": "Offre", "en": "Offering"}, [
      ("offering", {"fr": "Audiences", "en": "Audiences"}),
@@ -85,7 +90,7 @@ SUBPAGES = {"education-self": "education", "education-teach": "education", "educ
 EDU_BAR = {"fr": ("Éducation", [("education", "Les trois portes"), ("education-self", "J'apprends seul"), ("education-teach", "J'enseigne ou je conçois"), ("education-programme", "Je dirige un programme"), ("education-record", "Ce qui est prouvé")]),
            "en": ("Education", [("education", "The three doors"), ("education-self", "I learn by myself"), ("education-teach", "I teach or design"), ("education-programme", "I run a programme"), ("education-record", "What is proved")])}
 OLD_PAGES = {"teaching": "education", "pedagogy": "education"}        # the old addresses lead to the new page
-GENERATED = {"reference", "narrations", "howto", "ask"}   # built by code, not from a .md
+GENERATED = {"reference", "narrations", "howto", "ask", "narrations-performance", "narrations-security", "narrations-delivery"}   # built by code, not from a .md
 OWNER = {}                                          # page -> its section
 for sec, _, pages in SECTIONS:
     for slug, _ in pages: OWNER[slug] = sec
@@ -99,7 +104,7 @@ UI = {
     "slogan": "La plateforme des makers du logiciel à l'ère de l'IA", "second": "Née en Afrique. Utile au monde !",
     "skip": "Aller au contenu", "other_lang": "English", "other_code": "en",
     "present": "Présenter le site en diaporama", "github": "Le dépôt Softanza sur GitHub", "menu": "Menu principal", "path": "Pages de la section", "here": "Vous êtes ici", "moved": "Cette page est devenue Éducation",
-    "proof_law": "Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code a été exécuté le soir de la publication ; sa sortie est à côté.",
+    "proof_law": "Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s'exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.",
     "fonts": "Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s'ouvre sans réseau.",
     "made": "Les textes de ce site ont été rédigés avec un assistant d'IA, Claude, sous la direction de l'auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)",
     "built": "Site généré le", "elsewhere": "Softanza", "repo": "Le dépôt sur GitHub", "tour": "Mode présentation", "check": "Vérifier hors ligne",
@@ -114,9 +119,9 @@ UI = {
     "lanes_h": "Les couloirs, un par un", "lanes_note": "Les couloirs et leurs notes sont cités tels qu'ils ont été lus à la source, le",
     "example": "Un exemple, exécuté", "no_example": "Aucun exemple exécuté sur cette page", "output": "Sortie",
     "source": "la source", "nopic": "Pas encore d'image", "guide": "Le guide des fonctions de ce domaine",
-    "narr_title": "Narrations", "narr_title_html": "Les <i>narrations</i>", "narr_kicker": "La documentation qui s'exécute",
-    "narr_lede": "Cent trente-quatre documents qui racontent une partie de la bibliothèque comme une histoire, en code écrit pour être exécuté au fil de la lecture. Chacun est un fichier du dépôt ; le titre est celui du fichier.",
-    "narr_desc": "Les 134 narrations de Softanza, listées avec leur fichier dans le dépôt.",
+    "narr_title": "Narrations", "narr_title_html": "Les <i>narrations</i>", "narr_kicker": "Recherche",
+    "narr_lede": "Les articles du projet : cent trente-cinq essais où les idées de Softanza ont d\'abord été argumentées, avec leur code de la main de l\'auteur.",
+    "narr_desc": "Les 135 articles de Softanza, chacun une page : résumé, genre, domaine, année, et le code exécuté au nom de Haro.",
     "narr_note": "Liste lue dans le dossier doc/narrations du dépôt au commit 0e72e2e2c. Le 2026-10-02, chaque narration qui pouvait s'exécuter a été exécutée dans la bibliothèque, bloc après bloc dans un seul processus. Celles dont au moins trois blocs sur quatre tiennent leur promesse sont des pages de ce site, avec le verdict de chaque bloc ; les autres s'ouvrent sur GitHub, et la liste dit pourquoi.",
     "narr_groups": {"page": "Exécutées, pages de ce site", "run": "Exécutées, ne tenant pas encore leurs promesses : sur GitHub", "effects": "Non exécutées, elles touchent aux fichiers, au réseau, à la saisie, à l'horloge ou au hasard : sur GitHub", "names": "Non exécutées, leur code nomme l'ancien langage de la plateforme : sur GitHub", "compile": "Non exécutées, elles ne compilent pas telles qu'écrites : sur GitHub", "nocode": "Sans code à exécuter : sur GitHub"},
     "narr_kept": "{k} blocs sur {n} tiennent leur promesse",
@@ -127,7 +132,7 @@ UI = {
     "slogan": "The Software Makers Platform of the AI Age", "second": "Born in Africa. Useful to the World!",
     "skip": "Skip to content", "other_lang": "Français", "other_code": "fr",
     "present": "Present the site as a slideshow", "github": "The Softanza repository on GitHub", "menu": "Main menu", "path": "Pages of the section", "here": "You are here", "moved": "This page became Education",
-    "proof_law": "Every claim on this site links to the file, the guard or the render that proves it. Every code block was run on the night of publication; its output sits beside it.",
+    "proof_law": "Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.",
     "fonts": "Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network.",
     "made": "The prose of this site was drafted with an AI assistant, Claude, under the author's direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)",
     "built": "Site generated on", "elsewhere": "Softanza", "repo": "The repository on GitHub", "tour": "Presentation mode", "check": "Check offline",
@@ -142,9 +147,9 @@ UI = {
     "lanes_h": "The lanes, one by one", "lanes_note": "Lanes and their notes are quoted as they were read at the source, on",
     "example": "One example, run", "no_example": "No example run on this page", "output": "Output",
     "source": "the source", "nopic": "No picture yet", "guide": "The guide to this area's functions",
-    "narr_title": "Narrations", "narr_title_html": "The <i>narrations</i>", "narr_kicker": "Documentation that runs",
-    "narr_lede": "One hundred and thirty-four documents that tell a part of the library as a story, in code written to be run as it is read. Each is a file of the repository; the title is the file's own.",
-    "narr_desc": "Softanza's 134 narrations, listed with their file in the repository.",
+    "narr_title": "Narrations", "narr_title_html": "The <i>narrations</i>", "narr_kicker": "Research",
+    "narr_lede": "The articles of the project: one hundred and thirty-five essays in which the ideas of Softanza were first argued, with their code in the author's hand.",
+    "narr_desc": "Softanza's 135 articles, each a page: abstract, genre, area, year, and the code run in Haro's name.",
     "narr_note": "List read in the repository's doc/narrations folder at commit 0e72e2e2c. On 2026-10-02 every narration that could run was run inside the library, block after block in one process. Those where at least three blocks in four keep their promise are pages of this site, with each block's verdict; the others open on GitHub, and the list says why.",
     "narr_groups": {"page": "Run, pages of this site", "run": "Run, not yet keeping their promises: on GitHub", "effects": "Not run, they touch files, the network, input, the clock or chance: on GitHub", "names": "Not run, their code names the platform's former language: on GitHub", "compile": "Not run, they do not compile as written: on GitHub", "nocode": "No code to run: on GitHub"},
     "narr_kept": "{k} of {n} blocks keep their promise",
@@ -502,7 +507,7 @@ def showcase_html(lang, slug, heading=True, only=None):
         return ""
     # the site never names the platform's former language, and library code is never rewritten:
     # a run that shows the word in its code or output is left out (a .ring file name does not count)
-    WORD = re.compile(r"(?<![\w./-])ring(?![\w.])", re.I)
+    WORD = SHOWN   # the former name in code shown as the library wrote it (tools/haro.py)
     if any(WORD.search(it["code"]) or WORD.search(it["out"]) for it in items):
         if only:
             raise SystemExit(f"SHOWCASE:{slug}: a selected run shows the word; choose another run")
@@ -582,6 +587,7 @@ def build_group_page(lang, idx, groups, i):
     {thesis}
     {sg}
     {example}
+    {area_articles(lang, g["slug"])}
     <h2>{ui["lanes_h"]}</h2>
     <p class="proof">{ui["lanes_note"]} {esc(d.get("dated", ""))}.</p>
     {note}
@@ -594,40 +600,94 @@ def build_group_page(lang, idx, groups, i):
     out.write_text(page, encoding="utf-8")
 
 RING_WORD = re.compile(r"\bRing\b")
+NARR_UI = {
+  "fr": {"note": "Lus dans le dossier doc/narrations du dépôt au commit {c}. Chaque article est une page. Le {d}, chacun a été exécuté au nom de Haro dans la bibliothèque, bloc après bloc ; un bloc qui a tenu sa promesse le dit, les autres sont des illustrations. Le code des articles est du code Haro : là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série sont lus dans le nom du fichier et l'année dans le premier commit : dérivés, jusqu'à ce que chaque article porte son propre en-tête.",
+         "genre": "Genre", "area": "Domaine", "year": "Année", "family": "Famille", "family_off": "conçu, pas encore construit", "all": "tous",
+         "shown": "{n} sur {t} affichés", "series_h": "Les séries", "series_p": "Une série se lit dans l'ordre.", "list_h": "Tous les articles",
+         "kept": "{k} bloc(s) sur {n} ont tenu leur promesse", "noarea": "plusieurs domaines",
+         "not": {"effects": "non exécuté : touche aux fichiers, au réseau, à l'horloge ou au hasard", "does not compile": "non exécuté : ne se charge pas tel qu'écrit", "no code": "sans code", "": "non exécuté"},
+         "series": {"performance": ("Série performance", "La série performance", "Onze articles de 2026 sur la mesure : la charge, le profil, la trace, le jugement, le moniteur."),
+                    "security": ("Série sécurité", "La série sécurité", "Quatorze articles de 2026 sur la sécurité : la porte d'entrée, les secrets, le registre, la détection, la réponse."),
+                    "delivery": ("Série livraison", "La série livraison", "Cinq articles de 2026 sur la livraison : planifier, émuler, déployer, la virtualisation des services.")}},
+  "en": {"note": "Read in the repository's doc/narrations folder at commit {c}. Every article is a page. On {d} each was run in Haro's name inside the library, block after block; a block that kept its promise says so, the others are illustrations. The code of the articles is Haro code: where an article was written before the language took its present name, the name was changed and nothing else. Genre, area and series are read from the file's name and the year from its first commit: derived, until each article carries its own header.",
+         "genre": "Genre", "area": "Area", "year": "Year", "family": "Family", "family_off": "designed, not yet built", "all": "all",
+         "shown": "{n} of {t} shown", "series_h": "The series", "series_p": "A series is read in order.", "list_h": "Every article",
+         "kept": "{k} of {n} blocks kept their promise", "noarea": "several areas",
+         "not": {"effects": "not run: touches files, the network, the clock or chance", "does not compile": "not run: does not load as written", "no code": "no code", "": "not run"},
+         "series": {"performance": ("Performance series", "The performance series", "Eleven articles of 2026 on measuring: the load, the profile, the trace, the judgment, the monitor."),
+                    "security": ("Security series", "The security series", "Fourteen articles of 2026 on security: the front door, the secrets, the ledger, detection, response."),
+                    "delivery": ("Delivery series", "The delivery series", "Five articles of 2026 on delivery: planning, emulating, deploying, service virtualization.")}},
+}
+GENRE_ORDER = ["paradigm essay", "design essay", "feature essay", "comparison", "tutorial", "use case", "series"]
+NARR_FILTER_JS = """<script>(function(){var l=document.getElementById('nlist');if(!l)return;var s=[].slice.call(document.querySelectorAll('.nfilters select[data-f]')),c=document.getElementById('ncount');
+function go(){var n=0,t=0;[].forEach.call(l.children,function(li){var ok=s.every(function(x){return!x.value||li.getAttribute('data-'+x.getAttribute('data-f'))===x.value});li.hidden=!ok;t++;if(ok)n++});
+if(c)c.textContent=c.getAttribute('data-t').replace('{n}',n).replace('{t}',t)}s.forEach(function(x){x.addEventListener('change',go)});go()})();</script>"""
+
+def narration_items(lang, files, runs, cards, groups, rel=""):
+    from build_narration_pages import GENRE as NGENRE, title_of
+    nu = NARR_UI[lang]; names = {g["slug"]: g[lang] for g in groups}
+    lis = []
+    for f in files:
+        r, c = runs[f], cards[f]
+        if r.get("status") == "run" and r.get("blocks"):
+            note = nu["kept"].format(k=sum(1 for b in r["blocks"] if b["verdict"] == "kept"), n=len(r["blocks"]))
+        else:
+            note = nu["not"].get(r.get("reason") or ("no code" if r.get("status") == "no code" else ""), nu["not"][""])
+        area = names.get(c["area"], nu["noarea"]) if c["area"] else nu["noarea"]
+        meta = " · ".join(x for x in (NGENRE[lang][c["genre"]], area, c["year"], c["author"], note) if x)
+        lis.append(f'<li data-genre="{esc(c["genre"])}" data-area="{esc(c["area"] or "")}" data-year="{esc(c["year"])}">'
+                   f'<a href="{rel}narrations/{narration_slug(f)}.html"><b>{esc(title_of(r))}</b></a>'
+                   f'<p>{esc(c["abstract"])}</p><span class="rx-src">{esc(meta)}</span></li>')
+    return "".join(lis)
+
 def build_narrations(lang, published):
-    ui = UI[lang]
-    items = json.loads((DATA / "narrations.json").read_text(encoding="utf-8"))
+    ui, nu = UI[lang], NARR_UI[lang]
     runs = json.loads((DATA / "narrations-run.json").read_text(encoding="utf-8"))
-    def group(f):
-        r = runs[f]
-        if f in published: return "page"
-        if r["status"] == "run": return "run"
-        return {"effects": "effects", "names": "names", "does not compile": "compile"}.get(r["reason"], "nocode")
-    snips = json.loads((DATA / "narration-snippets.json").read_text(encoding="utf-8"))["snippets"] if (DATA / "narration-snippets.json").exists() else {}
-    def snippet(f, r):
-        """a few lines of the narration's own code under its title (tools/narrations_snippets.py): never a title alone"""
-        sn = snips.get(f)
-        if not sn: return f'<span class="rx-src">{esc(ui["narr_ex_none"])}</span>'
-        body = esc(sn["code"]) + ("\n" + "\n".join("#--&gt; " + esc(l) for l in sn["out"].split("\n") if l.strip()) if sn["out"] else "")
-        src = ui["narr_ex_ran"].format(d=esc(r.get("ran", ""))) if sn["how"] == "ran" else ui["narr_ex_written"]
-        return f'<pre class="rx">{body}</pre><span class="rx-src">{esc(src)}</span>'
-    def item(n):
-        title = esc(RING_WORD.sub("Haro", n["title"]).replace("Ring++", "Haro").replace("`", ""))
-        r = runs[n["file"]]
-        if n["file"] in published:
-            return f'<li><a href="narrations/{narration_slug(n["file"])}.html">{title}</a>{snippet(n["file"], r)}</li>'
-        kept = ""
-        if r["status"] == "run":
-            k = sum(1 for b in r["blocks"] if b["verdict"] == "kept")
-            kept = f' <span class="ran">{ui["narr_kept"].format(k=k, n=len(r["blocks"]))}</span>'
-        return f'<li><a href="{GH}base/doc/narrations/{esc(n["file"])}">{title}</a>{kept}{snippet(n["file"], r)}</li>'
-    body = f'<p class="proof">{esc(ui["narr_note"])}</p>'
-    for g, label in ui["narr_groups"].items():
-        lis = [item(n) for n in items if group(n["file"]) == g]
-        if lis:
-            body += f'<h2>{esc(label)} <span class="mono">({len(lis)})</span></h2><ol class="narr">{"".join(lis)}</ol>'
+    meta = json.loads((DATA / "narrations-meta.json").read_text(encoding="utf-8"))
+    cards = meta["articles"]
+    files = [f for f in published if f in cards]
+    _, groups = load_atlas()
+    from build_narration_pages import GENRE as NGENRE
+    ran = max((runs[f].get("ran", "") for f in files), default="")[:10]
+    files.sort(key=lambda f: (GENRE_ORDER.index(cards[f]["genre"]), cards[f]["date"], f))
+    def options(key, values, label):
+        opts = "".join(f'<option value="{esc(v)}">{esc(l)}</option>' for v, l in values)
+        return f'<label>{label} <select data-f="{key}"><option value="">{nu["all"]}</option>{opts}</select></label>'
+    names = {g["slug"]: g[lang] for g in groups}
+    areas = sorted({cards[f]["area"] for f in files if cards[f]["area"]}, key=lambda a: names.get(a, a))
+    years = sorted({cards[f]["year"] for f in files if cards[f]["year"]})
+    genres = [g for g in GENRE_ORDER if any(cards[f]["genre"] == g for f in files)]
+    filters = (f'<div class="nfilters">{options("genre", [(g, NGENRE[lang][g]) for g in genres], nu["genre"])}'
+               f'{options("area", [(a, names.get(a, a)) for a in areas], nu["area"])}{options("year", [(y, y) for y in years], nu["year"])}'
+               f'<label>{nu["family"]} <select disabled><option>{nu["family_off"]}</option></select></label>'
+               f'<span class="mono" id="ncount" data-t="{esc(nu["shown"])}"></span></div>')
+    series = "".join(f'<li><a href="narrations-{k}.html"><b>{esc(v[1])}</b></a> <span class="mono">({sum(1 for f in files if cards[f]["series"] == k)})</span><p>{esc(v[2])}</p></li>'
+                     for k, v in nu["series"].items())
+    body = (f'<p class="proof">{esc(nu["note"].format(c=meta["commit"], d=ran))}</p>'
+            f'<h2>{nu["series_h"]}</h2><p>{nu["series_p"]}</p><ul class="narr">{series}</ul>'
+            f'<h2>{nu["list_h"]} <span class="mono">({len(files)})</span></h2>{filters}'
+            f'<ol class="narr research" id="nlist">{narration_items(lang, files, runs, cards, groups)}</ol>{NARR_FILTER_JS}')
     page = page_shell(lang, "narrations", ui["narr_title"], ui["narr_desc"], esc(ui["narr_kicker"]), ui["narr_title_html"], esc(ui["narr_lede"]), body)
     (ROOT / lang / "narrations.html").write_text(page, encoding="utf-8")
+    for k, v in nu["series"].items():
+        sf = sorted((f for f in files if cards[f]["series"] == k), key=lambda f: (cards[f]["date"], f))
+        body = (f'<p class="proof">{esc(nu["note"].format(c=meta["commit"], d=ran))}</p><p>{nu["series_p"]}</p>'
+                f'<ol class="narr research">{narration_items(lang, sf, runs, cards, groups)}</ol>')
+        page = page_shell(lang, f"narrations-{k}", v[0], v[2], esc(ui["narr_kicker"]), esc(v[1]), esc(v[2]), body)
+        (ROOT / lang / f"narrations-{k}.html").write_text(page, encoding="utf-8")
+
+def area_articles(lang, slug):
+    """the articles of an Atlas area, listed on its page (12.16: each area lists its articles)"""
+    f_meta, f_run = DATA / "narrations-meta.json", DATA / "narrations-run.json"
+    if not (f_meta.exists() and f_run.exists()): return ""
+    cards = json.loads(f_meta.read_text(encoding="utf-8"))["articles"]
+    runs = json.loads(f_run.read_text(encoding="utf-8"))
+    files = sorted((f for f, c in cards.items() if c["area"] == slug and f in runs and "text" in runs[f]), key=lambda f: (cards[f]["date"], f))
+    if not files: return ""
+    from build_narration_pages import title_of
+    head_txt = {"fr": "Les articles de ce domaine", "en": "The articles of this area"}[lang]
+    lis = "".join(f'<li><a href="../narrations/{narration_slug(f)}.html">{esc(title_of(runs[f]))}</a> <span class="mono">{esc(cards[f]["year"])}</span></li>' for f in files)
+    return f'<h2>{head_txt} <span class="mono">({len(files)})</span></h2><ul class="narr">{lis}</ul>'
 
 # ----------------------------------------------------------------------------
 # the tour: scenes separated by <<< scene ... >>> lines, notes in ```notes fences
@@ -744,8 +804,10 @@ def main():
     COUNTS["methods"] = sum(len(c["own"]) for c in qforms.reference(ROOT)["classes"])    # a method is listed once: its extensions and its other names are folded into it
     COUNTS["classes"] = len(qforms.reference(ROOT)["classes"])        # one class under all its names
     COUNTS["entries"] = len(ENTRIES)
-    npages, PUBLISHED = build_narration_pages({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "md": md})
-    print(f"narrations: {npages} pages, {len(PUBLISHED)} narrations run and published")
+    npages, PUBLISHED = build_narration_pages({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "md": md, "groups": groups})
+    _runs = json.loads((DATA / "narrations-run.json").read_text(encoding="utf-8"))
+    print(f"narrations: {npages} pages, {len(PUBLISHED)} articles published, "
+          f"{sum(1 for f in PUBLISHED if _runs[f].get('status') == 'run')} of them run in Haro's name (the run is a note, not a gate)")
     outs = []
     for lang in LANGS:
         for sec, _, pages in SECTIONS:

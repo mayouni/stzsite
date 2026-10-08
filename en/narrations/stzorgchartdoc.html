@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Introducing stzOrgChart - The Strategic Organizational Intelligence Platform · Narrations · Softanza</title>
+<meta name="description" content="In Softanza, understanding organizational structure transcends simple box-and-line diagrams. Organizations need dynamic tools that can model, analyze, and visualize their human infrastructure with precision and depth.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Skip to content</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=en" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Present the site as a slideshow" title="Present the site as a slideshow"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="The Softanza repository on GitHub" title="The Softanza repository on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../fr/narrations/stzorgchartdoc.html" lang="fr" hreflang="fr">Français</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=en" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Main menu"><a href="../platform.html">Platform</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentic</a><a href="../learn.html">Learn</a><a href="../offering.html">Offering</a><a href="../start.html">Start</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Present the site as a slideshow" title="Present the site as a slideshow"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="The Softanza repository on GitHub" title="The Softanza repository on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../fr/narrations/stzorgchartdoc.html" lang="fr" hreflang="fr">Français</a></div>
+  </div>
+  <nav class="path" aria-label="Pages of the section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Performance series</a><a href="../narrations-security.html">Security series</a><a href="../narrations-delivery.html">Delivery series</a></div></nav>
+  <nav class="crumbs" aria-label="You are here"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">Introducing stzOrgChart - The Strategic Organizational Intelligence Platform</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="The narrations run"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">All the narrations</a></li><li><a href="stzdotcode-graphiz-dot-language-guide.html">Graphviz DOT Language Guide: Using stzDotCode</a></li><li><a href="stzgraph-computational-foundation.html">stzGraph: Computational Foundation and Design</a></li><li><a href="stzgraphdoc.html">stzGraph: The Art of Connected Thinking</a></li><li><a href="stzgraph-modeling-knowledge-with-nodes-and-connections.html">stzGraph — Modeling Knowledge Through Structure</a></li><li><a href="stzorgchartdoc.html" aria-current=page>Introducing stzOrgChart - The Strategic Organizational Intelligence Platform</a></li><li><a href="stzorgchartdoc-bankusecase.html">Organizational Intelligence in Action</a></li><li><a href="stzgraph-chatgpt-opinion.html">What ChatGPT Thinks of the stzGraph Module in the Softanza Library</a></li><li><a href="stzgraph-claudeai-opinion.html">ClaudeAI Opinion on stzGraph design</a></li><li><a href="stzgraph-vs-other-graph-libraries.html">Softanza stzGraph vs. Modern Graph Ecosystem</a></li><li><a href="stzgraphplannerdoc.html">Intelligence in Motion: Graph Planning in Softanza</a></li><li><a href="stzgraphquery-doc.html">stzGraphQuery: Asking Questions to Your Graph</a></li><li><a href="stz-rules-as-graph-rules-narration.html">Rules That See the Whole Picture</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Research · narration</div>
+    <h1>Introducing stzOrgChart - The Strategic Organizational Intelligence Platform</h1>
+    <p class="lede">Let's start with the core building blocks. Creating an organizational hierarchy with <strong>stzOrgChart</strong> is both intuitive and powerful:</p>
+    <p class="proof">by Mansour Ayouni · in the repository since 2025-11-25 · tutorial · area <a href="../atlas/diagramming.html">Diagramming &amp; graphs</a></p>
+    
+  </div></section>
+  <div class="wrap page-body narration">
+<figure><img src="../../assets/img/narrations/orgchart1.webp" alt="orgchart1.png" loading="lazy"><figcaption>orgchart1.png</figcaption></figure>
+<p>In Softanza, understanding organizational structure transcends simple box-and-line diagrams. Organizations need dynamic tools that can model, analyze, and visualize their human infrastructure with precision and depth. Enter <strong>stzOrgChart</strong> – a revolutionary approach to organizational modeling that transforms static charts into living, analytical systems with governance-aware intelligence.</p>
+<h2 id="the-foundation-position-people-and-department-management">The Foundation: Position, People, and Department Management</h2>
+<div class="nblock"><div class="lbl">Haro</div><pre>oOrg = new stzOrgChart(&quot;Basic_Hierarchy&quot;)
+oOrg {
+    SetLayout(&quot;TD&quot;)
+    
+    # Add executive position
+    AddExecutivePositionXT(:ceo, &quot;CEO&quot;) # ceo is the ID of the node and CEO it&#x27;s label
+    
+    # Add management positions
+    AddManagementPositionXT(:vp_sales, &quot;VP Sales&quot;)
+    AddManagementPositionXT(:vp_eng, &quot;VP Engineering&quot;)
+    
+    # Set reporting lines
+    ReportsTo(:vp_sales, :ceo)
+    ReportsTo(:vp_eng, :ceo)
+    
+    # Add staff positions with attributes
+    AddStaffPositionXTT(:sales_rep1, &quot;Sales Rep 1&quot;, [:region = &quot;North&quot;])
+    AddStaffPositionXTT(:dev1, &quot;Developer 1&quot;, [:skill = &quot;Backend&quot;])
+    
+    ReportsTo(:sales_rep1, :vp_sales)
+    ReportsTo(:dev1, :vp_eng)
+    
+    View()
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>Output:</p>
+<p><img alt="orgchart1.png" src="../../assets/img/narrations/orgchart1.webp" /></p>
+<p>Texecutive (yellow), management (blue), and staff positions (green), creating a visually intuitive hierarchy.</p>
+<blockquote>
+<p><strong>NOTE</strong>: The colors and everything else are completely configurable, at the gloabl level, to cope with your taste and need, by simply editng this container at the beginning of the stzOrgChart.ring file:</p>
+</blockquote>
+<pre>$aOrgColors = [
+    :board = &quot;gold&quot;,
+    :executive = &quot;gold-&quot;,       # Lighter gold
+    :management = &quot;blue+&quot;,      # Mid-blue
+    :staff = &quot;green-&quot;,          # Green
+    :operations = &quot;blue&quot;,
+    :treasury = &quot;green&quot;,
+    :risk = &quot;orange&quot;,
+    :audit = &quot;purple&quot;,
+    :hr = &quot;pink&quot;,
+    :it = &quot;cyan&quot;,
+    :sales = &quot;blue&quot;,
+    :engineering = &quot;green-&quot;,
+    
+    :focus = &quot;magenta+&quot;
+]</pre>
+<h3 id="people-management-with-rich-data">People Management with Rich Data</h3>
+<p>The true power emerges when we add people to positions with rich attribute data:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oOrg = new stzOrgChart(&quot;People_Management&quot;)
+oOrg {
+
+    AddPosition(&quot;ceo&quot;)
+    AddPosition(&quot;vp&quot;)
+    AddPosition(&quot;cto&quot;)
+
+    ReportsTo(&quot;vp&quot;, &quot;ceo&quot;)
+    ReportsTo(&quot;cto&quot;, &quot;ceo&quot;)
+
+    # Add people with data
+    AddPersonXTT(&quot;p1&quot;, &quot;John Doe&quot;, [:tenure = 5, :performance = &quot;High&quot;])
+    AddPersonXT(&quot;p2&quot;, &quot;Jane Smith&quot;)
+
+    # Assign people to positions
+    AssignPerson(&quot;p1&quot;, &quot;ceo&quot;)
+    AssignPerson(&quot;p2&quot;, &quot;vp&quot;)
+
+    # Verify assignments and data
+    ? @@NL( People() )
+    
+    # View with people emphasized
+    ViewPopulated()
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>Our org chart now is populated and we can check the data about it's people by checking the outpout of the People() method:</p>
+<pre>[
+		[
+			[ &quot;id&quot;, &quot;p1&quot; ],
+			[ &quot;name&quot;, &quot;John Doe&quot; ],
+			[ &quot;position&quot;, &quot;ceo&quot; ],
+			[
+				&quot;data&quot;,
+				[
+					[ &quot;tenure&quot;, 5 ],
+					[ &quot;performance&quot;, &quot;High&quot; ]
+				]
+			]
+		],
+		[
+			[ &quot;id&quot;, &quot;p2&quot; ],
+			[ &quot;name&quot;, &quot;Jane Smith&quot; ],
+			[ &quot;position&quot;, &quot;vp&quot; ],
+			[ &quot;data&quot;, [  ] ]
+		]
+]</pre>
+<p>The <code>ViewPopulated()</code> method instantly shows, in a distinct color, the nodes of the org chart that are <strong>populated</strong> with persons ("ceo" and "vp") and those who are not (the "cto" node).</p>
+<p><img alt="orgchart2.png" src="../../assets/img/narrations/orgchart2.webp" /></p>
+<blockquote>
+<p><strong>NOTE</strong>: The magenta color used here to highlight the nodes containing people is configurable in the <code>$aOrgColors</code> global setting we saw earlier, in particular, by modifying the <code>:focus = "magenta+"</code> line.</p>
+</blockquote>
+<p>Or you can focus on the <strong>vacant</strong> positions (nodes without people assigned to them) by using <code>ViewVacant()</code> instead of <code>ViewPopulated()</code> and so you get:</p>
+<p><img alt="orchart7.png" src="../../assets/img/narrations/orchart7.webp" /></p>
+<h3 id="departmental-structure-and-clusters">Departmental Structure and Clusters</h3>
+<p>Organizations are naturally compartmentalized into departments, and <strong>stzOrgChart</strong> models this reality:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oOrg = new stzOrgChart(&quot;Department_Management&quot;)
+oOrg {
+    # Adding the positions and who reports to whom
+
+    AddPositionXT(:ceo, &quot;CEO&quot;)
+    AddPositionXT(:sales_mgr, &quot;Sales Manager&quot;)
+    AddPositionXT(:eng_mgr, &quot;Engineering Manager&quot;)
+
+    ReportsTo(:sales_mgr, :ceo)
+    ReportsTo(:eng_mgr, :ceo)
+
+    # Adding departments and filling them with positions
+
+    AddDepartmentXTT(:exec, &quot;EXECUTIVE&quot;, [ :ceo ])
+    AddDepartmentXTT(:sales, &quot;SALES&quot;, [ :sales_mgr ])
+    AddDepartmentXTT(:eng, &quot;ENGINEERING&quot;, [ :eng_mgr ])
+
+    # Set position departments
+    SetPositionDepartment(:ceo, &quot;EXECUTIVE&quot;)
+    SetPositionDepartment(:sales_mgr, &quot;SALES&quot;)
+    SetPositionDepartment(:eng_mgr, &quot;ENGINEERING&quot;)
+
+    # Verify
+    ? @@NL( Departments() ) + NL
+
+    ? @@NL( Department(&quot;SALES&quot;) )
+
+    ViewByDepartment()
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>The full content of the departments is returned using <code>Departments()</code>method:</p>
+<p>And you can call the data of just a given department using <code>Department(cName)</code> like in <code>Department("SALES")</code> above.</p>
+<p>Finally, these departments are automatically reflected on the visual org chart as three <strong>clusters</strong>, each containing all the nodes assigned to that department. Each cluster appears as a box that encloses the department’s nodes:</p>
+<p><img alt="orgchart6.png" src="../../assets/img/narrations/orgchart6.webp" /></p>
+<blockquote>
+<p><strong>NOTE</strong>: If the default magenta cluster color isn’t what you prefer, you can change it effortlessly. Just add a line such as <code>SetClusterColor("gray")</code> before calling <code>View()</code>, and the new color will be applied to all clusters.</p>
+</blockquote>
+<p>You can also set the <strong>default</strong> cluster color globally by editing the <code>stzDiagram.ring</code> file and assigning:</p>
+<pre>$cDefaultClusterColor = &quot;gray&quot;</pre>
+<p>(This will apply the color automatically to all future org charts unless overridden in code.)</p>
+<h2 id="the-unified-validation-system-organizational-intelligence-at-scale">The Unified Validation System: Organizational Intelligence at Scale</h2>
+<p><strong>stzOrgChart</strong> implements validation as a multi-level intelligence system. At the organizational level, you get HR-specific validators (BCEAO governance, span of control, succession planning). But because stzOrgChart inherits from <strong>stzDiagram</strong> (which inherits from <strong>stzGraph</strong>), you also gain access to domain validators (SOX, GDPR, Banking) and structural validators (DAG, reachability, completeness). This creates a comprehensive validation platform that spans from graph theory to regulatory compliance.</p>
+<h2 id="quick-start-default-organizational-validators">" Quick Start: Default Organizational Validators</h2>
+<p>Every stzOrgChart comes with five organizational validators out of the box. Let's build a simple bank structure to see them in action:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oBank = new stzOrgChart(&quot;International_Bank&quot;)
+oBank {
+    SetTheme(&quot;pro&quot;)
+    
+    # Build basic structure
+    AddExecutivePositionXT(&quot;board&quot;, &quot;Board of Directors&quot;)
+    AddExecutivePositionXT(&quot;ceo&quot;, &quot;CEO&quot;)
+    AddManagementPositionXT(&quot;cfo&quot;, &quot;CFO&quot;)
+    AddManagementPositionXT(&quot;treasury_head&quot;, &quot;Treasury Head&quot;)
+    
+    ReportsTo(&quot;ceo&quot;, &quot;board&quot;)
+    ReportsTo(&quot;cfo&quot;, &quot;ceo&quot;)
+    ReportsTo(&quot;treasury_head&quot;, &quot;cfo&quot;)
+    
+    # What validators are active?
+    ? &quot;Default validators:&quot;
+    ? @@NL( Validators() )
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Output:</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Default validators:
+[ &quot;bceao&quot;, &quot;sod&quot;, &quot;soc&quot;, &quot;vacancy&quot;, &quot;succession&quot; ]</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Reading this:</strong> Your org chart automatically checks for West African banking compliance (BCEAO), segregation of duties (SOD), span of control (SOC), vacant positions, and succession planning. These are organizational concerns—exactly what HR and governance teams need.</p>
+<h3 id="boolean-validation-quick-health-checks">Boolean Validation: Quick Health Checks</h3>
+<p>The fastest way to check organizational health is with boolean validation. This gives you instant red-light/green-light indicators:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oBank {
+    # Quick compliance check
+    ? &quot;Overall organizational health:&quot;
+    ? IsValid()
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Output:</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Overall organizational health:
+0</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Reading this:</strong> <code>0</code> means FALSE—at least one validator failed. The organization has issues that need attention. This is perfect for dashboards or automated alerts where you need instant status.</p>
+<h3 id="detailed-validation-understanding-the-problems">Detailed Validation: Understanding the Problems</h3>
+<p>When validation fails, you need to know <em>what's wrong</em> and <em>where</em>. That's what detailed validation provides:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oBank {
+    ? &quot;Detailed analysis:&quot;
+    ? @@NL( Validate() )
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Output (excerpt):</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>[
+    [ &quot;status&quot;, &quot;fail&quot; ],
+    [ &quot;validatorsrun&quot;, 5 ],
+    [ &quot;validatorsfailed&quot;, 2 ],
+    [ &quot;totalissues&quot;, 10 ],
+    [ &quot;results&quot;, [
+        [
+            [ &quot;status&quot;, &quot;fail&quot; ],
+            [ &quot;domain&quot;, &quot;vacancy&quot; ],
+            [ &quot;issuecount&quot;, 4 ],
+            [ &quot;issues&quot;, [ &quot;Vacant positions: 4&quot; ] ],
+            [ &quot;affectednodes&quot;, [ &quot;board&quot;, &quot;cfo&quot;, &quot;treasury_head&quot;, &quot;ceo&quot; ] ]
+        ],
+        [
+            [ &quot;status&quot;, &quot;fail&quot; ],
+            [ &quot;domain&quot;, &quot;succession&quot; ],
+            [ &quot;issuecount&quot;, 6 ],
+            [ &quot;issues&quot;, [
+                &quot;No successor: ceo&quot;,
+                &quot;No successor: cfo&quot;,
+                &quot;No successor: treasury_head&quot;
+            ]],
+            [ &quot;affectednodes&quot;, [ &quot;ceo&quot;, &quot;cfo&quot;, &quot;treasury_head&quot; ] ]
+        ]
+    ]],
+    [ &quot;affectednodes&quot;, [ &quot;board&quot;, &quot;cfo&quot;, &quot;treasury_head&quot;, &quot;ceo&quot; ] ]
+]</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Reading this:</strong> The report tells you:
+- 2 of 5 validators failed
+- 10 total issues found across the organization
+- Vacancy validator found 4 empty positions
+- Succession validator found 3 positions without backups
+- The <code>affectedNodes</code> array lists every problematic position</p>
+<p>This is what auditors and analysts need—specific problems with evidence.</p>
+<h3 id="visual-validation-seeing-problems-in-context">Visual Validation: Seeing Problems in Context</h3>
+<p>The <code>affectedNodes</code> array enables direct visualization. Let's add the missing validation→view bridge methods and use them:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># stzOrgChart - Add these methods to enable visual validation
+
+def ViewValidation(aValidationResult)
+    # Extract affected nodes and apply focus
+    if HasKey(aValidationResult, :affectedNodes)
+        This.ApplyFocusTo(aValidationResult[:affectedNodes])
+    ok
+    This.View()
+
+def ViewXT(pcValidator)
+    # Validate and view in one action
+    aResult = This.ValidateXT(pcValidator)
+    This.ViewValidation(aResult)</pre><p class="ran nv-illus">illustration</p></div>
+<p>Now validation and visualization become seamless:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oBank {
+    # Assign some people to reduce vacancy issues
+    AddPersonXT(&quot;p1&quot;, &quot;Alice Chen&quot;)
+    AddPersonXT(&quot;p2&quot;, &quot;Bob Kumar&quot;)
+    AssignPerson(&quot;p1&quot;, &quot;ceo&quot;)
+    AssignPerson(&quot;p2&quot;, &quot;cfo&quot;)
+    
+    # View succession risks directly
+    ViewXT(:Succession)
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>This opens your org chart with the three positions lacking successors highlighted in magenta (the default focus color). No intermediate steps—validation flows directly into visualization.</p>
+<h3 id="single-validator-deep-dive">Single Validator Deep Dive</h3>
+<p>Sometimes you need to focus on one specific concern. The <code>XT</code> suffix (extended) provides both boolean and detailed validation for individual validators:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oBank {
+    ? &quot;Is span of control acceptable?&quot;
+    ? IsValidXT(:SOC)
+    
+    ? NL + &quot;Succession planning details:&quot;
+    ? @@NL( ValidateXT(:Succession) )
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Output:</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Is span of control acceptable?
+1
+
+Succession planning details:
+[
+    [ &quot;status&quot;, &quot;fail&quot; ],
+    [ &quot;domain&quot;, &quot;succession&quot; ],
+    [ &quot;issuecount&quot;, 6 ],
+    [ &quot;issues&quot;, [
+        &quot;No successor: ceo&quot;,
+        &quot;No successor: cfo&quot;,
+        &quot;No successor: treasury_head&quot;
+    ]],
+    [ &quot;affectednodes&quot;, [ &quot;ceo&quot;, &quot;cfo&quot;, &quot;treasury_head&quot; ] ]
+]</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Reading this:</strong> Span of control passes (<code>1</code> = TRUE)—no manager is overloaded. But succession planning fails—three critical positions have no designated backups. The <code>affectedNodes</code> array identifies exactly which positions are at risk.</p>
+<h3 id="multi-validator-analysis-comparative-auditing">Multi-Validator Analysis: Comparative Auditing</h3>
+<p>For comprehensive audits, run multiple validators simultaneously:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oBank {
+    SetPositionDepartment(&quot;treasury_head&quot;, &quot;treasury&quot;)
+    
+    # Compare two compliance frameworks
+    ? &quot;Banking vs BCEAO compliance:&quot;
+    ? @@NL( ValidateXT([ :Banking, :BCEAO ]) )
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Output:</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>[
+    [ &quot;status&quot;, &quot;pass&quot; ],
+    [ &quot;validatorsrun&quot;, 2 ],
+    [ &quot;validatorsfailed&quot;, 0 ],
+    [ &quot;totalissues&quot;, 0 ],
+    [ &quot;results&quot;, [
+        [
+            [ &quot;status&quot;, &quot;pass&quot; ],
+            [ &quot;domain&quot;, &quot;banking&quot; ],
+            [ &quot;issuecount&quot;, 0 ],
+            [ &quot;issues&quot;, [  ] ]
+        ],
+        [
+            [ &quot;status&quot;, &quot;pass&quot; ],
+            [ &quot;domain&quot;, &quot;BCEAO_governance&quot; ],
+            [ &quot;issuecount&quot;, 0 ],
+            [ &quot;issues&quot;, [  ] ]
+        ]
+    ]]
+]</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Reading this:</strong> Both validators passed. The organization satisfies universal banking controls (fraud prevention, dual control) AND West African regulatory requirements (governance structure, audit independence). The aggregated report shows you passed 2 of 2 validators with zero total issues.</p>
+<h3 id="understanding-validator-scope-banking-vs-bceao">Understanding Validator Scope: Banking vs BCEAO</h3>
+<p>These two validators check different concerns:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oBank {
+    ? &quot;═══ BANKING VALIDATOR ═══&quot;
+    ? &quot;Scope: Universal operational controls&quot;
+    ? &quot;Focus: Fraud prevention, dual control, IT security&quot;
+    ? @@NL( ValidateXT(:Banking) )
+    
+    ? NL + &quot;═══ BCEAO VALIDATOR ═══&quot;
+    ? &quot;Scope: West African banking zone regulations&quot;
+    ? &quot;Focus: Governance structure, board composition, audit independence&quot;
+    ? @@NL( ValidateXT(:BCEAO) )
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Banking</strong> validates operational controls that apply globally—fraud detection, payment approval processes, IT segregation. <strong>BCEAO</strong> validates governance structures required in the West African Economic and Monetary Union—board presence, audit reporting lines, risk management functions. Both are essential but check different layers of the organization.</p>
+<h3 id="custom-validator-sets-regional-compliance">Custom Validator Sets: Regional Compliance</h3>
+<p>Override the defaults to focus on specific requirements:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oBank {
+    ? &quot;Original defaults:&quot;
+    ? @@NL( Validators() )
+    
+    # Bank in BCEAO region needs both governance and operational controls
+    SetValidators([ :BCEAO, :Banking, :SOD, :SOC ])
+    
+    ? NL + &quot;Custom validators for BCEAO region:&quot;
+    ? @@NL( Validators() )
+    
+    ? NL + &quot;Running IsValid() with custom set:&quot;
+    ? IsValid()
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Output:</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Original defaults:
+[ &quot;bceao&quot;, &quot;sod&quot;, &quot;soc&quot;, &quot;vacancy&quot;, &quot;succession&quot; ]
+
+Custom validators for BCEAO region:
+[ &quot;bceao&quot;, &quot;banking&quot;, &quot;sod&quot;, &quot;soc&quot; ]
+
+Running IsValid() with custom set:
+1</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Reading this:</strong> You've replaced the default organizational validators with a custom set focused on regulatory compliance. Now <code>IsValid()</code> runs only these four validators. The result (<code>1</code> = TRUE) means your bank passes all regional requirements.</p>
+<h3 id="inherited-power-domain-validators-from-stzdiagram">Inherited Power: Domain Validators from stzDiagram</h3>
+<p>Because stzOrgChart inherits from stzDiagram, you can run workflow and compliance validators originally designed for business processes:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oBank {
+    # Add operational workflow properties
+    SetNodeProperty(&quot;treasury_head&quot;, &quot;domain&quot;, &quot;financial&quot;)
+    SetNodeProperty(&quot;treasury_head&quot;, &quot;requiresApproval&quot;, 1)
+    
+    # Run diagram-level validators on org structure
+    ? &quot;SOX compliance (from stzDiagram):&quot;
+    ? @@NL( ValidateXT(:SOX) )
+    
+    ? NL + &quot;GDPR compliance (from stzDiagram):&quot;
+    ? @@NL( ValidateXT(:GDPR) )
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Output:</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>SOX compliance (from stzDiagram):
+[
+    [ &quot;status&quot;, &quot;pass&quot; ],
+    [ &quot;domain&quot;, &quot;sox&quot; ],
+    [ &quot;issuecount&quot;, 0 ],
+    [ &quot;issues&quot;, [  ] ]
+]
+
+GDPR compliance (from stzDiagram):
+[
+    [ &quot;status&quot;, &quot;pass&quot; ],
+    [ &quot;domain&quot;, &quot;gdpr&quot; ],
+    [ &quot;issuecount&quot;, 0 ],
+    [ &quot;issues&quot;, [  ] ]
+]</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Reading this:</strong> Your org chart passes Sarbanes-Oxley (financial controls) and GDPR (data protection) requirements. These validators come from the parent stzDiagram class but work seamlessly on organizational structures. This is the power of inheritance—you get three validation levels in one object.</p>
+<h3 id="structural-intelligence-graph-validators-from-stzgraph">Structural Intelligence: Graph Validators from stzGraph</h3>
+<p>Go deeper still—validate the mathematical structure of your organization using graph theory validators from stzGraph:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oBank {
+    # Check structural integrity
+    ? &quot;DAG validation (from stzGraph):&quot;
+    ? @@NL( ValidateXT(:DAG) )
+    
+    ? NL + &quot;Reachability validation (from stzGraph):&quot;
+    ? @@NL( ValidateXT(:Reachability) )
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Output:</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>DAG validation (from stzGraph):
+[
+    [ &quot;status&quot;, &quot;pass&quot; ],
+    [ &quot;domain&quot;, &quot;dag&quot; ],
+    [ &quot;issuecount&quot;, 0 ],
+    [ &quot;issues&quot;, [  ] ],
+    [ &quot;affectednodes&quot;, [  ] ]
+]
+
+Reachability validation (from stzGraph):
+[
+    [ &quot;status&quot;, &quot;pass&quot; ],
+    [ &quot;domain&quot;, &quot;reachability&quot; ],
+    [ &quot;issuecount&quot;, 0 ],
+    [ &quot;issues&quot;, [  ] ],
+    [ &quot;affectednodes&quot;, [  ] ]
+]</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Reading this:</strong> Your org chart is a DAG (Directed Acyclic Graph)—no circular reporting relationships exist. All positions are reachable—every employee has a path to the board. These are structural guarantees that prevent organizational pathologies like reporting loops or isolated islands.</p>
+<h3 id="practical-workflow-regional-bank-audit">Practical Workflow: Regional Bank Audit</h3>
+<p>Here's how a real compliance audit might flow:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oBank = new stzOrgChart(&quot;Regional_Bank_Audit&quot;)
+oBank {
+    SetTheme(&quot;pro&quot;)
+    SetTitleVisibility(TRUE)
+    
+    # Build structure...
+    AddExecutivePositionXT(&quot;board&quot;, &quot;Board of Directors&quot;)
+    AddExecutivePositionXT(&quot;ceo&quot;, &quot;CEO&quot;)
+    AddManagementPositionXT(&quot;cro&quot;, &quot;Chief Risk Officer&quot;)
+    AddManagementPositionXT(&quot;cao&quot;, &quot;Chief Audit Officer&quot;)
+    
+    ReportsTo(&quot;ceo&quot;, &quot;board&quot;)
+    ReportsTo(&quot;cro&quot;, &quot;ceo&quot;)
+    ReportsTo(&quot;cao&quot;, &quot;board&quot;)  # BCEAO requirement: audit→board
+    
+    SetPositionDepartment(&quot;cro&quot;, &quot;risk&quot;)
+    SetPositionDepartment(&quot;cao&quot;, &quot;audit&quot;)
+    
+    # Assign people
+    AddPersonXT(&quot;p1&quot;, &quot;Alice Chen&quot;)
+    AddPersonXT(&quot;p2&quot;, &quot;Bob Kumar&quot;)
+    AssignPerson(&quot;p1&quot;, &quot;ceo&quot;)
+    AssignPerson(&quot;p2&quot;, &quot;cao&quot;)
+    
+    # AUDIT WORKFLOW
+    ? BoxRound(&quot;REGULATORY COMPLIANCE AUDIT&quot;)
+    
+    # Step 1: Quick check
+    if IsValidXT([ :Banking, :BCEAO ])
+        ? &quot;✓ Compliant with both Banking and BCEAO standards&quot;
+    else
+        ? &quot;✗ Non-compliant - running detailed analysis...&quot;
+        
+        aAudit = ValidateXT([ :Banking, :BCEAO ])
+        ? @@NL( aAudit )
+        
+        ? NL + &quot;Audit Summary:&quot;
+        ? &quot;  Validators run: &quot; + aAudit[:validatorsRun]
+        ? &quot;  Failed: &quot; + aAudit[:validatorsFailed]
+        ? &quot;  Total issues: &quot; + aAudit[:totalIssues]
+        ? &quot;  Affected positions: &quot; + len(aAudit[:affectedNodes])
+        
+        # Step 2: Visual inspection
+        ? NL + &quot;Generating visual report...&quot;
+        ViewValidation(aAudit)
+    ok
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>This workflow gives you:
+1. <strong>Instant status</strong> (boolean check)
+2. <strong>Detailed evidence</strong> (full report)
+3. <strong>Visual inspection</strong> (highlighted org chart)</p>
+<p>All in a few lines of code.</p>
+<h3 id="the-complete-api-reference">The Complete API Reference</h3>
+<p><strong>Boolean validation (fast status checks):</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>IsValid()                    # Run default validators → 0 or 1
+IsValidXT(pcValidator)       # Single validator → 0 or 1
+IsValidXT([v1, v2, ...])     # Multiple validators → 0 or 1</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Detailed validation (analysis &amp; evidence):</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Validate()                   # Full report with defaults → hashlist
+ValidateXT(pcValidator)      # Single detailed report → hashlist
+ValidateXT([v1, ...])        # Aggregated multi-report → hashlist</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Visual validation (immediate visualization):</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>ViewValidation(aResult)      # View with pre-computed validation
+ViewXT(pcValidator)          # Validate + view in one action</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Configuration:</strong></p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Validators()                 # See current defaults → list
+SetValidators(aList)         # Override defaults
+DefaultValidators()          # See class-level defaults → list</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="available-validators-by-level">Available Validators by Level</h3>
+<p><strong>Organizational (stzOrgChart):</strong>
+- <code>:BCEAO</code> - West African banking governance
+- <code>:SOD</code> / <code>:SegregationOfDuties</code> - Conflict of interest prevention
+- <code>:SOC</code> / <code>:SpanOfControl</code> - Manager overload detection
+- <code>:Vacancy</code> - Staffing gap analysis
+- <code>:Succession</code> - Continuity risk assessment</p>
+<p><strong>Domain (stzDiagram - inherited):</strong>
+- <code>:SOX</code> - Sarbanes-Oxley compliance
+- <code>:GDPR</code> - Data protection compliance
+- <code>:Banking</code> - Universal banking controls</p>
+<p><strong>Structural (stzGraph - inherited):</strong>
+- <code>:DAG</code> - Directed acyclic graph validation
+- <code>:Reachability</code> - Connectivity analysis
+- <code>:Completeness</code> - Decision path validation</p>
+<h3 id="why-this-unifie-validation-system-matters">Why This Unifie Validation System Matters</h3>
+<p>Traditional org chart tools show <em>structure</em>. Softanza's stzOrgChart provides <em>intelligence</em>:</p>
+<ul>
+<li><strong>Prevention</strong> - Structural validators catch organizational pathologies before they manifest</li>
+<li><strong>Detection</strong> - Domain validators identify compliance gaps before audits</li>
+<li><strong>Evidence</strong> - Every validation returns specific affected nodes with issue counts</li>
+<li><strong>Visualization</strong> - Problems appear in organizational context, not abstract reports</li>
+<li><strong>Scalability</strong> - Same API works for 10-person startups and 10,000-person enterprises</li>
+</ul>
+<p>The unified validation system transforms org charts from static diagrams into strategic intelligence platforms that predict, prevent, and document organizational health.</p>
+<h2 id="simulation-and-scenario-planning">Simulation and Scenario Planning</h2>
+<p>Perhaps the most strategic feature of <strong>stzOrgChart</strong> is its ability to simulate organizational changes before implementing them in reality:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Create baseline snapshot
+? CreateSnapshot(&quot;Initial&quot;)
+
+# Define reorganization changes
+aChanges = [
+    [:type = &quot;change_reporting&quot;, :subordinate = &quot;vp2&quot;, :supervisor = &quot;vp1&quot;],
+    [:type = &quot;add_position&quot;, :id = &quot;new_pos&quot;, :title = &quot;New Position&quot;],
+    [:type = &quot;remove_position&quot;, :position = &quot;vp1&quot;]
+]
+
+# Analyze impact
+? SimulateReorganization(aChanges)</pre><p class="ran nv-illus">illustration</p></div>
+<p>The simulation engine quantitatively analyzes the impact of proposed changes on key organizational metrics:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>[
+    [
+        &quot;before&quot;,
+        [
+            [ &quot;spanofcontrol&quot;, 2 ],
+            [ &quot;vacancyrate&quot;, 100 ]
+        ]
+    ],
+    [
+        &quot;after&quot;,
+        [
+            [ &quot;spanofcontrol&quot;, 0 ],
+            [ &quot;vacancyrate&quot;, 100 ]
+        ]
+    ],
+    # Detailed changes applied
+]</pre><p class="ran nv-illus">illustration</p></div>
+<p>This enables data-driven decision making for restructuring initiatives, merger integrations, and strategic realignments.</p>
+<h2 id="technical-power-graph-theory-meets-business-intelligence">Technical Power: Graph Theory Meets Business Intelligence</h2>
+<p>Under the hood, <strong>stzOrgChart</strong> leverages advanced <strong>graph theory</strong> algorithms inherited from its parent class <code>stzGraph</code>.</p>
+<p>These capabilities enable sophisticated analyses like:
+- Identifying communication bottlenecks that slow decision-making
+- Detecting single points of failure in critical functions
+- Optimizing organizational depth to balance control and agility
+- Quantifying influence networks beyond formal reporting lines</p>
+<p>Let's see some of them by example :</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oOrg = new stzOrgChart(&quot;Graph_Analysis&quot;)
+oOrg {
+
+    AddPosition(&quot;a&quot;)
+    AddPosition(&quot;b&quot;)
+    AddPosition(&quot;c&quot;)
+    AddPosition(&quot;d&quot;)
+    AddPosition(&quot;e&quot;)
+
+    ReportsTo(&quot;b&quot;, &quot;a&quot;)
+    ReportsTo(&quot;c&quot;, &quot;b&quot;)
+    ReportsTo(&quot;d&quot;, &quot;c&quot;)
+    ReportsTo(&quot;e&quot;, &quot;a&quot;)  # Parallel branch
+
+    # Cyclic check (no cycle)
+    ? CyclicDependencies()  # FALSE
+
+    # Add cycle
+    ReportsTo(&quot;a&quot;, &quot;d&quot;)  # Creates cycle a-&gt;b-&gt;c-&gt;d-&gt;a
+    ? CyclicDependencies()  # TRUE
+
+    # Remove cycle for further tests
+    Disconnect(&quot;a&quot;, &quot;d&quot;)
+    ? CyclicDependencies()  #--&gt; FALSE
+
+    # Connected components
+    ? @@( ConnectedComponents() )  # [[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;]]
+
+    # Articulation points (removal increases components)
+    ? @@( ArticulationPoints() ) #--&gt; [ &quot;a&quot;, &quot;d&quot; ]
+
+    # Betweenness centrality
+    ? BetweennessCentrality(&quot;b&quot;)  #--&gt; 0.25
+
+    # Closeness centrality
+    ? ClosenessCentrality(&quot;a&quot;)  #--&gt; 0.57
+
+    # Diameter (longest shortest path)
+    ? Diameter()  #--&gt; 4
+
+    # Average path length
+    ? AveragePathLength() #--&gt; 2
+
+    # Clustering coefficient
+    ? ClusteringCoefficient(&quot;a&quot;)  #--&gt; 0 Low since branches don&#x27;t connect
+
+}</pre><p class="ran nv-illus">illustration</p></div>
+<blockquote>
+<p><strong>NOTE</strong>: To get a detailed idea about the powerful features you can get for stzGraph, right inside your <code>stzOrgChart</code> objects, read <a href="stzgraphdoc.html">this article</a>.</p>
+</blockquote>
+<h2 id="11-rule-based-programming-in-stzorgchart">11. Rule-Based Programming in stzOrgChart</h2>
+<p>Because <code>stzOrgChart</code> inherits directly from <code>stzGraph</code>, it has access to the complete Softanza <strong>rule engine</strong> — one of the sophisticated features in the library.</p>
+<p>Rules transform a static org chart into a <strong>live, self-validating governance system</strong>. You encode your organization's policies once, and the chart continuously monitors itself.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oOrg = new stzOrgChart(&quot;RuleGoverned&quot;)
+oOrg {
+
+    # Only one root allowed
+    When( len(DependencyFreeNodes()) &gt; 1 )
+        AddAnomaly(&quot;ORG-001: Multiple root nodes – only Board or CEO may be root&quot;)
+
+    # BCEAO/Basel III – Risk Officer must report directly to Board or CEO
+    WhenNodeExists(&quot;dir_risk&quot;)
+        if not ( ReportsDirectlyTo(&quot;dir_risk&quot;, &quot;board&quot;) or ReportsDirectlyTo(&quot;dir_risk&quot;, &quot;ceo&quot;) )
+            AddAnomaly(&quot;RISK-001: Chief Risk Officer must report to Board or CEO&quot;)
+        ok
+
+    # Internal HR policy – every manager must have at least 3 direct reports
+    WhenNodeHasAttribute(:level, &quot;management&quot;)
+        if NumberOfDirectReports( This.CurrentNode() ) &lt; 3
+            AddAnomaly(&quot;HR-012: Manager &quot; + This.CurrentNode() + &quot; has insufficient span of control&quot;)
+        ok
+
+    # Sales department minimum staffing policy
+    WhenDepartmentExists(&quot;Sales&quot;)
+        if PositionsInDepartment(&quot;Sales&quot;).len() &lt; 6
+            AddAnomaly(&quot;SALES-001: Sales department below minimum required headcount&quot;)
+        ok
+
+    # Show results
+    ? &quot;CUSTOM RULE Anomalies:&quot;
+    ? @@NL( Anomalies() )
+    ShowAnomalies()   # highlights offending nodes in red
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>Rules are evaluated instantly after every structural change. They perfectly complement the built-in <code>Validate(:BCEAO)</code>, <code>Validate(:SpanOfControl)</code>, etc., giving you unlimited <strong>domain-specific</strong> governance.</p>
+<h2 id="12-knowledge-oriented-programming-kop-with-stzorgchart">12. Knowledge-Oriented Programming (KOP) With stzOrgChart</h2>
+<p>By combining <code>stzOrgChart</code> with <code>stzKnowledgeGraph</code> classes, yet an other powerful class of the Softanza Graph Module, the organizational structure becomes a full <strong>semantic knowledge engine</strong> you can query in near-natural business language.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oKG = new stzKnowledgeGraph(&quot;BankSemantics&quot;)
+oKG {
+
+    # Facts derived from the org chart (can be auto-generated in future versions) #TODO Make them now!
+    AddFact(&quot;ceo&quot;,       :IsA,         &quot;ExecutivePosition&quot;)
+    AddFact(&quot;dir_risk&quot;,  :IsA,         &quot;ControlFunction&quot;)
+    AddFact(&quot;vp_sales&quot;,  :ReportsTo,   &quot;ceo&quot;)
+    AddFact(&quot;vp_sales&quot;,  :InDepartment,&quot;Sales&quot;)
+    AddFact(&quot;vp_sales&quot;,  :Criticality, &quot;High&quot;)
+    AddFact(&quot;p_fatou&quot;,   :Holds,       &quot;vp_sales&quot;)
+    AddFact(&quot;p_fatou&quot;,   :HasSkill,    &quot;RevenueGrowth&quot;)
+    AddFact(&quot;p_fatou&quot;,   :Tenure,      8)
+
+    # Ontology
+    DefineClass(&quot;ControlFunction&quot;, &quot;Position&quot;)
+    DefineClass(&quot;ExecutivePosition&quot;, &quot;Position&quot;)
+
+    # Business-oriented queries
+    ? &quot;Who reports directly to the CEO?&quot;
+    ? @@( Query([&quot;?who&quot;, :ReportsTo, &quot;ceo&quot;]) )
+
+    ? &quot;Which positions are Control Functions?&quot;
+    ? @@( Query([&quot;?pos&quot;, :IsA, &quot;ControlFunction&quot;]) )
+
+    ? &quot;Who has tenure &gt; 5 years and holds a critical role?&quot;
+    ? @@( Query([&quot;?person&quot;, :Tenure, &quot;?years&quot;]) )   # then filter in Haro if needed
+
+    ? &quot;Roles similar to VP Sales (shared predicates)&quot;
+    ? @@NL( SimilarTo(&quot;vp_sales&quot;) )
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>The fusion of structural graph + semantic triples delivers <strong>hybrid intelligence</strong>: graph algorithms reveal bottlenecks, KOP explains <em>why</em> they matter from a business perspective.</p>
+<h1 id="visual-plasticity-configuring-the-orgchart-appearance">Visual Plasticity: Configuring the OrgChart Appearance</h1>
+<p>Most of the smart defaults provided by <strong>stzOrgChart</strong> are already optimized for clarity and consistency, and in many cases you won’t need to change anything. Still, <em>every aspect is customizable</em>—either at the <strong>stzOrgChart</strong> level or at its parent class <strong>stzDiagram</strong>, which provides a rich visual foundation.</p>
+<p>As demonstrated earlier, you can customize global values such as:</p>
+<ul>
+<li>The list of organizational colors via the global <code>$aOrgColors</code></li>
+<li>The default cluster color via <code>$cDefaultClusterColor</code></li>
+<li>And many additional visual parameters</li>
+</ul>
+<p>We also saw how to apply a <strong>specific cluster color</strong> only to the current org chart using <code>SetClusterColor()</code>. Following the same approach, you can personalize many other visual aspects:</p>
+<ul>
+<li><code>SetEdgeColor("blue-")</code></li>
+<li><code>SetLayout(:LeftRight)</code></li>
+<li>…and more.</li>
+</ul>
+<h3 id="choosing-the-spline-style-edge-style">Choosing the spline style (edge style)</h3>
+<p>You can also choose the type of splines (edge drawing style) to use:</p>
+<ul>
+<li><code>SetSplines("ortho")</code> – orthogonal step-like connectors</li>
+<li><code>SetSplines("splines")</code> – smooth direct arrows (the default style used in previous visuals)</li>
+<li>Other options include: <code>"line"</code>, <code>"polyline"</code>, <code>"curved"</code>, etc.</li>
+</ul>
+<h3 id="example-switching-to-orthogonal-splines">Example: Switching to Orthogonal Splines</h3>
+<p>Here is one of our previous examples, revisited to use the <strong>orthogonal</strong> spline style:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oOrg = new stzOrgChart(&quot;People_Management&quot;)
+oOrg {
+
+    SetSplines(&quot;ortho&quot;)   # Other options: splines, line, polyline, curved, etc.
+
+    AddPosition(&quot;ceo&quot;)
+    AddPosition(&quot;vp&quot;)
+    AddPosition(&quot;cto&quot;)
+
+    ReportsTo(&quot;vp&quot;, &quot;ceo&quot;)
+    ReportsTo(&quot;cto&quot;, &quot;ceo&quot;)
+
+    # Add people with data
+    AddPersonXTT(&quot;p1&quot;, &quot;John Doe&quot;, [:tenure = 5, :performance = &quot;High&quot;])
+    AddPersonXT(&quot;p2&quot;, &quot;Jane Smith&quot;)
+
+    # Assign people to positions
+    AssignPerson(&quot;p1&quot;, &quot;ceo&quot;)
+    AssignPerson(&quot;p2&quot;, &quot;vp&quot;)
+
+    # Verify assignments and data
+    ? @@NL( People() )
+    
+    # View with people emphasized
+    ViewPopulated()
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>The org chart now turns <strong>orthogonal</strong>:</p>
+<p><img alt="orgchart10.png" src="../../assets/img/narrations/orgchart10.webp" /></p>
+<p>Switch to:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>SetSplines(&quot;curved&quot;)</pre><p class="ran nv-illus">illustration</p></div>
+<p>and you get a <strong>curved</strong> connector style:</p>
+<p><img alt="orgchart11.png" src="../../assets/img/narrations/orgchart11.webp" /></p>
+<h3 id="beyond-these-options">Beyond These Options</h3>
+<p>These examples represent only a small portion of what’s possible, because <strong>stzOrgChart</strong> inherits all customization capabilities from the powerful <strong>stzDiagram</strong> class.</p>
+<p>Anything you can visually configure in <strong>stzDiagram</strong> can also be applied directly to <strong>stzOrgChart</strong>.</p>
+<p>For more information on the <code>stzDiagram</code> class, refer to the dedicated article: <strong>#TODO</strong></p>
+<h2 id="business-user-accessibility-beyond-programming">Business User Accessibility: Beyond Programming</h2>
+<p><strong>stzOrgChart</strong> bridges the gap between technical and business users through its dedicated <code>.stzorg</code> file format. Business users can edit organizational structures <strong>directly in text files</strong> without writing code:</p>
+<pre>orgchart &quot;Banking Structure&quot;
+
+positions
+    ceo
+        title: CEO
+        level: executive
+        department: executive
+        reportsTo: board
+
+    vp_sales
+        title: VP Sales
+        level: management
+        department: sales
+        reportsTo: ceo
+
+people
+    p1
+        name: Ali Mamane
+        data: {tenure: 5, performance: &quot;High&quot;}
+        
+    p2
+        name: Salimatou Touré
+
+assignments
+    p1 -&gt; ceo
+    p2 -&gt; vp_sales
+
+departments
+    sales
+        name: Sales Department
+        positions: [&quot;vp_sales&quot;, &quot;sales_mgr1&quot;, &quot;sales_mgr2&quot;]</pre>
+<p>Loading this structure from the text file and visualizing it requires minimal code:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oOrgChart = new stzOrgChart(&quot;Imported_Org&quot;)
+oOrgChart {
+    Import(&quot;banking_structure.stzorg&quot;)
+    View()
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p><img alt="orchart8.png" src="../../assets/img/narrations/orchart8.webp" /></p>
+<p>Now, all the <code>stzOrgChart</code> features are accessible by code, and you can edit the text file again to change the org chart structure, and then load it again. This accessibility makes organizational intelligence available to all stakeholders, not just technical teams.</p>
+<h2 id="generating-your-org-chart-file">Generating your Org Chart File</h2>
+<p><strong>stzOrgChart</strong> can generate your organizational chart in multiple formats—images (PNG, JPEG), vector files (SVG, PDF), and any other format supported by the Graphviz DOT engine used internally to render the graph.</p>
+<p>Exporting is as simple as calling <code>SetOutput(cFormat)</code>:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oOrgChart = new stzOrgChart(&quot;Imported_Org&quot;)
+oOrgChart {
+    Import(&quot;banking_structure.stzorg&quot;)
+    SetOutput(&quot;PDF&quot;) # SVG is the default form.
+    View()
+}</pre><p class="ran nv-illus">illustration</p></div>
+<p>This produces a PDF file that opens automatically in your browser or your system’s default PDF viewer:</p>
+<p><img alt="orgchart_pdf.png" src="../../assets/img/narrations/orgchart_pdf.webp" /></p>
+<p>In practice, you can choose your export format based on your needs:</p>
+<ul>
+<li><strong>SVG</strong> — Ideal for interactive web applications and scalable visuals</li>
+<li><strong>PDF</strong> — Best for formal documents, reports, and printing</li>
+<li><strong>PNG or other bitmap formats</strong> — Useful for presentations, slides, and email sharing</li>
+</ul>
+<h3 id="exporing-the-orgchart">Exporing the orgchart</h3>
+<p>Mermaid and others</p>
+<p><img alt="orgchart-mermaid.png" src="../../assets/img/narrations/orgchart-mermaid.webp" /></p>
+<h2 id="softanza-advantage-why-stzorgchart-outperforms-the-competition">Softanza Advantage: Why stzOrgChart Outperforms the Competition</h2>
+<p>The landscape of organizational charting tools is crowded with solutions that focus primarily on visualization. However, <strong>stzOrgChart</strong> stands apart by delivering a complete organizational intelligence platform that integrates governance, analytics, and simulation capabilities in a uniquely accessible architecture. The following comparison demonstrates why Softanza's approach represents the future of organizational design:</p>
+<table>
+<thead>
+<tr>
+<th>Feature Category</th>
+<th>Softanza <strong>stzOrgChart</strong> (Haro)</th>
+<th>D3.js/OrgChart JS (JavaScript)</th>
+<th>Visio/Lucidchart (GUI Tools)</th>
+<th>NetworkX (Python)</th>
+<th>Enterprise HRIS Platforms</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Core Architecture</strong></td>
+<td>Layered system (stzGraph; stzKnwoledgeGraph, stzDiagram, stzOrgChart) with analytical rulebased dimensions</td>
+<td>Visualization-focused libraries with limited analytics</td>
+<td>Static diagramming with minimal data integration</td>
+<td>Graph algorithms without business context</td>
+<td>Monolithic systems with rigid structures</td>
+</tr>
+<tr>
+<td><strong>Governance Validation</strong></td>
+<td>✅ Built-in frameworks (BCEAO, SOX, ISO) with automatic issue detection</td>
+<td>❌ Manual implementation required</td>
+<td>⚠️ Visual templates only, no validation logic</td>
+<td>❌ Requires custom implementation</td>
+<td>✅ Pre-built compliance but inflexible and costly</td>
+</tr>
+<tr>
+<td><strong>Simulation Engine</strong></td>
+<td>✅ Quantitative impact analysis of org changes with metric tracking</td>
+<td>❌ No native capabilities</td>
+<td>❌ No simulation capabilities</td>
+<td>⚠️ Possible with custom code, no business context</td>
+<td>⚠️ Limited scenario modeling at high cost</td>
+</tr>
+<tr>
+<td><strong>Analysis Layers</strong></td>
+<td>✅ Performance, Risk, Compliance, Succession layers with toggle capability</td>
+<td>❌ Single-dimension visualization</td>
+<td>❌ No layered analytics</td>
+<td>❌ Requires complex integration</td>
+<td>⚠️ Separate modules that don't integrate well</td>
+</tr>
+<tr>
+<td><strong>Data Integration</strong></td>
+<td>✅ Unified model combining positions, people, departments, and attributes</td>
+<td>⚠️ Requires external data binding</td>
+<td>⚠️ Limited data capabilities</td>
+<td>✅ Strong data handling but weak visualization</td>
+<td>✅ Comprehensive data but poor visualization</td>
+</tr>
+<tr>
+<td><strong>User Accessibility</strong></td>
+<td>✅ Business-friendly <code>.stzorg</code> format + programmer API</td>
+<td>❌ Code-intensive for non-developers</td>
+<td>✅ Drag-and-drop interface but limited analytics</td>
+<td>❌ Requires programming expertise</td>
+<td>✅ Business interface but limited customization</td>
+</tr>
+<tr>
+<td><strong>Graph Analytics</strong></td>
+<td>✅ Built-in centrality, connectivity, and cycle detection</td>
+<td>⚠️ Possible with extensions</td>
+<td>❌ No native graph algorithms</td>
+<td>✅ Rich algorithm library but visualization challenges</td>
+<td>❌ Limited or no graph theory implementation</td>
+</tr>
+<tr>
+<td><strong>Deployment Model</strong></td>
+<td>✅ Desktop, web, or embedded in enterprise applications</td>
+<td>✅ Web-focused only</td>
+<td>⚠️ Cloud or desktop with limitations</td>
+<td>✅ Research/analysis environment</td>
+<td>❌ Cloud-only with vendor lock-in</td>
+</tr>
+<tr>
+<td><strong>Customization</strong></td>
+<td>✅ Open architecture with extensible rule system</td>
+<td>✅ Developer-customizable but complex</td>
+<td>❌ Limited to vendor-provided features</td>
+<td>✅ Highly customizable but steep learning curve</td>
+<td>❌ Minimal customization without expensive services</td>
+</tr>
+<tr>
+<td><strong>Total Cost of Ownership</strong></td>
+<td>✅ One-time development with no recurring fees</td>
+<td>✅ Free libraries but high development cost</td>
+<td>⚠️ Subscription fees with limited functionality</td>
+<td>✅ Free but requires specialized skills</td>
+<td>❌ $50K-$500K+ implementation with annual fees</td>
+</tr>
+<tr>
+<td><strong>Time to Value</strong></td>
+<td>✅ Days to weeks for complete implementation</td>
+<td>⚠️ Weeks to months for full solution</td>
+<td>✅ Hours for basic charts, months for analytics</td>
+<td>⚠️ Months for non-technical teams</td>
+<td>❌ 6-18 months implementation cycles</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Differentiators That Matter</strong></p>
+<ul>
+<li>
+<p><strong>The Integrated Intelligence Approach</strong>: Unlike visualization-only tools (D3.js, Visio), <strong>stzOrgChart</strong> treats organizational structure as a living analytical system. It allows leaders to toggle between compliance views, risk heatmaps, and succession planning perspectives without rebuilding charts from scratch.</p>
+</li>
+<li>
+<p><strong>Governance as Code</strong>: While enterprise HRIS platforms bury compliance rules in configuration menus, <strong>stzOrgChart</strong> exposes governance standards as programmable validations. This enables version control, automated testing, and continuous compliance monitoring—capabilities unavailable in static diagramming tools.</p>
+</li>
+<li>
+<p><strong>Simulation-First Mindset</strong>: Most organizational tools present a snapshot in time. <strong>stzOrgChart</strong>'s simulation engine quantifies the impact of proposed changes on span of control, vacancy rates, and risk exposure before decisions are made—turning reorganization from guesswork into engineering.</p>
+</li>
+<li>
+<p><strong>Business-Technical Bridge</strong>: The <code>.stzorg</code> file format eliminates the traditional divide between business analysts and developers. HR professionals can edit organizational structures in plain text while developers build sophisticated analytics on the same foundation—a duality impossible in pure GUI tools or academic graph libraries.</p>
+</li>
+<li>
+<p><strong>Total Ownership Cost</strong>: Enterprise platforms charge premium prices for features that <strong>stzOrgChart</strong> delivers with elegant simplicity. Organizations avoid vendor lock-in while maintaining complete control over their organizational data and intelligence workflows.</p>
+</li>
+</ul>
+<p>This isn't just organizational charting—it's organizational engineering with full strategic ownership.</p>
+<h2 id="conclusion-the-strategic-value-of-organizational-intelligence">Conclusion: The Strategic Value of Organizational Intelligence</h2>
+<p><strong>stzOrgChart</strong> represents far more than a diagramming tool—it's a strategic intelligence platform that transforms how organizations understand and optimize their human infrastructure. By integrating graph theory, governance frameworks, simulation capabilities, and multi-dimensional visualization, <strong>stzOrgChart</strong> enables leaders to:</p>
+<ul>
+<li><strong>Quantify organizational health</strong> through validated metrics rather than intuition</li>
+<li><strong>Simulate restructuring impacts</strong> before committing resources to change</li>
+<li><strong>Identify hidden risks</strong> in reporting structures and succession planning</li>
+<li><strong>Ensure regulatory compliance</strong> through automated governance validation</li>
+<li><strong>Optimize decision-making velocity</strong> by analyzing communication pathways</li>
+<li><strong>Visualize complex relationships</strong> through layered analytical perspectives</li>
+</ul>
+<p>Whether you're an HR executive evaluating talent pipelines, a compliance officer ensuring regulatory adherence, a restructuring consultant optimizing spans of control, or a CEO planning digital transformation, <strong>stzOrgChart</strong> provides the analytical foundation for making confident, data-driven decisions about your organization's most valuable asset—your people.</p>
+<h2>Related reading</h2><ul><li><a href="stzgraphdoc.html">stzGraph: The Art of Connected Thinking</a></li><li><a href="stzgraphplannerdoc.html">Intelligence in Motion: Graph Planning in Softanza</a></li><li><a href="stzgraph-modeling-knowledge-with-nodes-and-connections.html">stzGraph — Modeling Knowledge Through Structure</a></li><li><a href="stzorgchartdoc-bankusecase.html">Organizational Intelligence in Action</a></li></ul><h2>Cite</h2><p class="mono cite">Mansour Ayouni. "Introducing stzOrgChart - The Strategic Organizational Intelligence Platform". Softanza narrations, 2025. https://mayouni.github.io/stzsite/en/narrations/stzorgchartdoc.html</p><p class="proof">Not run: its code touches files, the network, the clock or chance. The article is published as written; its blocks are illustrations. The code of the articles is Haro code. Where an article was written before the language took its present name, the name was changed and nothing else. Genre, area and series read from the file's name, the year from its first commit: derived, until the article carries its own header. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzOrgChartDoc.md" target="_blank" rel="noopener noreferrer">The file on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Platform</h3><ul><li><a href="../platform.html">Platform</a></li><li><a href="../platforms.html">Platform of platforms</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">The craft</a></li><li><a href="../areas.html">The areas</a></li><li><a href="../code.html">The code</a></li><li><a href="../compare.html">Compared</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Performance series</a></li><li><a href="../narrations-security.html">Security series</a></li><li><a href="../narrations-delivery.html">Delivery series</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">The north star</a></li><li><a href="../principles.html">Twelve principles</a></li><li><a href="../estate.html">The estate</a></li><li><a href="../history.html">From first principles</a></li><li><a href="../forged.html">Forged in projects</a></li><li><a href="../sovereignty.html">Sovereignty</a></li><li><a href="../africa.html">Born in Africa</a></li></ul></div><div><h3>Agentic</h3><ul><li><a href="../agentic.html">Agentic</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Language of languages</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Refinement</a></li><li><a href="../agents.html">For agents</a></li><li><a href="../coding-agents.html">Coding agents</a></li><li><a href="../security.html">Security</a></li></ul></div><div><h3>Learn</h3><ul><li><a href="../learn.html">Learn</a></li><li><a href="../book.html">The book</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">How-to</a></li><li><a href="../reference.html">Reference</a></li><li><a href="../ask.html">Ask the library</a></li><li><a href="../education.html">Education</a></li></ul></div><div><h3>Offering</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Editions</a></li><li><a href="../customers.html">Customers</a></li></ul></div><div><h3>Start</h3><ul><li><a href="../start.html">Start</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">The repository on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></li><li><a href="../tour.html">Presentation mode</a></li><li><a href="../../deck-check.html">Check offline</a></li><li><a href="../../index.html?lang=fr" lang="fr">Français</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">The Software Makers Platform of the AI Age. Born in Africa. Useful to the World!</p><div class="themes" role="group" aria-label="Display"><button type="button" data-set-theme="light">Use the light theme</button><button type="button" data-set-theme="dark">Use the dark theme</button><button type="button" data-set-theme="auto">Follow the system</button></div></div>
+    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

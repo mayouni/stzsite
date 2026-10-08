@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planning and Provisioning a Deployment · Narrations · Softanza</title>
+<meta name="description" content="Deploying the target sites taught the verbs: store, launch, report, all governed. But real rollouts are rarely one step. The backend must come up before the frontend that calls it. A health check must pass before you proceed.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Skip to content</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=en" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Present the site as a slideshow" title="Present the site as a slideshow"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="The Softanza repository on GitHub" title="The Softanza repository on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../fr/narrations/stz-planning-and-provisioning-a-deployment-narration.html" lang="fr" hreflang="fr">Français</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=en" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Main menu"><a href="../platform.html">Platform</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentic</a><a href="../learn.html">Learn</a><a href="../offering.html">Offering</a><a href="../start.html">Start</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Present the site as a slideshow" title="Present the site as a slideshow"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="The Softanza repository on GitHub" title="The Softanza repository on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../fr/narrations/stz-planning-and-provisioning-a-deployment-narration.html" lang="fr" hreflang="fr">Français</a></div>
+  </div>
+  <nav class="path" aria-label="Pages of the section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Performance series</a><a href="../narrations-security.html">Security series</a><a href="../narrations-delivery.html">Delivery series</a></div></nav>
+  <nav class="crumbs" aria-label="You are here"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">Planning and Provisioning a Deployment</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="The narrations run"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">All the narrations</a></li><li><a href="stz-system-dev-to-deploy-narration.html">From Dev to Deploy Without Leaving Your Editor</a></li><li><a href="stz-deploying-to-target-sites-narration.html">Deploying to the Target Sites</a></li><li><a href="stz-emulating-the-whole-solution-narration.html">Emulating the Whole Solution</a></li><li><a href="stz-planning-and-provisioning-a-deployment-narration.html" aria-current=page>Planning and Provisioning a Deployment</a></li><li><a href="stz-service-virtualization-code-first-subscribe-later.html">Code First, Subscribe Later</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Research · narration</div>
+    <h1>Planning and Provisioning a Deployment</h1>
+    <p class="lede">Deploying the <a href="stz-deploying-to-target-sites-narration.html">target sites</a> taught the
+verbs: store, launch, report, all governed. But real rollouts are rarely one step.
+The backend must come up <em>before</em> the frontend that calls it. A health check must
+pass before you proceed. A half-finished deployment must undo itself. And every
+target must actually have the memory, compute, and storage the part needs — or be
+created to have it.</p>
+    <p class="proof">by Mansour Ayouni · in the repository since 2026-07-22 · series · <a href="../narrations-delivery.html">the delivery series</a> · area <a href="../atlas/system.html">System programming</a></p>
+    
+  </div></section>
+  <div class="wrap page-body narration">
+
+<h3 id="from-a-one-step-rollout-to-an-ordered-gated-self-provisioning-one-and-back-if-it-fails">From a one-step rollout to an ordered, gated, self-provisioning one — and back if it fails</h3>
+<p>That is two ideas the CI and infrastructure world has long modelled: the
+deployment is a <strong>plan of ordered steps</strong>, and each host is <strong>sized to what runs on
+it</strong>. Softanza models both, on top of the rehearse-then-commit machinery it already
+had. This narration walks them. Every code block is real, and every output block is
+its actual output.</p>
+<hr />
+<h2 id="a-deployment-is-a-plan-of-steps">A deployment is a plan of steps</h2>
+<p>Take a small shop: a backend <code>api</code> and a browser <code>web</code> frontend. Bind each to a
+site, and — before anything runs — ask the deployment to <code>Explain()</code> itself:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oB = new stzDelivery(&quot;shop&quot;)
+oB.AddBackend(:api, :LinuxServer)
+oB.AddSuperApp(:web, :Browser)
+oB.NeedsIn(:api, [ :PivotTable ])
+oB.NeedsIn(:web, [ :Collection, :ConstraintSolver ])
+oB.RequiresIn(:api, StzResourcesQ().SetMemoryQ(2048).SetComputeQ(2).SetStorageQ(20))
+
+oApi = new stzDeploymentSite(&quot;prod-api&quot;)
+oApi.SetKindQ(:Server).SetProviderQ(:proxmox)
+
+oWeb = new stzDeploymentSite(&quot;cdn&quot;)
+oWeb.SetKindQ(:GitRepo).SetEndpointQ(&quot;git@cdn:web.git&quot;)
+
+oDep = new stzDeployment(oB)
+oDep.SetActor(HumanActor(&quot;ops&quot;))
+oDep.SetTarget(:api, oApi)
+oDep.SetTarget(:web, oWeb)
+oDep.RunAfter(:web, :api)     # the frontend deploys AFTER the backend
+
+? oDep.Explain()</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Promised output</div><pre>  Host feasibility (required -&gt; capacity):
+     [ok  ] prod-api: 2048MB / 2 vCPU / 20GB -&gt; (provision)  (provision on proxmox)
+     [ok  ] cdn: 0MB / 0 vCPU / 0GB -&gt; (undeclared)  (capacity not declared -- assumed ok)
+
+  Plan (7 steps, in order; Run() executes them, governed):
+     1. provision api -&gt; prod-api
+     2. store     api -&gt; prod-api   (after provision:api)
+     3. launch    api -&gt; prod-api   (after store:api)
+     4. verify    api -&gt; prod-api   (after launch:api)
+     5. store     web -&gt; cdn        (after verify:api)
+     6. launch    web -&gt; cdn        (after store:web)
+     7. verify    web -&gt; cdn        (after launch:web)
+
+  A verify gate must pass to proceed; a failure rolls back the completed steps.
+  Governed: only an effectful actor commits.</pre></div>
+<p>Read the plan. A <strong>simple</strong> deployment is just the default chain per part —
+<code>store → launch → verify</code>. This one is <strong>complex</strong>: <code>RunAfter(:web, :api)</code> made the
+frontend's <code>store</code> wait for the backend's <code>verify</code> (step 5 depends on step 4), and
+because <code>prod-api</code> is a <em>scriptable</em> host, a <code>provision</code> step leads the whole thing
+(step 1). The steps are topologically sorted, so every dependency precedes its
+dependants — a DAG, laid out before a byte moves.</p>
+<p>Three properties are promised in that last block, and <code>Run()</code> delivers them:
+<strong>order</strong> (the <code>after</code> edges), a <strong>gate</strong> (verify must pass), and <strong>rollback</strong> (a
+failure undoes what completed).</p>
+<h2 id="sizing-the-host-feasibility">Sizing the host — feasibility</h2>
+<p>Notice the <em>feasibility</em> section above. A part <strong>requires</strong> resources; a host
+<strong>provides</strong> them; feasibility is just "does it fit?". Declare a host's capacity and
+ask:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oB.RequiresIn(:api, StzResourcesQ().SetMemoryQ(2048).SetComputeQ(2).SetStorageQ(20))
+
+oBig = new stzDeploymentSite(&quot;big&quot;)
+oBig.SetKindQ(:Server).SetCapacityQ(StzResourcesQ().SetMemoryQ(4096).SetComputeQ(4).SetStorageQ(100))
+d1 = new stzDeployment(oB)
+d1.SetTarget(:api, oBig)
+? &quot;big host   -&gt; Feasible=&quot; + d1.Feasible()
+
+oSmall = new stzDeploymentSite(&quot;small&quot;)
+oSmall.SetKindQ(:Server).SetCapacityQ(StzResourcesQ().SetMemoryQ(1024).SetComputeQ(1).SetStorageQ(10))
+d2 = new stzDeployment(oB)
+d2.SetTarget(:api, oSmall)
+? &quot;small host -&gt; Feasible=&quot; + d2.Feasible()</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Promised output</div><pre>  big host   -&gt; Feasible=1  (fits)
+  small host -&gt; Feasible=0  (SHORTFALL -- host too small)</pre></div>
+<p>The undersized host is <strong>not feasible</strong> — a pre-flight that refuses an impossible
+placement before any commit, the same admission a Kubernetes scheduler performs.</p>
+<h2 id="when-the-host-isnt-there-yet-provision-it">When the host isn't there yet — provision it</h2>
+<p><code>prod-api</code> had no declared capacity, but it <em>did</em> have a <code>Provider(:proxmox)</code>. That
+makes it <strong>scriptable</strong>: feasible not because it fits, but because it can be
+<strong>created to fit</strong>. <code>Provision(req)</code> builds the provider command straight from the
+resource spec:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oPx = new stzDeploymentSite(&quot;vm&quot;)
+oPx.SetProviderQ(:proxmox)
+? oPx.ProvisionCommandFor(StzResourcesQ().SetMemoryQ(2048).SetComputeQ(2).SetStorageQ(20))
+
+oAws = new stzDeploymentSite(&quot;vm2&quot;)
+oAws.SetProviderQ(:aws)
+? oAws.ProvisionCommandFor(StzResourcesQ().SetMemoryQ(8192).SetComputeQ(4).SetStorageQ(50))</pre><p class="ran nv-kept">run on 2026-10-08 20:42 at commit 4a184e6f0: kept its promise</p></div>
+<div class="out"><div class="lbl">Promised output</div><pre>qm create --name vm --memory 2048 --cores 2 --scsi0 local:20
+aws ec2 run-instances --instance-type t3.large</pre></div>
+<p>Proxmox takes the raw spec; AWS maps the memory to an instance type. The <code>provision</code>
+step in the plan runs exactly this — so a scriptable host comes <em>into existence</em>,
+sized to the requirement, as the first step of the rollout. This is the
+infrastructure-as-code move: don't just deploy to a host, bring one about.</p>
+<h2 id="run-it-and-roll-back-if-a-step-fails">Run it — and roll back if a step fails</h2>
+<p>Now the promise that matters most. Deploy a <code>web</code> frontend and an <code>api</code> backend,
+order the backend <em>after</em> the frontend, and let the backend's store fail (its remote
+isn't reachable). <code>Run()</code> executes the plan and reports every step:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oGood = new stzDeploymentSite(&quot;cdn&quot;)
+oGood.SetKindQ(:LocalRepo).SetStoreAtQ(&quot;/srv/cdn&quot;)
+oBad = new stzDeploymentSite(&quot;prod-api&quot;)
+oBad.SetKindQ(:Server)                       # remote store fails: no host reachable
+
+oDep = new stzDeployment(oB)
+oDep.SetActor(HumanActor(&quot;ops&quot;))
+oDep.SetTarget(:web, oGood)
+oDep.SetTarget(:api, oBad)
+oDep.RunAfter(:api, :web)                   # web fully deploys, THEN api
+
+aRun = oDep.Run()
+? &quot;committed: &quot; + aRun[1]
+for i = 1 to len(aRun[2])
+    ? &quot;  &quot; + aRun[2][i][1] + &quot;  -&gt;  &quot; + aRun[2][i][2]
+next
+? &quot;web site status after: &quot; + oGood.Status()</pre><p class="ran nv-kept">run on 2026-10-08 20:42 at commit 4a184e6f0: kept its promise</p></div>
+<div class="out"><div class="lbl">Promised output</div><pre>  committed: 0
+  store:web   -&gt;  done
+  launch:web  -&gt;  done
+  verify:web  -&gt;  done
+  store:api   -&gt;  FAILED
+  launch:api  -&gt;  skipped
+  verify:api  -&gt;  skipped
+  web site status after: rolledback</pre></div>
+<p>The web frontend stored, launched, and passed its gate. Then the api's store
+<strong>FAILED</strong>, so the remaining steps were <strong>skipped</strong> and the deployment <strong>did not
+commit</strong> — and, crucially, the web frontend that had <em>already</em> deployed was
+<strong>rolled back</strong>. The rollout is transactional: all of it lands, or none of it does.
+Had a benign actor run it, every step would have merely rehearsed and nothing would
+have moved at all.</p>
+<h2 id="define-size-plan-run">Define, size, plan, run</h2>
+<p>That is the whole shape. You said what each part needs — its capabilities <em>and</em> its
+resources. The delivery planner laid out an ordered plan and told you, before committing,
+whether each host had room or could be provisioned to have it. And <code>Run()</code> executed
+that exact plan: provisioning where needed, honoring the dependencies, gating on the
+health checks, and — on failure — undoing itself, governed at every commit. A
+complex rollout, as legible and safe as a simple one.</p>
+<h2>Related reading</h2><ul><li><a href="stz-deploying-to-target-sites-narration.html">Deploying to the Target Sites</a></li><li><a href="stz-structured-logging-narration.html">Structured Logging with stzLog</a></li></ul><h2>Cite</h2><p class="mono cite">Mansour Ayouni. "Planning and Provisioning a Deployment". Softanza narrations, 2026. https://mayouni.github.io/stzsite/en/narrations/stz-planning-and-provisioning-a-deployment-narration.html</p><p class="proof">Run in Haro's name on 2026-10-08 20:42 inside the library at commit 4a184e6f0, block after block in one process: 2 of 4 blocks kept their promise; the others are illustrations. The code of the articles is Haro code. Where an article was written before the language took its present name, the name was changed and nothing else. Genre, area and series read from the file's name, the year from its first commit: derived, until the article carries its own header. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-planning-and-provisioning-a-deployment-narration.md" target="_blank" rel="noopener noreferrer">The file on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Platform</h3><ul><li><a href="../platform.html">Platform</a></li><li><a href="../platforms.html">Platform of platforms</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">The craft</a></li><li><a href="../areas.html">The areas</a></li><li><a href="../code.html">The code</a></li><li><a href="../compare.html">Compared</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Performance series</a></li><li><a href="../narrations-security.html">Security series</a></li><li><a href="../narrations-delivery.html">Delivery series</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">The north star</a></li><li><a href="../principles.html">Twelve principles</a></li><li><a href="../estate.html">The estate</a></li><li><a href="../history.html">From first principles</a></li><li><a href="../forged.html">Forged in projects</a></li><li><a href="../sovereignty.html">Sovereignty</a></li><li><a href="../africa.html">Born in Africa</a></li></ul></div><div><h3>Agentic</h3><ul><li><a href="../agentic.html">Agentic</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Language of languages</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Refinement</a></li><li><a href="../agents.html">For agents</a></li><li><a href="../coding-agents.html">Coding agents</a></li><li><a href="../security.html">Security</a></li></ul></div><div><h3>Learn</h3><ul><li><a href="../learn.html">Learn</a></li><li><a href="../book.html">The book</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">How-to</a></li><li><a href="../reference.html">Reference</a></li><li><a href="../ask.html">Ask the library</a></li><li><a href="../education.html">Education</a></li></ul></div><div><h3>Offering</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Editions</a></li><li><a href="../customers.html">Customers</a></li></ul></div><div><h3>Start</h3><ul><li><a href="../start.html">Start</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">The repository on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></li><li><a href="../tour.html">Presentation mode</a></li><li><a href="../../deck-check.html">Check offline</a></li><li><a href="../../index.html?lang=fr" lang="fr">Français</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">The Software Makers Platform of the AI Age. Born in Africa. Useful to the World!</p><div class="themes" role="group" aria-label="Display"><button type="button" data-set-theme="light">Use the light theme</button><button type="button" data-set-theme="dark">Use the dark theme</button><button type="button" data-set-theme="auto">Follow the system</button></div></div>
+    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

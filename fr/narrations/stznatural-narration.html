@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>**Natural Language Programming, Reimagined: The stzNatural Class in Softanza** · Narrations · Softanza</title>
+<meta name="description" content="In a world increasingly seduced by large language models and AI-generated code, stzNatural class—part of the Softanza library for the Haro programming language—offers a radical yet refreshingly pragmatic alternative: natural language programming that actual...">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stznatural-narration.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stznatural-narration.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">**Natural Language Programming, Reimagined: The stzNatural Class in Softanza**</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stz-mental-mode-narration.html">A Guided Path to Problem-Solving: The Softanza Mental Model</a></li><li><a href="stz-bridging-minds-and-code.html">Softanza: Bridging Minds and Code - A Humanistic Approach to Programming</a></li><li><a href="stz-knowledge-programming-narration.html">Softanza Knowledge Porgramming: Crafting the Semantics of Thought</a></li><li><a href="stz-functions-as-linguistic-expressions.html">Writability vs. Readability of Computer Code— Softanza Asks: Why NOT Both?</a></li><li><a href="stzfolder-natural-navigation.html">Natural Folder Navigation in Softanza</a></li><li><a href="stz-near-natural-language-programming.html">Near-Natural Programming: Bridging Human Thought and Code Execution</a></li><li><a href="stz-near-natural-language-tutorial.html">Softanza Near-Natural Programming Tutorial</a></li><li><a href="stz-function-forms-narration.html">Softanza: Functions as Linguistic Artifacts - A Comprehensive Narration</a></li><li><a href="stznatural-narration.html" aria-current=page>**Natural Language Programming, Reimagined: The stzNatural Class in Softanza**</a></li><li><a href="stznatural-vs-ring-naturallib.html">Why I Built stzNatural: A Journey from Haro&#x27;s NaturalLib to Softanza&#x27;s Natural System</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>**Natural Language Programming, Reimagined: The stzNatural Class in Softanza**</h1>
+    <p class="lede">In a world increasingly seduced by large language models and AI-generated code,  <strong><code>stzNatural</code></strong> class—part of the <strong>Softanza</strong> library for the <strong>Haro programming language</strong>—offers a radical yet refreshingly pragmatic alternative: <strong>natural language programming that actually runs</strong>, at native speed, with zero external dependencies.</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2025-11-02 · essai de fonction · domaine <a href="../atlas/nlp.html">Traitement du langage et linguistique</a></p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+<figure><img src="../../assets/img/narrations/stznatural-english.webp" alt="stznatural-english.png" loading="lazy"><figcaption>stznatural-english.png</figcaption></figure>
+<blockquote>
+<p><em>“Make a string with ‘hello Niger’ inside. Uppercase it, spacify it, and box it—rounded. Then show the result.”</em><br />
+— Not pseudocode. Not an LLM prompt. <strong>Real, executable Haro code.</strong></p>
+</blockquote>
+<p>No NLP. No neural nets. No hallucinations. Just clean, deterministic, <strong>data-driven code</strong> that reads like human instruction—and executes like machine logic.</p>
+<hr />
+<h2 id="a-vision-natural-orientation-in-code">🌍 A Vision: Natural Orientation in Code</h2>
+<p>At the heart of Softanza lies a design philosophy called <strong>natural orientation</strong>: software should feel intuitive, expressive, and accessible—not just to engineers, but to domain experts, educators, and multilingual communities.  </p>
+<p><code>stzNatural</code> embodies this vision by enabling developers to write <strong>executable natural-language commands</strong> directly inside Haro programs. But unlike toy DSLs or brittle macro systems, <code>stzNatural</code> is:</p>
+<ul>
+<li><strong>Multilingual by design</strong> (English, Hausa Latin, Hausa Ajami—and infinitely extensible),</li>
+<li><strong>Data-driven</strong> (language rules are pure configuration, not hardcoded logic),</li>
+<li><strong>Debuggable and transparent</strong> (you can inspect the generated Haro code at any time),</li>
+<li>And above all—<strong>fast</strong> (as fast as caling a bunch of method on a Haro object).</li>
+</ul>
+<p>Let’s explore how it works—and why it matters.</p>
+<h2 id="core-architecture-separation-of-concerns-perfected">Core Architecture: Separation of Concerns, Perfected</h2>
+<p><code>stzNatural</code> rests on three cleanly separated pillars:</p>
+<h3 id="1-language-definitions-alanguagedefinitions">1. <strong>Language Definitions</strong> (<code>$aLanguageDefinitions</code>)</h3>
+<p>A pure data structure mapping words in any language to semantic identifiers:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>[:natural = &quot;uppercase&quot;, :semantic = &quot;METHOD_UPPERCASE&quot;],
+[:natural = &quot;maiɗa&quot;,    :semantic = &quot;METHOD_UPPERCASE&quot;],   // Hausa (Latin)
+[:natural = &quot;ميّرد&quot;,     :semantic = &quot;METHOD_UPPERCASE&quot;]    // Hausa (Ajami)</pre><p class="ran nv-illus">illustration</p></div>
+<p>Add Swahili? Arabic? Just append a new block. No recompilation needed.</p>
+<h3 id="2-semantic-operations-asemanticoperations">2. <strong>Semantic Operations</strong> (<code>$aSemanticOperations</code>)</h3>
+<p>Language-agnostic definitions of what each semantic ID <em>does</em>:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>[
+  :semantic_id = &quot;METHOD_BOX&quot;,
+  :stz_signature = &quot;@var.Box()&quot;,
+  :supports_modifiers = 1,
+  :modifiers = [
+    [:semantic_id = &quot;MODIFIER_ROUNDED&quot;, :stz_method = &quot;BoxXT&quot;, :stz_param = &quot;:Rounded = 1&quot;]
+  ]
+]</pre><p class="ran nv-illus">illustration</p></div>
+<p>This decouples <em>meaning</em> from <em>implementation</em>—enabling rich behaviors like modifiers.</p>
+<h3 id="3-execution-engine-stznaturalengine">3. <strong>Execution Engine</strong> (<code>stzNaturalEngine</code>)</h3>
+<p>The runtime that:
+- Tokenizes input,
+- Filters ignored words (“the”, “and”, “please”),
+- Resolves semantics,
+- Generates and evaluates Haro code.</p>
+<p>All while supporting <strong>debug mode</strong>, <strong>literal protection</strong>, and <strong>deferred references</strong>.</p>
+<h2 id="feature-walkthrough-by-example">✨ Feature Walkthrough: By Example</h2>
+<h3 id="1-basic-object-creation-transformation">1. <strong>Basic Object Creation &amp; Transformation</strong></h3>
+<div class="nblock"><div class="lbl">Haro</div><pre>Naturally() {
+  Create a string with &quot;softanza&quot; inside
+  Uppercase it
+  Display the result
+}
+#--&gt; SOFTANZA</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="3-action-application-natural-verbs-as-methods">3. Action Application: Natural Verbs as Methods</h3>
+<p>Once an object exists, you apply actions using intuitive verbs. Here are examples from the stzString domain:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Nt = Naturally() {
+    Create a stzString with &quot;  Sample Data  &quot;
+    
+    Trim it
+    Uppercase it
+    Show it
+}
+#--&gt; SAMPLE DATA
+
+? Nt.Code()
+#--&gt;
+oStr = StzStringQ(&quot;  Sample Data  &quot;)
+oStr.Trim()
+oStr.Uppercase()
+? oStr.Content()</pre><p class="ran nv-illus">illustration</p></div>
+<p><strong>Important:</strong> These string operations are not "features" of the natural programming system itself. They're examples of how any Haro object with any methods can be naturally expressed. The system dynamically maps natural verbs to actual method calls.</p>
+<h3 id="4-chained-operations-with-natural-connectors">4. <strong>Chained Operations with Natural Connectors</strong></h3>
+<div class="nblock"><div class="lbl">Haro</div><pre>Naturally() {
+  Make a string containing &quot;haro language&quot;
+  Uppercase it and_ spacify it
+  Show it
+}
+#--&gt; H A R O   L A N G U A G E</pre><p class="ran nv-illus">illustration</p></div>
+<p>Words like <code>and_</code>, <code>then_</code>, <code>plus</code> are <strong>ignored</strong>—they exist only for fluency.</p>
+<h3 id="5-parameterized-methods">5. <strong>Parameterized Methods</strong></h3>
+<div class="nblock"><div class="lbl">Haro</div><pre>Naturally() {
+  Create a string with &quot;old text old&quot;
+  Replace &quot;old&quot; with &quot;new&quot;
+  Display it
+}
+#--&gt; new text new</pre><p class="ran nv-illus">illustration</p></div>
+<p>The system intelligently treats tokens after <code>replace</code> as <strong>literals</strong>, even if they match known keywords.</p>
+<h3 id="6-modifiers-via-deferred-reference">6. <strong>Modifiers via Deferred Reference (<code>@...@</code>)</strong></h3>
+<p>This is where <code>stzNatural</code> shines:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = Naturally()
+o1 {
+  Create a string with &quot;Softanza ♥ Haro&quot;
+  @box it
+  The box@ should be rounded
+  Display the final result
+}
+#--&gt;
+╭─────────────────╮
+│ Softanza ♥ Haro │
+╰─────────────────╯</pre><p class="ran nv-illus">illustration</p></div>
+<p>The <code>@box ... the box@</code> pattern creates a <strong>deferred reference</strong>, allowing natural phrasing like “the box should be rounded”—a construct impossible in most DSLs.</p>
+<p>Generated code:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? o1.Code()
+#--&gt;
+&#x27;
+oStr = StzStringQ(&quot;boxed text&quot;)
+oStr.BoxXT([:Rounded = 1])
+? oStr.Content()
+&#x27;</pre><p class="ran nv-illus">illustration</p></div>
+<blockquote>
+<p>💡 <strong>Note</strong>: <code>box</code> and <code>frame</code> are aliases. So are <code>replace</code>, <code>substitute</code>, <code>change</code>, and <code>swap</code>.</p>
+</blockquote>
+<h3 id="7-multilingual-execution">7. <strong>Multilingual Execution</strong></h3>
+<h4 id="english">English:</h4>
+<p><img alt="stznatural-english.png" src="../../assets/img/narrations/stznatural-english.webp" /></p>
+<h4 id="hausa-latin-script">Hausa (Latin script):</h4>
+<p><img alt="stznatural-hausa-boko.png" src="../../assets/img/narrations/stznatural-hausa-boko.webp" /></p>
+<h4 id="hausa-ajamiarabic-script">Hausa (Ajami/Arabic script):</h4>
+<p><img alt="stznatural-hausa-ajami.png" src="../../assets/img/narrations/stznatural-hausa-ajami.webp" />
+All produce identical output—and identical internal Haro code.</p>
+<p>This isn’t just localization—it’s <strong>linguistic inclusion</strong> in programming.</p>
+<h2 id="pragmatic-safeguards">Pragmatic Safeguards</h2>
+<p><code>stzNatural</code> avoids common pitfalls:</p>
+<ul>
+<li><strong>Ignored words</strong> (like <code>"it"</code>, <code>"the"</code>) are stripped—so you can’t accidentally use them as values.</li>
+<li><strong>Unknown words</strong> default to literals—making the system forgiving.</li>
+<li><strong>Empty or <code>nothing</code> values</strong> are handled gracefully.</li>
+<li><strong>Debug mode</strong> lets you trace every token and generated line.</li>
+</ul>
+<p>Example of misuse:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Naturally() { Create a string with &quot;it&quot; }  // &quot;it&quot; is ignored!
+// → Creates empty string: StzStringQ(&quot;&quot;)</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="extensibility-add-any-language-any-operation">🌱 Extensibility: Add Any Language, Any Operation</h2>
+<p>Want to support <strong>French</strong>?</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>[
+  :code = &quot;fr&quot;,
+  :ignored_words = [&quot;le&quot;, &quot;la&quot;, &quot;et&quot;, &quot;avec&quot;],
+  :semantic_mappings = [
+    [:natural = &quot;créer&quot;, :semantic = &quot;CREATE_OBJECT&quot;],
+    [:natural = &quot;chaîne&quot;, :semantic = &quot;OBJECT_STRING&quot;],
+    [:natural = &quot;afficher&quot;, :semantic = &quot;OUTPUT_DISPLAY&quot;]
+  ]
+]</pre><p class="ran nv-illus">illustration</p></div>
+<p>Need a <strong>new method</strong> like <code>encrypt</code>?
+1. Add to <code>$aSemanticOperations</code>:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>[:semantic_id = &quot;METHOD_ENCRYPT&quot;, :stz_signature = &quot;@var.Encrypt()&quot;]</pre><p class="ran nv-illus">illustration</p></div>
+<ol>
+<li>Map natural words in any language:</li>
+</ol>
+<div class="nblock"><div class="lbl">Haro</div><pre>[:natural = &quot;encrypt&quot;, :semantic = &quot;METHOD_ENCRYPT&quot;],
+[:natural = &quot;chiffrer&quot;, :semantic = &quot;METHOD_ENCRYPT&quot;]</pre><p class="ran nv-illus">illustration</p></div>
+<p>Done. No engine changes. No recompilation.</p>
+<h2 id="why-this-matters">Why This Matters</h2>
+<p>In an era where “AI coding assistants” generate fragile, opaque, and often incorrect code, <code>stzNatural</code> proves that <strong>clarity, control, and expressiveness</strong> can coexist—without sacrificing performance or determinism.</p>
+<p>It enables:
+- <strong>Teaching programming</strong> in local languages,
+- <strong>Domain-specific scripting</strong> for non-programmers (e.g., “format this report, box the title, and email it”),
+- <strong>Readable automation</strong> that stakeholders can audit and understand.</p>
+<p>And it does so <strong>within the Haro language itself</strong>—no external servers, no black boxes.</p>
+<h2 id="conclusion-natural-but-not-naive">Conclusion: Natural, But Not Naive</h2>
+<p><code>stzNatural</code> is not about mimicking human conversation. It’s about <strong>leveraging natural language as a structured interface</strong> to deterministic computation.</p>
+<p>By separating <strong>vocabulary</strong>, <strong>semantics</strong>, and <strong>execution</strong>, Softanza provides more than a class—it provides a <strong>blueprint for inclusive, maintainable, and joyful programming</strong>.</p>
+<blockquote>
+<p><strong>Natural programming shouldn’t require magic.</strong><br />
+With <code>stzNatural</code>, it just requires <strong>Haro</strong>—and a little poetry.</p>
+</blockquote>
+<h2>Lectures liées</h2><ul><li><a href="stznatural-vs-ring-naturallib.html">Why I Built stzNatural: A Journey from Haro&#x27;s NaturalLib to Softanza&#x27;s Natural System</a></li><li><a href="stz-bridging-minds-and-code.html">Softanza: Bridging Minds and Code - A Humanistic Approach to Programming</a></li></ul><h2>Citer</h2><p class="mono cite">Mansour Ayouni. « **Natural Language Programming, Reimagined: The `stzNatural` Class in Softanza** ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stznatural-narration.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-08 20:58 dans la bibliothèque au commit 4a184e6f0, bloc après bloc dans un seul processus : 0 bloc(s) sur 12 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stznatural-narration.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

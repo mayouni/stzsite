@@ -5,25 +5,43 @@ A narration is a story told in code: each block builds on the ones before it.
 So each narration runs in ONE process, its blocks in order, each in its own try
 block, the way a reader meets them. A block is judged against its own promise:
 the `#-->` lines it carries, or else the output block that follows it in the
-document. A narration is not run when one of its fences shows the platform's
-former name (the site never shows it, and library code is never rewritten), or
-when its code touches files, input, the network, the clock or chance; the
-reason is recorded. One narration at a time; the temporary folder created in the
-library is removed at the end.
+document. The code is RUN in Haro's name (ruled by the author 2026-10-07): the
+article is renamed by tools/haro.py, the name and nothing else, before it runs,
+so what the page shows is what ran. A narration is not run when its code
+touches files, input, the network, the clock or chance; the reason is
+recorded, and the article is published all the same: the run is a note on the
+page, never a gate (B36). One narration at a time; the temporary folder created
+in the library is removed at the end.
 
     python tools/narrations_run.py <path to libraries/stzlib>
     python tools/narrations_run.py <path to libraries/stzlib> --images   # host their pictures
+    python tools/narrations_run.py <path to libraries/stzlib> --only=a.md,b.md   # re-run those, keep the others' records
 """
 import json, re, sys, pathlib, subprocess, datetime, shutil
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from showcase_run import verdict
 from harvest_examples import parse, FORBIDDEN
+import haro
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "narrations-run.json"
-WORD = re.compile(r"(?<![\w./-])ring(?![\w.])", re.I)
 FENCE = re.compile(r"(?ms)^```([\w+-]*)[^\n]*\n(.*?)^```[ \t]*$")
 CODE_TAGS = ("ring", "softanza")
+
+def dedent_fences(text):
+    """a fence indented under a list item is still the article's code: bring it to the margin, so the run and the page both see it
+    (five articles wrote their code that way, and until 2026-10-08 it was neither run nor shown as code)"""
+    out, ind = [], None
+    for l in text.split("\n"):
+        if ind is None:
+            m = re.match(r"([ \t]*)```", l)
+            if m: ind = m.group(1)
+            out.append(l[len(ind):] if m else l)
+        else:
+            closing = l.strip().startswith("```")
+            out.append(l.strip() if closing else l[len(ind):] if l.startswith(ind) else l.lstrip(" \t"))
+            if closing: ind = None
+    return "\n".join(out)
 
 def blocks_of(text):
     fences = [(m.group(1).lower(), m.group(2), m.start(), m.end()) for m in FENCE.finditer(text)]
@@ -52,7 +70,7 @@ def copy_images(lib):
         for old in dest.glob("*.webp"): old.unlink()
     dest.mkdir(parents=True, exist_ok=True)
     n = 0
-    for rec in (r for r in result.values() if publishable(r)):
+    for rec in result.values():                            # every article is a page now, so every picture is hosted
         for target in IMAGE.findall(rec.get("text", "")):
             src = (lib / "base" / "doc" / "narrations" / target).resolve()
             if not src.is_file(): continue
@@ -68,19 +86,24 @@ def main():
     lib = pathlib.Path(sys.argv[1]).resolve()
     if "--images" in sys.argv[2:]:
         copy_images(lib); return
+    only = next((a.split("=", 1)[1].split(",") for a in sys.argv[2:] if a.startswith("--only=")), None)
     work = lib / "base" / "test" / "_stzsite_narrations"
     work.mkdir(parents=True, exist_ok=True)
-    result = {}
+    result = json.loads(OUT.read_text(encoding="utf-8")) if only else {}     # --only=a.md,b.md re-runs those and keeps the rest
     t_all = datetime.datetime.now()
+    commit = subprocess.run(["git", "-C", str(lib.parent.parent), "rev-parse", "--short=9", "HEAD"], capture_output=True, text=True).stdout.strip()
     try:
         for f in sorted((lib / "base" / "doc" / "narrations").glob("*.md")):
+            if only and f.name not in only: continue
             text = f.read_text(encoding="utf-8", errors="replace").replace("\r", "")
+            original = text
+            text, renamed = haro.rename(text)
+            haro.audit(original, text, f.name)
+            text = dedent_fences(text)
             fences, blocks = blocks_of(text)
             hm = next((l[2:].strip() for l in text.split("\n") if l.startswith("# ")), f.stem)
-            rec = {"blocks": [], "status": "", "reason": "", "title": hm}
+            rec = {"blocks": [], "status": "", "reason": "", "title": hm, "text": text, "renamed": renamed, "commit": commit}
             result[f.name] = rec
-            if any(WORD.search(body) for _, body, _, _ in fences):
-                rec.update(status="not run", reason="names"); continue
             if not blocks:
                 rec.update(status="no code"); continue
             allcode = "\n".join(l for b in blocks for l in b["code"])

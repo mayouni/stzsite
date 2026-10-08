@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rules That See the Whole Picture · Narrations · Softanza</title>
+<meta name="description" content="Softanza used to check its house rules with a text scanner: read the source line by line, and if a line looks like def len(, complain. That is a grep with a nicer return type.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Skip to content</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=en" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Present the site as a slideshow" title="Present the site as a slideshow"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="The Softanza repository on GitHub" title="The Softanza repository on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../fr/narrations/stz-rules-as-graph-rules-narration.html" lang="fr" hreflang="fr">Français</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=en" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Main menu"><a href="../platform.html">Platform</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentic</a><a href="../learn.html">Learn</a><a href="../offering.html">Offering</a><a href="../start.html">Start</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Present the site as a slideshow" title="Present the site as a slideshow"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="The Softanza repository on GitHub" title="The Softanza repository on GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../fr/narrations/stz-rules-as-graph-rules-narration.html" lang="fr" hreflang="fr">Français</a></div>
+  </div>
+  <nav class="path" aria-label="Pages of the section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Performance series</a><a href="../narrations-security.html">Security series</a><a href="../narrations-delivery.html">Delivery series</a></div></nav>
+  <nav class="crumbs" aria-label="You are here"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">Rules That See the Whole Picture</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="The narrations run"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">All the narrations</a></li><li><a href="stzdotcode-graphiz-dot-language-guide.html">Graphviz DOT Language Guide: Using stzDotCode</a></li><li><a href="stzgraph-computational-foundation.html">stzGraph: Computational Foundation and Design</a></li><li><a href="stzgraphdoc.html">stzGraph: The Art of Connected Thinking</a></li><li><a href="stzgraph-modeling-knowledge-with-nodes-and-connections.html">stzGraph — Modeling Knowledge Through Structure</a></li><li><a href="stzorgchartdoc.html">Introducing stzOrgChart - The Strategic Organizational Intelligence Platform</a></li><li><a href="stzorgchartdoc-bankusecase.html">Organizational Intelligence in Action</a></li><li><a href="stzgraph-chatgpt-opinion.html">What ChatGPT Thinks of the stzGraph Module in the Softanza Library</a></li><li><a href="stzgraph-claudeai-opinion.html">ClaudeAI Opinion on stzGraph design</a></li><li><a href="stzgraph-vs-other-graph-libraries.html">Softanza stzGraph vs. Modern Graph Ecosystem</a></li><li><a href="stzgraphplannerdoc.html">Intelligence in Motion: Graph Planning in Softanza</a></li><li><a href="stzgraphquery-doc.html">stzGraphQuery: Asking Questions to Your Graph</a></li><li><a href="stz-rules-as-graph-rules-narration.html" aria-current=page>Rules That See the Whole Picture</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Research · narration</div>
+    <h1>Rules That See the Whole Picture</h1>
+    <p class="lede">Softanza used to check its house rules with a text scanner: read the source line
+by line, and if a line <em>looks</em> like <code>def len(</code>, complain. That is a <code>grep</code> with a
+nicer return type. It has no idea what a class <em>is</em>, what a method <em>calls</em>, or how
+an actor <em>reaches</em> an effect — because it never builds anything to ask the
+question of.</p>
+    <p class="proof">by Mansour Ayouni · in the repository since 2026-07-24 · paradigm essay · area <a href="../atlas/diagramming.html">Diagramming &amp; graphs</a></p>
+    
+  </div></section>
+  <div class="wrap page-body narration">
+
+<h3 id="one-rule-engine-over-every-graph-in-the-library-code-agents-security-workflows-org-charts">One rule engine over every graph in the library — code, agents, security, workflows, org charts</h3>
+<p>This narration walks the engine that replaced it. A rule is now a <strong>graph rule</strong>:
+it runs over a model — a code graph, an agent graph, a security graph, an org
+chart — and answers questions a line scan structurally cannot. Every code block
+below is real, and every output block is its actual output.</p>
+<hr />
+<h2 id="the-graph-owns-its-rules">The graph owns its rules</h2>
+<p>You declare a rule fluently — a name, a domain, a severity, the condition. But
+you do <strong>not</strong> then turn the rule on the graph. In Softanza the graph is the
+subject you hold: you <strong>attach</strong> the rule to it, and it becomes part of the
+graph's own logic. From then on you ask the <em>graph</em> — to check itself, to say
+whether it is sound, to report.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oRule = new stzGraphRule(&quot;no-llm-effectful&quot;)
+oRule.SetDomainQ(&quot;agentic&quot;)
+oRule.WhenQ(&quot;kind&quot;, &quot;equals&quot;, &quot;llm_actor&quot;)
+oRule.WhenQ(&quot;capabilities&quot;, &quot;contains&quot;, &quot;effectful&quot;)
+oRule.ThenViolationQ(&quot;an LLM proposes, only a pi-gate commits&quot;)
+
+g = new stzGraph(&quot;agents&quot;)
+g.AddNode(&quot;writer&quot;)
+g.SetNodeProperty(&quot;writer&quot;, &quot;kind&quot;, &quot;llm_actor&quot;)
+g.SetNodeProperty(&quot;writer&quot;, &quot;capabilities&quot;, [ &quot;inference&quot;, &quot;effectful&quot; ])
+
+g.AddRule(oRule)        # the rule is now part of THIS graph
+g.RulesReport()         # the graph reports on itself</pre><p class="ran nv-kept">run on 2026-10-08 20:42 at commit 4a184e6f0: kept its promise</p></div>
+<div class="out"><div class="lbl">Promised output</div><pre>Rule report &#x27;agents&#x27;: 1 finding(s), 1 error(s), 0 warning(s) -&gt; UNSOUND (errors present)
+  [agentic] 1 finding(s)
+    ERROR no-llm-effectful @ writer -- an LLM proposes, only a pi-gate commits</pre></div>
+<p>The scope never leaves the graph. <code>g.AddRule(r)</code> attaches; <code>g.CheckRules()</code>
+returns the findings in one shape (<code>[ :rule, :subject, :where, :severity,
+:message ]</code>); <code>g.RulesAreSound()</code> is the verdict; <code>g.RulesReport()</code> prints. A
+whole set attaches at once with <code>g.UseRuleSet(...)</code>.</p>
+<p><code>When</code> clauses select the nodes a rule is <em>about</em>; <code>Then</code> clauses (not shown here)
+say what must <em>hold</em> on them. A rule too rich for property-matching supplies a
+checker. And the domain graphs come with their rules already attached — an
+<code>stzAgentGraph</code> knows its guardrails, an <code>stzSecurityGraph</code> its escalation rules —
+so you just ask <em>them</em> the same way.</p>
+<h2 id="the-model-sees-what-the-text-scan-cannot">The model sees what the text scan cannot</h2>
+<p>Here is the payoff, in one comparison. The <code>engine-first</code> rule flags a call to
+Haro's byte-oriented <code>substr</code> — new code should use the Unicode-safe engine
+forms. First, a real call inside a method:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>aF = StzCheckCode(&quot;class Foo&quot; + nl + &quot;def Bar()&quot; + nl + &quot;	x = substr(s, 2)&quot; + nl)
+nF = len(aF)
+for i = 1 to nF
+    ? aF[i][:rule] + &quot;  @line &quot; + aF[i][:line] + &quot;  [&quot; + aF[i][:severity] + &quot;]&quot;
+next</pre><p class="ran nv-kept">run on 2026-10-08 20:42 at commit 4a184e6f0: kept its promise</p></div>
+<div class="out"><div class="lbl">Promised output</div><pre>engine-first  @line 3  [warning]</pre></div>
+<p>Now the same three characters, <code>substr(</code>, but as a method <em>definition</em> rather
+than a call:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? &quot;findings: &quot; + len(StzCheckCode(&quot;class Foo&quot; + nl + &quot;def substr(x)&quot; + nl + &quot;	return x&quot; + nl))</pre><p class="ran nv-kept">run on 2026-10-08 20:42 at commit 4a184e6f0: kept its promise</p></div>
+<div class="out"><div class="lbl">Promised output</div><pre>findings: 0</pre></div>
+<p>Nothing. The old text scanner flagged both — <code>" substr("</code> matches a <code>def substr(</code>
+line just as happily as a call site. The graph rule reads the <em>call edges</em>, and a
+definition is not a call, so it is silent. A model distinguishes what a string
+match never could.</p>
+<h2 id="the-rule-that-would-have-caught-our-own-mistake">The rule that would have caught our own mistake</h2>
+<p>During a naming sweep, 62 mutator methods were given a chainable <code>...Q()</code> form
+with no plain twin — a violation of the Q convention (Q chains, the plain method
+acts). A line scan can't catch it: the twin might be anywhere in the class. A
+graph rule compares the class's <em>whole</em> method set:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>aQ = StzCheckCode(&quot;class Bag&quot; + nl + &quot;def SetLevelQ()&quot; + nl + &quot;	return This&quot; + nl)
+nQ = len(aQ)
+for i = 1 to nQ
+    ? aQ[i][:rule] + &quot;  [&quot; + aQ[i][:severity] + &quot;]&quot;
+    ? &quot;  &quot; + aQ[i][:message]
+next</pre><p class="ran nv-kept">run on 2026-10-08 20:42 at commit 4a184e6f0: kept its promise</p></div>
+<div class="out"><div class="lbl">Promised output</div><pre>q-has-plain-twin  [warning]
+  &#x27;SetLevelQ&#x27; is a Q mutator with no plain twin &#x27;SetLevel&#x27; in class &#x27;Bag&#x27; -- both are required (Q chains, plain acts)</pre></div>
+<p>It flags <code>SetLevelQ</code> (a mutator verb, no twin) but leaves a noun accessor like
+<code>ReactorQ</code> alone — an accessor legitimately has no plain form. Had this rule been
+in CI, it would have failed the commit that introduced those 62.</p>
+<h2 id="audit-becomes-a-gate">Audit becomes a gate</h2>
+<p>The agent guardrails used to be an <em>audit</em>: build a composition, then check it and
+complain about what is already wired. The load-bearing one — an LLM actor must
+never hold the <code>effectful</code> capability — is now a <strong>gate</strong>. The governed door
+refuses the dangerous grant at the moment of expression:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oAG = new stzAgentGraph(&quot;mailer&quot;)
+oAG.AddLLMActor(&quot;writer&quot;)
+try
+    oAG.Grant(&quot;writer&quot;, &quot;effectful&quot;)
+catch
+    ? cCatchError
+done</pre><p class="ran nv-kept">run on 2026-10-08 20:42 at commit 4a184e6f0: kept its promise</p></div>
+<div class="out"><div class="lbl">Promised output</div><pre>REFUSED: granting &#x27;effectful&#x27; to llm actor &#x27;writer&#x27; -- an LLM proposes, only a pi-gate commits (no-llm-effectful, enforced at CONSTRUCTION, not merely audited).</pre></div>
+<p>The violation can no longer enter the graph through the sanctioned API. The rule
+stays as the backstop for anything that reaches the graph another way; the gate
+closes the front door.</p>
+<h2 id="escalation-is-a-path">Escalation is a path</h2>
+<p>Security is where a graph earns its keep most clearly. The old posture check asks:
+<em>is this actor both sandboxed and effectful?</em> — one flag, one node. It is blind to
+a sandboxed actor that never holds <code>effectful</code> itself but can <strong>reach</strong> it through
+a tool it uses:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oSG = new stzSecurityGraph(&quot;resto&quot;)
+oSG.AddActor(&quot;llm&quot;, &quot;sandboxed&quot;)
+oSG.AddTool(&quot;shell&quot;)
+oSG.Uses(&quot;llm&quot;, &quot;shell&quot;)
+oSG.Grants(&quot;shell&quot;, &quot;effectful&quot;)
+
+? &quot;llm holds effectful directly? no. reaches it by a path? &quot; + oSG.ReachesEffectful(&quot;llm&quot;)</pre><p class="ran nv-kept">run on 2026-10-08 20:42 at commit 4a184e6f0: kept its promise</p></div>
+<div class="out"><div class="lbl">Promised output</div><pre>llm holds effectful directly? no. reaches it by a path? 1</pre></div>
+<p>The <code>llm</code> holds only <code>inference</code>. A flag check passes it. But the graph sees the
+path <code>llm → shell → effectful</code>, and <code>sandboxed-reaches-effectful</code> — a reachability
+query — catches the escalation. It is a class of finding a per-object check cannot
+produce at all.</p>
+<h2 id="one-gate-over-every-domain">One gate over every domain</h2>
+<p>Each graph checks <em>itself</em> — <code>CheckRules()</code> is the same verb on all of them. A
+gate just gathers them: you hand it the graphs, each self-checks, and it gives
+one verdict across code, agents, and security instead of three parallel APIs.</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oCG = new stzRingCodeGraph(&quot;&quot;)
+oCG.ScanSource(&quot;class Bag&quot; + nl + &quot;def Len()&quot; + nl + &quot;	return 1&quot; + nl, &quot;s&quot;)
+
+oAG = new stzAgentGraph(&quot;mailer&quot;)
+oAG.AddLLMActor(&quot;writer&quot;)  oAG.AddEffect(&quot;send&quot;)  oAG.Proposes(&quot;writer&quot;, &quot;send&quot;)
+
+oSG = new stzSecurityGraph(&quot;resto&quot;)
+oSG.AddActor(&quot;llm&quot;, &quot;sandboxed&quot;)  oSG.AddTool(&quot;shell&quot;)  oSG.Uses(&quot;llm&quot;, &quot;shell&quot;)  oSG.Grants(&quot;shell&quot;, &quot;effectful&quot;)
+
+oRep = new stzRuleReport(&quot;restolean&quot;)
+oRep.Collect(oCG).Collect(oAG).Collect(oSG)     # each graph checks itself
+oRep.Report()</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Promised output</div><pre>Rule report &#x27;restolean&#x27;: 5 finding(s), 5 error(s), 0 warning(s) -&gt; UNSOUND (errors present)
+  [code] 1 finding(s)
+    ERROR no-len-method @ 2 -- never define Len() on class &#x27;Bag&#x27; -- it shadows Haro&#x27;s builtin and breaks every caller; use Count()/Size()/NumberOf...()
+  [agentic] 3 finding(s)
+    ERROR effects-guarded @ send -- effect &#x27;send&#x27; has no guardian edge into it -- every effect passes a pi-gate
+    ERROR open-text-contained @ writer -- open llm text &#x27;writer&#x27; reaches effect &#x27;send&#x27; with no guardian on the path -- injection has somewhere to land
+    ERROR effects-traced @ send -- effect &#x27;send&#x27; reaches no trace sink -- every effect leaves an audit witness
+  [security] 1 finding(s)
+    ERROR sandboxed-reaches-effectful @ llm -- sandboxed actor &#x27;llm&#x27; can REACH the effectful capability by some path -- privilege escalation</pre></div>
+<p><code>Collect(g)</code> asks the graph to check itself and gathers its findings — the scope
+stays on the graphs throughout. One report, grouped by subject, errors first;
+<code>IsSound()</code> is the CI gate (errors fail the build, warnings advise). Org charts
+join the same way — an <code>stzOrgChart</code> projects its positions (<code>AsRuleGraph()</code>) and
+answers <code>CheckRules()</code> over rules like <code>separation-of-duties</code> and
+<code>no-cyclic-reporting</code>, so <code>oRep.Collect(oOrgChart)</code> slots right in.</p>
+<hr />
+<p><em>A house rule used to be folklore an agent could not run, checked by a scanner
+that could not see. Now it is an object over a model: the code's real structure,
+the agent graph's real edges, the security surface's real paths. Six domains —
+code, agents, security, workflows, org charts — share one engine, one finding
+shape, and one gate that either lets the build through or says, in one place,
+exactly why it will not.</em></p>
+<p>Runnable guards: <code>graphrule_object_narrated</code> (34), <code>graphruleset_narrated</code> (25),
+<code>coderule_narrated</code> (25), <code>coderule_project_narrated</code> (13), <code>agentrule_narrated</code>
+(21), <code>securitygraph_narrated</code> (22), <code>rulereport_narrated</code> (23), <code>orgrule_narrated</code>
+(22).
+Design: <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/../design/SOFTANZA_GRAPH_RULES_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA_GRAPH_RULES_PLAN.md<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a>.</p>
+<h2>Related reading</h2><ul><li><a href="stzgraphplannerdoc.html">Intelligence in Motion: Graph Planning in Softanza</a></li><li><a href="stzorgchartdoc.html">Introducing stzOrgChart - The Strategic Organizational Intelligence Platform</a></li></ul><h2>Cite</h2><p class="mono cite">Mansour Ayouni. "Rules That See the Whole Picture". Softanza narrations, 2026. https://mayouni.github.io/stzsite/en/narrations/stz-rules-as-graph-rules-narration.html</p><p class="proof">Run in Haro's name on 2026-10-08 20:42 inside the library at commit 4a184e6f0, block after block in one process: 6 of 7 blocks kept their promise; the others are illustrations. The code of the articles is Haro code. Where an article was written before the language took its present name, the name was changed and nothing else. Genre, area and series read from the file's name, the year from its first commit: derived, until the article carries its own header. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-rules-as-graph-rules-narration.md" target="_blank" rel="noopener noreferrer">The file on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Platform</h3><ul><li><a href="../platform.html">Platform</a></li><li><a href="../platforms.html">Platform of platforms</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">The craft</a></li><li><a href="../areas.html">The areas</a></li><li><a href="../code.html">The code</a></li><li><a href="../compare.html">Compared</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Performance series</a></li><li><a href="../narrations-security.html">Security series</a></li><li><a href="../narrations-delivery.html">Delivery series</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">The north star</a></li><li><a href="../principles.html">Twelve principles</a></li><li><a href="../estate.html">The estate</a></li><li><a href="../history.html">From first principles</a></li><li><a href="../forged.html">Forged in projects</a></li><li><a href="../sovereignty.html">Sovereignty</a></li><li><a href="../africa.html">Born in Africa</a></li></ul></div><div><h3>Agentic</h3><ul><li><a href="../agentic.html">Agentic</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Language of languages</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Refinement</a></li><li><a href="../agents.html">For agents</a></li><li><a href="../coding-agents.html">Coding agents</a></li><li><a href="../security.html">Security</a></li></ul></div><div><h3>Learn</h3><ul><li><a href="../learn.html">Learn</a></li><li><a href="../book.html">The book</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">How-to</a></li><li><a href="../reference.html">Reference</a></li><li><a href="../ask.html">Ask the library</a></li><li><a href="../education.html">Education</a></li></ul></div><div><h3>Offering</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Editions</a></li><li><a href="../customers.html">Customers</a></li></ul></div><div><h3>Start</h3><ul><li><a href="../start.html">Start</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">The repository on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></li><li><a href="../tour.html">Presentation mode</a></li><li><a href="../../deck-check.html">Check offline</a></li><li><a href="../../index.html?lang=fr" lang="fr">Français</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">The Software Makers Platform of the AI Age. Born in Africa. Useful to the World!</p><div class="themes" role="group" aria-label="Display"><button type="button" data-set-theme="light">Use the light theme</button><button type="button" data-set-theme="dark">Use the dark theme</button><button type="button" data-set-theme="auto">Follow the system</button></div></div>
+    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

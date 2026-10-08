@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From Dev to Deploy Without Leaving Your Editor · Narrations · Softanza</title>
+<meta name="description" content="Building a product that runs on more than one machine is, in most stacks, an exercise in tool management. A backend that deploys to a Linux server, a phone app that ships to Android, firmware that flashes to a microcontroller — each is a different world, re...">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stz-system-dev-to-deploy-narration.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stz-system-dev-to-deploy-narration.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">From Dev to Deploy Without Leaving Your Editor</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stz-system-dev-to-deploy-narration.html" aria-current=page>From Dev to Deploy Without Leaving Your Editor</a></li><li><a href="stz-deploying-to-target-sites-narration.html">Deploying to the Target Sites</a></li><li><a href="stz-emulating-the-whole-solution-narration.html">Emulating the Whole Solution</a></li><li><a href="stz-planning-and-provisioning-a-deployment-narration.html">Planning and Provisioning a Deployment</a></li><li><a href="stz-service-virtualization-code-first-subscribe-later.html">Code First, Subscribe Later</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>From Dev to Deploy Without Leaving Your Editor</h1>
+    <p class="lede">Building a product that runs on more than one machine is, in most stacks, an
+exercise in <em>tool management</em>. A backend that deploys to a Linux server, a phone
+app that ships to Android, firmware that flashes to a microcontroller — each is
+a different world, reached through a different tool: an IDE, a Dockerfile, a CI
+YAML, a cross-compiler, a flash script, a cloud IAM policy, a secrets manager.
+None of them knows about the others. Each holds one slice of the truth. And the
+gaps between them are exactly where "it worked on my machine" is born.</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2026-07-20 · série · <a href="../narrations-delivery.html">la série livraison</a> · domaine <a href="../atlas/system.html">Programmation système</a></p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+
+<h3 id="how-softanza-models-the-whole-system-journey-as-one-program">How Softanza models the whole system journey as one program</h3>
+<p>Underneath the tool sprawl is a subtler tax: a set of <strong>invisible frames</strong> the
+programmer must carry in their head and re-supply on every line —</p>
+<ul>
+<li><em>Which system does this code run on?</em> (my laptop now, the device later)</li>
+<li><em>What is that system allowed to do?</em> (an MCU has no processes; a phone is sandboxed)</li>
+<li><em>Will this even run there?</em> (I have no GPIO on my laptop)</li>
+<li><em>How do I get it there?</em> (build, cross-compile, flash, provision)</li>
+</ul>
+<p>Softanza's System Foundation makes each of those frames a <strong>named, checkable
+thing</strong> — and models the whole dev-to-deploy problem as a single object graph in
+one vocabulary. The result is that the journey from your editor to a running
+device can be <em>one continuous program</em>, not seven disconnected tools. This
+narration walks that program end to end. Every code block below is real, and
+every output block is its actual output.</p>
+<hr />
+<h2 id="one-developer-one-product">One developer, one product</h2>
+<p>Meet a developer on a Windows laptop building a <strong>smart greenhouse</strong>: a Linux
+backend, an Android companion app, and an ESP32 sensor node that reads soil
+moisture and drives a pump. Here is their whole dev-to-deploy session.</p>
+<h3 id="1-who-am-i-developing-on">1. Who am I developing on?</h3>
+<p>No guessing, no ambient "current machine." The development system is an object
+you instantiate, read live from the engine:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzDevSystem()
+
+? o1.OSName() + &quot; / &quot; + o1.Architecture() + &quot; / &quot; + o1.BitSize() + &quot;-bit&quot;
+#--&gt; windows / x64 / 64-bit
+
+? @@( o1.Capabilities() )
+#--&gt; [ &quot;filesystem&quot;, &quot;process&quot;, &quot;network&quot;, &quot;environment&quot;, &quot;dynamic_load&quot;, &quot;threads&quot;, &quot;clock&quot; ]
+
+? o1.Lacks(:gpio)
+#--&gt; 1</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:42 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+<p>That last line matters more than it looks: the machine's <em>capabilities</em> are
+first-class data. The object knows the laptop has no GPIO — and it will use that
+fact in a moment to help, not to block. (<code>CurrentSystem()</code> — a <code>new
+stzCurrentSystem()</code> — is its runtime-scope twin: on a deployed device it reads
+<em>that</em> device.)</p>
+<h3 id="2-model-the-whole-product-once">2. Model the whole product once</h3>
+<p>The deployment architecture is <strong>declared data</strong>, in four lines, in one place —
+not scattered across a Dockerfile, a compose file, and a CI pipeline:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oProduct = new stzPlatformProfile(&quot;smart-greenhouse&quot;)
+oProduct.DevelopedOn(:Windows)
+oProduct.AddServer(:backend, :LinuxServer)
+oProduct.AddSuperApp(:phone, :Android)
+oProduct.AddApp(:sensor, :ESP32)</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>Platform: smart-greenhouse
+  developed on: windows
+  server &#x27;backend&#x27; -&gt; linux
+  superapp &#x27;phone&#x27; -&gt; android
+  app &#x27;sensor&#x27; -&gt; espidf</pre></div>
+<p>Each part has a <strong>kind</strong> (server / superapp / app) and a <strong>target system</strong>. The
+profile only <em>describes</em> the solution; nothing is built or deployed yet.</p>
+<h3 id="3-write-feature-code-in-a-named-scope">3. Write feature code in a named scope</h3>
+<p>This is where the tax disappears. Feature code for a part is authored against
+that part's <em>target</em>, and checked on the laptop, as it is typed:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oProduct.ReadPinIn(:sensor, 34)      # read the moisture pin
+? oProduct.WritePinIn(:sensor, 26, 1)  # drive the pump
+oProduct.SpawnIn(:sensor, &quot;worker&quot;)    # ... and try to spawn a process</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>ReadPin(34)    -&gt; rehearsed   (ESP32 allows gpio; rehearsed -- my laptop has none)
+WritePin(26,1) -&gt; rehearsed
+Spawn(&#x27;worker&#x27;) -&gt; REFUSED here, on my laptop, at write time
+                   (an MCU has no processes -- I learn it NOW, not on the bench)
+backend Spawn(&#x27;cron&#x27;) -&gt; native   (Linux + my laptop both have processes)</pre></div>
+<p>Read those four results as a programmer, not a spec:</p>
+<ul>
+<li>
+<p><strong><code>Spawn</code> on the sensor was refused — on the laptop, at write time.</strong> In a
+  conventional flow you learn that an MCU has no processes <em>after</em> cross-compiling
+  and flashing, staring at a dead board, or from a field crash. Here the whole
+  class of "the target won't allow that" errors moved from production to your
+  editor. This is <em>shift-left</em> applied to the deployment target itself.</p>
+</li>
+<li>
+<p><strong><code>ReadPin</code> came back <code>rehearsed</code>, not refused.</strong> The ESP32 <em>does</em> have GPIO;
+  the laptop doesn't. Rather than fail, the scope <strong>rehearses</strong> the operation —
+  so you can write and reason about firmware for hardware you do not physically
+  have. The absent world is made present.</p>
+</li>
+<li>
+<p><strong>The same <code>Spawn</code> is <code>native</code> on the backend.</strong> The scope, not the operation,
+  decides. One verb, three verdicts, each correct for its target.</p>
+</li>
+</ul>
+<h3 id="4-a-risky-system-change-rehearse-it-first">4. A risky system change? Rehearse it first</h3>
+<p>System operations that touch reality — reorganising files, changing the
+environment, spawning children — go through a <strong>twin</strong>: an in-memory rehearsal
+that holds no reference to reality. You try things, read a plain-language plan,
+and <em>reality changes only when you commit it</em>:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oVfs = new stzVirtualFileSystem()
+oVfs.CreateFolder(&quot;config&quot;)
+oVfs.CreateFile(&quot;config/greenhouse.ini&quot;, &quot;pump_threshold=40&quot;)
+oVfs.MoveFile(&quot;old_settings.txt&quot;, &quot;config/legacy.ini&quot;)
+oPlan = oVfs.GenerateUpdatePlan()
+? oPlan.Narration()</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>Update plan (3 of 3 operations to commit):
+  * 1. create folder &#x27;config&#x27;
+  * 2. create file &#x27;config/greenhouse.ini&#x27; (17 bytes)
+  * 3. move &#x27;old_settings.txt&#x27; -&gt; &#x27;config/legacy.ini&#x27;
+
+reality is untouched until I choose to commit this plan.</pre></div>
+<p>System programming stops being "one wrong command and it's gone."</p>
+<h3 id="5-build-then-deploy">5. Build, then Deploy</h3>
+<p>A real <strong><code>stzPlatform</code></strong> owns the profile and drives its lifecycle. <em>We do not
+deploy a profile</em> — we deploy a platform and its parts, and building precedes
+deploying as two honest, ordered steps:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oPlatform = StzPlatformQ(&quot;smart-greenhouse&quot;)
+oPlatform.SetProfile(oProduct)
+oPlatform.Build()
+oPlatform.Deploy()</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>Build()  -&gt; built 3 parts
+Deploy() -&gt; lowered + delivered each part to its target</pre></div>
+<h3 id="6-the-firmware-written-on-a-laptop-with-no-gpio">6. The firmware — written on a laptop with no GPIO</h3>
+<p>At deploy, the <strong>lowering bridge</strong> turns each part's rehearsed operations into a
+real target artifact. The GPIO code the developer wrote on a Windows laptop
+becomes actual firmware source:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oPlatform.ArtifactFor(:sensor)</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>// firmware generated by the Softanza lowering bridge
+// target: espidf
+void setup() {}
+void loop() {
+  digitalRead(34);
+  digitalWrite(26, 1);
+}</pre></div>
+<p><code>ReadPin(34)</code> lowered to <code>digitalRead(34)</code>; <code>WritePin(26, 1)</code> to
+<code>digitalWrite(26, 1)</code>. The developer validated firmware logic without ever
+holding the board. The board is now the <em>last inch</em>, not the prerequisite for
+any progress.</p>
+<h3 id="7-the-backend-cross-compiled-for-real-from-the-same-laptop">7. The backend, cross-compiled for real — from the same laptop</h3>
+<p>The lowering bridge writes the <em>source</em>; <strong><code>stzBuilder</code></strong> turns it into a real
+binary for the target. Softanza's engine is built with Zig, and Zig is a complete
+multi-platform cross-compiler — so the Linux backend builds <em>from the Windows
+laptop</em> with no separate toolchain. And the build target is not re-specified: it
+<strong>is</strong> the part's deployment system, the same object that governed what the code
+may do:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oBuild = new stzBuilder(&quot;backend&quot;)
+oBuild.AddSourceQ(&quot;backend.c&quot;)
+oBuild.SetTargetQ( oProduct.App(:backend).DeploymentSystem() )   # a system IS a build target
+oBuild.ReleaseFast()
+oBuild.Build()
+
+? oBuild.Target()
+#--&gt; x86_64-linux-gnu
+
+? oBuild.Succeeded()
+#--&gt; 1</pre><p class="ran nv-illus">illustration</p></div>
+<p>The output is a genuine Linux ELF executable, produced on Windows — the same
+laptop with no GPIO, no Linux, and now no Linux toolchain either. The deployment
+system that decided <em>what the code may do</em> is the very object that decides <em>what
+it compiles to</em>. One profile carries the whole journey, from "which machine?" to
+a shippable binary.</p>
+<h3 id="8-hand-it-to-an-ai-copilot">8. Hand it to an AI copilot</h3>
+<p>The very same capability model that decided "can the ESP32 spawn?" decides "can
+this actor deploy?" Deployment is an <em>effectful</em> crossing, so an actor whose
+effect-capability set is empty — an LLM — may <strong>propose</strong> it but cannot
+<strong>perform</strong> it:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oGuarded.DeployAs(LLMActor(&quot;copilot&quot;))   # raises
+oGuarded.DeployAs(HumanActor(&quot;me&quot;))      # proceeds</pre><p class="ran nv-illus">illustration</p></div>
+<div class="out"><div class="lbl">Sortie promise</div><pre>the copilot may PROPOSE the deploy -- but CANNOT perform it (no effect capability)
+I approve; the human deploys. Expression is free; admission is governed.</pre></div>
+<p>You wrote no bespoke permission plumbing. Safety was a property of the model you
+were already using.</p>
+<hr />
+<h2 id="what-changed-frame-by-frame">What changed, frame by frame</h2>
+<table>
+<thead>
+<tr>
+<th>The invisible frame</th>
+<th>Conventionally you…</th>
+<th>In Softanza you…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>which system the code runs on</td>
+<td>hold it in your head; hope prod ≈ dev</td>
+<td>name the scope; <code>CurrentSystem()</code> resolves honestly</td>
+</tr>
+<tr>
+<td>what the target permits</td>
+<td>find out on the bench / in a crash log</td>
+<td>it is <strong>refused at write time on your laptop</strong></td>
+</tr>
+<tr>
+<td>firmware for hardware you lack</td>
+<td>need the board to test anything</td>
+<td>rehearse → lower; the board is the last inch</td>
+</tr>
+<tr>
+<td>a dangerous system op</td>
+<td>back up, cross fingers, run it</td>
+<td>rehearse in a twin, read the plan, commit</td>
+</tr>
+<tr>
+<td>the deployment architecture</td>
+<td>scattered across Dockerfiles / CI / manifests</td>
+<td>one declared profile, four lines</td>
+</tr>
+<tr>
+<td>shipping to the target</td>
+<td>a separate toolchain + flash script</td>
+<td><code>Build()</code> then <code>Deploy()</code>, the same object</td>
+</tr>
+<tr>
+<td>letting an agent touch it</td>
+<td>write custom permission plumbing</td>
+<td>the capability gate; LLM proposes, human commits</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="the-deepest-simplification-the-seam-collapses">The deepest simplification: the seam collapses</h2>
+<p>"It worked in dev, it broke in prod" is a law of nature in conventional stacks
+for one reason: <strong>dev and deploy are two different worlds joined by a fragile
+hand-off</strong> — different tools, different config, different invisible assumptions,
+discovered to disagree only at the boundary.</p>
+<p>Softanza makes deploy a <em>first-class part of the dev-time model</em>. You write,
+check, build, and deploy against the <strong>same</strong> profiles, with the target's real
+constraints enforced on your machine <em>before the hand-off even exists</em>. The cliff
+between the two worlds becomes a <strong>named scope boundary you can see and check.</strong>
+That is the whole trick, and it is why the session above reads like one
+continuous thought rather than a relay race between seven tools.</p>
+<p>There is a unifying reason it holds together: <strong>one vocabulary runs through the
+entire pipeline.</strong> The capability lattice — <code>effectful</code> / <code>sensing</code> / <code>compute</code>
+/ <code>inference</code> — is the same word used for a system's capabilities, a deployment
+scope's verdicts, an actor's authority, and the deploy governance gate. The
+developer above learned four nouns — a capability, a scope, an actor, a plan —
+<em>once</em>, and they carried from "what machine am I on?" to "here is the firmware"
+to "the AI can't deploy it." The mental model never fragmented.</p>
+<hr />
+<h2 id="honest-about-the-edges">Honest about the edges</h2>
+<p>A good tool is precise about what is real and what is modelled:</p>
+<ul>
+<li>The <strong>flash / upload of the artifact to the physical device</strong> is genuinely
+  external — it needs the hardware. The model generates the firmware; the last
+  inch is real, and stays honest about it.</li>
+<li>The <strong>cross-compile is real</strong>: <code>stzBuilder</code> drives Zig, a genuine multi-platform
+  C/C++/Zig compiler — the Linux (and wasm) binaries above are verified by their
+  ELF/wasm magic bytes, built from Windows. What stays <em>modelled</em> is the ESP32
+  firmware <strong>source</strong> (<code>digitalRead</code> is a faithful Arduino stand-in); a real MCU
+  build plugs an ESP-IDF / arduino-cli toolchain <em>behind the same builder
+  interface</em>. The seam is unified; that one target still awaits its real tool.</li>
+<li>This does not replace every mature deploy tool. It unifies the <strong>seams</strong> those
+  tools leave exposed — which is where the cognitive tax actually lives.</li>
+</ul>
+<p>The claim that survives running it: Softanza does not make deployment more
+<em>powerful</em> so much as it makes the dev-to-deploy problem <strong>small enough to hold
+in one head</strong> — because it is one model, one vocabulary, checked early, on your
+own machine.</p>
+<hr />
+<h3 id="see-also">See also</h3>
+<ul>
+<li><code>../design/SOFTANZA_SYSTEM_FOUNDATION.md</code> — the full design: engine-true facts,
+  the three scopes, the twin, the governance crossing, and the lowering bridge.</li>
+<li><code>../design/SCOPE_ORIENTED_PROGRAMMING.md</code> — the paradigm underneath: name the
+  operative scope at the call site and let the library reason with it (regex was
+  the first governed field; system programming is the second).</li>
+<li><code>stz-lowlevel-system-programming.md</code> — the low-level vision (safe memory,
+  named cross-platform operations) this foundation sits on.</li>
+</ul>
+<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « From Dev to Deploy Without Leaving Your Editor ». Softanza narrations, 2026. https://mayouni.github.io/stzsite/fr/narrations/stz-system-dev-to-deploy-narration.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-08 20:42 dans la bibliothèque au commit 4a184e6f0, bloc après bloc dans un seul processus : 1 bloc(s) sur 8 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-system-dev-to-deploy-narration.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

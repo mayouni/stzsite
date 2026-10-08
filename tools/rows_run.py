@@ -22,10 +22,11 @@ import json, re, sys, pathlib, subprocess, datetime, shutil, collections
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import qforms
 from harvest_examples import FORBIDDEN
+from haro import SHOWN
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "row-examples.json"
-WORD = re.compile(r"(?<![\w./-])ring(?![\w.])", re.I)
+WORD = SHOWN   # the former name in code shown as the library wrote it (tools/haro.py)
 EXTRA_FORBIDDEN = re.compile(r"(?i)(random|rnd|now|today|sleep|wait|clock|timer|stopwatch|viz|show|print|display|draw|render|plot|speak|say|learn|ask|howto|explain|doc\b|input|give|exit|halt|kill|system|execute|eval|compile|install|deploy|export|import|save|load|read|write|file|folder|path|url|http|socket|download|upload|copy\b)")
 
 # class -> a fresh sample object per call, how to see its content, and the kind that picks the sample arguments

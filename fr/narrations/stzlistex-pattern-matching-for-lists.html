@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Softanza Listex: Bringing Pattern Matching to Lists · Narrations · Softanza</title>
+<meta name="description" content="Pattern matching has revolutionized data validation and manipulation across various programming paradigms. While traditional regex excels at string matching, structured data—especially deeply nested lists—requires a more expressive approach.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzlistex-pattern-matching-for-lists.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzlistex-pattern-matching-for-lists.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">Softanza Listex: Bringing Pattern Matching to Lists</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stzregex-mastering-regex-with-softanza-narration.html">Mastering Regular Expressions with Softanza: A Modern Approach to Pattern Matching</a></li><li><a href="stzregexdata-library-narration.html">Simplifying Regular Expressions with the Enhanced stzRegexData Library</a></li><li><a href="stzregexmaker-making-regex-human-freindly-narration.html">The Softanza RegexMaker: Making Regex Human-Friendly</a></li><li><a href="stzregexuter-regex-as-computational-reactive-medium.html">Softanza Regexuter: Regex as Computational Reactive Medium</a></li><li><a href="stzlistex-pattern-matching-for-lists.html" aria-current=page>Softanza Listex: Bringing Pattern Matching to Lists</a></li><li><a href="stznumbex-number-patterns-made-simple.html">stzNumbrex: A Pattern Language for Numbers</a></li><li><a href="stztimex-a-pattern-language-for-time-in-softanza.html">stzTimex: A Pattern Language for Time in Softanza</a></li><li><a href="stznumbrex-pattern-language-for-number.html">stzNumbrex: A Pattern Language for Numbers in Softanza</a></li><li><a href="stzmatrex-declarative-pattern-matching-for-matrices.html">stzMatrex: Declarative Pattern Matching for Matrices in Softanza</a></li><li><a href="stztablex-pattern-langauge-for-tables.html">stzTablex: Declarative Pattern Matching for Tables in Softanza</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>Softanza Listex: Bringing Pattern Matching to Lists</h1>
+    <p class="lede">Validating and transforming hierarchical data structures often involves verbose conditional logic. Existing solutions—whether in Python, JSON Schema, or TypeScript interfaces—offer static validation but lack the elegance of regex-like expressiveness for lists. List Regex introduces:</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2025-02-13 · essai de paradigme · domaine <a href="../atlas/regex.html">Recherche de motifs</a></p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+
+<p>Pattern matching has revolutionized data validation and manipulation across various programming paradigms. While traditional regex excels at string matching, structured data—especially deeply nested lists—requires a more expressive approach. Enter <strong>List Regex (Lx)</strong>, a Softanza-powered pattern-matching engine that brings regex-style matching to structured data.</p>
+<h2 id="why-list-regex">Why List Regex?</h2>
+<ul>
+<li><strong>Concise, readable patterns</strong> for structured data</li>
+<li><strong>Regex-inspired syntax</strong> adapted for list validation</li>
+<li><strong>Powerful quantifiers, negation, and alternation</strong> to match complex structures</li>
+<li><strong>Stepped ranges and uniqueness constraints</strong> for advanced control over list elements</li>
+</ul>
+<h3 id="a-simple-example">A Simple Example</h3>
+<div class="nblock"><div class="lbl">Haro</div><pre>Lx(&quot;[@N, @S]&quot;).Match([42, &quot;hello&quot;]) #--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<p>Here, <code>@N</code> matches any number, and <code>@S</code> matches any string. The pattern ensures that a number appears first, followed by a string, making validation simple and intuitive.</p>
+<h2 id="core-features-and-syntax">Core Features and Syntax</h2>
+<h3 id="type-patterns">Type Patterns</h3>
+<p>Type patterns define the fundamental building blocks of Listex pattern matching. These patterns help categorize data types concisely:</p>
+<ul>
+<li><code>@N</code> - Matches any number (integer, float, scientific notation)</li>
+<li><code>@S</code> - Matches any string (single or double-quoted)</li>
+<li><code>@L</code> - Matches lists, from simple arrays to deeply nested structures</li>
+<li><code>@A</code> - Matches any type (wildcard, useful for unknown data)</li>
+</ul>
+<p>For instance, if we need to check whether a list contains a string followed by any value, we can use:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Lx(&quot;[@S, @A]&quot;).Match([&quot;name&quot;, 123]) #--&gt; TRUE
+Lx(&quot;[@S, @A]&quot;).Match([&quot;username&quot;, [&quot;admin&quot;, &quot;guest&quot;]]) #--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="quantifiers-and-ranges">Quantifiers and Ranges</h3>
+<p>Quantifiers allow us to specify <strong>how many times</strong> a pattern should appear within a list:</p>
+<ul>
+<li><code>@N+</code> - Matches one or more numbers</li>
+<li><code>@S*</code> - Matches zero or more strings</li>
+<li><code>@L?</code> - Matches an optional list (present or absent)</li>
+<li><code>@N1-3</code> - Matches between 1 and 3 numbers</li>
+</ul>
+<p>For example, to match one to three numbers in a row, we use:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Lx(&quot;[@N1-3, @S]&quot;).Match([1, 2, &quot;end&quot;]) #--&gt; TRUE
+Lx(&quot;[@N1-3, @S]&quot;).Match([3, &quot;done&quot;]) #--&gt; TRUE
+Lx(&quot;[@N1-3, @S]&quot;).Match([4, 5, 6, &quot;extra&quot;]) #--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="stepped-ranges">Stepped Ranges</h3>
+<p>Sometimes, we need to ensure that numbers follow a <strong>specific step or interval</strong>. Stepped ranges make this easy:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Lx(&quot;[@N{1-10:3}]&quot;).Match(1) #--&gt; TRUE  (matches 1, 4, 7, 10)
+Lx(&quot;[@N{1-10:3}]&quot;).Match(4) #--&gt; TRUE
+Lx(&quot;[@N{1-10:3}]&quot;).Match(6) #--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+<p>This feature is incredibly useful for validating data that follows a structured pattern, such as price increments, sequence validation, or even time intervals.</p>
+<h3 id="negation-patterns">Negation Patterns</h3>
+<p>Negation allows us to <strong>exclude</strong> certain types of values from matching. Instead of checking for a match, we check for a <strong>non-match</strong>:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Lx(&quot;[@!N]&quot;).Match([&quot;string&quot;]) #--&gt; TRUE (not a number)
+Lx(&quot;[@!N]&quot;).Match([[1,2,3]]) #--&gt; TRUE (not a number)
+Lx(&quot;[@!N]&quot;).Match([42]) #--&gt; FALSE (because 42 is a number)</pre><p class="ran nv-illus">illustration</p></div>
+<p>This can be useful when filtering out unwanted data types from a dataset.</p>
+<h3 id="alternation-patterns">Alternation Patterns</h3>
+<p>Alternation allows <strong>either-or</strong> matches, providing flexibility when validating structured data:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Lx(&quot;[@N|@S]&quot;).Match(42)        #--&gt; TRUE
+Lx(&quot;[@N|@S]&quot;).Match(&quot;hello&quot;)   #--&gt; TRUE
+Lx(&quot;[@N|@S]&quot;).Match([42, 99])  #--&gt; FALSE (expects a single number or string)</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="explicit-sets">Explicit Sets</h3>
+<p>We can define a <strong>fixed set of valid values</strong> using explicit sets:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Lx(&quot;[@N{1;2;3}]&quot;).Match(2)  #--&gt; TRUE
+Lx(&quot;[@N{4}]&quot;).Match(4)  #--&gt; TRUE
+Lx(&quot;[@N{5}]&quot;).Match(6)  #--&gt; FALSE (not in the set)</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="nested-patterns">Nested Patterns</h3>
+<p>Listex is particularly powerful when dealing with <strong>nested structures</strong>. This is useful for validating <strong>complex configurations</strong> and <strong>hierarchical data</strong>:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>Lx(&quot;[@N, [@N2], @N]&quot;).Match([1, [2, 3], 4]) #--&gt; TRUE
+Lx(&quot;[@N, [@N2], @N]&quot;).Match([1, [2], 4]) #--&gt; FALSE (inner list must have exactly 2 elements)</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="why-softanza-listex-stands-out">Why Softanza Listex Stands Out</h2>
+<p>Softanza Listex represents a true innovation in pattern matching by addressing a gap left by other languages. While some languages have <strong>partial support</strong> for structured pattern matching, none provide the <strong>regex-like expressiveness tailored for list validation</strong>. Here’s how Listex compares:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th style="text-align: center;">stzListex (Haro)</th>
+<th style="text-align: center;">Wolfram</th>
+<th style="text-align: center;">C#</th>
+<th style="text-align: center;">Rust</th>
+<th style="text-align: center;">Haskell</th>
+<th style="text-align: center;">Python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dedicated List Patterns</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td>Regex-Like Syntax</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🟥</td>
+<td style="text-align: center;">🟥</td>
+<td style="text-align: center;">🟥</td>
+<td style="text-align: center;">🟥</td>
+</tr>
+<tr>
+<td>Quantifiers</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td>Value Constraints</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>Uniqueness Constraints</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🟥</td>
+<td style="text-align: center;">🟥</td>
+<td style="text-align: center;">🟥</td>
+<td style="text-align: center;">🟥</td>
+</tr>
+<tr>
+<td>Stepped Ranges</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">🟥</td>
+<td style="text-align: center;">🟥</td>
+<td style="text-align: center;">🟥</td>
+<td style="text-align: center;">🟥</td>
+</tr>
+<tr>
+<td>Nested Matching</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+</tr>
+</tbody>
+</table>
+<p>Legend: ✅ Yes    |    🟥 No    |    — Parial / Limited</p>
+<p>Softanza Listex is positioned <strong>at the forefront of structured pattern matching</strong>, standing at the same level—or even surpassing—the most advanced systems in this area. While <strong>Wolfram Language</strong> has powerful symbolic pattern matching, it lacks the structured regex-like quantifiers of Listex. <strong>C# introduces pattern matching within switch expressions and tuples but lacks the expressiveness for list validation.</strong> <strong>Rust and Haskell</strong> provide functional and structural pattern matching but lack stepped ranges and uniqueness constraints. <strong>Python</strong>, while widely used, does not offer native pattern matching for structured lists.</p>
+<p>Given this, Softanza Listex <strong>achieves a breakthrough</strong> by combining regex-like syntax, deep nested matching, and advanced constraints in a way that no other system does.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>As pattern matching evolves in modern programming, List Regex brings this power to hierarchical data with an intuitive syntax. Its ability to <strong>dynamically validate nested lists</strong> without verbose conditions makes it a game-changer in structured data processing.</p>
+<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « Softanza Listex: Bringing Pattern Matching to Lists ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stzlistex-pattern-matching-for-lists.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-08 20:43 dans la bibliothèque au commit 4a184e6f0, bloc après bloc dans un seul processus : 0 bloc(s) sur 8 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzlistex-pattern-matching-for-lists.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

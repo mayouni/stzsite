@@ -22,7 +22,7 @@ Softanza a des milliers de fonctions. On ne les apprend pas une par une. On appr
 3
 [ 1, 3, 6 ]
 [ "tea", "rice", "fish" ]</pre></div></div>
-<p class="ran">exécuté le 2026-09-30 à 23:11, Softanza au commit 0e72e2e2c. L'introduction complète est la narration <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-mental-mode-narration.md">le modèle mental Softanza</a>.</p>
+<p class="ran">exécuté le 2026-09-30 à 23:11, Softanza au commit 0e72e2e2c. L'introduction complète est l'article <a href="narrations/stz-mental-mode-narration.html">le modèle mental Softanza</a>.</p>
 
 Trois habitudes complètent le modèle. Une méthode qui finit en <b>-ed</b> rend une copie et laisse l'objet tranquille ; le même verbe sans ce suffixe change l'objet. Une méthode qui finit en <b>Q</b> rend un objet qu'on peut continuer à interroger, donc une phrase peut s'enchaîner. Et si vous ne connaissez pas un nom, demandez : un objet répond à <code>Ask("how do I remove duplicates")</code> par les méthodes qui le font.
 

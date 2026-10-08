@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beyond Inner Loops: Walking on the Second Dimension in Softanza · Narrations · Softanza</title>
+<meta name="description" content="Building upon the innovative stzWalker paradigm, Softanza&#x27;s stzWalker2D elevates traversal to new dimensions by providing an elegant alternative to nested loops for two-dimensional data structures.">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../../assets/img/mark-180.png">
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-narration">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzwalker2d-walking-second-dimension.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="../platform.html">Plateforme</a><a href="../narrations.html" aria-current=page>Narrations</a><a href="../vision.html">Vision</a><a href="../agentic.html">Agentique</a><a href="../learn.html">Apprendre</a><a href="../offering.html">Offre</a><a href="../start.html">Démarrer</a></nav>
+    <div class="tools"><a class="present" href="../tour.html" aria-label="Présenter le site en diaporama" title="Présenter le site en diaporama"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="3.5" width="19" height="12.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 7.1v5.8l4.8-2.9z" fill="currentColor"/><path d="M12 16v3.2M8.2 21.2l3.8-2 3.8 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="gh" href="https://github.com/mayouni/stzlib" aria-label="Le dépôt Softanza sur GitHub" title="Le dépôt Softanza sur GitHub" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="lang" href="../../en/narrations/stzwalker2d-walking-second-dimension.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="../narrations.html" aria-current=page>Narrations</a><a href="../narrations-performance.html">Série performance</a><a href="../narrations-security.html">Série sécurité</a><a href="../narrations-delivery.html">Série livraison</a></div></nav>
+  <nav class="crumbs" aria-label="Vous êtes ici"><ol class="crumbs-in"><li><a href="../narrations.html">Narrations</a></li><li aria-current="page">Beyond Inner Loops: Walking on the Second Dimension in Softanza</li></ol></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="Les narrations exécutées"><div class="l2-in"><div class="l2-group"><ul><li><a href="../narrations.html">Toutes les narrations</a></li><li><a href="stzsections-merging-narration.html">Understanding Section Merging Features in Softanza</a></li><li><a href="stzobject-history-narration.html">The Narrative of Transformations: Tracking Object History in Softanza</a></li><li><a href="stzlist-in-strings-narration.html">Unlocking the Power of Lists-in-Strings with Softanza</a></li><li><a href="stz-repeat-function-narration.html">The Symphony of Repetition: A Coding Journey in Softanza</a></li><li><a href="stz-repetition-with-elegance-narration.html">Repetition with Elegance: Exploring @N() and @NXT() Smart Builders in Softanza</a></li><li><a href="stz-managing-deep-lists-narration.html">Taming Deep Lists with Softanza</a></li><li><a href="stz-fastporupdate-narration.html">FastProUpdate(): A Semantic Rengineering of RingFastPro extension</a></li><li><a href="stzwalker-beyond-loops-the-walker-metaphor.html">Beyond Loops: The Walker Metaphor in Softanza</a></li><li><a href="stzwalker-walking-at-the-edge-narration.html">Walking at the Edge — A Naturally-Oriented and Practical Design</a></li><li><a href="stzwalker2d-walking-second-dimension.html" aria-current=page>Beyond Inner Loops: Walking on the Second Dimension in Softanza</a></li><li><a href="stz-unfied-item-finding-with-find.html">The Unified @Find() Function in Softanza</a></li><li><a href="stz-named-vars-narration.html">Named Variables in Softanza: the What, Why and How!</a></li><li><a href="safe-access-to-ring-hashlists-using-haskey.html">Safe Access to Haro Hashlists: How Softanza Solves a Common Problem</a></li><li><a href="istrue-softanza-truth.html">DeepContains still reports that &quot;X&quot; exists down inside the nested list</a></li><li><a href="stzlist-diff.html">When “different” is not enough: the story behind Diff(), DiffXT() and DiffXTT() in stzList</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Recherche · narration</div>
+    <h1>Beyond Inner Loops: Walking on the Second Dimension in Softanza</h1>
+    <p class="lede">Traditional nested loops for matrix-like traversal:</p>
+    <p class="proof">par Mansour Ayouni · dans le dépôt depuis le 2025-04-24 · essai de fonction · domaine <a href="../atlas/collections.html">Collections et objets</a></p>
+    <p class="proof">Cet article est écrit en anglais, comme la bibliothèque.</p>
+  </div></section>
+  <div class="wrap page-body narration">
+
+<p>Building upon the innovative <code>stzWalker</code> paradigm, Softanza's <code>stzWalker2D</code> elevates traversal to new dimensions by providing an elegant alternative to nested loops for two-dimensional data structures. This intelligent iterator transforms mechanical iteration into an expressive journey through matrices and grid-like collections.</p>
+<h2 id="from-nested-loops-to-intelligent-traversal">From Nested Loops to Intelligent Traversal</h2>
+<div class="nblock"><div class="lbl">Haro</div><pre># Traditional nested loops for a 5x5 matrix
+for i = 1 to 5
+    for j = 1 to 5
+        # Processing element at position [i, j]
+        ...
+    next
+next</pre><p class="ran nv-illus">illustration</p></div>
+<p>With <code>stzWalker2D</code>, this becomes:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>oWalker = new stzWalker2D([1, 1], [5, 5], 1)
+oWalker.Walkables()
+#--&gt; [ [1, 1], [2, 1], ... ,[5, 5] ]</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="understanding-the-2d-walker">Understanding the 2D Walker</h2>
+<p>A 2D walker provides an abstraction over traditional nested loops, offering a complete iteration plan for traversing two-dimensional data structures. The walker tracks iteration state (current indices) and provides methods to control the iteration pattern:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>load &quot;stzlib.ring&quot;
+
+# Creating a 2D walker with step size 2 
+oWalker = new stzWalker2D([1, 1], [5, 5], 2)
+
+# Or using shorthand factory function
+oWalker = Wk2D([1, 1], [5, 5], 2)
+
+# See all traversable positions (index pairs)
+
+? @@(oWalker.WalkablePositions())
+#--&gt; [
+#	[ 1, 1 ], [ 3, 1 ], [ 5, 1 ],
+#	[ 2, 2 ], [ 4, 2 ],
+#	[ 1, 3 ], [ 3, 3 ], [ 5, 3 ],
+#	[ 2, 4 ], [ 4, 4 ],
+#	[ 1, 5 ], [ 3, 5 ], [ 5, 5 ]
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<blockquote>
+<p><strong>Note</strong>: In practice, you will simply use the simpler <code>Wk()</code> shorthand function that creates either a <code>stzWalker</code> or <code>stzWalker2D</code> object by automatically analyzing the types of parameters provided.</p>
+</blockquote>
+<h2 id="advanced-iteration-control">Advanced Iteration Control</h2>
+<h3 id="index-tracking-and-direction-control">Index Tracking and Direction Control</h3>
+<p>The walker maintains complete awareness of current indices while providing flexible iteration patterns:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Taking a step means advancing to the next index pair
+? @@(oWalker.Walk())
+#--&gt; [ [ 1, 1 ], [ 3, 1 ] ]
+
+? @@(oWalker.CurrentPosition())
+#--&gt; [ 3, 1 ]
+
+# Direction refers to index progression
+w = new stzWalker2D([5, 5], [1, 1], 1)
+
+? w.Direction()
+#--&gt; backward  # Indices decrease rather than increase
+
+? @@(w.Walkables())
+#--&gt; [
+#	[ 5, 5 ], [ 4, 5 ], [ 3, 5 ], [ 2, 5 ], [ 1, 5 ],
+#	[ 5, 4 ], [ 4, 4 ], [ 3, 4 ], [ 2, 4 ], [ 1, 4 ],
+#   ...
+# ]</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="visual-representation-of-iteration-state">Visual Representation of Iteration State</h3>
+<p>The <code>Show()</code> method visualizes the iteration pattern, marking start indices (S), end indices (E), current indices (x), and traversable indices (o):</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>w = new stzWalker2D([1, 1], [5, 5], 2)
+w.WalkNSteps(4)
+w.Show()
+#--&gt;
+#     1  2  3  4  5  
+#   ╭───────────────╮
+# 1 │ S  .  o  .  o │
+# 2 │ .  o  .  x  . │
+# 3 │ o  .  o  .  o │
+# 4 │ .  o  .  o  . │
+# 5 │ o  .  o  .  E │
+#   ╰───────────────╯</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="precise-traversal-control">Precise Traversal Control</h3>
+<p><code>stzWalker2D</code> allows targeted navigation to specific index pairs:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Advancing iteration to a specific position
+? @@(w.WalkTo(3, 4))
+#--&gt; [
+#	[ 1, 1 ], [ 2, 1 ], [ 3, 1 ], [ 4, 1 ], [ 5, 1 ],
+#	[ 1, 2 ], [ 2, 2 ], [ 3, 2 ], [ 4, 2 ], [ 5, 2 ], 
+#	[ 1, 3 ], [ 2, 3 ], [ 3, 3 ], [ 4, 3 ], [ 5, 3 ], 
+#	[ 1, 4 ], [ 2, 4 ], [ 3, 4 ] 
+# ]
+
+# Iterating between specific index pairs
+? @@(w.WalkBetween([3, 3], [5, 3]))
+#--&gt; [ [ 3, 3 ], [ 4, 3 ], [ 5, 3 ] ]</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="dynamic-traversal-patterns">Dynamic Traversal Patterns</h2>
+<h3 id="variable-and-bidirectional-steps">Variable and Bidirectional Steps</h3>
+<p><code>stzWalker2D</code> supports both variable stepping and bidirectional iteration:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Variable steps cycling through 1, 2, 3
+w = new stzWalker2D([1, 1], [10, 10], [1, 2, 3])
+
+? @@(w.Steps())
+#--&gt; [ 1, 2, 3 ]
+
+# Bidirectional steps (forward 3, backward 2)
+w = new stzWalker2D([1, 1], [10, 10], [3, -2])
+
+? @@(w.Walk())
+#--&gt; [ [ 1, 1 ], [ 4, 1 ] ]  # Forward 3
+
+? @@(w.Walk())
+#--&gt; [ [ 4, 1 ], [ 2, 1 ] ]  # Backward 2</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="history-and-rollback">History and Rollback</h3>
+<p>The walker maintains a complete history of traversal for analysis or backtracking:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>w = new stzWalker2D([1, 1], [5, 5], 1)
+w.Walk()
+w.Walk()
+w.WalkBackward()
+w.Walk()
+
+? @@(w.Walks()) # Or History()
+# --&gt; [
+#	[ [ 1, 1 ], [ 2, 1 ] ],		~&gt; Walk()
+#	[ [ 2, 1 ], [ 3, 1 ] ],		~&gt; Walk()
+#	[ [ 3, 1 ], [ 2, 1 ] ],		~&gt; WalkBackward()
+#	[ [ 2, 1 ], [ 3, 1 ] ]		~&gt; Walk()
+# ]
+
+# Reset history while maintaining current position
+w.ResetHistory()
+
+? @@(w.History())
+#--&gt; [ ]</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="robust-edge-case-handling">Robust Edge Case Handling</h2>
+<p><code>stzWalker2D</code> intelligently handles edge cases to prevent invalid operations:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre># Identical start and end positions
+w = new stzWalker2D([3, 3], [3, 3], 1)
+? @@(w.WalkablePositions())
+# --&gt; [ [ 3, 3 ] ]
+
+# Preventing over-iteration
+w = new stzWalker2D([1, 1], [5, 5], 2)
+? @@(w.WalkNSteps(20)) # Walks only available positions
+#--&gt; [ [1,1], [2,1], ..., [5, 5] ]
+
+# Cannot iterate before start position
+w.Reset()
+w.WalkBackward()
+# --&gt; ERROR: Can&#x27;t walk backward from the start position!</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="orchestrating-multiple-iteration-patterns-with-stzlistofwalkers2d">Orchestrating Multiple Iteration Patterns with stzListOfWalkers2D</h2>
+<p>The <code>stzListOfWalkers2D</code> class extends the walker paradigm by providing sophisticated management of multiple 2D walkers as a unified collection. This powerful abstraction enables synchronized iteration, comparative analysis, and coordinated traversal across multiple iteration patterns.</p>
+<h3 id="creating-and-managing-walker-collections">Creating and Managing Walker Collections</h3>
+<div class="nblock"><div class="lbl">Haro</div><pre># Create individual walkers
+w1 = new stzWalker2D([1, 1], [3, 3], 1)
+w2 = new stzWalker2D([2, 2], [4, 4], 1)
+w3 = new stzWalker2D([0, 0], [4, 4], 2)
+
+# Create collections using factory functions
+walkers1 = Wks([w1, w2])
+walkers2 = StzListOfWalkers2DQ([w1, w2, w3])
+
+# Alternatively, use the shorthand factory function with inline walker creation
+walkers = Wks2D([
+    Wk([1, 1], [3, 3], 1),
+    Wk([2, 2], [4, 4], 1),
+    Wk([1, 1], [5, 5], 2)
+])
+
+# Adding and removing walkers
+walkers = Wks([ Wk([1, 1], [3, 3, 1) ])
+walkers.AddWalker(Wk([2, 2], [4, 4], 1))
+walkers.AddWalkers([
+    Wk([1, 1], [5, 5], 2),
+    Wk([6, 6], [8, 8], 1)
+])
+
+# Removing walkers
+walkers.RemoveWalker(2)      # Remove by index
+walkers.RemoveFirstWalker()  # Remove first walker
+walkers.RemoveLastWalker()   # Remove last walker</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="accessing-walker-properties">Accessing Walker Properties</h3>
+<div class="nblock"><div class="lbl">Haro</div><pre>walkers = Wks2D([
+    new stzWalker2D([1, 1], [3, 3], 1),
+    new stzWalker2D([1, 1], [2, 2], 1),
+    new stzWalker2D([1, 1], [5, 5], 2)
+])
+
+# Access individual walkers
+? @@(walkers.FirstWalker().StartPosition())
+#--&gt; [ 1, 1 ]
+
+? @@(walkers.LastWalker().EndPosition())
+#--&gt; [ 5, 5 ]
+
+# Comparing walkers
+oSmallestWalker = walkers.SmallestWalker()
+? @@(oSmallestWalker.EndPosition())
+#--&gt; [ 2, 2 ]
+
+oLargestWalker = walkers.LargestWalker()
+? @@(oLargestWalker.EndPosition())
+#--&gt; [ 5, 5 ]
+
+# Comparing steps
+? walkers.AllWalkersHaveSameSteps()
+#--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="synchronized-iteration-operations">Synchronized Iteration Operations</h3>
+<div class="nblock"><div class="lbl">Haro</div><pre>w1 = new stzWalker2D([1, 1], [3, 3], 1)
+w2 = new stzWalker2D([2, 2], [4, 4], 1)
+
+o1 = Wks2D([ w1, w2 ])
+
+# Current indices of all walkers
+? @@(o1.CurrentPositions())
+#--&gt; [ [ 1, 1 ], [ 2, 2 ] ]
+
+# Advance all walkers by the same number of steps
+o1.WalkAllNSteps(2)
+? @@(o1.CurrentPositions())
+#--&gt; [ [ 3, 1 ], [ 4, 2 ] ]
+
+# Walk all to end position
+o1.WalkAllToEnd()
+? @@(o1.CurrentPositions())
+#--&gt; [ [ 3, 3 ], [ 4, 4 ] ]
+
+# Restart all walkers
+o1.RestartAllWalkers()
+? @@(o1.CurrentPositions())
+#--&gt; [ [ 1, 1 ], [ 2, 2 ] ]
+
+# Setting positions and conditional walking
+o1.SetCurrentPosition(3, 3)  # This sets all walkers to nearest walkable position
+? @@(o1.CurrentPositions())
+#--&gt; [ [ 2, 2 ], [ 2, 2 ] ]
+
+# Walk walkers only if position is within their iteration range
+o1.WalkIfPossible(3, 3)
+? @@(o1.CurrentPositions())
+#--&gt; [ [ 3, 3 ], [ 3, 3 ] ]</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="analyzing-traversable-positions">Analyzing Traversable Positions</h3>
+<div class="nblock"><div class="lbl">Haro</div><pre>w1 = new stzWalker2D([1, 1], [2, 2], 1)
+w2 = new stzWalker2D([1, 1], [2, 1], 1)
+w3 = new stzWalker2D([2, 1], [2, 2], 1)
+
+o1 = Wks2D([w1, w2, w3])
+
+# Get traversable index pairs for all walkers
+? @@NL(o1.Walkables()) + NL
+#--&gt; [
+#   [
+#       [ 1, 1 ], [ 2, 1 ],
+#       [ 1, 2 ], [ 2, 2 ]
+#   ],
+#   [
+#       [ 1, 1 ], [ 2, 1 ]
+#   ],
+#   [
+#       [ 2, 1 ], [ 2, 2 ]
+#   ]
+# ]
+
+# Find index pairs common to all walkers
+? @@(o1.CommonWalkables()) + NL
+#--&gt; [ [ 2, 1 ] ]
+
+# Get merged traversable positions (unique across all walkers)
+? @@(o1.MergedWalkables())
+#--&gt; [ [ 1, 1 ], [ 1, 2 ], [ 2, 1 ], [ 2, 2 ] ]</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="finding-walkers-based-on-position-criteria">Finding Walkers Based on Position Criteria</h3>
+<div class="nblock"><div class="lbl">Haro</div><pre>w1 = new stzWalker2D([1, 1], [3, 3], 1)
+w2 = new stzWalker2D([1, 1], [3, 3], 1)
+w3 = new stzWalker2D([3, 3], [6, 6], 1)
+
+walkers = Wks([w1, w2, w3])
+
+# Find walkers that can traverse position [1, 1]
+? @@(walkers.FindWalkable([1, 1])) + NL
+#--&gt; [ [ 1, 1 ], [ 2, 1 ] ]
+
+# Find walkers that can traverse specific index pairs
+? @@(walkers.FindWalkables([ [1, 1], [3, 3] ])) + NL
+#--&gt; [ [ 1, 1 ], [ 1, 9 ], [ 2, 1 ], [ 2, 9 ], [ 3, 1 ] ]
+
+# Find walkers within a specific section of the iteration space
+? @@(walkers.FindWalkersInSection([1, 1], [3, 3])) + NL
+#--&gt; [ 1, 2 ]   # Walkers 1 and 2
+
+# Find walkers that intersect a path of indices
+? @@(walkers.FindWalkersIntersectingPath([ [1, 1], [5, 5] ] ))
+#--&gt; [ 1, 2, 3 ]</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="visual-representation-of-multiple-walkers">Visual Representation of Multiple Walkers</h3>
+<div class="nblock"><div class="lbl">Haro</div><pre>w1 = new stzWalker2D([1, 1], [4, 4], 1)
+w2 = new stzWalker2D([3, 3], [6, 6], 1)
+
+Wks2D([w1, w2]) {
+    # Set different indices for each walker
+    Walker(1).WalkTo(2, 3)
+    walker(2).WalkTo(4, 5)
+
+    Show()
+    #--&gt;
+    #       1  2  3  4  5  6 
+    #    ╭─────v─────v───────╮
+    #  1 │ S1  1  1  1  .  . │
+    #  2 │  1  1  1  1  .  . │
+    #  3 &gt;  1 x1 S2  *  2  2 │
+    #  4 │  1  1  *  *  2  2 │
+    #  5 &gt;  .  .  2 x2  2  2 │
+    #  6 │  .  .  2  2  2 E2 │
+    #    ╰───────────────────╯
+
+    ? Legend()
+    #--&gt;
+    #   . = Empty position
+    # 1-9 = Walker&#x27;s traversable position
+    #   * = Overlapping traversable positions
+    #  x# = Current position of walker #
+    #  S# = Start position of walker #
+    #  E# = End position of walker #
+    # v/&gt; = Markers of current positions on grid borders
+}</pre><p class="ran nv-illus">illustration</p></div>
+<h3 id="working-with-different-step-patterns">Working with Different Step Patterns</h3>
+<div class="nblock"><div class="lbl">Haro</div><pre>// Create walkers with different step patterns
+w1 = new stzWalker2D([1, 1], [3, 3], 1)        // Constant step of 1
+w2 = new stzWalker2D([1, 1], [5, 5], 2)        // Constant step of 2
+w3 = new stzWalker2D([1, 1], [4, 4], [1, 2, 1])  // Variable step pattern
+
+walkers = Wks2D([w1, w2, w3])
+
+// Walk each 3 steps and check positions
+walkers.WalkAllNSteps(3)
+
+? @@(walkers.CurrentPositions())
+#--&gt; [ [ 1, 2 ], [ 2, 2 ], [ 1, 2 ] ]</pre><p class="ran nv-illus">illustration</p></div>
+<h2 id="practical-applications">Practical Applications</h2>
+<p>The <code>stzWalker2D</code> and <code>stzListOfWalkers2D</code> paradigms enable elegant solutions for index-based traversal across numerous domains:</p>
+<ul>
+<li><strong>Matrix Operations</strong>: Custom traversal patterns for convolution or filtering</li>
+<li><strong>Data Analysis</strong>: Consistent traversal of multidimensional datasets</li>
+<li><strong>Table Manipulation</strong>: Precise control over cell processing</li>
+<li><strong>UI Component Iteration</strong>: Grid-based UI element processing</li>
+<li><strong>Custom Collection Traversal</strong>: Specialized patterns for irregular grids</li>
+<li><strong>Multi-pattern Coordination</strong>: Synchronizing multiple iteration sequences</li>
+<li><strong>Complex Traversal Logic</strong>: Implementing sophisticated iteration rules without nested conditionals</li>
+<li><strong>Parallel Processing</strong>: Distributing work across multiple traversal patterns</li>
+</ul>
+<h2 id="softanza-advantage-a-comparative-analysis">Softanza Advantage: A Comparative Analysis</h2>
+<p>Softanza's <code>stzWalker2D</code> walking paradigm stands out when compared to traditional approaches to two-dimensional traversal, , whether they are pure nested loops, iterator patterns (like Java's Iterator interface or C++'s STL iterators), or matrix libraries (like Python's NumPy array iteration or MATLAB's matrix operations).</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Softanza Walker2D</th>
+<th>Nested Loops</th>
+<th>Iterator Patterns</th>
+<th>Matrix Libraries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Declarative Syntax</strong></td>
+<td>✅ High (Expressive)</td>
+<td>Low (Procedural)</td>
+<td>Medium</td>
+<td>Varies</td>
+</tr>
+<tr>
+<td><strong>Differential Stepping</strong></td>
+<td>✅ Built-in</td>
+<td>Manual</td>
+<td>Not Common</td>
+<td>Limited</td>
+</tr>
+<tr>
+<td><strong>Bidirectional Steps</strong></td>
+<td>✅ Native support</td>
+<td>Complex Implementation</td>
+<td>Rare</td>
+<td>Very Rare</td>
+</tr>
+<tr>
+<td><strong>Direction Control</strong></td>
+<td>✅ Automatic Detection</td>
+<td>Manual</td>
+<td>Typically Forward Only</td>
+<td>Limited</td>
+</tr>
+<tr>
+<td><strong>Visual Representation</strong></td>
+<td>✅ Built-in Show()</td>
+<td>None</td>
+<td>None</td>
+<td>Sometimes</td>
+</tr>
+<tr>
+<td><strong>Position Awareness</strong></td>
+<td>✅ Native</td>
+<td>Manual Tracking</td>
+<td>Limited</td>
+<td>Sometimes</td>
+</tr>
+<tr>
+<td><strong>Walking History</strong></td>
+<td>✅ Comprehensive</td>
+<td>None</td>
+<td>None</td>
+<td>Rare</td>
+</tr>
+<tr>
+<td><strong>Targeted Navigation</strong></td>
+<td>✅ WalkTo, WalkBetween</td>
+<td>Manual</td>
+<td>Not Common</td>
+<td>Sometimes</td>
+</tr>
+<tr>
+<td><strong>Variable Step Patterns</strong></td>
+<td>✅ Native</td>
+<td>Complex Implementation</td>
+<td>Not Common</td>
+<td>Rare</td>
+</tr>
+<tr>
+<td><strong>Error Handling</strong></td>
+<td>✅ Robust</td>
+<td>Manual</td>
+<td>Varies</td>
+<td>Varies</td>
+</tr>
+<tr>
+<td><strong>Integration with Objects</strong></td>
+<td>✅ Native</td>
+<td>External</td>
+<td>Sometimes</td>
+<td>Sometimes</td>
+</tr>
+<tr>
+<td><strong>Multi-Walker Management</strong></td>
+<td>✅ stzListOfWalkers2D</td>
+<td>Complex Implementation</td>
+<td>Not Native</td>
+<td>Rare</td>
+</tr>
+<tr>
+<td><strong>Synchronized Traversal</strong></td>
+<td>✅ Built-in</td>
+<td>Manual Coordination</td>
+<td>Not Common</td>
+<td>Limited</td>
+</tr>
+<tr>
+<td><strong>Traversal Analysis Tools</strong></td>
+<td>✅ Native</td>
+<td>Complex Implementation</td>
+<td>Rare</td>
+<td>Sometimes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conclusion">Conclusion</h2>
+<p>The combined power of <code>stzWalker2D</code> and <code>stzListOfWalkers2D</code> represents a paradigm shift in two-dimensional traversal of data structures. By transforming mechanical nested loops into an expressive iterator abstraction with index awareness, direction control, and pattern flexibility, Softanza eliminates error-prone index tracking while enabling sophisticated traversal patterns.</p>
+<p>The <code>stzListOfWalkers2D</code> class extends this metaphor to coordinated operations across multiple iteration patterns, offering unprecedented control over complex traversal relationships. This unified traversal ecosystem spans both individual and collective iteration behaviors, simplifying complex algorithm development with a consistent abstraction regardless of dimensional complexity.</p>
+<blockquote>
+<p><strong>Design Disclaimer</strong>: The walker metaphor used in Softanza's <code>stzWalker</code>, <code>stzListOfWalkers</code>, <code>stzWalker2D</code> and <code>stzListOfWalkers2D</code> classes represents an abstraction over traditional nested loops and index-based iteration, not actual spatial movement. While these classes use terminology like "walking" and "position," they are fundamentally iteration control mechanisms for traversing multi-dimensional data structures. The future <code>stzGridWalker</code> class,  will be the truly spatial-aware construct designed specifically for grid-based spatial applications.</p>
+</blockquote>
+<h2>Lectures liées</h2><ul><li><a href="stzwalker-beyond-loops-the-walker-metaphor.html">Beyond Loops: The Walker Metaphor in Softanza</a></li></ul><h2>Citer</h2><p class="mono cite">Mansour Ayouni. « Beyond Inner Loops: Walking on the Second Dimension in Softanza ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stzwalker2d-walking-second-dimension.html</p><p class="proof">Non exécuté : son code touche aux fichiers, au réseau, à l'horloge ou au hasard. L'article est publié tel qu'il est écrit ; ses blocs sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzwalker2D-walking-second-dimension.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="../platform.html">Plateforme</a></li><li><a href="../platforms.html">Plateforme de plateformes</a></li><li><a href="../architecture.html">Architecture</a></li><li><a href="../craft.html">Le métier</a></li><li><a href="../areas.html">Les domaines</a></li><li><a href="../code.html">Le code</a></li><li><a href="../compare.html">Comparée</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="../narrations.html">Narrations</a></li><li><a href="../narrations-performance.html">Série performance</a></li><li><a href="../narrations-security.html">Série sécurité</a></li><li><a href="../narrations-delivery.html">Série livraison</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="../vision.html">L&#x27;étoile polaire</a></li><li><a href="../principles.html">Douze principes</a></li><li><a href="../estate.html">Le domaine</a></li><li><a href="../history.html">Depuis les principes</a></li><li><a href="../forged.html">Forgée en projets</a></li><li><a href="../sovereignty.html">Souveraineté</a></li><li><a href="../africa.html">Née en Afrique</a></li></ul></div><div><h3>Agentique</h3><ul><li><a href="../agentic.html">Agentique</a></li><li><a href="../wise.html">Wise coding</a></li><li><a href="../languages.html">Langue des langues</a></li><li><a href="../zui.html">Zui</a></li><li><a href="../refinement.html">Raffinement</a></li><li><a href="../agents.html">Pour les agents</a></li><li><a href="../coding-agents.html">Agents qui codent</a></li><li><a href="../security.html">Sécurité</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="../learn.html">Apprendre</a></li><li><a href="../book.html">Le livre</a></li><li><a href="../docs.html">Documentation</a></li><li><a href="../howto.html">Comment faire</a></li><li><a href="../reference.html">Référence</a></li><li><a href="../ask.html">Interroger</a></li><li><a href="../education.html">Éducation</a></li></ul></div><div><h3>Offre</h3><ul><li><a href="../offering.html">Audiences</a></li><li><a href="../editions.html">Éditions</a></li><li><a href="../customers.html">Clients</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="../start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="../tour.html">Mode présentation</a></li><li><a href="../../deck-check.html">Vérifier hors ligne</a></li><li><a href="../../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme des makers du logiciel à l&#x27;ère de l&#x27;IA. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-08.</p></div>
+  </div>
+</div></footer>
+<script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

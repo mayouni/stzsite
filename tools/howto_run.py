@@ -17,10 +17,11 @@ import json, re, sys, pathlib, subprocess, datetime, shutil
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from showcase_run import verdict
 from harvest_examples import FORBIDDEN
+from haro import SHOWN
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "howto-run.json"
-WORD = re.compile(r"(?<![\w./-])ring(?![\w.])", re.I)
+WORD = SHOWN   # the former name in code shown as the library wrote it (tools/haro.py)
 FENCE = re.compile(r"(?ms)^```([\w+-]*)[^\n]*\n(.*?)^```[ \t]*$")
 PROMISE = re.compile(r"(#|//)[ \t]*-->[ \t]?(.*)$")
 STATEMENT = re.compile(r"(?i)^\s*(\?|see\b|load\b|for\b|while\b|if\b|but\b|else\b|ok\b|next\b|end\b|func\b|class\b|return\b|try\b|catch\b|done\b|[\w@.\[\]]+\s*[+\-*/]?=(?!=))")
