@@ -2,13 +2,13 @@
 title: Audiences
 title_html: Who it is <i>for</i>
 kicker: Six doors, one story
-lede: Softanza tells one story to six kinds of makers. Each door below says what that reader declares and what they get, and shows one example run on the night of publication.
+lede: Softanza tells one story to six kinds of crafters. Each door below says what that reader declares and what they get, and shows one example run on the night of publication.
 description: The six audiences of Softanza, from the programmer to the agent: what each declares and gets, with a real example.
 ---
 
-## What is a maker? {#maker}
+## What is a software crafter? {#crafter}
 
-A maker turns what they know about a world into something that runs, without waiting for the software industry. They are not defined by programming skill but by ownership: the artefact is theirs, in plain text, and it does not expire. A teacher, an analyst, a merchant, a student, a civil servant, and an agent that proposes under all of those worlds.
+A software crafter turns what they know about a world into something that runs, without waiting for the software industry. They are not defined by programming skill but by ownership: the artefact is theirs, in plain text, and it does not expire. A teacher, an analyst, a merchant, a student, a civil servant, and an agent that proposes under all of those worlds.
 
 ## Six doors {#doors}
 

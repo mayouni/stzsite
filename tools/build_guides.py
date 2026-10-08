@@ -46,12 +46,12 @@ KEYWORDS = {
 T = {
   "fr": {"kicker": "Guide", "classes": "Les classes de ce domaine", "methods": "méthodes", "fn": "Les fonctions, par ce qu'elles font",
          "more": "et {n} autres dans la référence", "tut": "Les narrations sur ce domaine", "tut_none": "Aucune narration n'est encore rattachée à ce domaine.",
-         "see": "Voir aussi", "atlas": "La page du domaine dans l'Atlas : ce qu'un maker en fait, un exemple exécuté, et ses couloirs notés",
+         "see": "Voir aussi", "atlas": "La page du domaine dans l'Atlas : ce qu'un artisan en fait, un exemple exécuté, et ses couloirs notés",
          "same": "Les autres domaines de ce thème", "src": "Les explications sont celles que la bibliothèque donne d'elle-même, en anglais, lues dans ses commentaires de documentation le",
          "in": "dans"},
   "en": {"kicker": "Guide", "classes": "The classes of this area", "methods": "methods", "fn": "The functions, by what they do",
          "more": "and {n} more in the reference", "tut": "Narrations about this area", "tut_none": "No narration is attached to this area yet.",
-         "see": "See also", "atlas": "The area's page in the Atlas: what a maker does with it, an example run, and its rated lanes",
+         "see": "See also", "atlas": "The area's page in the Atlas: what a crafter does with it, an example run, and its rated lanes",
          "same": "The other areas of this theme", "src": "The explanations are the ones the library gives of itself, read from its documentation comments on",
          "in": "in"},
 }

@@ -2,13 +2,13 @@
 title: Audiences
 title_html: Pour <i>qui</i>
 kicker: Six portes, une seule histoire
-lede: Softanza raconte une seule histoire à six sortes de makers. Chaque porte ci-dessous dit ce que ce lecteur déclare et ce qu'il obtient, et montre un exemple exécuté le soir de la publication.
+lede: Softanza raconte une seule histoire à six sortes d'artisans du logiciel. Chaque porte ci-dessous dit ce que ce lecteur déclare et ce qu'il obtient, et montre un exemple exécuté le soir de la publication.
 description: Les six publics de Softanza, du programmeur à l'agent : ce que chacun déclare et obtient, avec un vrai exemple.
 ---
 
-## Qu'est-ce qu'un maker ? {#maker}
+## Qu'est-ce qu'un artisan du logiciel ? {#crafter}
 
-Un maker transforme ce qu'il sait d'un monde en quelque chose qui tourne, sans attendre l'industrie du logiciel. Il n'est pas défini par sa maîtrise de la programmation mais par la propriété : l'artefact est à lui, en texte brut, et il n'expire pas. Une enseignante, un analyste, un commerçant, un élève, un fonctionnaire, et un agent qui propose sous tous ces mondes.
+Un artisan du logiciel transforme ce qu'il sait d'un monde en quelque chose qui tourne, sans attendre l'industrie du logiciel. Il n'est pas défini par sa maîtrise de la programmation mais par la propriété : l'artefact est à lui, en texte brut, et il n'expire pas. Une enseignante, un analyste, un commerçant, un élève, un fonctionnaire, et un agent qui propose sous tous ces mondes.
 
 ## Six portes {#doors}
 

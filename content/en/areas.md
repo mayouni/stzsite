@@ -2,7 +2,7 @@
 title: The areas
 title_html: The <i>areas</i>
 kicker: Twenty-eight areas, six themes
-lede: Everything the platform computes, grouped by theme as the Atlas groups it. Each picture was produced by the platform itself; its name and what it shows are written beneath it. Open an area to read what a maker does with it, an example run, and how each of its lanes is rated.
+lede: Everything the platform computes, grouped by theme as the Atlas groups it. Each picture was produced by the platform itself; its name and what it shows are written beneath it. Open an area to read what a crafter does with it, an example run, and how each of its lanes is rated.
 description: The twenty-eight areas of the Softanza platform, grouped by theme, each with a picture the platform produced.
 ---
 

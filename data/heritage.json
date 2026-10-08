@@ -1615,8 +1615,8 @@
     "stage": "planned"
    },
    {
-    "en": "The same schema also writes files. A maker narrates each field and its bytes, teaching layout to beginners and producing test files.",
-    "fr": "Le même schéma sert aussi à écrire des fichiers. Un « fabricant » raconte chaque champ et ses octets : il enseigne la structure aux débutants et produit les fichiers de test.",
+    "en": "The same schema also writes files. A crafter narrates each field and its bytes, teaching layout to beginners and producing test files.",
+    "fr": "Le même schéma sert aussi à écrire des fichiers. Un artisan raconte chaque champ et ses octets : il enseigne la structure aux débutants et produit les fichiers de test.",
     "source": "base/binary/SOFTANZA_BINARY_PLAN.md (§2.4 stzBinaryFileMaker)",
     "stage": "planned"
    },

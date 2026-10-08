@@ -1570,3 +1570,23 @@ waiting:
 next:
   - me:      commit and push this line; sweep the rest if the author says so
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-08 22:31
+
+subject:   the rest of the maker vocabulary becomes "crafter" (English) and "artisan" (French)
+
+why:       the author, "yes sweep the rest of the maker vocabulary", after the hero line changed
+
+did:
+  - changed the Offering page: the lede ("six kinds of crafters"), the heading and its anchor ("What is a software crafter?", #crafter; nothing linked to the old one)
+    and the definition's first words; the French says "un artisan du logiciel"
+  - changed the Areas page's lede, the Atlas area pages' heading and the guide pages' line ("what a crafter does with it", "ce qu'un artisan en fait")
+  - changed one line of the binary area's heritage, which called the person who narrates a file's fields a maker (the French said "fabricant")
+  - left on purpose: the Learn page's run, whose output spells the word because it is the program's own output; the names of the library's classes
+    (RegexMaker, KernelMaker, FileMaker); "decision maker", a different word; a quoted developer's surname in an article
+  - checked: the built pages hold the word only in those four places; 0 failures on the example blocks
+
+next:
+  - me:      commit and push
+```

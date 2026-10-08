@@ -2,7 +2,7 @@
 title: Les domaines
 title_html: Les <i>domaines</i>
 kicker: Vingt-huit domaines, six thèmes
-lede: Tout ce que la plateforme calcule, regroupé par thème comme l'Atlas le regroupe. Chaque image a été produite par la plateforme elle-même ; son nom et ce qu'elle montre sont écrits dessous. Ouvrez un domaine pour lire ce qu'un maker en fait, un exemple exécuté, et la note de chacun de ses couloirs.
+lede: Tout ce que la plateforme calcule, regroupé par thème comme l'Atlas le regroupe. Chaque image a été produite par la plateforme elle-même ; son nom et ce qu'elle montre sont écrits dessous. Ouvrez un domaine pour lire ce qu'un artisan en fait, un exemple exécuté, et la note de chacun de ses couloirs.
 description: Les vingt-huit domaines de la plateforme Softanza, regroupés par thème, chacun avec une image produite par la plateforme.
 ---
 
