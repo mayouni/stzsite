@@ -8,7 +8,7 @@ help: → or click: next · ←: previous · n: notes · h: menu · Esc: open th
 <img class="bg" src="../assets/img/onboarding-elder.webp" alt="An elder in a white turban reads a sheet of code in a courtyard; the word SOFTANZA is painted on the wall behind him.">
 <div class="caption">
 <div class="eyebrow">Softanza</div>
-<p><b>The Software Makers Platform of the AI Age.</b></p>
+<p><b>The Software Crafters Platform of the AI Age.</b></p>
 <p>Born in Africa. Useful to the World!</p>
 </div>
 ```notes

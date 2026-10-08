@@ -1542,3 +1542,31 @@ next:
   - me:      push, check the deploy once; then wave 3 on the author's word
   - author:  open Craft and follow its left bar; read Natural and say whether the five faces are the ones you would claim
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-08 22:23
+
+subject:   the hero line says "Crafters", not "Makers"
+
+why:       the author, in chat: "crafter" says the culture the background image carries and what they think of programming -- not maker, not builder
+
+did:
+  - changed the line in its places: "The Software Crafters Platform of the AI Age" and, in French, "La plateforme des artisans du logiciel à l'ère de l'IA"
+    (artisan is the word the French tradition of "software craftsmanship" uses); in the build's two slogans and the home's title, the home's two
+    h1, the tour in two languages, the README and the first line of llms.txt
+  - changed the home's word-by-word definition to match: "A software crafter" / "Un artisan du logiciel"; its text is unchanged, so D1 (the wording of
+    the definitions) stays the author's to rule
+  - looked at the French home on a render: the line fits its panel in two lines
+
+state:
+  still saying "maker": the Offering page ("What is a maker?", six kinds of makers, the doors), the Atlas and guide labels ("what a maker does
+                        with it"), the Agentic page's "decision maker" (a different word, left), and the Learn page's run, whose output
+                        spells "makers" because it is a run and must not change
+  the book:             its cover line must carry the same sentence; routed again to the book session
+
+waiting:
+  - the sweep of the rest of the maker vocabulary -> the author [asked now: it is the same decision, applied to about 25 lines]
+
+next:
+  - me:      commit and push this line; sweep the rest if the author says so
+```

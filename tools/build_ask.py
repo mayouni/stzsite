@@ -187,7 +187,7 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
     (ROOT / "agents" / "index.json").write_text(text, encoding="utf-8")
     # llms.txt: the convention of a site written for language models (llmstxt.org)
     L = ["# Softanza", "",
-         "> Softanza is a computational platform for makers: one engine, written in Zig, handles text, exact numbers, tables, graphs, maps, images, sound, neural networks, governed agents and the security around them. Its language, Haro, is in construction. Born in Africa, useful to the world.", "",
+         "> Softanza is a computational platform for software crafters: one engine, written in Zig, handles text, exact numbers, tables, graphs, maps, images, sound, neural networks, governed agents and the security around them. Its language, Haro, is in construction. Born in Africa, useful to the world.", "",
          "This site was generated from the library at commit 0e72e2e2c. Its method examples, recipes and narrations were run inside the library before publication, and each output shown is that run's; what did not run is not shown as run. The site is in English and French; this file links the English pages.", "",
          "## How to think and write Softanza", "",
          f"Read this before the method list. The page is {SITE}en/way.html; the rules are stated at {SITE}en/craft.html#rules.", "",

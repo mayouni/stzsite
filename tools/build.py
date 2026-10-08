@@ -108,7 +108,7 @@ OWNER["book-proof"] = "learn"                       # the proof of a chapter sit
 
 UI = {
   "fr": {
-    "slogan": "La plateforme des makers du logiciel à l'ère de l'IA", "second": "Née en Afrique. Utile au monde !",
+    "slogan": "La plateforme des artisans du logiciel à l'ère de l'IA", "second": "Née en Afrique. Utile au monde !",
     "skip": "Aller au contenu", "other_lang": "English", "other_code": "en",
     "present": "Présenter le site en diaporama", "github": "Le dépôt Softanza sur GitHub", "menu": "Menu principal", "path": "Pages de la section", "here": "Vous êtes ici", "moved": "Cette page est devenue Éducation",
     "proof_law": "Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s'exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.",
@@ -136,7 +136,7 @@ UI = {
     "cov_row": "Domaine", "cov_present": "Présent", "cov_deep": "Deep", "cov_solid": "Solid", "cov_partial": "Partial", "cov_none": "Absent",
   },
   "en": {
-    "slogan": "The Software Makers Platform of the AI Age", "second": "Born in Africa. Useful to the World!",
+    "slogan": "The Software Crafters Platform of the AI Age", "second": "Born in Africa. Useful to the World!",
     "skip": "Skip to content", "other_lang": "Français", "other_code": "fr",
     "present": "Present the site as a slideshow", "github": "The Softanza repository on GitHub", "menu": "Main menu", "path": "Pages of the section", "here": "You are here", "moved": "This page became Education",
     "proof_law": "Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.",
@@ -809,7 +809,7 @@ def build_home(idx, groups):
     body = (CONTENT / "home.html").read_text(encoding="utf-8")
     for lang in LANGS:
         body = body.replace(f"<!--AREAS-{lang.upper()}-->", fmap_html(lang, idx, groups, f"{lang}/atlas/") + tiles_html(lang, idx, groups, f"{lang}/atlas/", "", hl="h3"))
-    page = head("fr", "Softanza · La plateforme des makers du logiciel à l'ère de l'IA · The Software Makers Platform of the AI Age",
+    page = head("fr", "Softanza · La plateforme des artisans du logiciel à l'ère de l'IA · The Software Crafters Platform of the AI Age",
                 "Softanza: declare a language for your world, run it on one engine, let agents speak it safely. Born in Africa. Useful to the World.", "")
     page = page.replace('<html lang="fr" data-lang="fr">', '<html lang="fr" data-lang="fr" class="home">')
     heads = "".join(header(l, "index", "", other_href=f"index.html?lang={o}", nav_rel=f"{l}/", data_lang=l) for l, o in (("fr", "en"), ("en", "fr")))
