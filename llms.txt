@@ -4,6 +4,37 @@
 
 This site was generated from the library at commit 0e72e2e2c. Its method examples, recipes and narrations were run inside the library before publication, and each output shown is that run's; what did not run is not shown as run. The site is in English and French; this file links the English pages.
 
+## How to think and write Softanza
+
+Read this before the method list. The page is https://mayouni.github.io/stzsite/en/way.html; the rules are stated at https://mayouni.github.io/stzsite/en/craft.html#rules.
+
+Seven steps of thought:
+
+1. Define the problem in natural terms and take its keywords out. (rules 14, 12) e.g. Uppercasing and then spacifying 'softanza', so we get 'S O F T A N Z A'
+2. Select the object the problem is about. (rules 1) e.g. o1 = new stzList([ "A", "", "B", "", "", "C" ])
+3. Ask whether it contains. (rules 9, 2) e.g. ? o1.ContainsEmptyStrings()   #--> 1
+4. Ask how many. (rules 9, 3) e.g. ? o1.CountEmptyStrings()   #--> 3
+5. Ask where. (rules 7, 10) e.g. ? o1.FindEmptyStrings()   #--> [ 2, 4, 5 ]
+6. Act on the positions, or call the verb whose name says the act. (rules 6, 4, 8, 5) e.g. o1.ReplaceEmptyStrings(:With = "~")
+7. Celebrate and repeat: the answer is read under its arrow, and the chain keeps its history. (rules 3) e.g. Qh(12500).AddQ(500). ... History()
+
+Fourteen rules of writing:
+
+1. A value is lifted to its object by Q(), or by its typed lifter when the type is the point. e.g. Q("Niamey ♥")
+2. A scene is a brace block on one object, and the questions are asked inside it. e.g. Q("Niamey ♥") { ? NumberOfChars() ? Uppercased() }
+3. Every printed line carries its answer under #-->; a multi-line answer is drawn as the console shows it. e.g. ? o1.CountEmptyStrings()   #--> 3
+4. A parameter is named, and the name reads as English. e.g. Q("tea, rice, tea").Replaced("tea", :With = "coffee")
+5. A chain mirrors the order of thought: one step per line, the dot at the end. e.g. Q("LIFE").LowercaseQ().SpacifyQ(). ...
+6. The form of the verb says what happens: Remove acts, Removed gives a copy, RemoveQ hands the object back. e.g. Remove()   Removed()   RemoveQ()
+7. Suffixes and prefixes are small and each means one thing: CS, XT, FF, W, Z, ZZ. e.g. FindNthCS(2, "arem", :CS = FALSE)
+8. A function has alternatives for the way a person says it. e.g. NumberOfOccurrenceOfCharLeftSide("-")   HowManyOccurrenceOfCharRightSide("-")
+9. Precision over generality, when it costs nothing: NumberOfChars() over Size(); ContainsBoth, ContainsAll, ContainsSome. e.g. Q("one two three").ContainsBoth("one", "three")
+10. Code travels inside an argument as a small string, with @item, @char, @1 as placeholders. e.g. o.FindW("{ @item > 5 }")
+11. Small literal languages live in strings. e.g. L(' "♥1" : "♥3" ')
+12. A sentence may stay near-natural. e.g. _(8).IsA(:Number).Which('IsDoubleOf(4)')._
+13. A function may be named in any human language. e.g. 字符数()
+14. A comment speaks before the code, in the teacher's voice; a test block is framed by /*--- title, pr() and pf(). e.g. # the passive form returns a copy and keeps the original
+
 ## Ask the library
 
 - [Ask the library](https://mayouni.github.io/stzsite/en/ask.html): how a program asks Softanza (Ask, HowTo, ExplainMethod), every call run, measured against the library's own recipes
@@ -15,7 +46,7 @@ This site was generated from the library at commit 0e72e2e2c. Its method example
 - [Documentation](https://mayouni.github.io/stzsite/en/docs.html): the whole scope, area by area
 - [Reference](https://mayouni.github.io/stzsite/en/reference.html): 575 classes, each method with the explanation the library gives of itself; 1,177 methods have an entry with examples run
 - [How-to](https://mayouni.github.io/stzsite/en/howto.html): 28 recipes, each a task, its code and its output, run
-- [Narrations](https://mayouni.github.io/stzsite/en/narrations.html): the library's stories in code; 135 run block by block as pages
+- [Narrations](https://mayouni.github.io/stzsite/en/narrations.html): the author's articles, 135 essays each a page, their code run in Haro's name where it can run
 - [The book](https://mayouni.github.io/stzsite/en/book.html): the Elementary Introduction, fifteen chapters in four languages; 15 proof pages show each chapter's cells run, the guard that proves them, and its exercises proving themselves
 
 ## How-to

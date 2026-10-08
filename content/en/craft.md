@@ -1,7 +1,7 @@
 ---
-title: The craft
-title_html: The <i>craft</i> of Softanza code
-kicker: How Softanza code is written
+title: How Softanza is written
+title_html: How Softanza is <i>written</i>
+kicker: The craft of Softanza code
 lede: Softanza is written so that a name tells you what a call does, a condition can travel inside an argument, a loop gives way to a metaphor, and the library can explain itself. These are conventions held across thousands of methods. This page shows each one running.
 description: How Softanza code is written: the grammar of its names, the small languages inside its arguments, the four metaphors that replace loops, its conventions, and a library that explains itself.
 ---
@@ -41,6 +41,16 @@ A loop hides which move it is making. Softanza names the four moves, and a task 
 </div>
 
 <!--SHOWCASE:craft:5-->
+
+## Fourteen rules of writing {#rules}
+
+Everything above is one grammar. Written out as rules, it is fourteen, and a line of code that follows them reads as the thinking behind it. These are readings of the library's own code and articles, stated as rules. Each rule's sample is written below it, not run; the runs that follow show several of them working.
+
+<!--RULES-->
+
+<!--SHOWCASE:craft:8,9,10,11-->
+
+<p class="way"><span>The Softanza way</span> The same rules serve the seven steps of the mental model, one rule or two at each step. <a href="way.html">The next page</a> sets the two side by side.</p>
 
 ## Conventions {#conventions}
 

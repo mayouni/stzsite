@@ -1491,3 +1491,54 @@ next:
   - me:      push, check the deploy once; then wave 2 on the author's word
   - author:  open the narrations index, try the filters, read one article to its citation; say whether the genres read right
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-08 22:17
+
+subject:   STZSITE-REFORM-01, wave 2: the paradigms -- Natural and executable, By example, The Softanzuter, The Softanza way, and the register of innovations
+
+why:       the author, "go ahead with wave 2"; the assessment's 12.12 to 12.15, 12.22 and 12.23 found five paradigms and a discipline that the library holds whole and the site names nowhere
+
+did:
+  - made Craft the style's page, "How Softanza is written", with the fourteen rules of writing, each with its sample written below it
+    and four new runs (a scene, a chain, a precise verb, a near-natural sentence); and hung the paradigm pages off it in the same left
+    bar the Education pages use, so the menu path gains no entry
+  - published "Natural, and executable": one program run in English, Hausa, French, Arabic and Turkish, the two directions (who parses),
+    the refusals with their reasons, a language added at runtime as a block of data, five faces, the history in four dates, the limits;
+    seven runs, all from the scenario guards that are green, because the articles' own blocks mostly no longer run as written
+  - published "By example" with a stage at each of its three levels in its titles (finding: every piece built, the verb not yet;
+    inducing: the agent declared and reserved; synthesising: designed), the example-to-promise law marked designed, and one sentence
+    saying nothing induces yet
+  - published "The Softanzuter": the definition, the ladder of four rungs with a stage at each, the Regexuter and the agent's cascade
+    run, the three siblings as vision, and the three meanings of the word; rung 2, the missing middle, is said to be unbuilt
+  - published "The Softanza way": the seven steps of the mental model with the rules that serve each, run on one problem, the three
+    widenings, and the courts that judge it, with the one that does not exist (a court for a program written with the library) marked
+    designed; every callout headed "The Softanza way" on the site now links to it (20 pages)
+  - declared the discipline once (data/discipline.json) and generated from it the craft page's rules, this page's steps, a new section
+    of llms.txt placed before the method list, and a discipline object in the agents index
+  - published the register of innovations as a page (47 rows, 7 families, each with the record's line, its evidence and the pages and
+    articles that tell it), marked designed: it is a hand-made reading, not yet generated from a guarded file
+  - ran 25 new snippets in the library at 4a184e6f0 (worktree clean before and after); the runner now records the commit it ran at, so a
+    run's label no longer claims the old pinned one
+  - found and left out of the page: the article that teaches rule 4 calls ReplaceNextOccurrence, a name the library does not define; its
+    named-parameter sample is shown from another source instead, and the article's name goes to stzlib
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,213 files, the former name in the code of 0 files, 0 texts under
+    the 16 px floor or under contrast on the new pages in both themes and both languages; looked at the Natural, Way and Softanzuter pages
+    on renders
+
+state:
+  paradigm pages:    built, en and fr; Craft is their hub
+  innovations:       published as "designed" until a guarded data file generates it
+  perception-gate:   OPEN (the agent looked; the author has not)
+  not done, on purpose: the Atlas layer above its areas, the Narrations page grouped by the seven families, a 2022 sample beside each
+                     rule, the Regexuter article split at its vision tail -- each waits on data the library does not hold yet
+
+waiting:
+  - REFORM-RULING-01: D1, D2, D3 -> the author [asked 19:45, not yet answered]
+  - the register as a guarded data file (B30), the narration that calls a name the library does not define, the lexicon coverage per
+    language and the no-network guard for the natural layer -> stzlib [routed now in CONCLUSIONS]
+
+next:
+  - me:      push, check the deploy once; then wave 3 on the author's word
+  - author:  open Craft and follow its left bar; read Natural and say whether the five faces are the ones you would claim
+```

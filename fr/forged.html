@@ -64,7 +64,7 @@ oReg.SetPhase(:production)
 [ [ [ &quot;invariant&quot;, &quot;sandbox-in-production&quot; ], [ &quot;severity&quot;, &quot;error&quot; ], [ &quot;where&quot;, &quot;restolean/mail&quot; ], [ &quot;message&quot;, &quot;still bound to a SANDBOX in a production phase -- a fake must never ship&quot; ] ] ]</pre></div></div><p class="ran">exécuté le 2026-10-04 01:42 dans la bibliothèque au commit 0e72e2e2c</p>
 
 <p>La première ligne est 0, pas saine. La seconde dit pourquoi : un faux ne doit jamais partir en production. Le faux est refusé par son nom, et un service déclaré mais jamais lié lève une erreur quand on le demande, au lieu de ne rien faire en silence.</p>
-<p class="way"><span>La manière Softanza</span> « Nous avons testé contre le bac à sable » ne veut rien dire si le code n'est pas, octet pour octet, celui qui part. Alors c'est la phase qui décide ce qui revient, et la vérification que rien de faux ne part est imposée, pas retenue de mémoire.</p>
+<p class="way"><span><a href="way.html">La manière Softanza</a></span> « Nous avons testé contre le bac à sable » ne veut rien dire si le code n'est pas, octet pour octet, celui qui part. Alors c'est la phase qui décide ce qui revient, et la vérification que rien de faux ne part est imposée, pas retenue de mémoire.</p>
 
 <p>Ce qui est vrai aujourd'hui, dit clairement : la première itération de RestoLean est une application web de mondes en fichier unique, sans étape de construction ; la constellation est un dessin que la bibliothèque sait exécuter, pas encore la production de RestoLean.</p>
 <h2 id="organizium">Organizium et la Sonibank : une organisation jugée sur son propre organigramme</h2>

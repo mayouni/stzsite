@@ -33,7 +33,7 @@
   <div class="wrap page-body">
 <h2 id="judges">Hands and judges</h2>
 <p>Coding agents such as Claude Code, Codex or Cursor come with their own tools: they read files, search them, edit them and run commands. More ways to find code help them little; they keep coming back to plain search. What they cannot do on their own is know an unfamiliar API without guessing, judge their work against rules and promises, and present a change as an intention a person can review before anything moves.</p>
-<p class="way"><span>The Softanza way</span> Softanza does not compete with the agent's tools for finding code. It supplies the judges: something that knows the API, something that checks the claim, and something that shows the change before it lands. The agent keeps its hands.</p>
+<p class="way"><span><a href="way.html">The Softanza way</a></span> Softanza does not compete with the agent's tools for finding code. It supplies the judges: something that knows the API, something that checks the claim, and something that shows the change before it lands. The agent keeps its hands.</p>
 
 <figure class="diagram"><img class="wide-only" src="../assets/img/diagrams/codingagents-en.png" alt="Three boxes joined by arrows. The coding agent, the hands: read and search, edit files, run a shell; Claude Code, Codex, Cursor and others. The door, one stz command, decided and drawn dashed: a command line, an MCP server, a skill and a hook, a plugin to install. The judges, Softanza, built: know the API, check code and promises, show the change first, compute on one engine. Beneath all three: the model proposes; a person commits; every tool says whether it may act, and refuses with its reason." width="1376" height="768"><img class="narrow-only" loading="lazy" src="../assets/img/diagrams/codingagents-narrow-en.png" alt="Three boxes joined by arrows. The coding agent, the hands: read and search, edit files, run a shell; Claude Code, Codex, Cursor and others. The door, one stz command, decided and drawn dashed: a command line, an MCP server, a skill and a hook, a plugin to install. The judges, Softanza, built: know the API, check code and promises, show the change first, compute on one engine. Beneath all three: the model proposes; a person commits; every tool says whether it may act, and refuses with its reason." width="640" height="1160"><figcaption>The judges are built and run today. The door between them and the agent is decided and not built yet.</figcaption></figure>
 
@@ -87,7 +87,7 @@ oPlan = oVfs.GenerateUpdatePlan()
 </ul>
 <h2 id="governed">Tools that know whether they may act</h2>
 <p>Every tool carries one of the platform's capability kinds: compute, sensing, inference or effect. The agent's model is treated as what it is, an actor that may infer and propose but not act. So a tool that computes or reads answers at once. A tool that would act returns a plan with an identifier and changes nothing. Only a person confirming at the agent's permission prompt, or a governed actor, commits that plan, and every call is recorded.</p>
-<p class="way"><span>The Softanza way</span> The difference with an ordinary tool server is not more tools. It is that every tool knows whether it may act, and refuses with its reason when it may not.</p>
+<p class="way"><span><a href="way.html">The Softanza way</a></span> The difference with an ordinary tool server is not more tools. It is that every tool knows whether it may act, and refuses with its reason when it may not.</p>
 
 <h2 id="order">The order of work</h2>
 <ol>

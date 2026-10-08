@@ -1,7 +1,7 @@
 ---
-title: Le métier
-title_html: Le <i>métier</i> du code Softanza
-kicker: Comment s'écrit le code Softanza
+title: Comment Softanza s'écrit
+title_html: Comment Softanza <i>s'écrit</i>
+kicker: Le métier du code Softanza
 lede: Softanza s'écrit de sorte qu'un nom dise ce que fait un appel, qu'une condition voyage dans un argument, qu'une boucle laisse place à une métaphore, et que la bibliothèque puisse s'expliquer elle-même. Ce sont des conventions tenues sur des milliers de méthodes. Cette page montre chacune en marche.
 description: Comment s'écrit le code Softanza : la grammaire de ses noms, les petites langues dans ses arguments, les quatre métaphores qui remplacent les boucles, ses conventions, et une bibliothèque qui s'explique elle-même.
 ---
@@ -41,6 +41,16 @@ Une boucle cache le geste qu'elle fait. Softanza nomme les quatre gestes, et une
 </div>
 
 <!--SHOWCASE:craft:5-->
+
+## Quatorze règles d'écriture {#rules}
+
+Tout ce qui précède est une seule grammaire. Écrite en règles, elle en compte quatorze, et une ligne de code qui les suit se lit comme la pensée qui la porte. Ce sont des lectures du code et des articles de la bibliothèque, énoncées en règles. L'exemple de chaque règle est écrit sous elle, sans être exécuté ; les exécutions qui suivent en montrent plusieurs à l'œuvre.
+
+<!--RULES-->
+
+<!--SHOWCASE:craft:8,9,10,11-->
+
+<p class="way"><span>La manière Softanza</span> Les mêmes règles servent les sept étapes du modèle mental, une règle ou deux à chaque étape. <a href="way.html">La page suivante</a> met les deux côte à côte.</p>
 
 ## Conventions {#conventions}
 

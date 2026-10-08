@@ -718,6 +718,34 @@
    "source": "base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md",
    "what_en": "Ask the library what it calls what you mean: HowTo composes the call from the naming grammar and says so, and an unknown method is refused by name.",
    "what_fr": "Demandez à la bibliothèque comment elle nomme ce que vous voulez : HowTo compose l'appel à partir de la grammaire des noms et le dit, et une méthode inconnue est refusée nommément."
+  },
+  {
+   "code": "# a scene: one object, and the questions asked inside it\nQ(\"Niamey ♥\") {\n\t? NumberOfChars()\n\t? Uppercased()\n\t? StartsWith(\"Nia\")\n}",
+   "expected": "8\nNIAMEY ♥\n1",
+   "source": "base/doc/narrations/stz-functions-as-linguistic-expressions.md",
+   "what_en": "Rules 1, 2 and 9: the value lifted by Q(), a scene where several questions are asked of one object, and NumberOfChars() rather than a vague Size().",
+   "what_fr": "Règles 1, 2 et 9 : la valeur élevée par Q(), une scène où l'on pose plusieurs questions à un seul objet, et NumberOfChars() plutôt qu'un vague Size()."
+  },
+  {
+   "code": "? Q(\"LIFE\").\n\tLowercaseQ().\n\tSpacifyQ().\n\tCharsQ().\n\tRemoveSpacesQ().\n\tUppercaseQ().\n\tJoinQ().\n\tSpacifyQ().\n\tReplaceQ(\"I\", :With = AHeart()).\n\tContent()",
+   "expected": "L ♥ F E",
+   "source": "base/doc/narrations/stzobject-history-narration.md",
+   "what_en": "Rules 5 and 6: a chain in the order of thought, one step per line with the dot at the end, each verb in its Q form so the sentence goes on.",
+   "what_fr": "Règles 5 et 6 : une chaîne dans l'ordre de la pensée, un pas par ligne et le point en fin de ligne, chaque verbe sous sa forme Q pour que la phrase continue."
+  },
+  {
+   "code": "? Q(\"one two three\").ContainsBoth(\"one\", \"three\")\n? Q([ 1, 2, 3 ]).ContainsBoth(1, 4)",
+   "expected": "1\n0",
+   "source": "base/string/stzString.ring",
+   "what_en": "Rule 9, precision over generality: ContainsBoth says exactly what is asked, where a general Contains would need a loop.",
+   "what_fr": "Règle 9, la précision avant la généralité : ContainsBoth dit exactement ce qui est demandé, là où un Contains général demanderait une boucle."
+  },
+  {
+   "code": "# a sentence the library can judge\n? _(8).IsA(:Number).Which('IsDoubleOf(4)')._\n\n# and a question it answers from what it was told\nStzKnow(:Apple, :Fruit)\n? @@( WhatIs(:Apple) )",
+   "expected": "1\n[ \"fruit\" ]",
+   "source": "base/test/chainoftruth/16_all_these_return_1.ring",
+   "what_en": "Rule 12: a line of code can stay near-natural, a statement the library judges true or false, a question it answers from its knowledge.",
+   "what_fr": "Règle 12 : une ligne de code peut rester presque naturelle, une affirmation que la bibliothèque juge vraie ou fausse, une question à laquelle elle répond depuis ce qu'elle sait."
   }
  ],
  "architecture": [
@@ -748,6 +776,115 @@
    "source": "base/doc/narrations/stz-emulating-the-whole-solution-narration.md",
    "what_en": "Declare what each part of a product needs, and Softanza computes the engine subset to ship: the phone's on-device module carries only the aggregation and solver groups.",
    "what_fr": "Déclarez ce dont chaque partie d'un produit a besoin, et Softanza calcule le sous-ensemble du moteur à embarquer : le module du téléphone ne porte que les groupes agrégation et solveur."
+  }
+ ],
+ "natural": [
+  {
+   "code": "Naturally(\"\n    Make a string with 'hello niger' inside\n    Spacify it and uppercase it\n    @Box it while the box@ is rounded\n    Display it on the screen\n    Thank you very much\n\")",
+   "expected": "╭───────────────────────╮\n│ H E L L O   N I G E R │\n╰───────────────────────╯",
+   "source": "base/test/natural/32_natural_code_in_english.ring",
+   "what_en": "A program written as English sentences, run as it stands: no model reads it, the library's dictionary does.",
+   "what_fr": "Un programme écrit en phrases anglaises, exécuté tel quel : aucun modèle ne le lit, c'est le dictionnaire de la bibliothèque qui le lit."
+  },
+  {
+   "code": "o1 = NaturallyIn(\"hausa\", \"\n    Yi rubutu da dauke 'hello niger' a ciki\n    Raba shi kuma maida shi\n    @Akwati shi kuma wannan akwati@ dole zagaye\n    Nuna shi a kan allo\n    Na gode susai\n\")",
+   "expected": "╭───────────────────────╮\n│ H E L L O   N I G E R │\n╰───────────────────────╯",
+   "source": "base/test/natural/33_natural_code_in_hausa_latin_script_boko.ring",
+   "what_en": "The same program in Hausa: the words differ, the meanings are the same entries of one dictionary.",
+   "what_fr": "Le même programme en haoussa : les mots changent, les sens sont les mêmes entrées d'un seul dictionnaire."
+  },
+  {
+   "code": "o1 = NaturallyIn(\"fr\", \"Crée une liste avec [ 5, 3, 5, 1 ] et enlève les doublons\")\n? @@( o1.Result() )\n? o1.Understood()\n\no2 = NaturallyIn(\"ar\", \"أنشئ قائمة بـ [ 5, 3, 5 ] ثم أزل تكراراتها\")\n? @@( o2.Result() )\n? o2.Understood()\n\no3 = NaturallyIn(\"tr\", \"[ 3, 1, 3 ] ile bir liste oluştur ve tekrarları kaldır\")\n? @@( o3.Result() )",
+   "expected": "[ 5, 3, 1 ]\ncrée liste avec [ 5, 3, 5, 1 ] -> enlève les doublons\n[ 5, 3 ]\nأنشئ قائمة بـ [ 5, 3, 5 ] -> أزل التكرارات\n[ 3, 1 ]",
+   "source": "base/test/natural/multilingual_pack_narrated.ring",
+   "what_en": "French, Arabic and Turkish, verb last: each sentence runs, and each says back, in its own language, what it understood.",
+   "what_fr": "Français, arabe et turc, verbe en fin de phrase : chaque phrase s'exécute, et chacune redit, dans sa propre langue, ce qu'elle a compris."
+  },
+  {
+   "code": "aLint = StzNaturalLintIn(\"fr\", \"Crée une chaine avec 'x' et majuscul la\")\n# understood entirely? no\n? aLint[:understood]\n# the word it does not know, and the nearest word it knows\n? @@( aLint[:unresolved] )\n# a word outside the dictionary means nothing, never a guess\n? StzResolveSemanticInLang(\"fr\", \"zzqx\") = \"\"",
+   "expected": "0\n[ [ \"majuscul\", \"majuscule\" ] ]\n1",
+   "source": "base/test/natural/multilingual_pack_narrated.ring",
+   "what_en": "What it does not understand, it says: the misspelled word is named with the nearest word the dictionary holds, and an unknown word resolves to nothing.",
+   "what_fr": "Ce qu'il ne comprend pas, il le dit : le mot mal écrit est nommé avec le mot le plus proche que tient le dictionnaire, et un mot inconnu ne se résout en rien."
+  },
+  {
+   "code": "cTmpl = \"Create a list with {#1} and remove its duplicates\"\n? @@( NaturallyWith(cTmpl, [ [ 5, 3, 5 ] ]).Result() )\n? @@( NaturallyWith(cTmpl, [ [ 9, 9, 4 ] ]).Result() )\n\n# a hole left empty is refused: a template is a contract\nbRefused = 0\ntry\n    NaturallyWith(\"Create a string with {#1} and {#2} it\", [ \"x\" ])\ncatch\n    bRefused = 1\ndone\n? bRefused",
+   "expected": "[ 5, 3 ]\n[ 9, 4 ]\n1",
+   "source": "base/test/natural/literate_templates_narrated.ring",
+   "what_en": "One sentence with holes, many programs; and a hole left unfilled refuses to run instead of guessing.",
+   "what_fr": "Une phrase à trous, plusieurs programmes ; et un trou laissé vide refuse de s'exécuter au lieu de deviner."
+  },
+  {
+   "code": "StzAddNaturalLanguage([\n\t:code = \"sw\",\n\t:name = \"swahili\",\n\t:script = \"latin\",\n\t:ignored_words = [ \"na\", \"ya\", \"kwa\", \"hii\" ],\n\t:semantic_mappings = [\n\t\t[:natural = \"unda\",   :semantic = \"CREATE_OBJECT\"],\n\t\t[:natural = \"orodha\", :semantic = \"OBJECT_LIST\"],\n\t\t[:natural = \"na\",     :semantic = \"VALUE_INDICATOR\"]\n\t],\n\t:phrases = [\n\t\t[:semantic = \"METHOD_REMOVEDUPLICATES\", :words = \"ondoa nakala, futa nakala\"]\n\t]\n])\n? StzHasLanguagePack(\"sw\")\n? @@( NaturallyIn(\"sw\", \"Unda orodha na [ 9, 4, 9 ] ondoa nakala\").Result() )",
+   "expected": "1\n[ 9, 4 ]",
+   "source": "base/test/natural/multilingual_pack_narrated.ring",
+   "what_en": "A language added while the program runs, as a block of data: no code, no load, and its first sentence runs.",
+   "what_fr": "Une langue ajoutée pendant que le programme tourne, comme un bloc de données : pas de code, pas de chargement, et sa première phrase s'exécute."
+  },
+  {
+   "code": "# the other direction: the programmer is the parser, the chain is the sentence\n? TheWordQ(\"niger\").IsAQ([ :Lowercase, :Latin, :Word ]).WithQ().\n\tALengthQ().OfQ(5).UnitQ(:Letters).AndQ().OnlyQ(2).VowelNB()\n\n# a sentence that makes no sense is refused, not absorbed\nbRefused = 0\ntry\n    Q(5).VowelNB()\ncatch\n    bRefused = 1\ndone\n? bRefused",
+   "expected": "1\n1",
+   "source": "base/test/natural/nnl_narrated.ring",
+   "what_en": "The other direction: a chain that reads as an English sentence, where the programmer is the parser; a number asked for its vowels is refused.",
+   "what_fr": "L'autre sens : une chaîne qui se lit comme une phrase anglaise, où le programmeur est l'analyseur ; un nombre à qui l'on demande ses voyelles est refusé."
+  }
+ ],
+ "way": [
+  {
+   "code": "# 1 · say the problem in natural terms: the sentence runs\n? @@( Naturally(\"Create a list with [ 3, 1, 3 ] and remove its duplicates\").Result() )",
+   "expected": "[ 3, 1 ]",
+   "source": "base/test/natural/multilingual_pack_narrated.ring",
+   "what_en": "Step 1, define the problem in natural terms: here the definition is already the program.",
+   "what_fr": "Étape 1, définir le problème en termes naturels : ici la définition est déjà le programme."
+  },
+  {
+   "code": "# 2 · select the object\no1 = new stzList([ \"A\", \"\", \"B\", \"\", \"\", \"C\" ])\n\n# 3 · does it contain?\n? o1.ContainsEmptyStrings()\n\n# 4 · how many?\n? o1.CountEmptyStrings()\n\n# 5 · where?\n? @@( o1.FindEmptyStrings() )\n\n# 6 · act on the positions, with the dedicated verb\no1.ReplaceEmptyStrings(:With = \"~\")\n? @@( o1.Content() )",
+   "expected": "1\n3\n[ 2, 4, 5 ]\n[ \"A\", \"~\", \"B\", \"~\", \"~\", \"C\" ]",
+   "source": "base/doc/narrations/stz-mental-mode-narration.md",
+   "what_en": "Steps 2 to 6 on one object: select it, ask whether, how many and where, then act with the verb whose name says the act.",
+   "what_fr": "Les étapes 2 à 6 sur un seul objet : le choisir, demander si, combien et où, puis agir avec le verbe dont le nom dit l'acte."
+  },
+  {
+   "code": "# 7 · and again: the chain keeps the history of its steps\n? @@( Qh(12500).\n\tAddQ(500).\n\tRetrieveQ(1500).\n\tDivideByQ(500).\n\tMultiplyByQ(2).\n\tHistory() )",
+   "expected": "[ 12500, 13000, 11500, 23, 46 ]",
+   "source": "base/test/string/468_pr.ring",
+   "what_en": "Step 7, celebrate and repeat: one step per line, the dot at the end, and the chain remembers every value it held, the first one included.",
+   "what_fr": "Étape 7, célébrer et recommencer : un pas par ligne, le point en fin de ligne, et la chaîne se souvient de chaque valeur tenue, la première comprise."
+  }
+ ],
+ "softanzuter": [
+  {
+   "code": "rxu() {\n\tTrigger(:Number = \"(\\d+)\")\n\tTrigger(:WordInQuotes = '\"([^\"]+)\"')\n\tTrigger(:EmailAddr = \"([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})\")\n\n\t@C( :When = :Number, :Do = '{\n\t\t@value = @number(@value) * 2\n\t}')\n\t@C( :When = :WordInQuotes, :Do = '{\n\t\t@value = upper(@value)\n\t}')\n\t@C( :When = :EmailAddr, :Do = '{\n\t\t@value = \"CONTACT: \" + @value\n\t}')\n\n\tProcess('Contact \"john doe\" at john@example.com or call 555123 for a \"quick response\"')\n\t? @@NL( ResultXT() )\n}",
+   "expected": "[\n\t[ 1110246, \"555123\" ],\n\t[ '\"JOHN DOE\"', '\"john doe\"' ],\n\t[ '\"QUICK RESPONSE\"', '\"quick response\"' ],\n\t[ \"CONTACT: john@example.com\", \"john@example.com\" ]\n]",
+   "source": "base/test/regexuter/06_computing_multiple_triggers.ring",
+   "what_en": "Rung 1, the Regexuter: three patterns, each bound to a small computation; the text flows through and every match fires its own.",
+   "what_fr": "Échelon 1, le Regexuter : trois motifs, chacun lié à un petit calcul ; le texte passe et chaque correspondance déclenche le sien."
+  },
+  {
+   "code": "oChain = new stzPIAgent(\"cook\")\noChain.MemoryQ().Learn(\"order\", \"state\", \"placed\")\n# three skills chain: placed -> cooking -> plated -> served\ns1 = new stzAgentSkill(\"cook\")\ns1.SetWhen(func oM { return oM.Fact(\"order\", \"state\", \"placed\") })\ns1.SetDoes(func oM { oM.Forget(\"order\",\"state\",\"placed\") oM.Learn(\"order\",\"state\",\"cooking\") return 1 })\ns1.SetVerifiedBy(func oM { return oM.Fact(\"order\",\"state\",\"cooking\") })\ns2 = new stzAgentSkill(\"plate\")\ns2.SetWhen(func oM { return oM.Fact(\"order\", \"state\", \"cooking\") })\ns2.SetDoes(func oM { oM.Forget(\"order\",\"state\",\"cooking\") oM.Learn(\"order\",\"state\",\"plated\") return 1 })\ns2.SetVerifiedBy(func oM { return oM.Fact(\"order\",\"state\",\"plated\") })\ns3 = new stzAgentSkill(\"serve\")\ns3.SetWhen(func oM { return oM.Fact(\"order\", \"state\", \"plated\") })\ns3.SetDoes(func oM { oM.Forget(\"order\",\"state\",\"plated\") oM.Learn(\"order\",\"state\",\"served\") return 1 })\ns3.SetVerifiedBy(func oM { return oM.Fact(\"order\",\"state\",\"served\") })\noChain.AddSkill(s1)\noChain.AddSkill(s2)\noChain.AddSkill(s3)\nnC = oChain.Pursue()\nchk(\"all three skills fire in the cascade\", nC = 3)\nchk(\"the order reaches its final state\", oChain.MemoryQ().Fact(\"order\",\"state\",\"served\") = 1)",
+   "expected": "",
+   "source": "base/test/agentic/piagent_narrated.ring",
+   "what_en": "Rung 3, the agent: each skill's result is a fact the next skill matches over, and the agent goes on until nothing changes any more.",
+   "what_fr": "Échelon 3, l'agent : le résultat de chaque compétence est un fait sur lequel la suivante se déclenche, et l'agent continue jusqu'à ce que plus rien ne change."
+  }
+ ],
+ "byexample": [
+  {
+   "code": "# an example as the house writes one: the call, and under it the answer it promises\n? @@( Q([ 3, 1, 3, 2 ]).DuplicatesRemoved() )\n#--> [ 3, 1, 2 ]",
+   "expected": "[ 3, 1, 2 ]",
+   "source": "base/doc/narrations/stz-functions-as-linguistic-expressions.md",
+   "what_en": "The ground: an example in the library's own test form, a call and its promised answer, which a court compares with what really printed.",
+   "what_fr": "Le sol : un exemple dans la forme de test de la bibliothèque, un appel et la réponse promise, qu'un juge compare avec ce qui s'est vraiment affiché."
+  },
+  {
+   "code": "# found today from the WORDS of the need, not yet from an example of it\noDoc = StzSelfDocQ(\"stzList\")\n? oDoc.HowTo(\"remove duplicates from a list\")",
+   "expected": "",
+   "contains": [
+    "Duplicates"
+   ],
+   "source": "base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md",
+   "what_en": "What exists today: the library finds a method from the words of a need, with no model. Finding it from an example of the need is the next step, not built.",
+   "what_fr": "Ce qui existe aujourd'hui : la bibliothèque trouve une méthode à partir des mots d'un besoin, sans modèle. La trouver à partir d'un exemple du besoin est l'étape suivante, pas encore construite."
   }
  ]
 }

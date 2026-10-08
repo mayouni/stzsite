@@ -33,3 +33,5 @@ PROVED  an AI cannot commit what the agent proposed</pre></div></div>
 <p class="ran">exécuté le 2026-09-30 à 23:10 par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">la démonstration pour décideurs</a>, scène 6 ; le même mécanisme avec un relecteur humain qui rejette une étape est le garde <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/system/virtual_system_twin_narrated.ring">virtual_system_twin_narrated</a>, scène 5</p>
 
 <p class="way"><span>La manière Softanza</span> La sécurité n'est pas une consigne qui demande au modèle d'être prudent. C'est une architecture dans laquelle le modèle n'a rien avec quoi être prudent.</p>
+
+<p>Ce qui rend l'esprit d'un agent programmatique et non un modèle dans une boucle, c'est une échelle de motifs, de facultés et d'agents : <a href="softanzuter.html">le Softanzuter</a>.</p>

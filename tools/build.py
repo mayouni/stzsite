@@ -89,12 +89,19 @@ SECTIONS = [
 SUBPAGES = {"education-self": "education", "education-teach": "education", "education-programme": "education", "education-record": "education"}
 EDU_BAR = {"fr": ("Éducation", [("education", "Les trois portes"), ("education-self", "J'apprends seul"), ("education-teach", "J'enseigne ou je conçois"), ("education-programme", "Je dirige un programme"), ("education-record", "Ce qui est prouvé")]),
            "en": ("Education", [("education", "The three doors"), ("education-self", "I learn by myself"), ("education-teach", "I teach or design"), ("education-programme", "I run a programme"), ("education-record", "What is proved")])}
+# The Craft page is the style's page (12.12) and the paradigms that follow from it are its chapters, shown in the same left bar
+SUBPAGES.update({p: "craft" for p in ("way", "natural", "byexample", "softanzuter", "innovations")})
+CRAFT_BAR = {"fr": ("Comment Softanza s'écrit", [("craft", "Comment Softanza s'écrit"), ("way", "La manière Softanza"), ("natural", "Naturel, et exécutable"), ("byexample", "Par l'exemple"),
+                                                    ("softanzuter", "Le Softanzuter"), ("innovations", "Les innovations")]),
+             "en": ("How Softanza is written", [("craft", "How Softanza is written"), ("way", "The Softanza way"), ("natural", "Natural, and executable"), ("byexample", "By example"),
+                                                ("softanzuter", "The Softanzuter"), ("innovations", "Innovations")])}
+BARS = {"education": EDU_BAR, "craft": CRAFT_BAR}
 OLD_PAGES = {"teaching": "education", "pedagogy": "education"}        # the old addresses lead to the new page
 GENERATED = {"reference", "narrations", "howto", "ask", "narrations-performance", "narrations-security", "narrations-delivery"}   # built by code, not from a .md
 OWNER = {}                                          # page -> its section
 for sec, _, pages in SECTIONS:
     for slug, _ in pages: OWNER[slug] = sec
-for _sp in SUBPAGES: OWNER[_sp] = "learn"
+for _sp in SUBPAGES: OWNER[_sp] = OWNER[SUBPAGES[_sp]]
 OWNER["atlas-group"] = "platform"
 OWNER["guide"] = "learn"                            # a guide page sits under Documentation
 OWNER["book-proof"] = "learn"                       # the proof of a chapter sits under The book
@@ -380,6 +387,8 @@ def inject(body_html, lang, idx, groups, rel="../"):
     body_html = body_html.replace("<!--METHODS-->", fmt(COUNTS["methods"])).replace("<!--CLASSES-->", fmt(COUNTS["classes"])).replace("<!--ENTRIES-->", fmt(COUNTS["entries"]))
     body_html = body_html.replace("<!--AREAS-->", fmap_html(lang, idx, groups, "atlas/") + tiles_html(lang, idx, groups, "atlas/", rel))
     body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
+    for tag, fn in (("RULES", rules_html), ("STEPS", steps_html), ("INNOVATIONS", innovations_html)):
+        if f"<!--{tag}-->" in body_html: body_html = body_html.replace(f"<!--{tag}-->", fn(lang))
     body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
     body_html = body_html.replace("<!--DOCS-SCOPE-->", scope_html(lang, idx, groups))
     for tag, data_file in (("EDU", "edu-run.json"), ("FORGED", "forged-run.json"), ("EDUREC", "edu-record-run.json")):      # code the library ran for the page, beside what it printed
@@ -416,7 +425,10 @@ def check_reading_arc(slug, lang, body_html):
         t = re.sub(r"<[^>]+>", "", p)
         if len(t) > 800: LONG.append(f"{lang}/{slug}: {len(t)} chars: {t[:60]}...")
 
+WAY_RX = re.compile(r'<p class="way"><span>(The Softanza way|La manière Softanza)</span>')
 def page_shell(lang, slug, title, description, kicker, title_html, lede, body_html, rel="../", page_key=None, other_href=None, body_class=None, tail=None):
+    if slug != "way":
+        body_html = WAY_RX.sub(lambda m: f'<p class="way"><span><a href="{nav_prefix(rel, lang)}way.html">{m.group(1)}</a></span>', body_html)
     page = head(lang, f'{title} · Softanza', description, rel)
     page += f'\n<body class="{body_class or "page page-" + slug}">\n' + header(lang, slug, rel, other_href=other_href, page_key=page_key, tail=tail)
     page += f"""
@@ -446,8 +458,9 @@ def build_page(lang, slug, idx, groups):
     check_reading_arc(slug, lang, body_html)
     page = page_shell(lang, slug, title, meta.get("description", ""), esc(meta.get("kicker", "")),
                       meta.get("title_html", esc(title)), BOLD_RX.sub(BOLD_TO, meta.get("lede", "")), body_html)
-    if slug == "education" or slug in SUBPAGES:
-        label, items = EDU_BAR[lang]
+    parent = slug if slug in BARS else SUBPAGES.get(slug)
+    if parent:
+        label, items = BARS[parent][lang]
         page = level2.wrap(page, level2.nav(label, [("", [(f"{s}.html", n, "page" if s == slug else "") for s, n in items])]))
     out = ROOT / lang / f"{slug}.html"
     out.parent.mkdir(exist_ok=True)
@@ -491,9 +504,9 @@ def heritage_html(lang, slug):
             f'<div><h4>{ui["re"]}</h4><ul>{items(h.get("rethought", []), True)}</ul></div></div>')
 
 # the distinctive capability of each area, run inside the library (data/showcase.json)
-SHOW_UI = {"fr": {"h": "La manière Softanza, exécutée", "ran": "exécuté le {d} dans la bibliothèque au commit 0e72e2e2c ; tiré de",
+SHOW_UI = {"fr": {"h": "La manière Softanza, exécutée", "ran": "exécuté le {d} dans la bibliothèque au commit {c} ; tiré de",
                   "intro": "Ce que Softanza fait autrement dans ce domaine, montré par du code tiré de ses narrations et de ses gardes, et exécuté pour cette page."},
-           "en": {"h": "The Softanza way, run", "ran": "run on {d} inside the library at commit 0e72e2e2c; taken from",
+           "en": {"h": "The Softanza way, run", "ran": "run on {d} inside the library at commit {c}; taken from",
                   "intro": "What Softanza does differently in this area, shown by code taken from its narrations and guards, and run for this page."}}
 def load_showcase():
     f = DATA / "showcase.json"
@@ -530,7 +543,7 @@ def showcase_html(lang, slug, heading=True, only=None):
         parts.append(f'<p style="margin-top:32px"><b>{esc(it["what_" + lang])}</b></p>'
                      f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(it["code"])}</pre></div>'
                      f'<div class="out"><div class="lbl">{out_lbl}</div><pre>{esc(it["out"])}</pre></div></div>'
-                     f'<p class="ran">{ui["ran"].format(d=esc(it["ran"]))} <a href="{esc(src_link(it["source"]))}">{esc(it["source"].split(" ")[0])}</a></p>')
+                     f'<p class="ran">{ui["ran"].format(d=esc(it["ran"]), c=esc(it.get("commit", "0e72e2e2c")))} <a href="{esc(src_link(it["source"]))}">{esc(it["source"].split(" ")[0])}</a></p>')
     return "".join(parts)
 
 RATING_CLASS = {"Strong": "strong", "Solid": "solid", "Partial": "partial", "Emerging": "emerging"}
@@ -688,6 +701,66 @@ def area_articles(lang, slug):
     head_txt = {"fr": "Les articles de ce domaine", "en": "The articles of this area"}[lang]
     lis = "".join(f'<li><a href="../narrations/{narration_slug(f)}.html">{esc(title_of(runs[f]))}</a> <span class="mono">{esc(cards[f]["year"])}</span></li>' for f in files)
     return f'<h2>{head_txt} <span class="mono">({len(files)})</span></h2><ul class="narr">{lis}</ul>'
+
+# ----------------------------------------------------------------------------
+# the discipline, declared once (data/discipline.json), and the register of innovations (data/innovations.json)
+def load_json(name): return json.loads((DATA / name).read_text(encoding="utf-8"))
+
+def rules_html(lang):
+    d = load_json("discipline.json")
+    lis = "".join(f'<li id="rule-{r["n"]}" value="{r["n"]}">{esc(r[lang])} <code>{esc(r["ex"])}</code></li>' for r in d["rules"])
+    return f'<ol class="rules">{lis}</ol>'
+
+def steps_html(lang):
+    d = load_json("discipline.json")
+    lab = {"fr": "règles", "en": "rules"}[lang]
+    lis = []
+    for st in d["steps"]:
+        rl = ", ".join(f'<a href="craft.html#rule-{n}">{n}</a>' for n in st["rules"])
+        lis.append(f'<li value="{st["n"]}"><b>{esc(st[lang])}</b> <span class="rx-src">{lab} {rl}</span><code>{esc(st["sample"])}</code></li>')
+    return f'<ol class="steps">{"".join(lis)}</ol>'
+
+EVIDENCE_FR = [(r"a design of ([\d,]+) lines", r"une conception de \1 lignes"), (r"an analysis of ([\d,]+) lines", r"une analyse de \1 lignes"),
+               (r"1 article of ([\d,]+) lines", r"1 article de \1 lignes"), (r"a design", "une conception"), (r"designs", "conceptions"), (r"a registry", "un registre"),
+               (r"code files", "fichiers de code"), (r"code file", "fichier de code"), (r"test files", "fichiers de test"), (r"test blocks", "blocs de test"),
+               (r"no test", "aucun test"), (r"engine modules", "modules du moteur"), (r"an engine module", "un module du moteur"), (r"engine module", "module du moteur"),
+               (r"guards ([\d/]+) and ([\d/]+)", r"gardes \1 et \2"), (r"a guard of ([\d/]+)", r"garde : \1"), (r"guards", "gardes"),
+               (r"the structured-output contract", "le contrat de sortie structurée"), (r"two engines", "deux moteurs"), (r"four instances", "quatre instances"),
+               (r"promised examples", "exemples promis"), (r"the agent declared and reserved", "l'agent est déclaré et réservé"), (r"assertions", "assertions"),
+               (r"articles", "articles"), (r"tags", "balises"), (r"files", "fichiers"), (r"lines", "lignes"), (r"and", "et")]
+def evidence(lang, e):
+    if lang == "en": return e
+    for a, b in EVIDENCE_FR: e = re.sub(a, b, e)
+    return e
+
+PAGE_NAMES = {"softanzuter": {"fr": "Le Softanzuter", "en": "The Softanzuter"}, "natural": {"fr": "Naturel, et exécutable", "en": "Natural, and executable"},
+              "byexample": {"fr": "Par l'exemple", "en": "By example"}, "craft": {"fr": "Comment Softanza s'écrit", "en": "How Softanza is written"},
+              "refinement": {"fr": "Raffinement", "en": "Refinement"}, "wise": {"fr": "Wise coding", "en": "Wise coding"}, "agentic": {"fr": "Agentique", "en": "Agentic"},
+              "languages": {"fr": "Langue des langues", "en": "Language of languages"}, "ask": {"fr": "Interroger la bibliothèque", "en": "Ask the library"},
+              "narrations-delivery": {"fr": "Série livraison", "en": "Delivery series"}, "narrations-performance": {"fr": "Série performance", "en": "Performance series"},
+              "narrations-security": {"fr": "Série sécurité", "en": "Security series"}}
+
+def innovations_html(lang):
+    from build_narration_pages import title_of
+    reg = load_json("innovations.json")
+    runs = load_json("narrations-run.json")
+    told = {"fr": "Raconté ici", "en": "Told on this site"}[lang]
+    ev = {"fr": "Preuves", "en": "Evidence"}[lang]
+    out = [f'<p class="proof"><b>{ {"fr": "conçu", "en": "designed"}[lang] }</b> {esc(reg["read" if lang == "en" else "read_fr"])}</p>']
+    for fam, (en, fr) in reg["families"].items():
+        rows = [r for r in reg["rows"] if r[0] == fam]
+        lis = []
+        for _, n, nen, nfr, oen, ofr, evid, files, page in rows:
+            links = []
+            if page: links.append(f'<a href="{page}.html">{esc(PAGE_NAMES[page][lang])}</a>')
+            for f in files:
+                if f not in runs or "text" not in runs[f]: raise SystemExit(f"innovations.json row {n}: no article {f}")
+                links.append(f'<a href="narrations/{narration_slug(f)}.html">{esc(title_of(runs[f]))}</a>')
+            tl = " · ".join(links) if links else {"fr": "pas encore raconté sur ce site", "en": "not yet told on this site"}[lang]
+            lis.append(f'<li><a id="i{n}"></a><b>{n} · {esc(nen if lang == "en" else nfr)}</b><p>{esc(oen if lang == "en" else ofr)}</p>'
+                       f'<span class="rx-src">{ev} : {esc(evidence(lang, evid))}</span><br><span class="rx-src">{told} : </span>{tl}</li>')
+        out.append(f'<h2>{esc(en if lang == "en" else fr)}</h2><ul class="narr research">{"".join(lis)}</ul>')
+    return "".join(out)
 
 # ----------------------------------------------------------------------------
 # the tour: scenes separated by <<< scene ... >>> lines, notes in ```notes fences

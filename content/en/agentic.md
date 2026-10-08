@@ -33,3 +33,5 @@ PROVED  an AI cannot commit what the agent proposed</pre></div></div>
 <p class="ran">run on 2026-09-30 at 23:10 by <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">the decision-makers' demo</a>, scene 6; the same mechanism with a human reviewer rejecting one step is the guard <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/system/virtual_system_twin_narrated.ring">virtual_system_twin_narrated</a>, scene 5</p>
 
 <p class="way"><span>The Softanza way</span> Safety is not a prompt asking the model to be careful. It is an architecture in which the model has nothing to be careful with.</p>
+
+<p>What makes an agent's mind programmatic and not a model in a loop is a ladder of patterns, faculties and agents: <a href="softanzuter.html">the Softanzuter</a>.</p>

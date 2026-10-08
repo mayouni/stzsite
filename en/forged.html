@@ -64,7 +64,7 @@ oReg.SetPhase(:production)
 [ [ [ &quot;invariant&quot;, &quot;sandbox-in-production&quot; ], [ &quot;severity&quot;, &quot;error&quot; ], [ &quot;where&quot;, &quot;restolean/mail&quot; ], [ &quot;message&quot;, &quot;still bound to a SANDBOX in a production phase -- a fake must never ship&quot; ] ] ]</pre></div></div><p class="ran">run on 2026-10-04 01:42 inside the library at commit 0e72e2e2c</p>
 
 <p>The first line is 0, not sound. The second says why: a fake must never ship. The fake is refused by name, and a service that was declared and never bound raises when asked for, instead of silently doing nothing.</p>
-<p class="way"><span>The Softanza way</span> "We tested against the sandbox" means something only if the code is byte for byte the code that ships. So the phase decides what comes back, and the check that nothing fake ships is enforced, not remembered.</p>
+<p class="way"><span><a href="way.html">The Softanza way</a></span> "We tested against the sandbox" means something only if the code is byte for byte the code that ships. So the phase decides what comes back, and the check that nothing fake ships is enforced, not remembered.</p>
 
 <p>What is true today, said plainly: RestoLean's first iteration is a web application of single-file worlds with no build step; the constellation is a design the library can run, not yet RestoLean's production.</p>
 <h2 id="organizium">Organizium and Sonibank: an organisation judged by its own chart</h2>

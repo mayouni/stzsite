@@ -162,6 +162,7 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
                    **({"ran": x["ran"], "kept": sum(1 for b in x["blocks"] if b["verdict"] == "kept"), "blocks": len(x["blocks"])}
                       if x.get("ran") and x.get("blocks") else {"run": x.get("reason") or x.get("status") or "not run"})}
                   for f, x in sorted(narr.items()) if publishable(x)]
+    disc = json.loads((ROOT / "data" / "discipline.json").read_text(encoding="utf-8"))
     proof = build_proof.load(ROOT)
     book = [{"chapter": c["n"], "title": c["title"].get("en", c["id"]), "page": f'{SITE}en/book/{c["id"]}.html', "cells": len(c["cells"]),
              "promises": c["editions"]["en"]["promises"], "proven": build_proof.proven(c), "exercises": len(c["exercises"]), "ran": proof["ran"]}
@@ -176,6 +177,9 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
                                   "howto_same_method": sum(1 for q in ask["questions"] if q.get("howto_grade") == "same"),
                                   "howto_same_verb": sum(1 for q in ask["questions"] if q.get("howto_grade") == "verb"),
                                   "ask_top3_hit": sum(1 for q in ask["questions"] if q.get("ask_grade") in ("same", "verb"))}},
+             "discipline": {"about": "How to think and write Softanza, read before the names: seven steps of thought, fourteen rules of writing. Page: " + SITE + "en/way.html",
+                            "steps": [{"n": st["n"], "step": st["en"], "rules": st["rules"], "sample": st["sample"]} for st in disc["steps"]],
+                            "rules": [{"n": r["n"], "rule": r["en"], "example": r["ex"]} for r in disc["rules"]]},
              "areas": areas, "recipes": recipes, "narrations": narrations, "book": book, "classes": classes}
     # prose is mapped as on the pages; identifiers and file names stay as the library spells them
     text = json.dumps(index, ensure_ascii=False, separators=(",", ":"))
@@ -185,6 +189,9 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
     L = ["# Softanza", "",
          "> Softanza is a computational platform for makers: one engine, written in Zig, handles text, exact numbers, tables, graphs, maps, images, sound, neural networks, governed agents and the security around them. Its language, Haro, is in construction. Born in Africa, useful to the world.", "",
          "This site was generated from the library at commit 0e72e2e2c. Its method examples, recipes and narrations were run inside the library before publication, and each output shown is that run's; what did not run is not shown as run. The site is in English and French; this file links the English pages.", "",
+         "## How to think and write Softanza", "",
+         f"Read this before the method list. The page is {SITE}en/way.html; the rules are stated at {SITE}en/craft.html#rules.", "",
+         "Seven steps of thought:", ""] + [f"{st['n']}. {st['en']} (rules {', '.join(str(n) for n in st['rules'])}) e.g. {st['sample']}" for st in disc["steps"]] + ["", "Fourteen rules of writing:", ""] + [f"{r['n']}. {r['en']} e.g. {r['ex']}" for r in disc["rules"]] + ["",
          "## Ask the library", "",
          f"- [Ask the library]({SITE}en/ask.html): how a program asks Softanza (Ask, HowTo, ExplainMethod), every call run, measured against the library's own recipes",
          f"- [Machine index]({SITE}agents/index.json): every class and method with its explanation, every recipe with its code and output, every narration run, as JSON",
@@ -193,7 +200,7 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
          f"- [Documentation]({SITE}en/docs.html): the whole scope, area by area",
          f"- [Reference]({SITE}en/reference.html): {len(ref['classes'])} classes, each method with the explanation the library gives of itself; {len(entries):,} methods have an entry with examples run",
          f"- [How-to]({SITE}en/howto.html): {len(recipes)} recipes, each a task, its code and its output, run",
-         f"- [Narrations]({SITE}en/narrations.html): the library's stories in code; {len(narrations)} run block by block as pages", 
+         f"- [Narrations]({SITE}en/narrations.html): the author's articles, {len(narrations)} essays each a page, their code run in Haro's name where it can run", 
          f"- [The book]({SITE}en/book.html): the Elementary Introduction, fifteen chapters in four languages; {len(book)} proof pages show each chapter's cells run, the guard that proves them, and its exercises proving themselves", "",
          "## How-to", ""]
     for k in KINDS:

@@ -600,3 +600,7 @@ pre.rx{margin:10px 0 0;max-width:none}
 
 /* an address that jumps to a heading must not hide it under the pinned header */
 [id]{scroll-margin-top:calc(var(--pin,120px) + 12px)}
+/* the discipline: its seven steps and fourteen rules, each with its sample on its own line; the way callout points at the page */
+.way span a{color:inherit;text-decoration:underline}
+ol.rules li,ol.steps li{margin:14px 0;max-width:var(--measure)}
+ol.rules code,ol.steps code{display:block;margin-top:6px;overflow-x:auto}

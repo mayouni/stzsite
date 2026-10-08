@@ -48,3 +48,5 @@ Softanza teaches itself with the system this page has shown, and the same system
 <p class="proof"><a href="education.html">Education</a>.</p>
 
 <p class="way"><span>The Softanza way</span> The human is the parser. A line reads like a sentence because it was designed to be read, not only to be executed.</p>
+
+<p>How to think, how to write and how it is judged, as one discipline: <a href="way.html">the Softanza way</a>.</p>

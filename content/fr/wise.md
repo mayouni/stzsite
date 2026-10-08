@@ -24,3 +24,5 @@ TOTAL: 13 assertions, 13 pass, 0 fail</pre>
 <p class="ran">exécuté le 2026-10-01 à 09:39 : <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/conversation/wisecoding_narrated.ring">wisecoding_narrated</a> (13 sur 13) et <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/conversation/wisecoding_rich_narrated.ring">wisecoding_rich_narrated</a> (52 sur 52), chacun en trois secondes environ ; la doctrine est la section 0.3 de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md">SOFTANZA_INTELLIGENCE_ARCHITECTURE.md</a></p>
 
 <p class="way"><span>La manière Softanza</span> L'expression est libre, l'admission est gouvernée. Deviner est remplacé par demander ; les vibrations sont remplacées par la gouvernance.</p>
+
+<p>Le cinquième registre, la réponse par l'exemple, est raconté sur sa propre page : <a href="byexample.html">par l'exemple</a>.</p>

@@ -88,6 +88,7 @@ def main():
         print("not a library folder:", lib); sys.exit(2)
     src = json.loads(SRC.read_text(encoding="utf-8"))
     result = json.loads(OUT.read_text(encoding="utf-8")) if (only and OUT.exists()) else {}
+    commit = subprocess.run(["git", "-C", str(lib.parent.parent), "rev-parse", "--short=9", "HEAD"], capture_output=True, text=True).stdout.strip()
     work = lib / "base" / "test" / "_stzsite_showcase"
     work.mkdir(parents=True, exist_ok=True)
     report = []
@@ -149,7 +150,7 @@ def main():
                 if same is False and not keep_differing:
                     report.append(f"{slug} #{i+1}: output differs from its source's promise; left out\n      got: {text[:200]!r}\n      exp: {sn.get('expected','')[:200]!r}"); continue
                 kept.append({**sn, "out": text, "matches_source": same,
-                             "ran": started.strftime("%Y-%m-%d %H:%M"), "seconds": round(seconds, 1)})
+                             "ran": started.strftime("%Y-%m-%d %H:%M"), "seconds": round(seconds, 1), "commit": commit})
                 report.append(f"{slug} #{i+1}: ran{'' if same is None else (', matches its source' if same else ', differs from its source')}")
             if kept:
                 result[slug] = kept

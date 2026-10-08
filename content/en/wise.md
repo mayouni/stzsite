@@ -24,3 +24,5 @@ TOTAL: 13 assertions, 13 pass, 0 fail</pre>
 <p class="ran">run on 2026-10-01 at 09:39: <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/conversation/wisecoding_narrated.ring">wisecoding_narrated</a> (13 of 13) and <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/conversation/wisecoding_rich_narrated.ring">wisecoding_rich_narrated</a> (52 of 52), each in about three seconds; the doctrine is section 0.3 of <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md">SOFTANZA_INTELLIGENCE_ARCHITECTURE.md</a></p>
 
 <p class="way"><span>The Softanza way</span> Expression is free, admission is governed. Guessing is replaced by asking; vibes are replaced by governance.</p>
+
+<p>The fifth register, an answer by example, is told on its own page: <a href="byexample.html">by example</a>.</p>

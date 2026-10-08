@@ -48,3 +48,5 @@ Softanza s'enseigne avec le système que cette page a montré, et le même syst�
 <p class="proof"><a href="education.html">Éducation</a>.</p>
 
 <p class="way"><span>La manière Softanza</span> L'humain est l'analyseur. Une ligne se lit comme une phrase parce qu'elle a été conçue pour être lue, et pas seulement exécutée.</p>
+
+<p>Comment penser, comment écrire et comment on juge, en une seule discipline : <a href="way.html">la manière Softanza</a>.</p>
