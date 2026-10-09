@@ -1774,3 +1774,35 @@ next:
   - me:      commit and push
   - author:  read the page once through before it is shared; say what to add or cut
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-09 03:20
+
+subject:   the Adopt section gets its pages: proving grounds, solutions, education as a capability, partners, certification
+
+why:       the author, "go ahead with the Adopt pages"; the assessment's 3.3 asks for a section that helps people adopt, partner and certify, and its 3.4 asks the author to rule before a new offering is announced
+
+did:
+  - published five pages in English and French: Proving grounds (RestoLean, Organizium and the Sonibank, DIKO, each as asked, what exists, what was learned),
+    Solutions for organisations (what is delivered with the stage of each, the engagement in three moves, assurance as a name), Softanza for education (a course is a
+    folder, the mathematics course as proof beyond programming, the fifteen-minute demonstration, the three limits), Partners, and Certification
+  - put the funding doctrine, the project funds itself so that no outside capital acquires a voice over the open foundation, as a box on the Audiences page
+  - kept Partners and Certification to what is designed: the laws every customer is promised, a certification as evidence and not an examination (a project whose guards
+    pass and that a human reads), the stage said as designed at every card, and no term, price, fee or share stated, because none is set
+  - did NOT name ESPA-MT: the framework convention is attested in the record, but the education desk's fact sheet says to name no institution, and the author's account is that the other
+    side did not honour its side; a page that listed it as a partner would misstate that. The Education page keeps its limit "no institution has adopted it yet"
+  - left Partners and Education free of any promise about schools in Niger or the sub-region, because the convention's articles 5 and 9 give one institution a priority there; the author knows
+    the clauses, and the pages promise nothing they could contradict
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,278 files, the former name in the code of 0 files, search 16 of 16, the floor held on the new pages; I looked at the render
+
+state:
+  perception-gate:   OPEN (the agent looked at the solutions render; the author has not)
+
+waiting:
+  - REFORM-RULING-01: D1, D2, D3 -> the author [asked 19:45, not answered]; D3 is what would let the proving-grounds page name the first institution in education, in the words the document supports
+  - the money model, if the author wants a price or a share on Partners or Certification -> the author
+
+next:
+  - me:      commit and push
+  - author:  read Partners and Certification as a stranger would; say whether "designed, no term" is the line to hold
+```

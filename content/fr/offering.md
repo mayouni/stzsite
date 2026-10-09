@@ -104,3 +104,7 @@ PROVED  the child's Hausa program passed, checked by running it</pre></div><div 
 PROVED  the course folder still holds all 610 files</pre></div></div>
 <p class="ran">exécuté le 2026-09-30 à 23:10 par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">demo</a>, scène 6</p>
 </div>
+
+## Comment Softanza se finance {#funding}
+
+<p class="way"><span>La manière Softanza</span> La septième doctrine de la conception de référence le dit en une phrase : le projet se finance lui-même, pour qu'aucun capital extérieur n'acquière jamais de voix sur la fondation ouverte, et chaque frontière commerciale tombe sur ce que chaque chose sert. Pour qui décide d'investir un effort ici, cette phrase vaut plus qu'une grille de prix.</p>

@@ -104,3 +104,7 @@ PROVED  the child's Hausa program passed, checked by running it</pre></div><div 
 PROVED  the course folder still holds all 610 files</pre></div></div>
 <p class="ran">run on 2026-09-30 at 23:10 by <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">demo</a>, scene 6</p>
 </div>
+
+## How Softanza pays for itself {#funding}
+
+<p class="way"><span>The Softanza way</span> The reference design's seventh doctrine says it in one sentence: the project funds itself, so that no outside capital ever acquires a voice over the open foundation, and every commercial boundary falls on what each thing serves. For anyone deciding whether to invest effort here, that sentence is worth more than a price list.</p>

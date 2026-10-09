@@ -85,6 +85,11 @@ SECTIONS = [
   ("offering", {"fr": "Adopter", "en": "Adopt"}, [
      ("offering", {"fr": "Audiences", "en": "Audiences"}),
      ("journeys", {"fr": "Parcours", "en": "Journeys"}),
+     ("proving", {"fr": "Terrains d'épreuve", "en": "Proving grounds"}),
+     ("solutions", {"fr": "Solutions", "en": "Solutions"}),
+     ("institutions", {"fr": "Pour l'éducation", "en": "For education"}),
+     ("partners", {"fr": "Partenaires", "en": "Partners"}),
+     ("certification", {"fr": "Certification", "en": "Certification"}),
      ("editions", {"fr": "Éditions", "en": "Editions"}),
      ("customers", {"fr": "Clients", "en": "Customers"})]),
   ("start", {"fr": "Démarrer", "en": "Start"}, [
