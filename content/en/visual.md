@@ -10,6 +10,7 @@ description: Visual by default in Softanza: display, plots, string art and layou
 <li><b>In the terminal.</b> Boxes, histograms, plots, string art and layouts are drawn by the engine, with no library added. <span class="rx-src">built · see <a href="atlas/graphics.html">the graphics area</a></span></li>
 <li><b>In many domains.</b> Around a hundred files across more than a quarter of the library's folders define how a thing shows or draws itself, from security reports to performance traces. <span class="rx-src">read from the library by an outside assessment on 2026-10-07</span></li>
 <li><b>On the graphics card.</b> The same call, drawn by the card. <span class="rx-src">in construction</span></li>
+<li><b>The gallery.</b> Twenty-seven of the engine's pictures, each with the script that makes it and a place for a person's verdict: <a href="gallery.html">the gallery</a>.</li>
 <li><b>The honest sentence.</b> The vision plan puts it as: it can draw, and it cannot see. A picture is checked by comparing it and by looking at it, and only the second is a person's.</li>
 </ul>
 

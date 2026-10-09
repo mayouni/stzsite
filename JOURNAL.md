@@ -1903,3 +1903,35 @@ next:
   - me:      commit and push
   - author:  read the page's findings; say whether the library should grow the forms or the article should shrink
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-09 05:03
+
+subject:   the gallery, with room for a person's verdict
+
+why:       the author, "go ahead with the gallery"; the assessment's A6 asks for the gallery as a page with room for the human verdict
+
+did:
+  - published "The gallery" in the Foundation bar, English and French: the library's 27 graphics tests that have a picture of the same name, each shown with the script that makes
+    it (linked), what happened when it was drawn again tonight, and the line "Unperceived: nobody has yet said whether this picture is right"
+  - drew each script again in a temporary folder of the library at 4a184e6f0 (a new tool, tools/gallery_run.py; the folder is removed, the worktree stayed clean): 7 are byte for byte the
+    picture the library kept, 6 were drawn and differ in their bytes (a person decides whether it is the same picture), 14 could not be drawn again here
+  - said why for each of the 14, in the script's own words: the data to draw a map or a neuron is not in the repository and the script skips by name (twelve of them), one cannot read
+    its file, one waits for a window on a screen and timed out at 240 s; for those the page shows the picture the library kept and says so
+  - made the verdict a file the author edits: data/gallery-verdicts.json, empty today, with the form of an entry (a name, right, wrong or uncertain, a date, a note); the next build prints
+    it under the picture; a model's opinion is not accepted there, as the file says
+  - kept the earlier model judgments out: they were a model's, and the page says only that a model once judged some
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,298 files, the former name in the code of 0 files, search 16 of 16, the floor held; I looked at the render's top
+
+state:
+  perception-gate:   OPEN, by design: the page exists to carry the author's verdicts; none is in it
+  not done:          the pictures that could not be drawn again here, which need the library's data folders or a screen
+
+waiting:
+  - the author's afternoon of looking, one verdict per picture in data/gallery-verdicts.json -> the author
+  - the data the map and neuron scripts skip for, and the script that waits for a window -> stzlib [routed now in CONCLUSIONS]
+
+next:
+  - me:      commit and push
+  - author:  open the gallery, look, and write your verdicts into data/gallery-verdicts.json
+```

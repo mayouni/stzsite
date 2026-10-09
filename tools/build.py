@@ -102,7 +102,7 @@ SUBPAGES = {"education-self": "education", "education-teach": "education", "educ
 EDU_BAR = {"fr": ("Éducation", [("education", "Les trois portes"), ("education-self", "J'apprends seul"), ("education-teach", "J'enseigne ou je conçois"), ("education-programme", "Je dirige un programme"), ("education-record", "Ce qui est prouvé")]),
            "en": ("Education", [("education", "The three doors"), ("education-self", "I learn by myself"), ("education-teach", "I teach or design"), ("education-programme", "I run a programme"), ("education-record", "What is proved")])}
 # The Craft page is the style's page (12.12) and the paradigms that follow from it are its chapters, shown in the same left bar
-SUBPAGES.update({p: "foundation" for p in ("graphbeneath", "widths", "visual", "proven", "reach", "declared")})
+SUBPAGES.update({p: "foundation" for p in ("graphbeneath", "widths", "visual", "gallery", "proven", "reach", "declared")})
 SUBPAGES.update({"whyring": "roots"})
 SUBPAGES.update({p: "platforms" for p in ("applications", "world", "host", "device", "surfaces", "real", "first", "store", "conversations", "environment", "polyglot")})
 SUBPAGES.update({p: "craft" for p in ("goals", "patterns", "grammar", "way", "natural", "byexample", "softanzuter", "innovations")})
@@ -118,8 +118,8 @@ PLATFORMS_BAR = {"fr": ("Applications", [("applications", "Applications"), ("wor
                                          ("environment", "The environment"), ("polyglot", "Seven languages, one door")])}
 ROOTS_BAR = {"fr": ("Racines", [("roots", "Racines"), ("whyring", "Pourquoi Softanza quitte Ring")]),
              "en": ("Roots", [("roots", "Roots"), ("whyring", "Why Softanza leaves Ring")])}
-FOUNDATION_BAR = {"fr": ("La fondation", [("foundation", "La fondation"), ("graphbeneath", "Le graphe dessous"), ("widths", "Quatre largeurs"), ("visual", "Visuel par défaut"), ("proven", "Prouvé"), ("reach", "Portée"), ("declared", "Les langages déclarés")]),
-                  "en": ("The foundation", [("foundation", "The foundation"), ("graphbeneath", "The graph beneath"), ("widths", "Four widths"), ("visual", "Visual by default"), ("proven", "Proven"), ("reach", "Reach"), ("declared", "The declared languages")])}
+FOUNDATION_BAR = {"fr": ("La fondation", [("foundation", "La fondation"), ("graphbeneath", "Le graphe dessous"), ("widths", "Quatre largeurs"), ("visual", "Visuel par défaut"), ("gallery", "La galerie"), ("proven", "Prouvé"), ("reach", "Portée"), ("declared", "Les langages déclarés")]),
+                  "en": ("The foundation", [("foundation", "The foundation"), ("graphbeneath", "The graph beneath"), ("widths", "Four widths"), ("visual", "Visual by default"), ("gallery", "The gallery"), ("proven", "Proven"), ("reach", "Reach"), ("declared", "The declared languages")])}
 BARS = {"foundation": FOUNDATION_BAR, "education": EDU_BAR, "craft": CRAFT_BAR, "platforms": PLATFORMS_BAR, "roots": ROOTS_BAR}
 OLD_PAGES = {"teaching": "education", "pedagogy": "education"}        # the old addresses lead to the new page
 GENERATED = {"reference", "narrations", "howto", "ask", "journeys", "narrations-performance", "narrations-security", "narrations-delivery"}   # built by code, not from a .md
@@ -424,7 +424,7 @@ def inject(body_html, lang, idx, groups, rel="../"):
     body_html = body_html.replace("<!--METHODS-->", fmt(COUNTS["methods"])).replace("<!--CLASSES-->", fmt(COUNTS["classes"])).replace("<!--ENTRIES-->", fmt(COUNTS["entries"]))
     body_html = body_html.replace("<!--AREAS-->", fmap_html(lang, idx, groups, "atlas/") + tiles_html(lang, idx, groups, "atlas/", rel))
     body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
-    for tag, fn in (("GRAMMAR", grammar_html), ("DECLARED", declared_html), ("DEPTH", depth_html), ("GLOSSARY", glossary_html), ("LEADS", leads_html), ("RULES", rules_html), ("STEPS", steps_html), ("INNOVATIONS", innovations_html), ("GOALS", goals_html)):
+    for tag, fn in (("GALLERY", gallery_html), ("GRAMMAR", grammar_html), ("DECLARED", declared_html), ("DEPTH", depth_html), ("GLOSSARY", glossary_html), ("LEADS", leads_html), ("RULES", rules_html), ("STEPS", steps_html), ("INNOVATIONS", innovations_html), ("GOALS", goals_html)):
         if f"<!--{tag}-->" in body_html: body_html = body_html.replace(f"<!--{tag}-->", fn(lang))
     body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
     body_html = body_html.replace("<!--DOCS-SCOPE-->", scope_html(lang, idx, groups))
@@ -778,7 +778,7 @@ def evidence(lang, e):
     for a, b in EVIDENCE_FR: e = re.sub(a, b, e)
     return e
 
-PAGE_NAMES = {"grammar": {"fr": "La grammaire des fonctions", "en": "The grammar of functions"}, "graphbeneath": {"fr": "Le graphe dessous", "en": "The graph beneath"}, "widths": {"fr": "Quatre largeurs", "en": "Four widths"}, "visual": {"fr": "Visuel par défaut", "en": "Visual by default"},
+PAGE_NAMES = {"gallery": {"fr": "La galerie", "en": "The gallery"}, "grammar": {"fr": "La grammaire des fonctions", "en": "The grammar of functions"}, "graphbeneath": {"fr": "Le graphe dessous", "en": "The graph beneath"}, "widths": {"fr": "Quatre largeurs", "en": "Four widths"}, "visual": {"fr": "Visuel par défaut", "en": "Visual by default"},
               "proven": {"fr": "Prouvé", "en": "Proven"}, "reach": {"fr": "Portée", "en": "Reach"}, "declared": {"fr": "Les langages déclarés", "en": "The declared languages"}, "world": {"fr": "Le monde", "en": "The world"}, "whyring": {"fr": "Pourquoi Softanza quitte Ring", "en": "Why Softanza leaves Ring"}, "roots": {"fr": "Racines", "en": "Roots"}, "patterns": {"fr": "Langages de motifs", "en": "Pattern languages"}, "applications": {"fr": "Applications", "en": "Applications"}, "host": {"fr": "L'hôte", "en": "The host"},
               "device": {"fr": "De l'éditeur à l'appareil", "en": "From the editor to the device"}, "surfaces": {"fr": "Surfaces", "en": "Surfaces"}, "real": {"fr": "Applications réelles", "en": "Real applications"},
               "first": {"fr": "Votre première application", "en": "Your first application"}, "store": {"fr": "Le magasin", "en": "The store"}, "way": {"fr": "La manière Softanza", "en": "The Softanza way"}, "innovations": {"fr": "Les innovations", "en": "Innovations"}, "conversations": {"fr": "Conversations", "en": "Conversations"}, "environment": {"fr": "L'environnement", "en": "The environment"}, "polyglot": {"fr": "Sept langues, une porte", "en": "Seven languages, one door"}, "goals": {"fr": "Sept buts de conception", "en": "Seven design goals"}, "softanzuter": {"fr": "Le Softanzuter", "en": "The Softanzuter"}, "natural": {"fr": "Naturel, et exécutable", "en": "Natural, and executable"},
@@ -886,6 +886,38 @@ def build_journeys(lang, idx, groups):
                 f'{pos}{extra}<p><a href="journeys.html">{ui["back"]}</a></p>')
         page = page_shell(lang, f"journey-{j['id']}", j["name"][lang], j["promise"][lang], esc(ui["kicker"]), esc(j["name"][lang]), esc(j["promise"][lang]), body, page_key="journeys")
         (ROOT / lang / f"journey-{j['id']}.html").write_text(level2.wrap(page, journey_bar(lang, "journey-" + j["id"])), encoding="utf-8")
+
+GALLERY_UI = {
+  "fr": {"tally": "{n} images. {i} ont été redessinées ce soir et sont identiques octet pour octet à l'image que la bibliothèque a gardée ; {d} ont été redessinées et diffèrent par les octets ; {m} n'ont pas pu l'être. {v} ont le verdict d'une personne.",
+         "rendered_same": "redessinée ce soir en {s} s, identique à l'image gardée", "rendered_diff": "redessinée ce soir en {s} s, pas identique octet pour octet à l'image gardée : une personne décide si c'est la même image",
+         "skipped": "pas redessinée : {why} ; l'image montrée est celle que la bibliothèque a gardée", "unperceived": "Non perçue : personne n'a encore dit si cette image est juste.",
+         "verdict": {"right": "juste", "wrong": "fausse", "uncertain": "incertaine"}, "by": "par", "src": "le script", "how": "Pour donner un verdict : ajouter une entrée à data/gallery-verdicts.json, avec votre nom, juste, fausse ou incertaine, la date et ce que vous avez vu. Le prochain build l'imprime sous l'image."},
+  "en": {"tally": "{n} pictures. {i} were drawn again tonight and are byte for byte identical to the picture the library kept; {d} were drawn again and differ in their bytes; {m} could not be. {v} carry a person's verdict.",
+         "rendered_same": "drawn again tonight in {s} s, identical to the kept picture", "rendered_diff": "drawn again tonight in {s} s, not byte for byte identical to the kept picture: a person decides whether it is the same picture",
+         "skipped": "not drawn again: {why}; the picture shown is the one the library kept", "unperceived": "Unperceived: nobody has yet said whether this picture is right.",
+         "verdict": {"right": "right", "wrong": "wrong", "uncertain": "uncertain"}, "by": "by", "src": "the script", "how": "To give a verdict: add an entry to data/gallery-verdicts.json with your name, right, wrong or uncertain, the date and what you saw. The next build prints it under the picture."},
+}
+def gallery_html(lang):
+    from PIL import Image
+    g = load_json("gallery-run.json"); v = load_json("gallery-verdicts.json")["verdicts"]; ui = GALLERY_UI[lang]
+    pics = g["pictures"]
+    ident = sum(1 for r in pics.values() if r.get("identical")); rend = sum(1 for r in pics.values() if r.get("rendered"))
+    out = [f'<p class="proof">{esc(ui["tally"].format(n=len(pics), i=ident, d=rend - ident, m=len(pics) - rend, v=sum(1 for n in pics if n in v)))}</p><p>{esc(ui["how"])}</p>']
+    for n, r in sorted(pics.items()):
+        w, h = Image.open(ROOT / "assets" / "img" / "gallery" / f"{n}.webp").size
+        if r.get("rendered"):
+            fact = (ui["rendered_same"] if r.get("identical") else ui["rendered_diff"]).format(s=r["seconds"])
+        else:
+            why = (r.get("note") or "").replace("SKIPPED, by name: ", "") or ("a window is needed" if r["status"] == "timed out" else "the script stopped")
+            fact = ui["skipped"].format(why=why)
+        if n in v:
+            x = v[n]; verdict = f'<b>{esc(ui["verdict"].get(x.get("verdict"), x.get("verdict", "")))}</b> · {ui["by"]} {esc(x.get("who", ""))}, {esc(x.get("date", ""))}. {esc(x.get("note", ""))}'
+        else:
+            verdict = esc(ui["unperceived"])
+        cap = f'<p>{esc(r["caption"])}</p>' if r.get("caption") else ""
+        out.append(f'<figure class="gal"><img src="../assets/img/gallery/{n}.webp" alt="{esc(n.replace("_", " "))}" width="{w}" height="{h}" loading="lazy">'
+                   f'<figcaption><b>{esc(n)}</b> {cap}<span class="rx-src">{esc(fact)}</span><span class="rx-src">{ui["src"]} : <a href="{src_link(r["source"])}">{esc(r["source"])}</a></span><span class="rx-src">{verdict}</span></figcaption></figure>')
+    return "".join(out)
 
 GRAMMAR_UI = {
   "fr": {"kept": "a tenu sa promesse", "differs": "a affiché autre chose que la promesse", "missing": "n'existe pas : la bibliothèque répond", "raised": "a levé une erreur : la bibliothèque répond", "promised": "promis", "out": "Sortie",

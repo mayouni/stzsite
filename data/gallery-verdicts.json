@@ -1,0 +1,4 @@
+{
+ "about": "A person's verdict on a picture of the gallery, and nobody else's. A picture the engine draws can be wrong in a way no counter sees. To give a verdict, add an entry under 'verdicts' with the picture's name (its file name without .png): {\"who\": \"your name\", \"verdict\": \"right\" | \"wrong\" | \"uncertain\", \"date\": \"YYYY-MM-DD\", \"note\": \"what you saw\"}. The next build prints it under the picture. A model's opinion does not belong in this file.",
+ "verdicts": {}
+}

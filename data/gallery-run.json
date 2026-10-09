@@ -1,0 +1,362 @@
+{
+ "commit": "4a184e6f0",
+ "ran": "2026-10-09 04:49",
+ "pictures": {
+  "connectome": {
+   "caption": "",
+   "seconds": 32.6,
+   "status": "ran",
+   "committed_bytes": 548715,
+   "source": "base/test/graphics/connectome.ring",
+   "rendered": true,
+   "bytes": 548715,
+   "identical": true,
+   "size": [
+    1500,
+    1100
+   ]
+  },
+  "connectome_real": {
+   "note": "SKIPPED, by name: nm_cnic_006.swc not present -- see connectome_DATA.md for the fetch.",
+   "caption": "",
+   "seconds": 3.1,
+   "status": "ran",
+   "committed_bytes": 418319,
+   "source": "base/test/graphics/connectome_real.ring",
+   "rendered": false,
+   "size": [
+    1500,
+    1080
+   ]
+  },
+  "geo_blocs": {
+   "caption": "",
+   "seconds": 3.5,
+   "status": "ran",
+   "committed_bytes": 195054,
+   "source": "base/test/graphics/geo_blocs.ring",
+   "rendered": false,
+   "size": [
+    1280,
+    1030
+   ]
+  },
+  "geo_field": {
+   "caption": "",
+   "seconds": 3.6,
+   "status": "ran",
+   "committed_bytes": 106662,
+   "source": "base/test/graphics/geo_field.ring",
+   "rendered": false,
+   "size": [
+    1200,
+    870
+   ]
+  },
+  "geo_flow_gallery": {
+   "caption": "",
+   "seconds": 9.4,
+   "status": "ran",
+   "committed_bytes": 561272,
+   "source": "base/test/graphics/geo_flow_gallery.ring",
+   "rendered": true,
+   "bytes": 561272,
+   "identical": true,
+   "size": [
+    1292,
+    1368
+   ]
+  },
+  "geo_france": {
+   "note": "SKIPPED, by name: atlas/admin1_france.geojson is not present -- see atlas/README.md.",
+   "caption": "",
+   "seconds": 3.3,
+   "status": "ran",
+   "committed_bytes": 157064,
+   "source": "base/test/graphics/geo_france.ring",
+   "rendered": false,
+   "size": [
+    1000,
+    900
+   ]
+  },
+  "geo_furniture": {
+   "caption": "",
+   "seconds": 3.9,
+   "status": "ran",
+   "committed_bytes": 525429,
+   "source": "base/test/graphics/geo_furniture.ring",
+   "rendered": false,
+   "size": [
+    1280,
+    1180
+   ]
+  },
+  "geo_gallery": {
+   "caption": "",
+   "seconds": 8.1,
+   "status": "ran",
+   "committed_bytes": 526313,
+   "source": "base/test/graphics/geo_gallery.ring",
+   "rendered": true,
+   "bytes": 526313,
+   "identical": true,
+   "size": [
+    1372,
+    1574
+   ]
+  },
+  "geo_geodesy": {
+   "caption": "",
+   "seconds": 3.6,
+   "status": "ran",
+   "committed_bytes": 175233,
+   "source": "base/test/graphics/geo_geodesy.ring",
+   "rendered": false,
+   "size": [
+    1320,
+    1040
+   ]
+  },
+  "geo_inside": {
+   "caption": "",
+   "seconds": 3.5,
+   "status": "ran",
+   "committed_bytes": 111836,
+   "source": "base/test/graphics/geo_inside.ring",
+   "rendered": false,
+   "size": [
+    1180,
+    820
+   ]
+  },
+  "geo_interp": {
+   "caption": "",
+   "seconds": 3.6,
+   "status": "ran",
+   "committed_bytes": 171941,
+   "source": "base/test/graphics/geo_interp.ring",
+   "rendered": false,
+   "size": [
+    1240,
+    1000
+   ]
+  },
+  "geo_join": {
+   "caption": "",
+   "seconds": 3.6,
+   "status": "ran",
+   "committed_bytes": 147282,
+   "source": "base/test/graphics/geo_join.ring",
+   "rendered": false,
+   "size": [
+    1180,
+    720
+   ]
+  },
+  "geo_modes": {
+   "caption": "",
+   "seconds": 3.5,
+   "status": "ran",
+   "committed_bytes": 117660,
+   "source": "base/test/graphics/geo_modes.ring",
+   "rendered": false,
+   "size": [
+    1200,
+    760
+   ]
+  },
+  "geo_points": {
+   "caption": "",
+   "seconds": 3.5,
+   "status": "ran",
+   "committed_bytes": 136796,
+   "source": "base/test/graphics/geo_points.ring",
+   "rendered": false,
+   "size": [
+    1200,
+    910
+   ]
+  },
+  "geo_processes": {
+   "caption": "",
+   "seconds": 6.6,
+   "status": "ran",
+   "committed_bytes": 159182,
+   "source": "base/test/graphics/geo_processes.ring",
+   "rendered": true,
+   "bytes": 159182,
+   "identical": true,
+   "size": [
+    1340,
+    760
+   ]
+  },
+  "geo_sheet": {
+   "caption": "",
+   "seconds": 3.8,
+   "status": "ran",
+   "committed_bytes": 231454,
+   "source": "base/test/graphics/geo_sheet.ring",
+   "rendered": false,
+   "size": [
+    1300,
+    1210
+   ]
+  },
+  "geo_stream_density": {
+   "caption": "",
+   "seconds": 5.6,
+   "status": "ran",
+   "committed_bytes": 827641,
+   "source": "base/test/graphics/geo_stream_density.ring",
+   "rendered": true,
+   "bytes": 827641,
+   "identical": true,
+   "size": [
+    1160,
+    1390
+   ]
+  },
+  "gg4_framegraph": {
+   "caption": "",
+   "seconds": 4.4,
+   "status": "ran",
+   "committed_bytes": 1821,
+   "source": "base/test/graphics/gg4_framegraph.ring",
+   "rendered": true,
+   "bytes": 379,
+   "identical": false,
+   "size": [
+    256,
+    256
+   ]
+  },
+  "gg4_oneframe": {
+   "note": "==============================================================",
+   "caption": "",
+   "seconds": 5.2,
+   "status": "ran",
+   "committed_bytes": 277268,
+   "source": "base/test/graphics/gg4_oneframe.ring",
+   "rendered": true,
+   "bytes": 119195,
+   "identical": false,
+   "size": [
+    400,
+    400
+   ]
+  },
+  "gg5_gallery": {
+   "caption": "",
+   "seconds": 8.7,
+   "status": "ran",
+   "committed_bytes": 472024,
+   "source": "base/test/graphics/gg5_gallery.ring",
+   "rendered": true,
+   "bytes": 472024,
+   "identical": true,
+   "size": [
+    1256,
+    1256
+   ]
+  },
+  "gg5_materialgraph": {
+   "caption": "",
+   "seconds": 10.0,
+   "status": "ran",
+   "committed_bytes": 212632,
+   "source": "base/test/graphics/gg5_materialgraph.ring",
+   "rendered": true,
+   "bytes": 193369,
+   "identical": false,
+   "size": [
+    560,
+    560
+   ]
+  },
+  "gg_diagram_native": {
+   "caption": "",
+   "seconds": 5.1,
+   "status": "ran",
+   "committed_bytes": 8840,
+   "source": "base/test/graphics/gg_diagram_native.ring",
+   "rendered": true,
+   "bytes": 5668,
+   "identical": false,
+   "size": [
+    900,
+    620
+   ]
+  },
+  "gg_nodeshapes": {
+   "caption": "",
+   "seconds": 95.9,
+   "status": "ran",
+   "committed_bytes": 72899,
+   "source": "base/test/graphics/gg_nodeshapes.ring",
+   "rendered": true,
+   "bytes": 72899,
+   "identical": true,
+   "size": [
+    900,
+    992
+   ]
+  },
+  "gg_window_overlay": {
+   "caption": "",
+   "seconds": 4.2,
+   "status": "ran",
+   "committed_bytes": 52427,
+   "source": "base/test/graphics/gg_window_overlay.ring",
+   "rendered": true,
+   "bytes": 24573,
+   "identical": false,
+   "size": [
+    400,
+    300
+   ]
+  },
+  "graph_layout_hierarchical": {
+   "note": "==============================================================",
+   "caption": "",
+   "seconds": 11.7,
+   "status": "ran",
+   "committed_bytes": 401106,
+   "source": "base/test/graphics/graph_layout_hierarchical.ring",
+   "rendered": true,
+   "bytes": 1044570,
+   "identical": false,
+   "size": [
+    1400,
+    900
+   ]
+  },
+  "niger_density": {
+   "note": "In read() in file niger_density.ring",
+   "caption": "",
+   "seconds": 4.1,
+   "status": "failed",
+   "committed_bytes": 221997,
+   "source": "base/test/graphics/niger_density.ring",
+   "rendered": false,
+   "size": [
+    1500,
+    1240
+   ]
+  },
+  "showcase_window": {
+   "note": "",
+   "caption": "",
+   "seconds": 240.1,
+   "status": "timed out",
+   "committed_bytes": 18504,
+   "source": "base/test/graphics/showcase_window.ring",
+   "rendered": false,
+   "size": [
+    900,
+    560
+   ]
+  }
+ }
+}
