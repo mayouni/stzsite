@@ -2003,3 +2003,33 @@ next:
 
 note:      the Rule 115 finding is a design disagreement between two rows and one, taken on the author's behalf and stated on the page so it can be reversed
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-09 13:10
+
+subject:   the footer names, one page one name in the menu, the trail, the section bar and the footer map
+
+why:       the audit's Rule 116 findings showed three sections whose first page had a different name from the section; the author asked for the footer names to be settled
+
+did:
+  - decided that the first page of a section takes the section's name in the section bar and the footer map, as Platform, Narrations, Learn, Compared and Start already did, and keeps its own title as its heading: Vision (was the north star), Intelligence (was Agentic), Adopt (was Audiences), in both languages
+  - changed three labels in SECTIONS in tools/build.py and rebuilt; nothing else used the old labels
+  - ran the audit a third time on 188 pages at 11:57 and 11:59 UTC: 40 violations in light, 16 in dark; Rule 116 6 -> 0
+  - updated the Zui page in both languages: the third run, and the Rule 116 line moved from remaining to repaired
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,298 files, search 16 of 16, the floor held on both Zui pages in both themes
+
+state:
+  rule-116:        0 findings
+  rule-115:        16 findings, two rows kept by decision
+  rule-105:        24 findings in light, the home menu over the photograph, unperceived
+
+waiting:
+  - HOMEMENU-LIGHT: someone looks at the home menu over the photograph in the light theme -> the author [routed in the memo of the repair wave]
+  - AUDIT-READS-FOOTER: the audit takes the footer map for the main menu -> stzzui [routed in CONCLUSIONS]
+
+next:
+  - me:      commit and push
+  - author:  look at the home menu in the light theme; say whether Adopt should keep the name Audiences for its first page
+
+note:      the first-page title Audiences is still the heading of that page; only the navigation name changed
+```

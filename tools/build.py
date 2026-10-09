@@ -56,7 +56,7 @@ SECTIONS = [
      ("narrations-security", {"fr": "Série sécurité", "en": "Security series"}),
      ("narrations-delivery", {"fr": "Série livraison", "en": "Delivery series"})]),
   ("vision", {"fr": "Vision", "en": "Vision"}, [
-     ("vision", {"fr": "L'étoile polaire", "en": "The north star"}),
+     ("vision", {"fr": "Vision", "en": "Vision"}),
      ("principles", {"fr": "Douze principes", "en": "Twelve principles"}),
      ("estate", {"fr": "Le domaine", "en": "The estate"}),
      ("history", {"fr": "Depuis les principes", "en": "From first principles"}),
@@ -65,7 +65,7 @@ SECTIONS = [
      ("africa", {"fr": "Née en Afrique", "en": "Born in Africa"}),
      ("roots", {"fr": "Racines", "en": "Roots"})]),
   ("agentic", {"fr": "Intelligence", "en": "Intelligence"}, [
-     ("agentic", {"fr": "Agentique", "en": "Agentic"}),
+     ("agentic", {"fr": "Intelligence", "en": "Intelligence"}),
      ("wise", {"fr": "Wise coding", "en": "Wise coding"}),
      ("languages", {"fr": "Langue des langues", "en": "Language of languages"}),
      ("zui", {"fr": "Zui", "en": "Zui"}),
@@ -84,7 +84,7 @@ SECTIONS = [
      ("education", {"fr": "Éducation", "en": "Education"}),
      ("glossary", {"fr": "Glossaire", "en": "Glossary"})]),
   ("offering", {"fr": "Adopter", "en": "Adopt"}, [
-     ("offering", {"fr": "Audiences", "en": "Audiences"}),
+     ("offering", {"fr": "Adopter", "en": "Adopt"}),
      ("journeys", {"fr": "Parcours", "en": "Journeys"}),
      ("proving", {"fr": "Terrains d'épreuve", "en": "Proving grounds"}),
      ("solutions", {"fr": "Solutions", "en": "Solutions"}),
