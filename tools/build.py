@@ -253,7 +253,7 @@ def wordmark(rel):
     return (f'<img class="wm-light" src="{rel}assets/img/wordmark.png" alt="Softanza" width="660" height="105">'
             f'<img class="wm-dark" src="{rel}assets/img/wordmark-dark.png" alt="" width="660" height="105">')
 
-def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_lang="", tail=None):
+def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_lang="", tail=None, here_label=None):
     """the main menu, and under it the path of the current section. A page deeper than the section's own pages passes its
     `tail`, [(label, href or None)], and the header pins where the reader is: Learn > Reference > String > stzString"""
     ui = UI[lang]
@@ -273,13 +273,23 @@ def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_l
                     + "".join(f'<a href="{nav_rel}{p}.html"{" aria-current=page" if p == current_page else ""}>{esc(lab[lang])}</a>' for p, lab in pages)
                     + '</div></nav>')
     crumbs = ""
-    if tail and sec:
-        first = next(p for s_, _, p in SECTIONS if s_ == sec)
-        items = [("Softanza", f"{rel}index.html" + (f"?lang={lang}" if rel else "")), (next(lab for s_, lab, _ in SECTIONS if s_ == sec)[lang], f"{nav_rel}{first[0][0]}.html")]
-        if current_page != first[0][0]: items.append((next(lab for p_, lab in first if p_ == current_page)[lang], f"{nav_rel}{current_page}.html"))
-        items += list(tail)
-        lis = "".join((f'<li><a href="{h}">{esc(l)}</a></li>' if h and k < len(items) - 1 else f'<li aria-current="page">{esc(l)}</li>') for k, (l, h) in enumerate(items))
-        crumbs = f'\n  <nav class="crumbs" aria-label="{esc(ui["here"])}"><ol class="crumbs-in">{lis}</ol></nav>'
+    # Rule 108: every page but the home page shows its path from the root, every step but the current one a link. The first step is
+    # the bare root address: the reader's language is kept by the page they came from, so the link needs no query. A page outside
+    # any section (the presentation) names itself with `here_label`; the two pages that only redirect carry no trail.
+    if sec or here_label:
+        root = ("Softanza", f"{rel}index.html")
+        if sec:
+            first = next(p for s_, _, p in SECTIONS if s_ == sec)
+            items = [root, (next(lab for s_, lab, _ in SECTIONS if s_ == sec)[lang], f"{nav_rel}{first[0][0]}.html")]
+            if current_page != first[0][0]:
+                mine = next((lab for p_, lab in first if p_ == current_page), None)
+                if mine: items.append((mine[lang], f"{nav_rel}{current_page}.html"))
+            items += list(tail or [])
+        else:
+            items = [root, (here_label, None)]
+        last = len(items) - 1
+        lis = "".join((f'<li><a href="{h}">{esc(l)}</a></li>' if h and k < last else f'<li class="here-crumb" aria-current="page">{esc(l)}</li>') for k, (l, h) in enumerate(items))
+        crumbs = f'\n  <nav class="crumbs" aria-label="Breadcrumb"><ol class="crumbs-in">{lis}</ol></nav>'
     dl = f' data-lang="{data_lang}"' if data_lang else ""
     home = f"{rel}index.html" + (f"?lang={lang}" if rel else "")
     tools = (f'<div class="tools"><a class="lang" href="{other_href}" lang="{other}" hreflang="{other}">{ui["other_lang"]}</a></div>')
@@ -1075,7 +1085,7 @@ def build_tour(lang, idx, groups):
 </section>""")
     title = meta.get("title", "Tour")
     page_html = head(lang, f'{title} · Softanza', meta.get("description", ""), rel)
-    page_html += '\n<body class="page page-tour tour-mode">\n' + header(lang, "tour", rel)
+    page_html += '\n<body class="page page-tour tour-mode">\n' + header(lang, "tour", rel, here_label=UI[lang]["tour"])
     page_html += f"""
 <main id="main" class="deck" data-count="{n}">
 {chr(10).join(secs)}

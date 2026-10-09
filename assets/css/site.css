@@ -122,11 +122,10 @@ code,pre,kbd{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
   .topbar{flex-wrap:wrap;gap:0 16px;padding-top:6px}
   .tools{margin-left:auto}
   .nav{order:3;flex:1 0 100%;margin-left:0;overflow-x:auto;flex-wrap:nowrap;gap:0 22px;scrollbar-width:thin;padding-bottom:2px}
-  .path-in,.crumbs-in{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}
-  .crumbs li{white-space:nowrap}
-  .crumbs li{min-height:40px}
 }
 @media (max-width:760px){
+  .path-in,.crumbs-in{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}
+  .crumbs li{white-space:nowrap;min-height:40px}
   .brand img{height:22px}
   .tools a.present{display:none}
   .tools{gap:10px}
@@ -395,7 +394,7 @@ html[data-lang="fr"] [data-lang="en"],html[data-lang="en"] [data-lang="fr"]{disp
 .scene-image .caption{position:relative;z-index:2;margin:0 0 9vh 4vw;max-width:min(640px,92vw);background:rgba(18,20,19,.62);border-radius:14px;padding:22px 26px}
 .scene-image .caption p,.scene-image .caption b,.scene-image .caption .eyebrow{color:#fff}
 .scene-image .scene-foot,.scene-image .scene-foot a{color:#fff}
-.scene-image .scene-foot{position:absolute;bottom:8px;right:16px}
+.scene-image .scene-foot{position:absolute;bottom:8px;right:16px;background:rgba(18,20,19,.78);border-radius:8px;padding:2px 12px}
 .scene-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--ink-2);padding-top:10px;font-size:1rem}
 .scene-page{font-family:"IBM Plex Mono",monospace}
 .notes{display:none;position:fixed;right:16px;bottom:24px;max-width:min(460px,calc(100vw - 32px));max-height:55vh;overflow:auto;background:var(--panel);border:1px solid var(--line-2);border-left:4px solid var(--ink-2);border-radius:12px;padding:16px 20px;z-index:40}
@@ -656,3 +655,6 @@ figure.gal{margin:36px 0;max-width:920px}
 figure.gal img{width:100%;height:auto;border-radius:10px;border:1px solid var(--line)}
 figure.gal figcaption{margin-top:8px;font-size:1.0625rem}
 figure.gal figcaption p{margin:4px 0}
+
+/* Rules 105 and 107: a list of choices reads at the reading floor, not at the browser's own 13px */
+select,select option{font-size:1rem}

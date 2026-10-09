@@ -1968,3 +1968,38 @@ next:
 
 note:      the audit flagged what the site said it did; the three lines I corrected were my own claims from the earlier pass
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-09 12:39
+
+subject:   the repair wave for the findings of the constitution's audit on this site
+
+why:       the audit found 368 violations in the light theme and 340 in the dark; the author asked for the owed decisions to be taken and the repair done
+
+did:
+  - decided that every page of a section owes a breadcrumb, because Rule 108 names section landings without a path of their own as what to avoid and this site has depth; kept the section bar beside it
+  - put a breadcrumb on every page of a section (182 had none): marked nav[aria-label="Breadcrumb"] (the rule's label, English on the French pages too), first step the bare root address, current step class here-crumb; the presentation names itself Presentation mode; the two redirect stubs lead to a page that has one
+  - made the section bar and the trail wrap above 760 px and scroll only below it (80 pages had scrolled sideways at 1280 px)
+  - set choice lists at 1 rem (62 findings) and gave the presentation's page counter its own backing over the photograph
+  - ran the audit again after the rebuild, 188 pages, 11:29 and 11:31 UTC: 46 violations in light, 22 in dark, down from 368 and 340; zero under Rules 105 size, 107 and 108 and 114
+  - rewrote the Zui page's section to report both runs, what changed, what remains and why, and restored the three applied-rule lines to their claims now that they hold
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,298 files, search 16 of 16, the floor held on five pages in both themes; I looked at a section page at laptop and phone width
+
+state:
+  rule-108:        182 pages without a trail -> 0
+  rule-114:        80 pages with a sideways bar -> 0
+  rule-115:        16 findings, a landing's trail ends at the section while a child's goes on; the levels below sit in the section bar, which the audit does not read; two rows kept by decision
+  rule-116:        6 findings, all the footer map read as a menu (the audit's selector matches nav[aria-label="Site"]); the main menu has none
+  rule-105:        24 findings in light on the home menu over the photograph, none in dark; the audit cannot see the image; unperceived
+
+waiting:
+  - FOOTERNAMES: the footer map calls a section's first page by its own name (the north star, agentic, audiences) where the menu and trail say Vision, Intelligence, Adopt -> the author [not routed before this memo]
+  - HOMEMENU-LIGHT: someone looks at the home menu over the photograph in the light theme -> the author [not routed before this memo]
+  - AUDIT-READS-FOOTER: the audit takes the footer map for the main menu, and wants the English word Breadcrumb on a French page -> stzzui [routed in CONCLUSIONS]
+
+next:
+  - me:      commit and push
+  - author:  say a word on the footer names, and look at the home menu in the light theme
+
+note:      the Rule 115 finding is a design disagreement between two rows and one, taken on the author's behalf and stated on the page so it can be reversed
+```
