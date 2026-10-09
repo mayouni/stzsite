@@ -28,6 +28,8 @@ Son slogan était <b>Programming by heart!</b>, programmer avec le cœur. Cette 
 
 Une couverture plus tardive, de 2025, nomme le même projet <i>Softanza Pi : Intelligence Artificielle Souveraine et Facile d'Usage</i>.
 
+Pourquoi le projet quitte Ring est raconté une fois, sur <a href="whyring.html">sa propre page</a>, merci d'abord.
+
 ## Ce qui est daté, et ce qui ne l'est pas {#dates}
 
 <p class="proof"><b>en construction</b> Les dates ne s'accordent pas, et cette page imprime chacune avec sa source. L'histoire publique de la bibliothèque commence le 12 mars 2022 avec son premier commit. L'exposé a été exporté le 20 septembre 2022 et porte un droit d'auteur de 2020 à 2025. Le plus ancien document daté que garde le registre est un courrier du 17 novembre 2021. La page Vision dit que le projet a commencé en 2018, ce qui est le récit de l'auteur pour les années d'avant le dépôt. Là où deux dates diffèrent, aucune n'est corrigée pour s'accorder avec l'autre.</p>

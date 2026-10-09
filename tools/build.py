@@ -96,6 +96,7 @@ SUBPAGES = {"education-self": "education", "education-teach": "education", "educ
 EDU_BAR = {"fr": ("Éducation", [("education", "Les trois portes"), ("education-self", "J'apprends seul"), ("education-teach", "J'enseigne ou je conçois"), ("education-programme", "Je dirige un programme"), ("education-record", "Ce qui est prouvé")]),
            "en": ("Education", [("education", "The three doors"), ("education-self", "I learn by myself"), ("education-teach", "I teach or design"), ("education-programme", "I run a programme"), ("education-record", "What is proved")])}
 # The Craft page is the style's page (12.12) and the paradigms that follow from it are its chapters, shown in the same left bar
+SUBPAGES.update({"whyring": "roots"})
 SUBPAGES.update({p: "platforms" for p in ("applications", "host", "device", "surfaces", "real", "first", "store", "conversations", "environment", "polyglot")})
 SUBPAGES.update({p: "craft" for p in ("goals", "patterns", "way", "natural", "byexample", "softanzuter", "innovations")})
 CRAFT_BAR = {"fr": ("Comment Softanza s'écrit", [("craft", "Comment Softanza s'écrit"), ("goals", "Sept buts de conception"), ("patterns", "Langages de motifs"), ("way", "La manière Softanza"), ("natural", "Naturel, et exécutable"), ("byexample", "Par l'exemple"),
@@ -108,7 +109,9 @@ PLATFORMS_BAR = {"fr": ("Applications", [("applications", "Applications"), ("pla
                  "en": ("Applications", [("applications", "Applications"), ("platforms", "Platform of platforms"), ("host", "The host"), ("device", "From the editor to the device"), ("surfaces", "Surfaces"),
                                          ("real", "Real applications"), ("first", "Your first application"), ("store", "The store"), ("conversations", "Conversations"),
                                          ("environment", "The environment"), ("polyglot", "Seven languages, one door")])}
-BARS = {"education": EDU_BAR, "craft": CRAFT_BAR, "platforms": PLATFORMS_BAR}
+ROOTS_BAR = {"fr": ("Racines", [("roots", "Racines"), ("whyring", "Pourquoi Softanza quitte Ring")]),
+             "en": ("Roots", [("roots", "Roots"), ("whyring", "Why Softanza leaves Ring")])}
+BARS = {"education": EDU_BAR, "craft": CRAFT_BAR, "platforms": PLATFORMS_BAR, "roots": ROOTS_BAR}
 OLD_PAGES = {"teaching": "education", "pedagogy": "education"}        # the old addresses lead to the new page
 GENERATED = {"reference", "narrations", "howto", "ask", "journeys", "narrations-performance", "narrations-security", "narrations-delivery"}   # built by code, not from a .md
 OWNER = {}                                          # page -> its section
@@ -766,7 +769,7 @@ def evidence(lang, e):
     for a, b in EVIDENCE_FR: e = re.sub(a, b, e)
     return e
 
-PAGE_NAMES = {"patterns": {"fr": "Langages de motifs", "en": "Pattern languages"}, "applications": {"fr": "Applications", "en": "Applications"}, "host": {"fr": "L'hôte", "en": "The host"},
+PAGE_NAMES = {"whyring": {"fr": "Pourquoi Softanza quitte Ring", "en": "Why Softanza leaves Ring"}, "roots": {"fr": "Racines", "en": "Roots"}, "patterns": {"fr": "Langages de motifs", "en": "Pattern languages"}, "applications": {"fr": "Applications", "en": "Applications"}, "host": {"fr": "L'hôte", "en": "The host"},
               "device": {"fr": "De l'éditeur à l'appareil", "en": "From the editor to the device"}, "surfaces": {"fr": "Surfaces", "en": "Surfaces"}, "real": {"fr": "Applications réelles", "en": "Real applications"},
               "first": {"fr": "Votre première application", "en": "Your first application"}, "store": {"fr": "Le magasin", "en": "The store"}, "way": {"fr": "La manière Softanza", "en": "The Softanza way"}, "innovations": {"fr": "Les innovations", "en": "Innovations"}, "conversations": {"fr": "Conversations", "en": "Conversations"}, "environment": {"fr": "L'environnement", "en": "The environment"}, "polyglot": {"fr": "Sept langues, une porte", "en": "Seven languages, one door"}, "goals": {"fr": "Sept buts de conception", "en": "Seven design goals"}, "softanzuter": {"fr": "Le Softanzuter", "en": "The Softanzuter"}, "natural": {"fr": "Naturel, et exécutable", "en": "Natural, and executable"},
               "byexample": {"fr": "Par l'exemple", "en": "By example"}, "craft": {"fr": "Comment Softanza s'écrit", "en": "How Softanza is written"},
@@ -1064,7 +1067,7 @@ RUNTIME = {"en": "Softanza runs today on its Ring face, kept so that the code al
                  "in construction. Haro is the destination.",
            "fr": "Softanza tourne aujourd'hui sur sa face Ring, gardée pour que le code déjà écrit continue de fonctionner. Ring++ est "
                  "le pont, en construction. Haro est la destination."}
-RING_PAGES = set()
+RING_PAGES = {"whyring"}
 PROSE_RING = re.compile(r"(?<![\w./`-])Ring(?![\w.])")
 
 def check_names():

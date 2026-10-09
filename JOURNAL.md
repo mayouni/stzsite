@@ -1744,3 +1744,33 @@ next:
   - me:      commit and push; then whichever of the held items the author rules on
   - author:  open Applications in the Platform section's left bar, and the pattern page; rule D1 to D3
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-09 03:08
+
+subject:   "Why Softanza leaves Ring" is published, in the cautious form
+
+why:       the author, "go ahead with the Ring page", after the draft and its six questions; the answers did not come with the go-ahead, so I published what the author's own words and the site's record carry, and left out what only a third party's record could prove
+
+did:
+  - published the page in English and French under Roots (a two-entry left bar), and linked it from Roots, from the Haro proof line on Platform, and from the glossary entry
+    for Haro, Ring++ and Ring; it is the one page, besides the runtime sentence, where the site names the former language
+  - kept: thanks first (the years, the book, the 2021 description, the 2022 presentation's sentence), the three reasons, the commitments the site runs, and what stays
+  - reason one states the technical limits as the author's, reproduced by the author, without the numbers of an upstream register that is not public yet; it says so in its last line
+  - reason two is "in the author's experience", and says nothing about how Ring++ was received
+  - reason three states the due-diligence argument and the author's ethical concern in general terms
+  - LEFT OUT, because I cannot verify them from any record I can read and the page's own rule is to name decisions and documents: the removal of the package, the
+    removal from the core team, the count of pull requests, and the twelve limits by name; the author can add any of them, each with its link, and the page's last line is ready for it
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,268 files, the former name in the code of 0 files, search 16 of 16, the floor held on the page and on the three it touches; I looked at the render
+
+state:
+  perception-gate:   OPEN (the agent looked; the author has not read the final text)
+
+waiting:
+  - REFORM-RULING-01: D1, D2, D3 -> the author [asked 19:45, not answered]
+  - the omitted claims, each with a public source or the author's wording, if the author wants them on the page -> the author
+
+next:
+  - me:      commit and push
+  - author:  read the page once through before it is shared; say what to add or cut
+```

@@ -46,7 +46,7 @@ arabic
 
 Haro is the platform's language. It is designed so that a human can read it like a sentence and an agent can write it under a grammar that forbids malformed sentences. It is not finished: its road is a register virtual machine and a compiler written in Zig, onto which the platform's code is being moved. Its charter, a draft of 26 September 2026, awaits the author's ratification.
 
-<p class="proof"><b>in construction</b> <!--RUNTIME--> This site will not call Haro available before it is. The code it shows is in Haro's name: where a text was written before the language took its present name, the name was changed and nothing else, and the code was run again.</p>
+<p class="proof"><b>in construction</b> <!--RUNTIME--> <a href="whyring.html">Why the project leaves Ring</a> is told once, on its own page. This site will not call Haro available before it is. The code it shows is in Haro's name: where a text was written before the language took its present name, the name was changed and nothing else, and the code was run again.</p>
 
 The library documents itself: an object knows its methods and can explain each one. A string alone answers with 5,384 methods. That is how the reference on this site was generated, from the library's own explanations and not from a hand-written manual.
 

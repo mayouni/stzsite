@@ -26,6 +26,8 @@ Its slogan was <b>Programming by heart!</b> That sentence, and the slogan, are t
 
 A later cover, from 2025, names the same project <i>Softanza Pi: Intelligence Artificielle Souveraine et Facile d'Usage</i>, sovereign and easy-to-use artificial intelligence.
 
+Why the project leaves Ring is told once, on <a href="whyring.html">its own page</a>, thanks first.
+
 ## What is dated, and what is not {#dates}
 
 <p class="proof"><b>in construction</b> The dates do not agree, and this page prints each with its source. The library's public history begins on 12 March 2022 with its first commit. The deck was exported on 20 September 2022 and carries a copyright of 2020 to 2025. The oldest dated document the record keeps is a mail of 17 November 2021. The Vision page says the project began in 2018, which is the author's account of the years before the repository. Where two dates differ, neither is corrected to fit the other.</p>
