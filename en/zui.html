@@ -55,15 +55,25 @@
 <h2 id="site">This site, under the law</h2>
 <p>This site is built under the constitution, and its build checks what a machine can check. The rules it applies, each one where you can see it:</p>
 <ul>
-<li><strong>One reading size (Rule 107).</strong> Every text you read here is set at the same size; a title is larger, and nothing is set smaller to say it matters less.</li>
+<li><strong>One reading size (Rule 107).</strong> Every text you read here is set at the same size, except the choice lists of the narrations page, which the audit found smaller (below); a title is larger, and nothing is set smaller to say it matters less.</li>
 <li><strong>The legibility floor (Rule 105).</strong> Every pair of text and background colours is measured by the build, which stops if one falls below its threshold; the words over the photograph on the home page are measured over its brightest part.</li>
 <li><strong>Motion reports, it never decorates (Rules 112 and 17).</strong> Nothing glides, fades or bounces: a link takes you where you asked, at once.</li>
-<li><strong>The path shows every depth (Rules 108 and 115).</strong> Under the main menu, every page of the current section is listed and the one you are on is marked; both stay on screen while you read.</li>
+<li><strong>The path shows every depth (Rules 108 and 115).</strong> Under the main menu, every page of the current section is listed and the one you are on is marked; both stay on screen while you read. It is a section bar, not the breadcrumb the audit looks for, and the audit faults it (below).</li>
 <li><strong>Nothing floats over the reading (Rule 110).</strong> The bars hold their own space; nothing hovers over the text or the pictures.</li>
-<li><strong>No sideways scroll (Rules 14 and 95).</strong> Code wraps inside its block, tables stay tables at every width, and every diagram has a second drawing made for a phone.</li>
+<li><strong>No sideways scroll (Rules 14 and 95).</strong> Code wraps inside its block, tables stay tables at every width, and every diagram has a second drawing made for a phone. The section bar under the menu is the exception: it scrolls sideways on 80 pages at 1280 pixels (below).</li>
 <li><strong>The verb on the button (Rule 106).</strong> The display buttons at the foot of every page say what they do.</li>
 </ul>
-<p>What this site has not done yet: its pages have not been run through the constitution's verifier.</p>
+<h2 id="audit">What the audit found</h2>
+<p class="proof"><b>in construction</b> The constitution's own audit, the tool that measures Rules 105, 107, 108, 114, 115 and 116 on the rendered page, was run on this site on 2026-10-09, at 04:18 UTC in the light theme and 04:21 UTC in the dark one, at 1280 pixels. It read 188 pages: the home page, all 91 English and all 91 French section pages, and five deeper ones (a narration, two reference pages, a guide and an atlas page), not the thousands of reference and narration pages in between. It found <b>368 violations in the light theme and 340 in the dark one. This site is not clean.</b></p>
+
+<ul>
+<li><strong>Rule 108, a trail from the root: 182 pages have none.</strong> They carry the section bar under the menu, which lists every page of the section and marks the one you are on, and not a breadcrumb. The constitution exempts a flat site, and this one is not flat: a section, a page, then narrations and reference pages that do carry a trail. The five deeper pages carry one, and the audit faults it too: it wants the trail labelled as a breadcrumb, the first step to be the bare root address and the current step to carry its own class, where this site labels it "You are here", links the root with its language and marks the current step with the standard attribute. Those are fifteen findings, ten here and five under Rule 115, that say as much about the audit's reading as about the page, and they are counted, not hidden. Whether the section bar is enough, or every page owes a trail, is the author's to decide.</li>
+<li><strong>Rule 114, room before scrollbars: the section bar scrolls sideways on 80 pages.</strong> At 1280 pixels it overflows by 18 to 116 pixels while up to 98 pixels of page sit free beside it. The line above on sideways scroll holds for code, tables and diagrams, not for this bar.</li>
+<li><strong>Rules 105 and 107, the floor: the choice lists of the narrations page are set at 13.3 pixels</strong> in both languages, the size a browser gives a list of choices, which is 62 findings. The reading text everywhere else cleared 16 pixels.</li>
+<li><strong>Rule 105, contrast: 28 findings in the light theme, none in the dark one, all on text laid over a picture:</strong> the menu over the photograph on the home page and the page counter over the photograph on the tour. The audit cannot see an image. It measured the colour beneath the picture, so its 2.22 to 1 and 1.12 to 1 are not what a reader sees. No person has yet looked at the counter on the tour in the light theme: that is unperceived, not passed.</li>
+<li><strong>Rule 115, the path reads the same at every step: 6 findings,</strong> five of them the trail markup described above and one a path that shows its ancestors and not what lies beneath it. <strong>Rule 116, the menu against the tree: no finding.</strong></li>
+</ul>
+<p>What this audit cannot see: an image, a state that needs a hand (hover, focus, a menu opened), any width but 1280 pixels, and any page it was not given. A model read its report and wrote this; a clean report would still prove agreement with a rule, not that a person finds the page right. The findings are open, none is repaired yet, and the audit is run again on the day they are.</p>
   </div>
 </main>
 <footer class="foot"><div class="wrap">

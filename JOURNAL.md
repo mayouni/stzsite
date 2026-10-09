@@ -1935,3 +1935,36 @@ next:
   - me:      commit and push
   - author:  open the gallery, look, and write your verdicts into data/gallery-verdicts.json
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-09 05:31
+
+subject:   the Zui page's closing line, now a measured report from the constitution's own audit
+
+why:       the page said the site's pages had not been run through the verifier; the author asked for the line to say they have, with the results
+
+did:
+  - ran StzZui's tools/ui-audit.html read-only (served through a temporary mapping, neither repository touched) on 188 pages at 1280 px, light then dark: the home page, 91 English and 91 French section pages, five deeper pages; 368 violations in light, 340 in dark
+  - broke the findings by rule: Rule 108 no trail on 182 pages (the site shows a section bar, not a breadcrumb) plus 10 trail-markup findings on the five deeper pages; Rule 115 six (five markup, one a path showing ancestors only); Rule 114 the section bar scrolls sideways on 80 pages by 18 to 116 px; Rules 105/107 62 findings on the narrations choice lists (13.3 px, a browser default); Rule 105 contrast 28 in light and none in dark, all over a picture the audit cannot see; Rule 116 none
+  - replaced the closing line of content/en/zui.md and content/fr/zui.md with a section "What the audit found" stating the date, the pages, each result and what the audit cannot see, and said unperceived for the tour counter in the light theme
+  - corrected three of the page's own seven applied-rule lines that the audit contradicted (same size, path shows every depth, no sideways scroll), each pointing to the section below
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,298 files, search 16 of 16, the floor held on both Zui pages; I looked at the render of the new section
+
+state:
+  zui-page:          the audit's results are on it, in both languages; it no longer claims a clean site
+  findings:          open, none repaired
+  audit-reading:     it wants Breadcrumb as the label, a bare root address and a class on the current step; this site uses neither, so 15 of the trail findings describe the audit's convention as much as the page
+
+waiting:
+  - TRAIL: does every page owe a breadcrumb, or does the section bar suffice? -> the author [not routed before this memo]
+  - SECTIONBAR-114: let the section bar wrap instead of scrolling sideways, 80 pages -> the author [not routed before this memo]
+  - OPTIONSIZE-105: set the narrations choice lists at 1 rem -> the author [not routed before this memo]
+  - TOUR-COUNTER: someone looks at the tour's page counter over the photograph in the light theme -> the author [not routed before this memo]
+
+next:
+  - me:      commit and push
+  - author:  decide the trail question, then say go to a repair wave for the three fixes
+  - stzzui:  the audit's limits (no flat-section exemption by structure, a menu label of Main, a class on the current step) are theirs to know; routed in CONCLUSIONS
+
+note:      the audit flagged what the site said it did; the three lines I corrected were my own claims from the earlier pass
+```
