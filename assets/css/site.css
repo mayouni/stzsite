@@ -621,3 +621,15 @@ details.rxd{margin:8px 0 0}
 details.rxd summary{cursor:pointer;display:list-item}
 nav.jump p{margin:6px 0;max-width:none;line-height:2}
 nav.jump a{margin-right:10px}
+
+/* the depth page */
+table.depth{border-collapse:collapse;width:100%;max-width:640px}
+table.depth th,table.depth td{padding:8px 12px;border-bottom:1px solid var(--line);text-align:left}
+table.depth .n{text-align:right;font-variant-numeric:tabular-nums}
+
+/* the estate's products as a table (rule 119: records with the same fields) */
+table.products{border-collapse:collapse;width:100%}
+table.products th,table.products td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+table.products thead th{font-family:"IBM Plex Mono",monospace;font-size:var(--label);color:var(--ink-2)}
+table.products td:nth-child(2){white-space:nowrap}
+table.products p{margin:0 0 6px}

@@ -23,18 +23,18 @@ The drawing below places each member, with its stage as read in its repository o
 
 A product that does not exist yet says so. The stage is a word you can check: <b>built</b> the code exists and its guards pass · <b>in construction</b> the design exists and the code is under way · <b>specification</b> the document and, sometimes, a prototype · <b>ratified proposal</b> the direction is decided · <b>named</b> a name, and nothing else yet.
 
-<div class="cards">
-<div class="card"><h3>Softanza</h3><p class="stage">built</p><p>The foundation: the library and its Zig engine, public. Everything else stands on it.</p><p class="proof"><a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a></p></div>
-<div class="card"><h3>The Learning System</h3><p class="stage">built</p><p>Two courses of fifteen chapters in four languages, missions, projects, overlays, cohorts, a tutor; fourteen guards, 716 assertions. <b>Beside it:</b> <a href="education-record.html#limits">three limits</a>: French, Arabic and Hausa are drafts (0 of 35 units reviewed), the cells run on the desktop, no institution has adopted it.</p></div>
-<div class="card"><h3>Haro</h3><p class="stage">in construction</p><p>The language of languages, on a sovereign virtual machine and compiler in Zig. Charter of 2026-09-26 awaiting ratification.</p></div>
-<div class="card"><h3>Harobanda</h3><p class="stage">built</p><p>The declared machine, MIT, boots in an emulator. No production workload yet, and it says so.</p><p class="proof"><a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a></p></div>
-<div class="card"><h3>HaroBase</h3><p class="stage">specification</p><p>The governed data store: plain SQLite, in the process, governed. Charter ratified 2026-09-29; first layers built. Private for now.</p></div>
-<div class="card"><h3>Aïcha</h3><p class="stage">named</p><p>The coming intelligence layer and conversational agent. No product ships under that name today.</p></div>
-<div class="card"><h3>Zui</h3><p class="stage">built</p><p>The interface constitution: 122 rules a machine can refuse to violate, 22 verbs. Repository not public yet.</p></div>
-<div class="card"><h3>Refine</h3><p class="stage">specification</p><p>Refinement-oriented programming: a corpus of specifications, a prototype, a book in manuscript.</p></div>
-<div class="card"><h3>Takamba</h3><p class="stage">built</p><p>The harness, formerly Bangalo: how Softanza builds Softanza. Repository not public yet.</p></div>
-<div class="card"><h3>The COBOL workbench</h3><p class="stage">ratified proposal</p><p>Modern tooling around unchanged COBOL estates, without a rewrite. Direction ratified 2026-08-16; the name is held back until a prior-use search closes.</p></div>
-<div class="card"><h3>Softanza Studio</h3><p class="stage">specification</p><p>The commercial visual environment over the same plain-text truth. A design corpus and a browser prototype today.</p></div>
-</div>
+<div class="covwrap"><table class="products"><thead><tr><th scope="col">Product</th><th scope="col">Stage</th><th scope="col">What it is</th></tr></thead><tbody>
+<tr><th scope="row">Softanza</th><td><b>built</b></td><td><p>The foundation: the library and its Zig engine, public. Everything else stands on it.</p><p class="proof"><a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a></p></td></tr>
+<tr><th scope="row">The Learning System</th><td><b>built</b></td><td><p>Two courses of fifteen chapters in four languages, missions, projects, overlays, cohorts, a tutor; fourteen guards, 716 assertions. <b>Beside it:</b> <a href="education-record.html#limits">three limits</a>: French, Arabic and Hausa are drafts (0 of 35 units reviewed), the cells run on the desktop, no institution has adopted it.</p></td></tr>
+<tr><th scope="row">Haro</th><td><b>in construction</b></td><td><p>The language of languages, on a sovereign virtual machine and compiler in Zig. Charter of 2026-09-26 awaiting ratification.</p></td></tr>
+<tr><th scope="row">Harobanda</th><td><b>built</b></td><td><p>The declared machine, MIT, boots in an emulator. No production workload yet, and it says so.</p><p class="proof"><a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a></p></td></tr>
+<tr><th scope="row">HaroBase</th><td><b>in construction</b></td><td><p>The governed data store: plain SQLite, in the process, governed. Charter ratified 2026-09-29; first layers built. Private for now.</p></td></tr>
+<tr><th scope="row">Aïcha</th><td><b>named</b></td><td><p>The coming intelligence layer and conversational agent. No product ships under that name today.</p></td></tr>
+<tr><th scope="row">Zui</th><td><b>built</b></td><td><p>The interface constitution: 122 rules a machine can refuse to violate, 22 verbs. Repository not public yet.</p></td></tr>
+<tr><th scope="row">Refine</th><td><b>specification</b></td><td><p>Refinement-oriented programming: a corpus of specifications, a prototype, a book in manuscript.</p></td></tr>
+<tr><th scope="row">Takamba</th><td><b>built</b></td><td><p>The harness, formerly Bangalo: how Softanza builds Softanza. Repository not public yet.</p></td></tr>
+<tr><th scope="row">The COBOL workbench</th><td><b>ratified proposal</b></td><td><p>Modern tooling around unchanged COBOL estates, without a rewrite. Direction ratified 2026-08-16; the name is held back until a prior-use search closes.</p></td></tr>
+<tr><th scope="row">Softanza Studio</th><td><b>specification</b></td><td><p>The commercial visual environment over the same plain-text truth. A design corpus and a browser prototype today.</p></td></tr>
+</tbody></table></div>
 
 <p class="proof">Stages read on 2026-09-30 and 2026-10-01 in the repositories themselves. Where a repository is private, the site says so and quotes nothing it cannot link.</p>

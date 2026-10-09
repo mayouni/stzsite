@@ -1,0 +1,573 @@
+{
+ "commit": "4a184e6f0",
+ "domains": [
+  {
+   "name": "list",
+   "files": 52,
+   "lines": 74591
+  },
+  {
+   "name": "graph",
+   "files": 37,
+   "lines": 65522
+  },
+  {
+   "name": "string",
+   "files": 43,
+   "lines": 48199
+  },
+  {
+   "name": "number",
+   "files": 22,
+   "lines": 36520
+  },
+  {
+   "name": "table",
+   "files": 15,
+   "lines": 26490
+  },
+  {
+   "name": "object",
+   "files": 7,
+   "lines": 19293
+  },
+  {
+   "name": "common",
+   "files": 25,
+   "lines": 15662
+  },
+  {
+   "name": "datetime",
+   "files": 7,
+   "lines": 15639
+  },
+  {
+   "name": "data",
+   "files": 9,
+   "lines": 14633
+  },
+  {
+   "name": "sound",
+   "files": 32,
+   "lines": 13923
+  },
+  {
+   "name": "stats",
+   "files": 12,
+   "lines": 13574
+  },
+  {
+   "name": "regex",
+   "files": 10,
+   "lines": 13331
+  },
+  {
+   "name": "file",
+   "files": 11,
+   "lines": 12328
+  },
+  {
+   "name": "natural",
+   "files": 13,
+   "lines": 11920
+  },
+  {
+   "name": "security",
+   "files": 25,
+   "lines": 11634
+  },
+  {
+   "name": "system",
+   "files": 24,
+   "lines": 11502
+  },
+  {
+   "name": "math",
+   "files": 17,
+   "lines": 9587
+  },
+  {
+   "name": "service",
+   "files": 19,
+   "lines": 9345
+  },
+  {
+   "name": "graphics",
+   "files": 14,
+   "lines": 8038
+  },
+  {
+   "name": "geo",
+   "files": 10,
+   "lines": 7569
+  },
+  {
+   "name": "meta",
+   "files": 13,
+   "lines": 7279
+  },
+  {
+   "name": "education",
+   "files": 290,
+   "lines": 6773
+  },
+  {
+   "name": "agentic",
+   "files": 12,
+   "lines": 4816
+  },
+  {
+   "name": "reactive",
+   "files": 11,
+   "lines": 4443
+  },
+  {
+   "name": "i18n",
+   "files": 5,
+   "lines": 4131
+  },
+  {
+   "name": "cluster",
+   "files": 14,
+   "lines": 4025
+  },
+  {
+   "name": "gui",
+   "files": 8,
+   "lines": 3719
+  },
+  {
+   "name": "perf",
+   "files": 13,
+   "lines": 3711
+  },
+  {
+   "name": "neural",
+   "files": 6,
+   "lines": 3474
+  },
+  {
+   "name": "appserver",
+   "files": 5,
+   "lines": 3331
+  },
+  {
+   "name": "plugin",
+   "files": 24,
+   "lines": 3258
+  },
+  {
+   "name": "optim",
+   "files": 5,
+   "lines": 2753
+  },
+  {
+   "name": "linguistic",
+   "files": 8,
+   "lines": 2656
+  },
+  {
+   "name": "learning",
+   "files": 11,
+   "lines": 2589
+  },
+  {
+   "name": "reflect",
+   "files": 1,
+   "lines": 2585
+  },
+  {
+   "name": "extercode",
+   "files": 9,
+   "lines": 2016
+  },
+  {
+   "name": "network",
+   "files": 8,
+   "lines": 1662
+  },
+  {
+   "name": "testoor",
+   "files": 3,
+   "lines": 1541
+  },
+  {
+   "name": "gpu",
+   "files": 3,
+   "lines": 1326
+  },
+  {
+   "name": "app",
+   "files": 2,
+   "lines": 1098
+  },
+  {
+   "name": "platform",
+   "files": 1,
+   "lines": 892
+  },
+  {
+   "name": "governance",
+   "files": 1,
+   "lines": 888
+  },
+  {
+   "name": "error",
+   "files": 22,
+   "lines": 777
+  },
+  {
+   "name": "extincode",
+   "files": 8,
+   "lines": 722
+  },
+  {
+   "name": "conversation",
+   "files": 3,
+   "lines": 658
+  },
+  {
+   "name": "refine",
+   "files": 1,
+   "lines": 554
+  }
+ ],
+ "engine": {
+  "modules": 375,
+  "lines": 160063,
+  "largest": [
+   [
+    "list",
+    6518
+   ],
+   [
+    "string",
+    5052
+   ],
+   [
+    "ring_bridge_stats",
+    4476
+   ],
+   [
+    "ring_bridge_string",
+    4335
+   ],
+   [
+    "eigen_general",
+    4254
+   ],
+   [
+    "linalg",
+    3309
+   ],
+   [
+    "reactor",
+    2969
+   ],
+   [
+    "graph",
+    2808
+   ],
+   [
+    "soundgraph",
+    2777
+   ],
+   [
+    "umap",
+    2634
+   ],
+   [
+    "plot",
+    2437
+   ],
+   [
+    "geo_projection",
+    2314
+   ]
+  ]
+ },
+ "tests": {
+  "files": 5284,
+  "scenario_guards": 527,
+  "numbered": 4474,
+  "folders": 158
+ },
+ "designs": [
+  {
+   "file": "DOCREFORM_PILOT_STATE.md",
+   "title": "DOCREFORM -- state after wave 2 (handoff, 2026-10-05)",
+   "line": "Branch docs/reform (worktree D:\\GitHub\\wtd).",
+   "lines": 64
+  },
+  {
+   "file": "DOCREFORM_PROPOSAL.md",
+   "title": "DOCREFORM -- the library documents itself so that it reads like a reference",
+   "line": "(Every undocumented method sits under some box, so \"nothing\" is 0 here: in the pilot the problem is the section title, not silence.) Of own sentences only 817 / 268 / 283 / 91 pass a first surface...",
+   "lines": 72
+  },
+  {
+   "file": "EXTERNAL_DEPENDENCY_AUDIT.md",
+   "title": "External Dependency Audit -- 2026-06-13",
+   "line": "User directive: ensure no external Haro extensions are required; Zig-engine alternatives must replace them; no Ring-side...",
+   "lines": 310
+  },
+  {
+   "file": "MTLS_PLAN.md",
+   "title": "Wire mTLS between nodes -- implementation plan (R8 rung #6)",
+   "line": "True mutual-TLS between Softanza nodes: both ends terminate TLS and present + validate X.509 certificates.",
+   "lines": 123
+  },
+  {
+   "file": "NATURAL_VISION.md",
+   "title": "The Softanza Natural Programming Vision",
+   "line": "1. Housekeeping [DONE 2026-07-10] -- archive stznatural-copy.ring; retire stzNaturalMarkup, stzNaturalCode's future/context globals, and stzConstraints; remove or repurpose the IsStzChainOfCode...",
+   "lines": 329
+  },
+  {
+   "file": "NEXT_SESSION_PROMPT.md",
+   "title": "Next Session -- Reactive Engine: Tier 1 DONE, Tier 2 is next",
+   "line": "Closing the Tier 1 gaps from the analysis: hierarchical HTTP timeouts, connection pooling + keep-alive, DNS cache, cancellation tokens, retry budget, latency histograms, outlier ejection, graceful pool shutdown.",
+   "lines": 408
+  },
+  {
+   "file": "NNL_REVIEW.md",
+   "title": "NNL Reviewed: Near-Natural Language as Softanza's First Paradigm",
+   "line": "NNL's claim is NOT \"make APIs read nicely\" (fluent interfaces do that) and NOT \"make the machine understand text\" (that is Naturally's direction).",
+   "lines": 495
+  },
+  {
+   "file": "REACTIVE_ENGINE_GAP_ANALYSIS.md",
+   "title": "Reactive Engine -- Gap Analysis vs Industrial Tools",
+   "line": "What we shipped this arc, what libuv / libcurl / nginx / Go / Tokio / Envoy do that we don't, and what we should adopt...",
+   "lines": 279
+  },
+  {
+   "file": "SCOPE_ORIENTED_PROGRAMMING.md",
+   "title": "Scope-Oriented Programming",
+   "line": "The programmer is forced to hold the frame in their head and re-supply it mentally on every read.",
+   "lines": 451
+  },
+  {
+   "file": "Softanza Virtual System Framework.md",
+   "title": "The Softanza Virtual System Framework",
+   "line": "Unmanaged systems — file systems, databases, GUIs, networks — share a defining trait: operations on them are immediate and consequential.",
+   "lines": 255
+  },
+  {
+   "file": "SOFTANZA_AUTH_PLAN.md",
+   "title": "Industrial-Strength Authentication",
+   "line": "",
+   "lines": 389
+  },
+  {
+   "file": "SOFTANZA_CLI_DESIGN.md",
+   "title": "Softanza CLI Design",
+   "line": "A single softanza binary (built in Zig) that manages the Softanza development lifecycle.",
+   "lines": 78
+  },
+  {
+   "file": "SOFTANZA_DELIVERY_PLANE.md",
+   "title": "The Softanza Delivery Plane",
+   "line": "",
+   "lines": 104
+  },
+  {
+   "file": "SOFTANZA_DEPLOYMENT.md",
+   "title": "The Softanza Deployment Technology",
+   "line": "",
+   "lines": 199
+  },
+  {
+   "file": "SOFTANZA_DEPLOYMENT_PLAN.md",
+   "title": "The Softanza Deployment Plan & Provisioning",
+   "line": "",
+   "lines": 149
+  },
+  {
+   "file": "SOFTANZA_EMULATION.md",
+   "title": "The Softanza Emulation Technology",
+   "line": "",
+   "lines": 372
+  },
+  {
+   "file": "SOFTANZA_ENGINE_ARCHITECTURE.md",
+   "title": "Softanza Engine -- Architectural Design",
+   "line": "The Softanza Engine is not a helper library for Ring.",
+   "lines": 900
+  },
+  {
+   "file": "SOFTANZA_ENGINE_DESIGN.md",
+   "title": "Softanza Engine Design",
+   "line": "The Softanza Engine is the universal computation substrate that powers Softanza.",
+   "lines": 4095
+  },
+  {
+   "file": "SOFTANZA_ENGINE_MACROPLAN.md",
+   "title": "Softanza Engine -- Macro Plan",
+   "line": "8 DLLs built (Core + Base tiers). 40 tests...",
+   "lines": 1111
+  },
+  {
+   "file": "SOFTANZA_GRAPH_RULES_PLAN.md",
+   "title": "Rule Governance over Graphs",
+   "line": "",
+   "lines": 358
+  },
+  {
+   "file": "SOFTANZA_INCIDENT_ANALYSIS.md",
+   "title": "Softanza Incident Analysis",
+   "line": "",
+   "lines": 816
+  },
+  {
+   "file": "SOFTANZA_INCIDENT_VS_THE_FIELD.md",
+   "title": "The Softanza Incident-Analysis System vs the Field",
+   "line": "",
+   "lines": 313
+  },
+  {
+   "file": "SOFTANZA_INTELLIGENCE_ARCHITECTURE.md",
+   "title": "Softanza Intelligence Architecture",
+   "line": "Text processing is not one module -- it is a LAYERED STACK, and the layering IS the...",
+   "lines": 2551
+  },
+  {
+   "file": "SOFTANZA_LOGGING.md",
+   "title": "Softanza Logging",
+   "line": "",
+   "lines": 144
+  },
+  {
+   "file": "SOFTANZA_NUMBER_ENGINE_PLAN.md",
+   "title": "Softanza Numbers, Engine-Side",
+   "line": "engine/src/number.zig implements arbitrary-precision integers on top of Zig's std.math.big.int.Managed.",
+   "lines": 322
+  },
+  {
+   "file": "SOFTANZA_NUMERIC_FOUNDATION.md",
+   "title": "Numbers in Softanza — a global rethink",
+   "line": "One type, and it is a C double. There is no integer type at...",
+   "lines": 3168
+  },
+  {
+   "file": "SOFTANZA_PERF_SYSTEM.md",
+   "title": "Softanza Performance by Design",
+   "line": "",
+   "lines": 848
+  },
+  {
+   "file": "SOFTANZA_PERF_VS_THE_FIELD.md",
+   "title": "The Softanza Performance System vs the Field",
+   "line": "",
+   "lines": 231
+  },
+  {
+   "file": "SOFTANZA_SECRETS.md",
+   "title": "Softanza Secrets & Credentials",
+   "line": "",
+   "lines": 156
+  },
+  {
+   "file": "SOFTANZA_SECURITY.md",
+   "title": "Softanza Security",
+   "line": "",
+   "lines": 141
+  },
+  {
+   "file": "SOFTANZA_SERVICE_VIRTUALIZATION_PLAN.md",
+   "title": "The Service-Virtualization Plane",
+   "line": "",
+   "lines": 359
+  },
+  {
+   "file": "SOFTANZA_SYSTEM_FOUNDATION.md",
+   "title": "The Softanza System Foundation",
+   "line": "The reason the diagram is worth drawing: L1 and L2 present the same intent-named surface.",
+   "lines": 706
+  },
+  {
+   "file": "SOFTANZA_THROUGH_CLAUDES_EYES.md",
+   "title": "Softanza Through Claude's Eyes",
+   "line": "The three-layer pyramid (Core/Base/Max), the decision to remove Qt entirely, the Zig Engine as computation substrate -- this wasn't a library anymore.",
+   "lines": 276
+  },
+  {
+   "file": "Softaza and Agents That Cannot Hurt You.md",
+   "title": "Agents That Cannot Hurt You",
+   "line": "The industry's agentic race is a race for capability: better reasoning, more tools, longer autonomy.",
+   "lines": 95
+  },
+  {
+   "file": "STRING_ENGINE_DESIGN_v2.md",
+   "title": "String Engine v2 -- Design Document & Implementation Plan",
+   "line": "Current: stzstringwordcount(handle) New:...",
+   "lines": 836
+  },
+  {
+   "file": "stz-information-tagging-strategy.md",
+   "title": "Softanza Information-Tagging Strategy",
+   "line": "Status: active build (2026-07-08). Owner: reflection/self-doc layer (base/reflect/), built on the neural tier...",
+   "lines": 239
+  },
+  {
+   "file": "STZAPP_BODY_DESIGN.md",
+   "title": "stzApp — Deepening: Body (Embodiment)",
+   "line": "A world is a graph (stzGraph); so the world's substance persists exactly as a graph does — and stzGraph ships this already, in native Softanza formats plus...",
+   "lines": 145
+  },
+  {
+   "file": "STZAPP_DESIGN.md",
+   "title": "stzApp — an application is a living world of meaning",
+   "line": "Three aspects constitute the world (strip any and there is no world); four relate it to the outside (strip them and a world still lives,...",
+   "lines": 247
+  },
+  {
+   "file": "STZAPP_PURPOSE_DESIGN.md",
+   "title": "stzApp — Deepening: Purpose (Goals & Plans)",
+   "line": "A goal does not say what to do; it says what should become true.",
+   "lines": 154
+  },
+  {
+   "file": "STZAPP_STATUS_AND_NEXT.md",
+   "title": "stzApp - Status & Next Steps (handoff)",
+   "line": "Haro's value semantics defeat the \"sub-builder object that the app reads back\" approach (see S3).",
+   "lines": 155
+  },
+  {
+   "file": "stzCloudtool-Design-Article.md",
+   "title": "stzCloudTool: Unified Cloud Computing Integration for Softanza",
+   "line": "Contemporary applications operate across three computational...",
+   "lines": 671
+  },
+  {
+   "file": "stzextertool-design-article.md",
+   "title": "Softanza External Tools Ecosystem: Design & Architecture",
+   "line": "Example (Softanza approach): Stat = new stzStatTool() Stat.SetAnalysis(\"regression\") Stat.AddVariable(\"x\", :independent) Stat.AddVariable(\"y\", :dependent) Stat.Execute() # Developer thinks: \"I want...",
+   "lines": 1987
+  },
+  {
+   "file": "stzGraph-A-Design-Foundation-for-Connected-Domains.md",
+   "title": "stzGraph: A Design Foundation for Connected Domains",
+   "line": "stzGraph is not merely a data structure. It is the architectural foundation upon which Softanza builds an entire ecosystem of domain-specific reasoning...",
+   "lines": 1110
+  },
+  {
+   "file": "STZSTRING_DECOMPOSITION.md",
+   "title": "stzString Decomposition Map",
+   "line": "1. Phase A: Create stzString with engine handle and core methods. Verify it works...",
+   "lines": 284
+  },
+  {
+   "file": "STZSUPERAPP_DESIGN.md",
+   "title": "stzSuperApp - a living constellation of worlds",
+   "line": "Real solutions are rarely one app. A bank has a field tool, an admin console, a customer portal, a partner API -- each for a different persona, on a different platform, yet sharing customers,...",
+   "lines": 230
+  },
+  {
+   "file": "TIER2_REACTOR_DIRECTION.md",
+   "title": "Tier 2 -- Reactor Direction (libuv backbone)",
+   "line": "M-DEP forbade external Haro extensions (load \"libuv.ring\" etc.",
+   "lines": 174
+  }
+ ]
+}

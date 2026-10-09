@@ -45,7 +45,8 @@ SECTIONS = [
      ("architecture", {"fr": "Architecture", "en": "Architecture"}),
      ("craft", {"fr": "Le métier", "en": "The craft"}),
      ("areas", {"fr": "Les domaines", "en": "The areas"}),
-     ("code", {"fr": "Le code", "en": "The code"})]),
+     ("code", {"fr": "Le code", "en": "The code"}),
+     ("depth", {"fr": "Profondeur", "en": "Depth"})]),
   ("compare", {"fr": "Comparée", "en": "Compared"}, [
      ("compare", {"fr": "Comparée", "en": "Compared"})]),
   ("narrations", {"fr": "Narrations", "en": "Narrations"}, [
@@ -60,7 +61,8 @@ SECTIONS = [
      ("history", {"fr": "Depuis les principes", "en": "From first principles"}),
      ("forged", {"fr": "Forgée en projets", "en": "Forged in projects"}),
      ("sovereignty", {"fr": "Souveraineté", "en": "Sovereignty"}),
-     ("africa", {"fr": "Née en Afrique", "en": "Born in Africa"})]),
+     ("africa", {"fr": "Née en Afrique", "en": "Born in Africa"}),
+     ("roots", {"fr": "Racines", "en": "Roots"})]),
   ("agentic", {"fr": "Agentique", "en": "Agentic"}, [
      ("agentic", {"fr": "Agentique", "en": "Agentic"}),
      ("wise", {"fr": "Wise coding", "en": "Wise coding"}),
@@ -69,7 +71,8 @@ SECTIONS = [
      ("refinement", {"fr": "Raffinement", "en": "Refinement"}),
      ("agents", {"fr": "Pour les agents", "en": "For agents"}),
      ("coding-agents", {"fr": "Agents qui codent", "en": "Coding agents"}),
-     ("security", {"fr": "Sécurité", "en": "Security"})]),
+     ("security", {"fr": "Sécurité", "en": "Security"}),
+     ("aicha", {"fr": "Aïcha", "en": "Aïcha"})]),
   ("learn", {"fr": "Apprendre", "en": "Learn"}, [
      ("learn", {"fr": "Apprendre", "en": "Learn"}),
      ("book", {"fr": "Le livre", "en": "The book"}),
@@ -93,14 +96,18 @@ SUBPAGES = {"education-self": "education", "education-teach": "education", "educ
 EDU_BAR = {"fr": ("Éducation", [("education", "Les trois portes"), ("education-self", "J'apprends seul"), ("education-teach", "J'enseigne ou je conçois"), ("education-programme", "Je dirige un programme"), ("education-record", "Ce qui est prouvé")]),
            "en": ("Education", [("education", "The three doors"), ("education-self", "I learn by myself"), ("education-teach", "I teach or design"), ("education-programme", "I run a programme"), ("education-record", "What is proved")])}
 # The Craft page is the style's page (12.12) and the paradigms that follow from it are its chapters, shown in the same left bar
-SUBPAGES.update({p: "platforms" for p in ("conversations", "environment", "polyglot")})
-SUBPAGES.update({p: "craft" for p in ("goals", "way", "natural", "byexample", "softanzuter", "innovations")})
-CRAFT_BAR = {"fr": ("Comment Softanza s'écrit", [("craft", "Comment Softanza s'écrit"), ("goals", "Sept buts de conception"), ("way", "La manière Softanza"), ("natural", "Naturel, et exécutable"), ("byexample", "Par l'exemple"),
+SUBPAGES.update({p: "platforms" for p in ("applications", "host", "device", "surfaces", "real", "first", "store", "conversations", "environment", "polyglot")})
+SUBPAGES.update({p: "craft" for p in ("goals", "patterns", "way", "natural", "byexample", "softanzuter", "innovations")})
+CRAFT_BAR = {"fr": ("Comment Softanza s'écrit", [("craft", "Comment Softanza s'écrit"), ("goals", "Sept buts de conception"), ("patterns", "Langages de motifs"), ("way", "La manière Softanza"), ("natural", "Naturel, et exécutable"), ("byexample", "Par l'exemple"),
                                                     ("softanzuter", "Le Softanzuter"), ("innovations", "Les innovations")]),
-             "en": ("How Softanza is written", [("craft", "How Softanza is written"), ("goals", "Seven design goals"), ("way", "The Softanza way"), ("natural", "Natural, and executable"), ("byexample", "By example"),
+             "en": ("How Softanza is written", [("craft", "How Softanza is written"), ("goals", "Seven design goals"), ("patterns", "Pattern languages"), ("way", "The Softanza way"), ("natural", "Natural, and executable"), ("byexample", "By example"),
                                                 ("softanzuter", "The Softanzuter"), ("innovations", "Innovations")])}
-PLATFORMS_BAR = {"fr": ("Plateforme de plateformes", [("platforms", "Plateforme de plateformes"), ("conversations", "Conversations"), ("environment", "L'environnement"), ("polyglot", "Sept langues, une porte")]),
-                 "en": ("Platform of platforms", [("platforms", "Platform of platforms"), ("conversations", "Conversations"), ("environment", "The environment"), ("polyglot", "Seven languages, one door")])}
+PLATFORMS_BAR = {"fr": ("Applications", [("applications", "Applications"), ("platforms", "Plateforme de plateformes"), ("host", "L'hôte"), ("device", "De l'éditeur à l'appareil"), ("surfaces", "Surfaces"),
+                                           ("real", "Applications réelles"), ("first", "Votre première application"), ("store", "Le magasin"), ("conversations", "Conversations"),
+                                           ("environment", "L'environnement"), ("polyglot", "Sept langues, une porte")]),
+                 "en": ("Applications", [("applications", "Applications"), ("platforms", "Platform of platforms"), ("host", "The host"), ("device", "From the editor to the device"), ("surfaces", "Surfaces"),
+                                         ("real", "Real applications"), ("first", "Your first application"), ("store", "The store"), ("conversations", "Conversations"),
+                                         ("environment", "The environment"), ("polyglot", "Seven languages, one door")])}
 BARS = {"education": EDU_BAR, "craft": CRAFT_BAR, "platforms": PLATFORMS_BAR}
 OLD_PAGES = {"teaching": "education", "pedagogy": "education"}        # the old addresses lead to the new page
 GENERATED = {"reference", "narrations", "howto", "ask", "journeys", "narrations-performance", "narrations-security", "narrations-delivery"}   # built by code, not from a .md
@@ -338,7 +345,10 @@ def tiles_html(lang, idx, groups, rel_atlas, rel_assets, themed=True, hl="h2"):
             what = esc(g.get("nopic_" + lang, ""))
         h = HERITAGE.get(g["slug"])
         if h: what = esc(h["principle_" + lang])
-        return f'<div class="tile">{pic}<a class="name" href="{href}">{esc(g[lang])}</a><span class="what">{what}</span></div>'
+        lanes = g.get("detail", {}).get("lanes", [])
+        tally = " · ".join(f'{sum(1 for l in lanes if l.get("rating") == k)} {k}' for k in ("Strong", "Solid", "Partial", "Emerging") if any(l.get("rating") == k for l in lanes))
+        verdict = f'<span class="rx-src">{len(lanes)} {({"fr": "couloirs", "en": "lanes"}[lang])} : {tally}</span>' if lanes else ""
+        return f'<div class="tile">{pic}<a class="name" href="{href}">{esc(g[lang])}</a><span class="what">{what}</span>{verdict}</div>'
     if not themed:
         return '<div class="tiles">' + "".join(tile(g) for g in groups if g.get("render")) + '</div>'
     out = []
@@ -402,7 +412,7 @@ def inject(body_html, lang, idx, groups, rel="../"):
     body_html = body_html.replace("<!--METHODS-->", fmt(COUNTS["methods"])).replace("<!--CLASSES-->", fmt(COUNTS["classes"])).replace("<!--ENTRIES-->", fmt(COUNTS["entries"]))
     body_html = body_html.replace("<!--AREAS-->", fmap_html(lang, idx, groups, "atlas/") + tiles_html(lang, idx, groups, "atlas/", rel))
     body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
-    for tag, fn in (("GLOSSARY", glossary_html), ("LEADS", leads_html), ("RULES", rules_html), ("STEPS", steps_html), ("INNOVATIONS", innovations_html), ("GOALS", goals_html)):
+    for tag, fn in (("DEPTH", depth_html), ("GLOSSARY", glossary_html), ("LEADS", leads_html), ("RULES", rules_html), ("STEPS", steps_html), ("INNOVATIONS", innovations_html), ("GOALS", goals_html)):
         if f"<!--{tag}-->" in body_html: body_html = body_html.replace(f"<!--{tag}-->", fn(lang))
     body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
     body_html = body_html.replace("<!--DOCS-SCOPE-->", scope_html(lang, idx, groups))
@@ -631,7 +641,7 @@ RING_WORD = re.compile(r"\bRing\b")
 NARR_UI = {
   "fr": {"note": "Lus dans le dossier doc/narrations du dépôt au commit {c}. Chaque article est une page. Le {d}, chacun a été exécuté au nom de Haro dans la bibliothèque, bloc après bloc ; un bloc qui a tenu sa promesse le dit, les autres sont des illustrations. Le code des articles est du code Haro : là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série sont lus dans le nom du fichier et l'année dans le premier commit : dérivés, jusqu'à ce que chaque article porte son propre en-tête.",
          "genre": "Genre", "area": "Domaine", "year": "Année", "family": "Famille", "family_off": "conçu, pas encore construit", "all": "tous",
-         "shown": "{n} sur {t} affichés", "series_h": "Les séries", "series_p": "Une série se lit dans l'ordre.", "list_h": "Tous les articles",
+         "shown": "{n} sur {t} affichés", "order_h": "Par où commencer : un ordre de lecture", "order_p": "Vingt articles, dans l'ordre qui mène un lecteur du modèle mental à la programmation réactive. Chaque page dit lesquels de ses blocs ont tenu leur promesse.", "series_h": "Les séries", "series_p": "Une série se lit dans l'ordre.", "list_h": "Tous les articles",
          "kept": "{k} bloc(s) sur {n} ont tenu leur promesse", "noarea": "plusieurs domaines",
          "not": {"effects": "non exécuté : touche aux fichiers, au réseau, à l'horloge ou au hasard", "does not compile": "non exécuté : ne se charge pas tel qu'écrit", "no code": "sans code", "": "non exécuté"},
          "series": {"performance": ("Série performance", "La série performance", "Onze articles de 2026 sur la mesure : la charge, le profil, la trace, le jugement, le moniteur."),
@@ -639,7 +649,7 @@ NARR_UI = {
                     "delivery": ("Série livraison", "La série livraison", "Cinq articles de 2026 sur la livraison : planifier, émuler, déployer, la virtualisation des services.")}},
   "en": {"note": "Read in the repository's doc/narrations folder at commit {c}. Every article is a page. On {d} each was run in Haro's name inside the library, block after block; a block that kept its promise says so, the others are illustrations. The code of the articles is Haro code: where an article was written before the language took its present name, the name was changed and nothing else. Genre, area and series are read from the file's name and the year from its first commit: derived, until each article carries its own header.",
          "genre": "Genre", "area": "Area", "year": "Year", "family": "Family", "family_off": "designed, not yet built", "all": "all",
-         "shown": "{n} of {t} shown", "series_h": "The series", "series_p": "A series is read in order.", "list_h": "Every article",
+         "shown": "{n} of {t} shown", "order_h": "Where to start: a reading order", "order_p": "Twenty articles, in the order that takes a reader from the mental model to reactive programming. Each page says which of its blocks kept their promise.", "series_h": "The series", "series_p": "A series is read in order.", "list_h": "Every article",
          "kept": "{k} of {n} blocks kept their promise", "noarea": "several areas",
          "not": {"effects": "not run: touches files, the network, the clock or chance", "does not compile": "not run: does not load as written", "no code": "no code", "": "not run"},
          "series": {"performance": ("Performance series", "The performance series", "Eleven articles of 2026 on measuring: the load, the profile, the trace, the judgment, the monitor."),
@@ -668,6 +678,13 @@ def narration_items(lang, files, runs, cards, groups, rel=""):
                    f'<p>{esc(c["abstract"])}</p><span class="rx-src">{esc(meta)}</span></li>')
     return "".join(lis)
 
+READING_ORDER = ["stz-mental-mode-narration.md", "stz-bridging-minds-and-code.md", "stz-functions-as-linguistic-expressions.md", "stz-function-forms-narration.md",
+                 "stz-near-natural-language-programming.md", "stznatural-narration.md", "stz-knowledge-programming-narration.md", "stz-conditional-code-narration.md",
+                 "stzwalker-beyond-loops-the -walker-metaphor.md", "stzobject-history-narration.md", "stz-managing-deep-lists-narration.md",
+                 "stzregex-mastering-regex-with-softanza-narration.md", "stzlistex-pattern-matching-for-lists.md", "stzregexuter-regex-as-computational-reactive-medium.md",
+                 "stz-agents-that-cannot-hurt-you-narration.md", "stzApp-building-your-first-app-narration.md", "stz-emulating-the-whole-solution-narration.md",
+                 "stz-honest-stopwatch-narration.md", "stz-security-ledger-narration.md", "stz-reaxis-reactive-programming-narration.md"]
+
 def build_narrations(lang, published):
     ui, nu = UI[lang], NARR_UI[lang]
     runs = json.loads((DATA / "narrations-run.json").read_text(encoding="utf-8"))
@@ -692,6 +709,7 @@ def build_narrations(lang, published):
     series = "".join(f'<li><a href="narrations-{k}.html"><b>{esc(v[1])}</b></a> <span class="mono">({sum(1 for f in files if cards[f]["series"] == k)})</span><p>{esc(v[2])}</p></li>'
                      for k, v in nu["series"].items())
     body = (f'<p class="proof">{esc(nu["note"].format(c=meta["commit"], d=ran))}</p>'
+            f'<h2>{nu["order_h"]}</h2><p>{nu["order_p"]}</p><ol class="narr research">{narration_items(lang, [f for f in READING_ORDER if f in cards], runs, cards, groups)}</ol>'
             f'<h2>{nu["series_h"]}</h2><p>{nu["series_p"]}</p><ul class="narr">{series}</ul>'
             f'<h2>{nu["list_h"]} <span class="mono">({len(files)})</span></h2>{filters}'
             f'<ol class="narr research" id="nlist">{narration_items(lang, files, runs, cards, groups)}</ol>{NARR_FILTER_JS}')
@@ -748,7 +766,9 @@ def evidence(lang, e):
     for a, b in EVIDENCE_FR: e = re.sub(a, b, e)
     return e
 
-PAGE_NAMES = {"way": {"fr": "La manière Softanza", "en": "The Softanza way"}, "innovations": {"fr": "Les innovations", "en": "Innovations"}, "conversations": {"fr": "Conversations", "en": "Conversations"}, "environment": {"fr": "L'environnement", "en": "The environment"}, "polyglot": {"fr": "Sept langues, une porte", "en": "Seven languages, one door"}, "goals": {"fr": "Sept buts de conception", "en": "Seven design goals"}, "softanzuter": {"fr": "Le Softanzuter", "en": "The Softanzuter"}, "natural": {"fr": "Naturel, et exécutable", "en": "Natural, and executable"},
+PAGE_NAMES = {"patterns": {"fr": "Langages de motifs", "en": "Pattern languages"}, "applications": {"fr": "Applications", "en": "Applications"}, "host": {"fr": "L'hôte", "en": "The host"},
+              "device": {"fr": "De l'éditeur à l'appareil", "en": "From the editor to the device"}, "surfaces": {"fr": "Surfaces", "en": "Surfaces"}, "real": {"fr": "Applications réelles", "en": "Real applications"},
+              "first": {"fr": "Votre première application", "en": "Your first application"}, "store": {"fr": "Le magasin", "en": "The store"}, "way": {"fr": "La manière Softanza", "en": "The Softanza way"}, "innovations": {"fr": "Les innovations", "en": "Innovations"}, "conversations": {"fr": "Conversations", "en": "Conversations"}, "environment": {"fr": "L'environnement", "en": "The environment"}, "polyglot": {"fr": "Sept langues, une porte", "en": "Seven languages, one door"}, "goals": {"fr": "Sept buts de conception", "en": "Seven design goals"}, "softanzuter": {"fr": "Le Softanzuter", "en": "The Softanzuter"}, "natural": {"fr": "Naturel, et exécutable", "en": "Natural, and executable"},
               "byexample": {"fr": "Par l'exemple", "en": "By example"}, "craft": {"fr": "Comment Softanza s'écrit", "en": "How Softanza is written"},
               "refinement": {"fr": "Raffinement", "en": "Refinement"}, "wise": {"fr": "Wise coding", "en": "Wise coding"}, "agentic": {"fr": "Agentique", "en": "Agentic"},
               "languages": {"fr": "Langue des langues", "en": "Language of languages"}, "ask": {"fr": "Interroger la bibliothèque", "en": "Ask the library"},
@@ -924,6 +944,32 @@ def glossary_html(lang):
         pg = t["page"]
         items.append(f'<dt id="{t["id"]}">{esc(t[lang])}</dt><dd>{d} <span class="rx-src">{see}: <a href="{pg}">{esc(page_label(lang, pg.split("#")[0]))}</a></span></dd>')
     return f'<dl class="glossary">{"".join(items)}</dl>'
+
+DEPTH_UI = {
+  "fr": {"map": "La carte de la bibliothèque", "map_p": "Chaque dossier de domaine de la bibliothèque, avec ses fichiers et ses lignes de code. Les tests, les documents et les archives ne sont pas comptés comme du code.", "dom": "Domaine", "files": "Fichiers", "lines": "Lignes",
+         "eng": "Le moteur", "eng_p": "Le moteur est écrit en Zig : {n} fichiers sources, {l} lignes. Les plus grands, avec leurs lignes :", "tests": "Les tests",
+         "tests_p": "{f} fichiers de test dans {d} dossiers, dont {g} gardes-scénario et {n} tests numérotés de la forme classique.", "docs": "Les documents de conception",
+         "docs_p": "{n} documents de conception, pour qui veut comprendre pourquoi la bibliothèque est faite ainsi. Chaque titre ouvre le document sur GitHub ; le nombre est celui de ses lignes.",
+         "proof": "Ces nombres sont lus dans une copie de la bibliothèque au commit {c} par un outil du site (tools/depth_run.py), comptés comme des fichiers et des lignes de texte. Ils ne sont pas des exécutions."},
+  "en": {"map": "The library map", "map_p": "Every domain folder of the library, with its files and its lines of code. Tests, documents and archives are not counted as code.", "dom": "Domain", "files": "Files", "lines": "Lines",
+         "eng": "The engine", "eng_p": "The engine is written in Zig: {n} source files, {l} lines. The largest, with their lines:", "tests": "The tests",
+         "tests_p": "{f} test files in {d} folders, of which {g} are scenario guards and {n} are numbered tests of the classic form.", "docs": "The design documents",
+         "docs_p": "{n} design documents, for anyone who wants to understand why the library is made as it is. Each title opens the document on GitHub; the number is its lines.",
+         "proof": "These numbers were read from a copy of the library at commit {c} by a tool of the site (tools/depth_run.py), counted as files and lines of text. They are not runs."},
+}
+DEPTH_SKIP = {"DOCREFORM_PILOT_STATE.md", "NEXT_SESSION_PROMPT.md", "STZAPP_STATUS_AND_NEXT.md"}      # hand-over notes between working sessions, not designs
+def depth_html(lang):
+    d = load_json("depth.json"); ui = DEPTH_UI[lang]; fmt = (lambda n: f"{n:,}") if lang == "en" else (lambda n: f"{n:,}".replace(",", " "))
+    rows = "".join(f'<tr><th scope="row">{esc(x["name"])}</th><td class="n">{fmt(x["files"])}</td><td class="n">{fmt(x["lines"])}</td></tr>' for x in d["domains"])
+    big = ", ".join(f'{esc(n)} ({fmt(l)})' for n, l in d["engine"]["largest"][:8])
+    docs = [x for x in d["designs"] if x["file"] not in DEPTH_SKIP]
+    dl = "".join(f'<li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/{esc(x["file"])}">{esc(x["title"])}</a> <span class="mono">{fmt(x["lines"])}</span></li>' for x in docs)
+    t = d["tests"]
+    return (f'<h2>{ui["map"]}</h2><p>{ui["map_p"]}</p><table class="depth"><thead><tr><th scope="col">{ui["dom"]}</th><th scope="col" class="n">{ui["files"]}</th><th scope="col" class="n">{ui["lines"]}</th></tr></thead><tbody>{rows}</tbody></table>'
+            f'<h2>{ui["eng"]}</h2><p>{ui["eng_p"].format(n=fmt(d["engine"]["modules"]), l=fmt(d["engine"]["lines"]))} {big}.</p>'
+            f'<h2>{ui["tests"]}</h2><p>{ui["tests_p"].format(f=fmt(t["files"]), d=fmt(t["folders"]), g=fmt(t["scenario_guards"]), n=fmt(t["numbered"]))}</p>'
+            f'<h2>{ui["docs"]}</h2><p>{ui["docs_p"].format(n=len(docs))}</p><ul class="narr">{dl}</ul>'
+            f'<p class="proof">{ui["proof"].format(c=d["commit"])}</p>')
 
 # ----------------------------------------------------------------------------
 # the tour: scenes separated by <<< scene ... >>> lines, notes in ```notes fences

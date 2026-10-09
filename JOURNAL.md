@@ -1696,3 +1696,51 @@ next:
   - me:      commit and push; the second half of wave 4 on the author's word, starting with the pages whose content the library already holds
   - author:  open the home, Start (follow it to the first program), and the glossary; read .central/WHY-RING-DRAFT.md and answer its six questions
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-09 02:37
+
+subject:   STZSITE-REFORM-01, wave 4, second half: applications, the store, depth, roots, pattern languages, Aïcha, and the estate as a table
+
+why:       the author, "go ahead with the second half of wave 4"; I took the pages whose content the library or the site already holds, and left the ones that wait on a decision of the author or on facts I cannot read
+
+did:
+  - built the Applications family in the left bar of the platform of platforms: a hub that maps eight planes with their stage and guard count (read from the guards, not from
+    the status documents), the host (with the Atlas's own statement of its gaps), from the editor to the device (define, emulate, plan, deploy, secrets), surfaces (the web
+    built, the native interface in construction, the rest as directions), real applications (three grounds, each with its stage), your first application (the shape of a
+    world, the narration that builds one, and the missing creation command named), and the store (six properties, its charter and its two built rungs, stage in construction)
+  - set the store's stage word on the Estate page to "in construction", as the assessment says the site's own definition requires, and drew the estate's eleven products as a table
+  - published "Aïcha": the author's definition, the folder that would make an agent (written, not run), the six organs that exist under other names with their stage, and the coding agent
+    that would change the unit from a diff to a refinement, stage designed; it says in its first block that no product ships under the name
+  - published "Roots": the 2022 founding sentence in the author's words, the slogan, what the deck held, and the dates printed with their sources where they disagree; I left out the
+    dedication and the 2021 mail, which are the author's to give
+  - published "Pattern languages": seven languages over seven kinds of data, five runs from the library's own tests at 4a184e6f0, and the two that failed said plainly (below)
+  - published "Depth": the library's 46 domains with files and lines, the engine's files, the 5,284 test files with 527 scenario guards, and 43 design documents as a reading list, all
+    counted by a new tool (tools/depth_run.py) from a checkout; the hand-over notes between working sessions are left out of the list, and a note that held a machine path was one of them
+  - added a reading order of twenty articles to the narrations index, from the mental model to reactive programming; put each area's lane tally under its tile; and pointed Learn at the guides
+  - FOUND: the library's own tests for the table patterns (cols(3)) and for time patterns (MatchPartial) promise a match and print 0 at 4a184e6f0, run directly from their folders
+    (the same tests passed in earlier runs of the narrations); reported below
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,266 files, the former name in the code of 0 files, search 16 of 16, 0 texts under the floor on the new pages;
+    two of my builds ran at once once and broke a file; I rebuilt from nothing and ran every gate on the clean tree
+
+state:
+  library pin:       every run read the education worktree at 4a184e6f0, clean before and after
+  not done, on purpose (they wait for the author or for facts I cannot read):
+    - the section "Applications" in the top menu (the menu has no room for a ninth entry at 1366 px; the family sits in the Platform section's left bar), and the page for the world itself
+    - the home sentence "With Softanza you build applications" and a fourth door (the home's words are D1, the author's)
+    - the Adopt section's own pages: proving grounds, solutions, education as a product line, partners, certification (commercial decisions); the stack and seat pages; ESPA-MT stays unnamed (D3)
+    - the caveat dose (D2), the Learn split into learning Softanza and building on it, the learner's vocabulary diet, decks per target
+    - the Intelligence section (renaming Agentic), a name check for Aïcha, the Foundation chapter, the declared languages table, the grammar of functions, the gallery, How-to beyond lists
+      and strings, the Zui page's closing line, the phone's pinned rows, the hero picture's provenance (I do not know it), the site's own world file
+    - "Why Softanza leaves Ring": drafted, held, six confirmations owed (.central/WHY-RING-DRAFT.md)
+  perception-gate:   OPEN (the agent looked at renders of the estate and the pattern page; the author has not)
+
+waiting:
+  - REFORM-RULING-01: D1, D2, D3 -> the author [asked 19:45, not answered]
+  - the six confirmations on the Ring page -> the author [asked 01:50]
+  - the table-pattern and time-pattern tests that print 0 where they promise a match -> stzlib [routed now in CONCLUSIONS]
+
+next:
+  - me:      commit and push; then whichever of the held items the author rules on
+  - author:  open Applications in the Platform section's left bar, and the pattern page; rule D1 to D3
+```

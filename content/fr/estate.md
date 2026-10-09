@@ -23,18 +23,18 @@ Le dessin ci-dessous place chaque membre, avec son stade tel qu'il a été lu da
 
 Un produit qui n'existe pas encore le dit. Le stade est un mot que vous pouvez vérifier : <b>construit</b> le code existe et ses gardes passent · <b>en construction</b> la conception existe et le code est en cours · <b>spécification</b> le document et, parfois, un prototype · <b>proposition ratifiée</b> la direction est décidée · <b>nommé</b> un nom, et rien d'autre encore.
 
-<div class="cards">
-<div class="card"><h3>Softanza</h3><p class="stage">construite</p><p>La fondation : la bibliothèque et son moteur Zig, publics. Tout le reste se tient dessus.</p><p class="proof"><a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a></p></div>
-<div class="card"><h3>Le système d'apprentissage</h3><p class="stage">construit</p><p>Deux cours de quinze chapitres en quatre langues, des missions, des projets, des surcouches, des cohortes, un tuteur ; quatorze gardes, 716 assertions. <b>À côté :</b> <a href="education-record.html#limits">trois limites</a> : le français, l'arabe et le haoussa sont des brouillons (0 unité sur 35 relue), les cellules s'exécutent sur le bureau, aucune institution ne l'a adopté.</p></div>
-<div class="card"><h3>Haro</h3><p class="stage">en construction</p><p>La langue des langues, sur une machine virtuelle et un compilateur souverains en Zig. Charte du 2026-09-26 en attente de ratification.</p></div>
-<div class="card"><h3>Harobanda</h3><p class="stage">construite</p><p>La machine déclarée, MIT, démarre dans un émulateur. Pas de charge de production encore, et elle le dit.</p><p class="proof"><a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a></p></div>
-<div class="card"><h3>HaroBase</h3><p class="stage">spécification</p><p>Le magasin de données gouverné : du SQLite simple, dans le processus, gouverné. Charte ratifiée le 2026-09-29 ; premières couches construites. Privé pour l'instant.</p></div>
-<div class="card"><h3>Aïcha</h3><p class="stage">nommée</p><p>La couche d'intelligence et l'agent conversationnel à venir. Aucun produit ne porte ce nom aujourd'hui.</p></div>
-<div class="card"><h3>Zui</h3><p class="stage">construite</p><p>La constitution des interfaces : 122 règles qu'une machine peut refuser de violer, 22 verbes. Dépôt pas encore public.</p></div>
-<div class="card"><h3>Refine</h3><p class="stage">spécification</p><p>La programmation orientée raffinement : un corpus de spécifications, un prototype, un livre en manuscrit.</p></div>
-<div class="card"><h3>Takamba</h3><p class="stage">construit</p><p>Le harnais, anciennement Bangalo : comment Softanza construit Softanza. Dépôt pas encore public.</p></div>
-<div class="card"><h3>L'atelier COBOL</h3><p class="stage">proposition ratifiée</p><p>Un outillage moderne autour de parcs COBOL inchangés, sans réécriture. Direction ratifiée le 2026-08-16 ; le nom est retenu jusqu'à la clôture d'une recherche d'antériorité.</p></div>
-<div class="card"><h3>Softanza Studio</h3><p class="stage">spécification</p><p>L'environnement visuel commercial sur la même vérité en texte brut. Un corpus de conception et un prototype navigateur aujourd'hui.</p></div>
-</div>
+<div class="covwrap"><table class="products"><thead><tr><th scope="col">Produit</th><th scope="col">Stade</th><th scope="col">Ce que c'est</th></tr></thead><tbody>
+<tr><th scope="row">Softanza</th><td><b>construite</b></td><td><p>La fondation : la bibliothèque et son moteur Zig, publics. Tout le reste se tient dessus.</p><p class="proof"><a href="https://github.com/mayouni/stzlib">github.com/mayouni/stzlib</a></p></td></tr>
+<tr><th scope="row">Le système d'apprentissage</th><td><b>construit</b></td><td><p>Deux cours de quinze chapitres en quatre langues, des missions, des projets, des surcouches, des cohortes, un tuteur ; quatorze gardes, 716 assertions. <b>À côté :</b> <a href="education-record.html#limits">trois limites</a> : le français, l'arabe et le haoussa sont des brouillons (0 unité sur 35 relue), les cellules s'exécutent sur le bureau, aucune institution ne l'a adopté.</p></td></tr>
+<tr><th scope="row">Haro</th><td><b>en construction</b></td><td><p>La langue des langues, sur une machine virtuelle et un compilateur souverains en Zig. Charte du 2026-09-26 en attente de ratification.</p></td></tr>
+<tr><th scope="row">Harobanda</th><td><b>construite</b></td><td><p>La machine déclarée, MIT, démarre dans un émulateur. Pas de charge de production encore, et elle le dit.</p><p class="proof"><a href="https://github.com/mayouni/harobanda">github.com/mayouni/harobanda</a></p></td></tr>
+<tr><th scope="row">HaroBase</th><td><b>en construction</b></td><td><p>Le magasin de données gouverné : du SQLite simple, dans le processus, gouverné. Charte ratifiée le 2026-09-29 ; premières couches construites. Privé pour l'instant.</p></td></tr>
+<tr><th scope="row">Aïcha</th><td><b>nommée</b></td><td><p>La couche d'intelligence et l'agent conversationnel à venir. Aucun produit ne porte ce nom aujourd'hui.</p></td></tr>
+<tr><th scope="row">Zui</th><td><b>construite</b></td><td><p>La constitution des interfaces : 122 règles qu'une machine peut refuser de violer, 22 verbes. Dépôt pas encore public.</p></td></tr>
+<tr><th scope="row">Refine</th><td><b>spécification</b></td><td><p>La programmation orientée raffinement : un corpus de spécifications, un prototype, un livre en manuscrit.</p></td></tr>
+<tr><th scope="row">Takamba</th><td><b>construit</b></td><td><p>Le harnais, anciennement Bangalo : comment Softanza construit Softanza. Dépôt pas encore public.</p></td></tr>
+<tr><th scope="row">L'atelier COBOL</th><td><b>proposition ratifiée</b></td><td><p>Un outillage moderne autour de parcs COBOL inchangés, sans réécriture. Direction ratifiée le 2026-08-16 ; le nom est retenu jusqu'à la clôture d'une recherche d'antériorité.</p></td></tr>
+<tr><th scope="row">Softanza Studio</th><td><b>spécification</b></td><td><p>L'environnement visuel commercial sur la même vérité en texte brut. Un corpus de conception et un prototype navigateur aujourd'hui.</p></td></tr>
+</tbody></table></div>
 
 <p class="proof">Stades lus les 2026-09-30 et 2026-10-01 dans les dépôts eux-mêmes. Quand un dépôt est privé, le site le dit et ne cite rien qu'il ne puisse relier.</p>

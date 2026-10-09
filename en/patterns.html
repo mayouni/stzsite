@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pattern languages · Softanza</title>
+<meta name="description" content="The pattern languages of Softanza: a regular expression raised to lists, numbers, time, tables, matrices and graphs, each run, with the two whose own tests no longer pass said plainly.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Softanza">
+<meta property="og:title" content="Pattern languages · Softanza">
+<meta property="og:description" content="The pattern languages of Softanza: a regular expression raised to lists, numbers, time, tables, matrices and graphs, each run, with the two whose own tests no longer pass said plainly.">
+<meta property="og:image" content="https://mayouni.github.io/stzsite/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../assets/img/mark-180.png">
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-patterns">
+<a class="skip" href="#main">Skip to content</a>
+<div class="brandrow"><a class="brand" href="../index.html?lang=en" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="lang" href="../fr/patterns.html" lang="fr" hreflang="fr">Français</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../index.html?lang=en" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Main menu"><a href="platform.html" aria-current=page>Platform</a><a href="compare.html">Compared</a><a href="narrations.html">Narrations</a><a href="vision.html">Vision</a><a href="agentic.html">Agentic</a><a href="learn.html">Learn</a><a href="offering.html">Adopt</a><a href="start.html">Start</a></nav>
+    <div class="tools"><a class="lang" href="../fr/patterns.html" lang="fr" hreflang="fr">Français</a></div>
+  </div>
+  <nav class="path" aria-label="Pages of the section"><div class="path-in"><a href="platform.html">Platform</a><a href="platforms.html">Platform of platforms</a><a href="architecture.html">Architecture</a><a href="craft.html" aria-current=page>The craft</a><a href="areas.html">The areas</a><a href="code.html">The code</a><a href="depth.html">Depth</a></div></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2" aria-label="How Softanza is written"><div class="l2-in"><div class="l2-group"><ul><li><a href="craft.html">How Softanza is written</a></li><li><a href="goals.html">Seven design goals</a></li><li><a href="patterns.html" aria-current=page>Pattern languages</a></li><li><a href="way.html">The Softanza way</a></li><li><a href="natural.html">Natural, and executable</a></li><li><a href="byexample.html">By example</a></li><li><a href="softanzuter.html">The Softanzuter</a></li><li><a href="innovations.html">Innovations</a></li></ul></div></div></nav>
+<main id="main">
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">A paradigm</div>
+    <h1>Pattern <i>languages</i></h1>
+    <p class="lede">One regex-shaped grammar, across seven kinds of data: strings, lists, numbers, time, tables, matrices and graphs, in one library, with one habit.</p>
+  </div></section>
+  <div class="wrap page-body">
+<h2 id="seven">One grammar, seven subjects</h2>
+<p>Regular expressions were redesigned first, as a class, a maker and a data library. Their grammar, braces and the at sign, was then lifted to six more kinds of data, each a class with its own small function. The same habit holds in all seven: write the pattern, ask <code>Match</code>, and ask the pattern to explain itself.</p>
+<ol class="steps">
+<li value="1"><b>Strings.</b> <code>rx(pat(:email))</code> <span class="rx-src">the regular expression, backed by a standard engine</span></li>
+<li value="2"><b>Lists.</b> <code>[@N1-3, @S]</code>, and stepped ranges, and nested lists <span class="rx-src">Lx()</span></li>
+<li value="3"><b>Numbers.</b> <code>{@Property(Even) &amp; @Property(Prime)}</code> <span class="rx-src">Nx()</span></li>
+<li value="4"><b>Time.</b> <code>{@Event(Meeting) -&gt; @Duration(30m) -&gt; @Event(Break)}</code> <span class="rx-src">Tmx()</span></li>
+<li value="5"><b>Tables.</b> <code>{cols(3) &amp; unique(id) &amp; avgcol(salary:&gt;40000)}</code> <span class="rx-src">Tx()</span></li>
+<li value="6"><b>Matrices.</b> <code>{shape(square) &amp; property(symmetric)}</code> <span class="rx-src">Mx()</span></li>
+<li value="7"><b>Graphs.</b> <code>{@Node(start) -&gt; @Edge(flows) -&gt; @Node(done)}</code> <span class="rx-src">Gx()</span></li>
+</ol>
+
+<p>The patterns in this list are written, not run. The runs below are the ones that kept their promise.</p>
+<p style="margin-top:32px"><b>Over a string: the pattern finds every run of digits, and counts them.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>o = Rgx(&quot;\d+&quot;)
+o.MatchFirst(&quot;a1b22c333&quot;)
+? @@( o.AllMatches() )
+? o.NumberOfMatches()</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;1&quot;, &quot;22&quot;, &quot;333&quot; ]
+3</pre></div></div><p class="ran">run on 2026-10-09 02:11 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/regex/00_regex_narrated.ring" target="_blank" rel="noopener noreferrer">base/test/regex/00_regex_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p style="margin-top:32px"><b>Over a list: two or three unique numbers from a set match; a number then a string does not match a list that opens with a string.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oLx = new stzListex(&quot;[@N2-3{1; 2; 3}U]&quot;)
+? oLx.Match([ 1, 2 ])
+oLy = new stzListex(&quot;[@N, @S]&quot;)
+? oLy.Match([ &quot;hello&quot;, 1 ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+0</pre></div></div><p class="ran">run on 2026-10-09 02:11 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listex/01_listex_-_enhanced_test_suite.ring" target="_blank" rel="noopener noreferrer">base/test/listex/01_listex_-_enhanced_test_suite.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p style="margin-top:32px"><b>Over a number: a property is the pattern, here being prime.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>Nx = new stzNumbrex(&quot;{@Property(Prime)}&quot;)
+? Nx.Match(17)
+? Nx.Match(18)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+0</pre></div></div><p class="ran">run on 2026-10-09 02:11 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/numbrex/02_basic_property_matching.ring" target="_blank" rel="noopener noreferrer">base/test/numbrex/02_basic_property_matching.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p style="margin-top:32px"><b>Over a matrix: a size is the pattern.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oMx = new stzMatrex(&quot;{Size(3x3)}&quot;)
+aMatrix = [
+	[1, 2, 3],
+	[4, 5, 6],
+	[7, 8, 9]
+]
+? oMx.Match(aMatrix)</pre></div><div class="out"><div class="lbl">Output</div><pre>1</pre></div></div><p class="ran">run on 2026-10-09 02:11 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/01_matching_exact_size.ring" target="_blank" rel="noopener noreferrer">base/test/matrex/01_matching_exact_size.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p style="margin-top:32px"><b>Over a graph: a path of a node, an edge and a node is the pattern, matched without regard to case; a node that is not there does not match.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>g = new stzGraph(&quot;Mixed&quot;)
+g.AddNodeXT(:a, &quot;Start&quot;)
+g.AddNodeXT(:b, &quot;PROCESS&quot;)
+g.AddNodeXT(:c, &quot;end&quot;)
+g.AddEdgeXT(:a, :b, &quot;Flows&quot;)
+g.AddEdgeXT(:b, :c, &quot;COMPLETES&quot;)
+gx = new stzGraphex(&quot;{@Node(start) -&gt; @Edge(flows) -&gt; @Node(process)}&quot;, g)
+? gx.Match(g)
+gy = new stzGraphex(&quot;{@Node(zzz)}&quot;, g)
+? gy.Match(g)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+0</pre></div></div><p class="ran">run on 2026-10-09 02:11 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphex/00_graphex_narrated.ring" target="_blank" rel="noopener noreferrer">base/test/graphex/00_graphex_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
+
+<h2 id="claim">What can be said of it</h2>
+<p>The library's articles compare it with the field: Wolfram has list patterns, uniqueness and stepped ranges; Elixir, Haskell and Rust match structures; graph query languages and complex-event languages exist. What the articles find in none of them is one regex-shaped grammar across seven kinds of data in one library, with the same small-function habit, the same Match, Explain and Debug surface, and the same test discipline. That is the library's own reading of the field, not a survey.</p>
+<h2 id="state">The honest state</h2>
+<p class="proof"><b>in construction</b> Two of the seven runs above are missing, and they are missing because they failed. The library's own tests for the table and the time patterns promise a match and print none at the commit read for this page. They are reported to the library, and the two languages are shown here without a run. Graph quantifiers are parsed and not yet used. The regex analyser is a name, and the siblings of the Regexuter are <a href="softanzuter.html">a vision</a>.</p>
+
+<p class="proof">Sources: the articles <a href="narrations/stzregex-mastering-regex-with-softanza-narration.html">regex</a>, <a href="narrations/stzlistex-pattern-matching-for-lists.html">lists</a>, <a href="narrations/stznumbex-number-patterns-made-simple.html">numbers</a>, <a href="narrations/stztimex-a-pattern-language-for-time-in-softanza.html">time</a>, <a href="narrations/stztablex-pattern-langauge-for-tables.html">tables</a> and <a href="narrations/stzmatrex-declarative-pattern-matching-for-matrices.html">matrices</a>; the guards in the library's test folders for each, linked under every run.</p>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Platform</h3><ul><li><a href="platform.html">Platform</a></li><li><a href="platforms.html">Platform of platforms</a></li><li><a href="architecture.html">Architecture</a></li><li><a href="craft.html">The craft</a></li><li><a href="areas.html">The areas</a></li><li><a href="code.html">The code</a></li><li><a href="depth.html">Depth</a></li></ul></div><div><h3>Compared</h3><ul><li><a href="compare.html">Compared</a></li></ul></div><div><h3>Narrations</h3><ul><li><a href="narrations.html">Narrations</a></li><li><a href="narrations-performance.html">Performance series</a></li><li><a href="narrations-security.html">Security series</a></li><li><a href="narrations-delivery.html">Delivery series</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="vision.html">The north star</a></li><li><a href="principles.html">Twelve principles</a></li><li><a href="estate.html">The estate</a></li><li><a href="history.html">From first principles</a></li><li><a href="forged.html">Forged in projects</a></li><li><a href="sovereignty.html">Sovereignty</a></li><li><a href="africa.html">Born in Africa</a></li><li><a href="roots.html">Roots</a></li></ul></div><div><h3>Agentic</h3><ul><li><a href="agentic.html">Agentic</a></li><li><a href="wise.html">Wise coding</a></li><li><a href="languages.html">Language of languages</a></li><li><a href="zui.html">Zui</a></li><li><a href="refinement.html">Refinement</a></li><li><a href="agents.html">For agents</a></li><li><a href="coding-agents.html">Coding agents</a></li><li><a href="security.html">Security</a></li><li><a href="aicha.html">Aïcha</a></li></ul></div><div><h3>Learn</h3><ul><li><a href="learn.html">Learn</a></li><li><a href="book.html">The book</a></li><li><a href="docs.html">Documentation</a></li><li><a href="howto.html">How-to</a></li><li><a href="reference.html">Reference</a></li><li><a href="ask.html">Ask the library</a></li><li><a href="education.html">Education</a></li><li><a href="glossary.html">Glossary</a></li></ul></div><div><h3>Adopt</h3><ul><li><a href="offering.html">Audiences</a></li><li><a href="journeys.html">Journeys</a></li><li><a href="editions.html">Editions</a></li><li><a href="customers.html">Customers</a></li></ul></div><div><h3>Start</h3><ul><li><a href="start.html">Start</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">The repository on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></li><li><a href="tour.html">Presentation mode</a></li><li><a href="../deck-check.html">Check offline</a></li><li><a href="../index.html?lang=fr" lang="fr">Français</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../index.html" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">The Software Crafters Platform of the AI Age. Born in Africa. Useful to the World!</p><div class="themes" role="group" aria-label="Display"><button type="button" data-set-theme="light">Use the light theme</button><button type="button" data-set-theme="dark">Use the dark theme</button><button type="button" data-set-theme="auto">Follow the system</button></div></div>
+    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-09.</p></div>
+  </div>
+</div></footer>
+<script src="../assets/js/site.js"></script><script src="../assets/js/search-core.js"></script><script src="../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

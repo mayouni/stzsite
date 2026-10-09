@@ -31,6 +31,8 @@ Trois habitudes complètent le modèle. Une méthode qui finit en <b>-ed</b> ren
 └──────────────────────────────┘</pre></div></div>
 <p class="ran">exécuté le 2026-10-01 à 09:26</p>
 
+Au-delà du cours, chacun des vingt-huit domaines a un guide qui regroupe ce que font ses fonctions, avec un exemple sous chacune : <a href="docs.html">la documentation</a> les liste tous, et <a href="glossary.html">le glossaire</a> définit les mots que ce site emploie dans son propre sens.
+
 ## L'échelle {#ladder}
 
 <!--LADDER-->

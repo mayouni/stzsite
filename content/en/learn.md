@@ -31,6 +31,8 @@ Three habits complete the model. A method that ends in <b>-ed</b> returns a copy
 └──────────────────────────────┘</pre></div></div>
 <p class="ran">run on 2026-10-01 at 09:26</p>
 
+Beyond the course, each of the twenty-eight areas has a guide that groups what its functions do, with an example under each: <a href="docs.html">the documentation</a> lists them all, and <a href="glossary.html">the glossary</a> defines the words this site uses in its own sense.
+
 ## The ladder {#ladder}
 
 <!--LADDER-->

@@ -946,5 +946,56 @@
    "what_en": "The honesty figure: a text message is billed per segment, and one emoji added to a message of 100 characters doubles its cost, as does Arabic past 70 letters. The sandbox counts the bill before any subscription exists.",
    "what_fr": "Le chiffre d'honnêteté : un SMS se facture par segment, et un seul émoji ajouté à un message de 100 caractères double son coût, comme l'arabe au-delà de 70 lettres. Le bac à sable compte la facture avant qu'aucun abonnement n'existe."
   }
+ ],
+ "patterns": [
+  {
+   "code": "o = Rgx(\"\\d+\")\no.MatchFirst(\"a1b22c333\")\n? @@( o.AllMatches() )\n? o.NumberOfMatches()",
+   "expected": "[ \"1\", \"22\", \"333\" ]\n3",
+   "source": "base/test/regex/00_regex_narrated.ring",
+   "what_en": "Over a string: the pattern finds every run of digits, and counts them.",
+   "what_fr": "Sur une chaîne : le motif trouve chaque suite de chiffres, et les compte."
+  },
+  {
+   "code": "oLx = new stzListex(\"[@N2-3{1; 2; 3}U]\")\n? oLx.Match([ 1, 2 ])\noLy = new stzListex(\"[@N, @S]\")\n? oLy.Match([ \"hello\", 1 ])",
+   "expected": "1\n0",
+   "source": "base/test/listex/01_listex_-_enhanced_test_suite.ring",
+   "what_en": "Over a list: two or three unique numbers from a set match; a number then a string does not match a list that opens with a string.",
+   "what_fr": "Sur une liste : deux ou trois nombres uniques pris dans un ensemble correspondent ; un nombre puis une chaîne ne correspond pas à une liste qui commence par une chaîne."
+  },
+  {
+   "code": "Nx = new stzNumbrex(\"{@Property(Prime)}\")\n? Nx.Match(17)\n? Nx.Match(18)",
+   "expected": "1\n0",
+   "source": "base/test/numbrex/02_basic_property_matching.ring",
+   "what_en": "Over a number: a property is the pattern, here being prime.",
+   "what_fr": "Sur un nombre : une propriété est le motif, ici être premier."
+  },
+  {
+   "code": "oTimeline = new stzTimeLine(\"2025-10-22\", \"2025-10-22\")\noTimeline.AddInstant(\"Meeting\", \"2025-10-22 09:00:00\")\noTimeline.AddSpan(\"Break\", \"2025-10-22 10:00:00\", \"2025-10-22 10:15:00\")\noTimeline.AddInstant(\"Lunch\", \"2025-10-22 12:00:00\")\nTmx1 = new stzTimex(\"{@Event(Meeting) -> @Duration* -> @Event(Break)}\")\n# the whole day must fit the pattern: Lunch remains\n? Tmx1.Match(oTimeline)\n# the pattern exists somewhere in the day\n? Tmx1.MatchPartial(oTimeline)",
+   "expected": "0\n1",
+   "source": "base/test/timex/03_example_3_event_sequences_-_match_vs_matchpartial.ring",
+   "what_en": "Over time: a meeting, then any gaps, then a break. The whole day does not fit it, because lunch remains, and the pattern is found inside the day.",
+   "what_fr": "Sur le temps : une réunion, puis des intervalles quelconques, puis une pause. La journée entière n'y tient pas, parce que le déjeuner reste, et le motif se trouve dans la journée."
+  },
+  {
+   "code": "oTable = new stzTable([\n\t[ :NAME, :AGE, :JOB ],\n\t[ \"Ali\", 28, \"Teacher\" ],\n\t[ \"Sara\", 32, \"Engineer\" ]\n])\noTx = new stzTablex(\"{cols(3)}\")\n? oTx.Match(oTable)\noTy = new stzTablex(\"{cols(4)}\")\n? oTy.Match(oTable)",
+   "expected": "1\n0",
+   "source": "base/test/tablex/01_matching_exact_column_count.ring",
+   "what_en": "Over a table: the shape of the table is the pattern, here its number of columns.",
+   "what_fr": "Sur une table : la forme de la table est le motif, ici son nombre de colonnes."
+  },
+  {
+   "code": "oMx = new stzMatrex(\"{Size(3x3)}\")\naMatrix = [\n\t[1, 2, 3],\n\t[4, 5, 6],\n\t[7, 8, 9]\n]\n? oMx.Match(aMatrix)",
+   "expected": "1",
+   "source": "base/test/matrex/01_matching_exact_size.ring",
+   "what_en": "Over a matrix: a size is the pattern.",
+   "what_fr": "Sur une matrice : une taille est le motif."
+  },
+  {
+   "code": "g = new stzGraph(\"Mixed\")\ng.AddNodeXT(:a, \"Start\")\ng.AddNodeXT(:b, \"PROCESS\")\ng.AddNodeXT(:c, \"end\")\ng.AddEdgeXT(:a, :b, \"Flows\")\ng.AddEdgeXT(:b, :c, \"COMPLETES\")\ngx = new stzGraphex(\"{@Node(start) -> @Edge(flows) -> @Node(process)}\", g)\n? gx.Match(g)\ngy = new stzGraphex(\"{@Node(zzz)}\", g)\n? gy.Match(g)",
+   "expected": "1\n0",
+   "source": "base/test/graphex/00_graphex_narrated.ring",
+   "what_en": "Over a graph: a path of a node, an edge and a node is the pattern, matched without regard to case; a node that is not there does not match.",
+   "what_fr": "Sur un graphe : un chemin d'un nœud, d'une arête et d'un nœud est le motif, reconnu sans égard à la casse ; un nœud absent ne correspond pas."
+  }
  ]
 }
