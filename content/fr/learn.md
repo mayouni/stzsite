@@ -33,7 +33,7 @@ Trois habitudes complètent le modèle. Une méthode qui finit en <b>-ed</b> ren
 
 Au-delà du cours, chacun des vingt-huit domaines a un guide qui regroupe ce que font ses fonctions, avec un exemple sous chacune : <a href="docs.html">la documentation</a> les liste tous, et <a href="glossary.html">le glossaire</a> définit les mots que ce site emploie dans son propre sens.
 
-## L'échelle {#ladder}
+## Vos niveaux {#ladder}
 
 <!--LADDER-->
 
@@ -47,7 +47,7 @@ Softanza s'enseigne avec le système que cette page a montré, et le même syst�
 <a class="door big" href="education-programme.html"><div class="who">Je dirige un programme ou une institution</div><div class="what">Une surcouche, des cohortes, la propriété</div><div class="how">Votre monde et vos langues sur un seul cœur, un tribunal qui refuse une fourche, et une démonstration de quinze minutes.</div></a>
 </div>
 
-<p class="proof"><a href="education.html">Éducation</a>.</p>
+<p class="proof"><a href="education.html">Éducation</a>. Le même système, pris comme une façon d'enseigner n'importe quel sujet et pas seulement Softanza, est raconté sur <a href="institutions.html">Softanza pour l'éducation</a>.</p>
 
 <p class="way"><span>La manière Softanza</span> L'humain est l'analyseur. Une ligne se lit comme une phrase parce qu'elle a été conçue pour être lue, et pas seulement exécutée.</p>
 

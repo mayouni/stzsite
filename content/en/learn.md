@@ -33,7 +33,7 @@ Three habits complete the model. A method that ends in <b>-ed</b> returns a copy
 
 Beyond the course, each of the twenty-eight areas has a guide that groups what its functions do, with an example under each: <a href="docs.html">the documentation</a> lists them all, and <a href="glossary.html">the glossary</a> defines the words this site uses in its own sense.
 
-## The ladder {#ladder}
+## Your levels {#ladder}
 
 <!--LADDER-->
 
@@ -47,7 +47,7 @@ Softanza teaches itself with the system this page has shown, and the same system
 <a class="door big" href="education-programme.html"><div class="who">I run a programme or an institution</div><div class="what">An overlay, cohorts, ownership</div><div class="how">Your world and your languages over one core, a court that refuses a fork, and a fifteen-minute demo.</div></a>
 </div>
 
-<p class="proof"><a href="education.html">Education</a>.</p>
+<p class="proof"><a href="education.html">Education</a>. The same system, taken as a way to teach any subject and not only Softanza, is told on <a href="institutions.html">Softanza for education</a>.</p>
 
 <p class="way"><span>The Softanza way</span> The human is the parser. A line reads like a sentence because it was designed to be read, not only to be executed.</p>
 

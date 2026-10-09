@@ -1,0 +1,109 @@
+{
+ "about": "The declared languages of the estate, one table: what each declares and its stage, as read from the library and its sibling repositories' charters and READMEs by an outside assessment on 2026-10-07. No product names: a language is named by its file. A row is a reading, and its stage is the Estate page's own word.",
+ "rows": [
+  [
+   "W",
+   "a condition inside an argument",
+   "une condition dans un argument",
+   "built",
+   "construit",
+   "craft.html"
+  ],
+  [
+   ".zknw",
+   "what a world or an agent knows: entities, relations, rules",
+   "ce qu'un monde ou un agent sait : entités, relations, règles",
+   "built",
+   "construit",
+   "wise.html"
+  ],
+  [
+   ".pia",
+   "an agent: what it covers, how reversible its acts are, its skills",
+   "un agent : ce qu'il couvre, la réversibilité de ses actes, ses compétences",
+   "built",
+   "construit",
+   "journey-agent.html"
+  ],
+  [
+   ".stzapp, .stzplatform",
+   "an application, and a platform made of them",
+   "une application, et une plateforme faite d'elles",
+   "built (the format)",
+   "construit (le format)",
+   "applications.html"
+  ],
+  [
+   ".machine, .fleet, .pack",
+   "a machine, the links between machines, the servers placed on one",
+   "une machine, les liens entre machines, les serveurs placés sur l'une",
+   "built, emulated",
+   "construit, émulé",
+   "journey-architect.html"
+  ],
+  [
+   ".zgov",
+   "a governance regime: who may commit what",
+   "un régime de gouvernance : qui peut engager quoi",
+   "built",
+   "construit",
+   "security.html"
+  ],
+  [
+   ".zcnv",
+   "a conversation, as a record",
+   "une conversation, comme enregistrement",
+   "built",
+   "construit",
+   "conversations.html"
+  ],
+  [
+   ".panel",
+   "an interface, authored as text and drawn by a native renderer",
+   "une interface, écrite comme du texte et dessinée par un moteur natif",
+   "in construction",
+   "en construction",
+   "surfaces.html"
+  ],
+  [
+   ".wflow",
+   "a workflow",
+   "un flux de travail",
+   "in construction",
+   "en construction",
+   "journey-analyst.html"
+  ],
+  [
+   ".face",
+   "a face of an interface",
+   "une face d'interface",
+   "in construction (no generator yet)",
+   "en construction (pas encore de générateur)",
+   "surfaces.html"
+  ],
+  [
+   ".game",
+   "a game, and the gamification of a learner's ladder",
+   "un jeu, et la ludification de l'échelle d'un apprenant",
+   "ratified proposal (charter ratified, no code)",
+   "proposition ratifiée (charte ratifiée, pas de code)",
+   "education.html"
+  ],
+  [
+   ".zdlm",
+   "a domain's own voice, when it is forged",
+   "la voix propre d'un domaine, quand elle est forgée",
+   "designed",
+   "conçu",
+   "aicha.html"
+  ],
+  [
+   ".stzn",
+   "a notebook of cells",
+   "un carnet de cellules",
+   "named",
+   "nommé",
+   "estate.html"
+  ]
+ ]
+}

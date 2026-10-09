@@ -46,7 +46,8 @@ SECTIONS = [
      ("craft", {"fr": "Le métier", "en": "The craft"}),
      ("areas", {"fr": "Les domaines", "en": "The areas"}),
      ("code", {"fr": "Le code", "en": "The code"}),
-     ("depth", {"fr": "Profondeur", "en": "Depth"})]),
+     ("depth", {"fr": "Profondeur", "en": "Depth"}),
+     ("foundation", {"fr": "La fondation", "en": "The foundation"})]),
   ("compare", {"fr": "Comparée", "en": "Compared"}, [
      ("compare", {"fr": "Comparée", "en": "Compared"})]),
   ("narrations", {"fr": "Narrations", "en": "Narrations"}, [
@@ -63,7 +64,7 @@ SECTIONS = [
      ("sovereignty", {"fr": "Souveraineté", "en": "Sovereignty"}),
      ("africa", {"fr": "Née en Afrique", "en": "Born in Africa"}),
      ("roots", {"fr": "Racines", "en": "Roots"})]),
-  ("agentic", {"fr": "Agentique", "en": "Agentic"}, [
+  ("agentic", {"fr": "Intelligence", "en": "Intelligence"}, [
      ("agentic", {"fr": "Agentique", "en": "Agentic"}),
      ("wise", {"fr": "Wise coding", "en": "Wise coding"}),
      ("languages", {"fr": "Langue des langues", "en": "Language of languages"}),
@@ -101,22 +102,25 @@ SUBPAGES = {"education-self": "education", "education-teach": "education", "educ
 EDU_BAR = {"fr": ("Éducation", [("education", "Les trois portes"), ("education-self", "J'apprends seul"), ("education-teach", "J'enseigne ou je conçois"), ("education-programme", "Je dirige un programme"), ("education-record", "Ce qui est prouvé")]),
            "en": ("Education", [("education", "The three doors"), ("education-self", "I learn by myself"), ("education-teach", "I teach or design"), ("education-programme", "I run a programme"), ("education-record", "What is proved")])}
 # The Craft page is the style's page (12.12) and the paradigms that follow from it are its chapters, shown in the same left bar
+SUBPAGES.update({p: "foundation" for p in ("graphbeneath", "widths", "visual", "proven", "reach", "declared")})
 SUBPAGES.update({"whyring": "roots"})
-SUBPAGES.update({p: "platforms" for p in ("applications", "host", "device", "surfaces", "real", "first", "store", "conversations", "environment", "polyglot")})
+SUBPAGES.update({p: "platforms" for p in ("applications", "world", "host", "device", "surfaces", "real", "first", "store", "conversations", "environment", "polyglot")})
 SUBPAGES.update({p: "craft" for p in ("goals", "patterns", "way", "natural", "byexample", "softanzuter", "innovations")})
 CRAFT_BAR = {"fr": ("Comment Softanza s'écrit", [("craft", "Comment Softanza s'écrit"), ("goals", "Sept buts de conception"), ("patterns", "Langages de motifs"), ("way", "La manière Softanza"), ("natural", "Naturel, et exécutable"), ("byexample", "Par l'exemple"),
                                                     ("softanzuter", "Le Softanzuter"), ("innovations", "Les innovations")]),
              "en": ("How Softanza is written", [("craft", "How Softanza is written"), ("goals", "Seven design goals"), ("patterns", "Pattern languages"), ("way", "The Softanza way"), ("natural", "Natural, and executable"), ("byexample", "By example"),
                                                 ("softanzuter", "The Softanzuter"), ("innovations", "Innovations")])}
-PLATFORMS_BAR = {"fr": ("Applications", [("applications", "Applications"), ("platforms", "Plateforme de plateformes"), ("host", "L'hôte"), ("device", "De l'éditeur à l'appareil"), ("surfaces", "Surfaces"),
+PLATFORMS_BAR = {"fr": ("Applications", [("applications", "Applications"), ("world", "Le monde"), ("platforms", "Plateforme de plateformes"), ("host", "L'hôte"), ("device", "De l'éditeur à l'appareil"), ("surfaces", "Surfaces"),
                                            ("real", "Applications réelles"), ("first", "Votre première application"), ("store", "Le magasin"), ("conversations", "Conversations"),
                                            ("environment", "L'environnement"), ("polyglot", "Sept langues, une porte")]),
-                 "en": ("Applications", [("applications", "Applications"), ("platforms", "Platform of platforms"), ("host", "The host"), ("device", "From the editor to the device"), ("surfaces", "Surfaces"),
+                 "en": ("Applications", [("applications", "Applications"), ("world", "The world"), ("platforms", "Platform of platforms"), ("host", "The host"), ("device", "From the editor to the device"), ("surfaces", "Surfaces"),
                                          ("real", "Real applications"), ("first", "Your first application"), ("store", "The store"), ("conversations", "Conversations"),
                                          ("environment", "The environment"), ("polyglot", "Seven languages, one door")])}
 ROOTS_BAR = {"fr": ("Racines", [("roots", "Racines"), ("whyring", "Pourquoi Softanza quitte Ring")]),
              "en": ("Roots", [("roots", "Roots"), ("whyring", "Why Softanza leaves Ring")])}
-BARS = {"education": EDU_BAR, "craft": CRAFT_BAR, "platforms": PLATFORMS_BAR, "roots": ROOTS_BAR}
+FOUNDATION_BAR = {"fr": ("La fondation", [("foundation", "La fondation"), ("graphbeneath", "Le graphe dessous"), ("widths", "Quatre largeurs"), ("visual", "Visuel par défaut"), ("proven", "Prouvé"), ("reach", "Portée"), ("declared", "Les langages déclarés")]),
+                  "en": ("The foundation", [("foundation", "The foundation"), ("graphbeneath", "The graph beneath"), ("widths", "Four widths"), ("visual", "Visual by default"), ("proven", "Proven"), ("reach", "Reach"), ("declared", "The declared languages")])}
+BARS = {"foundation": FOUNDATION_BAR, "education": EDU_BAR, "craft": CRAFT_BAR, "platforms": PLATFORMS_BAR, "roots": ROOTS_BAR}
 OLD_PAGES = {"teaching": "education", "pedagogy": "education"}        # the old addresses lead to the new page
 GENERATED = {"reference", "narrations", "howto", "ask", "journeys", "narrations-performance", "narrations-security", "narrations-delivery"}   # built by code, not from a .md
 OWNER = {}                                          # page -> its section
@@ -420,7 +424,7 @@ def inject(body_html, lang, idx, groups, rel="../"):
     body_html = body_html.replace("<!--METHODS-->", fmt(COUNTS["methods"])).replace("<!--CLASSES-->", fmt(COUNTS["classes"])).replace("<!--ENTRIES-->", fmt(COUNTS["entries"]))
     body_html = body_html.replace("<!--AREAS-->", fmap_html(lang, idx, groups, "atlas/") + tiles_html(lang, idx, groups, "atlas/", rel))
     body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
-    for tag, fn in (("DEPTH", depth_html), ("GLOSSARY", glossary_html), ("LEADS", leads_html), ("RULES", rules_html), ("STEPS", steps_html), ("INNOVATIONS", innovations_html), ("GOALS", goals_html)):
+    for tag, fn in (("DECLARED", declared_html), ("DEPTH", depth_html), ("GLOSSARY", glossary_html), ("LEADS", leads_html), ("RULES", rules_html), ("STEPS", steps_html), ("INNOVATIONS", innovations_html), ("GOALS", goals_html)):
         if f"<!--{tag}-->" in body_html: body_html = body_html.replace(f"<!--{tag}-->", fn(lang))
     body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
     body_html = body_html.replace("<!--DOCS-SCOPE-->", scope_html(lang, idx, groups))
@@ -774,7 +778,8 @@ def evidence(lang, e):
     for a, b in EVIDENCE_FR: e = re.sub(a, b, e)
     return e
 
-PAGE_NAMES = {"whyring": {"fr": "Pourquoi Softanza quitte Ring", "en": "Why Softanza leaves Ring"}, "roots": {"fr": "Racines", "en": "Roots"}, "patterns": {"fr": "Langages de motifs", "en": "Pattern languages"}, "applications": {"fr": "Applications", "en": "Applications"}, "host": {"fr": "L'hôte", "en": "The host"},
+PAGE_NAMES = {"graphbeneath": {"fr": "Le graphe dessous", "en": "The graph beneath"}, "widths": {"fr": "Quatre largeurs", "en": "Four widths"}, "visual": {"fr": "Visuel par défaut", "en": "Visual by default"},
+              "proven": {"fr": "Prouvé", "en": "Proven"}, "reach": {"fr": "Portée", "en": "Reach"}, "declared": {"fr": "Les langages déclarés", "en": "The declared languages"}, "world": {"fr": "Le monde", "en": "The world"}, "whyring": {"fr": "Pourquoi Softanza quitte Ring", "en": "Why Softanza leaves Ring"}, "roots": {"fr": "Racines", "en": "Roots"}, "patterns": {"fr": "Langages de motifs", "en": "Pattern languages"}, "applications": {"fr": "Applications", "en": "Applications"}, "host": {"fr": "L'hôte", "en": "The host"},
               "device": {"fr": "De l'éditeur à l'appareil", "en": "From the editor to the device"}, "surfaces": {"fr": "Surfaces", "en": "Surfaces"}, "real": {"fr": "Applications réelles", "en": "Real applications"},
               "first": {"fr": "Votre première application", "en": "Your first application"}, "store": {"fr": "Le magasin", "en": "The store"}, "way": {"fr": "La manière Softanza", "en": "The Softanza way"}, "innovations": {"fr": "Les innovations", "en": "Innovations"}, "conversations": {"fr": "Conversations", "en": "Conversations"}, "environment": {"fr": "L'environnement", "en": "The environment"}, "polyglot": {"fr": "Sept langues, une porte", "en": "Seven languages, one door"}, "goals": {"fr": "Sept buts de conception", "en": "Seven design goals"}, "softanzuter": {"fr": "Le Softanzuter", "en": "The Softanzuter"}, "natural": {"fr": "Naturel, et exécutable", "en": "Natural, and executable"},
               "byexample": {"fr": "Par l'exemple", "en": "By example"}, "craft": {"fr": "Comment Softanza s'écrit", "en": "How Softanza is written"},
@@ -816,7 +821,7 @@ JOURNEY_UI = {
          "stage_intro": "Chaque étape porte son état, avec les mots de la page Domaine : construit, en construction, spécification, conçu, nommé. Un parcours peut paraître avec des étapes qui ne sont pas construites ; il le dit à chaque pas.",
          "focus_h": "Un focus, sans restriction", "focus": "Softanza sert n'importe quel besoin algorithmique, et l'Atlas en est la preuve d'étendue. Elle est mieux faite pour les domaines où ses couloirs sont forts, et ce focus est une mesure qui bouge avec la bibliothèque : les parcours s'appuient sur ces domaines, et l'Atlas garde les autres atteignables.",
          "steps_h": "Les étapes", "start_h": "Par où commencer", "pos_h": "La phrase de positionnement", "back": "Tous les parcours", "see": "voir",
-         "doors_h": "Neuf parcours", "n_steps": "{n} étapes : {t}", "hub_p": "Les six portes de la page Audiences disent ce que chaque lecteur déclare et obtient ; les parcours disent comment il y va.",
+         "doors_h": "Neuf parcours", "n_steps": "{n} étapes : {t}", "hub_p": "Les sept portes de la page Audiences disent ce que chaque lecteur déclare et obtient ; les parcours disent comment il y va.",
          "arch_h": "Le neuvième", "arch": "Le parcours de l'architecte de plateforme est celui qui traverse toute la verticale, de la machine à l'organisation. C'est celui dont dépend l'offre commerciale : le directeur technique achète auprès d'un architecte."},
   "en": {"kicker": "Journey", "hub_title": "The journeys", "hub_title_html": "The <i>journeys</i>",
          "hub_lede": "A library is usually presented by its anatomy. Softanza is also presented by who you are and what you are doing: one journey per person, the steps in the order they take them, and under each step the part of Softanza that serves it, its stage of construction and a page that shows it.",
@@ -824,7 +829,7 @@ JOURNEY_UI = {
          "stage_intro": "Every step carries its stage, in the words of the Estate page: built, in construction, specification, designed, named. A journey may be published with steps that are not built; it says so at every one.",
          "focus_h": "Focus without restriction", "focus": "Softanza serves any algorithmic need, and the Atlas is the proof of breadth. It is best made for the domains where its lanes are strong, and that focus is a measurement that moves with the library: the journeys stand on those domains and the Atlas keeps the rest reachable.",
          "steps_h": "The steps", "start_h": "Where to start", "pos_h": "The positioning sentence", "back": "All the journeys", "see": "see",
-         "doors_h": "Nine journeys", "n_steps": "{n} steps: {t}", "hub_p": "The six doors of the Audiences page say what each reader declares and gets; the journeys say how they get there.",
+         "doors_h": "Nine journeys", "n_steps": "{n} steps: {t}", "hub_p": "The seven doors of the Audiences page say what each reader declares and gets; the journeys say how they get there.",
          "arch_h": "The ninth", "arch": "The platform architect's journey is the one that crosses the whole vertical, from the machine up to the organisation. It is the journey the commercial offer depends on: the technical leader buys from an architect."},
 }
 def page_label(lang, page):
@@ -952,6 +957,12 @@ def glossary_html(lang):
         pg = t["page"]
         items.append(f'<dt id="{t["id"]}">{esc(t[lang])}</dt><dd>{d} <span class="rx-src">{see}: <a href="{pg}">{esc(page_label(lang, pg.split("#")[0]))}</a></span></dd>')
     return f'<dl class="glossary">{"".join(items)}</dl>'
+
+def declared_html(lang):
+    d = load_json("declared.json"); i = 1 if lang == "fr" else 0
+    heads = {"fr": ("Langage", "Ce qu'il déclare", "Étape", "Où"), "en": ("Language", "What it declares", "Stage", "Where")}[lang]
+    rows = "".join(f'<tr><th scope="row"><code>{esc(r[0])}</code></th><td>{esc(r[1 + i])}</td><td><b>{esc(r[3 + i])}</b></td><td><a href="{r[5]}">{esc(page_label(lang, r[5]))}</a></td></tr>' for r in d["rows"])
+    return (f'<div class="covwrap"><table class="products declared"><thead><tr><th scope="col">{heads[0]}</th><th scope="col">{heads[1]}</th><th scope="col">{heads[2]}</th><th scope="col">{heads[3]}</th></tr></thead><tbody>{rows}</tbody></table></div>')
 
 DEPTH_UI = {
   "fr": {"map": "La carte de la bibliothèque", "map_p": "Chaque dossier de domaine de la bibliothèque, avec ses fichiers et ses lignes de code. Les tests, les documents et les archives ne sont pas comptés comme du code.", "dom": "Domaine", "files": "Fichiers", "lines": "Lignes",

@@ -1,16 +1,16 @@
 ---
 title: Audiences
 title_html: Who it is <i>for</i>
-kicker: Six doors, one story
-lede: Softanza tells one story to six kinds of crafters, and each door leads to a journey, with a ninth, <a href="journey-architect.html">the platform architect's</a>, beside them. Each door below says what that reader declares and what they get, and shows one example run on the night of publication.
-description: The six audiences of Softanza, from the programmer to the agent: what each declares and gets, with a real example.
+kicker: Seven doors, one story
+lede: Softanza tells one story to seven kinds of crafters, and each door leads to a journey, with a ninth, <a href="journey-architect.html">the platform architect's</a>, beside them. Each door below says what that reader declares and what they get, and shows one example run on the night of publication.
+description: The seven audiences of Softanza, from the programmer to the agent: what each declares and gets, with a real example.
 ---
 
 ## What is a software crafter? {#crafter}
 
 A software crafter turns what they know about a world into something that runs, without waiting for the software industry. They are not defined by programming skill but by ownership: the artefact is theirs, in plain text, and it does not expire. A teacher, an analyst, a merchant, a student, a civil servant, and an agent that proposes under all of those worlds.
 
-## Six doors {#doors}
+## Seven doors {#doors}
 
 <div class="door-section" id="programmer" markdown="1">
 <div class="kicker">Door 1</div>
@@ -103,6 +103,13 @@ PROVED  the child's Hausa program passed, checked by running it</pre></div><div 
    (required by operation 1)
 PROVED  the course folder still holds all 610 files</pre></div></div>
 <p class="ran">run on 2026-09-30 at 23:10 by <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">demo</a>, scene 6</p>
+</div>
+
+<div class="door-section" id="application" markdown="1">
+<div class="kicker">Door 7</div>
+### A team that ships an application
+
+**What you declare:** a world: what lives in it and what is true of it, how it reacts, what it wants, and where it endures. **What you get:** an application judged by guards, served by a host built on the engine's reactor, rehearsed on a twin before it is deployed. It runs on the web today, and the native interface is in construction. **Where to start:** <a href="applications.html">Applications</a>, then <a href="first.html">your first application</a>. **The journey:** <a href="journey-programmer.html">The programmer's journey</a> ; <a href="journey-architect.html">the platform architect's</a>.
 </div>
 
 ## How Softanza pays for itself {#funding}

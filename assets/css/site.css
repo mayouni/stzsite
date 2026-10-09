@@ -633,3 +633,15 @@ table.products th,table.products td{padding:12px 14px;border-bottom:1px solid va
 table.products thead th{font-family:"IBM Plex Mono",monospace;font-size:var(--label);color:var(--ink-2)}
 table.products td:nth-child(2){white-space:nowrap}
 table.products p{margin:0 0 6px}
+
+/* the first picture says what it is: no provenance is recorded for it, and the page says so (4.6) */
+.hero{position:relative}
+.hero-credit{position:absolute;right:16px;bottom:12px;margin:0;max-width:calc(100% - 32px);padding:4px 10px;border-radius:6px;background:rgba(0,0,0,.7);color:#fff;font-size:16px;line-height:1.4}
+
+/* the declared languages: the second cell is prose, the fourth is a link */
+table.declared td:nth-child(2){white-space:normal}
+table.declared td:nth-child(3){white-space:normal;min-width:7em}
+table.declared td:nth-child(4){min-width:9em}
+table.declared th:first-child{white-space:nowrap}
+/* eight menu entries and the search word, in the longer French labels, between 1300 and 1480 px */
+@media (min-width:1301px) and (max-width:1480px){.nav{gap:4px 12px}.nav a,.tools a{font-size:1.0625rem}}

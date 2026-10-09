@@ -41,7 +41,7 @@ A cohort is a folder of learners who follow one course under one overlay. Its pr
 
 ## Languages {#languages}
 
-The course runs in English, French, Arabic (laid out right to left) and Hausa, from the first page; every chapter's guard runs in all four, and a missing translation is a failing guard, not a fallback to English. The French, Arabic and Hausa editions are drafts that await native reviewers (<a href="education-record.html#limits">0 of 35 units reviewed</a>), and every translated chapter and world page says so. A fifth language is a data-only pack, and the institution's own words go in its overlay.
+The course runs in English, French, Arabic (laid out right to left) and Hausa, from the first page; every chapter's guard runs in all four, and a missing translation is a failing guard, not a fallback to English. The French, Arabic and Hausa editions are drafts, and every translated chapter and world page says so (<a href="#honest">limits below</a>). A fifth language is a data-only pack, and the institution's own words go in its overlay.
 
 ## Governed AI for learners {#governed}
 

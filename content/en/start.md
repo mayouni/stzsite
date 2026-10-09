@@ -68,6 +68,10 @@ ring demo.ring rehearsal</pre>
 
 <p class="ran">run on 2026-09-30 at 23:10, in 49 seconds, 20 proofs out of 20</p>
 
+## Your first application {#application}
+
+A first program is a list. A first application is a world: <a href="first.html">your first application</a> says what it is made of and which narration builds one, and <a href="applications.html">the applications page</a> says what holds it up and which surfaces exist.
+
 ## Write {#write}
 
 Questions, defect reports and proposals go through the <a href="https://github.com/mayouni/stzlib/issues">issues of the GitHub repository</a>. A security flaw is reported privately through the repository's security advisories, as its <a href="https://github.com/mayouni/stzlib/blob/main/SECURITY.md">SECURITY.md</a> says. An edition of the course in your language starts with a folder of plain-text chapters: the Learn page says how the course's court will judge it. For the enterprise edition, write through the same issues: <a href="editions.html">the Editions page</a> says what it contains.

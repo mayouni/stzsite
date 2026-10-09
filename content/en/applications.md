@@ -30,6 +30,7 @@ Every stage here is read from the guards that judge each plane, not from the sta
 ## The pages {#pages}
 
 <ul class="narr">
+<li><a href="world.html"><b>The world</b></a><p>A domain, a life and a body, met in four ways.</p></li>
 <li><a href="host.html"><b>The host</b></a><p>The computational server and what the Atlas says is missing from it.</p></li>
 <li><a href="device.html"><b>From the editor to the device</b></a><p>Define, emulate, deploy, provision, with a twin in between.</p></li>
 <li><a href="surfaces.html"><b>Surfaces</b></a><p>The web today, the native interface in construction, and the others as directions.</p></li>
@@ -38,4 +39,4 @@ Every stage here is read from the guards that judge each plane, not from the sta
 <li><a href="store.html"><b>The store</b></a><p>Where a world endures.</p></li>
 </ul>
 
-<p class="proof"><b>in construction</b> What is not here yet: a page for the world itself, with its domain, its life and its body told one by one, and a short path from nothing to a served application, which would need a command that creates one. That command does not exist.</p>
+<p class="proof"><b>in construction</b> What is not here yet: a short path from nothing to a served application, which would need a command that creates one. That command does not exist.</p>

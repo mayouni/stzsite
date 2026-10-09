@@ -61,6 +61,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/conversations.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/craft.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/customers.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/declared.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/depth.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/device.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/docs.html</loc></url>
@@ -74,8 +75,10 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/estate.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/first.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/forged.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/foundation.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/glossary.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/goals.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/graphbeneath.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/guide/agents.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/guide/binary.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/guide/collections.html</loc></url>
@@ -294,7 +297,9 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/platforms.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/polyglot.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/principles.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/proven.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/proving.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reach.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/real.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/methods-a.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/methods-b.html</loc></url>
@@ -2087,9 +2092,12 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/surfaces.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/tour.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/vision.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/visual.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/way.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/whyring.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/widths.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/wise.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/world.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/zui.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/africa.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/agentic.html</loc></url>
@@ -2151,6 +2159,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/conversations.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/craft.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/customers.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/declared.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/depth.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/device.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/docs.html</loc></url>
@@ -2164,8 +2173,10 @@
 <url><loc>https://mayouni.github.io/stzsite/en/estate.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/first.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/forged.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/foundation.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/glossary.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/goals.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/graphbeneath.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/guide/agents.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/guide/binary.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/guide/collections.html</loc></url>
@@ -2384,7 +2395,9 @@
 <url><loc>https://mayouni.github.io/stzsite/en/platforms.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/polyglot.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/principles.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/proven.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/proving.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reach.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/real.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/methods-a.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/methods-b.html</loc></url>
@@ -4177,8 +4190,11 @@
 <url><loc>https://mayouni.github.io/stzsite/en/surfaces.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/tour.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/vision.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/visual.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/way.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/whyring.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/widths.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/wise.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/world.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/zui.html</loc></url>
 </urlset>

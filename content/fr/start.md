@@ -68,6 +68,10 @@ ring demo.ring rehearsal</pre>
 
 <p class="ran">exécuté le 2026-09-30 à 23:10, en 49 secondes, 20 preuves sur 20</p>
 
+## Votre première application {#application}
+
+Un premier programme est une liste. Une première application est un monde : <a href="first.html">votre première application</a> dit de quoi il est fait et quelle narration en construit un, et <a href="applications.html">la page des applications</a> dit ce qui le porte et quelles surfaces existent.
+
 ## Écrire {#write}
 
 Les questions, les rapports de défaut et les propositions passent par <a href="https://github.com/mayouni/stzlib/issues">les tickets du dépôt GitHub</a>. Une faille de sécurité se signale en privé par les avis de sécurité du dépôt, comme le dit son <a href="https://github.com/mayouni/stzlib/blob/main/SECURITY.md">SECURITY.md</a>. Une édition du cours dans votre langue commence par un dossier de chapitres en texte brut : la page Apprendre dit comment le tribunal du cours la jugera. Pour l'édition entreprise, écrivez par les mêmes tickets : <a href="editions.html">la page Éditions</a> dit ce qu'elle contient.

@@ -41,7 +41,7 @@ Une cohorte est un dossier d'apprenants qui suivent un cours sous une surcouche.
 
 ## Les langues {#languages}
 
-Le cours tourne en anglais, en français, en arabe (écrit de droite à gauche) et en haoussa, dès la première page ; le garde de chaque chapitre s'exécute dans les quatre, et une traduction manquante est un garde en échec, pas un repli sur l'anglais. Les éditions française, arabe et haoussa sont des brouillons qui attendent leurs relecteurs natifs (<a href="education-record.html#limits">0 unité sur 35 relue</a>), et chaque chapitre et chaque page de monde traduits le disent. Une cinquième langue est un paquet de données seulement, et les mots propres de l'institution vont dans sa surcouche.
+Le cours tourne en anglais, en français, en arabe (écrit de droite à gauche) et en haoussa, dès la première page ; le garde de chaque chapitre s'exécute dans les quatre, et une traduction manquante est un garde en échec, pas un repli sur l'anglais. Les éditions française, arabe et haoussa sont des brouillons, et chaque chapitre et chaque page de monde traduits le disent (<a href="#honest">limites plus bas</a>). Une cinquième langue est un paquet de données seulement, et les mots propres de l'institution vont dans sa surcouche.
 
 ## L'IA gouvernée pour les apprenants {#governed}
 

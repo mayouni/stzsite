@@ -30,6 +30,7 @@ Chaque étape ici est lue dans les gardes qui jugent chaque plan, pas dans les d
 ## Les pages {#pages}
 
 <ul class="narr">
+<li><a href="world.html"><b>Le monde</b></a><p>Un domaine, une vie et un corps, rencontrés de quatre façons.</p></li>
 <li><a href="host.html"><b>L'hôte</b></a><p>Le serveur de calcul et ce que l'Atlas dit qui lui manque.</p></li>
 <li><a href="device.html"><b>De l'éditeur à l'appareil</b></a><p>Définir, émuler, déployer, approvisionner, avec un jumeau entre les deux.</p></li>
 <li><a href="surfaces.html"><b>Surfaces</b></a><p>Le web aujourd'hui, l'interface native en construction, et les autres comme directions.</p></li>
@@ -38,4 +39,4 @@ Chaque étape ici est lue dans les gardes qui jugent chaque plan, pas dans les d
 <li><a href="store.html"><b>Le magasin</b></a><p>Là où un monde dure.</p></li>
 </ul>
 
-<p class="proof"><b>en construction</b> Ce qui n'est pas encore là : une page pour le monde lui-même, avec son domaine, sa vie et son corps racontés un à un, et un court chemin de rien à une application servie, qui demanderait une commande qui en crée une. Cette commande n'existe pas.</p>
+<p class="proof"><b>en construction</b> Ce qui n'est pas encore là : un court chemin de rien à une application servie, qui demanderait une commande qui en crée une. Cette commande n'existe pas.</p>

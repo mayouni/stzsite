@@ -1806,3 +1806,47 @@ next:
   - me:      commit and push
   - author:  read Partners and Certification as a stranger would; say whether "designed, no term" is the line to hold
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-09 03:44
+
+subject:   the held items: what I could do on the author's word, and what I could not
+
+why:       the author, "go ahead with the held items"; I took each held item in turn and did it where the site can decide it alone
+
+did:
+  - D2, the caveat dose: the figure "0 of 35 units reviewed" now stands once on each Education page, in its limits paragraph; the earlier mentions on the Education and Programme pages
+    say "drafts" and link down to it; the record page keeps the full account
+  - D1, the home: added the sentence "With Softanza you build applications: you declare a world, and it runs, on the web today and on the other surfaces as they are built" (the stage
+    is in the sentence), and a seventh door, "A team that ships an application", on the home, on the Audiences page and in the journeys hub; Start gains "Your first application"
+  - the Intelligence section: the Agentic section is named Intelligence in the menu and the footer; its pages keep their own titles
+  - the first picture says what it is: "Illustration: how it was made is not recorded in the repository", in both languages, because I do not know how it was made
+  - a page for the world (domain, life, body, and the four ways it is met), in the Applications bar
+  - the Foundation chapter, six one-screen pages: the graph beneath, four widths, visual by default, proven, reach, and the declared languages as one table of thirteen rows with
+    their stage and no product names; the figures are counted from the library (data/depth.json) or marked as readings of an outside assessment
+  - Learn: "The ladder" is "Your levels" in the learner's words, and Learn points to Softanza for education for the other proposition
+  - two defects of my own found in the renders and fixed: the French menu overflowed at 1366 px with eight entries and the search word (tightened between 1300 and 1480 px), and the declared
+    languages table squeezed its last column
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,294 files, the former name in the code of 0 files, search 16 of 16, the floor held on the new and changed pages
+
+state:
+  not done, and why:
+    - the phone's pinned rows: the header, the section's path and the trail are one pinned block and the home's hero, the left bar and the reference tables measure it; collapsing it for
+      phones changes every page and needs a design the author chooses (a disclosure for the path and trail is my proposal)
+    - Applications as a ninth top-menu entry: the menu has no room at 1366 px, in French least of all
+    - the grammar of functions (twenty-two forms, a run each) and the gallery: I have verified runs for about a third of the forms and none for the gallery's pictures, which wait on the author's
+      afternoon of looking; How-to beyond lists and strings: a recipe is a file in the library's quickers folder, and the site does not write the library's files, so the request goes to stzlib
+    - the Zui page's closing line: it needs the audit's date and results, and I have not run the audit; decks per target need scenes and a projector's eye
+    - the vocabulary diet beyond Learn, and the Learn page's own split, are done only as far as the wording above
+    - D3 and ESPA-MT: unchanged; nothing names an institution
+  perception-gate:   OPEN (the agent looked at the home, the declared languages and the world; the author has not)
+
+waiting:
+  - REFORM-RULING-01: D3 -> the author [asked 19:45, not answered]
+  - How-to recipes outside lists and strings -> stzlib [routed now in CONCLUSIONS]
+  - the phone's pinned block: a disclosure for the path and the trail, or another design -> the author
+
+next:
+  - me:      commit and push
+  - author:  open the home in French at 1366 px and on a phone; say whether to collapse the path and the trail on phones
+```

@@ -1,16 +1,16 @@
 ---
 title: Audiences
 title_html: Pour <i>qui</i>
-kicker: Six portes, une seule histoire
-lede: Softanza raconte une seule histoire à six sortes d'artisans du logiciel, et chaque porte mène à un parcours, avec un neuvième, <a href="journey-architect.html">celui de l'architecte de plateforme</a>, à leurs côtés. Chaque porte ci-dessous dit ce que ce lecteur déclare et ce qu'il obtient, et montre un exemple exécuté le soir de la publication.
-description: Les six publics de Softanza, du programmeur à l'agent : ce que chacun déclare et obtient, avec un vrai exemple.
+kicker: Sept portes, une seule histoire
+lede: Softanza raconte une seule histoire à sept sortes d'artisans du logiciel, et chaque porte mène à un parcours, avec un neuvième, <a href="journey-architect.html">celui de l'architecte de plateforme</a>, à leurs côtés. Chaque porte ci-dessous dit ce que ce lecteur déclare et ce qu'il obtient, et montre un exemple exécuté le soir de la publication.
+description: Les sept publics de Softanza, du programmeur à l'agent : ce que chacun déclare et obtient, avec un vrai exemple.
 ---
 
 ## Qu'est-ce qu'un artisan du logiciel ? {#crafter}
 
 Un artisan du logiciel transforme ce qu'il sait d'un monde en quelque chose qui tourne, sans attendre l'industrie du logiciel. Il n'est pas défini par sa maîtrise de la programmation mais par la propriété : l'artefact est à lui, en texte brut, et il n'expire pas. Une enseignante, un analyste, un commerçant, un élève, un fonctionnaire, et un agent qui propose sous tous ces mondes.
 
-## Six portes {#doors}
+## Sept portes {#doors}
 
 <div class="door-section" id="programmeur" markdown="1">
 <div class="kicker">Porte 1</div>
@@ -103,6 +103,13 @@ PROVED  the child's Hausa program passed, checked by running it</pre></div><div 
    (required by operation 1)
 PROVED  the course folder still holds all 610 files</pre></div></div>
 <p class="ran">exécuté le 2026-09-30 à 23:10 par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/demo/demo.ring">demo</a>, scène 6</p>
+</div>
+
+<div class="door-section" id="application" markdown="1">
+<div class="kicker">Porte 7</div>
+### Une équipe qui livre une application
+
+**Ce que vous déclarez :** un monde : ce qui y vit et ce qui y est vrai, comment il réagit, ce qu'il veut, et où il dure. **Ce que vous obtenez :** une application jugée par des gardes, servie par un hôte bâti sur le réacteur du moteur, répétée sur un jumeau avant d'être déployée. Elle tourne sur le web aujourd'hui, et l'interface native est en construction. **Par où commencer :** <a href="applications.html">Applications</a>, puis <a href="first.html">votre première application</a>. **Le parcours :** <a href="journey-programmer.html">Le parcours du programmeur</a> ; <a href="journey-architect.html">celui de l'architecte de plateforme</a>.
 </div>
 
 ## Comment Softanza se finance {#funding}
