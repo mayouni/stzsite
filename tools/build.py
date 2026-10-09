@@ -105,10 +105,10 @@ EDU_BAR = {"fr": ("Éducation", [("education", "Les trois portes"), ("education-
 SUBPAGES.update({p: "foundation" for p in ("graphbeneath", "widths", "visual", "proven", "reach", "declared")})
 SUBPAGES.update({"whyring": "roots"})
 SUBPAGES.update({p: "platforms" for p in ("applications", "world", "host", "device", "surfaces", "real", "first", "store", "conversations", "environment", "polyglot")})
-SUBPAGES.update({p: "craft" for p in ("goals", "patterns", "way", "natural", "byexample", "softanzuter", "innovations")})
-CRAFT_BAR = {"fr": ("Comment Softanza s'écrit", [("craft", "Comment Softanza s'écrit"), ("goals", "Sept buts de conception"), ("patterns", "Langages de motifs"), ("way", "La manière Softanza"), ("natural", "Naturel, et exécutable"), ("byexample", "Par l'exemple"),
+SUBPAGES.update({p: "craft" for p in ("goals", "patterns", "grammar", "way", "natural", "byexample", "softanzuter", "innovations")})
+CRAFT_BAR = {"fr": ("Comment Softanza s'écrit", [("craft", "Comment Softanza s'écrit"), ("goals", "Sept buts de conception"), ("patterns", "Langages de motifs"), ("grammar", "La grammaire des fonctions"), ("way", "La manière Softanza"), ("natural", "Naturel, et exécutable"), ("byexample", "Par l'exemple"),
                                                     ("softanzuter", "Le Softanzuter"), ("innovations", "Les innovations")]),
-             "en": ("How Softanza is written", [("craft", "How Softanza is written"), ("goals", "Seven design goals"), ("patterns", "Pattern languages"), ("way", "The Softanza way"), ("natural", "Natural, and executable"), ("byexample", "By example"),
+             "en": ("How Softanza is written", [("craft", "How Softanza is written"), ("goals", "Seven design goals"), ("patterns", "Pattern languages"), ("grammar", "The grammar of functions"), ("way", "The Softanza way"), ("natural", "Natural, and executable"), ("byexample", "By example"),
                                                 ("softanzuter", "The Softanzuter"), ("innovations", "Innovations")])}
 PLATFORMS_BAR = {"fr": ("Applications", [("applications", "Applications"), ("world", "Le monde"), ("platforms", "Plateforme de plateformes"), ("host", "L'hôte"), ("device", "De l'éditeur à l'appareil"), ("surfaces", "Surfaces"),
                                            ("real", "Applications réelles"), ("first", "Votre première application"), ("store", "Le magasin"), ("conversations", "Conversations"),
@@ -424,7 +424,7 @@ def inject(body_html, lang, idx, groups, rel="../"):
     body_html = body_html.replace("<!--METHODS-->", fmt(COUNTS["methods"])).replace("<!--CLASSES-->", fmt(COUNTS["classes"])).replace("<!--ENTRIES-->", fmt(COUNTS["entries"]))
     body_html = body_html.replace("<!--AREAS-->", fmap_html(lang, idx, groups, "atlas/") + tiles_html(lang, idx, groups, "atlas/", rel))
     body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
-    for tag, fn in (("DECLARED", declared_html), ("DEPTH", depth_html), ("GLOSSARY", glossary_html), ("LEADS", leads_html), ("RULES", rules_html), ("STEPS", steps_html), ("INNOVATIONS", innovations_html), ("GOALS", goals_html)):
+    for tag, fn in (("GRAMMAR", grammar_html), ("DECLARED", declared_html), ("DEPTH", depth_html), ("GLOSSARY", glossary_html), ("LEADS", leads_html), ("RULES", rules_html), ("STEPS", steps_html), ("INNOVATIONS", innovations_html), ("GOALS", goals_html)):
         if f"<!--{tag}-->" in body_html: body_html = body_html.replace(f"<!--{tag}-->", fn(lang))
     body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
     body_html = body_html.replace("<!--DOCS-SCOPE-->", scope_html(lang, idx, groups))
@@ -778,7 +778,7 @@ def evidence(lang, e):
     for a, b in EVIDENCE_FR: e = re.sub(a, b, e)
     return e
 
-PAGE_NAMES = {"graphbeneath": {"fr": "Le graphe dessous", "en": "The graph beneath"}, "widths": {"fr": "Quatre largeurs", "en": "Four widths"}, "visual": {"fr": "Visuel par défaut", "en": "Visual by default"},
+PAGE_NAMES = {"grammar": {"fr": "La grammaire des fonctions", "en": "The grammar of functions"}, "graphbeneath": {"fr": "Le graphe dessous", "en": "The graph beneath"}, "widths": {"fr": "Quatre largeurs", "en": "Four widths"}, "visual": {"fr": "Visuel par défaut", "en": "Visual by default"},
               "proven": {"fr": "Prouvé", "en": "Proven"}, "reach": {"fr": "Portée", "en": "Reach"}, "declared": {"fr": "Les langages déclarés", "en": "The declared languages"}, "world": {"fr": "Le monde", "en": "The world"}, "whyring": {"fr": "Pourquoi Softanza quitte Ring", "en": "Why Softanza leaves Ring"}, "roots": {"fr": "Racines", "en": "Roots"}, "patterns": {"fr": "Langages de motifs", "en": "Pattern languages"}, "applications": {"fr": "Applications", "en": "Applications"}, "host": {"fr": "L'hôte", "en": "The host"},
               "device": {"fr": "De l'éditeur à l'appareil", "en": "From the editor to the device"}, "surfaces": {"fr": "Surfaces", "en": "Surfaces"}, "real": {"fr": "Applications réelles", "en": "Real applications"},
               "first": {"fr": "Votre première application", "en": "Your first application"}, "store": {"fr": "Le magasin", "en": "The store"}, "way": {"fr": "La manière Softanza", "en": "The Softanza way"}, "innovations": {"fr": "Les innovations", "en": "Innovations"}, "conversations": {"fr": "Conversations", "en": "Conversations"}, "environment": {"fr": "L'environnement", "en": "The environment"}, "polyglot": {"fr": "Sept langues, une porte", "en": "Seven languages, one door"}, "goals": {"fr": "Sept buts de conception", "en": "Seven design goals"}, "softanzuter": {"fr": "Le Softanzuter", "en": "The Softanzuter"}, "natural": {"fr": "Naturel, et exécutable", "en": "Natural, and executable"},
@@ -886,6 +886,31 @@ def build_journeys(lang, idx, groups):
                 f'{pos}{extra}<p><a href="journeys.html">{ui["back"]}</a></p>')
         page = page_shell(lang, f"journey-{j['id']}", j["name"][lang], j["promise"][lang], esc(ui["kicker"]), esc(j["name"][lang]), esc(j["promise"][lang]), body, page_key="journeys")
         (ROOT / lang / f"journey-{j['id']}.html").write_text(level2.wrap(page, journey_bar(lang, "journey-" + j["id"])), encoding="utf-8")
+
+GRAMMAR_UI = {
+  "fr": {"kept": "a tenu sa promesse", "differs": "a affiché autre chose que la promesse", "missing": "n'existe pas : la bibliothèque répond", "raised": "a levé une erreur : la bibliothèque répond", "promised": "promis", "out": "Sortie",
+         "ran": "exécuté le {d} dans la bibliothèque au commit {c}", "answered": "La bibliothèque répond", "reads": "se lit comme",
+         "tally": "Sur {n} essais, {k} ont tenu leur promesse, {m} ont levé une erreur, dont {u} pour un nom que la bibliothèque n'a pas, et {x} ont affiché autre chose que la promesse."},
+  "en": {"kept": "kept its promise", "differs": "printed something other than the promise", "missing": "does not exist: the library answers", "raised": "raised an error: the library answers", "promised": "promised", "out": "Output",
+         "ran": "run on {d} inside the library at commit {c}", "answered": "The library answers", "reads": "reads as",
+         "tally": "Of {n} tries, {k} kept their promise, {m} raised an error, {u} of them for a name the library does not have, and {x} printed something other than the promise."},
+}
+def grammar_html(lang):
+    g = load_json("grammar.json"); r = load_json("grammar-run.json"); ui = GRAMMAR_UI[lang]; i = lang
+    tries = [x for v in r["forms"].values() for x in v]
+    kept = sum(1 for x in tries if x["kept"]); miss = sum(1 for x in tries if x["error"]); diff = len(tries) - kept - miss
+    undef = sum(1 for x in tries if "without definition" in x["error"])
+    out = [f'<p class="proof">{esc(ui["tally"].format(n=len(tries), k=kept, m=miss, u=undef, x=diff))}</p>']
+    for f in g["forms"]:
+        out.append(f'<h2 id="{f["id"]}">{esc(f[i])}</h2><p>{esc(f["reads_" + i])}</p>')
+        for x in r["forms"][f["id"]]:
+            if x["kept"]: verdict, shown, lbl = ui["kept"], x["out"], ui["out"]
+            elif x["error"]: verdict, shown, lbl = (ui["missing"] if "without definition" in x["error"] else ui["raised"]), x["error"], ui["answered"]
+            else: verdict, shown, lbl = ui["differs"], x["out"], ui["out"]
+            prom = " / ".join(x["promise"].split("\n"))
+            out.append(f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(x["code"])}</pre></div><div class="out"><div class="lbl">{lbl}</div><pre>{esc(shown)}</pre></div></div>'
+                       f'<p class="ran"><b>{esc(verdict)}</b> · {ui["promised"]} : {esc(prom)} · {esc(ui["ran"].format(d=r["ran"], c=r["commit"]))}</p>')
+    return "".join(out)
 
 GOAL_UI = {"fr": {"tally": "Sur {n} fonctions : {t}.", "see": "ce que la fonction devient aujourd'hui", "ran": "Une exécution"},
            "en": {"tally": "Of {n} features: {t}.", "see": "what the feature is today", "ran": "A run"}}

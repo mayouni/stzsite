@@ -1,0 +1,190 @@
+{
+ "commit": "4a184e6f0",
+ "ran": "2026-10-09 04:27",
+ "forms": {
+  "active": [
+   {
+    "code": "o1 = new stzString(\"TExxAxS\")\no1.RemoveAll(\"x\")\n? o1.Content()",
+    "promise": "TEAS",
+    "out": "TEAS",
+    "error": "",
+    "kept": true
+   }
+  ],
+  "passive": [
+   {
+    "code": "o1 = new stzString(\"TExxAxS\")\n? o1.Removed(\"x\")\n? o1.Content()",
+    "promise": "TEAS\nTExxAxS",
+    "out": "TEAS\nTExxAxS",
+    "error": "",
+    "kept": true
+   },
+   {
+    "code": "o1 = new stzString(\"TExxAxS\")\n? o1.AllRemoved(\"x\")",
+    "promise": "TEAS",
+    "out": "",
+    "error": "Error (R14) : Calling Method without definition: allremoved",
+    "kept": false
+   }
+  ],
+  "fluent": [
+   {
+    "code": "? Q(\"texxaxs\").\n\tRemoveQ(\"x\").\n\tReplaceQ(\"e\", :With = AHeart()).\n\tUppercaseQ().\n\tSpacified()",
+    "promise": "T ♥ A S",
+    "out": "T ♥ A S",
+    "error": "",
+    "kept": true
+   }
+  ],
+  "immutable": [
+   {
+    "code": "o1 = new stzString(\"texxaxs\")\n? o1.RemoveQC(\"x\").\n\tReplaceQ(\"e\", :With = AHeart()).\n\tUppercaseQ().\n\tSpacified()\n? o1.Content()",
+    "promise": "T ♥ A S\ntexxaxs",
+    "out": "T ♥ A S\ntexxaxs",
+    "error": "",
+    "kept": true
+   }
+  ],
+  "partial": [
+   {
+    "code": "o1 = new stzString(\"TExxAxS\")\n? o1.@(\"x\").@Removed()",
+    "promise": "TEAS",
+    "out": "",
+    "error": "Error (R14) : Calling Method without definition: @removed",
+    "kept": false
+   }
+  ],
+  "plural": [
+   {
+    "code": "o1 = new stzString(\"__T~~~EA***S__\")\no1.RemoveMany([ \"_\", \"~\", \"*\" ])\n? o1.Content()",
+    "promise": "TEAS",
+    "out": "TEAS",
+    "error": "",
+    "kept": true
+   },
+   {
+    "code": "o1 = new stzString(\"__T~~~EA***S__\")\n? @@( o1.FindManyZZ([ \"__\", \"~~~\", \"***\" ]) )",
+    "promise": "[ [ 1, 2 ], [ 4, 6 ], [ 9, 11 ], [ 13, 14 ] ]",
+    "out": "[ [ \"__\", [ [ 1, 2 ], [ 13, 14 ] ] ], [ \"~~~\", [ [ 4, 6 ] ] ], [ \"***\", [ [ 9, 11 ] ] ] ]",
+    "error": "",
+    "kept": false
+   }
+  ],
+  "exceptional": [
+   {
+    "code": "o1 = new stzString(\"__T~~~EA***S__\")\no1.RemoveNonLetters()\n? o1.Content()",
+    "promise": "TEAS",
+    "out": "",
+    "error": "Error (R14) : Calling Method without definition: removenonletters",
+    "kept": false
+   },
+   {
+    "code": "o1 = new stzString(\"__T~~~EA***S__\")\no1.RemoveNonLettersExcept(\"_\")\n? o1.Content()",
+    "promise": "__TEAS__",
+    "out": "",
+    "error": "Error (R14) : Calling Method without definition: removenonlettersexcept",
+    "kept": false
+   }
+  ],
+  "negative": [
+   {
+    "code": "? Q(\"*\").IsNotLetter()",
+    "promise": "1",
+    "out": "1",
+    "error": "",
+    "kept": true
+   },
+   {
+    "code": "? Q(\"*\").IsNotALetter()",
+    "promise": "1",
+    "out": "",
+    "error": "Error (R14) : Calling Method without definition: isnotaletter",
+    "kept": false
+   }
+  ],
+  "alternative": [
+   {
+    "code": "o1 = new stzList([ \"C\", \"B\", \"A\" ])\no1.SwapItems(1, 3)\n? @@( o1.Content() )",
+    "promise": "[ \"A\", \"B\", \"C\" ]",
+    "out": "[ \"A\", \"B\", \"C\" ]",
+    "error": "",
+    "kept": true
+   },
+   {
+    "code": "o2 = new stzList([ 1, 2, \"♥\", 4, 5, \"♥\", \"♥\" ])\n? o2.FindNthNext(2, \"♥\")\n? o2.FindNextNth(2, \"♥\")",
+    "promise": "6\n6",
+    "out": "",
+    "error": "Error (R19) : Calling function with less number of parameters",
+    "kept": false
+   }
+  ],
+  "named": [
+   {
+    "code": "? Q(\"tea, rice, tea\").Replaced(\"tea\", :With = \"coffee\")",
+    "promise": "coffee, rice, coffee",
+    "out": "coffee, rice, coffee",
+    "error": "",
+    "kept": true
+   }
+  ],
+  "conditional": [
+   {
+    "code": "o = new stzList([ 4, 7, 10, 3, 8 ])\n? @@( o.FindW(\"{ @item > 5 }\") )",
+    "promise": "[ 2, 3, 5 ]",
+    "out": "[ 2, 3, 5 ]",
+    "error": "",
+    "kept": true
+   }
+  ],
+  "prefix": [
+   {
+    "code": "? Q(\"RINGORIALAND\").FindAll(\"I\")",
+    "promise": "[ 2, 7 ]",
+    "out": "2\n7",
+    "error": "",
+    "kept": true
+   },
+   {
+    "code": "? Q(\"RINGORIALAND\").vizFindAll(\"I\")",
+    "promise": "RINGORIALAND\n-^----^-----",
+    "out": "",
+    "error": "Error (R14) : Calling Method without definition: vizfindall",
+    "kept": false
+   }
+  ],
+  "suffix": [
+   {
+    "code": "o1 = new stzString(\"123456789TEA\")\n? o1.FindNextSTCS(\"tea\", 5, FALSE)",
+    "promise": "10",
+    "out": "10",
+    "error": "",
+    "kept": true
+   },
+   {
+    "code": "str = new stzString(\"SOOooooFFfffTANNnnnZA\")\nstr.RemoveManyCS([ \"o\", \"f\", \"n\" ], FALSE)\n? str.Content()",
+    "promise": "SOFTANZA",
+    "out": "STAZA",
+    "error": "",
+    "kept": false
+   }
+  ],
+  "small": [
+   {
+    "code": "? @@( Qh(12500).\n\tAddQ(500).\n\tRetrieveQ(1500).\n\tDivideByQ(500).\n\tMultiplyByQ(2).\n\tHistory() )",
+    "promise": "[ 13000, 11500, 23, 46 ]",
+    "out": "[ 12500, 13000, 11500, 23, 46 ]",
+    "error": "",
+    "kept": false
+   }
+  ],
+  "future": [
+   {
+    "code": "? BeforeQ('').UppercasingFQ(\"teaso\").\n\tRemoveFFQ(\"o\").FromItQ().\n\tSpacifyItQ().\n\tAndThenQ().ReturnIt()",
+    "promise": "T E A S",
+    "out": "",
+    "error": "Error (R3) : Calling Function without definition: beforeq",
+    "kept": false
+   }
+  ]
+ }
+}

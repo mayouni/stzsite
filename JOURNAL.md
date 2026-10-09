@@ -1873,3 +1873,34 @@ next:
   - me:      commit and push
   - author:  open a class page on a phone, scroll, and open the "Where you are" line
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-09 04:33
+
+subject:   the grammar of functions, each form tried
+
+why:       the author, "go ahead with the grammar of functions"; the assessment's A3 asks for the twenty-two forms with one run each
+
+did:
+  - published "The grammar of functions" in the Craft family's bar, English and French: fifteen forms, each tried in the library at 4a184e6f0 with the example its own article gives (a new
+    tool, tools/grammar_run.py, data/grammar.json), and what came out shown beside the promise: the answer, or the library's own error
+  - the result is the page's finding: of 22 tries, 11 kept their promise (active, passive by its participle, fluent, immutable, plural, exceptional's absence aside, negative, the
+    alternative swap, named, conditional, the viz-less find, suffixes by position), 8 raised an error and 7 of those because the name does not exist (AllRemoved, @Removed,
+    RemoveNonLetters, RemoveNonLettersExcept, IsNotALetter, vizFindAll, BeforeQ), and 3 printed something other than the promise (a plural find returns each pattern with its sections
+    and not the merged sections; a chain's history starts with the first value; a case-insensitive removal leaves STAZA, not SOFTANZA, as the code reads FALSE)
+  - the page does not hide this: the article documents more than the library has, and it says which side should move, the library by writing the forms or the article by correcting them
+  - used data that does not spell the former name for the page's examples (a string of letters that is not the word), so the rename never has to touch them
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,296 files, the former name in the code of 0 files, search 16 of 16, the floor held; I looked at the render
+
+state:
+  not tried, said on the page: the random, deep, default, free-order, misspelled-name and statement forms, the free form (its name collides with another suffix), and the multilingual form
+  (archive only); the assessment's 22 count groups forms differently from the article's, and this page says fifteen
+  perception-gate:   OPEN (the agent looked; the author has not)
+
+waiting:
+  - the forms the article documents and the library lacks, and the three wrong promises -> stzlib [routed now in CONCLUSIONS]
+
+next:
+  - me:      commit and push
+  - author:  read the page's findings; say whether the library should grow the forms or the article should shrink
+```

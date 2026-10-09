@@ -1,0 +1,229 @@
+{
+ "about": "The forms of a function name, as the library's article on functions as linguistic expressions states them, each tried in the library at the commit read. A form is tried with the example the article gives and the answer it promises; what the library printed, or the error it raised, is kept beside the promise. The probe of how many files use each form is an outside assessment's reading of 2026-10-07.",
+ "source": "base/doc/narrations/stz-functions-as-linguistic-expressions.md",
+ "forms": [
+  {
+   "id": "active",
+   "en": "Active",
+   "fr": "Active",
+   "reads_en": "a verb acting on the object, like an imperative: RemoveAll(\"x\")",
+   "reads_fr": "un verbe qui agit sur l'objet, comme un impératif : RemoveAll(\"x\")",
+   "tries": [
+    {
+     "code": "o1 = new stzString(\"TExxAxS\")\no1.RemoveAll(\"x\")\n? o1.Content()",
+     "promise": "TEAS"
+    }
+   ]
+  },
+  {
+   "id": "passive",
+   "en": "Passive",
+   "fr": "Passive",
+   "reads_en": "the past participle, the state wanted: Removed(\"x\"), and the original is left alone",
+   "reads_fr": "le participe passé, l'état voulu : Removed(\"x\"), et l'original est laissé tel quel",
+   "tries": [
+    {
+     "code": "o1 = new stzString(\"TExxAxS\")\n? o1.Removed(\"x\")\n? o1.Content()",
+     "promise": "TEAS\nTExxAxS"
+    },
+    {
+     "code": "o1 = new stzString(\"TExxAxS\")\n? o1.AllRemoved(\"x\")",
+     "promise": "TEAS"
+    }
+   ]
+  },
+  {
+   "id": "fluent",
+   "en": "Fluent",
+   "fr": "Fluide",
+   "reads_en": "each verb hands the object back, so the sentence goes on: RemoveQ, ReplaceQ",
+   "reads_fr": "chaque verbe rend l'objet, si bien que la phrase continue : RemoveQ, ReplaceQ",
+   "tries": [
+    {
+     "code": "? Q(\"texxaxs\").\n\tRemoveQ(\"x\").\n\tReplaceQ(\"e\", :With = AHeart()).\n\tUppercaseQ().\n\tSpacified()",
+     "promise": "T ♥ A S"
+    }
+   ]
+  },
+  {
+   "id": "immutable",
+   "en": "Immutable",
+   "fr": "Immuable",
+   "reads_en": "QC chains over a copy and the original stays as it was",
+   "reads_fr": "QC enchaîne sur une copie et l'original reste tel qu'il était",
+   "tries": [
+    {
+     "code": "o1 = new stzString(\"texxaxs\")\n? o1.RemoveQC(\"x\").\n\tReplaceQ(\"e\", :With = AHeart()).\n\tUppercaseQ().\n\tSpacified()\n? o1.Content()",
+     "promise": "T ♥ A S\ntexxaxs"
+    }
+   ]
+  },
+  {
+   "id": "partial",
+   "en": "Partial",
+   "fr": "Partielle",
+   "reads_en": "an @ verb acts on the part the chain took out: @(\"x\").@Removed()",
+   "reads_fr": "un verbe en @ agit sur la partie que la chaîne a prise : @(\"x\").@Removed()",
+   "tries": [
+    {
+     "code": "o1 = new stzString(\"TExxAxS\")\n? o1.@(\"x\").@Removed()",
+     "promise": "TEAS"
+    }
+   ]
+  },
+  {
+   "id": "plural",
+   "en": "Plural",
+   "fr": "Plurielle",
+   "reads_en": "Many takes a list and the verb is done for each: RemoveMany",
+   "reads_fr": "Many prend une liste et le verbe est fait pour chacun : RemoveMany",
+   "tries": [
+    {
+     "code": "o1 = new stzString(\"__T~~~EA***S__\")\no1.RemoveMany([ \"_\", \"~\", \"*\" ])\n? o1.Content()",
+     "promise": "TEAS"
+    },
+    {
+     "code": "o1 = new stzString(\"__T~~~EA***S__\")\n? @@( o1.FindManyZZ([ \"__\", \"~~~\", \"***\" ]) )",
+     "promise": "[ [ 1, 2 ], [ 4, 6 ], [ 9, 11 ], [ 13, 14 ] ]"
+    }
+   ]
+  },
+  {
+   "id": "exceptional",
+   "en": "Exceptional",
+   "fr": "d'Exception",
+   "reads_en": "Except says what to spare: RemoveNonLettersExcept(\"_\")",
+   "reads_fr": "Except dit ce qu'il faut épargner : RemoveNonLettersExcept(\"_\")",
+   "tries": [
+    {
+     "code": "o1 = new stzString(\"__T~~~EA***S__\")\no1.RemoveNonLetters()\n? o1.Content()",
+     "promise": "TEAS"
+    },
+    {
+     "code": "o1 = new stzString(\"__T~~~EA***S__\")\no1.RemoveNonLettersExcept(\"_\")\n? o1.Content()",
+     "promise": "__TEAS__"
+    }
+   ]
+  },
+  {
+   "id": "negative",
+   "en": "Negative",
+   "fr": "Négative",
+   "reads_en": "the negation is a word of the name: IsNotLetter, IsNotALetter",
+   "reads_fr": "la négation est un mot du nom : IsNotLetter, IsNotALetter",
+   "tries": [
+    {
+     "code": "? Q(\"*\").IsNotLetter()",
+     "promise": "1"
+    },
+    {
+     "code": "? Q(\"*\").IsNotALetter()",
+     "promise": "1"
+    }
+   ]
+  },
+  {
+   "id": "alternative",
+   "en": "Alternative",
+   "fr": "Alternative",
+   "reads_en": "more than one name for the way a person says it, and the words of a name may swap",
+   "reads_fr": "plus d'un nom pour la façon dont une personne le dit, et les mots d'un nom peuvent s'intervertir",
+   "tries": [
+    {
+     "code": "o1 = new stzList([ \"C\", \"B\", \"A\" ])\no1.SwapItems(1, 3)\n? @@( o1.Content() )",
+     "promise": "[ \"A\", \"B\", \"C\" ]"
+    },
+    {
+     "code": "o2 = new stzList([ 1, 2, \"♥\", 4, 5, \"♥\", \"♥\" ])\n? o2.FindNthNext(2, \"♥\")\n? o2.FindNextNth(2, \"♥\")",
+     "promise": "6\n6"
+    }
+   ]
+  },
+  {
+   "id": "named",
+   "en": "Named parameters",
+   "fr": "Paramètres nommés",
+   "reads_en": "the argument says what it is: :With, :StartingAt",
+   "reads_fr": "l'argument dit ce qu'il est : :With, :StartingAt",
+   "tries": [
+    {
+     "code": "? Q(\"tea, rice, tea\").Replaced(\"tea\", :With = \"coffee\")",
+     "promise": "coffee, rice, coffee"
+    }
+   ]
+  },
+  {
+   "id": "conditional",
+   "en": "Conditional",
+   "fr": "Conditionnelle",
+   "reads_en": "W, a condition inside the argument",
+   "reads_fr": "W, une condition dans l'argument",
+   "tries": [
+    {
+     "code": "o = new stzList([ 4, 7, 10, 3, 8 ])\n? @@( o.FindW(\"{ @item > 5 }\") )",
+     "promise": "[ 2, 3, 5 ]"
+    }
+   ]
+  },
+  {
+   "id": "prefix",
+   "en": "Prefixes",
+   "fr": "Préfixes",
+   "reads_en": "viz shows the verb's answer on the string",
+   "reads_fr": "viz montre la réponse du verbe sur la chaîne",
+   "tries": [
+    {
+     "code": "? Q(\"RINGORIALAND\").FindAll(\"I\")",
+     "promise": "[ 2, 7 ]"
+    },
+    {
+     "code": "? Q(\"RINGORIALAND\").vizFindAll(\"I\")",
+     "promise": "RINGORIALAND\n-^----^-----"
+    }
+   ]
+  },
+  {
+   "id": "suffix",
+   "en": "Suffixes",
+   "fr": "Suffixes",
+   "reads_en": "CS, ST, Z, ZZ: the name says which arguments, in which order",
+   "reads_fr": "CS, ST, Z, ZZ : le nom dit quels arguments, dans quel ordre",
+   "tries": [
+    {
+     "code": "o1 = new stzString(\"123456789TEA\")\n? o1.FindNextSTCS(\"tea\", 5, FALSE)",
+     "promise": "10"
+    },
+    {
+     "code": "str = new stzString(\"SOOooooFFfffTANNnnnZA\")\nstr.RemoveManyCS([ \"o\", \"f\", \"n\" ], FALSE)\n? str.Content()",
+     "promise": "SOFTANZA"
+    }
+   ]
+  },
+  {
+   "id": "small",
+   "en": "Small functions",
+   "fr": "Petites fonctions",
+   "reads_en": "Q lifts, @@ reads, Qh keeps the history of a chain",
+   "reads_fr": "Q élève, @@ lit, Qh garde l'historique d'une chaîne",
+   "tries": [
+    {
+     "code": "? @@( Qh(12500).\n\tAddQ(500).\n\tRetrieveQ(1500).\n\tDivideByQ(500).\n\tMultiplyByQ(2).\n\tHistory() )",
+     "promise": "[ 13000, 11500, 23, 46 ]"
+    }
+   ]
+  },
+  {
+   "id": "future",
+   "en": "Future",
+   "fr": "Future",
+   "reads_en": "F defers an action, FF runs everything deferred before it",
+   "reads_fr": "F diffère une action, FF exécute tout ce qui était différé avant elle",
+   "tries": [
+    {
+     "code": "? BeforeQ('').UppercasingFQ(\"teaso\").\n\tRemoveFFQ(\"o\").FromItQ().\n\tSpacifyItQ().\n\tAndThenQ().ReturnIt()",
+     "promise": "T E A S"
+    }
+   ]
+  }
+ ]
+}
