@@ -658,3 +658,5 @@ figure.gal figcaption p{margin:4px 0}
 
 /* Rules 105 and 107: a list of choices reads at the reading floor, not at the browser's own 13px */
 select,select option{font-size:1rem}
+/* on a phone the credit follows the arrow in the flow instead of lying over it */
+@media (max-width:760px){.hero-credit{position:static;display:block;width:fit-content;margin:8px var(--gutter) 20px;max-width:calc(100% - 2*var(--gutter))}}

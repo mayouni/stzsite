@@ -2033,3 +2033,32 @@ next:
 
 note:      the first-page title Audiences is still the heading of that page; only the navigation name changed
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-09 13:26
+
+subject:   the home menu in the light theme, looked at, and one fault found beside it
+
+why:       the audit could not measure the menu over the photograph, and the author asked for it to be looked at
+
+did:
+  - rendered the home page in the light theme at laptop, phone and projector width and read the menu, the wordmark and the language link over the photograph: readable, white with its own dark edge on a 30% band
+  - found a fault no instrument could: on a phone the line saying the picture's provenance is not recorded lay over the arrow that scrolls down; made it follow in the flow, above the headline, and looked again
+  - left the menu as the author drew it (text with a halo, no bar, a deliberate exception to Rule 110 on the home page only): a heavier band would make the instruments pass and change the look, which is the author's
+  - said on the Zui page what was looked at, who looked (a model), and that no person's verdict is recorded, so the menu stays unperceived
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,298 files, search 16 of 16, the floor held on the Zui pages in both themes
+
+state:
+  home-menu-light:  read by a model without difficulty; no person's verdict recorded; unperceived
+  phone-credit:     overlap with the scroll arrow fixed
+  audit-105:        24 findings in light remain, the audit cannot see the photograph
+
+waiting:
+  - HOMEMENU-LIGHT: a person looks at the home page in the light theme and says so -> the author [routed on the Zui page]
+
+next:
+  - me:      commit and push
+  - author:  look at the home page in the light theme, laptop and phone, and tell me what you see
+
+note:      a decision on perception cannot be taken on someone's behalf; the fault found by looking was repaired, the verdict was not made
+```
