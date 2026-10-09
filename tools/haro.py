@@ -20,7 +20,7 @@ was added here only after a run of the renamed cell failed without it, and the r
 """
 import re, sys, json, shutil, pathlib
 
-NAME = re.compile(r"(?<![\w./\-])(?<!```)(ring|Ring|RING)(?![\w.+:\-])")    # inline `RING` is the name; a ```ring fence tag is not
+NAME = re.compile(r"(?<![\w./\-])(?<!```)(ring|Ring|RING)(?![\w.+:\-])(?! [\w./\-]+\.ring)")    # inline `RING` is the name; a ```ring fence tag is not; neither is the runtime's own command, `ring first.ring`
 MAP = {"ring": "haro", "Ring": "Haro", "RING": "HARO"}
 # data that spells the name without being the name standing alone, each found by a red run of the renamed chapter:
 #   chapter 3   "RIxxNxG" with the x's removed is RING, and a spaced promise "R I N G"

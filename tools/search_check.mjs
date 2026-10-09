@@ -30,6 +30,9 @@ const QUESTIONS = [
   ['banana split', 'texts', (idx, r) => r.total > 0 && flat(idx, r).slice(0, 5).every(h => h.where === 'example' || h.where === 'description' || h.where === 'name'), 'methods whose example shows "banana split"'],
   ['vowels in a word', 'texts', (idx, r) => flat(idx, r).slice(0, 5).some(h => /vowel/i.test(h.m.name)), 'a method about vowels'],
   ['string', 'names', (idx, r) => r.areas.length > 0 && r.classes.length > 0, 'the area String and its classes'],
+  ['map of niger', 'names', (idx, r) => r.pages.slice(0, 8).some(p => idx.pages[p.pi].kind === 'page' && /niger|africa/i.test(idx.pages[p.pi].l)), 'an authored page about Niger or Africa'],
+  ['crafters', 'names', (idx, r) => r.pages.slice(0, 8).some(p => idx.pages[p.pi].kind === 'page' && /journey|crafter|offering|audiences/i.test(idx.pages[p.pi].l)), 'an authored page about who the platform is for'],
+  ['natural language', 'names', (idx, r) => r.pages.slice(0, 8).some(p => idx.pages[p.pi].kind === 'page' && /natural/i.test(idx.pages[p.pi].l)), 'the page on natural, executable language'],
   ['xml', 'names', (idx, r) => r.pages.some(p => /xml/i.test(idx.pages[p.pi].l)), 'a page about XML'],
 ];
 

@@ -38,7 +38,7 @@ T = {
 
 FILTER_JS = """<script>(function(){var i=document.getElementById('flt');if(!i)return;var rows=document.querySelectorAll('[data-k]');i.addEventListener('input',function(){var q=i.value.toLowerCase();for(var r=0;r<rows.length;r++){rows[r].hidden=q&&rows[r].getAttribute('data-k').indexOf(q)<0;}});})();</script>"""
 
-RING = re.compile(r"Ring")
+RING = re.compile(r"\bRing\b")
 def esc(s): return html.escape(str(s), quote=True)
 
 RING = re.compile(r"\b(?:Ring|RING)\b")
@@ -103,6 +103,20 @@ def class_bar(lang, area, names, current, state, prefix=""):
     """the second submenu of a class page, and of its method entries: the classes of its area"""
     items = [(f"{prefix}{n.lower()}.html", n, state if n == current else "") for n in sorted(names, key=str.lower)]
     return level2.nav(level2.LABELS["classes"][lang], [(area, items)])
+
+def jump_html(lang, c):
+    """a class page can hold two thousand methods: a way to the letter, and to each section the source names"""
+    first, secs = {}, {}
+    for name, aka, desc in c["own"]:
+        first.setdefault(name[:1].upper() if name[:1].isalpha() else "#", name.lower())
+        sec = c["sections"].get(name.lower())
+        if sec: secs.setdefault(sec, name.lower())
+    if len(first) < 4: return ""
+    word = {"fr": ("Aller à", "Sections"), "en": ("Jump to", "Sections")}[lang]
+    out = f'<nav class="jump" aria-label="{word[0]}"><p><b>{word[0]}</b> ' + " ".join(f'<a href="#{esc(i)}">{esc(L)}</a>' for L, i in sorted(first.items())) + "</p>"
+    if len(secs) >= 3:
+        out += f'<p><b>{word[1]}</b> ' + " · ".join(f'<a href="#{esc(i)}">{esc(" ".join(t.split())[:60])}</a>' for t, i in secs.items()) + "</p>"
+    return out + "</nav>"
 
 def build_reference(ctx):
     ROOT, LANGS, head, header, footer, idx, groups = (ctx[k] for k in ("ROOT", "LANGS", "head", "header", "footer", "idx", "groups"))
@@ -230,6 +244,7 @@ def build_reference(ctx):
   <div class="wrap page-body">
     {extshow.legend(lang, "../")}
     {rowex.legend(c, entries, rdata, lang)}
+    {jump_html(lang, c)}
     <input id="flt" class="flt" type="search" placeholder="{esc(t["filter"])}" aria-label="{esc(t["filter"])}">
     <div class="lanes rtable"><div class="lane lane2 rhead"><div class="ln">{t["method"]}</div><div class="lt">{t["explanation"]}</div></div>{"".join(rows)}</div>
   </div>

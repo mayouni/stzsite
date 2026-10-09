@@ -59,7 +59,7 @@ def build(ROOT, entries, groups):
             d = " ".join((desc or "").split())[:220]
             if d or code: text.append([mi, d, code, out])
     pages = []
-    RING = re.compile(r"Ring")
+    RING = re.compile(r"\bRing\b")
     runs = json.loads((ROOT / "data" / "narrations-run.json").read_text(encoding="utf-8"))
     from build_narration_pages import slug as nslug
     GHN = "https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/"
@@ -74,6 +74,24 @@ def build(ROOT, entries, groups):
                 else:
                     for p in pages:
                         if p[3] == url: p[2] = title
+    META = re.compile(r'<meta name="description" content="([^"]*)"')
+    for lang in ("en", "fr"):                                        # the authored pages: a visitor's question may be about the site itself
+        d = ROOT / lang
+        for f in sorted(d.glob("*.html")):
+            if f.name.startswith("education") or f.name.startswith("methods-"): continue
+            head_txt = f.read_text(encoding="utf-8", errors="replace")[:6000]
+            if "refresh" in head_txt[:600]: continue
+            m = TITLE.search(head_txt); dm = META.search(head_txt)
+            if not m: continue
+            title = html.unescape(m.group(1)).strip(); desc = html.unescape(dm.group(1)) if dm else ""
+            url = f.name
+            if lang == "en": pages.append(["page", title, "", url, desc])
+            else:
+                for p in pages:
+                    if p[3] == url and p[0] == "page": p[2] = title; p[4] = (p[4] + " " + desc).strip()
+    home = (ROOT / "index.html").read_text(encoding="utf-8", errors="replace")[:6000]       # the front page, which holds the slogan in both languages
+    mt = re.search(r"<title>(.*?)</title>", home, re.S); md_ = re.search(r'<meta name="description" content="([^"]*)"', home)
+    if mt: pages.append(["page", html.unescape(mt.group(1)).split(" · ")[-1], html.unescape(mt.group(1)).split(" · ")[1] if html.unescape(mt.group(1)).count(" · ") > 1 else "", "../index.html", html.unescape(md_.group(1)) if md_ else ""])
     names = {"v": 1, "built": datetime.date.today().isoformat(), "areas": areas, "classes": classes, "methods": methods, "pages": pages}
     d = ROOT / "assets" / "search"; d.mkdir(parents=True, exist_ok=True)
     dump = lambda o: json.dumps(o, ensure_ascii=False, separators=(",", ":"))

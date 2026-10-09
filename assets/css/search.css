@@ -33,3 +33,7 @@ mark.sm{background:none;color:var(--accent);font-weight:700;text-decoration:unde
 .sp-d{margin:0;border:0;border-radius:0;overflow-y:auto;flex:1}
 body.sopen{overflow:hidden}
 .sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* the magnifier says its word (header icons in words, 4.6) */
+.tools a.sbtn{display:inline-flex;align-items:center;gap:8px}
+.tools a.sbtn .sw{font-weight:600}

@@ -129,7 +129,11 @@ def example_html(cls, name, exs, data, lang):
     code, used = natural(code, data.get("detours"))
     body = esc(code) + NL + NL.join("#--&gt; " + esc(l) for l in out_lines(out))
     note = (" · " + esc(detour_note(used, data["detours"], lang))) if used else ""
-    return f'<pre class="rx">{body}</pre><span class="rx-src">{T[lang][src]}{note}</span>'
+    if src == "lib":
+        return f'<pre class="rx">{body}</pre><span class="rx-src">{T[lang][src]}{note}</span>'
+    # a composed example proves that the method runs and not what it is for: folded by default, its provenance under it as for every example
+    short = {"fr": "exemple composé", "en": "composed example"}[lang]
+    return f'<details class="rxd"><summary>{short}</summary><pre class="rx">{body}</pre><span class="rx-src">{T[lang][src]}{note}</span></details>'
 
 def class_counts(c, entries, data):
     """how many of a class's listed methods have a library example, a composed one, or none"""

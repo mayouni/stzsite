@@ -13,7 +13,7 @@ scrolls (Rule 13). Inside a page there is no menu of anchors: a page is read top
 to bottom (Rule 12), and it carries no links that pull the reader elsewhere
 except the ones that belong to what they are reading.
 """
-import json, re, sys, html, datetime, pathlib
+import json, re, sys, html, datetime, pathlib, unicodedata
 import markdown
 from PIL import Image
 from build_reference import build_reference
@@ -77,8 +77,9 @@ SECTIONS = [
      ("howto", {"fr": "Comment faire", "en": "How-to"}),
      ("reference", {"fr": "Référence", "en": "Reference"}),
      ("ask", {"fr": "Interroger", "en": "Ask the library"}),
-     ("education", {"fr": "Éducation", "en": "Education"})]),
-  ("offering", {"fr": "Offre", "en": "Offering"}, [
+     ("education", {"fr": "Éducation", "en": "Education"}),
+     ("glossary", {"fr": "Glossaire", "en": "Glossary"})]),
+  ("offering", {"fr": "Adopter", "en": "Adopt"}, [
      ("offering", {"fr": "Audiences", "en": "Audiences"}),
      ("journeys", {"fr": "Parcours", "en": "Journeys"}),
      ("editions", {"fr": "Éditions", "en": "Editions"}),
@@ -192,8 +193,13 @@ def esc(s): return html.escape(str(s), quote=True)
 THEME_SCRIPT = """<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>"""
 READER_FLOOR = ("<style>/*stz-floor*/figure.cell figcaption,.out,nav.chapters,.note,p.draft,p.reviewed,p.stz-proof-ex"
                 "{font-size:16px!important}a{color:var(--accent)}</style>")      # important: the reader styles some of these more specifically
+READER_BACK = ("<style>/*stz-back*/p.stz-back{margin:0;padding:10px 16px;font-size:16px;background:#f2f4f2;color:#1b1b1b}"
+               "p.stz-back a{color:#5a2a8a;font-weight:600}</style>")
+READER_BACK_BAR = ('<p class="stz-back"><a href="en/learn.html">&larr; Softanza &middot; Learn</a> &middot; '
+                   '<a href="fr/learn.html">Softanza &middot; Apprendre</a></p>')
 PAGE_PING = """<script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>"""
 
+SITE_URL = "https://mayouni.github.io/stzsite/"
 def head(lang, title, description, rel, extra=""):
     return f"""<!doctype html>
 <html lang="{lang}" data-lang="{lang}">
@@ -202,6 +208,12 @@ def head(lang, title, description, rel, extra=""):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Softanza">
+<meta property="og:title" content="{esc(title)}">
+<meta property="og:description" content="{esc(description)}">
+<meta property="og:image" content="{SITE_URL}assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="{rel}assets/img/mark-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="{rel}assets/img/mark-64.png">
 <link rel="apple-touch-icon" href="{rel}assets/img/mark-180.png">
@@ -244,16 +256,14 @@ def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_l
     crumbs = ""
     if tail and sec:
         first = next(p for s_, _, p in SECTIONS if s_ == sec)
-        items = [(next(lab for s_, lab, _ in SECTIONS if s_ == sec)[lang], f"{nav_rel}{first[0][0]}.html")]
+        items = [("Softanza", f"{rel}index.html" + (f"?lang={lang}" if rel else "")), (next(lab for s_, lab, _ in SECTIONS if s_ == sec)[lang], f"{nav_rel}{first[0][0]}.html")]
         if current_page != first[0][0]: items.append((next(lab for p_, lab in first if p_ == current_page)[lang], f"{nav_rel}{current_page}.html"))
         items += list(tail)
         lis = "".join((f'<li><a href="{h}">{esc(l)}</a></li>' if h and k < len(items) - 1 else f'<li aria-current="page">{esc(l)}</li>') for k, (l, h) in enumerate(items))
         crumbs = f'\n  <nav class="crumbs" aria-label="{esc(ui["here"])}"><ol class="crumbs-in">{lis}</ol></nav>'
     dl = f' data-lang="{data_lang}"' if data_lang else ""
     home = f"{rel}index.html" + (f"?lang={lang}" if rel else "")
-    tools = (f'<div class="tools"><a class="present" href="{nav_rel}tour.html" aria-label="{esc(ui["present"])}" title="{esc(ui["present"])}">{PRESENT_SVG}</a>'
-             f'<a class="gh" href="https://github.com/mayouni/stzlib" aria-label="{esc(ui["github"])}" title="{esc(ui["github"])}">{GITHUB_SVG}</a>'
-             f'<a class="lang" href="{other_href}" lang="{other}" hreflang="{other}">{ui["other_lang"]}</a></div>')
+    tools = (f'<div class="tools"><a class="lang" href="{other_href}" lang="{other}" hreflang="{other}">{ui["other_lang"]}</a></div>')
     brand = f'<a class="brand" href="{home}" aria-label="Softanza">{wordmark(rel)}</a>'
     # on a phone the brand row scrolls away and only the two menus stay pinned;
     # the row is the same links, shown in one place or the other, never both
@@ -392,7 +402,7 @@ def inject(body_html, lang, idx, groups, rel="../"):
     body_html = body_html.replace("<!--METHODS-->", fmt(COUNTS["methods"])).replace("<!--CLASSES-->", fmt(COUNTS["classes"])).replace("<!--ENTRIES-->", fmt(COUNTS["entries"]))
     body_html = body_html.replace("<!--AREAS-->", fmap_html(lang, idx, groups, "atlas/") + tiles_html(lang, idx, groups, "atlas/", rel))
     body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
-    for tag, fn in (("LEADS", leads_html), ("RULES", rules_html), ("STEPS", steps_html), ("INNOVATIONS", innovations_html), ("GOALS", goals_html)):
+    for tag, fn in (("GLOSSARY", glossary_html), ("LEADS", leads_html), ("RULES", rules_html), ("STEPS", steps_html), ("INNOVATIONS", innovations_html), ("GOALS", goals_html)):
         if f"<!--{tag}-->" in body_html: body_html = body_html.replace(f"<!--{tag}-->", fn(lang))
     body_html = body_html.replace("<!--COVERAGE-->", coverage_html(lang))
     body_html = body_html.replace("<!--DOCS-SCOPE-->", scope_html(lang, idx, groups))
@@ -738,7 +748,7 @@ def evidence(lang, e):
     for a, b in EVIDENCE_FR: e = re.sub(a, b, e)
     return e
 
-PAGE_NAMES = {"conversations": {"fr": "Conversations", "en": "Conversations"}, "environment": {"fr": "L'environnement", "en": "The environment"}, "polyglot": {"fr": "Sept langues, une porte", "en": "Seven languages, one door"}, "goals": {"fr": "Sept buts de conception", "en": "Seven design goals"}, "softanzuter": {"fr": "Le Softanzuter", "en": "The Softanzuter"}, "natural": {"fr": "Naturel, et exécutable", "en": "Natural, and executable"},
+PAGE_NAMES = {"way": {"fr": "La manière Softanza", "en": "The Softanza way"}, "innovations": {"fr": "Les innovations", "en": "Innovations"}, "conversations": {"fr": "Conversations", "en": "Conversations"}, "environment": {"fr": "L'environnement", "en": "The environment"}, "polyglot": {"fr": "Sept langues, une porte", "en": "Seven languages, one door"}, "goals": {"fr": "Sept buts de conception", "en": "Seven design goals"}, "softanzuter": {"fr": "Le Softanzuter", "en": "The Softanzuter"}, "natural": {"fr": "Naturel, et exécutable", "en": "Natural, and executable"},
               "byexample": {"fr": "Par l'exemple", "en": "By example"}, "craft": {"fr": "Comment Softanza s'écrit", "en": "How Softanza is written"},
               "refinement": {"fr": "Raffinement", "en": "Refinement"}, "wise": {"fr": "Wise coding", "en": "Wise coding"}, "agentic": {"fr": "Agentique", "en": "Agentic"},
               "languages": {"fr": "Langue des langues", "en": "Language of languages"}, "ask": {"fr": "Interroger la bibliothèque", "en": "Ask the library"},
@@ -876,6 +886,45 @@ def leads_html(lang):
             lis.append(f'<li><b>{esc(r[lang])}</b> <span class="rx-src">Softanza{col} {word[r["r"][0]][lang]}</span> {({"fr": "Ils mènent", "en": "Where they lead"}[lang])}{col} {esc(who)}.{link}</li>')
     return f'<ul class="narr">{"".join(lis)}</ul>'
 
+def write_site_files():
+    """404.html (absolute paths, since the address that was not found may be at any depth), sitemap.xml, robots.txt"""
+    page = head("en", "Page not found · Softanza", "This page does not exist. The Softanza site opens in English and in French.", SITE_URL)
+    page += (f'\n<meta name="robots" content="noindex">\n<body class="page page-404"><main id="main"><div class="wrap page-body">'
+             f'<h1>Page not found / Page introuvable</h1>'
+             f'<p>This address leads nowhere. The site is here: <a href="{SITE_URL}en/platform.html">English</a>, '
+             f'or <a href="{SITE_URL}index.html">the front page</a>.</p>'
+             f'<p>Cette adresse ne mène nulle part. Le site est ici : <a href="{SITE_URL}fr/platform.html">français</a>, '
+             f'ou <a href="{SITE_URL}index.html">la page d&#39;accueil</a>.</p></div></main></body></html>')
+    page = page.replace('</head>\n<meta name="robots" content="noindex">', '<meta name="robots" content="noindex">\n</head>')
+    (ROOT / "404.html").write_text(page, encoding="utf-8")
+    urls = [SITE_URL] + [SITE_URL + f.relative_to(ROOT).as_posix() for lang in LANGS for f in sorted((ROOT / lang).rglob("*.html"))
+                         if "refresh" not in open(f, encoding="utf-8", errors="replace").read(600)]
+    (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+                                      + "".join(f"<url><loc>{esc(u)}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
+    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")
+    return len(urls)
+
+def make_og_card():
+    """the preview a shared link shows: the wordmark on the site's paper, made from the wordmark and nothing else"""
+    f = ROOT / "assets" / "img" / "og.png"
+    wm = ROOT / "assets" / "img" / "wordmark.png"
+    if f.exists() and f.stat().st_mtime >= wm.stat().st_mtime: return
+    card = Image.new("RGB", (1200, 630), (242, 244, 242))
+    mark = Image.open(wm).convert("RGBA"); w = 900; mark = mark.resize((w, round(mark.height * w / mark.width)), Image.LANCZOS)
+    card.paste(mark, ((1200 - w) // 2, (630 - mark.height) // 2), mark)
+    card.save(f, optimize=True)
+
+def glossary_html(lang):
+    g = load_json("glossary.json")
+    key = lambda t: unicodedata.normalize("NFD", t[lang]).encode("ascii", "ignore").decode().lower()
+    see = {"fr": "voir", "en": "see"}[lang]
+    items = []
+    for t in sorted(g["terms"], key=key):
+        d = t["def"][lang].replace("<!--RUNTIME-->", RUNTIME[lang])
+        pg = t["page"]
+        items.append(f'<dt id="{t["id"]}">{esc(t[lang])}</dt><dd>{d} <span class="rx-src">{see}: <a href="{pg}">{esc(page_label(lang, pg.split("#")[0]))}</a></span></dd>')
+    return f'<dl class="glossary">{"".join(items)}</dl>'
+
 # ----------------------------------------------------------------------------
 # the tour: scenes separated by <<< scene ... >>> lines, notes in ```notes fences
 SCENE_RX = re.compile(r'^<<<\s*scene\s+(.*?)\s*>>>\s*$', re.M)
@@ -985,6 +1034,7 @@ def check_names():
     return bad
 
 def main():
+    make_og_card()
     external.install(ROOT)                 # every page is marked as it is written
     idx, groups = load_atlas()
     ENTRIES = load_entries(ROOT)
@@ -1053,6 +1103,10 @@ def main():
         r = r0 if "stzsite:'page'" in r0 else r0.replace("</body>", PAGE_PING + "</body>", 1)
         r = re.sub(r"<style>/[*]stz-floor[*]/.*?</style>", "", r, flags=re.S)       # the floor (Rules 105, 107): one stylesheet, by marker
         r = r.replace("</head>", READER_FLOOR + "</head>", 1)
+        r = re.sub(r"<style>/[*]stz-back[*]/.*?</style>", "", r, flags=re.S)
+        r = re.sub(r'<p class="stz-back">.*?</p>', "", r, flags=re.S)
+        r = r.replace("</head>", READER_BACK + "</head>", 1)
+        r = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + READER_BACK_BAR, r, count=1)
         ladder = build_ladder.load(ROOT)
         if ladder: r = build_ladder.inject_reader(r, ladder)      # the rung of every chapter, under its title
         proof = build_proof.load(ROOT)
@@ -1062,6 +1116,7 @@ def main():
         if r != r0: reader.write_text(r, encoding="utf-8")
         assets.append({"kind": "page", "path": "reader.html"})
     build_deck_check(assets)
+    print(f"site files: 404.html, robots.txt, sitemap.xml with {write_site_files()} addresses")
     print(f"reference: {nref} pages, {ncls} classes, {nown} own methods")
     for f, why in check_names(): print(f"NAME CHECK FAILED  {f}: {why}")
     sc, sm, st, sp = build_search.build(ROOT, ENTRIES, groups)

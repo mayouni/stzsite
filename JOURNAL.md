@@ -1643,3 +1643,56 @@ next:
   - me:      wave 4 on the author's word
   - author:  open the journeys from the Offering page, walk the architect's nine steps, and say whether the stage words are the ones you would put
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-09 01:45
+
+subject:   STZSITE-REFORM-01, wave 4, first half: the external reader's shortlist -- Start that runs, a glossary, a home that leads somewhere, the small defects, the search, the class pages
+
+why:       the author, "go ahead with wave 4"; wave 4 lists about forty items, and I took first the ones the assessment's own shortlist (0.5) puts first and that the site can decide alone; the other half needs the author's word or content the library does not hold yet
+
+did:
+  - made Start runnable end to end: three steps (the repository, the runtime at version 1.27.0 with where to get it, a first.ring file whose first line
+    loads the library), the command that runs it, and the commands to rebuild the reader and play the demo, where there were comments; the first
+    program was run again today from a clean library worktree at 4a184e6f0 and printed what the page shows (6.9 seconds)
+  - published a glossary of thirty terms (data/glossary.json, en and fr), in the Learn path and the footer; its entry for Haro, Ring++ and Ring is the
+    runtime sentence, printed there as the assessment asked
+  - linked the home's six audience rows to their journeys and gave the first screen one call to action, Start and Learn
+  - added the page for an address that is not found, a sitemap of 4,145 addresses, a robots file, and a link-preview card (the wordmark on the site's
+    paper, made from the wordmark alone) with Open Graph and Twitter tags on every page
+  - gave the magnifier its word, and indexed the authored pages in the search (56 pages and the front page): "map of niger", which found nothing before,
+    now finds the page; three new questions about the site itself are in the search check, 16 of 16
+  - moved the two header icons that had no words, the slideshow and the repository, to the footer where words already stand, and added "Softanza" as the
+    first step of every trail; tightened the menu so eight entries and the search word fit at 1366 px
+  - gave the course reader a way back to the site (a bar at its top), and fixed the README's page count
+  - class pages: a "jump to" line (letters, and the sections the source names) at the top of each, and composed examples folded by default with their
+    provenance under them; the examples taken from the library's own tests stay open
+  - renamed the Offering section "Adopt" ("Adopter"), as the assessment proposes; its landing page keeps the name Audiences
+  - FOUND AND FIXED: two regular expressions, in the reference and in the search builder, that were meant to say "the word Ring, standing alone" and
+    held two backspace bytes each since before this reform, so they had never matched (the same heredoc trap as the Zin rule of wave 0); the narration
+    titles in the search index now follow the rename; and the runtime's own command, "ring first.ring", is no longer treated as the former name in
+    code, because it is the command that runs the program
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,244 files, the former name in the code of 0 files, search 16 of 16, and 0 texts under
+    the 16 px floor on the new pages; the floor instrument reports the home's menu at 1.12:1 because the menu lies over the photograph and the instrument cannot
+    see an image: the build's own measurement of it (white letter against its halo over the brightest pixel) is 19.46:1, and I looked at the render
+
+state:
+  gates:             green, with the one instrument limit named above
+  held back:         "Why Softanza leaves Ring" (12.7) is drafted, with the six things I need the author to confirm, in .central/WHY-RING-DRAFT.md; it is not in any commit
+  not done, on purpose, for the second half:
+    - the caveat dose (D2, the author's ruling), the Learn page split into learning Softanza and building on it, the learner's vocabulary diet
+    - the guides in the Learn path, How-to beyond lists and strings, the hero picture's provenance (I do not know it), the Estate cards as a table,
+      the Zui page's closing line, the phone's pinned rows (still four on a class page), decks per target
+    - the Adopt section's own pages (proving grounds, solutions, education as a product line, partners, certification), the stack page, the seat pages, Depth
+    - the Applications section, the Intelligence section and the Aïcha page, the store page, the site's own world file, the Foundation chapter, Roots,
+      Pattern languages, the grammar of functions, a reading order for the narrations, the gallery, the craft page's metaphors
+  perception-gate:   OPEN (the agent looked at the home, Start, the glossary and a class page; the author has not)
+
+waiting:
+  - REFORM-RULING-01: D1, D2, D3 -> the author [asked 19:45, not answered]
+  - WHY-RING-DRAFT: the six confirmations -> the author [asked here; nothing public until answered]
+
+next:
+  - me:      commit and push; the second half of wave 4 on the author's word, starting with the pages whose content the library already holds
+  - author:  open the home, Start (follow it to the first program), and the glossary; read .central/WHY-RING-DRAFT.md and answer its six questions
+```

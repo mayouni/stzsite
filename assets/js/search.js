@@ -15,12 +15,12 @@
           pages: 'Guides, how-to, narrations, book, education', more: 'Show more', in: 'in', example: 'example', also: 'also written', via: 'written', moreIn: 'more in',
           texts: 'Search the descriptions and the examples too', textsHow: 'about 330 KB, loaded once', textsOn: 'Looking in the descriptions and the examples too', close: 'Close',
           count: '{n} methods in {a} areas', qual: 'Looking inside', hint: 'Try a method (Find), a class (stzList), a sentence (sort a hash list), a piece of code (banana split)',
-          kind: { guide: 'Guide', howto: 'How-to', narration: 'Narration', book: 'Book', education: 'Education' }, ext: 'opens on GitHub' },
+          kind: { guide: 'Guide', howto: 'How-to', narration: 'Narration', book: 'Book', education: 'Education', page: 'Page' }, ext: 'opens on GitHub' },
     fr: { open: 'Chercher', ph: 'Chercher une classe, une méthode, une description, du code…', loading: "Chargement de l'index…", none: 'Rien trouvé.', areas: 'Domaines', classes: 'Classes', methods: 'Méthodes',
           pages: 'Guides, comment faire, narrations, livre, éducation', more: 'Voir plus', in: 'dans', example: 'exemple', also: 'aussi écrite', via: 'écrite', moreIn: 'de plus dans',
           texts: 'Chercher aussi dans les descriptions et les exemples', textsHow: 'environ 330 Ko, chargés une fois', textsOn: 'Recherche aussi dans les descriptions et les exemples', close: 'Fermer',
           count: '{n} méthodes dans {a} domaines', qual: 'Dans', hint: 'Essayez une méthode (Find), une classe (stzList), une phrase (trier une liste de hachage), du code (banana split)',
-          kind: { guide: 'Guide', howto: 'Comment faire', narration: 'Narration', book: 'Livre', education: 'Éducation' }, ext: 'ouvre GitHub' }
+          kind: { guide: 'Guide', howto: 'Comment faire', narration: 'Narration', book: 'Livre', education: 'Éducation', page: 'Page' }, ext: 'ouvre GitHub' }
   }[LANG];
   var state = { idx: null, names: null, texts: null, loading: null, wantTexts: false };
   try { state.wantTexts = localStorage.getItem('stz-search-text') === '1'; } catch (e) {}
@@ -180,7 +180,7 @@
     if (typeof StzSearchCore === 'undefined') return;
     document.querySelectorAll('.tools').forEach(function (tools) {
       var a = el('a', 'sbtn'); a.href = '#search'; a.setAttribute('role', 'button'); a.setAttribute('aria-label', T.open); a.title = T.open + '  /';
-      a.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>';
+      a.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg><span class="sw">' + T.open + '</span>';
       a.addEventListener('click', function (e) { e.preventDefault(); openDialog(); dialog._from = a; });
       tools.insertBefore(a, tools.firstChild);
     });

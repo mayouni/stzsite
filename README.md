@@ -17,7 +17,8 @@ beside it.** A block that could not run is not shown.
 | path | what |
 |---|---|
 | `index.html` | the onboarding scene, both languages, the visitor's browser language picks |
-| `fr/*.html`, `en/*.html` | the nine pages: why, platform, learn, govern, makers, products, africa, start, tour |
+| `fr/*.html`, `en/*.html` | the pages, about two thousand per language: about fifty written by hand from `content/` and data files (platform, craft, journeys, vision, learn, adopt, start, tour...), the rest generated from the library's data (the Atlas areas, guides, how-to recipes, narrations, the reference) |
+| `404.html`, `robots.txt`, `sitemap.xml` | the page for an address that is not found, and the two files a crawler reads |
 | `reader.html` | the Learning System reader, built by `base/education/tools/build_reader.ring` from the library |
 | `deck-check.html` | lists every asset the tour needs and reports each as found or missing, from `file://` |
 | `content/` | the sources: `home.html`, `deck-check.html`, `<lang>/<page>.md` |

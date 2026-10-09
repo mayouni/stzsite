@@ -97,7 +97,7 @@ code,pre,kbd{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
 :root[data-theme="dark"] .brand .wm-light{display:none}
 :root[data-theme="dark"] .brand .wm-dark{display:block}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .brand .wm-light{display:none}:root:not([data-theme="light"]) .brand .wm-dark{display:block}}
-.nav{display:flex;gap:4px 22px;align-items:center;margin-left:auto}
+.nav{display:flex;gap:4px 16px;align-items:center;margin-left:auto}
 .nav a{font-size:1.1875rem;font-weight:500;color:var(--ink-2);text-decoration:none;white-space:nowrap;display:inline-flex;align-items:center;min-height:44px;position:relative}
 .nav a[aria-current]{color:var(--accent);font-weight:600}
 .nav a[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:2px;background:var(--accent);border-radius:2px}
@@ -118,7 +118,7 @@ code,pre,kbd{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
 .crumbs a:hover{color:var(--accent);text-decoration:underline}
 /* below the width where the six entries and the tools fit on one line, the menu
    becomes its own scrollable row (Rule 27), and so does the path: both stay visible */
-@media (max-width:1160px){
+@media (max-width:1300px){
   .topbar{flex-wrap:wrap;gap:0 16px;padding-top:6px}
   .tools{margin-left:auto}
   .nav{order:3;flex:1 0 100%;margin-left:0;overflow-x:auto;flex-wrap:nowrap;gap:0 22px;scrollbar-width:thin;padding-bottom:2px}
@@ -604,3 +604,20 @@ pre.rx{margin:10px 0 0;max-width:none}
 .way span a{color:inherit;text-decoration:underline}
 ol.rules li,ol.steps li{margin:14px 0;max-width:var(--measure)}
 ol.rules code,ol.steps code{display:block;margin-top:6px;overflow-x:auto}
+
+/* the home: one call to action, two doors; the audience rows are links */
+.hero-panel .cta{margin:18px 0 6px}
+.hero-panel .cta a{display:inline-block;padding:10px 22px;margin-right:12px;border-radius:999px;background:#fff;color:#111;font-weight:600;text-decoration:none}
+.hero-panel .cta a:hover,.hero-panel .cta a:focus{background:#e9e4f2}
+.rows .who a{color:inherit;text-decoration:underline}
+
+/* the glossary */
+dl.glossary{max-width:var(--measure)}
+dl.glossary dt{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:600;margin-top:28px}
+dl.glossary dd{margin:6px 0 0}
+
+/* class pages: folded composed examples, and the way to a letter or a section */
+details.rxd{margin:8px 0 0}
+details.rxd summary{cursor:pointer;display:list-item}
+nav.jump p{margin:6px 0;max-width:none;line-height:2}
+nav.jump a{margin-right:10px}
