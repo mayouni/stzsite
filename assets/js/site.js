@@ -59,7 +59,7 @@
     for (var k = 0; k < tops.length; k++) if (tops[k].getClientRects().length) h = tops[k].getBoundingClientRect().height;
     root.style.setProperty('--pin', Math.round(h) + 'px');
   }
-  pin(); window.addEventListener('resize', pin);
+  pin(); window.__stzPin = pin; window.addEventListener('resize', pin);
   /* the home page: the photograph starts at the top of the browser, under the menu;
      the menu floats over it as text until the reader has scrolled past it */
   var body = document.body, hero = document.querySelector('.home-body .hero'), img = document.querySelector('.home-body .hero-img');
@@ -80,4 +80,25 @@
     window.addEventListener('load', place);
     window.addEventListener('scroll', state, { passive: true });
   }
+})();
+
+/* a phone pins one row: the main menu. The section's path and the trail fold into one line that scrolls away and opens on request.
+   Without this script nothing is lost: the path and the trail stay where they are, pinned. (4.6, the phone budget) */
+(function () {
+  if (!window.matchMedia || !window.matchMedia('(max-width:760px)').matches) return;
+  var top = document.querySelector('header.top'); if (!top) return;
+  var path = top.querySelector('nav.path'), crumbs = top.querySelector('nav.crumbs');
+  if (!path && !crumbs) return;
+  var cur = (crumbs && crumbs.querySelector('li[aria-current]')) || (path && path.querySelector('a[aria-current]'));
+  var fr = (document.documentElement.lang || '').indexOf('fr') === 0;
+  var d = document.createElement('details'); d.className = 'where';
+  var s = document.createElement('summary');
+  var here = cur ? cur.textContent.replace(/\s+/g, ' ').trim() : '', h1 = document.querySelector('h1'), t = h1 ? h1.textContent.replace(/\s+/g, ' ').trim() : '';
+  if (!crumbs && t && t !== here) here = (here ? here + ' › ' : '') + t;
+  s.textContent = (fr ? 'Où vous êtes : ' : 'Where you are: ') + here;
+  d.appendChild(s);
+  if (path) d.appendChild(path);
+  if (crumbs) d.appendChild(crumbs);
+  top.parentNode.insertBefore(d, top.nextSibling);
+  if (window.__stzPin) window.__stzPin();
 })();

@@ -645,3 +645,8 @@ table.declared td:nth-child(4){min-width:9em}
 table.declared th:first-child{white-space:nowrap}
 /* eight menu entries and the search word, in the longer French labels, between 1300 and 1480 px */
 @media (min-width:1301px) and (max-width:1480px){.nav{gap:4px 12px}.nav a,.tools a{font-size:1.0625rem}}
+
+/* the phone's one pinned row: the path and the trail fold into a line that scrolls away */
+details.where{background:var(--panel);border-bottom:1px solid var(--line)}
+details.where summary{display:flex;align-items:center;min-height:44px;padding:0 var(--gutter);cursor:pointer;font-size:1.0625rem;font-weight:600;color:var(--ink)}
+details.where nav.path,details.where nav.crumbs{border-top:1px solid var(--line)}

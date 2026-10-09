@@ -1850,3 +1850,26 @@ next:
   - me:      commit and push
   - author:  open the home in French at 1366 px and on a phone; say whether to collapse the path and the trail on phones
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-09 04:07
+
+subject:   the phone pins one row
+
+why:       the author, "go ahead with the phone disclosure"; the assessment's 4.6 asks for one pinned row at most on a phone
+
+did:
+  - on a screen narrower than 761 px, a small script folds the section's path and the trail into one closed line, "Where you are: ... ", placed under the menu and scrolling away with the
+    page; it opens on a tap and shows the path and the trail as they were
+  - measured on three pages at 390 px in a headless browser: the pinned header is 47 px, where it was 145 px on a class page (a sixth of the screen), and the left bar was already a
+    row that scrolls away; the table headers that stick under the menu follow the new height
+  - without the script nothing is lost: the path and the trail stay where they were, pinned; the desktop is unchanged
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,294 files, search 16 of 16; I looked at the scrolled and the opened state of a class page
+
+state:
+  perception-gate:   OPEN (the agent measured and looked; the author's thumb has not been on it)
+
+next:
+  - me:      commit and push
+  - author:  open a class page on a phone, scroll, and open the "Where you are" line
+```
