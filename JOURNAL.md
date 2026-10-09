@@ -1884,8 +1884,7 @@ why:       the author, "go ahead with the grammar of functions"; the assessment'
 did:
   - published "The grammar of functions" in the Craft family's bar, English and French: fifteen forms, each tried in the library at 4a184e6f0 with the example its own article gives (a new
     tool, tools/grammar_run.py, data/grammar.json), and what came out shown beside the promise: the answer, or the library's own error
-  - the result is the page's finding: of 22 tries, 11 kept their promise (active, passive by its participle, fluent, immutable, plural, exceptional's absence aside, negative, the
-    alternative swap, named, conditional, the viz-less find, suffixes by position), 8 raised an error and 7 of those because the name does not exist (AllRemoved, @Removed,
+  - the result is the page's finding: of 22 tries, 11 kept their promise (active, passive, fluent, immutable, plural, negative, alternative, named, conditional, prefix, suffix), 8 raised an error and 7 of those because the name does not exist (AllRemoved, @Removed,
     RemoveNonLetters, RemoveNonLettersExcept, IsNotALetter, vizFindAll, BeforeQ), and 3 printed something other than the promise (a plural find returns each pattern with its sections
     and not the merged sections; a chain's history starts with the first value; a case-insensitive removal leaves STAZA, not SOFTANZA, as the code reads FALSE)
   - the page does not hide this: the article documents more than the library has, and it says which side should move, the library by writing the forms or the article by correcting them
