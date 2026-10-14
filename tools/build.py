@@ -77,6 +77,7 @@ SECTIONS = [
   ("learn", {"fr": "Apprendre", "en": "Learn"}, [
      ("learn", {"fr": "Apprendre", "en": "Learn"}),
      ("book", {"fr": "Le livre", "en": "The book"}),
+     ("softanza-book", {"fr": "Le livre Softanza", "en": "The Softanza book"}),
      ("docs", {"fr": "Documentation", "en": "Documentation"}),
      ("howto", {"fr": "Comment faire", "en": "How-to"}),
      ("reference", {"fr": "Référence", "en": "Reference"}),

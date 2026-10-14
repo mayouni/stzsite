@@ -1,0 +1,25 @@
+---
+title: The Softanza book
+title_html: The Softanza <i>book</i>
+kicker: A book about the platform, in draft
+lede: Mansour Ayouni's book on Softanza defines the platform by what it does, not by who it is for: declare what you know, a court keeps it, the AI model comes last. It is a draft, in English and French, and it has no public address yet.
+description: The Softanza book by Mansour Ayouni, second of the AYOUNI books: the governed software platform of the AI age, a draft in English and French whose code blocks are run, with its citation and where it stands.
+---
+
+## The book {#book}
+
+<p class="proof">Mansour Ayouni, <i>Softanza: The Governed Software Platform of the AI Age</i> (second of the AYOUNI books), AYOUNI, 2026, draft.</p>
+
+The book rethinks programming, languages and intelligence from first principles, and it is about the platform as a whole: the engine, the language Haro, the courts that judge what is declared, and the place of the AI model, which comes last. It is the reference the pages of this site are the working proof of.
+
+It is a book that runs. Every code block in it is run inside the Softanza library at a named commit and judged against the promise lines it carries, and a chapter whose promises are not kept fails its build.
+
+## Where it stands {#stage}
+
+<p class="proof"><b>in construction</b> The book is a draft, in English and French. It has no public address yet. It is built as a web reader, and its author's build also makes a PDF and an ePub. The day its address exists, this page, the home page and the footer will link it, and not before: a link to a page that is not there helps nobody.</p>
+
+## While it is a draft {#meanwhile}
+
+The quickest way into the platform today is this site: every claim on it links to the file, the guard or the render that proves it. The course called <a href="book.html">The book</a> in the Learn section is a different book: an interactive course of fifteen chapters, in four languages, whose cells you run yourself.
+
+<p class="cta"><a href="start.html">Start</a><a href="learn.html">Learn</a></p>

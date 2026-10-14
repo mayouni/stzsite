@@ -660,3 +660,9 @@ figure.gal figcaption p{margin:4px 0}
 select,select option{font-size:1rem}
 /* on a phone the credit follows the arrow in the flow instead of lying over it */
 @media (max-width:760px){.hero-credit{position:static;display:block;width:fit-content;margin:8px var(--gutter) 20px;max-width:calc(100% - 2*var(--gutter))}}
+
+/* a call to action on a page or on the home page's own sections: the hero's pills, in the page's own colours */
+.cta a{display:inline-block;padding:10px 22px;margin:0 12px 8px 0;border-radius:999px;background:var(--ink);color:var(--paper);font-weight:600;text-decoration:none}
+.cta a:hover,.cta a:focus{background:var(--accent)}
+.hero-panel .cta a{background:#fff;color:#111}
+.hero-panel .cta a:hover,.hero-panel .cta a:focus{background:#e9e4f2}

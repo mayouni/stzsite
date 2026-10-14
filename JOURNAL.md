@@ -2124,3 +2124,31 @@ next:
 
 note:      a delegation to close pending tasks is read here as not naming a publication phase; if the author says otherwise it is a ten-minute copy
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-14 22:37
+
+subject:   a page and a call to action for the Softanza book, without a link
+
+why:       the author asked why the site should wait for the book to speak of it: a page about it and a call to action need no reader; only the link needs a public address
+
+did:
+  - checked the address: github.com/mayouni/ayouni, mayouni.github.io/ayouni and softanza-book on both answer 404 today, so no link is written
+  - wrote the page The Softanza book / Le livre Softanza in both languages: the citation, what the book is (the platform as a whole, run code blocks judged against promise lines, English and French, web reader plus the author's PDF and ePub build), where it stands (draft, no public address, in construction), and while it is a draft the way in through Start and Learn, distinguishing it from the interactive course called The book
+  - listed the page in the Learn section after the course, so it appears in the section bar, the trail and the footer map
+  - put a call to action on the home page's book section, a pill linking to the page, and a general call-to-action style in the page's own colours
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,300 files, search 16 of 16, the floor held on the new page in both languages and themes; I looked at the English page at laptop width
+
+state:
+  book-page:      live after this push, in both languages, citation included, no link out
+  book-link:      absent on purpose: the repository the author named does not exist yet
+
+waiting:
+  - BOOK-ADDRESS: the day the ayouni repository or its site answers, add one link on the page, the home section and the footer -> me, on the author's word that it is public
+
+next:
+  - me:      commit and push, then tell the book session
+  - author:  publish the book's repository or site; I link it the same day
+
+note:      the reader is not copied into this site, as the author's page-and-link idea needs none of it
+```
