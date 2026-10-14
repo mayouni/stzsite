@@ -20,7 +20,7 @@ Strip any of the three and there is no world.
 
 <ol class="steps">
 <li value="1"><b>Seen.</b> The world has a presence: it can be looked at, in whatever surface.</li>
-<li value="2"><b>Engaged.</b> It has an intent: a person or an agent can ask it something and do something with it.</li>
+<li value="2"><b>Engaged.</b> It has an intent: a person or an AI agent can ask it something and do something with it.</li>
 <li value="3"><b>Tuned.</b> It can be refined: changed under governance, with the change judged before it lands.</li>
 <li value="4"><b>Reached.</b> It has a reach: it appears on a surface, on the web today and elsewhere as the <a href="surfaces.html">surfaces</a> are built.</li>
 </ol>

@@ -14,4 +14,4 @@ description: Le visuel par défaut dans Softanza : affichage, tracés, art de ch
 <li><b>La phrase honnête.</b> Le plan de vision le dit ainsi : il peut dessiner, et il ne peut pas voir. Une image se vérifie en la comparant et en la regardant, et seule la seconde est celle d'une personne.</li>
 </ul>
 
-<p class="proof"><b>en construction</b> La perception est due. Les rendus de ce site ont été regardés par l'agent qui a écrit la page, et par personne d'autre encore ; le regard de l'auteur est la porte qui reste ouverte. C'est un état et pas un échec, et le site le dit sur chaque page où une image est le sujet.</p>
+<p class="proof"><b>en construction</b> La perception est due. Les rendus de ce site ont été regardés par l'agent d'IA qui a écrit la page, et par personne d'autre encore ; le regard de l'auteur est la porte qui reste ouverte. C'est un état et pas un échec, et le site le dit sur chaque page où une image est le sujet.</p>

@@ -8,7 +8,7 @@ description: The seven audiences of Softanza, from the programmer to the AI agen
 
 ## What is a software crafter? {#crafter}
 
-A software crafter turns what they know about a world into something that runs, without waiting for the software industry. They are not defined by programming skill but by ownership: the artefact is theirs, in plain text, and it does not expire. A teacher, an analyst, a merchant, a student, a civil servant, and an agent that proposes under all of those worlds.
+A software crafter turns what they know about a world into something that runs, without waiting for the software industry. They are not defined by programming skill but by ownership: the artefact is theirs, in plain text, and it does not expire. A teacher, an analyst, a merchant, a student, a civil servant, and an AI agent that proposes under all of those worlds.
 
 ## Seven doors {#doors}
 
@@ -91,7 +91,7 @@ PROVED  the child's Hausa program passed, checked by running it</pre></div><div 
 
 <div class="door-section" id="agent" markdown="1">
 <div class="kicker">Door 6</div>
-### An agent
+### An AI agent
 
 **What you declare:** yourself, in an agent file: what you cover, the reversibility of your acts, the posture of every function you call. **What you get:** a workbench where everything you do is rehearsed without touching reality, a constrained grammar that keeps you from emitting a malformed sentence, and a court that judges your plan. **What you do not get:** the capability to commit. **Where to start:** the agentic paradigm, and chapter 14 of the course, "An agent that cannot hurt". **The journey:** <a href="journey-agent.html">The agent's journey</a>.
 

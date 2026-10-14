@@ -73,7 +73,7 @@ Each method carries, right above its definition, one line saying what it does in
 #@ see  SentimentScore, IsPositive, IsNegative
 def Sentiment()</pre>
 
-A harvester reads these lines, the section titles and the examples promised in the tests. Every object then answers `Ask()`, `HowTo()` and `ExplainMethod()` from them, without any model: the answer is the library's own, and a method that does not exist is refused by name.
+A harvester reads these lines, the section titles and the examples promised in the tests. Every object then answers `Ask()`, `HowTo()` and `ExplainMethod()` from them, without any AI model: the answer is the library's own, and a method that does not exist is refused by name.
 
 <!--SHOWCASE:craft:7-->
 

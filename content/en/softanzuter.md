@@ -33,7 +33,7 @@ The agent below keeps its memory as facts, and three skills chain: an order plac
 
 <!--SHOWCASE:softanzuter:2-->
 
-<p class="way"><span>The Softanza way</span> The mind is programmatic by default, and a model is one faculty among the others, never the definition of the mind. The industry's loop of a model that calls tools is the special case of this ladder: one faculty, no governance. Softanza offers the general case, locally.</p>
+<p class="way"><span>The Softanza way</span> The mind is programmatic by default, and an AI model is one faculty among the others, never the definition of the mind. The industry's loop of an AI model that calls tools is the special case of this ladder: one faculty, no governance. Softanza offers the general case, locally.</p>
 
 ## What is still vision {#vision}
 

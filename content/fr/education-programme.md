@@ -21,7 +21,7 @@ PROUVÉ   la même cellule répond au sujet de la banque
 PROUVÉ   le fichier du chapitre n'a pas changé d'un octet</pre>
 <p class="ran">exécuté le 2026-09-30, la démonstration d'éducation</p>
 
-Une surcouche peut ajouter un chapitre, un exercice, une compétence ou un monde ; remplacer un monde par son nom, ce qui fait que le même chapitre raisonne sur une banque ; faire correspondre ses compétences à celles du cœur ; ajouter une cinquième langue comme un paquet de données seulement ; et gouverner, avec des règles que les agents de ses apprenants doivent respecter. Elle **ne peut pas** modifier ni supprimer un fichier du cœur : elle ne peut qu'en masquer un, et chaque masquage est listé, si bien qu'une institution voit toujours ce qui diffère du cœur.
+Une surcouche peut ajouter un chapitre, un exercice, une compétence ou un monde ; remplacer un monde par son nom, ce qui fait que le même chapitre raisonne sur une banque ; faire correspondre ses compétences à celles du cœur ; ajouter une cinquième langue comme un paquet de données seulement ; et gouverner, avec des règles que les agents d'IA de ses apprenants doivent respecter. Elle **ne peut pas** modifier ni supprimer un fichier du cœur : elle ne peut qu'en masquer un, et chaque masquage est listé, si bien qu'une institution voit toujours ce qui diffère du cœur.
 
 Les étapes du guide, lequel est lui-même vérifié par un garde qui les suit à la lettre :
 
@@ -45,7 +45,7 @@ Le cours tourne en anglais, en français, en arabe (écrit de droite à gauche) 
 
 ## L'IA gouvernée pour les apprenants {#governed}
 
-L'agent d'un apprenant propose ; seule une porte valide. Les exercices sur les agents s'exécutent dans un monde sûr : un garde vérifie que l'arbre réel est inchangé après que l'agent d'un étudiant a « tout supprimé ». Le tuteur lui-même n'utilise aucun modèle de langage et n'a besoin d'aucun réseau.
+L'agent d'IA d'un apprenant propose ; seule une porte valide. Les exercices sur les agents s'exécutent dans un monde sûr : un garde vérifie que l'arbre réel est inchangé après que l'agent d'un étudiant a « tout supprimé ». Le tuteur lui-même n'utilise aucun modèle d'IA et n'a besoin d'aucun réseau.
 
 ## Une démonstration de quinze minutes pour les décideurs {#demo}
 
@@ -66,4 +66,4 @@ Le guide du présentateur donne une scène par minute, tourne sur un seul ordina
 
 ## Ce qu'une institution doit savoir avant de commencer {#honest}
 
-Le lecteur interactif tourne sur le bureau ; un exécutant navigateur pour les cellules n'est pas encore construit, et la page le dit sur chaque cellule. Les éditions française, arabe et haoussa attendent des relecteurs natifs (0 unité sur 35 relue) ; le zarma n'est pas encore une langue du cours. Aucune institution n'a encore adopté le système : les surcouches de la banque et de l'université dans la bibliothèque sont des références écrites pour montrer ce qu'est une surcouche. Le tuteur est fondé sur des règles, pas une IA. Il n'y a aucun modèle de langage dans la boucle et aucun n'est requis : on pourra en ajouter un plus tard comme option, jamais comme l'esprit du tuteur.
+Le lecteur interactif tourne sur le bureau ; un exécutant navigateur pour les cellules n'est pas encore construit, et la page le dit sur chaque cellule. Les éditions française, arabe et haoussa attendent des relecteurs natifs (0 unité sur 35 relue) ; le zarma n'est pas encore une langue du cours. Aucune institution n'a encore adopté le système : les surcouches de la banque et de l'université dans la bibliothèque sont des références écrites pour montrer ce qu'est une surcouche. Le tuteur est fondé sur des règles, pas une IA. Il n'y a aucun modèle d'IA dans la boucle et aucun n'est requis : on pourra en ajouter un plus tard comme option, jamais comme l'esprit du tuteur.

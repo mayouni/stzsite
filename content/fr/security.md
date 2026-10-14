@@ -13,7 +13,7 @@ description: Les chiffres de la sécurité de Softanza : 38 garanties avec leurs
 <div class="figure"><b>27 / 27</b><span>assertions de l'exercice de confinement</span></div>
 </div>
 
-L'exercice a été rejoué le 2026-10-01 à 00:41. Un modèle de langage joue l'enquêteur, propose le bon plan, et ne commet rien ; l'humain d'astreinte commet le même plan, et le confinement tient. Limites, énoncées par le modèle de menace lui-même : une seule forme d'attaque, en boucle locale, sur une seule machine ; la détection tourne à la demande, pas en continu.
+L'exercice a été rejoué le 2026-10-01 à 00:41. Un modèle d'IA joue l'enquêteur, propose le bon plan, et ne commet rien ; l'humain d'astreinte commet le même plan, et le confinement tient. Limites, énoncées par le modèle de menace lui-même : une seule forme d'attaque, en boucle locale, sur une seule machine ; la détection tourne à la demande, pas en continu.
 
 <pre>WHEN  five bad passwords are sent over real HTTP
 THEN  credential stuffing was detected                        [PASS]

@@ -21,7 +21,7 @@ The sheet is titled "Softanza — Programming by heart!". The project is older t
 
 Each band was checked against the repositories, with the places named so the check can be repeated. The verdicts, in one line each:
 
-- **Who it is for: kept, and one reader added.** Every audience has a real instance today. The reader 2020 could not draw is the agent, which now both builds and speaks the languages, held to their grammar.
+- **Who it is for: kept, and one reader added.** Every audience has a real instance today. The reader 2020 could not draw is the AI agent, which now both builds and speaks the languages, held to their grammar.
 - **Solutions: kept, renamed, sharpened.** The software model is the open platform; the delivery model is how a solution reaches its users, one world at a time; the enterprise model is the commercial layer over the same plain text: the workbenches where the model meets a trade, and the assurance behind the foundation. One path joins them: declare your first language free, then compose an application, federate an organisation, govern how it changes, and each step upgrades the same files.
 - **Systems: kept, and under-used.** Each of the five has a practice, from frugal hardware to the rule that the customer owns code and data. No solution yet writes them down as five rows; that is the next step, not a claim.
 - **Narrations: kept in promise, changed in mechanism.** Natural language stays at the door, where it asks and drafts. Execution moved into small declared languages that a court can judge, because a natural sentence can be ambiguous and a lie can be grammatical.

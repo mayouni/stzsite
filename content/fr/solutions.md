@@ -2,7 +2,7 @@
 title: Solutions pour les organisations
 title_html: Solutions <i>pour les organisations</i>
 kicker: Ce qui est livré, et comment
-lede: Pour une entreprise ou un gouvernement, Softanza se livre comme une plateforme déclarée : un monde dans ses propres mots, des agents qui ne peuvent pas nuire, un déploiement souverain jusqu'à la machine. Voici ce que cela comprend, comment se déroule une mission, et ce que cela ne comprend pas encore.
+lede: Pour une entreprise ou un gouvernement, Softanza se livre comme une plateforme déclarée : un monde dans ses propres mots, des agents d'IA qui ne peuvent pas nuire, un déploiement souverain jusqu'à la machine. Voici ce que cela comprend, comment se déroule une mission, et ce que cela ne comprend pas encore.
 description: Les solutions Softanza pour entreprises et gouvernements : une plateforme déclarée, des agents gouvernés, un déploiement souverain, des paiements en francs CFA, et la mission en trois temps, avec l'étape de chacun.
 ---
 

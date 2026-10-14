@@ -2,7 +2,7 @@
 title: Raffinement
 title_html: La programmation <i>orientée raffinement</i>
 kicker: Un paradigme, une implémentation, un livre
-lede: Si un agent peut produire mille changements à l'heure, l'unité de travail ne peut plus être « le changement ». La réponse de Softanza est un paradigme, une implémentation en cours, et un livre.
+lede: Si un agent d'IA peut produire mille changements à l'heure, l'unité de travail ne peut plus être « le changement ». La réponse de Softanza est un paradigme, une implémentation en cours, et un livre.
 description: La programmation orientée raffinement : le paradigme, son implémentation en cours, et le livre.
 ---
 

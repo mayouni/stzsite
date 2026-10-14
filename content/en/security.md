@@ -13,7 +13,7 @@ description: Softanza's security numbers: 38 guarantees with their guards, detec
 <div class="figure"><b>27 / 27</b><span>assertions of the containment drill</span></div>
 </div>
 
-The drill was replayed on 2026-10-01 at 00:41. A language model plays the investigator, proposes the right plan, and commits nothing; the on-call human commits the same plan, and containment holds. Limits, stated by the threat model itself: one attack shape, on loopback, on one machine; detection runs on demand, not continuously.
+The drill was replayed on 2026-10-01 at 00:41. An AI model plays the investigator, proposes the right plan, and commits nothing; the on-call human commits the same plan, and containment holds. Limits, stated by the threat model itself: one attack shape, on loopback, on one machine; detection runs on demand, not continuously.
 
 <pre>WHEN  five bad passwords are sent over real HTTP
 THEN  credential stuffing was detected                        [PASS]

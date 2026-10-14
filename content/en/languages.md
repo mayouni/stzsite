@@ -2,7 +2,7 @@
 title: Language of languages
 title_html: A language <i>of languages</i>
 kicker: Declare yours
-lede: Softanza's founding act, and its own answer to programming in the agentic age, is that **declaring a language is as easy as declaring a variable.** This is not how software is written today; it is the way Softanza proposes. A domain expert writes, in plain text, the things of their world, the rules between them and the flows that move them. Out of that one declaration come a language in their jargon, a knowledge base of their world, and an agent that speaks it. All of it runs on the device, powered by the platform's own tools: no API, no remote model, no subscription.
+lede: Softanza's founding act, and its own answer to programming in the agentic age, is that **declaring a language is as easy as declaring a variable.** This is not how software is written today; it is the way Softanza proposes. A domain expert writes, in plain text, the things of their world, the rules between them and the flows that move them. Out of that one declaration come a language in their jargon, a knowledge base of their world, and an agent that speaks it. All of it runs on the device, powered by the platform's own tools: no API, no remote AI model, no subscription.
 description: Softanza's approach: a domain expert declares a language and gets a domain language, a knowledge base and a local agent.
 ---
 
@@ -29,6 +29,6 @@ DEFINE NORM positive_deposit AS (
   MESSAGE: "A deposit must bring something to the circle"
 )</pre>
 
-<p class="proof">Three strata per language: a closed syntax, a knowledge-base semantics, a conversational pragmatics; the natural layer compiles to the language's own closed query grammar and never to host code, and it is dictionary-driven, which is why it needs no model. The machine declaration is in <a href="https://github.com/mayouni/harobanda">the Harobanda repository</a>, file <code>declarative/machine/machine.stzu</code>. The language-making discipline's own repository is not public yet; its stage, in its own words: "Phase 1 closed, Phase 1.5 open; blueprint and studies, no code in this repository yet". What runs today runs in the platform: chapter 12 of the course, "Teach a world", and the natural layer shown on the Platform page.</p>
+<p class="proof">Three strata per language: a closed syntax, a knowledge-base semantics, a conversational pragmatics; the natural layer compiles to the language's own closed query grammar and never to host code, and it is dictionary-driven, which is why it needs no AI model. The machine declaration is in <a href="https://github.com/mayouni/harobanda">the Harobanda repository</a>, file <code>declarative/machine/machine.stzu</code>. The language-making discipline's own repository is not public yet; its stage, in its own words: "Phase 1 closed, Phase 1.5 open; blueprint and studies, no code in this repository yet". What runs today runs in the platform: chapter 12 of the course, "Teach a world", and the natural layer shown on the Platform page.</p>
 
 <p class="way"><span>The Softanza way</span> This is not how programming is done today; it is Softanza's proposal for the agentic age: a platform that knows your world, because you declared it, in your language, and the platform judged the declaration.</p>

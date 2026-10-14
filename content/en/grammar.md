@@ -6,7 +6,7 @@ lede: The library's founding claim is that a function's name is a sentence, with
 description: The forms of a Softanza function name, each tried in the library: active, passive, fluent, immutable, partial, plural, exceptional, negative, alternative, named, conditional, prefixes, suffixes, small functions and future, with what ran and what no longer exists.
 ---
 
-The claim is old and it is the first page of the library's writing: functions as linguistic expressions, an embedded language in every name, achieved with no language model, by naming systematically, ordering parameters, varying forms and inferring defaults. The article names the forms. This page does what the site's law asks and tries each one.
+The claim is old and it is the first page of the library's writing: functions as linguistic expressions, an embedded language in every name, achieved with no AI model, by naming systematically, ordering parameters, varying forms and inferring defaults. The article names the forms. This page does what the site's law asks and tries each one.
 
 <!--GRAMMAR-->
 

@@ -2,7 +2,7 @@
 title: The Softanza way
 title_html: The Softanza <i>way</i>
 kicker: How to think, how to write, how it is judged
-lede: One discipline, for a person and for an agent. Think the problem in seven steps, write each step in fourteen rules, and let something judge the result.
+lede: One discipline, for a person and for an AI agent. Think the problem in seven steps, write each step in fourteen rules, and let something judge the result.
 description: The Softanza way: the mental model in seven steps, the fourteen rules of writing that serve each step, the three widenings of the model, and where each part is judged, with the part not yet judged named.
 ---
 

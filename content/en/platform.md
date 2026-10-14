@@ -2,7 +2,7 @@
 title: Platform
 title_html: The <i>platform</i>
 kicker: One engine, twenty-eight areas
-lede: Softanza is one computational platform. One engine, written in Zig, handles text, exact numbers, tables, graphs, maps, images, sound, neural networks, governed agents and the security around them. One language, Haro, in construction, is to put all of it in a sentence. Everything on this page was run on the night of publication.
+lede: Softanza is one computational platform. One engine, written in Zig, handles text, exact numbers, tables, graphs, maps, images, sound, neural networks, governed AI agents and the security around them. One language, Haro, in construction, is to put all of it in a sentence. Everything on this page was run on the night of publication.
 description: The Softanza platform in plain words: what it is, what the engine does, and the language, Haro.
 ---
 

@@ -2096,3 +2096,31 @@ next:
 
 note:      the ruling displaces the earlier hero choice of Crafters, which the book session names as the person and not the platform
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-14 22:24
+
+subject:   the AI model and AI agent wording of the site, and the natural page read for underselling, on the book session's rule
+
+why:       the book session relayed the book's terminology rule (bare word stays where one sense is plain; AI model / AI agent at first use on a page and wherever another sense is within reach), and asked for the natural page to be read with VOICE-04
+
+did:
+  - swept the authored pages of both languages by hand, page by page, not by replace: 41 English and 41 French pages plus the home page took AI model / AI agent (modèle d'IA, agent d'IA) at the first use and where a data model, a domain model, the domain language model or a person's agent was within reach; language model became AI model
+  - left alone, on the rule: mental model, semantic model, threat model, domain model, delivery and enterprise models; the declared agent of the Softanzuter ladder and the agent files, whose names are Softanza's own; titles that already say coding agents; the law's own words
+  - read natural.md in both languages with VOICE-04: one phrase fixed (a toy language for commands became a language of fixed commands, jouet became commandes fixes); the not yet measured and designed and not built lines are stage and direction and stay as they are, since a plan the desk cannot read is not to be invented
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,298 files, search 16 of 16, the floor held on the natural and home pages; a search for doubled words finds none
+
+state:
+  ai-wording:     authored pages done at first use and at ambiguous senses; the generated pages (narrations, reference, guides) read the library's text and are not touched
+  natural-page:   read; one phrase fixed
+  book-hosting:   NOT done: held, see waiting
+
+waiting:
+  - BOOK-HOSTING: copy the book's reader to /book/ on the public site, which publishes a draft the author has not read, against the book's own REPO-01 (private until the author names a phase) and its open APPENDIX-03 question; the book session says the author delegated it, the desk has no word of the author's own -> the author [routed to the author and to the book session]
+
+next:
+  - me:      commit and push, then report to the book session
+  - author:  say host the book, or name the phase, or say wait
+
+note:      a delegation to close pending tasks is read here as not naming a publication phase; if the author says otherwise it is a ten-minute copy
+```

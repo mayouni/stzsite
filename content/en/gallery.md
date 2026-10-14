@@ -8,4 +8,4 @@ description: The Softanza gallery: the engine's pictures drawn again, byte-compa
 
 <!--GALLERY-->
 
-<p class="proof"><b>in construction</b> The perception gate for these pictures is open. A model has judged some of them in the past, and a model's opinion is not here: only a person's verdict, with their name and the date, is printed. The pictures that were not drawn again need data that is not in the repository, a window on a screen, or a file the script could not read; each says which.</p>
+<p class="proof"><b>in construction</b> The perception gate for these pictures is open. An AI model has judged some of them in the past, and an AI model's opinion is not here: only a person's verdict, with their name and the date, is printed. The pictures that were not drawn again need data that is not in the repository, a window on a screen, or a file the script could not read; each says which.</p>

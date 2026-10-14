@@ -2,7 +2,7 @@
 title: Pour les agents
 title_html: Pour <i>les agents</i>
 kicker: Comment une machine lit Softanza
-lede: Cette section s'adresse aussi à un agent qui lit ce site. Softanza est conçue pour être lue par une machine autant que par un humain.
+lede: Cette section s'adresse aussi à un agent d'IA qui lit ce site. Softanza est conçue pour être lue par une machine autant que par un humain.
 description: Comment un agent lit Softanza : demander à la bibliothèque, se déclarer dans un fichier d'agent, parler la grammaire.
 ---
 
@@ -20,5 +20,5 @@ first without saying what it covers:
 ...then with its coverage stated:
 -> The court judged your declaration,
    and every promise of the exercise was kept.</pre><p class="ran">exécuté le 2026-09-30 à 23:10, démonstration, scène 7</p></div>
-<div class="card"><h3>Parlez la grammaire, pas du code général</h3><p>Un schéma se compile déjà en grammaire de contrainte : un modèle local dont l'échantillonneur y est tenu ne peut émettre que des réponses valides. C'est le contrat C9 de la plateforme : la structure tue la malformation, jamais la fausseté. Émettre une telle grammaire pour chaque langue déclarée est la prochaine étape, décidée sous le nom de la commande stz grammar.</p><p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md">SOFTANZA_INTELLIGENCE_ARCHITECTURE.md</a></p></div>
+<div class="card"><h3>Parlez la grammaire, pas du code général</h3><p>Un schéma se compile déjà en grammaire de contrainte : un modèle d'IA local dont l'échantillonneur y est tenu ne peut émettre que des réponses valides. C'est le contrat C9 de la plateforme : la structure tue la malformation, jamais la fausseté. Émettre une telle grammaire pour chaque langue déclarée est la prochaine étape, décidée sous le nom de la commande stz grammar.</p><p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md">SOFTANZA_INTELLIGENCE_ARCHITECTURE.md</a></p></div>
 </div>

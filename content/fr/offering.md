@@ -8,7 +8,7 @@ description: Les sept publics de Softanza, du programmeur à l'agent d'IA : ce q
 
 ## Qu'est-ce qu'un artisan du logiciel ? {#crafter}
 
-Un artisan du logiciel transforme ce qu'il sait d'un monde en quelque chose qui tourne, sans attendre l'industrie du logiciel. Il n'est pas défini par sa maîtrise de la programmation mais par la propriété : l'artefact est à lui, en texte brut, et il n'expire pas. Une enseignante, un analyste, un commerçant, un élève, un fonctionnaire, et un agent qui propose sous tous ces mondes.
+Un artisan du logiciel transforme ce qu'il sait d'un monde en quelque chose qui tourne, sans attendre l'industrie du logiciel. Il n'est pas défini par sa maîtrise de la programmation mais par la propriété : l'artefact est à lui, en texte brut, et il n'expire pas. Une enseignante, un analyste, un commerçant, un élève, un fonctionnaire, et un agent d'IA qui propose sous tous ces mondes.
 
 ## Sept portes {#doors}
 
@@ -91,7 +91,7 @@ PROVED  the child's Hausa program passed, checked by running it</pre></div><div 
 
 <div class="door-section" id="agent" markdown="1">
 <div class="kicker">Porte 6</div>
-### Un agent
+### Un agent d'IA
 
 **Ce que vous déclarez :** vous-même, dans un fichier d'agent : ce que vous couvrez, la réversibilité de vos actes, la posture de chaque fonction que vous appelez. **Ce que vous obtenez :** un atelier où tout ce que vous faites est répété sans toucher le réel, une grammaire contrainte qui vous empêche d'émettre une phrase malformée, et un tribunal qui juge votre plan. **Ce que vous n'obtenez pas :** la capacité de commettre. **Où commencer :** le paradigme agentique, et le chapitre 14 du cours, « Un agent qui ne peut pas nuire ». **Le parcours :** <a href="journey-agent.html">Le parcours de l'agent</a>.
 

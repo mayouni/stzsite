@@ -155,7 +155,7 @@ StzKnow(:Apple, :Fruit)
 #@ see  SentimentScore, IsPositive, IsNegative
 def Sentiment()</pre>
 
-<p>A harvester reads these lines, the section titles and the examples promised in the tests. Every object then answers <code>Ask()</code>, <code>HowTo()</code> and <code>ExplainMethod()</code> from them, without any model: the answer is the library's own, and a method that does not exist is refused by name.</p>
+<p>A harvester reads these lines, the section titles and the examples promised in the tests. Every object then answers <code>Ask()</code>, <code>HowTo()</code> and <code>ExplainMethod()</code> from them, without any AI model: the answer is the library's own, and a method that does not exist is refused by name.</p>
 <p style="margin-top:32px"><b>Ask the library what it calls what you mean: HowTo composes the call from the naming grammar and says so, and an unknown method is refused by name.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oDoc = StzSelfDocQ(&quot;stzList&quot;)
 ? oDoc.HowTo(&quot;remove duplicates&quot;)
 ? oDoc.HasMethod(&quot;DuplicatesRemoved&quot;)

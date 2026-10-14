@@ -15,7 +15,7 @@ description: Les surfaces d'une application Softanza : le web, construit ; le pl
 
 ## Ce qui est direction {#directions}
 
-- <b>Un terminal</b>, pour les personnes et les agents qui y travaillent.
+- <b>Un terminal</b>, pour les personnes et les agents d'IA qui y travaillent.
 - <b>La voix</b> : la synthèse vocale existe dans le moteur ; la reconnaissance vocale et la téléphonie non.
 - <b>La messagerie</b>, l'application déjà sur le téléphone d'une personne : racontée sur <a href="conversations.html">la page des conversations</a>, conçue et surtout absente.
 - <b>Les appareils</b> : une machine déclarée comme du logiciel d'abord, sur <a href="sovereignty.html">la page de la souveraineté</a>.

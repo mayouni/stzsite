@@ -2,8 +2,8 @@
 title: Naturel, et exécutable
 title_html: Naturel, <i>et exécutable</i>
 kicker: Un paradigme
-lede: Une phrase dans votre langue s'exécute, sans modèle, parce que chacun de ses mots est dans un dictionnaire que la bibliothèque possède. Ce que la bibliothèque ne connaît pas, elle le refuse, et dit pourquoi.
-description: Le langage naturel exécutable dans Softanza : des phrases en anglais, français, arabe, haoussa et turc qui s'exécutent sans modèle, un dictionnaire que la bibliothèque possède, des refus motivés, et une langue ajoutée comme un bloc de données.
+lede: Une phrase dans votre langue s'exécute, sans modèle d'IA, parce que chacun de ses mots est dans un dictionnaire que la bibliothèque possède. Ce que la bibliothèque ne connaît pas, elle le refuse, et dit pourquoi.
+description: Le langage naturel exécutable dans Softanza : des phrases en anglais, français, arabe, haoussa et turc qui s'exécutent sans modèle d'IA, un dictionnaire que la bibliothèque possède, des refus motivés, et une langue ajoutée comme un bloc de données.
 ---
 
 ## Un programme, trois langues {#runs}
@@ -19,7 +19,7 @@ Le programme haoussa a d'autres mots et le même sens : chaque langue est un ens
 Il y a deux sens, et la différence est celle de qui fait la lecture.
 
 <div class="cards">
-<div class="card"><h3>La machine analyse</h3><p><code>Naturally()</code> prend un paragraphe. La bibliothèque le lit contre son dictionnaire et doit refuser ce dont elle ne peut prouver qu'elle l'a compris. L'ambiguïté est refusée à voix haute. Le public, ce sont les experts d'un domaine et les agents.</p></div>
+<div class="card"><h3>La machine analyse</h3><p><code>Naturally()</code> prend un paragraphe. La bibliothèque le lit contre son dictionnaire et doit refuser ce dont elle ne peut prouver qu'elle l'a compris. L'ambiguïté est refusée à voix haute. Le public, ce sont les experts d'un domaine et les agents d'IA.</p></div>
 <div class="card"><h3>Le programmeur analyse</h3><p>Une chaîne presque naturelle est du code qui se lit comme une phrase. L'humain est l'analyseur, et la chaîne est la phrase : une chaîne qui s'exécute sans se lire comme une phrase grammaticale est une erreur. Le public, ce sont les programmeurs.</p></div>
 </div>
 
@@ -44,11 +44,11 @@ Le haoussa en écriture ajami est nommé dans la bibliothèque et pas livré ; l
 ## Cinq faces {#faces}
 
 <div class="cards">
-<div class="card"><h3>Déterminisme et souveraineté</h3><p>La couche naturelle n'appelle aucun modèle et ne demande aucune clé, et la même phrase donne la même réponse n'importe quel jour. C'est la condition d'une banque ou d'un ministère, pas une option. Qu'aucune connexion réseau ne s'ouvre pendant une exécution naturelle n'est pas encore mesuré par un test dédié.</p></div>
-<div class="card"><h3>Responsabilité</h3><p>Chaque phrase peut dire ce qu'elle a compris, ce qu'elle a refusé, et pourquoi. C'est ce qui la sépare du code généré par un modèle et d'un langage jouet pour des commandes.</p></div>
+<div class="card"><h3>Déterminisme et souveraineté</h3><p>La couche naturelle n'appelle aucun modèle d'IA et ne demande aucune clé, et la même phrase donne la même réponse n'importe quel jour. C'est la condition d'une banque ou d'un ministère, pas une option. Qu'aucune connexion réseau ne s'ouvre pendant une exécution naturelle n'est pas encore mesuré par un test dédié.</p></div>
+<div class="card"><h3>Responsabilité</h3><p>Chaque phrase peut dire ce qu'elle a compris, ce qu'elle a refusé, et pourquoi. C'est ce qui la sépare du code généré par un modèle d'IA et d'un langage de commandes fixes.</p></div>
 <div class="card"><h3>Langues en données</h3><p>Une langue est un bloc, ajouté à l'exécution. Un locuteur du haoussa ou de l'arabe écrit à la même bibliothèque qu'un locuteur de l'anglais.</p></div>
 <div class="card"><h3>Deux sens, une discipline</h3><p>La machine qui analyse et l'humain qui analyse partagent un seul lexique : la grammaire des formes de fonction, lue comme un vocabulaire.</p></div>
-<div class="card"><h3>La porte de l'agent <b>(conçu)</b></h3><p>Un modèle peut proposer ; une grammaire fermée juge. Tenir un modèle à la grammaire du lexique, pour qu'il ne puisse produire que des phrases que la couche exécute, est conçu et pas construit.</p></div>
+<div class="card"><h3>La porte de l'agent <b>(conçu)</b></h3><p>Un modèle d'IA peut proposer ; une grammaire fermée juge. Tenir un modèle d'IA à la grammaire du lexique, pour qu'il ne puisse produire que des phrases que la couche exécute, est conçu et pas construit.</p></div>
 </div>
 
 ## D'où elle vient {#history}

@@ -14,4 +14,4 @@ description: Visual by default in Softanza: display, plots, string art and layou
 <li><b>The honest sentence.</b> The vision plan puts it as: it can draw, and it cannot see. A picture is checked by comparing it and by looking at it, and only the second is a person's.</li>
 </ul>
 
-<p class="proof"><b>in construction</b> Perception is owed. The renders on this site were looked at by the agent that wrote the page, and by nobody else yet; the author's own look is the gate that is still open. That is a state and not a failure, and the site says it on every page where a picture is the point.</p>
+<p class="proof"><b>in construction</b> Perception is owed. The renders on this site were looked at by the AI agent that wrote the page, and by nobody else yet; the author's own look is the gate that is still open. That is a state and not a failure, and the site says it on every page where a picture is the point.</p>

@@ -33,7 +33,7 @@ L'agent ci-dessous garde sa mémoire sous forme de faits, et trois compétences 
 
 <!--SHOWCASE:softanzuter:2-->
 
-<p class="way"><span>La manière Softanza</span> L'esprit est programmatique par défaut, et un modèle est une faculté parmi les autres, jamais la définition de l'esprit. La boucle de l'industrie, un modèle qui appelle des outils, est le cas particulier de cette échelle : une faculté, aucune gouvernance. Softanza offre le cas général, en local.</p>
+<p class="way"><span>La manière Softanza</span> L'esprit est programmatique par défaut, et un modèle d'IA est une faculté parmi les autres, jamais la définition de l'esprit. La boucle de l'industrie, un modèle d'IA qui appelle des outils, est le cas particulier de cette échelle : une faculté, aucune gouvernance. Softanza offre le cas général, en local.</p>
 
 ## Ce qui reste une vision {#vision}
 

@@ -69,7 +69,7 @@ You do not sit an exam. A level is earned by a **project** you build in your own
 <div class="card"><h3>S0 · Explorer</h3><p>After chapter 4. <b>Project:</b> a five-cell narration over a list of your own, where every cell runs and every cell carries a promise that holds.</p></div>
 <div class="card"><h3>S1 · Builder</h3><p>After chapter 7. <b>Project:</b> a small tool over your workplace, its conditions declared as data (a rule such as <span class="mono">{ @item &gt; 20 }</span> in a file), not written into the code.</p></div>
 <div class="card"><h3>S2 · Craftsperson</h3><p>After chapter 11. <b>Project:</b> a report over a real data file, with the patterns it finds, a table and a picture.</p></div>
-<div class="card"><h3>S3 · Architect</h3><p>After chapter 14. <b>Project:</b> a world you taught, with at least five facts, questioned by an agent you govern, admitted by the court, every act of which can be reversed.</p></div>
+<div class="card"><h3>S3 · Architect</h3><p>After chapter 14. <b>Project:</b> a world you taught, with at least five facts, questioned by an AI agent you govern, admitted by the court, every act of which can be reversed.</p></div>
 <div class="card"><h3>S4 · Master</h3><p>Chapter 15. <b>Project:</b> a new chapter for this course, in two languages, whose guard is green.</p></div>
 </div>
 

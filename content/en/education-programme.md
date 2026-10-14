@@ -21,7 +21,7 @@ PROVED   the same cell answers about the bank
 PROVED   the chapter file did not change by one byte</pre>
 <p class="ran">run on 2026-09-30, the education demo</p>
 
-An overlay can add a chapter, an exercise, a skill or a world; replace a world by name, which is how the same chapter reasons over a bank; map its own skills onto the core's; add a fifth language as a data-only pack; and govern, with rules its learners' agents must obey. It **cannot** edit or delete a core file: it can only shadow one, and every shadowing is listed, so an institution can always see what differs from the core.
+An overlay can add a chapter, an exercise, a skill or a world; replace a world by name, which is how the same chapter reasons over a bank; map its own skills onto the core's; add a fifth language as a data-only pack; and govern, with rules its learners' AI agents must obey. It **cannot** edit or delete a core file: it can only shadow one, and every shadowing is listed, so an institution can always see what differs from the core.
 
 The steps of the guide, which is itself checked by a guard that follows them literally:
 
@@ -45,7 +45,7 @@ The course runs in English, French, Arabic (laid out right to left) and Hausa, f
 
 ## Governed AI for learners {#governed}
 
-A learner's agent proposes; only a gate commits. Exercises on agents run in a safe world: a guard asserts that the real tree is unchanged after a student's agent "deletes everything". The tutor itself uses no language model and needs no network.
+A learner's AI agent proposes; only a gate commits. Exercises on agents run in a safe world: a guard asserts that the real tree is unchanged after a student's agent "deletes everything". The tutor itself uses no AI model and needs no network.
 
 ## A fifteen-minute demonstration for decision makers {#demo}
 
@@ -66,4 +66,4 @@ The presenter's guide gives a scene for each minute, runs on one laptop offline,
 
 ## What an institution should know before it starts {#honest}
 
-The interactive reader runs on the desktop; a browser runtime for the cells is not built yet, and the page says so on every cell. The French, Arabic and Hausa editions await native reviewers (0 of 35 units reviewed); Zarma is not yet a language of the course. No institution has adopted the system yet: the bank's and the university's overlays in the library are references written to show what an overlay is. The tutor is rule-based, not AI. There is no language model in the loop and none is required: one may be added later as an option, never as the mind of the tutor.
+The interactive reader runs on the desktop; a browser runtime for the cells is not built yet, and the page says so on every cell. The French, Arabic and Hausa editions await native reviewers (0 of 35 units reviewed); Zarma is not yet a language of the course. No institution has adopted the system yet: the bank's and the university's overlays in the library are references written to show what an overlay is. The tutor is rule-based, not AI. There is no AI model in the loop and none is required: one may be added later as an option, never as the mind of the tutor.

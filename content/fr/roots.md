@@ -2,7 +2,7 @@
 title: Racines
 title_html: Les <i>racines</i>
 kicker: Là où cela a commencé
-lede: Softanza n'a pas commencé par un moteur ni par un agent. Elle a commencé par une phrase sur la citoyenneté, un slogan, et un tableau de sept buts.
+lede: Softanza n'a pas commencé par un moteur ni par un agent d'IA. Elle a commencé par une phrase sur la citoyenneté, un slogan, et un tableau de sept buts.
 description: Les racines de Softanza : la phrase fondatrice de 2022, le slogan La programmation avec le cœur, les sept causes, buts et trente-trois fonctions, les publics, et ce qui est daté et ce qui ne l'est pas.
 ---
 

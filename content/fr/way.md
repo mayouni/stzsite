@@ -2,7 +2,7 @@
 title: La manière Softanza
 title_html: La manière <i>Softanza</i>
 kicker: Comment penser, comment écrire, comment on juge
-lede: Une seule discipline, pour une personne et pour un agent. Penser le problème en sept étapes, écrire chaque étape en quatorze règles, et laisser quelque chose juger le résultat.
+lede: Une seule discipline, pour une personne et pour un agent d'IA. Penser le problème en sept étapes, écrire chaque étape en quatorze règles, et laisser quelque chose juger le résultat.
 description: La manière Softanza : le modèle mental en sept étapes, les quatorze règles d'écriture qui servent chaque étape, les trois élargissements du modèle, et où chaque partie est jugée, avec la partie pas encore jugée nommée.
 ---
 

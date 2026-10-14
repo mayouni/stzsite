@@ -2,7 +2,7 @@
 title: Roots
 title_html: The <i>roots</i>
 kicker: Where it began
-lede: Softanza did not begin with an engine or with an agent. It began with a sentence about citizenship, a slogan, and a table of seven goals.
+lede: Softanza did not begin with an engine or with an AI agent. It began with a sentence about citizenship, a slogan, and a table of seven goals.
 description: The roots of Softanza: the 2022 founding sentence, the slogan Programming by heart, the seven root causes, goals and thirty-three features, the audiences, and what is dated and what is not.
 ---
 

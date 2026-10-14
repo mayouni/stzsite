@@ -44,4 +44,4 @@ print({unicodedata.name(c).split()[0] for c in s if not c.isspace()})</pre><pre 
 <div class="side stz"><div class="lbl">Softanza</div><pre>? @@( Naturally("Create a list with [ 5, 3, 5, 1 ] and remove its duplicates").Result() )</pre><pre class="o">[ 5, 3, 1 ]</pre></div>
 <div class="side other"><div class="lbl">Python 3.13</div><pre># no counterpart without an external language model</pre><pre class="o"></pre></div>
 </div>
-<p class="ran">An instruction in English, French, Arabic or Hausa runs. The natural layer is dictionary-driven and local: no network, no model, no API key. Run 2026-10-01 at 09:26.</p>
+<p class="ran">An instruction in English, French, Arabic or Hausa runs. The natural layer is dictionary-driven and local: no network, no AI model, no API key. Run 2026-10-01 at 09:26.</p>

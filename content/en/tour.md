@@ -19,7 +19,7 @@ Let the picture speak for ten seconds. Then one sentence: "This man is reading c
 <div class="eyebrow">The architecture since 2020 · read band by band against what exists, September 2026</div>
 <figure class="diagram"><img src="../assets/img/diagrams/northstar-en.png" alt="Six bands: who it is for, solutions, systems, languages, the foundation Softanza, and beneath; beside them the court." width="1376" height="820"></figure>
 ```notes
-"In 2020 the author drew Softanza on one sheet. Read it from the top: who it is for, the solutions, the five systems a solution answers to, the languages, the foundation, what lies beneath." In September 2026 every band was checked against the repositories. The goal has not moved. Two things are new: the agents in the first band, and the floors beneath. Beside everything, the court: nothing is believed.
+"In 2020 the author drew Softanza on one sheet. Read it from the top: who it is for, the solutions, the five systems a solution answers to, the languages, the foundation, what lies beneath." In September 2026 every band was checked against the repositories. The goal has not moved. Two things are new: the AI agents in the first band, and the floors beneath. Beside everything, the court: nothing is believed.
 ```
 
 <<< scene id="vision" page="principles.html" label="Vision" >>>
@@ -68,9 +68,9 @@ Let the wall of pictures speak. "Each picture was rendered by the platform: a ma
                  and remove its duplicates").Result() )</pre></div><div class="out"><div class="lbl">Output</div><pre>18446744073709551616
 arabic
 [ 5, 3, 1 ]</pre></div></div>
-<p>JavaScript answers <b>18446744073709552000</b> to the first line. The third line has no counterpart without an external language model.</p>
+<p>JavaScript answers <b>18446744073709552000</b> to the first line. The third line has no counterpart without an external AI model.</p>
 ```notes
-Three lines, three points: exact by default; the engine knows the script of a text; an instruction in English, Hausa or Arabic runs, locally, with no model. Say that every block on the site was run tonight and the output sits beside it.
+Three lines, three points: exact by default; the engine knows the script of a text; an instruction in English, Hausa or Arabic runs, locally, with no AI model. Say that every block on the site was run tonight and the output sits beside it.
 ```
 
 <<< scene id="agentic" page="agentic.html" label="Agentic" >>>
@@ -88,7 +88,7 @@ PROVED  the course folder still holds all 610 files</pre></div></div>
 <div class="figure"><b>50 ms</b><span>to contain it, verified from outside</span></div>
 </div>
 ```notes
-The story to tell: Amina writes an agent that "tidies" the course. It proposes to delete all 610 files. It cannot: it does not hold the capability to act, it never did. A human reads the plan and refuses. Then the two numbers: credential stuffing was detected in 395 milliseconds and contained in 50, tonight, on this laptop, and the language model investigating could commit nothing.
+The story to tell: Amina writes an agent that "tidies" the course. It proposes to delete all 610 files. It cannot: it does not hold the capability to act, it never did. A human reads the plan and refuses. Then the two numbers: credential stuffing was detected in 395 milliseconds and contained in 50, tonight, on this laptop, and the AI model investigating could commit nothing.
 ```
 
 <<< scene id="wise" page="wise.html" label="Wise coding" >>>

@@ -24,7 +24,7 @@ More than nine thousand such promises sit in the test tree, the articles and the
 
 ## What exists today {#today}
 
-Today the library finds a method from the words of a need, with no model. Finding it from an example of the need is the next step, and it is not built.
+Today the library finds a method from the words of a need, with no AI model. Finding it from an example of the need is the next step, and it is not built.
 
 <!--SHOWCASE:byexample:2-->
 
@@ -38,7 +38,7 @@ An answer by example is one of five registers in which the library accepts an an
 
 ## What it is not {#not}
 
-Programming by example is an old idea. What this one adds is how a candidate is judged: by running it against a vocabulary that documents itself, and by a court that can refuse. What is found is a closed pattern or a chain of named verbs, never free code, and a model, if one is used at all, is a generator of candidates inside the protocol and the last in line.
+Programming by example is an old idea. What this one adds is how a candidate is judged: by running it against a vocabulary that documents itself, and by a court that can refuse. What is found is a closed pattern or a chain of named verbs, never free code, and an AI model, if one is used at all, is a generator of candidates inside the protocol and the last in line.
 
 The costs are named. Several candidates is the normal case, which is why the second outcome exists. Three examples can fit too well, and the remedy is the question that tells two candidates apart. The index is as clean as the tags it reads.
 

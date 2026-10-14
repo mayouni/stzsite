@@ -8,4 +8,4 @@ description: La galerie Softanza : les images du moteur redessinées, comparées
 
 <!--GALLERY-->
 
-<p class="proof"><b>en construction</b> La porte de perception de ces images est ouverte. Un modèle en a jugé certaines dans le passé, et l'avis d'un modèle n'est pas ici : seul le verdict d'une personne, avec son nom et la date, est imprimé. Les images qui n'ont pas été redessinées demandent des données qui ne sont pas dans le dépôt, une fenêtre sur un écran, ou un fichier que le script n'a pas pu lire ; chacune dit lequel.</p>
+<p class="proof"><b>en construction</b> La porte de perception de ces images est ouverte. Un modèle d'IA en a jugé certaines dans le passé, et l'avis d'un modèle d'IA n'est pas ici : seul le verdict d'une personne, avec son nom et la date, est imprimé. Les images qui n'ont pas été redessinées demandent des données qui ne sont pas dans le dépôt, une fenêtre sur un écran, ou un fichier que le script n'a pas pu lire ; chacune dit lequel.</p>

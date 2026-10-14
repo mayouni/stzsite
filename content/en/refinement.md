@@ -2,7 +2,7 @@
 title: Refinement
 title_html: Refinement-<i>oriented</i> programming
 kicker: A paradigm, an implementation, a book
-lede: If an agent can produce a thousand changes an hour, the unit of work can no longer be "the change". Softanza's answer is a paradigm, an implementation under way, and a book.
+lede: If an AI agent can produce a thousand changes an hour, the unit of work can no longer be "the change". Softanza's answer is a paradigm, an implementation under way, and a book.
 description: Refinement-oriented programming: the paradigm, its implementation under way, and the book.
 ---
 

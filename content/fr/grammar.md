@@ -6,7 +6,7 @@ lede: L'affirmation fondatrice de la bibliothèque est que le nom d'une fonction
 description: Les formes du nom d'une fonction Softanza, chacune essayée dans la bibliothèque : active, passive, fluide, immuable, partielle, plurielle, d'exception, négative, alternative, nommée, conditionnelle, préfixes, suffixes, petites fonctions et future, avec ce qui a tourné et ce qui n'existe plus.
 ---
 
-L'affirmation est ancienne et c'est la première page des écrits de la bibliothèque : des fonctions comme expressions de la langue, un langage embarqué dans chaque nom, obtenu sans modèle de langage, en nommant systématiquement, en ordonnant les paramètres, en variant les formes et en inférant les valeurs par défaut. L'article nomme les formes. Cette page fait ce que demande la loi du site et essaie chacune.
+L'affirmation est ancienne et c'est la première page des écrits de la bibliothèque : des fonctions comme expressions de la langue, un langage embarqué dans chaque nom, obtenu sans modèle d'IA, en nommant systématiquement, en ordonnant les paramètres, en variant les formes et en inférant les valeurs par défaut. L'article nomme les formes. Cette page fait ce que demande la loi du site et essaie chacune.
 
 <!--GRAMMAR-->
 

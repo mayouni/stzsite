@@ -73,7 +73,7 @@ Chaque méthode porte, juste au-dessus de sa définition, une ligne qui dit ce q
 #@ see  SentimentScore, IsPositive, IsNegative
 def Sentiment()</pre>
 
-Un moissonneur lit ces lignes, les titres de section et les exemples promis dans les tests. Chaque objet répond alors à `Ask()`, `HowTo()` et `ExplainMethod()` à partir d'eux, sans aucun modèle : la réponse est celle de la bibliothèque, et une méthode qui n'existe pas est refusée nommément.
+Un moissonneur lit ces lignes, les titres de section et les exemples promis dans les tests. Chaque objet répond alors à `Ask()`, `HowTo()` et `ExplainMethod()` à partir d'eux, sans aucun modèle d'IA : la réponse est celle de la bibliothèque, et une méthode qui n'existe pas est refusée nommément.
 
 <!--SHOWCASE:craft:7-->
 

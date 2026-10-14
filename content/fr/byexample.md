@@ -24,7 +24,7 @@ Plus de neuf mille promesses de cette sorte se trouvent dans l'arbre de tests, l
 
 ## Ce qui existe aujourd'hui {#today}
 
-Aujourd'hui la bibliothèque trouve une méthode à partir des mots d'un besoin, sans modèle. La trouver à partir d'un exemple du besoin est l'étape suivante, et elle n'est pas construite.
+Aujourd'hui la bibliothèque trouve une méthode à partir des mots d'un besoin, sans modèle d'IA. La trouver à partir d'un exemple du besoin est l'étape suivante, et elle n'est pas construite.
 
 <!--SHOWCASE:byexample:2-->
 
@@ -38,7 +38,7 @@ Une réponse par l'exemple est l'un des cinq registres dans lesquels la biblioth
 
 ## Ce que ce n'est pas {#not}
 
-La programmation par l'exemple est une idée ancienne. Ce que celle-ci ajoute, c'est la façon de juger un candidat : en l'exécutant contre un vocabulaire qui se documente lui-même, et par un juge qui peut refuser. Ce que l'on trouve est un motif fermé ou une chaîne de verbes nommés, jamais du code libre, et un modèle, s'il en est utilisé un, est un générateur de candidats à l'intérieur du protocole et le dernier en ligne.
+La programmation par l'exemple est une idée ancienne. Ce que celle-ci ajoute, c'est la façon de juger un candidat : en l'exécutant contre un vocabulaire qui se documente lui-même, et par un juge qui peut refuser. Ce que l'on trouve est un motif fermé ou une chaîne de verbes nommés, jamais du code libre, et un modèle d'IA, s'il en est utilisé un, est un générateur de candidats à l'intérieur du protocole et le dernier en ligne.
 
 Les coûts sont nommés. Plusieurs candidats est le cas normal, c'est pourquoi la deuxième issue existe. Trois exemples peuvent coller trop bien, et le remède est la question qui départage deux candidats. L'index est aussi propre que les balises qu'il lit.
 

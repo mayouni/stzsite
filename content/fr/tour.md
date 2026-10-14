@@ -19,7 +19,7 @@ Laisser l'image parler dix secondes. Puis une phrase : « Cet homme lit du code.
 <div class="eyebrow">L'architecture depuis 2020 · relue bande par bande face à ce qui existe, septembre 2026</div>
 <figure class="diagram"><img src="../assets/img/diagrams/northstar-fr.png" alt="Six bandes : pour qui, solutions, systèmes, langues, la fondation Softanza, et en dessous ; à côté, le tribunal." width="1376" height="820"></figure>
 ```notes
-« En 2020, l'auteur a dessiné Softanza sur une seule feuille. Lisez-la depuis le haut : pour qui, les solutions, les cinq systèmes auxquels une solution répond, les langues, la fondation, ce qui est en dessous. » En septembre 2026, chaque bande a été vérifiée dans les dépôts. Le but n'a pas bougé. Deux choses sont nouvelles : les agents dans la première bande, et les étages en dessous. À côté de tout, le tribunal : rien n'est cru.
+« En 2020, l'auteur a dessiné Softanza sur une seule feuille. Lisez-la depuis le haut : pour qui, les solutions, les cinq systèmes auxquels une solution répond, les langues, la fondation, ce qui est en dessous. » En septembre 2026, chaque bande a été vérifiée dans les dépôts. Le but n'a pas bougé. Deux choses sont nouvelles : les agents d'IA dans la première bande, et les étages en dessous. À côté de tout, le tribunal : rien n'est cru.
 ```
 
 <<< scene id="vision" page="principles.html" label="Vision" >>>
@@ -68,9 +68,9 @@ Laisser le mur d'images parler. « Chaque image a été rendue par la plateforme
                  and remove its duplicates").Result() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>18446744073709551616
 arabic
 [ 5, 3, 1 ]</pre></div></div>
-<p>JavaScript répond <b>18446744073709552000</b> à la première ligne. La troisième n'a pas d'équivalent sans un modèle de langage externe.</p>
+<p>JavaScript répond <b>18446744073709552000</b> à la première ligne. La troisième n'a pas d'équivalent sans un modèle d'IA externe.</p>
 ```notes
-Trois lignes, trois points : exact par défaut ; le moteur connaît l'écriture d'un texte ; une instruction en anglais, en haoussa ou en arabe s'exécute, en local, sans modèle. Dire que chaque bloc du site a été exécuté ce soir et que la sortie est à côté.
+Trois lignes, trois points : exact par défaut ; le moteur connaît l'écriture d'un texte ; une instruction en anglais, en haoussa ou en arabe s'exécute, en local, sans modèle d'IA. Dire que chaque bloc du site a été exécuté ce soir et que la sortie est à côté.
 ```
 
 <<< scene id="agentic" page="agentic.html" label="Agentique" >>>
@@ -88,7 +88,7 @@ PROVED  the course folder still holds all 610 files</pre></div></div>
 <div class="figure"><b>50 ms</b><span>pour la confiner, vérifié de l'extérieur</span></div>
 </div>
 ```notes
-L'histoire à raconter : Amina écrit un agent qui « range » le cours. Il propose de supprimer les 610 fichiers. Il ne peut pas : il ne détient pas la capacité d'agir, il ne l'a jamais eue. Un humain lit le plan et refuse. Puis les deux chiffres : un bourrage d'identifiants détecté en 395 millisecondes et confiné en 50, ce soir, sur ce portable, et le modèle de langage qui enquêtait n'a rien pu commettre.
+L'histoire à raconter : Amina écrit un agent qui « range » le cours. Il propose de supprimer les 610 fichiers. Il ne peut pas : il ne détient pas la capacité d'agir, il ne l'a jamais eue. Un humain lit le plan et refuse. Puis les deux chiffres : un bourrage d'identifiants détecté en 395 millisecondes et confiné en 50, ce soir, sur ce portable, et le modèle d'IA qui enquêtait n'a rien pu commettre.
 ```
 
 <<< scene id="wise" page="wise.html" label="Wise coding" >>>

@@ -20,7 +20,7 @@ Retirez l'une des trois et il n'y a plus de monde.
 
 <ol class="steps">
 <li value="1"><b>Vu.</b> Le monde a une présence : on peut le regarder, sur n'importe quelle surface.</li>
-<li value="2"><b>Engagé.</b> Il a une intention : une personne ou un agent peut lui demander quelque chose et en faire quelque chose.</li>
+<li value="2"><b>Engagé.</b> Il a une intention : une personne ou un agent d'IA peut lui demander quelque chose et en faire quelque chose.</li>
 <li value="3"><b>Accordé.</b> Il peut être raffiné : changé sous gouvernance, le changement jugé avant de s'appliquer.</li>
 <li value="4"><b>Atteint.</b> Il a une portée : il apparaît sur une surface, sur le web aujourd'hui et ailleurs à mesure que les <a href="surfaces.html">surfaces</a> se construisent.</li>
 </ol>

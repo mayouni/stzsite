@@ -15,7 +15,7 @@ description: The surfaces of a Softanza application: the web, built; the declara
 
 ## What are directions {#directions}
 
-- <b>A terminal</b>, for the people and the agents who work in one.
+- <b>A terminal</b>, for the people and the AI agents who work in one.
 - <b>Voice</b>: speech synthesis exists in the engine; speech recognition and telephony do not.
 - <b>Messaging</b>, the app already on a person's phone: told on <a href="conversations.html">the conversations page</a>, designed and mostly absent.
 - <b>Devices</b>: a machine declared as software first, on <a href="sovereignty.html">the sovereignty page</a>.

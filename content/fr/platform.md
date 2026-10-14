@@ -2,7 +2,7 @@
 title: Plateforme
 title_html: La <i>plateforme</i>
 kicker: Un moteur, vingt-huit domaines
-lede: Softanza est une seule plateforme de calcul. Un moteur, écrit en Zig, traite le texte, les nombres exacts, les tables, les graphes, les cartes, les images, le son, les réseaux de neurones, les agents gouvernés et la sécurité qui les entoure. Une langue, Haro, en construction, doit mettre tout cela dans une phrase. Tout ce qui est sur cette page a été exécuté le soir de la publication.
+lede: Softanza est une seule plateforme de calcul. Un moteur, écrit en Zig, traite le texte, les nombres exacts, les tables, les graphes, les cartes, les images, le son, les réseaux de neurones, les agents d'IA gouvernés et la sécurité qui les entoure. Une langue, Haro, en construction, doit mettre tout cela dans une phrase. Tout ce qui est sur cette page a été exécuté le soir de la publication.
 description: La plateforme Softanza en mots simples : ce qu'elle est, ce que fait le moteur, et la langue, Haro.
 ---
 

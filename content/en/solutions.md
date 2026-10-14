@@ -2,7 +2,7 @@
 title: Solutions for organisations
 title_html: Solutions <i>for organisations</i>
 kicker: What is delivered, and how
-lede: For an enterprise or a government, Softanza is delivered as a declared platform: a world in your own words, agents that cannot hurt you, sovereign deployment down to the machine. What follows says what that includes, how an engagement runs, and what it does not yet include.
+lede: For an enterprise or a government, Softanza is delivered as a declared platform: a world in your own words, AI agents that cannot hurt you, sovereign deployment down to the machine. What follows says what that includes, how an engagement runs, and what it does not yet include.
 description: Softanza solutions for enterprises and governments: a declared platform, governed agents, sovereign deployment, payments in francs CFA, and the engagement in three moves, with the stage of each.
 ---
 
