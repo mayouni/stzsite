@@ -6,6 +6,8 @@ lede: The Elementary Introduction is a course of fifteen chapters, in English, F
 description: The Softanza interactive book: fifteen chapters in English, French, Arabic and Hausa, every cell run.
 ---
 
+<p class="proof">This page is about the course. The platform has a book of its own: Mansour Ayouni, <i>Softanza: The Governed Software Platform of the AI Age</i> (second of the AYOUNI books), AYOUNI, 2026, draft. It has no public address yet, and this page will link it the day it has one.</p>
+
 <div class="doors doors-wide">
 <a class="door big" href="../reader.html"><div class="who">The reader</div><div class="what">Open the interactive book</div><div class="how">Fifteen chapters · en · fr · ar · ha · three teaching worlds · every cell ran when the page was built on 2026-09-30 at 23:02, in 3 minutes 22 seconds. Arabic reads right to left.</div></a>
 </div>

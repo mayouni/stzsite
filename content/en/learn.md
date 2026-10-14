@@ -26,10 +26,10 @@ Softanza has thousands of features. You do not learn them one by one. You learn 
 
 Three habits complete the model. A method that ends in <b>-ed</b> returns a copy and leaves the object alone; the same verb without it changes the object. A method that ends in <b>Q</b> returns an object you can keep asking, so a sentence can chain. And if you do not know a name, ask: an object answers <code>Ask("how do I remove duplicates")</code> with the methods that do.
 
-<div class="run"><div><div class="lbl">Softanza</div><pre>? Q("softanza is a platform for makers").SpacesRemovedQ().UppercaseQ().Boxed()</pre></div><div class="out"><div class="lbl">Output</div><pre>┌──────────────────────────────┐
-│ SOFTANZAISAPLATFORMFORMAKERS │
-└──────────────────────────────┘</pre></div></div>
-<p class="ran">run on 2026-10-01 at 09:26</p>
+<div class="run"><div><div class="lbl">Softanza</div><pre>? Q("softanza is a governed platform").SpacesRemovedQ().UppercaseQ().Boxed()</pre></div><div class="out"><div class="lbl">Output</div><pre>┌─────────────────────────────┐
+│ SOFTANZAISAGOVERNEDPLATFORM │
+└─────────────────────────────┘</pre></div></div>
+<p class="ran">run on 2026-10-14 at 21:50, Softanza at commit 4a184e6f0</p>
 
 Beyond the course, each of the twenty-eight areas has a guide that groups what its functions do, with an example under each: <a href="docs.html">the documentation</a> lists them all, and <a href="glossary.html">the glossary</a> defines the words this site uses in its own sense.
 

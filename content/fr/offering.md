@@ -3,7 +3,7 @@ title: Audiences
 title_html: Pour <i>qui</i>
 kicker: Sept portes, une seule histoire
 lede: Softanza raconte une seule histoire à sept sortes d'artisans du logiciel, et chaque porte mène à un parcours, avec un neuvième, <a href="journey-architect.html">celui de l'architecte de plateforme</a>, à leurs côtés. Chaque porte ci-dessous dit ce que ce lecteur déclare et ce qu'il obtient, et montre un exemple exécuté le soir de la publication.
-description: Les sept publics de Softanza, du programmeur à l'agent : ce que chacun déclare et obtient, avec un vrai exemple.
+description: Les sept publics de Softanza, du programmeur à l'agent d'IA : ce qu'est un artisan du logiciel, ce que chaque public déclare et obtient, avec un vrai exemple.
 ---
 
 ## Qu'est-ce qu'un artisan du logiciel ? {#crafter}

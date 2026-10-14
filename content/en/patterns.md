@@ -8,7 +8,7 @@ description: The pattern languages of Softanza: a regular expression raised to l
 
 ## One grammar, seven subjects {#seven}
 
-Regular expressions were redesigned first, as a class, a maker and a data library. Their grammar, braces and the at sign, was then lifted to six more kinds of data, each a class with its own small function. The same habit holds in all seven: write the pattern, ask <code>Match</code>, and ask the pattern to explain itself.
+Regular expressions were redesigned first, as a class, a pattern builder and a data library. Their grammar, braces and the at sign, was then lifted to six more kinds of data, each a class with its own small function. The same habit holds in all seven: write the pattern, ask <code>Match</code>, and ask the pattern to explain itself.
 
 <ol class="steps">
 <li value="1"><b>Strings.</b> <code>rx(pat(:email))</code> <span class="rx-src">the regular expression, backed by a standard engine</span></li>

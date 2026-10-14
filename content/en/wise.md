@@ -2,7 +2,7 @@
 title: Wise coding
 title_html: Wise coding, <i>against vibe coding</i>
 kicker: Softanza asks; it does not guess
-lede: "Vibe coding" is the practice of prompting a machine and keeping whatever comes out. Softanza names the inverse, and builds it.
+lede: Wise coding is the name of a practice, not of the platform: the platform asks the question the person has to answer, and refuses to guess the answer. Expression is free; admission is governed. "Vibe coding" is the inverse, prompting an AI model and keeping whatever comes out.
 description: Wise coding, the Softanza way: the platform asks the questions, measures the gap, judges every answer and writes the knowledge base.
 ---
 

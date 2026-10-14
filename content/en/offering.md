@@ -3,7 +3,7 @@ title: Audiences
 title_html: Who it is <i>for</i>
 kicker: Seven doors, one story
 lede: Softanza tells one story to seven kinds of crafters, and each door leads to a journey, with a ninth, <a href="journey-architect.html">the platform architect's</a>, beside them. Each door below says what that reader declares and what they get, and shows one example run on the night of publication.
-description: The seven audiences of Softanza, from the programmer to the agent: what each declares and gets, with a real example.
+description: The seven audiences of Softanza, from the programmer to the AI agent: who the software crafters are, what each audience declares and gets, with a real example.
 ---
 
 ## What is a software crafter? {#crafter}

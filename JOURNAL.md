@@ -2062,3 +2062,37 @@ next:
 
 note:      a decision on perception cannot be taken on someone's behalf; the fault found by looking was repaired, the verdict was not made
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-14 22:10
+
+subject:   the site's line aligned with the book's ruling COVER-02, and the book cited
+
+why:       the Softanza book session relayed the author's ruling, which I checked in the book repository (DECISIONS.md, COVER-02, 2026-10-14): define the platform by what it does, not by who it is for
+
+did:
+  - replaced the line in the home hero, the home title tag and description, the footer of every page, the presentation title scene, the README and llms.txt: The Governed Software Platform of the AI Age / La plateforme logicielle gouvernée de l'ère de l'IA
+  - put the tagline Declare what you know. A court keeps it. The AI model comes last. (French twin) in the hero and the footer; Born in Africa. Useful to the World! stays in the footer and the head description, and leaves the hero
+  - rewrote the home page's definitions as four: Governed, A software platform, The AI age, and A software crafter as the person and not the platform; removed platform of platforms as the platform's identity there, it stays on its constellation page
+  - made the Wise coding page lead, in its lede, with the plain sentence (the platform asks the question the person has to answer and refuses to guess; expression is free, admission is governed), then the vibe-coding inverse
+  - cited the book on the home page, in a new section, in the footer of every page and on the course's book page, which now says it is the course and not the book: Mansour Ayouni, Softanza: The Governed Software Platform of the AI Age (second of the AYOUNI books), AYOUNI, 2026, draft; no link, since the book has no public address
+  - removed the word maker from the learn page's example (re-run in the pinned library at 4a184e6f0, output pasted with its real run stamp) and from the patterns page; added software crafters to the audiences page description so the search for crafters still finds it
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,298 files, search 16 of 16, the floor held on the pages touched; I looked at the home page at laptop width
+
+state:
+  site-line:         the new one everywhere the old one stood (checked by a sweep of the built output: 0 files)
+  book-link:         cited without a link; needs the author's address
+  ai-model-wording:  NOT swept site-wide: bare model and agent remain in many pages; rule 5 applied only where I wrote
+  undersell-words:   one hit in natural.md left to read
+
+waiting:
+  - BOOK-URL: the public address of the book, or the built reader to host here -> the author [not routed before this memo]
+  - AI-WORDING-SWEEP: apply AI model and AI agent site-wide, page by page -> the author [not routed before this memo]
+  - HERO-BORN-IN-AFRICA: the hero no longer carries Born in Africa. Useful to the World!, it is in the footer and the head description; say if you want it back as a third line -> the author [not routed before this memo]
+
+next:
+  - me:      commit and push, then report to the book session
+  - author:  give the book's address; say if the hero should keep Born in Africa
+
+note:      the ruling displaces the earlier hero choice of Crafters, which the book session names as the person and not the platform
+```

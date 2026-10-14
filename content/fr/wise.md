@@ -2,7 +2,7 @@
 title: Wise coding
 title_html: Wise coding, <i>contre vibe coding</i>
 kicker: Softanza demande ; elle ne devine pas
-lede: Le « vibe coding » est la pratique qui consiste à souffler une consigne à une machine et à garder ce qui en sort. Softanza nomme l'inverse, et le construit.
+lede: Le wise coding est le nom d'une pratique, pas celui de la plateforme : la plateforme pose la question à laquelle la personne doit répondre, et refuse de deviner la réponse. L'expression est libre ; l'admission est gouvernée. Le « vibe coding » en est l'inverse : souffler une consigne à un modèle d'IA et garder ce qui en sort.
 description: Le wise coding, à la manière Softanza : la plateforme pose les questions, mesure l'écart, juge chaque réponse et écrit la base de connaissances.
 ---
 

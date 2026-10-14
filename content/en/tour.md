@@ -8,8 +8,8 @@ help: → or click: next · ←: previous · n: notes · h: menu · Esc: open th
 <img class="bg" src="../assets/img/onboarding-elder.webp" alt="An elder in a white turban reads a sheet of code in a courtyard; the word SOFTANZA is painted on the wall behind him.">
 <div class="caption">
 <div class="eyebrow">Softanza</div>
-<p><b>The Software Crafters Platform of the AI Age.</b></p>
-<p>Born in Africa. Useful to the World!</p>
+<p><b>The Governed Software Platform of the AI Age.</b></p>
+<p>Declare what you know. A court keeps it. The AI model comes last.</p>
 </div>
 ```notes
 Let the picture speak for ten seconds. Then one sentence: "This man is reading code. The wall behind him already says Softanza. Everything I will show tonight is in this picture: knowledge, a place, and a language one can read."

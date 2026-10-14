@@ -26,10 +26,10 @@ Softanza a des milliers de fonctions. On ne les apprend pas une par une. On appr
 
 Trois habitudes complètent le modèle. Une méthode qui finit en <b>-ed</b> rend une copie et laisse l'objet tranquille ; le même verbe sans ce suffixe change l'objet. Une méthode qui finit en <b>Q</b> rend un objet qu'on peut continuer à interroger, donc une phrase peut s'enchaîner. Et si vous ne connaissez pas un nom, demandez : un objet répond à <code>Ask("how do I remove duplicates")</code> par les méthodes qui le font.
 
-<div class="run"><div><div class="lbl">Softanza</div><pre>? Q("softanza is a platform for makers").SpacesRemovedQ().UppercaseQ().Boxed()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>┌──────────────────────────────┐
-│ SOFTANZAISAPLATFORMFORMAKERS │
-└──────────────────────────────┘</pre></div></div>
-<p class="ran">exécuté le 2026-10-01 à 09:26</p>
+<div class="run"><div><div class="lbl">Softanza</div><pre>? Q("softanza is a governed platform").SpacesRemovedQ().UppercaseQ().Boxed()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>┌─────────────────────────────┐
+│ SOFTANZAISAGOVERNEDPLATFORM │
+└─────────────────────────────┘</pre></div></div>
+<p class="ran">exécuté le 2026-10-14 à 21:50, Softanza au commit 4a184e6f0</p>
 
 Au-delà du cours, chacun des vingt-huit domaines a un guide qui regroupe ce que font ses fonctions, avec un exemple sous chacune : <a href="docs.html">la documentation</a> les liste tous, et <a href="glossary.html">le glossaire</a> définit les mots que ce site emploie dans son propre sens.
 
