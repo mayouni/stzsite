@@ -2152,3 +2152,31 @@ next:
 
 note:      the reader is not copied into this site, as the author's page-and-link idea needs none of it
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-15 00:06
+
+subject:   the Softanza book linked from the site, now that it is online
+
+why:       the AYOUNI Press desk announced the book's addresses; the author had asked for the link the day the address exists
+
+did:
+  - checked the five addresses myself, all 200: the English and French readers, the manifest, the index of the books and the public source repository; read the draft banner on the English reader and the 42 pages in the manifest
+  - linked the readers from the book page (the citation and two call-to-action pills), the home page's book section (Read the book / About the book, in each language) and the footer citation of every page
+  - rewrote the book page's stage block: draft, 42 pages, every page carries the banner (Draft · not yet read by the author / Brouillon · traduit d'un brouillon anglais, pas encore lu par l'auteur), web reader in both languages, the manifest and llms.txt for AI agents, the public source repository, no PDF and no ePub online; the word is draft, never proof copy
+  - added the book's readers and manifest to llms.txt for AI agents
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,300 files, search 16 of 16, the floor held on the book page in both languages and themes; I looked at the French page at laptop width
+
+state:
+  book-link:      live on the book page, the home page, the footer and llms.txt
+  relative-links: the readers link back to stzsite by relative path; no stzsite page is moved or renamed by this change
+
+waiting:
+  - STZSITE-PAGE-MOVES: tell the AYOUNI Press desk before any stzsite page is moved or renamed -> me [standing rule from the desk, noted]
+
+next:
+  - me:      commit and push, then tell the two desks
+  - author:  read the English, as the banner says, and tell the book session when it is read
+
+note:      the book's own pages say draft; this site now says the same, in the same words
+```

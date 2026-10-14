@@ -134,7 +134,7 @@ OWNER["book-proof"] = "learn"                       # the proof of a chapter sit
 
 UI = {
   "fr": {
-    "slogan": "La plateforme logicielle gouvernée de l'ère de l'IA", "second": "Déclarez ce que vous savez. Un tribunal le garde. Le modèle d'IA vient en dernier.", "born": "Née en Afrique. Utile au monde !", "book_cite": "Mansour Ayouni, <i>Softanza : la plateforme logicielle gouvernée de l'ère de l'IA</i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.",
+    "slogan": "La plateforme logicielle gouvernée de l'ère de l'IA", "second": "Déclarez ce que vous savez. Un tribunal le garde. Le modèle d'IA vient en dernier.", "born": "Née en Afrique. Utile au monde !", "book_cite": "Mansour Ayouni, <i><a href=\"https://mayouni.github.io/ayouni/books/softanza/fr/\">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA</a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.",
     "skip": "Aller au contenu", "other_lang": "English", "other_code": "en",
     "present": "Présenter le site en diaporama", "github": "Le dépôt Softanza sur GitHub", "menu": "Menu principal", "path": "Pages de la section", "here": "Vous êtes ici", "moved": "Cette page est devenue Éducation",
     "proof_law": "Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s'exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.",
@@ -162,7 +162,7 @@ UI = {
     "cov_row": "Domaine", "cov_present": "Présent", "cov_deep": "Deep", "cov_solid": "Solid", "cov_partial": "Partial", "cov_none": "Absent",
   },
   "en": {
-    "slogan": "The Governed Software Platform of the AI Age", "second": "Declare what you know. A court keeps it. The AI model comes last.", "born": "Born in Africa. Useful to the World!", "book_cite": "Mansour Ayouni, <i>Softanza: The Governed Software Platform of the AI Age</i> (second of the AYOUNI books), AYOUNI, 2026, draft.",
+    "slogan": "The Governed Software Platform of the AI Age", "second": "Declare what you know. A court keeps it. The AI model comes last.", "born": "Born in Africa. Useful to the World!", "book_cite": "Mansour Ayouni, <i><a href=\"https://mayouni.github.io/ayouni/books/softanza/en/\">Softanza: The Governed Software Platform of the AI Age</a></i> (second of the AYOUNI books), AYOUNI, 2026, draft.",
     "skip": "Skip to content", "other_lang": "Français", "other_code": "fr",
     "present": "Present the site as a slideshow", "github": "The Softanza repository on GitHub", "menu": "Main menu", "path": "Pages of the section", "here": "You are here", "moved": "This page became Education",
     "proof_law": "Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.",
