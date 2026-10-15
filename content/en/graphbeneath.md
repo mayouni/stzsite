@@ -1,6 +1,6 @@
 ---
-title: The graph beneath
-title_html: The graph <i>beneath</i>
+title: One graph beneath every domain
+title_html: One graph <i>beneath every domain</i>
 kicker: One structure under every domain
 lede: Beneath every domain is one graph. Code, workflows, knowledge, schemas and the declared world are the same structure, queried and drawn the same way.
 description: The graph beneath every Softanza domain: the second largest domain of the library, the rule engine that governs over it, and the principle that the graph is the product and its layout a view.

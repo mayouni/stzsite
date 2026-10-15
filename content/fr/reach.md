@@ -1,6 +1,6 @@
 ---
-title: Portée
-title_html: <i>Portée</i>
+title: Plateformes, langages et ports
+title_html: Plateformes, langages <i>et ports</i>
 kicker: Là où cela tourne, et ce à quoi cela parle
 lede: Les plateformes sur lesquelles tourne le moteur, les langages qu'il peut appeler, et les ports par lesquels une solution atteint le monde. Ce qui est construit, et ce qui ne l'est pas.
 description: La portée de la fondation Softanza : plateformes, langages externes, la couture polyglotte et les ports de service, chacun avec son étape.

@@ -1,6 +1,6 @@
 ---
-title: The code
-title_html: The <i>code</i>
+title: Code side by side
+title_html: Code <i>side by side</i>
 kicker: Beside Python and JavaScript
 lede: The platform is judged on what its code looks like and what it answers. Four short comparisons, each side run on the night of publication, each output as it came out. Python and JavaScript are excellent languages; the point is not that they fail, it is what a line costs and what it answers.
 description: Four short comparisons between Softanza and Python or JavaScript, each side run on the night of publication.

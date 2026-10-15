@@ -2443,3 +2443,26 @@ state:
 next:
   - me:      commit; wave 4, labels that say what is inside (The code, Depth, Reach, Four widths), each with its redirect, and the Organisations audience doors folded into Journeys
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-15 22:19
+
+subject:   wave 4: six pages renamed to say what is inside, and the foundation's pages under How it is built
+
+why:       the analyst reader opened "The code", "Depth", "Reach", "Four widths", "The foundation" and "The graph beneath" one by one to learn what each was
+
+did:
+  - renamed six titles, in both languages, everywhere the page is named (rail, trail, footer, cross links, heading): Code side by side, What the library holds, Platforms languages and ports, Lanes cores GPU nodes, Five things across every area, One graph beneath every domain; no address changed
+  - made every cross link use the rail's name, so a page has one name across the site
+  - moved One graph beneath every domain and Lanes, cores, GPU, nodes under How it is built, beside Five things across every area; Visual by default keeps the gallery
+  - checked: 0 failures on the example blocks, 0 dangling links, search 16 of 16
+  - confirmed the earlier four commits reached GitHub at 14:07 (origin main 8c7f4d27d)
+
+state:
+  waves:       1 (rail, sections), 2 (merges with redirects), 3 (machine face), 4 (labels) done
+  addresses:   redirects only for proving, customers and the 56 guides; the AYOUNI Press desk checked them
+
+next:
+  - me:      push; tell the AYOUNI Press desk and the book session; then re-run the constitution's audit on the new structure and report it on the Zui page
+  - author:  read the site at laptop and phone width and say what still gets in the way
+```

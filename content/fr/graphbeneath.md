@@ -1,6 +1,6 @@
 ---
-title: Le graphe dessous
-title_html: Le graphe <i>dessous</i>
+title: Un graphe sous chaque domaine
+title_html: Un graphe <i>sous chaque domaine</i>
 kicker: Une structure sous chaque domaine
 lede: Sous chaque domaine il y a un seul graphe. Le code, les flux, la connaissance, les schémas et le monde déclaré sont la même structure, interrogée et dessinée de la même façon.
 description: Le graphe sous chaque domaine de Softanza : le deuxième plus grand domaine de la bibliothèque, le moteur de règles qui gouverne dessus, et le principe selon lequel le graphe est le produit et sa mise en page une vue.

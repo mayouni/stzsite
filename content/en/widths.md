@@ -1,6 +1,6 @@
 ---
-title: Four widths
-title_html: Four <i>widths</i>
+title: Lanes, cores, GPU, nodes
+title_html: Lanes, cores, <i>GPU, nodes</i>
 kicker: One function, four widths
 lede: One function can run on lanes, on cores, on the graphics card or across nodes. The engine chooses by measurement, and the person sees nothing but the speed.
 description: The four widths of Softanza computation: lanes, cores, the graphics card and nodes under one measured dispatch, each width bit-identical or justified in writing, with the stage of each.

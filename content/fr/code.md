@@ -1,6 +1,6 @@
 ---
-title: Le code
-title_html: Le <i>code</i>
+title: Le code côte à côte
+title_html: Le code <i>côte à côte</i>
 kicker: À côté de Python et de JavaScript
 lede: Une plateforme se juge à ce que son code a l'air et à ce qu'il répond. Quatre courtes comparaisons, chaque côté exécuté le soir de la publication, chaque sortie telle qu'elle est sortie. Python et JavaScript sont d'excellents langages ; la question n'est pas qu'ils échouent, c'est ce qu'une ligne coûte et ce qu'elle répond.
 description: Quatre courtes comparaisons entre Softanza et Python ou JavaScript, chaque côté exécuté le soir de la publication.

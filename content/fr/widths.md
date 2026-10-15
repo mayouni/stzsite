@@ -1,6 +1,6 @@
 ---
-title: Quatre largeurs
-title_html: Quatre <i>largeurs</i>
+title: Voies, cœurs, GPU, nœuds
+title_html: Voies, cœurs, <i>GPU, nœuds</i>
 kicker: Une fonction, quatre largeurs
 lede: Une fonction peut tourner sur des voies, sur des cœurs, sur la carte graphique ou à travers des nœuds. Le moteur choisit par la mesure, et la personne ne voit que la vitesse.
 description: Les quatre largeurs du calcul Softanza : voies, cœurs, carte graphique et nœuds sous un seul aiguillage mesuré, chaque largeur identique au bit près ou justifiée par écrit, avec l'étape de chacune.

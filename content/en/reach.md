@@ -1,6 +1,6 @@
 ---
-title: Reach
-title_html: <i>Reach</i>
+title: Platforms, languages and ports
+title_html: Platforms, languages <i>and ports</i>
 kicker: Where it runs, and what it talks to
 lede: The platforms the engine runs on, the languages it can call, and the ports a solution reaches the world through. What is built, and what is not.
 description: The reach of the Softanza foundation: platforms, external languages, the polyglot seam and the service ports, each with its stage.

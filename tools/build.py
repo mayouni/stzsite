@@ -94,12 +94,13 @@ FAMILIES = {
                    ("surfaces", {"fr": "Surfaces", "en": "Surfaces"}), ("first", {"fr": "Votre première application", "en": "Your first application"}),
                    ("store", {"fr": "Le magasin", "en": "The store"}), ("conversations", {"fr": "Conversations", "en": "Conversations"}),
                    ("environment", {"fr": "L'environnement", "en": "The environment"}), ("polyglot", {"fr": "Sept langues, une porte", "en": "Seven languages, one door"})],
-  "visual": [("gallery", {"fr": "La galerie", "en": "The gallery"}), ("widths", {"fr": "Quatre largeurs", "en": "Four widths"}),
-             ("graphbeneath", {"fr": "Le graphe dessous", "en": "The graph beneath"})],
+  "visual": [("gallery", {"fr": "La galerie", "en": "The gallery"})],
   "agentic": [("security", {"fr": "Sécurité", "en": "Security"}), ("aicha", {"fr": "Aïcha", "en": "Aïcha"}),
               ("coding-agents", {"fr": "Pour les agents qui codent", "en": "For coding agents"})],
-  "architecture": [("depth", {"fr": "Profondeur", "en": "Depth"}), ("code", {"fr": "Le code", "en": "The code"}),
-                   ("foundation", {"fr": "La fondation", "en": "The foundation"}), ("reach", {"fr": "Portée", "en": "Reach"}),
+  "architecture": [("depth", {"fr": "Ce que contient la bibliothèque", "en": "What the library holds"}), ("code", {"fr": "Le code côte à côte", "en": "Code side by side"}),
+                   ("foundation", {"fr": "Cinq choses dans tous les domaines", "en": "Five things across every area"}),
+                   ("graphbeneath", {"fr": "Un graphe sous chaque domaine", "en": "One graph beneath every domain"}),
+                   ("widths", {"fr": "Voies, cœurs, GPU, nœuds", "en": "Lanes, cores, GPU, nodes"}), ("reach", {"fr": "Plateformes, langages et ports", "en": "Platforms, languages and ports"}),
                    ("declared", {"fr": "Les langages déclarés", "en": "The declared languages"})],
   "history": [("roots", {"fr": "Racines", "en": "Roots"}), ("whyring", {"fr": "Pourquoi Softanza quitte Ring", "en": "Why Softanza leaves Ring"}),
               ("africa", {"fr": "Née en Afrique", "en": "Born in Africa"})],
@@ -924,9 +925,8 @@ def page_label(lang, page):
         slug = page[:-5]
         for j in load_json("journeys.json")["journeys"]:
             if slug == "journey-" + j["id"]: return j["name"][lang]
-        for _, _, pages in SECTIONS:
-            for sl, lab in pages:
-                if sl == slug: return lab[lang]
+        t_ = tree_label(slug, lang)                      # the rail's name, the same as the page's title (one name per page)
+        if t_ != slug: return t_
         if slug in PAGE_NAMES: return PAGE_NAMES[slug][lang]
         if slug in ("education-record", "education-teach", "natural", "wise", "estate", "education", "start", "agents", "zui"): return {"education-record": {"fr": "Ce qui est prouvé", "en": "What is proved"}, "education-teach": {"fr": "J'enseigne ou je conçois", "en": "I teach or design"}}.get(slug, {}).get(lang, slug)
     return page
