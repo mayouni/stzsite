@@ -1,5 +1,5 @@
 ---
-title: Applications
+title: Build an application
 title_html: <i>Applications</i>
 kicker: What you build with it
 lede: With Softanza you build applications: you declare a world, and it runs. This page maps what holds that up, plane by plane, with each plane's stage, and says which surfaces exist today.

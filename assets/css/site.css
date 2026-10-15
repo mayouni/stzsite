@@ -124,8 +124,7 @@ code,pre,kbd{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
   .nav{order:3;flex:1 0 100%;margin-left:0;overflow-x:auto;flex-wrap:nowrap;gap:0 22px;scrollbar-width:thin;padding-bottom:2px}
 }
 @media (max-width:760px){
-  .path-in,.crumbs-in{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}
-  .crumbs li{white-space:nowrap;min-height:40px}
+  .crumbs li{min-height:40px}
   .brand img{height:22px}
   .tools a.present{display:none}
   .tools{gap:10px}
@@ -553,19 +552,14 @@ ol.narr .ran{display:inline;margin:0}
 .level2 a{display:block;font-size:1.1875rem;line-height:1.35;color:var(--ink-2);text-decoration:none;padding:7px 10px;border-left:3px solid transparent;border-radius:0 8px 8px 0}
 .level2 a:hover{color:var(--accent);background:var(--panel)}
 .level2 a[aria-current]{color:var(--accent);font-weight:700;background:var(--panel);border-left-color:var(--accent)}
-/* narrower than the column and the page together: the bar becomes a row above the page, scrolled sideways like the path */
+/* narrower than the column and the page together: the rail leaves the side. With the script it folds into the
+   "Where you are" line under the menu; without it, it stands above the page as the same vertical list. Never a row
+   that scrolls sideways (Zui 27, 120) */
 @media (max-width:1100px){
   .l2wrap{display:block}
   .has-l2 main .wrap{padding-left:var(--gutter)}
-  .level2{position:static;max-height:none;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--line);padding:6px var(--gutter);scrollbar-width:none}
-  .level2::-webkit-scrollbar{display:none}
-  .level2 .l2-in{display:flex;align-items:center;gap:0 28px;width:max-content}
-  .level2 .l2-group{display:flex;align-items:center}
-  .level2 .l2-group+.l2-group{margin-top:0}
-  .level2 ul{display:flex;gap:0 2px}
-  .level2 .l2-h{margin:0 8px 0 0;white-space:nowrap}
-  .level2 a{white-space:nowrap;border-left:0;border-bottom:3px solid transparent;border-radius:0;padding:8px 8px;min-height:44px;display:flex;align-items:center}
-  .level2 a[aria-current]{background:none;border-bottom-color:var(--accent)}
+  .level2{position:static;max-height:none;overflow:visible;border-right:0;border-bottom:1px solid var(--line);padding:10px var(--gutter) 14px calc(var(--gutter) - 13px)}
+  .has-l2 main > .crumbs .crumbs-in{padding-left:var(--gutter)}
 }
 
 /* the extensions of a method, yes or no: the tick is drawn here, so a row carries almost no extra markup */
@@ -666,3 +660,17 @@ select,select option{font-size:1rem}
 .cta a:hover,.cta a:focus{background:var(--accent)}
 .hero-panel .cta a{background:#fff;color:#111}
 .hero-panel .cta a:hover,.hero-panel .cta a:focus{background:#e9e4f2}
+
+/* the rail (Zui 115, 120): the section's pages, the current page's family nested under it, a generated list under its head.
+   Depth is shown by indentation and a rule, never by a smaller type (Zui 107) */
+.level2 .rail-1 > li + li{margin-top:2px}
+.level2 .rail-2{list-style:none;margin:4px 0 8px 14px;padding:0 0 0 2px;border-left:1px solid var(--line)}
+.level2 .rail-gen{margin:6px 0 8px 14px;padding-left:2px;border-left:1px solid var(--line)}
+.level2 .rail-gen .l2-group + .l2-group{margin-top:12px}
+.level2 a[aria-current=location]{color:var(--ink);font-weight:700;background:none;border-left-color:var(--line-2)}
+/* the trail opens the page itself, above its title, and scrolls away with it (Zui 108, 13) */
+main > .crumbs{border-top:0;background:none}
+.has-l2 main > .crumbs .crumbs-in{max-width:1280px;margin:0;padding:18px var(--gutter) 0 48px}
+details.where nav.level2{border-top:1px solid var(--line);border-bottom:0}
+/* on a narrow screen the trail starts at the page's own gutter */
+@media (max-width:1100px){.has-l2 main > .crumbs .crumbs-in{padding-left:var(--gutter)}}

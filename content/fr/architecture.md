@@ -1,5 +1,5 @@
 ---
-title: Architecture
+title: Comment elle est construite
 title_html: L'<i>architecture</i>
 kicker: Trois couches, un moteur, un dossier par domaine
 lede: Softanza est faite de trois couches d'un même vocabulaire au-dessus d'un seul moteur. Un programme choisit sa couche par le fichier qu'il charge ; le moteur fait le travail lourd derrière une interface C simple ; et chaque domaine est un dossier, avec un objet qui l'ouvre. Cette page dit ce que contient chaque partie aujourd'hui, et où en est l'exécutable unique.

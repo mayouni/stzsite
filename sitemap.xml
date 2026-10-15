@@ -253,9 +253,11 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/narrations/stzlist-diff.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/narrations/stzlist-in-strings-narration.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/narrations/stzlistex-pattern-matching-for-lists.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/narrations/stzlocale-locale-management-the-softanza-way.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/narrations/stzmatrex-declarative-pattern-matching-for-matrices.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/narrations/stzmatrix-matrix-computing-in-softanza-narration.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/narrations/stzmax-stzurl-narration.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/narrations/stznatural-narration.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/narrations/stznatural-vs-ring-naturallib.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/narrations/stznumbex-number-patterns-made-simple.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/narrations/stznumbrex-pattern-language-for-number.html</loc></url>
@@ -330,6 +332,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/methods-x.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/methods-y.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/methods-z.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stz2dlist.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzaccessibilitytree.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzagentdeclaration.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzagentfolder.html</loc></url>
@@ -364,10 +367,13 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzappserver.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzapptopology.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzapriori.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzassociativelist.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzassociativelists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzauth.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzauthdbstore.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzauthmemorystore.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzauthresponder.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzbarchart.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzbarplot/setpercent.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzbarplot/setvalues.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzbarplot.html</loc></url>
@@ -378,6 +384,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzbpmrulebase.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzbuilder.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzbuildplan.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzbytes.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzcache.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzcachestorage.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzcalendar/addholiday.html</loc></url>
@@ -422,6 +429,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzcomplex.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzcomputefederation.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzcomputepipeline.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzconditionalcode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzconditionalregexmaker/ifmatch.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzconditionalregexmaker/pattern.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzconditionalregexmaker.html</loc></url>
@@ -502,6 +510,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzdatetime/tounixtimestamp.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzdatetime/year.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzdatetime.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzdecimalnumber.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzdecimaltobinary.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzdecisiontree/classify.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzdecisiontree/train.html</loc></url>
@@ -538,6 +547,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzedureader.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzemulator.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzenginetimeline.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzentities.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzentity.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzenvironment.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzenvironmentbridge.html</loc></url>
@@ -552,13 +562,16 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzexercisecheck.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzextercode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfacetcatalog.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfalse.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfalseobject.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfalsobject.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfamilyrule.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfamilyruleset.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfamilytree.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfaultrule.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfaultruleset.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfaulttree.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfile.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfileappender.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfileblobstore.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfilecreator.html</loc></url>
@@ -572,6 +585,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfilesystembridge.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfiletree.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfilext.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzflaseobject.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzflowparser.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfolder.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzfolderwatcher.html</loc></url>
@@ -641,6 +655,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid/size.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgridnav.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrids.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzhashlist/classifyinlist.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzhashlist/content.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzhashlist/finditem.html</loc></url>
@@ -660,6 +675,8 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzhashlist/theseitemsz.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzhashlist/valuebykey.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzhashlist.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzhashlists.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzhbarchart.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzhbarplot.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzhexnumber.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzhipaarulebase.html</loc></url>
@@ -678,6 +695,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stziso27001rulebase.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzitem.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzitemcs.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzitems.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzjscodegraph.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzjuliacode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzjwt.html</loc></url>
@@ -690,6 +708,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzknn/classify.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzknn/setk.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzknn.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzknowgraph.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzknowledgegraph/addconversation.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzknowledgegraph/gapsin.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzknowledgegraph/know.html</loc></url>
@@ -991,6 +1010,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlist/withoutduplication.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlist/zerosremoved.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlist.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlist2d.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistbounder.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistchecker.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistclassifier.html</loc></url>
@@ -1010,7 +1030,9 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistmerger.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistmover.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistnamedparams.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofassociativelists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofbytes.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofchars.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofentities.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofgrids.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofhashlists.html</loc></url>
@@ -1048,6 +1070,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofpairs.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofsections.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofsets.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofstrings.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistoftables.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistoftexts/mostrelevantto.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistoftexts/rankedforquery.html</loc></url>
@@ -1059,6 +1082,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistrandom.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistremover.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistreplacer.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistsections.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistsorter.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistsplits.html</loc></url>
@@ -1148,12 +1172,15 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzmatrix/replacesection.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzmatrix/section.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzmatrix.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzmbarchart.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzmbarplot.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzmemoryblobstore.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzmesh.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzmetric.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzmetricfamily.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzmicrophone.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzmultibarchart.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzmultibarplot.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzmultiobjectivesolver.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzmultiplancomparison.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzmusic.html</loc></url>
@@ -1163,7 +1190,9 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stznaivebayes/train.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stznaivebayes/vocabularysize.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stznaivebayes.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stznamedobjects.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stznaturalengine.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stznestedregexmaker.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stznetwork.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stznetworkdiagram.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stznetworkrule.html</loc></url>
@@ -1265,6 +1294,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stznumber/unitsinthousands.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stznumber/whynotexact.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stznumber.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stznumbers.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stznumbrex/match.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stznumbrex.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stznumbuffer/free.html</loc></url>
@@ -1274,6 +1304,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stznumbuffer.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzobjectguard.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzobjective.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzobjects.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzoccurrences.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzoctalnumber.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzoidcclient.html</loc></url>
@@ -1292,6 +1323,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzoptimmodel/vars.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzoptimmodel.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzoptimsentence.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzorderedlist.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzordinal.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzorgchart/addexecutiveposition.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzorgchart/addmanagementposition.html</loc></url>
@@ -1313,6 +1345,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzpair.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzpairoflists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzpairofnumbers.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzpairs.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzpanel.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzparser.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzparsetree.html</loc></url>
@@ -1344,6 +1377,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzprogram.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzproject.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzprologcode.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzpycode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzpycodegraph.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzpythoncode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzqmlcode.html</loc></url>
@@ -1351,6 +1385,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzratelimiter.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzratelimiterresponder.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzrcode.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzreactive.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzreactivefunc.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzreactivehttp.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzreactiveobject.html</loc></url>
@@ -1413,6 +1448,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzrulereport.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsamlidentityprovider.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsamlserviceprovider.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzscatterchart.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzscatterplot.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzscene.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzscenepanel.html</loc></url>
@@ -1423,6 +1459,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsecretstore.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsecretstoreresponder.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsection.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsections.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsecurityattestation.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsecuritydrill.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsecurityevent.html</loc></url>
@@ -1445,6 +1482,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzserviceruleset.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzset.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsetofsections.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsets.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsimilarity/dotproductfromlists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsimilarity/euclideanfromlists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsimilarity/magnitudeof.html</loc></url>
@@ -1484,6 +1522,8 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsplitter/splitbeforepositions.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsplitter.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsqlitedatasource.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsquarechart.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsquareplot.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzstatemachine.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzstochasticsolver.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzstopwatch.html</loc></url>
@@ -1920,6 +1960,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzstylparser.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsuperapp.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsupposition.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsurfacechart.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsurfaceplot.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsystemactor.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzsystemcall.html</loc></url>
@@ -2011,6 +2052,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztimeline/spansbetween.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztimeline/whatsat.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztimeline.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stztimelines.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztimermanager.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztimex.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztoken.html</loc></url>
@@ -2026,6 +2068,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztrainingset.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztranscript.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztree.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stztrue.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztrueobject.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztruthchain.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztsne.html</loc></url>
@@ -2055,6 +2098,8 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzvalidator.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzvaulthttpresolver.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzvaultresolver.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzvbarchart.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzvbarplot.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzvectorindex/cosinefromdistance.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzvectorindex/setmetric.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzvectorindex.html</loc></url>
@@ -2354,9 +2399,11 @@
 <url><loc>https://mayouni.github.io/stzsite/en/narrations/stzlist-diff.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/narrations/stzlist-in-strings-narration.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/narrations/stzlistex-pattern-matching-for-lists.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/narrations/stzlocale-locale-management-the-softanza-way.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/narrations/stzmatrex-declarative-pattern-matching-for-matrices.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/narrations/stzmatrix-matrix-computing-in-softanza-narration.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/narrations/stzmax-stzurl-narration.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/narrations/stznatural-narration.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/narrations/stznatural-vs-ring-naturallib.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/narrations/stznumbex-number-patterns-made-simple.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/narrations/stznumbrex-pattern-language-for-number.html</loc></url>
@@ -2431,6 +2478,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/methods-x.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/methods-y.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/methods-z.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stz2dlist.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzaccessibilitytree.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzagentdeclaration.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzagentfolder.html</loc></url>
@@ -2465,10 +2513,13 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzappserver.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzapptopology.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzapriori.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzassociativelist.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzassociativelists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzauth.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzauthdbstore.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzauthmemorystore.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzauthresponder.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzbarchart.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzbarplot/setpercent.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzbarplot/setvalues.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzbarplot.html</loc></url>
@@ -2479,6 +2530,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzbpmrulebase.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzbuilder.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzbuildplan.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzbytes.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzcache.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzcachestorage.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzcalendar/addholiday.html</loc></url>
@@ -2523,6 +2575,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzcomplex.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzcomputefederation.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzcomputepipeline.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzconditionalcode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzconditionalregexmaker/ifmatch.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzconditionalregexmaker/pattern.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzconditionalregexmaker.html</loc></url>
@@ -2603,6 +2656,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzdatetime/tounixtimestamp.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzdatetime/year.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzdatetime.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzdecimalnumber.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzdecimaltobinary.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzdecisiontree/classify.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzdecisiontree/train.html</loc></url>
@@ -2639,6 +2693,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzedureader.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzemulator.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzenginetimeline.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzentities.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzentity.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzenvironment.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzenvironmentbridge.html</loc></url>
@@ -2653,13 +2708,16 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzexercisecheck.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzextercode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzfacetcatalog.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzfalse.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzfalseobject.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzfalsobject.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzfamilyrule.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzfamilyruleset.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzfamilytree.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzfaultrule.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzfaultruleset.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzfaulttree.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzfile.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzfileappender.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzfileblobstore.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzfilecreator.html</loc></url>
@@ -2673,6 +2731,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzfilesystembridge.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzfiletree.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzfilext.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzflaseobject.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzflowparser.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzfolder.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzfolderwatcher.html</loc></url>
@@ -2742,6 +2801,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid/size.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzgridnav.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrids.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzhashlist/classifyinlist.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzhashlist/content.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzhashlist/finditem.html</loc></url>
@@ -2761,6 +2821,8 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzhashlist/theseitemsz.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzhashlist/valuebykey.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzhashlist.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzhashlists.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzhbarchart.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzhbarplot.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzhexnumber.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzhipaarulebase.html</loc></url>
@@ -2779,6 +2841,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stziso27001rulebase.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzitem.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzitemcs.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzitems.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzjscodegraph.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzjuliacode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzjwt.html</loc></url>
@@ -2791,6 +2854,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzknn/classify.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzknn/setk.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzknn.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzknowgraph.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzknowledgegraph/addconversation.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzknowledgegraph/gapsin.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzknowledgegraph/know.html</loc></url>
@@ -3092,6 +3156,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlist/withoutduplication.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlist/zerosremoved.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlist.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzlist2d.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistbounder.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistchecker.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistclassifier.html</loc></url>
@@ -3111,7 +3176,9 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistmerger.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistmover.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistnamedparams.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofassociativelists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofbytes.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofchars.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofentities.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofgrids.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofhashlists.html</loc></url>
@@ -3149,6 +3216,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofpairs.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofsections.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofsets.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofstrings.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistoftables.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistoftexts/mostrelevantto.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistoftexts/rankedforquery.html</loc></url>
@@ -3160,6 +3228,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistrandom.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistremover.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistreplacer.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzlists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistsections.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistsorter.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistsplits.html</loc></url>
@@ -3249,12 +3318,15 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzmatrix/replacesection.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzmatrix/section.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzmatrix.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzmbarchart.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzmbarplot.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzmemoryblobstore.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzmesh.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzmetric.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzmetricfamily.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzmicrophone.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzmultibarchart.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzmultibarplot.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzmultiobjectivesolver.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzmultiplancomparison.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzmusic.html</loc></url>
@@ -3264,7 +3336,9 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stznaivebayes/train.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stznaivebayes/vocabularysize.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stznaivebayes.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stznamedobjects.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stznaturalengine.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stznestedregexmaker.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stznetwork.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stznetworkdiagram.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stznetworkrule.html</loc></url>
@@ -3366,6 +3440,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stznumber/unitsinthousands.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stznumber/whynotexact.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stznumber.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stznumbers.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stznumbrex/match.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stznumbrex.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stznumbuffer/free.html</loc></url>
@@ -3375,6 +3450,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stznumbuffer.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzobjectguard.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzobjective.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzobjects.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzoccurrences.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzoctalnumber.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzoidcclient.html</loc></url>
@@ -3393,6 +3469,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzoptimmodel/vars.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzoptimmodel.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzoptimsentence.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzorderedlist.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzordinal.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzorgchart/addexecutiveposition.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzorgchart/addmanagementposition.html</loc></url>
@@ -3414,6 +3491,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzpair.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzpairoflists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzpairofnumbers.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzpairs.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzpanel.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzparser.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzparsetree.html</loc></url>
@@ -3445,6 +3523,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzprogram.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzproject.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzprologcode.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzpycode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzpycodegraph.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzpythoncode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzqmlcode.html</loc></url>
@@ -3452,6 +3531,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzratelimiter.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzratelimiterresponder.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzrcode.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzreactive.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzreactivefunc.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzreactivehttp.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzreactiveobject.html</loc></url>
@@ -3514,6 +3594,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzrulereport.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsamlidentityprovider.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsamlserviceprovider.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzscatterchart.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzscatterplot.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzscene.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzscenepanel.html</loc></url>
@@ -3524,6 +3605,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsecretstore.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsecretstoreresponder.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsection.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzsections.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsecurityattestation.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsecuritydrill.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsecurityevent.html</loc></url>
@@ -3546,6 +3628,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzserviceruleset.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzset.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsetofsections.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzsets.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsimilarity/dotproductfromlists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsimilarity/euclideanfromlists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsimilarity/magnitudeof.html</loc></url>
@@ -3585,6 +3668,8 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsplitter/splitbeforepositions.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsplitter.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsqlitedatasource.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzsquarechart.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzsquareplot.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzstatemachine.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzstochasticsolver.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzstopwatch.html</loc></url>
@@ -4021,6 +4106,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzstylparser.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsuperapp.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsupposition.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzsurfacechart.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsurfaceplot.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsystemactor.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzsystemcall.html</loc></url>
@@ -4112,6 +4198,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztimeline/spansbetween.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztimeline/whatsat.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztimeline.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stztimelines.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztimermanager.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztimex.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztoken.html</loc></url>
@@ -4127,6 +4214,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztrainingset.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztranscript.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztree.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stztrue.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztrueobject.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztruthchain.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztsne.html</loc></url>
@@ -4156,6 +4244,8 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzvalidator.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzvaulthttpresolver.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzvaultresolver.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzvbarchart.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzvbarplot.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzvectorindex/cosinefromdistance.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzvectorindex/setmetric.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzvectorindex.html</loc></url>

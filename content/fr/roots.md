@@ -28,7 +28,7 @@ Son slogan était <b>Programming by heart!</b>, programmer avec le cœur. Cette 
 
 Une couverture plus tardive, de 2025, nomme le même projet <i>Softanza Pi : Intelligence Artificielle Souveraine et Facile d'Usage</i>.
 
-Pourquoi le projet quitte Ring est raconté une fois, sur <a href="whyring.html">sa propre page</a>, merci d'abord.
+Pourquoi le projet quitte son ancien langage hôte est raconté une fois, sur <a href="whyring.html">sa propre page</a>, merci d'abord.
 
 ## Ce qui est daté, et ce qui ne l'est pas {#dates}
 

@@ -33,7 +33,7 @@ Un artisan du logiciel transforme ce qu'il sait d'un monde en quelque chose qui 
 <div class="kicker">Porte 2</div>
 ### Analyste fonctionnel ou data
 
-**Ce que vous déclarez :** les entités, les règles et les flux de votre organisation, dans un fichier de connaissance en texte brut. **Ce que vous obtenez :** un monde interrogeable, où le graphe des dépendances et la table des symboles sont le même graphe, plus des tables et des statistiques calculées par le moteur. **Où commencer :** le chapitre 12 du cours, « Enseigner un monde », dans [le lecteur](../reader.html). **Le parcours :** <a href="journey-dataanalyst.html">Le parcours de l'analyste de données</a> ; <a href="journey-analyst.html">celui de l'analyste</a>.
+**Ce que vous déclarez :** les entités, les règles et les flux de votre organisation, dans un fichier de connaissance en texte brut. **Ce que vous obtenez :** un monde interrogeable, où le graphe des dépendances et la table des symboles sont le même graphe, plus des tables et des statistiques calculées par le moteur. **Où commencer :** le chapitre 12 du cours, « Enseigner un monde », dans [le lecteur](../reader.html#fr:1). **Le parcours :** <a href="journey-dataanalyst.html">Le parcours de l'analyste de données</a> ; <a href="journey-analyst.html">celui de l'analyste</a>.
 
 <div class="run"><div><div class="lbl">Softanza</div><pre>o = new stzTable([ [ :region, :population ],
     [ "Agadez", 487620 ], [ "Maradi", 3402094 ], [ "Zinder", 3539764 ] ])

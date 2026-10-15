@@ -1,15 +1,15 @@
 ---
-title: Le livre
+title: Le cours interactif
 title_html: Le <i>livre</i> interactif
 kicker: Étape 2 sur 3 · quinze chapitres, quatre langues
 lede: L'Introduction élémentaire est un cours de quinze chapitres, en anglais, français, arabe et haoussa. Les trois dernières sont des brouillons : aucun locuteur natif n'a encore relu une seule de leurs 35 unités. On le lit dans **le lecteur**, une page de ce site construite en exécutant chaque cellule de chaque chapitre dans chaque langue : la construction est rouge si une cellule échoue ou si la promesse d'un exercice n'est pas tenue.
 description: Le livre interactif de Softanza : quinze chapitres en anglais, français, arabe et haoussa, chaque cellule exécutée.
 ---
 
-<p class="proof">Cette page parle du cours. La plateforme a son propre livre : Mansour Ayouni, <i>Softanza : la plateforme logicielle gouvernée de l'ère de l'IA</i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon. Il n'a pas encore d'adresse publique, et cette page le liera le jour où il en aura une.</p>
+<p class="proof">Cette page parle du cours. La plateforme a son propre livre : Mansour Ayouni, <i>Softanza : la plateforme logicielle gouvernée de l'ère de l'IA</i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon. Il est en ligne, en brouillon : <a href="softanza-book.html">le livre Softanza</a>.</p>
 
 <div class="doors doors-wide">
-<a class="door big" href="../reader.html"><div class="who">Le lecteur</div><div class="what">Ouvrir le livre interactif</div><div class="how">Quinze chapitres · en · fr · ar · ha · trois mondes d'enseignement · chaque cellule a tourné quand la page a été construite le 2026-09-30 à 23:02, en 3 minutes 22 secondes. L'arabe se lit de droite à gauche.</div></a>
+<a class="door big" href="../reader.html#fr:1"><div class="who">Le lecteur</div><div class="what">Ouvrir le livre interactif</div><div class="how">Quinze chapitres · en · fr · ar · ha · trois mondes d'enseignement · chaque cellule a tourné quand la page a été construite le 2026-09-30 à 23:02, en 3 minutes 22 secondes. L'arabe se lit de droite à gauche.</div></a>
 </div>
 
 <div class="figures">

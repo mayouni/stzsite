@@ -1,12 +1,12 @@
 ---
-title: The book
+title: The interactive course
 title_html: The interactive <i>book</i>
 kicker: Step 2 of 3 · fifteen chapters, four languages
 lede: The Elementary Introduction is a course of fifteen chapters, in English, French, Arabic and Hausa. The last three are drafts: no native speaker has reviewed any of their 35 units yet. It is read in **the reader**, a page of this site built by running every cell of every chapter in every language: the build is red if one cell fails or one exercise's promise is not kept.
 description: The Softanza interactive book: fifteen chapters in English, French, Arabic and Hausa, every cell run.
 ---
 
-<p class="proof">This page is about the course. The platform has a book of its own: Mansour Ayouni, <i>Softanza: The Governed Software Platform of the AI Age</i> (second of the AYOUNI books), AYOUNI, 2026, draft. It has no public address yet, and this page will link it the day it has one.</p>
+<p class="proof">This page is about the course. The platform has a book of its own: Mansour Ayouni, <i>Softanza: The Governed Software Platform of the AI Age</i> (second of the AYOUNI books), AYOUNI, 2026, draft. It is online as a draft: <a href="softanza-book.html">the Softanza book</a>.</p>
 
 <div class="doors doors-wide">
 <a class="door big" href="../reader.html"><div class="who">The reader</div><div class="what">Open the interactive book</div><div class="how">Fifteen chapters · en · fr · ar · ha · three teaching worlds · every cell ran when the page was built on 2026-09-30 at 23:02, in 3 minutes 22 seconds. Arabic reads right to left.</div></a>

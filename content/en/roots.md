@@ -26,7 +26,7 @@ Its slogan was <b>Programming by heart!</b> That sentence, and the slogan, are t
 
 A later cover, from 2025, names the same project <i>Softanza Pi: Intelligence Artificielle Souveraine et Facile d'Usage</i>, sovereign and easy-to-use artificial intelligence.
 
-Why the project leaves Ring is told once, on <a href="whyring.html">its own page</a>, thanks first.
+Why the project leaves its former host language is told once, on <a href="whyring.html">its own page</a>, thanks first.
 
 ## What is dated, and what is not {#dates}
 

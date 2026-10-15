@@ -1,5 +1,5 @@
 ---
-title: The estate
+title: The estate, stage by stage
 title_html: The <i>estate</i>
 kicker: Where the platform stands
 lede: Softanza is the foundation of a family: a machine beneath it, a language that runs on it, an intelligence layer to come, applications above, and a harness that builds them all. Every member carries its stage, read in its repository.

@@ -2291,3 +2291,35 @@ next:
 
 note:      the offering page's funding callout and the vision page's 2020 model are the author's own older words and are left as they are
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-15 12:47
+
+subject:   wave 1 of the site's new structure: a vertical rail instead of a second row, seven sections by reader question
+
+why:       the author showed a section with three stacked navigation rows and asked for the structure rethought from the reader's side; six readers then found the same thing, and the constitution already forbade it (Rules 120, 27, 115, 108, 116)
+
+did:
+  - sent six readers through the built site, read-only (a newcomer, a programmer, the French CTO of a bank, a French teacher, an analyst-designer, an AI coding agent) and wrote the decision in doc/STRUCTURE-2026-10-15.md
+  - replaced the second horizontal row with a vertical rail beside every page of a section: the section's pages, the current page's family nested under it, a generated list (areas, classes, narrations, journeys, chapters, recipes) nested under its head
+  - moved the trail into the page, above the title, ending on the page itself; on a screen narrower than 1100 px the rail folds into one "Where you are" line under the menu
+  - re-cut the menu into seven sections by the question a reader comes with: Platform, Proof, Vision, Learn, Reference, Organisations, Start; Intelligence, Compared and Adopt dissolve into them; no address moved
+  - gave five pages one name across menu, rail, trail and title, and fixed the stale lines the readers found (the book's address, 134 vs 135 narrations, two narrations linked to GitHub, the reader opening in English from four French pages)
+  - fixed four lines that named the former language outside its own page, a check failing since the Ring page
+  - brought the build back to 41 seconds from 558: the rail is drawn as each page is written, and the sitemap no longer opens 4,300 pages to find two redirects (measured with the profiler: 501 s were file opens at 26 ms each)
+  - wrote the StzZui finding as prompt 52 in softanza/prompts (the law covered the screenshot; Rules 114 and 27 collide; four possible gaps)
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,300 files, search 16 of 16, the floor held on the pages checked in both themes; refreshed all 371 screenshots of the render plan; looked at a family page, a method page and a phone
+
+state:
+  navigation:   menu of 7, rail on 4,204 pages, trail in every page, no second row anywhere
+  addresses:    unchanged; the AYOUNI Press readers' relative links still land
+
+waiting:
+  - STZZUI-READINGDEPTH-01: the four possible gaps of prompt 52 -> stzzui [routed in prompts/52 and CONCLUSIONS]
+
+next:
+  - me:      wave 2, the merges with redirects: one page per area (atlas and guide), the three projects told once, one Education hub, one page for organisations by the CTO's five questions; the AYOUNI Press desk is told before any address redirects
+  - author:  none
+
+note:      the 2026-10-02 rule "three menu levels and never more" is replaced by two levels on screen, the rest nested in the rail
+```

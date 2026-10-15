@@ -50,11 +50,11 @@ Le premier lancement prend environ sept secondes, parce que la bibliothèque et 
 
 ## La première narration {#narration}
 
-Une narration est un document qui raconte une partie de la bibliothèque comme une histoire, en code écrit pour être exécuté au fil de la lecture. Commencez par <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-mental-mode-narration.md">le modèle mental</a>, puis <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md">les agents qui ne peuvent pas vous nuire</a> ; les deux s'ouvrent sur GitHub. Pour voir une narration jugée bloc par bloc, ouvrez <a href="narrations/stz-repetition-with-elegance-narration.html">Repetition with Elegance</a>, exécutée pour ce site : ses six blocs affichent ce qu'ils promettent. Les 134 sont listées sous Apprendre, dans Narrations.
+Une narration est un document qui raconte une partie de la bibliothèque comme une histoire, en code écrit pour être exécuté au fil de la lecture. Commencez par <a href="narrations/stz-mental-mode-narration.html">le modèle mental</a>, puis <a href="narrations/stz-agents-that-cannot-hurt-you-narration.html">les agents qui ne peuvent pas vous nuire</a>. Pour voir une narration jugée bloc par bloc, ouvrez <a href="narrations/stz-repetition-with-elegance-narration.html">Repetition with Elegance</a>, exécutée pour ce site : ses six blocs affichent ce qu'ils promettent. Les 135 sont listées sous Apprendre, dans Narrations.
 
 ## Le lecteur du cours {#reader}
 
-Le lecteur est une page de ce site : <a href="../reader.html">ouvrir le lecteur</a>. Il a été construit depuis la bibliothèque le 2026-09-30, et la page Apprendre dit comment apprendre avec lui, étape par étape. Pour le reconstruire vous-même, depuis votre copie du dépôt :
+Le lecteur est une page de ce site : <a href="../reader.html#fr:1">ouvrir le lecteur</a>. Il a été construit depuis la bibliothèque le 2026-09-30, et la page Apprendre dit comment apprendre avec lui, étape par étape. Pour le reconstruire vous-même, depuis votre copie du dépôt :
 
 <pre>cd libraries/stzlib/base/education/tools
 ring build_reader.ring reader.html</pre>

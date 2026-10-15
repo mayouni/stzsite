@@ -82,23 +82,22 @@
   }
 })();
 
-/* a phone pins one row: the main menu. The section's path and the trail fold into one line that scrolls away and opens on request.
-   Without this script nothing is lost: the path and the trail stay where they are, pinned. (4.6, the phone budget) */
+/* on a screen narrower than the rail and the page together, the menu is the one row that stays; the rail folds into one
+   line under it that opens on request, "Where you are: Section > Page" (Zui 120: the second level is vertical, never a
+   second row). Without this script nothing is lost: the rail stands above the page as the same list */
 (function () {
-  if (!window.matchMedia || !window.matchMedia('(max-width:760px)').matches) return;
-  var top = document.querySelector('header.top'); if (!top) return;
-  var path = top.querySelector('nav.path'), crumbs = top.querySelector('nav.crumbs');
-  if (!path && !crumbs) return;
-  var cur = (crumbs && crumbs.querySelector('li[aria-current]')) || (path && path.querySelector('a[aria-current]'));
+  if (!window.matchMedia || !window.matchMedia('(max-width:1100px)').matches) return;
+  var rail = document.querySelector('nav.level2.rail'); if (!rail) return;
   var fr = (document.documentElement.lang || '').indexOf('fr') === 0;
+  var sec = rail.getAttribute('aria-label') || '';
+  var cur = rail.querySelector('a[aria-current=page]') || rail.querySelectorAll('a[aria-current=location]');
+  if (cur && cur.length !== undefined) cur = cur.length ? cur[cur.length - 1] : null;
+  var here = cur ? cur.textContent.replace(/\s+/g, ' ').trim() : '';
   var d = document.createElement('details'); d.className = 'where';
   var s = document.createElement('summary');
-  var here = cur ? cur.textContent.replace(/\s+/g, ' ').trim() : '', h1 = document.querySelector('h1'), t = h1 ? h1.textContent.replace(/\s+/g, ' ').trim() : '';
-  if (!crumbs && t && t !== here) here = (here ? here + ' › ' : '') + t;
-  s.textContent = (fr ? 'Où vous êtes : ' : 'Where you are: ') + here;
-  d.appendChild(s);
-  if (path) d.appendChild(path);
-  if (crumbs) d.appendChild(crumbs);
+  s.textContent = (fr ? 'Où vous êtes : ' : 'Where you are: ') + sec + (here && here !== sec ? ' › ' + here : '');
+  d.appendChild(s); d.appendChild(rail);
+  var top = document.querySelector('header.top');
   top.parentNode.insertBefore(d, top.nextSibling);
   if (window.__stzPin) window.__stzPin();
 })();

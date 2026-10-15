@@ -1,5 +1,5 @@
 ---
-title: Le domaine
+title: Le patrimoine, étape par étape
 title_html: Le <i>domaine</i>
 kicker: Où se tient la plateforme
 lede: Softanza est la fondation d'une famille : une machine en dessous, une langue qui tourne dessus, une couche d'intelligence à venir, des applications au-dessus, et un harnais qui les construit toutes. Chaque membre porte son stade, lu dans son dépôt.

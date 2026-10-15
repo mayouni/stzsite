@@ -1,5 +1,5 @@
 ---
-title: Architecture
+title: How it is built
 title_html: The <i>architecture</i>
 kicker: Three layers, one engine, a folder per domain
 lede: Softanza is three layers of one vocabulary over one engine. A program chooses its layer by the file it loads; the engine does the heavy work behind a plain C interface; and every domain is a folder with an object that opens it. This page says what each part holds today, and where the single executable stands.

@@ -1,5 +1,5 @@
 ---
-title: Applications
+title: Construire une application
 title_html: <i>Applications</i>
 kicker: Ce que l'on construit avec
 lede: Avec Softanza on construit des applications : on déclare un monde, et il tourne. Cette page cartographie ce qui le porte, plan par plan, avec l'étape de chacun, et dit quelles surfaces existent aujourd'hui.

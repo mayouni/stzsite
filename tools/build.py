@@ -37,91 +37,85 @@ LANGS = ("fr", "en")
 GH = "https://github.com/mayouni/stzlib/tree/main/libraries/stzlib/"
 
 # ----------------------------------------------------------------------------
-# the tree: six sections, each with its pages; the first page is the landing
+# the tree (doc/STRUCTURE-2026-10-15.md): seven sections, cut by the question the reader comes with, and under some pages a
+# family of their own. Two navigation levels on screen, never more: the main menu, and a rail beside the page that shows the
+# section's pages with the current page's family nested under it (Zui 120: the second level turns vertical; Zui 115: the whole
+# branch is visible from anywhere in it). A page is called by its title everywhere; a section's first page by the section's name.
 SECTIONS = [
   ("platform", {"fr": "Plateforme", "en": "Platform"}, [
      ("platform", {"fr": "Plateforme", "en": "Platform"}),
-     ("platforms", {"fr": "Plateforme de plateformes", "en": "Platform of platforms"}),
-     ("architecture", {"fr": "Architecture", "en": "Architecture"}),
-     ("craft", {"fr": "Le métier", "en": "The craft"}),
      ("areas", {"fr": "Les domaines", "en": "The areas"}),
-     ("code", {"fr": "Le code", "en": "The code"}),
-     ("depth", {"fr": "Profondeur", "en": "Depth"}),
-     ("foundation", {"fr": "La fondation", "en": "The foundation"})]),
-  ("compare", {"fr": "Comparée", "en": "Compared"}, [
+     ("applications", {"fr": "Construire une application", "en": "Build an application"}),
+     ("visual", {"fr": "Visuel par défaut", "en": "Visual by default"}),
+     ("agentic", {"fr": "Des agents qui ne peuvent pas nuire", "en": "Agents that cannot hurt you"}),
+     ("architecture", {"fr": "Comment elle est construite", "en": "How it is built"})]),
+  ("proof", {"fr": "Preuves", "en": "Proof"}, [
+     ("proven", {"fr": "Preuves", "en": "Proof"}),
+     ("estate", {"fr": "Le patrimoine, étape par étape", "en": "The estate, stage by stage"}),
+     ("forged", {"fr": "Forgée en projets", "en": "Forged in projects"}),
+     ("proving", {"fr": "Terrains d'épreuve", "en": "Proving grounds"}),
+     ("real", {"fr": "Applications réelles", "en": "Real applications"}),
+     ("customers", {"fr": "Clients", "en": "Customers"}),
      ("compare", {"fr": "Comparée", "en": "Compared"})]),
-  ("narrations", {"fr": "Narrations", "en": "Narrations"}, [
-     ("narrations", {"fr": "Narrations", "en": "Narrations"}),
-     ("narrations-performance", {"fr": "Série performance", "en": "Performance series"}),
-     ("narrations-security", {"fr": "Série sécurité", "en": "Security series"}),
-     ("narrations-delivery", {"fr": "Série livraison", "en": "Delivery series"})]),
   ("vision", {"fr": "Vision", "en": "Vision"}, [
      ("vision", {"fr": "Vision", "en": "Vision"}),
      ("principles", {"fr": "Douze principes", "en": "Twelve principles"}),
-     ("estate", {"fr": "Le domaine", "en": "The estate"}),
      ("history", {"fr": "Depuis les principes", "en": "From first principles"}),
-     ("forged", {"fr": "Forgée en projets", "en": "Forged in projects"}),
      ("sovereignty", {"fr": "Souveraineté", "en": "Sovereignty"}),
-     ("africa", {"fr": "Née en Afrique", "en": "Born in Africa"}),
-     ("roots", {"fr": "Racines", "en": "Roots"})]),
-  ("agentic", {"fr": "Intelligence", "en": "Intelligence"}, [
-     ("agentic", {"fr": "Intelligence", "en": "Intelligence"}),
      ("wise", {"fr": "Wise coding", "en": "Wise coding"}),
      ("languages", {"fr": "Langue des langues", "en": "Language of languages"}),
-     ("zui", {"fr": "Zui", "en": "Zui"}),
      ("refinement", {"fr": "Raffinement", "en": "Refinement"}),
-     ("agents", {"fr": "Pour les agents", "en": "For agents"}),
-     ("coding-agents", {"fr": "Agents qui codent", "en": "Coding agents"}),
-     ("security", {"fr": "Sécurité", "en": "Security"}),
-     ("aicha", {"fr": "Aïcha", "en": "Aïcha"})]),
+     ("zui", {"fr": "Constitution Zui", "en": "Zui constitution"}),
+     ("softanza-book", {"fr": "Le livre Softanza", "en": "The Softanza book"})]),
   ("learn", {"fr": "Apprendre", "en": "Learn"}, [
      ("learn", {"fr": "Apprendre", "en": "Learn"}),
-     ("book", {"fr": "Le livre", "en": "The book"}),
-     ("softanza-book", {"fr": "Le livre Softanza", "en": "The Softanza book"}),
-     ("docs", {"fr": "Documentation", "en": "Documentation"}),
-     ("howto", {"fr": "Comment faire", "en": "How-to"}),
-     ("reference", {"fr": "Référence", "en": "Reference"}),
-     ("ask", {"fr": "Interroger", "en": "Ask the library"}),
+     ("craft", {"fr": "Comment Softanza s'écrit", "en": "How Softanza is written"}),
+     ("book", {"fr": "Le cours interactif", "en": "The interactive course"}),
+     ("narrations", {"fr": "Narrations", "en": "Narrations"}),
      ("education", {"fr": "Éducation", "en": "Education"}),
      ("glossary", {"fr": "Glossaire", "en": "Glossary"})]),
-  ("offering", {"fr": "Adopter", "en": "Adopt"}, [
-     ("offering", {"fr": "Adopter", "en": "Adopt"}),
+  ("reference", {"fr": "Référence", "en": "Reference"}, [
+     ("reference", {"fr": "Référence", "en": "Reference"}),
+     ("howto", {"fr": "Comment faire", "en": "How-to"}),
+     ("docs", {"fr": "Documentation", "en": "Documentation"}),
+     ("ask", {"fr": "Interroger la bibliothèque", "en": "Ask the library"}),
+     ("agents", {"fr": "Pour les agents", "en": "For agents"})]),
+  ("offering", {"fr": "Organisations", "en": "Organisations"}, [
+     ("offering", {"fr": "Organisations", "en": "Organisations"}),
      ("journeys", {"fr": "Parcours", "en": "Journeys"}),
-     ("proving", {"fr": "Terrains d'épreuve", "en": "Proving grounds"}),
-     ("solutions", {"fr": "Solutions", "en": "Solutions"}),
-     ("institutions", {"fr": "Pour l'éducation", "en": "For education"}),
-     ("partners", {"fr": "Partenaires", "en": "Partners"}),
-     ("certification", {"fr": "Certification", "en": "Certification"}),
+     ("solutions", {"fr": "Solutions pour les organisations", "en": "Solutions for organisations"}),
      ("editions", {"fr": "Éditions", "en": "Editions"}),
-     ("customers", {"fr": "Clients", "en": "Customers"})]),
+     ("partners", {"fr": "Partenaires", "en": "Partners"}),
+     ("certification", {"fr": "Certification", "en": "Certification"})]),
   ("start", {"fr": "Démarrer", "en": "Start"}, [
      ("start", {"fr": "Démarrer", "en": "Start"})]),
 ]
-# Education is one page with three doors (the author, 2026-10-03: learning, teaching and pedagogic design are one flow, not Teaching and
-# Pedagogy): the doors are pages of the Learn section one level below it, shown in the left bar, never a third entry of the path
-SUBPAGES = {"education-self": "education", "education-teach": "education", "education-programme": "education", "education-record": "education"}
-EDU_BAR = {"fr": ("Éducation", [("education", "Les trois portes"), ("education-self", "J'apprends seul"), ("education-teach", "J'enseigne ou je conçois"), ("education-programme", "Je dirige un programme"), ("education-record", "Ce qui est prouvé")]),
-           "en": ("Education", [("education", "The three doors"), ("education-self", "I learn by myself"), ("education-teach", "I teach or design"), ("education-programme", "I run a programme"), ("education-record", "What is proved")])}
-# The Craft page is the style's page (12.12) and the paradigms that follow from it are its chapters, shown in the same left bar
-SUBPAGES.update({p: "foundation" for p in ("graphbeneath", "widths", "visual", "gallery", "proven", "reach", "declared")})
-SUBPAGES.update({"whyring": "roots"})
-SUBPAGES.update({p: "platforms" for p in ("applications", "world", "host", "device", "surfaces", "real", "first", "store", "conversations", "environment", "polyglot")})
-SUBPAGES.update({p: "craft" for p in ("goals", "patterns", "grammar", "way", "natural", "byexample", "softanzuter", "innovations")})
-CRAFT_BAR = {"fr": ("Comment Softanza s'écrit", [("craft", "Comment Softanza s'écrit"), ("goals", "Sept buts de conception"), ("patterns", "Langages de motifs"), ("grammar", "La grammaire des fonctions"), ("way", "La manière Softanza"), ("natural", "Naturel, et exécutable"), ("byexample", "Par l'exemple"),
-                                                    ("softanzuter", "Le Softanzuter"), ("innovations", "Les innovations")]),
-             "en": ("How Softanza is written", [("craft", "How Softanza is written"), ("goals", "Seven design goals"), ("patterns", "Pattern languages"), ("grammar", "The grammar of functions"), ("way", "The Softanza way"), ("natural", "Natural, and executable"), ("byexample", "By example"),
-                                                ("softanzuter", "The Softanzuter"), ("innovations", "Innovations")])}
-PLATFORMS_BAR = {"fr": ("Applications", [("applications", "Applications"), ("world", "Le monde"), ("platforms", "Plateforme de plateformes"), ("host", "L'hôte"), ("device", "De l'éditeur à l'appareil"), ("surfaces", "Surfaces"),
-                                           ("real", "Applications réelles"), ("first", "Votre première application"), ("store", "Le magasin"), ("conversations", "Conversations"),
-                                           ("environment", "L'environnement"), ("polyglot", "Sept langues, une porte")]),
-                 "en": ("Applications", [("applications", "Applications"), ("world", "The world"), ("platforms", "Platform of platforms"), ("host", "The host"), ("device", "From the editor to the device"), ("surfaces", "Surfaces"),
-                                         ("real", "Real applications"), ("first", "Your first application"), ("store", "The store"), ("conversations", "Conversations"),
-                                         ("environment", "The environment"), ("polyglot", "Seven languages, one door")])}
-ROOTS_BAR = {"fr": ("Racines", [("roots", "Racines"), ("whyring", "Pourquoi Softanza quitte Ring")]),
-             "en": ("Roots", [("roots", "Roots"), ("whyring", "Why Softanza leaves Ring")])}
-FOUNDATION_BAR = {"fr": ("La fondation", [("foundation", "La fondation"), ("graphbeneath", "Le graphe dessous"), ("widths", "Quatre largeurs"), ("visual", "Visuel par défaut"), ("gallery", "La galerie"), ("proven", "Prouvé"), ("reach", "Portée"), ("declared", "Les langages déclarés")]),
-                  "en": ("The foundation", [("foundation", "The foundation"), ("graphbeneath", "The graph beneath"), ("widths", "Four widths"), ("visual", "Visual by default"), ("gallery", "The gallery"), ("proven", "Proven"), ("reach", "Reach"), ("declared", "The declared languages")])}
-BARS = {"foundation": FOUNDATION_BAR, "education": EDU_BAR, "craft": CRAFT_BAR, "platforms": PLATFORMS_BAR, "roots": ROOTS_BAR}
+FAMILIES = {
+  "applications": [("world", {"fr": "Le monde", "en": "The world"}), ("platforms", {"fr": "Plateforme de plateformes", "en": "Platform of platforms"}),
+                   ("host", {"fr": "L'hôte", "en": "The host"}), ("device", {"fr": "De l'éditeur à l'appareil", "en": "From the editor to the device"}),
+                   ("surfaces", {"fr": "Surfaces", "en": "Surfaces"}), ("first", {"fr": "Votre première application", "en": "Your first application"}),
+                   ("store", {"fr": "Le magasin", "en": "The store"}), ("conversations", {"fr": "Conversations", "en": "Conversations"}),
+                   ("environment", {"fr": "L'environnement", "en": "The environment"}), ("polyglot", {"fr": "Sept langues, une porte", "en": "Seven languages, one door"})],
+  "visual": [("gallery", {"fr": "La galerie", "en": "The gallery"}), ("widths", {"fr": "Quatre largeurs", "en": "Four widths"}),
+             ("graphbeneath", {"fr": "Le graphe dessous", "en": "The graph beneath"})],
+  "agentic": [("security", {"fr": "Sécurité", "en": "Security"}), ("aicha", {"fr": "Aïcha", "en": "Aïcha"}),
+              ("coding-agents", {"fr": "Pour les agents qui codent", "en": "For coding agents"})],
+  "architecture": [("depth", {"fr": "Profondeur", "en": "Depth"}), ("code", {"fr": "Le code", "en": "The code"}),
+                   ("foundation", {"fr": "La fondation", "en": "The foundation"}), ("reach", {"fr": "Portée", "en": "Reach"}),
+                   ("declared", {"fr": "Les langages déclarés", "en": "The declared languages"})],
+  "history": [("roots", {"fr": "Racines", "en": "Roots"}), ("whyring", {"fr": "Pourquoi Softanza quitte Ring", "en": "Why Softanza leaves Ring"}),
+              ("africa", {"fr": "Née en Afrique", "en": "Born in Africa"})],
+  "craft": [("goals", {"fr": "Sept buts de conception", "en": "Seven design goals"}), ("patterns", {"fr": "Langages de motifs", "en": "Pattern languages"}),
+            ("grammar", {"fr": "La grammaire des fonctions", "en": "The grammar of functions"}), ("way", {"fr": "La manière Softanza", "en": "The Softanza way"}),
+            ("natural", {"fr": "Naturel, et exécutable", "en": "Natural, and executable"}), ("byexample", {"fr": "Par l'exemple", "en": "By example"}),
+            ("softanzuter", {"fr": "Le Softanzuter", "en": "The Softanzuter"}), ("innovations", {"fr": "Les innovations", "en": "Innovations"})],
+  "narrations": [("narrations-performance", {"fr": "Série performance", "en": "Performance series"}), ("narrations-security", {"fr": "Série sécurité", "en": "Security series"}),
+                 ("narrations-delivery", {"fr": "Série livraison", "en": "Delivery series"})],
+  "education": [("education-self", {"fr": "Apprendre seul", "en": "Learn by yourself"}), ("education-teach", {"fr": "Enseigner, ou concevoir des cours", "en": "Teach, or design courses"}),
+                ("education-programme", {"fr": "Diriger un programme", "en": "Run a programme"}), ("institutions", {"fr": "Softanza pour l'éducation", "en": "Softanza for education"}),
+                ("education-record", {"fr": "Ce qui est prouvé", "en": "What is proved"})],
+}
+SUBPAGES = {child: parent for parent, kids in FAMILIES.items() for child, _ in kids}
 OLD_PAGES = {"teaching": "education", "pedagogy": "education"}        # the old addresses lead to the new page
 GENERATED = {"reference", "narrations", "howto", "ask", "journeys", "narrations-performance", "narrations-security", "narrations-delivery"}   # built by code, not from a .md
 OWNER = {}                                          # page -> its section
@@ -129,8 +123,19 @@ for sec, _, pages in SECTIONS:
     for slug, _ in pages: OWNER[slug] = sec
 for _sp in SUBPAGES: OWNER[_sp] = OWNER[SUBPAGES[_sp]]
 OWNER["atlas-group"] = "platform"
-OWNER["guide"] = "learn"                            # a guide page sits under Documentation
-OWNER["book-proof"] = "learn"                       # the proof of a chapter sits under The book
+OWNER["guide"] = "reference"                        # a guide page sits under Documentation
+OWNER["book-proof"] = "learn"                       # the proof of a chapter sits under The interactive course
+GEN_ANCHOR = {"atlas-group": "areas", "guide": "docs", "book-proof": "book"}   # a generated page hangs under this page of its section
+
+def tree_label(slug, lang):
+    """a page's name in the rail and the trail: its section's name for a section's first page, its title elsewhere"""
+    for _, _, pages in SECTIONS:
+        for p_, lab in pages:
+            if p_ == slug: return lab[lang]
+    for kids in FAMILIES.values():
+        for p_, lab in kids:
+            if p_ == slug: return lab[lang]
+    return slug
 
 UI = {
   "fr": {
@@ -255,42 +260,41 @@ def wordmark(rel):
             f'<img class="wm-dark" src="{rel}assets/img/wordmark-dark.png" alt="" width="660" height="105">')
 
 def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_lang="", tail=None, here_label=None):
-    """the main menu, and under it the path of the current section. A page deeper than the section's own pages passes its
-    `tail`, [(label, href or None)], and the header pins where the reader is: Learn > Reference > String > stzString"""
+    """the main menu, and the page's trail and rail. A page deeper than the section's own pages passes its `tail`,
+    [(label, href or None)], and the trail goes on to it: Reference > String > stzString > Replace(). The trail and the rail are
+    placed beside and inside <main> by apply_rails(), at the end of the build, from the marker this function leaves."""
     ui = UI[lang]
     if nav_rel is None: nav_rel = nav_prefix(rel, lang)
     key = page_key or slug
     sec = OWNER.get(key)
-    current_page = {"atlas-group": "areas", "guide": "docs", "book-proof": "book", **SUBPAGES}.get(key, key)
+    cur = GEN_ANCHOR.get(key, key)
+    deep = key in GEN_ANCHOR or bool(tail)
     links = "".join(f'<a href="{nav_rel}{pages[0][0]}.html"{" aria-current=page" if s == sec else ""}>{esc(lab[lang])}</a>'
                     for s, lab, pages in SECTIONS)
     other = ui["other_code"]
     if other_href is None: other_href = f"../{other}/{slug}.html"
-    path = ""
-    if sec:
-        pages = next(p for s, _, p in SECTIONS if s == sec)
-        if len(pages) > 1:
-            path = ('\n  <nav class="path" aria-label="' + esc(ui["path"]) + '"><div class="path-in">'
-                    + "".join(f'<a href="{nav_rel}{p}.html"{" aria-current=page" if p == current_page else ""}>{esc(lab[lang])}</a>' for p, lab in pages)
-                    + '</div></nav>')
     crumbs = ""
-    # Rule 108: every page but the home page shows its path from the root, every step but the current one a link. The first step is
-    # the bare root address: the reader's language is kept by the page they came from, so the link needs no query. A page outside
-    # any section (the presentation) names itself with `here_label`; the two pages that only redirect carry no trail.
+    # Rule 108: every page but the home page shows its path from the root, every step but the current one a link, and the path ends
+    # on the page the reader is on (Rule 115). The first step is the bare root address: the reader's language is kept by the page
+    # they came from. A page outside any section (the presentation) names itself with `here_label`.
     if sec or here_label:
         root = ("Softanza", f"{rel}index.html")
         if sec:
-            first = next(p for s_, _, p in SECTIONS if s_ == sec)
-            items = [root, (next(lab for s_, lab, _ in SECTIONS if s_ == sec)[lang], f"{nav_rel}{first[0][0]}.html")]
-            if current_page != first[0][0]:
-                mine = next((lab for p_, lab in first if p_ == current_page), None)
-                if mine: items.append((mine[lang], f"{nav_rel}{current_page}.html"))
+            first = next(p for s_, _, p in SECTIONS if s_ == sec)[0][0]
+            items = [root, (next(lab for s_, lab, _ in SECTIONS if s_ == sec)[lang], f"{nav_rel}{first}.html")]
+            parent = SUBPAGES.get(cur)
+            for c in ([parent] if parent else []) + [cur]:
+                if c != first: items.append((tree_label(c, lang), f"{nav_rel}{c}.html"))
             items += list(tail or [])
         else:
             items = [root, (here_label, None)]
         last = len(items) - 1
         lis = "".join((f'<li><a href="{h}">{esc(l)}</a></li>' if h and k < last else f'<li class="here-crumb" aria-current="page">{esc(l)}</li>') for k, (l, h) in enumerate(items))
-        crumbs = f'\n  <nav class="crumbs" aria-label="Breadcrumb"><ol class="crumbs-in">{lis}</ol></nav>'
+        crumbs = f'<nav class="crumbs" aria-label="Breadcrumb"><ol class="crumbs-in">{lis}</ol></nav>'
+    marker = ""
+    if sec:
+        marker = "\n<!--rail " + json.dumps({"lang": lang, "sec": sec, "cur": cur, "deep": deep, "nav_rel": nav_rel}) + "-->"
+    path = ""
     dl = f' data-lang="{data_lang}"' if data_lang else ""
     home = f"{rel}index.html" + (f"?lang={lang}" if rel else "")
     tools = (f'<div class="tools"><a class="lang" href="{other_href}" lang="{other}" hreflang="{other}">{ui["other_lang"]}</a></div>')
@@ -304,8 +308,8 @@ def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_l
     {brand}
     <nav class="nav" aria-label="{esc(ui["menu"])}">{links}</nav>
     {tools}
-  </div>{path}{crumbs}
-</header>"""
+  </div>
+</header>{marker}{(chr(10) + '<!--crumbs ' + crumbs + '-->') if crumbs and sec else (chr(10) + crumbs if crumbs else '')}"""
 
 def footer(lang, rel, pagers_html="", nav_rel=None, scripts=True, data_lang=""):
     """a site map: every section and every page, then the signature"""
@@ -495,6 +499,72 @@ def page_shell(lang, slug, title, description, kicker, title_html, lede, body_ht
     return page
 
 # ----------------------------------------------------------------------------
+# The rail (Zui 115, 120): the second level of the navigation, vertical, beside the page. It lists the section's pages; under the
+# page the reader is in, its family; under a page that heads a generated family (the areas, the guides, the classes, the narrations,
+# the chapters, the recipes, the journeys), the list its own builder drew. Drawn once for every page, after every builder has written.
+RAIL_RX = re.compile(r"\n?<!--rail (\{.*?\})-->")
+CRUMBS_RX = re.compile(r"\n?<!--crumbs (<nav class=\"crumbs\".*?</nav>)-->", re.S)
+BAR_RX = re.compile(r'<nav class="level2"[^>]*><div class="l2-in">(.*?)</div></nav>', re.S)
+
+def rail_html(lang, sec, cur, deep, nav_rel, inner):
+    label, pages = next((lab, p) for s_, lab, p in SECTIONS if s_ == sec)
+    parent = SUBPAGES.get(cur)
+    lis = []
+    for slug, lab in pages:
+        state = "page" if (slug == cur and not deep) else ("location" if slug in (parent, cur) else "")
+        sub = ""
+        if slug in FAMILIES and slug in (cur, parent):
+            kids = []
+            for kid, klab in FAMILIES[slug]:
+                kstate = "page" if (kid == cur and not deep) else ("location" if kid == cur else "")
+                kin = f'<div class="rail-gen">{inner}</div>' if (deep and kid == cur and inner) else ""
+                kids.append(f'<li><a href="{nav_rel}{kid}.html"{f" aria-current={kstate}" if kstate else ""}>{esc(klab[lang])}</a>{kin}</li>')
+            sub = '<ul class="rail-2">' + "".join(kids) + "</ul>"
+        if slug == cur and inner:
+            sub += f'<div class="rail-gen">{inner}</div>'
+        lis.append(f'<li><a href="{nav_rel}{slug}.html"{f" aria-current={state}" if state else ""}>{esc(lab[lang])}</a>{sub}</li>')
+    return f'<nav class="level2 rail" aria-label="{esc(label[lang])}"><div class="l2-in"><ul class="rail-1">{"".join(lis)}</ul></div></nav>'
+
+RAILS = {"pages": 0}
+
+def rail_transform(s):
+    """the rail and the trail of one page, drawn in memory from the marker its header left"""
+    m = RAIL_RX.search(s)
+    if not m: return s
+    d = json.loads(m.group(1))
+    s = RAIL_RX.sub("", s, count=1)
+    cm = CRUMBS_RX.search(s)
+    crumbs = cm.group(1) if cm else ""
+    s = CRUMBS_RX.sub("", s, count=1)
+    inner = ""
+    bm = BAR_RX.search(s)
+    if bm:
+        inner = bm.group(1)
+        s = s[:bm.start()] + "<!--RAIL-->" + s[bm.end():]
+    elif s.count('<main id="main"') == 1 and s.count("</main>") == 1:
+        s = level2.wrap(s, "<!--RAIL-->")
+    else:
+        return s
+    s = s.replace("<!--RAIL-->", rail_html(d["lang"], d["sec"], d["cur"], d["deep"], d["nav_rel"], inner), 1)
+    if crumbs:
+        s = re.sub(r'(<main id="main"[^>]*>)', lambda mm: mm.group(1) + chr(10) + crumbs, s, count=1)
+    RAILS["pages"] += 1
+    return s
+
+def install_rails():
+    """Draw every page's rail as the build writes it (the same seam as external.install): a page that is still being assembled
+    carries no marker yet, or carries it with its builder's own list beside <main>, and the last write is the one that counts.
+    Reading the 4,300 written pages again to draw the rails cost four and a half minutes, measured 2026-10-15."""
+    import pathlib as _pl
+    original = _pl.Path.write_text
+    def write_text(self, data, *args, **kw):
+        if self.suffix == ".html" and isinstance(data, str) and "<!--rail " in data:
+            data = rail_transform(data)
+        return original(self, data, *args, **kw)
+    _pl.Path.write_text = write_text
+    return RAILS
+
+# ----------------------------------------------------------------------------
 BOLD_RX = re.compile("[*][*](.+?)[*][*]")
 def BOLD_TO(m): return "<b>" + m.group(1) + "</b>"
 
@@ -506,10 +576,6 @@ def build_page(lang, slug, idx, groups):
     check_reading_arc(slug, lang, body_html)
     page = page_shell(lang, slug, title, meta.get("description", ""), esc(meta.get("kicker", "")),
                       meta.get("title_html", esc(title)), BOLD_RX.sub(BOLD_TO, meta.get("lede", "")), body_html)
-    parent = slug if slug in BARS else SUBPAGES.get(slug)
-    if parent:
-        label, items = BARS[parent][lang]
-        page = level2.wrap(page, level2.nav(label, [("", [(f"{s}.html", n, "page" if s == slug else "") for s, n in items])]))
     out = ROOT / lang / f"{slug}.html"
     out.parent.mkdir(exist_ok=True)
     out.write_text(page, encoding="utf-8")
@@ -895,7 +961,7 @@ def build_journeys(lang, idx, groups):
         body = (f'<p class="rx-src">{esc(j["who"][lang])}</p><h2>{ui["steps_h"]}</h2><ol class="steps">{"".join(lis)}</ol>'
                 f'<h2>{ui["start_h"]}</h2><p>{esc(j["start"][lang])}: <a href="{j["start"]["page"]}">{esc(page_label(lang, j["start"]["page"]))}</a>.</p>'
                 f'{pos}{extra}<p><a href="journeys.html">{ui["back"]}</a></p>')
-        page = page_shell(lang, f"journey-{j['id']}", j["name"][lang], j["promise"][lang], esc(ui["kicker"]), esc(j["name"][lang]), esc(j["promise"][lang]), body, page_key="journeys")
+        page = page_shell(lang, f"journey-{j['id']}", j["name"][lang], j["promise"][lang], esc(ui["kicker"]), esc(j["name"][lang]), esc(j["promise"][lang]), body, page_key="journeys", tail=[(j["name"][lang], None)])
         (ROOT / lang / f"journey-{j['id']}.html").write_text(level2.wrap(page, journey_bar(lang, "journey-" + j["id"])), encoding="utf-8")
 
 GALLERY_UI = {
@@ -998,8 +1064,9 @@ def write_site_files():
              f'ou <a href="{SITE_URL}index.html">la page d&#39;accueil</a>.</p></div></main></body></html>')
     page = page.replace('</head>\n<meta name="robots" content="noindex">', '<meta name="robots" content="noindex">\n</head>')
     (ROOT / "404.html").write_text(page, encoding="utf-8")
+    moved = {f"{old}.html" for old in OLD_PAGES}            # the pages that only redirect; reading 4,300 pages to find them cost four minutes
     urls = [SITE_URL] + [SITE_URL + f.relative_to(ROOT).as_posix() for lang in LANGS for f in sorted((ROOT / lang).rglob("*.html"))
-                         if "refresh" not in open(f, encoding="utf-8", errors="replace").read(600)]
+                         if not (f.parent.name == lang and f.name in moved)]
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"<url><loc>{esc(u)}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")
@@ -1169,6 +1236,7 @@ def check_names():
 def main():
     make_og_card()
     external.install(ROOT)                 # every page is marked as it is written
+    install_rails()                        # and gets its rail and its trail, in the same write
     idx, groups = load_atlas()
     ENTRIES = load_entries(ROOT)
     COUNTS["methods"] = sum(len(c["own"]) for c in qforms.reference(ROOT)["classes"])    # a method is listed once: its extensions and its other names are folded into it
@@ -1185,6 +1253,7 @@ def main():
                 if slug in GENERATED: continue
                 outs.append(build_page(lang, slug, idx, groups))
         for slug in SUBPAGES:
+            if slug in GENERATED: continue
             outs.append(build_page(lang, slug, idx, groups))
         for old, new in OLD_PAGES.items():                              # Teaching and Pedagogy became Education: the old address says so and goes there
             (ROOT / lang / f"{old}.html").write_text(
@@ -1213,6 +1282,7 @@ def main():
     print(f"method entries: {nmeth} pages, {len(ENTRIES)} methods with examples run")
     nguide = build_guides({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "idx": idx, "groups": groups, "heritage": HERITAGE, "entries": ENTRIES})
     print(f"guides: {nguide} pages")
+    print(f"rails: {RAILS['pages']} pages carry the rail and the trail")
     assets = []
     for f in sorted((ROOT / "assets/fonts").glob("*.woff2")):
         assets.append({"kind": "font", "path": f"assets/fonts/{f.name}"})

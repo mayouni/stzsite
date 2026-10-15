@@ -50,7 +50,7 @@ The first run takes about seven seconds, because the library and its engine load
 
 ## The first narration {#narration}
 
-A narration is a document that tells a part of the library as a story, in code written to be run as it is read. Start with <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-mental-mode-narration.md">the mental model</a>, then <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-agents-that-cannot-hurt-you-narration.md">the agents that cannot hurt you</a>; both open on GitHub. To see a narration judged block by block, open <a href="narrations/stz-repetition-with-elegance-narration.html">Repetition with Elegance</a>, run for this site: its six blocks print what they promise. All 134 are listed under Learn, in Narrations.
+A narration is a document that tells a part of the library as a story, in code written to be run as it is read. Start with <a href="narrations/stz-mental-mode-narration.html">the mental model</a>, then <a href="narrations/stz-agents-that-cannot-hurt-you-narration.html">the agents that cannot hurt you</a>. To see a narration judged block by block, open <a href="narrations/stz-repetition-with-elegance-narration.html">Repetition with Elegance</a>, run for this site: its six blocks print what they promise. All 135 are listed under Learn, in Narrations.
 
 ## The course reader {#reader}
 

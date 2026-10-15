@@ -1,5 +1,5 @@
 ---
-title: Agentique
+title: Des agents qui ne peuvent pas nuire
 title_html: L'agent propose. <i>Il ne commet pas.</i>
 kicker: Le paradigme agentique, à la manière Softanza
 lede: Les machines écrivent et agissent désormais. La réponse de Softanza n'est pas de leur faire confiance avec plus de soin ; c'est de changer l'endroit où elles ont le droit de se tenir. Un agent d'IA parle une langue déclarée, répète dans un atelier, fait face à un tribunal, et ne détient jamais la capacité de commettre.

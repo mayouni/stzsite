@@ -1,5 +1,5 @@
 ---
-title: Agentic
+title: Agents that cannot hurt you
 title_html: The agent proposes. <i>It does not commit.</i>
 kicker: The agentic paradigm, the Softanza way
 lede: Machines now write and act. Softanza's answer is not to trust them more carefully; it is to change where they are allowed to stand. An AI agent speaks a declared language, rehearses in a workbench, faces a court, and never holds the capability to commit.
