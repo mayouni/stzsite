@@ -2180,3 +2180,32 @@ next:
 
 note:      the book's own pages say draft; this site now says the same, in the same words
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-15 09:58
+
+subject:   the standing invitation to organisations, in the author's words, and no payment anywhere
+
+why:       the author's ruling, read in the book repository (DECISIONS.md, OFFER-03, 2026-10-15): the books are free in every form with no payment of any kind; what is sold is the work around them, case by case by ordinary banking
+
+did:
+  - added the invitation, word for word and adapted only from this book to this site or its books, in English and French: on the book page (section Working with the author), on the editions page where the site speaks of the work around the platform, in the home page's book section, and in the footer of every page, with the address written as the author wrote it, a full-width at sign, plain text and not a mail link
+  - swept the authored pages for any ask or payment line (pay after, pay what it was worth, donation, sponsor, a payment service, a price, a tariff): none was ever there; the technical pages that name a payment service are library narrations about code, not an ask
+  - left the partners page alone: it says nothing on it is offered, and the invitation is the author's own standing line, not a partner programme; no prices, no bank details, no service beyond the list the author gave
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,300 files, search 16 of 16, the floor held on the pages touched
+
+state:
+  invitation:     on four places, both languages
+  payment-lines:  none on the site
+  editions-page:  still describes an enterprise edition with dedicated assistance from the people who wrote it, written before this ruling; the author may want it read against OFFER-03
+
+waiting:
+  - EDITIONS-READ: does the enterprise-edition card still say what the author means now that the work around the books is sold case by case? -> the author [not routed before this memo]
+  - OFFER-PAGE-LINK: the site links no offer page of the house today; when the house renames it How these books are offered, and how to work with the author, the link goes in -> me, on the house's word
+
+next:
+  - me:      commit and push, then tell the book session
+  - author:  read the editions page's enterprise card
+
+note:      the address is public text now; the author chose to publish it, in the full-width form that a scraper reads less easily
+```

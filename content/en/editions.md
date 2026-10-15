@@ -20,3 +20,7 @@ description: The open edition and the enterprise edition of Softanza: the same c
 ## What you own, in both editions {#own}
 
 Your worlds, rules, courses and agents are plain-text files in folders you keep. The engine's source is in the repository and builds for Windows, Linux and macOS. The course is plain text, adapted by overlay and never by fork, and a learner's progress is a text file you can read forever. Nothing anyone else can withdraw; the Vision page says what that sentence means and what it does not.
+
+## Working with the author {#work}
+
+If this site or its books are useful to your organisation, I work with organisations on their subjects: paper copies in quantity, workshops and training, talks, consulting and the building of solutions. Write to kalidianow＠gmail.com.
