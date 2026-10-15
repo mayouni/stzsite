@@ -74,7 +74,7 @@ A first program is a list. A first application is a world: <a href="first.html">
 
 ## Write {#write}
 
-Questions, defect reports and proposals go through the <a href="https://github.com/mayouni/stzlib/issues">issues of the GitHub repository</a>. A security flaw is reported privately through the repository's security advisories, as its <a href="https://github.com/mayouni/stzlib/blob/main/SECURITY.md">SECURITY.md</a> says. An edition of the course in your language starts with a folder of plain-text chapters: the Learn page says how the course's court will judge it. For the enterprise edition, write through the same issues: <a href="editions.html">the Editions page</a> says what it contains.
+Questions, defect reports and proposals go through the <a href="https://github.com/mayouni/stzlib/issues">issues of the GitHub repository</a>. A security flaw is reported privately through the repository's security advisories, as its <a href="https://github.com/mayouni/stzlib/blob/main/SECURITY.md">SECURITY.md</a> says. An edition of the course in your language starts with a folder of plain-text chapters: the Learn page says how the course's court will judge it. <a href="editions.html">The Editions page</a> says what exists today and what is to come.
 
 ## Check this site offline {#offline}
 

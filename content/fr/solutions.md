@@ -27,4 +27,4 @@ description: Les solutions Softanza pour entreprises et gouvernements : une plat
 
 ## L'assurance {#assurance}
 
-<p class="proof"><b>nommé</b> L'édition entreprise est la même plateforme, entière, avec les gens qui l'ont écrite : voir <a href="editions.html">éditions</a>. L'assurance qu'achèterait un client réglementé, soutien à long terme, constructions signées et un ingénieur nommé, est un nom aujourd'hui et pas un service. Rien sur cette page n'est chiffré, et rien n'est offert sous une condition que le dépôt ne montre pas déjà.</p>
+<p class="proof"><b>nommé</b> La plateforme est une édition ouverte, entière : voir <a href="editions.html">ce qui existe aujourd'hui</a>. Le soutien à long terme, les constructions signées et un ingénieur nommé sont des noms aujourd'hui et pas un service : à venir. Rien sur cette page n'est chiffré, et rien n'est offert sous une condition que le dépôt ne montre pas déjà.</p>

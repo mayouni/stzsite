@@ -17,4 +17,4 @@ Rien d'autre n'est une référence tant qu'un document ne le prouve pas. Un troi
 
 ## Écrire {#write}
 
-Les questions, les rapports de défaut, les propositions, et les demandes pour l'édition entreprise passent par <a href="https://github.com/mayouni/stzlib/issues">les tickets du dépôt GitHub</a>. Une faille de sécurité se signale en privé par les avis de sécurité du dépôt, comme le dit son <a href="https://github.com/mayouni/stzlib/blob/main/SECURITY.md">SECURITY.md</a>.
+Les questions, les rapports de défaut et les propositions passent par <a href="https://github.com/mayouni/stzlib/issues">les tickets du dépôt GitHub</a>. Une faille de sécurité se signale en privé par les avis de sécurité du dépôt, comme le dit son <a href="https://github.com/mayouni/stzlib/blob/main/SECURITY.md">SECURITY.md</a>.

@@ -79,7 +79,7 @@
     {"stage": "in construction", "en": "Keep the data in a governed store.", "fr": "Garder les données dans un magasin gouverné.", "page": "estate.html"},
     {"stage": "built", "en": "Run on a declared machine that boots in an emulator.", "fr": "Tourner sur une machine déclarée qui démarre dans un émulateur.", "page": "sovereignty.html"},
     {"stage": "built", "en": "Stand on the security plane: its guarantees, each tied to a guard.", "fr": "S'appuyer sur le plan de sécurité : ses garanties, chacune liée à un garde.", "page": "security.html"},
-    {"stage": "named", "en": "Receive enterprise assurance: support, long-term releases, signed builds.", "fr": "Recevoir l'assurance entreprise : support, versions à long terme, constructions signées.", "page": "editions.html"}],
+    {"stage": "named", "en": "Long-term support, long-term releases and signed builds: named, to come.", "fr": "Soutien à long terme, versions à long terme et constructions signées : nommés, à venir.", "page": "editions.html"}],
    "start": {"en": "the Offering page, door 4, and the platform architect's journey", "fr": "la page Offre, la porte 4, et le parcours de l'architecte de plateforme", "page": "journey-architect.html"},
    "positioning": null},
 

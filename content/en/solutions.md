@@ -27,4 +27,4 @@ description: Softanza solutions for enterprises and governments: a declared plat
 
 ## Assurance {#assurance}
 
-<p class="proof"><b>named</b> The enterprise edition is the same platform, entire, with the people who wrote it: see <a href="editions.html">editions</a>. The assurance a regulated customer would buy, long-term support, signed builds and a named engineer, is a name today and not a service. Nothing on this page is priced, and nothing is offered under a term that the repository does not already show.</p>
+<p class="proof"><b>named</b> The platform is one open edition, whole: see <a href="editions.html">what exists today</a>. Long-term support, signed builds and a named engineer are names today and not a service: to come. Nothing on this page is priced, and nothing is offered under a term that the repository does not already show.</p>

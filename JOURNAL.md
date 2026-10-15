@@ -2262,3 +2262,32 @@ next:
 
 note:      the house keeps the contact address in one place; this site repeats it in the footer string, so a dedicated address is a one-line change here
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-15 11:28
+
+subject:   the editions page brought in line with the house model, and the enterprise edition removed everywhere it was stated
+
+why:       the AYOUNI Press desk decided on the author's behalf (HOUSE-12, read in the house repository with the author's quoted words) that no edition, assistance, tier or price is offered that the author has not given in words; this was also my recommendation to the author
+
+did:
+  - rewrote the editions page in both languages, URL unchanged: the figure of two editions is gone (its image text named the enterprise edition), the open edition card stays, what you own stays, a block marked named says that nothing beyond the open platform is stated and is to come, and a last section points to the house's offer page
+  - kept the page's anchor #editions so the Adopt page's link still lands
+  - removed the same statements from the other pages that carried them: the customers page (requests for the enterprise edition), the start page (the enterprise edition sentence), the solutions page's note (the assurance a customer would buy, now named and to come), the tour's closing line, the home page's leader row (two editions of the same code), and one step of the leader journey (enterprise assurance, now long-term support named, to come); the Vision page's 2020 enterprise model is history and stays
+  - did not repeat the invitation inside the editions page: the footer already says it once on every page, and the house's own HOUSE-14 removed the same repetition from its home page; the page names the footer and links the offer page instead
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,300 files, search 16 of 16, the floor held; a sweep of the built output finds no enterprise edition, dedicated assistance or paying customers wording; I looked at the English page
+
+state:
+  editions-page:   one open edition, what you own, to come, link to the house offer page
+  enterprise-lines: none left on the site
+  nav-label:       the page is still called Editions in the Adopt bar; the address is unchanged as asked
+
+waiting:
+  - EDITIONS-LABEL: the bar still says Editions while the page now says one edition; rename it only if the house desk agrees, since its readers link by address and not by label -> me, on the desk's word
+
+next:
+  - me:      commit and push, then tell the house desk
+  - author:  none
+
+note:      the offering page's funding callout and the vision page's 2020 model are the author's own older words and are left as they are
+```

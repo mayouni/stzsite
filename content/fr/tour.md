@@ -136,7 +136,7 @@ cd stzlib/libraries/stzlib</pre>
 <div class="run"><div><div class="lbl">premier</div><pre>? Q("Softanza").Boxed()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>┌──────────┐
 │ Softanza │
 └──────────┘</pre></div></div>
-<p>github.com/mayouni/stzlib · édition ouverte, MIT · édition entreprise : le même code, plus les personnes qui l'ont écrit</p>
+<p>github.com/mayouni/stzlib · ouverte, MIT : toute la plateforme, rien de retenu</p>
 ```notes
 Clore par l'invitation : le cours en zarma, la relecture native du haoussa, et les premiers « Softanza Architects ». Tout ce qui a été montré ce soir est un fichier que l'on peut ouvrir, et chaque chiffre renvoie au fichier qui le prouve.
 ```

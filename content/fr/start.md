@@ -74,7 +74,7 @@ Un premier programme est une liste. Une première application est un monde : <a 
 
 ## Écrire {#write}
 
-Les questions, les rapports de défaut et les propositions passent par <a href="https://github.com/mayouni/stzlib/issues">les tickets du dépôt GitHub</a>. Une faille de sécurité se signale en privé par les avis de sécurité du dépôt, comme le dit son <a href="https://github.com/mayouni/stzlib/blob/main/SECURITY.md">SECURITY.md</a>. Une édition du cours dans votre langue commence par un dossier de chapitres en texte brut : la page Apprendre dit comment le tribunal du cours la jugera. Pour l'édition entreprise, écrivez par les mêmes tickets : <a href="editions.html">la page Éditions</a> dit ce qu'elle contient.
+Les questions, les rapports de défaut et les propositions passent par <a href="https://github.com/mayouni/stzlib/issues">les tickets du dépôt GitHub</a>. Une faille de sécurité se signale en privé par les avis de sécurité du dépôt, comme le dit son <a href="https://github.com/mayouni/stzlib/blob/main/SECURITY.md">SECURITY.md</a>. Une édition du cours dans votre langue commence par un dossier de chapitres en texte brut : la page Apprendre dit comment le tribunal du cours la jugera. <a href="editions.html">La page Éditions</a> dit ce qui existe aujourd'hui et ce qui est à venir.
 
 ## Vérifier ce site hors ligne {#offline}
 

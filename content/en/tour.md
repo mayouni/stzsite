@@ -136,7 +136,7 @@ cd stzlib/libraries/stzlib</pre>
 <div class="run"><div><div class="lbl">first</div><pre>? Q("Softanza").Boxed()</pre></div><div class="out"><div class="lbl">Output</div><pre>┌──────────┐
 │ Softanza │
 └──────────┘</pre></div></div>
-<p>github.com/mayouni/stzlib · open edition, MIT · enterprise edition: the same code, plus the people who wrote it</p>
+<p>github.com/mayouni/stzlib · open, MIT: the whole platform, nothing withheld</p>
 ```notes
 Close with the invitation: the course in Zarma, the native review of Hausa, and the first "Softanza Architects". Everything shown tonight is a file one can open, and every figure links to the file that proves it.
 ```

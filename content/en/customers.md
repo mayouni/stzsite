@@ -17,4 +17,4 @@ Nothing else is a reference until a document proves it. A third project, DIKO, i
 
 ## Write {#write}
 
-Questions, defect reports, proposals, and requests for the enterprise edition go through <a href="https://github.com/mayouni/stzlib/issues">the issues of the GitHub repository</a>. A security flaw is reported privately through the repository's security advisories, as its <a href="https://github.com/mayouni/stzlib/blob/main/SECURITY.md">SECURITY.md</a> says.
+Questions, defect reports and proposals go through <a href="https://github.com/mayouni/stzlib/issues">the issues of the GitHub repository</a>. A security flaw is reported privately through the repository's security advisories, as its <a href="https://github.com/mayouni/stzlib/blob/main/SECURITY.md">SECURITY.md</a> says.
