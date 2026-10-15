@@ -53,9 +53,7 @@ SECTIONS = [
      ("proven", {"fr": "Preuves", "en": "Proof"}),
      ("estate", {"fr": "Le patrimoine, étape par étape", "en": "The estate, stage by stage"}),
      ("forged", {"fr": "Forgée en projets", "en": "Forged in projects"}),
-     ("proving", {"fr": "Terrains d'épreuve", "en": "Proving grounds"}),
-     ("real", {"fr": "Applications réelles", "en": "Real applications"}),
-     ("customers", {"fr": "Clients", "en": "Customers"}),
+     ("real", {"fr": "Projets et références", "en": "Projects and references"}),
      ("compare", {"fr": "Comparée", "en": "Compared"})]),
   ("vision", {"fr": "Vision", "en": "Vision"}, [
      ("vision", {"fr": "Vision", "en": "Vision"}),
@@ -116,7 +114,8 @@ FAMILIES = {
                 ("education-record", {"fr": "Ce qui est prouvé", "en": "What is proved"})],
 }
 SUBPAGES = {child: parent for parent, kids in FAMILIES.items() for child, _ in kids}
-OLD_PAGES = {"teaching": "education", "pedagogy": "education"}        # the old addresses lead to the new page
+OLD_PAGES = {"teaching": "education", "pedagogy": "education",       # the old addresses lead to the new page
+             "proving": "real#grounds", "customers": "real#references"}   # wave 2 (doc/STRUCTURE-2026-10-15.md): told once
 GENERATED = {"reference", "narrations", "howto", "ask", "journeys", "narrations-performance", "narrations-security", "narrations-delivery"}   # built by code, not from a .md
 OWNER = {}                                          # page -> its section
 for sec, _, pages in SECTIONS:
@@ -141,7 +140,7 @@ UI = {
   "fr": {
     "slogan": "La plateforme logicielle gouvernée de l'ère de l'IA", "second": "Déclarez ce que vous savez. Un tribunal le garde. Le modèle d'IA vient en dernier.", "born": "Née en Afrique. Utile au monde !", "offer_link": "<a href=\"https://mayouni.github.io/ayouni/fr/offre/\">Comment ces livres sont offerts, et comment travailler avec l'auteur</a> · <a href=\"https://mayouni.github.io/ayouni/fr/licence/\">La licence</a>", "invite": "Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com.", "book_cite": "Mansour Ayouni, <i><a href=\"https://mayouni.github.io/ayouni/books/softanza/fr/\">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA</a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.",
     "skip": "Aller au contenu", "other_lang": "English", "other_code": "en",
-    "present": "Présenter le site en diaporama", "github": "Le dépôt Softanza sur GitHub", "menu": "Menu principal", "path": "Pages de la section", "here": "Vous êtes ici", "moved": "Cette page est devenue Éducation",
+    "present": "Présenter le site en diaporama", "github": "Le dépôt Softanza sur GitHub", "menu": "Menu principal", "path": "Pages de la section", "here": "Vous êtes ici", "moved": "Cette page a changé d'adresse",
     "proof_law": "Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s'exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.",
     "fonts": "Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s'ouvre sans réseau.",
     "made": "Les textes de ce site ont été rédigés avec un assistant d'IA, Claude, sous la direction de l'auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)",
@@ -169,7 +168,7 @@ UI = {
   "en": {
     "slogan": "The Governed Software Platform of the AI Age", "second": "Declare what you know. A court keeps it. The AI model comes last.", "born": "Born in Africa. Useful to the World!", "offer_link": "<a href=\"https://mayouni.github.io/ayouni/offer/\">How these books are offered, and how to work with the author</a> · <a href=\"https://mayouni.github.io/ayouni/licence/\">The licence</a>", "invite": "If this site or its books are useful to your organisation, I work with organisations on their subjects: paper copies in quantity, workshops and training, talks, consulting and the building of solutions. Write to kalidianow＠gmail.com.", "book_cite": "Mansour Ayouni, <i><a href=\"https://mayouni.github.io/ayouni/books/softanza/en/\">Softanza: The Governed Software Platform of the AI Age</a></i> (second of the AYOUNI books), AYOUNI, 2026, draft.",
     "skip": "Skip to content", "other_lang": "Français", "other_code": "fr",
-    "present": "Present the site as a slideshow", "github": "The Softanza repository on GitHub", "menu": "Main menu", "path": "Pages of the section", "here": "You are here", "moved": "This page became Education",
+    "present": "Present the site as a slideshow", "github": "The Softanza repository on GitHub", "menu": "Main menu", "path": "Pages of the section", "here": "You are here", "moved": "This page has moved",
     "proof_law": "Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.",
     "fonts": "Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network.",
     "made": "The prose of this site was drafted with an AI assistant, Claude, under the author's direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)",
@@ -1256,11 +1255,12 @@ def main():
         for slug in SUBPAGES:
             if slug in GENERATED: continue
             outs.append(build_page(lang, slug, idx, groups))
-        for old, new in OLD_PAGES.items():                              # Teaching and Pedagogy became Education: the old address says so and goes there
+        for old, new in OLD_PAGES.items():
+            url = new.split("#")[0] + ".html" + ("#" + new.split("#")[1] if "#" in new else "")                              # Teaching and Pedagogy became Education: the old address says so and goes there
             (ROOT / lang / f"{old}.html").write_text(
                 f'<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><title>{esc(UI[lang]["moved"])} · Softanza</title><meta name="robots" content="noindex">'
-                f'<meta http-equiv="refresh" content="0;url={new}.html"><link rel="canonical" href="{new}.html"></head>'
-                f'<body><p><a href="{new}.html">{esc(UI[lang]["moved"])}</a></p></body></html>', encoding="utf-8")
+                f'<meta http-equiv="refresh" content="0;url={url}"><link rel="canonical" href="{url}"></head>'
+                f'<body><p>{esc(UI[lang]["moved"])}{" :" if lang == "fr" else ":"} <a href="{url}">{esc(tree_label(new.split("#")[0], lang))}</a></p></body></html>', encoding="utf-8")
         build_narrations(lang, PUBLISHED)
         build_journeys(lang, idx, groups)
         for i in range(len(groups)):

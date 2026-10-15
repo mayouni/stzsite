@@ -2349,3 +2349,28 @@ next:
   - me:      wave 2, second part: the three projects told once (Real applications), one page per area (atlas and guide); the redirects are listed to the AYOUNI Press desk before they are pushed
   - author:  none
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-15 13:19
+
+subject:   wave 2, second part: the three projects told once, two old addresses kept as redirects
+
+why:       four readers met the same three projects (Organizium, RestoLean, DIKO) told on three pages of the old Adopt section, with the references on a fourth
+
+did:
+  - merged Real applications, Proving grounds and Customers into one page, en/real.html and fr/real.html, "Projects and references": each project once, with what was asked, what exists, what it proved, its stage and the document that attests it, then the references and how to write
+  - kept the old addresses as redirect pages that name their destination: proving.html goes to real.html#grounds and customers.html to real.html#references, in both languages; the AYOUNI Press desk was told before the push
+  - made every redirect page say "This page has moved" and name the page it goes to, instead of the old "This page became Education"
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,300 files, search 16 of 16, the floor held on the merged page in both languages and themes
+
+state:
+  proof-section:  Proof, The estate stage by stage, Forged in projects, Projects and references, Compared
+  redirects:      teaching, pedagogy (Education), proving, customers (Projects and references)
+
+waiting:
+  - STZZUI-READINGDEPTH-01: the four possible gaps of prompt 52 -> stzzui [routed]
+
+next:
+  - me:      wave 2, third part: one page per area (the atlas page and the guide merged), with the 56 guide addresses kept as redirects, listed to the AYOUNI Press desk first
+  - author:  none
+```
