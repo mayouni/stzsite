@@ -2236,3 +2236,29 @@ next:
 
 note:      I did not rewrite the older offer lines unasked, since they state a model the author wrote before the ruling
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-15 10:20
+
+subject:   the house's offer and licence pages linked, which makes the house page the one place for what is offered
+
+why:       the AYOUNI Press desk announced its offer page and licence page as final for the no-payment model, and the author had pointed at duplication of the offer on this site
+
+did:
+  - checked the four addresses (offer and licence, English and French): all 200, titles as announced
+  - linked them from the footer of every page, after the invitation, and from a new short section on the book page (How it is offered), in both languages; the books are said to be free in every form, the author's own words, and nothing else about terms is stated here
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,300 files, search 16 of 16, the floor held
+
+state:
+  offer-pointer:  the house offer page is where the site now points for how the books are offered and how to work with the author
+  old-offer-lines: editions card and callout, offering funding callout, solutions note, customers line, tour closing line: unchanged, routed to the author
+
+waiting:
+  - EDITIONS-AGAINST-HOUSE: the house offer page now exists; do the older offer lines on this site go, or point to it? I recommend pointing the editions page's enterprise card to it and shortening the rest -> the author [routed earlier, repeated here]
+
+next:
+  - me:      commit and push, then thank the house desk
+  - author:  say yes to the editions rewrite
+
+note:      the house keeps the contact address in one place; this site repeats it in the footer string, so a dedicated address is a one-line change here
+```

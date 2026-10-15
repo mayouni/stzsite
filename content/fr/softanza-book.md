@@ -25,3 +25,7 @@ C'est un livre qui s'exécute. Chaque bloc de code y est exécuté dans la bibli
 Le chemin le plus court vers la plateforme aujourd'hui est ce site : chaque affirmation y renvoie au fichier, à la garde ou au rendu qui la prouve. Le cours appelé <a href="book.html">Le livre</a> dans la section Apprendre est un autre livre : un cours interactif de quinze chapitres, en quatre langues, dont vous exécutez vous-même les cellules.
 
 <p class="cta"><a href="start.html">Démarrer</a><a href="learn.html">Apprendre</a></p>
+
+## Comment il est offert {#offer}
+
+Les livres sont gratuits sous toutes leurs formes. <a href="https://mayouni.github.io/ayouni/fr/offre/">Comment ces livres sont offerts, et comment travailler avec l'auteur</a> ; <a href="https://mayouni.github.io/ayouni/fr/licence/">la licence</a>.

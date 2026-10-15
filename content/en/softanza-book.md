@@ -25,3 +25,7 @@ It is a book that runs. Every code block in it is run inside the Softanza librar
 The quickest way into the platform today is this site: every claim on it links to the file, the guard or the render that proves it. The course called <a href="book.html">The book</a> in the Learn section is a different book: an interactive course of fifteen chapters, in four languages, whose cells you run yourself.
 
 <p class="cta"><a href="start.html">Start</a><a href="learn.html">Learn</a></p>
+
+## How it is offered {#offer}
+
+The books are free in every form. <a href="https://mayouni.github.io/ayouni/offer/">How these books are offered, and how to work with the author</a>; <a href="https://mayouni.github.io/ayouni/licence/">the licence</a>.
