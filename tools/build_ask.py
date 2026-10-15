@@ -167,7 +167,7 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
     book = [{"chapter": c["n"], "title": c["title"].get("en", c["id"]), "page": f'{SITE}en/book/{c["id"]}.html', "cells": len(c["cells"]),
              "promises": c["editions"]["en"]["promises"], "proven": build_proof.proven(c), "exercises": len(c["exercises"]), "ran": proof["ran"]}
             for c in proof["chapters"]] if proof else []
-    areas = [{"slug": g["slug"], "title": g["en"], "page": f'{SITE}en/atlas/{g["slug"]}.html', "guide": f'{SITE}en/guide/{g["slug"]}.html'} for g in groups]
+    areas = [{"slug": g["slug"], "title": g["en"], "page": f'{SITE}en/atlas/{g["slug"]}.html', "guide": f'{SITE}en/atlas/{g["slug"]}.html#functions'} for g in groups]
     index = {"site": SITE, "library": "https://github.com/mayouni/stzlib", "commit": "0e72e2e2c",
              "naming": "A name is listed once. A method name that ends in an extension (Q, CS, XT, Z, ZZ, U, IB, W...) is the same method written with one more word: each method lists the extensions that exist for it and the names of its forms. A method that only forwards to another is that method under another name (also_written on the method), and a class with nothing in it but its parent is that class under another name (also_named): ask for the main name.",
              "extensions": [{"code": e[0], "adds": e[1], "documented_in": GH + e[3]} for e in qforms.EXTENSIONS],

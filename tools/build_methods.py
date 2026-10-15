@@ -123,7 +123,7 @@ def build_methods(ctx):
             other_html = " · ".join((f'<a class="mono" href="../{c2.lower()}/{slug(m2)}.html">{esc(c2)}.{esc(m2)}</a>' if (c2, m2) in entries
                                      else f'<span class="mono">{esc(c2)}.{esc(m2)}</span>') for c2, m2 in others[:12])
             a = c.get("area")
-            guide = f'<li><a href="../../guide/{a}.html">{t["guide"]} : {esc(area_title[a][lang])}</a></li>'.replace(" : ", ": " if lang == "en" else " : ") if a in area_title else ""
+            guide = f'<li><a href="../../atlas/{a}.html#functions">{t["guide"]} : {esc(area_title[a][lang])}</a></li>'.replace(" : ", ": " if lang == "en" else " : ") if a in area_title else ""
             see = (f'<h2>{t["see"]}</h2><ul><li><a href="../{cls.lower()}.html#{esc(meth.lower())}">{t["class"]} {esc(cls)}</a></li>{guide}'
                    + (f'<li>{t["also"]} : {other_html}</li>'.replace(" : ", ": " if lang == "en" else " : ") if other_html else "")
                    + "".join(f'<li>{t["howto"]} : <a href="../../howto/{howto_page(r)}.html">{esc(howto_intent(r, lang))}</a></li>'.replace(" : ", ": " if lang == "en" else " : ")

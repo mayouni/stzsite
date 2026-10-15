@@ -31,7 +31,7 @@ Trois habitudes complètent le modèle. Une méthode qui finit en <b>-ed</b> ren
 └─────────────────────────────┘</pre></div></div>
 <p class="ran">exécuté le 2026-10-14 à 21:50, Softanza au commit 4a184e6f0</p>
 
-Au-delà du cours, chacun des vingt-huit domaines a un guide qui regroupe ce que font ses fonctions, avec un exemple sous chacune : <a href="docs.html">la documentation</a> les liste tous, et <a href="glossary.html">le glossaire</a> définit les mots que ce site emploie dans son propre sens.
+Au-delà du cours, chacun des vingt-huit domaines a une page qui regroupe ce que font ses fonctions, avec un exemple sous chacune : <a href="areas.html">les domaines</a> les liste tous, et <a href="glossary.html">le glossaire</a> définit les mots que ce site emploie dans son propre sens.
 
 ## Vos niveaux, et l'enseignement {#ladder}
 

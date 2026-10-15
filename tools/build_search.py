@@ -68,7 +68,7 @@ def build(ROOT, entries, groups):
         page = (ROOT / "en" / "narrations" / f"{nslug(f)}.html")
         pages.append(["narration", title, title, f"narrations/{nslug(f)}.html" if page.exists() else GHN + f, f[:-3] if f.endswith(".md") else f])
     for lang in ("en", "fr"):
-        for kind, sub in (("guide", "guide"), ("howto", "howto"), ("book", "book"), ("education", "")):
+        for kind, sub in (("howto", "howto"), ("book", "book"), ("education", "")):          # the guides are sections of the area pages
             for k, title, url in page_titles(ROOT, lang, sub, kind):
                 if lang == "en": pages.append([k, title, "", url, ""])
                 else:

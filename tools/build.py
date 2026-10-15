@@ -398,7 +398,7 @@ def scope_html(lang, idx, groups):
     out = []
     for b in idx["bands"]:
         for g in [g for g in groups if g["band"] == b["id"]]:
-            out.append(f'<a data-t="{b["id"]}" href="guide/{g["slug"]}.html"><span>{esc(g[lang])}<small>{esc(b[lang])}</small></span></a>')
+            out.append(f'<a data-t="{b["id"]}" href="atlas/{g["slug"]}.html#functions"><span>{esc(g[lang])}<small>{esc(b[lang])}</small></span></a>')
     return '<div class="scope">' + "".join(out) + '</div>'
 
 def coverage_html(lang):
@@ -707,7 +707,7 @@ def build_group_page(lang, idx, groups, i):
         hero = f'<div class="note"><p><b>{ui["nopic"]}.</b> {esc(g.get("nopic_" + lang, ""))}</p></div>'
     thesis = f'<blockquote><p>{esc(d["thesis"])}</p></blockquote>' if d.get("thesis") else ""
     body = f"""<p class="counts-line">{g["s"]} Strong · {g["so"]} Solid · {g["p"]} Partial · {g["e"]} Emerging</p>
-    <p class="proof">{ui["measured"]}{colon} {esc(g["peers"])} · {ui["folders"]}{colon} {folders} · <a href="../guide/{g["slug"]}.html">{ui["guide"]}</a></p>
+    <p class="proof">{ui["measured"]}{colon} {esc(g["peers"])} · {ui["folders"]}{colon} {folders} · <a href="#functions">{ui["guide"]}</a></p>
     {hero}
     {heritage_html(lang, g["slug"])}
     {thesis}
@@ -717,7 +717,8 @@ def build_group_page(lang, idx, groups, i):
     <h2>{ui["lanes_h"]}</h2>
     <p class="proof">{ui["lanes_note"]} {esc(d.get("dated", ""))}.</p>
     {note}
-    <div class="lanes">{lanes}</div>"""
+    <div class="lanes">{lanes}</div>
+    <!--GUIDE-SECTIONS-->"""
     page = page_shell(lang, "atlas", g[lang], g["line_" + lang], esc(band[lang]), esc(g[lang]), esc(g["line_" + lang]), body,
                       rel=rel, page_key="atlas-group", other_href=f"../../{ui['other_code']}/atlas/{g['slug']}.html", body_class="page page-atlas-group", tail=[(g[lang], None)])
     page = level2.wrap(page, level2.nav(level2.LABELS["areas"][lang], level2.area_groups(idx, lang, g["slug"])))
@@ -1065,7 +1066,7 @@ def write_site_files():
     (ROOT / "404.html").write_text(page, encoding="utf-8")
     moved = {f"{old}.html" for old in OLD_PAGES}            # the pages that only redirect; reading 4,300 pages to find them cost four minutes
     urls = [SITE_URL] + [SITE_URL + f.relative_to(ROOT).as_posix() for lang in LANGS for f in sorted((ROOT / lang).rglob("*.html"))
-                         if not (f.parent.name == lang and f.name in moved)]
+                         if not (f.parent.name == lang and f.name in moved) and f.parent.name != "guide"]
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"<url><loc>{esc(u)}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")

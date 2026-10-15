@@ -47,7 +47,7 @@
 
   function methodUrl(m, cls) { return ROOT + LANG + '/reference/' + cls.name.toLowerCase() + (m.entry ? '/' + m.entry + '.html' : '.html#' + m.name.toLowerCase()); }
   function classUrl(c) { return ROOT + LANG + '/reference/' + c.name.toLowerCase() + '.html'; }
-  function areaUrl(a) { return ROOT + LANG + (a.slug && a.slug !== 'education' ? '/guide/' + a.slug + '.html' : '/reference.html#' + (a.slug || 'other')); }
+  function areaUrl(a) { return ROOT + LANG + (a.slug && a.slug !== 'education' ? '/atlas/' + a.slug + '.html#functions' : '/reference.html#' + (a.slug || 'other')); }
   function pageUrl(p) { return /^https?:/.test(p.url) ? p.url : ROOT + LANG + '/' + p.url; }
   function link(href, cls) {
     var a = el('a', cls); a.href = href; a.setAttribute('role', 'option');

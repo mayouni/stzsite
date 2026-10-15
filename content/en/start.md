@@ -50,7 +50,7 @@ The first run takes about seven seconds, because the library and its engine load
 
 ## Which page answers what {#map}
 
-The site has one page for each kind of question. When you do not know a name, press <kbd>/</kbd> or <kbd>Ctrl</kbd>+<kbd>K</kbd> on any page: the search finds classes, methods, guides and recipes.
+The site has one page for each kind of question. When you do not know a name, press <kbd>/</kbd> or <kbd>Ctrl</kbd>+<kbd>K</kbd> on any page: the search finds classes, methods, areas and recipes.
 
 <table class="declared">
 <thead><tr><th>You want to</th><th>Open</th></tr></thead>

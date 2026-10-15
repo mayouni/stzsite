@@ -50,7 +50,7 @@ Le premier lancement prend environ sept secondes, parce que la bibliothèque et 
 
 ## Quelle page répond à quoi {#map}
 
-Le site a une page par sorte de question. Quand vous ne connaissez pas un nom, appuyez sur <kbd>/</kbd> ou <kbd>Ctrl</kbd>+<kbd>K</kbd> sur n'importe quelle page : la recherche trouve les classes, les méthodes, les guides et les recettes.
+Le site a une page par sorte de question. Quand vous ne connaissez pas un nom, appuyez sur <kbd>/</kbd> ou <kbd>Ctrl</kbd>+<kbd>K</kbd> sur n'importe quelle page : la recherche trouve les classes, les méthodes, les domaines et les recettes.
 
 <table class="declared">
 <thead><tr><th>Vous voulez</th><th>Ouvrez</th></tr></thead>

@@ -84,34 +84,34 @@ Fourteen rules of writing:
 
 ## Areas
 
-- [String](https://mayouni.github.io/stzsite/en/atlas/string.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/string.html
-- [Pattern matching](https://mayouni.github.io/stzsite/en/atlas/regex.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/regex.html
-- [Collections & objects](https://mayouni.github.io/stzsite/en/atlas/collections.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/collections.html
-- [Numeric & optimization](https://mayouni.github.io/stzsite/en/atlas/numeric.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/numeric.html
-- [Tables & data](https://mayouni.github.io/stzsite/en/atlas/tables.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/tables.html
-- [Internationalization](https://mayouni.github.io/stzsite/en/atlas/i18n.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/i18n.html
-- [NLP & linguistics](https://mayouni.github.io/stzsite/en/atlas/nlp.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/nlp.html
-- [Neural tier](https://mayouni.github.io/stzsite/en/atlas/neural.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/neural.html
-- [Agents & conversation](https://mayouni.github.io/stzsite/en/atlas/agents.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/agents.html
-- [Graphics](https://mayouni.github.io/stzsite/en/atlas/graphics.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/graphics.html
-- [Geo & cartography](https://mayouni.github.io/stzsite/en/atlas/geo.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/geo.html
-- [Diagramming & graphs](https://mayouni.github.io/stzsite/en/atlas/diagramming.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/diagramming.html
-- [GPU](https://mayouni.github.io/stzsite/en/atlas/gpu.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/gpu.html
-- [GUI & reactive](https://mayouni.github.io/stzsite/en/atlas/gui.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/gui.html
-- [Statistics & data-viz](https://mayouni.github.io/stzsite/en/atlas/stats.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/stats.html
-- [System programming](https://mayouni.github.io/stzsite/en/atlas/system.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/system.html
-- [Concurrency & distribution](https://mayouni.github.io/stzsite/en/atlas/concurrency.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/concurrency.html
-- [Web & app server](https://mayouni.github.io/stzsite/en/atlas/web.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/web.html
-- [Performance](https://mayouni.github.io/stzsite/en/atlas/performance.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/performance.html
-- [Metaprogramming & code rules](https://mayouni.github.io/stzsite/en/atlas/meta.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/meta.html
-- [Files & formats](https://mayouni.github.io/stzsite/en/atlas/files.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/files.html
-- [Binary formats](https://mayouni.github.io/stzsite/en/atlas/binary.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/binary.html
-- [Security & governance](https://mayouni.github.io/stzsite/en/atlas/security.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/security.html
-- [Extensibility & foreign code](https://mayouni.github.io/stzsite/en/atlas/extensibility.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/extensibility.html
-- [Sound](https://mayouni.github.io/stzsite/en/atlas/sound.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/sound.html
-- [Test & quality system](https://mayouni.github.io/stzsite/en/atlas/testing.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/testing.html
-- [Documentation system](https://mayouni.github.io/stzsite/en/atlas/documentation.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/documentation.html
-- [Governance doctrine](https://mayouni.github.io/stzsite/en/atlas/governance.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/guide/governance.html
+- [String](https://mayouni.github.io/stzsite/en/atlas/string.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/string.html#functions
+- [Pattern matching](https://mayouni.github.io/stzsite/en/atlas/regex.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/regex.html#functions
+- [Collections & objects](https://mayouni.github.io/stzsite/en/atlas/collections.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/collections.html#functions
+- [Numeric & optimization](https://mayouni.github.io/stzsite/en/atlas/numeric.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/numeric.html#functions
+- [Tables & data](https://mayouni.github.io/stzsite/en/atlas/tables.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/tables.html#functions
+- [Internationalization](https://mayouni.github.io/stzsite/en/atlas/i18n.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/i18n.html#functions
+- [NLP & linguistics](https://mayouni.github.io/stzsite/en/atlas/nlp.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/nlp.html#functions
+- [Neural tier](https://mayouni.github.io/stzsite/en/atlas/neural.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/neural.html#functions
+- [Agents & conversation](https://mayouni.github.io/stzsite/en/atlas/agents.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/agents.html#functions
+- [Graphics](https://mayouni.github.io/stzsite/en/atlas/graphics.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/graphics.html#functions
+- [Geo & cartography](https://mayouni.github.io/stzsite/en/atlas/geo.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/geo.html#functions
+- [Diagramming & graphs](https://mayouni.github.io/stzsite/en/atlas/diagramming.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/diagramming.html#functions
+- [GPU](https://mayouni.github.io/stzsite/en/atlas/gpu.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/gpu.html#functions
+- [GUI & reactive](https://mayouni.github.io/stzsite/en/atlas/gui.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/gui.html#functions
+- [Statistics & data-viz](https://mayouni.github.io/stzsite/en/atlas/stats.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/stats.html#functions
+- [System programming](https://mayouni.github.io/stzsite/en/atlas/system.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/system.html#functions
+- [Concurrency & distribution](https://mayouni.github.io/stzsite/en/atlas/concurrency.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/concurrency.html#functions
+- [Web & app server](https://mayouni.github.io/stzsite/en/atlas/web.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/web.html#functions
+- [Performance](https://mayouni.github.io/stzsite/en/atlas/performance.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/performance.html#functions
+- [Metaprogramming & code rules](https://mayouni.github.io/stzsite/en/atlas/meta.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/meta.html#functions
+- [Files & formats](https://mayouni.github.io/stzsite/en/atlas/files.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/files.html#functions
+- [Binary formats](https://mayouni.github.io/stzsite/en/atlas/binary.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/binary.html#functions
+- [Security & governance](https://mayouni.github.io/stzsite/en/atlas/security.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/security.html#functions
+- [Extensibility & foreign code](https://mayouni.github.io/stzsite/en/atlas/extensibility.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/extensibility.html#functions
+- [Sound](https://mayouni.github.io/stzsite/en/atlas/sound.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/sound.html#functions
+- [Test & quality system](https://mayouni.github.io/stzsite/en/atlas/testing.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/testing.html#functions
+- [Documentation system](https://mayouni.github.io/stzsite/en/atlas/documentation.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/documentation.html#functions
+- [Governance doctrine](https://mayouni.github.io/stzsite/en/atlas/governance.html): what Softanza rethought in this area, its code run, and its guide at https://mayouni.github.io/stzsite/en/atlas/governance.html#functions
 
 ## Optional
 

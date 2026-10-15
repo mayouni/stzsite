@@ -239,7 +239,7 @@ def build_reference(ctx):
     <h1 class="mono-title">{esc(title)}</h1>
     <p class="thesis">{len(c["own"])} {t["own"]} · {c["folded"]} {extshow.T[lang]["folded"]}{(" · " + t["inherits"] + " " + inh) if inh else ""}</p>
     {also_html(c.get("also_named"), t).replace("<small>", '<p class="thesis">').replace("</small>", "</p>")}
-    <p class="proof"><a href="{GH}{esc(c["file"])}">{t["source"]}: base/{esc(c["file"])}</a> · <a href="../reference.html">{t["back"]}</a>{(' · <a href="../guide/' + a + '.html">' + t["guide"] + ' ' + esc(area_title[a][lang]) + '</a>') if a in area_title else ''}</p>
+    <p class="proof"><a href="{GH}{esc(c["file"])}">{t["source"]}: base/{esc(c["file"])}</a> · <a href="../reference.html">{t["back"]}</a>{(' · <a href="../atlas/' + a + '.html#functions">' + t["guide"] + ' ' + esc(area_title[a][lang]) + '</a>') if a in area_title else ''}</p>
   </div></section>
   <div class="wrap page-body">
     {extshow.legend(lang, "../")}

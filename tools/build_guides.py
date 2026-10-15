@@ -107,28 +107,20 @@ def build_guides(ctx):
             same = " · ".join(f'<a href="{o["slug"]}.html">{esc(o[lang])}</a>' for o in groups if o["band"] == g["band"] and o["slug"] != slug)
             h = heritage.get(slug)
             lede = esc(h["principle_" + lang]) if h else esc(g["line_" + lang])
-            body = (f'<h2>{t["fn"]}</h2>' + "".join(fam_html)
+            # the area page and its guide were one subject on two pages, in two sections (doc/STRUCTURE-2026-10-15.md): the
+            # functions and the classes are now sections of the area page, and the guide's address sends the reader there
+            body = (f'<h2 id="functions">{t["fn"]}</h2>' + "".join(fam_html)
                     + f'<p class="proof">{t["src"]} {esc(harvested)}.</p>'
-                    + f'<h2>{t["classes"]}</h2><ul>{cls_rows}</ul>'
-                    + f'<h2>{t["tut"]}</h2>{tut}'
-                    + f'<h2>{t["see"]}</h2><ul><li><a href="../atlas/{slug}.html">{t["atlas"]}</a></li>'
-                    + (f'<li>{t["same"]} : {same}</li>' if lang == "fr" and same else (f'<li>{t["same"]}: {same}</li>' if same else "")) + '</ul>')
-            title = g[lang]
-            page = head(lang, f'{title} · {t["kicker"]} · Softanza', g["line_" + lang], "../../")
-            page += '\n<body class="page page-guide">\n' + header(lang, "docs", "../../", other_href=f"../../{'en' if lang == 'fr' else 'fr'}/guide/{slug}.html", nav_rel="../", page_key="guide", tail=[(title, None)])
-            page += f"""
-<main id="main">
-  <section class="page-head"><div class="wrap">
-    <div class="eyebrow">{t["kicker"]} · {esc(band[lang])}</div>
-    <h1>{esc(title)}</h1>
-    <p class="lede">{lede}</p>
-  </div></section>
-  <div class="wrap page-body">
-{body}
-  </div>
-</main>
-"""
-            page += footer(lang, "../../")
-            page = level2.wrap(page, level2.nav(level2.LABELS["guides"][lang], level2.area_groups(idx, lang, slug)))
-            (out_dir / f"{slug}.html").write_text(page, encoding="utf-8"); pages += 1
+                    + f'<h2 id="classes">{t["classes"]}</h2><ul>{cls_rows}</ul>')
+            area = ROOT / lang / "atlas" / f"{slug}.html"
+            ap = area.read_text(encoding="utf-8")
+            assert ap.count("<!--GUIDE-SECTIONS-->") == 1, area
+            area.write_text(ap.replace("<!--GUIDE-SECTIONS-->", body), encoding="utf-8")
+            moved = {"fr": "Cette page a changé d'adresse", "en": "This page has moved"}[lang]
+            url = f"../atlas/{slug}.html#functions"
+            (out_dir / f"{slug}.html").write_text(
+                f'<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><title>{esc(moved)} · Softanza</title><meta name="robots" content="noindex">'
+                f'<meta http-equiv="refresh" content="0;url={url}"><link rel="canonical" href="{url}"></head>'
+                f'<body><p>{esc(moved)}{" :" if lang == "fr" else ":"} <a href="{url}">{esc(g[lang])}</a></p></body></html>', encoding="utf-8")
+            pages += 1
     return pages

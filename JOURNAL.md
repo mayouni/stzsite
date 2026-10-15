@@ -2374,3 +2374,29 @@ next:
   - me:      wave 2, third part: one page per area (the atlas page and the guide merged), with the 56 guide addresses kept as redirects, listed to the AYOUNI Press desk first
   - author:  none
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-15 13:32
+
+subject:   wave 2, third part: one page per area, the 56 guide addresses kept as redirects
+
+why:       three readers met each of the 28 areas on two pages in two sections, an area page under Platform and a guide under Reference, and the two disagreed
+
+did:
+  - made the guide's two sections, the functions by what they do and the classes, the last sections of each area page, with anchors #functions and #classes; the guide's narrations list and its see-also list are dropped, since the area page and the rail already carry them
+  - turned en/guide/*.html and fr/guide/*.html (56 pages) into redirect pages to ../atlas/<area>.html#functions; the AYOUNI Press desk was told before the push
+  - pointed every link at the area page: the documentation's scope grid, the method pages, the class pages, the area page's own line, the search, the agents' index; the search index no longer lists the redirects, nor does the sitemap
+  - rewrote the three sentences that still spoke of a guide per area (Documentation, Learn, Start)
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,300 files, search 16 of 16, the floor held on two area pages in both themes
+
+state:
+  areas:        one page per area, 28 in each language
+  push:         waiting for the network; the background retry pushes main as soon as GitHub answers
+
+waiting:
+  - STZZUI-READINGDEPTH-01: the four possible gaps of prompt 52 -> stzzui [routed]
+
+next:
+  - me:      confirm the push of the three commits; then wave 3, the machine face (a runtime block in llms.txt, signatures and global functions in agents/index.json), and wave 4, labels that say what is inside
+  - author:  none
+```
