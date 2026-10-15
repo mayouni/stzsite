@@ -2466,3 +2466,31 @@ next:
   - me:      push; tell the AYOUNI Press desk and the book session; then re-run the constitution's audit on the new structure and report it on the Zui page
   - author:  read the site at laptop and phone width and say what still gets in the way
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-15 22:36
+
+subject:   the constitution's audit re-run on the new structure
+
+why:       the author asked for the audit on the rebuilt site, after waves 1 to 4
+
+did:
+  - ran StzZui's ui-audit.html (stzzui 303667c88), read-only through a temporary server, on 182 pages at 1280 px: the home page, every section page in both languages, five deeper pages; the light theme at 21:26 UTC and the dark one at 21:28 UTC
+  - read the result: 55 findings in the light theme, 33 in the dark; Rules 108, 114, 116 and the size floor of 105/107 have none
+  - read the 22 contrast findings: all on the home menu over the photograph, light theme only, the image the audit cannot see
+  - read the 33 Rule 115 findings: all the same reading, the audit comparing breadcrumbs along a branch, where the site's path is now the vertical rail (Rule 120), identical on every page of a section with only the highlight moving
+  - reported both on the Zui page, in both languages, with the date, the counts and what the audit cannot read
+  - added Part C to prompt 52 for StzZui: once a site follows Rule 120, the audit should read the vertical second level to judge Rule 115
+  - checked: 0 dangling links, the floor held on both Zui pages
+
+state:
+  audit:        light 55 (22 photo contrast, 33 Rule 115), dark 33 (Rule 115); before the rebuild light 46, dark 22, with three stacked rows the audit did not measure
+  rule-115:     up from 16 to 33 because the new families give more pages a deeper breadcrumb; the rail the rule describes is not read by the audit
+
+waiting:
+  - STZZUI-READINGDEPTH-01: prompt 52, now with Part C on the audit's reading of Rule 115 -> stzzui [routed]
+
+next:
+  - me:      commit and push
+  - author:  read the site at laptop and phone width and say what still gets in the way
+```
