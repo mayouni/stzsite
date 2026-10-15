@@ -25,7 +25,3 @@ It is a book that runs. Every code block in it is run inside the Softanza librar
 The quickest way into the platform today is this site: every claim on it links to the file, the guard or the render that proves it. The course called <a href="book.html">The book</a> in the Learn section is a different book: an interactive course of fifteen chapters, in four languages, whose cells you run yourself.
 
 <p class="cta"><a href="start.html">Start</a><a href="learn.html">Learn</a></p>
-
-## Working with the author {#work}
-
-If this site or its books are useful to your organisation, I work with organisations on their subjects: paper copies in quantity, workshops and training, talks, consulting and the building of solutions. Write to kalidianow＠gmail.com.

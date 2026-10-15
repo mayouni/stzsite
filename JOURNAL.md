@@ -2209,3 +2209,30 @@ next:
 
 note:      the address is public text now; the author chose to publish it, in the full-width form that a scraper reads less easily
 ```
+
+```yaml
+by:        stzsite · claude-sonnet-5-5 · 2026-10-15 10:14
+
+subject:   duplication of the invitation to organisations, which I had put twice on three pages
+
+why:       the author said the offer page contains many duplications; reading the site, the repetition I had made myself was the one I could prove
+
+did:
+  - found that the invitation stood once in the page and once in the footer on the home page, the book page and the editions page, because the footer shows it on every page
+  - kept it once per page, in the footer; removed the section I had added on the book page and the editions page, and the paragraph in the home page's book section, in both languages
+  - re-read the offering page itself, built and in source: no heading, paragraph or sentence repeats within it; what it shares with other pages is the seven doors, which the home page summarises and the journeys pages unfold, and the funding callout, which the editions page's callout echoes
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,300 files, search 16 of 16; the address now appears once on each page
+
+state:
+  invitation:      once per page, in the footer, both languages
+  offer-text:      still spread over the editions card, the editions callout, the offering funding callout, the solutions note, the customers line and the tour closing line, all older than the author's ruling OFFER-03
+
+waiting:
+  - OFFER-IN-ONE-PLACE: which page is the one place that says what is offered, and which of the older lines go: I propose the editions page, rewritten around OFFER-03, with the others pointing to it -> the author [not routed before this memo]
+
+next:
+  - me:      commit and push
+  - author:  say yes, and I rewrite the editions page around the ruling and remove the older lines in one commit
+
+note:      I did not rewrite the older offer lines unasked, since they state a model the author wrote before the ruling
+```

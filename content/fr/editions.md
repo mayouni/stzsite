@@ -20,7 +20,3 @@ description: L'édition ouverte et l'édition entreprise de Softanza : le même 
 ## Ce que vous possédez, dans les deux éditions {#own}
 
 Vos mondes, règles, cours et agents sont des fichiers texte dans des dossiers que vous gardez. La source du moteur est dans le dépôt et se construit pour Windows, Linux et macOS. Le cours est du texte brut, adapté par surcouche et jamais par copie, et la progression d'un apprenant est un fichier texte que vous pouvez lire pour toujours. Rien que quiconque puisse retirer ; la page Vision dit ce que cette phrase veut dire et ce qu'elle ne veut pas dire.
-
-## Travailler avec l'auteur {#work}
-
-Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com.

@@ -25,7 +25,3 @@ C'est un livre qui s'exécute. Chaque bloc de code y est exécuté dans la bibli
 Le chemin le plus court vers la plateforme aujourd'hui est ce site : chaque affirmation y renvoie au fichier, à la garde ou au rendu qui la prouve. Le cours appelé <a href="book.html">Le livre</a> dans la section Apprendre est un autre livre : un cours interactif de quinze chapitres, en quatre langues, dont vous exécutez vous-même les cellules.
 
 <p class="cta"><a href="start.html">Démarrer</a><a href="learn.html">Apprendre</a></p>
-
-## Travailler avec l'auteur {#work}
-
-Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com.
