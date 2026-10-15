@@ -77,3 +77,12 @@ runs (on text, not on numbers, at library commit 93d7a39bd). `@@()` stays in eve
 reports that the expressive print is Haro's default (PRINT-EXPRESSIVE): the site's blocks are run and judged, and
 without `@@()` the former host prints a list one item per line. The Softanza book's chapter 5 shows the four forms
 side by side. Every example a wave rewrites follows this, and is run again before it is shown.
+
+The second ruling, relayed the same day: a chain links through Q forms. `MethodQ().MethodQ().Method()`, never
+`Method()...()`; a chain that ends on a Q form returns the object after the chain changed it. The exceptions are the
+functions that mean an object (Q, QH, L, Lx, Nx, Tbx, Mx, rx, Refine, App, Service, Log, Plan, System, Deploy, TruthOf,
+Naturally and its kin). Where the library has no Q form for a method that returns the object (Know, KnowRelation,
+SetGovernedBy, SetRiskFor, SetAllowRefine, SetAuthorityLevel, and a few more at library commit 93d7a39bd), the chain
+becomes separate calls or a scene. This applies to the examples this site writes (the content pages and
+data/showcase-src.json); the narrations and the reference examples are the library's own text, read from the library,
+and change there.

@@ -38,7 +38,7 @@
    "what_fr": "Un motif tout fait s'appelle par son nom, se compare à une valeur entière et s'explique en mots simples."
   },
   {
-   "code": "wrxm() {\n\tIfStartsWith(\"+\").\n\tThenMatch(\"\\+1\\d{10}\").     # International format\n\tElseMatch(\"\\d{10}\")         # Local format\n\t? Pattern()\n}",
+   "code": "wrxm() {\n\tIfStartsWith(\"+\")\n\tThenMatch(\"\\+1\\d{10}\")      # International format\n\tElseMatch(\"\\d{10}\")         # Local format\n\t? Pattern()\n}",
    "expected": "(?(?=^\\+)\\+1\\d{10}|\\d{10})",
    "source": "base/test/regexmaker/34_validate_phone_numbers.ring",
    "what_en": "A conditional pattern is declared like an if/else, international or local phone format, and the maker writes the regex.",
@@ -706,7 +706,7 @@
    "what_fr": "Le « yielder », l'une des quatre métaphores : il filtre, transforme et additionne les recettes du jour sans une seule boucle."
   },
   {
-   "code": "? Q([ \"AnnIE\", \"aeiou\" ]).EachQ().AtLeast(2).VowelNB()\n? Q([ \"AnnIE\", \"sky\" ]).EachQ().AtLeast(2).VowelNB()\n? Why()",
+   "code": "? Q([ \"AnnIE\", \"aeiou\" ]).EachQ().AtLeastQ(2).VowelNB()\n? Q([ \"AnnIE\", \"sky\" ]).EachQ().AtLeastQ(2).VowelNB()\n? Why()",
    "expected": "TRUE\nFALSE\nno: item 2 (\"sky\") fails -- no: expected atleast 2, found 0",
    "source": "base/test/natural/nnl_narrated.ring (scenario Q3b, its assertions printed)",
    "what_en": "A near-natural chain reads as the sentence \"each has at least two vowels\", and when it is false, Why() names the item that failed.",

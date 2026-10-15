@@ -2400,3 +2400,25 @@ next:
   - me:      confirm the push of the three commits; then wave 3, the machine face (a runtime block in llms.txt, signatures and global functions in agents/index.json), and wave 4, labels that say what is inside
   - author:  none
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-15 13:43
+
+subject:   the author's two code-style rulings, applied to the examples this site writes
+
+why:       the book session relayed the author's rulings: the brace scene is the basis of the style, and a chain links through Q forms; both apply to every user-facing example
+
+did:
+  - recorded both rulings in doc/STRUCTURE-2026-10-15.md, so every later rewrite follows them, with the scope: the site's own examples (content pages and data/showcase-src.json); the narrations and the reference examples are the library's text and change in the library
+  - scanned every example the site writes for a chain that does not link through a Q form: 9 hits, 6 of them the rule's own exceptions (Projection(), which returns an object; _(8); NaturallyWith; a line of the build's own Python on The code page)
+  - rewrote the other 3: the conditional regex scene now makes separate calls, since IfStartsWith has no Q form at library commit 4a184e6f0; the vowel example on How Softanza is written uses AtLeastQ(2), twice
+  - re-ran both areas in the pinned library (4a184e6f0): regex 4 of 4 and craft 11 of 11 kept, each matching its source's promise
+  - checked: 0 failures on the example blocks, 0 dangling links
+
+state:
+  site-examples:   follow the Q rule; @@() kept until PRINT-EXPRESSIVE
+  push:            three commits (and this one) wait for the network; the retry is running
+
+next:
+  - me:      commit; tell the book session and the AYOUNI Press desk once the push lands
+```
