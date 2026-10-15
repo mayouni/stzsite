@@ -73,7 +73,7 @@ Vous ne passez pas d'examen. Un niveau se gagne par un **projet** que vous const
 <div class="card"><h3>S4 · Maître</h3><p>Chapitre 15. <b>Projet :</b> un nouveau chapitre pour ce cours, en deux langues, dont le garde est vert.</p></div>
 </div>
 
-<p class="proof">Le projet de chaque barreau est jugé par un garde, montré exécuté sur un échantillon faux et un échantillon juste : <a href="learn.html#ladder">l'échelle sur la page Apprendre</a>. Où vous en êtes est nommé par la bibliothèque sur votre machine, à partir des preuves de votre dossier ; ce site ne voit pas ce dossier.</p>
+<p class="proof">Le projet de chaque barreau est jugé par un garde, montré exécuté sur un échantillon faux et un échantillon juste : <a href="#ladder">l'échelle sur la page Apprendre</a>. Où vous en êtes est nommé par la bibliothèque sur votre machine, à partir des preuves de votre dossier ; ce site ne voit pas ce dossier.</p>
 
 ## Quand vous avez fini {#end}
 

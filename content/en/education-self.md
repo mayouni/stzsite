@@ -73,7 +73,7 @@ You do not sit an exam. A level is earned by a **project** you build in your own
 <div class="card"><h3>S4 · Master</h3><p>Chapter 15. <b>Project:</b> a new chapter for this course, in two languages, whose guard is green.</p></div>
 </div>
 
-<p class="proof">Each rung's project is judged by a guard shown run on a wrong sample and a right one: <a href="learn.html#ladder">the ladder on the Learn page</a>. Where you stand is named by the library on your machine, from the evidence in your folder; this site cannot see that folder.</p>
+<p class="proof">Each rung's project is judged by a guard shown run on a wrong sample and a right one: <a href="#ladder">the ladder on the Learn page</a>. Where you stand is named by the library on your machine, from the evidence in your folder; this site cannot see that folder.</p>
 
 ## When you finish {#end}
 

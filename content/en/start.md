@@ -48,6 +48,24 @@ The first run takes about seven seconds, because the library and its engine load
 └──────────┘</pre></div></div>
 <p class="ran">run on 2026-10-09 at 00:52 as <code>ring first.ring</code> from <code>libraries/stzlib</code>, in 6.9 seconds, Softanza at commit <a href="https://github.com/mayouni/stzlib/commit/4a184e6f0">4a184e6f0</a></p>
 
+## Which page answers what {#map}
+
+The site has one page for each kind of question. When you do not know a name, press <kbd>/</kbd> or <kbd>Ctrl</kbd>+<kbd>K</kbd> on any page: the search finds classes, methods, guides and recipes.
+
+<table class="declared">
+<thead><tr><th>You want to</th><th>Open</th></tr></thead>
+<tbody>
+<tr><td>learn the way of thinking, step by step</td><td><a href="learn.html">Learn</a>, then <a href="book.html">the interactive course</a></td></tr>
+<tr><td>do one task now, such as removing duplicates</td><td><a href="howto.html">How-to</a></td></tr>
+<tr><td>know exactly what a method does, and its other forms</td><td><a href="reference.html">Reference</a>, or the search</td></tr>
+<tr><td>see everything one area offers, from strings to maps</td><td><a href="areas.html">The areas</a></td></tr>
+<tr><td>understand why a part was designed the way it is</td><td><a href="narrations.html">Narrations</a></td></tr>
+<tr><td>know what is built and what is not yet</td><td><a href="proven.html">Proof</a></td></tr>
+<tr><td>decide whether an organisation should use it</td><td><a href="offering.html">Organisations</a></td></tr>
+<tr><td>point an AI agent at it</td><td><a href="agents.html">For agents</a></td></tr>
+</tbody>
+</table>
+
 ## The first narration {#narration}
 
 A narration is a document that tells a part of the library as a story, in code written to be run as it is read. Start with <a href="narrations/stz-mental-mode-narration.html">the mental model</a>, then <a href="narrations/stz-agents-that-cannot-hurt-you-narration.html">the agents that cannot hurt you</a>. To see a narration judged block by block, open <a href="narrations/stz-repetition-with-elegance-narration.html">Repetition with Elegance</a>, run for this site: its six blocks print what they promise. All 135 are listed under Learn, in Narrations.

@@ -2323,3 +2323,29 @@ next:
 
 note:      the 2026-10-02 rule "three menu levels and never more" is replaced by two levels on screen, the rest nested in the rail
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-15 13:05
+
+subject:   wave 2, first part: each reader's decisive page answers first, no address moved
+
+why:       the six readers named one change each that would help them most; four of them need no address to move
+
+did:
+  - Start opens a table "Which page answers what" after the first program, and names the site's search (/ or Ctrl+K), which no page mentioned (the programmer's change)
+  - the Organisations page opens with eight answers for a head of IT (what it does, what is built, who uses it, safety, sovereignty, cost, a first project, how to work with the author), each one or two sentences with the page that holds the proof (the CTO's change)
+  - Education says first what the learners' machines need, and the Learn page names the ladder and the doors once with a link, instead of repeating them (the teacher's change)
+  - the home page opens on one definition and its stage, through the runtime sentence, then the way to begin; the two analyst doors now go to their own journeys (the newcomer's and the analyst's changes)
+  - checked: 0 failures on the example blocks, 0 dangling links, search 16 of 16, the floor held on the four pages changed; looked at the home page and the Organisations page
+
+state:
+  wave-2a:     built, gates green
+  addresses:   none moved
+
+waiting:
+  - STZZUI-READINGDEPTH-01: the four possible gaps of prompt 52 -> stzzui [routed]
+
+next:
+  - me:      wave 2, second part: the three projects told once (Real applications), one page per area (atlas and guide); the redirects are listed to the AYOUNI Press desk before they are pushed
+  - author:  none
+```

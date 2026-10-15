@@ -48,6 +48,24 @@ Le premier lancement prend environ sept secondes, parce que la bibliothèque et 
 └──────────┘</pre></div></div>
 <p class="ran">exécuté le 2026-10-09 à 00:52 par <code>ring first.ring</code> depuis <code>libraries/stzlib</code>, en 6,9 secondes, Softanza au commit <a href="https://github.com/mayouni/stzlib/commit/4a184e6f0">4a184e6f0</a></p>
 
+## Quelle page répond à quoi {#map}
+
+Le site a une page par sorte de question. Quand vous ne connaissez pas un nom, appuyez sur <kbd>/</kbd> ou <kbd>Ctrl</kbd>+<kbd>K</kbd> sur n'importe quelle page : la recherche trouve les classes, les méthodes, les guides et les recettes.
+
+<table class="declared">
+<thead><tr><th>Vous voulez</th><th>Ouvrez</th></tr></thead>
+<tbody>
+<tr><td>apprendre la façon de penser, pas à pas</td><td><a href="learn.html">Apprendre</a>, puis <a href="book.html">le cours interactif</a></td></tr>
+<tr><td>faire une tâche tout de suite, comme retirer les doublons</td><td><a href="howto.html">Comment faire</a></td></tr>
+<tr><td>savoir exactement ce que fait une méthode, et ses autres formes</td><td><a href="reference.html">Référence</a>, ou la recherche</td></tr>
+<tr><td>voir tout ce qu'offre un domaine, des chaînes aux cartes</td><td><a href="areas.html">Les domaines</a></td></tr>
+<tr><td>comprendre pourquoi une partie a été conçue ainsi</td><td><a href="narrations.html">Narrations</a></td></tr>
+<tr><td>savoir ce qui est construit et ce qui ne l'est pas encore</td><td><a href="proven.html">Preuves</a></td></tr>
+<tr><td>décider si une organisation devrait l'adopter</td><td><a href="offering.html">Organisations</a></td></tr>
+<tr><td>y diriger un agent d'IA</td><td><a href="agents.html">Pour les agents</a></td></tr>
+</tbody>
+</table>
+
 ## La première narration {#narration}
 
 Une narration est un document qui raconte une partie de la bibliothèque comme une histoire, en code écrit pour être exécuté au fil de la lecture. Commencez par <a href="narrations/stz-mental-mode-narration.html">le modèle mental</a>, puis <a href="narrations/stz-agents-that-cannot-hurt-you-narration.html">les agents qui ne peuvent pas vous nuire</a>. Pour voir une narration jugée bloc par bloc, ouvrez <a href="narrations/stz-repetition-with-elegance-narration.html">Repetition with Elegance</a>, exécutée pour ce site : ses six blocs affichent ce qu'ils promettent. Les 135 sont listées sous Apprendre, dans Narrations.

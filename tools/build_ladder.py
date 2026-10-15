@@ -128,11 +128,11 @@ def inject_reader(text, run):
             t = T[lang]
             body = t["strip"].format(rung=esc(lv["id"].upper()), name=esc(NAMES[lv["named"]][0 if lang == "en" else 1]),
                                      n=upto, pid=esc(lv["earned-by"]), what=inline_code(b["what"]))
-            link = f' <a href="{lang}/learn.html#ladder">{t["strip_link"]}</a>'
+            link = f' <a href="{lang}/education-self.html#ladder">{t["strip_link"]}</a>'
         else:
             # Arabic and Hausa: only the library's own words, the brief in that language
             body = f'{esc(lv["id"].upper())} · 1 – {upto} · <bdi>{esc(lv["earned-by"])}</bdi> · {inline_code(b["what"])}'
-            link = ' <a href="en/learn.html#ladder">S0 – S4</a>'
+            link = ' <a href="en/education-self.html#ladder">S0 – S4</a>'
         return f'<!--stz-ladder--><p class="stz-ladder"><b>{body.split(" · ", 1)[0]}</b> · {body.split(" · ", 1)[1]}{link}</p><!--/stz-ladder-->'
     out, pos = [], 0
     for m in re.finditer(r'<article id="(en|fr|ar|ha)-(\d+)"[^>]*>', text):

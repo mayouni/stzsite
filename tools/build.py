@@ -1172,6 +1172,7 @@ def build_home(idx, groups):
     body = (CONTENT / "home.html").read_text(encoding="utf-8")
     for lang in LANGS:
         body = body.replace(f"<!--AREAS-{lang.upper()}-->", fmap_html(lang, idx, groups, f"{lang}/atlas/") + tiles_html(lang, idx, groups, f"{lang}/atlas/", "", hl="h3"))
+        body = body.replace(f"<!--RUNTIME-{lang.upper()}-->", RUNTIME[lang])
     page = head("fr", "Softanza · La plateforme logicielle gouvernée de l'ère de l'IA · The Governed Software Platform of the AI Age",
                 "Softanza, the Governed Software Platform of the AI Age. Declare what you know. A court keeps it. The AI model comes last. Born in Africa. Useful to the World.", "")
     page = page.replace('<html lang="fr" data-lang="fr">', '<html lang="fr" data-lang="fr" class="home">')

@@ -6,6 +6,29 @@ lede: Softanza raconte une seule histoire à sept sortes d'artisans du logiciel,
 description: Les sept publics de Softanza, du programmeur à l'agent d'IA : ce qu'est un artisan du logiciel, ce que chaque public déclare et obtient, avec un vrai exemple.
 ---
 
+## Pour une organisation, en huit réponses {#decide}
+
+Les questions qu'un responsable informatique pose avant un pilote, chacune avec sa réponse en une ou deux phrases et la page qui en tient la preuve.
+
+<dl class="terms decide">
+<dt>Ce qu'elle fait pour une organisation</dt>
+<dd>Elle livre une plateforme déclarée : votre monde, vos règles et vos rôles, écrits avec vos propres mots en texte brut qui vous appartient ; des agents d'IA qui proposent et ne peuvent pas engager ; et un déploiement répété sur un jumeau avant d'être réel. <a href="solutions.html">Solutions pour les organisations</a></dd>
+<dt>Ce qui est construit, et ce qui ne l'est pas encore</dt>
+<dd>Chaque produit est listé avec son stade : construit, en construction ou nommé, et le site ne dit jamais construit ce qui ne l'est pas. <a href="estate.html">Le patrimoine, étape par étape</a></dd>
+<dt>Qui l'utilise</dt>
+<dd>Les projets qui l'ont façonnée, avec ce que chacun demandait et ce qui existe aujourd'hui. <a href="real.html">Applications réelles</a> et <a href="forged.html">Forgée en projets</a></dd>
+<dt>Est-elle sûre</dt>
+<dd>Trente-huit garanties, chacune liée à un garde ; une attaque d'exercice détectée en 395 ms et contenue en 50 ms, 27 assertions sur 27, mesurée sur une seule machine et une seule forme d'attaque. <a href="security.html">Les chiffres de la sécurité</a></dd>
+<dt>Est-elle souveraine</dt>
+<dd>Ici, la souveraineté veut dire une seule chose : rien que quiconque d'autre puisse retirer. Chaque dépendance reçoit un verdict écrit : possédée, empruntée et épinglée, ou embarquée avec le code. <a href="sovereignty.html">Souveraineté</a></dd>
+<dt>Ce qu'elle coûte</dt>
+<dd>La plateforme est gratuite et entière, sous licence MIT, sans aucun module retenu, et rien sur ce site n'a de prix. <a href="editions.html">Éditions</a></dd>
+<dt>À quoi ressemble un premier projet</dt>
+<dd>Trois temps : spécifier le monde de l'organisation comme une déclaration, répéter toute la solution sur un jumeau jusqu'à ce qu'elle soit jugée, puis la livrer par un plan avec retour arrière. À la fin, le code, la configuration et les données sont à l'organisation, en texte brut. <a href="solutions.html#engagement">Une mission, en trois temps</a></dd>
+<dt>Comment travailler avec l'auteur</dt>
+<dd><a href="https://mayouni.github.io/ayouni/fr/offre/">Comment ces livres sont offerts, et comment travailler avec l'auteur</a>. L'invitation permanente est aussi au pied de chaque page.</dd>
+</dl>
+
 ## Qu'est-ce qu'un artisan du logiciel ? {#crafter}
 
 Un artisan du logiciel transforme ce qu'il sait d'un monde en quelque chose qui tourne, sans attendre l'industrie du logiciel. Il n'est pas défini par sa maîtrise de la programmation mais par la propriété : l'artefact est à lui, en texte brut, et il n'expire pas. Une enseignante, un analyste, un commerçant, un élève, un fonctionnaire, et un agent d'IA qui propose sous tous ces mondes.
