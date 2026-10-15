@@ -2422,3 +2422,24 @@ state:
 next:
   - me:      commit; tell the book session and the AYOUNI Press desk once the push lands
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-15 13:51
+
+subject:   wave 3, the machine face: an AI agent can now call what it finds, and run a first program from llms.txt
+
+why:       the AI-agent reader found a method in two fetches but could not call it (no parameters anywhere), could not find the global functions, and could not run a program from llms.txt
+
+did:
+  - wrote tools/signatures_run.py, which reads every method's and every global function's parameters from the library's source (a function before a file's first class is global, a method follows its class), skipping tests and archived copies; ran it on the pinned library 4a184e6f0: 898 files, 9,593 global functions, 37,504 methods in 618 classes -> data/signatures.json
+  - added to agents/index.json a signature on every method that has one (18,504 of 18,561, 99%), an address on every method (its entry page or its anchor on the class page), and the global functions with their signatures and sources
+  - opened llms.txt with "Run a program first": the clone, the runtime's version, the load line, the first run's seven seconds, the install page for the runtime's name and command, and where the signatures and functions are; the former host language stays unnamed there, as the site's rule for that file requires
+  - checked: 0 failures on the example blocks, 0 dangling links, search 16 of 16
+
+state:
+  machine-files:   llms.txt opens with the runtime; agents/index.json 7.4 MB with signatures and functions
+  push:            four commits wait for the network
+
+next:
+  - me:      commit; wave 4, labels that say what is inside (The code, Depth, Reach, Four widths), each with its redirect, and the Organisations audience doors folded into Journeys
+```

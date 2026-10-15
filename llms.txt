@@ -6,6 +6,15 @@
 
 This site was generated from the library at commit 0e72e2e2c. Its method examples, recipes and narrations were run inside the library before publication, and each output shown is that run's; what did not run is not shown as run. The site is in English and French; this file links the English pages.
 
+## Run a program first
+
+Softanza runs today on the runtime of its former host language, kept so that the code already written keeps working; a bridge is in construction, and Haro is the destination. To run a program today:
+
+1. `git clone https://github.com/mayouni/stzlib.git`, then `cd stzlib/libraries/stzlib`
+2. the runtime, version 1.27.0; the install page names it and links its download (the Zig engine ships compiled for Windows and builds for Linux and macOS from source)
+3. a file `first.ring` in that folder, whose first line is `load "stzLib.ring"`, run with the runtime's command given on the install page; the first run takes about seven seconds
+The install page: https://mayouni.github.io/stzsite/en/start.html#install. Methods take the parameters given as `signature` in https://mayouni.github.io/stzsite/agents/index.json, and the global functions are listed there under `functions`.
+
 ## How to think and write Softanza
 
 Read this before the method list. The page is https://mayouni.github.io/stzsite/en/way.html; the rules are stated at https://mayouni.github.io/stzsite/en/craft.html#rules.

@@ -136,13 +136,21 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
     narr = json.loads((ROOT / "data" / "narrations-run.json").read_text(encoding="utf-8"))
     classes = []
     rdata = rowex.load(ROOT)
+    # the parameters of every method and every global function, read from the library's source (tools/signatures_run.py):
+    # without them an AI agent finds a method and cannot call it (the agent reader of 2026-10-15)
+    sf = ROOT / "data" / "signatures.json"
+    sig = json.loads(sf.read_text(encoding="utf-8")) if sf.exists() else {"methods": {}, "functions": {}, "commit": ""}
     for c in ref["classes"]:
         ms = []
+        csig = sig["methods"].get(c["name"].lower(), {})
         for name, aka, desc in c["own"]:
             m = {"name": name, "description": prose(desc)}
             if aka: m["also"] = prose(aka)
             if c["also_written"].get(name.lower()): m["also_written"] = c["also_written"][name.lower()]      # its other names: listed once, here
             if (c["name"], name) in entries: m["entry"] = f'{SITE}en/reference/{c["name"].lower()}/{mslug(name)}.html'
+            m["url"] = m.get("entry") or f'{SITE}en/reference/{c["name"].lower()}.html#{name.lower()}'      # every method has an address
+            s_ = csig.get(name.lower())
+            if s_: m["signature"] = f'{s_["name"]}({", ".join(s_["params"])})'
             vs = c["variants"].get(name.lower(), [])
             have = qforms.extensions_of(vs)
             m["extensions"] = [e for e in qforms.CODES if e in have]          # which extensions exist for this method
@@ -180,7 +188,11 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
              "discipline": {"about": "How to think and write Softanza, read before the names: seven steps of thought, fourteen rules of writing. Page: " + SITE + "en/way.html",
                             "steps": [{"n": st["n"], "step": st["en"], "rules": st["rules"], "sample": st["sample"]} for st in disc["steps"]],
                             "rules": [{"n": r["n"], "rule": r["en"], "example": r["ex"]} for r in disc["rules"]]},
-             "areas": areas, "recipes": recipes, "narrations": narrations, "book": book, "classes": classes}
+             "areas": areas, "recipes": recipes, "narrations": narrations, "book": book, "classes": classes,
+             "functions": {"about": f"The library's global functions, with their parameters as declared in its source at commit {sig['commit']}. "
+                                    "They are called without an object: StzReplace(cHost, cOld, cNew), Q(value).", 
+                           "list": [{"name": f_["name"], "signature": f'{f_["name"]}({", ".join(f_["params"])})', "source": f'{GH}base/{f_["file"]}'}
+                                    for f_ in sorted(sig["functions"].values(), key=lambda x: x["name"].lower())]}}
     # prose is mapped as on the pages; identifiers and file names stay as the library spells them
     text = json.dumps(index, ensure_ascii=False, separators=(",", ":"))
     (ROOT / "agents").mkdir(exist_ok=True)
@@ -189,6 +201,12 @@ def write_machine_files(ROOT, entries, groups, howto, ask):
     L = ["# Softanza", "",
          "> Softanza is the Governed Software Platform of the AI Age: declare what you know, a court keeps it, the AI model comes last. One engine, written in Zig, handles text, exact numbers, tables, graphs, maps, images, sound, neural networks, governed agents and the security around them. Its language, Haro, is in construction. Born in Africa, useful to the world.", "", "> The book: Mansour Ayouni, Softanza: The Governed Software Platform of the AI Age (second of the AYOUNI books), AYOUNI, 2026, draft. English reader https://mayouni.github.io/ayouni/books/softanza/en/ , French reader https://mayouni.github.io/ayouni/books/softanza/fr/ , manifest https://mayouni.github.io/ayouni/books/softanza/book.json . Every page is a draft not yet read by the author.", "",
          "This site was generated from the library at commit 0e72e2e2c. Its method examples, recipes and narrations were run inside the library before publication, and each output shown is that run's; what did not run is not shown as run. The site is in English and French; this file links the English pages.", "",
+         "## Run a program first", "",
+         "Softanza runs today on the runtime of its former host language, kept so that the code already written keeps working; a bridge is in construction, and Haro is the destination. To run a program today:", "",
+         "1. `git clone https://github.com/mayouni/stzlib.git`, then `cd stzlib/libraries/stzlib`",
+         "2. the runtime, version 1.27.0; the install page names it and links its download (the Zig engine ships compiled for Windows and builds for Linux and macOS from source)",
+         "3. a file `first.ring` in that folder, whose first line is `load \"stzLib.ring\"`, run with the runtime's command given on the install page; the first run takes about seven seconds",
+         f"The install page: {SITE}en/start.html#install. Methods take the parameters given as `signature` in {SITE}agents/index.json, and the global functions are listed there under `functions`.", "",
          "## How to think and write Softanza", "",
          f"Read this before the method list. The page is {SITE}en/way.html; the rules are stated at {SITE}en/craft.html#rules.", "",
          "Seven steps of thought:", ""] + [f"{st['n']}. {st['en']} (rules {', '.join(str(n) for n in st['rules'])}) e.g. {st['sample']}" for st in disc["steps"]] + ["", "Fourteen rules of writing:", ""] + [f"{r['n']}. {r['en']} e.g. {r['ex']}" for r in disc["rules"]] + ["",
