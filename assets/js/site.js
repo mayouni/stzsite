@@ -86,21 +86,36 @@
    narrower than the left bar and the page together, the left bar folds into one line under the menu that opens on request;
    on a phone the level-2 bar folds into the same line. Without this script nothing is lost: both stand above the page */
 (function () {
-  if (!window.matchMedia || !window.matchMedia('(max-width:1100px)').matches) return;
-  var phone = window.matchMedia('(max-width:760px)').matches;
+  if (!window.matchMedia) return;
+  var wide = window.matchMedia('(max-width:1100px)'), narrow = window.matchMedia('(max-width:760px)');
   var top = document.querySelector('header.top'); if (!top) return;
-  var path = phone ? top.querySelector('nav.path') : null;
-  var rail = document.querySelector('nav.level2.rail');
-  if (!path && !rail) return;
-  var fr = (document.documentElement.lang || '').indexOf('fr') === 0;
-  var cur = (rail && (rail.querySelector('a[aria-current=page]') || rail.querySelector('a[aria-current=location]'))) ||
-            (path && (path.querySelector('a[aria-current=page]') || path.querySelector('a[aria-current=location]')));
-  var sec = document.querySelector('nav.nav a[aria-current]');
-  var here = [sec ? sec.textContent.trim() : '', cur ? cur.textContent.replace(/\s+/g, ' ').trim() : ''].filter(function (x, k, a) { return x && a.indexOf(x) === k; }).join(' \u203a ');
-  var d = document.createElement('details'); d.className = 'where';
-  var s = document.createElement('summary');
-  s.textContent = (fr ? 'Où vous êtes : ' : 'Where you are: ') + here;
-  d.appendChild(s); if (path) d.appendChild(path); if (rail) d.appendChild(rail);
-  top.parentNode.insertBefore(d, top.nextSibling);
-  if (window.__stzPin) window.__stzPin();
+  var path0 = top.querySelector('nav.path'), rail0 = document.querySelector('nav.level2.rail');
+  if (!path0 && !rail0) return;
+  /* where each bar stood, so that a window widened after load gets its bars back (a fold decided at load only stayed folded) */
+  var home = [path0, rail0].map(function (n) { return n ? [n, n.parentNode, n.nextSibling] : null; });
+  var d = null;
+  function unfold() {
+    if (!d) return;
+    home.forEach(function (h) { if (h) h[1].insertBefore(h[0], h[2]); });
+    d.parentNode.removeChild(d); d = null;
+  }
+  function fold() {
+    unfold();
+    if (!wide.matches) { if (window.__stzPin) window.__stzPin(); return; }
+    var path = narrow.matches ? path0 : null, rail = rail0;
+    if (!path && !rail) { if (window.__stzPin) window.__stzPin(); return; }
+    var fr = (document.documentElement.lang || '').indexOf('fr') === 0;
+    var cur = (rail && (rail.querySelector('a[aria-current=page]') || rail.querySelector('a[aria-current=location]'))) ||
+              (path && (path.querySelector('a[aria-current=page]') || path.querySelector('a[aria-current=location]')));
+    var sec = document.querySelector('nav.nav a[aria-current]');
+    var here = [sec ? sec.textContent.trim() : '', cur ? cur.textContent.replace(/\s+/g, ' ').trim() : ''].filter(function (x, k, a) { return x && a.indexOf(x) === k; }).join(' › ');
+    d = document.createElement('details'); d.className = 'where';
+    var s = document.createElement('summary');
+    s.textContent = (fr ? 'Où vous êtes : ' : 'Where you are: ') + here;
+    d.appendChild(s); if (path) d.appendChild(path); if (rail) d.appendChild(rail);
+    top.parentNode.insertBefore(d, top.nextSibling);
+    if (window.__stzPin) window.__stzPin();
+  }
+  fold();
+  [wide, narrow].forEach(function (m) { if (m.addEventListener) m.addEventListener('change', fold); else if (m.addListener) m.addListener(fold); });
 })();

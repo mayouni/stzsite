@@ -2,7 +2,8 @@
    Harobanda site's reading of it. Rewritten 2026-10-01 after the author's
    reading; the rules it answers are named where they bind.
 
-   Rule 3 and 5   the paper of the Atlas pages, flat: no gradient, no shadow
+   Rule 3 and 5   the Compass artifacts' style (the author, 2026-10-16): their paper, teal accent, serif titles;
+                  a resting tint under the page head and a resting shadow under cards, never used as emphasis
    Rule 107       ONE reading size (21px, raised on the author's word); titles and the hero are the only others
    Rule 105       every text pair below is measured by tools/build.py
    Rule 112, 17   nothing moves: no smooth scroll, no transition, no hover motion
@@ -13,8 +14,11 @@
 
 /* contrast: #1B211F | #F1F3F1 | 7 | reading ink on paper, light */
 /* contrast: #3E4744 | #F1F3F1 | 7 | secondary ink on paper, light */
-/* contrast: #5E2A88 | #F1F3F1 | 4.5 | link and selection on paper, light */
-/* contrast: #5E2A88 | #FBFCFB | 4.5 | link on panel, light */
+/* contrast: #1B6B72 | #F1F3F1 | 4.5 | link and selection on paper, light */
+/* contrast: #1B6B72 | #FBFCFB | 4.5 | link on panel, light */
+/* contrast: #0E4E54 | #DEE7E6 | 4.5 | eyebrow on the tinted top of the page head, light */
+/* contrast: #1B211F | #DEE7E6 | 7 | reading ink on the tinted top of the page head, light */
+/* contrast: #F1F3F1 | #1B6B72 | 4.5 | the Start button, light */
 /* contrast: #1B211F | #FBFCFB | 7 | reading ink on panel, light */
 /* contrast: #23664A | #E4F1EA | 4.5 | Strong label, light */
 /* contrast: #2F5A86 | #E4ECF4 | 4.5 | Solid label, light */
@@ -22,8 +26,11 @@
 /* contrast: #993A25 | #F6E3DD | 4.5 | Emerging label, light */
 /* contrast: #EAEEEB | #121614 | 7 | reading ink on paper, dark */
 /* contrast: #B7C1BC | #121614 | 7 | secondary ink on paper, dark */
-/* contrast: #C9A8EC | #121614 | 4.5 | link and selection on paper, dark */
-/* contrast: #C9A8EC | #1A201E | 4.5 | link on panel, dark */
+/* contrast: #5FB6BC | #121614 | 4.5 | link and selection on paper, dark */
+/* contrast: #5FB6BC | #1A201E | 4.5 | link on panel, dark */
+/* contrast: #8FD3D8 | #192423 | 4.5 | eyebrow on the tinted top of the page head, dark */
+/* contrast: #EAEEEB | #192423 | 7 | reading ink on the tinted top of the page head, dark */
+/* contrast: #121614 | #5FB6BC | 4.5 | the Start button, dark */
 /* contrast: #63B98C | #1B2F26 | 4.5 | Strong label, dark */
 /* contrast: #7BA8D4 | #1B2733 | 4.5 | Solid label, dark */
 /* contrast: #D6A559 | #302811 | 4.5 | Partial label, dark */
@@ -35,7 +42,8 @@
   --paper:#F1F3F1; --panel:#FBFCFB; --panel-2:#EAEEEB;
   --ink:#1B211F; --ink-2:#3E4744; --ink-3:#5E6864;
   --line:#D5DBD7; --line-2:#C3CAC6;
-  --accent:#5E2A88;
+  --accent:#1B6B72; --accent-ink:#0E4E54;
+  --shadow:0 1px 2px rgba(27,33,31,.04),0 6px 18px rgba(27,33,31,.05);
   --strong:#23664A; --strong-bg:#E4F1EA;
   --solid:#2F5A86; --solid-bg:#E4ECF4;
   --partial:#7A4F0E; --partial-bg:#F6ECD9;
@@ -52,7 +60,8 @@
   :root:not([data-theme="light"]){
     --paper:#121614; --panel:#1A201E; --panel-2:#232B28;
     --ink:#EAEEEB; --ink-2:#B7C1BC; --ink-3:#8A958F;
-    --line:#2C3532; --line-2:#3A443F; --accent:#C9A8EC;
+    --line:#2C3532; --line-2:#3A443F; --accent:#5FB6BC; --accent-ink:#8FD3D8;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.28);
     --strong:#63B98C; --strong-bg:#1B2F26; --solid:#7BA8D4; --solid-bg:#1B2733;
     --partial:#D6A559; --partial-bg:#302811; --emerging:#DB8069; --emerging-bg:#31201B;
     color-scheme:dark;
@@ -61,7 +70,8 @@
 :root[data-theme="dark"]{
   --paper:#121614; --panel:#1A201E; --panel-2:#232B28;
   --ink:#EAEEEB; --ink-2:#B7C1BC; --ink-3:#8A958F;
-  --line:#2C3532; --line-2:#3A443F; --accent:#C9A8EC;
+  --line:#2C3532; --line-2:#3A443F; --accent:#5FB6BC; --accent-ink:#8FD3D8;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.28);
   --strong:#63B98C; --strong-bg:#1B2F26; --solid:#7BA8D4; --solid-bg:#1B2733;
   --partial:#D6A559; --partial-bg:#302811; --emerging:#DB8069; --emerging-bg:#31201B;
   color-scheme:dark;
@@ -695,36 +705,47 @@ details.where nav.level2{border-top:1px solid var(--line);border-bottom:0}
 @media (max-width:760px){.tools a.lang{padding:0 8px}.tools a.cta-start{padding:0 10px}.tools{gap:6px}.brandrow{gap:8px}}
 @media (max-width:760px){.brandrow .brand img{height:19px}}
 
-/* the 28 areas, one orthogonal grid (the author, 2026-10-16): a column per theme, a tile per area, the picture and the name */
-.domains{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;align-items:start;margin:28px 0 8px}
-.dcol{min-width:0}
-.dband{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:1.0625rem;font-weight:700;line-height:1.3;color:var(--ink);margin:0 0 12px;padding-top:10px;border-top:5px solid var(--line-2);min-height:3.4em}
+/* the 28 areas, one framed grid (the author, 2026-10-16): a column per theme, a cell per area, subtle grey rules
+   between them, and the rows aligned across the columns (subgrid), so the grid reads as one table */
+.domains{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:auto repeat(var(--n,6),auto);
+  margin:28px 0 8px;border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:var(--panel);box-shadow:var(--shadow);
+  width:min(1500px,calc(100vw - 2*var(--gutter)));margin-left:calc((100% - min(1500px,calc(100vw - 2*var(--gutter))))/2)}
+.has-l2 .domains{width:100%;margin-left:0}
+.dcol{min-width:0;grid-row:1 / -1;display:grid;grid-template-rows:subgrid;border-left:1px solid var(--line)}
+.dcol:first-child{border-left:0}
+.dband,.page-body .dband{margin:0;padding:14px 16px 12px;background:var(--panel-2);border-top:4px solid var(--line-2);border-bottom:1px solid var(--line-2);
+  font-family:"IBM Plex Mono",monospace;font-size:var(--label);font-weight:600;line-height:1.3;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);hyphens:auto}
 .dcol[data-t="core"] .dband{border-top-color:#3E6E9E}
 .dcol[data-t="intelligence"] .dband{border-top-color:#2E7D5B}
 .dcol[data-t="visual"] .dband{border-top-color:#B77A24}
 .dcol[data-t="systems"] .dband{border-top-color:#5E6864}
-.dcol[data-t="io"] .dband{border-top-color:#7030A0}
+.dcol[data-t="io"] .dband{border-top-color:#1B6B72}
 .dcol[data-t="cross"] .dband{border-top-color:#B4462F}
-.dtiles{list-style:none;margin:0;padding:0;display:grid;gap:14px}
-.dtile{display:block;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel);text-decoration:none;color:var(--ink)}
-.dtile:hover{border-color:var(--accent)}
-.dtile:hover .dname{color:var(--accent)}
-.dpic{display:block;aspect-ratio:4/3;overflow:hidden;background:#0f1412}
+.page-body .dtiles,.dtiles{list-style:none;margin:0;padding:0;max-width:none;grid-row:2 / -1;display:grid;grid-template-rows:subgrid}
+.page-body .dtiles li,.dtiles li{margin:0;padding:0;border-bottom:1px solid var(--line);min-width:0}
+.dtile{display:flex;flex-direction:column;gap:10px;height:100%;padding:14px 16px 16px;text-decoration:none;color:var(--ink)}
+.dtile:hover{background:var(--panel-2)}
+.dtile:hover .dname{color:var(--accent);text-decoration:underline}
+.dpic{display:block;aspect-ratio:7/4;overflow:hidden;border:1px solid var(--line);border-radius:8px;background:#FBF7F0}
 .dpic img{display:block;width:100%;height:100%;object-fit:cover}
-.dpic.dnone{display:flex;align-items:center;justify-content:center;background:var(--panel-2);color:var(--ink-2);font-size:1rem;text-align:center;padding:0 10px}
-.dname{display:block;padding:10px 12px 12px;font-weight:700;font-size:1.0625rem;line-height:1.3}
-@media (max-width:1300px){.domains{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:760px){.domains{grid-template-columns:1fr;gap:26px}.dtiles{grid-template-columns:repeat(2,minmax(0,1fr))}.dband{min-height:0}}
-/* the grid takes the page's width, not the reading column's, and every tile in a row has the same height */
-.domains{width:min(1500px,calc(100vw - 2*var(--gutter)));margin-left:calc((100% - min(1500px,calc(100vw - 2*var(--gutter))))/2);gap:20px}
-.dtiles li{margin:0;padding:0}
-.dband{min-height:calc(3*1.3em + 10px);hyphens:auto;overflow-wrap:normal;word-break:normal}
-.dname{min-height:calc(3*1.3em + 22px);hyphens:auto;overflow-wrap:normal;word-break:normal}
-.has-l2 .domains{width:100%;margin-left:0}
-@media (max-width:760px){.domains{width:100%;margin-left:0}.dband,.dname{min-height:0}}
-.page-body .dtiles,.dtiles{padding-left:0;margin:0;max-width:none}
-.page-body .dtiles li+li{margin-top:0}
-@media (min-width:1301px){.dband{height:calc(3*1.3em + 10px);min-height:0}}
+.dname{display:block;font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.1875rem;line-height:1.25;hyphens:auto}
+/* three columns: the themes wrap onto two rows of the frame, each column on its own */
+@media (max-width:1300px){
+  .domains{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:none}
+  .dcol{grid-row:auto;display:block}
+  .dcol:nth-child(3n+1){border-left:0}
+  .dcol:nth-child(n+4){border-top:1px solid var(--line-2)}
+  .page-body .dtiles,.dtiles{display:block}
+}
+/* a phone: one theme under the other, two areas a row */
+@media (max-width:760px){
+  .domains{grid-template-columns:1fr;width:100%;margin-left:0}
+  .dcol{border-left:0}
+  .dcol+.dcol{border-top:1px solid var(--line-2)}
+  .page-body .dtiles,.dtiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .page-body .dtiles li:nth-child(odd),.dtiles li:nth-child(odd){border-right:1px solid var(--line)}
+  .dtile{padding:12px}
+}
 
 /* the home page keeps only the hooks (the author, 2026-10-16): three sentences that each lead to their page, the areas, the book */
 .hooks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
@@ -736,3 +757,12 @@ details.where nav.level2{border-top:1px solid var(--line);border-bottom:0}
 .book-line{max-width:var(--measure)}
 .home-def{margin:0 0 28px}
 @media (max-width:1000px){.hooks{grid-template-columns:1fr}}
+
+/* the Compass artifacts' style (the author, 2026-10-16): the page head on a resting teal tint, the eyebrow in the accent's
+   ink, cards on the panel with a 14 px corner and a resting shadow, as on the Softanza Atlas board */
+.page-head{background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 9%,var(--paper)),var(--paper))}
+.eyebrow,.kicker{color:var(--accent-ink);letter-spacing:.14em}
+.card,.figure,.pair>div,.sg>div,.hook,.rows,.lanes,table.ratings,.door,.ft{border-radius:14px;box-shadow:var(--shadow)}
+.hook{border-top:1px solid var(--line)}
+.hook:hover{border-color:var(--accent)}
+.hook .hk::after{content:" \2197";color:var(--accent-ink);font-weight:500}

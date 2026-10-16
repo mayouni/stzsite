@@ -390,8 +390,8 @@ def tiles_html(lang, idx, groups, rel_atlas, rel_assets, themed=True, hl="h2"):
     return "".join(out)
 
 def domains_html(lang, idx, groups, rel_atlas, rel_assets):
-    """the 28 areas as one orthogonal grid (the author, 2026-10-16): a column per theme, a tile per area, each tile the
-    picture the platform drew for that area and its name; no second list of the same names beside it"""
+    """the 28 areas as one framed grid (the author, 2026-10-16): a column per theme, a cell per area, each cell the
+    picture the platform drew for that area and its name; --n is the tallest column, so the rows align across columns"""
     cols = []
     for b in idx["bands"]:
         gs = [g for g in groups if g["band"] == b["id"]]
@@ -404,7 +404,8 @@ def domains_html(lang, idx, groups, rel_atlas, rel_assets):
                 pic = f'<span class="dpic dnone"><span>{esc(UI[lang]["nopic"])}</span></span>'
             tiles.append(f'<li><a class="dtile" href="{href}">{pic}<span class="dname">{esc(g[lang])}</span></a></li>')
         cols.append(f'<section class="dcol" data-t="{b["id"]}"><h3 class="dband">{esc(b[lang])}</h3><ul class="dtiles">{"".join(tiles)}</ul></section>')
-    return '<div class="domains">' + "".join(cols) + '</div>'
+    n = max(len([g for g in groups if g["band"] == b["id"]]) for b in idx["bands"])
+    return f'<div class="domains" style="--n:{n}">' + "".join(cols) + '</div>'
 
 MAP_LABEL = {"fr": ("La carte des domaines", "Les vingt-huit domaines d'un coup d'oeil, chacun dans la couleur de son thème."),
              "en": ("The map of the areas", "All twenty-eight areas at a glance, each in the colour of its theme.")}

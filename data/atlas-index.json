@@ -355,9 +355,7 @@
    "line_fr": "Un jeune plan RmlUi, remarquable en droite-à-gauche et en accessibilité ; le moteur réactif n'est pas encore relié à la vue.",
    "dirs": "gui, reactive, app",
    "peers": "Qt · GTK · Flutter · React",
-   "render": null,
-   "nopic_en": "The interface plane is young and not yet published; its pictures will come from its own guards.",
-   "nopic_fr": "Le plan des interfaces est jeune et pas encore publié ; ses images viendront de ses propres gardes."
+   "render": {"file": "gui.webp", "thumb": "gui-thumb.webp", "cap_en": "a window laid out by the GUI plane: tiles, wrapped text, alignment and right-to-left", "cap_fr": "une fenêtre mise en page par le plan des interfaces : tuiles, texte replié, alignement et droite-à-gauche", "by_en": "rendered by the plane's own guard, committed in the library at 0fbaa692a as base/test/gui/gui_gallery.png, read at commit 4a184e6f0", "by_fr": "rendu par la propre garde du plan, déposé dans la bibliothèque au commit 0fbaa692a sous base/test/gui/gui_gallery.png, lu au commit 4a184e6f0", "src": "https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/gui/gui_gallery.png"}
   },
   {
    "slug": "stats",
@@ -533,9 +531,7 @@
    "line_fr": "Un plan acté et aucun code livré ; noté sur le substrat et la feuille de route BN0 à BN5.",
    "dirs": "binary",
    "peers": "Kaitai Struct · construct · 010 Editor",
-   "render": null,
-   "nopic_en": "A plan of record with no shipped code: there is nothing to draw yet, and the page says so.",
-   "nopic_fr": "Un plan sans code livré : il n'y a encore rien à dessiner, et la page le dit."
+   "render": {"file": "binary.webp", "thumb": "binary-thumb.webp", "cap_en": "the plan of the binary plane, drawn by hand on a real file: 33 bytes and the eleven fields they hold", "cap_fr": "l'idée du plan binaire, dessinée à la main sur un vrai fichier : 33 octets et les onze champs qu'ils portent", "by_en": "drawn on 2026-10-16 by the site's script tools/areas-figurative.ring, run inside the library at commit 4a184e6f0; the binary plane itself has no code yet", "by_fr": "dessiné le 2026-10-16 par le script du site tools/areas-figurative.ring, exécuté dans la bibliothèque au commit 4a184e6f0 ; le plan binaire lui-même n'a pas encore de code", "src": "https://github.com/mayouni/stzsite/blob/main/tools/areas-figurative.ring"}
   },
   {
    "slug": "security",

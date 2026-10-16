@@ -481,6 +481,106 @@ catch
 	? "ERR governance: " + cCatchError
 done
 
+# ----------------------------------------------------------------- binary
+# The binary plane has no code yet (SOFTANZA_BINARY_PLAN.md, a plan of
+# record). This picture draws the plan's one sentence by hand, on a real
+# file: the first 33 bytes of the GUI plane's own gallery render, read
+# here byte by byte, and the ten fields the PNG format gives them.
+try
+	cBin = read("../gui/gui_gallery.png")
+	aByte = []
+	for i = 1 to 33
+		aByte + ascii(cBin[i])
+	next
+	nWide = (aByte[17] * 16777216) + (aByte[18] * 65536) + (aByte[19] * 256) + aByte[20]
+	nHigh = (aByte[21] * 16777216) + (aByte[22] * 65536) + (aByte[23] * 256) + aByte[24]
+	nLenIhdr = (aByte[9] * 16777216) + (aByte[10] * 65536) + (aByte[11] * 256) + aByte[12]
+	cType = char(aByte[13]) + char(aByte[14]) + char(aByte[15]) + char(aByte[16])
+	cColour = "" + aByte[26]
+	if aByte[26] = 6 cColour = "6, colour with alpha" ok
+	if aByte[26] = 2 cColour = "2, colour" ok
+	# field, first byte, width, value, fill
+	aField = [
+		[ "signature",   1, 8, "a PNG file",         "#E9DDF5" ],
+		[ "chunk length", 9, 4, "" + nLenIhdr,       "#DCEBF7" ],
+		[ "chunk type", 13, 4, cType,                "#D9EFE3" ],
+		[ "width",      17, 4, "" + nWide + " px",   "#F7E7C6" ],
+		[ "height",     21, 4, "" + nHigh + " px",   "#F6DCD3" ],
+		[ "bit depth",  25, 1, "" + aByte[25],       "#E4E8E6" ],
+		[ "colour type", 26, 1, cColour,             "#E4E8E6" ],
+		[ "compression", 27, 1, "" + aByte[27],      "#E4E8E6" ],
+		[ "filter",     28, 1, "" + aByte[28],       "#E4E8E6" ],
+		[ "interlace",  29, 1, "" + aByte[29],       "#E4E8E6" ],
+		[ "checksum",   30, 4, Hex2(aByte[30]) + Hex2(aByte[31]) + Hex2(aByte[32]) + Hex2(aByte[33]), "#FFFFFF" ]
+	]
+	aFill = []
+	for i = 1 to 33
+		aFill + "#FFFFFF"
+	next
+	nF = len(aField)
+	for i = 1 to nF
+		for j = aField[i][2] to aField[i][2] + aField[i][3] - 1
+			aFill[j] = aField[i][5]
+		next
+	next
+	oC = new stzCanvas(nW, nH)
+	oC.SetBackground(PAPER)
+	Head(oC, "A binary file is a table the bytes forgot to show", "the plan of the binary plane, drawn by hand on a real file: the plane itself has no code yet")
+	oC.SetFontQ(BOLD, 20).AddTextQ("THE BYTES", 50, 168).Fill(INK2)
+	oC.Flush()
+	for i = 1 to 33
+		nX = 50 + ((i - 1) % 11) * 58
+		nY = 190 + floor((i - 1) / 11) * 82
+		oC.AddRoundRectQ(nX, nY, 52, 72, 8).FillQ(aFill[i]).Stroke("#C9BFAE", 1.2)
+		oC.Flush()
+		cH = Hex2(aByte[i])
+		oC.SetFontQ(BOLD, 22).AddTextQ(cH, nX + 26 - BOLD.WidthOf(cH, 22) / 2, nY + 32).Fill(INK)
+		oC.Flush()
+		cCh = "."
+		if aByte[i] >= 33 and aByte[i] <= 126 cCh = char(aByte[i]) ok
+		oC.SetFontQ(FONT, 18).AddTextQ(cCh, nX + 26 - FONT.WidthOf(cCh, 18) / 2, nY + 60).Fill(INK2)
+		oC.Flush()
+	next
+	oC.SetFontQ(FONT, 24).AddTextQ("Without a schema, these are 33 numbers.", 50, 520).Fill(INK)
+	oC.Flush()
+	oC.SetFontQ(FONT, 24).AddTextQ("With one, they are eleven named fields.", 50, 558).Fill(INK)
+	oC.Flush()
+	oC.SetFontQ(FONT, 18).AddTextQ("read from gui_gallery.png, the GUI plane's own render", 50, 610).Fill(INK2)
+	oC.Flush()
+	oC.AddPolylineQ([ [ 700, 340 ], [ 760, 340 ] ]).Stroke(INK2, 4)
+	oC.Flush()
+	oC.AddPolylineQ([ [ 748, 330 ], [ 762, 340 ], [ 748, 350 ] ]).Stroke(INK2, 4)
+	oC.Flush()
+	oC.SetFontQ(BOLD, 20).AddTextQ("THE TABLE", 790, 168).Fill(INK2)
+	oC.Flush()
+	oC.AddRoundRectQ(790, 186, 560, 44 * (nF + 1) + 8, 10).FillQ("#FFFFFF").Stroke("#C9BFAE", 1.2)
+	oC.Flush()
+	oC.SetFontQ(BOLD, 19).AddTextQ("field", 840, 222).Fill(INK2)
+	oC.Flush()
+	oC.SetFontQ(BOLD, 19).AddTextQ("bytes", 1020, 222).Fill(INK2)
+	oC.Flush()
+	oC.SetFontQ(BOLD, 19).AddTextQ("value", 1110, 222).Fill(INK2)
+	oC.Flush()
+	for i = 1 to nF
+		nY = 190 + 44 * i
+		oC.AddPolylineQ([ [ 800, nY ], [ 1340, nY ] ]).Stroke("#E6DED0", 1)
+		oC.Flush()
+		oC.AddRoundRectQ(806, nY + 11, 22, 22, 5).FillQ(aField[i][5]).Stroke("#C9BFAE", 1)
+		oC.Flush()
+		oC.SetFontQ(FONT, 20).AddTextQ(aField[i][1], 840, nY + 29).Fill(INK)
+		oC.Flush()
+		oC.SetFontQ(FONT, 20).AddTextQ("" + aField[i][3], 1020, nY + 29).Fill(INK2)
+		oC.Flush()
+		oC.SetFontQ(BOLD, 20).AddTextQ(aField[i][4], 1110, nY + 29).Fill(INK)
+		oC.Flush()
+	next
+	Mark(oC)
+	oC.ToPNGHiRes("binary.png")
+	Wrote("binary.png")
+catch
+	? "ERR binary: " + cCatchError
+done
+
 ? "DONE"
 
 func Head(oC, cT, cS)
