@@ -296,8 +296,13 @@ def header(lang, slug, rel, other_href=None, nav_rel=None, page_key=None, data_l
         else:
             items = [root, (here_label, None)]
         last = len(items) - 1
-        lis = "".join((f'<li><a href="{h}">{esc(l)}</a></li>' if h and k < last else f'<li class="here-crumb" aria-current="page">{esc(l)}</li>') for k, (l, h) in enumerate(items))
-        crumbs = f'<nav class="crumbs" aria-label="Breadcrumb"><ol class="crumbs-in">{lis}</ol></nav>'
+        # the author, 2026-10-16: a trail that only says Softanza > section > page repeats the menu and the level-2 bar, which
+        # already mark both, so it is shown only where it names a level no bar marks: three steps or fewer, inside a section, is
+        # no trail (Rule 108 says always; its amendment is asked of StzZui in softanza/prompts/54)
+        if sec and len(items) <= 3: items = []
+        if items:
+            lis = "".join((f'<li><a href="{h}">{esc(l)}</a></li>' if h and k < last else f'<li class="here-crumb" aria-current="page">{esc(l)}</li>') for k, (l, h) in enumerate(items))
+            crumbs = f'<nav class="crumbs" aria-label="Breadcrumb"><ol class="crumbs-in">{lis}</ol></nav>'
     marker = ""
     if sec and sec not in MENU_HIDDEN:
         marker = "\n<!--rail " + json.dumps({"lang": lang, "sec": sec, "cur": cur, "deep": deep, "nav_rel": nav_rel}) + "-->"
