@@ -694,3 +694,45 @@ details.where nav.level2{border-top:1px solid var(--line);border-bottom:0}
 @media (max-width:760px){.tools .sw{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.tools a.cta-start{padding:0 12px}.tools{gap:8px}}
 @media (max-width:760px){.tools a.lang{padding:0 8px}.tools a.cta-start{padding:0 10px}.tools{gap:6px}.brandrow{gap:8px}}
 @media (max-width:760px){.brandrow .brand img{height:19px}}
+
+/* the 28 areas, one orthogonal grid (the author, 2026-10-16): a column per theme, a tile per area, the picture and the name */
+.domains{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;align-items:start;margin:28px 0 8px}
+.dcol{min-width:0}
+.dband{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:1.0625rem;font-weight:700;line-height:1.3;color:var(--ink);margin:0 0 12px;padding-top:10px;border-top:5px solid var(--line-2);min-height:3.4em}
+.dcol[data-t="core"] .dband{border-top-color:#3E6E9E}
+.dcol[data-t="intelligence"] .dband{border-top-color:#2E7D5B}
+.dcol[data-t="visual"] .dband{border-top-color:#B77A24}
+.dcol[data-t="systems"] .dband{border-top-color:#5E6864}
+.dcol[data-t="io"] .dband{border-top-color:#7030A0}
+.dcol[data-t="cross"] .dband{border-top-color:#B4462F}
+.dtiles{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.dtile{display:block;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel);text-decoration:none;color:var(--ink)}
+.dtile:hover{border-color:var(--accent)}
+.dtile:hover .dname{color:var(--accent)}
+.dpic{display:block;aspect-ratio:4/3;overflow:hidden;background:#0f1412}
+.dpic img{display:block;width:100%;height:100%;object-fit:cover}
+.dpic.dnone{display:flex;align-items:center;justify-content:center;background:var(--panel-2);color:var(--ink-2);font-size:1rem;text-align:center;padding:0 10px}
+.dname{display:block;padding:10px 12px 12px;font-weight:700;font-size:1.0625rem;line-height:1.3}
+@media (max-width:1300px){.domains{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.domains{grid-template-columns:1fr;gap:26px}.dtiles{grid-template-columns:repeat(2,minmax(0,1fr))}.dband{min-height:0}}
+/* the grid takes the page's width, not the reading column's, and every tile in a row has the same height */
+.domains{width:min(1500px,calc(100vw - 2*var(--gutter)));margin-left:calc((100% - min(1500px,calc(100vw - 2*var(--gutter))))/2);gap:20px}
+.dtiles li{margin:0;padding:0}
+.dband{min-height:calc(3*1.3em + 10px);hyphens:auto;overflow-wrap:normal;word-break:normal}
+.dname{min-height:calc(3*1.3em + 22px);hyphens:auto;overflow-wrap:normal;word-break:normal}
+.has-l2 .domains{width:100%;margin-left:0}
+@media (max-width:760px){.domains{width:100%;margin-left:0}.dband,.dname{min-height:0}}
+.page-body .dtiles,.dtiles{padding-left:0;margin:0;max-width:none}
+.page-body .dtiles li+li{margin-top:0}
+@media (min-width:1301px){.dband{height:calc(3*1.3em + 10px);min-height:0}}
+
+/* the home page keeps only the hooks (the author, 2026-10-16): three sentences that each lead to their page, the areas, the book */
+.hooks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.hook{display:block;padding:22px 24px;border:1px solid var(--line);border-top:5px solid var(--accent);border-radius:12px;background:var(--panel);text-decoration:none;color:var(--ink)}
+.hook:hover{border-color:var(--accent)}
+.hook .hk{display:block;font-family:"Fraunces",Georgia,serif;font-size:1.5rem;font-weight:600;line-height:1.2;color:var(--ink)}
+.hook .ht{display:block;margin-top:10px;font-size:1.1875rem;line-height:1.5;color:var(--ink-2)}
+.hooks-section{padding-block:48px 0}
+.book-line{max-width:var(--measure)}
+.home-def{margin:0 0 28px}
+@media (max-width:1000px){.hooks{grid-template-columns:1fr}}

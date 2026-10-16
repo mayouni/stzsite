@@ -2521,3 +2521,24 @@ waiting:
 next:
   - me:      commit and push; then the domains grid, then the home page
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-16 01:46
+
+subject:   the home page cut to its hooks, and the 28 domains as one orthogonal grid
+
+why:       the author: the first page was very long and mostly duplicated the site; the domains repeated their names in a grid and then in small widgets, and must show Softanza's richness in a clean orthogonal grid
+
+did:
+  - cut the home page to the hero, one sentence on what Softanza is with its stage, three hooks (declare then govern; AI agents that cannot hurt you; proof before promise) each leading to its page, the domains grid, and one line for the book; the four definitions, the Softanza way list and the audience doors left it, since each lives on its own page
+  - replaced the map of names plus the tiles of pictures by one grid: a column per theme, a tile per area, each tile the picture the platform drew and the area's name; every tile in a row the same height, the grid as wide as the page; three columns on a tablet, two tiles a row on a phone
+  - used the same grid on the home page and on The areas
+  - checked: 0 failures on the example blocks, 0 dangling links, search 16 of 16, the floor held on the areas pages and the home page (its known exception, the menu over the photograph, aside); looked at both at laptop width
+
+state:
+  home:        about 4,700 px tall at 1366, from about 12,000
+  domains:     26 tiles carry a picture; 2 say "no picture yet" (binary formats, GUI and reactive)
+
+next:
+  - me:      commit and push; tell the author what is done and what is waiting (StzZui's ruling on prompt 53)
+```

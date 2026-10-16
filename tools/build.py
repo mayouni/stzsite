@@ -389,6 +389,23 @@ def tiles_html(lang, idx, groups, rel_atlas, rel_assets, themed=True, hl="h2"):
         out.append(f'<section class="theme"><{hl} id="{b["id"]}">{esc(b[lang])}</{hl}><div class="tiles">{"".join(tile(g) for g in gs)}</div></section>')
     return "".join(out)
 
+def domains_html(lang, idx, groups, rel_atlas, rel_assets):
+    """the 28 areas as one orthogonal grid (the author, 2026-10-16): a column per theme, a tile per area, each tile the
+    picture the platform drew for that area and its name; no second list of the same names beside it"""
+    cols = []
+    for b in idx["bands"]:
+        gs = [g for g in groups if g["band"] == b["id"]]
+        tiles = []
+        for g in gs:
+            r = g.get("render"); href = f"{rel_atlas}{g['slug']}.html"
+            if r:
+                pic = f'<span class="dpic"><img src="{rel_assets}assets/img/areas/{r["thumb"]}" alt="{esc(r["cap_" + lang])}" loading="lazy"></span>'
+            else:
+                pic = f'<span class="dpic dnone"><span>{esc(UI[lang]["nopic"])}</span></span>'
+            tiles.append(f'<li><a class="dtile" href="{href}">{pic}<span class="dname">{esc(g[lang])}</span></a></li>')
+        cols.append(f'<section class="dcol" data-t="{b["id"]}"><h3 class="dband">{esc(b[lang])}</h3><ul class="dtiles">{"".join(tiles)}</ul></section>')
+    return '<div class="domains">' + "".join(cols) + '</div>'
+
 MAP_LABEL = {"fr": ("La carte des domaines", "Les vingt-huit domaines d'un coup d'oeil, chacun dans la couleur de son thème."),
              "en": ("The map of the areas", "All twenty-eight areas at a glance, each in the colour of its theme.")}
 
@@ -442,7 +459,7 @@ def inject(body_html, lang, idx, groups, rel="../"):
     body_html = body_html.replace("<!--RUNTIME-->", RUNTIME[lang])
     fmt = (lambda n: f"{n:,}") if lang == "en" else (lambda n: f"{n:,}".replace(",", " "))
     body_html = body_html.replace("<!--METHODS-->", fmt(COUNTS["methods"])).replace("<!--CLASSES-->", fmt(COUNTS["classes"])).replace("<!--ENTRIES-->", fmt(COUNTS["entries"]))
-    body_html = body_html.replace("<!--AREAS-->", fmap_html(lang, idx, groups, "atlas/") + tiles_html(lang, idx, groups, "atlas/", rel))
+    body_html = body_html.replace("<!--AREAS-->", domains_html(lang, idx, groups, "atlas/", rel))
     body_html = body_html.replace("<!--ATLAS-WALL-->", tiles_html(lang, idx, groups, "atlas/", rel, themed=False))
     for tag, fn in (("GALLERY", gallery_html), ("GRAMMAR", grammar_html), ("DECLARED", declared_html), ("DEPTH", depth_html), ("GLOSSARY", glossary_html), ("LEADS", leads_html), ("RULES", rules_html), ("STEPS", steps_html), ("INNOVATIONS", innovations_html), ("GOALS", goals_html)):
         if f"<!--{tag}-->" in body_html: body_html = body_html.replace(f"<!--{tag}-->", fn(lang))
@@ -1176,7 +1193,7 @@ def build_home(idx, groups):
     """the landing page: both languages inside, the header's language link picks"""
     body = (CONTENT / "home.html").read_text(encoding="utf-8")
     for lang in LANGS:
-        body = body.replace(f"<!--AREAS-{lang.upper()}-->", fmap_html(lang, idx, groups, f"{lang}/atlas/") + tiles_html(lang, idx, groups, f"{lang}/atlas/", "", hl="h3"))
+        body = body.replace(f"<!--AREAS-{lang.upper()}-->", domains_html(lang, idx, groups, f"{lang}/atlas/", ""))
         body = body.replace(f"<!--RUNTIME-{lang.upper()}-->", RUNTIME[lang])
     page = head("fr", "Softanza · La plateforme logicielle gouvernée de l'ère de l'IA · The Governed Software Platform of the AI Age",
                 "Softanza, the Governed Software Platform of the AI Age. Declare what you know. A court keeps it. The AI model comes last. Born in Africa. Useful to the World.", "")
