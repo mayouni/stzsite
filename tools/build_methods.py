@@ -158,6 +158,10 @@ def build_methods(ctx):
             page += footer(lang, rel)
             a_names = {k: {l: v[l] for l in ("fr", "en")} for k, v in area_title.items()}
             page = level2.wrap(page, class_bar(lang, area_name(c["area"], lang, a_names), by_area[c["area"]], cls, "location", "../"))
+            # level 4 (the author's four levels, 2026-10-16): on the right, the class's methods that have their own page
+            mine = sorted({m for (k, m) in entries if k == cls}, key=str.lower)
+            page = level2.add_right(page, f'<nav class="level4" aria-label="{esc(cls)}"><ul>' + "".join(
+                f'<li><a href="{slug(m)}.html"{" aria-current=page" if m == meth else ""}>{esc(m)}()</a></li>' for m in mine) + '</ul></nav>')
             out = ROOT / lang / "reference" / cls.lower()
             out.mkdir(parents=True, exist_ok=True)
             (out / f"{slug(meth)}.html").write_text(page, encoding="utf-8"); pages += 1

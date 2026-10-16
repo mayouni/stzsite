@@ -2494,3 +2494,30 @@ next:
   - me:      commit and push
   - author:  read the site at laptop and phone width and say what still gets in the way
 ```
+
+```yaml
+by:        stzsite · claude-opus-5-5 · 2026-10-16 01:31
+
+subject:   the author's four-level navigation, applied to the whole site
+
+why:       the author ruled that replacing the second horizontal bar by a vertical rail lost a level: level 1 the top menu, level 2 a horizontal bar fixed on scroll, level 3 a left bar, level 4 on the right when needed; at most five options per horizontal menu, short labels
+
+did:
+  - re-cut the tree into five menu entries (Platform, Vision, Learn, Reference, Adopt), with Start as a button beside the menu; each section has at most five level-2 pages with short labels; doc/STRUCTURE-2026-10-16.md holds the table
+  - restored the level-2 bar under the menu, fixed with it on scroll; moved the families to a left bar headed by their level-2 page; added a right bar on method pages listing the class's methods that have their own page
+  - on a phone, levels 2 and 3 fold into one "Where you are" line under the menu; on a tablet the left bar folds; the phone header keeps its search icon, Start and the language within 390 px
+  - gave the Start button a colour pair that holds in both themes (it failed the floor in the dark theme at first, 2.04:1)
+  - wrote prompt 53 for StzZui: the author's ruling, and what Rules 120, 27 and 115 would need to say to accept it
+  - recorded the ruling in memory, superseding the rail of 2026-10-15
+  - checked: 0 failures on the example blocks, 0 dangling links in 4,300 files, search 16 of 16, the floor held on the pages changed; looked at a family page, a method page and a phone
+
+state:
+  navigation:   four levels on every page; addresses unchanged
+  next-items:   the home page (hooks only) and the domains grid (radical, orthogonal) are the author's two other points, not done yet
+
+waiting:
+  - STZZUI-FOURLEVELS-01: accept the author's four levels into the law (Rules 120, 27, 115) -> stzzui [routed in prompts/53]
+
+next:
+  - me:      commit and push; then the domains grid, then the home page
+```

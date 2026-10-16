@@ -82,22 +82,25 @@
   }
 })();
 
-/* on a screen narrower than the rail and the page together, the menu is the one row that stays; the rail folds into one
-   line under it that opens on request, "Where you are: Section > Page" (Zui 120: the second level is vertical, never a
-   second row). Without this script nothing is lost: the rail stands above the page as the same list */
+/* level 2 is the bar fixed under the menu, level 3 the bar on the left (the author's four levels, 2026-10-16). On a screen
+   narrower than the left bar and the page together, the left bar folds into one line under the menu that opens on request;
+   on a phone the level-2 bar folds into the same line. Without this script nothing is lost: both stand above the page */
 (function () {
   if (!window.matchMedia || !window.matchMedia('(max-width:1100px)').matches) return;
-  var rail = document.querySelector('nav.level2.rail'); if (!rail) return;
+  var phone = window.matchMedia('(max-width:760px)').matches;
+  var top = document.querySelector('header.top'); if (!top) return;
+  var path = phone ? top.querySelector('nav.path') : null;
+  var rail = document.querySelector('nav.level2.rail');
+  if (!path && !rail) return;
   var fr = (document.documentElement.lang || '').indexOf('fr') === 0;
-  var sec = rail.getAttribute('aria-label') || '';
-  var cur = rail.querySelector('a[aria-current=page]') || rail.querySelectorAll('a[aria-current=location]');
-  if (cur && cur.length !== undefined) cur = cur.length ? cur[cur.length - 1] : null;
-  var here = cur ? cur.textContent.replace(/\s+/g, ' ').trim() : '';
+  var cur = (rail && (rail.querySelector('a[aria-current=page]') || rail.querySelector('a[aria-current=location]'))) ||
+            (path && (path.querySelector('a[aria-current=page]') || path.querySelector('a[aria-current=location]')));
+  var sec = document.querySelector('nav.nav a[aria-current]');
+  var here = [sec ? sec.textContent.trim() : '', cur ? cur.textContent.replace(/\s+/g, ' ').trim() : ''].filter(function (x, k, a) { return x && a.indexOf(x) === k; }).join(' \u203a ');
   var d = document.createElement('details'); d.className = 'where';
   var s = document.createElement('summary');
-  s.textContent = (fr ? 'Où vous êtes : ' : 'Where you are: ') + sec + (here && here !== sec ? ' › ' + here : '');
-  d.appendChild(s); d.appendChild(rail);
-  var top = document.querySelector('header.top');
+  s.textContent = (fr ? 'Où vous êtes : ' : 'Where you are: ') + here;
+  d.appendChild(s); if (path) d.appendChild(path); if (rail) d.appendChild(rail);
   top.parentNode.insertBefore(d, top.nextSibling);
   if (window.__stzPin) window.__stzPin();
 })();

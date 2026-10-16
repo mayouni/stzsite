@@ -50,3 +50,10 @@ def area_groups(idx, lang, current, href=lambda slug: f"{slug}.html"):
                  for g in idx["groups"] if g["band"] == b["id"]]
         if items: out.append((b[lang], items))
     return out
+
+def add_right(page, nav_html):
+    """level 4, on the right of the page, beside <main> (the author's four levels, 2026-10-16); only on a page already wrapped"""
+    if '<div class="l2wrap">' not in page: return page
+    page = page.replace('<div class="l2wrap">', '<div class="l2wrap with-l4">', 1)
+    nl = chr(10)
+    return page.replace("</main>" + nl + "</div>", "</main>" + nl + nav_html + nl + "</div>", 1)

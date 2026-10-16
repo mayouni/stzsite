@@ -674,3 +674,23 @@ main > .crumbs{border-top:0;background:none}
 details.where nav.level2{border-top:1px solid var(--line);border-bottom:0}
 /* on a narrow screen the trail starts at the page's own gutter */
 @media (max-width:1100px){.has-l2 main > .crumbs .crumbs-in{padding-left:var(--gutter)}}
+
+/* the author's four levels (2026-10-16): the menu, the level-2 bar fixed under it, the left bar, the right bar */
+.tools a.cta-start{font-weight:700;color:var(--paper);background:var(--accent);border-radius:999px;padding:0 18px;min-height:40px}
+.tools a.cta-start:hover,.tools a.cta-start:focus,.tools a.cta-start[aria-current]{background:var(--ink);color:var(--paper)}
+.home-body.over-hero .tools a.cta-start{color:var(--paper);background:var(--accent);text-shadow:none}
+.path a[aria-current=location]{color:var(--accent);font-weight:700}
+.level2 .l2-h a{color:var(--ink);text-decoration:none;font-weight:700;display:block;padding:7px 10px;border-left:3px solid transparent}
+.level2 .l2-h a[aria-current=page]{color:var(--accent);background:var(--panel);border-left-color:var(--accent)}
+.level2 .l2-h{margin:0 0 6px 0}
+.l2wrap.with-l4{grid-template-columns:clamp(240px,16vw,300px) minmax(0,1fr) clamp(220px,15vw,290px)}
+.level4{position:sticky;top:var(--pin,120px);align-self:start;max-height:calc(100vh - var(--pin,120px));overflow-y:auto;border-left:1px solid var(--line);padding:32px calc(var(--gutter) - 13px) 40px 16px;scrollbar-width:thin}
+.level4 ul{list-style:none;margin:0;padding:0}
+.level4 a{display:block;font-size:1.1875rem;line-height:1.35;color:var(--ink-2);text-decoration:none;padding:7px 10px;border-left:3px solid transparent;border-radius:0 8px 8px 0}
+.level4 a:hover{color:var(--accent);background:var(--panel)}
+.level4 a[aria-current]{color:var(--accent);font-weight:700;background:var(--panel);border-left-color:var(--accent)}
+@media (max-width:1300px){.l2wrap.with-l4{grid-template-columns:clamp(240px,18vw,300px) minmax(0,1fr)}.level4{display:none}}
+/* on a phone the brand row holds the wordmark, the search, Start and the language: the search keeps its icon, its word goes */
+@media (max-width:760px){.tools .sw{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.tools a.cta-start{padding:0 12px}.tools{gap:8px}}
+@media (max-width:760px){.tools a.lang{padding:0 8px}.tools a.cta-start{padding:0 10px}.tools{gap:6px}.brandrow{gap:8px}}
+@media (max-width:760px){.brandrow .brand img{height:19px}}
