@@ -10,8 +10,8 @@ description: Softanza solutions for enterprises and governments: a declared plat
 
 <div class="cards">
 <div class="card"><h3>A declared platform <b>(built)</b></h3><p>The organisation's worlds, bonds, rules and roles, declared in its own words and held as plain text it owns. See <a href="platforms.html">the platform of platforms</a>.</p></div>
-<div class="card"><h3>Governed agents <b>(built)</b></h3><p>Agents that propose and cannot commit, judged by a court before anything happens. See <a href="agentic.html">agentic</a> and <a href="journey-agent.html">the agent's journey</a>.</p></div>
-<div class="card"><h3>Sovereign deployment <b>(built, emulated)</b></h3><p>From the declared machine up to the application, rehearsed on a twin before it is real. See <a href="journey-architect.html">the platform architect's journey</a> and <a href="device.html">from the editor to the device</a>.</p></div>
+<div class="card"><h3>Governed agents <b>(built)</b></h3><p>Agents that propose and cannot commit, judged by a court before anything happens. See <a href="agentic.html">agentic</a> and <a href="for-agents.html#path">the agent's journey</a>.</p></div>
+<div class="card"><h3>Sovereign deployment <b>(built, emulated)</b></h3><p>From the declared machine up to the application, rehearsed on a twin before it is real. See <a href="for-architects.html#path">the platform architect's journey</a> and <a href="device.html">from the editor to the device</a>.</p></div>
 <div class="card"><h3>Payments in francs CFA <b>(built against sandboxes)</b></h3><p>A payments plane for a platform paid by people who hold accounts at banks or mobile-money operators that are not its own. No live money moves in any test.</p></div>
 <div class="card"><h3>The legacy workbench <b>(ratified proposal)</b></h3><p>Modern tooling around unchanged COBOL estates, without a rewrite. The direction is ratified; its name is held back until a prior-use search closes. See <a href="estate.html">the estate</a>.</p></div>
 <div class="card"><h3>The learning system for an institution <b>(built)</b></h3><p>See <a href="institutions.html">Softanza for education</a>.</p></div>

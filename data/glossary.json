@@ -149,7 +149,7 @@
     "en": "The steps one kind of person takes, in order, with the part of Softanza that serves each step and its stage.",
     "fr": "Les étapes qu'une sorte de personne suit, dans l'ordre, avec la partie de Softanza qui sert chaque étape et son étape de construction."
    },
-   "page": "journeys.html"
+   "page": "start.html#who"
   },
   {
    "id": "lane",
@@ -269,7 +269,7 @@
     "en": "A copy of a system that holds no reference to the real one, on which a plan is rehearsed before anyone commits it.",
     "fr": "Une copie d'un système qui ne garde aucune référence au vrai, sur laquelle un plan est répété avant que quiconque l'engage."
    },
-   "page": "journey-architect.html"
+   "page": "for-architects.html#path"
   },
   {
    "id": "way",

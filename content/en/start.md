@@ -8,6 +8,12 @@ description: How to start with Softanza: the GitHub repository, the install, the
 
 <p class="proof"><b>The runtime, plainly</b> <!--RUNTIME--></p>
 
+## Who are you? {#who}
+
+Each reader has a page that reads the whole site from their place: where to start, the path, and the pages that matter to them.
+
+<ul class="readings"><li><a href="for-programmers.html">For a programmer</a> · You write the application; Softanza is the part of it that reads like a sentence.</li><li><a href="for-analysts.html">For an analyst or a designer</a> · You know the world of the business; you declare it, and it becomes something that runs.</li><li><a href="for-architects.html">For an architect</a> · You answer for the whole vertical, from the machine to the organisation.</li><li><a href="for-leaders.html">For a decision-maker</a> · A CTO, a government, a business: what you would adopt, and what it is proven to do.</li><li><a href="for-educators.html">For an educator or an author</a> · You teach, design courses or write about code: everything here runs, in your learners&#x27; language.</li><li><a href="for-agents.html">For an AI agent</a> · An agent, or the person who deploys one: what to read, and what the agent may do.</li></ul>
+
 ## The repository {#repository}
 
 Everything is in one place: the foundation, its engine, its guards, its narrations and its course.

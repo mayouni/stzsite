@@ -1,4 +1,9 @@
-"""Guide pages: one per area of the platform, under Learn > Documentation.
+"""Reference pages: one per area of the platform, under Reference > Docs.
+
+The author, 2026-10-16: Reference is for programmers and agents, strict; Platform is for general
+readers, told as narrations. An area therefore has two pages that do not repeat each other: its
+narrative page (atlas/<slug>.html) and this reference page (guide/<slug>.html), one door between them.
+
 
 Learned from the Wolfram documentation's guide pages: a guide answers "what can
 I do in this area, and with which functions?" It opens with one sentence on the
@@ -44,12 +49,12 @@ KEYWORDS = {
 }
 
 T = {
-  "fr": {"kicker": "Guide", "classes": "Les classes de ce domaine", "methods": "méthodes", "fn": "Les fonctions, par ce qu'elles font",
+  "fr": {"kicker": "Référence", "classes": "Les classes de ce domaine", "methods": "méthodes", "fn": "Les fonctions, par ce qu'elles font",
          "more": "et {n} autres dans la référence", "tut": "Les narrations sur ce domaine", "tut_none": "Aucune narration n'est encore rattachée à ce domaine.",
          "see": "Voir aussi", "atlas": "La page du domaine dans l'Atlas : ce qu'un artisan en fait, un exemple exécuté, et ses couloirs notés",
          "same": "Les autres domaines de ce thème", "src": "Les explications sont celles que la bibliothèque donne d'elle-même, en anglais, lues dans ses commentaires de documentation le",
          "in": "dans"},
-  "en": {"kicker": "Guide", "classes": "The classes of this area", "methods": "methods", "fn": "The functions, by what they do",
+  "en": {"kicker": "Reference", "classes": "The classes of this area", "methods": "methods", "fn": "The functions, by what they do",
          "more": "and {n} more in the reference", "tut": "Narrations about this area", "tut_none": "No narration is attached to this area yet.",
          "see": "See also", "atlas": "The area's page in the Atlas: what a crafter does with it, an example run, and its rated lanes",
          "same": "The other areas of this theme", "src": "The explanations are the ones the library gives of itself, read from its documentation comments on",
@@ -64,7 +69,7 @@ def family_of(name):
     return None
 
 def build_guides(ctx):
-    ROOT, head, header, footer, idx, groups, heritage = (ctx[k] for k in ("ROOT", "head", "header", "footer", "idx", "groups", "heritage"))
+    ROOT, page_shell, idx, groups = (ctx[k] for k in ("ROOT", "page_shell", "idx", "groups"))
     entries = ctx.get("entries", {})
     rdata = rowex.load(ROOT)        # an example under every function that has one (tools/rowex.py)
     from build_methods import slug as mslug
@@ -105,22 +110,22 @@ def build_guides(ctx):
             rel_n = [n for n in narr if any(k in (n["file"] + " " + n["title"]).lower() for k in kws)][:12]
             tut = ("<ul>" + "".join(f'<li><a href="{GH}{esc(n["file"])}">{prose(n["title"])}</a></li>' for n in rel_n) + "</ul>") if rel_n else f'<p>{t["tut_none"]}</p>'
             same = " · ".join(f'<a href="{o["slug"]}.html">{esc(o[lang])}</a>' for o in groups if o["band"] == g["band"] and o["slug"] != slug)
-            h = heritage.get(slug)
-            lede = esc(h["principle_" + lang]) if h else esc(g["line_" + lang])
-            # the area page and its guide were one subject on two pages, in two sections (doc/STRUCTURE-2026-10-15.md): the
-            # functions and the classes are now sections of the area page, and the guide's address sends the reader there
-            body = (f'<h2 id="functions">{t["fn"]}</h2>' + "".join(fam_html)
+            nfn = sum(len(v) for v in fam.values())
+            lede = {"fr": f"{nfn} fonctions dans {len(cs)} classes, groupées par ce qu'elles font, chacune avec l'explication que la bibliothèque donne d'elle-même.",
+                    "en": f"{nfn} functions in {len(cs)} classes, grouped by what they do, each with the explanation the library gives of itself."}[lang]
+            story = {"fr": "Le récit de ce domaine, pour un lecteur général : ce qu'un artisan en fait, un exemple exécuté et ses couloirs notés, est sur "
+                           + f'<a href="../atlas/{slug}.html">sa page de la Plateforme</a>.',
+                     "en": "The story of this area, for a general reader: what a crafter does with it, an example run and its rated lanes, is on "
+                           + f'<a href="../atlas/{slug}.html">its Platform page</a>.'}[lang]
+            body = (f'<p class="proof">{story}</p>'
+                    + f'<h2 id="functions">{t["fn"]}</h2>' + "".join(fam_html)
                     + f'<p class="proof">{t["src"]} {esc(harvested)}.</p>'
-                    + f'<h2 id="classes">{t["classes"]}</h2><ul>{cls_rows}</ul>')
-            area = ROOT / lang / "atlas" / f"{slug}.html"
-            ap = area.read_text(encoding="utf-8")
-            assert ap.count("<!--GUIDE-SECTIONS-->") == 1, area
-            area.write_text(ap.replace("<!--GUIDE-SECTIONS-->", body), encoding="utf-8")
-            moved = {"fr": "Cette page a changé d'adresse", "en": "This page has moved"}[lang]
-            url = f"../atlas/{slug}.html#functions"
-            (out_dir / f"{slug}.html").write_text(
-                f'<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><title>{esc(moved)} · Softanza</title><meta name="robots" content="noindex">'
-                f'<meta http-equiv="refresh" content="0;url={url}"><link rel="canonical" href="{url}"></head>'
-                f'<body><p>{esc(moved)}{" :" if lang == "fr" else ":"} <a href="{url}">{esc(g[lang])}</a></p></body></html>', encoding="utf-8")
+                    + f'<h2 id="classes">{t["classes"]}</h2><ul>{cls_rows}</ul>'
+                    + f'<h2>{t["tut"]}</h2>{tut}')
+            other = "en" if lang == "fr" else "fr"
+            page = page_shell(lang, "docs", f'{g[lang]} · {t["kicker"]}', lede, f'{esc(t["kicker"])} · {esc(band[lang])}', esc(g[lang]), esc(lede), body,
+                              rel="../../", page_key="guide", other_href=f"../../{other}/guide/{slug}.html", body_class="page page-guide", tail=[(g[lang], None)])
+            page = level2.wrap(page, level2.nav(level2.LABELS["guides"][lang], level2.area_groups(idx, lang, slug)))
+            (out_dir / f"{slug}.html").write_text(page, encoding="utf-8")
             pages += 1
     return pages

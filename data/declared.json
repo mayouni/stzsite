@@ -23,7 +23,7 @@
    "un agent : ce qu'il couvre, la réversibilité de ses actes, ses compétences",
    "built",
    "construit",
-   "journey-agent.html"
+   "for-agents.html#path"
   ],
   [
    ".stzapp, .stzplatform",
@@ -39,7 +39,7 @@
    "une machine, les liens entre machines, les serveurs placés sur l'une",
    "built, emulated",
    "construit, émulé",
-   "journey-architect.html"
+   "for-architects.html#path"
   ],
   [
    ".zgov",
@@ -71,7 +71,7 @@
    "un flux de travail",
    "in construction",
    "en construction",
-   "journey-analyst.html"
+   "for-analysts.html#path"
   ],
   [
    ".face",

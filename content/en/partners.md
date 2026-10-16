@@ -16,6 +16,6 @@ description: Softanza partners as a direction: what a partner would commit to, w
 
 ## How to write {#write}
 
-The same door as for everything else: <a href="https://github.com/mayouni/stzlib/issues">the issues of the repository</a>. A person or a company that wants to deliver with Softanza is invited to read <a href="journey-architect.html">the platform architect's journey</a> first, since it is the work a partner would do.
+The same door as for everything else: <a href="https://github.com/mayouni/stzlib/issues">the issues of the repository</a>. A person or a company that wants to deliver with Softanza is invited to read <a href="for-architects.html#path">the platform architect's journey</a> first, since it is the work a partner would do.
 
 <p class="proof"><b>designed</b> No partner programme exists. Nothing on this page is offered, priced or promised beyond the three laws above, and any commitment the project has already made to an organisation is its own and is not altered by this page. The money question has one stated doctrine: the project funds itself, so that no outside capital acquires a voice over the open foundation. It is on <a href="offering.html#funding">the Audiences page</a>.</p>

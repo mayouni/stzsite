@@ -35,7 +35,7 @@ def wrap(page, nav_html):
 
 LABELS = {
     "areas":      {"fr": "Les domaines", "en": "The areas"},
-    "guides":     {"fr": "Les guides des domaines", "en": "The area guides"},
+    "guides":     {"fr": "Les domaines, en référence", "en": "The areas, in reference"},
     "narrations": {"fr": "Les narrations exécutées", "en": "The narrations run"},
     "classes":    {"fr": "Les classes du domaine", "en": "The area's classes"},
     "letters":    {"fr": "Les méthodes de A à Z", "en": "Methods from A to Z"},

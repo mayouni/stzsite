@@ -30,7 +30,7 @@ The folder is written, not run. The binary that reads it would judge every file 
 ## What exists, under other names {#exists}
 
 <div class="cards">
-<div class="card"><h3>The agent file and the folder as the deployment <b>(built)</b></h3><p>An agent is declared in its own file and a folder is its deployment. See <a href="journey-agent.html">the agent's journey</a>.</p></div>
+<div class="card"><h3>The agent file and the folder as the deployment <b>(built)</b></h3><p>An agent is declared in its own file and a folder is its deployment. See <a href="for-agents.html#path">the agent's journey</a>.</p></div>
 <div class="card"><h3>Governance and the workbench <b>(built)</b></h3><p>An agent proposes, the workbench rehearses on a twin, and only a governed actor commits. See <a href="agentic.html">the agentic page</a>.</p></div>
 <div class="card"><h3>The knowledge file and the domain's voice <b>(built)</b></h3><p>One knowledge file of entities, relations and rules; a deterministic model of the domain that answers from the graph with its reason. See <a href="wise.html">wise coding</a>.</p></div>
 <div class="card"><h3>The conversational door <b>(built)</b></h3><p>A governed conversation that generates its next question from a gap. See <a href="conversations.html">conversations</a>.</p></div>

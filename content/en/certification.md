@@ -19,4 +19,4 @@ The learning system refuses certificates that are only the result of an examinat
 
 ## What is not decided {#open}
 
-<p class="proof"><b>designed</b> This is a proposal of 30 September 2026. Nothing is certified, and no person or company holds a Softanza certification. The proposal needs an axis of its own in the project's reference design before it is announced as an offering, and the site does not announce it. No price, no fee and no share is stated, because none is set. See <a href="journey-architect.html">the platform architect's journey</a> for the work such a certification would examine.</p>
+<p class="proof"><b>designed</b> This is a proposal of 30 September 2026. Nothing is certified, and no person or company holds a Softanza certification. The proposal needs an axis of its own in the project's reference design before it is announced as an offering, and the site does not announce it. No price, no fee and no share is stated, because none is set. See <a href="for-architects.html#path">the platform architect's journey</a> for the work such a certification would examine.</p>

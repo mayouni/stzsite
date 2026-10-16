@@ -639,7 +639,6 @@ table.products p{margin:0 0 6px}
 
 /* the first picture says what it is: no provenance is recorded for it, and the page says so (4.6) */
 .hero{position:relative}
-.hero-credit{position:absolute;right:16px;bottom:12px;margin:0;max-width:calc(100% - 32px);padding:4px 10px;border-radius:6px;background:rgba(0,0,0,.7);color:#fff;font-size:16px;line-height:1.4}
 
 /* the declared languages: the second cell is prose, the fourth is a link */
 table.declared td:nth-child(2){white-space:normal}
@@ -663,7 +662,6 @@ figure.gal figcaption p{margin:4px 0}
 /* Rules 105 and 107: a list of choices reads at the reading floor, not at the browser's own 13px */
 select,select option{font-size:1rem}
 /* on a phone the credit follows the arrow in the flow instead of lying over it */
-@media (max-width:760px){.hero-credit{position:static;display:block;width:fit-content;margin:8px var(--gutter) 20px;max-width:calc(100% - 2*var(--gutter))}}
 
 /* a call to action on a page or on the home page's own sections: the hero's pills, in the page's own colours */
 .cta a{display:inline-block;padding:10px 22px;margin:0 12px 8px 0;border-radius:999px;background:var(--ink);color:var(--paper);font-weight:600;text-decoration:none}
@@ -686,9 +684,10 @@ details.where nav.level2{border-top:1px solid var(--line);border-bottom:0}
 @media (max-width:1100px){.has-l2 main > .crumbs .crumbs-in{padding-left:var(--gutter)}}
 
 /* the author's four levels (2026-10-16): the menu, the level-2 bar fixed under it, the left bar, the right bar */
-.tools a.cta-start{font-weight:700;color:var(--paper);background:var(--accent);border-radius:999px;padding:0 18px;min-height:40px}
-.tools a.cta-start:hover,.tools a.cta-start:focus,.tools a.cta-start[aria-current]{background:var(--ink);color:var(--paper)}
-.home-body.over-hero .tools a.cta-start{color:var(--paper);background:var(--accent);text-shadow:none}
+/* Start reads as a menu word like the others (the author, 2026-10-16): it is neither the active page nor the most important entry */
+.tools a.cta-start{position:relative}
+.tools a.cta-start[aria-current]{color:var(--accent);font-weight:600}
+.tools a.cta-start[aria-current]::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:2px;background:var(--accent);border-radius:2px}
 .path a[aria-current=location]{color:var(--accent);font-weight:700}
 .level2 .l2-h a{color:var(--ink);text-decoration:none;font-weight:700;display:block;padding:7px 10px;border-left:3px solid transparent}
 .level2 .l2-h a[aria-current=page]{color:var(--accent);background:var(--panel);border-left-color:var(--accent)}
@@ -701,8 +700,8 @@ details.where nav.level2{border-top:1px solid var(--line);border-bottom:0}
 .level4 a[aria-current]{color:var(--accent);font-weight:700;background:var(--panel);border-left-color:var(--accent)}
 @media (max-width:1300px){.l2wrap.with-l4{grid-template-columns:clamp(240px,18vw,300px) minmax(0,1fr)}.level4{display:none}}
 /* on a phone the brand row holds the wordmark, the search, Start and the language: the search keeps its icon, its word goes */
-@media (max-width:760px){.tools .sw{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.tools a.cta-start{padding:0 12px}.tools{gap:8px}}
-@media (max-width:760px){.tools a.lang{padding:0 8px}.tools a.cta-start{padding:0 10px}.tools{gap:6px}.brandrow{gap:8px}}
+@media (max-width:760px){.tools .sw{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.tools{gap:8px}}
+@media (max-width:760px){.tools a.lang{padding:0 8px}.tools{gap:6px}.brandrow{gap:8px}}
 @media (max-width:760px){.brandrow .brand img{height:19px}}
 
 /* the 28 areas, one framed grid (the author, 2026-10-16): a column per theme, a cell per area, subtle grey rules
@@ -711,7 +710,10 @@ details.where nav.level2{border-top:1px solid var(--line);border-bottom:0}
   margin:28px 0 8px;border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:var(--panel);box-shadow:var(--shadow);
   width:min(1500px,calc(100vw - 2*var(--gutter)));margin-left:calc((100% - min(1500px,calc(100vw - 2*var(--gutter))))/2)}
 .has-l2 .domains{width:100%;margin-left:0}
-.dcol{min-width:0;grid-row:1 / -1;display:grid;grid-template-rows:subgrid;border-left:1px solid var(--line)}
+.dcol{min-width:0;grid-row:1 / -1;display:grid;grid-template-rows:subgrid;border-left:1px solid var(--line-2)}
+/* a column is one theme: the strong lines run DOWN between themes, none across them (the author, 2026-10-16), and every other column
+   sits on a faint tint, so the eye reads a theme top to bottom */
+.dcol:nth-child(even){background:color-mix(in srgb,var(--panel-2) 55%,var(--panel))}
 .dcol:first-child{border-left:0}
 .dband,.page-body .dband{margin:0;padding:14px 16px 12px;background:var(--panel-2);border-top:4px solid var(--line-2);border-bottom:1px solid var(--line-2);
   font-family:"IBM Plex Mono",monospace;font-size:var(--label);font-weight:600;line-height:1.3;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);hyphens:auto}
@@ -722,9 +724,9 @@ details.where nav.level2{border-top:1px solid var(--line);border-bottom:0}
 .dcol[data-t="io"] .dband{border-top-color:#1B6B72}
 .dcol[data-t="cross"] .dband{border-top-color:#B4462F}
 .page-body .dtiles,.dtiles{list-style:none;margin:0;padding:0;max-width:none;grid-row:2 / -1;display:grid;grid-template-rows:subgrid}
-.page-body .dtiles li,.dtiles li{margin:0;padding:0;border-bottom:1px solid var(--line);min-width:0}
+.page-body .dtiles li,.dtiles li{margin:0;padding:0;min-width:0}
 .dtile{display:flex;flex-direction:column;gap:10px;height:100%;padding:14px 16px 16px;text-decoration:none;color:var(--ink)}
-.dtile:hover{background:var(--panel-2)}
+.dtile:hover .dpic{border-color:var(--accent)}
 .dtile:hover .dname{color:var(--accent);text-decoration:underline}
 .dpic{display:block;aspect-ratio:7/4;overflow:hidden;border:1px solid var(--line);border-radius:8px;background:#FBF7F0}
 .dpic img{display:block;width:100%;height:100%;object-fit:cover}
@@ -765,4 +767,24 @@ details.where nav.level2{border-top:1px solid var(--line);border-bottom:0}
 .card,.figure,.pair>div,.sg>div,.hook,.rows,.lanes,table.ratings,.door,.ft{border-radius:14px;box-shadow:var(--shadow)}
 .hook{border-top:1px solid var(--line)}
 .hook:hover{border-color:var(--accent)}
-.hook .hk::after{content:" \2197";color:var(--accent-ink);font-weight:500}
+
+/* the hero's arrow: small, on the right of the panel (the author, 2026-10-16) */
+.hero-panel .down,.down{display:flex;width:36px;height:36px;margin:12px 0 0 auto;border-width:1.5px;font-size:1.125rem}
+
+/* the book page shows the book's cover (the author, 2026-10-16), copied from the house's published reader */
+.page-body figure.book-cover{float:right;width:min(300px,40%);margin:8px 0 20px 32px}
+.page-body figure.book-cover img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow)}
+@media (max-width:760px){.page-body figure.book-cover{float:none;width:min(260px,70%);margin:16px 0}}
+
+/* a door per reader on the home page (the author, 2026-10-16): six cards, each leading to the page that reads the site from that reader's place */
+.readers-section{padding-block:48px 0}
+.readers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:20px}
+.reader{display:block;padding:18px 22px;border:1px solid var(--line);border-radius:14px;background:var(--panel);box-shadow:var(--shadow);text-decoration:none;color:var(--ink)}
+.reader:hover{border-color:var(--accent)}
+.reader:hover .rk{color:var(--accent);text-decoration:underline}
+.reader .rk{display:block;font-family:"Fraunces",Georgia,serif;font-size:1.375rem;font-weight:600;line-height:1.2}
+.reader .rt{display:block;margin-top:8px;font-size:1.1875rem;line-height:1.5;color:var(--ink-2)}
+@media (max-width:1000px){.readers{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.readers{grid-template-columns:1fr}}
+ul.readings{list-style:none;padding-left:0}
+ul.readings li{margin-top:10px}

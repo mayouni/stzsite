@@ -8,6 +8,8 @@ description: Le livre Softanza de Mansour Ayouni, deuxième des livres AYOUNI : 
 
 ## Le livre {#book}
 
+<figure class="book-cover"><a href="https://mayouni.github.io/ayouni/books/softanza/fr/"><img src="../assets/img/book-cover-fr.webp" width="640" height="837" alt="La couverture du livre : AYOUNI, Softanza, Mansour Ayouni ; un ancien en turban dessiné en facettes de couleur."></a></figure>
+
 <p class="proof">Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA</a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p>
 
 <p class="cta"><a href="https://mayouni.github.io/ayouni/books/softanza/fr/">Lire en français</a><a href="https://mayouni.github.io/ayouni/books/softanza/en/">Read it in English</a></p>

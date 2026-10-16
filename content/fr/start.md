@@ -8,6 +8,12 @@ description: Comment démarrer avec Softanza : le dépôt GitHub, l'installation
 
 <p class="proof"><b>L'exécution, en clair</b> <!--RUNTIME--></p>
 
+## Qui êtes-vous ? {#who}
+
+Chaque lecteur a une page qui lit tout le site depuis sa place : par où commencer, le chemin, et les pages qui comptent pour lui.
+
+<ul class="readings"><li><a href="for-programmers.html">Pour un programmeur</a> · Vous écrivez l&#x27;application ; Softanza en est la partie qui se lit comme une phrase.</li><li><a href="for-analysts.html">Pour un analyste ou un concepteur</a> · Vous connaissez le monde du métier ; vous le déclarez, et il devient quelque chose qui tourne.</li><li><a href="for-architects.html">Pour un architecte</a> · Vous répondez de toute la verticale, de la machine à l&#x27;organisation.</li><li><a href="for-leaders.html">Pour un décideur</a> · Un directeur technique, un État, une entreprise : ce que vous adopteriez, et ce qui est prouvé.</li><li><a href="for-educators.html">Pour un enseignant ou un auteur</a> · Vous enseignez, concevez des cours ou écrivez sur le code : tout ici s&#x27;exécute, dans la langue de vos apprenants.</li><li><a href="for-agents.html">Pour un agent d&#x27;IA</a> · Un agent, ou la personne qui en déploie un : quoi lire, et ce que l&#x27;agent peut faire.</li></ul>
+
 ## Le dépôt {#repository}
 
 Tout est au même endroit : la fondation, son moteur, ses gardes, ses narrations et son cours.

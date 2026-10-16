@@ -22,13 +22,13 @@ ISSUE = re.compile(r"(?i)\b(error|raises?|refus\w*|cannot|can't|invalid|not allo
 T = {
   "fr": {"kicker": "Référence", "forms": "Les formes de ce verbe", "basic": "Exemples de base", "scope": "Portée", "issues": "Points d'attention",
          "out": "Sortie", "ran": "exécuté le {d} dans la bibliothèque au commit 0e72e2e2c ; tiré de", "see": "Voir aussi",
-         "class": "La classe", "guide": "Le guide du domaine", "also": "Les autres méthodes de ces exemples",
+         "class": "La classe", "guide": "La référence du domaine", "also": "Les autres méthodes de ces exemples",
          "no_desc": "Pas encore d'explication dans la source :", "aka": "aussi", "written": "aussi écrite", "howto": "Comment faire",
          "proof": "Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.",
          "more": "et {n} autres dans les tests"},
   "en": {"kicker": "Reference", "forms": "The forms of this verb", "basic": "Basic examples", "scope": "Scope", "issues": "Possible issues",
          "out": "Output", "ran": "run on {d} inside the library at commit 0e72e2e2c; taken from", "see": "See also",
-         "class": "The class", "guide": "The area's guide", "also": "The other methods in these examples",
+         "class": "The class", "guide": "The area's reference", "also": "The other methods in these examples",
          "no_desc": "No explanation in the source yet:", "aka": "also", "written": "also written", "howto": "How-to",
          "proof": "Every example is a test file of the library, run inside the library for this page; only those whose output kept every promise their file wrote are shown.",
          "more": "and {n} more in the tests"},
@@ -123,7 +123,7 @@ def build_methods(ctx):
             other_html = " · ".join((f'<a class="mono" href="../{c2.lower()}/{slug(m2)}.html">{esc(c2)}.{esc(m2)}</a>' if (c2, m2) in entries
                                      else f'<span class="mono">{esc(c2)}.{esc(m2)}</span>') for c2, m2 in others[:12])
             a = c.get("area")
-            guide = f'<li><a href="../../atlas/{a}.html#functions">{t["guide"]} : {esc(area_title[a][lang])}</a></li>'.replace(" : ", ": " if lang == "en" else " : ") if a in area_title else ""
+            guide = f'<li><a href="../../guide/{a}.html">{t["guide"]} : {esc(area_title[a][lang])}</a></li>'.replace(" : ", ": " if lang == "en" else " : ") if a in area_title else ""
             see = (f'<h2>{t["see"]}</h2><ul><li><a href="../{cls.lower()}.html#{esc(meth.lower())}">{t["class"]} {esc(cls)}</a></li>{guide}'
                    + (f'<li>{t["also"]} : {other_html}</li>'.replace(" : ", ": " if lang == "en" else " : ") if other_html else "")
                    + "".join(f'<li>{t["howto"]} : <a href="../../howto/{howto_page(r)}.html">{esc(howto_intent(r, lang))}</a></li>'.replace(" : ", ": " if lang == "en" else " : ")

@@ -16,6 +16,6 @@ description: Les partenaires de Softanza comme direction : à quoi un partenaire
 
 ## Comment écrire {#write}
 
-La même porte que pour tout le reste : <a href="https://github.com/mayouni/stzlib/issues">les tickets du dépôt</a>. Une personne ou une entreprise qui veut livrer avec Softanza est invitée à lire d'abord <a href="journey-architect.html">le parcours de l'architecte de plateforme</a>, puisque c'est le travail qu'un partenaire ferait.
+La même porte que pour tout le reste : <a href="https://github.com/mayouni/stzlib/issues">les tickets du dépôt</a>. Une personne ou une entreprise qui veut livrer avec Softanza est invitée à lire d'abord <a href="for-architects.html#path">le parcours de l'architecte de plateforme</a>, puisque c'est le travail qu'un partenaire ferait.
 
 <p class="proof"><b>conçu</b> Aucun programme de partenaires n'existe. Rien sur cette page n'est offert, chiffré ni promis au-delà des trois lois ci-dessus, et tout engagement que le projet a déjà pris envers une organisation lui est propre et n'est pas modifié par cette page. La question de l'argent a une doctrine énoncée : le projet se finance lui-même, pour qu'aucun capital extérieur n'acquière de voix sur la fondation ouverte. Elle est sur <a href="offering.html#funding">la page Audiences</a>.</p>

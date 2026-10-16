@@ -69,13 +69,14 @@ SECTIONS = [
   ("offering", {"fr": "Adopter", "en": "Adopt"}, [
      ("offering", {"fr": "Adopter", "en": "Adopt"}),
      ("proven", {"fr": "Preuves", "en": "Proof"}),
-     ("journeys", {"fr": "Parcours", "en": "Journeys"}),
      ("solutions", {"fr": "Solutions", "en": "Solutions"})]),
   ("start", {"fr": "Démarrer", "en": "Start"}, [            # not a menu entry: a button beside the menu
      ("start", {"fr": "Démarrer", "en": "Start"})]),
 ]
 MENU_HIDDEN = {"start"}
+PROFILES = json.loads((pathlib.Path(__file__).resolve().parent.parent / "data" / "profiles.json").read_text(encoding="utf-8"))["profiles"]
 FAMILIES = {
+  "start": [(f"for-{_p['id']}", _p["name"]) for _p in PROFILES],      # a door per reader (the author, 2026-10-16)
   "applications": [("world", {"fr": "Le monde", "en": "The world"}), ("platforms", {"fr": "Plateforme de plateformes", "en": "Platform of platforms"}),
                    ("host", {"fr": "L'hôte", "en": "The host"}), ("device", {"fr": "De l'éditeur à l'appareil", "en": "From the editor to the device"}),
                    ("surfaces", {"fr": "Surfaces", "en": "Surfaces"}), ("first", {"fr": "Votre première application", "en": "Your first application"}),
@@ -112,14 +113,16 @@ FAMILIES = {
 }
 SUBPAGES = {child: parent for parent, kids in FAMILIES.items() for child, _ in kids}
 OLD_PAGES = {"teaching": "education", "pedagogy": "education",       # the old addresses lead to the new page
-             "proving": "real#grounds", "customers": "real#references"}   # wave 2 (doc/STRUCTURE-2026-10-15.md): told once
-GENERATED = {"reference", "narrations", "howto", "ask", "journeys", "narrations-performance", "narrations-security", "narrations-delivery"}   # built by code, not from a .md
+             "proving": "real#grounds", "customers": "real#references",   # wave 2 (doc/STRUCTURE-2026-10-15.md): told once
+             "journeys": "start#who",                                         # the journeys became the readers' pages (2026-10-16)
+             **{f"journey-{_j}": f"for-{_p['id']}#path" for _p in PROFILES for _j in _p["journeys"]}}
+GENERATED = {"reference", "narrations", "howto", "ask", *(f"for-{_p['id']}" for _p in PROFILES), "narrations-performance", "narrations-security", "narrations-delivery"}   # built by code, not from a .md
 OWNER = {}                                          # page -> its section
 for sec, _, pages in SECTIONS:
     for slug, _ in pages: OWNER[slug] = sec
 for _sp in SUBPAGES: OWNER[_sp] = OWNER[SUBPAGES[_sp]]
 OWNER["atlas-group"] = "platform"
-OWNER["guide"] = "reference"                        # a guide page sits under Documentation
+OWNER["guide"] = "reference"                        # an area's reference page sits under Reference > Docs
 OWNER["book-proof"] = "learn"                       # the proof of a chapter sits under The interactive course
 GEN_ANCHOR = {"atlas-group": "areas", "guide": "docs", "book-proof": "book"}   # a generated page hangs under this page of its section
 
@@ -152,7 +155,7 @@ UI = {
     "measured": "Mesuré contre", "folders": "Dossiers", "standouts": "Ce qu'un artisan en fait, et ce qui se distingue", "gaps": "Ce qui est dû",
     "lanes_h": "Les couloirs, un par un", "lanes_note": "Les couloirs et leurs notes sont cités tels qu'ils ont été lus à la source, le",
     "example": "Un exemple, exécuté", "no_example": "Aucun exemple exécuté sur cette page", "output": "Sortie",
-    "source": "la source", "nopic": "Pas encore d'image", "guide": "Le guide des fonctions de ce domaine",
+    "source": "la source", "nopic": "Pas encore d'image", "guide": "Pour les programmeurs : la référence de ce domaine",
     "narr_title": "Narrations", "narr_title_html": "Les <i>narrations</i>", "narr_kicker": "Recherche",
     "narr_lede": "Les articles du projet : cent trente-cinq essais où les idées de Softanza ont d\'abord été argumentées, avec leur code de la main de l\'auteur.",
     "narr_desc": "Les 135 articles de Softanza, chacun une page : résumé, genre, domaine, année, et le code exécuté au nom de Haro.",
@@ -180,7 +183,7 @@ UI = {
     "measured": "Measured against", "folders": "Folders", "standouts": "What a crafter does with it, and what stands out", "gaps": "What is owed",
     "lanes_h": "The lanes, one by one", "lanes_note": "Lanes and their notes are quoted as they were read at the source, on",
     "example": "One example, run", "no_example": "No example run on this page", "output": "Output",
-    "source": "the source", "nopic": "No picture yet", "guide": "The guide to this area's functions",
+    "source": "the source", "nopic": "No picture yet", "guide": "For programmers: this area's reference",
     "narr_title": "Narrations", "narr_title_html": "The <i>narrations</i>", "narr_kicker": "Research",
     "narr_lede": "The articles of the project: one hundred and thirty-five essays in which the ideas of Softanza were first argued, with their code in the author's hand.",
     "narr_desc": "Softanza's 135 articles, each a page: abstract, genre, area, year, and the code run in Haro's name.",
@@ -422,7 +425,7 @@ def scope_html(lang, idx, groups):
     out = []
     for b in idx["bands"]:
         for g in [g for g in groups if g["band"] == b["id"]]:
-            out.append(f'<a data-t="{b["id"]}" href="atlas/{g["slug"]}.html#functions"><span>{esc(g[lang])}<small>{esc(b[lang])}</small></span></a>')
+            out.append(f'<a data-t="{b["id"]}" href="guide/{g["slug"]}.html"><span>{esc(g[lang])}<small>{esc(b[lang])}</small></span></a>')
     return '<div class="scope">' + "".join(out) + '</div>'
 
 def coverage_html(lang):
@@ -731,7 +734,7 @@ def build_group_page(lang, idx, groups, i):
         hero = f'<div class="note"><p><b>{ui["nopic"]}.</b> {esc(g.get("nopic_" + lang, ""))}</p></div>'
     thesis = f'<blockquote><p>{esc(d["thesis"])}</p></blockquote>' if d.get("thesis") else ""
     body = f"""<p class="counts-line">{g["s"]} Strong · {g["so"]} Solid · {g["p"]} Partial · {g["e"]} Emerging</p>
-    <p class="proof">{ui["measured"]}{colon} {esc(g["peers"])} · {ui["folders"]}{colon} {folders} · <a href="#functions">{ui["guide"]}</a></p>
+    <p class="proof">{ui["measured"]}{colon} {esc(g["peers"])} · {ui["folders"]}{colon} {folders} · <a href="../guide/{g["slug"]}.html">{ui["guide"]}</a></p>
     {hero}
     {heritage_html(lang, g["slug"])}
     {thesis}
@@ -741,8 +744,7 @@ def build_group_page(lang, idx, groups, i):
     <h2>{ui["lanes_h"]}</h2>
     <p class="proof">{ui["lanes_note"]} {esc(d.get("dated", ""))}.</p>
     {note}
-    <div class="lanes">{lanes}</div>
-    <!--GUIDE-SECTIONS-->"""
+    <div class="lanes">{lanes}</div>"""
     page = page_shell(lang, "atlas", g[lang], g["line_" + lang], esc(band[lang]), esc(g[lang]), esc(g["line_" + lang]), body,
                       rel=rel, page_key="atlas-group", other_href=f"../../{ui['other_code']}/atlas/{g['slug']}.html", body_class="page page-atlas-group", tail=[(g[lang], None)])
     page = level2.wrap(page, level2.nav(level2.LABELS["areas"][lang], level2.area_groups(idx, lang, g["slug"])))
@@ -943,49 +945,64 @@ def page_label(lang, page):
     elif page.startswith("atlas/") or page.startswith("guide/"):
         slug = page.split("/")[1][:-5]
         for g in load_atlas()[1]:
-            if g["slug"] == slug: return g[lang] if page.startswith("atlas/") else {"fr": "Guide : ", "en": "Guide: "}[lang] + g[lang]
+            if g["slug"] == slug: return g[lang] if page.startswith("atlas/") else {"fr": "Référence : ", "en": "Reference: "}[lang] + g[lang]
     else:
         slug = page[:-5]
-        for j in load_json("journeys.json")["journeys"]:
-            if slug == "journey-" + j["id"]: return j["name"][lang]
+        for p_ in PROFILES:
+            if slug == "for-" + p_["id"]: return p_["title"][lang]
         t_ = tree_label(slug, lang)                      # the rail's name, the same as the page's title (one name per page)
         if t_ != slug: return t_
         if slug in PAGE_NAMES: return PAGE_NAMES[slug][lang]
         if slug in ("education-record", "education-teach", "natural", "wise", "estate", "education", "start", "agents", "zui"): return {"education-record": {"fr": "Ce qui est prouvé", "en": "What is proved"}, "education-teach": {"fr": "J'enseigne ou je conçois", "en": "I teach or design"}}.get(slug, {}).get(lang, slug)
     return page
 
-def journey_bar(lang, current):
-    jd = load_json("journeys.json")
-    ui = JOURNEY_UI[lang]
-    items = [("journeys.html", ui["hub_title"], "page" if current == "journeys" else "")]
-    items += [(f"journey-{j['id']}.html", j["name"][lang], "page" if current == "journey-" + j["id"] else "") for j in jd["journeys"]]
-    return level2.nav(ui["hub_title"], [("", items)])
+PROFILE_UI = {
+  "fr": {"start_h": "Par où commencer", "path_h": "Votre chemin", "site_h": "Le site, vu de votre place", "offer_h": "Ce que Softanza vous offre",
+         "offer": "Ce que vous déclarez et ce que vous obtenez, avec un exemple exécuté :", "door": "la porte « {n} » de la page Adopter",
+         "pos_h": "La phrase de positionnement", "see": "voir",
+         "stage_intro": "Chaque étape porte son état, avec les mots de la page Le patrimoine : construit, en construction, spécification, conçu, nommé."},
+  "en": {"start_h": "Where to start", "path_h": "Your path", "site_h": "The site, from where you stand", "offer_h": "What Softanza offers you",
+         "offer": "What you declare and what you get, with an example run:", "door": "the \u201c{n}\u201d door of the Adopt page",
+         "pos_h": "The positioning sentence", "see": "see",
+         "stage_intro": "Every step carries its stage, in the words of the Estate page: built, in construction, specification, designed, named."},
+}
+DOOR_NAMES = {"programmer": {"fr": "programmeur", "en": "programmer"}, "analyst": {"fr": "analyste", "en": "analyst"}, "designer": {"fr": "concepteur", "en": "designer"},
+              "decision-maker": {"fr": "décideur", "en": "decision-maker"}, "educator": {"fr": "enseignant", "en": "educator"}, "agent": {"fr": "agent d'IA", "en": "AI agent"},
+              "application": {"fr": "équipe qui livre une application", "en": "team that ships an application"}}
 
-def stage_tally(lang, steps):
-    names = STAGE_FR if lang == "fr" else STAGE_EN
-    order = ["built", "in construction", "specification", "designed", "named"]
-    return ", ".join(f"{sum(1 for st in steps if st['stage'] == k)} {names[k]}" for k in order if any(st["stage"] == k for st in steps))
+DOOR_ANCHOR_FR = {"programmer": "programmeur", "analyst": "analyste", "decision-maker": "decideur", "educator": "educateur"}   # the French page's own anchors
 
-def build_journeys(lang, idx, groups):
-    jd = load_json("journeys.json")
-    ui = JOURNEY_UI[lang]; names = STAGE_FR if lang == "fr" else STAGE_EN
-    cards = "".join(f'<div class="card"><h3><a href="journey-{j["id"]}.html">{esc(j["name"][lang])}</a></h3><p>{esc(j["promise"][lang])}</p>'
-                    f'<p class="rx-src">{esc(ui["n_steps"].format(n=len(j["steps"]), t=stage_tally(lang, j["steps"])))}</p></div>' for j in jd["journeys"])
-    body = (f'<p>{ui["hub_p"]}</p><p>{ui["stage_intro"]}</p><h2>{ui["doors_h"]}</h2><div class="cards">{cards}</div>'
-            f'<h2>{ui["focus_h"]}</h2><p>{ui["focus"]}</p>')
-    page = page_shell(lang, "journeys", ui["hub_title"], ui["hub_desc"], esc(ui["kicker"]), ui["hub_title_html"], esc(ui["hub_lede"]), body, page_key="journeys")
-    (ROOT / lang / "journeys.html").write_text(level2.wrap(page, journey_bar(lang, "journeys")), encoding="utf-8")
-    for j in jd["journeys"]:
-        lis = []
-        for n, st in enumerate(j["steps"], 1):
-            lis.append(f'<li value="{n}"><b>{esc(st[lang])}</b> <span class="rx-src">{names[st["stage"]]} · {ui["see"]}: <a href="{st["page"]}">{esc(page_label(lang, st["page"]))}</a></span></li>')
-        pos = f'<h2>{ui["pos_h"]}</h2><p>{esc(j["positioning"][lang])}</p>' if j.get("positioning") else ""
-        extra = f'<h2>{ui["arch_h"]}</h2><p>{ui["arch"]} <a href="journey-architect.html">{esc(jd["journeys"][-1]["name"][lang])}</a>.</p>' if j["id"] == "leader" else ""
-        body = (f'<p class="rx-src">{esc(j["who"][lang])}</p><h2>{ui["steps_h"]}</h2><ol class="steps">{"".join(lis)}</ol>'
-                f'<h2>{ui["start_h"]}</h2><p>{esc(j["start"][lang])}: <a href="{j["start"]["page"]}">{esc(page_label(lang, j["start"]["page"]))}</a>.</p>'
-                f'{pos}{extra}<p><a href="journeys.html">{ui["back"]}</a></p>')
-        page = page_shell(lang, f"journey-{j['id']}", j["name"][lang], j["promise"][lang], esc(ui["kicker"]), esc(j["name"][lang]), esc(j["promise"][lang]), body, page_key="journeys", tail=[(j["name"][lang], None)])
-        (ROOT / lang / f"journey-{j['id']}.html").write_text(level2.wrap(page, journey_bar(lang, "journey-" + j["id"])), encoding="utf-8")
+def build_profiles(lang):
+    """a page per reader (the author, 2026-10-16): where to start, the reader's path (the journeys of data/journeys.json, written
+    once there), the site's pages read from that reader's place, and the door of the offer that says what they get"""
+    jd = {j["id"]: j for j in load_json("journeys.json")["journeys"]}
+    ui = PROFILE_UI[lang]; names = STAGE_FR if lang == "fr" else STAGE_EN
+    sec_label = {s_: lab[lang] for s_, lab, _ in SECTIONS}
+    for p_ in PROFILES:
+        js = [jd[i] for i in p_["journeys"]]
+        start = js[0]["start"]
+        path = []
+        for j in js:
+            lis = "".join(f'<li value="{n}"><b>{esc(st[lang])}</b> <span class="rx-src">{names[st["stage"]]} · {ui["see"]}: <a href="{st["page"]}">{esc(page_label(lang, st["page"]))}</a></span></li>'
+                          for n, st in enumerate(j["steps"], 1))
+            head_ = f'<h3>{esc(j["name"][lang])}</h3>' if len(js) > 1 else ""
+            path.append(f'{head_}<p>{esc(j["promise"][lang])}</p><ol class="steps">{lis}</ol>')
+        site = []
+        for sec, items in p_["read"]:
+            lis = "".join(f'<li><a href="{it["page"]}">{esc(page_label(lang, it["page"].split("#")[0]))}</a> · {esc(it[lang])}</li>' for it in items)
+            site.append(f'<h3>{esc(sec_label[sec])}</h3><ul class="readings">{lis}</ul>')
+        doors = p_["door"] if isinstance(p_["door"], list) else [p_["door"]]
+        offer = ", ".join(f'<a href="offering.html#{DOOR_ANCHOR_FR.get(d, d) if lang == "fr" else d}">{esc(ui["door"].format(n=DOOR_NAMES[d][lang]))}</a>' for d in doors)
+        pos = "".join(f'<p>{esc(j["positioning"][lang])}</p>' for j in js if j.get("positioning"))
+        body = (f'<h2>{ui["start_h"]}</h2><p>{esc(start[lang])}: <a href="{start["page"]}">{esc(page_label(lang, start["page"]))}</a>.</p>'
+                f'<h2 id="path">{ui["path_h"]}</h2><p class="proof">{ui["stage_intro"]}</p>{"".join(path)}'
+                f'<h2 id="site">{ui["site_h"]}</h2>{"".join(site)}'
+                f'<h2 id="offer">{ui["offer_h"]}</h2><p>{ui["offer"]} {offer}.</p>'
+                + (f'<h2>{ui["pos_h"]}</h2>{pos}' if pos else ""))
+        slug = f"for-{p_['id']}"
+        page = page_shell(lang, slug, p_["title"][lang], p_["card"][lang], esc(p_["name"][lang]), esc(p_["title"][lang]), esc(p_["card"][lang]), body,
+                          page_key=slug, body_class="page page-profile")
+        (ROOT / lang / f"{slug}.html").write_text(page, encoding="utf-8")
 
 GALLERY_UI = {
   "fr": {"tally": "{n} images. {i} ont été redessinées ce soir et sont identiques octet pour octet à l'image que la bibliothèque a gardée ; {d} ont été redessinées et diffèrent par les octets ; {m} n'ont pas pu l'être. {v} ont le verdict d'une personne.",
@@ -1089,7 +1106,7 @@ def write_site_files():
     (ROOT / "404.html").write_text(page, encoding="utf-8")
     moved = {f"{old}.html" for old in OLD_PAGES}            # the pages that only redirect; reading 4,300 pages to find them cost four minutes
     urls = [SITE_URL] + [SITE_URL + f.relative_to(ROOT).as_posix() for lang in LANGS for f in sorted((ROOT / lang).rglob("*.html"))
-                         if not (f.parent.name == lang and f.name in moved) and f.parent.name != "guide"]
+                         if not (f.parent.name == lang and f.name in moved)]
     (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"<url><loc>{esc(u)}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")
@@ -1286,7 +1303,7 @@ def main():
                 f'<meta http-equiv="refresh" content="0;url={url}"><link rel="canonical" href="{url}"></head>'
                 f'<body><p>{esc(UI[lang]["moved"])}{" :" if lang == "fr" else ":"} <a href="{url}">{esc(tree_label(new.split("#")[0], lang))}</a></p></body></html>', encoding="utf-8")
         build_narrations(lang, PUBLISHED)
-        build_journeys(lang, idx, groups)
+        build_profiles(lang)
         for i in range(len(groups)):
             build_group_page(lang, idx, groups, i)
         for old in ("why", "govern", "makers", "products"):
@@ -1305,7 +1322,7 @@ def main():
                                             "groups": json.loads((DATA / "atlas-index.json").read_text(encoding="utf-8"))["groups"], "page_shell": page_shell})
     print(f"ask: {nask} pages; of {nq} recipe intents, HowTo same method {hs}, same verb {hv}, other {ho}; Ask top three {ag}; llms.txt and agents/index.json")
     print(f"method entries: {nmeth} pages, {len(ENTRIES)} methods with examples run")
-    nguide = build_guides({"ROOT": ROOT, "head": head, "header": header, "footer": footer, "idx": idx, "groups": groups, "heritage": HERITAGE, "entries": ENTRIES})
+    nguide = build_guides({"ROOT": ROOT, "page_shell": page_shell, "idx": idx, "groups": groups, "entries": ENTRIES})
     print(f"guides: {nguide} pages")
     print(f"rails: {RAILS['pages']} pages carry the rail and the trail")
     assets = []

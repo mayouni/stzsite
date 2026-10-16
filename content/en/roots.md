@@ -19,7 +19,7 @@ Its slogan was <b>Programming by heart!</b> That sentence, and the slogan, are t
 <ol class="steps">
 <li value="1"><b>Seven root causes of programming complexity.</b> They were never listed on a slide of their own: they exist as the seven rationales of the goals.</li>
 <li value="2"><b>Seven design goals and thirty-three features</b>, each demonstrated by code. They are redrawn with their state today on <a href="goals.html">the design goals page</a>.</li>
-<li value="3"><b>Five audiences</b>, each with a value proposition written to one person, a typical recipe of three to five steps, and a positioning sentence. They became <a href="journeys.html">the journeys</a>.</li>
+<li value="3"><b>Five audiences</b>, each with a value proposition written to one person, a typical recipe of three to five steps, and a positioning sentence. They became <a href="start.html#who">the journeys</a>.</li>
 <li value="4"><b>Nine domains</b>, a declared focus. Today the <a href="areas.html">Atlas</a> measures one.</li>
 <li value="5"><b>A claim proved by code:</b> a function name is a sentence. It is told on <a href="craft.html">the craft page</a>.</li>
 </ol>

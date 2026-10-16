@@ -1,0 +1,567 @@
+{
+ "about": "The six readers of the site (the author, 2026-10-16: the front page offers a door per reader, and each door is an umbrella page that reads the whole site from that reader's place). Built on the offer page's seven doors (the 2022 audience list) and on the journeys of data/journeys.json, which the umbrellas absorb: a journey's steps are written once, there.",
+ "profiles": [
+  {
+   "id": "programmers",
+   "door": "programmer",
+   "journeys": [
+    "programmer"
+   ],
+   "name": {
+    "en": "Programmers",
+    "fr": "Programmeurs"
+   },
+   "title": {
+    "en": "For a programmer",
+    "fr": "Pour un programmeur"
+   },
+   "card": {
+    "en": "You write the application; Softanza is the part of it that reads like a sentence.",
+    "fr": "Vous écrivez l'application ; Softanza en est la partie qui se lit comme une phrase."
+   },
+   "read": [
+    [
+     "platform",
+     [
+      {
+       "page": "areas.html",
+       "en": "Twenty-eight areas, each opening on what a crafter does with it and an example run.",
+       "fr": "Vingt-huit domaines, chacun ouvert sur ce qu'un artisan en fait et un exemple exécuté."
+      },
+      {
+       "page": "architecture.html",
+       "en": "How the library is layered over the Zig engine, with a folder per domain.",
+       "fr": "Comment la bibliothèque est posée sur le moteur Zig, avec un dossier par domaine."
+      },
+      {
+       "page": "code.html",
+       "en": "Four short comparisons with Python and JavaScript, each side run.",
+       "fr": "Quatre comparaisons courtes avec Python et JavaScript, chaque côté exécuté."
+      }
+     ]
+    ],
+    [
+     "vision",
+     [
+      {
+       "page": "principles.html",
+       "en": "Twelve principles, one sentence each: the rules behind every name you will call.",
+       "fr": "Douze principes, une phrase chacun : les règles derrière chaque nom que vous appellerez."
+      }
+     ]
+    ],
+    [
+     "learn",
+     [
+      {
+       "page": "book.html",
+       "en": "The course: fifteen chapters whose cells you run yourself.",
+       "fr": "Le cours : quinze chapitres dont vous exécutez vous-même les cellules."
+      },
+      {
+       "page": "craft.html",
+       "en": "The grammar of the names: learn one verb and you can read its whole family.",
+       "fr": "La grammaire des noms : apprenez un verbe et vous lisez toute sa famille."
+      },
+      {
+       "page": "narrations.html",
+       "en": "Articles that tell one idea in code, every block run.",
+       "fr": "Des articles qui racontent une idée en code, chaque bloc exécuté."
+      }
+     ]
+    ],
+    [
+     "reference",
+     [
+      {
+       "page": "reference.html",
+       "en": "Every class and method, generated from the library.",
+       "fr": "Chaque classe et chaque méthode, générées depuis la bibliothèque."
+      },
+      {
+       "page": "howto.html",
+       "en": "Answers to “how do I…”, each one run.",
+       "fr": "Des réponses à « comment faire… », chacune exécutée."
+      },
+      {
+       "page": "ask.html",
+       "en": "Ask the library in a sentence; it answers with its methods.",
+       "fr": "Interrogez la bibliothèque par une phrase ; elle répond par ses méthodes."
+      }
+     ]
+    ],
+    [
+     "offering",
+     [
+      {
+       "page": "proven.html",
+       "en": "How the foundation is proven: guards, fuzzers and a local gate.",
+       "fr": "Comment la fondation est prouvée : gardes, fuzzers et une porte locale."
+      },
+      {
+       "page": "editions.html",
+       "en": "One open edition under the MIT licence, with nothing withheld.",
+       "fr": "Une seule édition ouverte, sous licence MIT, sans rien de retenu."
+      }
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "analysts",
+   "door": [
+    "analyst",
+    "designer"
+   ],
+   "journeys": [
+    "analyst",
+    "dataanalyst"
+   ],
+   "name": {
+    "en": "Analysts and designers",
+    "fr": "Analystes et concepteurs"
+   },
+   "title": {
+    "en": "For an analyst or a designer",
+    "fr": "Pour un analyste ou un concepteur"
+   },
+   "card": {
+    "en": "You know the world of the business; you declare it, and it becomes something that runs.",
+    "fr": "Vous connaissez le monde du métier ; vous le déclarez, et il devient quelque chose qui tourne."
+   },
+   "read": [
+    [
+     "platform",
+     [
+      {
+       "page": "applications.html",
+       "en": "An application is a world of meaning, declared once.",
+       "fr": "Une application est un monde de sens, déclaré une fois."
+      },
+      {
+       "page": "world.html",
+       "en": "What you declare: the domain, its life and its body.",
+       "fr": "Ce que vous déclarez : le domaine, sa vie et son corps."
+      },
+      {
+       "page": "atlas/tables.html",
+       "en": "Tables and data: one data frame with a pattern language.",
+       "fr": "Tables et données : un tableau de données avec un langage de motifs."
+      },
+      {
+       "page": "surfaces.html",
+       "en": "Where an application meets people: the web today, the native interface in construction.",
+       "fr": "Là où une application rencontre les gens : le web aujourd'hui, l'interface native en construction."
+      }
+     ]
+    ],
+    [
+     "vision",
+     [
+      {
+       "page": "languages.html",
+       "en": "A domain expert declares a language and gets a domain language, a knowledge base and a local agent.",
+       "fr": "Un expert du domaine déclare un langage et obtient un langage de domaine, une base de connaissances et un agent local."
+      },
+      {
+       "page": "zui.html",
+       "en": "The Zui constitution: 122 rules for interfaces that stay calm.",
+       "fr": "La constitution Zui : 122 règles pour des interfaces qui restent calmes."
+      }
+     ]
+    ],
+    [
+     "learn",
+     [
+      {
+       "page": "natural.html",
+       "en": "Sentences in five languages that run with no model.",
+       "fr": "Des phrases en cinq langues qui s'exécutent sans modèle."
+      },
+      {
+       "page": "byexample.html",
+       "en": "Find a method by showing an example of what you want.",
+       "fr": "Trouver une méthode en montrant un exemple de ce que vous voulez."
+      }
+     ]
+    ],
+    [
+     "reference",
+     [
+      {
+       "page": "howto.html",
+       "en": "Answers to “how do I…”, each one run.",
+       "fr": "Des réponses à « comment faire… », chacune exécutée."
+      },
+      {
+       "page": "glossary.html",
+       "en": "The words this site uses in its own sense.",
+       "fr": "Les mots que ce site emploie dans son propre sens."
+      }
+     ]
+    ],
+    [
+     "offering",
+     [
+      {
+       "page": "real.html",
+       "en": "The projects behind Softanza: a bank's organisation in Niamey, neighbourhood commerce in Lyon.",
+       "fr": "Les projets derrière Softanza : l'organisation d'une banque à Niamey, le commerce de quartier à Lyon."
+      }
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "architects",
+   "door": "application",
+   "journeys": [
+    "architect"
+   ],
+   "name": {
+    "en": "Architects",
+    "fr": "Architectes"
+   },
+   "title": {
+    "en": "For an architect",
+    "fr": "Pour un architecte"
+   },
+   "card": {
+    "en": "You answer for the whole vertical, from the machine to the organisation.",
+    "fr": "Vous répondez de toute la verticale, de la machine à l'organisation."
+   },
+   "read": [
+    [
+     "platform",
+     [
+      {
+       "page": "architecture.html",
+       "en": "The core, base and max layers, the Zig engine beneath them, and the road to one executable.",
+       "fr": "Les couches core, base et max, le moteur Zig dessous, et la route vers un seul exécutable."
+      },
+      {
+       "page": "widths.html",
+       "en": "Lanes, cores, the graphics card and nodes under one measured dispatch.",
+       "fr": "Voies, cœurs, carte graphique et nœuds sous un seul aiguillage mesuré."
+      },
+      {
+       "page": "host.html",
+       "en": "The application host: the server, the live back end, the scale plane.",
+       "fr": "L'hôte d'application : le serveur, le back-end vivant, le plan d'échelle."
+      },
+      {
+       "page": "device.html",
+       "en": "From the editor to the device: a plan, a twin and a rollback.",
+       "fr": "De l'éditeur à l'appareil : un plan, un jumeau et un retour arrière."
+      },
+      {
+       "page": "agentic.html",
+       "en": "The agent proposes, a court judges, only a governed actor commits.",
+       "fr": "L'agent propose, un tribunal juge, seul un acteur gouverné commet."
+      }
+     ]
+    ],
+    [
+     "vision",
+     [
+      {
+       "page": "vision.html",
+       "en": "The 2020 architecture drawing, read band by band against 2026.",
+       "fr": "Le dessin d'architecture de 2020, relu bande par bande face à 2026."
+      },
+      {
+       "page": "sovereignty.html",
+       "en": "Technically and educationally yours, and honest about lock-in.",
+       "fr": "Techniquement et pédagogiquement à vous, et honnête sur l'enfermement."
+      }
+     ]
+    ],
+    [
+     "learn",
+     [
+      {
+       "page": "craft.html",
+       "en": "How Softanza code is written, so you can read what your teams write.",
+       "fr": "Comment s'écrit le code Softanza, pour lire ce qu'écrivent vos équipes."
+      }
+     ]
+    ],
+    [
+     "reference",
+     [
+      {
+       "page": "docs.html",
+       "en": "The whole documentation: the reference of every area, and the narrations.",
+       "fr": "Toute la documentation : la référence de chaque domaine, et les narrations."
+      }
+     ]
+    ],
+    [
+     "offering",
+     [
+      {
+       "page": "estate.html",
+       "en": "Every part of the estate, with its stage.",
+       "fr": "Chaque partie du patrimoine, avec son étape."
+      },
+      {
+       "page": "compare.html",
+       "en": "Softanza against .NET, Python, Wolfram and the JVM across thirty domains.",
+       "fr": "Softanza face à .NET, Python, Wolfram et la JVM, sur trente domaines."
+      }
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "leaders",
+   "door": "decision-maker",
+   "journeys": [
+    "leader"
+   ],
+   "name": {
+    "en": "Decision-makers",
+    "fr": "Décideurs"
+   },
+   "title": {
+    "en": "For a decision-maker",
+    "fr": "Pour un décideur"
+   },
+   "card": {
+    "en": "A CTO, a government, a business: what you would adopt, and what it is proven to do.",
+    "fr": "Un directeur technique, un État, une entreprise : ce que vous adopteriez, et ce qui est prouvé."
+   },
+   "read": [
+    [
+     "offering",
+     [
+      {
+       "page": "offering.html#decide",
+       "en": "For an organisation, in eight answers.",
+       "fr": "Pour une organisation, en huit réponses."
+      },
+      {
+       "page": "solutions.html",
+       "en": "A declared platform, governed agents, sovereign deployment, payments in francs CFA.",
+       "fr": "Une plateforme déclarée, des agents gouvernés, un déploiement souverain, des paiements en francs CFA."
+      },
+      {
+       "page": "real.html",
+       "en": "The projects and references behind the platform.",
+       "fr": "Les projets et les références derrière la plateforme."
+      },
+      {
+       "page": "editions.html",
+       "en": "What exists today: one open edition, and what is to come.",
+       "fr": "Ce qui existe aujourd'hui : une édition ouverte, et ce qui viendra."
+      }
+     ]
+    ],
+    [
+     "platform",
+     [
+      {
+       "page": "platform.html",
+       "en": "The platform in plain words.",
+       "fr": "La plateforme en mots simples."
+      },
+      {
+       "page": "security.html",
+       "en": "38 guarantees with their guards; detection in 395 ms, containment in 50 ms.",
+       "fr": "38 garanties avec leurs gardes ; détection en 395 ms, confinement en 50 ms."
+      }
+     ]
+    ],
+    [
+     "vision",
+     [
+      {
+       "page": "sovereignty.html",
+       "en": "What sovereignty means here, with the limits said plainly.",
+       "fr": "Ce que veut dire souveraineté ici, avec les limites dites clairement."
+      },
+      {
+       "page": "africa.html",
+       "en": "Born in Africa: the places, the references, the Hausa course.",
+       "fr": "Née en Afrique : les lieux, les références, le cours en haoussa."
+      }
+     ]
+    ],
+    [
+     "learn",
+     [
+      {
+       "page": "education.html",
+       "en": "Training your teams: a course that runs and levels earned by evidence.",
+       "fr": "Former vos équipes : un cours qui s'exécute et des niveaux gagnés sur preuve."
+      }
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "educators",
+   "door": "educator",
+   "journeys": [
+    "educator",
+    "linguist",
+    "author"
+   ],
+   "name": {
+    "en": "Educators and authors",
+    "fr": "Enseignants et auteurs"
+   },
+   "title": {
+    "en": "For an educator or an author",
+    "fr": "Pour un enseignant ou un auteur"
+   },
+   "card": {
+    "en": "You teach, design courses or write about code: everything here runs, in your learners' language.",
+    "fr": "Vous enseignez, concevez des cours ou écrivez sur le code : tout ici s'exécute, dans la langue de vos apprenants."
+   },
+   "read": [
+    [
+     "learn",
+     [
+      {
+       "page": "education.html",
+       "en": "A course that runs, a tutor that asks, levels earned by evidence.",
+       "fr": "Un cours qui s'exécute, un tuteur qui questionne, des niveaux gagnés sur preuve."
+      },
+      {
+       "page": "education-teach.html",
+       "en": "Forming a cohort, setting exercises judged by running them.",
+       "fr": "Former une cohorte, donner des exercices jugés en les exécutant."
+      },
+      {
+       "page": "book.html",
+       "en": "The course itself: fifteen chapters in English, French, Arabic and Hausa.",
+       "fr": "Le cours lui-même : quinze chapitres en anglais, français, arabe et haoussa."
+      },
+      {
+       "page": "narrations.html",
+       "en": "Articles whose code was run before they were published.",
+       "fr": "Des articles dont le code a été exécuté avant d'être publié."
+      }
+     ]
+    ],
+    [
+     "vision",
+     [
+      {
+       "page": "softanza-book.html",
+       "en": "The Softanza book, a draft in English and French.",
+       "fr": "Le livre Softanza, un brouillon en anglais et en français."
+      },
+      {
+       "page": "wise.html",
+       "en": "Wise coding: the platform asks the questions and judges every answer.",
+       "fr": "Le codage sage : la plateforme pose les questions et juge chaque réponse."
+      }
+     ]
+    ],
+    [
+     "platform",
+     [
+      {
+       "page": "areas.html",
+       "en": "Twenty-eight areas, each with a picture the platform drew.",
+       "fr": "Vingt-huit domaines, chacun avec une image que la plateforme a dessinée."
+      }
+     ]
+    ],
+    [
+     "reference",
+     [
+      {
+       "page": "glossary.html",
+       "en": "The words this site uses in its own sense.",
+       "fr": "Les mots que ce site emploie dans son propre sens."
+      }
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "agents",
+   "door": "agent",
+   "journeys": [
+    "agent"
+   ],
+   "name": {
+    "en": "AI agents",
+    "fr": "Agents d'IA"
+   },
+   "title": {
+    "en": "For an AI agent",
+    "fr": "Pour un agent d'IA"
+   },
+   "card": {
+    "en": "An agent, or the person who deploys one: what to read, and what the agent may do.",
+    "fr": "Un agent, ou la personne qui en déploie un : quoi lire, et ce que l'agent peut faire."
+   },
+   "read": [
+    [
+     "reference",
+     [
+      {
+       "page": "agents.html",
+       "en": "How an agent reads Softanza: ask the library, declare yourself, speak the grammar.",
+       "fr": "Comment un agent lit Softanza : interroger la bibliothèque, se déclarer, parler la grammaire."
+      },
+      {
+       "page": "ask.html",
+       "en": "Ask the library in a sentence; it answers with its methods.",
+       "fr": "Interrogez la bibliothèque par une phrase ; elle répond par ses méthodes."
+      },
+      {
+       "page": "reference.html",
+       "en": "Every class and method, generated from the library.",
+       "fr": "Chaque classe et chaque méthode, générées depuis la bibliothèque."
+      }
+     ]
+    ],
+    [
+     "platform",
+     [
+      {
+       "page": "agentic.html",
+       "en": "The agent proposes, a court judges, only a governed actor commits.",
+       "fr": "L'agent propose, un tribunal juge, seul un acteur gouverné commet."
+      },
+      {
+       "page": "coding-agents.html",
+       "en": "Softanza as a tool stack for coding agents.",
+       "fr": "Softanza comme boîte à outils des agents qui codent."
+      },
+      {
+       "page": "security.html",
+       "en": "38 guarantees, each tied to a guard.",
+       "fr": "38 garanties, chacune liée à un garde."
+      }
+     ]
+    ],
+    [
+     "learn",
+     [
+      {
+       "page": "grammar.html",
+       "en": "The forms of a function name, each tried in the library.",
+       "fr": "Les formes d'un nom de fonction, chacune essayée dans la bibliothèque."
+      }
+     ]
+    ],
+    [
+     "offering",
+     [
+      {
+       "page": "proven.html",
+       "en": "How the foundation is proven.",
+       "fr": "Comment la fondation est prouvée."
+      }
+     ]
+    ]
+   ]
+  }
+ ]
+}

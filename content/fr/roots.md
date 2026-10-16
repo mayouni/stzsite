@@ -21,7 +21,7 @@ Son slogan était <b>Programming by heart!</b>, programmer avec le cœur. Cette 
 <ol class="steps">
 <li value="1"><b>Sept causes profondes de la complexité de la programmation.</b> Elles n'ont jamais été listées sur une diapositive à part : elles existent comme les sept justifications des buts.</li>
 <li value="2"><b>Sept buts de conception et trente-trois fonctions</b>, chacune démontrée par du code. Ils sont redessinés avec leur état d'aujourd'hui sur <a href="goals.html">la page des buts de conception</a>.</li>
-<li value="3"><b>Cinq publics</b>, chacun avec une proposition de valeur écrite pour une personne, une recette typique de trois à cinq étapes et une phrase de positionnement. Ils sont devenus <a href="journeys.html">les parcours</a>.</li>
+<li value="3"><b>Cinq publics</b>, chacun avec une proposition de valeur écrite pour une personne, une recette typique de trois à cinq étapes et une phrase de positionnement. Ils sont devenus <a href="start.html#who">les parcours</a>.</li>
 <li value="4"><b>Neuf domaines</b>, un focus déclaré. Aujourd'hui l'<a href="areas.html">Atlas</a> en mesure un.</li>
 <li value="5"><b>Une affirmation prouvée par du code :</b> un nom de fonction est une phrase. Elle est racontée sur <a href="craft.html">la page du métier</a>.</li>
 </ol>

@@ -23,7 +23,7 @@ T = {
          "source": "la source", "inherits": "Hérite aussi de", "method": "Méthode", "explanation": "Explication, telle que la source la porte", "aka": "aussi nommée", "written": "aussi écrite", "forms": "aussi acceptée", "name_of": "autre nom de", "other_name_of": "{a} est un autre nom de {r}",
          "chip_q": "chaînable", "chip_cs": "sensible à la casse", "chip_xt": "étendue", "no_desc": "(sans commentaire dans la source : le nom se lit comme une phrase)", "section": "dans la section",
          "note": "Les explications sont citées dans la langue de la source, l'anglais. Récolte : {harvested}. Un commentaire absent est signalé plutôt qu'inventé.",
-         "area_edu": "Le Système d'apprentissage", "area_other": "Autres", "back": "Toutes les classes", "guide": "Le guide", "count_in": "méthodes propres dans", "page_title": "Référence"},
+         "area_edu": "Le Système d'apprentissage", "area_other": "Autres", "back": "Toutes les classes", "guide": "La référence du domaine :", "count_in": "méthodes propres dans", "page_title": "Référence"},
   "en": {"title": "Reference", "kicker": "The library documents itself",
          "lede": "Every method of every class, with the explanation the library carries in its own source, harvested by its self-documentation module. Nothing here was written for the site: it is what the library answers when asked.",
          "desc": "The Softanza reference, generated from the explanations the library carries in its source: {nc} classes, {n} own methods.",
@@ -33,7 +33,7 @@ T = {
          "source": "the source", "inherits": "Also inherits from", "method": "Method", "explanation": "Explanation, as the source carries it", "aka": "also named", "written": "also written", "forms": "also accepted", "name_of": "another name of", "other_name_of": "{a} is another name of {r}",
          "chip_q": "chainable", "chip_cs": "case-sensitive", "chip_xt": "extended", "no_desc": "(no comment in the source: the name reads as a sentence)", "section": "in the section",
          "note": "Explanations are quoted in the language of the source, English. Harvest: {harvested}. A missing comment is reported rather than invented.",
-         "area_edu": "The Learning System", "area_other": "Other", "back": "All classes", "guide": "The guide", "count_in": "own methods in", "page_title": "Reference"},
+         "area_edu": "The Learning System", "area_other": "Other", "back": "All classes", "guide": "The area reference:", "count_in": "own methods in", "page_title": "Reference"},
 }
 
 FILTER_JS = """<script>(function(){var i=document.getElementById('flt');if(!i)return;var rows=document.querySelectorAll('[data-k]');i.addEventListener('input',function(){var q=i.value.toLowerCase();for(var r=0;r<rows.length;r++){rows[r].hidden=q&&rows[r].getAttribute('data-k').indexOf(q)<0;}});})();</script>"""
@@ -155,7 +155,7 @@ def build_reference(ctx):
             if not cs: continue
             if a == "education": title = t["area_edu"]; link = f'<a href="learn.html">{esc(title)}</a>'
             elif a == "": title = t["area_other"]; link = esc(title)
-            else: title = area_title[a][lang]; link = f'<a href="atlas/{a}.html">{esc(title)}</a>'
+            else: title = area_title[a][lang]; link = f'<a href="guide/{a}.html">{esc(title)}</a>'
             rows = "".join(
                 f'<div class="lane rrow" data-k="{esc(c["name"].lower())}"><div class="ln"><a href="reference/{c["name"].lower()}.html">{esc(c["name"])}</a></div>'
                 f'<div class="lr mono">{len(c["own"])}</div><div class="lt">{esc(", ".join(f"{k} ({v})" for k, v in c["inherited"].items())) if c["inherited"] else "·"}'
@@ -197,7 +197,7 @@ def build_reference(ctx):
         out_dir = ROOT / lang / "reference"; out_dir.mkdir(parents=True, exist_ok=True)
         for c in classes:
             a = c["area"]
-            area_link = (f'<a href="../atlas/{a}.html">{esc(area_title[a][lang])}</a>' if a in area_title else
+            area_link = (f'<a href="../guide/{a}.html">{esc(area_title[a][lang])}</a>' if a in area_title else
                          (f'<a href="../learn.html">{esc(t["area_edu"])}</a>' if a == "education" else esc(t["area_other"])))
             inh = " · ".join((f'<a href="{k.lower()}.html">{esc(k)}</a> ({v})' if k.lower() in by_name else f'{esc(k)} ({v})') for k, v in c["inherited"].items())
             rows = []
@@ -239,7 +239,7 @@ def build_reference(ctx):
     <h1 class="mono-title">{esc(title)}</h1>
     <p class="thesis">{len(c["own"])} {t["own"]} · {c["folded"]} {extshow.T[lang]["folded"]}{(" · " + t["inherits"] + " " + inh) if inh else ""}</p>
     {also_html(c.get("also_named"), t).replace("<small>", '<p class="thesis">').replace("</small>", "</p>")}
-    <p class="proof"><a href="{GH}{esc(c["file"])}">{t["source"]}: base/{esc(c["file"])}</a> · <a href="../reference.html">{t["back"]}</a>{(' · <a href="../atlas/' + a + '.html#functions">' + t["guide"] + ' ' + esc(area_title[a][lang]) + '</a>') if a in area_title else ''}</p>
+    <p class="proof"><a href="{GH}{esc(c["file"])}">{t["source"]}: base/{esc(c["file"])}</a> · <a href="../reference.html">{t["back"]}</a>{(' · <a href="../guide/' + a + '.html">' + t["guide"] + ' ' + esc(area_title[a][lang]) + '</a>') if a in area_title else ''}</p>
   </div></section>
   <div class="wrap page-body">
     {extshow.legend(lang, "../")}

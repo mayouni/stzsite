@@ -30,7 +30,7 @@ Le dossier est écrit, pas exécuté. Le binaire qui le lirait jugerait chaque f
 ## Ce qui existe, sous d'autres noms {#exists}
 
 <div class="cards">
-<div class="card"><h3>Le fichier d'agent et le dossier comme déploiement <b>(construit)</b></h3><p>Un agent se déclare dans son propre fichier et un dossier est son déploiement. Voir <a href="journey-agent.html">le parcours de l'agent</a>.</p></div>
+<div class="card"><h3>Le fichier d'agent et le dossier comme déploiement <b>(construit)</b></h3><p>Un agent se déclare dans son propre fichier et un dossier est son déploiement. Voir <a href="for-agents.html#path">le parcours de l'agent</a>.</p></div>
 <div class="card"><h3>La gouvernance et l'atelier <b>(construit)</b></h3><p>Un agent propose, l'atelier répète sur un jumeau, et seul un acteur gouverné engage. Voir <a href="agentic.html">la page agentique</a>.</p></div>
 <div class="card"><h3>Le fichier de connaissance et la voix du domaine <b>(construit)</b></h3><p>Un fichier de connaissance d'entités, de relations et de règles ; un modèle déterministe du domaine qui répond depuis le graphe avec sa raison. Voir le <a href="wise.html">wise coding</a>.</p></div>
 <div class="card"><h3>La porte conversationnelle <b>(construit)</b></h3><p>Une conversation gouvernée qui génère sa question suivante depuis un écart. Voir <a href="conversations.html">conversations</a>.</p></div>
