@@ -985,7 +985,7 @@ def build_profiles(lang):
     sec_label = {s_: lab[lang] for s_, lab, _ in SECTIONS}
     for p_ in PROFILES:
         js = [jd[i] for i in p_["journeys"]]
-        start = js[0]["start"]
+        start = p_["start"]                                  # the reader's own first page (data/profiles.json)
         path = []
         for j in js:
             lis = "".join(f'<li value="{n}"><b>{esc(st[lang])}</b> <span class="rx-src">{names[st["stage"]]} · {ui["see"]}: <a href="{st["page"]}">{esc(page_label(lang, st["page"]))}</a></span></li>'
@@ -999,7 +999,8 @@ def build_profiles(lang):
         doors = p_["door"] if isinstance(p_["door"], list) else [p_["door"]]
         offer = ", ".join(f'<a href="offering.html#{DOOR_ANCHOR_FR.get(d, d) if lang == "fr" else d}">{esc(ui["door"].format(n=DOOR_NAMES[d][lang]))}</a>' for d in doors)
         pos = "".join(f'<p>{esc(j["positioning"][lang])}</p>' for j in js if j.get("positioning"))
-        body = (f'<h2>{ui["start_h"]}</h2><p>{esc(start[lang])}: <a href="{start["page"]}">{esc(page_label(lang, start["page"]))}</a>.</p>'
+        st_txt = start[lang][:1].upper() + start[lang][1:]           # the reader's first page, linked once
+        body = (f'<h2>{ui["start_h"]}</h2><p><a href="{start["page"]}">{esc(st_txt)}</a>.</p>'
                 f'<h2 id="path">{ui["path_h"]}</h2><p class="proof">{ui["stage_intro"]}</p>{"".join(path)}'
                 f'<h2 id="site">{ui["site_h"]}</h2>{"".join(site)}'
                 f'<h2 id="offer">{ui["offer_h"]}</h2><p>{ui["offer"]} {offer}.</p>'

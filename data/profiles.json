@@ -105,7 +105,12 @@
       }
      ]
     ]
-   ]
+   ],
+   "start": {
+    "page": "start.html",
+    "en": "The Start page: the install, then your first program",
+    "fr": "La page Démarrer : l'installation, puis votre premier programme"
+   }
   },
   {
    "id": "analysts",
@@ -210,7 +215,12 @@
       }
      ]
     ]
-   ]
+   ],
+   "start": {
+    "page": "first.html",
+    "en": "Your first application, declared as a world",
+    "fr": "Votre première application, déclarée comme un monde"
+   }
   },
   {
    "id": "architects",
@@ -311,7 +321,12 @@
       }
      ]
     ]
-   ]
+   ],
+   "start": {
+    "page": "architecture.html",
+    "en": "How Softanza is built, from the engine to the folders",
+    "fr": "Comment Softanza est construite, du moteur aux dossiers"
+   }
   },
   {
    "id": "leaders",
@@ -397,7 +412,12 @@
       }
      ]
     ]
-   ]
+   ],
+   "start": {
+    "page": "offering.html#decide",
+    "en": "For an organisation, in eight answers",
+    "fr": "Pour une organisation, en huit réponses"
+   }
   },
   {
    "id": "educators",
@@ -480,7 +500,12 @@
       }
      ]
     ]
-   ]
+   ],
+   "start": {
+    "page": "education.html",
+    "en": "The Education page, by the door that fits you",
+    "fr": "La page Éducation, par la porte qui vous convient"
+   }
   },
   {
    "id": "agents",
@@ -561,7 +586,12 @@
       }
      ]
     ]
-   ]
+   ],
+   "start": {
+    "page": "agents.html",
+    "en": "How an agent reads Softanza",
+    "fr": "Comment un agent lit Softanza"
+   }
   }
  ]
 }
