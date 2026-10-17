@@ -18,6 +18,7 @@
 /* contrast: #1B6B72 | #FBFCFB | 4.5 | link on panel, light */
 /* contrast: #0E4E54 | #DEE7E6 | 4.5 | eyebrow on the tinted top of the page head, light */
 /* contrast: #1B211F | #DEE7E6 | 7 | reading ink on the tinted top of the page head, light */
+/* contrast: #1B211F | #F2F4F2 | 7 | an area's name on a tinted column of the grid, light */
 /* contrast: #F1F3F1 | #1B6B72 | 4.5 | the Start button, light */
 /* contrast: #1B211F | #FBFCFB | 7 | reading ink on panel, light */
 /* contrast: #23664A | #E4F1EA | 4.5 | Strong label, light */
@@ -30,6 +31,7 @@
 /* contrast: #5FB6BC | #1A201E | 4.5 | link on panel, dark */
 /* contrast: #8FD3D8 | #192423 | 4.5 | eyebrow on the tinted top of the page head, dark */
 /* contrast: #EAEEEB | #192423 | 7 | reading ink on the tinted top of the page head, dark */
+/* contrast: #EAEEEB | #1F2624 | 7 | an area's name on a tinted column of the grid, dark */
 /* contrast: #121614 | #5FB6BC | 4.5 | the Start button, dark */
 /* contrast: #63B98C | #1B2F26 | 4.5 | Strong label, dark */
 /* contrast: #7BA8D4 | #1B2733 | 4.5 | Solid label, dark */
@@ -43,6 +45,7 @@
   --ink:#1B211F; --ink-2:#3E4744; --ink-3:#5E6864;
   --line:#D5DBD7; --line-2:#C3CAC6;
   --accent:#1B6B72; --accent-ink:#0E4E54;
+  --head-tint:#DEE7E6; --col-tint:#F2F4F2;   /* written as hex, not color-mix(): a tool that reads color(srgb 0..1) as 0..255 sees black */
   --shadow:0 1px 2px rgba(27,33,31,.04),0 6px 18px rgba(27,33,31,.05);
   --strong:#23664A; --strong-bg:#E4F1EA;
   --solid:#2F5A86; --solid-bg:#E4ECF4;
@@ -60,7 +63,7 @@
   :root:not([data-theme="light"]){
     --paper:#121614; --panel:#1A201E; --panel-2:#232B28;
     --ink:#EAEEEB; --ink-2:#B7C1BC; --ink-3:#8A958F;
-    --line:#2C3532; --line-2:#3A443F; --accent:#5FB6BC; --accent-ink:#8FD3D8;
+    --line:#2C3532; --line-2:#3A443F; --accent:#5FB6BC; --accent-ink:#8FD3D8; --head-tint:#192423; --col-tint:#1F2624;
     --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.28);
     --strong:#63B98C; --strong-bg:#1B2F26; --solid:#7BA8D4; --solid-bg:#1B2733;
     --partial:#D6A559; --partial-bg:#302811; --emerging:#DB8069; --emerging-bg:#31201B;
@@ -70,7 +73,7 @@
 :root[data-theme="dark"]{
   --paper:#121614; --panel:#1A201E; --panel-2:#232B28;
   --ink:#EAEEEB; --ink-2:#B7C1BC; --ink-3:#8A958F;
-  --line:#2C3532; --line-2:#3A443F; --accent:#5FB6BC; --accent-ink:#8FD3D8;
+  --line:#2C3532; --line-2:#3A443F; --accent:#5FB6BC; --accent-ink:#8FD3D8; --head-tint:#192423; --col-tint:#1F2624;
     --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.28);
   --strong:#63B98C; --strong-bg:#1B2F26; --solid:#7BA8D4; --solid-bg:#1B2733;
   --partial:#D6A559; --partial-bg:#302811; --emerging:#DB8069; --emerging-bg:#31201B;
@@ -713,7 +716,7 @@ details.where nav.level2{border-top:1px solid var(--line);border-bottom:0}
 .dcol{min-width:0;grid-row:1 / -1;display:grid;grid-template-rows:subgrid;border-left:1px solid var(--line-2)}
 /* a column is one theme: the strong lines run DOWN between themes, none across them (the author, 2026-10-16), and every other column
    sits on a faint tint, so the eye reads a theme top to bottom */
-.dcol:nth-child(even){background:color-mix(in srgb,var(--panel-2) 55%,var(--panel))}
+.dcol:nth-child(even){background:var(--col-tint)}
 .dcol:first-child{border-left:0}
 .dband,.page-body .dband{margin:0;padding:14px 16px 12px;background:var(--panel-2);border-top:4px solid var(--line-2);border-bottom:1px solid var(--line-2);
   font-family:"IBM Plex Mono",monospace;font-size:var(--label);font-weight:600;line-height:1.3;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);hyphens:auto}
@@ -762,7 +765,7 @@ details.where nav.level2{border-top:1px solid var(--line);border-bottom:0}
 
 /* the Compass artifacts' style (the author, 2026-10-16): the page head on a resting teal tint, the eyebrow in the accent's
    ink, cards on the panel with a 14 px corner and a resting shadow, as on the Softanza Atlas board */
-.page-head{background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 9%,var(--paper)),var(--paper))}
+.page-head{background:linear-gradient(180deg,var(--head-tint),var(--paper))}
 .eyebrow,.kicker{color:var(--accent-ink);letter-spacing:.14em}
 .card,.figure,.pair>div,.sg>div,.hook,.rows,.lanes,table.ratings,.door,.ft{border-radius:14px;box-shadow:var(--shadow)}
 .hook{border-top:1px solid var(--line)}
