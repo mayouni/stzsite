@@ -74,7 +74,9 @@ Le site a une page par sorte de question. Quand vous ne connaissez pas un nom, a
 
 ## La première narration {#narration}
 
-Une narration est un document qui raconte une partie de la bibliothèque comme une histoire, en code écrit pour être exécuté au fil de la lecture. Commencez par <a href="narrations/stz-mental-mode-narration.html">le modèle mental</a>, puis <a href="narrations/stz-agents-that-cannot-hurt-you-narration.html">les agents qui ne peuvent pas vous nuire</a>. Pour voir une narration jugée bloc par bloc, ouvrez <a href="narrations/stz-repetition-with-elegance-narration.html">Repetition with Elegance</a>, exécutée pour ce site : ses six blocs affichent ce qu'ils promettent. Les 135 sont listées sous Apprendre, dans Narrations.
+Une narration est un document qui raconte une partie de la bibliothèque comme une histoire, en code écrit pour être exécuté au fil de la lecture. Commencez par <a href="narrations/stz-mental-mode-narration.html">le modèle mental</a>, puis <a href="narrations/stz-agents-that-cannot-hurt-you-narration.html">les agents qui ne peuvent pas vous nuire</a>.
+
+Pour voir une narration jugée bloc par bloc, ouvrez <a href="narrations/stz-repetition-with-elegance-narration.html">Repetition with Elegance</a>, exécutée pour ce site : ses six blocs affichent ce qu'ils promettent. Les 135 sont listées sous Apprendre, dans Narrations.
 
 ## Le lecteur du cours {#reader}
 

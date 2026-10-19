@@ -61,7 +61,9 @@ Asked in French, Arabic or Hausa, the tutor answers in that language, and those 
 
 ## How a draft stops being a draft {#reviews}
 
-The library's own definition of a **unit**: a chapter with its exercises, a world page, the skills, or the tutor's texts. French, Arabic and Hausa each have 35. A unit stops being a draft when a native speaker's sign-off is recorded for it in a file named for the language; the page then drops the notice and names who signed. The reviewer does not need to know Softanza or Git: the sheet is one text file with everything to read, and says what to judge (the wording) and what not to touch (the code in the cells, and every line that begins with <span class="mono">#--&gt;</span>, which a guard checks by running it).
+The library's own definition of a **unit**: a chapter with its exercises, a world page, the skills, or the tutor's texts. French, Arabic and Hausa each have 35. A unit stops being a draft when a native speaker's sign-off is recorded for it in a file named for the language; the page then drops the notice and names who signed.
+
+The reviewer does not need to know Softanza or Git: the sheet is one text file with everything to read, and says what to judge (the wording) and what not to touch (the code in the cells, and every line that begins with <span class="mono">#--&gt;</span>, which a guard checks by running it).
 
 If you read French, Arabic or Hausa as your own language and would review a unit, open an issue on the library's repository and ask for the sheet. Zarma is not a language of the course; a Zarma edition is an invitation, as the <a href="education.html#missing">Education page</a> says.
 

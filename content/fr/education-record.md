@@ -61,7 +61,9 @@ Interrogé en français, en arabe ou en haoussa, le tuteur répond dans cette la
 
 ## Comment un brouillon cesse d'en être un {#reviews}
 
-La définition d'une **unité** par la bibliothèque elle-même : un chapitre avec ses exercices, une page de monde, les compétences, ou les textes du tuteur. Le français, l'arabe et le haoussa en ont chacun 35. Une unité cesse d'être un brouillon quand la validation d'un locuteur natif est enregistrée pour elle dans un fichier nommé d'après la langue ; la page retire alors l'avis et nomme qui l'a signée. Le relecteur n'a pas besoin de connaître Softanza ni Git : la fiche est un seul fichier texte avec tout ce qu'il faut lire, et dit ce qu'il faut juger (la formulation) et ce qu'il ne faut pas toucher (le code des cellules, et chaque ligne qui commence par <span class="mono">#--&gt;</span>, qu'un garde vérifie en l'exécutant).
+La définition d'une **unité** par la bibliothèque elle-même : un chapitre avec ses exercices, une page de monde, les compétences, ou les textes du tuteur. Le français, l'arabe et le haoussa en ont chacun 35. Une unité cesse d'être un brouillon quand la validation d'un locuteur natif est enregistrée pour elle dans un fichier nommé d'après la langue ; la page retire alors l'avis et nomme qui l'a signée.
+
+Le relecteur n'a pas besoin de connaître Softanza ni Git : la fiche est un seul fichier texte avec tout ce qu'il faut lire, et dit ce qu'il faut juger (la formulation) et ce qu'il ne faut pas toucher (le code des cellules, et chaque ligne qui commence par <span class="mono">#--&gt;</span>, qu'un garde vérifie en l'exécutant).
 
 Si vous lisez le français, l'arabe ou le haoussa comme votre propre langue et voulez relire une unité, ouvrez une issue sur le dépôt de la bibliothèque et demandez la fiche. Le zarma n'est pas une langue du cours ; une édition zarma est une invitation, comme le dit la <a href="education.html#missing">page Éducation</a>.
 

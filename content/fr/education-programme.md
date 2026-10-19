@@ -37,7 +37,9 @@ Les étapes du guide, lequel est lui-même vérifié par un garde qui les suit �
 
 ## Cohortes, rapports, propriété {#cohorts}
 
-Une cohorte est un dossier d'apprenants qui suivent un cours sous une surcouche. Son rapport de progression est une narration dont chaque chiffre est une promesse, si bien qu'il dit de lui-même quand il est périmé : la porte de l'enseignant en montre une <a href="education-teach.html#cohort">exécution</a>. La progression de chaque apprenant est un fichier texte dans son propre dossier, écrit seulement par le vérificateur et portant la preuve de chaque fait ; une réussite ne se falsifie pas, parce que sa preuve est l'empreinte du travail remis. À la fin d'une année l'institution détient, comme fichiers, qui a fait quoi et ce qui a été prouvé.
+Une cohorte est un dossier d'apprenants qui suivent un cours sous une surcouche. Son rapport de progression est une narration dont chaque chiffre est une promesse, si bien qu'il dit de lui-même quand il est périmé : la porte de l'enseignant en montre une <a href="education-teach.html#cohort">exécution</a>.
+
+La progression de chaque apprenant est un fichier texte dans son propre dossier, écrit seulement par le vérificateur et portant la preuve de chaque fait ; une réussite ne se falsifie pas, parce que sa preuve est l'empreinte du travail remis. À la fin d'une année l'institution détient, comme fichiers, qui a fait quoi et ce qui a été prouvé.
 
 ## Les langues {#languages}
 
@@ -66,4 +68,6 @@ Le guide du présentateur donne une scène par minute, tourne sur un seul ordina
 
 ## Ce qu'une institution doit savoir avant de commencer {#honest}
 
-Le lecteur interactif tourne sur le bureau ; un exécutant navigateur pour les cellules n'est pas encore construit, et la page le dit sur chaque cellule. Les éditions française, arabe et haoussa attendent des relecteurs natifs (0 unité sur 35 relue) ; le zarma n'est pas encore une langue du cours. Aucune institution n'a encore adopté le système : les surcouches de la banque et de l'université dans la bibliothèque sont des références écrites pour montrer ce qu'est une surcouche. Le tuteur est fondé sur des règles, pas une IA. Il n'y a aucun modèle d'IA dans la boucle et aucun n'est requis : on pourra en ajouter un plus tard comme option, jamais comme l'esprit du tuteur.
+Le lecteur interactif tourne sur le bureau ; un exécutant navigateur pour les cellules n'est pas encore construit, et la page le dit sur chaque cellule. Les éditions française, arabe et haoussa attendent des relecteurs natifs (0 unité sur 35 relue) ; le zarma n'est pas encore une langue du cours.
+
+Aucune institution n'a encore adopté le système : les surcouches de la banque et de l'université dans la bibliothèque sont des références écrites pour montrer ce qu'est une surcouche. Le tuteur est fondé sur des règles, pas une IA. Il n'y a aucun modèle d'IA dans la boucle et aucun n'est requis : on pourra en ajouter un plus tard comme option, jamais comme l'esprit du tuteur.

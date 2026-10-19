@@ -48,7 +48,9 @@ Ce qui est vrai aujourd'hui, dit clairement : la première itération de RestoLe
 
 ## Organizium et la Sonibank : une organisation jugée sur son propre organigramme {#organizium}
 
-Organizium est une plateforme d'évaluation des organisations : un questionnaire, un moteur de notation, un modèle de maturité, un référentiel de normes et d'indicateurs, un organigramme avec ses écarts de conformité, une simulation de l'avant et de l'après, et des recommandations. Elle a d'abord été construite pour une banque : Organizium Standard Edition est installée, sous licence, sur le réseau interne de la Sonibank à Niamey, et le guide d'installation remis à la banque l'atteste. Une seconde version, en 2026, a porté 48 questions en huit dimensions, un agent fait de règles sans modèle d'IA, et un outil de mise en relation avec des financements, d'abord pour DIKO.
+Organizium est une plateforme d'évaluation des organisations : un questionnaire, un moteur de notation, un modèle de maturité, un référentiel de normes et d'indicateurs, un organigramme avec ses écarts de conformité, une simulation de l'avant et de l'après, et des recommandations.
+
+Elle a d'abord été construite pour une banque : Organizium Standard Edition est installée, sous licence, sur le réseau interne de la Sonibank à Niamey, et le guide d'installation remis à la banque l'atteste. Une seconde version, en 2026, a porté 48 questions en huit dimensions, un agent fait de règles sans modèle d'IA, et un outil de mise en relation avec des financements, d'abord pour DIKO.
 
 Ce que la bibliothèque en porte est facile à montrer. Le régulateur d'une banque a des règles sur qui rend compte à qui : un conseil doit exister, l'audit doit rendre compte au conseil, une fonction de risque doit exister, les opérations ne doivent pas passer par la trésorerie. L'organigramme de la bibliothèque porte ces règles comme des validateurs, avec à côté les bases de règles des régulateurs (BCEAO, Bâle III, SOX, PCI DSS, ISO 27001, RGPD, HIPAA).
 
@@ -81,6 +83,8 @@ Un restaurant, une banque et une ONG n'ont rien en commun, et chacun a demandé 
 
 ## Ce que les projets n'ont pas prouvé {#limits}
 
-Les plateformes clientes tournent aujourd'hui sur des piles ordinaires : Organizium à la Sonibank est une application Python, RestoLean est faite de mondes web en fichier unique, DIKO Hub n'est pas construit. Leurs déclarations s'écrivent comme celles de Softanza, si bien que les passer sur le moteur de Softanza est un changement de moteur, pas de plan ; c'est une étape devant, pas une étape faite. Certaines leçons ci-dessus sont portées par des fichiers publics et d'autres seulement par des documents qui ne sont pas encore publics : la page marque lesquelles. Et ce dont l'auteur se souvient et qu'aucun fichier ne prouve n'est pas listé.
+Les plateformes clientes tournent aujourd'hui sur des piles ordinaires : Organizium à la Sonibank est une application Python, RestoLean est faite de mondes web en fichier unique, DIKO Hub n'est pas construit.
+
+Leurs déclarations s'écrivent comme celles de Softanza, si bien que les passer sur le moteur de Softanza est un changement de moteur, pas de plan ; c'est une étape devant, pas une étape faite. Certaines leçons ci-dessus sont portées par des fichiers publics et d'autres seulement par des documents qui ne sont pas encore publics : la page marque lesquelles. Et ce dont l'auteur se souvient et qu'aucun fichier ne prouve n'est pas listé.
 
 <p class="proof">Les fichiers de la bibliothèque nommés ci-dessus sont publics ; les dépôts des projets ne le sont pas, et le site n'en cite rien au-delà de ce que chaque section dit. Chaque exécution de cette page a été faite dans la bibliothèque le <!--FORGED-RAN--> au commit 0e72e2e2c.</p>

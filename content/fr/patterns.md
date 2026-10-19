@@ -26,7 +26,9 @@ Les motifs de cette liste sont écrits, pas exécutés. Les exécutions ci-desso
 
 ## Ce qu'on peut en dire {#claim}
 
-Les articles de la bibliothèque la comparent au domaine : Wolfram a des motifs de listes, l'unicité et les intervalles à pas ; Elixir, Haskell et Rust filtrent des structures ; des langages de requête de graphes et des langages d'événements complexes existent. Ce que les articles ne trouvent dans aucun d'eux, c'est une seule grammaire en forme d'expression régulière sur sept sortes de données dans une bibliothèque, avec la même habitude de petite fonction, la même surface Match, Explain et Debug, et la même discipline de test. C'est la lecture que la bibliothèque fait elle-même du domaine, pas une enquête.
+Les articles de la bibliothèque la comparent au domaine : Wolfram a des motifs de listes, l'unicité et les intervalles à pas ; Elixir, Haskell et Rust filtrent des structures ; des langages de requête de graphes et des langages d'événements complexes existent.
+
+Ce que les articles ne trouvent dans aucun d'eux, c'est une seule grammaire en forme d'expression régulière sur sept sortes de données dans une bibliothèque, avec la même habitude de petite fonction, la même surface Match, Explain et Debug, et la même discipline de test. C'est la lecture que la bibliothèque fait elle-même du domaine, pas une enquête.
 
 ## L'état honnête {#state}
 

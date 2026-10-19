@@ -18,7 +18,9 @@ La même question reçoit le même verbe aux deux profondeurs ; base connaît si
 
 ## Quelle couche charger {#which}
 
-Les trois couches sont l'unique règle de dépendance de l'architecture, appliquée à la profondeur de capacité et pas à la préoccupation. Une solution se place à la couche qui suffit et pas plus haut, pour n'embarquer que ce qu'elle utilise. Le noyau est pour les petits appareils et les binaires légers : artefacts système et fonctions simples au chargement minimal. La base tient les fonctions de base, avec la gymnastique et les innovations de style de Softanza, assez pour la plupart des besoins. Le max tient les innovations fortes. Une couche est un dossier, un préfixe, un fichier d'entrée et un ensemble de bibliothèques, sans cérémonie d'adaptateurs.
+Les trois couches sont l'unique règle de dépendance de l'architecture, appliquée à la profondeur de capacité et pas à la préoccupation. Une solution se place à la couche qui suffit et pas plus haut, pour n'embarquer que ce qu'elle utilise. Le noyau est pour les petits appareils et les binaires légers : artefacts système et fonctions simples au chargement minimal.
+
+La base tient les fonctions de base, avec la gymnastique et les innovations de style de Softanza, assez pour la plupart des besoins. Le max tient les innovations fortes. Une couche est un dossier, un préfixe, un fichier d'entrée et un ensemble de bibliothèques, sans cérémonie d'adaptateurs.
 
 <div class="cards">
 <div class="card"><h3>Un appareil, ou un binaire léger</h3><p>Chargez le <b>noyau</b>. Au commit lu pour cette page, il est cassé : deux de ses classes appellent douze noms du moteur qu'aucun fichier du moteur n'enregistre, et neuf fichiers de test le gardent là où la base en a plus de cinq mille. Signalé à la bibliothèque.</p></div>

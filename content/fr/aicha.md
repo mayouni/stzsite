@@ -8,7 +8,9 @@ description: Aïcha, l'agent Softanza : la définition de l'auteur, le dossier q
 
 ## La définition {#definition}
 
-Aïcha est l'agent Softanza, dans la définition de l'auteur. Il est livré nativement avec la fondation. Il est livrable dans toute solution en fournissant une base de connaissance, et tout client peut le rebaptiser comme son propre agent. Il est omniprésent dans Softanza comme interface conversationnelle de premier rang pour parler de la bibliothèque et des applications construites dessus, ou avec elles. Et il est lui-même une IA souveraine programmable que chacun peut faire vite, même sans Softanza, à partir de fichiers texte, d'un dossier et d'un seul binaire léger sur n'importe quelle plateforme.
+Aïcha est l'agent Softanza, dans la définition de l'auteur. Il est livré nativement avec la fondation. Il est livrable dans toute solution en fournissant une base de connaissance, et tout client peut le rebaptiser comme son propre agent.
+
+Il est omniprésent dans Softanza comme interface conversationnelle de premier rang pour parler de la bibliothèque et des applications construites dessus, ou avec elles. Et il est lui-même une IA souveraine programmable que chacun peut faire vite, même sans Softanza, à partir de fichiers texte, d'un dossier et d'un seul binaire léger sur n'importe quelle plateforme.
 
 <p class="proof"><b>nommé</b> Aucun produit ne porte ce nom aujourd'hui. Il n'y a pas de binaire à ce nom, pas de contrat de dossier en vigueur, pas de surface où une personne tape, pas de charte, pas d'empaquetage. Ce qui suit sépare les organes qui existent du produit qui n'existe pas.</p>
 

@@ -8,7 +8,9 @@ description: Learning, teaching and designing courses with Softanza: a course th
 
 ## What it is, in one paragraph {#what}
 
-A course in Softanza is **plain text in folders**: chapters whose every cell runs, exercises checked by running the learner's own program, skills that name the guard which proves each level, and worlds the learner reasons over. Nothing else is installed, no server, no database, no account: the file system is the administration console. The same frame carries the introduction to Softanza, nine missions set in Zindara, a course on governed agents and a course on mathematics, in English, French, Arabic and Hausa (the last three are drafts, <a href="#missing">limits below</a>). It is a part of the library, like strings or graphs: the learning system is written in Softanza, tested with Softanza, and taught with Softanza.
+A course in Softanza is **plain text in folders**: chapters whose every cell runs, exercises checked by running the learner's own program, skills that name the guard which proves each level, and worlds the learner reasons over. Nothing else is installed, no server, no database, no account: the file system is the administration console.
+
+The same frame carries the introduction to Softanza, nine missions set in Zindara, a course on governed agents and a course on mathematics, in English, French, Arabic and Hausa (the last three are drafts, <a href="#missing">limits below</a>). It is a part of the library, like strings or graphs: the learning system is written in Softanza, tested with Softanza, and taught with Softanza.
 
 ## What the learners' machines need {#machines}
 
@@ -52,6 +54,8 @@ Each claim below is a rule of the library with a test that enforces it, and link
 
 ## What is not done, said plainly {#missing}
 
-Zarma is not yet one of the course's languages: the French, Arabic and Hausa editions are drafts that await their native reviewers (0 of 35 units reviewed), and every translated chapter and world page says so. No institution has adopted the system yet, and the tutor is rule-based, not AI. The interactive reader runs on the desktop; a browser runtime for its cells depends on the Softanza browser engine and is not built. One principle is still only proposed: **progressive revelation**, a concept appearing only when the learner's previous work shows readiness. It needs the learner's progress, which only the desktop reader can see, so it is the library's to build, not this site's. A Zarma edition is an invitation: the program is plain text, every cell runs, and the course's court will say whether the translation holds.
+Zarma is not yet one of the course's languages: the French, Arabic and Hausa editions are drafts that await their native reviewers (0 of 35 units reviewed), and every translated chapter and world page says so. No institution has adopted the system yet, and the tutor is rule-based, not AI. The interactive reader runs on the desktop; a browser runtime for its cells depends on the Softanza browser engine and is not built.
+
+One principle is still only proposed: **progressive revelation**, a concept appearing only when the learner's previous work shows readiness. It needs the learner's progress, which only the desktop reader can see, so it is the library's to build, not this site's. A Zarma edition is an invitation: the program is plain text, every cell runs, and the course's court will say whether the translation holds.
 
 <p class="proof">The design, line by line: <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/CHARTER.md">CHARTER.md</a>, nine laws each with the test that enforces it, and <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/SOFTANZA_EDUCATION_PLAN.md">SOFTANZA_EDUCATION_PLAN.md</a>, the record of every phase. What is proved, and what is not: <a href="education-record.html">every figure beside its guard and its limit</a>.</p>
