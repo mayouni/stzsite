@@ -245,7 +245,7 @@ def pick_example_html(cls, name, exs, rdata, lang):
     best = None
     for e in exs or []:
         code = e["code"].strip("\n")
-        if code.count("\n") > 16 or len(code) > 900 or e["out"].count("\n") > 14 or len(e["out"]) > 700: continue
+        if code.count("\n") > 24 or len(code) > 900 or e["out"].count("\n") > 14 or len(e["out"]) > 700: continue
         if not call.search(code): continue
         key = (code.count("\n"), len(code))
         if best is None or key < best[0]: best = (key, e)

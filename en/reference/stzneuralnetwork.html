@@ -42,7 +42,45 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/learning/stzNeuralNetwork.ring" target="_blank" rel="noopener noreferrer">the source: base/learning/stzNeuralNetwork.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/nlp.html">The area reference: NLP &amp; linguistics</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p><code>stzNeuralNetwork</code> is a small network you can build in a few lines and train to a task: dense layers with a named activation, a trainer with a learning rate, and a prediction, all in the engine, with no framework and no model file to fetch.</p><p>Declare the input width, <code>new stzNeuralNetwork([ :Inputs = 2 ])</code>, then add layers, <code>AddDenseLayer(4, :Tanh)</code>, <code>AddDenseLayer(1, :Sigmoid)</code>; give an <code>stzTrainer</code> a learning rate and train for as many rounds as it takes, 2,000 in the library&#x27;s own example; <code>Predict(inputs)</code> answers. <code>SetSeed</code> fixes the initialisation, so a run is reproducible; <code>NumberOfLayers</code>, <code>NumberOfInputs</code> and <code>Layers</code> show what was built.</p><p>The classical test is XOR, which no single layer can learn and a network of two can: four points, four expected answers, a hidden layer of four units, and the trained network gets all four right. The trained weights can be written out with <code>ExportToGguf</code>, in the format the library&#x27;s inference tier reads, so what was learned here can be loaded there.</p><p>It serves a lesson on how learning works, a classifier on a small table, a prototype before a larger model, and any case where a few hundred weights are the right size.</p></div>
+    <div class="essay"><p><code>stzNeuralNetwork</code> is a small network you can build in a few lines and train to a task: dense layers with a named activation, a trainer with a learning rate, and a prediction, all in the engine, with no framework and no model file to fetch.</p><p>Declare the input width, <code>new stzNeuralNetwork([ :Inputs = 2 ])</code>, then add layers, <code>AddDenseLayer(4, :Tanh)</code>, <code>AddDenseLayer(1, :Sigmoid)</code>; give an <code>stzTrainer</code> a learning rate and train for as many rounds as it takes, 2,000 in the library&#x27;s own example; <code>Predict(inputs)</code> answers. <code>SetSeed</code> fixes the initialisation, so a run is reproducible; <code>NumberOfLayers</code>, <code>NumberOfInputs</code> and <code>Layers</code> show what was built.</p><p>The classical test is XOR, which no single layer can learn and a network of two can: four points, four expected answers, a hidden layer of four units, and the trained network gets all four right. The trained weights can be written out with <code>ExportToGguf</code>, in the format the library&#x27;s inference tier reads, so what was learned here can be loaded there.</p><p>It serves a lesson on how learning works, a classifier on a small table, a prototype before a larger model, and any case where a few hundred weights are the right size.</p></div><h2>The most expressive uses</h2><p>One method that shows what the class is for; its example was run inside the library.</p><div class="uses"><div class="use"><h3 class="mono">AddDenseLayer</h3><p>XOR learned: two layers, a learning rate, 2,000 rounds, four right answers.</p><pre class="rx">aX = [ [0,0], [0,1], [1,0], [1,1] ]
+aY = [ [0], [1], [1], [0] ]
+oN = new stzNeuralNetwork([ :Inputs = 2 ])
+oN.AddDenseLayer(4, :Tanh)
+oN.AddDenseLayer(1, :Sigmoid)
+oT = new stzTrainer()
+oT.SetLearningRate(0.5)
+oT.Train(oN, aX, aY, 2000)
+# 00 -&gt; 0
+? oN.Predict([0,0])[1] &lt; 0.5
+#--&gt; 1
+
+# 01 -&gt; 1
+? oN.Predict([0,1])[1] &gt; 0.5
+#--&gt; 1
+
+# 10 -&gt; 1
+? oN.Predict([1,0])[1] &gt; 0.5
+#--&gt; 1
+
+# 11 -&gt; 0
+? oN.Predict([1,1])[1] &lt; 0.5
+#--&gt; 1
+
+# the loss went down
+? oT.FinalLoss() &lt; oT.LossHistory()[1]
+#--&gt; 1
+
+# ...essentially to zero
+? oT.FinalLoss() &lt; 0.001
+#--&gt; 1
+
+# one loss per epoch was recorded
+? len(oT.LossHistory())
+#--&gt; 2000
+
+# Why() still narrates
+? StzFindFirst(&quot;trained 2000 epoch&quot;, oT.Why()) &gt; 0
+#--&gt; 1</pre><span class="rx-src">library test</span></div></div><p class="proof">Every method, by section, further down.</p>
     <div class="treasures"><p class="proof"><a href="../atlas/nlp.html">The story of its area: NLP &amp; linguistics</a> · <a href="../guide/nlp.html">Its area's reference</a></p></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#adddenselayer">A</a> <a href="#exporttogguf">E</a> <a href="#init">I</a> <a href="#layers">L</a> <a href="#numberoflayers">N</a> <a href="#predict">P</a> <a href="#setseed">S</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

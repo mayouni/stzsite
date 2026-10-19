@@ -55,9 +55,43 @@ oZ = new stzDataSet([ 1, 1, 2, 2, 3 ])
 #--&gt; 1
 
 ? oX.PartialCorrelation(oY, oZ)
-#--&gt; 1</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">Sum</h3><p>Sommation compensée : dix millions de milliards plus mille unités donnent exactement la bonne réponse, dans trois classes qui s&#x27;accordent.</p><pre class="rx">o1 = new stzDataSet([ 2, 4, 4, 5, 7, 9, 12, 25 ])
-? o1.Sum()
-#--&gt; 68</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></div><div class="use"><h3 class="mono">SortedData</h3><p>Les données dans l&#x27;ordre, sans changer le jeu.</p><pre class="rx">o1 = new stzDataSet([ 30, 10, 20, 50, 40 ])
+#--&gt; 1</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">Sum</h3><p>Sommation compensée : dix millions de milliards plus mille unités donnent exactement la bonne réponse, dans trois classes qui s&#x27;accordent.</p><pre class="rx">an = [ number(&quot;1e16&quot;) ]
+for i = 1 to 1000
+an + 1
+next
+oList = new stzListOfNumbers(an)
+oData = new stzDataSet(an)
+oBuf  = StzNumBufferQ(an)
+nTrue = number(&quot;1e16&quot;) + 1000
+# stzListOfNumbers
+? oList.Sum()
+#--&gt; 10000000000001000.00
+
+# stzDataSet
+? oData.Sum()
+#--&gt; 10000000000001000.00
+
+# stzNumBuffer
+? oBuf.Sum()
+#--&gt; 10000000000001000.00
+
+# list and dataset agree
+? oList.Sum() = oData.Sum()
+#--&gt; 1
+
+# dataset and buffer agree
+? oData.Sum() = oBuf.Sum()
+#--&gt; 1
+
+# list and dataset agree
+? oList.Mean() = oData.Mean()
+#--&gt; 1
+
+# dataset and buffer agree
+? oData.Mean() = oBuf.Mean()
+#--&gt; 1
+
+oBuf.Free()</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">SortedData</h3><p>Les données dans l&#x27;ordre, sans changer le jeu.</p><pre class="rx">o1 = new stzDataSet([ 30, 10, 20, 50, 40 ])
 ? @@(o1.SortedData())
 #--&gt; [ 10, 20, 30, 40, 50 ]</pre><span class="rx-src">test de la bibliothèque</span></div></div><p class="proof">Toutes les méthodes, par section, plus bas.</p>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/stats.html">Le récit de son domaine : Statistiques et visualisation</a> · <a href="../guide/stats.html">La référence de son domaine</a></p><h3>Documents de conception qui la nomment <span class="mono">(5)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/stats/SOFTANZA_TUKEY_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA TUKEY PLAN — the exploration tier (TK0–TK6)<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">14 mentions</span><span class="abs">Plan de référence du niveau d&#x27;exploration (TK0 à TK6), remplaçant trois notes anciennes jamais exécutées : statistiques résistantes et affichages en Zig derrière un objet de contrat, ré-expression mesurée non estimée à l&#x27;œil, verdicts dans la forme maison ; TK0 à TK5 livrés, mémoire de TK6 refusée.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_NUMERIC_FOUNDATION.md" target="_blank" rel="noopener noreferrer">Numbers in Softanza — a global rethink<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">13 mentions</span><span class="abs">Une refonte des nombres pour toute la bibliothèque, phases 0 à 7 terminées, qui remplace le plan du moteur numérique par cinq piliers : exactitude visible, cadre numérique nommé à l&#x27;appel, tableaux résidents dans le moteur, noyaux SIMD en Zig, et une seule autorité par algorithme.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Softanza Intelligence Architecture<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">8 mentions</span><span class="abs">La feuille de route unique du travail sur l&#x27;intelligence, issue de la directive de l&#x27;auteur : l&#x27;intelligence dérive une connaissance nouvelle d&#x27;une connaissance existante tenue en graphe gouverné, d&#x27;où six lois, cinq fondations, une carte des modules, un état audité et un parcours R1 à R8.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/math/SOFTANZA_MATH_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA MATH PLAN -- the map, the contracts, the phases<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">6 mentions</span><span class="abs">Plan compagnon de la charte mathématique, présenté comme brouillon M0, cartographiant l&#x27;existant avec numéros de ligne, listant les contrats consommés et consignant les phases M1 à M6 (figures, mouvement, un cours, le niveau Tukey, approfondissement du cœur, un pont vers Lean) avec leurs résultats livrés.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/DOCREFORM_PILOT_STATE.md" target="_blank" rel="noopener noreferrer">DOCREFORM -- state after wave 2 (handoff, 2026-10-05)<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">3 mentions</span><span class="abs">Passation consignant l&#x27;état de DOCREFORM après les vagues 2 à 4 (2026-10-05) : quelles classes ont chaque méthode racine documentée et vérifiée, le taux de réussite de toute la bibliothèque, la barrière documentaire en service, les défauts que le sondage a trouvés sans les corriger, et les décisions ouvertes pour l&#x27;auteur.</span></li></ul><h3>Narrations qui en parlent <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="../narrations/stzdatasetdoc.html">stzDataSet: Statistics as a Language of Thought</a> <span class="mono">2026</span><span class="abs">In Softanza, statistics isn&#x27;t just formulas—it&#x27;s a way of thinking about data. When a statistician examines data, he doesn&#x27;t see numbers; he sees questions waiting for answers. His intent shapes which analytical lens he reaches for:</span></li></ul></div>

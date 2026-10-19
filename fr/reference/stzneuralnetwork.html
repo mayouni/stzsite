@@ -42,7 +42,45 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/learning/stzNeuralNetwork.ring" target="_blank" rel="noopener noreferrer">la source: base/learning/stzNeuralNetwork.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/nlp.html">La référence du domaine : Traitement du langage et linguistique</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p><code>stzNeuralNetwork</code> est un petit réseau que l&#x27;on construit en quelques lignes et entraîne à une tâche : des couches denses à activation nommée, un entraîneur avec un taux d&#x27;apprentissage, et une prédiction, le tout dans le moteur, sans cadriciel et sans fichier de modèle à aller chercher.</p><p>Déclarez la largeur d&#x27;entrée, <code>new stzNeuralNetwork([ :Inputs = 2 ])</code>, puis ajoutez des couches, <code>AddDenseLayer(4, :Tanh)</code>, <code>AddDenseLayer(1, :Sigmoid)</code> ; donnez à un <code>stzTrainer</code> un taux d&#x27;apprentissage et entraînez autant de tours qu&#x27;il faut, 2 000 dans l&#x27;exemple de la bibliothèque ; <code>Predict(inputs)</code> répond. <code>SetSeed</code> fixe l&#x27;initialisation, si bien qu&#x27;une exécution est reproductible ; <code>NumberOfLayers</code>, <code>NumberOfInputs</code> et <code>Layers</code> montrent ce qui a été construit.</p><p>Le test classique est le OU exclusif, qu&#x27;aucune couche seule ne peut apprendre et que deux couches apprennent : quatre points, quatre réponses attendues, une couche cachée de quatre unités, et le réseau entraîné trouve les quatre. Les poids entraînés peuvent être écrits par <code>ExportToGguf</code>, dans le format que lit l&#x27;étage d&#x27;inférence de la bibliothèque, si bien que ce qui a été appris ici peut y être chargé.</p><p>Il sert une leçon sur la façon dont l&#x27;apprentissage fonctionne, un classificateur sur une petite table, un prototype avant un modèle plus grand, et tout cas où quelques centaines de poids sont la bonne taille.</p></div>
+    <div class="essay"><p><code>stzNeuralNetwork</code> est un petit réseau que l&#x27;on construit en quelques lignes et entraîne à une tâche : des couches denses à activation nommée, un entraîneur avec un taux d&#x27;apprentissage, et une prédiction, le tout dans le moteur, sans cadriciel et sans fichier de modèle à aller chercher.</p><p>Déclarez la largeur d&#x27;entrée, <code>new stzNeuralNetwork([ :Inputs = 2 ])</code>, puis ajoutez des couches, <code>AddDenseLayer(4, :Tanh)</code>, <code>AddDenseLayer(1, :Sigmoid)</code> ; donnez à un <code>stzTrainer</code> un taux d&#x27;apprentissage et entraînez autant de tours qu&#x27;il faut, 2 000 dans l&#x27;exemple de la bibliothèque ; <code>Predict(inputs)</code> répond. <code>SetSeed</code> fixe l&#x27;initialisation, si bien qu&#x27;une exécution est reproductible ; <code>NumberOfLayers</code>, <code>NumberOfInputs</code> et <code>Layers</code> montrent ce qui a été construit.</p><p>Le test classique est le OU exclusif, qu&#x27;aucune couche seule ne peut apprendre et que deux couches apprennent : quatre points, quatre réponses attendues, une couche cachée de quatre unités, et le réseau entraîné trouve les quatre. Les poids entraînés peuvent être écrits par <code>ExportToGguf</code>, dans le format que lit l&#x27;étage d&#x27;inférence de la bibliothèque, si bien que ce qui a été appris ici peut y être chargé.</p><p>Il sert une leçon sur la façon dont l&#x27;apprentissage fonctionne, un classificateur sur une petite table, un prototype avant un modèle plus grand, et tout cas où quelques centaines de poids sont la bonne taille.</p></div><h2>Les usages les plus parlants</h2><p>Une méthode qui montre ce que la classe sait faire ; son exemple a été exécuté dans la bibliothèque.</p><div class="uses"><div class="use"><h3 class="mono">AddDenseLayer</h3><p>Le OU exclusif appris : deux couches, un taux d&#x27;apprentissage, 2 000 tours, quatre bonnes réponses.</p><pre class="rx">aX = [ [0,0], [0,1], [1,0], [1,1] ]
+aY = [ [0], [1], [1], [0] ]
+oN = new stzNeuralNetwork([ :Inputs = 2 ])
+oN.AddDenseLayer(4, :Tanh)
+oN.AddDenseLayer(1, :Sigmoid)
+oT = new stzTrainer()
+oT.SetLearningRate(0.5)
+oT.Train(oN, aX, aY, 2000)
+# 00 -&gt; 0
+? oN.Predict([0,0])[1] &lt; 0.5
+#--&gt; 1
+
+# 01 -&gt; 1
+? oN.Predict([0,1])[1] &gt; 0.5
+#--&gt; 1
+
+# 10 -&gt; 1
+? oN.Predict([1,0])[1] &gt; 0.5
+#--&gt; 1
+
+# 11 -&gt; 0
+? oN.Predict([1,1])[1] &lt; 0.5
+#--&gt; 1
+
+# the loss went down
+? oT.FinalLoss() &lt; oT.LossHistory()[1]
+#--&gt; 1
+
+# ...essentially to zero
+? oT.FinalLoss() &lt; 0.001
+#--&gt; 1
+
+# one loss per epoch was recorded
+? len(oT.LossHistory())
+#--&gt; 2000
+
+# Why() still narrates
+? StzFindFirst(&quot;trained 2000 epoch&quot;, oT.Why()) &gt; 0
+#--&gt; 1</pre><span class="rx-src">test de la bibliothèque</span></div></div><p class="proof">Toutes les méthodes, par section, plus bas.</p>
     <div class="treasures"><p class="proof"><a href="../atlas/nlp.html">Le récit de son domaine : Traitement du langage et linguistique</a> · <a href="../guide/nlp.html">La référence de son domaine</a></p></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#adddenselayer">A</a> <a href="#exporttogguf">E</a> <a href="#init">I</a> <a href="#layers">L</a> <a href="#numberoflayers">N</a> <a href="#predict">P</a> <a href="#setseed">S</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>
