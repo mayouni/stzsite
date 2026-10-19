@@ -1,0 +1,270 @@
+{
+ "slug": "performance",
+ "url": "https://claude.ai/artifact/QWnP4nn4ywzpB4s8E4jB6D",
+ "title": "Performance — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "One of the most complete and rigorous planes in the library — P0–P11 all shipped, 366 assertions — and it does what OpenTelemetry and Prometheus split across separate tools: it closes the OTel triad (metrics + traces + logs, all in native OTLP JSON) and exposes Prometheus text, and adds SLA judgment with edge-triggered alerting, a sampling profiler, queueing-theory capacity analysis (utilization & Little's law, each with an independent self-check), and a driven-load harness — one coherent plane. Its real signature is measurement discipline: clocks as scopes, Windows 15.6 ms quantization handled, self-cost priced with its own machinery, and a rule that unmeasured is an error, never a silent pass. What it is not, by design, is the storage-and-dashboard half.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships, the tools it is fair to measure against, and the one thing still owed. Against OTel (an instrumentation SDK) and Prometheus (storage + alerting), this is one plane doing the instrumentation, the analysis, and the judgment — and leaving storage to the scraper.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Metrics & labeled families",
+   "rating": "Strong",
+   "engine": "Counters / gauges / timers (`stzMetric`) and Prometheus-style labeled families (`stzMetricFamily`) with the child registry engine-side (`perf.zig Family`) so children are visible across all Ring faces, and cardinality bounded at birth with a reserved, counted overflow child.",
+   "engine_h": "In the engine",
+   "against": [
+    "Prometheus client",
+    "OTel metrics",
+    "Micrometer"
+   ],
+   "against_h": "Measured against",
+   "owed": "At parity — full metric types, labels, and bounded cardinality that never silently drops. The overflow child is the honest touch most clients lack.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Percentiles & histograms",
+   "rating": "Strong",
+   "engine": "Two independent engines: an O(1) log-bucket sketch (`histogram.zig`, 16 fixed ms bounds + overflow) and a sort-exact nearest-rank over the retained window (`perf_series_percentile`) — plus `histogram_sum` keeping an exact lifetime sum while the buckets quantize, so the mean is exact.",
+   "engine_h": "In the engine",
+   "against": [
+    "Prometheus histograms",
+    "HdrHistogram",
+    "OTel"
+   ],
+   "against_h": "Measured against",
+   "owed": "Exact and sketch, both labeled by kind at the call site — ahead of Prometheus's bucket-only summaries. Nothing structural owed.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Exposition & export",
+   "rating": "Strong",
+   "engine": "Both worlds, all three signals: Prometheus text (`PromText`, label-aware) and OTLP JSON for metrics (`OtelJson`), spans (`stzOtelBatch`) and logs (`stzLog.OtelJson`). Built-in `GET /metrics` + `/health`; pull (scrape) and push (OTLP) both present.",
+   "engine_h": "In the engine",
+   "against": [
+    "Prometheus exposition",
+    "OTLP",
+    "StatsD"
+   ],
+   "against_h": "Measured against",
+   "owed": "Broad exposition across both ecosystems and all three OTel signals. The storage/query side it deliberately leaves to the scraper (lane 12).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "SLA judgment & alerting",
+   "rating": "Strong",
+   "engine": "`stzSla` (`ExpectP95(...).Under(...)`, warnings, `CheckAgainst`) emits verdicts in the unified rule shape into `stzRuleReport` (subject `perf`); `stzPerfSentinel` is edge-triggered (`OnBreach`/`OnClear`, event-bus fanout, a flight-recorder black box). NOT-MEASURED is an error, never a silent pass.",
+   "engine_h": "In the engine",
+   "against": [
+    "Prometheus Alertmanager",
+    "Grafana alerting",
+    "OTel (no alerting)"
+   ],
+   "against_h": "Measured against",
+   "owed": "SLA + alerting integrated into the same plane and the one CI gate — OTel has no alerting at all, and Prometheus's is a separate service. A distinctive, coherent lane.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Measurement discipline",
+   "rating": "Strong",
+   "engine": "The plane's signature: clocks as scopes (monotonic `watch.zig` for durations, epoch wall kept separate), Windows 15.6 ms quantization handled (a \"15.63 ms\" read is one tick), `SelfCost()` priced with its own machinery (~0.03 ms), exact-transfer proven against frozen stubs, and the self-check identity law — a real check compares two independent measurements.",
+   "engine_h": "In the engine",
+   "against": [
+    "(most SDKs get burned by these)",
+    "JFR rigor"
+   ],
+   "against_h": "Measured against",
+   "owed": "Category-leading rigor — the transferable laws (leave-one-out z, the f64 2⁷³ serialization boundary, guard-honesty for live values) are arguably the plane's most valuable export.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Capacity & queueing analysis",
+   "rating": "Strong",
+   "engine": "`stzPerfProfile`: utilization, throughput, response time, service demand, `MaxThroughput`, `Headroom`, a computing/waiting `Bottleneck` split, `MemoryTrendPerHour` / `HoursToMemoryCeiling`, and Little's law with an independent counted-in-flight self-check.",
+   "engine_h": "In the engine",
+   "against": [
+    "APM analysis",
+    "OTel (none)",
+    "Prometheus (none)"
+   ],
+   "against_h": "Measured against",
+   "owed": "Operational queueing-theory analysis neither OTel nor Prometheus offers — utilization and Little's law checked against a second, independent measurement, not asserted as an identity.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Distributed tracing",
+   "rating": "Solid",
+   "engine": "Real W3C traceparent spans: parent→child join, an engine trace ring, and OTLP `resourceSpans` export (`stzOtelBatch`) that a Jaeger/Tempo collector reassembles. Every observed request gets a trace identity and echoes the header.",
+   "engine_h": "In the engine",
+   "against": [
+    "OpenTelemetry tracing",
+    "Jaeger / Tempo"
+   ],
+   "against_h": "Measured against",
+   "owed": "Propagation is at the HTTP seam only — no baggage, no async-context through reactor jobs — a single global trace scope, and drop-oldest ring sampling rather than OTel head/tail. Below OTel's full context propagation.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Log↔trace correlation",
+   "rating": "Solid",
+   "engine": "Inside a trace scope (`stzTraceScope`), every `stzLog` record stamps a queryable `traceId`; `OfTrace(id)` recovers a trip's log lines and `OtelJson` ships OTLP logs with traceId first-class — closing the third leg of the triad.",
+   "engine_h": "In the engine",
+   "against": [
+    "OTel logs",
+    "structured logging + trace ctx"
+   ],
+   "against_h": "Measured against",
+   "owed": "One global scope slot — correct for one-request-per-loop, but parallel in-process dispatch would need per-task scopes (the same limit as tracing).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "The instrumentation bracket",
+   "rating": "Solid",
+   "engine": "`Observe` / `ObserveRoutes` wrap the appserver request seam, recording the well-known subjects (`http.request.ms`, `http.requests`, `http.errors`, `http.route.ms`), and `stzStopwatch` brackets any operation.",
+   "engine_h": "In the engine",
+   "against": [
+    "OTel auto-instrumentation",
+    "Prometheus middleware"
+   ],
+   "against_h": "Measured against",
+   "owed": "Instrumentation is manual (you call `Observe`) — no auto-instrumentation of frameworks the way OTel agents wrap a server, client and DB without code changes.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Profiling",
+   "rating": "Solid",
+   "engine": "`stzProfiler` over an engine frame stack (per-path calls / total-ns / self-ns) and a real engine sampler thread photographing the active path, with folded (flamegraph-ready) output (`WriteFoldedTo`) and self-cost pricing.",
+   "engine_h": "In the engine",
+   "against": [
+    "JFR",
+    "py-spy / pprof",
+    "perf"
+   ],
+   "against_h": "Measured against",
+   "owed": "Frames are cooperative (Enter/Leave), not native-stack unwinding — depth-capped and bounded-path — so it profiles instrumented code, not an arbitrary un-instrumented call tree.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Governed tuning & load harness",
+   "rating": "Solid",
+   "engine": "`stzPerfPlan` — a closed catalog of optimization actions an LLM may propose but only an effectful actor may `ExecuteOn` (audited); and `stzLoadDriver` — a real driven-load harness (target + driver child processes, client-observed R, engine-exact percentiles).",
+   "engine_h": "In the engine",
+   "against": [
+    "k6 / wrk / Locust",
+    "autoscalers"
+   ],
+   "against_h": "Measured against",
+   "owed": "A distinctive pair — governed tuning + an in-library load generator that measured X sub-linear and R super-linear on a real fleet — but narrower than a dedicated load tool's scripting/scenarios.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Storage, query & dashboards",
+   "rating": "Partial",
+   "engine": "Bounded in-memory rings hold the recent window; everything is exposed and exported for a scraper or collector to store.",
+   "engine_h": "In the engine",
+   "against": [
+    "Prometheus TSDB / PromQL",
+    "Grafana",
+    "APM backends"
+   ],
+   "against_h": "Measured against",
+   "owed": "No time-series database, no PromQL, no dashboards — export-only by explicit design. The half of \"Prometheus\" that stores and queries history, and the Grafana layer that draws it, are deliberately out of scope.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first closes the two OTel-ergonomics gaps; the second sharpens sampling, profiling and in-process aggregation; the third bridges to the storage/dashboard world it leaves to others.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — the OTel-ergonomics gaps",
+   "items": [
+    {
+     "title": "Auto-instrumentation",
+     "text": "Wrap the appserver, reactor client, backends and DB so metrics and traces appear without a manual `Observe` call — the \"zero-code\" value OTel agents provide. The seams already exist; this is making them opt-out rather than opt-in.",
+     "value": "High",
+     "effort": "Medium"
+    },
+    {
+     "title": "Full trace-context propagation",
+     "text": "Baggage, async-context through reactor jobs, and per-task trace scopes — lifting the single-global-scope limit so a trace survives an async hop and a concurrent request keeps its own log stamps.",
+     "value": "High",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — sharpen sampling, profiling, aggregation",
+   "items": [
+    {
+     "title": "Head / tail trace sampling",
+     "text": "Replace drop-oldest ring retention with head/tail sampling (keep the interesting traces — errors, slow tails) the way OTel does, so the exported spans are the ones worth reassembling.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "In-process aggregation (PromQL-lite)",
+     "text": "Rate/sum/quantile-over-children aggregation before the scrape, so a labeled family answers \"p95 across all routes\" without a PromQL server — a small analytic layer over the family store.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Native-stack profiling",
+     "text": "Real stack unwinding alongside the cooperative frames, so un-instrumented code (and engine internals) show up in the flamegraph, not just `Enter`/`Leave` paths.",
+     "value": "Medium",
+     "effort": "High"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — bridge to storage & the platform gaps",
+   "items": [
+    {
+     "title": "A storage / dashboard integration story",
+     "text": "A documented, tested path to Prometheus + Grafana (or an embedded lightweight TSDB) so the export-only design has a first-class \"and here's how you keep and see the history\" answer.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "Engine-heap allocation stats",
+     "text": "The deferred counting-allocator project — per-module engine-heap statistics beyond RSS/peak/trend, for when the operational question becomes \"which module is allocating.\"",
+     "value": "Low",
+     "effort": "High"
+    },
+    {
+     "title": "Close the platform gaps",
+     "text": "macOS RSS (returns `-1`), and refresh the one stale metadata line — the CLAUDE.md perf-laws header still says \"P0–P7 / 8 guards / 283 assertions\" while the code is P0–P11 / 12 guards / 366.",
+     "value": "Low",
+     "effort": "Low"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "Re-surveyed from `main`. Genuinely complete — every P0–P11 identifier resolves to real code — and rigorously guarded: 366 assertions across 12 guards plus ~22 engine `zig test` blocks, proving exact-transfer via frozen stubs, live-value ranges (not equalities, because live ratios drift both ways), and the self-check identity law (Little's implied N vs a counted in-flight; anchor-computed U vs a sampled gauge). The measurement laws are the transferable product. One stale metadata line noted above (the laws list itself is current); deliberate scope: export-only, HTTP-seam trace propagation, cooperative profiler frames, macOS RSS."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza's performance plane is a single coherent system that closes the OpenTelemetry triad, exposes to Prometheus, and adds the SLA judgment, capacity analysis and load testing those tools leave to others — held to a measurement rigor most SDKs don't reach; its one deliberate boundary is that it instruments and analyses but does not store, query or draw."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16, from a read-only `main` worktree — Ring faces under `base/perf` (`stzMetric`, `stzMetricFamily`, `stzPerfMonitor`, `stzSla`, `stzPerfSentinel`, `stzPerfProfile`, `stzProfiler`, `stzLoadDriver`, `stzOtelBatch`, `stzTraceScope`); engine `perf.zig`, `histogram.zig`, `watch.zig`, `time.zig` via `ring_bridge_perf.zig` (57 fns); plan of record `SOFTANZA_PERF_SYSTEM.md` (P0–P11) + `SOFTANZA_PERF_VS_THE_FIELD.md`; laws in `CLAUDE.md`; guards under `test/perf` (12 guards, 366 asserts). Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

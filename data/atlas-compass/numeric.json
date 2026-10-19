@@ -1,0 +1,275 @@
+{
+ "slug": "numeric",
+ "url": "https://claude.ai/artifact/7Faos68KGLaFV6tQkof5J6",
+ "title": "Numeric & optimization — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "The most rigorously measured module in the library — P0–P7 complete, ~1,827 assertions, every parallel route gated by a measured threshold and every kernel bit-identical under threads. It leads with something NumPy has no concept of: exactness — an arbitrary-precision numeric tower (bignum, exact rational, money-exact decimal) with a register that tells you why a value is exact or not. On dense linear algebra it reaches LAPACK-tier decompositions, and it ships reverse-mode autodiff with L-BFGS. It is deliberately \"not a NumPy\": no broadcasting, raw matmul peak below tuned BLAS, and it refuses what it cannot measure a use for.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships, the tools it is fair to measure against, and the one thing still owed. Uniquely here, several \"gaps\" are documented, measured refusals — a discipline worth reading as such, called out in the honesty note below.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Scalar arithmetic & exactness",
+   "rating": "Strong",
+   "engine": "An arbitrary-precision tower over `std.math.big`: bignum, exact rationals, and money-exact decimal (scaled integers, so `0.1+0.2` is exactly `0.3`), plus a full number-theory set. An exactness register — `IsExact()`, `Why()`, `Representation()` — reports why a value is exact or approximate.",
+   "engine_h": "In the engine",
+   "against": [
+    "Python int / Decimal / Fraction",
+    "GMP",
+    "NumPy (f64 only)"
+   ],
+   "against_h": "Measured against",
+   "owed": "A genuine differentiator: NumPy has no exactness concept at all. The 2⁷³ f64 boundary is handled by storing the value as a string and routing arithmetic away from the float path.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Matrices & linear algebra",
+   "rating": "Strong",
+   "engine": "`matrix.zig` + `linalg.zig`: matmul (i-k-j SIMD + threaded), determinant via LU, `Solve`, `Inverse`, `LeastSquares`, `PseudoInverse` (Penrose-4 verified), rank, condition number — all engine-backed and checked against NumPy.",
+   "engine_h": "In the engine",
+   "against": [
+    "NumPy / LAPACK",
+    "Eigen",
+    "GSL"
+   ],
+   "against_h": "Measured against",
+   "owed": "Core dense LA is at parity for correctness. Raw throughput is the ceiling, not coverage — see lane 12.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Eigen & decompositions",
+   "rating": "Strong",
+   "engine": "Symmetric eigen (Jacobi) and — the hard part — general non-symmetric eigen in `eigen_general.zig`: Parlett-Reinsch balancing, Householder→Hessenberg, Francis double-shift QR, Schur forms. Plus one-sided-Jacobi SVD, Householder QR, Cholesky, and polynomial roots via companion matrix.",
+   "engine_h": "In the engine",
+   "against": [
+    "LAPACK",
+    "Eigen",
+    "NumPy linalg"
+   ],
+   "against_h": "Measured against",
+   "owed": "The decomposition set is LAPACK-tier and genuinely hard to get right — general eigen with a Francis QR is not something most libraries hand-roll correctly. At parity for the analyst's needs.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Automatic differentiation & optimization",
+   "rating": "Strong",
+   "engine": "Reverse-mode autodiff (`autodiff.zig`, a compiled tape) with `valueAndGradient`, and L-BFGS with a bracket-and-zoom strong-Wolfe line search (`lbfgs.zig`). Verified against hand-derived gradients to 8–12 decimals; Rosenbrock converges in 34 iterations.",
+   "engine_h": "In the engine",
+   "against": [
+    "scipy.optimize.minimize",
+    "autograd / JAX (grad)",
+    "Ceres"
+   ],
+   "against_h": "Measured against",
+   "owed": "Reverse-mode AD plus a real quasi-Newton optimizer is a strong, uncommon pairing in a general library. The optimizer returns a full record (status, iterations, `Why()`).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Acceleration & residency",
+   "rating": "Strong",
+   "engine": "The discipline is the product: SIMD + row-banded threaded matmul (16× cache reorder, +19% vector, up to 7× threaded), Neumaier compensated summation (2.5×), and a residency model where the engine copy is truth — resident reductions run 19× faster. Every route is admitted only above a measured `calib.Gate` threshold, and results are bit-identical under threads.",
+   "engine_h": "In the engine",
+   "against": [
+    "NumPy (BLAS)",
+    "Eigen (SIMD)",
+    "MKL / OpenBLAS"
+   ],
+   "against_h": "Measured against",
+   "owed": "Raw single-thread matmul peaks ~15 GFLOP/s — below a tuned BLAS — because there is no MKL/OpenBLAS binding. The rigor is category-leading; the raw ceiling is not.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Vectors & buffers",
+   "rating": "Solid",
+   "engine": "`stzNumBuffer` over `numbuf.zig` — a contiguous, engine-owned f64 buffer with `dot`, `scale`, `add/sub/mul` and reductions (sum/mean/variance/stddev) that never marshal. The residency keystone.",
+   "engine_h": "In the engine",
+   "against": [
+    "NumPy ndarray",
+    "Eigen Vector",
+    "GSL vector"
+   ],
+   "against_h": "Measured against",
+   "owed": "Deliberately \"not a NumPy\": no broadcasting, no fancy indexing, no dtype algebra, no n-D arrays. A 1-D f64 workhorse, not a tensor library — multi-dimensional tensors live in the Neural tier.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Linear & integer programming",
+   "rating": "Solid",
+   "engine": "Real LP/MIP: an engine simplex (`simplex.zig`, measured 41× after a cubic re-parse fix) with a branch-and-bound integer tier, driven from a modelling DSL (`stzOptimModel`) and an exact coefficient compiler (no `eval()`), plus a natural-language sentence surface to the same AST and a `.zopt` file round-trip.",
+   "engine_h": "In the engine",
+   "against": [
+    "scipy.optimize.linprog",
+    "GLPK",
+    "HiGHS / OR-Tools"
+   ],
+   "against_h": "Measured against",
+   "owed": "No interior-point method, no large-scale MIP (HiGHS deliberately not vendored) and no QP (OSQP refused — no consumer). A capable modelling+solve surface, not an industrial solver.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Special functions",
+   "rating": "Solid",
+   "engine": "`special.zig`: erf/erfc, log-gamma and gamma, incomplete gamma and beta as workhorses, and the Normal/t/χ²/F distribution CDFs and quantiles that power the statistics plane.",
+   "engine_h": "In the engine",
+   "against": [
+    "GSL special functions",
+    "scipy.special",
+    "Boost.Math"
+   ],
+   "against_h": "Measured against",
+   "owed": "Testing-focused. The wider GSL catalogue — Bessel, Airy, elliptic, hypergeometric — is absent (no consumer yet). No dedicated `stzNumber` special-function face.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Solvers & roots",
+   "rating": "Solid",
+   "engine": "`solver.zig`: linear and quadratic roots, bisection, Newton, Simpson integration, polynomial evaluation, and the interpolation helpers (lerp / clamp / map-range). `stzPolynomial` and `stzMathFunction` sit on top.",
+   "engine_h": "In the engine",
+   "against": [
+    "GSL (roots / integration / ODE)",
+    "scipy.integrate",
+    "Boost"
+   ],
+   "against_h": "Measured against",
+   "owed": "Basic: no adaptive quadrature, no ODE/BVP solvers, no multi-dimensional root finding — the standard GSL/SciPy fare beyond single-variable roots and fixed-rule integration.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Random & sampling",
+   "rating": "Solid",
+   "engine": "`random.zig` over Zig's Xoshiro / PCG / ChaCha generators: seeded ints, floats, Gaussian, exponential, bulk-n variants, shuffle, Bernoulli and weighted choice, under one `SeedRandom` authority.",
+   "engine_h": "In the engine",
+   "against": [
+    "NumPy random (Generator)",
+    "GSL rng",
+    "std distributions"
+   ],
+   "against_h": "Measured against",
+   "owed": "Good generators, but a narrow distribution set next to NumPy's Generator — no binomial, Poisson, gamma, beta or Dirichlet samplers yet.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "FFT & spectral",
+   "rating": "Partial",
+   "engine": "`fft.zig`: radix-2 Cooley-Tukey with the NumPy `fft`/`ifft` convention, plus `convolveReal`, magnitudes, phases, power spectrum and dominant-bin detection.",
+   "engine_h": "In the engine",
+   "against": [
+    "NumPy fft",
+    "FFTW",
+    "KISS FFT"
+   ],
+   "against_h": "Measured against",
+   "owed": "Radix-2 only — non-power-of-2 sizes, a real-optimized `rfft`, and multi-dimensional transforms are all missing. Fine for the current spectral consumers, short of a general FFT.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Complex numbers",
+   "rating": "Partial",
+   "engine": "`complex.zig`: arithmetic, modulus (hypot), argument, conjugate, principal square root and exp, with division via Smith's formula for numerical stability. Surfaced as `stzComplex` and in `ComplexEigenValues()`.",
+   "engine_h": "In the engine",
+   "against": [
+    "NumPy complex",
+    "C++ std::complex",
+    "Python cmath"
+   ],
+   "against_h": "Measured against",
+   "owed": "Deliberately partial: no log, inverse-trig or general powers — a stated branch-cut policy plus no current consumer. Enough for eigenvalues, not for complex analysis.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first two close genuine capability gaps; the third is throughput and breadth that partly runs against the module's stated \"not a NumPy\" philosophy — flagged as optional.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — genuine capability gaps",
+   "items": [
+    {
+     "title": "Arbitrary-N & multi-dimensional FFT",
+     "text": "Beyond radix-2: mixed-radix / Bluestein for non-power-of-2 sizes, a real-optimized `rfft`, and 2-D transforms. This is table stakes against NumPy/FFTW and the clearest owed item in the compute set.",
+     "value": "High",
+     "effort": "Medium"
+    },
+    {
+     "title": "Complete the complex surface",
+     "text": "Log, inverse-trig and general powers with a stated branch-cut convention. Today complex is \"enough for eigenvalues\"; a consumer needing complex analysis or signal work hits the wall immediately.",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — cheap breadth",
+   "items": [
+    {
+     "title": "Adaptive quadrature + an ODE stepper",
+     "text": "Adaptive Gauss-Kronrod integration and a Runge-Kutta ODE solver over the existing `solver.zig` — the standard GSL/SciPy toolkit the roots lane stops just short of.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Broaden the sampling distributions",
+     "text": "Binomial, Poisson, gamma, beta and Dirichlet samplers over the existing generators — small additions that close the gap to NumPy's `Generator` and directly feed the statistics plane's resampling gap.",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "Feature standardization for the trainer",
+     "text": "The pinned issue: logistic regression diverges on unscaled features. Wiring standardization into the trainer is a small, known fix that removes a documented sharp edge.",
+     "value": "Low",
+     "effort": "Low"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — strategic (and partly against the stated philosophy)",
+   "items": [
+    {
+     "title": "A tuned BLAS path for raw throughput",
+     "text": "An MKL/OpenBLAS binding (or a GPU f32 route) would lift matmul from ~15 GFLOP/s toward tuned peak. Runs against \"not a NumPy,\" so worth it only if numeric throughput becomes a first-class goal.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "The GSL special-function catalogue",
+     "text": "Bessel, Airy, elliptic and hypergeometric functions. Currently absent for want of a consumer — add them when a consumer (physics, signal, advanced stats) actually arrives.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "QP & industrial-scale MIP",
+     "text": "Quadratic programming (OSQP-class) and large-scale MIP (HiGHS-class), both refused today for lack of a consumer. Strategic if the optimization plane grows past modelling-and-solve.",
+     "value": "Medium",
+     "effort": "High"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "Verification here is unusually strong: P0–P7 complete, ~1,827 numeric assertions checked against a NumPy reference oracle (decompositions to 8–12 decimals, matmul bit-identical across the reorder and across threads). Crucially, many \"gaps\" are deliberate, measured refusals recorded as results — elementwise multicore killed (PCIe / memory wall), GPU f64 refused (1/64-rate silicon), `mpdecimal` / OSQP / HiGHS / KISS FFT not built \"because nothing calls them.\" Read those as discipline, not as a to-do list."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza's numeric foundation trades NumPy's breadth for exactness, correctness and measured discipline: an arbitrary-precision exact tower NumPy lacks, LAPACK-tier decompositions with reverse-mode autodiff, and a residency-and-gating model where nothing parallel ships without a measurement. Its real distance from the top is raw BLAS throughput and a general FFT — everything else it's missing, it's missing on purpose."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16 — Ring faces under `base/number` (`stzNumber`, `stzMatrix`, `stzNumBuffer`, `stzComplex`, `stzPolynomial`) and `base/optim` (`stzOptimModel/Expr/Sentence/File`); engine `number.zig`, `matrix.zig`, `linalg.zig`, `eigen_general.zig`, `autodiff.zig`, `lbfgs.zig`, `simplex.zig`, `special.zig`, `fft.zig`; plan of record `SOFTANZA_NUMERIC_FOUNDATION.md` (P0–P7), `SOFTANZA_COMPUTE_MODEL.md`; guards under `test/number` + `test/optim` (~1,827 assertions, NumPy oracle). Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

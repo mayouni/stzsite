@@ -1,0 +1,277 @@
+{
+ "slug": "stats",
+ "url": "https://claude.ai/artifact/6CtjrTqTPvKU5w2H4uUPem",
+ "title": "Statistics & data-viz — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "The compute core is genuinely careful — SIMD Neumaier summation, engine hypothesis tests that never return a bare p-value (effect size and a conclusion come with every one), and a chart pipeline that is byte-tested against captured ground truth. But this is not yet scipy.stats or R: the nonparametric tests, resampling and time-series are absent, half the analyst's chart types don't render, and the exploratory (Tukey) tier is a plan with no code. A strong foundation, honestly incomplete.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships in the engine today, the tools it is fair to measure against, and the one thing still owed. Ratings are earned by what the guards prove — and here the guards are unusually literal: the chart pipeline is checked byte-for-byte.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Descriptive statistics",
+   "rating": "Strong",
+   "engine": "The full descriptive set in `stats.zig`: mean, median, variance/std (sample & population), skewness, kurtosis, geometric/harmonic/trimmed/weighted mean, percentiles, quartiles, IQR, z-scores, outliers, moving average — over lane-parallel Neumaier compensated summation (`@Vector(8)`, measured 2.5×).",
+   "engine_h": "In the engine",
+   "against": [
+    "scipy.stats.describe",
+    "R summary / stats",
+    "pandas.describe",
+    "NumPy"
+   ],
+   "against_h": "Measured against",
+   "owed": "At parity, and numerically more careful than most — the Chan-Golub-LeVeque variance correction was measured to change no digit and deliberately omitted. A genuine strength.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Chart rendering pipeline & fidelity",
+   "rating": "Strong",
+   "engine": "Three backends per chart — engine terminal (`plot.zig`), deviceless SVG, and GPU PNG — and a discipline peers lack: renderers are guarded byte-identical against captured ground truth (107 parity assertions), and 19 SVG/PNG checks run with no GPU (bars flush, one circle per point, treemap areas equal values).",
+   "engine_h": "In the engine",
+   "against": [
+    "matplotlib backends",
+    "D3 render",
+    "Vega render"
+   ],
+   "against_h": "Measured against",
+   "owed": "The pipeline is ready; the catalogue on top of it is not (lane 9). SVG line rendering is a canvas kind but has no dedicated face yet.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Hypothesis testing",
+   "rating": "Solid",
+   "engine": "`hypothesis.zig` ships one-sample / Welch (default) / pooled / paired t-tests, chi-square goodness-of-fit and independence, one-way ANOVA and a Pearson correlation test — each returning statistic, df, p-value, effect size (Cohen's d, Cramér's V, η²) and a plain conclusion. Better ergonomics than a bare tuple.",
+   "engine_h": "In the engine",
+   "against": [
+    "scipy.stats",
+    "R (t.test / aov)",
+    "statsmodels"
+   ],
+   "against_h": "Measured against",
+   "owed": "The entire nonparametric family is missing: no Mann-Whitney/Wilcoxon, Kruskal-Wallis, sign test, Kolmogorov-Smirnov or Shapiro-Wilk. That is the gap between Solid and parity.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Multivariate & dimensionality reduction",
+   "rating": "Solid",
+   "engine": "A broad engine-backed set: `pca.zig`, `tsne`/`umap`, k-means (`cluster.zig`), kNN + approximate NN, naive Bayes, ID3 trees, logistic regression, `fft.zig` and a general eigen-solver — over a matmul measured at 15 GFLOP/s.",
+   "engine_h": "In the engine",
+   "against": [
+    "scikit-learn",
+    "R (prcomp / kmeans)",
+    "scipy.linalg"
+   ],
+   "against_h": "Measured against",
+   "owed": "Depth is shallower than scikit-learn and the faces live outside `base/stats` (in `cluster` / `neural`) — rated here as the exploratory-multivariate lane, not the full ML story.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Analytical dataset & wrangling",
+   "rating": "Solid",
+   "engine": "`stzDataSet` (211 methods): confidence intervals with a reported method, box-plot five-number stats, contingency tables, frequency, entropy/diversity, mutual information, similarity, normalize/standardize, plus an insights / rules / plans engine. `stzDataWrangler` handles cleaning, missing-value strategies and validation.",
+   "engine_h": "In the engine",
+   "against": [
+    "pandas",
+    "R data.frame / dplyr",
+    "Polars"
+   ],
+   "against_h": "Measured against",
+   "owed": "The wrangler is pure Ring (no engine backing); columnar scale, join breadth and groupby depth are the Tables & data group's page, not this analytical surface.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Optimization & solvers",
+   "rating": "Solid",
+   "engine": "Real LP/MIP: `stzLinearSolver` builds a Big-M tableau and pivots in the engine (`simplex.zig`), with a branch-and-bound floor (`optim.zig`), a stochastic/robust solver, and root/quadrature primitives (bisection, Newton, Simpson) plus LU/Gauss-Jordan matrix algebra.",
+   "engine_h": "In the engine",
+   "against": [
+    "scipy.optimize / linprog",
+    "GLPK",
+    "R optim"
+   ],
+   "against_h": "Measured against",
+   "owed": "The deep optimization story — nonlinear/convex solvers, autodiff-driven minimization — is the Numeric & optimization group's page; here it is a solid embedded lane.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Distribution functions",
+   "rating": "Partial",
+   "engine": "`special.zig` ships correct CDF and quantile (ppf) for the four testing distributions — Normal, Student-t, Chi-square, F — on top of `erf`, log-gamma, incomplete gamma and incomplete beta, with a `criticalValue(level, df)` helper.",
+   "engine_h": "In the engine",
+   "against": [
+    "scipy.stats (~100 dists)",
+    "R distributions",
+    "Boost.Math"
+   ],
+   "against_h": "Measured against",
+   "owed": "Only four continuous families, and no discrete distributions (binomial, Poisson) — next to scipy's ~100. No distribution object with `.pdf`/`.sample()`; sampling lives in a separate random engine.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Correlation & regression",
+   "rating": "Partial",
+   "engine": "Pearson & Spearman correlation, covariance and simple linear regression are engine-backed, with frame-level regression, correlation matrix and multi-column describe (`frame.zig`). Partial correlation and mutual information ship Ring-side.",
+   "engine_h": "In the engine",
+   "against": [
+    "statsmodels (OLS/GLM/logit)",
+    "R lm / glm",
+    "scikit-learn"
+   ],
+   "against_h": "Measured against",
+   "owed": "Multiple regression, GLM and logistic-as-a-stats-face with residual diagnostics — the statsmodels core — are missing (logistic exists only in the ML lane). No ridge/lasso.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Charts & data-viz catalogue",
+   "rating": "Partial",
+   "engine": "Renders today: vertical / horizontal / multi-series bar, histogram, scatter, and treemap — each across all three backends. Line is a canvas kind without a face.",
+   "engine_h": "In the engine",
+   "against": [
+    "matplotlib",
+    "ggplot2",
+    "D3 / Observable Plot",
+    "Vega-Lite"
+   ],
+   "against_h": "Measured against",
+   "owed": "The statistical types an analyst reaches for are all missing: box, violin, pie/donut, heatmap, area/stacked, candlestick, radar, contour. Since the pipeline (lane 2) is ready, this is the highest-visibility win.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Resampling & Monte-Carlo inference",
+   "rating": "Emerging",
+   "engine": "The substrate exists — `random.zig` ships seeded Gaussian/exponential/weighted/bulk sampling and shuffles — but no inference is built on it.",
+   "engine_h": "In the engine",
+   "against": [
+    "scipy.stats.bootstrap",
+    "R boot",
+    "scikit-learn resample"
+   ],
+   "against_h": "Measured against",
+   "owed": "No bootstrap confidence intervals, no permutation test, no jackknife. A small inference layer over the sampling engine would move this quickly — the raw material is already engine-backed.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Time-series",
+   "rating": "Emerging",
+   "engine": "Moving average is an engine primitive (`stz_stats_moving_average`); trend / simple-series analysis is Ring-side. That is essentially the whole surface.",
+   "engine_h": "In the engine",
+   "against": [
+    "statsmodels.tsa",
+    "R (forecast / ts)",
+    "Prophet"
+   ],
+   "against_h": "Measured against",
+   "owed": "No autocorrelation, seasonality, exponential smoothing or ARIMA. Tukey's resistant smoothers (4253H, twicing) and change-point detection are planned but unbuilt (lane 12).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Exploratory data analysis (Tukey tier)",
+   "rating": "Emerging",
+   "engine": "A detailed plan of record (`SOFTANZA_TUKEY_PLAN.md`, TK0–TK6) written \"before any code\": a resistant `Data = Fit + Residual` contract, median polish, measured re-expression. No code has shipped — no `eda.zig`, no faces, no `test/tukey/`.",
+   "engine_h": "In the engine",
+   "against": [
+    "R (Tukey EDA, vcd)",
+    "seaborn",
+    "statsmodels graphics"
+   ],
+   "against_h": "Measured against",
+   "owed": "Everything: `stzBoxPlot` (notched, the five numbers already compute), stem-and-leaf, residual and coded-table displays, letter-value summaries, resistant smoothers. The tier's first action is still TK0.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first is foundational and unblocks whole lanes; the second is cheap and high-leverage — often because the substrate already ships; the third is strategic and larger.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — foundational, unblocks whole lanes",
+   "items": [
+    {
+     "title": "Nonparametric & normality tests",
+     "text": "Mann-Whitney/Wilcoxon, Kruskal-Wallis, sign test, Kolmogorov-Smirnov and Shapiro-Wilk in `hypothesis.zig`. This is the single line between the testing lane's Solid and category parity with scipy/R — the parametric core and its reporting are already there to extend.",
+     "value": "High",
+     "effort": "Medium"
+    },
+    {
+     "title": "Complete the statistical chart family",
+     "text": "Box, violin, pie/donut, heatmap and area — engine renderers plus `stzPlotCanvas` faces. The byte-tested pipeline (lane 2) is ready and waiting; this closes the weakest visible lane against the most crowded field.",
+     "value": "High",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — cheap and high-leverage (the substrate already ships)",
+   "items": [
+    {
+     "title": "Bootstrap CI + permutation test",
+     "text": "A thin inference layer over the existing `random.zig` sampler. The hard part — fast seeded bulk sampling — is already engine-backed; what is missing is the resample-and-summarise loop on top.",
+     "value": "High",
+     "effort": "Low"
+    },
+    {
+     "title": "The box plot specifically",
+     "text": "`BoxPlotStats()` already computes the five numbers — the Tukey plan calls it \"the promise at `stzDataSet.ring:2423`.\" Only the render is missing; a notched box with mild/extreme outliers is a short face over data that exists.",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "Discrete distributions + a distribution object",
+     "text": "Binomial and Poisson (pmf/cdf/quantile) reusing the incomplete-gamma/beta machinery in `special.zig`, and a small distribution object exposing `.pdf`/`.cdf`/`.sample()` uniformly.",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — strategic, larger",
+   "items": [
+    {
+     "title": "Multiple regression, GLM & diagnostics",
+     "text": "OLS with multiple predictors, logistic regression as a stats face, and residual/leverage diagnostics — the statsmodels core. High value, and the matrix algebra it needs (`matrix.zig` LU / inverse) already ships.",
+     "value": "High",
+     "effort": "High"
+    },
+    {
+     "title": "A real time-series lane",
+     "text": "Autocorrelation, exponential smoothing, seasonality and ARIMA. Today the surface is a moving average and a trend line; forecasting is entirely open.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "Build the Tukey EDA tier",
+     "text": "Execute TK0–TK6: the resistant `Data = Fit + Residual` contract, median polish, stem-and-leaf, residual and coded-table displays, and resistant smoothers. A fully-specified program with zero code so far.",
+     "value": "Strategic",
+     "effort": "High"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "The chart guards are unusually literal — 107 parity assertions plus 19 deviceless SVG/PNG checks — so the rendering lane's Strong is earned. But the general `test/plot/` directory (73 files) mostly only checks that a script runs, which is exactly why the parity suite was written; ratings here lean on the parity and backend guards, not on that directory."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza's statistics is a careful, engine-backed compute and rendering foundation — often more rigorous per-function than its peers — sitting under a catalogue that is only half-filled. The gaps that matter are the ones an analyst hits on day one (nonparametrics, a box plot, bootstrap, the missing chart types); the strategic distance is statsmodels-grade regression and the unbuilt Tukey tier."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16 — Ring faces under `base/stats` (`stzDataSet`, `stzHypothesis`, the plot faces, `stzLinearSolver`) and `base/graphics/stzPlotCanvas`; engine `stats.zig`, `hypothesis.zig`, `special.zig`, `plot.zig`, `random.zig`, `matrix.zig` via `ring_bridge_stats.zig`; plans of record `SOFTANZA_TUKEY_PLAN.md`, `SOFTANZA_COMPUTE_MODEL.md`. Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

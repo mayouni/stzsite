@@ -1,0 +1,246 @@
+{
+ "slug": "binary",
+ "url": "https://claude.ai/artifact/T7hXXTAX7VLyFtBTyoorWT",
+ "title": "Binary formats — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "This is the one pilot page that rates a plan, not a product. The binary plane is 607 lines of design and zero shipped code — no classes, no decode engine, no tests, no phase has run. What makes it worth a page is the bet: don't vendor Kaitai, treat a binary file as \"a table the bytes forgot to show,\" decode it in one engine crossing into the `stzTable` analysis stack that already exists — with zero new DLLs. The substrate it stands on is real; everything above it is named, sequenced (BN0–BN5), and unbuilt.",
+ "grid_kicker": "The grid",
+ "grid_title": "Ten lanes — one substrate that ships, nine that are designed",
+ "grid_lede": "Every lane names what actually exists today, the tools it is fair to measure against, and what the plan of record owes. For a planned plane the \"in the engine\" column is the honest one: only the byte substrate has code behind it.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Byte-buffer & encoding substrate",
+   "rating": "Partial",
+   "engine": "The one real piece: `stzBytes` over an engine handle buffer (`bytes.zig`, 25 `stz_bytes_*` functions) — slice, at, append, replace, plus hex / base64 / binary encoders (`encode.zig`) and `crc32`. Used across the library today.",
+   "engine_h": "What exists",
+   "against": [
+    "Python struct",
+    "Rust bytes / nom",
+    "construct"
+   ],
+   "against_h": "Measured against",
+   "owed": "Two must-fixes before it can carry a parser: the bridge returns slices through fixed `[4096]`/`[8192]` buffers (silent truncation above those sizes), and there are no typed endian readers — only `byte_swap`.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Schema-driven decode engine",
+   "rating": "Emerging",
+   "engine": "Designed: `stzBinarySchema` — pure-Ring nested-list data (never code) naming fields, widths, encodings, repetitions — consumed by a planned `stz_bytes_decode_records` that decodes the whole file in one crossing. No code.",
+   "engine_h": "What exists",
+   "against": [
+    "Kaitai Struct",
+    "construct",
+    "DFDL / Daffodil",
+    "010 Editor"
+   ],
+   "against_h": "Measured against",
+   "owed": "The heart of the plane. The distinctive choice — a declarative data schema (not a generated parser) decoded by one engine call — is what separates it from Kaitai's compiler model. Owed in full (BN1).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Endian-aware scalar types",
+   "rating": "Emerging",
+   "engine": "Planned scalar set `:U8..:U64`, `:I8..:I64`, `:F32`/`:F64`, little- and big-endian. The engine has only `stz_bits_byte_swap` — no `readInt`, no endian-aware scalar decode.",
+   "engine_h": "What exists",
+   "against": [
+    "Python struct",
+    "Rust binread",
+    "std.mem readInt"
+   ],
+   "against_h": "Measured against",
+   "owed": "Typed readers for each width and endianness — the most mechanical part of BN1, and the one every other type depends on.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Text & legacy character encodings",
+   "rating": "Emerging",
+   "engine": "UTF-8 is codepoint-correct in the string engine today, but the mainframe encodings the plan targets — `:Ebcdic037`, later CP500 / CP1140 — need 256-byte translation tables that do not exist. Latin-1/ASCII decode is trivial over existing bytes.",
+   "engine_h": "What exists",
+   "against": [
+    "iconv",
+    "ICU converters",
+    "cobol-copybook tools"
+   ],
+   "against_h": "Measured against",
+   "owed": "EBCDIC CP037 first (the telco case), then the CP500/CP1140 variants — small, table-driven, and the entry ticket to real mainframe data.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Numeric encodings — packed & zoned decimal",
+   "rating": "Emerging",
+   "engine": "Planned `:PackedDecimal` (COMP-3) and `:Zoned` (overpunch) decode — the numeric heart of COBOL data. No code, no primitive.",
+   "engine_h": "What exists",
+   "against": [
+    "construct (BCD)",
+    "JRecord",
+    "Cobrix"
+   ],
+   "against_h": "Measured against",
+   "owed": "Nibble-level BCD and overpunch-sign decode. Niche but non-negotiable for the mainframe use case that justifies the plane commercially.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "COBOL copybook dialect",
+   "rating": "Emerging",
+   "engine": "Planned `stzCopybook` — compile a COBOL copybook into a `stzBinarySchema`. Two fossils exist and the plan disavows both: an empty `max/stzBinaryFile` stub and a lost-2024 telco test calling functions that live nowhere.",
+   "engine_h": "What exists",
+   "against": [
+    "JRecord / CB2XML",
+    "Cobrix",
+    "Micro Focus tools"
+   ],
+   "against_h": "Measured against",
+   "owed": "The dialect compiler (BN2), tied to the \"RINGBOL\" commercial gate and to replaying the telco scene as a guard. The whole lane is owed.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Composite structure & framing",
+   "rating": "Emerging",
+   "engine": "Planned: flat fields + `:occurs` first, then v2's `:variants` (REDEFINES), RDW variable-length records, and Fortran unformatted framing (`:FortranRecords`). Nothing built.",
+   "engine_h": "What exists",
+   "against": [
+    "Kaitai (instances / switch)",
+    "construct",
+    "binread"
+   ],
+   "against_h": "Measured against",
+   "owed": "The structure grammar beyond flat records — where binary formats get genuinely hard (data-dependent layout). Deliberately staged to v2 (BN4).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Decode-to-table & analysis pipeline",
+   "rating": "Emerging",
+   "engine": "The destination is real: decoded records are meant to land in `stzTable`, where stats, Tukey, plots, CSV/JSON and SQLite already ship. The pipe into it does not exist — nothing decodes yet.",
+   "engine_h": "What exists",
+   "against": [
+    "pandas.read_*",
+    "Kaitai + analysis",
+    "Spark binary sources"
+   ],
+   "against_h": "Measured against",
+   "owed": "Once `decode_records` exists, this is a short wire — and it is the payoff: raw bytes become analyzable data in the same stack as every other Softanza source. The distinctive end-state.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Binary writing & fixture generation",
+   "rating": "Emerging",
+   "engine": "Planned `stzBinaryFileMaker` + `Narrate()` — because a read schema also writes, the same vocabulary runs backwards as an educational surface and a test-fixture factory. No code.",
+   "engine_h": "What exists",
+   "against": [
+    "construct (build)",
+    "Kaitai (write support)",
+    "010 templates"
+   ],
+   "against_h": "Measured against",
+   "owed": "The reverse engine (`stz_bytes_encode_records`) and the maker face (BN3). A genuine differentiator — most binary parsers cannot round-trip.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Hex view, exploration & big files",
+   "rating": "Emerging",
+   "engine": "Planned annotated `HexView()`, `DecodeReport()` and `Explore()`, plus batch/streaming with a measured threshold. File I/O today is whole-file only (`stz_file_read` — no seek/chunk).",
+   "engine_h": "What exists",
+   "against": [
+    "010 Editor / ImHex",
+    "hexyl",
+    "Kaitai IDE"
+   ],
+   "against_h": "Measured against",
+   "owed": "The exploration surface (BN4) and a seek/chunk read in `file.zig` before any file too large to hold in memory can be parsed.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to build — the roadmap is the gap list",
+ "gaps_title": "The phases, ordered by return — not by size",
+ "gaps_lede": "For a planned plane the gaps are the roadmap (BN0–BN5). Three tiers: the first unblocks everything, the second are the fast wins over an already-real destination, the third is the strategic breadth that justifies the plane commercially.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — foundational, unblocks the whole plane",
+   "items": [
+    {
+     "title": "Repair the byte-bridge truncation",
+     "text": "The `[4096]`/`[8192]` fixed return buffers silently truncate any slice above their size — a correctness bug in the one substrate every future lane rests on. It is the literal first step of BN1, and cheap.",
+     "value": "High",
+     "effort": "Low"
+    },
+    {
+     "title": "The schema + decode-records engine",
+     "text": "`stzBinarySchema` plus `stz_bytes_decode_records` for scalars, text, packed and zoned — decode the whole file in one crossing into columns. The core of the plane; everything else is either a feeder or a consumer of it.",
+     "value": "High",
+     "effort": "High"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — the fast wins over a real destination",
+   "items": [
+    {
+     "title": "BN0 — the decode-physics spike",
+     "text": "Measurement only: five measurements, six predictions, kill criteria written before the numbers. The plan's own gating first action — proves the \"zero new DLLs\" bet before a line of product code is written.",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "Endian readers + EBCDIC CP037",
+     "text": "Typed little/big-endian scalar readers and the 256-byte CP037 table. Small, table-driven, and together they are the entry ticket to real mainframe records.",
+     "value": "High",
+     "effort": "Medium"
+    },
+    {
+     "title": "Wire decode into stzTable",
+     "text": "The analysis destination already ships (stats, Tukey, plots, CSV/JSON/SQLite). Once `decode_records` exists, this short wire delivers the whole payoff — bytes become analyzable data in the same stack as every other source.",
+     "value": "High",
+     "effort": "Low"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — strategic breadth",
+   "items": [
+    {
+     "title": "COBOL copybook compiler (BN2)",
+     "text": "`stzCopybook` compiling a copybook into a schema, with the lost telco scene replayed as a guard. The commercial gate (tied to \"RINGBOL\") and the reason mainframe packed/zoned decode is non-negotiable.",
+     "value": "Strategic",
+     "effort": "High"
+    },
+    {
+     "title": "The writer & round-trip (BN3)",
+     "text": "`stz_bytes_encode_records` and `stzBinaryFileMaker` + `Narrate()`. Round-tripping a schema — read and write from one vocabulary — is something most binary parsers cannot do.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Structure, streaming & the exit decision (BN4–BN5)",
+     "text": "`:occurs`/`:variants`/RDW, Fortran framing, a seek/chunk read for big files — then BN5 decides whether a Kaitai/DFDL-subset importer pays rent, with a standing right to refuse and close the plane.",
+     "value": "Medium",
+     "effort": "High"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "This page rates a document. `base/binary/` holds exactly one file — the 607-line plan — and its own closing line (\"BN RESULTS appended as phases close\") sits empty, confirming no phase has run. There is no `test/binary/` directory. Every lane but the byte substrate describes intent; the Partial rating is generous to that substrate, which still needs a truncation repair before it can carry a parser."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza has no binary-format capability today — but it has an unusually disciplined plan and a distinctive architecture: a declarative data schema decoded in one engine crossing into an analysis stack that already exists, built by extending the `stz_bytes` DLL rather than vendoring Kaitai. The bet to watch is whether \"zero new DLLs\" holds through packed decimal and variable-length records; BN0 is designed to answer that before the plane commits."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16 — `base/binary/` (one file: `SOFTANZA_BINARY_PLAN.md`, 607 lines, 2026-08-16); substrate that ships: `stzBytes` over engine `bytes.zig` / `ring_bridge_bytes.zig`, `string/encode.zig` (hex/base64/binary), `bits.zig` (`byte_swap`), `file.zig` (whole-file read). Fossils disavowed by the plan: `max/stzBinaryFile.ring` stub, `future/stzCobol.ring`. No `test/binary/` exists. Ratings reflect what the guards prove — here, that nothing yet does.",
+ "shape": "standard"
+}

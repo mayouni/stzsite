@@ -1,0 +1,276 @@
+{
+ "slug": "gui",
+ "url": "https://claude.ai/artifact/87voC79SnAN26YwY84hmDN",
+ "title": "GUI & reactive — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "A young but genuinely coherent GUI plane, built on vendored RmlUi and actually running — windows open, events flow, it renders through the GPU plane and an SVG tier. Two standouts reflect the library's DNA: RTL/bidi fully owned (RmlUi does none — the emitter reverses layout, the engine reorders and shapes via SheenBidi + HarfBuzz), and accessibility built in from the grammar up (a mandatory RATIONALE on every element seeds an ARIA tree exposed to the OS via AccessKit). The rest is early: a closed four-primitive authoring vocabulary, flexbox-only layout, imperative view-binding — and a full reactive runtime that ships but is not yet wired to the GUI. No IME, no theme system, no animation. And the whole plane is on local `main` only, not yet pushed.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships, the tools it is fair to measure against, and the one thing still owed. Measured against decades-old, enormous frameworks, a young plane shows two distinctive strengths and a wide band of working-but-early basics.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "RTL & bidirectional text",
+   "rating": "Strong",
+   "engine": "Fully owned, because RmlUi does no bidi at all. The emitter (`stzUiDocument`) reverses flex rows under RTL, resolves logical `start`/`end` to physical sides, and builds a direction map with inheritance; the engine shaper (`gpu_text.zig`) reorders with SheenBidi (UAX#9) and shapes Arabic with HarfBuzz, feeding RmlUi the widths it will actually paint.",
+   "engine_h": "In the engine",
+   "against": [
+    "Qt",
+    "GTK / Pango",
+    "Flutter"
+   ],
+   "against_h": "Measured against",
+   "owed": "The peers have built-in bidi; here it is explicit, owned end-to-end, and guarded (including a picture-found bug the asserts had missed). Consistent with the library's first-class Arabic typography — a genuine strength.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Accessibility",
+   "rating": "Strong",
+   "engine": "Both halves ship. G4a: every element carries a mandatory RATIONALE that, with ROLE/LABEL, emits an ARIA-role tree (`stzAccessibilityTree`). G4b: `a11y.zig` hands that tree to AccessKit, bridging to UI Automation / NSAccessibility / AT-SPI.",
+   "engine_h": "In the engine",
+   "against": [
+    "Qt (QAccessible)",
+    "Flutter semantics",
+    "web ARIA",
+    "GTK / ATK"
+   ],
+   "against_h": "Measured against",
+   "owed": "Accessibility is mandatory at authoring time, not an afterthought — arguably ahead of peers where a11y is opt-in. The sharp edge (adapter must exist before the window shows) is handled and documented.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Declarative authoring (.panel)",
+   "rating": "Solid",
+   "engine": "A closed four-kind grammar — PANEL / BOX / TEXT / STYLE — with closed field sets, a diagnostics court (unknown field = error), a `.panel`→RML→`.panel` round-trip fixpoint, and mandatory RATIONALE. Emits RML/RCSS (and HTML/CSS for a web projection).",
+   "engine_h": "In the engine",
+   "against": [
+    "Flutter widgets",
+    "QML",
+    "React JSX"
+   ],
+   "against_h": "Measured against",
+   "owed": "A coherent, governed authoring layer — but a four-primitive vocabulary is far narrower than the component models of the peers. Breadth is the widget lane (below).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Layout",
+   "rating": "Solid",
+   "engine": "RmlUi flexbox via RCSS: direction, wrap, gap, padding/margin, align, justify, and px / % / `fill` sizing — emitted as `display:flex` by `stzUiDocument.ring::ToRml()`.",
+   "engine_h": "In the engine",
+   "against": [
+    "Flutter (flex + custom)",
+    "CSS grid + flex",
+    "Qt layouts"
+   ],
+   "against_h": "Measured against",
+   "owed": "CSS Grid is refused by decision, and there is no constraint or custom layout. Flexbox covers most UI, but grid-shaped layouts must be composed by hand.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Rendering backend",
+   "rating": "Solid",
+   "engine": "RmlUi's render interface is a recorder, not a painter (`stz_rmlui.cpp`): it records one flat vertex/index display list, which the graphics plane draws via the GPU tier or an SVG tier — one list, two renderers. GUI output is data crossing a C ABI.",
+   "engine_h": "In the engine",
+   "against": [
+    "Qt (RHI)",
+    "Flutter (Skia / Impeller)",
+    "GTK (Cairo)"
+   ],
+   "against_h": "Measured against",
+   "owed": "A clean recorder→GPU/SVG model (the deviceless SVG tier is distinctive) — but it rides the GPU plane's own young f32 renderer, and PNG needs a GPU device.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Event handling",
+   "rating": "Solid",
+   "engine": "A complete input surface in the C ABI: pointer move/button/leave, key, text-input, focus + directional focus move, hit-testing (`element_at`), and an event recorder that counts dropped events. Ring-side focus order and arrow navigation in `stzPanel`.",
+   "engine_h": "In the engine",
+   "against": [
+    "Qt signals/slots",
+    "Flutter gestures",
+    "React events"
+   ],
+   "against_h": "Measured against",
+   "owed": "The primitives are all there and honest about drops — but no gesture recognition (drag/pinch/swipe) or higher-level event abstractions above raw pointer/key.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Reactive runtime & signals",
+   "rating": "Solid",
+   "engine": "A real reactive stack (`base/reactive`): `stzReactiveObject` with Watch / Computed(deps) / BindTo / SetAttribute (old≠new gating), plus streams, timers, tasks, HTTP and an event bus — running on a libuv reactor (`reactor.zig`) with a no-DLL cooperative fallback.",
+   "engine_h": "In the engine",
+   "against": [
+    "SolidJS / MobX",
+    "RxJS",
+    "Qt properties"
+   ],
+   "against_h": "Measured against",
+   "owed": "A genuine signals runtime with computed dependencies — used by `stzApp` — but its power is not yet reaching the view: see the binding lane, where the two are still unconnected.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "App shell & windowing",
+   "rating": "Solid",
+   "engine": "Native windows via vendored GLFW (`window.zig` — HWND / X11 / NSWindow handle, poll→input→draw→present loop with delta time). `stzApp` is a declarative \"living world\" (graph + workflow + Reaxis + goals + persistence).",
+   "engine_h": "In the engine",
+   "against": [
+    "Qt (QApplication)",
+    "Flutter app",
+    "Electron"
+   ],
+   "against_h": "Measured against",
+   "owed": "Windows open and a real app model exists — but window management is basic: no multi-window orchestration, dialogs, menus or system-tray, and `stzApp` is more a domain/world model than a conventional window framework.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Widget / element toolkit",
+   "rating": "Partial",
+   "engine": "RmlUi's own element library supplies the form controls — input, select, textarea, progress, tabset, form, button — over the `.panel` primitives.",
+   "engine_h": "In the engine",
+   "against": [
+    "Qt (hundreds of widgets)",
+    "GTK",
+    "Flutter / Material"
+   ],
+   "against_h": "Measured against",
+   "owed": "No rich widget set: no tables, trees, menus, dialogs, date/color pickers, toolbars, docking. Basic form controls exist; the library of higher-level widgets the peers are famous for does not.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "State→view binding",
+   "rating": "Partial",
+   "engine": "The shipped G5 first clause: `{placeholder}` templates and `Set` / `SetStyle` / `Apply` that mutate a live document preserving focus (no rebuild), with values escaped as data so a model can't inject markup.",
+   "engine_h": "In the engine",
+   "against": [
+    "React (reactive)",
+    "Flutter (reactive)",
+    "Qt models"
+   ],
+   "against_h": "Measured against",
+   "owed": "Explicitly imperative, not reactive — no dependency graph, no computed, no two-way binding. The whole model React and Flutter are built on (signal → auto-updated view) is the unbuilt G5 second clause (Tier A).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Text input & IME",
+   "rating": "Partial",
+   "engine": "Single-line text input works (`stz_gui_text_input`); the `ActivateKeyboard` seam is recorded for the future.",
+   "engine_h": "In the engine",
+   "against": [
+    "Qt / GTK IME",
+    "Flutter",
+    "OS input methods"
+   ],
+   "against_h": "Measured against",
+   "owed": "No IME — composition input for CJK and complex scripts is deferred (costed at 1–3 engineer-years), and two-way text editing is undone. Ironic against the strong RTL rendering: the plane can display Arabic beautifully but can't yet compose-type it.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Theming & animation",
+   "rating": "Partial",
+   "engine": "Inline styling ships — `BACKGROUND`, `COLOR`, reusable `STYLE` bags → RCSS — and a profile layer maps logical spellings to native vs web.",
+   "engine_h": "In the engine",
+   "against": [
+    "Qt stylesheets / themes",
+    "Flutter themes + animation",
+    "CSS"
+   ],
+   "against_h": "Measured against",
+   "owed": "No semantic theme system (G6 \"sense sheet\" not started, blocked on an external repo) and no animation / transitions (RmlUi supports them; Softanza doesn't emit them). Both are core to a modern UI.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first two turn a working foundation into a usable framework — connecting the reactive runtime and filling the widget set; the third is the harder, longer reach.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — turn foundation into framework",
+   "items": [
+    {
+     "title": "Wire the reactive runtime to the GUI (G5 clause 2)",
+     "text": "Connect `stzReactiveObject` signals/computed to the imperative view-binding so a state change auto-updates the view — the React/Flutter model. Both halves already ship (a real signals runtime and focus-preserving view mutation); they are simply unconnected. The highest-leverage single move.",
+     "value": "High",
+     "effort": "Medium"
+    },
+    {
+     "title": "A richer widget set",
+     "text": "Tables, trees, menus, dialogs, toolbars and pickers over the RmlUi element library — the higher-level components the peers are built on. Without them, real apps hand-assemble everything from four primitives.",
+     "value": "High",
+     "effort": "High"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — modern-UI table stakes",
+   "items": [
+    {
+     "title": "The semantic theme system (G6)",
+     "text": "One \"sense sheet\" artifact → RCSS + CSS variables, so light/dark and brand theming come from a single governed source rather than inline hex. Currently blocked on an external `stzSense` repo — unblock or inline it.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Animation & transitions",
+     "text": "Emit RCSS transitions/keyframes (RmlUi supports them; the emitter doesn't yet). State changes and focus moves gain motion — the difference between a static form and a live interface.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Two-way binding & form validation",
+     "text": "Bind an input back to a model with validation and formatting — today binding is one-way and unformatted. It completes the forms story the RmlUi controls already start.",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — the harder, longer reach",
+   "items": [
+    {
+     "title": "IME & two-way text editing",
+     "text": "Composition input for CJK and complex scripts — the expensive, deferred gap (1–3 engineer-years), and the one that most limits the plane's i18n claim given how well it already renders those scripts.",
+     "value": "High",
+     "effort": "High"
+    },
+    {
+     "title": "Push & cross-platform verification",
+     "text": "The whole plane sits on local main only — not on origin or codeberg — and is built/tested on Windows (GLFW can't cross-compile from Windows; a11y/wgpu/RmlUi are prebuilt Windows DLLs). Push it, and run it on real Linux/macOS hardware to make \"cross-platform by design\" true in fact.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Window-framework depth",
+     "text": "Multi-window orchestration, native dialogs, menus and system-tray over the GLFW base — the desktop-app plumbing between \"a window opens\" and \"an application ships.\"",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "Re-surveyed from `main` (the working branch was stale). The plane genuinely runs and is heavily guarded — 415 GUI assertions across 11 suites (panel, RTL, font, input, accessibility, scene, binding…) plus the reactive suite, all green, with PNG/SVG witnesses (windows open, events flow, Arabic renders). Two delivery facts matter for planning: the entire plane is on local main only, unpushed to origin/codeberg, and it is built and tested on Windows — cross-platform is by design (GLFW / AccessKit / wgpu) but not hardware-verified. The \"tick loop\" is `RunLoop()` / `Run()` (no literal `Cycle()`), libuv on the engine thread, callbacks on the Ring thread."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza's GUI is an early, coherent, governed plane that already does two things better than most — owned RTL/bidi and grammar-level accessibility — over a real running RmlUi+GPU stack; its distance from Qt/Flutter/React is breadth (widgets), the unbuilt bridge from its own reactive runtime to the view, and the modern-UI table stakes (theming, animation, IME) it has scoped but not yet built."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16, from a read-only `main` worktree — Ring faces under `base/gui` (`stzUiDocument`, `stzPanel`, `stzUiBindings`, `stzAccessibilityTree`, `stzUiProfile`), `base/reactive` (`stzReactive`/Reaxis, `stzReactor`) and `base/app` (`stzApp`); engine `stz_rmlui.cpp` + vendored `RmlUi`, `gpu_text.zig` (SheenBidi + HarfBuzz), `window.zig` (GLFW), `a11y.zig` (AccessKit), `reactor.zig` (libuv); plan of record `SOFTANZA_GUI_PLAN.md` (G0–G6); guards under `test/gui` (11 suites, 415 asserts) + `test/reactive` + `test/app`. Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

@@ -1,0 +1,275 @@
+{
+ "slug": "string",
+ "url": "https://claude.ai/artifact/1Z839KWgApUpujMppdaSgy",
+ "title": "String — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "A general string library ships convenience; ICU ships locale. Softanza's string is one Zig engine — `utf8proc` + `PCRE2` + `SheenBidi`/`HarfBuzz` — behind a 2,212-method Ring face that is codepoint-correct end to end and reaches from core slicing through similarity, formatting and text analytics: a genuine superset of Python/Rust str. What it deliberately is not is ICU — no locale collation, no CLDR, no legacy charset transcoding — and the honest read below marks exactly that line.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships in the engine today, the tools it is fair to measure against, and the one thing still owed. Ratings are earned by what the narrated guards prove — see the honesty note below on how far that audit has reached.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Unicode-correct core ops",
+   "rating": "Strong",
+   "engine": "Length, slice, index, insert, reverse — all codepoint-correct through `_EngineSlice` / `_EngineCount` / `str_mid_cp` over `utf8proc`. Byte and codepoint are kept cleanly apart (`SizeInBytes` vs `NumberOfChars`), and grapheme count ships. Guarded at multi-million codepoints.",
+   "engine_h": "In the engine",
+   "against": [
+    "ICU",
+    "Rust str + unicode-segmentation",
+    "Python str"
+   ],
+   "against_h": "Measured against",
+   "owed": "A first-class extended grapheme-cluster iterator (UAX#29) beyond the count, so user-perceived characters are a native cursor, not a derived number.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Search · find · between · sections",
+   "rating": "Strong",
+   "engine": "The full finder family — `Find`, `FindCS`, `FindFirst/Last/Nth`, `FindAll`, `Between`, `FindBetweenAsSections` — over `str_find_*` and `str_between_*`. The between/sections vocabulary is a genuine superset of what str libraries expose, and it returns all matches past 65,536 (guarded).",
+   "engine_h": "In the engine",
+   "against": [
+    "ICU",
+    "Python str.find / re",
+    "Rust str"
+   ],
+   "against_h": "Measured against",
+   "owed": "Contract questions still open in the guards: `FindAnyBoundedBy` return shape (positions vs substrings), and `Section` strict-raise vs clamp on out-of-range.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Replace · remove · edit",
+   "rating": "Strong",
+   "engine": "Codepoint-safe editing across `replace.zig` (70 KB): `Replace[CS]`, `ReplaceMany[ByMany]`, `ReplaceOccurrencesByMany`, positional and range replace, the `*_between` edit set, and `InsertBefore/AfterEachNChars`. Replaces Ring's byte-oriented `substr` entirely.",
+   "engine_h": "In the engine",
+   "against": [
+    "ICU",
+    "Python str.replace / re.sub",
+    "Rust str"
+   ],
+   "against_h": "Measured against",
+   "owed": "Nothing structural — the vocabulary is wider than the peers'. The one sharp edge is documented, not owed: `ReplaceCS` mutates its handle in place.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Segmentation & tokenization",
+   "rating": "Strong",
+   "engine": "A dedicated `word_break.zig` (UAX#29) drives `Words`, plus sentence and line splitting, streaming tokenizers (`stzWordStream`, `stzTextStream`), and char/word n-grams with frequency. Split is one-pass linear (was O(n²), now guarded).",
+   "engine_h": "In the engine",
+   "against": [
+    "ICU BreakIterator",
+    "Rust unicode-segmentation",
+    "spaCy tokenizer"
+   ],
+   "against_h": "Measured against",
+   "owed": "UAX#14 line-break opportunities as an engine primitive (line wrapping is width-based today); locale-tailored word rules for Thai/Khmer/CJK where UAX#29 needs a dictionary.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Normalization",
+   "rating": "Strong",
+   "engine": "Full NF-form normalization through `utf8proc` (`str_normalize`), plus mark stripping (`RemoveDiacritics` / `str_strip_marks`), space collapsing and `Simplify`. Category parity for the canonical / compatibility forms.",
+   "engine_h": "In the engine",
+   "against": [
+    "ICU Normalizer2",
+    "Python unicodedata",
+    "Rust unicode-normalization"
+   ],
+   "against_h": "Measured against",
+   "owed": "Surface all four NF forms (NFC/NFD/NFKC/NFKD) as explicitly named entry points, and a normalization-quick-check fast path for the already-normalized common case.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Similarity & distance",
+   "rating": "Strong",
+   "engine": "A rich metric set in `fuzzy.zig` / `compare.zig`, all over codepoints: `levenshtein`, `hamming`, `jaro`, `jarowinkler`, `jaccard`, `cosine`, longest common prefix/suffix, anagram and char-diff — a lane ICU does not even enter.",
+   "engine_h": "In the engine",
+   "against": [
+    "RapidFuzz",
+    "Python difflib",
+    "strsim (Rust)"
+   ],
+   "against_h": "Measured against",
+   "owed": "Damerau-Levenshtein (transpositions) and a token-set / partial-ratio scorer for the fuzzy-matching use case RapidFuzz is built around.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Case · script · direction · language detection",
+   "rating": "Solid",
+   "engine": "Default Unicode case (upper/lower/title/fold via `utf8proc`) plus a detection suite peers usually farm out: `detectScript`, `detectLanguage`, `detectDirection`, per-script counters and bidi-direction numbers.",
+   "engine_h": "In the engine",
+   "against": [
+    "ICU (case + UScript)",
+    "Boost.Locale",
+    "Python (+ 3rd-party detect)"
+   ],
+   "against_h": "Measured against",
+   "owed": "Locale-tailored casing — Turkish dotless-i, Greek final sigma, Lithuanian — needs the locale foundation (lane 12). Case is Unicode-default-correct but not locale-correct.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Formatting · padding · alignment · boxing",
+   "rating": "Solid",
+   "engine": "The largest submodule (`format.zig`, 75 KB): codepoint-width pad/justify/center, `wrap`, `truncate`, `indent/dedent`, `expandtabs`, `mask`/`maskemail`, `numberlines`, quote/surround and box drawing.",
+   "engine_h": "In the engine",
+   "against": [
+    "Python str.format / textwrap",
+    "Rust std::fmt",
+    "fmtlib"
+   ],
+   "against_h": "Measured against",
+   "owed": "Box drawing emits ASCII `+ - |`, not the Unicode `┌─┐` glyphs (open cluster); and caller-scope `Interpolate` / `$()` is blocked by a Ring-language limit, not a string one.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Pattern · regex · fuzzy",
+   "rating": "Solid",
+   "engine": "Real PCRE2 under `regex.zig` — match/count/find-all/replace/split, Unicode-capable — plus a declarative `W`-conditional DSL (28 `*W` methods) lowered through the expression engine, and fuzzy edit-clustering.",
+   "engine_h": "In the engine",
+   "against": [
+    "PCRE2",
+    "RE2",
+    "Python re",
+    "Rust regex"
+   ],
+   "against_h": "Measured against",
+   "owed": "The deep regex story — named captures ergonomics, RE2-style linear-time guarantees, compiled-pattern reuse — is rated on its own Regex page; here it is a solid embedded lane.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Text analytics (NLP)",
+   "rating": "Solid",
+   "engine": "A large data-backed surface str libraries never attempt: VADER `sentiment`, `NER`, `POS`, `lemma` (en/fr/ar), `stem`, WordNet synonyms/hypernyms, TextRank/TF-IDF keywords, `summarize`, `readability`, stopwords.",
+   "engine_h": "In the engine",
+   "against": [
+    "spaCy",
+    "NLTK",
+    "Stanza"
+   ],
+   "against_h": "Measured against",
+   "owed": "Dictionary/statistical grade and largely English-centred; neural, multilingual parsing is the NLP & linguistics group's page. Rated Solid as a bonus lane, not against spaCy's models.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Encoding · charset · crypto",
+   "rating": "Partial",
+   "engine": "`encode.zig` covers url/html escaping, base64, hex, binary, run-length and CSV fields; the crypto surface adds `md5`, `sha256`, `blake3`, `hmacsha256`, xor, and classical ciphers (caesar/vigenere/atbash).",
+   "engine_h": "In the engine",
+   "against": [
+    "ICU converters / iconv",
+    "Python codecs + hashlib",
+    "OpenSSL"
+   ],
+   "against_h": "Measured against",
+   "owed": "Legacy charset transcoding — Shift-JIS, GBK, ISO-8859-*, Windows-125x — is absent; the world is assumed UTF-8. Classical ciphers are for teaching, not security. Charset conversion is ICU's, and it is the real gap here.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Locale-tailored ops & collation",
+   "rating": "Emerging",
+   "engine": "Locale lives Ring-side as tables (`stzLocale`, `stzCountry`, `stzLanguage`, `stzScript`); the engine `locale.zig` is ten C-locale stubs. Native day names stop at ten languages.",
+   "engine_h": "In the engine",
+   "against": [
+    "ICU / CLDR",
+    "Boost.Locale"
+   ],
+   "against_h": "Measured against",
+   "owed": "Locale-aware collation — ICU's crown jewel — is missing entirely, along with CLDR data and locale sorting. The plan owns this: \"scoped, not started,\" and the choice was deliberately not to embed ICU.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first is foundational and unblocks several lanes; the second is cheap and high-leverage; the third is strategic and larger. Value is impact on the library's reach; effort is a rough engineering read.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — foundational, unblocks several lanes",
+   "items": [
+    {
+     "title": "Locale-aware collation + CLDR foundation",
+     "text": "A collation engine and a CLDR data subset. This one addition unblocks locale sorting, locale-tailored casing (lane 7), and locale number/date formatting across the library — the single line that separates a strong str library from ICU. The plan already scopes it as phase L0.",
+     "value": "High",
+     "effort": "High"
+    },
+    {
+     "title": "Finish the narration audit",
+     "text": "Ratings on this page rest on ~2,377 narrated assertions — but the block-by-block audit has reached ~245 of 999, so roughly 736 blocks remain unproven. Every rating above is \"proven where narrated\"; closing the audit is what turns intent into fact across the whole face.",
+     "value": "High",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — cheap and high-leverage",
+   "items": [
+    {
+     "title": "Unicode box-drawing glyphs",
+     "text": "Emit `┌─┐` instead of ASCII `+ - |` in the box/boxify family — a mojibake fix on an existing, otherwise-solid formatter. Every boxed figure improves at once.",
+     "value": "Low",
+     "effort": "Low"
+    },
+    {
+     "title": "Close the open contract questions",
+     "text": "`Duplicates()` chars-vs-substrings, `FindAnyBoundedBy` return shape, and `Section` raise-vs-clamp are undecided in the guards. Each is a one-line semantics call that unblocks its test block.",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "Damerau-Levenshtein + fuzzy scorers",
+     "text": "Add transposition distance and a token-set / partial-ratio scorer over the existing metric set, matching the fuzzy-match ergonomics RapidFuzz is used for. Small next to the code that already ships.",
+     "value": "Medium",
+     "effort": "Low"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — strategic, larger",
+   "items": [
+    {
+     "title": "Legacy charset transcoding",
+     "text": "An iconv-style layer for Shift-JIS, GBK, ISO-8859-* and Windows-125x. Needed the moment Softanza reads text it did not write; today the world is assumed UTF-8.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Grapheme & line-break primitives",
+     "text": "An extended grapheme-cluster cursor (UAX#29) and line-break opportunities (UAX#14) as engine primitives — the two boundary kinds the segmentation lane still derives rather than iterates.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "A string-specific perf audit",
+     "text": "The residency wins measured so far were list-specific; the handoff flags that string's own engine paths still need their own profiling pass. The substring-enumeration family is Θ(n²) by design and only stressed to L=1000.",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "Softanza's string audit is narrated, not finished — roughly 245 of 999 blocks are block-by-block verified, and where a block is unaudited the guard cannot yet vouch for it. The lane ratings reflect what the ~2,377 committed assertions prove today; they will only harden as the audit closes."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "On breadth and Unicode-correctness, Softanza's string is at or beyond any general-purpose str library — and it adds similarity, formatting and text-analytics lanes those libraries do not have. The one place it stands clearly behind category is ICU's locale layer: collation, CLDR, locale casing and legacy charsets — a boundary the library drew on purpose, and the one worth closing next."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16 — Ring faces under `base/string` (`stzString.ring`, 2,212 methods; `stzStringFunc.ring`; 35 role faces), engine `stz_string.dll` / `str.dll` (26 submodules under `engine/src/string`, `regex.zig`, `unicode.zig`, vendored `utf8proc`); plans of record `_HANDOFF_STRING_MODULE_PHASE.md`, `SOFTANZA_LOCALE_PLAN.md`, `_AUDIT_DEFECTS.md`. Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

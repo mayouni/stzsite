@@ -1,0 +1,274 @@
+{
+ "slug": "geo",
+ "url": "https://claude.ai/artifact/28ACwqSU1qwjYiSvsKDy3r",
+ "title": "Geo & cartography — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "A genuine standout — and one this survey nearly missed: the plane lives on `main`, which a stale working branch did not carry. There, 44 self-inverting projections (one shared Newton/Jacobian solver that refuses an inverse it can't round-trip), full WGS84 geodesy, and a spatstat-class spatial-statistics engine ship together behind Ring faces, guarded by ~400 assertions and 72 negative controls. It is the rare library where the tool that draws the map also computes the statistics it shows and measures its own distortion. It stands apart from D3/Cartopy on that analytical coherence — and behind GDAL/PostGIS on the GIS plumbing it skips on purpose.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships, the tools it is fair to measure against, and the one thing still owed. The split is clean: analysis and cartography are strong; GIS plumbing — overlay algebra, reprojection, raster, tiles — is where the field's data engines lead.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Map projections",
+   "rating": "Strong",
+   "engine": "44 projections (`geo_projection.zig`) across cylindrical, pseudocylindrical, conic, azimuthal and lenticular families — all with inverses, closed-form where possible else a shared 2D Newton solver with a coarse-search seed that refuses any inverse not round-tripping to 1e-6. Rotate/clip/fit/resample stream transforms and UTM.",
+   "engine_h": "In the engine",
+   "against": [
+    "D3-geo (+ geo-projection)",
+    "Cartopy",
+    "PROJ"
+   ],
+   "against_h": "Measured against",
+   "owed": "44 with universal, self-checking inverses exceeds D3-geo's core and Cartopy's built-ins. Below PROJ's hundreds of CRS definitions; Robinson and Albers-USA are documented refusals, and projections are sphere-for-display.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Geodesy",
+   "rating": "Strong",
+   "engine": "`geo_geodesy.zig`: WGS84 + an ellipsoid table, ellipsoidal geodesic inverse/direct (Bessel/Karney reduction + quadrature + Vincenty azimuth iteration), rhumb lines, ECEF and ENU frames, DMS parse/format, meridian arc, and polygon area on the ellipsoid with geodesic edges.",
+   "engine_h": "In the engine",
+   "against": [
+    "GeographicLib (Karney)",
+    "PROJ",
+    "GDAL"
+   ],
+   "against_h": "Measured against",
+   "owed": "Comprehensive and self-consistent (the Niger map's areas are computed by this very engine). It is a hybrid — not Karney's series end-to-end — but guarded and accurate for the analyst's distances and areas.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Spatial statistics",
+   "rating": "Strong",
+   "engine": "`geo_stats.zig` / `geo_interp.zig` / `geo_process.zig`: Clark-Evans with a z-test, Ripley K/L/G/F with Monte-Carlo envelopes, mean centre / spatial median / SD ellipse; IDW, fitted variograms and ordinary kriging with its variance surface (one LU reused over the grid); kernel density with Diggle correction; seven+ point-process null models (Matérn, Thomas, hard-core…).",
+   "engine_h": "In the engine",
+   "against": [
+    "spatstat (R)",
+    "PySAL",
+    "ArcGIS"
+   ],
+   "against_h": "Measured against",
+   "owed": "Broadly at spatstat-core parity — the rare lane where a mapping library also computes the statistics it draws. Kriging variance depends on geometry, not values, and is guarded to prove it.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Thematic maps",
+   "rating": "Strong",
+   "engine": "Choropleth (equal-area default, data-driven standard parallel, north-up guard), proportional symbol (area-encoded), flow (great circles), hex-bin (engine-backed), bloc/membership, and insets with a measured locator scale — all with honesty rules and refusals.",
+   "engine_h": "In the engine",
+   "against": [
+    "D3",
+    "GeoPandas plot",
+    "kepler.gl"
+   ],
+   "against_h": "Measured against",
+   "owed": "A broad thematic set for the maps an analyst actually makes. The two missing kinds are dot-density and cartogram.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Map decorations & fields",
+   "rating": "Strong",
+   "engine": "`geo_furniture.zig`: graticule, Tissot indicatrix (backed by the same Jacobian as the inverse solver), a scale bar that refuses to lie, a measured north arrow, a full day-night terminator + twilight + night cap, and vector fields with even-spaced streamlines.",
+   "engine_h": "In the engine",
+   "against": [
+    "Cartopy",
+    "D3",
+    "matplotlib / basemap"
+   ],
+   "against_h": "Measured against",
+   "owed": "A richer, more measured decoration set than most — the terminator, streamlines and self-consistent Tissot are beyond the usual furniture. Nothing structural owed here.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "GeoJSON / TopoJSON I/O",
+   "rating": "Solid",
+   "engine": "`stzGeoFeatures` reads both GeoJSON and TopoJSON, keeping every part, hole, property and id, with an engine-side filtered read so a 40 MB admin file yields only the wanted features.",
+   "engine_h": "In the engine",
+   "against": [
+    "GDAL / OGR",
+    "GeoPandas",
+    "D3"
+   ],
+   "against_h": "Measured against",
+   "owed": "Read-only — there is no GeoJSON/TopoJSON writer, so geometry can come in but not out (output is PNG/SVG pictures). And only two formats, next to GDAL's dozens.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Atlas & real-data pipeline",
+   "rating": "Solid",
+   "engine": "`stzGeoAtlas` binds name→shape without vendoring boundary data, reporting the unresolved and uncovered. The Niger real-data map is the cap: geoBoundaries ADM1 (ODbL) + official RGPH-2012 census, with areas measured by the house geodesic engine, rendered as a density choropleth.",
+   "engine_h": "In the engine",
+   "against": [
+    "GeoPandas + Natural Earth",
+    "Cartopy features"
+   ],
+   "against_h": "Measured against",
+   "owed": "A real, vendor-free end-to-end map is a genuine capability — but the atlas ships no bundled shapes (by design) and has no fuzzy name matching, so a caller must supply and exactly name its boundaries.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Geometry & spatial ops",
+   "rating": "Partial",
+   "engine": "Measurement and membership: ring area (planar/spherical/ellipsoidal), centroid, point-in-polygon / `Within`, bounding boxes, and spatial join (count/assign points to regions, coverage fraction).",
+   "engine_h": "In the engine",
+   "against": [
+    "PostGIS / GEOS",
+    "Shapely",
+    "GDAL"
+   ],
+   "against_h": "Measured against",
+   "owed": "No vector-geometry overlay algebra: no buffer, intersection, union, difference, convex hull, simplify or dissolve. The PostGIS core is a deliberate non-goal today.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Source reprojection (CRS transforms)",
+   "rating": "Partial",
+   "engine": "Projections are a display transform — lon/lat in, pixels out, with all the forward/inverse math above.",
+   "engine_h": "In the engine",
+   "against": [
+    "PROJ",
+    "GDAL warp",
+    "Cartopy CRS"
+   ],
+   "against_h": "Measured against",
+   "owed": "No source-CRS reprojection: a dataset stored in UTM or a national grid can't be transformed to another CRS — features keep their stored CRS and lon/lat input is assumed. The projection math exists; the CRS-transform plumbing does not.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Raster & DEM",
+   "rating": "Partial",
+   "engine": "`geo_field.zig`: scalar density fields, an ESRI ASCII grid reader, a field image resampled per-pixel through the projection, and contours by marching squares with polygon clipping.",
+   "engine_h": "In the engine",
+   "against": [
+    "GDAL (raster)",
+    "rasterio",
+    "Cartopy imshow"
+   ],
+   "against_h": "Measured against",
+   "owed": "No DEM terrain analysis (hillshade, slope, aspect) and no general raster formats (GeoTIFF). Scalar fields + ESRI-grid are the whole raster story.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Interactivity",
+   "rating": "Partial",
+   "engine": "Maps emit interactive SVG — per-region ids, classes and `<title>` hooks (`SetInteractive`, GE2c) — so a browser can hover and select.",
+   "engine_h": "In the engine",
+   "against": [
+    "Leaflet",
+    "Mapbox GL",
+    "D3 zoom"
+   ],
+   "against_h": "Measured against",
+   "owed": "No live pan/zoom — interaction stops at static SVG hooks. Live map interaction is, by the plan, the GUI plane's job on the geo plane's hands, not the geo module's own.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Tiling & web maps",
+   "rating": "Emerging",
+   "engine": "None. There is no slippy-tile scheme, no tile server, and no web-map basemap integration anywhere in the geo module.",
+   "engine_h": "In the engine",
+   "against": [
+    "Leaflet / Mapbox",
+    "XYZ tile servers",
+    "OpenLayers"
+   ],
+   "against_h": "Measured against",
+   "owed": "The whole web-map delivery model — tiled basemaps, zoom levels, tile serving. Softanza renders a finished map, not a pannable tiled surface.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first opens the GIS-data workflows the analysis strengths currently can't feed; the second is cheap breadth over an already-strong base; the third is the delivery and terrain reach GDAL/Leaflet own.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — GIS-data workflows",
+   "items": [
+    {
+     "title": "Vector geometry overlay algebra",
+     "text": "Buffer, intersection, union, difference, convex hull, simplify, dissolve — the PostGIS/GEOS core. It is the biggest capability gap for real GIS work and unblocks everything from catchment analysis to boundary cleaning.",
+     "value": "High",
+     "effort": "High"
+    },
+    {
+     "title": "Source-CRS reprojection",
+     "text": "Transform a dataset from its stored CRS (UTM, national grid) to another — the PROJ/GDAL-warp core. The forward/inverse projection math already ships; this is the CRS-graph and datum-shift plumbing on top of it.",
+     "value": "High",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — cheap breadth over a strong base",
+   "items": [
+    {
+     "title": "A GeoJSON / TopoJSON writer",
+     "text": "Close the round-trip — geometry can be read but not written today. A writer lets geo output feed other tools and lets the atlas persist resolved shapes. Small next to the reader that ships.",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "Dot-density & cartogram",
+     "text": "The two thematic types not yet in the set. Both sit naturally on the existing region/point machinery and complete the analyst's thematic toolkit.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Close GE0c — fill across a seam",
+     "text": "The plan's one open item: reconstruct a closed fill for a polygon cut by the antimeridian or horizon (today such pieces are stroked, not filled). A finishing touch on an otherwise complete projection renderer.",
+     "value": "Low",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — delivery & terrain",
+   "items": [
+    {
+     "title": "Raster / DEM & GeoTIFF",
+     "text": "Terrain analysis (hillshade, slope, aspect) over elevation, and general raster I/O (GeoTIFF). The scalar-field and contour engine is the seed; DEM ops and real raster formats are the reach.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "Tiling & web maps",
+     "text": "Slippy tiles, zoom levels and basemap integration — the Leaflet/Mapbox delivery model. It turns a finished map into a pannable surface for the web.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "Live interactivity via the GUI plane",
+     "text": "Pan / zoom / brush on the interactive-SVG hands the geo plane already exposes (GE2c). Belongs on the GUI plane's reactive layer, and would make the strong static maps explorable.",
+     "value": "Medium",
+     "effort": "High"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings — and a survey correction.",
+   "text": "This page was re-surveyed from `main` (HEAD `04cff1c34`) after the session's working tree was found to be a feature branch 391 commits behind main and missing `base/geo` entirely. Ratings reflect the code on main, verified against it — the memory/plan claims checked out (44 projections, universal inverses, the geodesy and spatial-statistics engines, the Niger map), with a minor date nuance (the Niger narratives are 09-12–09-14). The guards are strong: ~400 `chk` assertions with ~72 negative controls, all-44 inverse round-trips, and kriging-variance invariance. One plan item is confirmed still open in code: GE0c (fill across a seam/horizon). No `#ERR`/`#SKIP` markers."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza's geo is analysis-and-cartography strong — a map engine that also does the geodesy and the spatial statistics, coherent in a way D3 and Cartopy are not — and GIS-plumbing light: the overlay algebra, dataset reprojection, raster/terrain, and web tiling that GDAL, PostGIS and Leaflet are built on are the deliberate frontier still to cross."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16, from a read-only `main` worktree (HEAD `04cff1c34`) — Ring faces under `base/geo` (`stzGeoProjection`, `stzGeoEllipsoid`, `stzGeoMap`, `stzGeoFeatures`, `stzGeoField`, `stzGeoPoints`, `stzGeoProcess`, `stzGeoSamples`, `stzGeoAtlas`, `stzGeoRegions`); engine `geo_projection`, `geo_geodesy`, `geo_stats`, `geo_interp`, `geo_process`, `geo_field`, `geo_furniture`, `geo_distortion` via `ring_bridge_geo.zig`; plan of record `SOFTANZA_GRAPH_PLANE_PLAN.md` §GE0–GE10; guards `test/graphics/geo_*_narrated.ring` + `niger_density.ring`. Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

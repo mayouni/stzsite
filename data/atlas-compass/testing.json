@@ -1,0 +1,270 @@
+{
+ "slug": "testing",
+ "url": "https://claude.ai/artifact/CToahAJ7Mp95S84hkvjvU6",
+ "title": "Test & quality system — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "Softanza has no test framework as a module — it has a test-and-quality discipline spread across the estate, and its signature is that a test is a readable specification and a green checkmark is never enough. 455 narrated guards read as Given/When/Then specs; correctness is proven against independent numpy/LAPACK oracles (not just self-captured snapshots), by byte-parity against pre-port ground truth, and by an adversarial gate whose 1,416 assertions each exist because \"a defect survived a green suite\" — with 58 negative controls that prove the instrument itself can fail. Distribution is tested on real spawned processes; the engine is fuzzed and property-tested; and one rule gate collects code, security, agent and diagram findings in a single shape. Where it's thin: property/mutation is engine-only, there is no coverage instrumentation and no CI, and the classic suites carry a fidelity backlog.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "A cross-cutting system measured against the basket most projects assemble from separate tools — pytest/jest, Hypothesis, libFuzzer, jest-snapshot, Cucumber, SonarQube. The split is clean: the techniques are rigorous; the tooling (coverage, CI, the classic-suite backlog) lags.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Narrated guards as executable spec",
+   "rating": "Strong",
+   "engine": "`_narrated.ring` gives a Given/When/Then DSL (`Scenario` / `Then(text, got, want)` / `Summary`) that prints a readable spec and distinguishes \"ran-but-failed\" from \"didn't run\" — across 455 `*_narrated.ring` guards and on the order of 10,000+ assertions.",
+   "engine_h": "In the engine",
+   "against": [
+    "Cucumber",
+    "RSpec",
+    "jest describe/it"
+   ],
+   "against_h": "Measured against",
+   "owed": "BDD-as-default at estate scale. The one wart: the dominant per-file `chk(label, cond)` idiom is copy-pasted, not imported — a convention rather than one shipped assertion module (lane 12).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Reference oracles (numpy / LAPACK)",
+   "rating": "Strong",
+   "engine": "Correctness checked against an independent implementation, not self-consistency: `_gen_numpy_reference.py` generates `_numpy_reference.ring` / `_numpy_fft_reference.ring` (LAPACK eigenvalues, SVD, det, Cholesky…), and the BERT forward matches numpy to 1.64e-7.",
+   "engine_h": "In the engine",
+   "against": [
+    "(rare — most suites self-check)",
+    "SciPy test oracles"
+   ],
+   "against_h": "Measured against",
+   "owed": "Oracle testing catches bugs a snapshot cannot — a snapshot pins whatever you produced, right or wrong; an oracle pins what is correct. A gold-standard technique used where it matters most (numeric, neural).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Adversarial gate & negative controls",
+   "rating": "Strong",
+   "engine": "`gg_adversarial.ring` (23,481 lines, 1,416 assertions): its thesis is \"every assertion exists because a defect survived a green suite and was found by rendering a picture and looking at it.\" It carries 58 negative siblings (proving each instrument can fail) and 82 `discharges()` that generate the plan's status table from the suite.",
+   "engine_h": "In the engine",
+   "against": [
+    "mutation testing (in spirit)",
+    "approval testing"
+   ],
+   "against_h": "Measured against",
+   "owed": "Assertions born from real escaped defects, negative controls, and a plan-discharge link — a rigor discipline most suites never reach. Distinctive.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "The unified quality gate",
+   "rating": "Strong",
+   "engine": "`stzRuleReport` collects findings in one shape `[:rule,:subject,:where,:severity,:message]` from 13 rule domains (code, security, agent, org, service, and diagram notations), with `IsSound()`; 14 code rules + the knob gate; and a signable predicate set (`stzPredicateSet`, sha256-sealed `.zrlz`).",
+   "engine_h": "In the engine",
+   "against": [
+    "SonarQube",
+    "semgrep",
+    "quality gates"
+   ],
+   "against_h": "Measured against",
+   "owed": "One gate over code and security and agent and process rules — a unification SonarQube/semgrep (code-only) don't attempt (rated deeper on the Metaprogramming page). Its one weakness: it isn't wired to any CI (lane 12).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Byte-parity & golden / snapshot",
+   "rating": "Solid",
+   "engine": "`plot.zig` holds 29 byte-parity tests against ground truth captured from the Ring plotters before the renderer moved (and after three defects were fixed); `stzLLMFunction.AddGolden/RunGoldens` pins LLM outputs; and the `#-->` markers capture expected stdout.",
+   "engine_h": "In the engine",
+   "against": [
+    "jest-snapshot",
+    "approvaltests",
+    "insta"
+   ],
+   "against_h": "Measured against",
+   "owed": "Rigorous snapshot testing (captured post-fix, string-exact) — but snapshots pin current behavior, so a wrong-but-stable output can be frozen; the oracle lane (2) is the stronger guard where it applies.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Fuzzing",
+   "rating": "Solid",
+   "engine": "Five UBSan-trap fuzzers on the untrusted-input parsers — `fuzz_http`, `fuzz_tls` (X.509), `fuzz_pcre2` (300k rounds, ReDoS-bounded), `fuzz_sqlite`, `fuzz_utf8` — wired into `zig build fuzz`, any UB becoming a hard crash.",
+   "engine_h": "In the engine",
+   "against": [
+    "libFuzzer",
+    "AFL",
+    "go-fuzz"
+   ],
+   "against_h": "Measured against",
+   "owed": "Real fuzzing of exactly the right targets — but engine-only (5 harnesses), random-round not coverage-guided (no libFuzzer feedback or evolving corpus), and not run continuously.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Real-process & integration testing",
+   "rating": "Solid",
+   "engine": "The D0–D6 cluster guards spawn genuine OS processes (via `uv_spawn`), exchange framed STZM messages over loopback, perform real kills to test supervision, and assert clean teardown; the appserver guards run a second reactor as a live client.",
+   "engine_h": "In the engine",
+   "against": [
+    "testcontainers",
+    "integration harnesses"
+   ],
+   "against_h": "Measured against",
+   "owed": "Integration testing against real processes and real failures (not mocks) — rigorous where it exists, but a focused set (cluster / appserver), not a general integration-test framework.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Engine unit tests (Zig)",
+   "rating": "Solid",
+   "engine": "Inline `test \"…\"` blocks in 151 of 371 engine `.zig` files — the native Zig unit layer under the Ring guards, run by the build's test step.",
+   "engine_h": "In the engine",
+   "against": [
+    "zig test",
+    "cargo test",
+    "go test"
+   ],
+   "against_h": "Measured against",
+   "owed": "Standard, well-used inline unit testing at the engine layer. Coverage of the 371-file engine is broad but not universal (151 files), and unmeasured (lane 12).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Stress & scale testing",
+   "rating": "Solid",
+   "engine": "Million-scale guards (1M-item `IntSeq` builds ~7 ms vs >60 s; `999_*_millions` string/list suites) and multilingual stress (Arabic/CJK/emoji through the same paths), catching O(n²) regressions and byte-corruption at scale.",
+   "engine_h": "In the engine",
+   "against": [
+    "perf regression suites",
+    "load harnesses"
+   ],
+   "against_h": "Measured against",
+   "owed": "Scale and multilingual correctness are tested as first-class properties — a real strength — though the timed guards inherit the machine-load sensitivity the perf plane documents.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Test-as-documentation",
+   "rating": "Solid",
+   "engine": "The narrated guards are designed to double as readable specs, and a parallel prose corpus of 135 narrations (`base/doc/narrations`) explains the same features the guards prove — a runnable-and-readable pairing.",
+   "engine_h": "In the engine",
+   "against": [
+    "doctest",
+    "Cucumber features",
+    "literate testing"
+   ],
+   "against_h": "Measured against",
+   "owed": "A genuine test-as-doc intent — but the guard↔narration link is convention, not enforced: the two can (and once did) diverge, letting a bug hide behind a prettied-up narration.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Property & mutation testing",
+   "rating": "Partial",
+   "engine": "Three `prop_*.zig` files — `prop_crypto` (determinism / tamper-detection plus mutation: \"constant + first-byte hashes must be killed\"), `prop_http`, `prop_ratebucket` (token-bucket invariants).",
+   "engine_h": "In the engine",
+   "against": [
+    "Hypothesis / QuickCheck",
+    "Stryker / PIT"
+   ],
+   "against_h": "Measured against",
+   "owed": "Engine-only, 3 files. No Ring-side property testing, no generator/shrinking framework (Hypothesis), and no mutation-testing framework for the library — the mutation discipline lives only inside those crypto/http/ratebucket props.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Coverage, CI & suite health",
+   "rating": "Partial",
+   "engine": "Coverage is by assertion count (chk / Then / `#-->` / discharged plan items); the pipeline is bespoke Python runners (`_run_test_batch.py`, `_annotate_test_errors.py`, `promises.py`) plus `zig build`.",
+   "engine_h": "In the engine",
+   "against": [
+    "pytest-cov / istanbul",
+    "GitHub Actions",
+    "Stryker"
+   ],
+   "against_h": "Measured against",
+   "owed": "No coverage % (no line/branch instrumentation), no CI config (`.github` absent), and a fidelity-grind backlog: the classic `#-->` suites sit ~41–60% green with 1,312 `#ERR` markers, while the curated narrated surface is the green, maintained one.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The techniques are strong; the gaps are tooling and hygiene — the first tier makes the discipline enforceable, the second broadens it, the third pays down debt.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — make the discipline enforceable",
+   "items": [
+    {
+     "title": "A standard CI pipeline",
+     "text": "There is no `.github` / CI config — the bespoke runners and `zig build` should run on every push, with the unified rule gate (`stzRuleReport`) as a required check. The whole point of a quality gate is to gate; today it's a library API nothing runs automatically.",
+     "value": "High",
+     "effort": "Low"
+    },
+    {
+     "title": "Coverage instrumentation",
+     "text": "Line/branch coverage for the engine (and, where feasible, the Ring guards) so \"we assert a lot\" becomes \"we cover X%.\" Assertion counts show effort, not reach — the one number this rigorous system cannot currently produce.",
+     "value": "High",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — broaden the techniques",
+   "items": [
+    {
+     "title": "Ring-side property testing",
+     "text": "A Hypothesis-style generator/shrinking harness for Ring library code — property testing is engine-only (3 files) today. It would fit the library's \"assert the mechanism\" ethos and find the edge cases example-based guards miss.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "A shipped assertion module",
+     "text": "Retire the copy-pasted per-file `chk()` for one imported harness (the `_narrated.ring` DSL is the seed), so every guard shares one tallying, diffing, skip-aware assertion surface instead of 455 near-copies.",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "Coverage-guided / continuous fuzzing",
+     "text": "Give the five fuzzers libFuzzer-style coverage feedback and an evolving corpus, and run them continuously in CI — turning random-round harnesses into corpus-growing regression fuzzers.",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — pay down the debt",
+   "items": [
+    {
+     "title": "Close the fidelity-grind backlog",
+     "text": "The classic `#-->` suites sit ~41–60% green with 1,312 `#ERR` — mostly output drift and lost shared setup, not real bugs. Reconciling them makes the whole corpus vouch, not just the curated narrated surface.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "Mutation testing for Ring code",
+     "text": "Extend the engine's \"these mutations must be killed\" discipline (today only in the crypto/http/ratebucket props) into a mutation-testing pass over the library — the strongest measure of whether the many assertions actually catch defects.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "Enforce the guard↔narration link",
+     "text": "Bind each prose narration to the guard that proves it, so the two can't diverge silently (the underscore-vs-space case where a bug hid behind a prettified narration) — turning test-as-doc from convention into contract.",
+     "value": "Low",
+     "effort": "Medium"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "This page rates a cross-cutting system, not a module — there is no `base/test-framework`; it is ~6 harnesses/gates plus a large guard corpus. Read from `main`. The strengths are technique-level and real (455 narrated guards; `plot.zig` byte-parity; numpy/LAPACK oracles; `gg_adversarial`'s 1,416 assertions + 58 negative controls + 82 plan-discharges; D0–D6 real-process; 5 engine fuzzers + 3 property/mutation files; the 13-domain rule gate). The weaknesses are tooling-level and honestly recorded in the repo's own health files (`base/test/_STATUS.md` / `_FINDINGS.md`): no coverage %, no CI, and the classic-suite backlog. The split is the story: the curated narrated / adversarial / oracle surface is green and maintained; the classic extracted suites are the grind."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza tests the way it builds — narrated as a spec, proven against independent oracles and negative controls, gated in one place — a testing discipline more rigorous than most frameworks demand; what it lacks is the ordinary tooling those frameworks ship for free: coverage numbers, a CI that runs the gate, and a reconciled classic-suite corpus."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-17, from a read-only `main` worktree — the narrated-guard harness `base/test/_narrated.ring` (455 `*_narrated.ring` guards); the promise harness `base/meta/promises.py` (~8,500 `#-->` markers) with runners `_run_test_batch.py` / `_annotate_test_errors.py`; engine `test` blocks (151/371 files), fuzzers `fuzz_{http,tls,pcre2,sqlite,utf8}.zig` and `prop_{crypto,http,ratebucket}.zig`; oracles `_gen_numpy_reference.py`, byte-parity in `plot.zig`, the gate `base/graph/stzRuleReport.ring` + `stzPredicateSet`; health in `base/test/_STATUS.md` / `_FINDINGS.md`. Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

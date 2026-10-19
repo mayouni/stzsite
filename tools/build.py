@@ -23,6 +23,7 @@ from build_narration_pages import build_narration_pages, slug as narration_slug
 import level2
 from build_howto import build_howto, load_howtos, howtos_by_method
 from build_ask import build_ask
+import build_area_story as story
 import build_ladder
 import qforms
 import build_proof
@@ -738,18 +739,22 @@ def build_group_page(lang, idx, groups, i):
     else:
         hero = f'<div class="note"><p><b>{ui["nopic"]}.</b> {esc(g.get("nopic_" + lang, ""))}</p></div>'
     thesis = f'<blockquote><p>{esc(d["thesis"])}</p></blockquote>' if d.get("thesis") else ""
-    body = f"""<p class="counts-line">{g["s"]} Strong · {g["so"]} Solid · {g["p"]} Partial · {g["e"]} Emerging</p>
+    from build_narration_pages import title_of
+    counts = story.lane_counts(g["slug"], d, g)
+    body = f"""{story.rating_bar(counts, lang)}
     <p class="proof">{ui["measured"]}{colon} {esc(g["peers"])} · {ui["folders"]}{colon} {folders} · <a href="../guide/{g["slug"]}.html">{ui["guide"]}</a></p>
     {hero}
-    {heritage_html(lang, g["slug"])}
-    {thesis}
+    {story.compass_head(lang, g["slug"], d)}
     {sg}
+    {heritage_html(lang, g["slug"])}
     {example}
-    {area_articles(lang, g["slug"])}
-    <h2>{ui["lanes_h"]}</h2>
-    <p class="proof">{ui["lanes_note"]} {esc(d.get("dated", ""))}.</p>
+    {story.lanes_html(lang, g["slug"], d)}
     {note}
-    <div class="lanes">{lanes}</div>"""
+    {story.tiers_html(lang, g["slug"])}
+    {story.design_html(lang, g["slug"])}
+    {story.articles_html(lang, g["slug"], narration_slug, title_of)}
+    {story.classes_html(lang, g["slug"])}
+    <p class="proof">{story.T[lang]["compass_src"].format(d=esc(d.get("dated", "")))}</p>"""
     page = page_shell(lang, "atlas", g[lang], g["line_" + lang], esc(band[lang]), esc(g[lang]), esc(g["line_" + lang]), body,
                       rel=rel, page_key="atlas-group", other_href=f"../../{ui['other_code']}/atlas/{g['slug']}.html", body_class="page page-atlas-group", tail=[(g[lang], None)])
     page = level2.wrap(page, level2.nav(level2.LABELS["areas"][lang], level2.area_groups(idx, lang, g["slug"])))

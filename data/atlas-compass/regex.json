@@ -1,0 +1,274 @@
+{
+ "slug": "regex",
+ "url": "https://claude.ai/artifact/TUj8gXotShcsjw32Cv1EZn",
+ "title": "Regex — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "Under the hood it is PCRE2 10.47, statically linked, Unicode always on. On top sits an unusually rich Ring layer — 100+ methods, four fluent builder classes, and a reactive match→code engine — with a clear `Match()`-anchors / `MatchFirst()`-searches / partial-as-you-type model. On features it is at PCRE2 parity — lookaround, backreferences, recursion, conditionals, things RE2 and Rust deliberately refuse. Where it trails the modern engines is the safety-and-throughput story: no JIT, no linear-time matcher, and the ReDoS knob isn't even reachable from Ring — although the code for both is already compiled into the binary.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships, the tools it is fair to measure against, and the one thing still owed. The recurring theme: a broad, well-guarded feature surface over a compact 17-function C engine — with the performance and safety knobs left un-wired.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Match, search & anchoring",
+   "rating": "Strong",
+   "engine": "A well-articulated model: `Match()` anchors the whole content, `MatchFirst()` searches unanchored, `MatchAt(s,n)` from a position, and a partial \"as-you-type\" mode (`PARTIAL_HARD/SOFT`) for live validation. Scope helpers match within lines / words / segments.",
+   "engine_h": "In the engine",
+   "against": [
+    "PCRE2",
+    "Python re (match/search)",
+    "Rust regex"
+   ],
+   "against_h": "Measured against",
+   "owed": "The clearest match-semantics API of the group, and the partial-match mode is a genuine plus most libraries lack. Nothing structural owed.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Capture groups — numbered & named",
+   "rating": "Strong",
+   "engine": "Numbered and named captures (`(?<name>)` and `(?P<name>)`), with positions and `[start,end]` section variants. Ring re-derives names in source order because PCRE2 enumerates them alphabetically — a thoughtful correction.",
+   "engine_h": "In the engine",
+   "against": [
+    "PCRE2",
+    "Python re",
+    "Rust regex"
+   ],
+   "against_h": "Measured against",
+   "owed": "Comprehensive. The only related gap is on the replace side (named-group substitution, lane 5), not on capture itself.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Unicode correctness",
+   "rating": "Strong",
+   "engine": "PCRE2 compiled with `UTF | UCP` unconditionally: `\\p{L}`, `\\p{Lu}`, scripts (`\\p{Greek}`, `\\p{Arabic}`), and codepoint-correct `\\w`/`\\d`/`.` over multibyte UTF-8, with codepoint↔byte offset conversion at the boundary.",
+   "engine_h": "In the engine",
+   "against": [
+    "Oniguruma",
+    "Rust regex (Unicode default)",
+    "PCRE2"
+   ],
+   "against_h": "Measured against",
+   "owed": "At parity — Unicode is on by default and cannot be accidentally disabled (the `:UseUnicode` flag is a no-op because it is already always on).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Advanced pattern features",
+   "rating": "Strong",
+   "engine": "The full PCRE2 set, all proven by engine tests: lookahead / lookbehind, backreferences `\\1`, atomic `(?>)`, possessive `++`, non-capturing, recursion `(?R)`, and conditionals `(?(?=c)t|e)`.",
+   "engine_h": "In the engine",
+   "against": [
+    "PCRE2",
+    "Oniguruma",
+    ".NET regex"
+   ],
+   "against_h": "Measured against",
+   "owed": "A category advantage: RE2 and Rust deliberately omit backrefs, lookaround and recursion for their linear-time guarantee. Softanza has them — at the cost of that guarantee (lane 11).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Replace & substitution",
+   "rating": "Solid",
+   "engine": "Engine-backed replace with backreferences `$1` / `${1}` / `\\1` and literal `$$`, via global `StzRegexReplace` and the string face `ReplaceRegex`.",
+   "engine_h": "In the engine",
+   "against": [
+    "PCRE2 substitute",
+    "Python re.sub",
+    "Rust regex"
+   ],
+   "against_h": "Measured against",
+   "owed": "Named-group substitution (`${name}`) is parsed but only numeric names are honored; and there is no `Replace` method on the `stzRegex` object itself — only the global and string-face routes.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Split, find-all & iteration",
+   "rating": "Solid",
+   "engine": "Find-all comes two ways: the string face's single-pass `FindAllRegex` / `extract_all` (O(n), skips UTF-8 re-validation), and the `stzRegex` iteration wrappers (`Matches`, `MatchesZZ`). Split via `SplitByRegex`.",
+   "engine_h": "In the engine",
+   "against": [
+    "Python re.finditer / split",
+    "Rust find_iter",
+    "PCRE2"
+   ],
+   "against_h": "Measured against",
+   "owed": "The `stzRegex` iteration path makes a per-match engine round-trip (slower than the string-face single pass), and `split_get` silently caps at 512 pieces (fixed stack arrays).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Flags & compiled-pattern reuse",
+   "rating": "Solid",
+   "engine": "The standard modifiers — case-insensitive, dot-all, multiline, extended, non-greedy — plus auto-multiline when the pattern contains a newline. A pattern compiles once and recompiles only when flags change; anchor/partial changes are free (match-time options).",
+   "engine_h": "In the engine",
+   "against": [
+    "Python re (compile cache)",
+    "Rust regex",
+    "PCRE2"
+   ],
+   "against_h": "Measured against",
+   "owed": "Several advertised flags are no-ops (`:DontCapture`, `:DisableOptimizations`, `:UseUnicode`), and there is no cross-object compiled-pattern cache.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Fluent builder DSL",
+   "rating": "Solid",
+   "engine": "A distinctive surface most regex libraries lack: four builders — `stzRegexMaker` (declarative classes, groups, quantifiers), `stzRecursiveRegexMaker`, `stzConditionalRegexMaker` (the `W` conditional DSL → `(?(?=c)t|e)`), and `stzRegexLookaroundMaker` — each emitting a pattern string.",
+   "engine_h": "In the engine",
+   "against": [
+    "VerbalExpressions",
+    "XRegExp",
+    "(no native peer)"
+   ],
+   "against_h": "Measured against",
+   "owed": "Unfinished in spots: `Quantifiers()` is an empty `#TODO`, `MatchSameContentAs` has a parameter-name bug, and `NumberOfSequences()` reads an undefined global — latent errors if called.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Reactive computing (RegexUter)",
+   "rating": "Solid",
+   "engine": "`stzRegexuter` — a trigger→pattern→code engine that runs regex over text and evaluates per-match code referencing `@value`, with state tracking, dependency chains and per-position results. Ties into Softanza's broader `When/If/Do` convention.",
+   "engine_h": "In the engine",
+   "against": [
+    "(no direct peer)",
+    "awk-style rules",
+    "reactive stream ops"
+   ],
+   "against_h": "Measured against",
+   "owed": "A novel niche surface — powerful, but built on `eval()` and narrower in use than the core matcher. Rated as the distinctive extra it is.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Named-pattern catalogue & explanation",
+   "rating": "Partial",
+   "engine": "A 4,842-line catalogue (`stzRegexData.ring`) of named patterns with explanations, reached by `rxp()` / `pat()` — a real asset for \"email/url/date\" without hand-writing the pattern.",
+   "engine_h": "In the engine",
+   "against": [
+    "regexlib / regex101 explain",
+    "XRegExp add-ons"
+   ],
+   "against_h": "Measured against",
+   "owed": "`Explain()` works only for named patterns — the fallback calls `new stzRegexAnalyzer(...)`, a class that does not exist in the library, so explaining an arbitrary pattern raises rather than explains.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Throughput — JIT & linear-time matcher",
+   "rating": "Partial",
+   "engine": "One matching path: PCRE2's standard backtracking `pcre2_match`. Correct, Unicode-aware, and fast on typical patterns.",
+   "engine_h": "In the engine",
+   "against": [
+    "RE2 (linear)",
+    "Rust regex (linear)",
+    "PCRE2-JIT"
+   ],
+   "against_h": "Measured against",
+   "owed": "Both faster paths are compiled into the binary but never called: `pcre2_jit_compile` (JIT off) and `pcre2_dfa_match` (the linear, no-backtracking matcher). The code that would answer RE2's whole advantage is present and dark.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "ReDoS safety & limits",
+   "rating": "Partial",
+   "engine": "The engine has the guards: `stz_regex_set_limits(steps, input_len, depth)` bounds a catastrophic pattern (an engine test proves `(a+)+$` aborts), with a ~10M-step default and a 64 MB input cap.",
+   "engine_h": "In the engine",
+   "against": [
+    "RE2 (ReDoS-immune)",
+    "Rust regex",
+    "node re2"
+   ],
+   "against_h": "Measured against",
+   "owed": "The limits API is bridged but not surfaced on the Ring `stzRegex` class — no method calls it — so a caller cannot actually tune the bound against a hostile pattern. Backtracking means ReDoS is bounded, never eliminated.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first is where the highest leverage sits — because the code is already in the binary; the second is cheap correctness; the third is throughput and reach.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — foundational (and the code already ships)",
+   "items": [
+    {
+     "title": "Wire the linear-time DFA matcher",
+     "text": "`pcre2_dfa_match` is compiled into the binary and never called. Exposing it as an opt-in matcher gives a no-backtracking, ReDoS-immune path for the patterns that don't need backrefs — answering RE2/Rust's core advantage with code that is already present.",
+     "value": "High",
+     "effort": "Medium"
+    },
+    {
+     "title": "Surface the ReDoS limits on the Ring class",
+     "text": "`stz_regex_set_limits` is bridged but unreachable from `stzRegex`. A method that sets step/depth/input bounds turns an existing safety mechanism into one a caller can actually use against a hostile pattern.",
+     "value": "High",
+     "effort": "Low"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — cheap correctness",
+   "items": [
+    {
+     "title": "Named-group substitution in replace",
+     "text": "Honor `${name}` in replacement strings (it is already parsed, just not expanded for non-numeric names). A small fix that closes an obvious surprise.",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "Fix the broken explain & builder stubs",
+     "text": "Provide the missing `stzRegexAnalyzer` (or drop the fallback), and close the RegexMaker latent bugs — `Quantifiers()` TODO, `MatchSameContentAs` param name, `NumberOfSequences` undefined global.",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "Raise the split cap",
+     "text": "`split_get` truncates at 512 pieces through fixed stack arrays — the same class of bug the byte and string engines carry. Grow the buffer or return count-then-drain.",
+     "value": "Low",
+     "effort": "Low"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — throughput & reach",
+   "items": [
+    {
+     "title": "Enable PCRE2 JIT",
+     "text": "`pcre2_jit_compile` is in the build source list but never invoked. Wiring it (with the interpreter as fallback) is the standard throughput win for hot patterns.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Regex over lists, not just strings",
+     "text": "The `stzRegex` TODO names it: apply a pattern across a list of items in one call. A natural fit with the collections plane and a real ergonomics win.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "A cross-object pattern cache",
+     "text": "Today each `stzRegex` compiles its own pattern; a shared LRU cache keyed on pattern+flags would spare repeated compiles across a program, matching Python's implicit cache.",
+     "value": "Low",
+     "effort": "Low"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "The two test runners disagree: `_ERR_RUN.txt` (current filenames) shows all 53 regex and 51 maker files run crash-free, but the assertion-marker runner `_RUN.txt` is stale — its filenames predate the current layout — and reports failures clustered in recursive-match info shape and `CaptureXT`. So the \"does not crash\" guarantee is firm; the assertion-level one is partly unverifiable until that runner is refreshed. The Zig in-source tests (~57 blocks) are the most trustworthy proof, including three that guard a real subject-lifetime heap bug."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza's regex is a feature-complete PCRE2 with the friendliest match-semantics API and builder surface in its class — and a performance story that is one wiring job away from RE2's league, because the linear-time matcher, the JIT and the ReDoS limits are all already in the binary, just not called."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16 — Ring faces under `base/regex` (`stzRegex.ring`, `stzRegexMaker.ring`, `stzRegexUter.ring`) and `base/data/stzRegexData.ring`; engine `regex.zig` (PCRE2 10.47, static), `string/regex.zig`, `ring_bridge_regex.zig`; guards under `test/regex` and `test/regexmaker` plus ~57 in-source Zig test blocks. Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

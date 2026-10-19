@@ -1,0 +1,276 @@
+{
+ "slug": "security",
+ "url": "https://claude.ai/artifact/KZPQcHHPuGEPhnUe34wNsj",
+ "title": "Security & governance — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "Most security stacks are a bag of primitives; Softanza's is a doctrine. One capability lattice — `effectful · sensing · compute · inference` — and three postures gate every dangerous act uniformly, so an LLM actor (holding `inference` only) is refused a secret, a file write or a deployment by construction, not by a rule someone remembered to write. On top sit a full identity stack (OIDC, SAML, WebAuthn — both sides) and an engine-computed tamper-evident audit ledger. The gaps are a unified injection-defense surface and the still-unbuilt plugin governance — and there is no formal threat-model document yet.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships, the tools it is fair to measure against, and the one thing still owed. Ratings are earned by what the guards prove — and security is unusually well-guarded: roughly 530 core, 417 identity and 88 governance assertions, though they live under `test/system`, `test/cluster` and `test/governance`, not a `test/security` dir.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Safe-world & capability governance",
+   "rating": "Strong",
+   "engine": "One capability lattice (`effectful/sensing/compute/inference`) and three postures (`trusted/external/sandboxed`) enforce six checkpoints: file commit, secret reveal, secret store, deployment, platform deploy, and `StzCheckNoLLMEffectful`. Agents rehearse in a `stzVirtualFileSystem` twin; only a committing actor runs the `stzUpdatePlan` under three gates.",
+   "engine_h": "In the engine",
+   "against": [
+    "OS capability systems",
+    "gVisor / sandboxes",
+    "OPA (policy)",
+    "Agent-sandbox patterns"
+   ],
+   "against_h": "Measured against",
+   "owed": "A genuinely novel, coherent model no mainstream library ships — the LLM actor's lack of `effectful` is the single fact every gate rests on. The remaining reach is extending it to plugins (lane 12).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Identity — authn & authz",
+   "rating": "Strong",
+   "engine": "A full modern stack: `stzAuth` (sessions-as-tokens, TTL, constant-time), TOTP 2FA, WebAuthn passkeys, OIDC client and provider, SAML SP and IdP, and HMAC request signing with a freshness window + nonce replay cache. All crypto verbs engine-backed; ~417 guarded assertions.",
+   "engine_h": "In the engine",
+   "against": [
+    "Keycloak",
+    "Auth0 / Okta",
+    "authlib / passport.js"
+   ],
+   "against_h": "Measured against",
+   "owed": "Password-reset-through-the-store is named as remaining; and being an IdP is protocol-complete but has no admin console or federation breadth — it is a library, not Keycloak the product.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Tamper-evident audit ledger",
+   "rating": "Strong",
+   "engine": "`stzSecurityLedger` over `engine/src/seclog.zig`: a bounded, hash-chained ring whose digest is computed in-engine, so a caller cannot forge it. Seal-to-file, verify (a broken link is named), rich pivots (by actor/subject/kind/trace/outcome), and `stzSecurityAttestation` for custody.",
+   "engine_h": "In the engine",
+   "against": [
+    "SIEM audit logs",
+    "sigstore / in-toto",
+    "AWS CloudTrail"
+   ],
+   "against_h": "Measured against",
+   "owed": "The guarantee is honestly scoped — it detects retroactive edits on exported evidence, not an attacker already running in-process (who can wipe the ring). That limit is stated in the doc and matched by the guards.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Cryptographic primitives",
+   "rating": "Solid",
+   "engine": "\"Engine-backed, never hand-rolled\": `crypto.zig` ships SHA-256, HMAC-SHA256, PBKDF2 (100k rounds), constant-time compare, CSPRNG, TOTP, ES256/RS256 sign+verify+keypair, b64url; RSA and X.509 go through vendored mbedTLS — a vetted library, not new code.",
+   "engine_h": "In the engine",
+   "against": [
+    "OpenSSL",
+    "libsodium",
+    "Python cryptography"
+   ],
+   "against_h": "Measured against",
+   "owed": "A curated subset: no authenticated symmetric encryption (AES-GCM / ChaCha20-Poly1305) for data-at-rest, and only PBKDF2 among password KDFs (no Argon2/scrypt). Hashing, signing and KDF are covered; sealing is not.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Secret storage & keyring",
+   "rating": "Solid",
+   "engine": "`stzSecretStore` is the one governed door: register / rotate / revoke, and every `Reveal(name, actor)` is gated and audited (a refusal emits a security event). Secrets self-redact — config serializes a `Descriptor()`, never a value — with lazy env/file/vault sources.",
+   "engine_h": "In the engine",
+   "against": [
+    "HashiCorp Vault",
+    "AWS Secrets Manager",
+    "KMS"
+   ],
+   "against_h": "Measured against",
+   "owed": "The redaction and governed-reveal defaults are arguably ahead of Vault's, but no real backend adapter ships (proven only against the in-memory `stzVaultResolver`), and there is no scheduled rotation.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Policy governance & security rules",
+   "rating": "Solid",
+   "engine": "`stzSecurityGraph` models the security surface as actors/tools/secrets/edges and answers `ReachesEffectful`, `BlastRadius(secret)` and `PathExists` — catching multi-hop escalation a flag check misses. `stzSecurityRule` is-a graph rule and feeds the one CI gate (`stzRuleReport`) alongside code, agent and org domains.",
+   "engine_h": "In the engine",
+   "against": [
+    "OPA / Rego",
+    "semgrep",
+    "IAM Access Analyzer"
+   ],
+   "against_h": "Measured against",
+   "owed": "The reachability architecture is distinctive, but only three security rules ship (two ERROR, one WARN) — a thin catalogue next to OPA's or semgrep's ecosystems. The seam is ready for many more.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Events, redaction & OCSF telemetry",
+   "rating": "Solid",
+   "engine": "`stzSecurityEvent` is a typed record over a closed kind-catalog, carrying a MITRE ATT&CK technique field and an OCSF JSON export for SIEM interop. The redaction law is enforced at construction — an event records a descriptor, never a value — so telemetry cannot leak a secret.",
+   "engine_h": "In the engine",
+   "against": [
+    "OCSF",
+    "Splunk / SIEM",
+    "Sigma"
+   ],
+   "against_h": "Measured against",
+   "owed": "Redaction is strong, but there is no PII detection / classification / DLP surface — the law protects known secrets, not free-text data it has never been told about.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Detection & incident response",
+   "rating": "Solid",
+   "engine": "A full runtime chain: `stzDetection` (burst / sequence / any, with a corroboration law) → `stzSecuritySentinel` (edge-triggered) → `stzIncident` (timeline, path, blast radius) → `stzResponsePlan` (containment as a governed act — an LLM's `MayCommit` is false) → `stzSecurityDrill` (adversary emulation vs a real spawned app).",
+   "engine_h": "In the engine",
+   "against": [
+    "SOAR platforms",
+    "Wazuh",
+    "Sigma rules"
+   ],
+   "against_h": "Measured against",
+   "owed": "Only three detection shapes ship (stated to cover the common patterns); no anomaly/ML detection and no Sigma-rule interop for the wider detection ecosystem.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Attestation & evidence custody",
+   "rating": "Solid",
+   "engine": "`stzSecurityAttestation` makes a custody statement over a sealed ledger, and evidence crosses process boundaries as a sealed + attested file (the drill's findings, an incident's proof). Export is treated as a `sensing` act — an LLM may analyze evidence, it may not export it.",
+   "engine_h": "In the engine",
+   "against": [
+    "in-toto / SLSA",
+    "sigstore",
+    "chain-of-custody tooling"
+   ],
+   "against_h": "Measured against",
+   "owed": "Custody is internal (self-signed over the ledger hash); interop with an external attestation ecosystem (in-toto layouts, transparency logs) is not yet a story.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "TLS / transport security",
+   "rating": "Partial",
+   "engine": "mTLS and TLS ride vendored mbedTLS, with a smoke guard (`test/cluster/mtls_narrated.ring`) and engine `fuzz_tls.zig`. Certificate helpers (key, SHA-256 fingerprint, info, readability) live in the security module.",
+   "engine_h": "In the engine",
+   "against": [
+    "OpenSSL / BoringSSL",
+    "rustls",
+    "mbedTLS"
+   ],
+   "against_h": "Measured against",
+   "owed": "Transport lives in the cluster / reactive / appserver planes, not security, and is shallow: no cert-lifecycle management, OCSP or cipher-policy governance. It works; it is not a managed TLS surface.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Input validation & injection defense",
+   "rating": "Partial",
+   "engine": "The primitives exist, scattered: HTML/URL escaping in `encode.zig`, the XML parser closing XXE by construction, request signing against forgery. Real defenses, in the right places.",
+   "engine_h": "In the engine",
+   "against": [
+    "OWASP ESAPI / Top 10",
+    "DOMPurify",
+    "parameterized-query libs"
+   ],
+   "against_h": "Measured against",
+   "owed": "No unified injection-defense surface in security: no central validation/sanitization governance, no SQLi / command-injection / path-traversal helpers, no CSRF/XSS toolkit. The OWASP-shaped lane is distributed, not owned.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Plugin / foreign-capability governance",
+   "rating": "Emerging",
+   "engine": "A designed doctrine — \"a plugin is a governed foreign capability\" — that would extend the capability lattice to third-party code (`SOFTANZA_PLUGIN_PLAN.md` + a comparative study).",
+   "engine_h": "In the engine",
+   "against": [
+    "WASM sandboxing",
+    "Pyodide",
+    "capability-based FFI"
+   ],
+   "against_h": "Measured against",
+   "owed": "Design docs and a recovered archive only — `base/plugin/` is not loaded in `stzBase.ring`. The seam that would make foreign code safe is planned, not shipped (this lane's full rating is the Extensibility group's page).",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first closes an OWASP-shaped hole and a data-at-rest one; the second is cheap and buys trust; the third is strategic. Value is impact on the library's security posture; effort is a rough engineering read.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — foundational",
+   "items": [
+    {
+     "title": "A unified injection-defense surface",
+     "text": "Central validation / sanitization governance covering XSS, SQLi, command injection and path traversal — the OWASP Top-10 core. The escaping primitives already ship; what is missing is one owned surface that a caller reaches for and the CI gate can check.",
+     "value": "High",
+     "effort": "Medium"
+    },
+    {
+     "title": "Authenticated symmetric encryption + a modern KDF",
+     "text": "AES-GCM or ChaCha20-Poly1305 for data-at-rest, and Argon2 alongside PBKDF2. The secret store governs access but cannot seal a value at rest without an AEAD — the one crypto gap that limits the keyring.",
+     "value": "High",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — cheap and high-leverage (mostly trust)",
+   "items": [
+    {
+     "title": "A formal threat model, mapped to guards",
+     "text": "The module makes honestly-scoped guarantees (the ledger doc names its in-process limit), but there is no STRIDE/threat-model document. Writing one — each guarantee → the assertion that proves it — turns implicit trust into an auditable claim.",
+     "value": "High",
+     "effort": "Low"
+    },
+    {
+     "title": "A shipped Vault / KMS backend adapter",
+     "text": "The `stzVaultResolver` seam is proven only against the in-memory reference. One real adapter (HashiCorp Vault or a cloud manager) turns the keyring from a reference design into a deployable one.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Scheduled rotation + password reset",
+     "text": "Both are named as remaining: automatic secret rotation on a schedule, and password-reset flowing through the store. Small additions to surfaces (`RotateQ`, `stzAuth`) that already exist.",
+     "value": "Medium",
+     "effort": "Low"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — strategic, larger",
+   "items": [
+    {
+     "title": "Ship plugin / foreign-capability governance",
+     "text": "Wire the designed plugin doctrine into the capability lattice and the CI gate, so third-party code becomes governed capability rather than trust. The distinctive safe-world model's natural next frontier.",
+     "value": "Strategic",
+     "effort": "High"
+    },
+    {
+     "title": "Grow the security-rule catalogue",
+     "text": "Three rules today. The reachability seam is built to carry many — a real catalogue (misconfig, over-privilege, exposure patterns) feeding the one CI gate would make it a live policy engine against OPA/semgrep, not a demonstrator.",
+     "value": "High",
+     "effort": "Medium"
+    },
+    {
+     "title": "Anomaly detection + DLP",
+     "text": "Beyond the three fixed detection shapes: statistical/anomaly detection over the ledger, Sigma-rule interop, and a PII-classification / DLP layer so redaction protects data it was never explicitly handed.",
+     "value": "Medium",
+     "effort": "High"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "Security is heavily guarded — roughly a thousand assertions across the identity, ledger, detection, reveal-gate and multi-hop-escalation scenarios — but the guards live under `test/system`, `test/cluster` and `test/governance`, not a `test/security` folder, and every guarantee is scoped honestly in its doc. What is not present is a single formal threat model tying those guarantees together."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza's security advantage is not a better crypto library — it is a governance doctrine enforced uniformly: one capability lattice under which an LLM cannot act effectfully, a tamper-evident ledger, and a full identity stack, all feeding one CI gate. The gaps that matter are the classic surfaces that doctrine has not yet absorbed — injection defense, data-at-rest sealing, and foreign-code governance."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16 — Ring faces under `base/security` (25 files: `stzSecret`, `stzSecretStore`, `stzAuth`, `stzSecurityGraph/Rule`, `stzSecurityLedger/Event`, `stzDetection`, `stzIncident`) and `base/governance`; engine `crypto.zig`, `seclog.zig`, `webauthn.zig`, `xmldsig.zig` + vendored `mbedTLS`; plan of record `doc/design/SOFTANZA_SECURITY.md`. Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

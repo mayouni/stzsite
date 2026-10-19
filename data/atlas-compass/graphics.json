@@ -1,0 +1,277 @@
+{
+ "slug": "graphics",
+ "url": "https://claude.ai/artifact/4uSeoZvDiv39BwRAwBz6Ba",
+ "title": "Softanza Graphics Engine — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "Most of the field ships one lane well: Skia renders, D3 charts the web, Graphviz lays out graphs, spatstat does the statistics and draws nothing. Softanza is one Zig engine behind declarative Ring faces that reaches across twelve of those lanes at once — and the honest read below says which are genuinely strong, which are solid, and which are still gaps worth closing.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships in the engine today, the tools it is fair to measure against, and the one thing still owed. Ratings are earned by what the guards prove, not by what the plan intends.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Text & typography",
+   "rating": "Strong",
+   "engine": "A full Unicode pipeline — `SheenBidi` → `HarfBuzz` → `stb_truetype`: bidi reorder, OpenType shaping, Arabic kashida justification at font-declared points, fallback chains, vertical CJK, glyph-id witnessing.",
+   "engine_h": "In the engine",
+   "against": [
+    "HarfBuzz + FreeType + ICU",
+    "Browser text engines",
+    "Pango"
+   ],
+   "against_h": "Measured against",
+   "owed": "Line breaking / multi-line paragraph layout; an IME-grade retained layout; text halos as a first-class primitive.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Colour system",
+   "rating": "Strong",
+   "engine": "OKLCH/Oklab throughout, monotonic ramps by construction, a five-value semantic family governed by a constitution, ten themes, and WCAG 2 + APCA contrast as gate-able numbers (`StzIsLegible`, `StzContrastLc`).",
+   "engine_h": "In the engine",
+   "against": [
+    "D3-color",
+    "chroma.js / culori",
+    "Adobe Leonardo"
+   ],
+   "against_h": "Measured against",
+   "owed": "Colour-blindness (CVD) simulation — deuteran / protan / tritan — and a \"safe under CVD\" check beside the contrast one.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Cartography & projections",
+   "rating": "Strong",
+   "engine": "44 projections with inverses (analytic + a shared Newton/Jacobian solver), WGS84 geodesy with ECEF/ENU frames and DMS, GeoJSON/TopoJSON, choropleth · symbol · flow · hex-bin, insets, Tissot, scale bar, north arrow, day-night terminator.",
+   "engine_h": "In the engine",
+   "against": [
+    "D3-geo",
+    "Wolfram GeoGraphics",
+    "Cartopy",
+    "GeoTools"
+   ],
+   "against_h": "Measured against",
+   "owed": "Not the projection count (nobody's analysis is wrong for want of Wagner VII) — it's live interactivity, which is the GUI plane's to add on GE5's hands.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Spatial statistics",
+   "rating": "Strong",
+   "engine": "Clark-Evans with its z-test, Ripley's K/L, G & F functions, simulation envelopes, mean centre / Weiszfeld median / SD ellipse; kernel density, marching-squares contours; IDW, fitted variograms and ordinary kriging with its variance surface; seven point-process null models.",
+   "engine_h": "In the engine",
+   "against": [
+    "spatstat (R)",
+    "PySAL",
+    "ArcGIS"
+   ],
+   "against_h": "Measured against",
+   "owed": "Broadly at parity for the analyst's core questions — the rare lane where a general graphics library also computes the statistics it draws.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Diagramming",
+   "rating": "Strong",
+   "engine": "25+ notations, all closed (DN0–DN24): flowcharts, DRAKON, BPMN, UML, org, Gantt, ER, Petri nets, fault trees, fishbone, network, floor plans — many constraint-solved, not placed. Own deterministic layout engine (GG1–GG6) plus a live \"picture-as-input\" mode.",
+   "engine_h": "In the engine",
+   "against": [
+    "Graphviz",
+    "Mermaid",
+    "PlantUML",
+    "D2"
+   ],
+   "against_h": "Measured against",
+   "owed": "Force / hierarchical graph layout still shells out to `dot.exe` — the one external-binary runtime dependency.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "GPU compute + render",
+   "rating": "Strong",
+   "engine": "In-house `wgpu` (WebGPU) surface: instanced multi-texture render and compute — `matmul`, `fft`, `softmax`, `topk`, pairdist — composed zero-copy on one device, with a W-string → WGSL transpiler.",
+   "engine_h": "In the engine",
+   "against": [
+    "raw wgpu / Dawn",
+    "three.js",
+    "taichi",
+    "regl"
+   ],
+   "against_h": "Measured against",
+   "owed": "Single-GPU discipline is a deliberate constraint, not a gap; browser (WebGPU) tier is proven, the multi-device story is out of scope by choice.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "2D vector rendering",
+   "rating": "Solid",
+   "engine": "Retained display-list canvas with an SVG floor that always answers, GPU-backed PNG (lossless, auto indexed/RGB/RGBA) and supersampled hi-res. Rect, rounded-rect, circle, ellipse, line, polyline, polygon, mesh, tinted image; linear gradient; rect clip; SVG hit-testing.",
+   "engine_h": "In the engine",
+   "against": [
+    "Skia",
+    "Cairo",
+    "HTML Canvas / SVG",
+    "PlutoVG"
+   ],
+   "against_h": "Measured against",
+   "owed": "No Bézier / arc / general `AddPath`, no affine transform stack, only linear gradients — and the CPU rasteriser was never written, so PNG needs a GPU device or refuses to the SVG floor.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Accessibility",
+   "rating": "Solid",
+   "engine": "An accessibility tree with roles, names, reading order and `ToJSON`, a screen-reader bridge, and the contrast/legibility maths already gating colour choices.",
+   "engine_h": "In the engine",
+   "against": [
+    "axe-core",
+    "Browser a11y tree",
+    "WAI-ARIA"
+   ],
+   "against_h": "Measured against",
+   "owed": "CVD simulation (shared with colour); an a11y layer for raster canvas / geo / diagram output beyond the GUI document tree.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Output & portability",
+   "rating": "Solid",
+   "engine": "SVG everywhere (no device needed), lossless PNG with a returned encode decision, raw pixel buffers, native window and browser tiers. Engine, SVG and PNG are cross-platform by construction.",
+   "engine_h": "In the engine",
+   "against": [
+    "Cairo (PDF/PS)",
+    "Skia",
+    "librsvg"
+   ],
+   "against_h": "Measured against",
+   "owed": "No PDF, JPEG or WebP export; only Windows is runtime-verified — Linux/macOS windowing is vendored but not yet run on hardware.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Charts & data-viz",
+   "rating": "Partial",
+   "engine": "Bar, horizontal-bar, multi-bar, line, scatter, histogram, surface and treemap — each with SVG and PNG backends and a terminal renderer, over a real stats plane (`stzDataSet`, hypothesis tests).",
+   "engine_h": "In the engine",
+   "against": [
+    "D3",
+    "Vega-Lite",
+    "matplotlib",
+    "ECharts",
+    "Observable Plot"
+   ],
+   "against_h": "Measured against",
+   "owed": "The most crowded field, and the weakest lane: no pie/donut, area, heatmap, box/violin or candlestick. Closing these is the highest-visibility win.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Interactivity & animation",
+   "rating": "Partial",
+   "engine": "Canvas hit-testing (`Pick`), SVG ids/classes for hover, a GUI event model that surfaces the input source and counts dropped events, and a drag-driven live diagram.",
+   "engine_h": "In the engine",
+   "against": [
+    "D3 transitions",
+    "GSAP",
+    "Framer Motion"
+   ],
+   "against_h": "Measured against",
+   "owed": "Animation, transitions and tweening are explicitly deferred — no timeline / easing API yet. GUI-plane (G5) territory.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Perception — the plane can draw, not yet see",
+   "rating": "Emerging",
+   "engine": "The VISION plane's first rung: a draw→read round trip proven through `Windows.Media.Ocr` and `onnxruntime` (10 ms, glyph-accurate incl. Arabic shaping quirks) — perception, not just production.",
+   "engine_h": "In the engine",
+   "against": [
+    "OpenCV",
+    "Tesseract",
+    "Cloud Vision"
+   ],
+   "against_h": "Measured against",
+   "owed": "Nearly all of it — image recognition, classification, document understanding. The largest new direction, and a deliberate frontier.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first buys the most across lanes; the second is cheap and high-leverage; the third is strategic and larger. Value is impact on the library's reach; effort is a rough engineering read.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — foundational, unblocks several lanes",
+   "items": [
+    {
+     "title": "General paths, curves & transforms",
+     "text": "Bézier / arc / `AddPath` and an affine transform stack. Flat art, maps and diagrams all work today — but smooth chart lines, rounded flows and rotated groups all wait on this one primitive. It is the single most-reused missing piece.",
+     "value": "High",
+     "effort": "Medium"
+    },
+    {
+     "title": "Complete the chart family",
+     "text": "Pie/donut, area, heatmap, box/violin, candlestick — engine renderers plus `stzPlotCanvas` faces. This closes the weakest lane against the most crowded field, and it is the most visible \"we do that too\" win.",
+     "value": "High",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — cheap and high-leverage",
+   "items": [
+    {
+     "title": "Colour-blindness simulation",
+     "text": "Deuteran / protan / tritan transforms and an `IsSafeUnderCVD` check beside `StzIsLegible`. A small addition to an already-strong colour system that competitors treat as a headline feature.",
+     "value": "High",
+     "effort": "Low"
+    },
+    {
+     "title": "Radial & conic gradients + halos",
+     "text": "Two more gradient kinds and a first-class text halo (hand-rolled today). Small, and they lift the quality of every figure the plane already draws.",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "Multi-line paragraph text",
+     "text": "Line breaking over the existing pure-function layout — a wrapper, not a rewrite. Unlocks captions, annotations and any label longer than a line.",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — strategic, larger",
+   "items": [
+    {
+     "title": "Animation & transitions",
+     "text": "A timeline / easing / tween API — the deferred lane. Belongs with the GUI plane's reactive layer (G5) rather than the canvas.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "PDF export & the raster floor",
+     "text": "An SVG→PDF path for print/publication, and either the never-written CPU rasteriser or an accepted device-free raster route so PNG no longer needs a GPU.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "Own graph layout · cross-platform proof · perception",
+     "text": "Retire the `dot.exe` dependency; run and CI-verify Linux/macOS on real hardware; and mature the VISION plane from OCR to recognition. Each is a program, not a patch.",
+     "value": "Strategic",
+     "effort": "High"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza's advantage is not being best-in-lane against Skia or D3 — it is being coherent across twelve lanes under one governed colour and text system, which no single competitor is. The gaps that matter are where a lane a user expects (charts, curves) falls short of that coherence; the gaps that don't are the ones we chose (data services, a second GPU, vendoring the world)."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-15 — engine `stz_gpu.dll` / `stz_geo.dll` and the Ring faces under `base/graphics`, `base/graph`, `base/geo`, `base/gui`; plans of record `SOFTANZA_GRAPHICS_PLAN.md`, `…_COLOR_SYSTEM.md`, `…_GRAPH_PLANE_PLAN.md`. Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

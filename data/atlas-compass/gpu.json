@@ -1,0 +1,274 @@
+{
+ "slug": "gpu",
+ "url": "https://claude.ai/artifact/HefJH6rS2QYbVvR2cXaSXH",
+ "title": "GPU — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "An in-house `wgpu` plane that does what neither three.js (render-only) nor taichi (compute-only) does: compute and render on one device, zero-copy. Its distinctive core is a self-tuning foundry — a checker that refuses physically-impossible kernel times, shape-keyed CPU-vs-GPU routing measured and persisted, and a winning-kernel table per shape. Real consumers are accelerated and verified: t-SNE 5–8×, UMAP up to 16×, k-means 6×, neural forward 5×, exact vector search 18× — always with a bit-identical CPU fallback. It runs in the browser too (byte-identical WGSL native vs WASM). What it refuses by measured decision — f64 on GPU, multi-GPU, deep 3D — are scope boundaries, not oversights.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships, the tools it is fair to measure against, and the one thing still owed. The plane straddles two peer worlds — three.js for render, taichi for compute — and its edge is doing both under one governed, self-measuring device.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "The calibration foundry",
+   "rating": "Strong",
+   "engine": "The distinctive core (`gpu_verify.zig`, `gpu_foundry.zig`): a checker that runs reference vs candidate on the same device at a visible and a hidden shape, times on two clocks, and refuses by name any time under a measured roofline; a shape-keyed store `(adapter, op, n-class, d-class)` that persists the winning kernel variant and the CPU-vs-GPU crossover.",
+   "engine_h": "In the engine",
+   "against": [
+    "taichi (autotune)",
+    "ML-compiler autotuners",
+    "(no direct peer)"
+   ],
+   "against_h": "Measured against",
+   "owed": "A self-tuning GPU foundry with a self-checking committer — a test-only \"broken\" variant is refused in every foundry — is something no mainstream GPU library ships. The one clear category-of-one lane.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Device & runtime (wgpu)",
+   "rating": "Strong",
+   "engine": "`gpu.zig` over vendored wgpu-native v29 (DX12 / Vulkan / Metal / WASM): generation-keyed handles, bounded VRAM cache, WGSL compile-cache keyed by kernel text, TDR-safe tiling, batched passes, async dispatch, and live instruments (`gpu.dispatch.ms`, `gpu.fallback.count`).",
+   "engine_h": "In the engine",
+   "against": [
+    "wgpu (raw)",
+    "Dawn",
+    "WebGPU"
+   ],
+   "against_h": "Measured against",
+   "owed": "A managed, instrumented, crash-safe device layer over raw wgpu — more than the bare API gives you. At parity for the runtime it targets.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Compute kernels",
+   "rating": "Strong",
+   "engine": "A real WGSL kernel library: `matmul` (tiled + register-blocked variants), `pairdist`, `softmax`, reductions (`sum`/`dot`), axpby/mul/scale, FFT convolution (Stockham radix-2), and fused multi-head attention — each with kernel variants the foundry selects between.",
+   "engine_h": "In the engine",
+   "against": [
+    "taichi",
+    "wgpu compute",
+    "cuBLAS / cuDNN"
+   ],
+   "against_h": "Measured against",
+   "owed": "A curated fast set (incl. FFT and attention) rather than a general kernel zoo. Broadening it is the transpiler's job (lane 6), not more hand-written shaders.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Compute + render on one device",
+   "rating": "Strong",
+   "engine": "Compute and render compile into one DLL sharing one device: instanced 2D display list (`gpu_scene.zig`, GPU + SVG backends), HarfBuzz text (`gpu_text.zig`), texture atlas, and 3D meshes drawn as a single instanced draw (`gpu_scene3d.zig`) — with compute→render proven zero-copy.",
+   "engine_h": "In the engine",
+   "against": [
+    "three.js (render only)",
+    "taichi (compute only)",
+    "regl"
+   ],
+   "against_h": "Measured against",
+   "owed": "Neither category leader composes compute and render on one zero-copy device — three.js can't compute, taichi can't render, raw wgpu makes you build it. The 3D feature depth is the gap (lane 12).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Acceleration seams (GS)",
+   "rating": "Strong",
+   "engine": "Real consumers routed to GPU and verified: t-SNE (`tsne_gpu.zig`) 5–8×, UMAP (`umap_gpu.zig`) 9.8–16.5×, k-means (`kmeans_gpu.zig`) up to 6.1×, semantic index 2–2.5×, neural backbone 5.3×, exact vector search 17.9× — each with a bit-identical CPU fallback (k-means decides ties in f64 on CPU: max Δ=0).",
+   "engine_h": "In the engine",
+   "against": [
+    "RAPIDS / cuML",
+    "taichi",
+    "cuGraph"
+   ],
+   "against_h": "Measured against",
+   "owed": "Measured, verified acceleration of the library's own ML/analytics — not a benchmark, a shipped route with a correctness guarantee. Coverage is per-op; whole-pipeline residency is the reach (Tier A).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "W-string → WGSL transpiler",
+   "rating": "Solid",
+   "engine": "`gpu_wgsl.zig` turns a declarative kernel spec (`stzKernelMaker`: TakesVector / ReturnsVector / ForEachElement + a W-string body) into complete elementwise WGSL — f32-only, a 20-function whitelist, refusing unknown functions by name, zero-allocation so it also compiles into the browser WASM.",
+   "engine_h": "In the engine",
+   "against": [
+    "taichi (Python DSL)",
+    "Triton",
+    "CUDA C++"
+   ],
+   "against_h": "Measured against",
+   "owed": "Elementwise-only — one assignment `@out = expr`, no loops or reductions. taichi and Triton let users write arbitrary kernels; this authors the simple ones and leaves the hard kernels hand-written.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Browser / WebGPU edge tier",
+   "rating": "Solid",
+   "engine": "The transpiler compiles into `stz.wasm` as the `gpu` capability group, so the same spec authors a kernel in the browser. Proven: same spec → byte-identical WGSL native vs browser → f32-exact equal results (`test/gpu/edge_proof`, 5/5).",
+   "engine_h": "In the engine",
+   "against": [
+    "three.js (web)",
+    "wgpu WASM",
+    "TensorFlow.js"
+   ],
+   "against_h": "Measured against",
+   "owed": "Genuine native/browser parity, but the edge tier runs the transpiler's elementwise kernels — the full op library (matmul, FFT, attention) is not yet exposed in the browser.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Residency & buffer model",
+   "rating": "Solid",
+   "engine": "The design axiom: upload once → run N kernels → read once. Every op takes and returns device-buffer handles (`stzGpuBuffer`), a bounded FIFO VRAM cache manages residency, and compute+render share buffers on the one device.",
+   "engine_h": "In the engine",
+   "against": [
+    "taichi fields",
+    "wgpu buffers",
+    "CUDA memory"
+   ],
+   "against_h": "Measured against",
+   "owed": "A clean residency model that makes chains cheap — but single-device, and eviction is FIFO rather than usage-aware. No device-to-device transfer (a wgpu limitation, and the reason multi-GPU is out of scope).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Idle / power management",
+   "rating": "Solid",
+   "engine": "A real answer to a real hazard: a power-gated laptop dGPU sleeps after ~10 s idle (a 32 MB copy drops from 85 to 13 GB/s). `stz_gpu_wake(cap_ms)` (`Wake(400)`) does adaptive copies until one runs at full speed, then stops; every guard and calibration wakes the device before timing.",
+   "engine_h": "In the engine",
+   "against": [
+    "(GPU-runtime power quirks)",
+    "CUDA persistence mode"
+   ],
+   "against_h": "Measured against",
+   "owed": "Idle-aware routing (GK1b) is named, not built — a sporadic caller still pays the ~2 ms wake penalty because routing doesn't yet model the dormant-clock cost of the very next submit.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Precision — f64 on GPU",
+   "rating": "Partial",
+   "engine": "f32 throughout: the transpiler emits f32 only, and `gpu_math.zig` is \"f32 graphics math, deliberately apart from the f64 solver tier.\" The f64 linear-algebra (LU/QR/Cholesky/SVD/eigen) stays CPU SIMD.",
+   "engine_h": "In the engine",
+   "against": [
+    "CUDA (f64)",
+    "OpenCL",
+    "ROCm"
+   ],
+   "against_h": "Measured against",
+   "owed": "f64 is refused by measured decision — consumer NVIDIA runs it at 1/64 of f32 (the dev 3050). A defensible scope boundary, but a real capability CUDA has; the documented escape hatch is an OpenCL route, not built.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Multi-GPU / scaling",
+   "rating": "Partial",
+   "engine": "Adapter enumeration, explicit selection of one device, and per-adapter calibration files — \"selection, not parallelism.\" `SelectAdapter` closes the current device and stales its handles before opening another.",
+   "engine_h": "In the engine",
+   "against": [
+    "CUDA multi-GPU",
+    "Dask-CUDA",
+    "taichi"
+   ],
+   "against_h": "Measured against",
+   "owed": "No two-device parallelism (device state is module globals; wgpu has no device-to-device transfer). Out of scope by choice with a pre-written kill line: a two-adapter pool must beat the faster single adapter by 1.5× or it's refused.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "3D render depth",
+   "rating": "Partial",
+   "engine": "3D ships: a camera, one directional light, and instanced meshes drawn in a single instanced call (`gpu_scene3d.zig`, `gpu_mesh.zig`).",
+   "engine_h": "In the engine",
+   "against": [
+    "three.js",
+    "Babylon.js",
+    "Bevy"
+   ],
+   "against_h": "Measured against",
+   "owed": "Minimal next to a real 3D engine: no PBR materials, shadows, post-processing, or a deep scene graph. 3D here is a companion to compute, not a game/vis engine — the depth is the gap.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first widens what the plane can express and cover; the second finishes named-but-unbuilt seams; the third is depth and reach, some of it deliberate scope to revisit only on demand.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — widen expression & coverage",
+   "items": [
+    {
+     "title": "Broaden the kernel transpiler",
+     "text": "Beyond elementwise: loops, reductions and stencils in the W-string→WGSL path, so users author real kernels the way taichi/Triton allow — not just the simple ones. It is the lever that turns a curated kernel set into an open one.",
+     "value": "High",
+     "effort": "High"
+    },
+    {
+     "title": "Whole-pipeline GPU residency",
+     "text": "Chain multiple GPU consumers (e.g. embed → knn → cluster) on one resident buffer set rather than per-op round trips. The residency model exists; extending the foundry to multi-kernel pipelines compounds the measured wins.",
+     "value": "High",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — finish the named seams",
+   "items": [
+    {
+     "title": "Idle-aware routing (GK1b)",
+     "text": "Model the ~2 ms sleeping-GPU penalty in the router so a sporadic caller isn't charged a cold submit it can't amortize. Small, and it removes the one place the otherwise-excellent routing misjudges.",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "Complete GK2b elementwise + GS1b",
+     "text": "The matmul foundry's elementwise half (named, no caller yet) and the sound-desk FFT pointer route — the two named-not-built seams that round out the foundry and the FFT consumer story.",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "A device-free raster floor",
+     "text": "PNG currently needs a GPU device (SVG is the deviceless floor), and the plan mentions a CPU rasterizer that does not exist. Either write it or formally accept SVG-only when headless — a documented divergence worth closing.",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — depth & deliberate scope",
+   "items": [
+    {
+     "title": "Deeper 3D rendering",
+     "text": "PBR materials, shadows, post-processing and a scene graph — the three.js/Babylon feature set. It would turn the compute-companion 3D into a real visualization/game render path.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "Multi-GPU pool (GX0)",
+     "text": "An adapter pool with host partition/merge — deliberately out of scope until a machine with ≥2 discrete adapters and a partitionable workload asks, and it must clear a pre-written 1.5× kill line. A revisit-on-demand item, not an oversight.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "An f64 GPU route (OpenCL)",
+     "text": "For the domains that truly need double precision on device, the documented runner-up (an OpenCL path) rather than WGSL. Low priority — the f64 solver tier is fast on CPU SIMD and refuses GPU by measurement.",
+     "value": "Low",
+     "effort": "High"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "Re-surveyed from `main` (the session's working branch was stale). The plane is heavily guarded — ~24 narrated guards — but CI has no GPU: the fallback path is the CI coverage, and the device scenes run only on the dev machine (RTX 3050 Laptop), so GPU correctness is proven on one adapter and calibration is per-adapter. The trust anchor is the checker (GK0), which is guarded to catch answers-without-reading-input, constant offsets, and physically-impossible times. Two plan-vs-code divergences are recorded: no CPU rasterizer despite a plan mention (SVG is the floor), and a fixture checked in as an expectation."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza's GPU isn't trying to be three.js or taichi — it is a governed compute-and-render device with a self-tuning, self-checking foundry, where every GPU route is measured, verified, and reversible to CPU; its remaining distance is expressiveness (open kernels), 3D depth, and the f64/multi-GPU frontiers it refuses on purpose until a workload earns them."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16, from a read-only `main` worktree — Ring faces under `base/gpu` (`stzGpu`, `stzGpuBuffer`, `stzKernelMaker`); engine `gpu.zig`, `gpu_ops.zig`, `gpu_verify.zig`, `gpu_foundry.zig`, `gpu_wgsl.zig`, `gpu_fft.zig`, `gpu_scene/text/scene3d.zig`, `tsne_gpu / umap_gpu / kmeans_gpu / neural_backbone.zig`; vendored `wgpu-native v29`; plan of record `SOFTANZA_GPU_PLAN.md` (G0–G6, GK0–GK2c, GS1–GS7); guards under `test/gpu` (24 files) + `edge_proof`. Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

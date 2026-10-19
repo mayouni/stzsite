@@ -1,0 +1,271 @@
+{
+ "slug": "extensibility",
+ "url": "https://claude.ai/artifact/B7CGAa1NoVLSQPYN3kMy4j",
+ "title": "Extensibility & foreign code — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "The most honestly-mixed group in the survey. What ships is real but modest: Softanza consumes a large, carefully-vendored foreign-code stack (tree-sitter, SQLite, curl, mbedTLS, zlib, ggml, RmlUi, HarfBuzz, PCRE2… all compiled from source, no external runtime deps) — genuinely strong foreign-code integration — plus pragmatic interop: subprocess bridges that run Python/R/Julia/C/Prolog/Node, Ring shims that let you paste Python/PHP/SQL, and tool bridges to Graphviz/QML. But the actual extensibility story the group is named for is overwhelmingly planned: there is no in-process FFI, no embedded interpreter, and the plugin plane (\"a plugin is governed foreign capability — accept code you don't trust, audit what it did, undo it\") is a detailed plan with a recovered reference archive but zero live code.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships, the tools it is fair to measure against, and the one thing still owed. The split runs down the middle: Softanza using foreign code is real; letting a user plug in foreign code is mostly designed, not built.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Foreign-library consumption (the vendored stack)",
+   "rating": "Strong",
+   "engine": "A large, disciplined vendored C/C++ stack compiled into the engine from source via Zig — tree-sitter, SQLite, curl, mbedTLS, zlib, ggml, RmlUi, GLFW, wgpu, HarfBuzz, SheenBidi, PCRE2, utf8proc, Snowball, AccessKit — with no external runtime dependencies (each vendored, pinned, and patched where needed).",
+   "engine_h": "What ships",
+   "against": [
+    "any language's C ecosystem",
+    "Zig build-from-source"
+   ],
+   "against_h": "Measured against",
+   "owed": "Foreign-code integration is genuinely strong — a dozen serious native libraries built and linked cleanly. This is the one lane where \"foreign code\" is a shipped strength, not a plan.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Foreign-code parsing (tree-sitter)",
+   "rating": "Solid",
+   "engine": "`stz_polyglot` parses Python and JavaScript source (vendored tree-sitter grammars, compiled — no interpreter) into a shared declaration/call protocol that feeds `stzCodeGraph` — understanding foreign code without running it.",
+   "engine_h": "What ships",
+   "against": [
+    "tree-sitter",
+    "language servers"
+   ],
+   "against_h": "Measured against",
+   "owed": "Two grammars, parse-only (see the Metaprogramming page for the deep rating). It reads foreign code; it does not execute it.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "External-tool bridges",
+   "rating": "Solid",
+   "engine": "Subprocess bridges to external tools: `stzDotCode` (Graphviz `dot` → SVG/PNG), `stzQmlCode` (Qt's standalone `qml` runtime), and `stzImgToAscii` (a vendored `im2ansi.exe`) — same write-temp / spawn / read shape.",
+   "engine_h": "What ships",
+   "against": [
+    "tool-shelling patterns",
+    "graphviz bindings"
+   ],
+   "against_h": "Measured against",
+   "owed": "Real, loaded bridges (dot, qml) — though `stzImgToAscii` ships but is never loaded, and each depends on the external tool being installed.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Call-out interop (extercode)",
+   "rating": "Partial",
+   "engine": "`stzExterCode` + wrappers run Python, R, Julia, C, Prolog and Node: write the snippet to a temp file, wrap it with a result-serialization prelude, shell out via `stzSystemCall`, and `eval()` the transformed result back into a Ring value.",
+   "engine_h": "What ships",
+   "against": [
+    "FFI (in-process)",
+    "Pyodide (embedded)",
+    "subprocess interop"
+   ],
+   "against_h": "Measured against",
+   "owed": "Subprocess-only — high overhead, no shared memory, gated on installed toolchains and hardcoded `d:\\` paths — and the whole suite is currently red (lane 12). It runs foreign code, but coarsely.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Foreign-syntax shims (extincode)",
+   "rating": "Partial",
+   "engine": "Ring shims so you can paste foreign syntax and run it as Ring with small edits: Python (`range`/`print`/f-strings), PHP, C#, Perl, C ternaries, and the biggest — SQL-in-Ring (`SELECT/FROM_/WHERE_/ORDER_BY` as functions over `stzTable`).",
+   "engine_h": "What ships",
+   "against": [
+    "transpilers",
+    "polyglot notebooks",
+    "embedded DSLs"
+   ],
+   "against_h": "Measured against",
+   "owed": "A distinctive paste-and-tweak ergonomic — but these are shims, not a runtime (no foreign interpreter), coverage is thin (the JS shim is an empty stub), and the suite is red (lane 12).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Interop robustness (test state)",
+   "rating": "Partial",
+   "engine": "Both shipped interop modules have real test suites with genuine assertions (language-table checks, `iif`/`range` comparisons, port examples with expected outputs).",
+   "engine_h": "What ships",
+   "against": [
+    "green interop suites"
+   ],
+   "against_h": "Measured against",
+   "owed": "The suites are entirely red: `C22 function-redefinition`, 0 passing — the base library loads fine, so it's a duplicate definition in the shims (e.g. `echo`/`range0` defined in both the PHP and Python files, both loaded). Shipped, but not currently trustworthy.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "In-process FFI",
+   "rating": "Emerging",
+   "engine": "None for user code. There is no `dlopen` / `cffi` / direct-C-call surface — (`extern` in the engine is only vendored C headers the engine itself links).",
+   "engine_h": "What ships",
+   "against": [
+    "ctypes / cffi",
+    "Node FFI",
+    "JNI"
+   ],
+   "against_h": "Measured against",
+   "owed": "No way for a user to call a C function directly and fast. The only \"call out\" is the subprocess bridge (lane 4) — an order of magnitude heavier than FFI.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Embedded interpreters (Pyodide-style)",
+   "rating": "Emerging",
+   "engine": "None. No in-process Python / JS / Lua interpreter embedded in the engine; foreign execution is subprocess-only.",
+   "engine_h": "What ships",
+   "against": [
+    "Pyodide",
+    "embedded V8 / Lua",
+    "RustPython"
+   ],
+   "against_h": "Measured against",
+   "owed": "No embedded runtime means no fast, in-memory foreign execution and no shared data structures across the language boundary — the Pyodide/embedded-VM model is entirely absent.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Plugin plane — load / register / govern",
+   "rating": "Emerging",
+   "engine": "A detailed plan of record (PL0–PL5) and a `recovered/` archive — a working single-file 2024 system and a never-run 2025 refactor, both explicitly \"reference only, not loaded.\" The enabling VM primitives (`ring_state_*`) exist. No live plugin code; not loaded in `stzBase`; no test dir.",
+   "engine_h": "What ships",
+   "against": [
+    "VS Code extensions",
+    "OSGi",
+    "WordPress hooks",
+    "MCP"
+   ],
+   "against_h": "Measured against",
+   "owed": "The group's named headline is unbuilt — the recovered 2024 system proves the mechanism works (~3.1 ms/call, per-call VM-state isolation), so PL1 is a rebuild on a known-good base, not a discovery.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Governance of untrusted capability",
+   "rating": "Emerging",
+   "engine": "The distinctive thesis, designed: a five-clause contract — isolation, per-call ledger, cooperative constraint, currency (fswatch + hash), and governance (trust posture picks the isolation tier; verdicts to `stzRuleReport`), with reversible updates (`XfU`) and `@plugin_author` provenance.",
+   "engine_h": "What ships",
+   "against": [
+    "MCP",
+    "plugin permission models",
+    "capability systems"
+   ],
+   "against_h": "Measured against",
+   "owed": "\"Accept capability you don't trust — from humans or models — and prove afterwards what it did, and undo it.\" A genuinely distinctive idea (per-call audit + effect reversal + provenance) — but entirely unbuilt.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Isolation & sandboxing",
+   "rating": "Emerging",
+   "engine": "Designed two-tier isolation (`:State` in-process `ring_state` / `:Process` reactor spawn), with the host-state guarantee \"by physics\" (a VM state can't reference host memory). Explicitly refuses to be a security sandbox — governance, not syscall confinement.",
+   "engine_h": "What ships",
+   "against": [
+    "WASM sandbox",
+    "V8 isolates",
+    "gVisor"
+   ],
+   "against_h": "Measured against",
+   "owed": "Unbuilt, and by design it is not a syscall-level sandbox — a plugin in the process tier can still do what the process can. Honest, but a real boundary vs WASM/V8 isolation.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Distribution — package / marketplace / signing",
+   "rating": "Emerging",
+   "engine": "None — and the plugin plan explicitly states it is not a package manager, marketplace or code-signing scheme.",
+   "engine_h": "What ships",
+   "against": [
+    "npm / pip",
+    "VS Code Marketplace",
+    "crates.io"
+   ],
+   "against_h": "Measured against",
+   "owed": "No discovery, versioning, dependency resolution or signed distribution — deliberately deferred. Even a manifest + provenance story would be a first step the plan reserves for later.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first is a cheap correctness fix plus the group's headline plane; the second is the fast interop path and finishing the shipped bridges; the third is the embedded/distribution reach.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — fix what's red, build what's named",
+   "items": [
+    {
+     "title": "Fix the red interop suites",
+     "text": "extercode and extincode ship and load, but 0 tests pass — a `C22` duplicate-definition (the shims define `echo`/`range0` in both the PHP and Python files). Namespace the shim functions so the two shipped modules become trustworthy. Cheap, and it turns \"shipped-but-red\" into \"shipped.\"",
+     "value": "High",
+     "effort": "Low"
+    },
+    {
+     "title": "Build the plugin plane (PL0–PL5)",
+     "text": "The group's named headline — governed foreign capability — with a working recovered reference and the enabling `ring_state_*` primitives already in the VM. PL1 rebuilds on a known-good base; the whole point (audit + reverse untrusted capability) has no competitor.",
+     "value": "High",
+     "effort": "High"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — the fast path & finish the shipped bits",
+   "items": [
+    {
+     "title": "In-process FFI",
+     "text": "A `dlopen`/cffi-style bridge so a user can call a C function directly — the fast, shared-memory path the subprocess bridge (lane 4) can never be. It also underpins any future embedded-interpreter work.",
+     "value": "High",
+     "effort": "High"
+    },
+    {
+     "title": "Configurable toolchain discovery",
+     "text": "Retire extercode's hardcoded `d:\\` interpreter paths for real discovery (PATH / config), so \"run this Python\" works on a machine that isn't the dev box.",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "Wire the plugin isolation tiers",
+     "text": "The `:State` (`ring_state`) and `:Process` (reactor spawn) tiers the plan designs — the mechanical half of the plugin plane, on which the governance clauses hang.",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — embedded & distribution reach",
+   "items": [
+    {
+     "title": "The governance / audit / reversal contract",
+     "text": "The plan's crown: per-call ledger, `XfU` effect reversal, provenance, and verdicts into the one CI gate — the \"prove what it did and undo it\" guarantee that distinguishes this plane from every mainstream plugin system.",
+     "value": "High",
+     "effort": "High"
+    },
+    {
+     "title": "Embedded interpreters",
+     "text": "An in-process Python or Lua (Pyodide-style) for fast foreign execution with shared data — the heavy alternative to subprocess interop, worth it where the round-trip cost dominates.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "A manifest & provenance layer",
+     "text": "Not a marketplace (deliberately out of scope) — but a plugin manifest, versioning and signed provenance, the minimum a governed-capability plane needs to trust where a plugin came from.",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "Re-surveyed from `main` — and it corrected an earlier read: `extercode` and `extincode` are not plan-only; they ship and are loaded. But three caveats hold: (1) both shipped interop suites are entirely red (`C22` function-redefinition, 0 passing — a duplicate-def in the shims, not a base-library fault); (2) the `plugin` plane is genuinely plan-only (no live code, not loaded, no test dir), with a recovered archive marked \"reference only\"; (3) there is no in-process FFI or embedded interpreter anywhere — foreign execution is subprocess-only. The \"governed foreign capability\" thesis is distinctive and its VM primitives exist, but it is unbuilt."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza is strong at using foreign code (a serious vendored native stack) and pragmatic at bridging to it (subprocess interpreters, syntax shims, tool shells) — but the extensibility it is named for, letting a user or a model plug in code the host governs, audits and can undo, is a compelling design with no shipped implementation, and the interop that does ship needs its test suites made green."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16, from a read-only `main` worktree — Ring faces under `base/extercode` (`stzExterCode`, `stzPythonCode/RCode/JuliaCode/PrologCode`, `stzDotCode`, `stzQmlCode`) and `base/extincode` (`stzExtinPython/Php/Sql/C/CSharp/Perl`), both loaded in `stzBase.ring`; `base/plugin` = plan (`SOFTANZA_PLUGIN_PLAN.md`, `…_COMPARATIVE_STUDY.md`) + a `recovered/` archive, not loaded; consumption via the engine's vendored stack (tree-sitter, SQLite, curl, mbedTLS, zlib, ggml…); VM primitives `ring_state_*`; guards under `test/extercode` + `test/extincode` (present, currently red), `test/plugin` absent. Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

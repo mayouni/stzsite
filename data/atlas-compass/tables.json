@@ -1,0 +1,271 @@
+{
+ "slug": "tables",
+ "url": "https://claude.ai/artifact/CFt2s2vabDhQivCn3mpLX1",
+ "title": "Tables & data — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "One enormous unified class — 2,517 methods, eleven sibling caps merged into a single `stzTable` — with engine-backed sort, aggregates, calculated columns, describe and pivot, plus a distinctive multi-table \"TableX\" pattern-query language. But measured against pandas, Polars and DuckDB it has three real holes: there is no join at all; group-by and filter run Ring-side even though engine bridges for both sit exported-but-unused; and the columnar engine is used per-operation, not as the live store. Ambition is pandas-eager, well short of Polars / DuckDB's vectorized columnar execution.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships, the tools it is fair to measure against, and the one thing still owed. A recurring pattern here: an engine capability exists but the Ring face doesn't call it — so several lanes are rated on the Ring path that actually runs, not the dark engine bridge.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Calculated & derived columns",
+   "rating": "Strong",
+   "engine": "`AddCalculatedCol` with an `@(:ColName)` formula, lowered engine-first through `StzEngineListEvalRows` — compile-once over all rows, with a Ring `eval()` fallback for non-arithmetic formulas. Guarded at 50k rows, chained calc columns and insert-position semantics.",
+   "engine_h": "In the engine",
+   "against": [
+    "pandas assign / eval",
+    "Polars with_columns",
+    "DuckDB expressions"
+   ],
+   "against_h": "Measured against",
+   "owed": "The one lane with measured engine scale. Short of Polars' fully-lazy vectorized expressions, but genuinely engine-backed and well-guarded.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Sort & order",
+   "rating": "Strong",
+   "engine": "`SortOn(col)` ascending or descending via `StzEngineTableSortOn` → `table.zig sortOnColumn`: an index-permutation `std.sort.pdq` that moves companion columns without copying row objects, plus `IsSorted` predicates.",
+   "engine_h": "In the engine",
+   "against": [
+    "pandas sort_values",
+    "Polars sort",
+    "DuckDB ORDER BY"
+   ],
+   "against_h": "Measured against",
+   "owed": "A clean, copy-free engine sort — at parity for the operation. Multi-key stable sort with mixed asc/desc per key would round it out.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Construction & I/O",
+   "rating": "Solid",
+   "engine": "Build from list-of-columns or hashlist; round-trip CSV (with separator control), JSON, and HTML tables (`FromHtml` / `ToHtmlXT`); SQLite via `stzDatabase` over the vendored engine.",
+   "engine_h": "In the engine",
+   "against": [
+    "pandas read_*",
+    "Polars I/O",
+    "DuckDB"
+   ],
+   "against_h": "Measured against",
+   "owed": "No Parquet / Arrow / Excel, the formats a modern data library lives on. And two rough edges: `FromJson` is marked `#TODO Test it`, and the CSV `iscsv` guards fail on a function-redefinition collision.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Columns, typing & access",
+   "rating": "Solid",
+   "engine": "Heterogeneous columns with per-column `type_hint` and per-cell tags (int/float/string/null) tracked in `table.zig`; `Cell`, `Row`, `Col`, `Section`, add/remove/rename column.",
+   "engine_h": "In the engine",
+   "against": [
+    "pandas dtypes",
+    "Polars schema"
+   ],
+   "against_h": "Measured against",
+   "owed": "Real typing, but many legacy access aliases (`colsection`, `rowz`, `cellsincol`, `cellatposition`) error after the 11→1 merge — the fidelity grind (see note) is exactly this surface.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Select · project · filter",
+   "rating": "Solid",
+   "engine": "`Filter(paColValues)`, `FilterBy`, and predicate-string `FilterW` / `FilterWXT`, plus column projection. Multi-table querying via the TableX pattern language over `stzListOfTables`.",
+   "engine_h": "In the engine",
+   "against": [
+    "pandas query / loc",
+    "Polars filter",
+    "DuckDB WHERE"
+   ],
+   "against_h": "Measured against",
+   "owed": "The whole lane is Ring-side — the engine's `ring_FilterRows` exists but is never called — so filtering doesn't ride the columnar engine and won't vectorize.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Reshape — pivot & transpose",
+   "rating": "Solid",
+   "engine": "`stzPivotTable` + `stzPivotTableShow` for multi-dimension pivots and crosstabs, engine-backed via `StzEnginePivotCrossTab` / `ring_PivotGroupBy`; plus `Transpose` variants.",
+   "engine_h": "In the engine",
+   "against": [
+    "pandas pivot_table / melt",
+    "Polars pivot / melt"
+   ],
+   "against_h": "Measured against",
+   "owed": "No melt / unpivot / wide↔long — the inverse of pivot that tidy-data workflows depend on. Pivot ships; the reshape family is half-present.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Describe & summary stats",
+   "rating": "Solid",
+   "engine": "`Describe()` over all numeric columns, engine-backed through `frame.zig` (`StzEngineFrameDescribeAll` = 8 stats/col: count, mean, median, stddev, min, max, Q1, Q3) plus whole-table regression (`StzEngineFrameRegression`).",
+   "engine_h": "In the engine",
+   "against": [
+    "pandas describe",
+    "Polars describe",
+    "DuckDB SUMMARIZE"
+   ],
+   "against_h": "Measured against",
+   "owed": "Solid and engine-backed. The deeper statistical work (tests, distributions) lives on the Statistics page via `stzDataSet` — a separate, single-variable analyzer.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "The unified hierarchy & TableX",
+   "rating": "Solid",
+   "engine": "Eleven caps (cell/column/row access, structure, subset, search, finder, sorter, replacer, aggregator, display) merged into one `stzTable` namespace, so any method reaches any other; the old classes survive as ~1 KB shells. A distinctive TableX pattern language queries collections of tables.",
+   "engine_h": "In the engine",
+   "against": [
+    "(architecture — no direct peer)",
+    "SQL"
+   ],
+   "against_h": "Measured against",
+   "owed": "The merge is sound engineering, but it left the legacy method surface unreconciled (150 erroring tests), and TableX is Ring-side and niche next to a real query language.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Aggregates (scalar column)",
+   "rating": "Solid",
+   "engine": "Column reductions are engine-backed: `StzEngineTableSumCol` / `AvgCol` / `MinCol` / `MaxCol` / `ProductCol` / `CountNonNull` — cache-friendly columnar scans.",
+   "engine_h": "In the engine",
+   "against": [
+    "pandas agg",
+    "Polars",
+    "DuckDB"
+   ],
+   "against_h": "Measured against",
+   "owed": "Scalar-per-column aggregation is fast and correct; the gap is grouped aggregation (lane 10), where the engine path exists but the Ring `GroupBy` doesn't use it.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Group-by (grouped aggregation)",
+   "rating": "Partial",
+   "engine": "`GroupBy(cols)` / `GroupByXT` exist and work — but as pure Ring row-wise hash-string keying.",
+   "engine_h": "In the engine",
+   "against": [
+    "pandas groupby",
+    "Polars group_by",
+    "DuckDB GROUP BY"
+   ],
+   "against_h": "Measured against",
+   "owed": "The engine already ships `groupByAggregate` (`table.zig`, `ring_GroupBy`) with O(n) hashed keys — but stzTable never calls it. The Ring path won't scale to the sizes Polars/DuckDB target.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Missing-data handling",
+   "rating": "Partial",
+   "engine": "Null awareness exists — per-cell null tags, `AllItemsAreNull`, `CountNonNull`, and TableX null checks.",
+   "engine_h": "In the engine",
+   "against": [
+    "pandas fillna / dropna",
+    "Polars null handling"
+   ],
+   "against_h": "Measured against",
+   "owed": "No fillna / dropna / interpolate / forward-fill family — the everyday missing-data toolkit. Nulls can be detected but not systematically repaired or removed.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Columnar scale & SQL",
+   "rating": "Partial",
+   "engine": "A real columnar engine exists (`table.zig` — contiguous per-column arrays, copy-free sort, O(n) grouping), and SQL is available through `stzDatabase` over vendored SQLite.",
+   "engine_h": "In the engine",
+   "against": [
+    "Polars (lazy / vectorized)",
+    "DuckDB (columnar OLAP)",
+    "pandas"
+   ],
+   "against_h": "Measured against",
+   "owed": "The Ring table keeps a row-wise `@aContent` and marshals the whole content per operation — the columnar engine is a per-op accelerator, not the live store. No query planner, no lazy execution; SQL is SQLite passthrough, not an in-house engine.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first closes the two biggest capability holes — one of which is mostly a wiring job; the second pays down debt and everyday breadth; the third is the columnar ambition that would move it toward Polars/DuckDB.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — foundational holes",
+   "items": [
+    {
+     "title": "Add joins",
+     "text": "Inner, left, outer and cross joins — there is no join anywhere in the tables lane today, the single largest gap for a data-frame library. The columnar engine could host it; nothing does yet.",
+     "value": "High",
+     "effort": "Medium"
+    },
+    {
+     "title": "Wire group-by & filter to the engine",
+     "text": "`ring_GroupBy` / `groupByAggregate` and `ring_FilterRows` are already compiled and exported — stzTable just doesn't call them. Routing the Ring paths to the existing engine bridges is high leverage for near-zero new engine code.",
+     "value": "High",
+     "effort": "Low"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — debt & everyday breadth",
+   "items": [
+    {
+     "title": "Finish the 11→1 fidelity grind",
+     "text": "150 of 251 legacy table tests error, almost all `R14` for method names not carried into the merged class. Reconciling them turns the advertised access surface from claimed into guarded — and the curated suites are already green to build on.",
+     "value": "High",
+     "effort": "Medium"
+    },
+    {
+     "title": "Missing-data toolkit + melt",
+     "text": "A `fillna` / `dropna` / interpolate family and a `melt` / unpivot to complete the reshape lane — the tidy-data operations every workflow reaches for.",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "Fix the I/O rough edges",
+     "text": "Test and confirm `FromJson` (currently `#TODO`), and resolve the CSV `iscsv` function-redefinition collision that fails those guards.",
+     "value": "Low",
+     "effort": "Low"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — the columnar ambition",
+   "items": [
+    {
+     "title": "Make the columnar engine the live store",
+     "text": "Stop marshalling row-wise `@aContent` per operation; hold data column-wise in the engine and run filter / group-by / join vectorized through it. This is the step from pandas-eager toward Polars/DuckDB execution.",
+     "value": "High",
+     "effort": "High"
+    },
+    {
+     "title": "Parquet & Arrow I/O",
+     "text": "The formats a modern data library is expected to read and write, and the interchange layer that connects it to the rest of the ecosystem.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "An in-house relational query surface",
+     "text": "A query layer over `stzTable` itself (select/where/join/group as one planned expression), beyond today's SQLite passthrough — so relational queries run on the library's own columnar engine.",
+     "value": "Medium",
+     "effort": "High"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "The curated suites are green — `test_table_*` (core / access / aggregate / search / structure / engine-delegation) plus narrated calc-column, aggregation and regression guards (~90+ assertions) — and the lane ratings rest on those. The legacy numbered suite is not: 150 of 251 files error, overwhelmingly renamed methods from the 11→1 merge. And several lanes are rated on the Ring path that runs, not the engine bridge that exists but is never called (group-by, filter)."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza's tables are a broad, unified, partly engine-backed data-frame with a distinctive multi-table pattern language — competent for construct / sort / aggregate / pivot / describe — but they are not yet a pandas replacement, let alone a Polars/DuckDB one: no join, a Ring-side group-by, and a columnar engine that accelerates operations rather than owning the data."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16 — Ring faces under `base/table` (`stzTable.ring` ~2,517 defs, the 11 merged caps, `stzPivotTable`, `stzListOfTables`) and `base/data` (`stzDatabase`); engine `table.zig` (columnar), `frame.zig` (describe/regression), `db.zig` (SQLite), `ring_bridge_table.zig`; connector `base/file/stzCSV.ring`; guards under `test/table` + `test/csv` + `test/database`. Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

@@ -1,0 +1,272 @@
+{
+ "slug": "nlp",
+ "url": "https://claude.ai/artifact/GfESsd62R4oyYeiUdcqM29",
+ "title": "NLP & linguistics — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "A deterministic, fully-embedded classic NLP pipeline — UAX#29 tokenization, 25-language Snowball stemming, an averaged-perceptron POS tagger (NLTK's own model, reimplemented in Zig), VADER sentiment, RAKE + TextRank + TF-IDF keywords, WordNet, phonetics — with zero downloads and a one-line first contact. Its own stated target is to beat NLTK on simplicity, and against NLTK it largely does. But it sits a full tier below spaCy and Stanza: NER is gazetteer-rule not neural, there is no dependency parsing, and the neural upgrades (transformer NER, embeddings, abstractive summary) are wired but no-op without a local model — gated on the still-unstarted ggml/GGUF foundry.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships, the tools it is fair to measure against, and the one thing still owed. The axis that matters here is deterministic/dictionary vs neural: this tier is the former by design, with the latter deferred to a local-model upgrade.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Tokenization & sentence segmentation",
+   "rating": "Strong",
+   "engine": "`word_break.zig` implements the full UAX#29 word-boundary state machine — `WordIter` / `SentenceIter` are the shared seam every lane routes through. Sentence splitting handles terminator runs, ellipses, abbreviations (`Dr.`) and in-token dots (`example.com`).",
+   "engine_h": "In the engine",
+   "against": [
+    "spaCy tokenizer",
+    "NLTK",
+    "ICU BreakIterator"
+   ],
+   "against_h": "Measured against",
+   "owed": "CJK and Thai break per-codepoint pending true dictionary segmentation (libthai/ICU is the named future step) — the one deviation from full correctness.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Stemming",
+   "rating": "Strong",
+   "engine": "Vendored Snowball (`stem.zig`) across 25 languages — english, arabic, french, german, russian, hindi, tamil, turkish and more — the reference algorithm, engine-backed, with per-language and auto-detect entry points.",
+   "engine_h": "In the engine",
+   "against": [
+    "NLTK Snowball / Porter",
+    "spaCy (no stemmer)"
+   ],
+   "against_h": "Measured against",
+   "owed": "At reference parity — it is Snowball. spaCy doesn't stem at all; this is a lane where the classic approach is simply the right one.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Keyword & keyphrase extraction",
+   "rating": "Strong",
+   "engine": "All three classic methods, engine-backed: RAKE (`textutil.zig`), TextRank keywords + extractive summary (`textrank.zig`, PageRank over a co-occurrence graph), and TF-IDF keywords (`textstats.zig`, with corpus-level IDF via `stzCorpus`).",
+   "engine_h": "In the engine",
+   "against": [
+    "gensim (TextRank)",
+    "NLTK",
+    "RAKE-nltk / yake"
+   ],
+   "against_h": "Measured against",
+   "owed": "Having RAKE, TextRank and TF-IDF plus extractive summarization in one engine is broader than most single libraries offer. A genuinely strong lane.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "POS tagging",
+   "rating": "Solid",
+   "engine": "`pos.zig` — an averaged perceptron, a faithful reimplementation of NLTK's `averaged_perceptron_tagger` (Penn Treebank), with the trained weights (~75k features) `@embedFile`'d and deterministic argmax. No ML runtime.",
+   "engine_h": "In the engine",
+   "against": [
+    "NLTK (same model)",
+    "spaCy (neural)",
+    "Stanza (neural)"
+   ],
+   "against_h": "Measured against",
+   "owed": "English only, and a trained linear model sits below spaCy/Stanza's neural taggers on accuracy. At NLTK parity because it is NLTK's model.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Sentiment (VADER)",
+   "rating": "Solid",
+   "engine": "`sentiment.zig` — a faithful VADER (Hutto & Gilbert): a 7,500-term lexicon plus the five rule heuristics (caps emphasis, degree boosters with distance damping, negation, contrastive \"but\", punctuation), with an explainable breakdown.",
+   "engine_h": "In the engine",
+   "against": [
+    "NLTK (ships VADER)",
+    "transformer sentiment",
+    "TextBlob"
+   ],
+   "against_h": "Measured against",
+   "owed": "English only and rule-based — below a fine-tuned transformer on nuanced text. Faithful to VADER, which is the point; the neural upgrade is deferred.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Lemmatization",
+   "rating": "Solid",
+   "engine": "`lemma.zig` — dictionary form→lemma lookup for en / fr / ar (the fr table is 4.5 MB), plus an English regular-suffix rule fallback validated against the lemma set. Irregulars (mice→mouse) covered by the tables.",
+   "engine_h": "In the engine",
+   "against": [
+    "spaCy lemmatizer",
+    "NLTK WordNetLemmatizer",
+    "Stanza"
+   ],
+   "against_h": "Measured against",
+   "owed": "POS-blind and three languages. Ambiguous forms resolve by an alphabetical tie-break (`better→well`) — pinned by a test as an artifact, not a policy. POS-aware lemmatization is the accuracy step.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Statistical text (collocations · readability · lang-detect)",
+   "rating": "Solid",
+   "engine": "A broad statistical toolkit in `textstats.zig` / `textutil.zig`: PMI collocations, word/char n-grams + frequency, cosine similarity, Flesch reading-ease and grade, stopword removal, lexical diversity, and language detection.",
+   "engine_h": "In the engine",
+   "against": [
+    "NLTK",
+    "textstat",
+    "langdetect"
+   ],
+   "against_h": "Measured against",
+   "owed": "At NLTK parity for the statistical layer; mostly English-tuned (stopwords, readability). A solid, broad utility belt.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Phonetics",
+   "rating": "Solid",
+   "engine": "`phonetics.zig` — Soundex (4-char) and Metaphone (6-char), English-oriented, pure algorithm with no data file — an extra that NLTK and spaCy don't ship.",
+   "engine_h": "In the engine",
+   "against": [
+    "jellyfish / fuzzy",
+    "Apache Commons Codec"
+   ],
+   "against_h": "Measured against",
+   "owed": "Two algorithms — no Double Metaphone, NYSIIS or Caverphone. A nice bonus over the NLP peers, short of a dedicated phonetics library.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Named-entity recognition",
+   "rating": "Partial",
+   "engine": "`ner.zig` — deterministic, gazetteer + POS-chunk + rules (no model): chunk NNP runs, classify via firstname / place / org gazetteers and title/context rules into PERSON / ORGANIZATION / LOCATION / ENTITY.",
+   "engine_h": "In the engine",
+   "against": [
+    "spaCy (neural, 18 types)",
+    "Stanza",
+    "NLTK"
+   ],
+   "against_h": "Measured against",
+   "owed": "Well below neural NER: four types, English gazetteers, no learned disambiguation. The file itself names CRF/transformer NER as \"the modern-tier upgrade.\" The weakest classic lane against the peers.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "WordNet",
+   "rating": "Partial",
+   "engine": "`wordnet.zig` over a compacted Princeton WordNet 3.1 (8.6 MB, ~140k words): synonyms and hypernyms, the two most-used relations, engine-backed.",
+   "engine_h": "In the engine",
+   "against": [
+    "NLTK WordNet (full)",
+    "spaCy (via extensions)"
+   ],
+   "against_h": "Measured against",
+   "owed": "The compaction dropped hyponyms, meronyms, antonyms and glosses — a substantial subset of what NLTK's WordNet exposes. Synonymy and hypernymy work; the rest of the graph does not.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Parsing (chunk & constituency)",
+   "rating": "Partial",
+   "engine": "Ring-side chunking (`Chunks(\"DT? JJ* NN+\")`, `NounPhrases`) and a cascaded constituency parse tree (`stzParseTree`, Penn bracket notation, S→VP→PP→NP) — analogous to NLTK's `RegexpParser`.",
+   "engine_h": "In the engine",
+   "against": [
+    "spaCy (dependency)",
+    "Stanza (dependency)",
+    "NLTK RegexpParser"
+   ],
+   "against_h": "Measured against",
+   "owed": "No dependency parsing — spaCy and Stanza's core capability is entirely absent, and the doc explicitly keeps it deferred. Constituency-via-cascade is the ceiling.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Neural NLP & embeddings",
+   "rating": "Emerging",
+   "engine": "`stzText` exposes the neural surface — `Embedding()`, `SemanticSimilarityWith()`, `Classify(labels)`, `SummarizedAbstractively()` — all gated on `HasSemanticModel()`.",
+   "engine_h": "In the engine",
+   "against": [
+    "spaCy (vectors / transformers)",
+    "Stanza (neural)",
+    "sentence-transformers"
+   ],
+   "against_h": "Measured against",
+   "owed": "They no-op without a loaded GGUF model, no static word2vec/GloVe ships, and the ggml bridge + GGUF foundry that would power them is the one unstarted rung (see the Neural tier page).",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first unlocks the whole neural tier and lifts the weakest classic lane; the second is cheap data/coverage; the third is the deep parsing and multilingual reach.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — foundational",
+   "items": [
+    {
+     "title": "The ggml bridge + GGUF foundry",
+     "text": "The one unstarted rung (R4 step 8) that turns every neural delegator real — transformer NER, embeddings, abstractive summary, zero-shot classify. It rides the Neural tier page, and it is what would move this group from \"beats NLTK\" to \"reaches spaCy.\"",
+     "value": "High",
+     "effort": "High"
+    },
+    {
+     "title": "Statistical / neural NER",
+     "text": "A CRF or perceptron-sequence NER above the gazetteer floor — the weakest classic lane. Lifts recognition beyond four types and English name lists toward usable accuracy, without waiting on the full neural tier.",
+     "value": "High",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — cheap data & coverage",
+   "items": [
+    {
+     "title": "Restore the full WordNet graph",
+     "text": "Bring back hyponyms, meronyms, antonyms and glosses that the compaction dropped — a larger data file or an on-demand loader. Closes most of the gap to NLTK's WordNet with no new algorithm.",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "Ship a static embedding floor",
+     "text": "A small GloVe/word2vec embedding embedded like the other data, so `SemanticSimilarity` works without a GGUF model — the lexical-tier floor the architecture's own LAW 2 calls for.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Publish accuracy benchmarks",
+     "text": "No POS accuracy, NER F1 or VADER-parity numbers exist — guards prove behavior, not scores. A small eval harness against standard corpora would let these ratings rest on metrics, and prove the NLTK-parity claim.",
+     "value": "Medium",
+     "effort": "Low"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — deep parsing & reach",
+   "items": [
+    {
+     "title": "Dependency parsing",
+     "text": "The spaCy/Stanza core, entirely absent. A transition-based parser (classic MALT-style, or on the neural tier) would add the syntactic layer that constituency-cascade only approximates.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "POS-aware & multilingual lemmatization",
+     "text": "Use POS to disambiguate lemmas, and extend beyond en/fr/ar toward the stemmer's 25-language reach — turning the dictionary lane from lookup into linguistically-correct reduction.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "CJK / Thai dictionary segmentation",
+     "text": "The tokenizer's own named future step — vendor libthai/ICU so CJK and Thai break on words, not codepoints, extending the strong tokenization lane to the scripts it currently approximates.",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "The guards are behavioral, not benchmarked — no POS accuracy, NER F1 or VADER-parity number exists anywhere. What they prove is values and invariants: the lemmatizer's ambiguity tie-break is pinned so a data edit fails loudly, sentiment sign/ordering holds against a build-time tally over 1,000 reviews, POS/word/sentence counts agree, and multilingual input survives byte-for-byte through the English models (robustness, not linguistic correctness on non-English). So the lanes are rated on faithful-reimplementation-of-a-known-method, not on a measured score."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza's NLP is the best embedded, zero-setup, deterministic classic pipeline of its peers — genuinely competitive with NLTK and simpler to reach — and a full tier below spaCy/Stanza on exactly the things that need a model: neural NER, dependency parsing and learned embeddings, all deferred to a local-model upgrade that hasn't been built yet."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16 — Ring faces under `base/linguistic` (`stzText`, `stzParseTree`, `stzCorpus`), `base/natural` and `base/learning`; engine NLP in `engine/src/string/` (`word_break`, `lemma`, `stem`, `pos`, `ner`, `sentiment`, `wordnet`, `textrank`, `textstats`) with `@embedFile`'d data (VADER, POS weights, lemmatization-en/fr/ar, WordNet); plan of record `SOFTANZA_INTELLIGENCE_ARCHITECTURE.md`; guards under `test/{linguistic,natural,learning,string}`. Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

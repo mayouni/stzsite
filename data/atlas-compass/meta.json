@@ -1,0 +1,270 @@
+{
+ "slug": "meta",
+ "url": "https://claude.ai/artifact/TmxWRgtkKRLTgFUbgerua4",
+ "title": "Metaprogramming & code rules — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "The distinctive thing here is unification, not any single tool. One CI gate (`stzRuleReport`) collects findings in one shape from ~11 domains — code rules, agent-graph invariants, security reachability, org charts, service contracts, workflow SLAs, even diagram notations — something neither semgrep (code-only) nor OPA (policy-only) attempts. Around it sits a broad band of Ring-side meta tools: a graph+text code-rule engine whose rules were born from the library's own hard-won bugs (so it lints itself), a three-language code graph, a governance contract model, a deterministic self-documentation surface, and a signable rule constitution. The honest gaps are extensibility (no way to author a custom rule pattern), a two-grammar tree-sitter, and shallow reflection.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships, the tools it is fair to measure against, and the one thing still owed. One category-leading unification, a broad band of competent house-tools, and four honest gaps against semgrep, OPA and full reflection systems.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "The unified rule report (one CI gate)",
+   "rating": "Strong",
+   "engine": "`stzRuleReport` collects findings in one shape — `[:rule,:subject,:where,:severity,:message]` — from any graph that answers `CheckRules()`, across ~11 domains: code, agentic, security, org-chart, service, workflow SLA, fault-tree, ER, network, Petri, family. `IsSound()` = zero errors; legacy checkers normalize in via `IngestLegacy`.",
+   "engine_h": "In the engine",
+   "against": [
+    "semgrep (code-only)",
+    "OPA (policy-only)",
+    "SonarQube"
+   ],
+   "against_h": "Measured against",
+   "owed": "No peer unifies code rules, security reachability, agent invariants, process SLAs and diagram correctness into one gate with one finding shape. A genuine category-of-one.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Governance / policy model",
+   "rating": "Solid",
+   "engine": "`stzGovernance` — policy as data (`.zgov`): risk tiers 1–4, permission (CAN) vs authority (SHOULD) composed by `MayProceed` (undeclared → refused, every verdict narrated), commitment state, decommission obligations, decision lineage, reversibility classes and trust postures.",
+   "engine_h": "In the engine",
+   "against": [
+    "OPA / Rego",
+    "XACML",
+    "AWS IAM"
+   ],
+   "against_h": "Measured against",
+   "owed": "Richer primitives than OPA (lineage, reversibility, postures) — but a fixed-primitive data model, not a query language: you declare data, you can't write arbitrary Rego-style policy logic (lane 12).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Code-rule engine",
+   "rating": "Solid",
+   "engine": "A hybrid engine: graph-query rules over a code graph plus statement text-passes — 14 named rules incl. `no-len-method`, `engine-first`, `no-case-collision`, `writes-a-mutable-constant` (the NL/TRUE/FALSE clobbering guard), `no-dead-code`. Graph-awareness avoids the false positives a text scanner makes (a `def substr(` isn't flagged).",
+   "engine_h": "In the engine",
+   "against": [
+    "semgrep",
+    "ESLint",
+    "ruff"
+   ],
+   "against_h": "Measured against",
+   "owed": "Real, self-applied rules born from the library's own bugs — but a house-specific catalogue, not a general AST-pattern engine: you can't write `$X.foo()`-style matchers the way semgrep lets you.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Code as a graph",
+   "rating": "Solid",
+   "engine": "`stzCodeGraph` across three languages (Ring source-truth parser, Python, JS): classes / methods / calls / inheritance, with queries `Ancestry`, `Subclasses`, `Impact`, `Cascade`, `Callers/Callees`, `DeadCode`, `CyclicCalls` — and it self-checks via `CheckRules()`.",
+   "engine_h": "In the engine",
+   "against": [
+    "Sourcetrail / Understand",
+    "semgrep dataflow",
+    "stack-graphs"
+   ],
+   "against_h": "Measured against",
+   "owed": "Call resolution is name-based — honest about dynamic dispatch (\"candidates, not proof\"), so `DeadCode`/`CyclicCalls` are approximate. No dataflow / taint (the semgrep-pro axis, lane 12).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Knob gate (library hygiene)",
+   "rating": "Solid",
+   "engine": "`StzCheckProjectKnobs` — nine text-passes over the tree (dead-knob, library-prints, empty-method-body, `writes-a-mutable-constant`, `value-called-as-function`, `for-in-loops`…), all from a single source list so entry points can't drift (the past drift bug is structurally prevented).",
+   "engine_h": "In the engine",
+   "against": [
+    "ruff / ESLint custom rules",
+    "clippy"
+   ],
+   "against_h": "Measured against",
+   "owed": "A real library-wide hygiene gate catching Ring-specific footguns most linters can't express — but narrow to those known footguns, and text-pass (so the deeper structural checks live in the graph engine).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Self-documentation (Ask / ExplainMethod)",
+   "rating": "Solid",
+   "engine": "`stzSelfDoc` / `stzLibDoc`: `Ask` a class what it can do (lexical IDF first, neural embedding/reranker rescue only on zero overlap), `ExplainMethod` (deterministic templated), `HowTo` (grammar-compose a method name, then retrieve) — harvested from source, \"zero hallucination.\"",
+   "engine_h": "In the engine",
+   "against": [
+    "docstrings + Sphinx",
+    "AI code assistants"
+   ],
+   "against_h": "Measured against",
+   "owed": "A distinctive self-querying library (real methods, not hallucinations) — but coverage depends on doc-comment harvest, and the retrieval floor is lexical; a prototype-grade surface, not a full doc system.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Code refinement",
+   "rating": "Solid",
+   "engine": "`stzRefinableCode`: typed refinement points (`<R:PARAM|ALGO|LIB …>`) with a five-stage gate (structural → constraint → governance → trust posture → cross-point derivation) and a reversibility timeline (`RevertTo`/`Redo`/checkpoints), format `.zrfn`.",
+   "engine_h": "In the engine",
+   "against": [
+    "template / codegen tools",
+    "refactoring engines"
+   ],
+   "against_h": "Measured against",
+   "owed": "A governed, reversible refinement-points mechanism — but niche: it tunes declared knobs under predicates, it is not general code generation or automated refactoring.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Signable rule constitution",
+   "rating": "Solid",
+   "engine": "`stzPredicateSet`: assemble rules (`AddRule` from the code-rule names) and invariants into a constitution, `Save`/`LoadFrom`/`Verify`/`EnforceOnCode`, sealed with sha256 (`.zrlz`).",
+   "engine_h": "In the engine",
+   "against": [
+    "OPA bundles",
+    "policy-as-code signing",
+    "sigstore policy"
+   ],
+   "against_h": "Measured against",
+   "owed": "A verifiable, tamper-sealed rule set — governance of the rules — but built from the fixed rule/invariant catalogue, so its reach grows only as the catalogue does.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Reflection / introspection",
+   "rating": "Partial",
+   "engine": "Runtime discovery on `stzObject`: `Methods()`, `Attributes()`, `AttributesAndValues()`, `Type()`, `ClassName()` — over Ring's own builtins.",
+   "engine_h": "In the engine",
+   "against": [
+    "Python inspect",
+    "Java reflection",
+    "Ruby / Smalltalk"
+   ],
+   "against_h": "Measured against",
+   "owed": "Shallow: names and values, but no signatures / parameters / decorators / annotations and no dynamic-invocation surface beyond a plain call — below Python's `inspect` or Java reflection.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Tree-sitter polyglot",
+   "rating": "Partial",
+   "engine": "Vendored tree-sitter runtime compiled from source (`tree_sitter.zig`) with a `walk()` that maps CST nodes to a shared `CLASS|/METHOD|/CALL|` protocol — and \"add a language = grammar + `walk()`\" is real, documented in-engine.",
+   "engine_h": "In the engine",
+   "against": [
+    "tree-sitter (dozens of grammars)",
+    "semgrep parsers"
+   ],
+   "against_h": "Measured against",
+   "owed": "Only two grammars (Python + JavaScript), parse-only (no tree-sitter queries or transforms exposed), and Ring itself isn't on it (its own parser). The extension path exists; the breadth doesn't yet.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Semantic resolver (one lexicon)",
+   "rating": "Partial",
+   "engine": "`stzSemanticResolver` merges three lexical sources into one semantic-ID-keyed lexicon (`StzResolveSemantic`), lexical IDF first with a neural embedding rescue when a model is loaded — the library's \"one lexicon\" for near-natural coding.",
+   "engine_h": "In the engine",
+   "against": [
+    "intent resolution / NLU",
+    "synonym/ontology stores"
+   ],
+   "against_h": "Measured against",
+   "owed": "Described in source as \"the unification prototype\" — the mechanism works, but it is early: coverage, growth and cross-domain consistency are not yet production-hardened.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Custom rule / policy authoring",
+   "rating": "Partial",
+   "engine": "Extending the system means writing a Ring `stzGraphRule` checker or a governance declaration — programmatic, not declarative.",
+   "engine_h": "In the engine",
+   "against": [
+    "semgrep patterns (YAML)",
+    "OPA / Rego",
+    "ESLint plugins"
+   ],
+   "against_h": "Measured against",
+   "owed": "No declarative authoring surface: you can't write a semgrep-style AST pattern or a Rego-style policy expression without hand-coding a checker. This is the extensibility both category leaders are built on.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first opens the extensibility the category leaders are built on; the second deepens the code model and reflection; the third matures the prototype layers.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — the extensibility semgrep and OPA are built on",
+   "items": [
+    {
+     "title": "Declarative rule & policy authoring",
+     "text": "A way to write a new code rule as an AST/graph pattern (semgrep-style) and a governance policy as an expression (Rego-style) without hand-coding a Ring checker. It turns a fixed catalogue into an open one and is the single biggest lever against both leaders.",
+     "value": "High",
+     "effort": "High"
+    },
+    {
+     "title": "Broaden tree-sitter — and put Ring on it",
+     "text": "Vendor more grammars (the whole point of tree-sitter), expose its queries/transforms, and parse Ring itself through tree-sitter so the code graph is one path instead of a bespoke Ring parser plus the polyglot layer.",
+     "value": "High",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — deepen the model",
+   "items": [
+    {
+     "title": "Richer reflection",
+     "text": "Method signatures/parameters, annotations/decorators, and a dynamic-invocation surface — lifting introspection from names-and-values toward Python `inspect` / Java reflection, which the self-doc and rule layers would both draw on.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Resolved call edges + dataflow",
+     "text": "Move call resolution beyond name-based candidates so `DeadCode` / `CyclicCalls` are proof, and add basic dataflow/taint — the analysis depth that separates a graph from semgrep-pro.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "Full dominator analysis for effects-guarded",
+     "text": "The source names it as \"the next strengthening\": prove every input→effect path crosses a guardian (dominator form), not just direct-guard edges — hardening the agent/security invariants the gate already runs.",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — mature the prototypes",
+   "items": [
+    {
+     "title": "Production-harden the semantic resolver",
+     "text": "Take the \"unification prototype\" to production: measured coverage, disciplined growth, and cross-domain lexicon consistency — the backbone the near-natural surfaces across the whole library lean on.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "A policy expression language",
+     "text": "A Rego-class expression layer over the governance primitives, so arbitrary CAN/SHOULD/risk logic can be authored as data rather than composed only from the fixed contracts.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "Grow the rule & hygiene catalogue",
+     "text": "More code rules and knob-gate passes as new footguns are found — with the single-source discipline that already prevents entry-point drift, so the one gate keeps widening without duplicating lists.",
+     "value": "Low",
+     "effort": "Low"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "Re-surveyed from `main`. Mostly Ring (only tree-sitter parse, the governance clock, and the optional neural tier are engine-backed). Guards prove the substance: the code graph is structural, not prose (ownership/ancestry/impact), the rules avoid the text-scanner false positives (a `def substr(` or a comment \"def len\" isn't flagged), and `MayProceed` composition + lineage completeness hold. Two memory corrections verified: the knob gate is now nine passes / 14 rules (not \"six\"), and the DRIFT the memory warns of is structurally prevented by a single-source list; the \"perf/plastic\" domains from memory are not wired as report subjects (the real subjects are the ~11 above). Tree-sitter / Python-ast scenarios skip cleanly when the DLL isn't built — no `#ERR`."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza's meta plane wins on a unification no competitor offers — one gate, one finding shape, across code, security, agents, processes and diagrams — and trails on the thing they're built for: letting a user author a new rule or policy declaratively, over a deeper code model and richer reflection than it currently exposes."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16, from a read-only `main` worktree — Ring faces under `base/meta` (`stzCodeGraph`, `stzCodeRule/s`, `stzSelfDoc`, `stzPredicateSet`, `stzGovernanceChecks`), `base/reflect`, `base/refine` (`stzRefinableCode`), `base/governance` (`stzGovernance`), plus `base/graph/stzRuleReport.ring` (the one gate) and `base/natural/stzSemanticResolver.ring`; engine `tree_sitter.zig` + vendored tree-sitter (Python, JS); guards under `test/{meta,reflect,refine,governance}`. Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

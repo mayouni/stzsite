@@ -1,0 +1,266 @@
+{
+ "slug": "governance",
+ "url": "https://claude.ai/artifact/JgUS6fdkp3EUw4sEJVhpLb",
+ "title": "Governance doctrine — agents that cannot hurt you",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "This is Softanza's signature — the one capability where, in the platform survey, it out-covers .NET, Python, Wolfram and the JVM alike. The doctrine is that safety is architectural, not procedural: an LLM (or any untrusted capability) cannot act effectfully by construction — it holds only the `inference` capability, granting it `effectful` raises at construction, and effectful work rehearses in a semantic virtual world whose only export is a reviewable update plan a governed actor commits. One rule gate then judges the result across eleven domains. And the field is moving the other way — Java's `SecurityManager` is deprecated, .NET's Code Access Security was removed — so Softanza builds in what the platforms are retiring.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "A cross-cutting doctrine measured against how the field handles safe, governed execution — policy engines (OPA/Rego), sandboxes (seccomp, gVisor, Deno), object-capability systems, AI-agent guardrails (Guardrails, NeMo), and secrets/identity (Vault, SPIFFE). The split is clean: the architecture is distinctive and guarded; the closure (a formal capability type, the negotiation loop) is the frontier.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Propose-don't-act, by construction",
+   "rating": "Strong",
+   "engine": "`stzAgentGraph` gives every actor a capability set and a taint colour. `AddLLMActor` grants `[\"inference\"]` only — the effect set is empty — and `Grant(llm,\"effectful\")` raises: \"an LLM proposes, only a pi-gate commits — enforced at CONSTRUCTION, not merely audited.\"",
+   "engine_h": "In the engine",
+   "against": [
+    "OPA / Rego",
+    "NeMo Guardrails",
+    "LangChain tool sandboxes"
+   ],
+   "against_h": "Measured against",
+   "owed": "The refusal is structural, not a runtime policy check. The effect capability simply isn't in the LLM actor's set to begin with — closer to object-capability discipline than to a prompt-level or stack-walk guard. Guard: `agentgraph_narrated`.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "The safe world — rehearse → plan → commit",
+   "rating": "Strong",
+   "engine": "`stzVirtualSystem` + `stzVirtualFileSystem` are a real in-memory twin (tree state, snapshots, branches, tombstones). Effectful work runs against the twin; the tick's only export is a reviewable `stzUpdatePlan`. Principle P1: \"the virtual layer holds no reference to reality.\"",
+   "engine_h": "In the engine",
+   "against": [
+    "gVisor / seccomp",
+    "Deno permissions",
+    "VM sandboxes"
+   ],
+   "against_h": "Measured against",
+   "owed": "Unlike a container you can only throw away, the plan is a reviewable, rejectable artifact — a semantic sandbox that speaks files and operations, not opaque syscalls. Guard: `safeworld_narrated` (76/76).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "The single crossing & capability lattice",
+   "rating": "Strong",
+   "engine": "`stzUpdatePlan.Execute()` passes every operation through three gates — reviewer, commit scope (`stzCommitScope`), and capability (`executor.Can(RequiredKind())`). `MayCommit()` answers \"this LLM's plan cannot cross\" before any attempt; the lattice (`effectful/sensing/compute/inference`) refuses an unknown kind.",
+   "engine_h": "In the engine",
+   "against": [
+    "object-capability systems",
+    "WASI capabilities"
+   ],
+   "against_h": "Measured against",
+   "owed": "The gates compose — an LLM is refused even inside an allowing scope, and a human can commit the very same plan. One crossing point between imagination and reality. Guard: `governance_crossing_narrated` (Scene 10).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "The unified rule gate",
+   "rating": "Strong",
+   "engine": "`stzRuleReport` collects findings in one shape `[:rule,:subject,:where,:severity,:message]` with `IsSound()`, from 11 self-checking domains (code, security, agent, org, service, ER, petri, network, fault, family, diagram); `stzPredicateSet` is the signable, sha256-sealed constitution.",
+   "engine_h": "In the engine",
+   "against": [
+    "OPA",
+    "SonarQube",
+    "semgrep"
+   ],
+   "against_h": "Measured against",
+   "owed": "One gate spanning code and agents and services and security and diagram models — broader than any single policy engine's remit (each is single-domain). The governance verdict has one address.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Governed effects in system programming",
+   "rating": "Solid",
+   "engine": "OS effects — `create_file`, `set_var`, `spawn_process`, `change_dir` — are `stzVirtualOperation`s requiring the `effectful` capability; they reach reality only through the update plan, which refuses any executor lacking the kind or a declared trust posture. `stzVirtualEnvironment` extends the twin to env vars and cwd.",
+   "engine_h": "In the engine",
+   "against": [
+    "Go / Rust std (ungoverned)",
+    "capability OSes"
+   ],
+   "against_h": "Measured against",
+   "owed": "The doctrine applied to the OS surface — real and guarded (`governance_crossing`, env twin) — but a focused effect set (files / env / process), not yet the whole syscall surface.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Capability-gated secrets",
+   "rating": "Solid",
+   "engine": "`stzSecretStore` is enumerable and all reads self-redact; `Reveal(name, actor)` is gated to an effectful, non-sandboxed actor, so an inference-only LLM cannot reveal a secret. Refusals are recorded as security events — the secret name only, never the value. `stzVaultResolver` bridges external stores.",
+   "engine_h": "In the engine",
+   "against": [
+    "HashiCorp Vault",
+    "cloud secret managers"
+   ],
+   "against_h": "Measured against",
+   "owed": "The secret gate is the same lattice as the effect gate — one capability model, not a bolt-on keyring. Vault-grade discipline built into the doctrine. Guard: `secretstore_narrated`.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Tamper-evident ledger",
+   "rating": "Solid",
+   "engine": "`stzSecurityLedger` is append-only and hash-chained (`Verify()` names the first broken link); `SealTo(path,key)` is a keyed HMAC-SHA256 export, and a Ring copy records into the same evidence. It is honest about its threat model: it detects retroactive edits, but an in-process attacker can still append or wipe.",
+   "engine_h": "In the engine",
+   "against": [
+    "Vault audit devices",
+    "transparency logs"
+   ],
+   "against_h": "Measured against",
+   "owed": "Tamper-evidence with a stated, honest threat model — strong on retroactive edits, explicit that it is not append-proof against an in-process attacker. Guard: `security_ledger_narrated` (10 scenes).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Production refuses fakes",
+   "rating": "Strong",
+   "engine": "`stzServiceRegistry` asks each service its posture — `:sandbox` (a fake, must-not-ship), `:local`, `:live`. `SetPhase(:production)` raises an ERROR `sandbox-in-production` and `ephemeral-in-production` (a sqlite `\":memory:\"` — one character from the safe spelling); `stzServiceRule` answers, in development, which part depends on a fake.",
+   "engine_h": "In the engine",
+   "against": [
+    "WireMock",
+    "Testcontainers",
+    "service virtualization"
+   ],
+   "against_h": "Measured against",
+   "owed": "A fake reaching production is refused by construction, not by discipline — and the sandboxes are genuine (a real P-256 key), so \"we tested against the sandbox\" means something. Guard: `service_registry_narrated`.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Identity, posture & response",
+   "rating": "Solid",
+   "engine": "A broad shipped surface (23 files in `base/security`): auth (`stzAuth`, OIDC, SAML, passkey, TOTP, request signer) plus `stzSecurityPosture` / Attestation / Drill / Sentinel / Detection / Incident / ResponsePlan, with `stzSecurityGraph` self-checking via `CheckRules()` into the same rule gate.",
+   "engine_h": "In the engine",
+   "against": [
+    "Keycloak",
+    "Auth0",
+    "SPIFFE"
+   ],
+   "against_h": "Measured against",
+   "owed": "A comprehensive identity + posture layer feeding the one gate — broad and real, though it composes existing protocols (OIDC/SAML/passkey) rather than inventing them. The doctrine's perimeter, not its novelty.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Governance as a file — the `.pia` agent",
+   "rating": "Solid",
+   "engine": "`stzAgentDeclaration` compiles a `.pia` declarative agent to the same classes and quotes `stzAgentGraph.Grant`'s refusal verbatim — \"one rule, two doors, same words.\" A `pia: 2` posture requirement refuses a `ring:` clause with no declared posture. An agent is a file judged at load.",
+   "engine_h": "In the engine",
+   "against": [
+    "policy-as-code (Rego files)",
+    "agent manifests"
+   ],
+   "against_h": "Measured against",
+   "owed": "The doctrine reachable declaratively, not only in code — a distinctive \"constitution as a file.\" The v1 files remain readable as a stated migration debt (lane 12).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "The negotiation & evaluation loop",
+   "rating": "Partial",
+   "engine": "The plan now reaches the agent (`stzAgentWorkbench` + `GiveWorkbench`, shipped 2026-08-22), but the conversation about the plan is design-only: `Receive(issues)` / `Revise()`, `stzAgentEvaluation` (the \"examination hall\"), and branch-per-hypothesis (`BranchFrom` / `CompareBranches` exist on the vfs but no agent uses them).",
+   "engine_h": "In the engine",
+   "against": [
+    "critique/revise agent loops",
+    "reflection frameworks"
+   ],
+   "against_h": "Measured against",
+   "owed": "The doc's own words: \"the plan reaches the agent; the conversation about the plan does not yet.\" Build Receive/Revise, the evaluation hall, and branch-per-hypothesis into a real agent. `stzHybridAgent` is named but never built as a class.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Airtight-by-construction (closure)",
+   "rating": "Partial",
+   "engine": "The by-construction guarantees are real at the `Grant` boundary and the plan crossing; where they aren't, an audit (`Violations()`) is the acknowledged backstop — \"by construction\" becoming \"by detection\" at the edges.",
+   "engine_h": "In the engine",
+   "against": [
+    "object-capability type systems",
+    "formal capability models"
+   ],
+   "against_h": "Measured against",
+   "owed": "Three honest holes: no formal capability type (kinds are strings in list properties, and a raw `SetNodeProperty` bypasses `Grant`); the registration gate is opt-in (a migration default until the last in-tree host declares); the `ring:` escape checks the function name, not what it does (backstopped by posture + reversibility, not closed).",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The architecture is strong; the gaps are closure and depth — the first tier makes the guarantee airtight, the second finishes the wiring, the third builds the loop that lets an agent argue with its own rejected plan.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — make the guarantee airtight",
+   "items": [
+    {
+     "title": "A formal capability type",
+     "text": "Capabilities are string kinds in list properties, so a raw `SetNodeProperty` can still grant an effect around `Grant` — the `Violations()` audit catches it after the fact. A real capability type that cannot be forged would turn the last \"by detection\" edges into \"by construction.\"",
+     "value": "High",
+     "effort": "Medium"
+    },
+    {
+     "title": "Flip the registration gate to default",
+     "text": "The engine-loop registration gate (`MayRegister`) is opt-in (`UseEngineLoop()`); the default only flips when the last in-tree host declares. Wire `appserver/`, `cluster/` and `perf/` to declare, and the migration state becomes the guarantee.",
+     "value": "High",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — finish the wiring",
+   "items": [
+    {
+     "title": "Close the `ring:` escape",
+     "text": "The `ring:` clause is checked by function name, not by what the function does — closed today only by the `pia: 2` posture requirement composed against reversibility. Make the check behavioral (or run the body itself in the twin) so a mislabeled function can't slip an effect through.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Wire the native roster",
+     "text": "`stzOwnAgentStack` declares five library-internal agents and wires one (`wise-coder`); the other four raise if asked. Finishing them turns the \"self-governing library\" from a demonstrated pattern into a live one.",
+     "value": "Medium",
+     "effort": "Low"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — build the conversation about the plan",
+   "items": [
+    {
+     "title": "The negotiation loop",
+     "text": "Ship `Receive(issues)` / `Revise()` so a rejected plan comes back to the agent with the reviewer's findings, and the agent proposes again — the missing half of propose-review-commit. The plan reaches the agent; the argument about it should too.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "The evaluation hall & branches",
+     "text": "Wire `stzAgentEvaluation` and branch-per-hypothesis (the vfs already has `BranchFrom` / `CompareBranches`) so an agent can rehearse several plans and a governed actor picks the winner — rehearsal as comparison, not just as a single dry run.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "Build `stzHybridAgent`",
+     "text": "`AddHybridActor` is only a graph node and colour — a composition proven sound that instantiates nothing. Building it as a real class would let one actor hold both proposing and (scoped) committing roles under the same lattice.",
+     "value": "Low",
+     "effort": "Medium"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": null,
+   "text": "\"We will not build safe agents. We will build a safe world, and let ordinary agents loose inside it. The workbench holds no reference to reality.\""
+  },
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "This page rates a cross-cutting doctrine, not a module — it lives across `base/agentic`, `base/system`, `base/security`, `base/service` and `base/graph`. Read from `main`. The strengths are real and guarded: `Grant` refuses at construction; the safe-world twin exports a reviewable plan; `MayCommit` refuses the LLM before it tries; the 11-domain rule gate; production refuses fakes; the hash-chained ledger; capability-gated secrets. The weaknesses are equally on the page, and the design doc grades itself this candidly (`SOFTANZA_INTELLIGENCE_ARCHITECTURE.md` §3.1–3.2): the negotiation loop and `stzHybridAgent` are design-only, the registration gate is opt-in, and there is no formal capability type — the audit is where \"by construction\" becomes \"by detection.\""
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza is the only stack in the mainstream field that makes safe execution architectural rather than procedural — the LLM cannot act because it never holds the capability, effectful work rehearses in a reviewable world, and one gate judges the result across every domain; what it still owes is the airtight type behind the discipline and the negotiation loop that lets an agent argue with its own rejected plan."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-17, from a read-only `main` worktree — the graph `base/agentic/stzAgentGraph.ring` + `stzAgentWorkbench` / `stzPIAgent` / `stzAgentDeclaration` (`.pia`); the safe world `base/system/stzVirtualSystem.ring` / `stzVirtualFileSystem` / `stzSystemActor`; the gate `base/graph/stzRuleReport.ring` + `stzPredicateSet`; secrets and ledger `base/security/stzSecretStore.ring` / `stzSecurityLedger.ring`; the service plane `base/service/stzServiceRegistry.ring` / `stzServiceRule.ring`; doctrine in `base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md` and the constitution \"Softanza and Agents That Cannot Hurt You\". Guards: `safeworld` (76), `governance_crossing`, `service_registry`, `security_ledger`, the agentic suite (261 asserts). Ratings reflect what the guards prove.",
+ "shape": "standard, plus header paragraph(s) of class pull (recorded in notes with lead null)"
+}

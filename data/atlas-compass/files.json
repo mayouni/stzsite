@@ -1,0 +1,270 @@
+{
+ "slug": "files",
+ "url": "https://claude.ai/artifact/5UKK51SEWidJA36g5sTAn9",
+ "title": "Files & formats — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "A competent, safety-first formats module — engine-backed file I/O, directories (with the Windows non-ASCII listing bug defeated), CSV, JSON, and a namespace-aware XML parser — whose one genuine standout is XML security: XXE is closed by construction, the parser refusing `<!DOCTYPE>` and `<!ENTITY>` outright, which lxml and most XML libraries get wrong by default. Everything else is a deliberate subset: XML has no XPath/XSLT/validation (the price of that refusal), HTML is a pragmatic flat index with three selectors (not an lxml DOM), archives are zip-only via Ring's minizip (no tar/gzip vs libarchive), there is no charset detection (UTF-8 only), and reads are whole-file with a 64 MB cap.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships, the tools it is fair to measure against, and the one thing still owed. Measured against lxml (XML/HTML) and libarchive (archives), this is a deliberately scoped, correctness-over-coverage module with one security-first standout.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "XML security — XXE closed by construction",
+   "rating": "Strong",
+   "engine": "`xml.zig` refuses any document containing `<!DOCTYPE>` or `<!ENTITY>` — a hard failure, not sanitization — so external-entity injection is unrepresentable. Guarded: a `file:///etc/passwd` entity doc returns FALSE; ordinary and SAML-signed docs parse.",
+   "engine_h": "In the engine",
+   "against": [
+    "lxml (needs defusedxml)",
+    "defusedxml",
+    "most XML libs"
+   ],
+   "against_h": "Measured against",
+   "owed": "The XXE footgun that has burned lxml, Java and .NET users is closed at the parser, by refusal — a security posture the category leaders default to wrong. The cost is paid honestly in the query lanes below.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "File I/O",
+   "rating": "Solid",
+   "engine": "`file.zig`: read / write / append / copy / delete / stat (size, mtime), engine-backed, with a `pathIsUsable` screen that catches Windows-illegal characters before Zig std would crash the host DLL. Bytes and text; UTF-8 paths.",
+   "engine_h": "In the engine",
+   "against": [
+    "Go os / io",
+    "Rust std::fs",
+    "Python open"
+   ],
+   "against_h": "Measured against",
+   "owed": "64 MB read cap (larger files return empty), no streaming/chunked reads, no mmap/seek, and `Move` is copy+delete (no engine rename). Solid for ordinary files, not for large or streamed ones (lane 12).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Directory operations",
+   "rating": "Solid",
+   "engine": "list / walk / create / delete / count via `stz_dir_*`, and the non-ASCII listing bug fixed: Ring's native `dir()` routes through the Windows ANSI code page (Arabic + CJK names both collapse to `\"??.txt\"`); the engine uses the wide-W API → UTF-8, so names survive.",
+   "engine_h": "In the engine",
+   "against": [
+    "Go filepath.Walk",
+    "Python os / pathlib"
+   ],
+   "against_h": "Measured against",
+   "owed": "A real correctness win (guarded: listed count == engine count over Arabic/CJK/Hebrew/emoji filenames). Deep walking is Ring-side; no parallel walk.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "CSV",
+   "rating": "Solid",
+   "engine": "`csv.zig`: RFC-4180 quoting (`\"\"` escaping), configurable separator, header auto-detection, exact-round-trip type inference (`\"007\"` preserved). Two seam fixes: removed `eval()` on list-looking cells (arbitrary code from data), and a byte-scan number test ~156× faster than the old regex-per-cell.",
+   "engine_h": "In the engine",
+   "against": [
+    "Python csv",
+    "pandas read_csv"
+   ],
+   "against_h": "Measured against",
+   "owed": "No multiline quoted fields — rows are split on newlines before field parsing, so a newline inside a quoted cell breaks the row; and a multi-byte separator falls back to a Ring split with no quote handling.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "JSON",
+   "rating": "Solid",
+   "engine": "`json.zig` (std.json) parse / serialize / pretty, and the UTF-8 trap fixed in `StzJsonToList` — Ring's own `JsonToList` loses its place on a raw multibyte byte and never reads `\\uXXXX`; the engine parser does both. Plus a big-file `JsonFilterFeatures` escape hatch (GeoJSON, in-engine).",
+   "engine_h": "In the engine",
+   "against": [
+    "Python json",
+    "jq",
+    "serde_json"
+   ],
+   "against_h": "Measured against",
+   "owed": "The wart: the fix exists and the flat `StzJson*` helpers use it, but the `stzJson` class constructor still calls the old broken pure-Ring parser. Also no JSONPath, no streaming.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "XML parsing & query",
+   "rating": "Solid",
+   "engine": "A strict, namespace-aware single parser (`xml.zig`) shared with XML digital signatures (`xmldsig.zig`/SAML), with exclusive C14N canonicalization and a small local-name path grammar (`Root/Child/Leaf`, `//Leaf`, `Item[2]`). Builder escapes every value.",
+   "engine_h": "In the engine",
+   "against": [
+    "lxml (XPath 1.0 + XSLT + validation)",
+    "ElementTree"
+   ],
+   "against_h": "Measured against",
+   "owed": "No XPath, XSLT, or DTD/XSD validation — the deliberate price of the XXE refusal. A safe, namespace-aware subset that carries real SAML, not a full lxml.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "File watching",
+   "rating": "Solid",
+   "engine": "`fswatch.zig` — a cross-platform worker that snapshots (mtime, size) and diffs to `ADD` / `MOD` / `DEL` events; `stzFolderWatcher.Watch` / `Drain` / `Stop`.",
+   "engine_h": "In the engine",
+   "against": [
+    "inotify / FSEvents",
+    "watchdog",
+    "chokidar"
+   ],
+   "against_h": "Measured against",
+   "owed": "Polling-based — no native OS events (inotify/FSEvents/IOCP) — so it trades latency and scale for portability. Correct, but not event-driven.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "HTML parsing & query",
+   "rating": "Partial",
+   "engine": "`html_dom.zig` — a pragmatic tokenizer + flat element index (depth recorded, not a nested tree), with `tag` / `#id` / `.class` selectors, entity encode/decode (the double-decode fix: `&amp;lt;` survives), and the O(n²) Find fix (all class matches in one pass).",
+   "engine_h": "In the engine",
+   "against": [
+    "lxml.html",
+    "BeautifulSoup",
+    "cheerio"
+   ],
+   "against_h": "Measured against",
+   "owed": "Self-declared \"not a spec-compliant HTML5 parser\": no real DOM tree, no descendant/child combinators, no mutation, read-only. The full CSS selector + DOM builder is deferred (\"slice 3\").",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Archives & compression",
+   "rating": "Partial",
+   "engine": "`stzZipFile` does zip read and write (create from file/dir, add, extract, list, contains) — but backed by Ring's native `ziplib` (minizip), not the Softanza engine. The engine `compressor.zig` offers only crc32 / adler32 / RLE / a bespoke codec.",
+   "engine_h": "In the engine",
+   "against": [
+    "libarchive (tar/zip/7z/xz/zstd)",
+    "Python zipfile/tarfile"
+   ],
+   "against_h": "Measured against",
+   "owed": "Zip only. No tar, no gzip/zlib as a user format, no 7z, no streaming filters — the many-format, streaming breadth libarchive is built on is absent, and even zip isn't engine-backed.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Path manipulation",
+   "rating": "Partial",
+   "engine": "Engine `stz_path_extension` / `basename` / `dirname` (handle both `/` and `\\`).",
+   "engine_h": "In the engine",
+   "against": [
+    "Python pathlib",
+    "Go path/filepath"
+   ],
+   "against_h": "Measured against",
+   "owed": "Three primitives only — no join / normalize / relative-to / glob and no pathlib-style path object. Enough to split a path, not to manipulate one.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Streaming & large files",
+   "rating": "Partial",
+   "engine": "Whole-file read only, with a hard 64 MB cap; the one large-file path is the domain-specific `JsonFilterFeatures` (GeoJSON matched in-engine so a 40 MB file never crosses the bridge).",
+   "engine_h": "In the engine",
+   "against": [
+    "stdlib streaming readers",
+    "lxml iterparse",
+    "mmap"
+   ],
+   "against_h": "Measured against",
+   "owed": "No streaming or chunked reads, no iterparse, no mmap / random-access. A file larger than the cap simply doesn't load — the biggest structural limit of the plane.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Encoding / charset",
+   "rating": "Emerging",
+   "engine": "None for text: `codec.zig` is Base64 only, and everything is UTF-8 by design (stated across `file.zig`, `xml.zig`).",
+   "engine_h": "In the engine",
+   "against": [
+    "chardet",
+    "iconv",
+    "lxml encoding detection"
+   ],
+   "against_h": "Measured against",
+   "owed": "No charset detection and no non-UTF-8 decoding — so a Windows-1252 CSV, a Shift-JIS document or a legacy-encoded HTML page can't be read correctly. The wild is not all UTF-8.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first closes a shipped-but-unwired fix and the biggest structural limit; the second broadens formats and encodings; the third is the query and path depth lxml and pathlib carry.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — the shipped-but-unwired fix & the size wall",
+   "items": [
+    {
+     "title": "Migrate the stzJson constructor to the fixed parser",
+     "text": "The UTF-8 fix (`StzJsonToList`) already exists and the flat helpers use it — but the `stzJson` object constructor still calls the old pure-Ring parser that drops multibyte bytes and ignores `\\uXXXX`. Point the ctor at the fix. Low effort, closes a silent-corruption path on the main surface.",
+     "value": "High",
+     "effort": "Low"
+    },
+    {
+     "title": "Streaming & large-file reads",
+     "text": "Chunked/streaming file reads past the 64 MB cap, plus iterparse-style incremental XML/JSON. Today a file larger than the cap simply returns empty — the plane's biggest structural limit.",
+     "value": "High",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — formats & encodings",
+   "items": [
+    {
+     "title": "A real archive layer",
+     "text": "Engine-backed tar and gzip/zlib alongside zip (toward libarchive's format breadth and streaming filters) — so the archive lane is more than Ring's minizip and covers the formats data actually arrives in.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Charset detection & non-UTF-8 decoding",
+     "text": "Detect and decode Windows-125x, Shift-JIS, ISO-8859-* (shared with the String page's legacy-charset gap), so files and pages not born in UTF-8 read correctly instead of mangling.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Multiline CSV + richer HTML",
+     "text": "Parse fields before splitting rows (fixing newlines-in-quoted-cells), and land HTML \"slice 3\" — full CSS selectors, a real DOM, and mutation — lifting HTML from a flat read-only index.",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — query & path depth",
+   "items": [
+    {
+     "title": "XPath (or a richer query) for XML/HTML",
+     "text": "A real query language over the safe parser — XPath is orthogonal to the XXE refusal, so it can be added without reopening the security hole. Closes the biggest lxml gap.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "A pathlib-style path surface",
+     "text": "join / normalize / relative-to / glob and a path object — beyond the three split primitives — so path manipulation is first-class, not hand-assembled.",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "mmap, engine rename & format sniffing",
+     "text": "Random-access via mmap, a real engine `rename` (today Move is copy+delete), and magic-byte/MIME format detection beyond the current text heuristics.",
+     "value": "Low",
+     "effort": "Medium"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "Re-surveyed from `main`. The seam fixes are verified in code and guards: XXE refusal (a `file:///` entity doc returns FALSE, the SAML fixture still parses), HTML double-decode (`&amp;lt;` survives), dir non-ASCII (Arabic/CJK filenames, listed count == engine count), and CSV/JSON non-ASCII survival end-to-end. The one live wart is real: the JSON UTF-8 fix exists but the `stzJson` class constructor isn't migrated to it. Note the `test/xml`, `test/archive` and `test/zip` directories are empty — XML/zip coverage lives under `test/file` and `test/html`. UTF-8-only and zip-only are deliberate boundaries."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza's formats module chooses correctness and safety over coverage — a parser that refuses XXE by construction, a directory lister that survives non-ASCII names, profiled CSV/JSON with their traps fixed — and pays for it in breadth: no XPath, a flat HTML index, zip-only archives, UTF-8 only, and no streaming past a 64 MB read."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16, from a read-only `main` worktree — Ring faces under `base/file` (`stzFile`, `stzFolder`, `stzCSV`, `stzJson`, `stzXml`, `stzHtml`, `stzZipFile`, `stzFolderWatcher`); engine `file.zig`, `csv.zig`, `json.zig`, `xml.zig` (shared with `xmldsig.zig`), `html.zig` + `html_dom.zig`, `fswatch.zig`, `compressor.zig`; zip via Ring `ziplib`; guards under `test/file`, `test/csv`, `test/json`, `test/html` (`test/xml,archive,zip` empty). Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

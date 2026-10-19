@@ -6,6 +6,8 @@ that defines it. This module turns it into fr|en/reference.html (the index by
 area), fr|en/reference/<class>.html (one page per class) and
 fr|en/reference/methods-<letter>.html (the alphabetical index). Called by build.py
 with its helpers, so the chrome stays one."""
+import build_area_story as story
+from build_narration_pages import slug as narration_slug, title_of
 import json, re, html, collections
 import level2, qforms, extshow, rowex
 PIN_DATE = re.compile(r"(\d{4}-\d{2}-\d{2})\.</p>")
@@ -242,6 +244,7 @@ def build_reference(ctx):
     <p class="proof"><a href="{GH}{esc(c["file"])}">{t["source"]}: base/{esc(c["file"])}</a> · <a href="../reference.html">{t["back"]}</a>{(' · <a href="../guide/' + a + '.html">' + t["guide"] + ' ' + esc(area_title[a][lang]) + '</a>') if a in area_title else ''}</p>
   </div></section>
   <div class="wrap page-body">
+    {story.class_treasures(lang, c, a if a in area_title else "", area_title[a][lang] if a in area_title else "", narration_slug, title_of)}
     {extshow.legend(lang, "../")}
     {rowex.legend(c, entries, rdata, lang)}
     {jump_html(lang, c)}

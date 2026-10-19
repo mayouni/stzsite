@@ -1,0 +1,274 @@
+{
+ "slug": "concurrency",
+ "url": "https://claude.ai/artifact/CC2DEQUCQ2q9qK2nnBSwzh",
+ "title": "Concurrency & distribution — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "An unusual shape: the substrates are complete and excellent, while the vocabulary over them is design-only. Three sub-planes ship, each heavily guarded with real multi-process tests — message-passing nodes with OTP-style supervision (the pragmatic 80% of Erlang: mailboxes, location-transparent Send/Ask, restart budgets, heartbeats, topology-as-data); a measured-gated multicore tier (bit-identical or justified, elementwise killed by the memory wall); and an elastic HTTP worker fleet with a smart router and autoscaling — over a full libuv reactor with mTLS. What's not built is the plane's own headline: the one \"routing vocabulary\" (`Concurrently()`) that would let you say \"do this concurrently\" and have it land on the right substrate.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships, the tools it is fair to measure against, and the one thing still owed. The six Strong lanes are the shipped, guarded substrates; the honest gap is the ergonomic layer that would unify them.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Message-passing nodes & mailboxes",
+   "rating": "Strong",
+   "engine": "Share-nothing nodes (`stzNode`) with an engine-enforced bounded inbox (counted overflow: drop-oldest / drop-newest / refuse), `On(tag,f)` dispatch, and a registry (`stzNodePlane`) giving location-transparent `Send` (fire-forget) and `Ask` (reply, mandatory timeout) over an in-house STZM wire codec.",
+   "engine_h": "In the engine",
+   "against": [
+    "Erlang / Elixir processes",
+    "Akka",
+    "Go channels"
+   ],
+   "against_h": "Measured against",
+   "owed": "Guarded with real OS processes (D0–D2): FIFO-by-content, exact overflow counts, byte-identical results local vs remote. Genuinely Erlang-shaped for a non-BEAM language.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Actor supervision",
+   "rating": "Strong",
+   "engine": "`stzNodeSupervisor`: `:OneForOne` / `:AllForOne` strategies, a restart budget (max/window) with escalation, heartbeats that catch a wedged node, and death-notice monitors — pure policy over engine observations, hostable on an agent host.",
+   "engine_h": "In the engine",
+   "against": [
+    "Erlang/OTP supervisors",
+    "Akka"
+   ],
+   "against_h": "Measured against",
+   "owed": "Proven by surviving vs wiped state under real kills (D3): OneForOne preserves a sibling, AllForOne resets it, budget escalates, heartbeats catch the wedge. OTP-grade supervision, guarded.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Distributed computing (D0–D6)",
+   "rating": "Strong",
+   "engine": "Share-nothing OS processes exchanging STZM frames over reactor TCP/mTLS, addressed by name, supervised. Topology as data (`Describe()` emits plain nested lists; handlers are Ring code strings so they cross a process boundary); `Deploy` moves a node in one line.",
+   "engine_h": "In the engine",
+   "against": [
+    "Erlang distribution",
+    "Akka Cluster",
+    "Ray"
+   ],
+   "against_h": "Measured against",
+   "owed": "Complete and guarded end-to-end (D4–D6, a semantic-search node Deploy'd and killed mid-run). It is process-pool + message-passing distribution — the pragmatic 80% of Erlang — not Ray-class dynamic task graphs (lane 11).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Multicore parallel tier (M1–M5)",
+   "rating": "Strong",
+   "engine": "Five parallel sites, each a `std.Thread.spawn` behind a measured `calib.Gate` (failed spawn computes inline): row-banded matmul, gated-parallel LU, compensated threaded reductions, and kNN / distance scans — 2.7–6.7×, transparent (the user never asks).",
+   "engine_h": "In the engine",
+   "against": [
+    "Rayon (Rust)",
+    "OpenMP",
+    "Go parallelism"
+   ],
+   "against_h": "Measured against",
+   "owed": "Correctness is two-class: partition-output is bit-identical (asserted), reduce-across-threads carries a written justification. Elementwise was killed — the memory wall (one core already pulls ~39 of ~58 GB/s).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Async reactor / event loop",
+   "rating": "Strong",
+   "engine": "`reactor.zig` — vendored libuv on its own thread, a submit→ticket→await idiom where no callback crosses into Ring: async timers, TCP, subprocess (with kill), curl HTTPS, and HTTP/STZM/TLS listeners, plus a reactor pool of N loops.",
+   "engine_h": "In the engine",
+   "against": [
+    "libuv / Node",
+    "Go netpoller",
+    "Tokio"
+   ],
+   "against_h": "Measured against",
+   "owed": "A genuine async runtime with a clean no-VM-callback model and mTLS termination. The ergonomic surface over it (channels, structured concurrency) is the vocabulary gap (lane 12).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Worker fleet & autoscaling (R8)",
+   "rating": "Strong",
+   "engine": "An elastic HTTP fleet: `stzWorkerPool` (admission / load-isolation), a 3-tier `stzRequestClassifier` (rules / lexical / model), `stzAppCluster` (front host + worker processes via reactor spawn+curl), `stzClusterSupervisor` (autoscale on live `/health`), staged `stzComputePipeline`, and p50–p99 telemetry.",
+   "engine_h": "In the engine",
+   "against": [
+    "Ray Serve",
+    "Celery",
+    "Kubernetes + workers"
+   ],
+   "against_h": "Measured against",
+   "owed": "Guarded with a real 3-process fleet (health-wait, round-robin, teardown). A Ray-Serve-shaped fleet for HTTP facets — the reach is live multi-machine verification (Tier C).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Fault tolerance & hardening",
+   "rating": "Solid",
+   "engine": "Retry-with-failover + per-worker circuit breakers, token-bucket rate limiting, at-most-once delivery (late replies discarded by correlation id), mandatory timeouts, `Drain`/`Stop` — with a hardening guard against SSRF, CRLF smuggling and injection.",
+   "engine_h": "In the engine",
+   "against": [
+    "Akka / OTP resilience",
+    "Hystrix",
+    "Envoy"
+   ],
+   "against_h": "Measured against",
+   "owed": "A real resilience toolkit, guarded — but fleet-scoped; the general per-call policy vocabulary (bulkheads, adaptive concurrency) is thinner than a dedicated service mesh.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Networking (HTTP / TCP)",
+   "rating": "Solid",
+   "engine": "HTTP client (sync `http.zig` + async reactor curl), TCP client/server (blocking `tcp.zig` + async reactor TCP), URL parsing and DNS — HTTP framing fuzzed and property-tested.",
+   "engine_h": "In the engine",
+   "against": [
+    "Go net/http",
+    "Rust hyper / reqwest",
+    "Node"
+   ],
+   "against_h": "Measured against",
+   "owed": "No UDP, WebSocket is still curl-based (not a native implementation), and the plain client/server faces are blocking. HTTP/TCP are covered; the edges are not.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Transport security (mTLS)",
+   "rating": "Solid",
+   "engine": "Mutual TLS via vendored mbedTLS in the reactor: server termination with `require_client`, a client role (`reactor_connect_tls`, link-up only on completed handshake), and a reactor-free smoke guard (`mtls_smoke.zig`, exit-code gated).",
+   "engine_h": "In the engine",
+   "against": [
+    "Go crypto/tls",
+    "rustls",
+    "Erlang ssl"
+   ],
+   "against_h": "Measured against",
+   "owed": "Real mutual auth, but test certs only — no cert lifecycle, rotation, OCSP or real-CA verification story. It proves the handshake, not a managed PKI.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Compute federation",
+   "rating": "Solid",
+   "engine": "`stzComputeFederation`: a governed multi-host constellation — `Join(host,endpoint,facets)`, a governance lattice (risk/grant/authority), and `FederatedCall` (discovered → governed → transported over reactor async curl).",
+   "engine_h": "In the engine",
+   "against": [
+    "Ray cluster",
+    "Dask distributed",
+    "Spark"
+   ],
+   "against_h": "Measured against",
+   "owed": "Unified at the vocabulary level (one signer, one lattice, one TLS channel) but facet discovery is still HTTP, not re-expressed over the node plane (D5 residue) — and it is governed remote-call, not a distributed scheduler.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Dynamic task-graph distribution",
+   "rating": "Partial",
+   "engine": "Distribution today routes named work — messages to nodes, requests to facet workers. Arbitrary task submission with data-dependency scheduling is not built.",
+   "engine_h": "In the engine",
+   "against": [
+    "Ray (@remote / task graph)",
+    "Dask",
+    "Spark DAG"
+   ],
+   "against_h": "Measured against",
+   "owed": "No Ray-style dynamic task graph — submit an arbitrary function, let a scheduler place it and track its dependencies. The plan explicitly refuses this until a workload earns it; message-passing is the deliberate model.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "The routing vocabulary (Concurrently)",
+   "rating": "Emerging",
+   "engine": "A detailed plan of record (CN0–CN5): one adverb `Concurrently()`, a `stzTask` / ticket / `stzWorkshop` surface that routes work to the right substrate (engine threads / reactor / processes) by declaration + measurement, never guessed. No code exists — `base/concurrent/` holds only the plan; its test dir is empty.",
+   "engine_h": "In the engine",
+   "against": [
+    "Go (go + channels)",
+    "Ray (@remote)",
+    "async/await"
+   ],
+   "against_h": "Measured against",
+   "owed": "The plane's headline is unbuilt: the three substrates it would route over all ship, but the adverb, task, ticket and workshop that make concurrency ergonomic — and a channel/select primitive — do not.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first builds the ergonomic layer the excellent substrates deserve; the second finishes the transport and networking edges; the third is the scheduler and PKI reach.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — the ergonomic layer the substrates deserve",
+   "items": [
+    {
+     "title": "Build the routing vocabulary (CN0–CN5)",
+     "text": "`Concurrently()` + `stzTask` / ticket / `stzWorkshop` that route to engine threads, the reactor, or processes by declaration and measured break-even. Three strong substrates exist; this is the single move that makes them one usable concurrency model.",
+     "value": "High",
+     "effort": "High"
+    },
+    {
+     "title": "Channels & structured concurrency",
+     "text": "A first-class channel / select primitive and scoped task groups over the mailbox + reactor substrates — the Go/structured-concurrency ergonomics that make fan-out and coordination readable rather than hand-wired.",
+     "value": "High",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — transport & networking edges",
+   "items": [
+    {
+     "title": "Federation over the node plane",
+     "text": "Re-express `stzComputeFederation` discovery/transport over the node registry (the D5 residue), so distribution is one message plane rather than HTTP-discovery plus node-plane split.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "UDP & a native WebSocket",
+     "text": "A UDP surface and a first-party WebSocket (today it rides curl `CONNECT_ONLY`) — the two networking edges the HTTP/TCP core leaves open.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "A managed-PKI mTLS story",
+     "text": "Beyond test certs and a handshake: cert lifecycle, rotation, real-CA verification and OCSP — so mutual TLS is deployable, not just demonstrable.",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — scheduler reach",
+   "items": [
+    {
+     "title": "Dynamic task-graph distribution",
+     "text": "Ray-style arbitrary-task submission with dependency scheduling across the fleet — deliberately refused today. Strategic if a workload needs a distributed scheduler rather than named message-passing.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "Live multi-machine verification",
+     "text": "The fleet and federation are proven on local processes; running and verifying them across real machines (and the deploy plane's ssh/registry backends with them) makes \"distributed\" true in fact, not just in loopback.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "The refused-until-measured multicore sites",
+     "text": "Parallel Cholesky / QR / back-substitution — held back because their reductions sit under the oracle tolerances. Admit them once a measurement makes the correctness case, as the tier's own discipline requires.",
+     "value": "Low",
+     "effort": "Medium"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "Re-surveyed from `main`. The substrates are guarded with real multi-process tests — D0–D6 spawn 2–6 OS processes, D3 performs real kills, R8 runs a 3-process fleet — proving FIFO-by-content, exact overflow counts, location-transparency by byte-identical results, restart-by-surviving-state and at-most-once. Two test-runner artifacts to note: the cluster `_ERR_RUN.txt` shows one error for a file that does not exist in the tree (a stale harness entry; the 20+ narrated guards aren't in that record), and the network `_ERR_RUN.txt` ran only 2 of ~26 suites. And `base/concurrent/` is genuinely empty — the routing vocabulary does not exist yet."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza has category-competitive concurrency substrates — Erlang-shaped supervised nodes, a measured multicore tier, an elastic worker fleet, a real async reactor — and lacks the ergonomic vocabulary that would let a user reach them without knowing which one they're using; the plane's own headline is its one big gap."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16, from a read-only `main` worktree — Ring faces under `base/cluster` (`stzNode`, `stzNodePlane`, `stzNodeSupervisor`, `stzAppCluster`, `stzClusterSupervisor`, `stzComputeFederation`), `base/network` and `base/reactive` (`stzReactor`); engine `reactor.zig` (libuv), `stzm.zig`, `matrix/linalg/stats/cluster/umap.zig` (M1–M5), `http/tcp.zig`, `mtls_smoke.zig` (mbedTLS); plans of record `SOFTANZA_DISTRIBUTION_PLAN.md` (D0–D6), `SOFTANZA_COMPUTE_MODEL.md` (M1–M5), `SOFTANZA_CONCURRENT_PLAN.md` (CN0–CN5, plan-only); guards under `test/cluster` + `test/network`. Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

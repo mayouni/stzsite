@@ -1,0 +1,275 @@
+{
+ "slug": "collections",
+ "url": "https://claude.ai/artifact/A7erA2T64KAfYKf1hkDAdn",
+ "title": "Collections & objects — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "This is one of the largest surfaces in the library: ~155 list operations in a 6,500-line Zig core behind a 1,600-method Ring face, a functional pipeline, deep-path search, Lodash-grade grouping, and a reflective object root that 449 classes inherit. It is tuned for millions of items with measured residency wins. Two honest limits keep it short of the very top: boxed value storage holds raw set-op throughput an order of magnitude below NumPy/native, there are no persistent immutable structures, and the legacy test grind is mid-flight — so the ratings lean on the narrated and engine suites that pass.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships, the tools it is fair to measure against, and the one thing still owed. The core operations are engine-backed and guarded by the narrated suites; the caveats are about scale ceilings, immutability, and the fidelity grind noted below.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Core list operations",
+   "rating": "Strong",
+   "engine": "Index, slice, section, insert, remove, reverse, swap, rotate, repeat — the full vocabulary, reads and reverse engine-backed via `stz_list_get/slice/reverse/rotate`. Mutators route through Ring submodules (`stzListInserter/Remover/Mover`) then re-cache.",
+   "engine_h": "In the engine",
+   "against": [
+    "Python list",
+    "Rust Vec",
+    "C++ std::vector",
+    "Lodash"
+   ],
+   "against_h": "Measured against",
+   "owed": "Comprehensive and correct. The only structural note is that mutators still make a Ring hop before invalidating the engine cache — a residency detail, not a capability gap.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Functional pipeline (map · filter · reduce)",
+   "rating": "Strong",
+   "engine": "Engine-backed `map_expr` / `filter_expr` / `reduce_expr` using a string DSL (`@item`, `@accumulator`), plus two predicate modes: `W` (string-expression, engine) and `WF` (Ring function, in-VM) across Find/Filter/Count/Positions/Remove/Replace.",
+   "engine_h": "In the engine",
+   "against": [
+    "Lodash",
+    "Python functools / comprehensions",
+    "Rust iterators"
+   ],
+   "against_h": "Measured against",
+   "owed": "A real, dual-mode functional surface. The string-expression path even runs the predicate in the engine, which the peers cannot do — a genuine differentiator.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Search · find · contains · deep paths",
+   "rating": "Strong",
+   "engine": "The full finder family engine-backed (`find_cs`, `find_all_cs`, `find_nth_cs`, `contains_cs`, `starts/ends_with`) plus a deep-path API (`deep_find`, `item_at_path`, `paths_at_depth`) that Lodash-style `get` only approximates.",
+   "engine_h": "In the engine",
+   "against": [
+    "Lodash (get / find)",
+    "Python",
+    "Rust"
+   ],
+   "against_h": "Measured against",
+   "owed": "Cross-module needle handles are already solved (`find_all_held_cs`). Nothing structural owed on the search lane.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Set operations",
+   "rating": "Solid",
+   "engine": "Union, intersection, difference, subset, unique — all engine-backed (`stz_list_union_cs` etc.) with a scalar `splitmix64` fast path for int/float keys (1M int-union ~43% faster).",
+   "engine_h": "In the engine",
+   "against": [
+    "Python set",
+    "Lodash",
+    "Immutable.js Set"
+   ],
+   "against_h": "Measured against",
+   "owed": "A footgun to know: `intersection_cs` dedups (true set) while `common_items_cs` keeps left order and duplicates (multiset). And boxed storage keeps 1M int-union at ~2–3s vs Python's ~0.1s — the unboxed frontier (lane 9).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Grouping · partition · chunk · zip",
+   "rating": "Strong",
+   "engine": "Full Lodash-grade reshaping, engine-backed: `classify_cs`, `partition`, `chunked`, `split_to_parts_of_n`, `zip`, `interleave`, `sliding_window`, `frequencies_cs` — `classify` even emits the final nested shape engine-side (−51% at 1M).",
+   "engine_h": "In the engine",
+   "against": [
+    "Lodash (groupBy / chunk / zip)",
+    "Python itertools / collections"
+   ],
+   "against_h": "Measured against",
+   "owed": "Broad and fast. A window / stream abstraction that returns lazily (rather than materialising) would be the only refinement worth naming.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Sorting & ordering",
+   "rating": "Strong",
+   "engine": "`sort`, `sort_cs`, `sort_descending`, `sort_by_expr` (key expression), `sort_on`, `sorted_insert`, and a full predicate set (`is_sorted`, `is_strictly_increasing`, `is_monotonic`) — all engine-backed.",
+   "engine_h": "In the engine",
+   "against": [
+    "Python sorted / key",
+    "Lodash sortBy",
+    "Rust sort_by"
+   ],
+   "against_h": "Measured against",
+   "owed": "At parity, with a case-sensitivity dial and key-expression sorting the peers match but rarely improve on.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Aggregation & statistics on lists",
+   "rating": "Solid",
+   "engine": "Stats built into the collection, engine-backed: `sum`, `product`, `mean`, `median`, `variance`, `stddev`, `nth_largest`, `ranked` — also surfaced on `stzListOfNumbers`.",
+   "engine_h": "In the engine",
+   "against": [
+    "Lodash",
+    "Python statistics",
+    "NumPy (reductions)"
+   ],
+   "against_h": "Measured against",
+   "owed": "A useful bonus on a collection, but the deep statistical story (distributions, tests, the careful compensated summation) lives on the Statistics page — rated Solid here as a convenience lane.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Immutability & copy semantics",
+   "rating": "Partial",
+   "engine": "Ring assigns lists by value — copy-on-assign and copy-on-return — which gives safety by default (no accidental aliasing) and a clean `Copy()`. The residency layer works with this rather than against it.",
+   "engine_h": "In the engine",
+   "against": [
+    "Immutable.js",
+    "Clojure persistent colls",
+    "Rust im crate"
+   ],
+   "against_h": "Measured against",
+   "owed": "No persistent immutable structures with structural sharing: a \"modified copy\" of a large list is a full copy, not an O(log n) share. The whole residency effort (lane 9) exists to soften exactly this cost.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Large-scale performance & residency",
+   "rating": "Solid",
+   "engine": "A measured residency system: a bounded, generation-keyed cache (FIFO eviction at 8M items / 1024 entries, so the 8192-slot handle table never overflows) plus copy-elimination on unmarshal. Measured: read-reuse 3.34s→1.29s (2.6×), Classify −51%, Union −34% at 1M items.",
+   "engine_h": "In the engine",
+   "against": [
+    "NumPy (unboxed)",
+    "Rust Vec",
+    "Python list"
+   ],
+   "against_h": "Measured against",
+   "owed": "Items are boxed `*StzValue`, so native-speed set-ops need unboxed typed storage (deferred). And the migration is half-done: Slice 4 (engine-truth) and Slice 5 (submodule residency) are open, with ~32 marshal-in sites remaining.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "The object system (stzObject root)",
+   "rating": "Strong",
+   "engine": "One reflective root inherited by 449 classes: introspection (`Attributes`, `Methods`, `Type`, `ObjectUID`), comparison, cloning, Q-elevation (`Q(...)` lifts a raw value into a chainable object), and the function-form grammar — `Verb()` mutates, `Verbed()` copies, `VerbQ()` chains.",
+   "engine_h": "In the engine",
+   "against": [
+    "Python object / reflection",
+    "Ruby",
+    "JS Object / Reflect"
+   ],
+   "against_h": "Measured against",
+   "owed": "The root's own `#TODO` notes the common surface is not fully abstracted — some behaviour is duplicated across children for semantic reasons. A consolidation, not a capability gap.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Specialized collections",
+   "rating": "Solid",
+   "engine": "A wide family: `stzHashList` / associative list, `stzGrid`, `stzTree`, `stzSet`, `stzListOfLists` / 2D, `stzListOfPairs`, `stzListOfSections`, `stzYielder` — the structured-collection catalogue.",
+   "engine_h": "In the engine",
+   "against": [
+    "Python collections",
+    "Immutable.js (Map/Record)",
+    "Lodash"
+   ],
+   "against_h": "Measured against",
+   "owed": "Most of this family is Ring-side (not scale-tuned), and `stzHashList` folds keys to lowercase and is not a true hash map — a documented trap. Rich, but shallower than the core list under the engine.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Named-parameter grammar",
+   "rating": "Solid",
+   "engine": "`stzListNamedParams` — a 1,945-method grammar for natural-language named arguments (`IsOnSection`, `IsHarvest`, `IsYield…NamedParam`) that lets call sites read close to English. A distinctive Softanza mechanism with no direct peer.",
+   "engine_h": "In the engine",
+   "against": [
+    "Python kwargs",
+    "Ruby keyword args",
+    "(no direct peer)"
+   ],
+   "against_h": "Measured against",
+   "owed": "Pure Ring, and its correctness under the fidelity grind (lane note below) is the least-verified of the group. A powerful, distinctive surface carrying real coverage debt.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first pays down the coverage debt the ratings depend on and lifts the one hard performance ceiling; the second finishes measured work already in flight; the third is the strategic reach toward Immutable.js and a real map.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — foundational",
+   "items": [
+    {
+     "title": "Finish the list narration / fidelity grind",
+     "text": "About 312 of ~602 legacy test blocks error — mostly R14 \"method without definition\" from renamed aliases — and the fidelity marker pass is uncaptured. The core is proven by the narrated and engine suites, but closing this turns the whole advertised surface from claimed into guarded.",
+     "value": "High",
+     "effort": "Medium"
+    },
+    {
+     "title": "Unboxed typed storage for native-speed set-ops",
+     "text": "Items are boxed `*StzValue`, so a 1M int-union runs ~2–3s against Python's ~0.1s. Typed unboxed arrays for scalar lists would close the last order-of-magnitude gap — the deliberately-deferred frontier.",
+     "value": "High",
+     "effort": "High"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — finish work already in flight",
+   "items": [
+    {
+     "title": "Complete the residency migration",
+     "text": "Slice 4 (engine-truth / lazy `@aContent`) and Slice 5 (submodule residency) with the ~32 remaining marshal-in sites. The infrastructure and measurements exist; this is finishing a measured win, not starting one.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Disambiguate the set-op semantics",
+     "text": "Make the set-vs-multiset choice explicit at the API so `intersection_cs` (dedups) and `common_items_cs` (keeps order + duplicates) can't be confused silently — a naming/doc fix over correct engine code.",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "Consolidate the object root",
+     "text": "Act on `stzObject`'s own `#TODO`: abstract the common behaviour duplicated across children. Reduces surface area and drift across 449 classes.",
+     "value": "Low",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — strategic reach",
+   "items": [
+    {
+     "title": "Persistent immutable collections",
+     "text": "Structural-sharing lists/maps so a \"modified copy\" is O(log n), not a full copy — the Immutable.js / Clojure lane. It would also relieve the pressure the residency system was built to absorb.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "A true hash map for stzHashList",
+     "text": "Real key semantics — case-preserving, arbitrary key types — instead of the current lowercase-folding associative list. Lifts the specialized-collections lane toward Python `dict` / Immutable.js `Map`.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Lazy / streaming pipeline",
+     "text": "A lazy iterator that fuses map/filter/take without materialising intermediates — the one thing Rust iterators and Lodash chains do that the engine-expr pipeline does not yet.",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "The core is proven: `00_list_narrated` (79 assertions), the large-scale guards, and ~30 `test_*` engine/delegation checkers all pass. But the ~602-file legacy suite is mid-grind — 312 blocks error, dominated by renamed-method calls, and the object module carries a stale expectation (`HowManyStzClasses()=60` when 449+ classes now inherit the root). The lane ratings describe the engine-backed capability the trustworthy suites exercise, not the full alias surface that grind will reconcile."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza's collections are broader and more engine-backed than any single stdlib or Lodash — a functional pipeline, deep search, Lodash-grade grouping and a reflective object root, tuned for millions — and its distance from the very top is two specific things: boxed storage (vs NumPy-native throughput) and the absence of persistent immutable structures (vs Immutable.js)."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16 — Ring faces under `base/list` (`stzList.ring` 1,614 defs, `stzListFunc`, `stzListNamedParams`, `stzHashList`) and `base/object` (`stzObject.ring`, the 449-class root); engine `list.zig` (6,517 lines, ~155 ops), `ring_bridge_list.zig` (residency cache), `number.zig`, `bytes.zig`; plan of record `_ENGINE_RESIDENCY_PLAN.md`; guards under `test/list` and `test/object`. Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

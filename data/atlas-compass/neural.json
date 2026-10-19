@@ -1,0 +1,270 @@
+{
+ "slug": "neural",
+ "url": "https://claude.ai/artifact/3LD3dNfL7Jxf9DGgujU6x6",
+ "title": "Neural tier — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "The docs and the code disagreed; the code wins. The consumption side is complete and genuinely wired to a patched, vendored ggml: real GGUF loading, id-exact WordPiece/BPE tokenizers, a numpy-parity BERT encoder (embeddings, NER, rerank), a multi-architecture causal LLM decoder (llama / qwen / smollm) with KV-cache and grammar-constrained decoding, and a measurement-gated wgpu GPU path. What is not there is the production side: training runs only for small pure-Zig MLPs, ggml's own backward pass is vendored-but-dark, quantization is consume-only, and there is no ONNX. A llama.cpp-class runner, wired into a governed library — not yet a training or model-production platform.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships and runs, the tools it is fair to measure against, and the one thing still owed. The dividing line runs straight down the middle: run a model is strong; make a model is a seed.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "GGUF model loading",
+   "rating": "Strong",
+   "engine": "`neural_embed.zig` loads GGUF metadata + weights into a ggml context — arch-prefixed KV reads, tensor enumeration, F16 / Q8_0 de-quant on load. Exposed as `StzEngineNeuralModelLoad` / `stzNeuralModel.LoadFrom`, tested against a committed `tiny_bert.gguf`.",
+   "engine_h": "In the engine",
+   "against": [
+    "llama.cpp",
+    "ggml"
+   ],
+   "against_h": "Measured against",
+   "owed": "Real GGUF loading at reference parity — the format is read faithfully across encoder and decoder families. Nothing structural owed on load.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Tokenizers",
+   "rating": "Strong",
+   "engine": "Both families, from the GGUF vocab/merges: WordPiece / SentencePiece-metaspace (encoder, auto-detect `##` vs `▁`, cased detection, special tokens) and GPT-2 byte-level BPE (decoder, ChatML control tokens). Tokenization is id-exact against a numpy reference.",
+   "engine_h": "In the engine",
+   "against": [
+    "llama.cpp tokenizers",
+    "HF tokenizers"
+   ],
+   "against_h": "Measured against",
+   "owed": "Id-exact parity for both schemes is exactly what a tokenizer must guarantee. At parity.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Encoder inference (BERT family)",
+   "rating": "Strong",
+   "engine": "`neural_embed.zig` runs a full BERT-family forward (MiniLM / BERT / RoBERTa / jina-bert-v2, auto-adapting learned-pos vs ALiBi, standard vs GEGLU FFN): sentence embeddings, token states, NER, and cross-encoder rerank — matching an independent numpy reference to 1.64e-7.",
+   "engine_h": "In the engine",
+   "against": [
+    "ONNX Runtime (BERT)",
+    "sentence-transformers",
+    "ggml"
+   ],
+   "against_h": "Measured against",
+   "owed": "Numerically verified against numpy — the strongest correctness proof in the tier. A genuinely complete encoder path.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Constrained / structured decoding",
+   "rating": "Strong",
+   "engine": "GBNF grammar-constrained decoding (`gbnf_machine.zig`, `schema_gbnf.zig`): a schema compiles to a grammar that makes invalid tokens unemittable, wired to `stzOutputSchema` / structured output. Measured value: ~5 calls per valid answer without the grammar, one with.",
+   "engine_h": "In the engine",
+   "against": [
+    "llama.cpp GBNF",
+    "outlines",
+    "guidance"
+   ],
+   "against_h": "Measured against",
+   "owed": "At llama.cpp parity for grammar-constrained decoding, and integrated with the library's structured-output contract — a distinctive strength.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Decoder inference (causal LLM)",
+   "rating": "Solid",
+   "engine": "`neural_gen.zig` — llama / qwen2 / qwen3 / smollm: RMSNorm + RoPE + GQA + SwiGLU + KV-cache, tied/untied lm-head, greedy and temp/top-k/top-p sampling, streaming (`neural_gen_start/next`) and multi-turn.",
+   "engine_h": "In the engine",
+   "against": [
+    "llama.cpp",
+    "ollama",
+    "MLC / vLLM"
+   ],
+   "against_h": "Measured against",
+   "owed": "A real, functional decoder — but narrower than llama.cpp (four architectures, no speculative decoding), and CI has no generative model, so it runs only with a user-supplied GGUF and is proven by construction, not by a parity fixture.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Tensor ops & the numeric bridge",
+   "rating": "Solid",
+   "engine": "The vendored ggml tensor core is wired and exercised (`mul_mat`, `soft_max_ext`, `rope_ext`, norms, activations), and a stzMatrix↔ggml bridge (`neural_matmul.zig`, R4 step 2) routes f64 matmul through ggml's threaded SIMD kernel with a resident cache.",
+   "engine_h": "In the engine",
+   "against": [
+    "ggml (full tensor lib)",
+    "ONNX Runtime",
+    "PyTorch tensors"
+   ],
+   "against_h": "Measured against",
+   "owed": "The bridge is matmul-only — no general tensor exposure and no backward pass into the numeric plane. The doc's \"ggml available to all numerics\" is a seed, not the full graft.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Semantic index & embeddings pipeline",
+   "rating": "Solid",
+   "engine": "`stzSemanticIndex` (`AddText` / `Search` over `StzNeuralEmbeddingOf`), the embedding seam the NLP tier gates on, and `stzLLMFunction` / structured-output faces on top.",
+   "engine_h": "In the engine",
+   "against": [
+    "sentence-transformers + FAISS",
+    "ONNX embeddings",
+    "llama.cpp embed"
+   ],
+   "against_h": "Measured against",
+   "owed": "The pipeline is shipped and tested, but the strong model is user-supplied (only a synthetic 83 KB `tiny_bert.gguf` is git-tracked), and the index itself is basic next to a tuned ANN store.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "GPU execution",
+   "rating": "Solid",
+   "engine": "Softanza's own wgpu backend (f32): a resident BERT backbone (`neural_backbone.zig`, WGSL matmul + fused-attention kernels) that now auto-routes to the GPU through a shape-keyed calibration foundry (GK0–GK2c) — measured 2.08× on the backbone forward and 5.3× over the full CPU forward, selecting a persisted winning kernel per shape.",
+   "engine_h": "In the engine",
+   "against": [
+    "llama.cpp (CUDA / Metal / Vulkan)",
+    "ONNX Runtime (CUDA / DirectML)"
+   ],
+   "against_h": "Measured against",
+   "owed": "GPU now engages automatically on the inference path when calibration favors it — no longer dormant. But training and quantization see no GPU work, ggml's own mature CUDA/Metal/Vulkan backends are pruned, and coverage is per-shape rather than whole-graph.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Training & backward pass",
+   "rating": "Partial",
+   "engine": "Real training exists — but in the pure-Zig ML floor: `nn.zig` forward + backward SGD for small dense MLPs (learns XOR and multiclass, tested), plus scalar reverse-mode `autodiff.zig` for optimization objectives.",
+   "engine_h": "In the engine",
+   "against": [
+    "ggml training",
+    "PyTorch",
+    "ONNX Runtime training"
+   ],
+   "against_h": "Measured against",
+   "owed": "No transformer training: ggml's own backward pass (`ggml-opt.cpp`) is vendored but never called. Training a real neural model — the production half — is owed.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Quantization",
+   "rating": "Partial",
+   "engine": "Consume-only: F16 and Q8_0 weights are de-quantized on load (`dequantRows`), so quantized models run correctly.",
+   "engine_h": "In the engine",
+   "against": [
+    "llama.cpp (Q4_K / Q5_K / …)",
+    "ggml quantize",
+    "GPTQ / AWQ"
+   ],
+   "against_h": "Measured against",
+   "owed": "No encode path — Softanza cannot quantize a model, and GGUF export writes F32 only. The whole k-quant family that makes local LLMs deployable is absent.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "GGUF export & the foundry",
+   "rating": "Partial",
+   "engine": "`gguf_export.zig` — \"Softanza writes the format it reads\": exports GGUF for small F32 nets (the `stz-mlp` arch, the bigram DLM), round-trip verified (ggml reads them back). R4 step 8 seed, closed and tested.",
+   "engine_h": "In the engine",
+   "against": [
+    "llama.cpp convert / quantize",
+    "HF → GGUF"
+   ],
+   "against_h": "Measured against",
+   "owed": "Foundry rung 2 is unbuilt: corpus synthesis → tokenizer training → transformer training on ggml's backward → quantize → LLM GGUF. Today it exports small nets, not trained models.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "ONNX interop",
+   "rating": "Emerging",
+   "engine": "None. GGUF is the chosen and only model format; there is no ONNX import, runtime or export anywhere in the engine or faces.",
+   "engine_h": "In the engine",
+   "against": [
+    "ONNX Runtime",
+    "onnx"
+   ],
+   "against_h": "Measured against",
+   "owed": "ONNX is the interchange format for the wider model ecosystem (vision, classic ML, non-LLM nets). Choosing GGUF is defensible, but it closes the door on every ONNX-only model.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first is the production half the tier does not yet have; the second hardens what already runs; the third is reach and breadth.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — the production half",
+   "items": [
+    {
+     "title": "Wire ggml's backward pass — the training foundry",
+     "text": "Invoke `ggml-opt.cpp` (vendored, dark) to train a transformer, closing foundry rung 2: corpus synthesis → tokenizer training → backward-pass training → LLM export. This is the line between \"runs models\" and \"makes models.\"",
+     "value": "High",
+     "effort": "High"
+    },
+    {
+     "title": "A quantization (encode) path",
+     "text": "Q8_0 first, then the k-quant family — so exported or derived models ship at deployable size. De-quant already works on load; the encode side is the missing half and a precondition for a real foundry.",
+     "value": "High",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — harden what runs",
+   "items": [
+    {
+     "title": "Ship or fetch a real semantic model",
+     "text": "Commit a small real embedding model, or fetch-on-first-use, so the embedding, generative and rerank paths are exercised in CI rather than gracefully skipped. Turns \"code proven by construction\" into \"path proven end-to-end.\"",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "Broaden the numeric bridge",
+     "text": "Expose general ggml tensor ops (not just matmul) and a backward pass to the numeric plane — the doc's \"ggml available to all numerics.\" It would also give the training foundry its gradient substrate.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Extend GPU beyond the forward path",
+     "text": "The calibration foundry now auto-routes the inference forward pass to GPU (2–5×). The reach is to cover the decoder generation loop and, eventually, training — and to move from per-shape kernel selection toward whole-graph GPU execution.",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — reach & breadth",
+   "items": [
+    {
+     "title": "More decoder architectures + speculative decoding",
+     "text": "Beyond llama/qwen/smollm — the breadth llama.cpp carries — plus speculative decoding for throughput. Each new arch widens which local LLMs the tier can run.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "ONNX import",
+     "text": "An ONNX loader would open the vision and classic-ML model ecosystem that GGUF does not cover. Strategic and against the current single-format bet — worth it only if non-LLM models become a goal.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "Convolutional & vision layers",
+     "text": "The tier is text-transformer only — no conv layers, no vision models. Adding them (train and infer) would extend it beyond language into the image domain the perception frontier needs.",
+     "value": "Low",
+     "effort": "High"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings — and a docs correction.",
+   "text": "The design doc is stale: it still says \"no ggml bridge\" and \"cannot yet write GGUF,\" both contradicted by shipped, committed code (`neural_matmul.zig`, `gguf_export.zig`, \"R4 CLOSES\"). Project memory's \"Neural tier COMPLETE, numpy parity\" is true for inference and would overclaim if read as the full training vision. This page rates the code, not either doc. And the numpy-parity (1.64e-7) covers the BERT forward + core numerics only — not the pure-Zig trainer and not the LLM decoder, which has no committed CI model and is proven by construction with graceful skips."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza's neural tier is a real, numpy-verified, governed inference engine — GGUF in, embeddings / NER / rerank / grammar-constrained generation out, on CPU or measured GPU — that stands with the local-inference field on consumption, and is a full program away from it on production: training a transformer, quantizing it, and writing it back out."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16 — Ring faces under `base/neural` (`stzNeuralModel`, `stzSemanticIndex`, `stzLLMFunction`, `stzOutputSchema`) and `base/learning` (`stzNeuralNetwork`, `stzTrainer`); engine `neural_embed.zig`, `neural_gen.zig`, `neural_backbone.zig`, `neural_gpu.zig`, `neural_matmul.zig`, `gguf_export.zig`, `nn.zig`, vendored `ggml` (CPU-only, patched); guards under `test/neural` + `test/learning` (BERT numpy-parity 1.64e-7, GBNF, XOR training). Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

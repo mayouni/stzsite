@@ -1,0 +1,273 @@
+{
+ "slug": "system",
+ "url": "https://claude.ai/artifact/3oWhGiSou6wBQyKbBkCDQ4",
+ "title": "System programming — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "Deliberately not a Go/Rust-std system library. The primitives it exposes — managed child processes, environment, working directory, filesystem, monotonic clocks, a libuv reactor — are a clean but intentional subset of what those stdlibs and libuv carry. What it adds that none of them have is the layer above: an in-memory rehearsal twin over files, env and spawns, a single narrated / scoped / audited `stzUpdatePlan` that is the only bridge to reality, and a capability-actor lattice where an inference-only (LLM) actor's effect set is empty by construction — \"agents that cannot hurt you,\" enforced in code. On top sits a complete delivery plane. It omits by design what a governed-effects surface doesn't need: signals, broad IPC, the raw syscall zoo.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships, the tools it is fair to measure against, and the one thing still owed. Read the shape honestly: one category-leading strength (governance), a broad band of solid-but-subset OS basics, and a few deliberate omissions.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Safe-world governance (actor · twin · commit)",
+   "rating": "Strong",
+   "engine": "One closed capability lattice (`effectful/sensing/compute/inference` + postures) in `stzSystemActor`; a rehearsal twin (`stzVirtualSystem` / `stzVirtualFileSystem` / `stzVirtualEnvironment`) that touches nothing; and `stzUpdatePlan` — the sole crossing — which commits only through three gates (reject · scope · governance). An LLM actor's effect set is empty, so it commits nothing, in every domain.",
+   "engine_h": "In the engine",
+   "against": [
+    "Go std (none)",
+    "Rust std (none)",
+    "libuv (none)"
+   ],
+   "against_h": "Measured against",
+   "owed": "No stdlib has any of this — it is the substrate the agentic safe-world binding rides on. Proven: a queued spawn does not run until commit (marker-file verified); scope refusals never reach disk. A genuine category-of-one.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Process / subprocess management",
+   "rating": "Solid",
+   "engine": "Managed children (`system.zig`): `Spawn`, streaming `ReadOutput`/`ReadError`, `Wait`, `ExitCode`, `Kill`, no-leak `Close` — plus a `SystemCall` front whose double-exec bug is fixed (one spawn returns `[stdout, exit, stderr]`).",
+   "engine_h": "In the engine",
+   "against": [
+    "Go os/exec",
+    "Rust std::process",
+    "libuv spawn"
+   ],
+   "against_h": "Measured against",
+   "owed": "`ExePath`, `IsAlive` and a process table are named but have no Ring consumer yet; no pty. The common lifecycle is clean and leak-safe.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Environment & working directory",
+   "rating": "Solid",
+   "engine": "Get / set / unset / list env vars, cwd get/set, hostname, username, cpu-count — engine-backed. On Windows, a set value uses `SetEnvironmentVariableW` so later child spawns inherit it.",
+   "engine_h": "In the engine",
+   "against": [
+    "Go os",
+    "Rust std::env"
+   ],
+   "against_h": "Measured against",
+   "owed": "Complete for the everyday surface, and correctly wired to child inheritance. Nothing structural owed.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Filesystem operations",
+   "rating": "Solid",
+   "engine": "`file.zig`: read / write / append / copy / delete / stat, and dir create / delete / list / walk / count — path args screened by `pathIsUsable`. The rehearsal twin adds governed create/write/copy/move over the same primitives.",
+   "engine_h": "In the engine",
+   "against": [
+    "Go os / io",
+    "Rust std::fs"
+   ],
+   "against_h": "Measured against",
+   "owed": "Covers the common ops (and adds a twin no stdlib has) — but omits permissions, ownership, symlinks and fifos that Go/Rust std carry (see lane 11).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "OS / platform detection & machine info",
+   "rating": "Solid",
+   "engine": "OS / arch / endianness / pointer-size / bit-size, cpu-count, machine memory (total/free) and process memory (RSS/peak/CPU-time), with declared profiles that model non-host targets (rtos/android/esp32). Discipline: \"facts are engine, opinions are Ring\" — the old Ring `getarch()` was retired.",
+   "engine_h": "In the engine",
+   "against": [
+    "Go runtime",
+    "Rust std",
+    "sysinfo crates"
+   ],
+   "against_h": "Measured against",
+   "owed": "Solid machine/process facts with no double source — but not a deep sysinfo (no per-disk, per-NIC, load average or thermals).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Time & clocks",
+   "rating": "Solid",
+   "engine": "`time.zig`: monotonic ns/us/ms, wall UTC, sleep, and clock resolution — with process uptime taken from a monotonic base instant captured at DLL load (the old epoch-uptime bug is fixed and guarded).",
+   "engine_h": "In the engine",
+   "against": [
+    "Go time",
+    "Rust std::time",
+    "libuv"
+   ],
+   "against_h": "Measured against",
+   "owed": "Monotonic-vs-wall is correctly separated (a real correctness win). Calendar / timezone time is the datetime module's, by design.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Deployment plane",
+   "rating": "Solid",
+   "engine": "A governed define → require → feasibility → plan → execute → ship pipeline in one vocabulary: `stzDeployment` + `stzDeploymentSite` with a step DAG, rollback and provisioning. `Deploy(:Production)` is real and gated (`MayCommit` = actor holds `effectful`); a bare call touches nothing. Git and LocalRepo backends proven byte-for-byte.",
+   "engine_h": "In the engine",
+   "against": [
+    "Ansible / Capistrano",
+    "Terraform",
+    "Docker deploy"
+   ],
+   "against_h": "Measured against",
+   "owed": "Server (scp/ssh), Registry (docker) and Device (flash) backends generate correct commands but are not yet live-verified against a real host / account — \"one reachable host away from literal.\"",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Build & emulation",
+   "rating": "Solid",
+   "engine": "`stzBuilder` + `build.zig wasm` produce a bundle; `stzEmulator` gives `Deploy(:Emulated)` a rehearsed run; `stzWebBundle` packages the WASM edge; `stzPlatform` drives Build→Deploy (refusing to deploy what wasn't built).",
+   "engine_h": "In the engine",
+   "against": [
+    "build systems",
+    "Docker build",
+    "esbuild / bundlers"
+   ],
+   "against_h": "Measured against",
+   "owed": "A real build+emulate stage feeding the deploy plane — focused on Softanza's own artifacts (WASM edge, deployable bundles), not a general build tool.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Threading / async (reactor)",
+   "rating": "Partial",
+   "engine": "`reactor.zig` is a libuv-backed cross-platform event loop (epoll / kqueue / IOCP), but in this group only its first slice ships — `version` + `selftest`.",
+   "engine_h": "In the engine",
+   "against": [
+    "libuv (full)",
+    "Go goroutines",
+    "Rust async / tokio"
+   ],
+   "against_h": "Measured against",
+   "owed": "The full async multiplexing surface is the Concurrency & distribution plane's, and only its first slice is here. No thread-spawn API in the system group (`threads` is a lattice token, not a call).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Low-level OS surface",
+   "rating": "Partial",
+   "engine": "Path helpers (extension / basename / dirname) and the common file/dir ops ship; a coarse engine sandbox flag (`stz_config_sandbox`) is designed as a belt-and-braces companion to the twin.",
+   "engine_h": "In the engine",
+   "against": [
+    "Go syscall / os",
+    "Rust std + nix",
+    "libuv"
+   ],
+   "against_h": "Measured against",
+   "owed": "Deliberately omitted: file permissions / ownership / symlinks / fifos, mmap, users/groups, ptrace, raw syscalls. A focused governed surface, not an `os`/`syscall` clone.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "IPC",
+   "rating": "Partial",
+   "engine": "Inter-process communication is the managed child's stdout / stderr / stdin pipes — enough to drive and read a subprocess.",
+   "engine_h": "In the engine",
+   "against": [
+    "Go (pipes / net)",
+    "Rust",
+    "libuv (pipes / named)"
+   ],
+   "against_h": "Measured against",
+   "owed": "No named pipes, shared memory or socketpair IPC. Cross-process coordination beyond parent↔child stdio is not a lane yet (sockets are the network module's).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Signals",
+   "rating": "Emerging",
+   "engine": "None. There is no signal handling — `grep` finds no `stz_signal*` in the engine and no Ring signal class.",
+   "engine_h": "In the engine",
+   "against": [
+    "Go os/signal",
+    "Rust signal-hook",
+    "libuv signals"
+   ],
+   "against_h": "Measured against",
+   "owed": "No SIGINT / SIGTERM / SIGCHLD handling — so no graceful shutdown, no child-reaping on signal, no Ctrl-C hook. A real gap for a system-programming surface.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first closes the two most load-bearing omissions for real system work; the second finishes named-but-unbuilt pieces; the third is the OS breadth this surface leaves to the stdlibs on purpose.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — load-bearing omissions",
+   "items": [
+    {
+     "title": "Signal handling",
+     "text": "SIGINT / SIGTERM / SIGCHLD (and the Windows console-control equivalents) — the difference between a process that can shut down gracefully and reap its children and one that can't. Absent today, and essential for anything long-running.",
+     "value": "High",
+     "effort": "Medium"
+    },
+    {
+     "title": "The full async reactor surface",
+     "text": "Only the reactor's first slice ships here; real async multiplexing (timers, I/O, tasks) is the Concurrency & distribution plane's — and it is what most I/O-bound system work needs. Landing it turns a governed effects surface into a governed runtime.",
+     "value": "High",
+     "effort": "High"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — finish the named pieces",
+   "items": [
+    {
+     "title": "Complete the process face",
+     "text": "`ExePath`, `IsAlive` and the process table (`proc_list`/`proc_exists`) are named but have no Ring consumer. Small additions over the existing engine surface.",
+     "value": "Medium",
+     "effort": "Low"
+    },
+    {
+     "title": "Live-verify the deploy backends",
+     "text": "Server (ssh/scp), Registry (docker) and Device (flash) generate correct commands but aren't run against a real host/account. Proving one of each end-to-end makes \"one host away from literal\" actually literal.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Unify SystemCall over Spawn",
+     "text": "Re-express `stzSystemCall` over `stzProcess.Spawn` so there is one spawn implementation, not two. The double-exec fix already landed; this removes the remaining parallel path.",
+     "value": "Low",
+     "effort": "Low"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — OS breadth, on demand",
+   "items": [
+    {
+     "title": "The lower OS surface",
+     "text": "File permissions / ownership / symlinks, users/groups, and the metadata the stdlibs carry — added where a real workload needs them, keeping the governed-effects framing rather than cloning `os`/`syscall` wholesale.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "Richer IPC",
+     "text": "Named pipes, shared memory and socketpair beyond child stdio — the cross-process coordination a multi-process app eventually needs, ideally as governed operations under the twin.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "The engine sandbox flag",
+     "text": "Wire the designed coarse `stz_config_sandbox` as the belt-and-braces companion to the twin — a hard engine-level backstop under the soft governance gate, so even a bug in Ring can't cross to reality.",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "Re-surveyed from `main`. Heavily guarded (~335 assertions across eight+ guards) proving exactly the distinctive parts: uptime is monotonic seconds not epoch (the fix), SystemCall is a single spawn (the double-exec fix), a queued spawn does not run until commit (marker-file verified), an LLM empty-effect actor commits nothing across files and env, and out-of-scope operations never reach disk. One test errors (`test_system_engine2.ring` — a stale engine binding). The deploy plane's Git/LocalRepo backends are proven end-to-end; ssh/aws/registry/device are command-generated and infra-gated."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza's system layer is not trying to out-surface Go or Rust — it exposes a deliberate subset of OS primitives and wraps them in the one thing those stdlibs lack: a rehearse-then-commit, capability-gated bridge to reality where an LLM cannot act by construction; its gaps are the classic OS pieces (signals, IPC, full async, the lower syscall surface) it will add as real workloads earn them."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16, from a read-only `main` worktree — Ring faces under `base/system` (`stzProcess`, `stzSystemCall`, `stzEnvironment`, `stzSystemActor`, `stzVirtualFileSystem`, `stzVirtualSystem`, `stzUpdatePlan`, `stzDelivery`/`stzDeployment`) and `base/platform`; engine `system.zig`, `process.zig`, `file.zig`, `time.zig`, `perf.zig`, `reactor.zig`; plan of record `SOFTANZA_SYSTEM_FOUNDATION.md` + `SOFTANZA_DELIVERY_PLANE.md`; guards under `test/system` + `test/platform` (~335 asserts). Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

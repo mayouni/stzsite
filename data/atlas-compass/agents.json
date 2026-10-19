@@ -1,0 +1,275 @@
+{
+ "slug": "agents",
+ "url": "https://claude.ai/artifact/JqibGH4MRydpf8JrzjUwSN",
+ "title": "Agents & conversation — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "A deliberate inversion of LangChain and AutoGen. Where those are LLM-driven autonomy frameworks — the model picks tools, plans, and orchestrates — Softanza builds a governed, declarative substrate where an LLM only proposes and can never act. Agents are `.pia` files judged at load; they rehearse into a virtual-filesystem twin and only a committing actor writes reality, under three gates; a capability lattice makes \"an LLM cannot act effectfully\" a static, provable invariant. It is strongest exactly where the peers are weakest — safety, governance, determinism — and deliberately absent exactly where they lead: LLM-driven tool selection, autonomous planning, live multi-agent chat, and RAG.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships, the tools it is fair to measure against, and the one thing still owed. Read the Partial/Emerging lanes carefully: several are capabilities Softanza refuses by design (LLM-driven action), not merely unbuilt.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Safe-world binding (sandboxed execution)",
+   "rating": "Strong",
+   "engine": "The differentiator: an agent (`stzAgentWorkbench`) rehearses file/system changes into a virtual-filesystem twin, then exports one governed `GenerateUpdatePlan()`. A separate committing actor executes it under three gates — scope, capability, governance — leaving an audit trail. \"Build a safe world, and let ordinary agents loose inside it.\"",
+   "engine_h": "In the engine",
+   "against": [
+    "LangChain (none)",
+    "AutoGen (none)",
+    "Semantic Kernel"
+   ],
+   "against_h": "Measured against",
+   "owed": "Proven: a `Cycle()` fires, the disk does not move, the plan carries one op, an `LLMActor` cannot commit, only the in-scope actor makes it real. No mainstream framework has this — a genuine category-of-one.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Guardrails & governance (capability lattice)",
+   "rating": "Strong",
+   "engine": "Agents compose as a colored `stzAgentGraph` where an `llm_actor` holds `[inference]` only. Five statically-proven invariants (no-llm-effectful, effects-guarded, open-text-contained, effects-traced, effects-dominated) feed the one CI gate, and `no-llm-effectful` is enforced at two doors — graph construction and engine registration — with the same sentence.",
+   "engine_h": "In the engine",
+   "against": [
+    "NeMo Guardrails",
+    "LangChain (ad-hoc)",
+    "Guardrails AI"
+   ],
+   "against_h": "Measured against",
+   "owed": "A provable governance graph is far beyond the peers' runtime-only guardrails. The \"effects-dominated\" strengthening (every input→effect path crosses a guardian) is the newest rung.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Agent definition & lifecycle (.pia, judged-at-load)",
+   "rating": "Strong",
+   "engine": "An agent is a file: a closed, versioned `.pia` declaration (kind, coverage, reversibility, schedule, skills, governance) — or a `.ring` program — judged at LOAD by a sequence of courts. A defect is a refusal in the unified finding shape, one per gate (14 refusal codes), before the agent ever runs.",
+   "engine_h": "In the engine",
+   "against": [
+    "LangChain (code)",
+    "Semantic Kernel",
+    "AutoGen"
+   ],
+   "against_h": "Measured against",
+   "owed": "Declarative, governed, version-gated agents validated before execution — no peer validates an agent at load like this. A distinctive deployment model (drop a file in a folder, it mounts or is refused).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Tick / scheduler loop",
+   "rating": "Strong",
+   "engine": "`agentloop.zig` — Zig owns time, Ring runs `Cycle()`, and there is no callback into the Ring VM: the loop publishes a schedule (a run queue) rather than invoking. Total order is priority then registration; timer/event/mailbox/manual triggers; an over-full queue drops and counts; the loop states its own coverage at runtime.",
+   "engine_h": "In the engine",
+   "against": [
+    "AutoGen (call-driven)",
+    "LangGraph runtime",
+    "actor schedulers"
+   ],
+   "against_h": "Measured against",
+   "owed": "Determinism-as-a-test (same sequence → same order, twice) and 15 Zig unit tests. The engine pump is opt-in today — a stated migration state that flips when the last in-tree host declares.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Structured output (LLM proposals)",
+   "rating": "Solid",
+   "engine": "An `llm_actor` proposes through `stzLLMFunction` + `stzOutputSchema`: a declared structure, compiled to a GBNF grammar, enforced at the sampler so invalid tokens are unemittable. The proposal is validated against the declared shape and written to the agent's own memory — \"a candidate, never an effect.\"",
+   "engine_h": "In the engine",
+   "against": [
+    "LangChain output parsers",
+    "instructor / outlines",
+    "SK"
+   ],
+   "against_h": "Measured against",
+   "owed": "Grammar-constrained decoding beats retry-based parsing — the deep rating lives on the Neural tier page; here it is the solid mechanism by which an LLM contributes without acting.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Conversation management",
+   "rating": "Solid",
+   "engine": "`stzConversation` — a goal-driven \"wise-coding\" loop inside a `stzKnowledgeGraph`: it holds one accountable `stzGoal`, generates the next question from the goal's gaps, admits answers through governed `Admit`, checkpoints refusals, and persists as `.zcnv` — with optional neural rephrasing.",
+   "engine_h": "In the engine",
+   "against": [
+    "LangChain conversation chains",
+    "SK chat",
+    "Rasa"
+   ],
+   "against_h": "Measured against",
+   "owed": "A distinctive system-led, gap-born dialogue — but deterministic and narrower than a full dialogue manager (no intent classification, no free-form NLU beyond the answer registers).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Memory & state",
+   "rating": "Solid",
+   "engine": "`stzAgentMemory` over a `stzKnowledgeGraph`: `Learn` / `Recall` / `Forget` / `Prove` over case-folded (subject, predicate, object) triples, persistable.",
+   "engine_h": "In the engine",
+   "against": [
+    "LangChain memory",
+    "AutoGen",
+    "SK memory"
+   ],
+   "against_h": "Measured against",
+   "owed": "Graph-backed, provable memory is a nice distinctive — but there is no conversation-buffer / summary / vector memory variety LangChain offers, and no automatic recency/relevance management.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "LLM function & prompt management",
+   "rating": "Solid",
+   "engine": "`stzLLMFunction`: typed returns (`ReturnsNumber/Boolean/OneOf/Structure`), a call budget, retries, goldens (`AddGolden/RunGoldens`), a template prompt with `{input}` substitution, and a real GGUF backend (`UseResponder` / `SeedAnswer` for model-free tests).",
+   "engine_h": "In the engine",
+   "against": [
+    "LangChain (LCEL / chains)",
+    "SK functions",
+    "DSPy"
+   ],
+   "against_h": "Measured against",
+   "owed": "A clean single-function abstraction with goldens — but no chain/pipeline ecosystem, and no prompt registry or versioning beyond the template. Narrower than LangChain's composition surface.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Multi-agent orchestration",
+   "rating": "Partial",
+   "engine": "`stzAgentGraph` composes roles (pi / llm / hybrid / guardian / effect / tool) with edges (`Proposes` / `Guards` / `Feeds` / `Escalates`) and proves soundness. An engine mailbox (`stz_agent_send_msg`) carries messages.",
+   "engine_h": "In the engine",
+   "against": [
+    "AutoGen (group chat)",
+    "CrewAI",
+    "LangGraph"
+   ],
+   "against_h": "Measured against",
+   "owed": "Composition-as-proof is elegant, but there is no runtime multi-agent conversation orchestrator (AutoGen's core), the native roster is one-fifth wired, and `stzHybridAgent` exists only as a graph node, not a class.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Tools / function-calling",
+   "rating": "Partial",
+   "engine": "A skill's `ring:<Function>` clause binds a plain Ring function, governed by an execution `posture` (trusted / external / sandboxed) composed against the agent's reversibility class. Tools are `tool` nodes with `[compute]` capability.",
+   "engine_h": "In the engine",
+   "against": [
+    "LangChain tools (LLM-selected)",
+    "SK plugins",
+    "OpenAI function-calling"
+   ],
+   "against_h": "Measured against",
+   "owed": "No LLM-driven tool selection — the defining feature of LangChain/AutoGen tool agents. Binding is declarative and posture-gated; which tool runs is decided by the deterministic agent, not the model. A deliberate refusal, but a gap against the peers.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Planning & reasoning",
+   "rating": "Partial",
+   "engine": "Deterministic perceive→decide→act to a fixpoint (`stzPIAgent.Pursue`, `RunToQuiet`), and gap-driven slot-filling via `stzGoal`.",
+   "engine_h": "In the engine",
+   "against": [
+    "SK planners",
+    "LangChain agents (ReAct)",
+    "AutoGPT"
+   ],
+   "against_h": "Measured against",
+   "owed": "No LLM-driven planning — no ReAct, no stepwise / Handlebars planner. Reasoning is a deterministic fixpoint; the `planner` agent is reserved, not wired. Autonomous multi-step reasoning is the peers' headline and is absent here by design.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "RAG / retrieval",
+   "rating": "Emerging",
+   "engine": "Not wired into the agent tier. The nearest tie-in is `stzAgentMemory` over the knowledge graph; the semantic index (`stzSemanticIndex`, embeddings) lives on the Neural tier and is not connected to agent proposal or memory.",
+   "engine_h": "In the engine",
+   "against": [
+    "LangChain (RAG)",
+    "LlamaIndex",
+    "SK memory connectors"
+   ],
+   "against_h": "Measured against",
+   "owed": "Retrieval-augmented generation — a headline of every peer — is absent from agents. The embedding retrieval to build it already exists one tier over; it just isn't connected.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first two add the peers' capabilities inside the governance frame (LLM proposes, a gate commits); the third finishes the owed negotiation and evaluation surfaces.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — the peers' strengths, governed",
+   "items": [
+    {
+     "title": "LLM-driven tool selection, gated",
+     "text": "Let an `llm_actor` propose which tool to call (a ReAct-style loop), with a deterministic pi-gate approving the commit. This adds LangChain's core capability without surrendering the \"LLM never acts\" invariant — proposal, not authority.",
+     "value": "High",
+     "effort": "Medium"
+    },
+    {
+     "title": "Wire RAG into agents",
+     "text": "Connect the existing `stzSemanticIndex` to agent memory and LLM proposals, so an agent can retrieve before it proposes. The retrieval engine ships one tier over; this is a wiring job with high visible return.",
+     "value": "High",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — finish the owed surfaces",
+   "items": [
+    {
+     "title": "Plan negotiation (Receive / Revise)",
+     "text": "The agent's side of the plan handshake — `Receive(aIssues)` / `Revise()` — so a rejected update plan comes back for repair instead of just failing. Named as owed in the design doc.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Live multi-agent orchestration",
+     "text": "A runtime message-passing / group-chat layer over the proven graph — turning static composition into live collaboration, the way AutoGen runs a conversation between agents.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Wire the roster & build stzHybridAgent",
+     "text": "Four of five native agents are reserved and `stzHybridAgent` is only a graph node. Wiring them (and the hybrid class) turns the honest one-fifth roster into a working fleet.",
+     "value": "Medium",
+     "effort": "Low"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — evaluation & exploration",
+   "items": [
+    {
+     "title": "stzAgentEvaluation — the examination hall",
+     "text": "A structured harness to score an agent's proposals against expectations (beyond goldens on a single LLM function). Named as owed; the piece that makes agent quality measurable, not just governed.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "Branch-per-hypothesis exploration",
+     "text": "`BranchFrom` / `CompareBranches` — let an agent rehearse several futures in parallel workbenches and compare, using the safe-world twin that already exists. A natural, distinctive extension of the rehearse model.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "Governed autonomous planning",
+     "text": "An LLM planner that proposes a multi-step plan, re-validated and committed step-by-step under the three gates — the peers' autonomy, made auditable. The reserved `planner` agent's eventual home.",
+     "value": "Medium",
+     "effort": "High"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "This tier is heavily guarded and green — the agent loop (determinism proven as a test, the drop-and-count under overflow), the `.pia` court (one refusal per gate, every one at LOAD), and the safe world (the disk provably does not move until a scoped actor commits). Two caveats: the LLM-model-dependent paths run model-free in CI via `SeedAnswer`/`UseResponder`, so the governance is proven but proposal quality is not CI-tested; and `stzNarration` was renamed to `stzTranscript` (not a lost capability — the git delete/add pair is the rename)."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza's agents are the safest, most governable, most declarative of their field — a provably-contained substrate no LLM framework offers — and the deliberate cost of that is the autonomy the field is famous for: LLM-driven tool use, planning, live multi-agent chat and RAG are refused or unbuilt, and closing the gap means adding those as governed proposals rather than autonomous authority."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16 — Ring faces under `base/agentic` (`stzAgentDeclaration`, `stzAgentFolder`, `stzAgentHost`, `stzAgentWorkbench`, `stzPIAgent`, `stzAgentGraph`, `stzAgentRule`, `stzAgentMemory`) and `base/conversation` (`stzConversation`, `stzGoal`, `stzTranscript`); engine `agentloop.zig` + `ring_bridge_agentloop.zig` (in `stz_softanzuter.dll`); C9 in `stzLLMFunction` / `stzOutputSchema`; plan of record `SOFTANZA_INTELLIGENCE_ARCHITECTURE.md` §3.2; guards under `test/agentic` + `test/conversation`. Ratings reflect what the guards prove.",
+ "shape": "standard"
+}

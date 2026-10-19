@@ -1,0 +1,278 @@
+{
+ "base/doc/design/Softanza Virtual System Framework.md": {
+  "en": "A requirements narration and architectural reference, version 1.2, for the Virtual System Framework: every unmanaged system gains an in-memory twin holding no reference to reality, so one rehearses, plans and commits through a single governed crossing, with the file domain first and a four-phase roadmap.",
+  "fr": "Narration d'exigences et référence d'architecture, version 1.2, pour le cadre de système virtuel : tout système non géré reçoit un jumeau en mémoire sans référence à la réalité ; on répète, planifie et valide par une traversée gouvernée, les fichiers d'abord, sur une route en quatre phases."
+ },
+ "base/doc/design/TIER2_REACTOR_DIRECTION.md": {
+  "en": "A direction record for Tier 2, dated 2026-06-14: the decision to vendor libuv as the cross-platform async I/O backbone rather than hand-roll a reactor, the architecture joining it to the host language, the build-or-buy ladder, and the resolved choice of vendored libcurl for HTTP.",
+  "fr": "Relevé de direction pour le Tier 2, daté du 2026-06-14 : la décision d'intégrer libuv comme socle d'E/S asynchrones multiplateforme plutôt que d'écrire un réacteur maison, l'architecture qui le relie au langage hôte, l'échelle construire-ou-acheter, et le choix tranché de libcurl intégré pour HTTP."
+ },
+ "base/doc/design/SOFTANZA_CLI_DESIGN.md": {
+  "en": "A short design for a single softanza command-line binary built in Zig that bundles the Engine and launches the host language, offering run, test, build, version, doctor and a future notebook command, laid out as a three-phase implementation plan.",
+  "fr": "Courte conception d'un binaire unique softanza en ligne de commande, écrit en Zig, qui embarque l'Engine et lance le langage hôte, avec les commandes run, test, build, version, doctor et un futur notebook, présentée comme un plan de réalisation en trois phases."
+ },
+ "base/doc/design/SOFTANZA_LOGGING.md": {
+  "en": "A design note, status built, for stzLog: a log is structured data rather than a stream of strings, each entry a timestamped, leveled record with fields that can be filtered and queried in-process and rendered as text or JSON, wired into the delivery plane.",
+  "fr": "Note de conception, au statut construit, pour stzLog : un journal est une donnée structurée, non un flux de chaînes ; chaque entrée est un enregistrement horodaté et nivelé, aux champs filtrables et interrogeables dans le processus, rendu en texte ou JSON, branché sur le plan de livraison."
+ },
+ "base/concurrent/SOFTANZA_CONCURRENT_PLAN.md": {
+  "en": "The plan of record for the concurrency plane (CN0-CN5), written 2026-08-16 before any code: concurrency is a routing vocabulary over three substrates already shipped (engine threads, the reactor, the process fleet), with phases and kill criteria; it supersedes the 2024 proposal.",
+  "fr": "Plan de référence du plan de concurrence (CN0-CN5), écrit le 2026-08-16 avant tout code : la concurrence est un vocabulaire d'aiguillage sur trois substrats déjà livrés (threads du moteur, réacteur, flotte de processus), avec phases et critères d'arrêt ; il remplace la proposition de 2024."
+ },
+ "base/cluster/SOFTANZA_DISTRIBUTION_PLAN.md": {
+  "en": "A phased plan (D0-D6, every phase marked done on 2026-08-07) for running any Softanza app as share-nothing nodes on one or many machines without changing code: location-transparent messages, supervisors with declared restart strategies, and a wire whose cost is measured before work crosses it.",
+  "fr": "Plan par phases (D0-D6, toutes marquées faites le 2026-08-07) pour exécuter toute application Softanza en nœuds sans partage, sur une ou plusieurs machines, sans changer le code : messages indépendants de l'emplacement, superviseurs aux stratégies de redémarrage déclarées, et un réseau dont le coût est mesuré avant qu'un travail le traverse."
+ },
+ "base/doc/design/MTLS_PLAN.md": {
+  "en": "An implementation plan, marked complete (slices 1-4, 2026-07-15), for mutual TLS between Softanza nodes using vendored mbedTLS over the libuv reactor rather than Schannel, adding encryption in transit and certificate-based mutual identity that request signing alone did not provide.",
+  "fr": "Plan de réalisation, marqué terminé (tranches 1-4, 2026-07-15), d'un TLS mutuel entre nœuds Softanza avec mbedTLS intégré sur le réacteur libuv plutôt que Schannel, apportant le chiffrement en transit et l'identité mutuelle par certificat que la seule signature des requêtes ne donnait pas."
+ },
+ "base/doc/design/SOFTANZA_SERVICE_VIRTUALIZATION_PLAN.md": {
+  "en": "A plan, status complete with all seven phases built, for the service-virtualization plane: code the whole solution fee-free against sandboxes of six categories of external service, then flip to live adapters at deploy through a governed registry that refuses a sandbox in production.",
+  "fr": "Plan, au statut terminé avec ses sept phases construites, du plan de virtualisation des services : coder toute la solution sans frais contre des bacs à sable de six catégories de services externes, puis basculer vers les adaptateurs réels au déploiement via un registre gouverné qui refuse un bac à sable en production."
+ },
+ "base/doc/design/SOFTANZA_AUTH_PLAN.md": {
+  "en": "A design study, status all six phases built plus OIDC, passkeys and SAML, analysing what Better Auth teaches and answering it through governance: an adapter seam for persistence, pluggable authentication methods, hardened primitives, a real second factor, and authentication wired to authorization.",
+  "fr": "Étude de conception, au statut six phases construites plus OIDC, passkeys et SAML, qui analyse ce que Better Auth enseigne et y répond par la gouvernance : couture d'adaptateur pour la persistance, méthodes d'authentification enfichables, primitives durcies, vrai second facteur, et authentification reliée à l'autorisation."
+ },
+ "base/service/SOFTANZA_PAYMENTS_PORT.md": {
+  "en": "A charter (rung PY0, 2026-10-04) for a payments port shaped on the BCEAO PI-SPI API Business, so any Softanza platform in the UEMOA pays, requests payment and handles webhooks as a normal service, with four postures, governed money out, and a guard per rung.",
+  "fr": "Charte (échelon PY0, 2026-10-04) d'un port de paiement calqué sur l'API Business du PI-SPI de la BCEAO, pour que toute plateforme Softanza de l'UEMOA paie, demande un paiement et traite les webhooks comme un service ordinaire, avec quatre postures, des sorties d'argent gouvernées et une garde par échelon."
+ },
+ "base/doc/design/SOFTANZA_PERF_SYSTEM.md": {
+  "en": "The design study for stzPerfSystem, status complete (P0-P11 shipped): one governed system that measures, explains and defends a program's performance, every measurement taken and stored by the Zig engine, metric reads treated as sensing and optimization acts as governed effects.",
+  "fr": "Étude de conception de stzPerfSystem, au statut terminé (P0-P11 livrés) : un seul système gouverné qui mesure, explique et défend la performance d'un programme, chaque mesure prise et conservée par le moteur Zig, les lectures de métriques traitées comme perception et les actes d'optimisation comme effets gouvernés."
+ },
+ "base/doc/design/SOFTANZA_PERF_VS_THE_FIELD.md": {
+  "en": "A comparative study placing the performance system beside Micrometer, OpenTelemetry, Prometheus, the APM agents and JFR: an instrumentation library with black-box senses and a governed act, explicitly not a storage or visualization platform, and it names honestly what the field has that Softanza lacks.",
+  "fr": "Étude comparative situant le système de performance face à Micrometer, OpenTelemetry, Prometheus, aux agents APM et à JFR : une bibliothèque d'instrumentation aux sens boîte noire et à l'acte gouverné, explicitement pas une plateforme de stockage ou de visualisation, qui nomme honnêtement ce que le domaine a et que Softanza n'a pas."
+ },
+ "base/doc/design/SOFTANZA_INCIDENT_ANALYSIS.md": {
+  "en": "The design study for the security incident-analysis system, status complete (I0-I8 shipped): every governed refusal or grant becomes a typed event in a hash-chained ledger, detections are code, incidents are case files, and containment runs under governance; the library already detected, this makes it remember.",
+  "fr": "Étude de conception du système d'analyse des incidents de sécurité, au statut terminé (I0-I8 livrés) : chaque refus ou autorisation gouverné devient un événement typé dans un registre chaîné par hachage, les détections sont du code, les incidents des dossiers, le confinement s'exécute sous gouvernance ; la bibliothèque détectait déjà, ceci la fait se souvenir."
+ },
+ "base/doc/design/SOFTANZA_INCIDENT_VS_THE_FIELD.md": {
+  "en": "A comparative study, written only after the system shipped, placing the incident-analysis system beside SIEMs, EDR/XDR agents, SOAR, DFIR toolchains, Sigma and RASP: in-process evidence and governed response are its distinctive points; fleet-scale collection and host telemetry are honestly listed as absent.",
+  "fr": "Étude comparative, écrite seulement après la livraison du système, situant l'analyse des incidents face aux SIEM, agents EDR/XDR, SOAR, outils DFIR, Sigma et RASP : la preuve dans le processus et la réponse gouvernée sont ses points distinctifs ; la collecte à l'échelle d'un parc et la télémétrie d'hôte sont honnêtement notées absentes."
+ },
+ "base/doc/design/SCOPE_ORIENTED_PROGRAMMING.md": {
+  "en": "A design paradigm (v1.2) for fields whose behavior depends on an invisible frame: name it, reduce it to a closed set of scopes, choose the scope at the call site in the verb, and let the library compute with it; four instances, regex to concurrency.",
+  "fr": "Paradigme de conception (v1.2) pour les domaines dont le comportement dépend d'un cadre invisible : le nommer, le réduire à un ensemble fermé de portées, choisir la portée au point d'appel dans le verbe, et laisser la bibliothèque calculer avec ; quatre instances, des regex à la concurrence."
+ },
+ "base/doc/design/stz-information-tagging-strategy.md": {
+  "en": "A strategy, status active build (2026-07-08), for making every unit of the library retrievable and explainable in natural language: methods, harvested test examples and intent recipes normalize to one knowledge record, authored in four layers including #@ InfoTags, with retrieval quality measured rather than asserted.",
+  "fr": "Stratégie, au statut en construction active (2026-07-08), pour rendre chaque unité de la bibliothèque retrouvable et explicable en langage naturel : méthodes, exemples de tests récoltés et recettes d'intention se normalisent en un seul enregistrement de connaissance, rédigé en quatre couches dont les InfoTags #@, la qualité de recherche étant mesurée, non affirmée."
+ },
+ "base/binary/SOFTANZA_BINARY_PLAN.md": {
+  "en": "The plan of record for the binary-file plane (BN0-BN5), written 2026-08-16 before any code: a binary file is a table the bytes forgot to show, so a schema written once as data lets the engine read and write fixed-layout files, COBOL copybooks first.",
+  "fr": "Plan de référence du plan des fichiers binaires (BN0-BN5), écrit le 2026-08-16 avant tout code : un fichier binaire est une table que les octets ont oublié de montrer, donc un schéma écrit une fois comme donnée permet au moteur de lire et d'écrire des fichiers à disposition fixe, copybooks COBOL d'abord."
+ },
+ "base/doc/design/SOFTANZA_SECURITY.md": {
+  "en": "A consolidated map of security in Softanza, treated as governance under one vocabulary, expression free and admission governed: a capability lattice of four kinds and three trust postures gates a file write, a deploy or a key reveal alike, with the components homed in base/security.",
+  "fr": "Carte consolidée de la sécurité dans Softanza, traitée comme gouvernance sous un seul vocabulaire, expression libre et admission gouvernée : un treillis de capacités à quatre genres et trois postures de confiance filtre de même une écriture de fichier, un déploiement ou la révélation d'une clé, les composants étant logés dans base/security."
+ },
+ "base/security/SOFTANZA_THREAT_MODEL.md": {
+  "en": "A threat model written 2026-09-29 that turns the Security Readiness Compass into an auditable claim: every guarantee names the guard that proves it, open risks are listed with the rung that will close them, and OWASP and NIST CSF serve as lenses, not verdicts.",
+  "fr": "Modèle de menaces écrit le 2026-09-29 qui transforme la boussole de maturité sécurité en affirmation auditable : chaque garantie nomme la garde qui la prouve, les risques ouverts sont listés avec l'échelon qui les fermera, et OWASP et le NIST CSF servent de lentilles, non de verdicts."
+ },
+ "base/doc/design/SOFTANZA_SECRETS.md": {
+  "en": "A design note, status built, for secrets and credentials in base/security: a secret is not a string but a governed value that redacts itself everywhere, resolves lazily from a source such as an environment variable or a file, and reveals only under governance.",
+  "fr": "Note de conception, au statut construit, pour les secrets et identifiants dans base/security : un secret n'est pas une chaîne mais une valeur gouvernée qui se caviarde partout, se résout paresseusement depuis une source telle qu'une variable d'environnement ou un fichier, et ne se révèle que sous gouvernance."
+ },
+ "base/security/SOFTANZA_CRA_RUNBOOK.md": {
+  "en": "A runbook written 2026-09-30, closing threat-model risk R13, for reporting an actively exploited vulnerability under the EU Cyber Resilience Act: whether the Act reaches the project and in what role, what starts the clock, the 24-hour and 72-hour deadlines, and the questions left to counsel.",
+  "fr": "Procédure écrite le 2026-09-30, fermant le risque R13 du modèle de menaces, pour signaler une vulnérabilité activement exploitée selon le Cyber Resilience Act européen : si le règlement atteint le projet et à quel titre, ce qui déclenche l'horloge, les délais de 24 et 72 heures, et les questions laissées au juriste."
+ },
+ "base/doc/design/EXTERNAL_DEPENDENCY_AUDIT.md": {
+  "en": "An audit dated 2026-06-13 tracking every site where the base library loaded an external host-language extension (uuid, fastpro, html, libcurl, libuv), recording that all five were replaced by the in-tree Zig engine or dropped, and leaving a cross-platform async loop as a separate future milestone.",
+  "fr": "Audit daté du 2026-06-13 suivant chaque endroit où la bibliothèque de base chargeait une extension externe du langage hôte (uuid, fastpro, html, libcurl, libuv), constatant que les cinq ont été remplacées par le moteur Zig de l'arbre ou abandonnées, une boucle asynchrone multiplateforme restant un jalon futur distinct."
+ },
+ "base/plugin/SOFTANZA_PLUGIN_PLAN.md": {
+  "en": "The plan of record for the extension plane (PL0-PL5), written 2026-08-16 before any code: a plugin is governed foreign capability under five contract clauses (isolation, observation, constraint, currency, governance), invoked through one verb family in an isolated VM state; it supersedes the 2024 prototype narration.",
+  "fr": "Plan de référence du plan d'extension (PL0-PL5), écrit le 2026-08-16 avant tout code : un plugin est une capacité étrangère gouvernée sous cinq clauses (isolation, observation, contrainte, actualité, gouvernance), invoquée par une seule famille de verbes dans un état de machine virtuelle isolé ; il remplace le prototype de 2024."
+ },
+ "base/plugin/SOFTANZA_PLUGIN_COMPARATIVE_STUDY.md": {
+  "en": "A comparative analysis, explicitly not rules, placing the plugin plane beside hook systems, OSGi, extension hosts, WebExtensions, game-engine Lua, V8 isolates, WASM components and MCP: the field was built so humans could extend trusted software; this plane accepts untrusted capability, ledgers it and undoes it.",
+  "fr": "Analyse comparative, qui n'édicte aucune règle, situant le plan des plugins face aux systèmes de hooks, OSGi, hôtes d'extensions, WebExtensions, Lua des moteurs de jeu, isolats V8, composants WASM et MCP : le domaine fut bâti pour que des humains étendent un logiciel de confiance ; ce plan accepte une capacité non fiable, la consigne et la défait."
+ },
+ "base/doc/design/stzextertool-design-article.md": {
+  "en": "A long design article for an external-tools ecosystem: fifteen foundation tools (mathematics, statistics, data, media, documents, containers and more) under one intent-driven umbrella over the existing external-code runtimes, joined by a semantic bridge layer and a compositional DSL in the host language.",
+  "fr": "Long article de conception d'un écosystème d'outils externes : quinze outils fondateurs (mathématiques, statistiques, données, médias, documents, conteneurs et autres) sous un même parapluie piloté par l'intention au-dessus des runtimes de code externe existants, reliés par une couche de pont sémantique et un DSL de composition dans le langage hôte."
+ },
+ "base/doc/design/stzCloudtool-Design-Article.md": {
+  "en": "A design article proposing stzCloudTool, a semantic bridge between edge devices and cloud computation: operations are declared local or remote, or offloaded transparently when a device cannot carry them, with a command-line face, a configuration file and a twelve-month roadmap; nothing is reported as built.",
+  "fr": "Article de conception proposant stzCloudTool, pont sémantique entre appareils de bordure et calcul en nuage : les opérations sont déclarées locales ou distantes, ou déportées automatiquement quand un appareil ne peut les porter, avec une face en ligne de commande, une configuration et une feuille de route de douze mois ; rien n'est annoncé comme construit."
+ },
+ "base/sound/SOFTANZA_SOUND_PLAN.md": {
+  "en": "The plan of record for the sound plane (SN0-SN6, SS1-SS5, each closed by measurement): vendor miniaudio for the device tier, do the DSP in Zig over the SIMD and FFT assets, and keep the audio callback free of allocation, locks and the host language.",
+  "fr": "Plan de référence du plan sonore (SN0-SN6, SS1-SS5, chacun clos par la mesure) : intégrer miniaudio pour l'étage périphérique, faire le DSP en Zig sur les acquis SIMD et FFT, et garder le callback audio sans allocation, sans verrou et sans le langage hôte."
+ },
+ "base/sound/SOFTANZA_MUSIC_PLAN.md": {
+  "en": "The plan of record for music as a third door on the sound plane (MU0-MU7, later extended to MU14): a score is data, a performance is a sound, a cultural universe is a declaration, and every phase ends with a named listener's verdict.",
+  "fr": "Plan de référence de la musique comme troisième porte du plan sonore (MU0-MU7, prolongé jusqu'à MU14) : une partition est une donnée, une interprétation est un son, un univers culturel est une déclaration, et chaque phase se clôt sur le verdict d'un auditeur nommé."
+ },
+ "base/sound/SOFTANZA_VOICE_PLAN.md": {
+  "en": "The plan of record for the voice plane (VC0-VC6, closed), written after VC0's measurements: it overturns the sound plan's exclusion of speech by using the synthesizer and recognizer each operating system already ships, reached through a per-OS engine DLL; neural speech stays out of scope.",
+  "fr": "Plan de référence du plan vocal (VC0-VC6, clos), écrit après les mesures de VC0 : il renverse l'exclusion de la parole par le plan sonore en utilisant le synthétiseur et le reconnaisseur que chaque système d'exploitation livre déjà, atteints par une DLL du moteur par OS ; la parole neuronale reste hors périmètre."
+ },
+ "base/testoor/SOFTANZA_TESTOOR_PLAN.md": {
+  "en": "The plan for Testoor, the testing framework fitted to Softanza's 5,267 test files: every file is read as a tour and run from one runner a shell and an agent both believe, with routes, a clock and faults to come; TR0 and TR1 done 2026-10-05.",
+  "fr": "Plan de Testoor, le cadre de test ajusté aux 5 267 fichiers de test de Softanza : chaque fichier est lu comme un parcours et exécuté par un seul lanceur qu'un shell et un agent croient tous deux, avec routes, horloge et pannes à venir ; TR0 et TR1 faits le 2026-10-05."
+ },
+ "base/doc/design/DOCREFORM_PROPOSAL.md": {
+  "en": "A study and proposal (DOCREFORM step 1) for documenting the library so it reads like a reference: measuring the extractor's fallback on section titles, proposing a comment block above each def with brief and fields, a score and a gate, and recording the author's rulings.",
+  "fr": "Étude et proposition (étape 1 de DOCREFORM) pour documenter la bibliothèque afin qu'elle se lise comme une référence : mesurant le repli de l'extracteur sur les titres de section, proposant un bloc de commentaire au-dessus de chaque def avec résumé et champs, un score et une barrière, et consignant les décisions de l'auteur."
+ },
+ "base/doc/design/DOCREFORM_PILOT_STATE.md": {
+  "en": "A handoff recording the state of DOCREFORM after waves 2 to 4 (2026-10-05): which classes have every root method documented and checked, the library-wide pass rate, the live documentation gate, the defects probing found but did not fix, and the decisions open for the author.",
+  "fr": "Passation consignant l'état de DOCREFORM après les vagues 2 à 4 (2026-10-05) : quelles classes ont chaque méthode racine documentée et vérifiée, le taux de réussite de toute la bibliothèque, la barrière documentaire en service, les défauts que le sondage a trouvés sans les corriger, et les décisions ouvertes pour l'auteur."
+ },
+ "base/doc/DOCBLOCK.md": {
+  "en": "A one-page guide to documenting a method or class in Softanza: write only what a machine cannot derive, a brief sentence above the def, an optional detail paragraph, then fields for parameters, returns, notes, examples and status; the extractor derives usage, types, forms and aliases.",
+  "fr": "Guide d'une page pour documenter une méthode ou classe dans Softanza : n'écrire que ce qu'une machine ne peut déduire, une phrase de résumé au-dessus du def, un paragraphe de détail facultatif, puis des champs pour paramètres, retour, notes, exemples et statut ; l'extracteur déduit usage, types, formes et alias."
+ },
+ "base/doc/stz-doc-system-overview.md": {
+  "en": "An overview of the Softanza documentation system and its five pillars, quickers, narrations, references, deepdives and FAQs, each aimed at a different kind of reader, under the principles of clarity, engagement, versatility and simplicity, kept as markdown files hosted on GitHub.",
+  "fr": "Vue d'ensemble du système de documentation de Softanza et de ses cinq piliers, quickers, narrations, références, deepdives et FAQ, chacun visant un type de lecteur, selon les principes de clarté, d'engagement, de polyvalence et de simplicité, en fichiers markdown hébergés sur GitHub."
+ },
+ "base/doc/design/SOFTANZA_THROUGH_CLAUDES_EYES.md": {
+  "en": "An essay written by an AI model after studying the library over several sessions, tracing how its reading moved from a large utility library for the host language to a runtime and then to a programming philosophy, each abstraction implemented through one engine.",
+  "fr": "Essai écrit par un modèle d'IA après avoir étudié la bibliothèque sur plusieurs sessions, retraçant comment sa lecture est passée d'une grande bibliothèque utilitaire pour le langage hôte à un runtime puis à une philosophie de programmation, chaque abstraction réalisée par un seul moteur."
+ },
+ "base/doc/design/STRING_ENGINE_DESIGN_v2.md": {
+  "en": "A design document and eight-phase implementation plan for the Zig string engine, approved but not yet implemented: a str_ prefix, 1-based indexing, Unicode-correct case folding, error unions instead of silent catches, then regex, locale and NLP primitives.",
+  "fr": "Un document de conception et un plan en huit phases pour le moteur de chaînes en Zig, approuvé mais non réalisé : préfixe str_, indexation à base 1, pliage de casse correct en Unicode, unions d'erreurs plutôt que captures silencieuses, puis primitives regex, locale et TAL."
+ },
+ "base/doc/design/STZSTRING_DECOMPOSITION.md": {
+  "en": "A decomposition map proposing to split the 15,887-method stzString class into nine subclasses (finder, splitter, replacer, bounder, formatter, visualizer, walker, checker and a root) by composition over one shared engine handle, with a five-phase migration strategy.",
+  "fr": "Une carte de décomposition proposant de scinder les 15 887 méthodes de stzString en neuf sous-classes (recherche, découpage, remplacement, bornage, formatage, visualisation, parcours, vérification et une racine) par composition sur un handle moteur partagé, avec une migration en cinq phases."
+ },
+ "base/list/_ENGINE_RESIDENCY_PLAN.md": {
+  "en": "A refactor plan and implementation log making stzList engine-resident so the list is not re-marshalled on every call; it rejects a plain cache as unsafe, finds the host language has no destructors, and solves the leak with a bounded, generation-keyed cache.",
+  "fr": "Plan de refonte et journal rendant stzList résident dans le moteur pour ne plus re-sérialiser la liste à chaque appel ; un cache naïf est écarté, le langage hôte n'a pas de destructeurs, la fuite est résolue par un cache borné à clés de génération."
+ },
+ "base/doc/design/SOFTANZA_NUMERIC_FOUNDATION.md": {
+  "en": "A library-wide rethink of numbers, phases 0 to 7 complete, superseding the number-engine plan with five pillars: visible exactness, a numeric frame named at the call site, engine-resident arrays, Zig SIMD kernels, and one authority per algorithm.",
+  "fr": "Une refonte des nombres pour toute la bibliothèque, phases 0 à 7 terminées, qui remplace le plan du moteur numérique par cinq piliers : exactitude visible, cadre numérique nommé à l'appel, tableaux résidents dans le moteur, noyaux SIMD en Zig, et une seule autorité par algorithme."
+ },
+ "base/doc/design/SOFTANZA_NUMBER_ENGINE_PLAN.md": {
+  "en": "A six-phase plan, superseded on 2026-07-25 by the numeric foundation, to make arbitrary-precision arithmetic first-class: it corrects the claim that no big-number engine exists, since StzBigInt already works, and proposes a big-number class, decimals, rationals and complex numbers.",
+  "fr": "Un plan en six phases, remplacé le 2026-07-25 par la fondation numérique, pour rendre l'arithmétique à précision arbitraire native : il corrige l'affirmation qu'aucun moteur de grands nombres n'existe, StzBigInt fonctionnant déjà, et propose une classe de grands nombres, décimaux, rationnels et complexes."
+ },
+ "base/math/CHARTER.md": {
+  "en": "The charter of the math plane (M0), a draft awaiting the author's ratification: mathematics in Softanza is seen first, proven always and learned in the learner's own language; it fixes the vocabulary and laws and lists the decisions only the author can make.",
+  "fr": "La charte du plan mathématique (M0), brouillon attendant la ratification de l'auteur : les mathématiques dans Softanza sont d'abord vues, toujours prouvées et apprises dans la langue de l'apprenant ; elle fixe le vocabulaire et les lois et liste les décisions que seul l'auteur peut prendre."
+ },
+ "base/math/SOFTANZA_MATH_PLAN.md": {
+  "en": "The math charter's companion plan, headed draft M0, mapping what exists with line numbers, listing the contracts consumed, and recording phases M1 to M6 (figures, motion, a course, the Tukey tier, core deepening, a bridge to Lean) with their shipped results.",
+  "fr": "Plan compagnon de la charte mathématique, présenté comme brouillon M0, cartographiant l'existant avec numéros de ligne, listant les contrats consommés et consignant les phases M1 à M6 (figures, mouvement, un cours, le niveau Tukey, approfondissement du cœur, un pont vers Lean) avec leurs résultats livrés."
+ },
+ "base/culture/SOFTANZA_CULTURE_PLAN.md": {
+  "en": "An analysis and plan (CU0 to CU5, not yet started) for a culture module, whose law is that a locale formats and a culture interprets: no call returns a meaning from a locale identifier alone, and an operation honours its culture or refuses.",
+  "fr": "Une analyse et un plan (CU0 à CU5, non commencé) pour un module culture, dont la loi est qu'une locale formate et qu'une culture interprète : aucun appel ne retourne un sens d'un identifiant de locale seul, et une opération honore sa culture ou refuse."
+ },
+ "base/doc/design/NATURAL_VISION.md": {
+  "en": "A synthesis of the natural-programming folder written on 2026-07-10, reading five years of layers as three attacks on one gap between human intention and execution, and proposing a four-floor architecture over one atom, the semantic ID; its five sequencing steps are recorded as landed.",
+  "fr": "Une synthèse du dossier de programmation naturelle, écrite le 2026-07-10, lisant cinq ans de couches comme trois attaques d'un même écart entre intention humaine et exécution, et proposant une architecture à quatre étages sur un seul atome, l'identifiant sémantique ; ses cinq étapes sont réalisées."
+ },
+ "base/doc/design/NNL_REVIEW.md": {
+  "en": "A review correcting the natural vision's framing of Near-Natural Language: it is Softanza's first paradigm, where the human is the parser and code adheres to language dynamics with no NLP; it catalogues the grammar devices, records the renovation done and re-scopes the remaining phases.",
+  "fr": "Une revue corrigeant la vision naturelle sur le langage quasi naturel : c'est le premier paradigme de Softanza, où l'humain est l'analyseur et le code suit la dynamique de la langue sans TAL ; elle catalogue les dispositifs grammaticaux, consigne la rénovation et redéfinit les phases restantes."
+ },
+ "base/neural/SOFTANZA_STRUCTURED_OUTPUT.md": {
+  "en": "The normative specification of contract C9 v1.0.0, extracted from running code: structured output from a language model kills malformedness, never falsehood, through closed types, five validation rules, a grammar compiler with a mandatory report of what it does not enforce, and a sampling machine.",
+  "fr": "La spécification normative du contrat C9 v1.0.0, extraite du code exécuté : la sortie structurée d'un modèle de langage tue la malformation, jamais la fausseté, par des types fermés, cinq règles de validation, un compilateur de grammaire au rapport obligatoire du non-imposé, et une machine d'échantillonnage."
+ },
+ "base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md": {
+  "en": "The single roadmap governing intelligence work, from the author's directive: intelligence derives new knowledge from existing knowledge held as a governed graph, hence six laws, five foundations, a module map, an audited current state and one path R1 to R8.",
+  "fr": "La feuille de route unique du travail sur l'intelligence, issue de la directive de l'auteur : l'intelligence dérive une connaissance nouvelle d'une connaissance existante tenue en graphe gouverné, d'où six lois, cinq fondations, une carte des modules, un état audité et un parcours R1 à R8."
+ },
+ "base/doc/design/Softaza and Agents That Cannot Hurt You.md": {
+  "en": "A short strategy essay: Softanza will not build safe agents but a safe world, where an agent lives inside a virtual system, only a plan leaves it, and deterministic committing actors execute plans within a declared scope, so agents are reviewed rather than trusted.",
+  "fr": "Un court essai stratégique : Softanza ne construira pas des agents sûrs mais un monde sûr, où un agent vit dans un système virtuel, seul un plan en sort, et des acteurs déterministes exécutent les plans dans un périmètre déclaré ; les agents sont relus, non crus."
+ },
+ "base/graphics/SOFTANZA_GRAPHICS_PLAN.md": {
+  "en": "The graphics plane's plan of record (GR0 to GR6, shipped): vendor no new graphics engine, extend the owned wgpu plane from compute to render, and vendor HarfBuzz and SheenBidi because Arabic text is a requirement; the geo plane was later appended.",
+  "fr": "Le plan de référence du plan graphique (GR0 à GR6, livré) : aucun nouveau moteur graphique vendorisé, le plan wgpu déjà possédé étendu du calcul au rendu, HarfBuzz et SheenBidi vendorisés car le texte arabe est une exigence ; le plan géographique fut ajouté ensuite."
+ },
+ "base/graphics/SOFTANZA_COLOR_SYSTEM.md": {
+  "en": "The plan of record for one colour language across all planes: keep meaning-named colours, fix the measured uneven shade ramp and guessed contrast with role steps, an OKLCH ramp in the engine, contrast as a refusable number and exportable themes; C1 to C5 are complete.",
+  "fr": "Plan de référence d'un langage de couleur pour les plans : garder les couleurs nommées par sens, corriger la rampe irrégulière et le contraste deviné par des paliers de rôle, une rampe OKLCH côté moteur, un contraste chiffré refusable et thèmes exportables ; C1 à C5 terminées."
+ },
+ "base/graphics/SOFTANZA_VISION_PLAN.md": {
+  "en": "The plan of record closing the graphics plane's loop from drawing to seeing: it scores four transforms, keeps deterministic image generation as the guardable default, quarantines neural generation, and phases OCR in a per-OS DLL and image analysis on a grid shared with sound.",
+  "fr": "Plan de référence bouclant le plan graphique du dessin à la vision : note quatre transformations, garde la génération d'images déterministe en défaut vérifiable, isole la génération neuronale, et échelonne l'OCR dans une DLL par système et l'analyse d'image sur une grille commune au son."
+ },
+ "base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md": {
+  "en": "The plan of record for graph-oriented graphics (GG0 to GG5, then the DN phases): the graph is semantics, not syntax, so one primitive, propagation over a resident DAG, serves layout, scene, frame and material graphs; its status table comes from the guard suite.",
+  "fr": "Plan de référence des graphiques orientés graphe (GG0 à GG5, puis les phases DN) : le graphe est sémantique, non syntaxe, donc une seule primitive, la propagation sur un DAG résident, sert disposition, scène, trame et matériau ; sa table d'état vient de la suite de garde."
+ },
+ "base/doc/design/stzGraph-A-Design-Foundation-for-Connected-Domains.md": {
+  "en": "A design essay presenting stzGraph as Softanza's architectural spine: structure is kept separate from semantics, every domain (code, workflows, state machines, knowledge, data models, natural language) is a class inheriting from the graph, and patterns found in one domain flow back to the core.",
+  "fr": "Essai de conception présentant stzGraph comme colonne vertébrale architecturale de Softanza : la structure est séparée de la sémantique, chaque domaine (code, flux, automates, connaissance, modèles de données, langage naturel) est une classe héritant du graphe, et les motifs trouvés dans un domaine reviennent au cœur."
+ },
+ "base/doc/design/SOFTANZA_GRAPH_RULES_PLAN.md": {
+  "en": "A plan, marked complete (phases 1 to 7 and 2b built), for one rule engine over every graph-based object: a rule is attached to and checked from the graph, stzCodeRule is the first instance, and code, agents, security and workflows report through one gate.",
+  "fr": "Plan, marqué complet (phases 1 à 7 et 2b construites), pour un moteur de règles unique sur tout objet-graphe : une règle s'attache au graphe et se vérifie depuis lui, stzCodeRule est la première instance, et code, agents, sécurité et flux rapportent par une porte."
+ },
+ "base/gpu/SOFTANZA_GPU_PLAN.md": {
+  "en": "The GPU plane's plan of record (G0 to G6, all shipped): vendor wgpu-native because WGSL compiles from text at runtime and the same kernels reach the browser, measure where the GPU does not pay, and later add the kernel foundry and silent seams.",
+  "fr": "Plan de référence du plan GPU (G0 à G6, tout livré) : vendoriser wgpu-native parce que WGSL se compile du texte à l'exécution et les mêmes noyaux atteignent le navigateur, mesurer où le GPU ne paie pas, puis la fonderie de noyaux et les coutures silencieuses."
+ },
+ "base/gui/SOFTANZA_GUI_PLAN.md": {
+  "en": "The GUI plane's plan of record (G0 to G6), reconciled against what was built: RmlUi is the engine, chosen by a prior survey, with flexbox only, right-to-left from the first commit, markup emitted never authored, accessibility before the declarative surface; status sections record what happened.",
+  "fr": "Plan de référence du plan d'interface graphique (G0 à G6), rapproché du construit : RmlUi est le moteur, choisi par enquête préalable, flexbox seul, le droite-à-gauche dès le premier commit, un balisage émis jamais rédigé, l'accessibilité avant la surface déclarative ; les sections d'état disent le réalisé."
+ },
+ "base/doc/design/REACTIVE_ENGINE_GAP_ANALYSIS.md": {
+  "en": "A comparative study, dated 2026-06-13, of the shipped reactive engine against libuv, libcurl, nginx, Go, Tokio, Envoy and OpenTelemetry, listing what each has that Softanza lacks and ranking the gaps into three tiers, the first being timeouts, connection pooling, DNS caching and cancellation.",
+  "fr": "Étude comparative, datée du 2026-06-13, du moteur réactif livré face à libuv, libcurl, nginx, Go, Tokio, Envoy et OpenTelemetry, listant ce que chacun a et Softanza non, classant les écarts en trois niveaux, le premier étant délais, regroupement de connexions, cache DNS et annulation."
+ },
+ "base/doc/design/NEXT_SESSION_PROMPT.md": {
+  "en": "A handoff prompt for the reactive engine stating that all eight Tier 1 gap items are complete, each with Zig code, host-language rewiring and narrated tests, and that Tier 2, a unified reactor with cooperative scheduling, is the next multi-session arc, not yet started.",
+  "fr": "Consigne de passation pour le moteur réactif : les huit éléments du niveau 1 sont terminés, chacun avec code Zig, recâblage côté langage hôte et tests narrés, et le niveau 2, un réacteur unifié à ordonnancement coopératif, est le prochain arc multi-sessions, non commencé."
+ },
+ "base/doc/design/STZAPP_DESIGN.md": {
+  "en": "A forward design of the stzApp construct, written while the class is a stub: an application is a living world of meaning made of a domain, a life and a body, met from without by presence, intent, refinement and reach, composed from existing organs.",
+  "fr": "Conception prospective du construct stzApp, écrite alors que la classe est un squelette : une application est un monde vivant de sens fait d'un domaine, d'une vie et d'un corps, rencontré du dehors par présence, intention, affinage et portée, composé d'organes existants."
+ },
+ "base/doc/design/STZAPP_BODY_DESIGN.md": {
+  "en": "A companion to the stzApp design deepening Body: a world's substance is its graph, which already persists in native and interchange formats, so the body is declared with LivesIn, is composition, not a new datastore, and says where the world resides, not where it appears.",
+  "fr": "Complément à la conception de stzApp approfondissant le Corps : la substance d'un monde est son graphe, qui persiste déjà en formats natifs et d'échange, donc le corps se déclare par LivesIn, est composition, non stockage neuf, dit où le monde réside, non où il apparaît."
+ },
+ "base/doc/design/STZAPP_PURPOSE_DESIGN.md": {
+  "en": "A companion to the stzApp design deepening Purpose, Life's second arm: a goal is a wanted state of the graph expressed as a query predicate, a plan a search toward it over the graph planner; the world declares the goal, the engine finds the plan.",
+  "fr": "Complément à la conception de stzApp approfondissant le Dessein, bras de la Vie : un but est un état voulu du graphe exprimé en prédicat de requête, un plan une recherche vers lui sur le planificateur ; le monde déclare le but, le moteur trouve le plan."
+ },
+ "base/doc/design/STZAPP_STATUS_AND_NEXT.md": {
+  "en": "A handoff recording where the stzApp construct stands: the concept is locked, slice A (the domain) runs green under the host language, the builder pattern that works is described, host-language and graph gotchas are kept, and slices B to E and open questions are listed.",
+  "fr": "Passation consignant où en est le construct stzApp : le concept est figé, la tranche A (le domaine) est verte sous le langage hôte, le motif de construction qui marche est décrit, les pièges hôte et graphe gardés, tranches B à E et questions ouvertes listées."
+ },
+ "base/doc/design/STZSUPERAPP_DESIGN.md": {
+  "en": "A forward design and thinking piece built on stzApp: a super-app is a living constellation of worlds, a governed graph whose nodes are apps sharing a commons that is itself a world, isolated by declared boundaries, not a sandbox, and recursive; stzApp is its prerequisite.",
+  "fr": "Conception prospective et réflexion bâties sur stzApp : une super-application est une constellation vivante de mondes, un graphe gouverné dont les nœuds sont des applications partageant un commun lui-même monde, isolées par des frontières déclarées, non un bac à sable, et récursive ; stzApp est son prérequis."
+ },
+ "base/stats/SOFTANZA_TUKEY_PLAN.md": {
+  "en": "The plan of record for the exploration tier (TK0 to TK6), replacing three legacy notes never run: resistant statistics and displays in Zig behind one contract object, re-expression measured not eyeballed, verdicts in the house shape; TK0 to TK5 shipped, TK6's memory refused.",
+  "fr": "Plan de référence du niveau d'exploration (TK0 à TK6), remplaçant trois notes anciennes jamais exécutées : statistiques résistantes et affichages en Zig derrière un objet de contrat, ré-expression mesurée non estimée à l'œil, verdicts dans la forme maison ; TK0 à TK5 livrés, mémoire de TK6 refusée."
+ },
+ "base/doc/design/SOFTANZA_SYSTEM_FOUNDATION.md": {
+  "en": "A design document, marked complete through phase 4, redesigning system programming from first principles: every system fact and mutation lives once in the Zig engine, reality is reached through one door of rehearse, plan and commit, and rehearsing and committing are separate powers.",
+  "fr": "Document de conception, marqué complet jusqu'à la phase 4, repensant la programmation système aux premiers principes : chaque fait et mutation système vit une fois dans le moteur Zig, la réalité s'atteint par une porte, répéter, planifier, valider, répéter et valider étant des pouvoirs séparés."
+ },
+ "base/doc/design/SOFTANZA_DELIVERY_PLANE.md": {
+  "en": "A map of the delivery plane linking its design documents and tutorials: from a solution's definition to running on real targets is one object graph in one vocabulary, the engine, not the interpreter, compiles to WebAssembly, any actor may rehearse, only an effectful one commits.",
+  "fr": "Carte du plan de livraison reliant ses documents de conception et tutoriels : de la définition d'une solution à son exécution sur cibles réelles, un graphe d'objets, un vocabulaire ; le moteur, non l'interpréteur, compile en WebAssembly ; tout acteur peut répéter, seul un acteur à effets valide."
+ },
+ "base/doc/design/SOFTANZA_DEPLOYMENT.md": {
+  "en": "A design document, marked built (45-assertion guard), for the deployment technology: a target is a site described by a config that is the link, deploying is one governed act (bind, store, launch, report), and the same verb rehearses as emulated and commits as production.",
+  "fr": "Document de conception, marqué construit (garde de 45 assertions), pour la technologie de déploiement : une cible est un site décrit par une configuration, qui est le lien, déployer est un acte gouverné (lier, stocker, lancer, rapporter), le même verbe répète en émulation, valide en production."
+ },
+ "base/doc/design/SOFTANZA_DEPLOYMENT_PLAN.md": {
+  "en": "A design document, marked built, that models the two hard dimensions of a deployment: an ordered, gated and reversible plan of steps across sites, and the host resources each part requires, checked against a site's capacity and provisioned through a provider, composing toward full automation.",
+  "fr": "Document de conception, marqué construit, modélisant les deux dimensions difficiles d'un déploiement : un plan d'étapes ordonné, conditionné et réversible à travers les sites, et les ressources d'hôte que chaque partie exige, vérifiées contre la capacité d'un site et provisionnées par un fournisseur, vers l'automatisation complète."
+ },
+ "base/doc/design/SOFTANZA_EMULATION.md": {
+  "en": "A design document, marked built, for emulation: the emulator does not mock, each part of a multi-target solution runs in the browser the same compiled Zig engine subset it will ship, Deploy being a two-phase verb, with a fidelity contract and live cross-part state.",
+  "fr": "Document de conception, marqué construit, pour l'émulation : l'émulateur ne simule pas, chaque partie d'une solution multi-cibles exécutant dans le navigateur le même sous-ensemble compilé du moteur Zig qu'elle livrera, Deploy étant un verbe à deux phases, un contrat de fidélité, un état partagé entre parties."
+ }
+}

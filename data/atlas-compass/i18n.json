@@ -1,0 +1,271 @@
+{
+ "slug": "i18n",
+ "url": "https://claude.ai/artifact/3pqbb25E9XuxnVttoGEng3",
+ "title": "Internationalization — where it stands",
+ "eyebrow": "Capability positioning · read from the source, not from memory",
+ "thesis": "This module is a deliberate bet against ICU. Rather than vendor tens of MB of C++ and CLDR data, Softanza ships broad hand-tables (261 countries, 323 languages, 143 scripts, Qt-sourced), a solid engine-backed datetime core with rich Ring-side formatting, and a distinctive business/holiday calendar. But that same choice leaves the CLDR crown jewels absent: no locale collation, no ICU MessageFormat or plural rules, no translation catalog, no locale-aware number/currency formatting, no timezone database (`ToUTC` is a no-op), and no non-Gregorian calendars. The data and the datetime basics are solid; almost everything that makes ICU, Babel and Luxon what they are is still owed.",
+ "grid_kicker": "The grid",
+ "grid_title": "Twelve lanes, each against its category leader",
+ "grid_lede": "Every lane names what actually ships, the tools it is fair to measure against, and the one thing still owed. The shape of this page is the shape of the \"not ICU\" decision: solid reference data and datetime, then a wall of CLDR-dependent features left for later.",
+ "lanes": [
+  {
+   "n": "01",
+   "lane": "Locale identity & reference data",
+   "rating": "Solid",
+   "engine": "Broad tables: 261 countries, 323 languages, 143 scripts, 495 locale abbreviations, with language↔country↔script defaults (`stzLocale`, `stzCountry`, `stzLanguage`, `stzScript`), now mirrored into an engine SQLite layer (`ref_data.zig` / `i18n.db`).",
+   "engine_h": "In the engine",
+   "against": [
+    "ICU / CLDR",
+    "Babel"
+   ],
+   "against_h": "Measured against",
+   "owed": "Row coverage rivals CLDR, but the data is Qt-sourced, not CLDR, \"native\" names are romanized English, and Ring and engine hold parallel copies (L2 cutover incomplete).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "02",
+   "lane": "Date / time types & arithmetic",
+   "rating": "Solid",
+   "engine": "`stzDate` / `stzTime` / `stzDateTime` are engine-backed (`datetime.zig`): components, leap/day-of-year, add-days, diff, compare, is-between, ISO and Unix round-trips. Validated construction (invalid dates return null).",
+   "engine_h": "In the engine",
+   "against": [
+    "Luxon",
+    "Temporal",
+    "ICU calendar"
+   ],
+   "against_h": "Measured against",
+   "owed": "Month/year addition is done Ring-side (no engine add-months), and every value is naive wall-clock — the offset math a real datetime type carries lives in the timezone gap (lane 9).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "03",
+   "lane": "Date / time formatting & parsing",
+   "rating": "Solid",
+   "engine": "Rich Ring-side formatting: ~40 named formats (`:ISO8601`, `:European`, `:Verbose`, `:Compact12h`…) over Qt/Unicode pattern tokens, plus multi-format parsing and natural-language epoch parsing (`FromNaturalEpoch`).",
+   "engine_h": "In the engine",
+   "against": [
+    "Luxon",
+    "Babel",
+    "strftime"
+   ],
+   "against_h": "Measured against",
+   "owed": "All Ring-side — the engine `stz_date_format` ignores its format string and always emits ISO. No CLDR skeleton formats, and formatting is not locale-tailored beyond the named presets.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "04",
+   "lane": "Business & holiday calendar",
+   "rating": "Solid",
+   "engine": "`stzCalendar` — a genuinely rich Gregorian working-days / holiday calendar: quarters, weeks, working-day arithmetic, holidays, capacity and sprint planning, with a heat-map view. Plus an engine-backed `stzTimeLine`.",
+   "engine_h": "In the engine",
+   "against": [
+    "workalendar",
+    "bizdays",
+    "pandas bdate_range"
+   ],
+   "against_h": "Measured against",
+   "owed": "A distinctive plus most i18n libraries lack — but pure Ring, Gregorian-only, and its test directory currently can't run (lane note below).",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "05",
+   "lane": "Currency",
+   "rating": "Partial",
+   "engine": "Engine-backed (the L1 cutover): `stz_locale_currency_iso` / `_symbol` over 143 rows, guarded by a \"no row answers its own ISO code\" property test.",
+   "engine_h": "In the engine",
+   "against": [
+    "ICU",
+    "Babel numbers",
+    "Intl.NumberFormat"
+   ],
+   "against_h": "Measured against",
+   "owed": "Symbol / ISO lookup only — no amount formatting with locale placement, spacing, grouping or minor-unit rules. The actual currency-formatting job is not done.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "06",
+   "lane": "Number formatting",
+   "rating": "Partial",
+   "engine": "`StzFormatNumber` formats with grouping and decimals — and Ring holds per-locale decimal/group-separator hint tables (~30 languages).",
+   "engine_h": "In the engine",
+   "against": [
+    "ICU NumberFormat",
+    "Intl.NumberFormat",
+    "Babel"
+   ],
+   "against_h": "Measured against",
+   "owed": "Not locale-aware: the engine formatter hardcodes US `,`/`.` and never reads the hint tables. The data exists; wiring it in is the whole gap.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "07",
+   "lane": "Native names & per-locale text",
+   "rating": "Partial",
+   "engine": "Native day and month names for 11 languages (english, french, arabic, persian — now native-script — spanish, german, portuguese, italian, russian, turkish, dutch), via `NamesOfDaysIn` / `NamesOfMonthsIn`.",
+   "engine_h": "In the engine",
+   "against": [
+    "CLDR (hundreds of locales)",
+    "Babel"
+   ],
+   "against_h": "Measured against",
+   "owed": "Eleven of hundreds — everything else falls back to English, and the engine `day_name` still takes a number and no locale (the L3 work). Reference \"native\" names elsewhere are romanized.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "08",
+   "lane": "Calendar systems",
+   "rating": "Partial",
+   "engine": "Proleptic Gregorian only, hardcoded in `datetime.zig` (`gregorianToJulian` and back). The business calendar above is the depth on this single system.",
+   "engine_h": "In the engine",
+   "against": [
+    "ICU (Hijri / Persian / Hebrew / Buddhist / Japanese)",
+    "Luxon"
+   ],
+   "against_h": "Measured against",
+   "owed": "No Hijri, Persian, Hebrew, Buddhist or Japanese calendars — a notable absence given the library's strong Arabic/Persian typography elsewhere.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "09",
+   "lane": "Timezones",
+   "rating": "Emerging",
+   "engine": "None. Datetimes are naive wall-clock — `ToUTC()` and `ToLocalTime()` are no-ops that copy the components unchanged.",
+   "engine_h": "In the engine",
+   "against": [
+    "Luxon (IANA)",
+    "ICU / tz database",
+    "moment-timezone"
+   ],
+   "against_h": "Measured against",
+   "owed": "An IANA/Olson timezone database, offset math and DST. Without it, no correct cross-zone arithmetic — the single biggest gap against Luxon.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "10",
+   "lane": "Collation (locale-aware sorting)",
+   "rating": "Emerging",
+   "engine": "None. The only \"collate\" in the tree is SQLite `COLLATE NOCASE` (ASCII case-insensitive lookup), not linguistic collation.",
+   "engine_h": "In the engine",
+   "against": [
+    "ICU Collator (the crown jewel)",
+    "Intl.Collator"
+   ],
+   "against_h": "Measured against",
+   "owed": "Locale-aware sorting is ICU's headline feature and is entirely absent — shared with the String page's top gap. The one thing that most defines an i18n library.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "11",
+   "lane": "Message formatting & pluralization",
+   "rating": "Emerging",
+   "engine": "None. The only plural handling is an English singular/plural pair for duration wording in `stzDuration`.",
+   "engine_h": "In the engine",
+   "against": [
+    "ICU MessageFormat",
+    "CLDR plural rules",
+    "i18next / Fluent"
+   ],
+   "against_h": "Measured against",
+   "owed": "No ICU MessageFormat, no CLDR plural rules (one/few/many/other), no gender/select — the machinery real translation depends on.",
+   "owed_h": "To complete"
+  },
+  {
+   "n": "12",
+   "lane": "Translation / message catalog",
+   "rating": "Emerging",
+   "engine": "None. No gettext, no `.po` / `.mo`, no message catalog anywhere in the group.",
+   "engine_h": "In the engine",
+   "against": [
+    "gettext",
+    "Babel catalogs",
+    "i18next / Fluent"
+   ],
+   "against_h": "Measured against",
+   "owed": "A catalog format and lookup — the actual \"translate a string into locale X\" surface. Everything above is locale data; there is no translation layer yet.",
+   "owed_h": "To complete"
+  }
+ ],
+ "gaps_kicker": "What to complete",
+ "gaps_title": "The gaps, ordered by return — not by size",
+ "gaps_lede": "Three tiers. The first two close the gaps that make datetime correct and formatting locale-real — several with the data already sitting unused; the third is the CLDR reach the \"not ICU\" decision deferred.",
+ "tiers": [
+  {
+   "tier": "A",
+   "title": "Tier A — foundational",
+   "items": [
+    {
+     "title": "A timezone database",
+     "text": "IANA/Olson zones, offset math and DST, so `ToUTC` / `ToLocalTime` stop being no-ops and cross-zone arithmetic becomes correct. The single biggest gap against Luxon, and a precondition for any global scheduling use.",
+     "value": "High",
+     "effort": "High"
+    },
+    {
+     "title": "Locale-aware number & currency formatting",
+     "text": "Wire the existing decimal/group-separator hint tables (and currency placement/minor-unit rules) into the engine formatter. The data already ships; the formatter just hardcodes US — a high-leverage fix over existing tables.",
+     "value": "High",
+     "effort": "Medium"
+    }
+   ]
+  },
+  {
+   "tier": "B",
+   "title": "Tier B — cheap and high-leverage",
+   "items": [
+    {
+     "title": "Fix the datetime test-runner collision",
+     "text": "The `datetime` / `date` / `calendar` / `currency` dirs error en masse on one `C22 Function redefinition` load collision — not logic failures. Fixing it lets those ~450 assertions actually vouch for the lanes.",
+     "value": "High",
+     "effort": "Low"
+    },
+    {
+     "title": "CLDR plural rules + minimal MessageFormat",
+     "text": "Generate the CLDR plural categories offline (as the \"not ICU\" decision already does for other data) and a small MessageFormat parser — the base translation real apps need.",
+     "value": "Medium",
+     "effort": "Medium"
+    },
+    {
+     "title": "Broaden native day/month names",
+     "text": "Lift the 11-language ceiling by generating names from the offline source, and give the engine `day_name` a real locale argument (the L3 work).",
+     "value": "Medium",
+     "effort": "Low"
+    }
+   ]
+  },
+  {
+   "tier": "C",
+   "title": "Tier C — the CLDR reach",
+   "items": [
+    {
+     "title": "Locale-aware collation",
+     "text": "The crown jewel — locale sorting via a generated CLDR collation subset. Shared with the String page's top gap; closing it once serves both.",
+     "value": "High",
+     "effort": "High"
+    },
+    {
+     "title": "Non-Gregorian calendars",
+     "text": "Hijri, Persian and Hebrew at least — conspicuously missing given the library's strong Arabic/Persian typography elsewhere.",
+     "value": "Medium",
+     "effort": "High"
+    },
+    {
+     "title": "A translation catalog + finish the engine cutover",
+     "text": "A gettext-style or Fluent-style message catalog, and completing L2–L4 so the engine registry (already built) retires the parallel Ring tables and becomes the single source of truth.",
+     "value": "Medium",
+     "effort": "Medium"
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "lead": "The honesty line on the ratings.",
+   "text": "The clean-loading test dirs pass — `time`, `timeline` (54), `timex`, `i18n`, `script`, and `locale` (81/94) — and the engine Zig tests guard currency and datetime. But `datetime`, `date`, `calendar` and `currency` report large ERR counts that are all one C22 runner-load collision, not per-assertion failures, so those lanes' guards can't fully vouch until it's fixed. The engine locale functions (casing, AM/PM, number, day names) remain English/ASCII/US stubs."
+  },
+  {
+   "lead": "The one-sentence position.",
+   "text": "Softanza traded ICU's weight for owned, committed data — and it shows on both sides: broad reference tables and a solid, well-formatted Gregorian datetime with a standout business calendar, but none of the CLDR machinery (collation, plural/message formatting, timezones, locale number formatting, multiple calendars) that the category leaders are defined by."
+  }
+ ],
+ "footer": "Read from the source on 2026-09-16 — Ring faces under `base/i18n` (`stzLocale`, `stzCountry`, `stzLanguage`, `stzScript`, `stzCurrency`), `base/datetime` (`stzDate/Time/DateTime`, `stzCalendar`, `stzTimeLine`), `base/data/stzLocaleData.ring`; engine `locale.zig`, `datetime.zig`, `ref_data.zig` + `i18n.db`; plans of record `SOFTANZA_LOCALE_PLAN.md` (L0–L4), `SOFTANZA_CULTURE_PLAN.md`. Ratings reflect what the guards prove.",
+ "shape": "standard"
+}
