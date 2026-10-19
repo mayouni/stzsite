@@ -42,7 +42,30 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/perf/stzMetric.ring" target="_blank" rel="noopener noreferrer">the source: base/perf/stzMetric.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/performance.html">The area reference: Performance</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p><code>stzMetric</code> is one measured thing with a name: a counter, a gauge or a timer, fed from the program and read as a number, a rate, a percentile or a sentence, and exported in the vocabularies the monitoring world already speaks.</p><p>A counter takes <code>Increment()</code> and answers <code>RatePerSecond()</code>, the slope of its cumulative count over the retained window. A gauge takes <code>Set(level)</code> and answers <code>SlopePerMs()</code>, <code>Mean</code>, <code>Min</code>, <code>Max</code>. A timer takes <code>Record(ms)</code> or a stopwatch straight in, <code>RecordWatch</code>, and answers <code>P50</code>, <code>P95</code>, <code>P99</code> from a constant-size histogram fit for an unbounded stream, <code>ExactPercentile</code> over the recent window when exactness matters, and <code>MeanMs</code> exact over the lifetime because the engine keeps the true sum. <code>Value()</code> is the current answer of any kind, <code>Count()</code> the samples ever recorded, <code>SeriesQ()</code> the series itself.</p><p><code>PromName()</code> and <code>PromText()</code> write the metric in Prometheus exposition, <code>OtelMetricJson()</code> as one OpenTelemetry fragment, <code>Explain()</code> as a sentence a person reads. A metric can carry labels and belong to a family, one child per route the traffic actually took.</p><p>It serves a request bracket, a queue, a cache, a worker, anything whose health is a number over time, and it is what <code>stzPerfMonitor</code> collects and what the service-level checks read.</p></div>
+    <div class="essay"><p>One measured thing with a name: a counter, a gauge or a timer, fed from the program and read as a number, a rate, a percentile or a sentence, and exported in the vocabularies that the monitoring world already speaks.</p><p>A counter counts, and its rate is the slope of its cumulative count over the retained window. It is exported under the name that Prometheus reads.</p><div class="sample"><pre class="rx">o1 = new stzMetric(&quot;app.requests&quot;, :counter)
+o1.Increment()
+o1.Increment()
+o1.Increment()
+
+? o1.Value()
+#--&gt; 3
+
+# the same metric, in the name Prometheus reads
+? o1.PromName()
+#--&gt; app_requests</pre><span class="rx-src">run in the library on 2026-10-19</span></div><p>A timer records durations and answers percentiles from a histogram of constant size, fit for an unbounded stream, or exact over the recent window when exactness matters, while the mean over the whole lifetime is exact because the engine keeps the true sum.</p><div class="sample"><pre class="rx">o1 = new stzMetric(&quot;http.request.ms&quot;, :timer)
+o1 {
+    Record(12)
+    Record(15)
+    Record(18)
+    Record(250)
+}
+
+? o1.Count()
+#--&gt; 4
+
+# the exact mean over the lifetime
+? o1.MeanMs()
+#--&gt; 73.75</pre><span class="rx-src">run in the library on 2026-10-19</span></div><p>A gauge holds a level and its slope. Every metric can be written as Prometheus text, as an OpenTelemetry fragment, or as a sentence a person reads, and can carry labels and belong to a family, one child per route the traffic actually took. It serves a request bracket, a queue, a cache, a worker, anything whose health is a number over time, and it is what <code>stzPerfMonitor</code> collects.</p></div>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/performance.html">The story of its area: Performance</a> · <a href="../guide/performance.html">Its area's reference</a></p><h3>Design documents that name it <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_PERF_SYSTEM.md" target="_blank" rel="noopener noreferrer">Softanza Performance by Design<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">6 mentions</span><span class="abs">The design study for stzPerfSystem, status complete (P0-P11 shipped): one governed system that measures, explains and defends a program&#x27;s performance, every measurement taken and stored by the Zig engine, metric reads treated as sensing and optimization acts as governed effects.</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#count">C</a> <a href="#destroy">D</a> <a href="#exactpercentile">E</a> <a href="#help">H</a> <a href="#init">I</a> <a href="#kind">K</a> <a href="#labelpairs">L</a> <a href="#mean">M</a> <a href="#name">N</a> <a href="#otelmetricjson">O</a> <a href="#p50">P</a> <a href="#ratepersecond">R</a> <a href="#sethelp">S</a> <a href="#value">V</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

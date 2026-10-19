@@ -76,7 +76,7 @@ def load(ROOT):
 # made only where the printing line is a predicate: a method that asks (Is..., Has..., Can..., Are..., Does..., Was..., ...Contains...,
 # ...Exists..., ...StartsWith..., ...EndsWith...) or a comparison (<, >, <=, >=, !=)
 STRLIT = re.compile(r'"(?:[^"\\]|\\.)*"' + "|" + r"'(?:[^'\\]|\\.)*'")
-ASKS = re.compile(r"\b(?:Stz|Q)?(?:Is|Has|Can|Are|Does|Was|Were|Will|Should)[A-Z]\w*\(|\w*(?:Contains|Exists|StartsWith|EndsWith)\w*\(|\bHas\(|\bMatch(?:First|AsYouType|WordsIn|Line|Word|Segment)?\(")
+ASKS = re.compile(r"\b(?:Stz|Q)?(?:Is|Has|Can|Are|Does|Was|Were|Will|Should)[A-Z]\w*\(|\w*(?:Contains|Exists|StartsWith|EndsWith)\w*\(|\bHas\(|\b(?:f|dir)[Ee]xists\(|\bMatch(?:First|AsYouType|WordsIn|Line|Word|Segment)?\(")
 CMP = re.compile(r"<=|>=|!=|<|>")
 
 def is_predicate(line):

@@ -328,309 +328,263 @@
  },
  "stzTimeLine": {
   "en": [
-   "`stzTimeLine` is a stretch of time with things on it: points, which happen at a moment, and spans, which last, each with a label; and the questions a planner asks of them, what is at this moment, what lies between these two, what overlaps, what is blocked.",
-   "Open it on a start and an end, `new stzTimeLine(:From = \"2024-10-10\", :To = \"2024-10-22 16:40:00\")`, a time being added to a bare date. Place events: `AddPoint(\"MEETING\", \"2024-03-15 10:00:00\")`, `AddSpan(\"PROJECT\", from, to)`, `AddPeriod`, `AddMoment`; the names are synonyms, so you say it the way you think it. Then ask: `WhatsAt(moment)` lists what is live then, a point or a span; `PointsBetween` and `SpansBetween` cut a window; `SortedPoints` and `SortedSpans` put them in order; `HasOverlaps` says whether two spans collide; `Duration`, `Summary`, `Content` describe the whole.",
-   "A blocked span is a rule the timeline enforces: `AddBlockedSpan(\"BLACKOUT\", from, to)`, and `IsBlocked(moment)` refuses an event inside it, a span partly inside being reported as such. Labels can be found, renamed and removed, and the timeline shows itself as text.",
-   "It serves a project plan, a schedule of releases, a history of incidents, a campaign calendar, an audit of what happened when, and it reads its dates through `stzDateTime`, so any form that class understands is accepted here."
+   "A stretch of time with things on it: points, which happen at a moment, and spans, which last, each with a label; and the questions a planner asks of them, what is at this moment, what lies between these two, what overlaps, what is blocked.",
+   "It opens on a start and an end, a bare date receiving its time, and events are placed with the words a person would use, a point, a span, a period, a moment. Asked about a moment, the line answers with everything that is live then, and says whether each thing is a point or a span.",
+   "@plan",
+   "A blocked span is a rule the timeline enforces: once it is declared, an event inside it is refused, and a span that is only partly inside is reported as such.",
+   "@blocked",
+   "It serves a project plan, a schedule of releases, a history of incidents, a campaign calendar, an audit of what happened when. It reads its dates through `stzDateTime`, so any form that class understands is accepted here."
   ],
   "fr": [
-   "`stzTimeLine` est une étendue de temps avec des choses dessus : des points, qui arrivent à un instant, et des étendues, qui durent, chacun avec une étiquette ; et les questions qu'un planificateur leur pose, qu'y a-t-il à cet instant, qu'y a-t-il entre ces deux-là, qu'est-ce qui se chevauche, qu'est-ce qui est bloqué.",
-   "Ouvrez-la sur un début et une fin, `new stzTimeLine(:From = \"2024-10-10\", :To = \"2024-10-22 16:40:00\")`, une heure étant ajoutée à une date nue. Placez des événements : `AddPoint(\"MEETING\", \"2024-03-15 10:00:00\")`, `AddSpan(\"PROJECT\", from, to)`, `AddPeriod`, `AddMoment` ; les noms sont synonymes, on le dit comme on le pense. Puis interrogez : `WhatsAt(moment)` liste ce qui est en cours alors, point ou étendue ; `PointsBetween` et `SpansBetween` découpent une fenêtre ; `SortedPoints` et `SortedSpans` mettent en ordre ; `HasOverlaps` dit si deux étendues se heurtent ; `Duration`, `Summary`, `Content` décrivent l'ensemble.",
-   "Une étendue bloquée est une règle que la ligne de temps fait respecter : `AddBlockedSpan(\"BLACKOUT\", from, to)`, et `IsBlocked(moment)` refuse un événement dedans, une étendue en partie dedans étant signalée comme telle. Les étiquettes se cherchent, se renomment et se retirent, et la ligne de temps se montre en texte.",
-   "Elle sert un plan de projet, un calendrier de versions, un historique d'incidents, un calendrier de campagne, un audit de ce qui est arrivé quand ; elle lit ses dates par `stzDateTime`, si bien que toute forme comprise par cette classe est acceptée ici."
-  ],
-  "picks": {
-   "WhatsAt": {
-    "en": "A moment asked what is live then: a meeting, two spans, and nothing at all later.",
-    "fr": "Un instant interrogé sur ce qui est en cours : une réunion, deux étendues, et rien du tout plus tard."
-   },
-   "PointsBetween": {
-    "en": "A window cut from the year, and the events inside it.",
-    "fr": "Une fenêtre découpée dans l'année, et les événements dedans."
-   },
-   "AddBlockedSpan": {
-    "en": "A blackout declared, and an event inside it refused with a reason.",
-    "fr": "Un gel déclaré, et un événement dedans refusé avec sa raison."
-   },
-   "SortedSpans": {
-    "en": "Quarters added out of order, read back in order.",
-    "fr": "Des trimestres ajoutés dans le désordre, relus dans l'ordre."
-   },
-   "Content": {
-    "en": "A bare date gets its time; the whole line as data.",
-    "fr": "Une date nue reçoit son heure ; toute la ligne comme donnée."
-   }
-  }
+   "Une étendue de temps avec des choses dessus : des points, qui arrivent à un instant, et des étendues, qui durent, chacun avec une étiquette ; et les questions qu'un planificateur leur pose, qu'y a-t-il à cet instant, qu'y a-t-il entre ces deux-là, qu'est-ce qui se chevauche, qu'est-ce qui est bloqué.",
+   "Elle s'ouvre sur un début et une fin, une date nue recevant son heure, et les événements se placent avec les mots qu'une personne emploierait, un point, une étendue, une période, un moment. Interrogée sur un instant, la ligne répond par tout ce qui est en cours alors, et dit si chaque chose est un point ou une étendue.",
+   "@plan",
+   "Une étendue bloquée est une règle que la ligne de temps fait respecter : une fois déclarée, un événement dedans est refusé, et une étendue qui n'est qu'en partie dedans est signalée comme telle.",
+   "@blocked",
+   "Elle sert un plan de projet, un calendrier de versions, un historique d'incidents, un calendrier de campagne, un audit de ce qui est arrivé quand. Elle lit ses dates par `stzDateTime`, si bien que toute forme comprise par cette classe est acceptée ici."
+  ]
  },
  "stzLocale": {
   "en": [
-   "`stzLocale` is the answer to \"where and in what language\": a country, a language and a script, resolved from whatever fragment you have, and from them the numbers, dates, currency, phone code and letters a reader of that place expects.",
-   "Name it any way the world does: `new stzLocale(\"de-DE\")`, `\"pt_Latn_BR\"`, `\"ar-TN\"`, `[ :Language = :Spanish, :Country = :Spain ]`, or just `[ :Country = :Niger ]`, and the missing parts are filled from the best default, so Niger alone answers `fr_NE`, French, and `+227`; Arabic alone answers Egypt, Arabic script and Tunisia resolves to Arabic. Then read: `Abbreviation()` and `bcp47Abbreviation()`, `CountryName`, `CountryNumber`, `CountryPhoneCode`, `LanguageName`, `LanguageNativeName`, isiZulu for South Africa, `ScriptName`, `CurrencyName`, `CurrencySymbol`, `CurrencyFractionalUnit`.",
-   "The conventions follow: `DecimalPoint`, `GroupSeparator`, `NegativeSign`, `amText` and `pmText`, `TimeShortFormat` and `TimeLongFormat`, `ToLowercase` and `ToUppercase` by the rules of that language rather than of ASCII. A date written through `stzDateTime` reads the locale's clock, and a number formatted for a reader reads its separators.",
-   "It serves any program that speaks to people in more than one place: an invoice, a form, a report, a message, and the first screen of an application that must open in the reader's own convention."
+   "The answer to \"where and in what language\": a country, a language and a script, resolved from whatever fragment you have, and from them the numbers, dates, currency, phone code and letters that a reader of that place expects.",
+   "It is named any way the world names a place: a locale tag, a language and a country, or just a country, and the missing parts are filled from the best default.",
+   "@niger",
+   "The parts can be read one by one, in their English or their native names, as codes or as numbers.",
+   "@parts",
+   "The conventions follow: the decimal point and the group separator, the words for morning and afternoon, the short and long forms of the time, and upper- and lowercase by the rules of that language rather than of ASCII. A date written through `stzDateTime` reads the locale's clock, and a number formatted for a reader reads its separators. It serves any program that speaks to people in more than one place: an invoice, a form, a report, a message, and the first screen of an application that must open in the reader's own convention."
   ],
   "fr": [
-   "`stzLocale` est la réponse à « où et dans quelle langue » : un pays, une langue et une écriture, résolus depuis le fragment que vous avez, et à partir d'eux les nombres, les dates, la monnaie, l'indicatif téléphonique et les lettres qu'un lecteur de ce lieu attend.",
-   "Nommez-la comme le monde le fait : `new stzLocale(\"de-DE\")`, `\"pt_Latn_BR\"`, `\"ar-TN\"`, `[ :Language = :Spanish, :Country = :Spain ]`, ou simplement `[ :Country = :Niger ]`, et les parts manquantes sont remplies par le meilleur défaut, si bien que le Niger seul répond `fr_NE`, français, et `+227` ; l'arabe seul répond l'Égypte, l'écriture arabe, et la Tunisie se résout en arabe. Puis lisez : `Abbreviation()` et `bcp47Abbreviation()`, `CountryName`, `CountryNumber`, `CountryPhoneCode`, `LanguageName`, `LanguageNativeName`, isiZulu pour l'Afrique du Sud, `ScriptName`, `CurrencyName`, `CurrencySymbol`, `CurrencyFractionalUnit`.",
-   "Les conventions suivent : `DecimalPoint`, `GroupSeparator`, `NegativeSign`, `amText` et `pmText`, `TimeShortFormat` et `TimeLongFormat`, `ToLowercase` et `ToUppercase` selon les règles de cette langue plutôt que de l'ASCII. Une date écrite par `stzDateTime` lit l'horloge de la locale, et un nombre formaté pour un lecteur lit ses séparateurs.",
-   "Elle sert tout programme qui parle à des gens en plus d'un lieu : une facture, un formulaire, un rapport, un message, et le premier écran d'une application qui doit s'ouvrir dans la convention propre du lecteur."
-  ],
-  "picks": {
-   "CountryPhoneCode": {
-    "en": "Egypt from `ar_eg`, Niger from a country alone, Niger again from a bare symbol.",
-    "fr": "L'Égypte depuis `ar_eg`, le Niger depuis un pays seul, le Niger encore depuis un simple symbole."
-   },
-   "LanguageName": {
-    "en": "A country alone, and the language and abbreviation filled from it.",
-    "fr": "Un pays seul, et la langue et l'abréviation remplies à partir de lui."
-   },
-   "CountryName": {
-    "en": "Arabic alone defaults to Egypt; a country tag, in any case, overrides it.",
-    "fr": "L'arabe seul se résout en Égypte ; une étiquette de pays, quelle que soit sa casse, l'emporte."
-   },
-   "TimeShortFormat": {
-    "en": "The clock formats a locale expects, short, long and narrow.",
-    "fr": "Les formats d'heure qu'une locale attend, court, long et étroit."
-   },
-   "ToLowercase": {
-    "en": "Case, the day-half words, and every numeric separator of one locale in a row.",
-    "fr": "La casse, les mots du matin et du soir, et chaque séparateur numérique d'une locale à la suite."
-   }
-  }
+   "La réponse à « où et dans quelle langue » : un pays, une langue et une écriture, résolus depuis le fragment que l'on a, et à partir d'eux les nombres, les dates, la monnaie, l'indicatif téléphonique et les lettres qu'un lecteur de ce lieu attend.",
+   "Elle se nomme comme le monde nomme un lieu : une étiquette de locale, une langue et un pays, ou simplement un pays, et les parts manquantes sont remplies par le meilleur défaut.",
+   "@niger",
+   "Les parts se lisent une à une, sous leurs noms anglais ou natifs, comme codes ou comme numéros.",
+   "@parts",
+   "Les conventions suivent : le séparateur décimal et celui des groupes, les mots du matin et de l'après-midi, les formes courte et longue de l'heure, et majuscules et minuscules selon les règles de cette langue plutôt que de l'ASCII. Une date écrite par `stzDateTime` lit l'horloge de la locale, et un nombre formaté pour un lecteur lit ses séparateurs. Elle sert tout programme qui parle à des gens en plus d'un lieu : une facture, un formulaire, un rapport, un message, et le premier écran d'une application qui doit s'ouvrir dans la convention propre du lecteur."
+  ]
  },
  "stzPivotTable": {
   "en": [
-   "`stzPivotTable` is the analyst's cross-tabulation: rows by one column, columns by another, a value aggregated in each cell, totals at the margins, from any `stzTable`.",
-   "Build it on a table and declare the pivot in sentences: `SetRowsBy(:Region)`, `SetColsBy(:Product)`, `SetValues(:Sales)`, `SetAggregateFunction(:Sum)`, or the one-call `Analyze`. Labels, the separator between stacked row labels, the label of the totals, the value shown for an empty cell and the order of the columns are all settings, so the printed table says what the reader wants it to say. `Generate()` computes it; `Value(row, col)`, `RowTotal`, `ColumnTotal` and `GrandTotal` read it; `ToTable()` gives it back as a plain table to filter, sort or chart; `Show()` prints it aligned.",
-   "A pivot can be saved and loaded, so a report is a file rather than a program, and because it inherits from `stzList`, everything a list can do applies to its rows.",
-   "It serves sales by region and product, incidents by month and severity, grades by class and subject, any question of the form \"how much of this, by that and that\"."
+   "The analyst's cross-tabulation: rows by one column, columns by another, a value aggregated in each cell, totals at the margins, from any `stzTable`.",
+   "The pivot is declared in sentences, what the rows are, what the columns are, which value, which aggregate; then it is generated and read.",
+   "@sales",
+   "Labels, the separator between stacked row labels, the label of the totals, the value shown for an empty cell and the order of the columns are all settings, so the printed table says what the reader wants it to say. The pivot can be handed back as a plain table to filter, sort or chart, and it can be saved and loaded, so a report is a file rather than a program. It serves sales by region and product, incidents by month and severity, grades by class and subject: any question of the form \"how much of this, by that and that\"."
   ],
   "fr": [
-   "`stzPivotTable` est le tableau croisé de l'analyste : des lignes selon une colonne, des colonnes selon une autre, une valeur agrégée dans chaque cellule, des totaux en marge, à partir de toute `stzTable`.",
-   "Construisez-le sur une table et déclarez le pivot en phrases : `SetRowsBy(:Region)`, `SetColsBy(:Product)`, `SetValues(:Sales)`, `SetAggregateFunction(:Sum)`, ou l'appel unique `Analyze`. Les étiquettes, le séparateur entre étiquettes de ligne empilées, l'étiquette des totaux, la valeur montrée pour une cellule vide et l'ordre des colonnes sont des réglages, si bien que la table imprimée dit ce que le lecteur veut qu'elle dise. `Generate()` le calcule ; `Value(row, col)`, `RowTotal`, `ColumnTotal` et `GrandTotal` le lisent ; `ToTable()` le rend comme table ordinaire à filtrer, trier ou tracer ; `Show()` l'imprime aligné.",
-   "Un pivot se sauve et se recharge, si bien qu'un rapport est un fichier plutôt qu'un programme, et parce qu'il hérite de `stzList`, tout ce qu'une liste sait faire s'applique à ses lignes.",
-   "Il sert les ventes par région et produit, les incidents par mois et gravité, les notes par classe et matière, toute question de la forme « combien de ceci, par cela et cela »."
-  ],
-  "picks": {}
+   "Le tableau croisé de l'analyste : des lignes selon une colonne, des colonnes selon une autre, une valeur agrégée dans chaque cellule, des totaux en marge, à partir de toute `stzTable`.",
+   "Le pivot se déclare en phrases, quelles sont les lignes, quelles sont les colonnes, quelle valeur, quel agrégat ; puis il est généré et lu.",
+   "@sales",
+   "Les étiquettes, le séparateur entre étiquettes de ligne empilées, l'étiquette des totaux, la valeur montrée pour une cellule vide et l'ordre des colonnes sont des réglages, si bien que la table imprimée dit ce que le lecteur veut qu'elle dise. Le pivot peut être rendu comme table ordinaire à filtrer, trier ou tracer, et il se sauve et se recharge, si bien qu'un rapport est un fichier plutôt qu'un programme. Il sert les ventes par région et produit, les incidents par mois et gravité, les notes par classe et matière : toute question de la forme « combien de ceci, par cela et cela »."
+  ]
  },
  "stzSound": {
   "en": [
-   "`stzSound` is a sound you can hold: a buffer of samples at a rate, with a channel count, that can be measured, transformed, analysed, saved and heard, the audio itself living in the engine and never copied into the language.",
-   "Load it from a file or make it, `MakeSilence`, and read it: `Frames()`, `Channels()`, `SampleRate()`, `Duration()`, `Peak()`, `Rms()`, `SampleAt(frame, channel)`. Change it: `ResampleTo(rate)`, sinc quality unless you ask for fast, `ToMono()`, `ToStereo()`, `MixIn(other)`, `SetSampleAt`. Keep it: `SaveAs(path)` writes 16-bit, measured at one quantum of round-trip error, `SaveAsFloat` writes 32, `ToWavBytes()` hands the file back as bytes for a service that never touches a disk.",
-   "Then analyse it, every result a grid with its axes named: `ToSpectrum()`, `ToSpectrogram()`, computed on every core since each row is an independent transform, `DominantFrequency()`, `ToOnsets()`, where the notes start, `Tempo()`, which answers −1 rather than a confident number from two events, and `Loudness()` by the broadcast standard, which refuses a rate the standard's coefficients were not specified for; `LoudnessMetric()` says which figure you were given. `Play()` plays it and waits.",
-   "It serves a cue in an interface, a recording to measure, a dataset of clips to classify, a lesson on signals, and it is the buffer the earcons, the sound graph and the sound plots are built on."
+   "A sound you can hold: a buffer of samples at a rate, with a channel count, that can be measured, transformed, analysed, saved and heard, the audio itself living in the engine and never copied into the language.",
+   "It is loaded from a file or made, and it knows what it is: how many frames, how many channels, at what rate, for how long, how loud at its peak.",
+   "@silence",
+   "It is changed by verbs that read as they sound: resample, mix down to mono, spread to stereo, mix another sound in. It is saved at 16 bits, measured at one quantum of round-trip error, or at 32 when the file is to be handed back, or handed to a service as bytes that never touch a disk.",
+   "Then it is analysed, and every result is a grid with its axes named: the spectrum, the spectrogram, computed on every core since each row is an independent transform, the dominant frequency, where the notes start, the tempo, which answers minus one rather than a confident number drawn from two events, and the loudness by the broadcast standard, which refuses a rate that the standard's coefficients were not specified for. It serves a cue in an interface, a recording to measure, a set of clips to classify, a lesson on signals, and it is the buffer that the earcons, the sound graph and the sound plots are built on."
   ],
   "fr": [
-   "`stzSound` est un son que l'on peut tenir : un tampon d'échantillons à une cadence, avec un nombre de canaux, qui se mesure, se transforme, s'analyse, se sauve et s'écoute, l'audio lui-même vivant dans le moteur et jamais copié dans le langage.",
-   "Chargez-le d'un fichier ou fabriquez-le, `MakeSilence`, et lisez-le : `Frames()`, `Channels()`, `SampleRate()`, `Duration()`, `Peak()`, `Rms()`, `SampleAt(frame, channel)`. Changez-le : `ResampleTo(rate)`, qualité sinc sauf à demander la rapide, `ToMono()`, `ToStereo()`, `MixIn(other)`, `SetSampleAt`. Gardez-le : `SaveAs(path)` écrit en 16 bits, mesuré à un quantum d'erreur aller-retour, `SaveAsFloat` en 32, `ToWavBytes()` rend le fichier en octets pour un service qui ne touche jamais un disque.",
-   "Puis analysez-le, chaque résultat une grille aux axes nommés : `ToSpectrum()`, `ToSpectrogram()`, calculé sur tous les cœurs puisque chaque ligne est une transformée indépendante, `DominantFrequency()`, `ToOnsets()`, où les notes commencent, `Tempo()`, qui répond −1 plutôt qu'un nombre assuré tiré de deux événements, et `Loudness()` selon la norme de diffusion, qui refuse une cadence pour laquelle les coefficients de la norme n'ont pas été spécifiés ; `LoudnessMetric()` dit quelle mesure vous avez reçue. `Play()` le joue et attend.",
-   "Il sert un signal dans une interface, un enregistrement à mesurer, un jeu d'extraits à classer, une leçon sur les signaux, et c'est le tampon sur lequel les earcons, le graphe sonore et les tracés sonores sont bâtis."
-  ],
-  "picks": {}
+   "Un son que l'on peut tenir : un tampon d'échantillons à une cadence, avec un nombre de canaux, qui se mesure, se transforme, s'analyse, se sauve et s'écoute, l'audio lui-même vivant dans le moteur et jamais copié dans le langage.",
+   "Il se charge d'un fichier ou se fabrique, et il sait ce qu'il est : combien d'images, combien de canaux, à quelle cadence, pour quelle durée, quelle crête.",
+   "@silence",
+   "Il se change par des verbes qui se lisent comme ils se disent : rééchantillonner, ramener en mono, étaler en stéréo, y mêler un autre son. Il se sauve en 16 bits, mesuré à un quantum d'erreur aller-retour, ou en 32 quand le fichier doit être rendu, ou confié à un service comme octets qui ne touchent jamais un disque.",
+   "Puis il s'analyse, et chaque résultat est une grille aux axes nommés : le spectre, le spectrogramme, calculé sur tous les cœurs puisque chaque ligne est une transformée indépendante, la fréquence dominante, où les notes commencent, le tempo, qui répond moins un plutôt qu'un nombre assuré tiré de deux événements, et le niveau sonore selon la norme de diffusion, qui refuse une cadence pour laquelle les coefficients de la norme n'ont pas été spécifiés. Il sert un signal dans une interface, un enregistrement à mesurer, un jeu d'extraits à classer, une leçon sur les signaux, et c'est le tampon sur lequel les earcons, le graphe sonore et les tracés sonores sont bâtis."
+  ]
  },
  "stzGpu": {
   "en": [
-   "`stzGpu` is the graphics card as a calculator: vectors uploaded once, kernels run on them, results read back or kept resident, and, before any of that, a measurement of where this machine's card actually starts to win.",
-   "`IsAvailable()`, `DeviceName()` and `AdapterCount()` say what is there. `Run(kernel, vectors)` is the one-shot door, data in and data out; `UploadQ` keeps a vector on the device until freed, `RunQ` keeps the result resident, and `ApplyOnQ` chains kernels over resident buffers with no transfer at all. A kernel comes from `stzKernelMaker` or as raw WGSL on the same binding contract, and `Verify` judges a candidate against the reference and against the device's measured floors: could a dispatch touching these bytes finish in that time at all.",
-   "`Calibrate()` is the method that makes the rest honest. It measures the crossover on this hardware and stores it, so the faces that may use the GPU, nearest neighbours, convolution, matrix products, attention, route to it only above the size where it was measured to win: on the laptop that built this, k-NN at 384 dimensions loses at a thousand items and wins at sixteen thousand. The foundries, `FoundryMatmul`, `FoundryAttention`, `FoundryPairdist`, race kernel variants under a checker and report a winner with its ratio. And `Wake()` exists because an idle card sleeps and the first submit pays for it.",
+   "The graphics card as a calculator: vectors uploaded once, kernels run on them, results read back or kept resident, and, before any of that, a measurement of where this machine's card actually starts to win.",
+   "The object says what is there, a device, its name, how many adapters. Data goes up once and lives on the device until it is freed, and a kernel can be chained over buffers that are already resident, with no transfer at all. A kernel comes from `stzKernelMaker`, or as raw WGSL on the same binding contract, and a candidate is judged against the reference and against the device's measured floors: could a dispatch touching these bytes finish in that time at all.",
+   "Calibration is what makes the rest honest. It measures the crossover on this hardware and stores it, so the parts of the library that may use the GPU, nearest neighbours, convolution, matrix products, attention, route to it only above the size where it was measured to win: on the laptop that built this, k-NN at 384 dimensions loses at a thousand items and wins at sixteen thousand. The foundries race kernel variants under a checker and report a winner with its ratio. And a method exists to wake the card, because an idle card sleeps and the first submit pays for it.",
    "It serves whoever has a large enough problem, embeddings to compare, a signal to convolve, a network to run, and wants the GPU used when it helps and left alone when it does not, with the decision recorded as a number."
   ],
   "fr": [
-   "`stzGpu` est la carte graphique comme calculateur : des vecteurs envoyés une fois, des noyaux exécutés dessus, des résultats relus ou gardés résidents, et, avant tout cela, une mesure de l'endroit où la carte de cette machine commence réellement à gagner.",
-   "`IsAvailable()`, `DeviceName()` et `AdapterCount()` disent ce qui est là. `Run(kernel, vectors)` est la porte en un coup, données en entrée et données en sortie ; `UploadQ` garde un vecteur sur la carte jusqu'à sa libération, `RunQ` garde le résultat résident, et `ApplyOnQ` enchaîne des noyaux sur des tampons résidents sans aucun transfert. Un noyau vient de `stzKernelMaker` ou en WGSL brut sur le même contrat de liaison, et `Verify` juge un candidat contre la référence et contre les planchers mesurés de la carte : un envoi touchant ces octets peut-il seulement finir en ce temps.",
-   "`Calibrate()` est la méthode qui rend le reste honnête. Elle mesure le point de bascule sur ce matériel et le conserve, si bien que les faces qui peuvent employer le GPU, plus proches voisins, convolution, produits de matrices, attention, n'y routent qu'au-dessus de la taille où il a été mesuré gagnant : sur l'ordinateur portable qui a bâti ceci, le k-NN à 384 dimensions perd à mille éléments et gagne à seize mille. Les fonderies, `FoundryMatmul`, `FoundryAttention`, `FoundryPairdist`, font courir des variantes de noyau sous un vérificateur et rapportent un vainqueur avec son rapport. Et `Wake()` existe parce qu'une carte au repos s'endort et que le premier envoi le paie.",
+   "La carte graphique comme calculateur : des vecteurs envoyés une fois, des noyaux exécutés dessus, des résultats relus ou gardés résidents, et, avant tout cela, une mesure de l'endroit où la carte de cette machine commence réellement à gagner.",
+   "L'objet dit ce qui est là, un appareil, son nom, combien d'adaptateurs. Les données montent une fois et vivent sur la carte jusqu'à leur libération, et un noyau peut s'enchaîner sur des tampons déjà résidents, sans aucun transfert. Un noyau vient de `stzKernelMaker`, ou en WGSL brut sur le même contrat de liaison, et un candidat est jugé contre la référence et contre les planchers mesurés de la carte : un envoi touchant ces octets peut-il seulement finir en ce temps.",
+   "L'étalonnage est ce qui rend le reste honnête. Il mesure le point de bascule sur ce matériel et le conserve, si bien que les parties de la bibliothèque qui peuvent employer le GPU, plus proches voisins, convolution, produits de matrices, attention, n'y routent qu'au-dessus de la taille où il a été mesuré gagnant : sur l'ordinateur portable qui a bâti ceci, le k-NN à 384 dimensions perd à mille éléments et gagne à seize mille. Les fonderies font courir des variantes de noyau sous un vérificateur et rapportent un vainqueur avec son rapport. Et une méthode existe pour réveiller la carte, parce qu'une carte au repos s'endort et que le premier envoi le paie.",
    "Il sert à qui a un problème assez grand, des plongements à comparer, un signal à convoluer, un réseau à exécuter, et veut que le GPU soit employé quand il aide et laissé tranquille sinon, la décision consignée en un nombre."
-  ],
-  "picks": {}
+  ]
  },
  "stzAgentGraph": {
   "en": [
-   "`stzAgentGraph` is the composition of an agent system as a graph that can be judged: who proposes, who guards, what has an effect on the world, where the trace goes, and the proof that no effect is reachable without passing a gate.",
-   "Declare the nodes by kind, `AddLLMActor(\"writer\")`, `AddPIActor`, `AddGuardian(\"gate\")`, `AddEffect(\"send\")`, `AddTraceSink(\"audit\")`, `AddTool`, `AddInput`, `AddCheckpoint`, and the edges by meaning, `Proposes(\"writer\", \"gate\")`, `Guards(\"gate\", \"send\")`, `Feeds`, `Traces`, `Escalates`. An LLM actor starts with an empty capability set and its output is tainted as open text; `Grant()` is the governed way to add a capability and refuses one no door allows, while `Tampering()` reports any node whose properties no longer match the sealed record.",
-   "`IsSound()` is the verdict: a writer proposing straight to `send` fails, and `Violations()` says why in a sentence, *effect 'send' has no guardian edge into it -- every effect passes a pi-gate*. The same invariants are available as a declared rule set, `RuleSetQ()`, and as findings in the library's unified shape, so a CI report collects them beside every other rule; `Explain()` reads the composition back in words.",
-   "It serves whoever builds with language models and must show, before the first message is sent, that nothing effectful happens without a deterministic gate in front of it."
+   "The composition of an agent system as a graph that can be judged: who proposes, who guards, what has an effect on the world, where the trace goes, and the proof that no effect is reachable without passing a gate.",
+   "Nodes are declared by kind, a language-model actor, a guardian, an effect, a trace sink, and edges by meaning, proposes, guards, traces. A model actor starts with an empty set of capabilities and its output is marked as open text.",
+   "@unsound",
+   "The verdict is not an opinion: the violation says in a sentence which rule was broken and where. Add a guardian before the effect and a witness after it, and the same system is sound.",
+   "@sound",
+   "Capabilities are granted through a governed door that refuses what no door allows, and any node whose properties no longer match the sealed record is reported as tampered with. The same invariants exist as a declared rule set and as findings in the library's unified shape, so a CI report collects them beside every other rule. It serves whoever builds with language models and must show, before the first message is sent, that nothing effectful happens without a deterministic gate in front of it."
   ],
   "fr": [
-   "`stzAgentGraph` est la composition d'un système d'agents comme graphe que l'on peut juger : qui propose, qui garde, ce qui a un effet sur le monde, où va la trace, et la preuve qu'aucun effet n'est atteignable sans passer une porte.",
-   "Déclarez les nœuds par sorte, `AddLLMActor(\"writer\")`, `AddPIActor`, `AddGuardian(\"gate\")`, `AddEffect(\"send\")`, `AddTraceSink(\"audit\")`, `AddTool`, `AddInput`, `AddCheckpoint`, et les arêtes par sens, `Proposes(\"writer\", \"gate\")`, `Guards(\"gate\", \"send\")`, `Feeds`, `Traces`, `Escalates`. Un acteur LLM part avec un ensemble de capacités vide et sa sortie est marquée comme texte ouvert ; `Grant()` est la voie gouvernée pour ajouter une capacité et refuse celle qu'aucune porte n'autorise, tandis que `Tampering()` signale tout nœud dont les propriétés ne correspondent plus à l'enregistrement scellé.",
-   "`IsSound()` est le verdict : un rédacteur proposant droit à `send` échoue, et `Violations()` dit pourquoi en une phrase, *effect 'send' has no guardian edge into it -- every effect passes a pi-gate*. Les mêmes invariants existent comme jeu de règles déclaré, `RuleSetQ()`, et comme constats dans la forme unifiée de la bibliothèque, si bien qu'un rapport d'intégration les recueille à côté de toute autre règle ; `Explain()` relit la composition en mots.",
-   "Il sert à qui bâtit avec des modèles de langage et doit montrer, avant le premier message envoyé, que rien d'effectif n'arrive sans une porte déterministe devant."
-  ],
-  "picks": {
-   "IsSound": {
-    "en": "A writer proposing straight to an effect: unsound, and the violation says why.",
-    "fr": "Un rédacteur proposant droit à un effet : non sain, et la violation dit pourquoi."
-   },
-   "AddGuardian": {
-    "en": "The same system with a gate between the writer and the effect, and a trace: sound.",
-    "fr": "Le même système avec une porte entre le rédacteur et l'effet, et une trace : sain."
-   }
-  }
+   "La composition d'un système d'agents comme graphe que l'on peut juger : qui propose, qui garde, ce qui a un effet sur le monde, où va la trace, et la preuve qu'aucun effet n'est atteignable sans passer une porte.",
+   "Les nœuds se déclarent par sorte, un acteur modèle de langage, un gardien, un effet, un puits de trace, et les arêtes par sens, propose, garde, trace. Un acteur modèle part avec un ensemble de capacités vide et sa sortie est marquée comme texte ouvert.",
+   "@unsound",
+   "Le verdict n'est pas une opinion : la violation dit en une phrase quelle règle a été rompue et où. Ajoutez un gardien avant l'effet et un témoin après, et le même système est sain.",
+   "@sound",
+   "Les capacités s'accordent par une porte gouvernée qui refuse ce qu'aucune porte n'autorise, et tout nœud dont les propriétés ne correspondent plus à l'enregistrement scellé est signalé comme altéré. Les mêmes invariants existent comme jeu de règles déclaré et comme constats dans la forme unifiée de la bibliothèque, si bien qu'un rapport d'intégration les recueille à côté de toute autre règle. Il sert à qui bâtit avec des modèles de langage et doit montrer, avant le premier message envoyé, que rien d'effectif n'arrive sans une porte déterministe devant."
+  ]
  },
  "stzVirtualFileSystem": {
   "en": [
-   "`stzVirtualFileSystem` is a twin of a file system in which an agent rehearses: every create, write, copy, move and delete is recorded against the twin and touches nothing real, so a plan can be inspected before anything is committed.",
-   "Mirror reality into it, `MirrorFile(path)` for one file or `MirrorFrom(folder)` for one level of a directory, then let the plan run: `CreateFile`, `WriteFile`, `CreateFolder`, `CopyFile`, `MoveFile`, `DeleteFile`, `DeleteFolder`. Inspection is free and reads the twin, never the disk: `Exists`, `ContentOf`, `SizeOf`, `OriginOf`, which says where a node came from, `Paths`, `NumberOfNodes`, `TreeView`, `Show`.",
-   "This is the workbench of the safe world: an agent binds to it, acts, and what it produced is a plan of changes; only a committing actor, a different thing with a different capability, carries the plan onto the real file system. The twin is what makes \"show me what you would do\" a question with an exact answer.",
-   "It serves any automation that writes files, a code migration, a document generator, an installer, a cleanup, and any agent that must be allowed to try before it is allowed to act."
+   "A twin of a file system in which an agent rehearses: every create, write, copy, move and delete is recorded against the twin and touches nothing real, so that a plan can be inspected before anything is committed.",
+   "@twin",
+   "Reality can be mirrored into it, one file or one level of a directory, and then the plan runs against the mirror. Inspection is free and reads the twin, never the disk: whether a path exists, what a file holds, how big it is, where a node came from, the tree as a picture.",
+   "This is the workbench of the safe world. An agent binds to it, acts, and what it produced is a plan of changes. Only a committing actor, a different thing with a different capability, carries the plan onto the real file system. The twin is what makes \"show me what you would do\" a question with an exact answer. It serves any automation that writes files, a code migration, a document generator, an installer, a cleanup, and any agent that must be allowed to try before it is allowed to act."
   ],
   "fr": [
-   "`stzVirtualFileSystem` est un jumeau d'un système de fichiers dans lequel un agent répète : chaque création, écriture, copie, déplacement et suppression est enregistré contre le jumeau et ne touche rien de réel, si bien qu'un plan peut être inspecté avant que quoi que ce soit soit validé.",
-   "Reflétez-y la réalité, `MirrorFile(path)` pour un fichier ou `MirrorFrom(folder)` pour un niveau de répertoire, puis laissez le plan courir : `CreateFile`, `WriteFile`, `CreateFolder`, `CopyFile`, `MoveFile`, `DeleteFile`, `DeleteFolder`. L'inspection est gratuite et lit le jumeau, jamais le disque : `Exists`, `ContentOf`, `SizeOf`, `OriginOf`, qui dit d'où vient un nœud, `Paths`, `NumberOfNodes`, `TreeView`, `Show`.",
-   "C'est l'établi du monde sûr : un agent s'y lie, agit, et ce qu'il a produit est un plan de changements ; seul un acteur validant, une chose différente avec une capacité différente, porte le plan sur le vrai système de fichiers. Le jumeau est ce qui fait de « montre-moi ce que tu ferais » une question à réponse exacte.",
-   "Il sert toute automatisation qui écrit des fichiers, une migration de code, un générateur de documents, un installeur, un nettoyage, et tout agent qui doit pouvoir essayer avant de pouvoir agir."
-  ],
-  "picks": {}
+   "Un jumeau d'un système de fichiers dans lequel un agent répète : chaque création, écriture, copie, déplacement et suppression est enregistré contre le jumeau et ne touche rien de réel, si bien qu'un plan peut être inspecté avant que quoi que ce soit soit validé.",
+   "@twin",
+   "On peut y refléter la réalité, un fichier ou un niveau de répertoire, puis le plan court contre le reflet. L'inspection est gratuite et lit le jumeau, jamais le disque : un chemin existe-t-il, que contient un fichier, quelle taille, d'où vient un nœud, l'arbre comme image.",
+   "C'est l'établi du monde sûr. Un agent s'y lie, agit, et ce qu'il a produit est un plan de changements. Seul un acteur validant, une chose différente avec une capacité différente, porte le plan sur le vrai système de fichiers. Le jumeau est ce qui fait de « montre-moi ce que tu ferais » une question à réponse exacte. Il sert toute automatisation qui écrit des fichiers, une migration de code, un générateur de documents, un installeur, un nettoyage, et tout agent qui doit pouvoir essayer avant de pouvoir agir."
+  ]
  },
  "stzSystemCall": {
   "en": [
-   "`stzSystemCall` runs a program and gives back what it said: its output, its error stream and its exit code, each separately, with the arguments passed as a list and never through a quoted shell string.",
-   "Name the program and its arguments, `SetProgram`, `SetArgs` or `WithArgs`, `AddArg`, or hand a command line to `ParseCommandString`; set a `Timeout`; choose what to capture, `CaptureOutput`, `CaptureError`, and whether a console shows, `Silently`. Then `Run()`, and read: `Output()`, `OutputAsLines()`, `Error()`, `ExitCode()`. `SetReturnType` converts the output on the way back, a number, a list of lines, so a caller that wants a count gets a count.",
-   "The call runs once and answers with all three channels together; it used to run twice to collect them, and the double execution was found and closed. Running by argument list rather than a shell string is what makes a filename with a space, a quote or a non-ASCII letter arrive intact.",
-   "It serves a build step, a conversion through an external tool, a system query, a test that drives another process, and anything else a program must delegate to the machine it runs on."
+   "Runs a program and gives back what it said: its output, its error stream and its exit code, each separately, with the arguments passed as a list and never through a quoted shell string.",
+   "The program and its arguments are named, or a command line is handed over to be parsed; a timeout is set; what to capture is chosen, the output, the error, and whether a console shows. The call runs once and answers with all three channels together. It used to run twice to collect them, and the double execution was found and closed.",
+   "The output can be converted on the way back, to a number or to a list of lines, so a caller that wants a count receives a count. Running by argument list rather than by a shell string is what makes a filename with a space, a quote or a non-ASCII letter arrive intact. It serves a build step, a conversion through an external tool, a system query, a test that drives another process, and anything else a program must delegate to the machine it runs on."
   ],
   "fr": [
-   "`stzSystemCall` exécute un programme et rend ce qu'il a dit : sa sortie, son flux d'erreur et son code de sortie, chacun à part, les arguments passés en liste et jamais par une chaîne d'interpréteur entre guillemets.",
-   "Nommez le programme et ses arguments, `SetProgram`, `SetArgs` ou `WithArgs`, `AddArg`, ou confiez une ligne de commande à `ParseCommandString` ; posez un `Timeout` ; choisissez ce qui est capturé, `CaptureOutput`, `CaptureError`, et si une console s'affiche, `Silently`. Puis `Run()`, et lisez : `Output()`, `OutputAsLines()`, `Error()`, `ExitCode()`. `SetReturnType` convertit la sortie au retour, un nombre, une liste de lignes, si bien qu'un appelant qui veut un compte reçoit un compte.",
-   "L'appel s'exécute une fois et répond avec les trois canaux ensemble ; il s'exécutait deux fois pour les recueillir, et la double exécution a été trouvée et fermée. Exécuter par liste d'arguments plutôt que par chaîne d'interpréteur est ce qui fait qu'un nom de fichier avec une espace, un guillemet ou une lettre non ASCII arrive intact.",
-   "Il sert une étape de compilation, une conversion par un outil externe, une interrogation du système, un test qui pilote un autre processus, et tout ce qu'un programme doit déléguer à la machine où il tourne."
-  ],
-  "picks": {}
+   "Exécute un programme et rend ce qu'il a dit : sa sortie, son flux d'erreur et son code de sortie, chacun à part, les arguments passés en liste et jamais par une chaîne d'interpréteur entre guillemets.",
+   "Le programme et ses arguments sont nommés, ou une ligne de commande est confiée pour être analysée ; un délai est posé ; ce qui est capturé est choisi, la sortie, l'erreur, et si une console s'affiche. L'appel s'exécute une fois et répond avec les trois canaux ensemble. Il s'exécutait deux fois pour les recueillir, et la double exécution a été trouvée et fermée.",
+   "La sortie peut être convertie au retour, en nombre ou en liste de lignes, si bien qu'un appelant qui veut un compte reçoit un compte. Exécuter par liste d'arguments plutôt que par chaîne d'interpréteur est ce qui fait qu'un nom de fichier avec une espace, un guillemet ou une lettre non ASCII arrive intact. Il sert une étape de compilation, une conversion par un outil externe, une interrogation du système, un test qui pilote un autre processus, et tout ce qu'un programme doit déléguer à la machine où il tourne."
+  ]
  },
  "stzMetric": {
   "en": [
-   "`stzMetric` is one measured thing with a name: a counter, a gauge or a timer, fed from the program and read as a number, a rate, a percentile or a sentence, and exported in the vocabularies the monitoring world already speaks.",
-   "A counter takes `Increment()` and answers `RatePerSecond()`, the slope of its cumulative count over the retained window. A gauge takes `Set(level)` and answers `SlopePerMs()`, `Mean`, `Min`, `Max`. A timer takes `Record(ms)` or a stopwatch straight in, `RecordWatch`, and answers `P50`, `P95`, `P99` from a constant-size histogram fit for an unbounded stream, `ExactPercentile` over the recent window when exactness matters, and `MeanMs` exact over the lifetime because the engine keeps the true sum. `Value()` is the current answer of any kind, `Count()` the samples ever recorded, `SeriesQ()` the series itself.",
-   "`PromName()` and `PromText()` write the metric in Prometheus exposition, `OtelMetricJson()` as one OpenTelemetry fragment, `Explain()` as a sentence a person reads. A metric can carry labels and belong to a family, one child per route the traffic actually took.",
-   "It serves a request bracket, a queue, a cache, a worker, anything whose health is a number over time, and it is what `stzPerfMonitor` collects and what the service-level checks read."
+   "One measured thing with a name: a counter, a gauge or a timer, fed from the program and read as a number, a rate, a percentile or a sentence, and exported in the vocabularies that the monitoring world already speaks.",
+   "A counter counts, and its rate is the slope of its cumulative count over the retained window. It is exported under the name that Prometheus reads.",
+   "@counter",
+   "A timer records durations and answers percentiles from a histogram of constant size, fit for an unbounded stream, or exact over the recent window when exactness matters, while the mean over the whole lifetime is exact because the engine keeps the true sum.",
+   "@timer",
+   "A gauge holds a level and its slope. Every metric can be written as Prometheus text, as an OpenTelemetry fragment, or as a sentence a person reads, and can carry labels and belong to a family, one child per route the traffic actually took. It serves a request bracket, a queue, a cache, a worker, anything whose health is a number over time, and it is what `stzPerfMonitor` collects."
   ],
   "fr": [
-   "`stzMetric` est une chose mesurée avec un nom : un compteur, une jauge ou un chronomètre, alimenté par le programme et lu comme nombre, taux, percentile ou phrase, et exporté dans les vocabulaires que le monde de la supervision parle déjà.",
-   "Un compteur prend `Increment()` et répond `RatePerSecond()`, la pente de son cumul sur la fenêtre retenue. Une jauge prend `Set(level)` et répond `SlopePerMs()`, `Mean`, `Min`, `Max`. Un chronomètre prend `Record(ms)` ou un chronomètre directement, `RecordWatch`, et répond `P50`, `P95`, `P99` depuis un histogramme de taille constante fait pour un flux sans borne, `ExactPercentile` sur la fenêtre récente quand l'exactitude compte, et `MeanMs` exact sur toute la durée parce que le moteur garde la vraie somme. `Value()` est la réponse courante de toute sorte, `Count()` les échantillons jamais enregistrés, `SeriesQ()` la série elle-même.",
-   "`PromName()` et `PromText()` écrivent la métrique en exposition Prometheus, `OtelMetricJson()` en un fragment OpenTelemetry, `Explain()` en une phrase qu'une personne lit. Une métrique peut porter des étiquettes et appartenir à une famille, un enfant par route que le trafic a réellement prise.",
-   "Elle sert une parenthèse de requête, une file, un cache, un travailleur, tout ce dont la santé est un nombre dans le temps, et c'est ce que `stzPerfMonitor` recueille et ce que les contrôles de niveau de service lisent."
-  ],
-  "picks": {}
+   "Une chose mesurée avec un nom : un compteur, une jauge ou un chronomètre, alimenté par le programme et lu comme nombre, taux, percentile ou phrase, et exporté dans les vocabulaires que le monde de la supervision parle déjà.",
+   "Un compteur compte, et son taux est la pente de son cumul sur la fenêtre retenue. Il s'exporte sous le nom que lit Prometheus.",
+   "@counter",
+   "Un chronomètre enregistre des durées et répond des percentiles depuis un histogramme de taille constante, fait pour un flux sans borne, ou exacts sur la fenêtre récente quand l'exactitude compte, tandis que la moyenne sur toute la durée est exacte parce que le moteur garde la vraie somme.",
+   "@timer",
+   "Une jauge tient un niveau et sa pente. Chaque métrique peut s'écrire en texte Prometheus, en fragment OpenTelemetry, ou en phrase qu'une personne lit, et peut porter des étiquettes et appartenir à une famille, un enfant par route que le trafic a réellement prise. Elle sert une parenthèse de requête, une file, un cache, un travailleur, tout ce dont la santé est un nombre dans le temps, et c'est ce que `stzPerfMonitor` recueille."
+  ]
  },
  "stzCodeGraph": {
   "en": [
-   "`stzCodeGraph` is a program read as a graph: its classes, methods, functions, inheritance, imports and, with a real parser, its calls; so that the questions a maintainer asks, who defines this, who inherits it, what breaks if I change it, what is never called, are answered by a query and not by a search.",
-   "Point it at a root, `SetRoot(path)`, for the language the subclass knows, and the source is parsed through the vendored tree-sitter grammar in the engine, with no runtime of that language required. Then ask: `Classes()`, `MethodsOf(class)`, `OwnersOf(method)`, every class that defines it, `ParentOf`, `AncestryOf`, `SubclassesOf`, `DescendantsOf`, `ImportsOf`, `FileOf`. `ImpactOf(method)` is the question before an edit: the classes defining it plus every descendant that inherits it unchanged. With call edges, `CallersOf`, `CalleesOf`, `DeadCode()`, every defined routine no recorded call reaches, and `CyclicCalls()`.",
-   "`CheckRules()` runs the code rules over the graph and answers findings in the library's unified shape, each with class, method and line, which is how the knob gate and the other code rules sit in one CI report with the graph rules of every other domain.",
-   "It serves a refactoring, a review, an onboarding, a migration between languages, and the library's own self-documentation, which reads itself through this class."
+   "A program read as a graph: its classes, methods, functions, inheritance, imports and, with a real parser, its calls; so that the questions a maintainer asks, who defines this, who inherits it, what breaks if I change it, what is never called, are answered by a query and not by a search.",
+   "It is pointed at a root, for the language its subclass knows, and the source is parsed by the tree-sitter grammar embedded in the engine, with no runtime of that language required. Then it answers about structure: the classes, the methods of a class, every class that defines a method, a parent, the ancestry up to a root, the subclasses and descendants, the imports, the file.",
+   "The question to ask before an edit is the impact of a method: the classes that define it plus every descendant that inherits it unchanged. With call edges it also answers who calls what, which defined routine no recorded call reaches, and which routines can reach themselves.",
+   "The code rules run over the graph and answer findings in the library's unified shape, each with class, method and line, which is how the knob gate and the other code rules sit in one CI report with the graph rules of every other domain. It serves a refactoring, a review, an onboarding, a migration between languages, and the library's own self-documentation, which reads itself through this class."
   ],
   "fr": [
-   "`stzCodeGraph` est un programme lu comme graphe : ses classes, méthodes, fonctions, héritages, importations et, avec un vrai analyseur, ses appels ; si bien que les questions d'un mainteneur, qui définit ceci, qui en hérite, que casse-t-on en le changeant, qu'est-ce qui n'est jamais appelé, trouvent réponse par une requête et non par une recherche.",
-   "Pointez-le sur une racine, `SetRoot(path)`, pour le langage que la sous-classe connaît, et la source est analysée par la grammaire tree-sitter embarquée dans le moteur, sans qu'aucun environnement de ce langage soit requis. Puis demandez : `Classes()`, `MethodsOf(class)`, `OwnersOf(method)`, chaque classe qui la définit, `ParentOf`, `AncestryOf`, `SubclassesOf`, `DescendantsOf`, `ImportsOf`, `FileOf`. `ImpactOf(method)` est la question avant une modification : les classes qui la définissent plus chaque descendant qui l'hérite sans la redéfinir. Avec les arêtes d'appel, `CallersOf`, `CalleesOf`, `DeadCode()`, toute routine définie qu'aucun appel enregistré n'atteint, et `CyclicCalls()`.",
-   "`CheckRules()` fait courir les règles de code sur le graphe et répond des constats dans la forme unifiée de la bibliothèque, chacun avec classe, méthode et ligne, ce qui met la porte des boutons et les autres règles de code dans un seul rapport d'intégration avec les règles de graphe de tous les autres domaines.",
-   "Il sert une refonte, une revue, une prise en main, une migration entre langages, et l'auto-documentation de la bibliothèque, qui se lit elle-même par cette classe."
-  ],
-  "picks": {}
+   "Un programme lu comme graphe : ses classes, méthodes, fonctions, héritages, importations et, avec un vrai analyseur, ses appels ; si bien que les questions d'un mainteneur, qui définit ceci, qui en hérite, que casse-t-on en le changeant, qu'est-ce qui n'est jamais appelé, trouvent réponse par une requête et non par une recherche.",
+   "On le pointe sur une racine, pour le langage que sa sous-classe connaît, et la source est analysée par la grammaire tree-sitter embarquée dans le moteur, sans qu'aucun environnement de ce langage soit requis. Puis il répond sur la structure : les classes, les méthodes d'une classe, chaque classe qui définit une méthode, un parent, la filiation jusqu'à une racine, les sous-classes et descendants, les importations, le fichier.",
+   "La question à poser avant une modification est l'impact d'une méthode : les classes qui la définissent plus chaque descendant qui l'hérite sans la redéfinir. Avec les arêtes d'appel, il répond aussi qui appelle quoi, quelle routine définie aucun appel enregistré n'atteint, et quelles routines peuvent s'atteindre elles-mêmes.",
+   "Les règles de code courent sur le graphe et répondent des constats dans la forme unifiée de la bibliothèque, chacun avec classe, méthode et ligne, ce qui met la porte des boutons et les autres règles de code dans un seul rapport d'intégration avec les règles de graphe de tous les autres domaines. Il sert une refonte, une revue, une prise en main, une migration entre langages, et l'auto-documentation de la bibliothèque, qui se lit elle-même par cette classe."
+  ]
  },
  "stzLLMFunction": {
   "en": [
-   "`stzLLMFunction` is a language model wrapped as a function with a declared return type: a number, a boolean, a string, one of a list, or a structure, so that what comes back is either the shape you asked for or a refusal that says why.",
-   "Name it and give it a prompt, `SetPrompt`, then declare the return: `ReturnsNumber()`, `ReturnsBoolean()`, `ReturnsOneOf([...])`, or `ReturnsStructure(fields)`, an `stzOutputSchema` compiled and judged at declaration, so a defective schema never reaches a model. `Call(args)` or `Of(args)` runs it; `Budget`, `SetRetries` and `SetRetrySampling` bound the cost, the first attempt always greedy; `Why()` and `LastFindings()` explain a refusal in the unified finding shape, so it stands in a CI report. `RefuseUnknownFields()` closes the world: a field the schema never declared refuses the answer rather than being dropped in silence.",
-   "When a structure is declared and the engine enforces grammars, decoding is constrained to the schema, `IsConstrainingDecoding()` tells you before the call, `GrammarUsed()` shows the grammar, and `WasLastAnswerConstrained()` tells you after. For tests and offline work, `UseResponder(fake)` puts a fake where the model stands and `SeedAnswer` plants a known answer; `AddGolden` and `RunGoldens` keep a set of expected answers, structures included, that the function is checked against.",
-   "It serves any program that wants a model's judgement as a typed value, a classification, an extraction, a score, a filled record, and wants to know, every time, whether the value was earned or the call was refused."
+   "A language model wrapped as a function with a declared return type: a number, a boolean, a string, one of a list, or a structure, so that what comes back is either the shape you asked for or a refusal that says why.",
+   "The function is named, given a prompt, and told what it returns. A structure is an `stzOutputSchema`, compiled and judged at declaration, so a defective schema never reaches a model. A budget is mandatory before a call, so that no spending is silent, and retries are bounded, the first attempt always greedy.",
+   "@seed",
+   "A refusal explains itself, in the library's unified finding shape, so that it stands in a CI report. A closed schema can refuse a field that was never declared rather than dropping it in silence. When a structure is declared and the engine enforces grammars, decoding itself is constrained to the schema, and the function can say before the call whether it will be, and after the call whether it was.",
+   "For tests and offline work, a fake can stand where the model stands, and a known answer can be seeded explicitly; a set of expected answers, structures included, can be kept and run against the function. It serves any program that wants a model's judgement as a typed value, a classification, an extraction, a score, a filled record, and wants to know, every time, whether the value was earned or the call was refused."
   ],
   "fr": [
-   "`stzLLMFunction` est un modèle de langage enveloppé comme fonction à type de retour déclaré : un nombre, un booléen, une chaîne, un élément d'une liste, ou une structure, si bien que ce qui revient est soit la forme demandée, soit un refus qui dit pourquoi.",
-   "Nommez-la et donnez-lui une consigne, `SetPrompt`, puis déclarez le retour : `ReturnsNumber()`, `ReturnsBoolean()`, `ReturnsOneOf([...])`, ou `ReturnsStructure(fields)`, un `stzOutputSchema` compilé et jugé à la déclaration, si bien qu'un schéma défectueux n'atteint jamais un modèle. `Call(args)` ou `Of(args)` l'exécute ; `Budget`, `SetRetries` et `SetRetrySampling` bornent le coût, la première tentative toujours gloutonne ; `Why()` et `LastFindings()` expliquent un refus dans la forme unifiée des constats, qui tient dans un rapport d'intégration. `RefuseUnknownFields()` ferme le monde : un champ que le schéma n'a jamais déclaré refuse la réponse plutôt que d'être abandonné en silence.",
-   "Quand une structure est déclarée et que le moteur fait respecter les grammaires, le décodage est contraint au schéma, `IsConstrainingDecoding()` vous le dit avant l'appel, `GrammarUsed()` montre la grammaire, et `WasLastAnswerConstrained()` vous le dit après. Pour les tests et le travail hors ligne, `UseResponder(fake)` met un faux là où se tient le modèle et `SeedAnswer` plante une réponse connue ; `AddGolden` et `RunGoldens` tiennent un jeu de réponses attendues, structures comprises, contre lequel la fonction est vérifiée.",
-   "Elle sert tout programme qui veut le jugement d'un modèle comme valeur typée, une classification, une extraction, un score, une fiche remplie, et veut savoir, à chaque fois, si la valeur a été gagnée ou si l'appel a été refusé."
-  ],
-  "picks": {}
+   "Un modèle de langage enveloppé comme fonction à type de retour déclaré : un nombre, un booléen, une chaîne, un élément d'une liste, ou une structure, si bien que ce qui revient est soit la forme demandée, soit un refus qui dit pourquoi.",
+   "La fonction est nommée, reçoit une consigne, et on lui dit ce qu'elle rend. Une structure est un `stzOutputSchema`, compilé et jugé à la déclaration, si bien qu'un schéma défectueux n'atteint jamais un modèle. Un budget est obligatoire avant un appel, pour qu'aucune dépense ne soit silencieuse, et les reprises sont bornées, la première tentative toujours gloutonne.",
+   "@seed",
+   "Un refus s'explique, dans la forme unifiée des constats de la bibliothèque, si bien qu'il tient dans un rapport d'intégration. Un schéma fermé peut refuser un champ qui n'a jamais été déclaré plutôt que de l'abandonner en silence. Quand une structure est déclarée et que le moteur fait respecter les grammaires, le décodage lui-même est contraint au schéma, et la fonction peut dire avant l'appel s'il le sera, et après l'appel s'il l'a été.",
+   "Pour les tests et le travail hors ligne, un faux peut se tenir là où se tient le modèle, et une réponse connue peut être plantée explicitement ; un jeu de réponses attendues, structures comprises, peut être gardé et exécuté contre la fonction. Elle sert tout programme qui veut le jugement d'un modèle comme valeur typée, une classification, une extraction, un score, une fiche remplie, et veut savoir, à chaque fois, si la valeur a été gagnée ou si l'appel a été refusé."
+  ]
  },
  "stzSecret": {
   "en": [
-   "`stzSecret` is a secret that can be carried everywhere and read almost nowhere: it holds where a value lives, never the value, and shows only a redacted descriptor in every print, log and file.",
-   "Say where it comes from: `FromEnv(\"API_KEY\")` an environment variable, `FromFile(path)`, `FromVault(ref)`, or `FromLiteral` for development and tests only, which is still redacted in every output. `Name()`, `Kind()`, `SourceKind()` and `SourceLocator()` are safe reads, the locator being a pointer, a variable name or a path, and never the secret; `Descriptor()` and `Masked()` are what any display or serialisation sees.",
-   "Plaintext has exactly one door, and it is governed. `IsRevealableBy(actor)` answers whether this actor may read it, and only an effectful, non-sandboxed actor may: `Reveal(actor)` succeeds for a trusted human and is refused for an inference-only language-model actor. A vault-sourced secret is fetched through a resolver passed at the moment of reveal, after the actor check, with `RevealVia`.",
+   "A secret that can be carried everywhere and read almost nowhere: it holds where a value lives, never the value, and shows only a redacted descriptor in every print, log and file.",
+   "It says where it comes from, an environment variable, a file, a vault, or, for development and tests only, a literal, which is still redacted in every output. What can be read safely is the name, the kind, and the locator, which is a pointer, a variable name or a path, and never the secret.",
+   "@mask",
+   "Plaintext has exactly one door, and it is governed. The question is whether this actor may read it, and only an effectful, non-sandboxed actor may: the reveal succeeds for a trusted human and is refused for a language-model actor that can only infer. A vault-sourced secret is fetched through a resolver passed at the moment of reveal, after the actor check.",
    "It serves every program that holds credentials and also hands text to a model: the secret can sit inside a prompt-building function, a log line or a saved agent file without ever being the thing that leaks."
   ],
   "fr": [
-   "`stzSecret` est un secret qui se porte partout et ne se lit presque nulle part : il tient l'endroit où vit une valeur, jamais la valeur, et ne montre qu'un descripteur masqué dans chaque affichage, journal et fichier.",
-   "Dites d'où il vient : `FromEnv(\"API_KEY\")` une variable d'environnement, `FromFile(path)`, `FromVault(ref)`, ou `FromLiteral` pour le développement et les tests seulement, toujours masqué dans toute sortie. `Name()`, `Kind()`, `SourceKind()` et `SourceLocator()` sont des lectures sûres, le localisateur étant un pointeur, un nom de variable ou un chemin, jamais le secret ; `Descriptor()` et `Masked()` sont ce que voit tout affichage ou toute sérialisation.",
-   "Le texte en clair n'a qu'une porte, et elle est gouvernée. `IsRevealableBy(actor)` répond si cet acteur peut le lire, et seul un acteur effectif, hors bac à sable, le peut : `Reveal(actor)` réussit pour un humain de confiance et est refusé à un acteur modèle de langage qui ne fait qu'inférer. Un secret venu d'un coffre est récupéré par un résolveur passé au moment de la révélation, après le contrôle de l'acteur, avec `RevealVia`.",
+   "Un secret qui se porte partout et ne se lit presque nulle part : il tient l'endroit où vit une valeur, jamais la valeur, et ne montre qu'un descripteur masqué dans chaque affichage, journal et fichier.",
+   "Il dit d'où il vient, une variable d'environnement, un fichier, un coffre, ou, pour le développement et les tests seulement, un littéral, toujours masqué dans toute sortie. Ce qui peut se lire sans danger est le nom, la sorte, et le localisateur, qui est un pointeur, un nom de variable ou un chemin, jamais le secret.",
+   "@mask",
+   "Le texte en clair n'a qu'une porte, et elle est gouvernée. La question est de savoir si cet acteur peut le lire, et seul un acteur effectif, hors bac à sable, le peut : la révélation réussit pour un humain de confiance et est refusée à un acteur modèle de langage qui ne fait qu'inférer. Un secret venu d'un coffre est récupéré par un résolveur passé au moment de la révélation, après le contrôle de l'acteur.",
    "Il sert tout programme qui garde des identifiants et confie aussi du texte à un modèle : le secret peut se trouver dans une fonction qui compose une consigne, une ligne de journal ou un fichier d'agent sauvegardé sans jamais être ce qui fuit."
-  ],
-  "picks": {}
+  ]
  },
  "stzPanel": {
   "en": [
-   "`stzPanel` is a user interface laid out from markup and handed back as triangles: a document is loaded, laid out, and recorded as geometry that any surface can paint, a window, a texture on a 3D object or an image, with nothing painted by the panel itself.",
-   "`LoadMarkup(string)` takes the document as text, because markup is emitted rather than typed; `Layout()` is cheap when nothing changed, a still frame costing a few hundredths of a dirty one, and `Record()` produces `Verts()`, `Indices()` and the text meshes. `SetTime` is the caller's clock, so a test frame is deterministic. Fonts are registered once and matched by the engine's font id, not by family name.",
-   "Input is drained, never dispatched: `PointerMovedTo`, `ClickAt`, which is the whole gesture, press and release, so a button is never left down, and `Events()` hands back what arrived as a list; no callback ever enters the language. `ElementAt(x, y)` names what is under a point, `FromWindow` and `FromTexture` convert a window pixel or a texture coordinate into the panel's own. The keyboard is first-class: `FocusOn`, `FocusNext`, `FocusUp`, `TabRing`, and a refusal at the end of a ring is the answer FALSE rather than an error. `SetTextOf` and `SetStyleOf` change one element without regenerating every string.",
+   "A user interface laid out from markup and handed back as triangles: a document is loaded, laid out, and recorded as geometry that any surface can paint, a window, a texture on a 3D object or an image, with nothing painted by the panel itself.",
+   "The document is given as text, because markup is emitted rather than typed. Layout is cheap when nothing changed, a still frame costing a few hundredths of a dirty one, and the caller drives the clock, so a test frame is deterministic. Fonts are registered once and matched by the engine's font id, never by family name.",
+   "Input is drained, never dispatched. A pointer moves, a click is a press and a release together, so a button is never left down, and what arrived is handed back as a list; no callback ever enters the language. A point can be asked which element is under it, and a window pixel or a texture coordinate converted into the panel's own. The keyboard is first-class: focus moves in a ring, in document order or by direction, and a refusal at the end of a ring is the plain answer no rather than an error.",
    "It serves a tool window, a heads-up display, a menu inside a game, a control panel hanging in a 3D scene, and it is what `stzApp` and the GUI plane put on screen."
   ],
   "fr": [
-   "`stzPanel` est une interface composée à partir d'un balisage et rendue en triangles : un document est chargé, mis en page, et enregistré comme géométrie que toute surface peut peindre, une fenêtre, une texture sur un objet 3D ou une image, le panneau ne peignant rien lui-même.",
-   "`LoadMarkup(string)` prend le document comme texte, parce qu'un balisage s'émet plus qu'il ne se tape ; `Layout()` est peu coûteux quand rien n'a changé, une image fixe coûtant quelques centièmes d'une image modifiée, et `Record()` produit `Verts()`, `Indices()` et les maillages de texte. `SetTime` est l'horloge de l'appelant, si bien qu'une image de test est déterministe. Les polices sont enregistrées une fois et appariées par l'identifiant du moteur, non par le nom de famille.",
-   "L'entrée est drainée, jamais distribuée : `PointerMovedTo`, `ClickAt`, qui est le geste entier, appui et relâchement, si bien qu'un bouton n'est jamais laissé enfoncé, et `Events()` rend ce qui est arrivé sous forme de liste ; aucun rappel n'entre jamais dans le langage. `ElementAt(x, y)` nomme ce qui se trouve sous un point, `FromWindow` et `FromTexture` convertissent un pixel de fenêtre ou une coordonnée de texture en celle du panneau. Le clavier est de première classe : `FocusOn`, `FocusNext`, `FocusUp`, `TabRing`, et un refus au bout d'un anneau est la réponse FALSE plutôt qu'une erreur. `SetTextOf` et `SetStyleOf` modifient un élément sans régénérer chaque chaîne.",
+   "Une interface composée à partir d'un balisage et rendue en triangles : un document est chargé, mis en page, et enregistré comme géométrie que toute surface peut peindre, une fenêtre, une texture sur un objet 3D ou une image, le panneau ne peignant rien lui-même.",
+   "Le document est donné comme texte, parce qu'un balisage s'émet plus qu'il ne se tape. La mise en page est peu coûteuse quand rien n'a changé, une image fixe coûtant quelques centièmes d'une image modifiée, et l'appelant pilote l'horloge, si bien qu'une image de test est déterministe. Les polices sont enregistrées une fois et appariées par l'identifiant du moteur, jamais par le nom de famille.",
+   "L'entrée est drainée, jamais distribuée. Un pointeur bouge, un clic est un appui et un relâchement ensemble, si bien qu'un bouton n'est jamais laissé enfoncé, et ce qui est arrivé est rendu sous forme de liste ; aucun rappel n'entre jamais dans le langage. On peut demander à un point quel élément est dessous, et convertir un pixel de fenêtre ou une coordonnée de texture en celle du panneau. Le clavier est de première classe : le focus circule en anneau, dans l'ordre du document ou par direction, et un refus au bout d'un anneau est la réponse simple non plutôt qu'une erreur.",
    "Il sert une fenêtre d'outil, un affichage tête haute, un menu dans un jeu, un pupitre suspendu dans une scène 3D, et c'est ce que `stzApp` et le plan GUI mettent à l'écran."
-  ],
-  "picks": {}
+  ]
  },
  "stzApp": {
   "en": [
-   "`stzApp` is an application declared as a world rather than coded as a program: its things, their relations and instances, its flows, its reactions, its goals, its body and its screens, held as one graph that can be asked, checked and run.",
-   "The declaration reads in the vocabulary of what the application is. `AddThing` declares what exists, `AddRelation` and `AddInstance` populate it, `AddFlow` says what happens when, in a brace of `Require` and `Then(Keep(...))`, and `AddReaction` says what the world should propose when a thing lacks something. `AddGoal` names a purpose and `Pursue` measures the gap on the live world graph and turns each missing piece into a proposal rather than an action; `SetBody` and `AddScreen` give it embodiment and surfaces. Everything can be read back as data, `Things()`, `Surfaces()`, `Explain()`, so a generator, a documentation tool or a platform can ask the declaration instead of reaching into it.",
-   "`Live()` wires the reactions into a running reactive system and `Pulse()` evaluates every reaction against the world, one proposal for each instance that lacks what a reaction wants, `React` pulses a single instance, and what comes out is a list of proposals to be accepted or refused.",
+   "An application declared as a world rather than coded as a program: its things, their relations and instances, its flows, its reactions, its goals, its body and its screens, held as one graph that can be asked, checked and run.",
+   "The declaration reads in the vocabulary of what the application is. A thing is declared, then related, then populated with instances. A flow says what happens when, in a block that requires something and then keeps something. A reaction says what the world should propose when a thing lacks something. A goal names a purpose, and pursuing it measures the gap on the live world graph and turns each missing piece into a proposal rather than an action.",
+   "Everything can be read back as data, the things, the surfaces, an explanation, so that a generator, a documentation tool or a platform asks the declaration instead of reaching into it. When the application is made live, its reactions are wired into a running reactive system, one proposal is made for each instance that lacks what a reaction wants, and what comes out is a list of proposals to be accepted or refused.",
    "It serves whoever builds a business or a game as a set of rules and goals first and a screen second, and wants the same declaration to feed the interface, the documentation and the check."
   ],
   "fr": [
-   "`stzApp` est une application déclarée comme un monde plutôt que codée comme un programme : ses choses, leurs relations et instances, ses flux, ses réactions, ses buts, son corps et ses écrans, tenus comme un seul graphe que l'on peut interroger, vérifier et exécuter.",
-   "La déclaration se lit dans le vocabulaire de ce qu'est l'application. `AddThing` déclare ce qui existe, `AddRelation` et `AddInstance` le peuplent, `AddFlow` dit ce qui arrive quand, dans une accolade de `Require` et `Then(Keep(...))`, et `AddReaction` dit ce que le monde doit proposer quand une chose manque de quelque chose. `AddGoal` nomme un but et `Pursue` mesure l'écart sur le graphe du monde vivant et transforme chaque pièce manquante en proposition plutôt qu'en action ; `SetBody` et `AddScreen` lui donnent incarnation et surfaces. Tout se relit comme donnée, `Things()`, `Surfaces()`, `Explain()`, si bien qu'un générateur, un outil de documentation ou une plateforme interroge la déclaration au lieu de fouiller dedans.",
-   "`Live()` branche les réactions sur un système réactif en marche et `Pulse()` évalue chaque réaction contre le monde, une proposition pour chaque instance qui manque de ce qu'une réaction veut, `React` fait pulser une seule instance, et ce qui sort est une liste de propositions à accepter ou à refuser.",
-   "Il sert qui bâtit une entreprise ou un jeu comme un ensemble de règles et de buts d'abord et un écran ensuite, et veut que la même déclaration alimente l'interface, la documentation et la vérification."
-  ],
-  "picks": {}
+   "Une application déclarée comme un monde plutôt que codée comme un programme : ses choses, leurs relations et instances, ses flux, ses réactions, ses buts, son corps et ses écrans, tenus comme un seul graphe que l'on peut interroger, vérifier et exécuter.",
+   "La déclaration se lit dans le vocabulaire de ce qu'est l'application. Une chose est déclarée, puis reliée, puis peuplée d'instances. Un flux dit ce qui arrive quand, dans un bloc qui exige quelque chose puis garde quelque chose. Une réaction dit ce que le monde doit proposer quand une chose manque de quelque chose. Un but nomme un dessein, et le poursuivre mesure l'écart sur le graphe du monde vivant et transforme chaque pièce manquante en proposition plutôt qu'en action.",
+   "Tout se relit comme donnée, les choses, les surfaces, une explication, si bien qu'un générateur, un outil de documentation ou une plateforme interroge la déclaration au lieu de fouiller dedans. Quand l'application est rendue vivante, ses réactions sont branchées sur un système réactif en marche, une proposition est faite pour chaque instance qui manque de ce qu'une réaction veut, et ce qui sort est une liste de propositions à accepter ou à refuser.",
+   "Elle sert qui bâtit une entreprise ou un jeu comme un ensemble de règles et de buts d'abord et un écran ensuite, et veut que la même déclaration alimente l'interface, la documentation et la vérification."
+  ]
  },
  "stzHttpClient": {
   "en": [
-   "`stzHttpClient` is the client side of the web: GET and POST, forms, downloads, many requests at once, authentication in every common scheme, and the timeouts, proxies and certificates a real network demands, each a setting you can read back.",
-   "Configure once, `SetHeader`, `SetCookie`, `SetBearer(token)`, `SetAuth` with Basic by default or digest through `SetAuthType`, `SetClientCert` for mutual TLS, `SetProxy`, `FollowRedirects`, `VerifySSL`, `AcceptGzip`, and then speak: `Get`, `Post`, `PostForm`, `DownloadFile`, `Response` and its accessors. `GetMany` runs a batch of GETs in parallel, one thread per address, and returns them together. Timeouts are the engine's own, `SetConnectTimeout`, `SetRequestTimeout`, with process-wide defaults, and `PoolStats` and `Shutdown` show and release the keep-alive pool.",
-   "Tracing is built in: `StartTrace()` attaches a fresh W3C trace context to the request and returns the header value to record, `SetTraceParent` continues one that arrived, so a call across services can be followed from end to end.",
+   "The client side of the web: GET and POST, forms, downloads, many requests at once, authentication in every common scheme, and the timeouts, proxies and certificates that a real network demands, each a setting that can be read back.",
+   "It is configured once, headers, cookies, a bearer token, Basic or digest authentication, a client certificate for mutual TLS, a proxy, redirects, certificate verification, compression, and then it speaks: get, post, post a form, download a file, read the response. A batch of GETs runs in parallel, one thread per address, and comes back together. Timeouts are the engine's own, with process-wide defaults, and the pool of kept-alive connections can be shown and released.",
+   "Tracing is built in: a fresh W3C trace context can be attached to a request and the header value returned to be recorded, or one that arrived can be continued, so that a call across services can be followed from end to end.",
    "It serves any program that talks to another service, an API, a download, a webhook, a health probe."
   ],
   "fr": [
-   "`stzHttpClient` est le côté client du web : GET et POST, formulaires, téléchargements, nombreuses requêtes à la fois, authentification sous tous les schémas courants, et les délais, mandataires et certificats qu'exige un vrai réseau, chacun un réglage que l'on peut relire.",
-   "Configurez une fois, `SetHeader`, `SetCookie`, `SetBearer(token)`, `SetAuth` en Basic par défaut ou digest par `SetAuthType`, `SetClientCert` pour le TLS mutuel, `SetProxy`, `FollowRedirects`, `VerifySSL`, `AcceptGzip`, puis parlez : `Get`, `Post`, `PostForm`, `DownloadFile`, `Response` et ses accesseurs. `GetMany` exécute un lot de GET en parallèle, un fil par adresse, et les rend ensemble. Les délais sont ceux du moteur, `SetConnectTimeout`, `SetRequestTimeout`, avec des valeurs par défaut pour tout le processus, et `PoolStats` et `Shutdown` montrent et libèrent le réservoir de connexions maintenues.",
-   "Le traçage est intégré : `StartTrace()` attache un contexte de trace W3C neuf à la requête et rend la valeur d'en-tête à consigner, `SetTraceParent` poursuit celui qui est arrivé, si bien qu'un appel à travers des services se suit de bout en bout.",
+   "Le côté client du web : GET et POST, formulaires, téléchargements, nombreuses requêtes à la fois, authentification sous tous les schémas courants, et les délais, mandataires et certificats qu'exige un vrai réseau, chacun un réglage que l'on peut relire.",
+   "On le configure une fois, en-têtes, témoins, jeton porteur, authentification Basic ou digest, certificat client pour le TLS mutuel, mandataire, redirections, vérification des certificats, compression, puis il parle : lire, envoyer, envoyer un formulaire, télécharger un fichier, lire la réponse. Un lot de lectures s'exécute en parallèle, un fil par adresse, et revient ensemble. Les délais sont ceux du moteur, avec des valeurs par défaut pour tout le processus, et le réservoir de connexions maintenues peut être montré et libéré.",
+   "Le traçage est intégré : un contexte de trace W3C neuf peut être attaché à une requête et la valeur d'en-tête rendue pour être consignée, ou bien on poursuit celui qui est arrivé, si bien qu'un appel à travers des services se suit de bout en bout.",
    "Il sert tout programme qui parle à un autre service, une API, un téléchargement, un crochet web, une sonde de santé."
-  ],
-  "picks": {}
+  ]
  },
  "stzDatabase": {
   "en": [
-   "`stzDatabase` is a SQLite database in the process: open a file, run SQL, get rows back, with transactions that take the lock when they begin and failures that raise rather than hide.",
-   "`Exec(sql)` runs a statement and returns the rows changed; `Rows(sql)` returns rows as lists, `Value(sql)` one scalar. The bound forms are the safe ones: `ExecWith(sql, values)`, `RowsWith`, `ValueWith` pass values separately from the statement, a string as text, a whole number as an integer, another number as a real, and `TypedRowsWith` gives numbers back as numbers rather than text. `Begin()` takes the write lock at once, so a busy database refuses at the start of a unit where the whole unit can be retried; `Commit()` and `Rollback()` end it, `LastInsertId()` reads the key just made, and `Why()` says what the last failure was.",
-   "A query that fails partway through its rows raises, so a half answer is never mistaken for a whole one. And the database is the store under other parts of the library: `stzAppServer.Expose` publishes one of its tables as a REST resource, `stzAuth` persists its users through one.",
-   "It serves any program that needs structured storage without a server: a cache, a log, a user table, an agent's memory."
+   "A SQLite database in the process: a file is opened, SQL is run, rows come back, with transactions that take the lock when they begin and failures that raise rather than hide.",
+   "A statement runs and answers with the rows it changed; a query answers with rows as lists, or with one scalar. The bound forms are the safe ones: values are passed apart from the statement, a string as text, a whole number as an integer, another number as a real, and a typed query gives numbers back as numbers rather than as text.",
+   "A transaction takes the write lock at once, so a busy database refuses at the start of a unit, where the whole unit can be retried, and it ends in a commit or a rollback. A query that fails partway through its rows raises, so that a half answer is never mistaken for a whole one.",
+   "The database is the store under other parts of the library: `stzAppServer` can publish one of its tables as a REST resource, and `stzAuth` can keep its users in one. It serves any program that needs structured storage without a server: a cache, a log, a user table, an agent's memory."
   ],
   "fr": [
-   "`stzDatabase` est une base SQLite dans le processus : on ouvre un fichier, on exécute du SQL, on récupère des lignes, avec des transactions qui prennent le verrou quand elles commencent et des échecs qui lèvent une erreur plutôt que de se cacher.",
-   "`Exec(sql)` exécute une instruction et rend les lignes modifiées ; `Rows(sql)` rend des lignes comme listes, `Value(sql)` un scalaire. Les formes liées sont les sûres : `ExecWith(sql, values)`, `RowsWith`, `ValueWith` passent les valeurs à part de l'instruction, une chaîne comme texte, un entier comme entier, un autre nombre comme réel, et `TypedRowsWith` rend les nombres comme nombres plutôt que comme texte. `Begin()` prend le verrou d'écriture aussitôt, si bien qu'une base occupée refuse au début d'une unité où l'on peut la rejouer entière ; `Commit()` et `Rollback()` la terminent, `LastInsertId()` lit la clé qui vient d'être créée, et `Why()` dit quel fut le dernier échec.",
-   "Une requête qui échoue en cours de lecture lève une erreur, si bien qu'une demi-réponse n'est jamais prise pour une réponse entière. Et la base est le magasin sous d'autres parties de la bibliothèque : `stzAppServer.Expose` publie l'une de ses tables comme ressource REST, `stzAuth` y garde ses utilisateurs.",
-   "Elle sert tout programme qui a besoin d'un stockage structuré sans serveur : un cache, un journal, une table d'utilisateurs, la mémoire d'un agent."
-  ],
-  "picks": {}
+   "Une base SQLite dans le processus : on ouvre un fichier, on exécute du SQL, on récupère des lignes, avec des transactions qui prennent le verrou quand elles commencent et des échecs qui lèvent une erreur plutôt que de se cacher.",
+   "Une instruction s'exécute et répond par les lignes modifiées ; une requête répond par des lignes sous forme de listes, ou par un scalaire. Les formes liées sont les sûres : les valeurs sont passées à part de l'instruction, une chaîne comme texte, un entier comme entier, un autre nombre comme réel, et une requête typée rend les nombres comme nombres plutôt que comme texte.",
+   "Une transaction prend le verrou d'écriture aussitôt, si bien qu'une base occupée refuse au début d'une unité, où l'on peut la rejouer entière, et elle se termine par une validation ou une annulation. Une requête qui échoue en cours de lecture lève une erreur, si bien qu'une demi-réponse n'est jamais prise pour une réponse entière.",
+   "La base est le magasin sous d'autres parties de la bibliothèque : `stzAppServer` peut publier l'une de ses tables comme ressource REST, et `stzAuth` peut y garder ses utilisateurs. Elle sert tout programme qui a besoin d'un stockage structuré sans serveur : un cache, un journal, une table d'utilisateurs, la mémoire d'un agent."
+  ]
  },
  "stzWorkflow": {
   "en": [
-   "`stzWorkflow` is a process as a diagram that knows what kind of process it is: a sequence of steps, or a state machine of states and transitions, with the actors who do the work and the exceptional path kept apart from the intended one.",
-   "Choose the kind, `SetWorkflowType`, then declare in its vocabulary: for a sequence, `AddStep`, `Steps`, `ConnectSteps`, `Then`; for a state machine, `AddState`, `AddTransition`, `States`, `Transitions`. `AddActor` assigns who acts; `SetExceptionEvents` and `AddExceptionTransition` mark which transitions are the unwelcome ones, and `IsExceptionalTransition` tells them back, so a layout can keep the intended path straight and push the exceptions aside, the BPMN rule that makes such pictures readable.",
-   "Being a diagram, it inherits everything `stzDiagram` and `stzGraph` do: reachability, cycles, the shortest route through the process, themes, notation, and rendering to SVG or PNG. The workflow is therefore a checked thing and a drawn thing at once, and its rules can be ingested into the same CI report as every other graph.",
-   "It serves an approval chain, an order's life, a support escalation, a protocol, and any process a team wants to read, test and print from the same definition."
+   "A process as a diagram that knows what kind of process it is: a sequence of steps, or a state machine of states and transitions, with the actors who do the work and the exceptional path kept apart from the intended one.",
+   "The kind is chosen, then the process is declared in its vocabulary: for a sequence, steps connected one after the other; for a state machine, states and the transitions between them, each named by the event that causes it.",
+   "@states",
+   "Actors can be assigned to the work. Some transitions are marked as the unwelcome ones, so that a layout can keep the intended path straight and push the exceptions aside, the BPMN rule that makes such pictures readable.",
+   "Being a diagram, it inherits everything `stzDiagram` and `stzGraph` do: reachability, cycles, the shortest route through the process, themes, notation, rendering to SVG or PNG. The workflow is a checked thing and a drawn thing at once. It serves an approval chain, an order's life, a support escalation, a protocol, and any process a team wants to read, test and print from the same definition."
   ],
   "fr": [
-   "`stzWorkflow` est un processus comme diagramme qui sait de quelle sorte de processus il s'agit : une suite d'étapes, ou un automate d'états et de transitions, avec les acteurs qui font le travail et le chemin exceptionnel tenu à part du chemin prévu.",
-   "Choisissez la sorte, `SetWorkflowType`, puis déclarez dans son vocabulaire : pour une suite, `AddStep`, `Steps`, `ConnectSteps`, `Then` ; pour un automate, `AddState`, `AddTransition`, `States`, `Transitions`. `AddActor` assigne qui agit ; `SetExceptionEvents` et `AddExceptionTransition` marquent les transitions malvenues, et `IsExceptionalTransition` les redit, si bien qu'une mise en page peut garder le chemin prévu droit et écarter les exceptions, la règle BPMN qui rend ces images lisibles.",
-   "Étant un diagramme, il hérite de tout ce que font `stzDiagram` et `stzGraph` : atteignabilité, cycles, plus court chemin dans le processus, thèmes, notation, rendu en SVG ou PNG. Le flux de travail est donc une chose vérifiée et une chose dessinée à la fois, et ses règles peuvent être versées au même rapport d'intégration que tout autre graphe.",
-   "Il sert une chaîne d'approbation, la vie d'une commande, une escalade de support, un protocole, et tout processus qu'une équipe veut lire, tester et imprimer à partir d'une seule définition."
-  ],
-  "picks": {}
+   "Un processus comme diagramme qui sait de quelle sorte de processus il s'agit : une suite d'étapes, ou un automate d'états et de transitions, avec les acteurs qui font le travail et le chemin exceptionnel tenu à part du chemin prévu.",
+   "La sorte est choisie, puis le processus est déclaré dans son vocabulaire : pour une suite, des étapes reliées l'une après l'autre ; pour un automate, des états et les transitions entre eux, chacune nommée par l'événement qui la provoque.",
+   "@states",
+   "Des acteurs peuvent être affectés au travail. Certaines transitions sont marquées comme malvenues, si bien qu'une mise en page peut garder le chemin prévu droit et écarter les exceptions, la règle BPMN qui rend ces images lisibles.",
+   "Étant un diagramme, il hérite de tout ce que font `stzDiagram` et `stzGraph` : atteignabilité, cycles, plus court chemin dans le processus, thèmes, notation, rendu en SVG ou PNG. Le flux de travail est une chose vérifiée et une chose dessinée à la fois. Il sert une chaîne d'approbation, la vie d'une commande, une escalade de support, un protocole, et tout processus qu'une équipe veut lire, tester et imprimer à partir d'une seule définition."
+  ]
  },
  "stzOrgChart": {
   "en": [
@@ -652,82 +606,74 @@
  },
  "stzNeuralNetwork": {
   "en": [
-   "`stzNeuralNetwork` is a small network you can build in a few lines and train to a task: dense layers with a named activation, a trainer with a learning rate, and a prediction, all in the engine, with no framework and no model file to fetch.",
-   "Declare the input width, `new stzNeuralNetwork([ :Inputs = 2 ])`, then add layers, `AddDenseLayer(4, :Tanh)`, `AddDenseLayer(1, :Sigmoid)`; give an `stzTrainer` a learning rate and train for as many rounds as it takes, 2,000 in the library's own example; `Predict(inputs)` answers. `SetSeed` fixes the initialisation, so a run is reproducible; `NumberOfLayers`, `NumberOfInputs` and `Layers` show what was built.",
-   "The classical test is XOR, which no single layer can learn and a network of two can: four points, four expected answers, a hidden layer of four units, and the trained network gets all four right. The trained weights can be written out with `ExportToGguf`, in the format the library's inference tier reads, so what was learned here can be loaded there.",
-   "It serves a lesson on how learning works, a classifier on a small table, a prototype before a larger model, and any case where a few hundred weights are the right size."
+   "A small network you can build in a few lines and train to a task: dense layers with a named activation, a trainer with a learning rate, and a prediction, all in the engine, with no framework and no model file to fetch.",
+   "The classical test is XOR, which no single layer can learn and a network of two can: four points, four expected answers, a hidden layer of four units.",
+   "@xor",
+   "The initialisation can be seeded, so that a run is reproducible, and the object says what it holds, the layers, the number of inputs. The trained weights can be written out in the format that the library's inference tier reads, so that what was learned here can be loaded there. It serves a lesson on how learning works, a classifier on a small table, a prototype before a larger model, and any case where a few hundred weights are the right size."
   ],
   "fr": [
-   "`stzNeuralNetwork` est un petit réseau que l'on construit en quelques lignes et entraîne à une tâche : des couches denses à activation nommée, un entraîneur avec un taux d'apprentissage, et une prédiction, le tout dans le moteur, sans cadriciel et sans fichier de modèle à aller chercher.",
-   "Déclarez la largeur d'entrée, `new stzNeuralNetwork([ :Inputs = 2 ])`, puis ajoutez des couches, `AddDenseLayer(4, :Tanh)`, `AddDenseLayer(1, :Sigmoid)` ; donnez à un `stzTrainer` un taux d'apprentissage et entraînez autant de tours qu'il faut, 2 000 dans l'exemple de la bibliothèque ; `Predict(inputs)` répond. `SetSeed` fixe l'initialisation, si bien qu'une exécution est reproductible ; `NumberOfLayers`, `NumberOfInputs` et `Layers` montrent ce qui a été construit.",
-   "Le test classique est le OU exclusif, qu'aucune couche seule ne peut apprendre et que deux couches apprennent : quatre points, quatre réponses attendues, une couche cachée de quatre unités, et le réseau entraîné trouve les quatre. Les poids entraînés peuvent être écrits par `ExportToGguf`, dans le format que lit l'étage d'inférence de la bibliothèque, si bien que ce qui a été appris ici peut y être chargé.",
-   "Il sert une leçon sur la façon dont l'apprentissage fonctionne, un classificateur sur une petite table, un prototype avant un modèle plus grand, et tout cas où quelques centaines de poids sont la bonne taille."
-  ],
-  "picks": {
-   "AddDenseLayer": {
-    "en": "XOR learned: two layers, a learning rate, 2,000 rounds, four right answers.",
-    "fr": "Le OU exclusif appris : deux couches, un taux d'apprentissage, 2 000 tours, quatre bonnes réponses."
-   }
-  }
+   "Un petit réseau que l'on construit en quelques lignes et entraîne à une tâche : des couches denses à activation nommée, un entraîneur avec un taux d'apprentissage, et une prédiction, le tout dans le moteur, sans cadriciel et sans fichier de modèle à aller chercher.",
+   "Le test classique est le OU exclusif, qu'aucune couche seule ne peut apprendre et que deux couches apprennent : quatre points, quatre réponses attendues, une couche cachée de quatre unités.",
+   "@xor",
+   "L'initialisation peut être fixée, si bien qu'une exécution est reproductible, et l'objet dit ce qu'il contient, les couches, le nombre d'entrées. Les poids entraînés peuvent être écrits dans le format que lit l'étage d'inférence de la bibliothèque, si bien que ce qui a été appris ici peut y être chargé. Il sert une leçon sur la façon dont l'apprentissage fonctionne, un classificateur sur une petite table, un prototype avant un modèle plus grand, et tout cas où quelques centaines de poids sont la bonne taille."
+  ]
  },
  "stzPerfMonitor": {
   "en": [
-   "`stzPerfMonitor` is the program's own instrument panel: it watches memory and processor, keeps the metrics you declare, records request traces, and writes them out in the formats the monitoring world reads, while measuring what the watching itself costs.",
-   "Say what to watch, `WatchMemory`, `WatchCpu`, `WatchSystemMemory`, at what cadence, `Every`, and make your own, `NewCounter`, `NewGauge`, `NewTimer`, or the labelled forms that give one family a child per route or per method. `Sample()` takes every reading now; `Tick()` samples only when the cadence has elapsed on the monotonic clock, so it can be called from any loop; `RunFor(ms)` runs standalone and `Cycle()` is the one cycle an agent host drives, so a server can host a monitor and tick it between requests. `EnableTracing` keeps the last requests, `[ traceId, path, status, durMs, wallMs ]`, in an engine ring and `RecentTraces(n)` reads them.",
-   "`Prometheus()` and `OtelJson()` export every metric in the standard text and JSON forms; `Explain()` says it in words; `MetricQ(name)` gives one metric as a chainable object whose state is the same engine series. And `SelfCost()` reports what the observation itself used, with the same clock, so the profiler is profiled.",
-   "It serves a service with a latency promise, a batch that must stay inside its memory, a test that asserts a budget, and the well-known subjects `http.request.ms`, `http.requests` and `http.errors` that the server's request bracket feeds."
+   "The program's own instrument panel: it watches memory and processor, keeps the metrics you declare, records request traces, and writes them out in the formats the monitoring world reads, while measuring what the watching itself costs.",
+   "What to watch is declared, memory, processor, system memory, at a given cadence, and so are the program's own metrics, counters, gauges and timers, or the labelled forms that give one family a child per route or per method.",
+   "@declare",
+   "Sampling can be called from any loop, and it only samples when the cadence has elapsed on the monotonic clock; or it runs standalone for a while; or it is hosted by an agent host, so that a server ticks a monitor between requests. The last requests are kept as traces in an engine ring, each with its id, path, status and durations.",
+   "Every metric is exported as Prometheus text or as an OpenTelemetry batch, or explained in words. And the monitor reports what the observation itself used, with the same clock, so that the profiler is profiled. It serves a service with a latency promise, a batch that must stay inside its memory, a test that asserts a budget, and the well-known subjects that the server's request bracket feeds."
   ],
   "fr": [
-   "`stzPerfMonitor` est le tableau de bord du programme lui-même : il surveille la mémoire et le processeur, garde les métriques que vous déclarez, enregistre des traces de requêtes, et les écrit dans les formats que lit le monde de la supervision, tout en mesurant ce que la surveillance elle-même coûte.",
-   "Dites quoi surveiller, `WatchMemory`, `WatchCpu`, `WatchSystemMemory`, à quelle cadence, `Every`, et faites les vôtres, `NewCounter`, `NewGauge`, `NewTimer`, ou les formes étiquetées qui donnent à une famille un enfant par route ou par méthode. `Sample()` prend toutes les lectures maintenant ; `Tick()` n'échantillonne que lorsque la cadence est écoulée sur l'horloge monotone, si bien qu'on peut l'appeler depuis n'importe quelle boucle ; `RunFor(ms)` tourne seul et `Cycle()` est le cycle qu'un hôte d'agents pilote, si bien qu'un serveur peut héberger un moniteur et le faire avancer entre les requêtes. `EnableTracing` garde les dernières requêtes, `[ traceId, path, status, durMs, wallMs ]`, dans un anneau du moteur et `RecentTraces(n)` les lit.",
-   "`Prometheus()` et `OtelJson()` exportent chaque métrique sous les formes standard de texte et de JSON ; `Explain()` le dit en mots ; `MetricQ(name)` donne une métrique comme objet chaînable dont l'état est la même série du moteur. Et `SelfCost()` rapporte ce que l'observation elle-même a consommé, avec la même horloge, si bien que le profileur est profilé.",
-   "Il sert un service qui a une promesse de latence, un traitement par lots qui doit rester dans sa mémoire, un test qui affirme un budget, et les sujets connus `http.request.ms`, `http.requests` et `http.errors` qu'alimente la parenthèse de requête du serveur."
-  ],
-  "picks": {}
+   "Le tableau de bord du programme lui-même : il surveille la mémoire et le processeur, garde les métriques que vous déclarez, enregistre des traces de requêtes, et les écrit dans les formats que lit le monde de la supervision, tout en mesurant ce que la surveillance elle-même coûte.",
+   "Ce qu'il faut surveiller se déclare, mémoire, processeur, mémoire du système, à une cadence donnée, et les métriques propres du programme aussi, compteurs, jauges et chronomètres, ou les formes étiquetées qui donnent à une famille un enfant par route ou par méthode.",
+   "@declare",
+   "L'échantillonnage peut être appelé depuis n'importe quelle boucle, et il n'échantillonne que lorsque la cadence est écoulée sur l'horloge monotone ; ou il tourne seul un moment ; ou un hôte d'agents l'héberge, si bien qu'un serveur fait avancer un moniteur entre les requêtes. Les dernières requêtes sont gardées comme traces dans un anneau du moteur, chacune avec son identifiant, son chemin, son statut et ses durées.",
+   "Chaque métrique s'exporte en texte Prometheus ou en lot OpenTelemetry, ou s'explique en mots. Et le moniteur rapporte ce que l'observation elle-même a consommé, avec la même horloge, si bien que le profileur est profilé. Il sert un service qui a une promesse de latence, un traitement par lots qui doit rester dans sa mémoire, un test qui affirme un budget, et les sujets connus qu'alimente la parenthèse de requête du serveur."
+  ]
  },
  "stzProcess": {
   "en": [
-   "`stzProcess` is a child process you hold in your hand: started, read as it speaks, waited for, killed, and never left behind, since closing a handle on a running child kills it first.",
-   "`Spawn(program, args)` starts it, an effectful act, the kind a virtual system rehearses before it is allowed to happen; `ChildPid()` names it. `ReadOutput()` is the streaming read, it blocks until at least one byte arrives and returns an empty string at the end of the stream, `ReadOutputAll()` reads to the end, and `ReadError` and `ReadErrorAll` do the same for the error stream. `Wait()` returns the exit code and may be called twice, `Succeeded()` and `Failed()` read it, `Kill()` ends the child now, `Close()` frees the handle.",
-   "The object also knows its own process: `Id()`, `Uptime()` in seconds of the monotonic clock, `UptimeMs()`, `UptimeNs()`. The difference from `stzSystemCall` is the difference between a conversation and a command: a system call runs to completion and returns three channels, a process is held open and talked to while it runs.",
-   "It serves a long-running tool read line by line, a server a test starts and stops, a worker the program supervises, and anything where \"wait for it to finish\" is not the whole story."
+   "A child process held in the hand: started, read as it speaks, waited for, killed, and never left behind, since closing the handle of a running child kills it first.",
+   "Starting it is an effectful act, the kind that a virtual system rehearses before it is allowed to happen. The output is read as a stream, which blocks until at least one byte arrives and answers an empty string at the end, or all at once to the end; the error stream is read the same way. Waiting answers the exit code and may be done twice, and success or failure can be asked for, or the child ended at once.",
+   "The object also knows its own process: its id, and its uptime on the monotonic clock in seconds, milliseconds or nanoseconds. The difference from `stzSystemCall` is the difference between a conversation and a command: a system call runs to completion and returns three channels, a process is held open and talked to while it runs.",
+   "It serves a long-running tool read line by line, a server that a test starts and stops, a worker that the program supervises, and anything where \"wait for it to finish\" is not the whole story."
   ],
   "fr": [
-   "`stzProcess` est un processus enfant que l'on tient en main : démarré, lu pendant qu'il parle, attendu, tué, et jamais abandonné, puisque fermer le descripteur d'un enfant en marche le tue d'abord.",
-   "`Spawn(program, args)` le démarre, un acte effectif, de ceux qu'un système virtuel répète avant qu'on le laisse arriver ; `ChildPid()` le nomme. `ReadOutput()` est la lecture en flux, elle bloque jusqu'à l'arrivée d'au moins un octet et rend une chaîne vide en fin de flux, `ReadOutputAll()` lit jusqu'au bout, et `ReadError` et `ReadErrorAll` font de même pour le flux d'erreur. `Wait()` rend le code de sortie et peut être appelé deux fois, `Succeeded()` et `Failed()` le lisent, `Kill()` termine l'enfant tout de suite, `Close()` libère le descripteur.",
-   "L'objet connaît aussi son propre processus : `Id()`, `Uptime()` en secondes de l'horloge monotone, `UptimeMs()`, `UptimeNs()`. La différence avec `stzSystemCall` est celle d'une conversation et d'une commande : un appel système va jusqu'au bout et rend trois canaux, un processus est tenu ouvert et on lui parle pendant qu'il tourne.",
+   "Un processus enfant que l'on tient en main : démarré, lu pendant qu'il parle, attendu, tué, et jamais abandonné, puisque fermer le descripteur d'un enfant en marche le tue d'abord.",
+   "Le démarrer est un acte effectif, de ceux qu'un système virtuel répète avant qu'on le laisse arriver. La sortie se lit en flux, ce qui bloque jusqu'à l'arrivée d'au moins un octet et répond une chaîne vide à la fin, ou d'un coup jusqu'au bout ; le flux d'erreur se lit de même. Attendre répond le code de sortie et peut se faire deux fois, la réussite ou l'échec peuvent être demandés, ou l'enfant terminé aussitôt.",
+   "L'objet connaît aussi son propre processus : son identifiant, et sa durée de vie sur l'horloge monotone en secondes, millisecondes ou nanosecondes. La différence avec `stzSystemCall` est celle d'une conversation et d'une commande : un appel système va jusqu'au bout et rend trois canaux, un processus est tenu ouvert et on lui parle pendant qu'il tourne.",
    "Il sert un outil de longue durée lu ligne à ligne, un serveur qu'un test démarre et arrête, un travailleur que le programme supervise, et tout cas où « attendre qu'il finisse » n'est pas toute l'histoire."
-  ],
-  "picks": {}
+  ]
  },
  "stzXml": {
   "en": [
-   "`stzXml` reads an XML document by path, the way a person points at it: the text of this element, the number in that one, the attribute of a third, with the document safe to open from anywhere.",
-   "`new stzXml(text)` parses; `IsValid()` says whether it did. `TextAt(path)` reads the text of an element and answers an empty string when there is none, `NumberAt(path)` a number, `AttributeAt(path, name)` an attribute, `NamespaceAt` a namespace, `TextsAt(path)` every value of a repeated element as a list, `NumberOf`, `Has`, `ChildrenOf` count and test. A node is a path into the document, `NodeQ(path)`, so navigation is a value that can be kept and passed. `Pretty()` presents it indented, `SaveTo(path)` writes it, `ToStzString()` hands it to the string layer.",
-   "Parsing is done in the engine, and external entities are closed: a document that tries to pull in a file or a URL through an entity is not given the chance, the class of attack known as XXE.",
-   "It serves a configuration, a feed, an exchange format with a bank or a government service, any document received from outside and read without being trusted."
+   "An XML document read by path, the way a person points at it: the text of this element, the number in that one, the attribute of a third, with the document safe to open from anywhere.",
+   "The document is parsed, and it says whether it is valid. Then an element is read by its path, its text, a number, an attribute, a namespace, or every value of a repeated element as a list; a node is a path into the document, so that navigation is a value that can be kept and passed.",
+   "@read",
+   "Parsing is done in the engine, and external entities are closed: a document that tries to pull in a file or an address through an entity is not given the chance, the class of attack known as XXE. It serves a configuration, a feed, an exchange format with a bank or a government service, any document received from outside and read without being trusted."
   ],
   "fr": [
-   "`stzXml` lit un document XML par chemin, comme une personne le montre du doigt : le texte de cet élément, le nombre dans celui-là, l'attribut d'un troisième, le document pouvant s'ouvrir sans danger de n'importe où.",
-   "`new stzXml(text)` analyse ; `IsValid()` dit si cela a réussi. `TextAt(path)` lit le texte d'un élément et répond une chaîne vide s'il n'y en a pas, `NumberAt(path)` un nombre, `AttributeAt(path, name)` un attribut, `NamespaceAt` un espace de noms, `TextsAt(path)` chaque valeur d'un élément répété comme liste, `NumberOf`, `Has`, `ChildrenOf` comptent et testent. Un nœud est un chemin dans le document, `NodeQ(path)`, si bien que la navigation est une valeur que l'on peut garder et passer. `Pretty()` le présente indenté, `SaveTo(path)` l'écrit, `ToStzString()` le confie à la couche chaîne.",
-   "L'analyse est faite dans le moteur, et les entités externes sont fermées : un document qui tente de faire entrer un fichier ou une adresse par une entité n'en a pas la chance, la classe d'attaque connue sous le nom de XXE.",
-   "Il sert une configuration, un flux, un format d'échange avec une banque ou un service public, tout document reçu de l'extérieur et lu sans lui faire confiance."
-  ],
-  "picks": {}
+   "Un document XML lu par chemin, comme une personne le montre du doigt : le texte de cet élément, le nombre dans celui-là, l'attribut d'un troisième, le document pouvant s'ouvrir sans danger de n'importe où.",
+   "Le document est analysé, et il dit s'il est valide. Puis un élément se lit par son chemin, son texte, un nombre, un attribut, un espace de noms, ou chaque valeur d'un élément répété comme liste ; un nœud est un chemin dans le document, si bien que la navigation est une valeur que l'on peut garder et passer.",
+   "@read",
+   "L'analyse est faite dans le moteur, et les entités externes sont fermées : un document qui tente de faire entrer un fichier ou une adresse par une entité n'en a pas la chance, la classe d'attaque connue sous le nom de XXE. Il sert une configuration, un flux, un format d'échange avec une banque ou un service public, tout document reçu de l'extérieur et lu sans lui faire confiance."
+  ]
  },
  "stzHtml": {
   "en": [
-   "`stzHtml` reads a web page the way a browser's inspector does: parse it, find elements by tag, id or class, read their text and attributes, count what is there, with scripts and styles kept out of the text.",
-   "`new stzHtml(text)` parses, `IsValid()` and `IsWellFormed()` say what was found. `Find(\"a\")`, `Find(\"#main\")`, `Find(\".price\")` return element nodes bound to the document, `FindFirst` and `FindAll` the single and the full list; `ElementsWhere([ :Tag = \"div\", :Class = \"card\" ])` combines constraints in a record. `Text()` gives the visible text with scripts and styles suppressed, `PlainText()` the flattened form, `NumberOfElements()`, `CountByTag()` and `TagsUsed()` describe the document, `HasTag`, `HasBody` and `HasHead` test its shape.",
-   "A node keeps its place in the document, so a found element can be asked for its own text and attributes and its children. Parsing is the engine's.",
-   "It serves reading a page for a price or a title, checking that a generated page has the structure it promised, extracting the links of a document, and the tests of a web application that need to ask the page what it contains."
+   "A web page read the way a browser's inspector does: parsed, its elements found by tag, id or class, its text and attributes read, what is there counted, with scripts and styles kept out of the text.",
+   "A page says whether it is valid and well formed, what tags it uses, how many elements it holds, and gives its elements back as nodes bound to the document, found by a simple selector or by a record of constraints on tag, class and id.",
+   "@find",
+   "A node keeps its place in the document, so a found element can be asked for its own text, its attributes and its children. Parsing is the engine's. It serves reading a page for a price or a title, checking that a generated page has the structure it promised, extracting the links of a document, and the tests of a web application that need to ask the page what it contains."
   ],
   "fr": [
-   "`stzHtml` lit une page web comme l'inspecteur d'un navigateur : l'analyser, trouver des éléments par balise, identifiant ou classe, lire leur texte et leurs attributs, compter ce qui s'y trouve, scripts et styles tenus hors du texte.",
-   "`new stzHtml(text)` analyse, `IsValid()` et `IsWellFormed()` disent ce qui a été trouvé. `Find(\"a\")`, `Find(\"#main\")`, `Find(\".price\")` rendent des nœuds d'éléments liés au document, `FindFirst` et `FindAll` l'unique et la liste complète ; `ElementsWhere([ :Tag = \"div\", :Class = \"card\" ])` combine des contraintes dans un enregistrement. `Text()` donne le texte visible, scripts et styles supprimés, `PlainText()` la forme aplatie, `NumberOfElements()`, `CountByTag()` et `TagsUsed()` décrivent le document, `HasTag`, `HasBody` et `HasHead` testent sa forme.",
-   "Un nœud garde sa place dans le document, si bien qu'un élément trouvé peut être interrogé sur son texte, ses attributs et ses enfants. L'analyse est celle du moteur.",
-   "Il sert à lire une page pour un prix ou un titre, à vérifier qu'une page générée a la structure promise, à extraire les liens d'un document, et aux tests d'une application web qui doivent demander à la page ce qu'elle contient."
-  ],
-  "picks": {}
+   "Une page web lue comme l'inspecteur d'un navigateur : analysée, ses éléments trouvés par balise, identifiant ou classe, son texte et ses attributs lus, ce qui s'y trouve compté, scripts et styles tenus hors du texte.",
+   "Une page dit si elle est valide et bien formée, quelles balises elle emploie, combien d'éléments elle contient, et rend ses éléments comme nœuds liés au document, trouvés par un sélecteur simple ou par un enregistrement de contraintes sur balise, classe et identifiant.",
+   "@find",
+   "Un nœud garde sa place dans le document, si bien qu'un élément trouvé peut être interrogé sur son texte, ses attributs et ses enfants. L'analyse est celle du moteur. Il sert à lire une page pour un prix ou un titre, à vérifier qu'une page générée a la structure promise, à extraire les liens d'un document, et aux tests d'une application web qui doivent demander à la page ce qu'elle contient."
+  ]
  }
 }

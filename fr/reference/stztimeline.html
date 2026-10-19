@@ -42,55 +42,28 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/datetime/stzTimeLine.ring" target="_blank" rel="noopener noreferrer">la source: base/datetime/stzTimeLine.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/i18n.html">La référence du domaine : Internationalisation</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p><code>stzTimeLine</code> est une étendue de temps avec des choses dessus : des points, qui arrivent à un instant, et des étendues, qui durent, chacun avec une étiquette ; et les questions qu&#x27;un planificateur leur pose, qu&#x27;y a-t-il à cet instant, qu&#x27;y a-t-il entre ces deux-là, qu&#x27;est-ce qui se chevauche, qu&#x27;est-ce qui est bloqué.</p><p>Ouvrez-la sur un début et une fin, <code>new stzTimeLine(:From = &quot;2024-10-10&quot;, :To = &quot;2024-10-22 16:40:00&quot;)</code>, une heure étant ajoutée à une date nue. Placez des événements : <code>AddPoint(&quot;MEETING&quot;, &quot;2024-03-15 10:00:00&quot;)</code>, <code>AddSpan(&quot;PROJECT&quot;, from, to)</code>, <code>AddPeriod</code>, <code>AddMoment</code> ; les noms sont synonymes, on le dit comme on le pense. Puis interrogez : <code>WhatsAt(moment)</code> liste ce qui est en cours alors, point ou étendue ; <code>PointsBetween</code> et <code>SpansBetween</code> découpent une fenêtre ; <code>SortedPoints</code> et <code>SortedSpans</code> mettent en ordre ; <code>HasOverlaps</code> dit si deux étendues se heurtent ; <code>Duration</code>, <code>Summary</code>, <code>Content</code> décrivent l&#x27;ensemble.</p><p>Une étendue bloquée est une règle que la ligne de temps fait respecter : <code>AddBlockedSpan(&quot;BLACKOUT&quot;, from, to)</code>, et <code>IsBlocked(moment)</code> refuse un événement dedans, une étendue en partie dedans étant signalée comme telle. Les étiquettes se cherchent, se renomment et se retirent, et la ligne de temps se montre en texte.</p><p>Elle sert un plan de projet, un calendrier de versions, un historique d&#x27;incidents, un calendrier de campagne, un audit de ce qui est arrivé quand ; elle lit ses dates par <code>stzDateTime</code>, si bien que toute forme comprise par cette classe est acceptée ici.</p></div><h2>Les usages les plus parlants</h2><p>Quatre méthodes qui montrent ce que la classe sait faire ; chaque exemple a été exécuté dans la bibliothèque.</p><div class="uses"><div class="use"><h3 class="mono">WhatsAt</h3><p>Un instant interrogé sur ce qui est en cours : une réunion, deux étendues, et rien du tout plus tard.</p><pre class="rx">oTimeLine = new stzTimeLine(
-	:Start = &quot;2024-01-01 00:00:00&quot;,
-	:End = &quot;2024-12-31 23:59:59&quot;
-)
-oTimeLine {
-	AddPoint(&quot;MEETING&quot;, &quot;2024-03-15 10:00:00&quot;)
-	AddSpan(&quot;PROJECT&quot;, &quot;2024-03-01 00:00:00&quot;, &quot;2024-05-31 23:59:59&quot;)
-	AddSpan(&quot;CAMPAIGN&quot;, &quot;2024-03-10 00:00:00&quot;, &quot;2024-03-20 23:59:59&quot;)
+    <div class="essay"><p>Une étendue de temps avec des choses dessus : des points, qui arrivent à un instant, et des étendues, qui durent, chacun avec une étiquette ; et les questions qu&#x27;un planificateur leur pose, qu&#x27;y a-t-il à cet instant, qu&#x27;y a-t-il entre ces deux-là, qu&#x27;est-ce qui se chevauche, qu&#x27;est-ce qui est bloqué.</p><p>Elle s&#x27;ouvre sur un début et une fin, une date nue recevant son heure, et les événements se placent avec les mots qu&#x27;une personne emploierait, un point, une étendue, une période, un moment. Interrogée sur un instant, la ligne répond par tout ce qui est en cours alors, et dit si chaque chose est un point ou une étendue.</p><div class="sample"><pre class="rx">o1 = new stzTimeLine(:Start = &quot;2024-01-01 00:00:00&quot;, :End = &quot;2024-12-31 23:59:59&quot;)
+o1 {
+    AddPoint(&quot;MEETING&quot;, &quot;2024-03-15 10:00:00&quot;)
+    AddSpan(&quot;PROJECT&quot;, &quot;2024-03-01 00:00:00&quot;, &quot;2024-05-31 23:59:59&quot;)
+    AddSpan(&quot;CAMPAIGN&quot;, &quot;2024-03-10 00:00:00&quot;, &quot;2024-04-10 23:59:59&quot;)
 }
-? @@NL( oTimeLine.WhatsAt(&quot;2024-03-15 10:00:00&quot;) )
-? @@( oTimeLine.WhatsAt(&quot;2024-02-15 12:00:00&quot;) )
-#--&gt; [
-#--&gt; 	[ &quot;MEETING&quot;, &quot;point&quot; ],
-#--&gt; 	[ &quot;PROJECT&quot;, &quot;span&quot; ],
-#--&gt; 	[ &quot;CAMPAIGN&quot;, &quot;span&quot; ]
-#--&gt; ]
-#--&gt; [ ]</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">PointsBetween</h3><p>Une fenêtre découpée dans l&#x27;année, et les événements dedans.</p><pre class="rx">oTimeLine = new stzTimeLine(
-	:Start = &quot;2024-01-01 00:00:00&quot;,
-	:End = &quot;2024-12-31 23:59:59&quot;
-)
-oTimeLine {
-	AddPoint(&quot;JAN_EVENT&quot;, &quot;2024-01-15 10:00:00&quot;)
-	AddPoint(&quot;FEB_EVENT&quot;, &quot;2024-02-15 10:00:00&quot;)
-	AddPoint(&quot;MAR_EVENT&quot;, &quot;2024-03-15 10:00:00&quot;)
-	AddPoint(&quot;APR_EVENT&quot;, &quot;2024-04-15 10:00:00&quot;)
-}
-? @@( oTimeLine.PointsBetween(&quot;2024-02-01 00:00:00&quot;, &quot;2024-03-31 23:59:59&quot;) )
-? oTimeLine.MomentsBetween(&quot;2024-02-01 00:00:00&quot;, :And = &quot;2024-03-31 23:59:59&quot;)
-#--&gt; [ &quot;FEB_EVENT&quot;, &quot;MAR_EVENT&quot; ]
-#--&gt; FEB_EVENT
-#--&gt; MAR_EVENT</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">AddBlockedSpan</h3><p>Un gel déclaré, et un événement dedans refusé avec sa raison.</p><pre class="rx">oTimeline = new stzTimeLine(&quot;2024-01-01&quot;, &quot;2024-12-31&quot;)
-oTimeline.AddBlockedSpan(&quot;BLACKOUT&quot;, &quot;2024-08-01 00:00:00&quot;, &quot;2024-08-08 23:59:59&quot;)
-if oTimeline.IsBlocked(&quot;2024-08-05 14:30:00&quot;)
-	? &quot;Cannot add event during blackout&quot;
-	#--&gt; Cannot add event during blackout
 
-ok
-if oTimeline.IsSectionBlocked(&quot;2024-08-07&quot;, &quot;2024-08-10&quot;)
-	? &quot;Span partially blocked&quot;
-	#--&gt; Span partially blocked
+# what is live at the moment of the meeting?
+? @@( o1.WhatsAt(&quot;2024-03-15 10:00:00&quot;) )
+#--&gt; [ [ &quot;MEETING&quot;, &quot;point&quot; ], [ &quot;PROJECT&quot;, &quot;span&quot; ], [ &quot;CAMPAIGN&quot;, &quot;span&quot; ] ]
 
-ok</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">Content</h3><p>Une date nue reçoit son heure ; toute la ligne comme donnée.</p><pre class="rx">o1 = new stzTimeLine(:From = &quot;2024-10-10&quot;, :To = &quot;2024-10-22 16:40:00&quot;)
-? @@NL(o1.Content()) # Time is added automatically to &quot;2024-10-10&quot;
-#--&gt; [
-#--&gt; 	[ &quot;start&quot;, &quot;2024-10-10 00:00:00&quot; ],
-#--&gt; 	[ &quot;end&quot;, &quot;2024-10-22 16:40:00&quot; ],
-#--&gt; 	[ &quot;points&quot;, [  ] ],
-#--&gt; 	[ &quot;spans&quot;, [  ] ]
-#--&gt; ]</pre><span class="rx-src">test de la bibliothèque</span></div></div><p class="proof">Toutes les méthodes, par section, plus bas.</p>
+# and in August?
+? @@( o1.WhatsAt(&quot;2024-08-15 10:00:00&quot;) )
+#--&gt; [ ]</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-19</span></div><p>Une étendue bloquée est une règle que la ligne de temps fait respecter : une fois déclarée, un événement dedans est refusé, et une étendue qui n&#x27;est qu&#x27;en partie dedans est signalée comme telle.</p><div class="sample"><pre class="rx">o1 = new stzTimeLine(&quot;2024-01-01&quot;, &quot;2024-12-31&quot;)
+o1.AddBlockedSpan(&quot;BLACKOUT&quot;, &quot;2024-08-01 00:00:00&quot;, &quot;2024-08-08 23:59:59&quot;)
+
+# no event may be added during the blackout
+? o1.IsBlocked(&quot;2024-08-05 14:30:00&quot;)
+#--&gt; TRUE
+
+? o1.IsBlocked(&quot;2024-09-05 14:30:00&quot;)
+#--&gt; FALSE</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-19</span></div><p>Elle sert un plan de projet, un calendrier de versions, un historique d&#x27;incidents, un calendrier de campagne, un audit de ce qui est arrivé quand. Elle lit ses dates par <code>stzDateTime</code>, si bien que toute forme comprise par cette classe est acceptée ici.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/i18n.html">Le récit de son domaine : Internationalisation</a> · <a href="../guide/i18n.html">La référence de son domaine</a></p><h3>Documents de conception qui la nomment <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/DOCREFORM_PILOT_STATE.md" target="_blank" rel="noopener noreferrer">DOCREFORM -- state after wave 2 (handoff, 2026-10-05)<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">3 mentions</span><span class="abs">Passation consignant l&#x27;état de DOCREFORM après les vagues 2 à 4 (2026-10-05) : quelles classes ont chaque méthode racine documentée et vérifiée, le taux de réussite de toute la bibliothèque, la barrière documentaire en service, les défauts que le sondage a trouvés sans les corriger, et les décisions ouvertes pour l&#x27;auteur.</span></li></ul><h3>Narrations qui en parlent <span class="mono">(2)</span></h3><ul class="narr arts"><li><a href="../narrations/stztimeline-managing-temporal-structures-narration.html">**Time Modeling in Softanza using stzTimeLine**</a> <span class="mono">2025</span><span class="abs">Imagine you’re planning a product launch. You’ve got milestones, sprints, blackout dates for holidays, and three HR reviews scattered across the year. In most systems, that’s a spreadsheet or a calendar invite.</span></li><li><a href="../narrations/stztimeline-temporal-design-philosophy-in-softanza.html">Temporal Design Philosophy of stzTimeLine</a> <span class="mono">2025</span><span class="abs">Most time-handling libraries across ecosystems (Python’s datetime, Java’s java.time, JavaScript’s Luxon, etc.) treat time as scalar values to be parsed, formatted, or arithmetically manipulated. They stop at representation and calculation.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#addpoint">A</a> <a href="#blockedpoints">B</a> <a href="#content">C</a> <a href="#duration">D</a> <a href="#end_">E</a> <a href="#findpoint">F</a> <a href="#gaps">G</a> <a href="#haspoint">H</a> <a href="#init">I</a> <a href="#overlappingspans">O</a> <a href="#points">P</a> <a href="#removepoint">R</a> <a href="#start">S</a> <a href="#timebetween">T</a> <a href="#uncoveredperiods">U</a> <a href="#vizwidth">V</a> <a href="#whatsat">W</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

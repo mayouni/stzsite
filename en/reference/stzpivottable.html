@@ -42,7 +42,33 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/table/stzPivotTable.ring" target="_blank" rel="noopener noreferrer">the source: base/table/stzPivotTable.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/tables.html">The area reference: Tables &amp; data</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p><code>stzPivotTable</code> is the analyst&#x27;s cross-tabulation: rows by one column, columns by another, a value aggregated in each cell, totals at the margins, from any <code>stzTable</code>.</p><p>Build it on a table and declare the pivot in sentences: <code>SetRowsBy(:Region)</code>, <code>SetColsBy(:Product)</code>, <code>SetValues(:Sales)</code>, <code>SetAggregateFunction(:Sum)</code>, or the one-call <code>Analyze</code>. Labels, the separator between stacked row labels, the label of the totals, the value shown for an empty cell and the order of the columns are all settings, so the printed table says what the reader wants it to say. <code>Generate()</code> computes it; <code>Value(row, col)</code>, <code>RowTotal</code>, <code>ColumnTotal</code> and <code>GrandTotal</code> read it; <code>ToTable()</code> gives it back as a plain table to filter, sort or chart; <code>Show()</code> prints it aligned.</p><p>A pivot can be saved and loaded, so a report is a file rather than a program, and because it inherits from <code>stzList</code>, everything a list can do applies to its rows.</p><p>It serves sales by region and product, incidents by month and severity, grades by class and subject, any question of the form &quot;how much of this, by that and that&quot;.</p></div>
+    <div class="essay"><p>The analyst&#x27;s cross-tabulation: rows by one column, columns by another, a value aggregated in each cell, totals at the margins, from any <code>stzTable</code>.</p><p>The pivot is declared in sentences, what the rows are, what the columns are, which value, which aggregate; then it is generated and read.</p><div class="sample"><pre class="rx">oTab = new stzTable([
+    [ :Region, :Product, :Sales ],
+    [ &quot;North&quot;, &quot;Tea&quot;, 10 ],
+    [ &quot;North&quot;, &quot;Rice&quot;, 30 ],
+    [ &quot;South&quot;, &quot;Tea&quot;, 20 ],
+    [ &quot;South&quot;, &quot;Rice&quot;, 5 ]
+])
+
+o1 = new stzPivotTable(oTab)
+o1 {
+    SetRowsBy(:Region)
+    SetColsBy(:Product)
+    SetValues(:Sales)
+    SetAggregateFunction(:Sum)
+    Generate()
+}
+
+# sales of tea in the north
+? o1.Value(&quot;North&quot;, &quot;Tea&quot;)
+#--&gt; 10
+
+# everything the south sold
+? o1.RowTotal(&quot;South&quot;)
+#--&gt; 25
+
+? o1.GrandTotal()
+#--&gt; 65</pre><span class="rx-src">run in the library on 2026-10-19</span></div><p>Labels, the separator between stacked row labels, the label of the totals, the value shown for an empty cell and the order of the columns are all settings, so the printed table says what the reader wants it to say. The pivot can be handed back as a plain table to filter, sort or chart, and it can be saved and loaded, so a report is a file rather than a program. It serves sales by region and product, incidents by month and severity, grades by class and subject: any question of the form &quot;how much of this, by that and that&quot;.</p></div>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/tables.html">The story of its area: Tables &amp; data</a> · <a href="../guide/tables.html">Its area's reference</a></p><h3>Design documents that name it <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/stats/SOFTANZA_TUKEY_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA TUKEY PLAN — the exploration tier (TK0–TK6)<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">3 mentions</span><span class="abs">The plan of record for the exploration tier (TK0 to TK6), replacing three legacy notes never run: resistant statistics and displays in Zig behind one contract object, re-expression measured not eyeballed, verdicts in the house shape; TK0 to TK5 shipped, TK6&#x27;s memory refused.</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#analyze">A</a> <a href="#by">B</a> <a href="#classname">C</a> <a href="#generate">G</a> <a href="#init">I</a> <a href="#klassname">K</a> <a href="#loadfromfile">L</a> <a href="#padright">P</a> <a href="#rowtotal">R</a> <a href="#setrowsby">S</a> <a href="#totable">T</a> <a href="#value">V</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

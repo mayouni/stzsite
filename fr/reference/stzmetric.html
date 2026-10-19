@@ -42,7 +42,30 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/perf/stzMetric.ring" target="_blank" rel="noopener noreferrer">la source: base/perf/stzMetric.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/performance.html">La référence du domaine : Performance</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p><code>stzMetric</code> est une chose mesurée avec un nom : un compteur, une jauge ou un chronomètre, alimenté par le programme et lu comme nombre, taux, percentile ou phrase, et exporté dans les vocabulaires que le monde de la supervision parle déjà.</p><p>Un compteur prend <code>Increment()</code> et répond <code>RatePerSecond()</code>, la pente de son cumul sur la fenêtre retenue. Une jauge prend <code>Set(level)</code> et répond <code>SlopePerMs()</code>, <code>Mean</code>, <code>Min</code>, <code>Max</code>. Un chronomètre prend <code>Record(ms)</code> ou un chronomètre directement, <code>RecordWatch</code>, et répond <code>P50</code>, <code>P95</code>, <code>P99</code> depuis un histogramme de taille constante fait pour un flux sans borne, <code>ExactPercentile</code> sur la fenêtre récente quand l&#x27;exactitude compte, et <code>MeanMs</code> exact sur toute la durée parce que le moteur garde la vraie somme. <code>Value()</code> est la réponse courante de toute sorte, <code>Count()</code> les échantillons jamais enregistrés, <code>SeriesQ()</code> la série elle-même.</p><p><code>PromName()</code> et <code>PromText()</code> écrivent la métrique en exposition Prometheus, <code>OtelMetricJson()</code> en un fragment OpenTelemetry, <code>Explain()</code> en une phrase qu&#x27;une personne lit. Une métrique peut porter des étiquettes et appartenir à une famille, un enfant par route que le trafic a réellement prise.</p><p>Elle sert une parenthèse de requête, une file, un cache, un travailleur, tout ce dont la santé est un nombre dans le temps, et c&#x27;est ce que <code>stzPerfMonitor</code> recueille et ce que les contrôles de niveau de service lisent.</p></div>
+    <div class="essay"><p>Une chose mesurée avec un nom : un compteur, une jauge ou un chronomètre, alimenté par le programme et lu comme nombre, taux, percentile ou phrase, et exporté dans les vocabulaires que le monde de la supervision parle déjà.</p><p>Un compteur compte, et son taux est la pente de son cumul sur la fenêtre retenue. Il s&#x27;exporte sous le nom que lit Prometheus.</p><div class="sample"><pre class="rx">o1 = new stzMetric(&quot;app.requests&quot;, :counter)
+o1.Increment()
+o1.Increment()
+o1.Increment()
+
+? o1.Value()
+#--&gt; 3
+
+# the same metric, in the name Prometheus reads
+? o1.PromName()
+#--&gt; app_requests</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-19</span></div><p>Un chronomètre enregistre des durées et répond des percentiles depuis un histogramme de taille constante, fait pour un flux sans borne, ou exacts sur la fenêtre récente quand l&#x27;exactitude compte, tandis que la moyenne sur toute la durée est exacte parce que le moteur garde la vraie somme.</p><div class="sample"><pre class="rx">o1 = new stzMetric(&quot;http.request.ms&quot;, :timer)
+o1 {
+    Record(12)
+    Record(15)
+    Record(18)
+    Record(250)
+}
+
+? o1.Count()
+#--&gt; 4
+
+# the exact mean over the lifetime
+? o1.MeanMs()
+#--&gt; 73.75</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-19</span></div><p>Une jauge tient un niveau et sa pente. Chaque métrique peut s&#x27;écrire en texte Prometheus, en fragment OpenTelemetry, ou en phrase qu&#x27;une personne lit, et peut porter des étiquettes et appartenir à une famille, un enfant par route que le trafic a réellement prise. Elle sert une parenthèse de requête, une file, un cache, un travailleur, tout ce dont la santé est un nombre dans le temps, et c&#x27;est ce que <code>stzPerfMonitor</code> recueille.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/performance.html">Le récit de son domaine : Performance</a> · <a href="../guide/performance.html">La référence de son domaine</a></p><h3>Documents de conception qui la nomment <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_PERF_SYSTEM.md" target="_blank" rel="noopener noreferrer">Softanza Performance by Design<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">6 mentions</span><span class="abs">Étude de conception de stzPerfSystem, au statut terminé (P0-P11 livrés) : un seul système gouverné qui mesure, explique et défend la performance d&#x27;un programme, chaque mesure prise et conservée par le moteur Zig, les lectures de métriques traitées comme perception et les actes d&#x27;optimisation comme effets gouvernés.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#count">C</a> <a href="#destroy">D</a> <a href="#exactpercentile">E</a> <a href="#help">H</a> <a href="#init">I</a> <a href="#kind">K</a> <a href="#labelpairs">L</a> <a href="#mean">M</a> <a href="#name">N</a> <a href="#otelmetricjson">O</a> <a href="#p50">P</a> <a href="#ratepersecond">R</a> <a href="#sethelp">S</a> <a href="#value">V</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

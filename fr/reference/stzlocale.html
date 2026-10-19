@@ -42,41 +42,29 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/i18n/stzLocale.ring" target="_blank" rel="noopener noreferrer">la source: base/i18n/stzLocale.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/i18n.html">La référence du domaine : Internationalisation</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p><code>stzLocale</code> est la réponse à « où et dans quelle langue » : un pays, une langue et une écriture, résolus depuis le fragment que vous avez, et à partir d&#x27;eux les nombres, les dates, la monnaie, l&#x27;indicatif téléphonique et les lettres qu&#x27;un lecteur de ce lieu attend.</p><p>Nommez-la comme le monde le fait : <code>new stzLocale(&quot;de-DE&quot;)</code>, <code>&quot;pt_Latn_BR&quot;</code>, <code>&quot;ar-TN&quot;</code>, <code>[ :Language = :Spanish, :Country = :Spain ]</code>, ou simplement <code>[ :Country = :Niger ]</code>, et les parts manquantes sont remplies par le meilleur défaut, si bien que le Niger seul répond <code>fr_NE</code>, français, et <code>+227</code> ; l&#x27;arabe seul répond l&#x27;Égypte, l&#x27;écriture arabe, et la Tunisie se résout en arabe. Puis lisez : <code>Abbreviation()</code> et <code>bcp47Abbreviation()</code>, <code>CountryName</code>, <code>CountryNumber</code>, <code>CountryPhoneCode</code>, <code>LanguageName</code>, <code>LanguageNativeName</code>, isiZulu pour l&#x27;Afrique du Sud, <code>ScriptName</code>, <code>CurrencyName</code>, <code>CurrencySymbol</code>, <code>CurrencyFractionalUnit</code>.</p><p>Les conventions suivent : <code>DecimalPoint</code>, <code>GroupSeparator</code>, <code>NegativeSign</code>, <code>amText</code> et <code>pmText</code>, <code>TimeShortFormat</code> et <code>TimeLongFormat</code>, <code>ToLowercase</code> et <code>ToUppercase</code> selon les règles de cette langue plutôt que de l&#x27;ASCII. Une date écrite par <code>stzDateTime</code> lit l&#x27;horloge de la locale, et un nombre formaté pour un lecteur lit ses séparateurs.</p><p>Elle sert tout programme qui parle à des gens en plus d&#x27;un lieu : une facture, un formulaire, un rapport, un message, et le premier écran d&#x27;une application qui doit s&#x27;ouvrir dans la convention propre du lecteur.</p></div><h2>Les usages les plus parlants</h2><p>Quatre méthodes qui montrent ce que la classe sait faire ; chaque exemple a été exécuté dans la bibliothèque.</p><div class="uses"><div class="use"><h3 class="mono">CountryPhoneCode</h3><p>L&#x27;Égypte depuis <code>ar_eg</code>, le Niger depuis un pays seul, le Niger encore depuis un simple symbole.</p><pre class="rx">? StzLocaleQ(&quot;ar_eg&quot;).CountryPhoneCode()
-#--&gt; +20
+    <div class="essay"><p>La réponse à « où et dans quelle langue » : un pays, une langue et une écriture, résolus depuis le fragment que l&#x27;on a, et à partir d&#x27;eux les nombres, les dates, la monnaie, l&#x27;indicatif téléphonique et les lettres qu&#x27;un lecteur de ce lieu attend.</p><p>Elle se nomme comme le monde nomme un lieu : une étiquette de locale, une langue et un pays, ou simplement un pays, et les parts manquantes sont remplies par le meilleur défaut.</p><div class="sample"><pre class="rx"># a country alone is enough: the language is filled in from it
+o1 = new stzLocale([ :Country = :Niger ])
 
-? StzLocaleQ([ :Country = :Niger ]).CountryPhoneCode()
-#--&gt; +227
-
-? StzLocaleQ(:Niger).CountryPhoneCode()
-#--&gt; +227</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">LanguageName</h3><p>Un pays seul, et la langue et l&#x27;abréviation remplies à partir de lui.</p><pre class="rx">o1 = new stzLocale([ :Country = &quot;Niger&quot; ])
 ? o1.Abbreviation()
 #--&gt; fr_NE
 
 ? o1.LanguageName()
 #--&gt; french
 
-? o1.CountryName()
-#--&gt; niger</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">CountryName</h3><p>L&#x27;arabe seul se résout en Égypte ; une étiquette de pays, quelle que soit sa casse, l&#x27;emporte.</p><pre class="rx">o1 = new stzLocale([ :Country = &quot;Niger&quot; ])
+? o1.CountryPhoneCode()
+#--&gt; +227</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-19</span></div><p>Les parts se lisent une à une, sous leurs noms anglais ou natifs, comme codes ou comme numéros.</p><div class="sample"><pre class="rx">o1 = new stzLocale(&quot;pt_Latn_BR&quot;)
+
 ? o1.Abbreviation()
-#--&gt; fr_NE
+#--&gt; pt_BR
 
 ? o1.LanguageName()
-#--&gt; french
+#--&gt; portuguese
+
+? o1.ScriptName()
+#--&gt; latin
 
 ? o1.CountryName()
-#--&gt; niger</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">TimeShortFormat</h3><p>Les formats d&#x27;heure qu&#x27;une locale attend, court, long et étroit.</p><pre class="rx">o1 = new stzLocale(&quot;en-Latn-US&quot;)
-? o1.Abbreviation()
-#--&gt; en_US
-
-? o1.TimeShortFormat()
-#--&gt; h:mm AP
-
-? o1.TimeLongFormat()
-#--&gt; h:mm:ss AP t
-
-? o1.TimeNarrowFormat()
-#--&gt; h:mm AP</pre><span class="rx-src">test de la bibliothèque</span></div></div><p class="proof">Toutes les méthodes, par section, plus bas.</p>
+#--&gt; brazil</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-19</span></div><p>Les conventions suivent : le séparateur décimal et celui des groupes, les mots du matin et de l&#x27;après-midi, les formes courte et longue de l&#x27;heure, et majuscules et minuscules selon les règles de cette langue plutôt que de l&#x27;ASCII. Une date écrite par <code>stzDateTime</code> lit l&#x27;horloge de la locale, et un nombre formaté pour un lecteur lit ses séparateurs. Elle sert tout programme qui parle à des gens en plus d&#x27;un lieu : une facture, un formulaire, un rapport, un message, et le premier écran d&#x27;une application qui doit s&#x27;ouvrir dans la convention propre du lecteur.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/i18n.html">Le récit de son domaine : Internationalisation</a> · <a href="../guide/i18n.html">La référence de son domaine</a></p><h3>Narrations qui en parlent <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="../narrations/stzlocale-locale-management-the-softanza-way.html">Software Global Reach: Locale Management the Softanza Way</a> <span class="mono">2025</span><span class="abs">The Softanza library for Haro brings a refreshingly intuitive approach to locale management, wrapping the Softanza Engine&#x27;s powerful internationalization capabilities in an API that feels natural and expressive.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#abbreviation">A</a> <a href="#bcp47abbreviation">B</a> <a href="#countrynumber">C</a> <a href="#daysofweek">D</a> <a href="#exponential">E</a> <a href="#firstdayofweek">F</a> <a href="#groupseparator">G</a> <a href="#init">I</a> <a href="#languagenumber">L</a> <a href="#measurementsystem">M</a> <a href="#nativedaysofweek">N</a> <a href="#pmtext">P</a> <a href="#scriptnumber">S</a> <a href="#timeshortformat">T</a> <a href="#value">V</a></p><p><b>Sections</b> <a href="#countrynumber">country</a> · <a href="#currencyname">currency</a> · <a href="#daysofweek">day</a> · <a href="#stringlowercased">string lower case</a> · <a href="#stringcapitalcased">string capital case</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

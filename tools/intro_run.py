@@ -25,6 +25,7 @@ def main():
         print("not a library folder:", lib); sys.exit(2)
     src = json.loads(SRC.read_text(encoding="utf-8"))
     result = json.loads(OUT.read_text(encoding="utf-8")) if (only and OUT.exists()) else {}
+    result = {k: v for k, v in result.items() if k in src}          # a class that no longer has samples keeps none
     commit = subprocess.run(["git", "-C", str(lib.parent.parent), "rev-parse", "--short=9", "HEAD"], capture_output=True, text=True).stdout.strip()
     work = lib / "base" / "test" / "_stzsite_intro"
     work.mkdir(parents=True, exist_ok=True)

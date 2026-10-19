@@ -42,55 +42,28 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/datetime/stzTimeLine.ring" target="_blank" rel="noopener noreferrer">the source: base/datetime/stzTimeLine.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/i18n.html">The area reference: Internationalization</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p><code>stzTimeLine</code> is a stretch of time with things on it: points, which happen at a moment, and spans, which last, each with a label; and the questions a planner asks of them, what is at this moment, what lies between these two, what overlaps, what is blocked.</p><p>Open it on a start and an end, <code>new stzTimeLine(:From = &quot;2024-10-10&quot;, :To = &quot;2024-10-22 16:40:00&quot;)</code>, a time being added to a bare date. Place events: <code>AddPoint(&quot;MEETING&quot;, &quot;2024-03-15 10:00:00&quot;)</code>, <code>AddSpan(&quot;PROJECT&quot;, from, to)</code>, <code>AddPeriod</code>, <code>AddMoment</code>; the names are synonyms, so you say it the way you think it. Then ask: <code>WhatsAt(moment)</code> lists what is live then, a point or a span; <code>PointsBetween</code> and <code>SpansBetween</code> cut a window; <code>SortedPoints</code> and <code>SortedSpans</code> put them in order; <code>HasOverlaps</code> says whether two spans collide; <code>Duration</code>, <code>Summary</code>, <code>Content</code> describe the whole.</p><p>A blocked span is a rule the timeline enforces: <code>AddBlockedSpan(&quot;BLACKOUT&quot;, from, to)</code>, and <code>IsBlocked(moment)</code> refuses an event inside it, a span partly inside being reported as such. Labels can be found, renamed and removed, and the timeline shows itself as text.</p><p>It serves a project plan, a schedule of releases, a history of incidents, a campaign calendar, an audit of what happened when, and it reads its dates through <code>stzDateTime</code>, so any form that class understands is accepted here.</p></div><h2>The most expressive uses</h2><p>Four methods that show what the class is for; every example was run inside the library.</p><div class="uses"><div class="use"><h3 class="mono">WhatsAt</h3><p>A moment asked what is live then: a meeting, two spans, and nothing at all later.</p><pre class="rx">oTimeLine = new stzTimeLine(
-	:Start = &quot;2024-01-01 00:00:00&quot;,
-	:End = &quot;2024-12-31 23:59:59&quot;
-)
-oTimeLine {
-	AddPoint(&quot;MEETING&quot;, &quot;2024-03-15 10:00:00&quot;)
-	AddSpan(&quot;PROJECT&quot;, &quot;2024-03-01 00:00:00&quot;, &quot;2024-05-31 23:59:59&quot;)
-	AddSpan(&quot;CAMPAIGN&quot;, &quot;2024-03-10 00:00:00&quot;, &quot;2024-03-20 23:59:59&quot;)
+    <div class="essay"><p>A stretch of time with things on it: points, which happen at a moment, and spans, which last, each with a label; and the questions a planner asks of them, what is at this moment, what lies between these two, what overlaps, what is blocked.</p><p>It opens on a start and an end, a bare date receiving its time, and events are placed with the words a person would use, a point, a span, a period, a moment. Asked about a moment, the line answers with everything that is live then, and says whether each thing is a point or a span.</p><div class="sample"><pre class="rx">o1 = new stzTimeLine(:Start = &quot;2024-01-01 00:00:00&quot;, :End = &quot;2024-12-31 23:59:59&quot;)
+o1 {
+    AddPoint(&quot;MEETING&quot;, &quot;2024-03-15 10:00:00&quot;)
+    AddSpan(&quot;PROJECT&quot;, &quot;2024-03-01 00:00:00&quot;, &quot;2024-05-31 23:59:59&quot;)
+    AddSpan(&quot;CAMPAIGN&quot;, &quot;2024-03-10 00:00:00&quot;, &quot;2024-04-10 23:59:59&quot;)
 }
-? @@NL( oTimeLine.WhatsAt(&quot;2024-03-15 10:00:00&quot;) )
-? @@( oTimeLine.WhatsAt(&quot;2024-02-15 12:00:00&quot;) )
-#--&gt; [
-#--&gt; 	[ &quot;MEETING&quot;, &quot;point&quot; ],
-#--&gt; 	[ &quot;PROJECT&quot;, &quot;span&quot; ],
-#--&gt; 	[ &quot;CAMPAIGN&quot;, &quot;span&quot; ]
-#--&gt; ]
-#--&gt; [ ]</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">PointsBetween</h3><p>A window cut from the year, and the events inside it.</p><pre class="rx">oTimeLine = new stzTimeLine(
-	:Start = &quot;2024-01-01 00:00:00&quot;,
-	:End = &quot;2024-12-31 23:59:59&quot;
-)
-oTimeLine {
-	AddPoint(&quot;JAN_EVENT&quot;, &quot;2024-01-15 10:00:00&quot;)
-	AddPoint(&quot;FEB_EVENT&quot;, &quot;2024-02-15 10:00:00&quot;)
-	AddPoint(&quot;MAR_EVENT&quot;, &quot;2024-03-15 10:00:00&quot;)
-	AddPoint(&quot;APR_EVENT&quot;, &quot;2024-04-15 10:00:00&quot;)
-}
-? @@( oTimeLine.PointsBetween(&quot;2024-02-01 00:00:00&quot;, &quot;2024-03-31 23:59:59&quot;) )
-? oTimeLine.MomentsBetween(&quot;2024-02-01 00:00:00&quot;, :And = &quot;2024-03-31 23:59:59&quot;)
-#--&gt; [ &quot;FEB_EVENT&quot;, &quot;MAR_EVENT&quot; ]
-#--&gt; FEB_EVENT
-#--&gt; MAR_EVENT</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">AddBlockedSpan</h3><p>A blackout declared, and an event inside it refused with a reason.</p><pre class="rx">oTimeline = new stzTimeLine(&quot;2024-01-01&quot;, &quot;2024-12-31&quot;)
-oTimeline.AddBlockedSpan(&quot;BLACKOUT&quot;, &quot;2024-08-01 00:00:00&quot;, &quot;2024-08-08 23:59:59&quot;)
-if oTimeline.IsBlocked(&quot;2024-08-05 14:30:00&quot;)
-	? &quot;Cannot add event during blackout&quot;
-	#--&gt; Cannot add event during blackout
 
-ok
-if oTimeline.IsSectionBlocked(&quot;2024-08-07&quot;, &quot;2024-08-10&quot;)
-	? &quot;Span partially blocked&quot;
-	#--&gt; Span partially blocked
+# what is live at the moment of the meeting?
+? @@( o1.WhatsAt(&quot;2024-03-15 10:00:00&quot;) )
+#--&gt; [ [ &quot;MEETING&quot;, &quot;point&quot; ], [ &quot;PROJECT&quot;, &quot;span&quot; ], [ &quot;CAMPAIGN&quot;, &quot;span&quot; ] ]
 
-ok</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">Content</h3><p>A bare date gets its time; the whole line as data.</p><pre class="rx">o1 = new stzTimeLine(:From = &quot;2024-10-10&quot;, :To = &quot;2024-10-22 16:40:00&quot;)
-? @@NL(o1.Content()) # Time is added automatically to &quot;2024-10-10&quot;
-#--&gt; [
-#--&gt; 	[ &quot;start&quot;, &quot;2024-10-10 00:00:00&quot; ],
-#--&gt; 	[ &quot;end&quot;, &quot;2024-10-22 16:40:00&quot; ],
-#--&gt; 	[ &quot;points&quot;, [  ] ],
-#--&gt; 	[ &quot;spans&quot;, [  ] ]
-#--&gt; ]</pre><span class="rx-src">library test</span></div></div><p class="proof">Every method, by section, further down.</p>
+# and in August?
+? @@( o1.WhatsAt(&quot;2024-08-15 10:00:00&quot;) )
+#--&gt; [ ]</pre><span class="rx-src">run in the library on 2026-10-19</span></div><p>A blocked span is a rule the timeline enforces: once it is declared, an event inside it is refused, and a span that is only partly inside is reported as such.</p><div class="sample"><pre class="rx">o1 = new stzTimeLine(&quot;2024-01-01&quot;, &quot;2024-12-31&quot;)
+o1.AddBlockedSpan(&quot;BLACKOUT&quot;, &quot;2024-08-01 00:00:00&quot;, &quot;2024-08-08 23:59:59&quot;)
+
+# no event may be added during the blackout
+? o1.IsBlocked(&quot;2024-08-05 14:30:00&quot;)
+#--&gt; TRUE
+
+? o1.IsBlocked(&quot;2024-09-05 14:30:00&quot;)
+#--&gt; FALSE</pre><span class="rx-src">run in the library on 2026-10-19</span></div><p>It serves a project plan, a schedule of releases, a history of incidents, a campaign calendar, an audit of what happened when. It reads its dates through <code>stzDateTime</code>, so any form that class understands is accepted here.</p></div>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/i18n.html">The story of its area: Internationalization</a> · <a href="../guide/i18n.html">Its area's reference</a></p><h3>Design documents that name it <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/DOCREFORM_PILOT_STATE.md" target="_blank" rel="noopener noreferrer">DOCREFORM -- state after wave 2 (handoff, 2026-10-05)<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">3 mentions</span><span class="abs">A handoff recording the state of DOCREFORM after waves 2 to 4 (2026-10-05): which classes have every root method documented and checked, the library-wide pass rate, the live documentation gate, the defects probing found but did not fix, and the decisions open for the author.</span></li></ul><h3>Narrations that speak of it <span class="mono">(2)</span></h3><ul class="narr arts"><li><a href="../narrations/stztimeline-managing-temporal-structures-narration.html">**Time Modeling in Softanza using stzTimeLine**</a> <span class="mono">2025</span><span class="abs">Imagine you’re planning a product launch. You’ve got milestones, sprints, blackout dates for holidays, and three HR reviews scattered across the year. In most systems, that’s a spreadsheet or a calendar invite.</span></li><li><a href="../narrations/stztimeline-temporal-design-philosophy-in-softanza.html">Temporal Design Philosophy of stzTimeLine</a> <span class="mono">2025</span><span class="abs">Most time-handling libraries across ecosystems (Python’s datetime, Java’s java.time, JavaScript’s Luxon, etc.) treat time as scalar values to be parsed, formatted, or arithmetically manipulated. They stop at representation and calculation.</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#addpoint">A</a> <a href="#blockedpoints">B</a> <a href="#content">C</a> <a href="#duration">D</a> <a href="#end_">E</a> <a href="#findpoint">F</a> <a href="#gaps">G</a> <a href="#haspoint">H</a> <a href="#init">I</a> <a href="#overlappingspans">O</a> <a href="#points">P</a> <a href="#removepoint">R</a> <a href="#start">S</a> <a href="#timebetween">T</a> <a href="#uncoveredperiods">U</a> <a href="#vizwidth">V</a> <a href="#whatsat">W</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>
