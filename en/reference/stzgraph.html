@@ -42,55 +42,47 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/graph/stzGraph.ring" target="_blank" rel="noopener noreferrer">the source: base/graph/stzGraph.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/diagramming.html">The area reference: Diagramming &amp; graphs</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p><code>stzGraph</code> is the structure beneath every connected thing in Softanza: nodes, edges, properties on both, and the questions a graph can answer, is there a path, what is reachable, where are the bottlenecks, what is the shortest way.</p><p>It keeps structure apart from meaning. You add nodes and edges, <code>AddNode(&quot;A&quot;)</code>, <code>AddEdge(&quot;A&quot;, &quot;B&quot;)</code>, give them properties, <code>AddNodeXTT(&quot;alice&quot;, &quot;Person&quot;, [:age = 30])</code>, and the graph stays a graph; a workflow, an org chart, a state machine, a knowledge base, a diagram are classes that inherit from it and add their own vocabulary. The algorithms are compiled in the engine: breadth and depth searches, shortest paths, connected and strongly connected components, articulation points, topological order, cycle detection, centralities, PageRank, communities, minimum spanning tree, maximum flow.</p><p>Two things make it more than a data structure. Constraints: a graph can carry rules, loaded from a file of them, and refuse an edge it forbids, <code>WhyCannotAddEdge</code> saying why. And a query language, <code>StzGraphQueryQ(oGraph) { Match(...) Set(...) Select(...) }</code>, that reads, updates and deletes by pattern instead of by loop.</p><p>It serves anywhere relations are the data: dependencies, hierarchies, flows of money or of work, networks of services, the code of a program, the links between the facts a world knows.</p></div><h2>The most expressive uses</h2><p>Four methods that show what the class is for; every example was run inside the library.</p><div class="uses"><div class="use"><h3 class="mono">IsBipartite</h3><p>A question of structure, answered: a path is bipartite, a triangle is not.</p><pre class="rx">p1 = new stzGraph(&quot;p&quot;)
-p1.AddNode(&quot;A&quot;) p1.AddNode(&quot;B&quot;) p1.AddNode(&quot;C&quot;)
-p1.AddEdge(&quot;A&quot;, &quot;B&quot;) p1.AddEdge(&quot;B&quot;, &quot;C&quot;)
-# a path is bipartite
-? p1.IsBipartite()
+    <div class="essay"><p>The structure beneath every connected thing in Softanza: nodes, edges, properties on both, and the questions a graph can answer. A workflow, an org chart, a state machine, a knowledge base and a diagram are classes that inherit from it and add their own vocabulary.</p><div class="sample"><pre class="rx">oG = new stzGraph(&quot;trip&quot;)
+oG {
+    AddNode(&quot;A&quot;)
+    AddNode(&quot;B&quot;)
+    AddNode(&quot;C&quot;)
+
+    AddEdge(&quot;A&quot;, &quot;B&quot;)
+    AddEdge(&quot;B&quot;, &quot;C&quot;)
+}
+
+# a path can be coloured with two colours
+? oG.IsBipartite()
 #--&gt; TRUE
 
-t1 = new stzGraph(&quot;t&quot;)
-t1.AddNode(&quot;X&quot;) t1.AddNode(&quot;Y&quot;) t1.AddNode(&quot;Z&quot;)
-t1.AddEdge(&quot;X&quot;, &quot;Y&quot;) t1.AddEdge(&quot;Y&quot;, &quot;Z&quot;) t1.AddEdge(&quot;Z&quot;, &quot;X&quot;)
-# a triangle (odd cycle) is not bipartite
-? t1.IsBipartite()
-#--&gt; FALSE</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">MSTWeight</h3><p>Weights on the edges, and the minimum spanning tree&#x27;s total in one call.</p><pre class="rx">m1 = new stzGraph(&quot;m&quot;)
-m1.AddNode(&quot;A&quot;) m1.AddNode(&quot;B&quot;) m1.AddNode(&quot;C&quot;) m1.AddNode(&quot;D&quot;)
-m1.AddEdgeXTT(&quot;A&quot;, &quot;B&quot;, &quot;&quot;, [ :weight = 1 ])
-m1.AddEdgeXTT(&quot;B&quot;, &quot;C&quot;, &quot;&quot;, [ :weight = 2 ])
-m1.AddEdgeXTT(&quot;C&quot;, &quot;D&quot;, &quot;&quot;, [ :weight = 3 ])
-m1.AddEdgeXTT(&quot;D&quot;, &quot;A&quot;, &quot;&quot;, [ :weight = 4 ])
-m1.AddEdgeXTT(&quot;A&quot;, &quot;C&quot;, &quot;&quot;, [ :weight = 5 ])
-# the MST weight is 1+2+3 = 6
-? m1.MSTWeight()
-#--&gt; 6
+# add the edge that closes the triangle
+oG.AddEdge(&quot;A&quot;, &quot;C&quot;)
+? oG.IsBipartite()
+#--&gt; FALSE</pre><span class="rx-src">run in the library on 2026-10-19</span></div><p>The algorithms are compiled in the engine: shortest paths, components, topological order, cycles, centralities, communities. Node ids are folded to lowercase, like the keys of a hash list.</p><div class="sample"><pre class="rx">oG = new stzGraph(&quot;roads&quot;)
+oG {
+    AddNodes([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot; ])
 
-d1 = new stzGraph(&quot;d&quot;)
-d1.AddNode(&quot;A&quot;) d1.AddNode(&quot;B&quot;) d1.AddNode(&quot;X&quot;)
-d1.AddEdge(&quot;A&quot;, &quot;B&quot;)
-# a graph with no spanning tree returns -1
-? d1.MSTWeight()
-#--&gt; -1</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">LoadFromStzRulz</h3><p>Rules loaded from a file of them: the graph then knows what it must refuse.</p><pre class="rx">oGraph = new stzGraph(&quot;org&quot;)
-oGraph.LoadFromStzRulz(&quot;../_data/bceao_banking.stzrulz&quot;)
-? &quot;Rules loaded: &quot; + oGraph.NumberOfRules()
-#--&gt; Rules loaded: 2
-
-? @@( oGraph.RulesSummary()[:Validation] )
-#--&gt; [ &quot;board_required&quot;, &quot;audit_independence&quot; ]
-
-? @@( oGraph.RulesSummary()[:Constraint] )
-#--&gt; [ ]</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">NodeCount</h3><p>A query deletes by pattern, and the count says the node is gone.</p><pre class="rx">oGraph = new stzGraph(&quot;test&quot;)
-oGraph {
-	AddNode(&quot;alice&quot;)
-	AddNode(&quot;bob&quot;)
+    AddEdge(&quot;A&quot;, &quot;B&quot;)
+    AddEdge(&quot;B&quot;, &quot;C&quot;)
+    AddEdge(&quot;C&quot;, &quot;D&quot;)
+    AddEdge(&quot;A&quot;, &quot;D&quot;)
 }
-StzGraphQueryQ(oGraph) {
-	Match([:node = &quot;n&quot;, :where = [:id, &quot;=&quot;, &quot;alice&quot;]])
-	Delete(&quot;n&quot;)
-	Select(&quot;n&quot;)
+
+# the shortest way from A to C
+? @@( oG.ShortestPath(&quot;A&quot;, &quot;C&quot;) )
+#--&gt; [ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ]</pre><span class="rx-src">run in the library on 2026-10-19</span></div><p>Weights ride on the edges as properties, and the questions that need them ask for them.</p><div class="sample"><pre class="rx">oG = new stzGraph(&quot;network&quot;)
+oG {
+    AddNodes([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
+
+    AddEdgeXTT(&quot;A&quot;, &quot;B&quot;, &quot;link&quot;, [ :weight = 1 ])
+    AddEdgeXTT(&quot;B&quot;, &quot;C&quot;, &quot;link&quot;, [ :weight = 2 ])
+    AddEdgeXTT(&quot;A&quot;, &quot;C&quot;, &quot;link&quot;, [ :weight = 5 ])
 }
-? oGraph.NodeCount()
-#--&gt; 1</pre><span class="rx-src">library test</span></div></div><p class="proof">Every method, by section, further down.</p>
+
+# the cheapest tree that connects all three
+? oG.MSTWeight()
+#--&gt; 3</pre><span class="rx-src">run in the library on 2026-10-19</span></div><p>Two things make it more than a data structure. A graph can carry rules, loaded from a file, and refuse an edge they forbid, saying why. And a query language reads, updates and deletes by pattern instead of by loop. It serves anywhere relations are the data: dependencies, hierarchies, flows of money or of work, networks of services, the code of a program.</p></div>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/diagramming.html">The story of its area: Diagramming &amp; graphs</a> · <a href="../guide/diagramming.html">Its area's reference</a></p><h3>Design documents that name it <span class="mono">(6)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/stzGraph-A-Design-Foundation-for-Connected-Domains.md" target="_blank" rel="noopener noreferrer">stzGraph: A Design Foundation for Connected Domains<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">25 mentions</span><span class="abs">A design essay presenting stzGraph as Softanza&#x27;s architectural spine: structure is kept separate from semantics, every domain (code, workflows, state machines, knowledge, data models, natural language) is a class inheriting from the graph, and patterns found in one domain flow back to the core.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Softanza Intelligence Architecture<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">17 mentions</span><span class="abs">The single roadmap governing intelligence work, from the author&#x27;s directive: intelligence derives new knowledge from existing knowledge held as a governed graph, hence six laws, five foundations, a module map, an audited current state and one path R1 to R8.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA GRAPH-ORIENTED GRAPHICS — plan of record (GG0–GG5)<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">17 mentions</span><span class="abs">The plan of record for graph-oriented graphics (GG0 to GG5, then the DN phases): the graph is semantics, not syntax, so one primitive, propagation over a resident DAG, serves layout, scene, frame and material graphs; its status table comes from the guard suite.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_GRAPH_RULES_PLAN.md" target="_blank" rel="noopener noreferrer">Rule Governance over Graphs<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">7 mentions</span><span class="abs">A plan, marked complete (phases 1 to 7 and 2b built), for one rule engine over every graph-based object: a rule is attached to and checked from the graph, stzCodeRule is the first instance, and code, agents, security and workflows report through one gate.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/STZAPP_STATUS_AND_NEXT.md" target="_blank" rel="noopener noreferrer">stzApp - Status &amp; Next Steps (handoff)<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">7 mentions</span><span class="abs">A handoff recording where the stzApp construct stands: the concept is locked, slice A (the domain) runs green under the host language, the builder pattern that works is described, host-language and graph gotchas are kept, and slices B to E and open questions are listed.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/stzextertool-design-article.md" target="_blank" rel="noopener noreferrer">Softanza External Tools Ecosystem: Design &amp; Architecture<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">6 mentions</span><span class="abs">A long design article for an external-tools ecosystem: fifteen foundation tools (mathematics, statistics, data, media, documents, containers and more) under one intent-driven umbrella over the existing external-code runtimes, joined by a semantic bridge layer and a compositional DSL in the host language.</span></li></ul><h3>Narrations that speak of it <span class="mono">(8)</span></h3><ul class="narr arts"><li><a href="../narrations/stzgraph-computational-foundation.html">stzGraph: Computational Foundation and Design</a> <span class="mono">2025</span><span class="abs">stzGraph separates structure (how things connect) from semantics (what connections mean). This single decision enables reuse across workflows, org hierarchies, data flows, service maps, and language models.</span></li><li><a href="../narrations/stzgraphdoc.html">stzGraph: The Art of Connected Thinking</a> <span class="mono">2025</span><span class="abs">A graph is an elegant yet profound concept in computer science—a structure of nodes (entities) and edges (relationships) that illuminates how systems connect, interact, and evolve.</span></li><li><a href="../narrations/stzgraph-chatgpt-opinion.html">What ChatGPT Thinks of the stzGraph Module in the Softanza Library</a> <span class="mono">2025</span><span class="abs">I shared the stzGraphTest.ring file with ChatGPT and asked a simple question:</span></li><li><a href="../narrations/stzgraph-claudeai-opinion.html">ClaudeAI Opinion on stzGraph design</a> <span class="mono">2025</span><span class="abs">I shared the full codebase of the stzGraph module (across several classes) with ClaudeAI and asked for an entirely objective assessment.</span></li><li><a href="../narrations/stzgraph-modeling-knowledge-with-nodes-and-connections.html">stzGraph — Modeling Knowledge Through Structure</a> <span class="mono">2025</span><span class="abs">Software systems today are built on relationships: microservices depend on one another, workflows move across steps, configurations link modules to environments, and business rules weave threads between entities that must interact correctly.</span></li><li><a href="../narrations/stzgraph-vs-other-graph-libraries.html">Softanza stzGraph vs. Modern Graph Ecosystem</a> <span class="mono">2025</span><span class="abs">The rule system is particularly innovative - rules are first-class citizens that can be stored, versioned, and applied dynamically.</span></li><li><a href="../narrations/stzgraphplannerdoc.html">Intelligence in Motion: Graph Planning in Softanza</a> <span class="mono">2025</span><span class="abs">Softanza&#x27;s Graph Module already gives you powerful tools for representing connected systems. With stzGraph, you model networks of nodes and edges. With stzDiagram, you visualize relationships.</span></li><li><a href="../narrations/stzgraphquery-doc.html">stzGraphQuery: Asking Questions to Your Graph</a> <span class="mono">2026</span><span class="abs">When working with graphs, a moment inevitably arrives when the graph stops being just a structure of nodes and edges and starts becoming a world you want to explore.</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#addnode">A</a> <a href="#bypassingconstraints">B</a> <a href="#copy">C</a> <a href="#disconnect">D</a> <a href="#enginehandle">E</a> <a href="#firstnode">F</a> <a href="#graphtype">G</a> <a href="#hasengine">H</a> <a href="#init">I</a> <a href="#lastnode">L</a> <a href="#mergenodes">M</a> <a href="#name">N</a> <a href="#outdegree">O</a> <a href="#properties">P</a> <a href="#queryq">Q</a> <a href="#removenodes">R</a> <a href="#setgraphtype">S</a> <a href="#tocanvas">T</a> <a href="#updatenodes">U</a> <a href="#view">V</a> <a href="#withoutconstraints">W</a></p><p><b>Sections</b> <a href="#enginehandle">engine adapter layer</a> · <a href="#addnode">node operations</a> · <a href="#removenodes">node removal</a> · <a href="#addedge">edge operations</a> · <a href="#properties">managing node properties</a> · <a href="#pathexists">traversal &amp; pathfinding</a> · <a href="#bottlenecknodes">analysis metrics</a> · <a href="#nodesbytype">rich querying - based on stzgraphfinder class</a> · <a href="#tohashlist">export and interoperability</a> · <a href="#exporttographml">graphml format</a> · <a href="#show">visualising in ascii</a> · <a href="#attachedrules">the graph owns its rules (softanza orientation)</a> · <a href="#validators">validation</a> · <a href="#comparewithmanyqr">multiple graph comparison</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

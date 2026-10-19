@@ -42,21 +42,27 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/datetime/stzDateTime.ring" target="_blank" rel="noopener noreferrer">la source: base/datetime/stzDateTime.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/i18n.html">La référence du domaine : Internationalisation</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p><code>stzDateTime</code> est un instant qui parle tous les dialectes du calendrier : il lit une date sous la forme où elle arrive, fait de l&#x27;arithmétique dessus en mots simples, et la réécrit sous la forme qu&#x27;un lecteur attend.</p><p>Construisez-le depuis une chaîne ISO, <code>StzDateTimeQ(&quot;2024-03-15 10:30:00&quot;)</code>, depuis une liste de composantes, depuis un horodatage Unix, ou depuis une époque comptée en n&#x27;importe quelle unité, <code>[ :FromEpochHours = 480000 ]</code>. Puis déplacez-le comme vous le diriez : <code>oDateTime + &quot;2 days 5 hours&quot;</code>, <code>oDateTime - &quot;3 hours&quot;</code>, <code>AddNatural(&quot;1 day 2 hours&quot;)</code>, ou la chaîne <code>AddDaysQ(5).AddHoursQ(3).AddMinutesQ(30)</code>. Demandez où il se situe, <code>IsBefore</code>, <code>IsAfter</code>, <code>IsBetween(a, :And = b)</code>, <code>IsToday</code>, <code>IsTomorrow</code>, et à quelle distance il est d&#x27;un autre instant, <code>DurationTo(other, :In = :Days)</code>.</p><p>L&#x27;écriture est là où l&#x27;étendue se voit. <code>ToEuropean()</code> donne <code>15/03/2024 10:30:00 AM</code>, <code>ToAmerican()</code> le mois d&#x27;abord, <code>ToIso8601()</code> le <code>T</code>, <code>ToLong()</code> le jour de la semaine en toutes lettres, <code>ToRelative()</code> une tournure, et <code>ToStringXT(&quot;dddd h:mm AP&quot;)</code> toute forme que vous nommez ; chaque famille existe en forme 12 heures et 24 heures, si bien que le choix d&#x27;horloge n&#x27;est jamais une surprise.</p><p>Il sert partout où le temps est une donnée : un journal à aligner, une échéance à calculer, un horaire à rendre dans la convention du lecteur, un intervalle à mesurer, et c&#x27;est l&#x27;instant sur lequel <code>stzDate</code>, <code>stzTime</code>, <code>stzCalendar</code> et <code>stzTimeLine</code> sont bâtis.</p></div><h2>Les usages les plus parlants</h2><p>Quatre méthodes qui montrent ce que la classe sait faire ; chaque exemple a été exécuté dans la bibliothèque.</p><div class="uses"><div class="use"><h3 class="mono">ToEuropean</h3><p>Le même instant écrit de trois façons : tel que rangé, en horloge européenne 12 heures, en 24 heures.</p><pre class="rx">oDateTime = StzDateTimeQ(&quot;2024-03-15 10:30:00&quot;)
-? oDateTime.Content()
-#--&gt; 2024-03-15 10:30:00
+    <div class="essay"><p>Un instant qui parle tous les dialectes du calendrier : il lit une date sous la forme où elle arrive, fait de l&#x27;arithmétique dessus en mots simples, et la réécrit sous la forme qu&#x27;un lecteur attend.</p><div class="sample"><pre class="rx">o1 = StzDateTimeQ(&quot;2024-03-15 10:30:00&quot;)
 
-? oDateTime.ToEuropean() # Or ToEuropeanAmPm() or ToEuropean12h()
+# the same moment, written for three readers
+? o1.ToEuropean()
 #--&gt; 15/03/2024 10:30:00 AM
 
-? oDateTime.ToEuropeanWithoutAmPm() # Or ToEuropean24h()
-#--&gt; 15/03/2024 10:30:00</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">Content</h3><p>L&#x27;arithmétique en mots : ajouter deux jours, puis trois heures, puis les deux à la fois.</p><pre class="rx">oDateTime = new stzDateTime(&quot;2024-03-15 10:30:00&quot;)
-? oDateTime.Content()
-#--&gt; 2024-03-15 10:30:00</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">DurationTo</h3><p>La distance entre deux instants, dans l&#x27;unité que vous nommez.</p><pre class="rx">oDateTime1 = StzDateTimeQ(&quot;2024-03-15 10:00:00&quot;)
-? oDateTime1.DurationTo(&quot;2024-03-20 14:30:15&quot;, :InMinutes)
-#--&gt; 7470.25</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">IsBetween</h3><p>Un instant dans une fenêtre, les bornes données comme chaînes ou comme objets.</p><pre class="rx">oDateTime = StzDateTimeQ(&quot;2024-03-17 10:00:00&quot;)
-? oDateTime.IsBetween(&quot;2024-03-15 10:00:00&quot;, :And = &quot;2024-03-20 10:00:00&quot;)
-#--&gt; TRUE</pre><span class="rx-src">test de la bibliothèque</span></div></div><p class="proof">Toutes les méthodes, par section, plus bas.</p>
+? o1.ToAmerican()
+#--&gt; 03/15/2024 10:30:00 AM
+
+? o1.ToLong()
+#--&gt; Friday, March 15, 2024 10:30:00 AM</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-19</span></div><p>Le temps se déplace comme on le dirait, et se mesure contre un autre instant dans l&#x27;unité que l&#x27;on nomme.</p><div class="sample"><pre class="rx">o1 = StzDateTimeQ(&quot;2024-03-15 10:00:00&quot;)
+
+# arithmetic in words
+o1 + &quot;2 days 5 hours&quot;
+? o1.Content()
+#--&gt; 2024-03-17 15:00:00
+
+# and the distance between two moments, in the unit you name
+o2 = StzDateTimeQ(&quot;2024-03-15 10:00:00&quot;)
+? o2.DurationTo(&quot;2024-03-20 14:30:15&quot;, :In = :Days)
+#--&gt; 5</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-19</span></div><p>Il se construit depuis une chaîne ISO, une liste de composantes, un horodatage Unix, ou une époque comptée en n&#x27;importe quelle unité, et chaque famille de sortie existe en forme 12 heures et 24 heures, si bien que le choix d&#x27;horloge n&#x27;est jamais une surprise. Il sert partout où le temps est une donnée : un journal à aligner, une échéance à calculer, un horaire à rendre dans la convention du lecteur. C&#x27;est l&#x27;instant sur lequel <code>stzDate</code>, <code>stzTime</code>, <code>stzCalendar</code> et <code>stzTimeLine</code> sont bâtis.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/i18n.html">Le récit de son domaine : Internationalisation</a> · <a href="../guide/i18n.html">La référence de son domaine</a></p><h3>Narrations qui en parlent <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="../narrations/stzdatetime-guide-narration.html">stzDateTime: Elegant DateTime Operations in Softanza</a> <span class="mono">2025</span><span class="abs">DateTime manipulation is a universal programming challenge—combining date and time logic while handling formats, timezones, and arithmetic.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#adddays">A</a> <a href="#content">C</a> <a href="#date">D</a> <a href="#fromsecondssinceepoch">F</a> <a href="#guessdatetimeformat">G</a> <a href="#hours">H</a> <a href="#init">I</a> <a href="#month">M</a> <a href="#operator">O</a> <a href="#parsestringdatetime">P</a> <a href="#subtractdays">S</a> <a href="#trymanualparse">T</a> <a href="#weeksto">W</a> <a href="#year">Y</a></p><p><b>Sections</b> <a href="#fromsecondssinceepoch">epoch-based creation methods</a> · <a href="#adddays">arithmetic operations</a> · <a href="#isbefore">comparison methods</a> · <a href="#tosecondssinceepochxt">epoch conversions</a> · <a href="#toutc">time zone operations</a> · <a href="#tostring">formatting</a> · <a href="#copy">utility methods</a> · <a href="#iscountingfromstring">helper methods for countingfrom</a> · <a href="#durationto">duration calculations to a target datetime</a> · <a href="#durationsince">duration calculations from a given origin or datetime</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

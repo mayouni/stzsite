@@ -112,10 +112,10 @@
 ? o1.MatchAsYouType(&quot;example&quot;)
 ? o1.MatchAsYouType(&quot;example.&quot;)
 ? o1.MatchAsYouType(&quot;example.com&quot;)
-#--&gt; 1
-#--&gt; 1
-#--&gt; 1
-#--&gt; 1
+#--&gt; TRUE
+#--&gt; TRUE
+#--&gt; TRUE
+#--&gt; TRUE
 #--&gt; ...</pre><span class="rx-src">test de la bibliothèque · stzRegex</span></div></div><div class="lane rrow" data-k="matchat"><div class="ln mono">MatchAt</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#matchat">stzRegex</a><pre class="rx">o1 = new stzRegex(&quot;[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+&quot;)
 ? o1.MatchAt(&quot;an&quot;, 2)
 #--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzRegex</span></div></div><div class="lane rrow" data-k="matchbranches"><div class="ln mono">MatchBranches</div><div class="lr mono">1</div><div class="lt"><a href="stzgraphex.html#matchbranches">stzGraphex</a></div></div><div class="lane rrow" data-k="matchcandidates"><div class="ln mono">MatchCandidates</div><div class="lr mono">1</div><div class="lt"><a href="stzmathdiagram.html#matchcandidates">stzMathDiagram</a><pre class="rx">o1 = new stzMathDiagram(StzGraphDomain(), new stzMathSubstance(StzGraphDomain()), StzCurvedGraphStyle())
@@ -153,7 +153,7 @@ aMatrices = [
 ? o1.MatchesRegex(&quot;an&quot;)
 #--&gt; 1</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzString</span></div></div><div class="lane rrow" data-k="matchexact"><div class="ln mono">MatchExact</div><div class="lr mono">1</div><div class="lt"><a href="stztimex.html#matchexact">stzTimex</a></div></div><div class="lane rrow" data-k="matchfirst"><div class="ln mono">MatchFirst</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#matchfirst">stzRegex</a><pre class="rx">o1 = new stzRegex(&quot;[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+&quot;)
 ? o1.MatchFirst(&quot;an&quot;)
-#--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzRegex</span></div></div><div class="lane rrow" data-k="matchfirstline"><div class="ln mono">MatchFirstLine</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#matchfirstline">stzRegex</a><small>autre nom de <span class="mono">MatchFirstLineIn</span></small></div></div><div class="lane rrow" data-k="matchfirstlinein"><div class="ln mono">MatchFirstLineIn</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#matchfirstlinein">stzRegex</a><pre class="rx">o1 = new stzRegex(&quot;[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+&quot;)
+#--&gt; FALSE</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzRegex</span></div></div><div class="lane rrow" data-k="matchfirstline"><div class="ln mono">MatchFirstLine</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#matchfirstline">stzRegex</a><small>autre nom de <span class="mono">MatchFirstLineIn</span></small></div></div><div class="lane rrow" data-k="matchfirstlinein"><div class="ln mono">MatchFirstLineIn</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#matchfirstlinein">stzRegex</a><pre class="rx">o1 = new stzRegex(&quot;[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+&quot;)
 ? o1.MatchFirstLineIn(&quot;an&quot;)
 #--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzRegex</span></div></div><div class="lane rrow" data-k="matchfirstsegment"><div class="ln mono">MatchFirstSegment</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#matchfirstsegment">stzRegex</a><small>autre nom de <span class="mono">MatchFirstSegmentIn</span></small></div></div><div class="lane rrow" data-k="matchfirstsegmentin"><div class="ln mono">MatchFirstSegmentIn</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#matchfirstsegmentin">stzRegex</a><pre class="rx">o1 = new stzRegex(&quot;[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+&quot;)
 ? o1.MatchFirstSegmentIn(&quot;an&quot;)
@@ -188,10 +188,10 @@ aMatrices = [
 ? o1.MatchType()
 #--&gt; matchentirecontent</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzRegex</span></div></div><div class="lane rrow" data-k="matchtypeandoptions"><div class="ln mono">MatchTypeAndOptions</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#matchtypeandoptions">stzRegex</a><small>autre nom de <span class="mono">MatchType</span></small></div></div><div class="lane rrow" data-k="matchword"><div class="ln mono">MatchWord</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#matchword">stzRegex</a><small>autre nom de <span class="mono">MatchWordsIn</span></small></div></div><div class="lane rrow" data-k="matchwordsin"><div class="ln mono">MatchWordsIn</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#matchwordsin">stzRegex</a><pre class="rx">o1 = new stzRegex(&quot;pre\w+&quot;)
 ? o1.MatchWordsIn(&quot;prefix preprocess present compress&quot;)  # matches pre* words
-#--&gt; 1
+#--&gt; TRUE
 
 ? o1.MatchWordsIn(&quot;compress&quot;)
-#--&gt; 0</pre><span class="rx-src">test de la bibliothèque · stzRegex</span></div></div><div class="lane rrow" data-k="materialtexturecount"><div class="ln mono">MaterialTextureCount</div><div class="lr mono">1</div><div class="lt"><a href="stzscene.html#materialtexturecount">stzScene</a><pre class="rx">o1 = new stzScene(1100, 660)
+#--&gt; FALSE</pre><span class="rx-src">test de la bibliothèque · stzRegex</span></div></div><div class="lane rrow" data-k="materialtexturecount"><div class="ln mono">MaterialTextureCount</div><div class="lr mono">1</div><div class="lt"><a href="stzscene.html#materialtexturecount">stzScene</a><pre class="rx">o1 = new stzScene(1100, 660)
 ? o1.MaterialTextureCount()
 #--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzScene</span></div></div><div class="lane rrow" data-k="mathfunctionq"><div class="ln mono">MathFunctionQ</div><div class="lr mono">1</div><div class="lt"><a href="stzobjective.html#mathfunctionq">stzObjective</a></div></div><div class="lane rrow" data-k="matrix"><div class="ln mono">Matrix</div><div class="lr mono">1</div><div class="lt"><a href="stzmatrex.html#matrix">stzMatrex</a></div></div><div class="lane rrow" data-k="max"><div class="ln mono">Max</div><div class="lr mono">11</div><div class="lt"><a href="stzdataset.html#max">stzDataSet</a> · <a href="stzgeofield.html#max">stzGeoField</a> · <a href="stzintseq.html#max">stzIntSeq</a> · <a href="stzlist.html#max">stzList</a> · <a href="stzlistofnumbers.html#max">stzListOfNumbers</a> · <a href="stzlistsorter.html#max">stzListSorter</a> · <a href="stzmatrix.html#max">stzMatrix</a> · <a href="stzmetric.html#max">stzMetric</a> · <a href="stznumbuffer.html#max">stzNumBuffer</a> · <a href="stzperfseries.html#max">stzPerfSeries</a> · <a href="stzsoundgrid.html#max">stzSoundGrid</a><pre class="rx">o1 = new stzListOfNumbers(1:8)
 ? o1.sum()

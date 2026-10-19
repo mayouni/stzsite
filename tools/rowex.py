@@ -76,7 +76,7 @@ def load(ROOT):
 # made only where the printing line is a predicate: a method that asks (Is..., Has..., Can..., Are..., Does..., Was..., ...Contains...,
 # ...Exists..., ...StartsWith..., ...EndsWith...) or a comparison (<, >, <=, >=, !=)
 STRLIT = re.compile(r'"(?:[^"\\]|\\.)*"' + "|" + r"'(?:[^'\\]|\\.)*'")
-ASKS = re.compile(r"\b(?:Stz|Q)?(?:Is|Has|Can|Are|Does|Was|Were|Will|Should)[A-Z]\w*\(|\w*(?:Contains|Exists|StartsWith|EndsWith)\w*\(|\bHas\(")
+ASKS = re.compile(r"\b(?:Stz|Q)?(?:Is|Has|Can|Are|Does|Was|Were|Will|Should)[A-Z]\w*\(|\w*(?:Contains|Exists|StartsWith|EndsWith)\w*\(|\bHas\(|\bMatch(?:First|AsYouType|WordsIn|Line|Word|Segment)?\(")
 CMP = re.compile(r"<=|>=|!=|<|>")
 
 def is_predicate(line):
@@ -115,7 +115,9 @@ def promise_body(code, out, n=None):
         res = []
         for i, l in enumerate(lines):
             res.append(l)
-            if i in q: res += [ind(l) + "#--> " + outs[q.index(i)], ""]
+            if i in q:
+                res.append(ind(l) + "#--> " + outs[q.index(i)])
+                if i + 1 < len(lines) and lines[i + 1].strip() != "": res.append("")        # a blank line after a promise, once
         return NL.join(res).rstrip(NL)
     if not cut and len(q) == 1:
         i = q[0]

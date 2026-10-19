@@ -1,10 +1,196 @@
 {
  "stzOrgChart": [
-  {"id": "chart", "code": "oOrg = new stzOrgChart(\"acme\")\noOrg {\n    AddExecutivePosition(\"ceo\")\n    AddManagementPosition(\"cfo\")\n    AddStaffPosition(\"clerk\")\n\n    ReportsTo(\"cfo\", \"ceo\")\n    ReportsTo(\"clerk\", \"cfo\")\n}\n\n# three positions\n? oOrg.NumberOfNodes()"},
-  {"id": "rogue", "code": "oOrg = new stzOrgChart(\"acme\")\noOrg {\n    AddExecutivePosition(\"ceo\")\n    AddStaffPosition(\"rogue\")\n    ReportsTo(\"rogue\", \"rogue\")\n}\n\noRep = new stzRuleReport(\"acme\")\n# the org chart checks itself into the gate\noRep.Collect(oOrg)\n\n# the gate collected orgchart findings\n? len(oRep.FindingsOfSubject(\"orgchart\")) >= 1"}
+  {
+   "id": "chart",
+   "code": "oOrg = new stzOrgChart(\"acme\")\noOrg {\n    AddExecutivePosition(\"ceo\")\n    AddManagementPosition(\"cfo\")\n    AddStaffPosition(\"clerk\")\n\n    ReportsTo(\"cfo\", \"ceo\")\n    ReportsTo(\"clerk\", \"cfo\")\n}\n\n# three positions\n? oOrg.NumberOfNodes()"
+  },
+  {
+   "id": "rogue",
+   "code": "oOrg = new stzOrgChart(\"acme\")\noOrg {\n    AddExecutivePosition(\"ceo\")\n    AddStaffPosition(\"rogue\")\n    ReportsTo(\"rogue\", \"rogue\")\n}\n\noRep = new stzRuleReport(\"acme\")\n# the org chart checks itself into the gate\noRep.Collect(oOrg)\n\n# the gate collected orgchart findings\n? len(oRep.FindingsOfSubject(\"orgchart\")) >= 1"
+  }
  ],
  "stzCalendar": [
-  {"id": "working", "code": "StzCalendarQ([2024, 10]) {\n\n    SetWorkingDays([ \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\" ])\n\n    # Thu 2024-10-03 is a working day\n    ? IsWorkingDay(\"2024-10-03\")\n\n    # Sat 2024-10-05 is not a working day\n    ? IsWorkingDay(\"2024-10-05\")\n\n    # October 2024 has 23 working days\n    ? len(WorkingDays())\n}"},
-  {"id": "holiday", "code": "StzCalendarQ([2024, 10]) {\n\n    AddHoliday(\"2024-10-15\", \"National Day\")\n\n    # the 15th is a holiday\n    ? IsHoliday(\"2024-10-15\")\n\n    # the 16th is not\n    ? IsHoliday(\"2024-10-16\")\n\n    # and the holiday has a name\n    ? HolidayName(\"2024-10-15\")\n}"}
+  {
+   "id": "working",
+   "code": "StzCalendarQ([2024, 10]) {\n\n    SetWorkingDays([ \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\" ])\n\n    # Thu 2024-10-03 is a working day\n    ? IsWorkingDay(\"2024-10-03\")\n\n    # Sat 2024-10-05 is not a working day\n    ? IsWorkingDay(\"2024-10-05\")\n\n    # October 2024 has 23 working days\n    ? len(WorkingDays())\n}"
+  },
+  {
+   "id": "holiday",
+   "code": "StzCalendarQ([2024, 10]) {\n\n    AddHoliday(\"2024-10-15\", \"National Day\")\n\n    # the 15th is a holiday\n    ? IsHoliday(\"2024-10-15\")\n\n    # the 16th is not\n    ? IsHoliday(\"2024-10-16\")\n\n    # and the holiday has a name\n    ? HolidayName(\"2024-10-15\")\n}"
+  }
+ ],
+ "stzString": [
+  {
+   "id": "count",
+   "code": "o1 = new stzString(\"s㊱m\")\n\n# three characters, not five bytes\n? o1.NumberOfChars()\n\n# the second one is the circled number\n? o1[2]"
+  },
+  {
+   "id": "find",
+   "code": "o1 = new stzString(\"...emm...eh..emm...eh\")\n\n# where is \"emm\"?\n? @@( o1.Find(\"emm\") )\n\n# and what are the first and last positions of each?\n? @@( o1.FindAsSections(\"emm\") )"
+  },
+  {
+   "id": "names",
+   "code": "# every character has a name, and the name says what it is\n? @@NL( Q(\"◐◰☁\").CharsNames() )"
+  },
+  {
+   "id": "forms",
+   "code": "o1 = new stzString(\"hello world\")\n\n# Replaced returns a changed copy and leaves the string alone\n? o1.Replaced(\"world\", \"Softanza\")\n? o1.Content()\n\n# Replace changes the string itself\no1.Replace(\"world\", \"Softanza\")\n? o1.Content()"
+  }
+ ],
+ "stzRegex": [
+  {
+   "id": "match",
+   "code": "o1 = new stzRegex(\"[a-z]+@[a-z]+\\.com\")\n\n# Match anchors the pattern on the whole text\n? o1.Match(\"kal@stz.com\")\n? o1.Match(\"write to kal@stz.com\")\n\n# MatchFirst looks for it anywhere\n? o1.MatchFirst(\"write to kal@stz.com\")"
+  },
+  {
+   "id": "typing",
+   "code": "o1 = new stzRegex(\"\\d{3}-\\d{2}-\\d{4}\")\n\n# the text is on its way to a match\n? o1.MatchAsYouType(\"123-45\")\n\n# this one can never become one\n? o1.MatchAsYouType(\"abc\")"
+  }
+ ],
+ "stzList": [
+  {
+   "id": "sort",
+   "code": "o1 = new stzList([ \"abcde\", \"a\", \"abc\", \"ab\", \"abcd\" ])\n\n# the predicate is a string that the engine evaluates\no1.SortBy('len(@item)')\n? @@( o1.Content() )"
+  },
+  {
+   "id": "deep",
+   "code": "o1 = new stzList([\n    \"you\",\n    \"other\",\n    [ \"other\", \"you\", [ \"you\" ], \"other\" ],\n    \"other\",\n    \"you\"\n])\n\n# three levels deep\n? o1.NumberOfLevels()\n\n# every place where \"you\" sits, at any depth\n? @@( o1.DeepFind(\"you\") )"
+  },
+  {
+   "id": "forms",
+   "code": "o1 = new stzList([ 5, 3, 8 ])\n\n# Added returns a copy with the item and leaves the list alone\n? @@( o1.Added(1) )\n? @@( o1.Content() )\n\n# Add changes the list itself\no1.Add(1)\n? @@( o1.Content() )"
+  }
+ ],
+ "stzNumber": [
+  {
+   "id": "prime",
+   "code": "? Q(17).IsPrime()\n\n? Q(169).IsPrime()\n\n# the numbers that divide 54\n? @@( Q(54).Factors() )\n\n# and the prime ones among them\n? @@( Q(54).PrimeFactors() )"
+  },
+  {
+   "id": "theory",
+   "code": "# 5! is 120\n? Q(5).Factorial()\n\n# GCD(12, 18) is 6\n? Q(12).GCD(18)\n\n# LCM(4, 6) is 12\n? Q(4).LCM(6)\n\n# Fibonacci(10) is 55\n? Q(10).Fibonacci()"
+  },
+  {
+   "id": "exact",
+   "code": "# the same question, asked at two precisions\n? Q(5.12).IsEqualTo(5.1200000000000001)\n\n? Q(5.12).IsEqualTo([ 5.1200000000000001, :Round = 16 ])"
+  }
+ ],
+ "stzListOfNumbers": [
+  {
+   "id": "nearest",
+   "code": "o1 = new stzListOfNumbers([ 2, 7, 18, 10, 12, 25, 4 ])\n\n# the number of the list that is nearest to 17\n? o1.Nearest(17)\n\n# and to 88\n? o1.Nearest(88)"
+  },
+  {
+   "id": "steps",
+   "code": "o1 = new stzListOfNumbers([ 1, 2, 5, 6, 9, 10 ])\n\n# the distinct steps between consecutive numbers\n? @@( o1.Steps() )\n\n# the running total\no1.Cumulate()\n? @@( o1.Content() )"
+  },
+  {
+   "id": "classify",
+   "code": "o1 = new stzListOfNumbers([ 4, 8, 15, 16, 23, 42 ])\n\n# every number goes under the centre it is nearest to\n? @@( o1.ClassifyByNearestTo([ 5, 20 ]) )"
+  }
+ ],
+ "stzHashList": [
+  {
+   "id": "read",
+   "code": "o1 = new stzHashList([ :math = 18, :stats = 16, :history = 14 ])\n\n# read a value by its key\n? o1[:stats]\n\n# the keys, in the order they were given\n? @@( o1.Keys() )\n\n# which positions hold the value 18?\n? @@( o1.FindValue(18) )"
+  },
+  {
+   "id": "lower",
+   "code": "o1 = new stzHashList([ [ \"NAME\", \"Mansour\" ], [ \"AGE\", 45 ] ])\n\n# keys are folded to lowercase\n? @@( o1.Content() )"
+  }
+ ],
+ "stzText": [
+  {
+   "id": "tone",
+   "code": "o1 = new stzText(\"I love this library, it is wonderful\")\n\n? o1.Sentiment()\n\n? o1.IsPositive()"
+  },
+  {
+   "id": "entities",
+   "code": "o1 = new stzText(\"Mansour lives in Niamey and works for Softanza\")\n\n# who and where, found by rules, with no model\n? @@NL( o1.NamedEntities() )"
+  },
+  {
+   "id": "phrases",
+   "code": "o1 = new stzText(\"The quick brown fox jumps over the lazy dog\")\n\n? @@( o1.NounPhrases() )"
+  }
+ ],
+ "stzGraph": [
+  {
+   "id": "bipartite",
+   "code": "oG = new stzGraph(\"trip\")\noG {\n    AddNode(\"A\")\n    AddNode(\"B\")\n    AddNode(\"C\")\n\n    AddEdge(\"A\", \"B\")\n    AddEdge(\"B\", \"C\")\n}\n\n# a path can be coloured with two colours\n? oG.IsBipartite()\n\n# add the edge that closes the triangle\noG.AddEdge(\"A\", \"C\")\n? oG.IsBipartite()"
+  },
+  {
+   "id": "path",
+   "code": "oG = new stzGraph(\"roads\")\noG {\n    AddNodes([ \"A\", \"B\", \"C\", \"D\" ])\n\n    AddEdge(\"A\", \"B\")\n    AddEdge(\"B\", \"C\")\n    AddEdge(\"C\", \"D\")\n    AddEdge(\"A\", \"D\")\n}\n\n# the shortest way from A to C\n? @@( oG.ShortestPath(\"A\", \"C\") )"
+  },
+  {
+   "id": "weight",
+   "code": "oG = new stzGraph(\"network\")\noG {\n    AddNodes([ \"A\", \"B\", \"C\" ])\n\n    AddEdgeXTT(\"A\", \"B\", \"link\", [ :weight = 1 ])\n    AddEdgeXTT(\"B\", \"C\", \"link\", [ :weight = 2 ])\n    AddEdgeXTT(\"A\", \"C\", \"link\", [ :weight = 5 ])\n}\n\n# the cheapest tree that connects all three\n? oG.MSTWeight()"
+  }
+ ],
+ "stzDiagram": [
+  {
+   "id": "flow",
+   "code": "o1 = new stzDiagram(\"flow\")\no1 {\n    AddNode(\"start\")\n    AddNode(\"check\")\n    AddNode(\"done\")\n\n    AddEdge(\"start\", \"check\")\n    AddEdge(\"check\", \"done\")\n}\n\n# a diagram is a graph, so it answers like one\n? o1.NumberOfNodes()\n\n# and it knows how it will be drawn\n? o1.Layout()\n\n? o1.Notation()\n\n# the picture is vector, and needs no device\n? StzFindFirst(\"<svg\", o1.ToSVG()) > 0"
+  }
+ ],
+ "stzGeoMap": [
+  {
+   "id": "points",
+   "code": "cJson = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\n\noMap = StzGeoMap(new stzGeoProjection(:mercator), StzGeoFeaturesFromJson(cJson))\n\n# one well falls inside region A\n? @@( oMap.CountPointsIn([ 2, 3 ]) )\n\n# and the density the region carries\n? @@( oMap.DensityPointsIn([ 2, 3 ]) )"
+  }
+ ],
+ "stzCanvas": [
+  {
+   "id": "draw",
+   "code": "o1 = new stzCanvas(300, 120)\no1 {\n    SetBackground(\"white\")\n    AddRect(10, 10, 120, 100)\n    AddCircle(220, 60, 40)\n}\n\n# two shapes on the display list\n? o1.ShapeCount()\n\n# the same picture, as SVG: vector, with no device\n? StzFindFirst(\"<svg\", o1.ToSVG()) > 0"
+  }
+ ],
+ "stzDataSet": [
+  {
+   "id": "centre",
+   "code": "o1 = new stzDataSet([ 2, 4, 4, 5, 7, 9, 12, 25 ])\n\n# the outlier pulls the mean up\n? o1.Mean()\n\n# and leaves the median where it was\n? o1.Median()"
+  },
+  {
+   "id": "partial",
+   "code": "oX = new stzDataSet([ 1, 2, 3, 4, 5 ])\noY = new stzDataSet([ 2, 1, 4, 3, 6 ])\noZ = new stzDataSet([ 3, 1, 4, 1, 5 ])\n\n# how X moves with Y\n? oX.CorrelationWith(oY)\n\n# and the same, once Z is held fixed\n? oX.PartialCorrelation(oY, oZ)"
+  }
+ ],
+ "stzDateTime": [
+  {
+   "id": "forms",
+   "code": "o1 = StzDateTimeQ(\"2024-03-15 10:30:00\")\n\n# the same moment, written for three readers\n? o1.ToEuropean()\n\n? o1.ToAmerican()\n\n? o1.ToLong()"
+  },
+  {
+   "id": "words",
+   "code": "o1 = StzDateTimeQ(\"2024-03-15 10:00:00\")\n\n# arithmetic in words\no1 + \"2 days 5 hours\"\n? o1.Content()\n\n# and the distance between two moments, in the unit you name\no2 = StzDateTimeQ(\"2024-03-15 10:00:00\")\n? o2.DurationTo(\"2024-03-20 14:30:15\", :In = :Days)"
+  }
+ ],
+ "stzFolder": [
+  {
+   "id": "make",
+   "code": "StzMakeDir(\"demo\")\n\no1 = new stzFolder(\"demo\")\no1.CreateFolders([ \"src\", \"docs\", \"tests\" ])\n\n# three folders were made\n? o1.CountFolders()\n\n# listed in a form that never varies\n? @@( o1.Folders() )"
+  }
+ ],
+ "stzAppServer": [
+  {
+   "id": "start",
+   "code": "o1 = new stzAppServer()\n\n# port 0 asks the system for a free one\no1.Start(0, \"127.0.0.1\")\n? o1.IsRunning()\n\no1.Stop()\n? o1.IsRunning()"
+  }
+ ],
+ "stzMatrix": [
+  {
+   "id": "find",
+   "code": "o1 = new stzMatrix([\n    [ 80, 85, 99 ],\n    [ 70, 75, 80 ],\n    [ 99, 65, 99 ]\n])\n\n# every cell that holds 99, as row and column\n? @@( o1.FindElement(99) )"
+  },
+  {
+   "id": "det",
+   "code": "o1 = new stzMatrix([ [ 1, 2 ], [ 3, 4 ] ])\n\n? o1.Determinant()\n\n# replace a row, and the engine answers for the new matrix\no1.ReplaceRow(1, [ 99, 2 ])\n? o1.Determinant()"
+  }
+ ],
+ "stzRegexMaker": [
+  {
+   "id": "build",
+   "code": "o1 = new stzRegexMaker()\no1 {\n    AddWordBoundary(:start)\n    AddCapturingGroup(\"digits\", \"\\d+\")\n    AddWordBoundary(:end)\n}\n\n# the pattern\n? o1.Pattern()\n\n# and its pieces, each of which can be explained\n? @@( o1.Fragments() )"
+  }
  ]
 }

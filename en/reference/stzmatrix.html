@@ -42,56 +42,23 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/number/stzMatrix.ring" target="_blank" rel="noopener noreferrer">the source: base/number/stzMatrix.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/numeric.html">The area reference: Numeric &amp; optimization</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p><code>stzMatrix</code> is a grid of numbers with the two vocabularies a grid needs: the algebra, transpose, product, determinant, inverse, solve, norms, powers, and the editing, add to this row, multiply those columns, find every cell holding this value, replace a section.</p><p>Build it from a list of rows, <code>new stzMatrix([ [1,2,3], [4,5,6], [7,8,9] ])</code>. The algebra is the engine&#x27;s and agrees with the content: replace a row and <code>Determinant()</code> answers for the new matrix; <code>MultiplyByMatrix</code>, <code>Transpose</code>, <code>Solve</code>, <code>Trace</code>, <code>FrobeniusNorm</code>, <code>Power</code>. The editing is addressed the way a person points: <code>AddXT(10, :InCol = 2)</code>, <code>AddInRows([1, 3], 100)</code> or <code>[ :From = 1, :To = 2 ]</code>, <code>MultiplyCols([1, 3], :By = 2)</code>, <code>AddInDiagonal</code>, <code>ReplaceElementsAt([ [1,3], [2,2] ], :By = 0)</code>.</p><p>Finding is spatial. <code>FindElement(99)</code> returns the positions of every 99 as <code>[row, col]</code> pairs; <code>FindRow</code> and <code>FindCol</code> find a whole row or column, <code>FindCols</code> several at once; <code>Section([1,1], [2,2])</code> cuts a block, <code>SectionQQ</code> makes it a list that keeps answering, <code>Max()</code>, <code>Min()</code>, <code>Sum()</code>, and <code>ElementsInSectionZ</code> gives each value with its position. <code>ReplaceElementInSectionByMany</code> hands each occurrence the next replacement in turn.</p><p>It serves a numerical method, a transformation, a table of scores, a game board, anything laid out in rows and columns where you want to both compute and point.</p></div><h2>The most expressive uses</h2><p>Five methods that show what the class is for; every example was run inside the library.</p><div class="uses"><div class="use"><h3 class="mono">FindElement</h3><p>Every cell holding 99, as row and column pairs.</p><pre class="rx">o1 = new stzMatrix([
-	[ 80, 85, 99 ],
-	[ 70, 75, 80 ],
-	[ 99, 65, 99 ]
+    <div class="essay"><p>A grid of numbers with the two vocabularies a grid needs: the algebra, transpose, product, determinant, inverse, solve, norms, powers, and the editing, add to this row, multiply those columns, find every cell holding this value, replace a section.</p><div class="sample"><pre class="rx">o1 = new stzMatrix([
+    [ 80, 85, 99 ],
+    [ 70, 75, 80 ],
+    [ 99, 65, 99 ]
 ])
+
+# every cell that holds 99, as row and column
 ? @@( o1.FindElement(99) )
-#--&gt; [ [ 1, 3 ], [ 3, 1 ], [ 3, 3 ] ]</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">ReplaceRow</h3><p>Replace a row, and the engine&#x27;s determinant answers for the new matrix.</p><pre class="rx">oM = new stzMatrix([ [1,2], [3,4] ])
-# the determinant is right to begin with
-? oM.Determinant()
+#--&gt; [ [ 1, 3 ], [ 3, 1 ], [ 3, 3 ] ]</pre><span class="rx-src">run in the library on 2026-10-19</span></div><p>Finding is spatial: a value is found as the list of its row and column pairs, a whole row or column is found as a unit, a block is cut out as a section that can itself be asked for its largest and smallest values.</p><p>The algebra is the engine&#x27;s and agrees with the content: replace a row, and the determinant answers for the new matrix.</p><div class="sample"><pre class="rx">o1 = new stzMatrix([ [ 1, 2 ], [ 3, 4 ] ])
+
+? o1.Determinant()
 #--&gt; -2
 
-oM.ReplaceRow(1, [99, 2])
-# the content shows the change
-? @@(oM.Content())
-#--&gt; [ [ 99, 2 ], [ 3, 4 ] ]
-
-# and the ENGINE agrees: 99*4 - 2*3
-? oM.Determinant()
-#--&gt; 390</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">MultiplyCols</h3><p>Columns 1 and 3 doubled, column 2 untouched.</p><pre class="rx">oM = new stzMatrix([ [1,0,3], [4,0,6], [7,0,9] ])
-oM.MultiplyCols([1, 3], :By = 2)
-# columns 1 and 3 doubled, column 2 untouched
-? @@(oM.Content())
-#--&gt; [ [ 2, 0, 6 ], [ 8, 0, 12 ], [ 14, 0, 18 ] ]</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">FindCols</h3><p>Several columns found at once, including one that appears twice.</p><pre class="rx">oM = new stzMatrix([ [88,85,88], [70,88,70], [99,65,99] ])
-# FindCol
-? @@(oM.FindCol([ 88, 70, 99 ]))
-#--&gt; [ 1, 3 ]
-
-oM2 = new stzMatrix([ [88,85,88,1], [70,88,70,1], [99,65,99,1] ])
-# ...and FindCols, which could not work without it
-? @@(oM2.FindCols([ [1,1,1], [88,70,99] ]))
-#--&gt; [ 1, 3, 4 ]</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">ReplaceElementInSectionByMany</h3><p>Each occurrence of 1 in the section takes the next replacement in turn.</p><pre class="rx">oM = new stzMatrix([ [1,2,1], [4,1,6], [1,8,9] ])
-oM.ReplaceElementInSectionByMany(1, [1,1], [3,3], [ 70, 80, 90 ])
-# each occurrence of 1 takes the next replacement
-? @@(oM.Content())
-#--&gt; [ [ 70, 2, 80 ], [ 4, 90, 6 ], [ 1, 8, 9 ] ]
-
-oX = new stzMatrix([ [1,2,1], [4,1,6], [1,8,9] ])
-oX.ReplaceElementInSectionByManyXT(1, [1,1], [3,3], [ 70, 80 ])
-# ...and the XT form CYCLES the replacements
-? @@(oX.Content())
-#--&gt; [ [ 70, 2, 80 ], [ 4, 70, 6 ], [ 80, 8, 9 ] ]
-
-oF = new stzMatrix([ [1,2,3], [4,5,6], [7,8,9] ])
-# FindInSection with one element
-? @@(oF.FindInSection(5, [1,1], [3,3]))
-#--&gt; [ [ 2, 2 ] ]
-
-# ...and with several
-? @@(oF.FindInSection([1,5,9], [1,1], [3,3]))
-#--&gt; [ [ 1, 1 ], [ 2, 2 ], [ 3, 3 ] ]</pre><span class="rx-src">library test</span></div></div><p class="proof">Every method, by section, further down.</p>
+# replace a row, and the engine answers for the new matrix
+o1.ReplaceRow(1, [ 99, 2 ])
+? o1.Determinant()
+#--&gt; 390</pre><span class="rx-src">run in the library on 2026-10-19</span></div><p>Editing is addressed the way a person points: a column, several rows, the diagonal, a section, with one value or with many. It serves a numerical method, a transformation, a table of scores, a game board, anything laid out in rows and columns where you want both to compute and to point.</p></div>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/numeric.html">The story of its area: Numeric &amp; optimization</a> · <a href="../guide/numeric.html">Its area's reference</a></p><h3>Design documents that name it <span class="mono">(3)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_NUMERIC_FOUNDATION.md" target="_blank" rel="noopener noreferrer">Numbers in Softanza — a global rethink<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">10 mentions</span><span class="abs">A library-wide rethink of numbers, phases 0 to 7 complete, superseding the number-engine plan with five pillars: visible exactness, a numeric frame named at the call site, engine-resident arrays, Zig SIMD kernels, and one authority per algorithm.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Softanza Intelligence Architecture<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">6 mentions</span><span class="abs">The single roadmap governing intelligence work, from the author&#x27;s directive: intelligence derives new knowledge from existing knowledge held as a governed graph, hence six laws, five foundations, a module map, an audited current state and one path R1 to R8.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/math/SOFTANZA_MATH_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA MATH PLAN -- the map, the contracts, the phases<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">3 mentions</span><span class="abs">The math charter&#x27;s companion plan, headed draft M0, mapping what exists with line numbers, listing the contracts consumed, and recording phases M1 to M6 (figures, motion, a course, the Tukey tier, core deepening, a bridge to Lean) with their shipped results.</span></li></ul><h3>Narrations that speak of it <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="../narrations/stzmatrix-matrix-computing-in-softanza-narration.html">Matrix Computing in Softanza with stzMatrix</a> <span class="mono">2025</span><span class="abs">Matrices are the unsung heroes of computational problem-solving, powering everything from data analysis to image processing and machine learning.</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#add">A</a> <a href="#classname">C</a> <a href="#divideelementwise">D</a> <a href="#frobeniusnorm">F</a> <a href="#hadamardproduct">H</a> <a href="#init">I</a> <a href="#multiply">M</a> <a href="#power">P</a> <a href="#rows">R</a> <a href="#size">S</a> <a href="#trace">T</a></p><p><b>Sections</b> <a href="#addmatrix">matrix-to-matrix operations</a> · <a href="#findelement">finding thing in the matrix</a> · <a href="#replaceelementsat">replacement by many elements</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>
