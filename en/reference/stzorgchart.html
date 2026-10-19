@@ -42,31 +42,32 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/graph/stzOrgChart.ring" target="_blank" rel="noopener noreferrer">the source: base/graph/stzOrgChart.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/diagramming.html">The area reference: Diagramming &amp; graphs</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p><code>stzOrgChart</code> is an organisation as a graph that checks itself: positions, who reports to whom, who may do what, drawn as the chart a person expects and judged against the rules of a regulatory framework.</p><p>Declare positions by their level, <code>AddExecutivePosition(&quot;ceo&quot;)</code>, <code>AddManagementPosition(&quot;cfo&quot;)</code>, <code>AddStaffPosition(&quot;clerk&quot;)</code>, then the lines, <code>ReportsTo(&quot;cfo&quot;, &quot;ceo&quot;)</code>, and a position stays white until a person is assigned. The chart is a diagram, so it draws itself in the org-chart notation with the shapes and colours of its levels; and it is a graph, so a position that reports to itself is a finding rather than a surprise.</p><p>The rule bases are where it earns its place in a regulated firm. <code>LoadRuleBase(new stzSOXRuleBase())</code> loads a framework, the BCEAO validator and the segregation-of-duties validator ship beside it, and <code>stzRuleReport.Collect(oOrg)</code> collects the chart&#x27;s findings into the same CI report as every other graph in the library.</p><p>It serves a bank, a ministry, a company or a school that needs its structure drawn, queried and audited from one definition, instead of kept as a drawing that nobody checks.</p></div><h2>The most expressive uses</h2><p>Two methods that show what the class is for; every example was run inside the library.</p><div class="uses"><div class="use"><h3 class="mono">AddExecutivePosition</h3><p>Three positions, two reporting lines, and the chart checks itself into a rule graph.</p><pre class="rx">oOrg = new stzOrgChart(&quot;acme&quot;)
-oOrg.AddExecutivePosition(&quot;ceo&quot;)
-oOrg.AddStaffPosition(&quot;rogue&quot;)
-oOrg.ReportsTo(&quot;rogue&quot;, &quot;rogue&quot;)
+    <div class="essay"><p>An organisation is a graph before it is a drawing: positions, and the lines along which one answers to another. <code>stzOrgChart</code> keeps it as that graph, draws it as the chart a person expects, and judges it against the rules of a regulatory framework.</p><p>A position is declared by its level, executive, management or staff, and a line says who reports to whom. A position stays white until a person is assigned to it.</p><div class="sample"><pre class="rx">oOrg = new stzOrgChart(&quot;acme&quot;)
+oOrg {
+    AddExecutivePosition(&quot;ceo&quot;)
+    AddManagementPosition(&quot;cfo&quot;)
+    AddStaffPosition(&quot;clerk&quot;)
+
+    ReportsTo(&quot;cfo&quot;, &quot;ceo&quot;)
+    ReportsTo(&quot;clerk&quot;, &quot;cfo&quot;)
+}
+
+# three positions
+? oOrg.NumberOfNodes()
+#--&gt; 3</pre><span class="rx-src">run in the library on 2026-10-19</span></div><p>Because the chart is a graph, it answers questions a drawing cannot. A position that reports to itself is not a slip to be spotted by eye but a finding, and the chart hands its findings to the same gate as every other rule in the library.</p><div class="sample"><pre class="rx">oOrg = new stzOrgChart(&quot;acme&quot;)
+oOrg {
+    AddExecutivePosition(&quot;ceo&quot;)
+    AddStaffPosition(&quot;rogue&quot;)
+    ReportsTo(&quot;rogue&quot;, &quot;rogue&quot;)
+}
+
 oRep = new stzRuleReport(&quot;acme&quot;)
-oRep.Collect(oOrg)             # the org chart checks itself into the gate
+# the org chart checks itself into the gate
+oRep.Collect(oOrg)
+
 # the gate collected orgchart findings
 ? len(oRep.FindingsOfSubject(&quot;orgchart&quot;)) &gt;= 1
-#--&gt; 1
-
-# ...tagged with :subject = orgchart
-? oRep.Findings()[1][:subject]
-#--&gt; orgchart
-
-# ...and the gate is unsound
-? oRep.IsSound()
-#--&gt; 0</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">LoadRuleBase</h3><p>A regulatory framework loaded as a rule base, and the chart keeps its name.</p><pre class="rx">oOrg = new stzOrgChart(&quot;acme&quot;)
-oOrg.LoadRuleBase(new stzSOXRuleBase())
-# LoadRuleBase records the base
-? len(oOrg.RuleBases()) &gt;= 1
-#--&gt; 1
-
-# ...the base kept its name
-? (new stzSOXRuleBase()).Name()
-#--&gt; SOX</pre><span class="rx-src">library test</span></div></div><p class="proof">Every method, by section, further down.</p>
+#--&gt; TRUE</pre><span class="rx-src">run in the library on 2026-10-19</span></div><p>The rule bases are where it earns its place in a regulated firm: a framework such as SOX is loaded as a base, and the validators for the BCEAO and for segregation of duties stand beside it. A bank, a ministry, a company or a school gets its structure drawn, queried and audited from one definition, instead of a drawing that nobody checks.</p></div>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/diagramming.html">The story of its area: Diagramming &amp; graphs</a> · <a href="../guide/diagramming.html">Its area's reference</a></p><h3>Design documents that name it <span class="mono">(3)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_GRAPH_RULES_PLAN.md" target="_blank" rel="noopener noreferrer">Rule Governance over Graphs<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">9 mentions</span><span class="abs">A plan, marked complete (phases 1 to 7 and 2b built), for one rule engine over every graph-based object: a rule is attached to and checked from the graph, stzCodeRule is the first instance, and code, agents, security and workflows report through one gate.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/graphics/SOFTANZA_GRAPH_PLANE_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA GRAPH-ORIENTED GRAPHICS — plan of record (GG0–GG5)<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">4 mentions</span><span class="abs">The plan of record for graph-oriented graphics (GG0 to GG5, then the DN phases): the graph is semantics, not syntax, so one primitive, propagation over a resident DAG, serves layout, scene, frame and material graphs; its status table comes from the guard suite.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/graphics/SOFTANZA_GRAPHICS_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA GRAPHICS PLAN — analysis and phased plan (GR0–GR6)<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">3 mentions</span><span class="abs">The graphics plane&#x27;s plan of record (GR0 to GR6, shipped): vendor no new graphics engine, extend the owned wgpu plane from compute to render, and vendor HarfBuzz and SheenBidi because Arabic text is a requirement; the geo plane was later appended.</span></li></ul><h3>Narrations that speak of it <span class="mono">(2)</span></h3><ul class="narr arts"><li><a href="../narrations/stzorgchartdoc-bankusecase.html">Organizational Intelligence in Action</a> <span class="mono">2025</span><span class="abs">This article follows a real-world journey at a Softabank (Virtual bank name, BCEAO-regulated). We deliberately start with a realistically flawed, non-compliant structure — exactly what you often inherit in practice — then use stzOrgChart’s intelligence laye...</span></li><li><a href="../narrations/stzorgchartdoc.html">Introducing stzOrgChart - The Strategic Organizational Intelligence Platform</a> <span class="mono">2025</span><span class="abs">In Softanza, understanding organizational structure transcends simple box-and-line diagrams. Organizations need dynamic tools that can model, analyze, and visualize their human infrastructure with precision and depth.</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#addposition">A</a> <a href="#checkcompliance">C</a> <a href="#department">D</a> <a href="#explain">E</a> <a href="#focuscolor">F</a> <a href="#governancefindings">G</a> <a href="#hilightpath">H</a> <a href="#init">I</a> <a href="#loadstzorg">L</a> <a href="#nonvacantpositions">N</a> <a href="#position">P</a> <a href="#reportsto">R</a> <a href="#subordinateof">S</a> <a href="#totreenodes">T</a> <a href="#vacantpositions">V</a> <a href="#writetostzorgfile">W</a></p><p><b>Sections</b> <a href="#addposition">position management</a> · <a href="#addperson">people management</a> · <a href="#validators">compliance &amp; governance</a> · <a href="#generatereport">reporting &amp; analytics</a> · <a href="#setdepartmentcolor">visualization</a> · <a href="#tostzorg">export to .stzorg format</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>
@@ -102,7 +103,7 @@ o1.AddPositionXTT(&quot;ceo&quot;, &quot;CEO&quot;, [ :level = &quot;executive&q
 o1.AddPositionXTT(&quot;cfo&quot;, &quot;CFO&quot;, [ :level = &quot;senior&quot;, :reportsTo = &quot;ceo&quot; ])
 o1.AddPositionXTT(&quot;clerk&quot;, &quot;Clerk&quot;, [ :level = &quot;staff&quot;, :reportsTo = &quot;cfo&quot; ])
 ? o1.IsValid()
-#--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts"><i class="n" title="Q: chains (does not exist for this method)">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="y" title="XT: extended">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="validatebceaogovernance" data-k="validatebceaogovernance validatecompliance "><span id="validatecompliance"></span><div class="ln mono">ValidateBCEAOGovernance</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">validate bceao governance</span><small>also written: <span class="mono">ValidateCompliance</span></small><small>in the section <b>compliance &amp; governance</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzOrgChart(&quot;firm&quot;)
+#--&gt; FALSE</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts"><i class="n" title="Q: chains (does not exist for this method)">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="y" title="XT: extended">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="validatebceaogovernance" data-k="validatebceaogovernance validatecompliance "><span id="validatecompliance"></span><div class="ln mono">ValidateBCEAOGovernance</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">validate bceao governance</span><small>also written: <span class="mono">ValidateCompliance</span></small><small>in the section <b>compliance &amp; governance</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzOrgChart(&quot;firm&quot;)
 o1.AddPositionXTT(&quot;ceo&quot;, &quot;CEO&quot;, [ :level = &quot;executive&quot; ])
 o1.AddPositionXTT(&quot;cfo&quot;, &quot;CFO&quot;, [ :level = &quot;senior&quot;, :reportsTo = &quot;ceo&quot; ])
 o1.AddPositionXTT(&quot;clerk&quot;, &quot;Clerk&quot;, [ :level = &quot;staff&quot;, :reportsTo = &quot;cfo&quot; ])
@@ -191,7 +192,7 @@ o1.AddPositionXTT(&quot;clerk&quot;, &quot;Clerk&quot;, [ :level = &quot;staff&q
 oOrg.LoadRuleBase(new stzSOXRuleBase())
 # LoadRuleBase records the base
 ? len(oOrg.RuleBases()) &gt;= 1
-#--&gt; 1
+#--&gt; TRUE
 
 # ...the base kept its name
 ? (new stzSOXRuleBase()).Name()
@@ -199,7 +200,7 @@ oOrg.LoadRuleBase(new stzSOXRuleBase())
 oOrg.LoadRuleBase(new stzSOXRuleBase())
 # LoadRuleBase records the base
 ? len(oOrg.RuleBases()) &gt;= 1
-#--&gt; 1
+#--&gt; TRUE
 
 # ...the base kept its name
 ? (new stzSOXRuleBase()).Name()

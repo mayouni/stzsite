@@ -51,8 +51,8 @@ t1 = new stzGraph(&quot;t&quot;)
 t1.AddNode(&quot;X&quot;) t1.AddNode(&quot;Y&quot;) t1.AddNode(&quot;Z&quot;)
 t1.AddEdge(&quot;X&quot;, &quot;Y&quot;) t1.AddEdge(&quot;Y&quot;, &quot;Z&quot;) t1.AddEdge(&quot;Z&quot;, &quot;X&quot;)
 # a triangle (odd cycle) is not bipartite
-? t1.IsBipartite()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-0</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graph/00_graph_narrated.ring" target="_blank" rel="noopener noreferrer">00_graph_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>m1 = new stzGraph(&quot;m&quot;)
+? t1.IsBipartite()</pre></div><div class="out"><div class="lbl">Output</div><pre>TRUE
+FALSE</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graph/00_graph_narrated.ring" target="_blank" rel="noopener noreferrer">00_graph_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>m1 = new stzGraph(&quot;m&quot;)
 m1.AddNode(&quot;A&quot;) m1.AddNode(&quot;B&quot;) m1.AddNode(&quot;C&quot;) m1.AddNode(&quot;D&quot;)
 m1.AddEdgeXTT(&quot;A&quot;, &quot;B&quot;, &quot;&quot;, [ :weight = 1 ])
 m1.AddEdgeXTT(&quot;B&quot;, &quot;C&quot;, &quot;&quot;, [ :weight = 2 ])

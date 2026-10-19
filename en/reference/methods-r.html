@@ -833,7 +833,7 @@ oS.Add(&quot;0.2&quot;)
 #--&gt; 0.3
 
 ? oS.IsExact()
-#--&gt; 1
+#--&gt; TRUE
 
 ? oS.Representation()
 #--&gt; decimal</pre><span class="rx-src">library test · stzNumber</span></div></div><div class="lane rrow" data-k="representsahexunicode"><div class="ln mono">RepresentsAHexUnicode</div><div class="lr mono">1</div><div class="lt"><a href="stzstring.html#representsahexunicode">stzString</a><small>another name of <span class="mono">RepresentsNumberInUnicodeHexForm</span></small></div></div><div class="lane rrow" data-k="representsahexunicodeinstring"><div class="ln mono">RepresentsAHexUnicodeInString</div><div class="lr mono">1</div><div class="lt"><a href="stzstring.html#representsahexunicodeinstring">stzString</a><small>another name of <span class="mono">RepresentsNumberInUnicodeHexForm</span></small></div></div><div class="lane rrow" data-k="representsahexunicodeinstringq"><div class="ln mono">RepresentsAHexUnicodeInStringQ</div><div class="lr mono">1</div><div class="lt"><a href="stzquestion.html#representsahexunicodeinstringq">stzQuestion</a><pre class="rx">? WhatQ().TheQ().RepresentsAHexUnicodeInStringQ().Of(&quot;Softanza&quot;)
@@ -1035,7 +1035,7 @@ o1 = new stzNumber([ 981.123456701, :round = 5 ])
 oOrg.LoadRuleBase(new stzSOXRuleBase())
 # LoadRuleBase records the base
 ? len(oOrg.RuleBases()) &gt;= 1
-#--&gt; 1
+#--&gt; TRUE
 
 # ...the base kept its name
 ? (new stzSOXRuleBase()).Name()

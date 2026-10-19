@@ -42,25 +42,25 @@
   <div class="wrap page-body">
 <p class="proof">Le récit de ce domaine, pour un lecteur général : ce qu'un artisan en fait, un exemple exécuté et ses couloirs notés, est sur <a href="../atlas/string.html">sa page de la Plateforme</a>.</p><h2 id="functions">Les fonctions, par ce qu'elles font</h2><h3>Tester et vérifier</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzstring/check.html">Check</a> Check([pcExpr]) -- evaluate pcExpr per char (@char in scope) and return TRUE if it holds for every char. 0-arg form is the existence-check stub used by re-include narratives. <span class="in">dans stzString</span><pre class="rx">? Q(&quot;(,,)&quot;).Check(:That = &#x27;StzCharQ(@Char).IsPunctuation()&#x27;)   #--&gt; 1</pre><span class="rx-src">test de la bibliothèque</span></li><li><a class="mono" href="../reference/stzstring.html#isword">IsWord</a> TRUE if the string is a single word. <span class="in">dans stzString</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.IsWord()
-#--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzstring.html#hasmark">HasMark</a> control / mark checks <span class="in">dans stzString</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
+#--&gt; FALSE</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzstring.html#hasmark">HasMark</a> control / mark checks <span class="in">dans stzString</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.HasMark()
-#--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzstring.html#isachar">IsAChar</a> TRUE if the string is exactly one char long. <span class="in">dans stzString</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
+#--&gt; FALSE</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzstring.html#isachar">IsAChar</a> TRUE if the string is exactly one char long. <span class="in">dans stzString</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.IsChar()
-#--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · écrit IsAChar() dans la bibliothèque aujourd&#x27;hui : le langage hôte tient déjà IsChar(), et Haro supprime le détour</span></details></li><li><a class="mono" href="../reference/stzstring.html#isblank">IsBlank</a> TRUE if the string is empty or whitespace only. <span class="in">dans stzString</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
+#--&gt; FALSE</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · écrit IsAChar() dans la bibliothèque aujourd&#x27;hui : le langage hôte tient déjà IsChar(), et Haro supprime le détour</span></details></li><li><a class="mono" href="../reference/stzstring.html#isblank">IsBlank</a> TRUE if the string is empty or whitespace only. <span class="in">dans stzString</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.IsBlank()
-#--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzstring.html#isempty">IsEmpty</a> Whether the string has no characters. <span class="in">dans stzString</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
+#--&gt; FALSE</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzstring.html#isempty">IsEmpty</a> Whether the string has no characters. <span class="in">dans stzString</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.IsEmpty()
-#--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzstring/islatin.html">IsLatin</a> IsLatin(): TRUE iff every char is ASCII-Latin. <span class="in">dans stzString</span><pre class="rx"># Latin script
+#--&gt; FALSE</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzstring/islatin.html">IsLatin</a> IsLatin(): TRUE iff every char is ASCII-Latin. <span class="in">dans stzString</span><pre class="rx"># Latin script
 ? StzStringQ(&quot;Ⅱ&quot;).IsLatin()
-#--&gt; 1
+#--&gt; TRUE
 
 # and a Roman number
 ? StzCharQ(&quot;Ⅱ&quot;).IsRomanNumber()
-#--&gt; 1</pre><span class="rx-src">test de la bibliothèque</span></li><li><a class="mono" href="../reference/stzstring.html#isvowel">IsVowel</a> Returns 1 if the string is a single vowel char (case-insensitive ASCII a/e/i/o/u). Convenience predicate; callers use it as `Q(c).IsVowel()` or `Q(c).Vowel()`. <span class="in">dans stzString</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
+#--&gt; TRUE</pre><span class="rx-src">test de la bibliothèque</span></li><li><a class="mono" href="../reference/stzstring.html#isvowel">IsVowel</a> Returns 1 if the string is a single vowel char (case-insensitive ASCII a/e/i/o/u). Convenience predicate; callers use it as `Q(c).IsVowel()` or `Q(c).Vowel()`. <span class="in">dans stzString</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.IsVowel()
-#--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzstring/contains.html">Contains</a> Whether the string contains the given substring. <span class="in">dans stzString</span><pre class="rx">oS = new stzString(&quot;tea rice tea fish&quot;)
+#--&gt; FALSE</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzstring/contains.html">Contains</a> Whether the string contains the given substring. <span class="in">dans stzString</span><pre class="rx">oS = new stzString(&quot;tea rice tea fish&quot;)
 ? oS.Contains(&quot;tea&quot;)
-#--&gt; 1
+#--&gt; TRUE
 
 ? oS.NumberOfOccurrence(&quot;tea&quot;)
 #--&gt; 2
@@ -68,19 +68,19 @@
 ? @@( oS.FindAll(&quot;tea&quot;) )
 #--&gt; [ 1, 10 ]</pre><span class="rx-src">test de la bibliothèque</span></li><li><a class="mono" href="../reference/stzstring/isaclass.html">IsAClass</a> IsAClass(): TRUE if content is a Haro class name (lookup via Haro&#x27;s classes() introspection). <span class="in">dans stzString</span><pre class="rx"># stzLen is a function
 ? Q(&quot;stzLen&quot;).IsFunction()
-#--&gt; 1
+#--&gt; TRUE
 
 # stzChar is a class
 ? Q(&quot;stzChar&quot;).IsClass()
-#--&gt; 1</pre><span class="rx-src">test de la bibliothèque · écrit IsAClass() dans la bibliothèque aujourd&#x27;hui : le langage hôte tient déjà IsClass(), et Haro supprime le détour; écrit IsAFunction() dans la bibliothèque aujourd&#x27;hui : le langage hôte tient déjà IsFunction(), et Haro supprime le détour</span></li><li><a class="mono" href="../reference/stzstring.html#isadigit">IsADigit</a> TRUE if the string is a single digit. <span class="in">dans stzString</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
+#--&gt; TRUE</pre><span class="rx-src">test de la bibliothèque · écrit IsAClass() dans la bibliothèque aujourd&#x27;hui : le langage hôte tient déjà IsClass(), et Haro supprime le détour; écrit IsAFunction() dans la bibliothèque aujourd&#x27;hui : le langage hôte tient déjà IsFunction(), et Haro supprime le détour</span></li><li><a class="mono" href="../reference/stzstring.html#isadigit">IsADigit</a> TRUE if the string is a single digit. <span class="in">dans stzString</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.IsDigit()
-#--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · écrit IsADigit() dans la bibliothèque aujourd&#x27;hui : le langage hôte tient déjà IsDigit(), et Haro supprime le détour</span></details></li><li><a class="mono" href="../reference/stzstring.html#iseither">IsEither</a> IsEither(a, :Or = b): TRUE when the content equals either value (string-side override; unwraps the :Or named param). <span class="in">dans stzString</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
+#--&gt; FALSE</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · écrit IsADigit() dans la bibliothèque aujourd&#x27;hui : le langage hôte tient déjà IsDigit(), et Haro supprime le détour</span></details></li><li><a class="mono" href="../reference/stzstring.html#iseither">IsEither</a> IsEither(a, :Or = b): TRUE when the content equals either value (string-side override; unwraps the :Or named param). <span class="in">dans stzString</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.IsEither(3, 4)
-#--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li></ul><p class="proof">et 376 autres dans la référence</p><h3>Trouver</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzstring/nth.html">Nth</a> Nth(n[, pcSub]): Nth(n)        : the n-th char (1-based, codepoint-aware) Nth(n, pcSub) : position of the n-th occurrence of pcSub Negative n counts from the end (-1 = last). <span class="in">dans stzString</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
+#--&gt; FALSE</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li></ul><p class="proof">et 376 autres dans la référence</p><h3>Trouver</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzstring/nth.html">Nth</a> Nth(n[, pcSub]): Nth(n)        : the n-th char (1-based, codepoint-aware) Nth(n, pcSub) : position of the n-th occurrence of pcSub Negative n counts from the end (-1 = last). <span class="in">dans stzString</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.Nth(2, &quot;an&quot;)
 #--&gt; 4</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzstring/find.html">Find</a> Find pcSubStr in the string: the positions of EVERY occurrence, as a list (engine-backed, codepoint-aware). (case-sensitive by default) <span class="in">dans stzString</span><pre class="rx">oS = new stzString(&quot;tea rice tea fish&quot;)
 ? oS.Contains(&quot;tea&quot;)
-#--&gt; 1
+#--&gt; TRUE
 
 ? oS.NumberOfOccurrence(&quot;tea&quot;)
 #--&gt; 2
@@ -320,7 +320,7 @@ o1.InsertAfterPositions([ 2, 4, 6, 8 ], &quot; &quot;)
 ? len( o1.SubStrings() )
 #--&gt; 78</pre><span class="rx-src">test de la bibliothèque</span></li><li><a class="mono" href="../reference/stzstring/substringxt.html">SubStringXT</a> SubStringXT(p1, p2): polymorphic substring DSL. SubStringXT(n, :NCharsFrom = m)         -- m chars from pos n SubStringXT(pcSub, :NCharsFrom = m)     -- m chars after pcSub SubStringXT(:NCharsBefore = m, pcSub)   -- m chars before pcSub <span class="in">dans stzString</span><pre class="rx"># the named-param shape is recognised
 ? Q(:IsBoundedBy = &quot;.&quot;).IsIsBoundedByNamedParam()
-#--&gt; 1
+#--&gt; TRUE
 
 # the direct check
 ? Q(&quot;.♥.&quot;).SubStringIsBoundedBy(&quot;♥&quot;, &quot;.&quot;)

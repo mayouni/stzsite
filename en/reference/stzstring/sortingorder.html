@@ -49,9 +49,9 @@
 # a descending string is sorted
 ? Q(&quot;XVTNLIGFEDDCBAAA&quot;).IsSorted()
 # ... descending
-? Q(&quot;XVTNLIGFEDDCBAAA&quot;).SortingOrder()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+? Q(&quot;XVTNLIGFEDDCBAAA&quot;).SortingOrder()</pre></div><div class="out"><div class="lbl">Output</div><pre>TRUE
 ascending
-1
+TRUE
 descending</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/633_sortingorder.ring" target="_blank" rel="noopener noreferrer">633_sortingorder.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;BCAADDEFAGTILNXV&quot;)
 # ascending copy
 ? o1.SortedInAscending()
@@ -68,9 +68,9 @@ o1.Sort()
 ? o1.Content()
 # and the order says so
 ? o1.SortingOrder()</pre></div><div class="out"><div class="lbl">Output</div><pre>AAABCDDEFGILNTVX
-0
+FALSE
 XVTNLIGFEDDCBAAA
-0
+FALSE
 unsorted
 AAABCDDEFGILNTVX
 ascending</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/632_sortedinascending.ring" target="_blank" rel="noopener noreferrer">632_sortedinascending.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>

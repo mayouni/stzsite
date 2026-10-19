@@ -570,35 +570,21 @@
  },
  "stzCalendar": {
   "en": [
-   "`stzCalendar` is a month, a quarter or a year that knows what a working day is: its boundaries, its weeks, the days people actually work, the holidays, the business hours and the breaks, with the arithmetic those imply.",
-   "Open it on a period, `new stzCalendar([2024, 10])` for a month or `[2024, \"Q3\"]` for a quarter, and read it: `Start()`, `End()`, `TotalDays()`, `TotalWeeks()`, `MonthName()`, `QuarterNumber()`. Then teach it the shape of work: `SetWorkingDays([\"Monday\", ..., \"Friday\"])`, `AddHoliday(\"2024-10-15\", \"National Day\")`, `SetBusinessHours`, `AddBreak`. From then on `IsWorkingDay(\"2024-10-03\")` answers for a Thursday and refuses a Saturday, `WorkingDays()` counts the 23 of October, `IsHoliday` and `HolidayName` read the days off, and the first and last working days of the period, the next working day after a date, the working days between two dates, are all one call.",
-   "The point is that a calendar is a rule, not a list. Two companies in the same month have different calendars, a Sunday-to-Thursday week and a Monday-to-Friday one, and every question about deadlines, delivery dates and payroll is answered against the rule that applies.",
-   "It serves schedules, deadlines, payroll, service-level clocks that must stop at the weekend, and the planning of anything measured in working days, and it is the calendar `stzTimeLine` lays its events on."
+   "A calendar is a rule, not a list. Two companies in the same month have different calendars, a Sunday-to-Thursday week and a Monday-to-Friday one, and every question about a deadline, a delivery date or a payroll is answered against the rule that applies. `stzCalendar` is a month, a quarter or a year that knows what a working day is.",
+   "Open it on a period, then teach it the shape of work: which days people work, and which days are holidays, by name.",
+   "@working",
+   "A holiday is declared with its name and read back by date, so that the same calendar can say both that a day is off and why.",
+   "@holiday",
+   "It serves schedules, deadlines, payroll, service clocks that must stop at the weekend, and the planning of anything measured in working days. It is the calendar that `stzTimeLine` lays its events on."
   ],
   "fr": [
-   "`stzCalendar` est un mois, un trimestre ou une année qui sait ce qu'est un jour ouvré : ses bornes, ses semaines, les jours où l'on travaille réellement, les fériés, les heures d'ouverture et les pauses, avec l'arithmétique qu'ils impliquent.",
-   "Ouvrez-le sur une période, `new stzCalendar([2024, 10])` pour un mois ou `[2024, \"Q3\"]` pour un trimestre, et lisez-le : `Start()`, `End()`, `TotalDays()`, `TotalWeeks()`, `MonthName()`, `QuarterNumber()`. Puis enseignez-lui la forme du travail : `SetWorkingDays([\"Monday\", ..., \"Friday\"])`, `AddHoliday(\"2024-10-15\", \"National Day\")`, `SetBusinessHours`, `AddBreak`. Dès lors `IsWorkingDay(\"2024-10-03\")` répond oui pour un jeudi et non pour un samedi, `WorkingDays()` compte les 23 d'octobre, `IsHoliday` et `HolidayName` lisent les jours chômés, et le premier et le dernier jour ouvré de la période, le prochain jour ouvré après une date, les jours ouvrés entre deux dates, tiennent en un appel.",
-   "L'idée est qu'un calendrier est une règle, pas une liste. Deux entreprises dans le même mois ont deux calendriers, une semaine du dimanche au jeudi et une du lundi au vendredi, et chaque question sur les échéances, les dates de livraison et la paie est répondue selon la règle qui s'applique.",
-   "Il sert les horaires, les échéances, la paie, les horloges de niveau de service qui doivent s'arrêter le week-end, et la planification de tout ce qui se mesure en jours ouvrés ; c'est le calendrier sur lequel `stzTimeLine` pose ses événements."
-  ],
-  "picks": {
-   "Year": {
-    "en": "A month opened by its two numbers, and read by name and size.",
-    "fr": "Un mois ouvert par ses deux nombres, et lu par son nom et sa taille."
-   },
-   "SetWorkingDays": {
-    "en": "Five working days declared; a Thursday passes, a Saturday does not, and October counts 23.",
-    "fr": "Cinq jours ouvrés déclarés ; un jeudi passe, un samedi non, et octobre en compte 23."
-   },
-   "AddHoliday": {
-    "en": "A holiday with its name, asked back by date.",
-    "fr": "Un férié avec son nom, redemandé par sa date."
-   },
-   "Start": {
-    "en": "A quarter, and where it begins.",
-    "fr": "Un trimestre, et où il commence."
-   }
-  }
+   "Un calendrier est une règle, pas une liste. Deux entreprises dans le même mois ont deux calendriers, une semaine du dimanche au jeudi et une du lundi au vendredi, et chaque question sur une échéance, une date de livraison ou une paie est répondue selon la règle qui s'applique. `stzCalendar` est un mois, un trimestre ou une année qui sait ce qu'est un jour ouvré.",
+   "Ouvrez-le sur une période, puis enseignez-lui la forme du travail : quels jours on travaille, et quels jours sont fériés, par leur nom.",
+   "@working",
+   "Un jour férié se déclare avec son nom et se relit par sa date, si bien que le même calendrier peut dire à la fois qu'un jour est chômé et pourquoi.",
+   "@holiday",
+   "Il sert les horaires, les échéances, la paie, les horloges de service qui doivent s'arrêter le week-end, et la planification de tout ce qui se mesure en jours ouvrés. C'est le calendrier sur lequel `stzTimeLine` pose ses événements."
+  ]
  },
  "stzTimeLine": {
   "en": [
@@ -908,27 +894,21 @@
  },
  "stzOrgChart": {
   "en": [
-   "`stzOrgChart` is an organisation as a graph that checks itself: positions, who reports to whom, who may do what, drawn as the chart a person expects and judged against the rules of a regulatory framework.",
-   "Declare positions by their level, `AddExecutivePosition(\"ceo\")`, `AddManagementPosition(\"cfo\")`, `AddStaffPosition(\"clerk\")`, then the lines, `ReportsTo(\"cfo\", \"ceo\")`, and a position stays white until a person is assigned. The chart is a diagram, so it draws itself in the org-chart notation with the shapes and colours of its levels; and it is a graph, so a position that reports to itself is a finding rather than a surprise.",
-   "The rule bases are where it earns its place in a regulated firm. `LoadRuleBase(new stzSOXRuleBase())` loads a framework, the BCEAO validator and the segregation-of-duties validator ship beside it, and `stzRuleReport.Collect(oOrg)` collects the chart's findings into the same CI report as every other graph in the library.",
-   "It serves a bank, a ministry, a company or a school that needs its structure drawn, queried and audited from one definition, instead of kept as a drawing that nobody checks."
+   "An organisation is a graph before it is a drawing: positions, and the lines along which one answers to another. `stzOrgChart` keeps it as that graph, draws it as the chart a person expects, and judges it against the rules of a regulatory framework.",
+   "A position is declared by its level, executive, management or staff, and a line says who reports to whom. A position stays white until a person is assigned to it.",
+   "@chart",
+   "Because the chart is a graph, it answers questions a drawing cannot. A position that reports to itself is not a slip to be spotted by eye but a finding, and the chart hands its findings to the same gate as every other rule in the library.",
+   "@rogue",
+   "The rule bases are where it earns its place in a regulated firm: a framework such as SOX is loaded as a base, and the validators for the BCEAO and for segregation of duties stand beside it. A bank, a ministry, a company or a school gets its structure drawn, queried and audited from one definition, instead of a drawing that nobody checks."
   ],
   "fr": [
-   "`stzOrgChart` est une organisation comme graphe qui se vérifie elle-même : des postes, qui rend compte à qui, qui peut faire quoi, dessinée comme l'organigramme qu'on attend et jugée contre les règles d'un cadre réglementaire.",
-   "Déclarez les postes par leur niveau, `AddExecutivePosition(\"ceo\")`, `AddManagementPosition(\"cfo\")`, `AddStaffPosition(\"clerk\")`, puis les liens, `ReportsTo(\"cfo\", \"ceo\")`, et un poste reste blanc tant qu'une personne n'y est pas affectée. L'organigramme est un diagramme, il se dessine donc dans la notation d'organigramme avec les formes et couleurs de ses niveaux ; et c'est un graphe, si bien qu'un poste qui rend compte à lui-même est un constat plutôt qu'une surprise.",
-   "Les bases de règles sont l'endroit où il gagne sa place dans une entreprise réglementée. `LoadRuleBase(new stzSOXRuleBase())` charge un cadre, le validateur BCEAO et le validateur de séparation des tâches existent à côté, et `stzRuleReport.Collect(oOrg)` verse les constats de l'organigramme dans le même rapport d'intégration que tout autre graphe de la bibliothèque.",
-   "Il sert une banque, un ministère, une entreprise ou une école qui a besoin que sa structure soit dessinée, interrogée et auditée à partir d'une seule définition, au lieu d'un dessin que personne ne vérifie."
-  ],
-  "picks": {
-   "AddExecutivePosition": {
-    "en": "Three positions, two reporting lines, and the chart checks itself into a rule graph.",
-    "fr": "Trois postes, deux liens hiérarchiques, et l'organigramme se vérifie lui-même dans un graphe de règles."
-   },
-   "LoadRuleBase": {
-    "en": "A regulatory framework loaded as a rule base, and the chart keeps its name.",
-    "fr": "Un cadre réglementaire chargé comme base de règles, et l'organigramme en garde le nom."
-   }
-  }
+   "Une organisation est un graphe avant d'être un dessin : des postes, et les liens par lesquels l'un répond à l'autre. `stzOrgChart` la garde comme ce graphe, la dessine comme l'organigramme qu'on attend, et la juge contre les règles d'un cadre réglementaire.",
+   "Un poste se déclare par son niveau, direction, encadrement ou exécution, et un lien dit qui rend compte à qui. Un poste reste blanc tant qu'une personne n'y est pas affectée.",
+   "@chart",
+   "Parce que l'organigramme est un graphe, il répond à des questions qu'un dessin ne peut pas traiter. Un poste qui rend compte à lui-même n'est pas une coquille à repérer à l'œil mais un constat, et l'organigramme remet ses constats à la même porte que toute autre règle de la bibliothèque.",
+   "@rogue",
+   "Les bases de règles sont l'endroit où il gagne sa place dans une entreprise réglementée : un cadre comme SOX se charge comme une base, et les validateurs de la BCEAO et de la séparation des tâches se tiennent à côté. Une banque, un ministère, une entreprise ou une école obtient sa structure dessinée, interrogée et auditée à partir d'une seule définition, au lieu d'un dessin que personne ne vérifie."
+  ]
  },
  "stzNeuralNetwork": {
   "en": [

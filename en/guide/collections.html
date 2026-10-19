@@ -42,35 +42,35 @@
   <div class="wrap page-body">
 <p class="proof">The story of this area, for a general reader: what a crafter does with it, an example run and its rated lanes, is on <a href="../atlas/collections.html">its Platform page</a>.</p><h2 id="functions">The functions, by what they do</h2><h3>Testing and checking</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzlistnamedparams.html#isuptonboundsnamedparam">IsUpToNBoundsNamedParam</a> ~~~~~~~~ <span class="in">in stzListNamedParams</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzListNamedParams([ :UpToNBounds, 3 ])
 ? o1.IsUpToNBoundsNamedParam()
-#--&gt; 1</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlistnamedparams.html#isuptopositionnamedparam">IsUptoPositionNamedParam</a> Misspelled form <span class="in">in stzListNamedParams</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzListNamedParams([ :UptoPosition, 3 ])
+#--&gt; TRUE</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlistnamedparams.html#isuptopositionnamedparam">IsUptoPositionNamedParam</a> Misspelled form <span class="in">in stzListNamedParams</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzListNamedParams([ :UptoPosition, 3 ])
 ? o1.IsUptoPositionNamedParam()
-#--&gt; 1</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlistnamedparams.html#isuntilsubstringnamedparam">IsUntilSubStringNamedParam</a> Move IsToSubStringNamedParam() here <span class="in">in stzListNamedParams</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzListNamedParams([ :UntilSubString, 3 ])
+#--&gt; TRUE</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlistnamedparams.html#isuntilsubstringnamedparam">IsUntilSubStringNamedParam</a> Move IsToSubStringNamedParam() here <span class="in">in stzListNamedParams</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzListNamedParams([ :UntilSubString, 3 ])
 ? o1.IsUntilSubStringNamedParam()
-#--&gt; 1</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlistnamedparams.html#isbymanyorwithmanyorusingmanynamedparam">IsByManyOrWithManyOrUsingManyNamedParam</a> ...Param(s) with s <span class="in">in stzListNamedParams</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzListNamedParams([ :ByMany, 3 ])
+#--&gt; TRUE</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlistnamedparams.html#isbymanyorwithmanyorusingmanynamedparam">IsByManyOrWithManyOrUsingManyNamedParam</a> ...Param(s) with s <span class="in">in stzListNamedParams</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzListNamedParams([ :ByMany, 3 ])
 ? o1.IsByManyOrWithManyOrUsingManyNamedParam()
-#--&gt; 1</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist.html#isset">IsSet</a> TRUE if all the items are unique (the list is a set). <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
+#--&gt; TRUE</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist.html#isset">IsSet</a> TRUE if all the items are unique (the list is a set). <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
 ? o1.IsSet()
-#--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist/checkw.html">CheckW</a> CheckW: all items satisfy a W (DSL) condition. CheckW is the same -- now that the DSL is engine-backed (the perf/expressiveness split is gone). <span class="in">in stzList</span><pre class="rx">o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
+#--&gt; FALSE</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist/checkw.html">CheckW</a> CheckW: all items satisfy a W (DSL) condition. CheckW is the same -- now that the DSL is engine-backed (the perf/expressiveness split is gone). <span class="in">in stzList</span><pre class="rx">o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
 ? o1.CheckW(&#x27;{ isString(@item) and IsUppercase(@item) }&#x27;)
 #--&gt; 1</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist/ispair.html">IsPair</a> TRUE if the list holds exactly two items. <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
 ? o1.IsPair()
-#--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist.html#isalist">IsAList</a> So a stzList answered &quot;no&quot; to being a list, and every `but IsAList()` arm in the library fell past it. stzObject.IsEither() has such an arm, followed by `but IsAnObject()` -- which a stzList IS -- so comparing two lists raised &quot;Feature not implemented yet!&quot; from a branch meant for something else entirely. <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
+#--&gt; FALSE</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist.html#isalist">IsAList</a> So a stzList answered &quot;no&quot; to being a list, and every `but IsAList()` arm in the library fell past it. stzObject.IsEither() has such an arm, followed by `but IsAnObject()` -- which a stzList IS -- so comparing two lists raised &quot;Feature not implemented yet!&quot; from a branch meant for something else entirely. <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
 ? o1.IsList()
-#--&gt; 1</pre><span class="rx-src">composed from the signature, run for this page · written IsAList() in the library today: the host language already holds IsList(), and Haro removes the detour</span></details></li><li><a class="mono" href="../reference/stzlist/contains.html">Contains</a> TRUE if the list contains the given item. <span class="in">in stzList</span><pre class="rx">o1 = new stzList(&quot;a&quot;:&quot;t&quot;)
+#--&gt; TRUE</pre><span class="rx-src">composed from the signature, run for this page · written IsAList() in the library today: the host language already holds IsList(), and Haro removes the detour</span></details></li><li><a class="mono" href="../reference/stzlist/contains.html">Contains</a> TRUE if the list contains the given item. <span class="in">in stzList</span><pre class="rx">o1 = new stzList(&quot;a&quot;:&quot;t&quot;)
 ? o1.Contains(&quot;x&quot;)
-#--&gt; 0</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist/ismadeof.html">IsMadeOf</a> IsMadeOf family: &quot;the list consists of these items&quot;. -- IsMadeOf / IsMadeOfThese  -&gt; contains ALL the given items. <span class="in">in stzList</span><pre class="rx">o1 = new stzList([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;a&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ])
+#--&gt; FALSE</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist/ismadeof.html">IsMadeOf</a> IsMadeOf family: &quot;the list consists of these items&quot;. -- IsMadeOf / IsMadeOfThese  -&gt; contains ALL the given items. <span class="in">in stzList</span><pre class="rx">o1 = new stzList([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;a&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ])
 ? o1.IsMadeOf([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ])
-#--&gt; 1
+#--&gt; TRUE
 
 ? o1.IsMadeOfSome([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;x&quot;, &quot;z&quot; ])
-#--&gt; 1</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist.html#issorted">IsSorted</a> TRUE if the items are sorted, ascending OR descending. <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
+#--&gt; TRUE</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist.html#issorted">IsSorted</a> TRUE if the items are sorted, ascending OR descending. <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
 ? o1.IsSorted()
-#--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist/isequalto.html">IsEqualTo</a> equality check (set-based, engine-backed) <span class="in">in stzList</span><pre class="rx">o1 = new stzList([ &quot;C&quot;, &quot;A&quot;, &quot;B&quot; ])
+#--&gt; FALSE</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist/isequalto.html">IsEqualTo</a> equality check (set-based, engine-backed) <span class="in">in stzList</span><pre class="rx">o1 = new stzList([ &quot;C&quot;, &quot;A&quot;, &quot;B&quot; ])
 ? o1.IsEqualTo([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
-#--&gt; 1
+#--&gt; TRUE
 
 ? o1.IsEqualToXT([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
-#--&gt; 0</pre><span class="rx-src">library test</span></li></ul><p class="proof">and 104 more in the reference</p><h3>Finding</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzlist/find.html">Find</a> Find the given item: the positions of EVERY occurrence, as a list (engine-backed). (case-sensitive by default) <span class="in">in stzList</span><pre class="rx"># find example 1
+#--&gt; FALSE</pre><span class="rx-src">library test</span></li></ul><p class="proof">and 104 more in the reference</p><h3>Finding</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzlist/find.html">Find</a> Find the given item: the positions of EVERY occurrence, as a list (engine-backed). (case-sensitive by default) <span class="in">in stzList</span><pre class="rx"># find example 1
 ? @@( Q([1, 2, 3, 4, 5, 3, 7]).Find(3) )
 #--&gt; [ 3, 6 ]</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist/findnth.html">FindNth</a> Case-insensitive word-order aliases used by narrative tests. (Cannot live inside FindNthOccurrenceCS as nested defs because they take a different arity -- top-level methods instead.) <span class="in">in stzList</span><pre class="rx">o1 = new stzList([ &quot;_&quot;, &quot;_&quot;, &quot;♥&quot;, &quot;_&quot;, &quot;♥&quot;, &quot;_&quot;, &quot;_&quot;, &quot;♥&quot;, &quot;_&quot;, &quot;_&quot; ])
 ? o1.FindNth(3, &quot;♥&quot;)
@@ -107,11 +107,11 @@
 
 # IsEmpty([]) is TRUE
 ? Q([]).IsEmpty()
-#--&gt; 1
+#--&gt; TRUE
 
 # IsEmpty([1]) is FALSE
 ? Q([1]).IsEmpty()
-#--&gt; 0</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist.html#numberoflists">NumberOfLists</a> How many LIST items the list holds. <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
+#--&gt; FALSE</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist.html#numberoflists">NumberOfLists</a> How many LIST items the list holds. <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
 ? o1.NumberOfLists()
 #--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist.html#numberofpairs">NumberOfPairs</a> How many pairs the list holds. <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
 ? o1.NumberOfPairs()
@@ -131,7 +131,7 @@
 ? o1.NumberOfSmallest()
 #--&gt; 1</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist/numberofduplicates.html">NumberOfDuplicates</a> NumberOfDuplicates counts the duplicate OCCURRENCES (every 2nd+ appearance), not the number of distinct duplicated items. For [ &quot;A&quot;,&quot;B&quot;,&quot;2&quot;,&quot;A&quot;,&quot;A&quot;,&quot;B&quot;,2,2,&quot;.&quot; ] that is 4 (A twice, B once, 2 once). NumberOfDuplicatedItems (distinct) would be 3. <span class="in">in stzList</span><pre class="rx">oW = new stzList( o1.Words() )
 ? oW.ContainsDuplicates()
-#--&gt; 1
+#--&gt; TRUE
 
 ? oW.NumberOfDuplicates()
 #--&gt; 3</pre><span class="rx-src">library test</span></li></ul><p class="proof">and 28 more in the reference</p><h3>Replacing and setting</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzlist/update.html">Update</a> Replace the whole content with the given list (mutating; the enforcement guard sits at _SetContent, the single update point). <span class="in">in stzList</span><pre class="rx">o1 = new stzList(&quot;A&quot;:&quot;E&quot;)

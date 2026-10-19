@@ -72,6 +72,31 @@ def load(ROOT):
     d["detours"] = qforms.names(ROOT).get("detours", {})                                                              # spellings the host language forces
     return d
 
+# a line that prints a predicate shows TRUE or FALSE, not 1 or 0 (the author, 2026-10-19). The run printed 1 or 0, so the conversion is
+# made only where the printing line is a predicate: a method that asks (Is..., Has..., Can..., Are..., Does..., Was..., ...Contains...,
+# ...Exists..., ...StartsWith..., ...EndsWith...) or a comparison (<, >, <=, >=, !=)
+STRLIT = re.compile(r'"(?:[^"\\]|\\.)*"' + "|" + r"'(?:[^'\\]|\\.)*'")
+ASKS = re.compile(r"\b(?:Stz|Q)?(?:Is|Has|Can|Are|Does|Was|Were|Will|Should)[A-Z]\w*\(|\w*(?:Contains|Exists|StartsWith|EndsWith)\w*\(|\bHas\(")
+CMP = re.compile(r"<=|>=|!=|<|>")
+
+def is_predicate(line):
+    t = STRLIT.sub('""', line.strip().lstrip("?").strip())
+    return bool(ASKS.search(t) or CMP.search(t))
+
+def predicate_outs(lines, outs):
+    """outs, with 1/0 shown as TRUE/FALSE on the lines that print a predicate; only when `?` lines and outputs pair one to one"""
+    q = [l for l in lines if l.strip().startswith("?")]
+    if len(q) != len(outs): return outs
+    return [("TRUE" if o == "1" else "FALSE") if o in ("1", "0") and is_predicate(l) else o for l, o in zip(q, outs)]
+
+def shown_out(code, out):
+    """an output pane, with a predicate's 1/0 shown as TRUE/FALSE (see predicate_outs); blank lines stay where they were"""
+    rows = str(out).split(NL)
+    idx = [i for i, l in enumerate(rows) if l.strip() != ""]
+    conv = predicate_outs(code.split(NL), [rows[i].rstrip() for i in idx])
+    for i, c in zip(idx, conv): rows[i] = c
+    return NL.join(rows)
+
 def promise_body(code, out, n=None):
     """the code as Haro shows it, with each promise (#-->) under the line that printed it and a blank line after -- the author,
     2026-10-19: never a block of promises at the end. A one-line example carries its promise on the same line when it fits. When
@@ -79,6 +104,7 @@ def promise_body(code, out, n=None):
     code = shown_code(code)
     lines = code.strip(NL).split(NL)
     outs = [l.rstrip() for l in str(out).split(NL) if l.strip() != ""]
+    outs = predicate_outs(lines, outs)
     cut = n is not None and len(outs) > n
     if cut: outs = outs[:n] + ["..."]
     q = [i for i, l in enumerate(lines) if l.strip().startswith("?")]

@@ -36,6 +36,7 @@ NARR_META = _load("narrations-meta.json", {"articles": {}})
 NARR_RUN = _load("narrations-run.json", {})
 REFERENCE = _load("reference.json", {"classes": []})
 AREA_INTROS = _load("area-intros.json", {})      # the essay of each area, written by hand from the sources (the author, 2026-10-19)
+INTRO_RUN = _load("intro-run.json", {})            # the samples inside the introductions, run in the library (tools/intro_run.py)
 CLASS_INTROS = _load("class-intros.json", {})    # the introduction of a class and its most expressive uses, written by hand
 
 RATING_CLASS = {"Strong": "strong", "Solid": "solid", "Partial": "partial", "Emerging": "emerging"}
@@ -238,6 +239,13 @@ USES_T = {"fr": {"h": "Les usages les plus parlants", "p": "{n} méthodes qui mo
 COUNT_WORDS = {"en": ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"], "fr": ["", "Une", "Deux", "Trois", "Quatre", "Cinq", "Six", "Sept", "Huit"]}
 
 
+SAMPLE_T = {"en": "run in the library on {d}", "fr": "exécuté dans la bibliothèque le {d}"}
+
+def sample_html(sn, lang):
+    """a sample the introduction shows in its own block, with the promise written under the line that printed it"""
+    body = esc(rowex.promise_body(sn["code"], sn["out"]))
+    return f'<div class="sample"><pre class="rx">{body}</pre><span class="rx-src">{SAMPLE_T[lang].format(d=esc(sn["ran"][:10]))}</span></div>'
+
 def pick_example_html(cls, name, exs, rdata, lang):
     """the library example a captioned pick shows: the shortest one that CALLS the method, under a budget wide enough
     for an expressive example -- the row budget (five lines) is sized for a table cell, and a pick is not a cell"""
@@ -262,7 +270,16 @@ def class_intro_html(lang, c, entries, rdata, example_html):
     paras = ci.get(lang) or []
     if not paras: return ""
     t = USES_T[lang]
-    out = ['<div class="essay">' + "".join(f"<p>{para_html(x)}</p>" for x in paras) + "</div>"]
+    snippets = {x["id"]: x for x in INTRO_RUN.get(c["name"], [])}
+    body = []
+    for x in paras:
+        if x.startswith("@") and x[1:].strip() in snippets:        # a sample of its own, between two paragraphs: never code inside a sentence
+            body.append(sample_html(snippets[x[1:].strip()], lang))
+        elif x.startswith("@"):
+            continue                                                # a sample that did not run is left out, and the build says so
+        else:
+            body.append(f"<p>{para_html(x)}</p>")
+    out = ['<div class="essay">' + "".join(body) + "</div>"]
     uses = []
     picks = ci.get("picks") or {}
     if isinstance(picks, list): picks = {m: {} for m in picks}

@@ -44,7 +44,7 @@
     
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oW = new stzList( o1.Words() )
 ? oW.ContainsDuplicates()
-? oW.NumberOfDuplicates()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+? oW.NumberOfDuplicates()</pre></div><div class="out"><div class="lbl">Output</div><pre>TRUE
 3</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/02-a-first-sentence.en.md" target="_blank" rel="noopener noreferrer">02-a-first-sentence.en.md<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;*&quot;, &quot;4&quot;, &quot;*&quot;, &quot;3&quot;, &quot;4&quot; ])
 ? o1.NumberOfDuplicates() + NL
 ? o1.Duplicates()</pre></div><div class="out"><div class="lbl">Output</div><pre>2
@@ -56,7 +56,7 @@
 ? @@( o1.FindDuplicates() )
 ? @@( o1.DuplicatesZ() ) # Or DuplicatesAndTheirPositions()
 o1.RemoveDuplicates()
-? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Output</div><pre>TRUE
 3
 [ 3, 4, 6 ]
 [ [ 5, [ 3, 4 ] ], [ 7, [ 6 ] ] ]

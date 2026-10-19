@@ -47,7 +47,7 @@ oT.Divide(&quot;3&quot;)
 ? oT.Content()
 ? oT.IsExact()
 ? oT.WhyNotExact()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0.333333
-0
+FALSE
 the division does not terminate in 6 decimal place(s)</pre></div></div><p class="ran">exécuté le 2026-10-02 04:25 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/math/chapters/07-a-number-that-says-why.en.md" target="_blank" rel="noopener noreferrer">07-a-number-that-says-why.en.md<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre># 1 / 8 is 0.125
 ? (new stzNumber(&quot;1&quot;)).DivideQ(&quot;8&quot;).Content()
 # 0.1 / 4 is 0.025
@@ -65,8 +65,8 @@ oThird.Divide(&quot;3&quot;)
 0.025
 2.5
 4.4
-0
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_exactness_narrated.ring" target="_blank" rel="noopener noreferrer">numeric_exactness_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># an exact product knows it
+FALSE
+TRUE</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/number/numeric_exactness_narrated.ring" target="_blank" rel="noopener noreferrer">numeric_exactness_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># an exact product knows it
 ? (new stzNumber(&quot;19.99&quot;)).MultiplyByQ(&quot;0.15&quot;).IsExact()
 # ...with nothing to explain
 ? (new stzNumber(&quot;19.99&quot;)).MultiplyByQ(&quot;0.15&quot;).Why()

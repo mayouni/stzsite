@@ -52,7 +52,7 @@
 2</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/489_findall.ring" target="_blank" rel="noopener noreferrer">489_findall.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><h2>Scope <span class="mono">(6)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oL = new stzList([ &quot;tea&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;fish&quot; ])
 ? oL.Contains(&quot;tea&quot;)
 ? oL.NumberOfOccurrence(&quot;tea&quot;)
-? @@( oL.FindAll(&quot;tea&quot;) )</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+? @@( oL.FindAll(&quot;tea&quot;) )</pre></div><div class="out"><div class="lbl">Output</div><pre>TRUE
 2
 [ 1, 3 ]</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/05-one-object-any-structure.en.md" target="_blank" rel="noopener noreferrer">05-one-object-any-structure.en.md<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([&quot;__&quot;, &quot;♥&quot;, &quot;_&quot;, &quot;__&quot;, &quot;♥&quot;, &quot;♥&quot;, &quot;__&quot;, &quot;♥&quot; ])
 ? o1.NumberOfOccurrence(&quot;♥&quot;) #NOTE that this is a misspelled form (lacks an &quot;r&quot;)

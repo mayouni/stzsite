@@ -52,7 +52,7 @@
 1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/345_are.ring" target="_blank" rel="noopener noreferrer">345_are.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><h2>Portée <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># a Han text
 ? StzTextQ(&quot;朋友们&quot;).IsHanScript()
 # all three are Han texts
-? Q([ &quot;你好&quot;, &quot;亲&quot;, &quot;朋友们&quot; ]).Are([ :HanScript, :Texts ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+? Q([ &quot;你好&quot;, &quot;亲&quot;, &quot;朋友们&quot; ]).Are([ :HanScript, :Texts ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE
 1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/994_ishanscript.ring" target="_blank" rel="noopener noreferrer">994_ishanscript.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([ 1, 2, 3 ]).Are(:Numbers)
 ? Q([ -2, -4, -8 ]).Are([ :Even, :Negative, :Numbers ])
 ? Q([ 2, 4, 8 ]).Are([ :Even, :Numbers ])

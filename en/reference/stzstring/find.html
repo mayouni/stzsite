@@ -47,7 +47,7 @@
 ? @@( Q(&quot;1 AA 6 B 0 CCC 6 DD 1 Z&quot;).FindW(&#x27;isDigit(@char)&#x27;) )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ 1, 6, 10, 16, 21 ]</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/465_findw.ring" target="_blank" rel="noopener noreferrer">465_findw.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><h2>Scope <span class="mono">(4)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oS = new stzString(&quot;tea rice tea fish&quot;)
 ? oS.Contains(&quot;tea&quot;)
 ? oS.NumberOfOccurrence(&quot;tea&quot;)
-? @@( oS.FindAll(&quot;tea&quot;) )</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+? @@( oS.FindAll(&quot;tea&quot;) )</pre></div><div class="out"><div class="lbl">Output</div><pre>TRUE
 2
 [ 1, 10 ]</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/05-one-object-any-structure.en.md" target="_blank" rel="noopener noreferrer">05-one-object-any-structure.en.md<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;...emm...eh..emm...eh&quot;)
 ? @@( o1.FindMany([ &quot;emm&quot;, &quot;eh&quot; ]) )

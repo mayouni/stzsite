@@ -102,7 +102,7 @@ big  = new stzString( oAB.Repeated(1000000) )
 ? big.FindFirst(&quot;ab&quot;)
 # FindLast &#x27;ab&#x27; is 1,999,999
 ? big.FindLast(&quot;ab&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>2000000
-1
+TRUE
 1
 1999999</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring" target="_blank" rel="noopener noreferrer">999_engine_string_millions_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;ab_cd_ef_gh&quot;)
 # the first underscore

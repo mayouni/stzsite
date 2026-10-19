@@ -71,8 +71,8 @@ brazil
 # fr-fr is
 ? Q(&quot;fr-fr&quot;).IsLocaleAbbreviation()
 # and its country reads france
-? StzLocaleQ(&quot;fr-fr&quot;).Country()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0
-1
+? StzLocaleQ(&quot;fr-fr&quot;).Country()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>FALSE
+TRUE
 france</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/842_islocaleabbreviation.ring" target="_blank" rel="noopener noreferrer">842_islocaleabbreviation.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzLocale([ :Language = &quot;romanian&quot; ])
 ? o1.Abbreviation()
 ? o1.Abbreviation() + NL

@@ -72,7 +72,7 @@ def run_block(ex, t):
     code, used = rowex.natural(ex["code"], DETOURS)               # the natural name is shown; what it ran as is said under it
     note = f' · {esc(rowex.detour_note(used, DETOURS, ("fr" if t["out"] == "Sortie" else "en")))}' if used else ""
     return (f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(shown_code(code))}</pre></div>'
-            f'<div class="out"><div class="lbl">{t["out"]}</div><pre>{esc(ex["out"])}</pre></div></div>'
+            f'<div class="out"><div class="lbl">{t["out"]}</div><pre>{esc(rowex.shown_out(ex["code"], ex["out"]))}</pre></div></div>'
             f'<p class="ran">{t["ran"].format(d=esc(ex["ran"]))} <a href="{GH}{esc(ex["source"])}">{esc(ex["source"].split("/")[-1])}</a>{note}</p>')
 
 def build_methods(ctx):

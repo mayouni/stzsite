@@ -52,27 +52,27 @@ oT.SetLearningRate(0.5)
 oT.Train(oN, aX, aY, 2000)
 # 00 -&gt; 0
 ? oN.Predict([0,0])[1] &lt; 0.5
-#--&gt; 1
+#--&gt; TRUE
 
 # 01 -&gt; 1
 ? oN.Predict([0,1])[1] &gt; 0.5
-#--&gt; 1
+#--&gt; TRUE
 
 # 10 -&gt; 1
 ? oN.Predict([1,0])[1] &gt; 0.5
-#--&gt; 1
+#--&gt; TRUE
 
 # 11 -&gt; 0
 ? oN.Predict([1,1])[1] &lt; 0.5
-#--&gt; 1
+#--&gt; TRUE
 
 # the loss went down
 ? oT.FinalLoss() &lt; oT.LossHistory()[1]
-#--&gt; 1
+#--&gt; TRUE
 
 # ...essentially to zero
 ? oT.FinalLoss() &lt; 0.001
-#--&gt; 1
+#--&gt; TRUE
 
 # one loss per epoch was recorded
 ? len(oT.LossHistory())
@@ -80,7 +80,7 @@ oT.Train(oN, aX, aY, 2000)
 
 # Why() still narrates
 ? StzFindFirst(&quot;trained 2000 epoch&quot;, oT.Why()) &gt; 0
-#--&gt; 1</pre><span class="rx-src">test de la bibliothèque</span></div></div><p class="proof">Toutes les méthodes, par section, plus bas.</p>
+#--&gt; TRUE</pre><span class="rx-src">test de la bibliothèque</span></div></div><p class="proof">Toutes les méthodes, par section, plus bas.</p>
     <div class="treasures"><p class="proof"><a href="../atlas/nlp.html">Le récit de son domaine : Traitement du langage et linguistique</a> · <a href="../guide/nlp.html">La référence de son domaine</a></p></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#adddenselayer">A</a> <a href="#exporttogguf">E</a> <a href="#init">I</a> <a href="#layers">L</a> <a href="#numberoflayers">N</a> <a href="#predict">P</a> <a href="#setseed">S</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

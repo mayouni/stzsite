@@ -47,7 +47,7 @@
 ? o1.IsBoundedBy([&quot;&lt;&lt;&quot;, &quot;&gt;&gt;&quot;])
 o1.RemoveTheseBounds(&quot;&lt;&lt;&quot;,&quot;&gt;&gt;&quot;)
 # stripped
-? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE
 word</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/587_isboundedby.ring" target="_blank" rel="noopener noreferrer">587_isboundedby.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre># FindTheseBounds reports the outer [ ] positions
 ? @@( Q(&#x27;[ @$2{&quot;a&quot;;1;[1]}U ]&#x27;).FindTheseBounds(&quot;[&quot;, &quot;]&quot;) )
 # RemoveTheseBounds drops the outer bounds
