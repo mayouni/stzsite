@@ -463,5 +463,114 @@
    "ran": "2026-10-19 23:50",
    "commit": "4a184e6f0"
   }
+ ],
+ "area:string": [
+  {
+   "id": "chars",
+   "code": "# five characters, which is what a person counts\n? Q(\"héllo\").NumberOfChars()\n\n# and six bytes, which is what a machine stores\n? len(\"héllo\")",
+   "out": "5\n6",
+   "ran": "2026-10-20 00:04",
+   "commit": "4a184e6f0"
+  },
+  {
+   "id": "case",
+   "code": "o1 = new stzString(\"Tea and tea\")\n\n# case matters unless you say it does not, in the one same function\n? @@( o1.FindCS(\"tea\", TRUE) )\n\n? @@( o1.FindCS(\"tea\", FALSE) )",
+   "out": "[ 9 ]\n[ 1, 9 ]",
+   "ran": "2026-10-20 00:04",
+   "commit": "4a184e6f0"
+  }
+ ],
+ "area:regex": [
+  {
+   "id": "match",
+   "code": "o1 = new stzRegex(\"[a-z]+@[a-z]+\\.com\")\n\n# does the whole text fit the pattern?\n? o1.Match(\"write to kal@stz.com\")\n\n# does it occur anywhere?\n? o1.MatchFirst(\"write to kal@stz.com\")",
+   "out": "0\n1",
+   "ran": "2026-10-20 00:04",
+   "commit": "4a184e6f0"
+  }
+ ],
+ "area:collections": [
+  {
+   "id": "find",
+   "code": "# one function, whether the host is a string or a list\n? @@( StzFind(\"tea\", \"tea rice tea fish\") )\n\n? @@( StzFind(\"tea\", [ \"tea\", \"rice\", \"tea\", \"fish\" ]) )",
+   "out": "[ 1, 10 ]\n[ 1, 3 ]",
+   "ran": "2026-10-20 00:04",
+   "commit": "4a184e6f0"
+  },
+  {
+   "id": "pred",
+   "code": "o1 = new stzList([ 5, 12, 8, 30 ])\n\n# a predicate written as a string runs inside the engine\n? @@( o1.Filter('@item > 10') )",
+   "out": "[ 12, 30 ]",
+   "ran": "2026-10-20 00:04",
+   "commit": "4a184e6f0"
+  },
+  {
+   "id": "forms",
+   "code": "o1 = new stzList([ 5, 3, 8 ])\n\n# the past form returns a copy and leaves the list alone\n? @@( o1.Added(1) )\n? @@( o1.Content() )\n\n# the plain verb changes the list itself\no1.Add(1)\n? @@( o1.Content() )",
+   "out": "[ 5, 3, 8, 1 ]\n[ 5, 3, 8 ]\n[ 5, 3, 8, 1 ]",
+   "ran": "2026-10-20 00:04",
+   "commit": "4a184e6f0"
+  }
+ ],
+ "area:numeric": [
+  {
+   "id": "exact",
+   "code": "o1 = new stzNumber(\"1\")\no1.Divide(\"3\")\n\n# one third cannot be written in decimals, and the number says so\n? o1.IsExact()\n\n? o1.Why()",
+   "out": "0\nthe division does not terminate in 6 decimal place(s)",
+   "ran": "2026-10-20 00:04",
+   "commit": "4a184e6f0"
+  },
+  {
+   "id": "money",
+   "code": "# a price stays money: two places, with the accountant's rounding\no1 = StzMoneyQ(\"19.99\")\no1.MultiplyBy(\"0.15\")\n\n? o1.Content()",
+   "out": "3.00",
+   "ran": "2026-10-20 00:04",
+   "commit": "4a184e6f0"
+  }
+ ],
+ "area:tables": [
+  {
+   "id": "col",
+   "code": "oT = new stzTable([\n    [ :ORDER, :ITEM, :PRICE ],\n    [ 1, \"Tea\", 3 ],\n    [ 2, \"Rice\", 5 ],\n    [ 3, \"Tea\", 3 ]\n])\n\n# a column is a list you can sum, or filter with a condition\n? @@( oT.Col(:PRICE) )",
+   "out": "[ 3, 5, 3 ]",
+   "ran": "2026-10-20 00:04",
+   "commit": "4a184e6f0"
+  }
+ ],
+ "area:i18n": [
+  {
+   "id": "locale",
+   "code": "o1 = new stzLocale(\"fr_FR\")\no2 = new stzLocale(\"fa_IR\")\n\n# a locale knows its own currency, and the name of its language in that language\n? o1.CurrencyAbbreviation()\n\n? o2.LanguageNativeName()",
+   "out": "EUR\nفارسی",
+   "ran": "2026-10-20 00:04",
+   "commit": "4a184e6f0"
+  }
+ ],
+ "area:nlp": [
+  {
+   "id": "phrases",
+   "code": "o1 = new stzText(\"The quick brown fox jumps over the lazy dog\")\n\n# two noun phrases, and nothing was fetched to find them\n? @@( o1.NounPhrases() )",
+   "out": "[ \"The quick brown fox\", \"the lazy dog\" ]",
+   "ran": "2026-10-20 00:04",
+   "commit": "4a184e6f0"
+  }
+ ],
+ "area:graphics": [
+  {
+   "id": "legible",
+   "code": "# legibility is a number that can say no\n? StzIsLegible(\"#999999\", :White)\n\n? StzIsLegible(\"#333333\", :White)",
+   "out": "0\n1",
+   "ran": "2026-10-20 00:04",
+   "commit": "4a184e6f0"
+  }
+ ],
+ "area:documentation": [
+  {
+   "id": "howto",
+   "code": "# the library documents itself, and no model is involved\no1 = StzSelfDocQ(\"stzList\")\n? o1.HowTo(\"remove duplicates\")",
+   "out": "Q([...]).RemoveDuplicates()   -- composed by grammar (remove duplicates)",
+   "ran": "2026-10-20 00:04",
+   "commit": "4a184e6f0"
+  }
  ]
 }

@@ -225,7 +225,14 @@ def essay_html(lang, slug):
     """the area told in a few paragraphs, written from the Compass, the design documents and the narrations"""
     e = AREA_INTROS.get(slug, {}).get(lang) or []
     if not e: return ""
-    return '<div class="essay">' + "".join(f"<p>{para_html(x)}</p>" for x in e) + "</div>"
+    snippets = {x["id"]: x for x in INTRO_RUN.get("area:" + slug, [])}
+    body = []
+    for x in e:
+        if x.startswith("@"):
+            if x[1:].strip() in snippets: body.append(sample_html(snippets[x[1:].strip()], lang))   # a sample that did not run is left out
+        else:
+            body.append(f"<p>{para_html(x)}</p>")
+    return '<div class="essay">' + "".join(body) + "</div>"
 
 def para_html(x):
     """a paragraph written in the data: **bold** and `code` only"""

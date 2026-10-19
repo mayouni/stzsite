@@ -292,5 +292,75 @@
    "id": "states",
    "code": "o1 = new stzWorkflow(\"order\")\no1 {\n    SetWorkflowType(:StateMachine)\n\n    AddState(\"new\")\n    AddState(\"paid\")\n    AddState(\"shipped\")\n\n    AddTransition(\"new\", \"paid\", \"pay\")\n    AddTransition(\"paid\", \"shipped\", \"ship\")\n}\n\n? o1.IsStateMachine()\n\n? o1.NumberOfNodes()"
   }
+ ],
+ "area:string": [
+  {
+   "id": "chars",
+   "code": "# five characters, which is what a person counts\n? Q(\"héllo\").NumberOfChars()\n\n# and six bytes, which is what a machine stores\n? len(\"héllo\")"
+  },
+  {
+   "id": "case",
+   "code": "o1 = new stzString(\"Tea and tea\")\n\n# case matters unless you say it does not, in the one same function\n? @@( o1.FindCS(\"tea\", TRUE) )\n\n? @@( o1.FindCS(\"tea\", FALSE) )"
+  }
+ ],
+ "area:regex": [
+  {
+   "id": "match",
+   "code": "o1 = new stzRegex(\"[a-z]+@[a-z]+\\.com\")\n\n# does the whole text fit the pattern?\n? o1.Match(\"write to kal@stz.com\")\n\n# does it occur anywhere?\n? o1.MatchFirst(\"write to kal@stz.com\")"
+  }
+ ],
+ "area:collections": [
+  {
+   "id": "find",
+   "code": "# one function, whether the host is a string or a list\n? @@( StzFind(\"tea\", \"tea rice tea fish\") )\n\n? @@( StzFind(\"tea\", [ \"tea\", \"rice\", \"tea\", \"fish\" ]) )"
+  },
+  {
+   "id": "pred",
+   "code": "o1 = new stzList([ 5, 12, 8, 30 ])\n\n# a predicate written as a string runs inside the engine\n? @@( o1.Filter('@item > 10') )"
+  },
+  {
+   "id": "forms",
+   "code": "o1 = new stzList([ 5, 3, 8 ])\n\n# the past form returns a copy and leaves the list alone\n? @@( o1.Added(1) )\n? @@( o1.Content() )\n\n# the plain verb changes the list itself\no1.Add(1)\n? @@( o1.Content() )"
+  }
+ ],
+ "area:numeric": [
+  {
+   "id": "exact",
+   "code": "o1 = new stzNumber(\"1\")\no1.Divide(\"3\")\n\n# one third cannot be written in decimals, and the number says so\n? o1.IsExact()\n\n? o1.Why()"
+  },
+  {
+   "id": "money",
+   "code": "# a price stays money: two places, with the accountant's rounding\no1 = StzMoneyQ(\"19.99\")\no1.MultiplyBy(\"0.15\")\n\n? o1.Content()"
+  }
+ ],
+ "area:tables": [
+  {
+   "id": "col",
+   "code": "oT = new stzTable([\n    [ :ORDER, :ITEM, :PRICE ],\n    [ 1, \"Tea\", 3 ],\n    [ 2, \"Rice\", 5 ],\n    [ 3, \"Tea\", 3 ]\n])\n\n# a column is a list you can sum, or filter with a condition\n? @@( oT.Col(:PRICE) )"
+  }
+ ],
+ "area:i18n": [
+  {
+   "id": "locale",
+   "code": "o1 = new stzLocale(\"fr_FR\")\no2 = new stzLocale(\"fa_IR\")\n\n# a locale knows its own currency, and the name of its language in that language\n? o1.CurrencyAbbreviation()\n\n? o2.LanguageNativeName()"
+  }
+ ],
+ "area:nlp": [
+  {
+   "id": "phrases",
+   "code": "o1 = new stzText(\"The quick brown fox jumps over the lazy dog\")\n\n# two noun phrases, and nothing was fetched to find them\n? @@( o1.NounPhrases() )"
+  }
+ ],
+ "area:graphics": [
+  {
+   "id": "legible",
+   "code": "# legibility is a number that can say no\n? StzIsLegible(\"#999999\", :White)\n\n? StzIsLegible(\"#333333\", :White)"
+  }
+ ],
+ "area:documentation": [
+  {
+   "id": "howto",
+   "code": "# the library documents itself, and no model is involved\no1 = StzSelfDocQ(\"stzList\")\n? o1.HowTo(\"remove duplicates\")"
+  }
  ]
 }

@@ -39,7 +39,7 @@ def main():
             for i, sn in enumerate(snippets):
                 code = sn["code"].replace("\r", "")
                 body += [f'? "@@BEGIN {i}"', "try", code, "catch", '    ? "@@ERROR " + cCatchError', "done", f'? "@@END {i}"', ""]
-            script = work / f"{cls}.ring"
+            script = work / (re.sub(r"[^A-Za-z0-9]+", "_", cls) + ".ring")
             script.write_text("\n".join(['load "../../stzBase.ring"', ""] + body) + "\n", encoding="utf-8")
             started = datetime.datetime.now()
             try:
