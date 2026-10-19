@@ -56,36 +56,36 @@ oDate.AddDays(30)
 ? oDate.ToStringXT(&quot;dddd, MMMM d, yyyy&quot;) # Custom format</pre></div><div class="out"><div class="lbl">Sortie</div><pre>15/07/2024
 07/15/2024
 2024-07-15
-Monday, July 15, 2024</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/22_formatting_dates_in_different_styles.ring" target="_blank" rel="noopener noreferrer">22_formatting_dates_in_different_styles.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o = StzDateQ(&quot;15/03/2024&quot;)
-o.AddDays(20)
+Monday, July 15, 2024</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/22_formatting_dates_in_different_styles.ring" target="_blank" rel="noopener noreferrer">22_formatting_dates_in_different_styles.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = StzDateQ(&quot;15/03/2024&quot;)
+o1.AddDays(20)
 # +20 days crosses into April -&gt; 04/04/2024
-? o.Date()
-p = StzDateQ(&quot;15/03/2024&quot;)
-p.AddMonths(2)
+? o1.Date()
+p1 = StzDateQ(&quot;15/03/2024&quot;)
+p1.AddMonths(2)
 # +2 months -&gt; 15/05/2024
-? p.Date()
-q = StzDateQ(&quot;15/03/2024&quot;)
-q.AddYears(1)
+? p1.Date()
+q1 = StzDateQ(&quot;15/03/2024&quot;)
+q1.AddYears(1)
 # +1 year -&gt; 15/03/2025
-? q.Date()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>04/04/2024
+? q1.Date()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>04/04/2024
 15/05/2024
-15/03/2025</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/00_date_narrated.ring" target="_blank" rel="noopener noreferrer">00_date_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o = StzDateQ(&quot;15/03/2024&quot;)
+15/03/2025</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/00_date_narrated.ring" target="_blank" rel="noopener noreferrer">00_date_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = StzDateQ(&quot;15/03/2024&quot;)
 # Date() round-trips the string
-? o.Date()
+? o1.Date()
 # Day() is the weekday name Friday
-? o.Day()
+? o1.Day()
 # DayNumber() is 15
-? o.DayNumber()
+? o1.DayNumber()
 # Month() is March
-? o.Month()
+? o1.Month()
 # MonthNumber() is 3
-? o.MonthNumber()
+? o1.MonthNumber()
 # Year() is 2024
-? o.Year()
+? o1.Year()
 # DayOfYear() is 75 (leap-year Jan31+Feb29+15)
-? o.DayOfYear()
+? o1.DayOfYear()
 # 2024 IsLeapYear
-? o.IsLeapYear()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>15/03/2024
+? o1.IsLeapYear()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>15/03/2024
 Friday
 15
 March

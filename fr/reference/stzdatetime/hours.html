@@ -47,19 +47,19 @@
 ? oParsed.ToString()
 ? oParsed.ToString12h()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>14
 2024-03-15 14:30:45
-2024-03-15 2:30:45 PM</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/58_parsing_preserves_original_hour.ring" target="_blank" rel="noopener noreferrer">58_parsing_preserves_original_hour.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o = StzDateTimeQ(&quot;2024-03-15 10:30:45&quot;)
+2024-03-15 2:30:45 PM</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/datetime/58_parsing_preserves_original_hour.ring" target="_blank" rel="noopener noreferrer">58_parsing_preserves_original_hour.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = StzDateTimeQ(&quot;2024-03-15 10:30:45&quot;)
 # Year is 2024
-? o.Year()
+? o1.Year()
 # Month is 3
-? o.Month()
+? o1.Month()
 # Day is 15
-? o.Day()
+? o1.Day()
 # Hours is 10
-? o.Hours()
+? o1.Hours()
 # Minutes is 30
-? o.Minutes()
+? o1.Minutes()
 # Seconds is 45
-? o.Seconds()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>2024
+? o1.Seconds()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>2024
 3
 15
 10

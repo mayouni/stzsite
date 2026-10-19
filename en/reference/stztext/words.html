@@ -42,15 +42,15 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>t = new stzText(&quot;I love this wonderful product. The service was terrible and slow.&quot;)
+    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>t1 = new stzText(&quot;I love this wonderful product. The service was terrible and slow.&quot;)
 # SentencesQ() is still the basic stzList
-? classname(t.SentencesQ())
+? classname(t1.SentencesQ())
 # SentencesQQ() is stzListOfTexts immediately
-? classname(t.SentencesQQ())
+? classname(t1.SentencesQQ())
 # meaning ops chain off QQ on a text
-? t.SentencesQQ().MostSimilarByMeaning(&quot;great item&quot;)
+? t1.SentencesQQ().MostSimilarByMeaning(&quot;great item&quot;)
 # words stay lexical: WordsQQ() is stzListOfStrings
-? classname(t.WordsQQ())</pre></div><div class="out"><div class="lbl">Output</div><pre>stzlist
+? classname(t1.WordsQQ())</pre></div><div class="out"><div class="lbl">Output</div><pre>stzlist
 stzlistoftexts
 I love this wonderful product.
 stzlistofstrings</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/natural/text_query_layer_narrated.ring" target="_blank" rel="noopener noreferrer">text_query_layer_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>

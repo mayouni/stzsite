@@ -187,17 +187,20 @@ o1.AddEdge(&quot;B&quot;, &quot;D&quot;)
 #--&gt; rules</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzgraph/loadfromstzrulz.html">LoadFromStzRulz</a> .stzrulz format <span class="in">dans stzGraph</span><pre class="rx">oGraph = new stzGraph(&quot;org&quot;)
 oGraph.LoadFromStzRulz(&quot;../_data/bceao_banking.stzrulz&quot;)
 ? &quot;Rules loaded: &quot; + oGraph.NumberOfRules()
-? @@( oGraph.RulesSummary()[:Validation] )
-? @@( oGraph.RulesSummary()[:Constraint] )
 #--&gt; Rules loaded: 2
+
+? @@( oGraph.RulesSummary()[:Validation] )
 #--&gt; [ &quot;board_required&quot;, &quot;audit_independence&quot; ]
+
+? @@( oGraph.RulesSummary()[:Constraint] )
 #--&gt; [ ]</pre><span class="rx-src">test de la bibliothèque</span></li><li><a class="mono" href="../reference/stzorgchart/loadrulebase.html">LoadRuleBase</a> LoadRuleBase: stub for the future rule-base validation system. Accepts a file path, a class instance, or a pre-built profile name (string). For now it just records the source -- the actual rule-evaluation engine will land with the dedicated stzRuleBase class. <span class="in">dans stzOrgChart</span><pre class="rx">oOrg = new stzOrgChart(&quot;acme&quot;)
 oOrg.LoadRuleBase(new stzSOXRuleBase())
 # LoadRuleBase records the base
 ? len(oOrg.RuleBases()) &gt;= 1
+#--&gt; 1
+
 # ...the base kept its name
 ? (new stzSOXRuleBase()).Name()
-#--&gt; 1
 #--&gt; SOX</pre><span class="rx-src">test de la bibliothèque</span></li><li><a class="mono" href="../reference/stzgraph.html#saveto">SaveTo</a> serialization - file format support <span class="in">dans stzGraph</span></li><li><a class="mono" href="../reference/stzgraph.html#loadfrom">LoadFrom</a> serialization - file format support <span class="in">dans stzGraph</span></li><li><a class="mono" href="../reference/stzgraph.html#loadstzgraf">LoadStzGraf</a> .stzgraf format <span class="in">dans stzGraph</span></li><li><a class="mono" href="../reference/stzgraph.html#loadstzrulf">LoadStzRulf</a> .stzrulf format <span class="in">dans stzGraph</span></li><li><a class="mono" href="../reference/stzgraph.html#loadstzrulz">LoadStzRulz</a> .stzrulz format <span class="in">dans stzGraph</span></li><li><a class="mono" href="../reference/stzgraph.html#saveasstzsim">SaveAsStzSim</a> .stzsim format <span class="in">dans stzGraph</span></li><li><a class="mono" href="../reference/stzgraph.html#savetostzsim">SaveToStzSim</a> .stzsim format <span class="in">dans stzGraph</span></li><li><a class="mono" href="../reference/stzgraph.html#saveasstzgraf">SaveAsStzGraf</a> .stzgraf format <span class="in">dans stzGraph</span></li><li><a class="mono" href="../reference/stzgraph.html#saveasstzrulz">SaveAsStzRulz</a> .stzrulz format <span class="in">dans stzGraph</span></li></ul><p class="proof">et 19 autres dans la référence</p><h3>Parcourir et appliquer</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzgraphquery.html#execute">Execute</a> query execution <span class="in">dans stzGraphQuery</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">oG = new stzGraph(&quot;g&quot;)
 oG.AddNode(&quot;a&quot;)
 oG.AddNode(&quot;b&quot;)

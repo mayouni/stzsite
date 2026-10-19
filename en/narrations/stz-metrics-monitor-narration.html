@@ -118,7 +118,7 @@ tFork.Record(9)
 <h2 id="three-ways-to-run-the-monitor-the-third-one-is-the-point">Three ways to run the monitor -- the third one is the point</h2>
 <p><code>Sample()</code> pulls one sample now. <code>Tick()</code> samples only when the
 <code>Every()</code> cadence is due -- call it from any loop you already have.
-But the monitor also implements <code>Name_()</code> and <code>Cycle()</code> -- the house
+But the monitor also implements <code>Name()</code> and <code>Cycle()</code> -- the house
 agent contract -- so <strong>any <code>stzAgentHost</code> supervises it like any
 other agent</strong>, no adapter:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oMon2 = StzPerfMonitor(&quot;hosted&quot;)

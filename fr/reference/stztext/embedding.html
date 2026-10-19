@@ -42,19 +42,19 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o = new stzText(&quot;The cat sits on the mat&quot;)
+    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzText(&quot;The cat sits on the mat&quot;)
 # no model loaded here
-? o.HasSemanticModel()
+? o1.HasSemanticModel()
 # Embedding() is empty without a model
-? len(o.Embedding())
+? len(o1.Embedding())
 # SemanticSimilarityWith falls back to a lexical score in [-1,1]
-? o.SemanticSimilarityWith(&quot;A kitten rests on the rug&quot;) &gt;= 0
+? o1.SemanticSimilarityWith(&quot;A kitten rests on the rug&quot;) &gt;= 0
 # identical text is maximally similar (lexical)
-? o.SemanticSimilarityWith(&quot;The cat sits on the mat&quot;) &gt; 0.99
+? o1.SemanticSimilarityWith(&quot;The cat sits on the mat&quot;) &gt; 0.99
 # a non-string comparand is rejected
-? o.SemanticSimilarityWith(123)
+? o1.SemanticSimilarityWith(123)
 # IsSemanticallySimilarTo respects the threshold
-? o.IsSemanticallySimilarTo(&quot;The cat sits on the mat&quot;, 0.5)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0
+? o1.IsSemanticallySimilarTo(&quot;The cat sits on the mat&quot;, 0.5)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0
 0
 1
 1

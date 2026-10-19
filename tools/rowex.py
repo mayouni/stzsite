@@ -16,7 +16,7 @@ row, and the legend of the page counts how many rows have which.
 import json, html, re, sys, pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import qforms
-from haro import SHOWN
+from haro import SHOWN, shown_code
 
 def esc(s): return html.escape(str(s), quote=True)
 WORD = SHOWN   # the former name in code shown as the library wrote it (tools/haro.py)
@@ -71,6 +71,30 @@ def load(ROOT):
     d["also"] = {(c["name"], k): v for c in qforms.reference(ROOT)["classes"] for k, v in c["also_written"].items()}   # a method's other names
     d["detours"] = qforms.names(ROOT).get("detours", {})                                                              # spellings the host language forces
     return d
+
+def promise_body(code, out, n=None):
+    """the code as Haro shows it, with each promise (#-->) under the line that printed it and a blank line after -- the author,
+    2026-10-19: never a block of promises at the end. A one-line example carries its promise on the same line when it fits. When
+    the outputs and the `?` lines do not pair, or the output is cut to n lines, the promises stay as a block under the code"""
+    code = shown_code(code)
+    lines = code.strip(NL).split(NL)
+    outs = [l.rstrip() for l in str(out).split(NL) if l.strip() != ""]
+    cut = n is not None and len(outs) > n
+    if cut: outs = outs[:n] + ["..."]
+    q = [i for i, l in enumerate(lines) if l.strip().startswith("?")]
+    if len(lines) == 1 and len(outs) == 1 and len(lines[0]) + len(outs[0]) < 64:
+        return lines[0] + "   #--> " + outs[0]
+    ind = lambda l: l[:len(l) - len(l.lstrip())]
+    if not cut and q and len(q) == len(outs):
+        res = []
+        for i, l in enumerate(lines):
+            res.append(l)
+            if i in q: res += [ind(l) + "#--> " + outs[q.index(i)], ""]
+        return NL.join(res).rstrip(NL)
+    if not cut and len(q) == 1:
+        i = q[0]
+        return NL.join(lines[:i + 1] + [ind(lines[i]) + "#--> " + o for o in outs] + [""] + lines[i + 1:]).rstrip(NL)
+    return NL.join(lines) + NL + NL.join("#--> " + o for o in outs)
 
 def out_lines(out, n=4):
     ls = [l.rstrip() for l in str(out).split(NL) if l.strip() != ""]
@@ -127,7 +151,7 @@ def example_html(cls, name, exs, data, lang):
     code, out, src = ex
     if src == "new" and data["classes"].get(cls, {}).get("receiver", "x") == "": src = "named"      # a sentence class: composed from the name
     code, used = natural(code, data.get("detours"))
-    body = esc(code) + NL + NL.join("#--&gt; " + esc(l) for l in out_lines(out))
+    body = esc(promise_body(code, out, 4))
     note = (" · " + esc(detour_note(used, data["detours"], lang))) if used else ""
     if src == "lib":
         return f'<pre class="rx">{body}</pre><span class="rx-src">{T[lang][src]}{note}</span>'
@@ -158,7 +182,7 @@ def legend(c, entries, data, lang):
 
 def _html(code, out, src, lang, on=None, detours=None):
     code, used = natural(code, detours)
-    body = esc(code) + NL + NL.join("#--&gt; " + esc(l) for l in out_lines(out))
+    body = esc(promise_body(code, out, 4))
     label = T[lang][src] + (f" · {on}" if on else "") + ((" · " + detour_note(used, detours, lang)) if used else "")
     return f'<pre class="rx">{body}</pre><span class="rx-src">{label}</span>'
 

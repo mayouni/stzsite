@@ -44,18 +44,23 @@
   <div class="wrap page-body">
     <div class="essay"><p><code>stzRegex</code> is a regular expression you can question: does the whole text fit, does the pattern occur anywhere, what did it capture and under which names, and, as the user types, is the input still on its way to a match.</p><p>The pattern itself is standard <code>PCRE2</code>, with Unicode always on and the whole feature set: lookaround, backreferences, recursion, conditionals. What the class adds is clarity about the question. <code>Match(text)</code> anchors the pattern on the whole content; <code>MatchFirst(text)</code> searches it anywhere; <code>MatchLine</code>, <code>MatchWord</code> and <code>MatchSegment</code> choose the scope in the verb instead of a flag set somewhere else. <code>Matches()</code> returns every value found, <code>MatchesZ()</code> the values with their positions, <code>CaptureXT()</code> the named groups as pairs.</p><p>Its most unusual gift is partial matching: <code>MatchAsYouType(&quot;123-45&quot;)</code> answers yes for a social-security pattern because the text can still become a match, and no for <code>&quot;abc&quot;</code>, which lets a form validate a field while it is being typed. A pattern can also come from the catalogue by name, <code>rx(pat(:url))</code>, and explain itself.</p><p>It serves wherever text must be recognised rather than merely searched: validating input, extracting fields from logs and lines, tokenising, driving the <code>stzRegexuter</code> that runs code at each match. For building a pattern from words instead of symbols, see <code>stzRegexMaker</code>.</p></div><h2>The most expressive uses</h2><p>Three methods that show what the class is for; every example was run inside the library.</p><div class="uses"><div class="use"><h3 class="mono">MatchAsYouType</h3><p>A field validated while it is typed: <code>123-45</code> is still on its way to a social-security number, <code>abc</code> never will be.</p><pre class="rx">o1 = new stzRegex(&quot;(https?://)?(www\.)?[\w-]+\.com&quot;)
 ? o1.MatchAsYouType(&quot;www.&quot;)
+#--&gt; 1
+
 ? o1.MatchAsYouType(&quot;https://&quot;)
+#--&gt; 1
+
 ? o1.MatchAsYouType(&quot;example&quot;)
+#--&gt; 1
+
 ? o1.MatchAsYouType(&quot;example.&quot;)
+#--&gt; 1
+
 ? o1.MatchAsYouType(&quot;example.com&quot;)
-#--&gt; 1
-#--&gt; 1
-#--&gt; 1
-#--&gt; 1
 #--&gt; 1</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">MatchWordsIn</h3><p>The scope is in the verb: match whole words, not a flag set elsewhere.</p><pre class="rx">o1 = new stzRegex(&quot;pre\w+&quot;)
 ? o1.MatchWordsIn(&quot;prefix preprocess present compress&quot;)  # matches pre* words
-? o1.MatchWordsIn(&quot;compress&quot;)
 #--&gt; 1
+
+? o1.MatchWordsIn(&quot;compress&quot;)
 #--&gt; 0</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">PartialMatchInfo</h3><p>When a match is partial, the object says what matched and where it stopped.</p><pre class="rx">o1 = new stzRegex(&quot;hello\d{3}&quot;)
 ? @@NL(o1.PartialMatchInfo(&quot;hello12&quot;))
 #--&gt; [
@@ -88,8 +93,9 @@ o1.SetPattern(&quot;an&quot;)
 ? o1.MatchFirstLineIn(&quot;an&quot;)
 #--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="matchwordsin" data-k="matchwordsin matchword "><span id="matchword"></span><div class="ln mono"><a href="stzregex/matchwordsin.html">MatchWordsIn</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">match words in</span> <a class="ex" href="stzregex/matchwordsin.html">1 examples run</a><small>also written: <span class="mono">MatchWord</span></small><small>in the section <b>matching methods</b></small><pre class="rx">o1 = new stzRegex(&quot;pre\w+&quot;)
 ? o1.MatchWordsIn(&quot;prefix preprocess present compress&quot;)  # matches pre* words
-? o1.MatchWordsIn(&quot;compress&quot;)
 #--&gt; 1
+
+? o1.MatchWordsIn(&quot;compress&quot;)
 #--&gt; 0</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="matchfirstwordin" data-k="matchfirstwordin matchfirstword "><span id="matchfirstword"></span><div class="ln mono">MatchFirstWordIn</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">match first word in</span><small>also written: <span class="mono">MatchFirstWord</span></small><small>in the section <b>matching methods</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzRegex(&quot;[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+&quot;)
 ? o1.MatchFirstWordIn(&quot;an&quot;)
 #--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="matchsegmentsin" data-k="matchsegmentsin matchsegment "><span id="matchsegment"></span><div class="ln mono">MatchSegmentsIn</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">match segments in</span><small>also written: <span class="mono">MatchSegment</span></small><small>in the section <b>matching methods</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzRegex(&quot;[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+&quot;)
@@ -134,12 +140,15 @@ o1.SetPattern(&quot;an&quot;)
 #--&gt; 1
 #--&gt; ...</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="matchinprogress" data-k="matchinprogress searchinprogress the search counterpart: is a match either present, or still possible if more text arrives? used for progressive/incremental search."><span id="searchinprogress"></span><div class="ln mono"><a href="stzregex/matchinprogress.html">MatchInProgress</a></div><div class="lt">The search counterpart: is a match either present, or still possible if more text arrives? Used for progressive/incremental search. <a class="ex" href="stzregex/matchinprogress.html">1 examples run</a><small>also written: <span class="mono">SearchInProgress</span></small><pre class="rx">o1 = new stzRegex(&quot;quick.*fox&quot;)
 ? o1.MatchInProgress(&quot;qui&quot;)
+#--&gt; 1
+
 ? o1.MatchInProgress(&quot;quick br&quot;)
+#--&gt; 1
+
 ? o1.MatchInProgress(&quot;quick brown f&quot;)
+#--&gt; 1
+
 ? o1.MatchInProgress(&quot;slow&quot;)
-#--&gt; 1
-#--&gt; 1
-#--&gt; 1
 #--&gt; 0</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="partialmatchinfo" data-k="partialmatchinfo matchpartialinfo "><span id="matchpartialinfo"></span><div class="ln mono"><a href="stzregex/partialmatchinfo.html">PartialMatchInfo</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">partial match info</span> <a class="ex" href="stzregex/partialmatchinfo.html">6 examples run</a><small>also written: <span class="mono">MatchPartialInfo</span></small><small>in the section <b>partial match</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzRegex(&quot;[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+&quot;)
 ? @@( o1.PartialMatchInfo(&quot;an&quot;) )
 #--&gt; [ [ &quot;matchtype&quot;, &quot;partial&quot; ], [ &quot;matched&quot;, &quot;an&quot; ], [ &quot;section&quot;, [ 1, 2 ] ] ]</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="findpartialmatch" data-k="findpartialmatch  "><div class="ln mono"><a href="stzregex/findpartialmatch.html">FindPartialMatch</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">find partial match</span> <a class="ex" href="stzregex/findpartialmatch.html">2 examples run</a><small>in the section <b>partial match</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzRegex(&quot;[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+&quot;)

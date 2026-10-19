@@ -59,9 +59,9 @@
 [ [ 4, 6 ], [ 10, 11 ], [ 14, 16 ], [ 20, 21 ] ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/global/29_findmany.ring" target="_blank" rel="noopener noreferrer">29_findmany.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre># FindZZ locates the section of Programming
 ? @@( Q(&quot;Softanza Programming by Heart&quot;).FindZZ(&quot;Programming&quot;) )
 # ReplaceInSection m-&gt;M inside [10,20]
-o = new stzString(&quot;Softanza Programming by Heart&quot;)
-o.ReplaceInSection(&quot;m&quot;, &quot;M&quot;, 10, 20)
-? o.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ [ 10, 20 ] ]
+o1 = new stzString(&quot;Softanza Programming by Heart&quot;)
+o1.ReplaceInSection(&quot;m&quot;, &quot;M&quot;, 10, 20)
+? o1.Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ [ 10, 20 ] ]
 Softanza PrograMMing by Heart</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/03_findzz.ring" target="_blank" rel="noopener noreferrer">03_findzz.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
 big  = new stzString( oAB.Repeated(1000000) )
 # NumberOfOccurrences(&#x27;a&#x27;) is 1,000,000 (&gt; 65536)

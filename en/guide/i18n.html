@@ -82,8 +82,9 @@ oTomorrow = new stzDate(:Tomorrow)
 ? o1.ToRelative()
 #--&gt; 2 years ago</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzdatetime/tounixtimestamp.html">ToUnixTimeStamp</a> unix timestamp <span class="in">in stzDateTime</span><pre class="rx">oDateTime = StzDateTimeQ(1710498600) # March 15, 2024, 10:30:00 UTC
 ? oDateTime.Content()
-? oDateTime.ToUnixTimeStamp()
 #--&gt; 2024-03-15 10:30:00
+
+? oDateTime.ToUnixTimeStamp()
 #--&gt; 1710498600</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzdatetime.html#tounixtimestampms">ToUnixTimeStampMs</a> unix timestamp <span class="in">in stzDateTime</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
 ? o1.ToUnixTimeStampMs()
 #--&gt; 1728000000000</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzdate/tojulianday.html">ToJulianDay</a> julian day methods <span class="in">in stzDate</span><pre class="rx">o1 = new stzDate(&quot;2025-10-10&quot;)

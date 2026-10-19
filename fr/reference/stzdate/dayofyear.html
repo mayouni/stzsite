@@ -42,23 +42,23 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o = StzDateQ(&quot;15/03/2024&quot;)
+    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = StzDateQ(&quot;15/03/2024&quot;)
 # Date() round-trips the string
-? o.Date()
+? o1.Date()
 # Day() is the weekday name Friday
-? o.Day()
+? o1.Day()
 # DayNumber() is 15
-? o.DayNumber()
+? o1.DayNumber()
 # Month() is March
-? o.Month()
+? o1.Month()
 # MonthNumber() is 3
-? o.MonthNumber()
+? o1.MonthNumber()
 # Year() is 2024
-? o.Year()
+? o1.Year()
 # DayOfYear() is 75 (leap-year Jan31+Feb29+15)
-? o.DayOfYear()
+? o1.DayOfYear()
 # 2024 IsLeapYear
-? o.IsLeapYear()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>15/03/2024
+? o1.IsLeapYear()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>15/03/2024
 Friday
 15
 March

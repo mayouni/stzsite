@@ -299,17 +299,17 @@ aMatches = oTx.MatchingTablesIn(aTables)
 oQuality = new stzTablex(&quot;{unique(id) &amp; @!nulls(email)}&quot;)
 
 # Combine with AND
-oComplete = oStructure.And_(oQuality)
+oComplete = oStructure.And(oQuality)
 ? oComplete.Pattern()
 #--&gt; {cols(3) &amp; rows(&gt;5) &amp; unique(id) &amp; @!nulls(email)}
 
 # Combine with OR
-oFlexible = oStructure.Or_(oQuality)
+oFlexible = oStructure.Or(oQuality)
 ? oFlexible.Pattern()
 #--&gt; {cols(3) &amp; rows(&gt;5) | unique(id) &amp; @!nulls(email)}
 
 # Negate
-oInverse = oQuality.Not_()
+oInverse = oQuality.Not()
 ? oInverse.Pattern()
 #--&gt; {@!unique(id) &amp; @!nulls(email)}</pre><p class="ran nv-illus">illustration</p></div>
 <p>This compositional approach encourages pattern libraries—reusable validation rules across your application.</p>
@@ -435,7 +435,7 @@ aExplain = oTx.Explain()
 </tr>
 <tr>
 <td><strong>Pattern composition</strong></td>
-<td>✅ <code>And_()</code>, <code>Or_()</code>, <code>Not_()</code></td>
+<td>✅ <code>And()</code>, <code>Or()</code>, <code>Not()</code></td>
 <td>❌</td>
 <td>❌</td>
 <td>⚠️ Nested ifs</td>

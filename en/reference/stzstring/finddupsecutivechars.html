@@ -43,11 +43,11 @@
   <div class="wrap page-body">
     
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oA = new stzString(&quot;a&quot;)
-s = new stzString( oA.Repeated(1000) )
+s1 = new stzString( oA.Repeated(1000) )
 # ConsecutiveSubStrings count is 375,250
-? len(s.ConsecutiveSubStrings())
+? len(s1.ConsecutiveSubStrings())
 # FindDupSecutiveChars is 999 (positions 2..1000)
-? len(s.FindDupSecutiveChars())</pre></div><div class="out"><div class="lbl">Output</div><pre>375250
+? len(s1.FindDupSecutiveChars())</pre></div><div class="out"><div class="lbl">Output</div><pre>375250
 999</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/998_engine_string_largedata_narrated.ring" target="_blank" rel="noopener noreferrer">998_engine_string_largedata_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
 big  = new stzString( oAB.Repeated(1000000) )
 oaA = new stzString(&quot;aA&quot;)
@@ -62,19 +62,19 @@ bigab = new stzString( oAB2.Repeated(100000) )  # &quot;abab...&quot; 200,000 ch
 ? len(bigab.FindDupSecutiveSubString(&quot;ab&quot;))</pre></div><div class="out"><div class="lbl">Output</div><pre>0
 999999
 99999</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring" target="_blank" rel="noopener noreferrer">999_engine_string_millions_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oA = new stzString(&quot;a&quot;)
-s = new stzString( oA.Repeated(100) )
+s1 = new stzString( oA.Repeated(100) )
 # NumberOfSubStrings is 5,050
-? s.NumberOfSubStrings()
+? s1.NumberOfSubStrings()
 # SubStrings() enumerates 5,050
-? len(s.SubStrings())
+? len(s1.SubStrings())
 # SubStringsU() is 100
-? len(s.SubStringsU())
+? len(s1.SubStringsU())
 # DuplicatesCS(1) is 50
-? len(s.DuplicatesCS(1))
+? len(s1.DuplicatesCS(1))
 # ConsecutiveSubStrings is 3,775
-? len(s.ConsecutiveSubStrings())
+? len(s1.ConsecutiveSubStrings())
 # FindDupSecutiveChars is 99
-? len(s.FindDupSecutiveChars())</pre></div><div class="out"><div class="lbl">Output</div><pre>5050
+? len(s1.FindDupSecutiveChars())</pre></div><div class="out"><div class="lbl">Output</div><pre>5050
 5050
 100
 50

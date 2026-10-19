@@ -70,16 +70,16 @@ aMatrix = [
 	[4, 5, 6],
 	[7, 8, 9]
 ]
-? oMx.Match(aMatrix)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1</pre></div></div><p class="ran">exécuté le 2026-10-09 02:11 dans la bibliothèque au commit 4a184e6f0 ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/01_matching_exact_size.ring" target="_blank" rel="noopener noreferrer">base/test/matrex/01_matching_exact_size.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p style="margin-top:32px"><b>Sur un graphe : un chemin d&#x27;un nœud, d&#x27;une arête et d&#x27;un nœud est le motif, reconnu sans égard à la casse ; un nœud absent ne correspond pas.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>g = new stzGraph(&quot;Mixed&quot;)
-g.AddNodeXT(:a, &quot;Start&quot;)
-g.AddNodeXT(:b, &quot;PROCESS&quot;)
-g.AddNodeXT(:c, &quot;end&quot;)
-g.AddEdgeXT(:a, :b, &quot;Flows&quot;)
-g.AddEdgeXT(:b, :c, &quot;COMPLETES&quot;)
-gx = new stzGraphex(&quot;{@Node(start) -&gt; @Edge(flows) -&gt; @Node(process)}&quot;, g)
-? gx.Match(g)
-gy = new stzGraphex(&quot;{@Node(zzz)}&quot;, g)
-? gy.Match(g)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+? oMx.Match(aMatrix)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1</pre></div></div><p class="ran">exécuté le 2026-10-09 02:11 dans la bibliothèque au commit 4a184e6f0 ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/matrex/01_matching_exact_size.ring" target="_blank" rel="noopener noreferrer">base/test/matrex/01_matching_exact_size.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p style="margin-top:32px"><b>Sur un graphe : un chemin d&#x27;un nœud, d&#x27;une arête et d&#x27;un nœud est le motif, reconnu sans égard à la casse ; un nœud absent ne correspond pas.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>g1 = new stzGraph(&quot;Mixed&quot;)
+g1.AddNodeXT(:a, &quot;Start&quot;)
+g1.AddNodeXT(:b, &quot;PROCESS&quot;)
+g1.AddNodeXT(:c, &quot;end&quot;)
+g1.AddEdgeXT(:a, :b, &quot;Flows&quot;)
+g1.AddEdgeXT(:b, :c, &quot;COMPLETES&quot;)
+gx = new stzGraphex(&quot;{@Node(start) -&gt; @Edge(flows) -&gt; @Node(process)}&quot;, g1)
+? gx.Match(g1)
+gy = new stzGraphex(&quot;{@Node(zzz)}&quot;, g1)
+? gy.Match(g1)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
 0</pre></div></div><p class="ran">exécuté le 2026-10-09 02:11 dans la bibliothèque au commit 4a184e6f0 ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphex/00_graphex_narrated.ring" target="_blank" rel="noopener noreferrer">base/test/graphex/00_graphex_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
 
 <h2 id="claim">Ce qu'on peut en dire</h2>

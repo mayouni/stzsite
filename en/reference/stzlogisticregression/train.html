@@ -42,22 +42,22 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o = new stzLogisticRegression(new stzTrainingSet([
+    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzLogisticRegression(new stzTrainingSet([
 		[ [0.0], &quot;lo&quot; ], [ [0.1], &quot;lo&quot; ], [ [0.2], &quot;lo&quot; ],
 		[ [0.8], &quot;hi&quot; ], [ [0.9], &quot;hi&quot; ], [ [1.0], &quot;hi&quot; ] ]))
-o.Train(300)
+o1.Train(300)
 # the weight has the sign the data implies
-? o.Weights()[1] &gt; 0
+? o1.Weights()[1] &gt; 0
 # low input -&gt; low class
-? o.Classify([0.05])
+? o1.Classify([0.05])
 # high input -&gt; high class
-? o.Classify([0.95])
+? o1.Classify([0.95])
 # ...and the boundary sits between them
-? o.Probability([0.05]) &lt; 0.5 and o.Probability([0.95]) &gt; 0.5
+? o1.Probability([0.05]) &lt; 0.5 and o1.Probability([0.95]) &gt; 0.5
 # it fits its own training data
-? o.TrainingAccuracy()
+? o1.TrainingAccuracy()
 # Why() still narrates
-? StzFindFirst(&quot;P(&#x27;hi&#x27;)&quot;, o.Why()) &gt; 0</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+? StzFindFirst(&quot;P(&#x27;hi&#x27;)&quot;, o1.Why()) &gt; 0</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 lo
 hi
 1

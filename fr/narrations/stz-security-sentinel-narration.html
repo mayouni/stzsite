@@ -110,7 +110,7 @@ fired during the attack, and the case records both the attack and the
 response — because both went through seams in I2.</p>
 <h2 id="three-ways-to-run-it-one-of-them-hands-free">Three ways to run it, one of them hands-free</h2>
 <p><code>Check()</code> when you like; <code>Every(ms)</code> + <code>Tick()</code> from a loop you
-already run; or — the one that matters — <code>Name_()</code> + <code>Cycle()</code>, the
+already run; or — the one that matters — <code>Name()</code> + <code>Cycle()</code>, the
 house agent contract, so <strong>any <code>stzAgentHost</code> supervises it</strong>:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oHost.Supervise(oSentinel, 50)
 oHost.RunFor(260)</pre><p class="ran nv-illus">illustration</p></div>

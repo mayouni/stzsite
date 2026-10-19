@@ -92,3 +92,34 @@ if __name__ == "__main__":
         print(f"{sum(len(v) for v in rec.values())} lines renamed in {len(rec)} files; every difference is a name or a declared data pair")
     else:
         print(__doc__)
+
+# ---- the code as Haro shows it (the author, 2026-10-19) -------------------------------------------------------------
+# The runtime the library grew in is retired, and the spellings it forced are not reflected on the site: a method it made end in
+# `_` because the bare word was its keyword (End_, Get_, Put_, Call_, Name_, Id_) is shown without the underscore. And an object
+# named by one letter (o = new ...) is shown with a digit (o1): a letter is not a name.
+UNDERSCORE = re.compile(r"(?<=[A-Za-z0-9])_(?=\()")
+SINGLE = re.compile(r"^[ \t]*([A-Za-z])[ \t]*=[ \t]*(?:new\b|Stz\w*Q\()", re.M)
+STRINGS = re.compile(r'("(?:[^"\\]|\\.)*"|\'(?:[^\'\\]|\\.)*\')')
+
+def shown_code(code):
+    """the code with a forced trailing underscore removed from every call, and a one-letter object renamed, outside string literals"""
+    code = UNDERSCORE.sub("", code)
+    for letter in dict.fromkeys(SINGLE.findall(code)):
+        new, k = letter + "1", 1
+        while re.search(r"\b" + new + r"\b", code): k += 1; new = letter + str(k)
+        use = re.compile(r"(?<![\w'\"])" + letter + r"(?=\s*(?:[.=\{\)\],]|$))", re.M)
+        parts = STRINGS.split(code)
+        code = "".join(p if i % 2 else use.sub(new, p) for i, p in enumerate(parts))
+    return code
+
+def shown_names(root):
+    """on every page of the site (the reference, the atlas, the guides, the narrations, the recipes), a shown method name loses
+    the forced trailing underscore; returns the count"""
+    rx = re.compile(r"(?<=[A-Za-z0-9])_(?=\(|</| · )")
+    n = 0
+    for d in (pathlib.Path(root) / "en", pathlib.Path(root) / "fr", pathlib.Path(root)):
+        for f in (d.rglob("*.html") if d.name in ("en", "fr") else d.glob("*.html")):
+            s = f.read_text(encoding="utf-8")
+            t, k = rx.subn("", s)
+            if k: f.write_text(t, encoding="utf-8"); n += k
+    return n

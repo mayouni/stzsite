@@ -29,7 +29,7 @@ import qforms
 import build_proof
 import external
 import build_search
-from haro import SHOWN
+from haro import SHOWN, shown_code, shown_names
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -484,7 +484,7 @@ def inject(body_html, lang, idx, groups, rel="../"):
                 ran = {"fr": "exécuté le {d} dans la bibliothèque au commit {c}", "en": "run on {d} inside the library at commit {c}"}[lang].format(d=run["ran"], c=run["commit"])
                 lbl = {"fr": "Sortie", "en": "Output"}[lang]
                 lcode = {"EDUREC": {"fr": "En ligne de commande", "en": "At the command line"}}.get(tag, {}).get(lang, "Softanza")
-                return (f'<div class="run"><div><div class="lbl">{lcode}</div><pre>{esc(seg["code"])}</pre></div>'
+                return (f'<div class="run"><div><div class="lbl">{lcode}</div><pre>{esc(shown_code(seg["code"]))}</pre></div>'
                         f'<div class="out"><div class="lbl">{lbl}</div><pre>{esc(seg["out"])}</pre></div></div><p class="ran">{ran}</p>')
             body_html = re.sub(r"<!--" + tag + r":(\w+)-->", run_block, body_html).replace(f"<!--{tag}-RAN-->", run["ran"])
     if "<!--PROOF-->" in body_html:
@@ -687,7 +687,7 @@ def showcase_html(lang, slug, heading=True, only=None):
     parts = [f'<h2>{ui["h"]}</h2><p>{ui["intro"]}</p>'] if heading else []
     for it in items:
         parts.append(f'<p style="margin-top:32px"><b>{esc(it["what_" + lang])}</b></p>'
-                     f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(it["code"])}</pre></div>'
+                     f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(shown_code(it["code"]))}</pre></div>'
                      f'<div class="out"><div class="lbl">{out_lbl}</div><pre>{esc(it["out"])}</pre></div></div>'
                      f'<p class="ran">{ui["ran"].format(d=esc(it["ran"]), c=esc(it.get("commit", "0e72e2e2c")))} <a href="{esc(src_link(it["source"]))}">{esc(it["source"].split(" ")[0])}</a></p>')
     return "".join(parts)
@@ -712,7 +712,7 @@ def build_group_page(lang, idx, groups, i):
         example = showcase_html(lang, g["slug"])
     elif run.get("code"):
         example = (f'<h2>{ui["example"]}</h2><p>{esc(run.get("intro_" + lang, ""))}</p>'
-                   f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(run["code"])}</pre></div><div class="out"><div class="lbl">{ui["output"]}</div><pre>{esc(run["out"])}</pre></div></div>'
+                   f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(shown_code(run["code"]))}</pre></div><div class="out"><div class="lbl">{ui["output"]}</div><pre>{esc(run["out"])}</pre></div></div>'
                    f'<p class="ran">{esc(run.get("ran_" + lang, ""))}</p>')
     elif run.get("image"):
         example = (f'<h2>{ui["example"]}</h2><p>{esc(run.get("intro_" + lang, ""))}</p>'
@@ -1069,7 +1069,7 @@ def grammar_html(lang):
             elif x["error"]: verdict, shown, lbl = (ui["missing"] if "without definition" in x["error"] else ui["raised"]), x["error"], ui["answered"]
             else: verdict, shown, lbl = ui["differs"], x["out"], ui["out"]
             prom = " / ".join(x["promise"].split("\n"))
-            out.append(f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(x["code"])}</pre></div><div class="out"><div class="lbl">{lbl}</div><pre>{esc(shown)}</pre></div></div>'
+            out.append(f'<div class="run"><div><div class="lbl">Softanza</div><pre>{esc(shown_code(x["code"]))}</pre></div><div class="out"><div class="lbl">{lbl}</div><pre>{esc(shown)}</pre></div></div>'
                        f'<p class="ran"><b>{esc(verdict)}</b> · {ui["promised"]} : {esc(prom)} · {esc(ui["ran"].format(d=r["ran"], c=r["commit"]))}</p>')
     return "".join(out)
 
@@ -1383,6 +1383,7 @@ def main():
     if LONG:
         print("reading arc (Rule 123), paragraphs past 800 characters:")
         for l in LONG: print("  ", l)
+    print(f"haro names: {shown_names(ROOT)} forced trailing underscores removed from shown method names")
     print("contrast:")
     if not check_contrast():
         print("CONTRAST BELOW TARGET"); sys.exit(1)

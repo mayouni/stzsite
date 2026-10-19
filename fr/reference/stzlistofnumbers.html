@@ -46,24 +46,31 @@
 ? @@( o1.ClassifyByNearestTo([ 2, 3 ]) )
 #--&gt; [ [ 2, [ ] ], [ 3, [ 4, 8, 15, 16, 23, 42 ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></div><div class="use"><h3 class="mono">Nearest</h3><p>La valeur la plus proche d&#x27;une cible, quelle que soit la façon de la dire.</p><pre class="rx">o1 = new stzListOfNumbers([ 2, 7, 18, 18, 10, 12, 25, 4 ])
 ? o1.Nearest(88)
-? o1.Nearst(17) #NOTE this is a misspelled form of Nearest()
-? o1.NearestTo(10)
-? o1.Nearest( :To = 12 )
-? o1.Nearest(2)
-? o1.Nearest(1)
 #--&gt; 25
+
+? o1.Nearst(17) #NOTE this is a misspelled form of Nearest()
 #--&gt; 18
+
+? o1.NearestTo(10)
 #--&gt; 12
+
+? o1.Nearest( :To = 12 )
 #--&gt; 10
+
+? o1.Nearest(2)
 #--&gt; 4
+
+? o1.Nearest(1)
 #--&gt; 2</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">Steps</h3><p>Les pas entre nombres consécutifs, repliés quand ils se répètent.</p><pre class="rx">o1 = new stzListOfNumbers([ 1, 2, 3, 4, 5 ])
 ? @@( o1.Steps() )
+#--&gt; [ 1 ]
+
 o1 = new stzListOfNumbers([ 1, 2, 5, 6, 9, 10 ])
 ? @@( o1.Steps() )
+#--&gt; [ 1, 3 ]
+
 o1 = new stzListOfNumbers([ 4, 8, 2, 3, 7, 1, 2 ])
 ? @@( o1.Steps() )
-#--&gt; [ 1 ]
-#--&gt; [ 1, 3 ]
 #--&gt; [ 4, -6, 1 ]</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">Cumulate</h3><p>Le total cumulé, sur place.</p><pre class="rx">o1 = new stzListOfNumbers([ 1, 2, 3, 4, 5, 6, 7, 8, 9 ])
 o1.Cumulate()
 ? @@( o1.Content() )
@@ -111,20 +118,26 @@ o1.Cumulate()
 ? @@( o1.BottomNAndTheirPositions(2) )
 #--&gt; [ [ 4, 1 ], [ 8, 2 ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="findmin" data-k="findmin  finding the smalles number"><div class="ln mono"><a href="stzlistofnumbers/findmin.html">FindMin</a></div><div class="lt">finding the smalles number <a class="ex" href="stzlistofnumbers/findmin.html">1 exemples exécutés</a><pre class="rx">o1 = new stzListOfNumbers([ 12, 10, 98, 3, 23, 98, 7 ])
 ? o1.Min()
-? o1.FindMin() + NL
-? o1.Max()
-? o1.FindMax()
 #--&gt; 3
+
+? o1.FindMin() + NL
 #--&gt; 4
+
+? o1.Max()
 #--&gt; 98
+
+? o1.FindMax()
 #--&gt; 3</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="min" data-k="min minnumber finding the smalles number"><span id="minnumber"></span><div class="ln mono"><a href="stzlistofnumbers/min.html">Min</a></div><div class="lt">finding the smalles number <a class="ex" href="stzlistofnumbers/min.html">1 exemples exécutés</a><small>aussi écrite: <span class="mono">MinNumber</span></small><pre class="rx">o1 = new stzListOfNumbers([ 12, 10, 98, 3, 23, 98, 7 ])
 ? o1.Min()
-? o1.FindMin() + NL
-? o1.Max()
-? o1.FindMax()
 #--&gt; 3
+
+? o1.FindMin() + NL
 #--&gt; 4
+
+? o1.Max()
 #--&gt; 98
+
+? o1.FindMax()
 #--&gt; 3</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts"><i class="n" title="Q: enchaîne (n&#x27;existe pas pour cette méthode)">Q</i><i class="n" title="CS: casse (n&#x27;existe pas pour cette méthode)">CS</i><i class="n" title="XT: étendue (n&#x27;existe pas pour cette méthode)">XT</i><i class="y" title="Z: positions">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="minanditsposition" data-k="minanditsposition  finding the smalles number"><div class="ln mono">MinAndItsPosition</div><div class="lt">finding the smalles number<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzListOfNumbers([ 4, 8, 15, 16, 23, 42 ])
 ? @@( o1.MinAndItsPosition() )
 #--&gt; [ 42, 6 ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="minnumberanditsposition" data-k="minnumberanditsposition  finding the smalles number"><div class="ln mono">MinNumberAndItsPosition</div><div class="lt">finding the smalles number<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzListOfNumbers([ 4, 8, 15, 16, 23, 42 ])
@@ -195,20 +208,26 @@ o1.Cumulate()
 ? @@( o1.TopNAndTheirPositions(2) )
 #--&gt; [ [ 23, 5 ], [ 42, 6 ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="findmax" data-k="findmax  finding the largest number"><div class="ln mono"><a href="stzlistofnumbers/findmax.html">FindMax</a></div><div class="lt">finding the largest number <a class="ex" href="stzlistofnumbers/findmax.html">1 exemples exécutés</a><pre class="rx">o1 = new stzListOfNumbers([ 12, 10, 98, 3, 23, 98, 7 ])
 ? o1.Min()
-? o1.FindMin() + NL
-? o1.Max()
-? o1.FindMax()
 #--&gt; 3
+
+? o1.FindMin() + NL
 #--&gt; 4
+
+? o1.Max()
 #--&gt; 98
+
+? o1.FindMax()
 #--&gt; 3</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="max" data-k="max maxnumber finding the largest number"><span id="maxnumber"></span><div class="ln mono"><a href="stzlistofnumbers/max.html">Max</a></div><div class="lt">finding the largest number <a class="ex" href="stzlistofnumbers/max.html">2 exemples exécutés</a><small>aussi écrite: <span class="mono">MaxNumber</span></small><pre class="rx">o1 = new stzListOfNumbers(1:8)
 ? o1.sum()
-? o1.Product()
-? o1.Max()
-? o1.Mean()
 #--&gt; 36
+
+? o1.Product()
 #--&gt; 40320
+
+? o1.Max()
 #--&gt; 8
+
+? o1.Mean()
 #--&gt; 4.50</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts"><i class="n" title="Q: enchaîne (n&#x27;existe pas pour cette méthode)">Q</i><i class="n" title="CS: casse (n&#x27;existe pas pour cette méthode)">CS</i><i class="n" title="XT: étendue (n&#x27;existe pas pour cette méthode)">XT</i><i class="y" title="Z: positions">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="maxanditsposition" data-k="maxanditsposition  finding the largest number"><div class="ln mono">MaxAndItsPosition</div><div class="lt">finding the largest number<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzListOfNumbers([ 4, 8, 15, 16, 23, 42 ])
 ? @@( o1.MaxAndItsPosition() )
 #--&gt; [ 42, 6 ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="maxnumberanditsposition" data-k="maxnumberanditsposition  finding the largest number"><div class="ln mono">MaxNumberAndItsPosition</div><div class="lt">finding the largest number<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzListOfNumbers([ 4, 8, 15, 16, 23, 42 ])
@@ -283,50 +302,63 @@ o1.Cumulate()
 ? @@( o1.ClassifyByNearestTo([ 2, 3 ]) )
 #--&gt; [ [ 2, [ ] ], [ 3, [ 4, 8, 15, 16, 23, 42 ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="steps" data-k="steps  returns the minimal repeating pattern of steps (differences) between consecutive numbers in the list made for use with stzwalker classes"><div class="ln mono"><a href="stzlistofnumbers/steps.html">Steps</a></div><div class="lt">Returns the minimal repeating pattern of steps (differences) between consecutive numbers in the list Made for use with stzWalker classes <a class="ex" href="stzlistofnumbers/steps.html">1 exemples exécutés</a><pre class="rx">o1 = new stzListOfNumbers([ 1, 2, 3, 4, 5 ])
 ? @@( o1.Steps() )
+#--&gt; [ 1 ]
+
 o1 = new stzListOfNumbers([ 1, 2, 5, 6, 9, 10 ])
 ? @@( o1.Steps() )
+#--&gt; [ 1, 3 ]
+
 o1 = new stzListOfNumbers([ 4, 8, 2, 3, 7, 1, 2 ])
 ? @@( o1.Steps() )
-#--&gt; [ 1 ]
-#--&gt; [ 1, 3 ]
 #--&gt; [ 4, -6, 1 ]</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="walker" data-k="walker stzwalker reverse-engeneering the list of numbers into a stzwalker object"><span id="stzwalker"></span><div class="ln mono">Walker</div><div class="lt">reverse-engeneering the list of numbers into a stzwalker object<small>aussi écrite: <span class="mono">StzWalker</span></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="leastcommonnumber" data-k="leastcommonnumber lcn leastcommunnumber smallescommonnumber smallestcommunnumber least common number with an other list of numbers"><span id="lcn"></span><span id="leastcommunnumber"></span><span id="smallescommonnumber"></span><span id="smallestcommunnumber"></span><div class="ln mono">LeastCommonNumber</div><div class="lt">least common number with an other list of numbers<small>aussi écrite: <span class="mono">LCN · LeastCommunNumber · SmallesCommonNumber · SmallestCommunNumber</span></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="greatestcommonnumber" data-k="greatestcommonnumber gcn least common number with an other list of numbers"><span id="gcn"></span><div class="ln mono">GreatestCommonNumber</div><div class="lt">least common number with an other list of numbers<small>aussi écrite: <span class="mono">GCN</span></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="leastcommonmultiple" data-k="leastcommonmultiple lcm the least common multiple of the numbers"><span id="lcm"></span><div class="ln mono"><a href="stzlistofnumbers/leastcommonmultiple.html">LeastCommonMultiple</a></div><div class="lt">the least common multiple of the numbers <a class="ex" href="stzlistofnumbers/leastcommonmultiple.html">1 exemples exécutés</a><small>aussi écrite: <span class="mono">LCM</span></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzListOfNumbers([ 4, 8, 15, 16, 23, 42 ])
 ? o1.LeastCommonMultiple()
 #--&gt; 38640</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="absolute" data-k="absolute  &quot;absoluting&#x27; the list of numbers"><div class="ln mono">Absolute</div><div class="lt">&quot;absoluting&#x27; the list of numbers<span class="ext-line"><span class="exts"><i class="y" title="Q: enchaîne">Q</i><i class="n" title="CS: casse (n&#x27;existe pas pour cette méthode)">CS</i><i class="n" title="XT: étendue (n&#x27;existe pas pour cette méthode)">XT</i><i class="n" title="Z: positions (n&#x27;existe pas pour cette méthode)">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="absoluted" data-k="absoluted  &quot;absoluting&#x27; the list of numbers"><div class="ln mono">Absoluted</div><div class="lt">&quot;absoluting&#x27; the list of numbers<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="negate" data-k="negate  &quot;negating&#x27; the list of numbers"><div class="ln mono">Negate</div><div class="lt">&quot;negating&#x27; the list of numbers<span class="ext-line"><span class="exts"><i class="y" title="Q: enchaîne">Q</i><i class="n" title="CS: casse (n&#x27;existe pas pour cette méthode)">CS</i><i class="n" title="XT: étendue (n&#x27;existe pas pour cette méthode)">XT</i><i class="n" title="Z: positions (n&#x27;existe pas pour cette méthode)">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="negated" data-k="negated  &quot;negating&#x27; the list of numbers"><div class="ln mono">Negated</div><div class="lt">&quot;negating&#x27; the list of numbers<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="product" data-k="product  the product of all the numbers."><div class="ln mono"><a href="stzlistofnumbers/product.html">Product</a></div><div class="lt">The product of all the numbers. <a class="ex" href="stzlistofnumbers/product.html">1 exemples exécutés</a><pre class="rx">o1 = new stzListOfNumbers(1:8)
 ? o1.sum()
-? o1.Product()
-? o1.Max()
-? o1.Mean()
 #--&gt; 36
+
+? o1.Product()
 #--&gt; 40320
+
+? o1.Max()
 #--&gt; 8
+
+? o1.Mean()
 #--&gt; 4.50</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="sum" data-k="sum  the sum of all the numbers."><div class="ln mono"><a href="stzlistofnumbers/sum.html">Sum</a></div><div class="lt">The sum of all the numbers. <a class="ex" href="stzlistofnumbers/sum.html">3 exemples exécutés</a><pre class="rx">o1 = new stzListOfNumbers(1:8)
 ? o1.sum()
-? o1.Product()
-? o1.Max()
-? o1.Mean()
 #--&gt; 36
+
+? o1.Product()
 #--&gt; 40320
+
+? o1.Max()
 #--&gt; 8
+
+? o1.Mean()
 #--&gt; 4.50</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="mean" data-k="mean  the arithmetic mean (average) of the numbers."><div class="ln mono"><a href="stzlistofnumbers/mean.html">Mean</a></div><div class="lt">The arithmetic mean (average) of the numbers. <a class="ex" href="stzlistofnumbers/mean.html">2 exemples exécutés</a><pre class="rx">o1 = new stzListOfNumbers(1:8)
 ? o1.sum()
-? o1.Product()
-? o1.Max()
-? o1.Mean()
 #--&gt; 36
+
+? o1.Product()
 #--&gt; 40320
+
+? o1.Max()
 #--&gt; 8
+
+? o1.Mean()
 #--&gt; 4.50</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="average" data-k="average  same as mean: the arithmetic average of the numbers."><div class="ln mono">Average</div><div class="lt">Same as Mean: the arithmetic average of the numbers.<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzListOfNumbers([ 4, 8, 15, 16, 23, 42 ])
 ? o1.Average()
 #--&gt; 18</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="median" data-k="median  the median of the numbers."><div class="ln mono">Median</div><div class="lt">The median of the numbers.<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzListOfNumbers([ 4, 8, 15, 16, 23, 42 ])
 ? o1.Median()
 #--&gt; 15.50</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="meanbycoefficient" data-k="meanbycoefficient  the weighted mean of the numbers, using the given coefficients."><div class="ln mono">MeanByCoefficient</div><div class="lt">The weighted mean of the numbers, using the given coefficients.<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="containsadividablenumberby" data-k="containsadividablenumberby  containing dividable number by"><div class="ln mono"><a href="stzlistofnumbers/containsadividablenumberby.html">ContainsADividableNumberBy</a></div><div class="lt">containing dividable number by <a class="ex" href="stzlistofnumbers/containsadividablenumberby.html">1 exemples exécutés</a><pre class="rx">o1 = new stzListOfNumbers(1:8)
 ? o1.ContainsADividableNumberBy(2) + NL
-? @@( o1.DividableNumbersBy(2) )
 #--&gt; 1
+
+? @@( o1.DividableNumbersBy(2) )
 #--&gt; [ 2, 4, 6, 8 ]</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="dividablenumbersby" data-k="dividablenumbersby numbersdividableby getting the numbers dividable by a given number"><span id="numbersdividableby"></span><div class="ln mono"><a href="stzlistofnumbers/dividablenumbersby.html">DividableNumbersBy</a></div><div class="lt">getting the numbers dividable by a given number <a class="ex" href="stzlistofnumbers/dividablenumbersby.html">1 exemples exécutés</a><small>aussi écrite: <span class="mono">NumbersDividableBy</span></small><pre class="rx">o1 = new stzListOfNumbers(1:8)
 ? o1.ContainsADividableNumberBy(2) + NL
-? @@( o1.DividableNumbersBy(2) )
 #--&gt; 1
+
+? @@( o1.DividableNumbersBy(2) )
 #--&gt; [ 2, 4, 6, 8 ]</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="clip" data-k="clip  limits the values of the list by adjusting the numbers outside the provided range (nmin, nmax). each number lesser then nmin becomes equal to nmin. and each number greater then nmax becomes equal to nmax."><div class="ln mono"><a href="stzlistofnumbers/clip.html">Clip</a></div><div class="lt">Limits the values of the list by adjusting the numbers outside the provided range (nMin, nMax). Each number lesser then nMin becomes equal to nMin. And each number greater then nMax becomes equal to nMax. <a class="ex" href="stzlistofnumbers/clip.html">1 exemples exécutés</a><pre class="rx">o1 = new stzListOfNumbers(1:8)
 o1.Clip(3, 5)
 ? @@( o1.Content() )
@@ -413,12 +445,15 @@ o1.ReverseNumbers()
 #--&gt; stzlistofnumbers</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="tostzlistofchars" data-k="tostzlistofchars  the numbers as a stzlistofchars object."><div class="ln mono">ToStzListOfChars</div><div class="lt">The numbers as a stzListOfChars object.<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="numberofnumbers" data-k="numberofnumbers  how many numbers the list holds."><div class="ln mono">NumberOfNumbers</div><div class="lt">How many numbers the list holds.<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzListOfNumbers([ 4, 8, 15, 16, 23, 42 ])
 ? o1.NumberOfNumbers()
 #--&gt; 6</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="iscontiguous" data-k="iscontiguous iscontinuous true if the numbers form a contiguous sequence (each one following the previous)."><span id="iscontinuous"></span><div class="ln mono"><a href="stzlistofnumbers/iscontiguous.html">IsContiguous</a></div><div class="lt">TRUE if the numbers form a contiguous sequence (each one following the previous). <a class="ex" href="stzlistofnumbers/iscontiguous.html">1 exemples exécutés</a><small>aussi écrite: <span class="mono">IsContinuous</span></small><pre class="rx">? StzListOfNumbersQ( 12:22 ).IsContiguous()
+#--&gt; 1
+
 ? StzListOfNumbersQ( 17:8 ).IsContiguous()
+#--&gt; 1
+
 ? StzListOfNumbersQ([10, 12, 18]).IsContiguous()
-? StzListOfNumbersQ([10, 11, 10]).IsContiguous()
-#--&gt; 1
-#--&gt; 1
 #--&gt; 0
+
+? StzListOfNumbersQ([10, 11, 10]).IsContiguous()
 #--&gt; 0</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="arandomnumber" data-k="arandomnumber  getting a random number from the list"><div class="ln mono">ARandomNumber</div><div class="lt">getting a random number from the list<span class="ext-line"><span class="exts"><i class="n" title="Q: enchaîne (n&#x27;existe pas pour cette méthode)">Q</i><i class="n" title="CS: casse (n&#x27;existe pas pour cette méthode)">CS</i><i class="n" title="XT: étendue (n&#x27;existe pas pour cette méthode)">XT</i><i class="y" title="Z: positions">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="anumber" data-k="anumber  getting a random number from the list"><div class="ln mono">ANumber</div><div class="lt">getting a random number from the list<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzListOfNumbers([ 4, 8, 15, 16, 23, 42 ])
 ? o1.ANumber()
 #--&gt; 16</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="anyrandomnumber" data-k="anyrandomnumber  getting a random number from the list"><div class="ln mono">AnyRandomNumber</div><div class="lt">getting a random number from the list<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="anynumber" data-k="anynumber  getting a random number from the list"><div class="ln mono">AnyNumber</div><div class="lt">getting a random number from the list<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzListOfNumbers([ 4, 8, 15, 16, 23, 42 ])

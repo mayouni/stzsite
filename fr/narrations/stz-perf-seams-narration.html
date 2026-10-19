@@ -61,7 +61,7 @@ oMon.WatchMemory().WatchCpu().Every(100)
 
 oSrv = new stzAppServer()
 oSrv.Observe(oMon)                  # &lt;- the whole integration
-oSrv.Get_(&quot;/menu&quot;, func oReq, oResp { oResp.Json([ &quot;dish&quot;, &quot;Couscous&quot;, &quot;price&quot;, 12 ]) })
+oSrv.Get(&quot;/menu&quot;, func oReq, oResp { oResp.Json([ &quot;dish&quot;, &quot;Couscous&quot;, &quot;price&quot;, 12 ]) })
 oSrv.Start(0, &quot;127.0.0.1&quot;)
 # ... 30 real requests over real HTTP ...
 ? &quot;R p95 (exact)  : &quot; + oMon.MetricQ(&quot;http.request.ms&quot;).ExactPercentile(95) + &quot; ms&quot;

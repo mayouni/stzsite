@@ -94,7 +94,7 @@ and every application adds more. Wiring each one would have produced a
 seam that saw the library's own refusals and missed the ones an
 application wrote — the more interesting half.</p>
 <p>The verdict is read once, where the response is final:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>oSrv.Get_(&quot;/vault&quot;, func oReq, oResp {
+<div class="nblock"><div class="lbl">Haro</div><pre>oSrv.Get(&quot;/vault&quot;, func oReq, oResp {
     oResp.Status(403, &quot;Forbidden&quot;).Json([ &quot;error&quot;, &quot;not yours&quot; ]) })</pre><p class="ran nv-illus">illustration</p></div>
 <div class="out"><div class="lbl">Sortie promise</div><pre>  [OK] a real 403 came back over a real socket
   [OK] ...and the refusal reached the ledger from a USER&#x27;s route

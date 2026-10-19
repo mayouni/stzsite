@@ -42,39 +42,43 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/graph/stzGraph.ring" target="_blank" rel="noopener noreferrer">the source: base/graph/stzGraph.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/diagramming.html">The area reference: Diagramming &amp; graphs</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p><code>stzGraph</code> is the structure beneath every connected thing in Softanza: nodes, edges, properties on both, and the questions a graph can answer, is there a path, what is reachable, where are the bottlenecks, what is the shortest way.</p><p>It keeps structure apart from meaning. You add nodes and edges, <code>AddNode(&quot;A&quot;)</code>, <code>AddEdge(&quot;A&quot;, &quot;B&quot;)</code>, give them properties, <code>AddNodeXTT(&quot;alice&quot;, &quot;Person&quot;, [:age = 30])</code>, and the graph stays a graph; a workflow, an org chart, a state machine, a knowledge base, a diagram are classes that inherit from it and add their own vocabulary. The algorithms are compiled in the engine: breadth and depth searches, shortest paths, connected and strongly connected components, articulation points, topological order, cycle detection, centralities, PageRank, communities, minimum spanning tree, maximum flow.</p><p>Two things make it more than a data structure. Constraints: a graph can carry rules, loaded from a file of them, and refuse an edge it forbids, <code>WhyCannotAddEdge</code> saying why. And a query language, <code>StzGraphQueryQ(oGraph) { Match(...) Set(...) Select(...) }</code>, that reads, updates and deletes by pattern instead of by loop.</p><p>It serves anywhere relations are the data: dependencies, hierarchies, flows of money or of work, networks of services, the code of a program, the links between the facts a world knows.</p></div><h2>The most expressive uses</h2><p>Four methods that show what the class is for; every example was run inside the library.</p><div class="uses"><div class="use"><h3 class="mono">IsBipartite</h3><p>A question of structure, answered: a path is bipartite, a triangle is not.</p><pre class="rx">p = new stzGraph(&quot;p&quot;)
-p.AddNode(&quot;A&quot;) p.AddNode(&quot;B&quot;) p.AddNode(&quot;C&quot;)
-p.AddEdge(&quot;A&quot;, &quot;B&quot;) p.AddEdge(&quot;B&quot;, &quot;C&quot;)
+    <div class="essay"><p><code>stzGraph</code> is the structure beneath every connected thing in Softanza: nodes, edges, properties on both, and the questions a graph can answer, is there a path, what is reachable, where are the bottlenecks, what is the shortest way.</p><p>It keeps structure apart from meaning. You add nodes and edges, <code>AddNode(&quot;A&quot;)</code>, <code>AddEdge(&quot;A&quot;, &quot;B&quot;)</code>, give them properties, <code>AddNodeXTT(&quot;alice&quot;, &quot;Person&quot;, [:age = 30])</code>, and the graph stays a graph; a workflow, an org chart, a state machine, a knowledge base, a diagram are classes that inherit from it and add their own vocabulary. The algorithms are compiled in the engine: breadth and depth searches, shortest paths, connected and strongly connected components, articulation points, topological order, cycle detection, centralities, PageRank, communities, minimum spanning tree, maximum flow.</p><p>Two things make it more than a data structure. Constraints: a graph can carry rules, loaded from a file of them, and refuse an edge it forbids, <code>WhyCannotAddEdge</code> saying why. And a query language, <code>StzGraphQueryQ(oGraph) { Match(...) Set(...) Select(...) }</code>, that reads, updates and deletes by pattern instead of by loop.</p><p>It serves anywhere relations are the data: dependencies, hierarchies, flows of money or of work, networks of services, the code of a program, the links between the facts a world knows.</p></div><h2>The most expressive uses</h2><p>Four methods that show what the class is for; every example was run inside the library.</p><div class="uses"><div class="use"><h3 class="mono">IsBipartite</h3><p>A question of structure, answered: a path is bipartite, a triangle is not.</p><pre class="rx">p1 = new stzGraph(&quot;p&quot;)
+p1.AddNode(&quot;A&quot;) p1.AddNode(&quot;B&quot;) p1.AddNode(&quot;C&quot;)
+p1.AddEdge(&quot;A&quot;, &quot;B&quot;) p1.AddEdge(&quot;B&quot;, &quot;C&quot;)
 # a path is bipartite
-? p.IsBipartite()
-t = new stzGraph(&quot;t&quot;)
-t.AddNode(&quot;X&quot;) t.AddNode(&quot;Y&quot;) t.AddNode(&quot;Z&quot;)
-t.AddEdge(&quot;X&quot;, &quot;Y&quot;) t.AddEdge(&quot;Y&quot;, &quot;Z&quot;) t.AddEdge(&quot;Z&quot;, &quot;X&quot;)
-# a triangle (odd cycle) is not bipartite
-? t.IsBipartite()
+? p1.IsBipartite()
 #--&gt; 1
-#--&gt; 0</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">MSTWeight</h3><p>Weights on the edges, and the minimum spanning tree&#x27;s total in one call.</p><pre class="rx">m = new stzGraph(&quot;m&quot;)
-m.AddNode(&quot;A&quot;) m.AddNode(&quot;B&quot;) m.AddNode(&quot;C&quot;) m.AddNode(&quot;D&quot;)
-m.AddEdgeXTT(&quot;A&quot;, &quot;B&quot;, &quot;&quot;, [ :weight = 1 ])
-m.AddEdgeXTT(&quot;B&quot;, &quot;C&quot;, &quot;&quot;, [ :weight = 2 ])
-m.AddEdgeXTT(&quot;C&quot;, &quot;D&quot;, &quot;&quot;, [ :weight = 3 ])
-m.AddEdgeXTT(&quot;D&quot;, &quot;A&quot;, &quot;&quot;, [ :weight = 4 ])
-m.AddEdgeXTT(&quot;A&quot;, &quot;C&quot;, &quot;&quot;, [ :weight = 5 ])
+
+t1 = new stzGraph(&quot;t&quot;)
+t1.AddNode(&quot;X&quot;) t1.AddNode(&quot;Y&quot;) t1.AddNode(&quot;Z&quot;)
+t1.AddEdge(&quot;X&quot;, &quot;Y&quot;) t1.AddEdge(&quot;Y&quot;, &quot;Z&quot;) t1.AddEdge(&quot;Z&quot;, &quot;X&quot;)
+# a triangle (odd cycle) is not bipartite
+? t1.IsBipartite()
+#--&gt; 0</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">MSTWeight</h3><p>Weights on the edges, and the minimum spanning tree&#x27;s total in one call.</p><pre class="rx">m1 = new stzGraph(&quot;m&quot;)
+m1.AddNode(&quot;A&quot;) m1.AddNode(&quot;B&quot;) m1.AddNode(&quot;C&quot;) m1.AddNode(&quot;D&quot;)
+m1.AddEdgeXTT(&quot;A&quot;, &quot;B&quot;, &quot;&quot;, [ :weight = 1 ])
+m1.AddEdgeXTT(&quot;B&quot;, &quot;C&quot;, &quot;&quot;, [ :weight = 2 ])
+m1.AddEdgeXTT(&quot;C&quot;, &quot;D&quot;, &quot;&quot;, [ :weight = 3 ])
+m1.AddEdgeXTT(&quot;D&quot;, &quot;A&quot;, &quot;&quot;, [ :weight = 4 ])
+m1.AddEdgeXTT(&quot;A&quot;, &quot;C&quot;, &quot;&quot;, [ :weight = 5 ])
 # the MST weight is 1+2+3 = 6
-? m.MSTWeight()
-d = new stzGraph(&quot;d&quot;)
-d.AddNode(&quot;A&quot;) d.AddNode(&quot;B&quot;) d.AddNode(&quot;X&quot;)
-d.AddEdge(&quot;A&quot;, &quot;B&quot;)
-# a graph with no spanning tree returns -1
-? d.MSTWeight()
+? m1.MSTWeight()
 #--&gt; 6
+
+d1 = new stzGraph(&quot;d&quot;)
+d1.AddNode(&quot;A&quot;) d1.AddNode(&quot;B&quot;) d1.AddNode(&quot;X&quot;)
+d1.AddEdge(&quot;A&quot;, &quot;B&quot;)
+# a graph with no spanning tree returns -1
+? d1.MSTWeight()
 #--&gt; -1</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">LoadFromStzRulz</h3><p>Rules loaded from a file of them: the graph then knows what it must refuse.</p><pre class="rx">oGraph = new stzGraph(&quot;org&quot;)
 oGraph.LoadFromStzRulz(&quot;../_data/bceao_banking.stzrulz&quot;)
 ? &quot;Rules loaded: &quot; + oGraph.NumberOfRules()
-? @@( oGraph.RulesSummary()[:Validation] )
-? @@( oGraph.RulesSummary()[:Constraint] )
 #--&gt; Rules loaded: 2
+
+? @@( oGraph.RulesSummary()[:Validation] )
 #--&gt; [ &quot;board_required&quot;, &quot;audit_independence&quot; ]
+
+? @@( oGraph.RulesSummary()[:Constraint] )
 #--&gt; [ ]</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">NodeCount</h3><p>A query deletes by pattern, and the count says the node is gone.</p><pre class="rx">oGraph = new stzGraph(&quot;test&quot;)
 oGraph {
 	AddNode(&quot;alice&quot;)
@@ -685,17 +689,21 @@ o1.AddEdge(&quot;B&quot;, &quot;D&quot;)
 #--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="attachedrulenamed" data-k="attachedrulenamed  "><div class="ln mono">AttachedRuleNamed</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">attached rule named</span><small>in the section <b>the graph owns its rules (softanza orientation)</b></small><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="rulesreport" data-k="rulesreport  print the graph&#x27;s own rule findings, grouped and gated -- via stzrulereport (the graph collects itself into it, then shows it)."><div class="ln mono">RulesReport</div><div class="lt">Print the graph&#x27;s own rule findings, grouped and gated -- via stzRuleReport (the graph collects itself into it, then shows it).<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="clearattachedrules" data-k="clearattachedrules  "><div class="ln mono">ClearAttachedRules</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">clear attached rules</span><small>in the section <b>the graph owns its rules (softanza orientation)</b></small><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="rules" data-k="rules  "><div class="ln mono">Rules</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">rules</span><small>in the section <b>the graph owns its rules (softanza orientation)</b></small><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="numberofrules" data-k="numberofrules  "><div class="ln mono"><a href="stzgraph/numberofrules.html">NumberOfRules</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">number of rules</span> <a class="ex" href="stzgraph/numberofrules.html">1 examples run</a><small>in the section <b>the graph owns its rules (softanza orientation)</b></small><pre class="rx">oGraph = new stzGraph(&quot;org&quot;)
 oGraph.LoadFromStzRulz(&quot;../_data/bceao_banking.stzrulz&quot;)
 ? &quot;Rules loaded: &quot; + oGraph.NumberOfRules()
-? @@( oGraph.RulesSummary()[:Validation] )
-? @@( oGraph.RulesSummary()[:Constraint] )
 #--&gt; Rules loaded: 2
+
+? @@( oGraph.RulesSummary()[:Validation] )
 #--&gt; [ &quot;board_required&quot;, &quot;audit_independence&quot; ]
+
+? @@( oGraph.RulesSummary()[:Constraint] )
 #--&gt; [ ]</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="rulessummary" data-k="rulessummary  "><div class="ln mono"><a href="stzgraph/rulessummary.html">RulesSummary</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">rules summary</span> <a class="ex" href="stzgraph/rulessummary.html">1 examples run</a><small>in the section <b>the graph owns its rules (softanza orientation)</b></small><pre class="rx">oGraph = new stzGraph(&quot;org&quot;)
 oGraph.LoadFromStzRulz(&quot;../_data/bceao_banking.stzrulz&quot;)
 ? &quot;Rules loaded: &quot; + oGraph.NumberOfRules()
-? @@( oGraph.RulesSummary()[:Validation] )
-? @@( oGraph.RulesSummary()[:Constraint] )
 #--&gt; Rules loaded: 2
+
+? @@( oGraph.RulesSummary()[:Validation] )
 #--&gt; [ &quot;board_required&quot;, &quot;audit_independence&quot; ]
+
+? @@( oGraph.RulesSummary()[:Constraint] )
 #--&gt; [ ]</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="clearrules" data-k="clearrules  "><div class="ln mono">ClearRules</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">clear rules</span><small>in the section <b>the graph owns its rules (softanza orientation)</b></small><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="clearconstraintrules" data-k="clearconstraintrules  clear specific type"><div class="ln mono">ClearConstraintRules</div><div class="lt">Clear specific type<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="clearderivationrules" data-k="clearderivationrules  "><div class="ln mono">ClearDerivationRules</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">clear derivation rules</span><small>in the section <b>the graph owns its rules (softanza orientation)</b></small><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="clearvalidationrules" data-k="clearvalidationrules  "><div class="ln mono">ClearValidationRules</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">clear validation rules</span><small>in the section <b>the graph owns its rules (softanza orientation)</b></small><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="removerule" data-k="removerule  remove specific rule"><div class="ln mono">RemoveRule</div><div class="lt">Remove specific rule<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="hasrule" data-k="hasrule containsrule check if rule loaded"><span id="containsrule"></span><div class="ln mono">HasRule</div><div class="lt">Check if rule loaded<small>also written: <span class="mono">ContainsRule</span></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzGraph(&quot;g&quot;)
 o1.AddNode(&quot;A&quot;) o1.AddNode(&quot;B&quot;) o1.AddNode(&quot;C&quot;)
 o1.AddNode(&quot;D&quot;)
@@ -744,10 +752,12 @@ o1.AddEdge(&quot;B&quot;, &quot;D&quot;)
 #--&gt; rules</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="savetostzrulz" data-k="savetostzrulz  .stzrulz format"><div class="ln mono">SaveToStzRulz</div><div class="lt">.stzrulz format<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="saveasstzrulz" data-k="saveasstzrulz  .stzrulz format"><div class="ln mono">SaveAsStzRulz</div><div class="lt">.stzrulz format<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="loadfromstzrulz" data-k="loadfromstzrulz  .stzrulz format"><div class="ln mono"><a href="stzgraph/loadfromstzrulz.html">LoadFromStzRulz</a></div><div class="lt">.stzrulz format <a class="ex" href="stzgraph/loadfromstzrulz.html">1 examples run</a><pre class="rx">oGraph = new stzGraph(&quot;org&quot;)
 oGraph.LoadFromStzRulz(&quot;../_data/bceao_banking.stzrulz&quot;)
 ? &quot;Rules loaded: &quot; + oGraph.NumberOfRules()
-? @@( oGraph.RulesSummary()[:Validation] )
-? @@( oGraph.RulesSummary()[:Constraint] )
 #--&gt; Rules loaded: 2
+
+? @@( oGraph.RulesSummary()[:Validation] )
 #--&gt; [ &quot;board_required&quot;, &quot;audit_independence&quot; ]
+
+? @@( oGraph.RulesSummary()[:Constraint] )
 #--&gt; [ ]</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="loadstzrulz" data-k="loadstzrulz  .stzrulz format"><div class="ln mono">LoadStzRulz</div><div class="lt">.stzrulz format<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="loadrulefunctionsfrom" data-k="loadrulefunctionsfrom  .stzrulf format"><div class="ln mono">LoadRuleFunctionsFrom</div><div class="lt">.stzrulf format<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="loadstzrulf" data-k="loadstzrulf  .stzrulf format"><div class="ln mono">LoadStzRulf</div><div class="lt">.stzrulf format<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="exporttostzsim" data-k="exporttostzsim asstzsim tostzsim .stzsim format"><span id="asstzsim"></span><span id="tostzsim"></span><div class="ln mono">ExportToStzSim</div><div class="lt">.stzsim format<small>also written: <span class="mono">AsStzSim · ToStzSim</span></small><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="savetostzsim" data-k="savetostzsim  .stzsim format"><div class="ln mono">SaveToStzSim</div><div class="lt">.stzsim format<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="saveasstzsim" data-k="saveasstzsim  .stzsim format"><div class="ln mono">SaveAsStzSim</div><div class="lt">.stzsim format<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="applysimulation" data-k="applysimulation  .stzsim format"><div class="ln mono">ApplySimulation</div><div class="lt">.stzsim format<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="applystzsim" data-k="applystzsim  .stzsim format"><div class="ln mono">ApplyStzSim</div><div class="lt">.stzsim format<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="cyclesallowed" data-k="cyclesallowed  note// i added those methods after including the graphtype attribute so we can use it in a practical way to enforce the beahvir of some features depending on the graph type (see examples at the end of stzgraphtest.ring file)"><div class="ln mono">CyclesAllowed</div><div class="lt">NOTE// I added those methods after including the GraphType attribute So we can use it in a practical way to enforce the beahvir of some features depending on the graph type (see examples at the end of stzGraphTest.ring file)<details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzGraph(&quot;g&quot;)
 o1.AddNode(&quot;A&quot;) o1.AddNode(&quot;B&quot;) o1.AddNode(&quot;C&quot;)
 o1.AddNode(&quot;D&quot;)

@@ -44,18 +44,23 @@
   <div class="wrap page-body">
     <div class="essay"><p><code>stzRegex</code> est une expression régulière que l&#x27;on peut interroger : tout le texte épouse-t-il le motif, le motif apparaît-il quelque part, qu&#x27;a-t-il capturé et sous quels noms, et, pendant que l&#x27;utilisateur tape, la saisie est-elle encore en chemin vers une correspondance.</p><p>Le motif lui-même est du <code>PCRE2</code> standard, Unicode toujours allumé et tout l&#x27;arsenal : regards autour, références arrière, récursion, conditionnelles. Ce que la classe ajoute, c&#x27;est la clarté sur la question. <code>Match(texte)</code> ancre le motif sur tout le contenu ; <code>MatchFirst(texte)</code> le cherche n&#x27;importe où ; <code>MatchLine</code>, <code>MatchWord</code> et <code>MatchSegment</code> choisissent la portée dans le verbe plutôt que dans un drapeau réglé ailleurs. <code>Matches()</code> rend toutes les valeurs trouvées, <code>MatchesZ()</code> les valeurs avec leurs positions, <code>CaptureXT()</code> les groupes nommés en paires.</p><p>Son don le plus singulier est la correspondance partielle : <code>MatchAsYouType(&quot;123-45&quot;)</code> répond oui pour un motif de numéro de sécurité sociale parce que le texte peut encore devenir une correspondance, et non pour <code>&quot;abc&quot;</code>, ce qui permet à un formulaire de valider un champ pendant la frappe. Un motif peut aussi venir du catalogue par son nom, <code>rx(pat(:url))</code>, et s&#x27;expliquer.</p><p>Elle sert partout où un texte doit être reconnu et non seulement cherché : valider une saisie, extraire des champs de journaux et de lignes, découper en jetons, piloter le <code>stzRegexuter</code> qui exécute du code à chaque occurrence. Pour bâtir un motif avec des mots plutôt que des symboles, voir <code>stzRegexMaker</code>.</p></div><h2>Les usages les plus parlants</h2><p>Trois méthodes qui montrent ce que la classe sait faire ; chaque exemple a été exécuté dans la bibliothèque.</p><div class="uses"><div class="use"><h3 class="mono">MatchAsYouType</h3><p>Un champ validé pendant la frappe : <code>123-45</code> est encore en chemin vers un numéro de sécurité sociale, <code>abc</code> ne le sera jamais.</p><pre class="rx">o1 = new stzRegex(&quot;(https?://)?(www\.)?[\w-]+\.com&quot;)
 ? o1.MatchAsYouType(&quot;www.&quot;)
+#--&gt; 1
+
 ? o1.MatchAsYouType(&quot;https://&quot;)
+#--&gt; 1
+
 ? o1.MatchAsYouType(&quot;example&quot;)
+#--&gt; 1
+
 ? o1.MatchAsYouType(&quot;example.&quot;)
+#--&gt; 1
+
 ? o1.MatchAsYouType(&quot;example.com&quot;)
-#--&gt; 1
-#--&gt; 1
-#--&gt; 1
-#--&gt; 1
 #--&gt; 1</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">MatchWordsIn</h3><p>La portée est dans le verbe : des mots entiers, et non un drapeau réglé ailleurs.</p><pre class="rx">o1 = new stzRegex(&quot;pre\w+&quot;)
 ? o1.MatchWordsIn(&quot;prefix preprocess present compress&quot;)  # matches pre* words
-? o1.MatchWordsIn(&quot;compress&quot;)
 #--&gt; 1
+
+? o1.MatchWordsIn(&quot;compress&quot;)
 #--&gt; 0</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">PartialMatchInfo</h3><p>Quand une correspondance est partielle, l&#x27;objet dit ce qui a correspondu et où cela s&#x27;est arrêté.</p><pre class="rx">o1 = new stzRegex(&quot;hello\d{3}&quot;)
 ? @@NL(o1.PartialMatchInfo(&quot;hello12&quot;))
 #--&gt; [
@@ -88,8 +93,9 @@ o1.SetPattern(&quot;an&quot;)
 ? o1.MatchFirstLineIn(&quot;an&quot;)
 #--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="matchwordsin" data-k="matchwordsin matchword "><span id="matchword"></span><div class="ln mono"><a href="stzregex/matchwordsin.html">MatchWordsIn</a></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">match words in</span> <a class="ex" href="stzregex/matchwordsin.html">1 exemples exécutés</a><small>aussi écrite: <span class="mono">MatchWord</span></small><small>dans la section <b>matching methods</b></small><pre class="rx">o1 = new stzRegex(&quot;pre\w+&quot;)
 ? o1.MatchWordsIn(&quot;prefix preprocess present compress&quot;)  # matches pre* words
-? o1.MatchWordsIn(&quot;compress&quot;)
 #--&gt; 1
+
+? o1.MatchWordsIn(&quot;compress&quot;)
 #--&gt; 0</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="matchfirstwordin" data-k="matchfirstwordin matchfirstword "><span id="matchfirstword"></span><div class="ln mono">MatchFirstWordIn</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">match first word in</span><small>aussi écrite: <span class="mono">MatchFirstWord</span></small><small>dans la section <b>matching methods</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzRegex(&quot;[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+&quot;)
 ? o1.MatchFirstWordIn(&quot;an&quot;)
 #--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="matchsegmentsin" data-k="matchsegmentsin matchsegment "><span id="matchsegment"></span><div class="ln mono">MatchSegmentsIn</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">match segments in</span><small>aussi écrite: <span class="mono">MatchSegment</span></small><small>dans la section <b>matching methods</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzRegex(&quot;[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+&quot;)
@@ -134,12 +140,15 @@ o1.SetPattern(&quot;an&quot;)
 #--&gt; 1
 #--&gt; ...</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="matchinprogress" data-k="matchinprogress searchinprogress the search counterpart: is a match either present, or still possible if more text arrives? used for progressive/incremental search."><span id="searchinprogress"></span><div class="ln mono"><a href="stzregex/matchinprogress.html">MatchInProgress</a></div><div class="lt">The search counterpart: is a match either present, or still possible if more text arrives? Used for progressive/incremental search. <a class="ex" href="stzregex/matchinprogress.html">1 exemples exécutés</a><small>aussi écrite: <span class="mono">SearchInProgress</span></small><pre class="rx">o1 = new stzRegex(&quot;quick.*fox&quot;)
 ? o1.MatchInProgress(&quot;qui&quot;)
+#--&gt; 1
+
 ? o1.MatchInProgress(&quot;quick br&quot;)
+#--&gt; 1
+
 ? o1.MatchInProgress(&quot;quick brown f&quot;)
+#--&gt; 1
+
 ? o1.MatchInProgress(&quot;slow&quot;)
-#--&gt; 1
-#--&gt; 1
-#--&gt; 1
 #--&gt; 0</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="partialmatchinfo" data-k="partialmatchinfo matchpartialinfo "><span id="matchpartialinfo"></span><div class="ln mono"><a href="stzregex/partialmatchinfo.html">PartialMatchInfo</a></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">partial match info</span> <a class="ex" href="stzregex/partialmatchinfo.html">6 exemples exécutés</a><small>aussi écrite: <span class="mono">MatchPartialInfo</span></small><small>dans la section <b>partial match</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzRegex(&quot;[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+&quot;)
 ? @@( o1.PartialMatchInfo(&quot;an&quot;) )
 #--&gt; [ [ &quot;matchtype&quot;, &quot;partial&quot; ], [ &quot;matched&quot;, &quot;an&quot; ], [ &quot;section&quot;, [ 1, 2 ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="findpartialmatch" data-k="findpartialmatch  "><div class="ln mono"><a href="stzregex/findpartialmatch.html">FindPartialMatch</a></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">find partial match</span> <a class="ex" href="stzregex/findpartialmatch.html">2 exemples exécutés</a><small>dans la section <b>partial match</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzRegex(&quot;[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+&quot;)

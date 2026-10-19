@@ -42,12 +42,12 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>a = new stzTime(&quot;09:00:00&quot;)
-b = new stzTime(&quot;17:30:00&quot;)
+    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>a1 = new stzTime(&quot;09:00:00&quot;)
+b1 = new stzTime(&quot;17:30:00&quot;)
 # 09:00 IsBefore 17:30
-? a.IsBefore(b)
+? a1.IsBefore(b1)
 # 09:00 IsAfter 17:30 is FALSE
-? a.IsAfter(b)
+? a1.IsAfter(b1)
 # 14:30 is afternoon
 ? (new stzTime(&quot;14:30:00&quot;)).IsAfternoon()
 # 09:00 is not afternoon

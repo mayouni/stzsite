@@ -44,8 +44,9 @@
   <div class="wrap page-body">
     <div class="essay"><p><code>stzHashList</code> est la liste de paires : une clé et sa valeur, dans l&#x27;ordre, <code>[ :name = &quot;Aya&quot;, :age = 30, :city = &quot;Niamey&quot; ]</code>. Elle garde l&#x27;ordre donné, replie ses clés en minuscules, et s&#x27;interroge des deux côtés, par clé ou par valeur.</p><p><code>o1[:stats]</code> ou <code>ValueByKey(:stats)</code> lit une valeur ; <code>Keys()</code>, <code>Values()</code>, <code>Pairs()</code> donnent les trois vues ; <code>FindValue(18)</code> dit sous quelles positions une valeur se trouve ; <code>KeysForValue</code> fait le chemin inverse. Quand les valeurs sont elles-mêmes des listes, <code>FindValueOrItem(:can)</code> et <code>FindInLists</code> regardent dedans et répondent par la paire et la place : un enregistrement imbriqué se cherche sans boucle.</p><p>La mise à jour se lit comme une édition : <code>AddPair</code>, <code>InsertBefore</code>, <code>RemoveByKey</code>, <code>ReplaceValueByKey</code>, <code>ReverseKeysAndValues</code> ; et la discipline sûre que la bibliothèque enseigne tient, <code>HasKey</code> avant de lire, parce qu&#x27;une lecture ne doit jamais créer une entrée en silence.</p><p>C&#x27;est la forme d&#x27;un enregistrement, d&#x27;une configuration, d&#x27;un résultat à parties nommées ; et ce n&#x27;est pas une table de hachage : les recherches parcourent la liste, le piège que sa page énonce.</p></div><h2>Les usages les plus parlants</h2><p>Cinq méthodes qui montrent ce que la classe sait faire ; chaque exemple a été exécuté dans la bibliothèque.</p><div class="uses"><div class="use"><h3 class="mono">ValueByKey</h3><p>Une valeur par sa clé, par la méthode ou par le crochet.</p><pre class="rx">o1 = new stzHashList([ :math = 18, :stats = 16, :history = 14 ])
 ? o1.ValueByKey(:stats)
-? o1[:stats]
 #--&gt; 16
+
+? o1[:stats]
 #--&gt; 16</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">FindValue</h3><p>Les positions où une valeur se trouve, quel que soit son type.</p><pre class="rx">o1 = new stzHashList([
 	:math = 18,
 	:stats = &quot;good&quot;,
@@ -53,10 +54,12 @@
 	:history = [ 10, 15 ]
 ])
 ? @@( o1.FindValue(18) )
-? @@( o1.FindValue(&quot;good&quot;) )	// TODO: CaseSensitivity
-? @@( o1.FindValue([ 10, 15 ]) )
 #--&gt; [ 1, 3 ]
+
+? @@( o1.FindValue(&quot;good&quot;) )	// TODO: CaseSensitivity
 #--&gt; [ 2 ]
+
+? @@( o1.FindValue([ 10, 15 ]) )
 #--&gt; [ 4 ]</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">FindValueOrItem</h3><p>Une valeur trouvée qu&#x27;elle soit la valeur de la paire ou un élément en son sein.</p><pre class="rx">o1 = new stzHashList([
 	:One	= :can,
 	:Two  	= [ :is, :will, :can, :some, :can ],
@@ -73,7 +76,6 @@ o1 = new stzHashList( [ [&quot;one&quot;, 1], [ &quot;two&quot;, 2] ] )
 ? o1.Keys()
 #--&gt; one
 #--&gt; two
-#--&gt; 
 #--&gt; one
 #--&gt; two</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">Content</h3><p>Les clés sont repliées en minuscules : le piège et la règle, dits par la classe elle-même.</p><pre class="rx">o1 = new stzHashList([ [ &quot;NAME&quot;, &quot;Mansour&quot;] , [ &quot;AGE&quot; , 45 ] ])
 ? @@( o1.Content() ) # Keys are automatically lowercased
@@ -114,8 +116,9 @@ o1 = new stzHashList( [ [&quot;one&quot;, 1], [ &quot;two&quot;, 2] ] )
 ? o1.ValueInInNthPair(2)
 #--&gt; 30</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="valueinnthpairq" data-k="valueinnthpairq  the value of the nth pair, wrapped as a q object."><div class="ln mono">ValueInNthPairQ</div><div class="lt">The value of the nth pair, wrapped as a Q object.<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="valuebykey" data-k="valuebykey valueinkey valueofkey valueonkey valueinthiskey valueofthiskey valueonthiskey valuerelatedtokey valuerelatedtothiskey valuecorrespondingtokey valuecorrespondingtothiskey the value stored under the given key."><span id="valueinkey"></span><span id="valueofkey"></span><span id="valueonkey"></span><span id="valueinthiskey"></span><span id="valueofthiskey"></span><span id="valueonthiskey"></span><span id="valuerelatedtokey"></span><span id="valuerelatedtothiskey"></span><span id="valuecorrespondingtokey"></span><span id="valuecorrespondingtothiskey"></span><div class="ln mono"><a href="stzhashlist/valuebykey.html">ValueByKey</a></div><div class="lt">The value stored under the given key. <a class="ex" href="stzhashlist/valuebykey.html">1 exemples exécutés</a><small>aussi écrite: <span class="mono">ValueInKey · ValueOfKey · ValueOnKey · ValueInThisKey · ValueOfThisKey · ValueOnThisKey · ValueRelatedToKey · ValueRelatedToThisKey · ValueCorrespondingToKey · ValueCorrespondingToThisKey</span></small><pre class="rx">o1 = new stzHashList([ :math = 18, :stats = 16, :history = 14 ])
 ? o1.ValueByKey(:stats)
-? o1[:stats]
 #--&gt; 16
+
+? o1[:stats]
 #--&gt; 16</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="valueintbykey" data-k="valueintbykey  the value under the given key, as an integer (engine map)."><div class="ln mono">ValueIntByKey</div><div class="lt">The value under the given key, as an integer (engine map).<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzHashList([ :name = &quot;Aya&quot;, :age = 30, :city = &quot;Niamey&quot; ])
 ? o1.ValueIntByKey(&quot;a&quot;)
 #--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="valuefloatbykey" data-k="valuefloatbykey  the value under the given key, as a float (engine map)."><div class="ln mono">ValueFloatByKey</div><div class="lt">The value under the given key, as a float (engine map).<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzHashList([ :name = &quot;Aya&quot;, :age = 30, :city = &quot;Niamey&quot; ])

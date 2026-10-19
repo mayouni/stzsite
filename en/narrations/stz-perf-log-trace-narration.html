@@ -80,7 +80,7 @@ spans and log lines, one trace.</p>
 after the trace identity is settled, before dispatch -- and closes it
 with the bracket. A handler that just <em>logs</em> is correlated with no
 plumbing at all:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>oSrv.Get_(&quot;/order&quot;, func oReq, oResp {
+<div class="nblock"><div class="lbl">Haro</div><pre>oSrv.Get(&quot;/order&quot;, func oReq, oResp {
 	$oLog.Info(&quot;taking the order&quot;)     # no trace code anywhere
 	$oLog.Info(&quot;order placed&quot;)
 	oResp.Text(&quot;placed&quot;)

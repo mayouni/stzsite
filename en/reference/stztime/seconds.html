@@ -42,15 +42,15 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o = new stzTime(&quot;14:30:45&quot;)
+    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzTime(&quot;14:30:45&quot;)
 # Content round-trips
-? o.Content()
+? o1.Content()
 # Hours is 14
-? o.Hours()
+? o1.Hours()
 # Minutes is 30
-? o.Minutes()
+? o1.Minutes()
 # Seconds is 45
-? o.Seconds()
+? o1.Seconds()
 # &#x27;14:30&#x27; normalises to 14:30:00
 ? (new stzTime(&quot;14:30&quot;)).Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>14:30:45
 14

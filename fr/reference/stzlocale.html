@@ -43,30 +43,39 @@
   </div></section>
   <div class="wrap page-body">
     <div class="essay"><p><code>stzLocale</code> est la réponse à « où et dans quelle langue » : un pays, une langue et une écriture, résolus depuis le fragment que vous avez, et à partir d&#x27;eux les nombres, les dates, la monnaie, l&#x27;indicatif téléphonique et les lettres qu&#x27;un lecteur de ce lieu attend.</p><p>Nommez-la comme le monde le fait : <code>new stzLocale(&quot;de-DE&quot;)</code>, <code>&quot;pt_Latn_BR&quot;</code>, <code>&quot;ar-TN&quot;</code>, <code>[ :Language = :Spanish, :Country = :Spain ]</code>, ou simplement <code>[ :Country = :Niger ]</code>, et les parts manquantes sont remplies par le meilleur défaut, si bien que le Niger seul répond <code>fr_NE</code>, français, et <code>+227</code> ; l&#x27;arabe seul répond l&#x27;Égypte, l&#x27;écriture arabe, et la Tunisie se résout en arabe. Puis lisez : <code>Abbreviation()</code> et <code>bcp47Abbreviation()</code>, <code>CountryName</code>, <code>CountryNumber</code>, <code>CountryPhoneCode</code>, <code>LanguageName</code>, <code>LanguageNativeName</code>, isiZulu pour l&#x27;Afrique du Sud, <code>ScriptName</code>, <code>CurrencyName</code>, <code>CurrencySymbol</code>, <code>CurrencyFractionalUnit</code>.</p><p>Les conventions suivent : <code>DecimalPoint</code>, <code>GroupSeparator</code>, <code>NegativeSign</code>, <code>amText</code> et <code>pmText</code>, <code>TimeShortFormat</code> et <code>TimeLongFormat</code>, <code>ToLowercase</code> et <code>ToUppercase</code> selon les règles de cette langue plutôt que de l&#x27;ASCII. Une date écrite par <code>stzDateTime</code> lit l&#x27;horloge de la locale, et un nombre formaté pour un lecteur lit ses séparateurs.</p><p>Elle sert tout programme qui parle à des gens en plus d&#x27;un lieu : une facture, un formulaire, un rapport, un message, et le premier écran d&#x27;une application qui doit s&#x27;ouvrir dans la convention propre du lecteur.</p></div><h2>Les usages les plus parlants</h2><p>Quatre méthodes qui montrent ce que la classe sait faire ; chaque exemple a été exécuté dans la bibliothèque.</p><div class="uses"><div class="use"><h3 class="mono">CountryPhoneCode</h3><p>L&#x27;Égypte depuis <code>ar_eg</code>, le Niger depuis un pays seul, le Niger encore depuis un simple symbole.</p><pre class="rx">? StzLocaleQ(&quot;ar_eg&quot;).CountryPhoneCode()
-? StzLocaleQ([ :Country = :Niger ]).CountryPhoneCode()
-? StzLocaleQ(:Niger).CountryPhoneCode()
 #--&gt; +20
+
+? StzLocaleQ([ :Country = :Niger ]).CountryPhoneCode()
 #--&gt; +227
+
+? StzLocaleQ(:Niger).CountryPhoneCode()
 #--&gt; +227</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">LanguageName</h3><p>Un pays seul, et la langue et l&#x27;abréviation remplies à partir de lui.</p><pre class="rx">o1 = new stzLocale([ :Country = &quot;Niger&quot; ])
 ? o1.Abbreviation()
-? o1.LanguageName()
-? o1.CountryName()
 #--&gt; fr_NE
+
+? o1.LanguageName()
 #--&gt; french
+
+? o1.CountryName()
 #--&gt; niger</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">CountryName</h3><p>L&#x27;arabe seul se résout en Égypte ; une étiquette de pays, quelle que soit sa casse, l&#x27;emporte.</p><pre class="rx">o1 = new stzLocale([ :Country = &quot;Niger&quot; ])
 ? o1.Abbreviation()
-? o1.LanguageName()
-? o1.CountryName()
 #--&gt; fr_NE
+
+? o1.LanguageName()
 #--&gt; french
+
+? o1.CountryName()
 #--&gt; niger</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">TimeShortFormat</h3><p>Les formats d&#x27;heure qu&#x27;une locale attend, court, long et étroit.</p><pre class="rx">o1 = new stzLocale(&quot;en-Latn-US&quot;)
 ? o1.Abbreviation()
-? o1.TimeShortFormat()
-? o1.TimeLongFormat()
-? o1.TimeNarrowFormat()
 #--&gt; en_US
+
+? o1.TimeShortFormat()
 #--&gt; h:mm AP
+
+? o1.TimeLongFormat()
 #--&gt; h:mm:ss AP t
+
+? o1.TimeNarrowFormat()
 #--&gt; h:mm AP</pre><span class="rx-src">test de la bibliothèque</span></div></div><p class="proof">Toutes les méthodes, par section, plus bas.</p>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/i18n.html">Le récit de son domaine : Internationalisation</a> · <a href="../guide/i18n.html">La référence de son domaine</a></p><h3>Narrations qui en parlent <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="../narrations/stzlocale-locale-management-the-softanza-way.html">Software Global Reach: Locale Management the Softanza Way</a> <span class="mono">2025</span><span class="abs">The Softanza library for Haro brings a refreshingly intuitive approach to locale management, wrapping the Softanza Engine&#x27;s powerful internationalization capabilities in an API that feels natural and expressive.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#abbreviation">A</a> <a href="#bcp47abbreviation">B</a> <a href="#countrynumber">C</a> <a href="#daysofweek">D</a> <a href="#exponential">E</a> <a href="#firstdayofweek">F</a> <a href="#groupseparator">G</a> <a href="#init">I</a> <a href="#languagenumber">L</a> <a href="#measurementsystem">M</a> <a href="#nativedaysofweek">N</a> <a href="#pmtext">P</a> <a href="#scriptnumber">S</a> <a href="#timeshortformat">T</a> <a href="#value">V</a></p><p><b>Sections</b> <a href="#countrynumber">country</a> · <a href="#currencyname">currency</a> · <a href="#daysofweek">day</a> · <a href="#stringlowercased">string lower case</a> · <a href="#stringcapitalcased">string capital case</a></p></nav>
@@ -77,25 +86,27 @@
 ? o1.Abbreviation()
 #--&gt; de_DE</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="value" data-k="value  info"><div class="ln mono">Value</div><div class="lt">info<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="bcp47abbreviation" data-k="bcp47abbreviation  info"><div class="ln mono">bcp47Abbreviation</div><div class="lt">info<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzLocale([ :Country = :south_africa ])
 ? o1.bcp47Abbreviation()
-#--&gt; zu-ZA</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="countrynumber" data-k="countrynumber  "><div class="ln mono"><a href="stzlocale/countrynumber.html">CountryNumber</a></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">country number</span> <a class="ex" href="stzlocale/countrynumber.html">3 exemples exécutés</a><small>dans la section <b>country</b></small><pre class="rx">? StzLocaleQ([ :Country = :Tunisia ]).CountryNumber()
-#--&gt; 216</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="countryshortabbreviation" data-k="countryshortabbreviation countryabbreviation "><span id="countryabbreviation"></span><div class="ln mono">CountryShortAbbreviation</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">country short abbreviation</span><small>aussi écrite: <span class="mono">CountryAbbreviation</span></small><small>dans la section <b>country</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzLocale([ :Country = :south_africa ])
+#--&gt; zu-ZA</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="countrynumber" data-k="countrynumber  "><div class="ln mono"><a href="stzlocale/countrynumber.html">CountryNumber</a></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">country number</span> <a class="ex" href="stzlocale/countrynumber.html">3 exemples exécutés</a><small>dans la section <b>country</b></small><pre class="rx">? StzLocaleQ([ :Country = :Tunisia ]).CountryNumber()   #--&gt; 216</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="countryshortabbreviation" data-k="countryshortabbreviation countryabbreviation "><span id="countryabbreviation"></span><div class="ln mono">CountryShortAbbreviation</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">country short abbreviation</span><small>aussi écrite: <span class="mono">CountryAbbreviation</span></small><small>dans la section <b>country</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzLocale([ :Country = :south_africa ])
 ? o1.CountryShortAbbreviation()
 #--&gt; ZA</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="countrylongabbreviation" data-k="countrylongabbreviation  "><div class="ln mono">CountryLongAbbreviation</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">country long abbreviation</span><small>dans la section <b>country</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzLocale([ :Country = :south_africa ])
 ? o1.CountryLongAbbreviation()
 #--&gt; ZAF</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="countryphonecode" data-k="countryphonecode  "><div class="ln mono"><a href="stzlocale/countryphonecode.html">CountryPhoneCode</a></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">country phone code</span> <a class="ex" href="stzlocale/countryphonecode.html">1 exemples exécutés</a><small>dans la section <b>country</b></small><pre class="rx">? StzLocaleQ(&quot;ar_eg&quot;).CountryPhoneCode()
-? StzLocaleQ([ :Country = :Niger ]).CountryPhoneCode()
-? StzLocaleQ(:Niger).CountryPhoneCode()
 #--&gt; +20
+
+? StzLocaleQ([ :Country = :Niger ]).CountryPhoneCode()
 #--&gt; +227
-#--&gt; +227</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="countryname" data-k="countryname country countrynativename "><span id="country"></span><span id="countrynativename"></span><div class="ln mono"><a href="stzlocale/countryname.html">CountryName</a></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">country name</span> <a class="ex" href="stzlocale/countryname.html">9 exemples exécutés</a><small>aussi écrite: <span class="mono">Country · CountryNativeName</span></small><small>dans la section <b>country</b></small><pre class="rx">? StzLocaleQ(&quot;ru_RU&quot;).Country()
-#--&gt; russia</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="languagenumber" data-k="languagenumber  language"><div class="ln mono"><a href="stzlocale/languagenumber.html">LanguageNumber</a></div><div class="lt">language <a class="ex" href="stzlocale/languagenumber.html">1 exemples exécutés</a><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzLocale([ :Country = :south_africa ])
+
+? StzLocaleQ(:Niger).CountryPhoneCode()
+#--&gt; +227</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="countryname" data-k="countryname country countrynativename "><span id="country"></span><span id="countrynativename"></span><div class="ln mono"><a href="stzlocale/countryname.html">CountryName</a></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">country name</span> <a class="ex" href="stzlocale/countryname.html">9 exemples exécutés</a><small>aussi écrite: <span class="mono">Country · CountryNativeName</span></small><small>dans la section <b>country</b></small><pre class="rx">? StzLocaleQ(&quot;ru_RU&quot;).Country()   #--&gt; russia</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="languagenumber" data-k="languagenumber  language"><div class="ln mono"><a href="stzlocale/languagenumber.html">LanguageNumber</a></div><div class="lt">language <a class="ex" href="stzlocale/languagenumber.html">1 exemples exécutés</a><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzLocale([ :Country = :south_africa ])
 ? o1.LanguageNumber()
 #--&gt; 140</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="languagename" data-k="languagename langauge language the country stays as the fallback: a locale naming a country but no recognised language is still better answered by that country&#x27;s language than by nothing."><span id="langauge"></span><span id="language"></span><div class="ln mono"><a href="stzlocale/languagename.html">LanguageName</a></div><div class="lt">The country stays as the FALLBACK: a locale naming a country but no recognised language is still better answered by that country&#x27;s language than by nothing. <a class="ex" href="stzlocale/languagename.html">6 exemples exécutés</a><small>aussi écrite: <span class="mono">Langauge · Language</span></small><pre class="rx">o1 = new stzLocale([ :Country = &quot;Niger&quot; ])
 ? o1.Abbreviation()
-? o1.LanguageName()
-? o1.CountryName()
 #--&gt; fr_NE
+
+? o1.LanguageName()
 #--&gt; french
+
+? o1.CountryName()
 #--&gt; niger</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="languagenativename" data-k="languagenativename  language"><div class="ln mono">LanguageNativeName</div><div class="lt">language<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzLocale([ :Country = :south_africa ])
 ? o1.LanguageNativeName()
 #--&gt; isiZulu</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="languageabbreviation" data-k="languageabbreviation  language"><div class="ln mono">LanguageAbbreviation</div><div class="lt">language<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzLocale([ :Country = :south_africa ])
@@ -108,12 +119,15 @@
 ? o1.ScriptNumber()
 #--&gt; 7</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="scriptname" data-k="scriptname script script"><span id="script"></span><div class="ln mono"><a href="stzlocale/scriptname.html">ScriptName</a></div><div class="lt">script <a class="ex" href="stzlocale/scriptname.html">2 exemples exécutés</a><small>aussi écrite: <span class="mono">Script</span></small><pre class="rx">o1 = new stzLocale(&quot;pt_Latn_BR&quot;)
 ? o1.Abbreviation()
-? o1.language()
-? o1.Script()
-? o1.Country()
 #--&gt; pt_BR
+
+? o1.language()
 #--&gt; portuguese
+
+? o1.Script()
 #--&gt; latin
+
+? o1.Country()
 #--&gt; brazil</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="scriptabbreviation" data-k="scriptabbreviation  script"><div class="ln mono">ScriptAbbreviation</div><div class="lt">script<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzLocale([ :Country = :south_africa ])
 ? o1.ScriptAbbreviation()
 #--&gt; Latn</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="currencyname" data-k="currencyname currency "><span id="currency"></span><div class="ln mono">CurrencyName</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">currency name</span><small>aussi écrite: <span class="mono">Currency</span></small><small>dans la section <b>currency</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzLocale([ :Country = :south_africa ])
@@ -134,42 +148,55 @@
 ? o1.CurrencyBase()
 #--&gt; 100</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="currencyinfo" data-k="currencyinfo  "><div class="ln mono">CurrencyInfo</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">currency info</span><small>dans la section <b>currency</b></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="amtext" data-k="amtext  localised time management  #	#todo :should be used by default in"><div class="ln mono"><a href="stzlocale/amtext.html">amText</a></div><div class="lt">LOCALISED TIME MANAGEMENT  #	#TODO :Should be used by default in <a class="ex" href="stzlocale/amtext.html">2 exemples exécutés</a><pre class="rx">Lc = new stzLocale(&quot;&quot;)
 ? Lc.amText()
+#--&gt; AM
+
 ? Lc.pmText()
+#--&gt; PM
+
 oDateTime = StzDateTimeQ(&quot;2024-03-15 14:30:00&quot;)
 ? oDateTime.ToSimple()
-#--&gt; AM
-#--&gt; PM
 #--&gt; 15/03/2024 2:30 PM</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="pmtext" data-k="pmtext  "><div class="ln mono"><a href="stzlocale/pmtext.html">pmText</a></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">pm text</span> <a class="ex" href="stzlocale/pmtext.html">2 exemples exécutés</a><small>dans la section <b>currency</b></small><pre class="rx">Lc = new stzLocale(&quot;&quot;)
 ? Lc.amText()
+#--&gt; AM
+
 ? Lc.pmText()
+#--&gt; PM
+
 oDateTime = StzDateTimeQ(&quot;2024-03-15 14:30:00&quot;)
 ? oDateTime.ToSimple()
-#--&gt; AM
-#--&gt; PM
 #--&gt; 15/03/2024 2:30 PM</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="timeshortformat" data-k="timeshortformat  "><div class="ln mono"><a href="stzlocale/timeshortformat.html">TimeShortFormat</a></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">time short format</span> <a class="ex" href="stzlocale/timeshortformat.html">1 exemples exécutés</a><small>dans la section <b>currency</b></small><pre class="rx">o1 = new stzLocale(&quot;en-Latn-US&quot;)
 ? o1.Abbreviation()
-? o1.TimeShortFormat()
-? o1.TimeLongFormat()
-? o1.TimeNarrowFormat()
 #--&gt; en_US
+
+? o1.TimeShortFormat()
 #--&gt; h:mm AP
+
+? o1.TimeLongFormat()
 #--&gt; h:mm:ss AP t
+
+? o1.TimeNarrowFormat()
 #--&gt; h:mm AP</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="timelongformat" data-k="timelongformat  you can get the list of supported types by using localetimeformattypes()"><div class="ln mono"><a href="stzlocale/timelongformat.html">TimeLongFormat</a></div><div class="lt">You can get the list of supported types by using LocaleTimeFormatTypes() <a class="ex" href="stzlocale/timelongformat.html">1 exemples exécutés</a><pre class="rx">o1 = new stzLocale(&quot;en-Latn-US&quot;)
 ? o1.Abbreviation()
-? o1.TimeShortFormat()
-? o1.TimeLongFormat()
-? o1.TimeNarrowFormat()
 #--&gt; en_US
+
+? o1.TimeShortFormat()
 #--&gt; h:mm AP
+
+? o1.TimeLongFormat()
 #--&gt; h:mm:ss AP t
+
+? o1.TimeNarrowFormat()
 #--&gt; h:mm AP</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="timenarrowformat" data-k="timenarrowformat  "><div class="ln mono"><a href="stzlocale/timenarrowformat.html">TimeNarrowFormat</a></div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">time narrow format</span> <a class="ex" href="stzlocale/timenarrowformat.html">1 exemples exécutés</a><small>dans la section <b>currency</b></small><pre class="rx">o1 = new stzLocale(&quot;en-Latn-US&quot;)
 ? o1.Abbreviation()
-? o1.TimeShortFormat()
-? o1.TimeLongFormat()
-? o1.TimeNarrowFormat()
 #--&gt; en_US
+
+? o1.TimeShortFormat()
 #--&gt; h:mm AP
+
+? o1.TimeLongFormat()
 #--&gt; h:mm:ss AP t
+
+? o1.TimeNarrowFormat()
 #--&gt; h:mm AP</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="timeformat" data-k="timeformat  "><div class="ln mono">TimeFormat</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">time format</span><small>dans la section <b>currency</b></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="tostztime" data-k="tostztime  "><div class="ln mono">ToStzTime</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">to stz time</span><small>dans la section <b>currency</b></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="totimeasstring" data-k="totimeasstring  "><div class="ln mono">ToTimeAsString</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">to time as string</span><small>dans la section <b>currency</b></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="totimeaslongstring" data-k="totimeaslongstring  stztime object              &quot;hh:mm:ss&quot;"><div class="ln mono">ToTimeAsLongString</div><div class="lt">stzTime object              &quot;hh:mm:ss&quot;<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="totimeasshortstring" data-k="totimeasshortstring  "><div class="ln mono">ToTimeAsShortString</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">to time as short string</span><small>dans la section <b>currency</b></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="totimeasnarrowstring" data-k="totimeasnarrowstring  "><div class="ln mono">ToTimeAsNarrowString</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">to time as narrow string</span><small>dans la section <b>currency</b></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="daysofweek" data-k="daysofweek  "><div class="ln mono">DaysOfWeek</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">days of week</span><small>dans la section <b>day</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzLocale([ :Country = :south_africa ])
 ? @@( o1.DaysOfWeek() )
 #--&gt; [ &quot;sunday&quot;, &quot;monday&quot;, &quot;tuesday&quot;, &quot;wednesday&quot;, &quot;thursday&quot;, &quot;friday&quot;, &quot;saturday&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="nativedaysofweek" data-k="nativedaysofweek  "><div class="ln mono">NativeDaysOfWeek</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">native days of week</span><small>dans la section <b>day</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzLocale([ :Country = :south_africa ])

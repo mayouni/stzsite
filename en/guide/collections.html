@@ -60,14 +60,16 @@
 ? o1.Contains(&quot;x&quot;)
 #--&gt; 0</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist/ismadeof.html">IsMadeOf</a> IsMadeOf family: &quot;the list consists of these items&quot;. -- IsMadeOf / IsMadeOfThese  -&gt; contains ALL the given items. <span class="in">in stzList</span><pre class="rx">o1 = new stzList([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;a&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ])
 ? o1.IsMadeOf([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ])
-? o1.IsMadeOfSome([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;x&quot;, &quot;z&quot; ])
 #--&gt; 1
+
+? o1.IsMadeOfSome([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;x&quot;, &quot;z&quot; ])
 #--&gt; 1</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist.html#issorted">IsSorted</a> TRUE if the items are sorted, ascending OR descending. <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
 ? o1.IsSorted()
 #--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist/isequalto.html">IsEqualTo</a> equality check (set-based, engine-backed) <span class="in">in stzList</span><pre class="rx">o1 = new stzList([ &quot;C&quot;, &quot;A&quot;, &quot;B&quot; ])
 ? o1.IsEqualTo([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
-? o1.IsEqualToXT([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
 #--&gt; 1
+
+? o1.IsEqualToXT([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
 #--&gt; 0</pre><span class="rx-src">library test</span></li></ul><p class="proof">and 104 more in the reference</p><h3>Finding</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzlist/find.html">Find</a> Find the given item: the positions of EVERY occurrence, as a list (engine-backed). (case-sensitive by default) <span class="in">in stzList</span><pre class="rx"># find example 1
 ? @@( Q([1, 2, 3, 4, 5, 3, 7]).Find(3) )
 #--&gt; [ 3, 6 ]</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist/findnth.html">FindNth</a> Case-insensitive word-order aliases used by narrative tests. (Cannot live inside FindNthOccurrenceCS as nested defs because they take a different arity -- top-level methods instead.) <span class="in">in stzList</span><pre class="rx">o1 = new stzList([ &quot;_&quot;, &quot;_&quot;, &quot;♥&quot;, &quot;_&quot;, &quot;♥&quot;, &quot;_&quot;, &quot;_&quot;, &quot;♥&quot;, &quot;_&quot;, &quot;_&quot; ])
@@ -101,12 +103,14 @@
 ? o1.Min()
 #--&gt; 1</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist/sum.html">Sum</a> Sum / Product / Mean (engine-backed) <span class="in">in stzList</span><pre class="rx"># Sum([1,2,3,4]) is 10
 ? Q([1,2,3,4]).Sum()
+#--&gt; 10
+
 # IsEmpty([]) is TRUE
 ? Q([]).IsEmpty()
+#--&gt; 1
+
 # IsEmpty([1]) is FALSE
 ? Q([1]).IsEmpty()
-#--&gt; 10
-#--&gt; 1
 #--&gt; 0</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist.html#numberoflists">NumberOfLists</a> How many LIST items the list holds. <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
 ? o1.NumberOfLists()
 #--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist.html#numberofpairs">NumberOfPairs</a> How many pairs the list holds. <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
@@ -127,8 +131,9 @@
 ? o1.NumberOfSmallest()
 #--&gt; 1</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist/numberofduplicates.html">NumberOfDuplicates</a> NumberOfDuplicates counts the duplicate OCCURRENCES (every 2nd+ appearance), not the number of distinct duplicated items. For [ &quot;A&quot;,&quot;B&quot;,&quot;2&quot;,&quot;A&quot;,&quot;A&quot;,&quot;B&quot;,2,2,&quot;.&quot; ] that is 4 (A twice, B once, 2 once). NumberOfDuplicatedItems (distinct) would be 3. <span class="in">in stzList</span><pre class="rx">oW = new stzList( o1.Words() )
 ? oW.ContainsDuplicates()
-? oW.NumberOfDuplicates()
 #--&gt; 1
+
+? oW.NumberOfDuplicates()
 #--&gt; 3</pre><span class="rx-src">library test</span></li></ul><p class="proof">and 28 more in the reference</p><h3>Replacing and setting</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzlist/update.html">Update</a> Replace the whole content with the given list (mutating; the enforcement guard sits at _SetContent, the single update point). <span class="in">in stzList</span><pre class="rx">o1 = new stzList(&quot;A&quot;:&quot;E&quot;)
 o1.Update([])
 ? @@( o1.Content() )
@@ -146,9 +151,10 @@ o1.ReplaceAllItems(2)
 #--&gt; [ 2, 2, 2, 2, 2 ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist/replacethisitemat.html">ReplaceThisItemAt</a> positional replacers (ported from the monolith) <span class="in">in stzList</span><pre class="rx">o1 = new stzList([ 1, 2, &quot;♥&quot;, 4, &quot;♥&quot; ])
 o1.ReplaceThisItemAt(3, &quot;♥&quot;, :With = &quot;★&quot;)
 ? @@( o1.Content() )
+#--&gt; [ 1, 2, &quot;★&quot;, 4, &quot;♥&quot; ]
+
 o1.ReplaceThisItemAt(2, &quot;BLA&quot;, :With = &quot;★&quot; )
 ? @@( o1.Content() )
-#--&gt; [ 1, 2, &quot;★&quot;, 4, &quot;♥&quot; ]
 #--&gt; [ 1, 2, &quot;★&quot;, 4, &quot;♥&quot; ]</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist/replaceoccurrencesbymany.html">ReplaceOccurrencesByMany</a> Replace items at the GIVEN positions with paNewItems consumed in order. <span class="in">in stzList</span><pre class="rx">o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;*&quot;, &quot;D&quot;, &quot;*&quot;,  &quot;=&quot; ])
 o1.ReplaceOccurrencesByMany([ 3, 5, 6 ], [&quot;C&quot;, &quot;E&quot;, &quot;F&quot;])
 ? @@( o1.Content() )
@@ -236,9 +242,10 @@ o1.InsertAfter( :ItemAtPosition = 3, &quot;A4&quot; )
 #--&gt; A3</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist/extendtoposition.html">ExtendToPosition</a> Extend the list up to position n. ExtendToPosition pads with 0 -- (number lists) or &quot;&quot; ; the WithItemsIn/Repeated forms pad by -- cycling through a given list (or the list&#x27;s own items). <span class="in">in stzList</span><pre class="rx">o1 = new stzList([ 1, 2, 3])
 o1.ExtendToPosition(5)
 ? @@( o1.Content() )
+#--&gt; [ 1, 2, 3, 0, 0 ]
+
 o1.ExtendToPositionXT( 8, :With = 5 )
 ? @@(o1.Content())
-#--&gt; [ 1, 2, 3, 0, 0 ]
 #--&gt; [ 1, 2, 3, 0, 0, 5, 5, 5 ]</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist.html#insertafterposition">InsertAfterPosition</a> inserting an item after a given position <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
 o1.InsertAfterPosition(2, 3)
 ? @@( o1.Content() )
@@ -261,9 +268,10 @@ o1.InsertBeforeManyPositions([ 2, 4, 5 ], &quot;*&quot;)
 #--&gt; [ [ 5 ], [ 3, 8, 3, 1 ] ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist/extractall.html">ExtractAll</a> Empty the list, returning everything that was in it. <span class="in">in stzList</span><pre class="rx">o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
 # extractall example 1
 ? @@( o1.ExtractAll() )
+#--&gt; [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ]
+
 # extractall example 2
 ? @@( o1.Content() )
-#--&gt; [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ]
 #--&gt; [ ]</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist.html#extractnth">ExtractNth</a> Remove the nth item and return it. <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
 ? o1.ExtractNth(2)
 #--&gt; 8</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist.html#splitafter">SplitAfter</a> Split the list after each occurrence of the item: each occurrence closes its part. <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ &quot;tea&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;fish&quot; ])
@@ -289,9 +297,10 @@ o1.SplitAtPacer(2, 5)
 ? @@( o1.Content() )
 #--&gt; [ &quot;tea&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;fish&quot; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist/splittonparts.html">SplitToNParts</a> Split the list into n (near-)equal parts. <span class="in">in stzList</span><pre class="rx">o1 = new stzSplitter(3)
 ? @@( o1.SplitToNParts(0) )
+#--&gt; [ ]
+
 o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ])
 ? @@( o1.SplittedToNParts(3) )
-#--&gt; [ ]
 #--&gt; [ [ &quot;A&quot; ], [ &quot;B&quot; ], [ &quot;C&quot; ] ]</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist/extractsection.html">ExtractSection</a> Remove the items at positions n1..n2 and return them. <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
 ? @@( o1.ExtractSection(2, 5) )
 #--&gt; [ 3, 8, 3, 1 ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist.html#splitatposition">SplitAtPosition</a> Split the list at the given position: the parts. <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ &quot;tea&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;fish&quot; ])
@@ -301,12 +310,14 @@ o1.SplitAtPosition(2)
 o1.Move(2, 5)
 ? @@( o1.Content() )
 #--&gt; [ 5, 8, 3, 1, 3 ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist/sort.html">Sort</a> Sort the items in ascending order in place (mutating). For a copy, use Sorted. <span class="in">in stzList</span><pre class="rx">? @@( StzListQ([ &quot;him&quot;, [ &quot;him&quot; ], &quot;&quot; ]).Sorted() ) + NL
+#--&gt; [ &quot;&quot;, &quot;him&quot;, [ &quot;him&quot; ] ]
+
 o1 = new stzList([ &quot;him&quot;, [ &quot;him&quot; ], &quot;&quot; ])
 o1.Stringify()
 ? @@( o1.Content() )
-o1.Sort()
-#--&gt; [ &quot;&quot;, &quot;him&quot;, [ &quot;him&quot; ] ]
-#--&gt; [ &quot;him&quot;, &#x27;[ &quot;him&quot; ]&#x27;, &quot;&quot; ]</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist/swap.html">Swap</a> Exchange the items at the two given positions (mutating). <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
+#--&gt; [ &quot;him&quot;, &#x27;[ &quot;him&quot; ]&#x27;, &quot;&quot; ]
+
+o1.Sort()</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist/swap.html">Swap</a> Exchange the items at the two given positions (mutating). <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
 o1.Swap(2, 5)
 ? @@( o1.Content() )
 #--&gt; [ 5, 1, 8, 3, 3 ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist/sortby.html">SortBy</a> Sort by a key expression (engine-backed via the W DSL). <span class="in">in stzList</span><pre class="rx">o1 = new stzList([ &quot;a&quot;, &quot;abcde&quot;, &quot;abc&quot;, &quot;ab&quot;, &quot;abcd&quot; ])
@@ -344,13 +355,15 @@ o1.MoveItemToStart(3)
 #--&gt; 8
 #--&gt; 3
 #--&gt; ...</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist/tolistinastring.html">ToListInAString</a> ToListInAString: the content rendered as a &quot;[ ... ]&quot; string (computable form). Delegates to stzListStringify, like the rest of this section. <span class="in">in stzList</span><pre class="rx">? @@( StzListQ( 4:8 ).ToListInAString() )
-? @@( StzListQ( 4:8 ).ToListInAStringInShortForm() )
 #--&gt; &quot;[ 4, 5, 6, 7, 8 ]&quot;
+
+? @@( StzListQ( 4:8 ).ToListInAStringInShortForm() )
 #--&gt; &quot;4:8&quot;</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzlist.html#tolistofstzstrings">ToListOfStzStrings</a> tion over the established per-string locale lookups. <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ &quot;tea&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;fish&quot; ])
 ? @@( o1.ToListOfStzStrings() )
 #--&gt; [ @noname, @noname, @noname, @noname ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlist/tolistinastringinshortform.html">ToListInAStringInShortForm</a> Short form: a contiguous run of integers (a, a+1, ..., b -- or the descending a, a-1, ..., b) collapses to the range literal &quot;a:b&quot;. Anything else falls back to the full stringified list. <span class="in">in stzList</span><pre class="rx">? StzListQ( 4:8 ).ToListInString()
-? StzListQ( 4:8 ).ToListInStringInShortForm()
 #--&gt; [ 4, 5, 6, 7, 8 ]
+
+? StzListQ( 4:8 ).ToListInStringInShortForm()
 #--&gt; 4:8</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzhashlist.html#tocode">ToCode</a> The hash list as runnable Haro code, as a string. <span class="in">in stzHashList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzHashList([ :name = &quot;Aya&quot;, :age = 30, :city = &quot;Niamey&quot; ])
 ? o1.ToCode()
 #--&gt; [ :name = &quot;Aya&quot;, :age = &quot;30&quot;, :city = &quot;Niamey&quot; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzlistnamedparams.html#tostzhashlist">ToStzHashList</a> content access <span class="in">in stzListNamedParams</span></li><li><a class="mono" href="../reference/stzlist.html#tostztable">ToStzTable</a> The list turned into a stzTable object (rows; per the stzTable contract, the first row may carry the column names). <span class="in">in stzList</span></li><li><a class="mono" href="../reference/stzlist.html#tostzlistofstrings">ToStzListOfStrings</a> Convert to a stzListOfStrings (for string-oriented chaining like -- ConcatenatedUsing / Joined). Needed by the ..Q() chain idioms. <span class="in">in stzList</span></li><li><a class="mono" href="../reference/stzlistofpairs.html#tostzsetofsections">ToStzSetOfSections</a> transforming the list of pairs into a stzhashlist <span class="in">in stzListOfPairs</span></li><li><a class="mono" href="../reference/stzlistofpairs.html#tostzlistofsections">ToStzListOfSections</a> transforming the list of pairs into a stzhashlist <span class="in">in stzListOfPairs</span></li><li><a class="mono" href="../reference/stzlistparser.html#parse">Parse</a> parsing <span class="in">in stzListParser</span></li><li><a class="mono" href="../reference/stzsplitter.html#tostzlist">ToStzList</a> utility functions used by the other methods above <span class="in">in stzSplitter</span></li></ul><p class="proof">and 3 more in the reference</p><h3>Showing, drawing and formatting</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzlist.html#show">Show</a> Print the list to stdout in its computable @@ form. <span class="in">in stzList</span></li><li><a class="mono" href="../reference/stzlist.html#showshort">ShowShort</a> Print an abbreviated form of the list (first items ... last items). <span class="in">in stzList</span></li><li><a class="mono" href="../reference/stzlist.html#showshortn">ShowShortN</a> Print the abbreviated form showing n items at each end. <span class="in">in stzList</span></li></ul><h3>Walking and applying</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzlist/map.html">Map</a> expression-backed operations (engine bytecode) <span class="in">in stzList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])

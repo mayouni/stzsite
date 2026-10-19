@@ -49,30 +49,30 @@ StzGraphQueryQ(oGraph) {
 	Set(&quot;n.age&quot;, [:to = 31])
 	Select(&quot;n&quot;)
 	? GraphQ().NodeProperty(&quot;alice&quot;, &quot;age&quot;)
-}</pre></div><div class="out"><div class="lbl">Sortie</div><pre>31</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphquery/20_set_property.ring" target="_blank" rel="noopener noreferrer">20_set_property.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>p = new stzGraph(&quot;p&quot;)
-p.AddNode(&quot;A&quot;) p.AddNode(&quot;B&quot;) p.AddNode(&quot;C&quot;)
-p.AddEdge(&quot;A&quot;, &quot;B&quot;) p.AddEdge(&quot;B&quot;, &quot;C&quot;)
+}</pre></div><div class="out"><div class="lbl">Sortie</div><pre>31</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graphquery/20_set_property.ring" target="_blank" rel="noopener noreferrer">20_set_property.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>p1 = new stzGraph(&quot;p&quot;)
+p1.AddNode(&quot;A&quot;) p1.AddNode(&quot;B&quot;) p1.AddNode(&quot;C&quot;)
+p1.AddEdge(&quot;A&quot;, &quot;B&quot;) p1.AddEdge(&quot;B&quot;, &quot;C&quot;)
 # a path is bipartite
-? p.IsBipartite()
-t = new stzGraph(&quot;t&quot;)
-t.AddNode(&quot;X&quot;) t.AddNode(&quot;Y&quot;) t.AddNode(&quot;Z&quot;)
-t.AddEdge(&quot;X&quot;, &quot;Y&quot;) t.AddEdge(&quot;Y&quot;, &quot;Z&quot;) t.AddEdge(&quot;Z&quot;, &quot;X&quot;)
+? p1.IsBipartite()
+t1 = new stzGraph(&quot;t&quot;)
+t1.AddNode(&quot;X&quot;) t1.AddNode(&quot;Y&quot;) t1.AddNode(&quot;Z&quot;)
+t1.AddEdge(&quot;X&quot;, &quot;Y&quot;) t1.AddEdge(&quot;Y&quot;, &quot;Z&quot;) t1.AddEdge(&quot;Z&quot;, &quot;X&quot;)
 # a triangle (odd cycle) is not bipartite
-? t.IsBipartite()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
-0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graph/00_graph_narrated.ring" target="_blank" rel="noopener noreferrer">00_graph_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>m = new stzGraph(&quot;m&quot;)
-m.AddNode(&quot;A&quot;) m.AddNode(&quot;B&quot;) m.AddNode(&quot;C&quot;) m.AddNode(&quot;D&quot;)
-m.AddEdgeXTT(&quot;A&quot;, &quot;B&quot;, &quot;&quot;, [ :weight = 1 ])
-m.AddEdgeXTT(&quot;B&quot;, &quot;C&quot;, &quot;&quot;, [ :weight = 2 ])
-m.AddEdgeXTT(&quot;C&quot;, &quot;D&quot;, &quot;&quot;, [ :weight = 3 ])
-m.AddEdgeXTT(&quot;D&quot;, &quot;A&quot;, &quot;&quot;, [ :weight = 4 ])
-m.AddEdgeXTT(&quot;A&quot;, &quot;C&quot;, &quot;&quot;, [ :weight = 5 ])
+? t1.IsBipartite()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graph/00_graph_narrated.ring" target="_blank" rel="noopener noreferrer">00_graph_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>m1 = new stzGraph(&quot;m&quot;)
+m1.AddNode(&quot;A&quot;) m1.AddNode(&quot;B&quot;) m1.AddNode(&quot;C&quot;) m1.AddNode(&quot;D&quot;)
+m1.AddEdgeXTT(&quot;A&quot;, &quot;B&quot;, &quot;&quot;, [ :weight = 1 ])
+m1.AddEdgeXTT(&quot;B&quot;, &quot;C&quot;, &quot;&quot;, [ :weight = 2 ])
+m1.AddEdgeXTT(&quot;C&quot;, &quot;D&quot;, &quot;&quot;, [ :weight = 3 ])
+m1.AddEdgeXTT(&quot;D&quot;, &quot;A&quot;, &quot;&quot;, [ :weight = 4 ])
+m1.AddEdgeXTT(&quot;A&quot;, &quot;C&quot;, &quot;&quot;, [ :weight = 5 ])
 # the MST weight is 1+2+3 = 6
-? m.MSTWeight()
-d = new stzGraph(&quot;d&quot;)
-d.AddNode(&quot;A&quot;) d.AddNode(&quot;B&quot;) d.AddNode(&quot;X&quot;)
-d.AddEdge(&quot;A&quot;, &quot;B&quot;)
+? m1.MSTWeight()
+d1 = new stzGraph(&quot;d&quot;)
+d1.AddNode(&quot;A&quot;) d1.AddNode(&quot;B&quot;) d1.AddNode(&quot;X&quot;)
+d1.AddEdge(&quot;A&quot;, &quot;B&quot;)
 # a graph with no spanning tree returns -1
-? d.MSTWeight()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>6
+? d1.MSTWeight()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>6
 -1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graph/00_graph_narrated.ring" target="_blank" rel="noopener noreferrer">00_graph_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
     <h2>Les extensions de cette méthode</h2><p class="proof">Chaque extension, et si elle existe pour cette méthode ; une extension qui existe se compose avec les autres (FindSTCS).</p><div class="lanes rtable"><div class="lane lane3e rhead"><div class="ln">Extension</div><div class="lr">Existe</div><div class="lt">Ce qu'elle ajoute · Les noms</div></div><div class="lane lane3e"><div class="ln mono">Q</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">fait ce que fait la méthode, puis rend l&#x27;objet, pour que l&#x27;appel puisse s&#x27;enchaîner</div></div><div class="lane lane3e"><div class="ln mono">QQ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">enchaîne sur le type d&#x27;objet suivant, plus précis (l&#x27;échelle des Q)</div></div><div class="lane lane3e"><div class="ln mono">QQQ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">enchaîne sur le type d&#x27;objet le plus précis (l&#x27;échelle des Q)</div></div><div class="lane lane3e"><div class="ln mono">QRT</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend le résultat comme un objet du type demandé</div></div><div class="lane lane3e"><div class="ln mono">CS</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend un indicateur de sensibilité à la casse</div></div><div class="lane lane3e"><div class="ln mono">ST</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend la position de départ (StartingAt)</div></div><div class="lane lane3e"><div class="ln mono">IB</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend des bornes incluses (IncludingBounds)</div></div><div class="lane lane3e"><div class="ln mono">XT</div><div class="lr"><span class="exts"><i class="y">oui</i></span></div><div class="lt">la forme étendue : plus de paramètres que la méthode de base · <span class="mono">AddNode<mark class="ext">XT</mark></span></div></div><div class="lane lane3e"><div class="ln mono">XTT</div><div class="lr"><span class="exts"><i class="y">oui</i></span></div><div class="lt">encore une extension : une forme étendue de plus, après XT · <span class="mono">AddNode<mark class="ext">XTT</mark></span></div></div><div class="lane lane3e"><div class="ln mono">Z</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">inclut la position dans ce qu&#x27;elle rend</div></div><div class="lane lane3e"><div class="ln mono">ZZ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend les positions comme des sections, [début, fin]</div></div><div class="lane lane3e"><div class="ln mono">W</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">choisit selon une condition</div></div><div class="lane lane3e"><div class="ln mono">WF</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">choisit selon une condition, avec les mots-clés expressifs (@NextItem, @PreviousItem...)</div></div><div class="lane lane3e"><div class="ln mono">D</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend une direction, en avant ou en arrière (Directional)</div></div><div class="lane lane3e"><div class="ln mono">F</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend une fonction (la condition ou la mise à jour est donnée comme une fonction) ; le document des formes emploie aussi F pour la forme future, qui diffère l&#x27;action</div></div><div class="lane lane3e"><div class="ln mono">Many</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">travaille sur une collection d&#x27;éléments au lieu d&#x27;un seul (la forme plurielle)</div></div><div class="lane lane3e"><div class="ln mono">Except</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend des exceptions, ce qu&#x27;il faut laisser de côté (la forme exceptionnelle)</div></div><div class="lane lane3e"><div class="ln mono">U</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend le résultat sans doublon</div></div></div>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>

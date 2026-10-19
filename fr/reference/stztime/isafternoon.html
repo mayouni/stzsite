@@ -52,12 +52,12 @@ oNight = new stzTime(&quot;23:00:00&quot;)
 ? oNight.IsNight()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
 1
 1
-1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/time/17_time_of_day_checks.ring" target="_blank" rel="noopener noreferrer">17_time_of_day_checks.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>a = new stzTime(&quot;09:00:00&quot;)
-b = new stzTime(&quot;17:30:00&quot;)
+1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/time/17_time_of_day_checks.ring" target="_blank" rel="noopener noreferrer">17_time_of_day_checks.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>a1 = new stzTime(&quot;09:00:00&quot;)
+b1 = new stzTime(&quot;17:30:00&quot;)
 # 09:00 IsBefore 17:30
-? a.IsBefore(b)
+? a1.IsBefore(b1)
 # 09:00 IsAfter 17:30 is FALSE
-? a.IsAfter(b)
+? a1.IsAfter(b1)
 # 14:30 is afternoon
 ? (new stzTime(&quot;14:30:00&quot;)).IsAfternoon()
 # 09:00 is not afternoon

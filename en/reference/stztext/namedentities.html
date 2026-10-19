@@ -42,11 +42,11 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>t = new stzText(&quot;Barack Obama visited Paris.&quot;)
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>t1 = new stzText(&quot;Barack Obama visited Paris.&quot;)
 # NeuralEntities() is empty without a NER-head model
-? @@(t.NeuralEntities())
+? @@(t1.NeuralEntities())
 # NamedEntities() still works via the rule-based fallback
-? len(t.NamedEntities()) &gt;= 1</pre></div><div class="out"><div class="lbl">Output</div><pre>[ ]
+? len(t1.NamedEntities()) &gt;= 1</pre></div><div class="out"><div class="lbl">Output</div><pre>[ ]
 1</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/natural/text_query_layer_narrated.ring" target="_blank" rel="noopener noreferrer">text_query_layer_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oT = new stzText(&quot;John Smith works at Microsoft in Paris&quot;)
 # rule NER sees person / organization / location
 ? @@( oT.NamedEntities() )

@@ -44,10 +44,12 @@
   <div class="wrap page-body">
     <div class="essay"><p><code>stzDateTime</code> is a moment in time that speaks every dialect of the calendar: it reads a date in whatever form it arrives, does arithmetic on it in plain words, and writes it back in the form a reader expects.</p><p>Build it from an ISO string, <code>StzDateTimeQ(&quot;2024-03-15 10:30:00&quot;)</code>, from a list of components, from a Unix timestamp, or from an epoch counted in any unit, <code>[ :FromEpochHours = 480000 ]</code>. Then move it the way you would say it: <code>oDateTime + &quot;2 days 5 hours&quot;</code>, <code>oDateTime - &quot;3 hours&quot;</code>, <code>AddNatural(&quot;1 day 2 hours&quot;)</code>, or the chain <code>AddDaysQ(5).AddHoursQ(3).AddMinutesQ(30)</code>. Ask where it stands, <code>IsBefore</code>, <code>IsAfter</code>, <code>IsBetween(a, :And = b)</code>, <code>IsToday</code>, <code>IsTomorrow</code>, and how far it is from another moment, <code>DurationTo(other, :In = :Days)</code>.</p><p>Writing it out is where the breadth shows. <code>ToEuropean()</code> gives <code>15/03/2024 10:30:00 AM</code>, <code>ToAmerican()</code> the month first, <code>ToIso8601()</code> the <code>T</code>, <code>ToLong()</code> the weekday spelled out, <code>ToRelative()</code> a phrase, and <code>ToStringXT(&quot;dddd h:mm AP&quot;)</code> any shape you name; every family comes in a 12-hour and a 24-hour form, so the choice of clock is never a surprise.</p><p>It serves wherever time is data: a log to align, a deadline to compute, a schedule to render in a reader&#x27;s own convention, an interval to measure, and it is the moment that <code>stzDate</code>, <code>stzTime</code>, <code>stzCalendar</code> and <code>stzTimeLine</code> build on.</p></div><h2>The most expressive uses</h2><p>Four methods that show what the class is for; every example was run inside the library.</p><div class="uses"><div class="use"><h3 class="mono">ToEuropean</h3><p>The same moment written three ways: as stored, as a European 12-hour clock, as a 24-hour one.</p><pre class="rx">oDateTime = StzDateTimeQ(&quot;2024-03-15 10:30:00&quot;)
 ? oDateTime.Content()
-? oDateTime.ToEuropean() # Or ToEuropeanAmPm() or ToEuropean12h()
-? oDateTime.ToEuropeanWithoutAmPm() # Or ToEuropean24h()
 #--&gt; 2024-03-15 10:30:00
+
+? oDateTime.ToEuropean() # Or ToEuropeanAmPm() or ToEuropean12h()
 #--&gt; 15/03/2024 10:30:00 AM
+
+? oDateTime.ToEuropeanWithoutAmPm() # Or ToEuropean24h()
 #--&gt; 15/03/2024 10:30:00</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">Content</h3><p>Arithmetic in words: add two days, then three hours, then both at once.</p><pre class="rx">oDateTime = new stzDateTime(&quot;2024-03-15 10:30:00&quot;)
 ? oDateTime.Content()
 #--&gt; 2024-03-15 10:30:00</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">DurationTo</h3><p>The distance between two moments, in the unit you name.</p><pre class="rx">oDateTime1 = StzDateTimeQ(&quot;2024-03-15 10:00:00&quot;)
@@ -66,20 +68,26 @@
 ? o1.TryManualDateParse(&quot;a&quot;)
 #--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="fromsecondssinceepoch" data-k="fromsecondssinceepoch fromepochseconds fromunixtimestamp "><span id="fromepochseconds"></span><span id="fromunixtimestamp"></span><div class="ln mono">FromSecondsSinceEpoch</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">from seconds since epoch</span><small>also written: <span class="mono">FromEpochSeconds · FromUnixTimestamp</span></small><small>in the section <b>epoch-based creation methods</b></small><span class="ext-line"><span class="exts"><i class="n" title="Q: chains (does not exist for this method)">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="y" title="XT: extended">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="frommillisecondssinceepoch" data-k="frommillisecondssinceepoch fromepochmilliseconds "><span id="fromepochmilliseconds"></span><div class="ln mono">FromMillisecondsSinceEpoch</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">from milliseconds since epoch</span><small>also written: <span class="mono">FromEpochMilliseconds</span></small><small>in the section <b>epoch-based creation methods</b></small><span class="ext-line"><span class="exts"><i class="n" title="Q: chains (does not exist for this method)">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="y" title="XT: extended">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="fromminutessinceepoch" data-k="fromminutessinceepoch fromepochminutes "><span id="fromepochminutes"></span><div class="ln mono">FromMinutesSinceEpoch</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">from minutes since epoch</span><small>also written: <span class="mono">FromEpochMinutes</span></small><small>in the section <b>epoch-based creation methods</b></small><span class="ext-line"><span class="exts"><i class="n" title="Q: chains (does not exist for this method)">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="y" title="XT: extended">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="fromhourssinceepoch" data-k="fromhourssinceepoch fromepochhours "><span id="fromepochhours"></span><div class="ln mono">FromHoursSinceEpoch</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">from hours since epoch</span><small>also written: <span class="mono">FromEpochHours</span></small><small>in the section <b>epoch-based creation methods</b></small><span class="ext-line"><span class="exts"><i class="n" title="Q: chains (does not exist for this method)">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="y" title="XT: extended">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="fromdayssinceepoch" data-k="fromdayssinceepoch fromepochdays "><span id="fromepochdays"></span><div class="ln mono">FromDaysSinceEpoch</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">from days since epoch</span><small>also written: <span class="mono">FromEpochDays</span></small><small>in the section <b>epoch-based creation methods</b></small><span class="ext-line"><span class="exts"><i class="n" title="Q: chains (does not exist for this method)">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="y" title="XT: extended">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="fromweekssinceepoch" data-k="fromweekssinceepoch fromepochweeks "><span id="fromepochweeks"></span><div class="ln mono">FromWeeksSinceEpoch</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">from weeks since epoch</span><small>also written: <span class="mono">FromEpochWeeks</span></small><small>in the section <b>epoch-based creation methods</b></small><span class="ext-line"><span class="exts"><i class="n" title="Q: chains (does not exist for this method)">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="y" title="XT: extended">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="frommonthssinceepoch" data-k="frommonthssinceepoch fromepochmonths "><span id="fromepochmonths"></span><div class="ln mono">FromMonthsSinceEpoch</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">from months since epoch</span><small>also written: <span class="mono">FromEpochMonths</span></small><small>in the section <b>epoch-based creation methods</b></small><span class="ext-line"><span class="exts"><i class="n" title="Q: chains (does not exist for this method)">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="y" title="XT: extended">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="fromyearssinceepoch" data-k="fromyearssinceepoch fromepochyears "><span id="fromepochyears"></span><div class="ln mono">FromYearsSinceEpoch</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">from years since epoch</span><small>also written: <span class="mono">FromEpochYears</span></small><small>in the section <b>epoch-based creation methods</b></small><span class="ext-line"><span class="exts"><i class="n" title="Q: chains (does not exist for this method)">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="y" title="XT: extended">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="fromnaturalepoch" data-k="fromnaturalepoch fromnaturalsinceepoch natural language epoch creation"><span id="fromnaturalsinceepoch"></span><div class="ln mono">FromNaturalEpoch</div><div class="lt">natural language epoch creation<small>also written: <span class="mono">FromNaturalSinceEpoch</span></small><span class="ext-line"><span class="exts"><i class="n" title="Q: chains (does not exist for this method)">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="y" title="XT: extended">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="fromepochhash" data-k="fromepochhash fromepochduration combined epoch creation with hash"><span id="fromepochduration"></span><div class="ln mono">FromEpochHash</div><div class="lt">combined epoch creation with hash<small>also written: <span class="mono">FromEpochDuration</span></small><span class="ext-line"><span class="exts"><i class="n" title="Q: chains (does not exist for this method)">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="y" title="XT: extended">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="date" data-k="date  component extraction"><div class="ln mono"><a href="stzdatetime/date.html">Date</a></div><div class="lt">component extraction <a class="ex" href="stzdatetime/date.html">1 examples run</a><pre class="rx">oDateTime = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
 ? oDateTime.Date()
-? oDateTime.DateQ().Content() + NL
-? oDateTime.Time()
-? oDateTime.TimeQ().Content()
 #--&gt; 2024-03-15
+
+? oDateTime.DateQ().Content() + NL
 #--&gt; 15/03/2024
+
+? oDateTime.Time()
 #--&gt; 14:30:45
+
+? oDateTime.TimeQ().Content()
 #--&gt; 14:30:45</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts"><i class="y" title="Q: chains">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="n" title="XT: extended (does not exist for this method)">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="time" data-k="time  component extraction"><div class="ln mono"><a href="stzdatetime/time.html">Time</a></div><div class="lt">component extraction <a class="ex" href="stzdatetime/time.html">1 examples run</a><pre class="rx">oDateTime = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
 ? oDateTime.Date()
-? oDateTime.DateQ().Content() + NL
-? oDateTime.Time()
-? oDateTime.TimeQ().Content()
 #--&gt; 2024-03-15
+
+? oDateTime.DateQ().Content() + NL
 #--&gt; 15/03/2024
+
+? oDateTime.Time()
 #--&gt; 14:30:45
+
+? oDateTime.TimeQ().Content()
 #--&gt; 14:30:45</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts"><i class="y" title="Q: chains">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="n" title="XT: extended (does not exist for this method)">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="adddays" data-k="adddays  "><div class="ln mono"><a href="stzdatetime/adddays.html">AddDays</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">add days</span> <a class="ex" href="stzdatetime/adddays.html">2 examples run</a><small>in the section <b>arithmetic operations</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
 ? o1.AddDays(2)
 #--&gt; 2024-10-06 00:00:00</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts"><i class="y" title="Q: chains">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="n" title="XT: extended (does not exist for this method)">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="addmonths" data-k="addmonths  "><div class="ln mono">AddMonths</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">add months</span><small>in the section <b>arithmetic operations</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
@@ -109,50 +117,61 @@ oDateTime.SubtractNatural(&quot;1 day 2 hours&quot;)
 ? oDateTime.ToString()
 #--&gt; 2024-03-14 08:00:00</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="isbefore" data-k="isbefore  "><div class="ln mono"><a href="stzdatetime/isbefore.html">IsBefore</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">is before</span> <a class="ex" href="stzdatetime/isbefore.html">3 examples run</a><small>in the section <b>comparison methods</b></small><pre class="rx">oDateTime1 = StzDateTimeQ(&quot;2024-03-15 10:00:00&quot;)
 ? oDateTime1.IsBefore(&quot;2024-03-20 10:00:00&quot;)
-? oDateTime1.IsAfter(&quot;2024-03-20 10:00:00&quot;)
-? oDateTime1.IsEqualTo(&quot;2024-03-15 10:00:00&quot;)
 #--&gt; 1
+
+? oDateTime1.IsAfter(&quot;2024-03-20 10:00:00&quot;)
 #--&gt; 0
+
+? oDateTime1.IsEqualTo(&quot;2024-03-15 10:00:00&quot;)
 #--&gt; 1</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="isafter" data-k="isafter  "><div class="ln mono"><a href="stzdatetime/isafter.html">IsAfter</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">is after</span> <a class="ex" href="stzdatetime/isafter.html">3 examples run</a><small>in the section <b>comparison methods</b></small><pre class="rx">oDateTime1 = StzDateTimeQ(&quot;2024-03-15 10:00:00&quot;)
 ? oDateTime1.IsBefore(&quot;2024-03-20 10:00:00&quot;)
-? oDateTime1.IsAfter(&quot;2024-03-20 10:00:00&quot;)
-? oDateTime1.IsEqualTo(&quot;2024-03-15 10:00:00&quot;)
 #--&gt; 1
+
+? oDateTime1.IsAfter(&quot;2024-03-20 10:00:00&quot;)
 #--&gt; 0
+
+? oDateTime1.IsEqualTo(&quot;2024-03-15 10:00:00&quot;)
 #--&gt; 1</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="isequalto" data-k="isequalto isequal "><span id="isequal"></span><div class="ln mono"><a href="stzdatetime/isequalto.html">IsEqualTo</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">is equal to</span> <a class="ex" href="stzdatetime/isequalto.html">2 examples run</a><small>also written: <span class="mono">IsEqual</span></small><small>in the section <b>comparison methods</b></small><pre class="rx">oDateTime1 = StzDateTimeQ(&quot;2024-03-15 10:00:00&quot;)
 ? oDateTime1.IsBefore(&quot;2024-03-20 10:00:00&quot;)
-? oDateTime1.IsAfter(&quot;2024-03-20 10:00:00&quot;)
-? oDateTime1.IsEqualTo(&quot;2024-03-15 10:00:00&quot;)
 #--&gt; 1
+
+? oDateTime1.IsAfter(&quot;2024-03-20 10:00:00&quot;)
 #--&gt; 0
+
+? oDateTime1.IsEqualTo(&quot;2024-03-15 10:00:00&quot;)
 #--&gt; 1</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="isbetween" data-k="isbetween  "><div class="ln mono"><a href="stzdatetime/isbetween.html">IsBetween</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">is between</span> <a class="ex" href="stzdatetime/isbetween.html">2 examples run</a><small>in the section <b>comparison methods</b></small><pre class="rx">oDateTime = StzDateTimeQ(&quot;2024-03-17 10:00:00&quot;)
 ? oDateTime.IsBetween(&quot;2024-03-15 10:00:00&quot;, :And = &quot;2024-03-20 10:00:00&quot;)
 #--&gt; 1</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="isnow" data-k="isnow  "><div class="ln mono"><a href="stzdatetime/isnow.html">IsNow</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">is now</span> <a class="ex" href="stzdatetime/isnow.html">1 examples run</a><small>in the section <b>comparison methods</b></small><pre class="rx">oNow = StzDateTimeQ(&quot;&quot;)
 ? oNow.IsNow()
-? oNow.IsToday()
 #--&gt; 1
+
+? oNow.IsToday()
 #--&gt; 1</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="istoday" data-k="istoday  "><div class="ln mono"><a href="stzdatetime/istoday.html">IsToday</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">is today</span> <a class="ex" href="stzdatetime/istoday.html">1 examples run</a><small>in the section <b>comparison methods</b></small><pre class="rx">oNow = StzDateTimeQ(&quot;&quot;)
 ? oNow.IsNow()
-? oNow.IsToday()
 #--&gt; 1
+
+? oNow.IsToday()
 #--&gt; 1</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="istomorrow" data-k="istomorrow  "><div class="ln mono"><a href="stzdatetime/istomorrow.html">IsTomorrow</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">is tomorrow</span> <a class="ex" href="stzdatetime/istomorrow.html">1 examples run</a><small>in the section <b>comparison methods</b></small><pre class="rx">o1 = StzDateTimeQ(&#x27;&#x27;)
 o1 + &quot;1 day&quot;
 ? o1.IsTomorrow()
+#--&gt; 1
+
 o2 = StzDateTimeQ(&#x27;&#x27;)
 o2 - &quot;1 day&quot;
 ? o2.IsYesterday()
-#--&gt; 1
 #--&gt; 1</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="isyesterday" data-k="isyesterday  "><div class="ln mono"><a href="stzdatetime/isyesterday.html">IsYesterday</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">is yesterday</span> <a class="ex" href="stzdatetime/isyesterday.html">1 examples run</a><small>in the section <b>comparison methods</b></small><pre class="rx">o1 = StzDateTimeQ(&#x27;&#x27;)
 o1 + &quot;1 day&quot;
 ? o1.IsTomorrow()
+#--&gt; 1
+
 o2 = StzDateTimeQ(&#x27;&#x27;)
 o2 - &quot;1 day&quot;
 ? o2.IsYesterday()
-#--&gt; 1
 #--&gt; 1</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="tounixtimestamp" data-k="tounixtimestamp  unix timestamp"><div class="ln mono"><a href="stzdatetime/tounixtimestamp.html">ToUnixTimeStamp</a></div><div class="lt">unix timestamp <a class="ex" href="stzdatetime/tounixtimestamp.html">1 examples run</a><pre class="rx">oDateTime = StzDateTimeQ(1710498600) # March 15, 2024, 10:30:00 UTC
 ? oDateTime.Content()
-? oDateTime.ToUnixTimeStamp()
 #--&gt; 2024-03-15 10:30:00
+
+? oDateTime.ToUnixTimeStamp()
 #--&gt; 1710498600</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="tounixtimestampms" data-k="tounixtimestampms  unix timestamp"><div class="ln mono">ToUnixTimeStampMs</div><div class="lt">unix timestamp<details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
 ? o1.ToUnixTimeStampMs()
 #--&gt; 1728000000000</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="tosecondssinceepochxt" data-k="tosecondssinceepochxt  "><div class="ln mono">ToSecondsSinceEpochXT</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to seconds since epoch xt</span><small>in the section <b>epoch conversions</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
@@ -185,10 +204,12 @@ o2 - &quot;1 day&quot;
 ? o1.DayN()
 #--&gt; 4</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="hours" data-k="hours hoursn "><span id="hoursn"></span><div class="ln mono"><a href="stzdatetime/hours.html">Hours</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">hours</span> <a class="ex" href="stzdatetime/hours.html">2 examples run</a><small>also written: <span class="mono">HoursN</span></small><small>in the section <b>time zone operations</b></small><pre class="rx">oParsed = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
 ? oParsed.Hours()
-? oParsed.ToString()
-? oParsed.ToString12h()
 #--&gt; 14
+
+? oParsed.ToString()
 #--&gt; 2024-03-15 14:30:45
+
+? oParsed.ToString12h()
 #--&gt; 2024-03-15 2:30:45 PM</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="minutes" data-k="minutes minutesn "><span id="minutesn"></span><div class="ln mono"><a href="stzdatetime/minutes.html">Minutes</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">minutes</span> <a class="ex" href="stzdatetime/minutes.html">1 examples run</a><small>also written: <span class="mono">MinutesN</span></small><small>in the section <b>time zone operations</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
 ? o1.Minutes()
 #--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="seconds" data-k="seconds secondsn "><span id="secondsn"></span><div class="ln mono"><a href="stzdatetime/seconds.html">Seconds</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">seconds</span> <a class="ex" href="stzdatetime/seconds.html">1 examples run</a><small>also written: <span class="mono">SecondsN</span></small><small>in the section <b>time zone operations</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
@@ -273,10 +294,12 @@ o2 - &quot;1 day&quot;
 ? o1.ToStandardWithoutAmPm()
 #--&gt; 04/10/2024 00:00:00</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="toeuropean" data-k="toeuropean  "><div class="ln mono"><a href="stzdatetime/toeuropean.html">ToEuropean</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to european</span> <a class="ex" href="stzdatetime/toeuropean.html">2 examples run</a><small>in the section <b>formatting</b></small><pre class="rx">oDateTime = StzDateTimeQ(&quot;2024-03-15 10:30:00&quot;)
 ? oDateTime.Content()
-? oDateTime.ToEuropean() # Or ToEuropeanAmPm() or ToEuropean12h()
-? oDateTime.ToEuropeanWithoutAmPm() # Or ToEuropean24h()
 #--&gt; 2024-03-15 10:30:00
+
+? oDateTime.ToEuropean() # Or ToEuropeanAmPm() or ToEuropean12h()
 #--&gt; 15/03/2024 10:30:00 AM
+
+? oDateTime.ToEuropeanWithoutAmPm() # Or ToEuropean24h()
 #--&gt; 15/03/2024 10:30:00</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="toeuropean12h" data-k="toeuropean12h  "><div class="ln mono">ToEuropean12h</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to european12h</span><small>in the section <b>formatting</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
 ? o1.ToEuropean12h()
 #--&gt; 04/10/2024 12:00:00 AM</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="toeuropeanap" data-k="toeuropeanap  "><div class="ln mono">ToEuropeanAP</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to european ap</span><small>in the section <b>formatting</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
@@ -293,14 +316,17 @@ o2 - &quot;1 day&quot;
 ? o1.ToEuropeanWithoutAP()
 #--&gt; 04/10/2024 00:00:00</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="toeuropeanwithoutampm" data-k="toeuropeanwithoutampm  "><div class="ln mono"><a href="stzdatetime/toeuropeanwithoutampm.html">ToEuropeanWithoutAmPm</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to european without am pm</span> <a class="ex" href="stzdatetime/toeuropeanwithoutampm.html">2 examples run</a><small>in the section <b>formatting</b></small><pre class="rx">oDateTime = StzDateTimeQ(&quot;2024-03-15 10:30:00&quot;)
 ? oDateTime.Content()
-? oDateTime.ToEuropean() # Or ToEuropeanAmPm() or ToEuropean12h()
-? oDateTime.ToEuropeanWithoutAmPm() # Or ToEuropean24h()
 #--&gt; 2024-03-15 10:30:00
+
+? oDateTime.ToEuropean() # Or ToEuropeanAmPm() or ToEuropean12h()
 #--&gt; 15/03/2024 10:30:00 AM
+
+? oDateTime.ToEuropeanWithoutAmPm() # Or ToEuropean24h()
 #--&gt; 15/03/2024 10:30:00</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="toamerican" data-k="toamerican  "><div class="ln mono"><a href="stzdatetime/toamerican.html">ToAmerican</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to american</span> <a class="ex" href="stzdatetime/toamerican.html">1 examples run</a><small>in the section <b>formatting</b></small><pre class="rx">oDateTime = StzDateTimeQ(&quot;2024-03-15 10:30:00&quot;)
 ? oDateTime.Content()
-? oDateTime.ToAmerican()
 #--&gt; 2024-03-15 10:30:00
+
+? oDateTime.ToAmerican()
 #--&gt; 03/15/2024 10:30:00 AM</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="toamerican12h" data-k="toamerican12h  "><div class="ln mono">ToAmerican12h</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to american12h</span><small>in the section <b>formatting</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
 ? o1.ToAmerican12h()
 #--&gt; 10/04/2024 12:00:00 AM</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="toamericanap" data-k="toamericanap  "><div class="ln mono">ToAmericanAP</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to american ap</span><small>in the section <b>formatting</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
@@ -319,20 +345,25 @@ o2 - &quot;1 day&quot;
 ? o1.ToAmericanWithoutAmPm()
 #--&gt; 10/04/2024 00:00:00</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="toiso" data-k="toiso  "><div class="ln mono"><a href="stzdatetime/toiso.html">ToIso</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to iso</span> <a class="ex" href="stzdatetime/toiso.html">1 examples run</a><small>in the section <b>formatting</b></small><pre class="rx">oDateTime = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
 ? oDateTime.ToISO()
-? oDateTime.ToIso8601()
-? oDateTime.ToIsoWithMs()
 #--&gt; 2024-03-15 14:30:45
+
+? oDateTime.ToIso8601()
 #--&gt; 2024-03-15T14:30:45
+
+? oDateTime.ToIsoWithMs()
 #--&gt; 2024-03-15 14:30:45.000</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="toiso8601" data-k="toiso8601  "><div class="ln mono"><a href="stzdatetime/toiso8601.html">ToIso8601</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to iso8601</span> <a class="ex" href="stzdatetime/toiso8601.html">2 examples run</a><small>in the section <b>formatting</b></small><pre class="rx">oDateTime = StzDateTimeQ(&quot;2024-03-15T10:30:00&quot;)
 ? oDateTime.Content()
-? oDateTime.ToISO8601()
 #--&gt; 2024-03-15 10:30:00
+
+? oDateTime.ToISO8601()
 #--&gt; 2024-03-15T10:30:00</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="toisowithms" data-k="toisowithms  "><div class="ln mono"><a href="stzdatetime/toisowithms.html">ToIsoWithMs</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to iso with ms</span> <a class="ex" href="stzdatetime/toisowithms.html">1 examples run</a><small>in the section <b>formatting</b></small><pre class="rx">oDateTime = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
 ? oDateTime.ToISO()
-? oDateTime.ToIso8601()
-? oDateTime.ToIsoWithMs()
 #--&gt; 2024-03-15 14:30:45
+
+? oDateTime.ToIso8601()
 #--&gt; 2024-03-15T14:30:45
+
+? oDateTime.ToIsoWithMs()
 #--&gt; 2024-03-15 14:30:45.000</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="toverbose" data-k="toverbose  "><div class="ln mono">ToVerbose</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to verbose</span><small>in the section <b>formatting</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
 ? o1.ToVerbose()
 #--&gt; Friday, October d, 2024 12:00:00 AM</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="toverbose12h" data-k="toverbose12h  "><div class="ln mono">ToVerbose12h</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to verbose12h</span><small>in the section <b>formatting</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
@@ -357,28 +388,34 @@ o2 - &quot;1 day&quot;
 ? o1.ToTextDate()
 #--&gt; Fri Oct d 00:00:00 2024</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="tosimple" data-k="tosimple tosimple12h "><span id="tosimple12h"></span><div class="ln mono"><a href="stzdatetime/tosimple.html">ToSimple</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to simple</span> <a class="ex" href="stzdatetime/tosimple.html">3 examples run</a><small>also written: <span class="mono">ToSimple12h</span></small><small>in the section <b>formatting</b></small><pre class="rx">oDateTime = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
 ? oDateTime.ToSimple()
-? oDateTime.ToLong()
 #--&gt; 15/03/2024 2:30 PM
+
+? oDateTime.ToLong()
 #--&gt; Friday, March 15, 2024 2:30:45 PM</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="tosimple24h" data-k="tosimple24h  "><div class="ln mono"><a href="stzdatetime/tosimple24h.html">ToSimple24h</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to simple24h</span> <a class="ex" href="stzdatetime/tosimple24h.html">1 examples run</a><small>in the section <b>formatting</b></small><pre class="rx">oMorning = StzDateTimeQ(&quot;2024-03-15 09:15:30&quot;)
 ? oMorning.ToSimple()
+#--&gt; 15/03/2024 9:15 AM
+
 ? oMorning.ToSimple12h()
+#--&gt; 15/03/2024 9:15 AM
+
 ? oMorning.ToSimple24h()
-? oMorning.ToStringXT(&quot;h:mm AP&quot;)
-#--&gt; 15/03/2024 9:15 AM
-#--&gt; 15/03/2024 9:15 AM
 #--&gt; 15/03/2024 09:15
+
+? oMorning.ToStringXT(&quot;h:mm AP&quot;)
 #--&gt; 9:15 AM</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="tolong" data-k="tolong tolong12h "><span id="tolong12h"></span><div class="ln mono"><a href="stzdatetime/tolong.html">ToLong</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to long</span> <a class="ex" href="stzdatetime/tolong.html">1 examples run</a><small>also written: <span class="mono">ToLong12h</span></small><small>in the section <b>formatting</b></small><pre class="rx">oDateTime = StzDateTimeQ(&quot;2024-03-15 14:30:45&quot;)
 ? oDateTime.ToSimple()
-? oDateTime.ToLong()
 #--&gt; 15/03/2024 2:30 PM
+
+? oDateTime.ToLong()
 #--&gt; Friday, March 15, 2024 2:30:45 PM</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="tolong24h" data-k="tolong24h  "><div class="ln mono">ToLong24h</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to long24h</span><small>in the section <b>formatting</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
 ? o1.ToLong24h()
 #--&gt; Friday, October d, 2024 00:00:00</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="tolongdate" data-k="tolongdate  "><div class="ln mono">ToLongDate</div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to long date</span><small>in the section <b>formatting</b></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
 ? o1.ToLongDate()
 #--&gt; Friday, October d, 2024</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="tostring12h" data-k="tostring12h  "><div class="ln mono"><a href="stzdatetime/tostring12h.html">ToString12h</a></div><div class="lt"><i>(no comment in the source: the name reads as a sentence)</i> <span class="mono">to string12h</span> <a class="ex" href="stzdatetime/tostring12h.html">3 examples run</a><small>in the section <b>formatting</b></small><pre class="rx">oSingle = StzDateTimeQ(&quot;2024-03-15 03:05:00&quot;)
 ? oSingle.ToString12h()
-? oSingle.ToStringXT(&quot;h:mm AP&quot;)
 #--&gt; 2024-03-15 3:05:00 AM
+
+? oSingle.ToStringXT(&quot;h:mm AP&quot;)
 #--&gt; 3:05 AM</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="tohuman" data-k="tohuman  human-readable"><div class="ln mono">ToHuman</div><div class="lt">human-readable<details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
 ? o1.ToHuman()
 #--&gt; Friday, October 4th, 2024 at 12 o&#x27;clock AM</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="torelative" data-k="torelative  human-readable"><div class="ln mono">ToRelative</div><div class="lt">human-readable<details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])

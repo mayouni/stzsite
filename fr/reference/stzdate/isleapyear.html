@@ -45,23 +45,23 @@
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># 2023 is not a leap year
 ? StzDateQ(&quot;01/01/2023&quot;).IsLeapYear()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/00_date_narrated.ring" target="_blank" rel="noopener noreferrer">00_date_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? StzDateQ(&quot;15/02/2024&quot;).IsLeapYear()
 ? StzDateQ(&quot;15/02/2025&quot;).IsLeap()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
-0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/16_checking_if_year_is_leap_year.ring" target="_blank" rel="noopener noreferrer">16_checking_if_year_is_leap_year.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o = StzDateQ(&quot;15/03/2024&quot;)
+0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/16_checking_if_year_is_leap_year.ring" target="_blank" rel="noopener noreferrer">16_checking_if_year_is_leap_year.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = StzDateQ(&quot;15/03/2024&quot;)
 # Date() round-trips the string
-? o.Date()
+? o1.Date()
 # Day() is the weekday name Friday
-? o.Day()
+? o1.Day()
 # DayNumber() is 15
-? o.DayNumber()
+? o1.DayNumber()
 # Month() is March
-? o.Month()
+? o1.Month()
 # MonthNumber() is 3
-? o.MonthNumber()
+? o1.MonthNumber()
 # Year() is 2024
-? o.Year()
+? o1.Year()
 # DayOfYear() is 75 (leap-year Jan31+Feb29+15)
-? o.DayOfYear()
+? o1.DayOfYear()
 # 2024 IsLeapYear
-? o.IsLeapYear()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>15/03/2024
+? o1.IsLeapYear()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>15/03/2024
 Friday
 15
 March

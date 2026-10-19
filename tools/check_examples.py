@@ -28,8 +28,9 @@ def main():
             text = f.read_text(encoding="utf-8", errors="replace")
             for m in RX.finditer(text):
                 body = html.unescape(re.sub(r"<[^>]+>", "", m.group(1)))
-                code = "\n".join(l for l in body.split("\n") if not l.startswith("#-->"))
-                out = [l for l in body.split("\n") if l.startswith("#-->")]
+                # a promise sits under the line that printed it, indented with it, or on the same line when the example is one line
+                code = "\n".join(l.split("#-->")[0].rstrip() for l in body.split("\n") if l.split("#-->")[0].strip())
+                out = [l for l in body.split("\n") if "#-->" in l]
                 count += 1; per[(lang, kind)] += 1
                 rel = f.relative_to(ROOT).as_posix()
                 if WORD.search(body): bad.append((rel, "names the former language", code.split("\n")[-1][:70]))

@@ -142,7 +142,7 @@ alert log: 4 entries; bus count: 2</pre></div>
 agent supervised <em>on that channel</em> wakes exactly when the SLA breaks,
 and any part of the process can poll the counts without holding the
 sentinel. The bounded <code>AlertLog()</code> keeps the story. And the sentinel
-wears the same agent-host contract as the monitor (<code>Name_()</code> +
+wears the same agent-host contract as the monitor (<code>Name()</code> +
 <code>Cycle()</code>): a server that hosts agents can judge its own SLA
 continuously, in its own loop.</p>
 <h2 id="honest-limits-and-where-this-goes">Honest limits, and where this goes</h2>

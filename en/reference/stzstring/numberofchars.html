@@ -105,13 +105,13 @@ big  = new stzString( oAB.Repeated(1000000) )
 1999999</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring" target="_blank" rel="noopener noreferrer">999_engine_string_millions_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
 big  = new stzString( oAB.Repeated(1000000) )
 oE = new stzString(&quot;😀🎉&quot;)
-e  = new stzString( oE.Repeated(50000) )
+e1  = new stzString( oE.Repeated(50000) )
 # NumberOfChars is 100,000 codepoints
-? e.NumberOfChars()
+? e1.NumberOfChars()
 # NumberOfOccurrences(&#x27;😀&#x27;) is 50,000
-? e.NumberOfOccurrences(&quot;😀&quot;)
+? e1.NumberOfOccurrences(&quot;😀&quot;)
 # Reversed keeps 100,000 codepoints
-? StzLen(e.Reversed())</pre></div><div class="out"><div class="lbl">Output</div><pre>100000
+? StzLen(e1.Reversed())</pre></div><div class="out"><div class="lbl">Output</div><pre>100000
 50000
 100000</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring" target="_blank" rel="noopener noreferrer">999_engine_string_millions_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAB  = new stzString(&quot;ab&quot;)
 big  = new stzString( oAB.Repeated(1000000) )

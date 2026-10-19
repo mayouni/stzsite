@@ -17,6 +17,7 @@ movements, each fed by a source that exists and is named:
 Every sentence from the Compass is shown in English, as the Compass wrote it, and the page says so.
 """
 import json, re, html, pathlib
+import rowex
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -251,7 +252,7 @@ def pick_example_html(cls, name, exs, rdata, lang):
     if not best: return ""
     e = best[1]
     code = e["code"].strip("\n")
-    body = esc(code) + "\n" + "\n".join("#--&gt; " + esc(l) for l in e["out"].strip("\n").split("\n"))
+    body = esc(rowex.promise_body(code, e["out"]))
     src = {"en": "library test", "fr": "test de la bibliothèque"}[lang]
     return f'<pre class="rx">{body}</pre><span class="rx-src">{src}</span>'
 

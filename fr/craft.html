@@ -69,10 +69,10 @@ o1 = new stzList(L(&#x27; &quot;♥1&quot; : &quot;♥3&quot; &#x27;))
 </ul>
 <h2 id="languages">De petites langues dans les arguments</h2>
 <p>Certains arguments ne sont pas des valeurs mais des phrases dans une petite langue. Une condition comme <code>"{ @item &gt; 5 }"</code> est compilée par le moteur et vérifiée sur chaque élément, sans jamais évaluer de code : elle reste sûre même quand elle vient d'un utilisateur ou d'un fichier. Un paramètre nommé comme <code>:With = "coffee"</code> ou <code>:StartingAt = 3</code> fait lire un appel comme une phrase. Les motifs sur les listes, les nombres, les tables et le temps suivent la même idée, et les chaînes quasi naturelles laissent une ligne de code se lire comme de l'anglais.</p>
-<p style="margin-top:32px"><b>Une condition voyage comme un court texte dans l&#x27;argument ; le moteur la compile et répond par les positions, les éléments ou leur nombre.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>o = new stzList([ 4, 7, 10, 3, 8 ])
-? @@( o.FindW(&quot;{ @item &gt; 5 }&quot;) )
-? @@( o.ItemsW(&quot;{ @item &gt; 5 }&quot;) )
-? o.CountW(&quot;{ @item &gt; 5 }&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 2, 3, 5 ]
+<p style="margin-top:32px"><b>Une condition voyage comme un court texte dans l&#x27;argument ; le moteur la compile et répond par les positions, les éléments ou leur nombre.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 4, 7, 10, 3, 8 ])
+? @@( o1.FindW(&quot;{ @item &gt; 5 }&quot;) )
+? @@( o1.ItemsW(&quot;{ @item &gt; 5 }&quot;) )
+? o1.CountW(&quot;{ @item &gt; 5 }&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 2, 3, 5 ]
 [ 7, 10, 8 ]
 3</pre></div></div><p class="ran">exécuté le 2026-10-15 13:37 dans la bibliothèque au commit 4a184e6f0 ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/07-declare-what-not-how.en.md" target="_blank" rel="noopener noreferrer">base/education/program/courses/elementary-introduction/chapters/07-declare-what-not-how.en.md<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p style="margin-top:32px"><b>Les paramètres nommés font lire un appel comme une phrase, et les positions comptent des caractères : chaque puce compte pour un.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(&quot;tea, rice, tea&quot;).Replaced(&quot;tea&quot;, :With = &quot;coffee&quot;)
 o1 = new stzString(&quot;..•.•..&quot;)

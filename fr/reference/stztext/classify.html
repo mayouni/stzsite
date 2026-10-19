@@ -42,19 +42,19 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>t = new stzText(&quot;the stock market prices fell sharply on wall street today&quot;)
+    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>t1 = new stzText(&quot;the stock market prices fell sharply on wall street today&quot;)
 # ClassifiedAs picks the closest label
-? t.ClassifiedAs([ &quot;market finance&quot;, &quot;cooking food&quot; ])
+? t1.ClassifiedAs([ &quot;market finance&quot;, &quot;cooking food&quot; ])
 # Classify returns ranked [label, score] pairs, best first
-? t.Classify([ &quot;market finance&quot;, &quot;cooking food&quot; ])[1][1]
+? t1.Classify([ &quot;market finance&quot;, &quot;cooking food&quot; ])[1][1]
 # Classify keeps all labels
-? len(t.Classify([ &quot;market finance&quot;, &quot;cooking food&quot;, &quot;space travel&quot; ]))
+? len(t1.Classify([ &quot;market finance&quot;, &quot;cooking food&quot;, &quot;space travel&quot; ]))
 # ClassifyQ is the basic stzList
-? classname(t.ClassifyQ([ &quot;a&quot;, &quot;b&quot; ]))
+? classname(t1.ClassifyQ([ &quot;a&quot;, &quot;b&quot; ]))
 # ClassifyQQ is stzListOfPairs
-? classname(t.ClassifyQQ([ &quot;a&quot;, &quot;b&quot; ]))
+? classname(t1.ClassifyQQ([ &quot;a&quot;, &quot;b&quot; ]))
 # a non-list of labels is rejected
-? @@(t.Classify(&quot;not a list&quot;))</pre></div><div class="out"><div class="lbl">Sortie</div><pre>market finance
+? @@(t1.Classify(&quot;not a list&quot;))</pre></div><div class="out"><div class="lbl">Sortie</div><pre>market finance
 market finance
 3
 stzlist

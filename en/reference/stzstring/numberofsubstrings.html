@@ -53,28 +53,28 @@
 # SubStrings() returns that many
 ? len( o1.SubStrings() )</pre></div><div class="out"><div class="lbl">Output</div><pre>78
 78</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/125_numberofsubstrings.ring" target="_blank" rel="noopener noreferrer">125_numberofsubstrings.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><h2>Scope <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oA = new stzString(&quot;a&quot;)
-s = new stzString( oA.Repeated(1000) )
+s1 = new stzString( oA.Repeated(1000) )
 # NumberOfSubStrings is 500,500 (L(L+1)/2)
-? s.NumberOfSubStrings()
+? s1.NumberOfSubStrings()
 # SubStrings() enumerates all 500,500
-? len(s.SubStrings())
+? len(s1.SubStrings())
 # SubStringsU() distinct is 1,000 (a^1..a^1000)
-? len(s.SubStringsU())</pre></div><div class="out"><div class="lbl">Output</div><pre>500500
+? len(s1.SubStringsU())</pre></div><div class="out"><div class="lbl">Output</div><pre>500500
 500500
 1000</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/998_engine_string_largedata_narrated.ring" target="_blank" rel="noopener noreferrer">998_engine_string_largedata_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oA = new stzString(&quot;a&quot;)
-s = new stzString( oA.Repeated(100) )
+s1 = new stzString( oA.Repeated(100) )
 # NumberOfSubStrings is 5,050
-? s.NumberOfSubStrings()
+? s1.NumberOfSubStrings()
 # SubStrings() enumerates 5,050
-? len(s.SubStrings())
+? len(s1.SubStrings())
 # SubStringsU() is 100
-? len(s.SubStringsU())
+? len(s1.SubStringsU())
 # DuplicatesCS(1) is 50
-? len(s.DuplicatesCS(1))
+? len(s1.DuplicatesCS(1))
 # ConsecutiveSubStrings is 3,775
-? len(s.ConsecutiveSubStrings())
+? len(s1.ConsecutiveSubStrings())
 # FindDupSecutiveChars is 99
-? len(s.FindDupSecutiveChars())</pre></div><div class="out"><div class="lbl">Output</div><pre>5050
+? len(s1.FindDupSecutiveChars())</pre></div><div class="out"><div class="lbl">Output</div><pre>5050
 5050
 100
 50

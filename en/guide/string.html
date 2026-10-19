@@ -40,8 +40,7 @@
     <p class="lede">977 functions in 43 classes, grouped by what they do, each with the explanation the library gives of itself.</p>
   </div></section>
   <div class="wrap page-body">
-<p class="proof">The story of this area, for a general reader: what a crafter does with it, an example run and its rated lanes, is on <a href="../atlas/string.html">its Platform page</a>.</p><h2 id="functions">The functions, by what they do</h2><h3>Testing and checking</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzstring/check.html">Check</a> Check([pcExpr]) -- evaluate pcExpr per char (@char in scope) and return TRUE if it holds for every char. 0-arg form is the existence-check stub used by re-include narratives. <span class="in">in stzString</span><pre class="rx">? Q(&quot;(,,)&quot;).Check(:That = &#x27;StzCharQ(@Char).IsPunctuation()&#x27;)
-#--&gt; 1</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring.html#isword">IsWord</a> TRUE if the string is a single word. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
+<p class="proof">The story of this area, for a general reader: what a crafter does with it, an example run and its rated lanes, is on <a href="../atlas/string.html">its Platform page</a>.</p><h2 id="functions">The functions, by what they do</h2><h3>Testing and checking</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzstring/check.html">Check</a> Check([pcExpr]) -- evaluate pcExpr per char (@char in scope) and return TRUE if it holds for every char. 0-arg form is the existence-check stub used by re-include narratives. <span class="in">in stzString</span><pre class="rx">? Q(&quot;(,,)&quot;).Check(:That = &#x27;StzCharQ(@Char).IsPunctuation()&#x27;)   #--&gt; 1</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring.html#isword">IsWord</a> TRUE if the string is a single word. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.IsWord()
 #--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring.html#hasmark">HasMark</a> control / mark checks <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.HasMark()
@@ -53,22 +52,26 @@
 ? o1.IsEmpty()
 #--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring/islatin.html">IsLatin</a> IsLatin(): TRUE iff every char is ASCII-Latin. <span class="in">in stzString</span><pre class="rx"># Latin script
 ? StzStringQ(&quot;Ⅱ&quot;).IsLatin()
+#--&gt; 1
+
 # and a Roman number
 ? StzCharQ(&quot;Ⅱ&quot;).IsRomanNumber()
-#--&gt; 1
 #--&gt; 1</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring.html#isvowel">IsVowel</a> Returns 1 if the string is a single vowel char (case-insensitive ASCII a/e/i/o/u). Convenience predicate; callers use it as `Q(c).IsVowel()` or `Q(c).Vowel()`. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.IsVowel()
 #--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring/contains.html">Contains</a> Whether the string contains the given substring. <span class="in">in stzString</span><pre class="rx">oS = new stzString(&quot;tea rice tea fish&quot;)
 ? oS.Contains(&quot;tea&quot;)
-? oS.NumberOfOccurrence(&quot;tea&quot;)
-? @@( oS.FindAll(&quot;tea&quot;) )
 #--&gt; 1
+
+? oS.NumberOfOccurrence(&quot;tea&quot;)
 #--&gt; 2
+
+? @@( oS.FindAll(&quot;tea&quot;) )
 #--&gt; [ 1, 10 ]</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring/isaclass.html">IsAClass</a> IsAClass(): TRUE if content is a Haro class name (lookup via Haro&#x27;s classes() introspection). <span class="in">in stzString</span><pre class="rx"># stzLen is a function
 ? Q(&quot;stzLen&quot;).IsFunction()
+#--&gt; 1
+
 # stzChar is a class
 ? Q(&quot;stzChar&quot;).IsClass()
-#--&gt; 1
 #--&gt; 1</pre><span class="rx-src">library test · written IsAClass() in the library today: the host language already holds IsClass(), and Haro removes the detour; written IsAFunction() in the library today: the host language already holds IsFunction(), and Haro removes the detour</span></li><li><a class="mono" href="../reference/stzstring.html#isadigit">IsADigit</a> TRUE if the string is a single digit. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.IsDigit()
 #--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page · written IsADigit() in the library today: the host language already holds IsDigit(), and Haro removes the detour</span></details></li><li><a class="mono" href="../reference/stzstring.html#iseither">IsEither</a> IsEither(a, :Or = b): TRUE when the content equals either value (string-side override; unwraps the :Or named param). <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
@@ -77,10 +80,12 @@
 ? o1.Nth(2, &quot;an&quot;)
 #--&gt; 4</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring/find.html">Find</a> Find pcSubStr in the string: the positions of EVERY occurrence, as a list (engine-backed, codepoint-aware). (case-sensitive by default) <span class="in">in stzString</span><pre class="rx">oS = new stzString(&quot;tea rice tea fish&quot;)
 ? oS.Contains(&quot;tea&quot;)
-? oS.NumberOfOccurrence(&quot;tea&quot;)
-? @@( oS.FindAll(&quot;tea&quot;) )
 #--&gt; 1
+
+? oS.NumberOfOccurrence(&quot;tea&quot;)
 #--&gt; 2
+
+? @@( oS.FindAll(&quot;tea&quot;) )
 #--&gt; [ 1, 10 ]</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring.html#lastz">LastZ</a> The last char along with its position. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? @@( o1.LastZ() )
 #--&gt; [ 12, 12 ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring.html#firstz">FirstZ</a> FirstZ(sub) -- the Z grouping [sub, position] of the first occurrence (0-arg keeps the first-char section form). <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
@@ -102,9 +107,10 @@
 #--&gt; split</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring/findlast.html">FindLast</a> The last occurrence of the substring: the position(s). <span class="in">in stzString</span><pre class="rx">o1 = new stzString(&quot;•♥••••♥••&quot;)
 # FindLast(&#x27;♥&#x27;) is 7
 ? o1.FindLast(&quot;♥&quot;)
+#--&gt; 7
+
 # FindLast(&#x27;_&#x27;) (absent) is 0
 ? o1.FindLast(&quot;_&quot;)
-#--&gt; 7
 #--&gt; 0</pre><span class="rx-src">library test</span></li></ul><p class="proof">and 132 more in the reference</p><h3>Counting and measuring</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzstring/howmany.html">HowMany</a> HowMany family: count occurrences of pcSub in the content. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.HowMany(&quot;an&quot;)
 #--&gt; 2</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring.html#countregex">CountRegex</a> How many matches of the given regex pattern. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
@@ -113,31 +119,39 @@
 ? o1.NumberForm()
 #--&gt; other</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring/countcharsw.html">CountCharsW</a> How many chars satisfy the W condition. <span class="in">in stzString</span><pre class="rx"># counting the lowercase &quot;a&quot; gives 3
 ? Q(&quot;SoftAnza Libraray&quot;).CountCharsW(&#x27;@char = &quot;a&quot;&#x27;)
+#--&gt; 3
+
 # counting &quot;a&quot; case-insensitively (a or A) gives 4
 ? Q(&quot;SoftAnza Libraray&quot;).CountCharsW(&#x27;(@char = &quot;a&quot;) or (@char = &quot;A&quot;)&#x27;)
-#--&gt; 3
 #--&gt; 4</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring/sizeinbytes.html">SizeInBytes</a> The size of the string in bytes (UTF-8). <span class="in">in stzString</span><pre class="rx">o1 = new stzString(&quot;s㊱m&quot;)
 ? o1.NumberOfBytes()
+#--&gt; 5
+
 ? o1.SizeInBytes()
+#--&gt; 5
+
 ? @@(o1.Bytes())
-? @@(o1.NumberOfBytesPerChar())
-#--&gt; 5
-#--&gt; 5
 #--&gt; [ &quot;s&quot;, &quot;�&quot;, &quot;�&quot;, &quot;�&quot;, &quot;m&quot; ]
+
+? @@(o1.NumberOfBytesPerChar())
 #--&gt; [ [ &quot;s&quot;, 1 ], [ &quot;㊱&quot;, 3 ], [ &quot;m&quot;, 1 ] ]</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring.html#sumofnumbers">SumOfNumbers</a> Data extraction: total amounts in an invoice/log, averages, ranges. A number = optional &#x27;-&#x27;, digits, one optional &#x27;.&#x27; with more digits. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.SumOfNumbers()
 #--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring/numberofbytes.html">NumberOfBytes</a> The size of the string in bytes (UTF-8). <span class="in">in stzString</span><pre class="rx">o1 = new stzString(&quot;s㊱m&quot;)
 ? o1.NumberOfBytes()
+#--&gt; 5
+
 ? o1.SizeInBytes()
+#--&gt; 5
+
 ? @@(o1.Bytes())
-? @@(o1.NumberOfBytesPerChar())
-#--&gt; 5
-#--&gt; 5
 #--&gt; [ &quot;s&quot;, &quot;�&quot;, &quot;�&quot;, &quot;�&quot;, &quot;m&quot; ]
+
+? @@(o1.NumberOfBytesPerChar())
 #--&gt; [ [ &quot;s&quot;, 1 ], [ &quot;㊱&quot;, 3 ], [ &quot;m&quot;, 1 ] ]</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring/numberofchars.html">NumberOfChars</a> The length of the string in characters (Unicode codepoints). <span class="in">in stzString</span><pre class="rx">ostr = new stzString(&quot;s㊱m&quot;)
 ? ostr.NumberOfChars()
-? ostr[2]
 #--&gt; 3
+
+? ostr[2]
 #--&gt; ㊱</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring/numberoflines.html">NumberOfLines</a> How many lines the string holds. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.NumberOfLines()
 #--&gt; 1</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring/numberofwords.html">NumberOfWords</a> How many words the string holds. <span class="in">in stzString</span><pre class="rx">o1 = new stzString(&quot;the bread was cold and the tea was cold&quot;)
@@ -180,20 +194,22 @@ o1.ReplaceAllChars( :With = &quot;*&quot; )
 ? o1.Content()
 #--&gt; *******************************</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring/replacenthcharq.html">ReplaceNthCharQ</a> ReplaceNthCharQ alias. Replace the char at position n with the given one (chainable). <span class="in">in stzString</span><pre class="rx"># positional
 ? StzStringQ(&quot;évènement&quot;).ReplaceNthCharQ(3, &quot;*&quot;).Content()
+#--&gt; év*nement
+
 # named
 ? StzStringQ(&quot;évènement&quot;).ReplaceNthCharQ(3, :With = &quot;*&quot;).Content()
-#--&gt; év*nement
 #--&gt; év*nement</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring/replacewithmany.html">ReplaceWithMany</a> Replace the occurrences of pcSub cycling through the given replacements (same as ReplaceByMany). <span class="in">in stzString</span><pre class="rx">o1 = new stzString(&quot;--Ring--Softanza--&quot;)
 o1.ReplaceWithMany(&quot;--&quot;, [ &quot;1&quot;, &quot;2&quot;, &quot;3&quot; ])
 # the three &#x27;--&#x27; get 1, 2, 3
 ? o1.Content()
 #--&gt; 1Ring2Softanza3</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring/replaceinsection.html">ReplaceInSection</a> ReplaceInSection: replace occurrences of pSubStr within the section [n1, n2] with pNew. Polymorphic on argument order: ReplaceInSection(n1, n2, pSubStr, pNew)      -- bounds first ReplaceInSection(pSubStr, pNew, n1, n2)      -- substrings first <span class="in">in stzString</span><pre class="rx"># FindZZ locates the section of Programming
 ? @@( Q(&quot;Softanza Programming by Heart&quot;).FindZZ(&quot;Programming&quot;) )
-# ReplaceInSection m-&gt;M inside [10,20]
-o = new stzString(&quot;Softanza Programming by Heart&quot;)
-o.ReplaceInSection(&quot;m&quot;, &quot;M&quot;, 10, 20)
-? o.Content()
 #--&gt; [ [ 10, 20 ] ]
+
+# ReplaceInSection m-&gt;M inside [10,20]
+o1 = new stzString(&quot;Softanza Programming by Heart&quot;)
+o1.ReplaceInSection(&quot;m&quot;, &quot;M&quot;, 10, 20)
+? o1.Content()
 #--&gt; Softanza PrograMMing by Heart</pre><span class="rx-src">library test</span></li></ul><p class="proof">and 55 more in the reference</p><h3>Removing</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzstring/trim.html">Trim</a> Remove leading and trailing whitespace in place (mutating). For a copy, use Trimmed. <span class="in">in stzString</span><pre class="rx">o1 = new stzString(&quot; ♥♥♥123♥♥♥   &quot;)
 o1.Trim()
 # only the spaces went
@@ -283,9 +299,10 @@ o1.InsertAfterPositions([ 2, 4, 6, 8 ], &quot; &quot;)
 ? o1.Content()
 #--&gt; SO FT AN ZA</pre><span class="rx-src">library test</span></li></ul><p class="proof">and 21 more in the reference</p><h3>Splitting and extracting</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzstring/split.html">Split</a> Split the string into a list of parts around a separator. <span class="in">in stzString</span><pre class="rx"># Split on the literal hyphen
 ? @@( Q(&quot;ONE-TWO-THREE&quot;).Split(&quot;-&quot;) )
+#--&gt; [ &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot; ]
+
 # SplitW at every non-letter is equivalent
 ? @@( Q(&quot;ONE-TWO-THREE&quot;).SplitW(&#x27;{ Q(@char).IsNotLetter() }&#x27;) )
-#--&gt; [ &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot; ]
 #--&gt; [ &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot; ]</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring.html#splits">Splits</a> Splits([pcSep]): split-on-separator words; 0-arg uses whitespace. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? @@( o1.Splits(&quot; &quot;) )
 #--&gt; [ &quot;banana&quot;, &quot;split&quot; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring/section.html">Section</a> The substring from position n1 to n2 (inclusive, codepoint-aware). <span class="in">in stzString</span><pre class="rx"># 456
@@ -297,26 +314,30 @@ o1.InsertAfterPositions([ 2, 4, 6, 8 ], &quot; &quot;)
 #--&gt; [ &quot;b&quot;, &quot;a&quot;, &quot;n&quot;, &quot;a&quot;, &quot;n&quot;, &quot;a&quot;, &quot; split&quot; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring/substrings.html">SubStrings</a> ENGINE-BACKED (StzEngineStringSubStrings): all substrings in (i,j) order, no dedup. Retires the O(n^2) Haro double-loop. <span class="in">in stzString</span><pre class="rx">o1 = new stzString(&quot;RINGORIALAND&quot;)
 # there are 12*13/2 = 78 substrings
 ? o1.NumberOfSubStrings()
+#--&gt; 78
+
 # SubStrings() returns that many
 ? len( o1.SubStrings() )
-#--&gt; 78
 #--&gt; 78</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring/substringxt.html">SubStringXT</a> SubStringXT(p1, p2): polymorphic substring DSL. SubStringXT(n, :NCharsFrom = m)         -- m chars from pos n SubStringXT(pcSub, :NCharsFrom = m)     -- m chars after pcSub SubStringXT(:NCharsBefore = m, pcSub)   -- m chars before pcSub <span class="in">in stzString</span><pre class="rx"># the named-param shape is recognised
 ? Q(:IsBoundedBy = &quot;.&quot;).IsIsBoundedByNamedParam()
+#--&gt; 1
+
 # the direct check
 ? Q(&quot;.♥.&quot;).SubStringIsBoundedBy(&quot;♥&quot;, &quot;.&quot;)
+#--&gt; 1
+
 # the SubStringXT spelling
 ? Q(&quot;.♥.&quot;).SubStringXT(&quot;♥&quot;, :IsBoundedBy = &quot;.&quot;)
-#--&gt; 1
-#--&gt; 1
 #--&gt; 1</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring.html#splitbyregex">SplitByRegex</a> Split the string on the matches of the given regex pattern. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? @@( o1.SplitByRegex(&quot;an&quot;) )
 #--&gt; [ &quot;b&quot;, &quot;&quot;, &quot;a split&quot; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring.html#sectionbounds">SectionBounds</a> SectionBounds(n1, n2, nLeftMax, nRightMax): the [open, close] bound substrings just before n1 and just after n2. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? @@( o1.SectionBounds(2, 5, 2, 2) )
 #--&gt; [ &quot;b&quot;, &quot;a &quot; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring/splitatcharsw.html">SplitAtCharsW</a> SplitAtCharsW(pcCondition): split content at every char where the predicate is TRUE. Same semantics as SplitW, spelled for char-narratives. <span class="in">in stzString</span><pre class="rx"># SplitAtCharsW
 ? @@( Q(&quot;RingRingRing&quot;).SplitAtCharsW(&#x27;Q(@char).IsUppercase()&#x27;) )
+#--&gt; [ &quot;ing&quot;, &quot;ing&quot;, &quot;ing&quot; ]
+
 # SplitW(:AtChars) is the same
 ? @@( Q(&quot;RingRingRing&quot;).SplitW(:AtChars = &#x27;Q(@char).IsUppercase()&#x27;) )
-#--&gt; [ &quot;ing&quot;, &quot;ing&quot;, &quot;ing&quot; ]
 #--&gt; [ &quot;ing&quot;, &quot;ing&quot;, &quot;ing&quot; ]</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring.html#splittonparts">SplitToNParts</a> SplitToNParts: split the string into fixed-size character chunks of n characters each. The split is RIGHT-anchored (counting from the end of the string), which is the natural shape for digit grouping -- &quot;1234567&quot; with n=3 gives [&quot;1&quot;, &quot;234&quot;, &quot;567&quot;]. The Q form returns a stzList wrapper for fluent chaining. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? @@( o1.SplitToNParts(2) )
 #--&gt; [ &quot;banana&quot;, &quot; split&quot; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring.html#splitatposition">SplitAtPosition</a> Split the string at the given position. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
@@ -415,9 +436,10 @@ o1.SortLines()
 ? o1.WalkUntil(&quot;@char = &#x27;a&#x27;&quot;)
 #--&gt; 1</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring/yieldcharsw.html">YieldCharsW</a> YieldCharsW(pcYielder, pNamedWhere): transform every char through the yielder expression via the engine char-map (StzEngineStringMapChars, expr.zig -- no eval). Optional :Where = predicate restricts to the matching chars first (engine FindCharsW). @char binding. Replaces the retired raw-eval YieldCharsWXT. <span class="in">in stzString</span><pre class="rx"># FindCharsW reports the letter positions
 ? @@( Q(&quot;..ONE...TWO..&quot;).FindCharsW(&#x27;isLetter(@char)&#x27;) )
+#--&gt; [ 3, 4, 5, 9, 10, 11 ]
+
 # YieldCharsW with :Where collects the letters
 ? @@( Q(&quot;..ONE...TWO..&quot;).YieldCharsW(&#x27;@char&#x27;, :Where = &#x27;isLetter(@char)&#x27;) )
-#--&gt; [ 3, 4, 5, 9, 10, 11 ]
 #--&gt; [ &quot;O&quot;, &quot;N&quot;, &quot;E&quot;, &quot;T&quot;, &quot;W&quot;, &quot;O&quot; ]</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring.html#walkforwardw">WalkForwardW</a> Walk forward collecting where the W condition holds (mirror of WalkBackwardW). <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? @@( o1.WalkForwardW(&quot;@char = &#x27;a&#x27;&quot;, 2) )
 #--&gt; [ 2, 4, 6 ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring.html#eachcharboxed">EachCharBoxed</a> Each char in its own box cell, as a string. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)

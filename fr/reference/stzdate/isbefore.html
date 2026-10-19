@@ -42,14 +42,14 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>a = StzDateQ(&quot;01/01/2024&quot;)
-b = StzDateQ(&quot;31/01/2024&quot;)
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>a1 = StzDateQ(&quot;01/01/2024&quot;)
+b1 = StzDateQ(&quot;31/01/2024&quot;)
 # DaysTo is 30
-? a.DaysTo(b)
+? a1.DaysTo(b1)
 # Jan 1 IsBefore Jan 31
-? a.IsBefore(b)
+? a1.IsBefore(b1)
 # Jan 1 IsAfter Jan 31 is FALSE
-? a.IsAfter(b)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>30
+? a1.IsAfter(b1)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>30
 1
 0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/date/00_date_narrated.ring" target="_blank" rel="noopener noreferrer">00_date_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oDate1 = StzDateQ(&quot;15/06/2024&quot;)
 oDate2 = StzDateQ(&quot;20/06/2024&quot;)

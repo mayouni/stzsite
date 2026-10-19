@@ -58,14 +58,16 @@
 ? oF.ValueAt([ 2 ])
 #--&gt; 4</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="gradientat" data-k="gradientat  the gradient: one entry per variable, in the order they were named"><div class="ln mono"><a href="stzmathfunction/gradientat.html">GradientAt</a></div><div class="lt">the gradient: one entry per variable, in the order they were named <a class="ex" href="stzmathfunction/gradientat.html">1 exemples exécutés</a><pre class="rx">oG = new stzMathFunction(&quot;x*y + y^2&quot;, [ &quot;x&quot;, &quot;y&quot; ])
 ? oG.ValueAt([ 2, 3 ])
-? @@( oG.GradientAt([ 2, 3 ]) )
 #--&gt; 15
+
+? @@( oG.GradientAt([ 2, 3 ]) )
 #--&gt; [ 3, 8 ]</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="valueandgradientat" data-k="valueandgradientat  value and gradient together, because the backward pass computes both and asking for them separately evaluates the expression twice"><div class="ln mono">ValueAndGradientAt</div><div class="lt">value and gradient together, because the backward pass computes both and asking for them separately evaluates the expression twice<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzMathFunction(&quot;x^2 + 3*x*y&quot;, [ &quot;x&quot;, &quot;y&quot; ])
 ? @@( o1.ValueAndGradientAt([ &quot;an&quot;, &quot;a&quot; ]) )
 #--&gt; [ [ &quot;value&quot;, 0 ], [ &quot;gradient&quot;, [ 0.00, 0.00 ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="derivativeat" data-k="derivativeat  the partial derivative with respect to one named variable"><div class="ln mono"><a href="stzmathfunction/derivativeat.html">DerivativeAt</a></div><div class="lt">the partial derivative with respect to one named variable <a class="ex" href="stzmathfunction/derivativeat.html">4 exemples exécutés</a><pre class="rx">oQ = new stzMathFunction(&quot;x^2 - 2&quot;, [ &quot;x&quot; ])
 ? oQ.DerivativeAt(&quot;x&quot;, [ 0 ])
-? oQ.DerivativeAt(&quot;x&quot;, [ 1 ])
 #--&gt; 0
+
+? oQ.DerivativeAt(&quot;x&quot;, [ 1 ])
 #--&gt; 2</pre><span class="rx-src">test de la bibliothèque</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="free" data-k="free  "><div class="ln mono">Free</div><div class="lt"><i>(sans commentaire dans la source : le nom se lit comme une phrase)</i> <span class="mono">free</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div></div>
   </div>
 </main>

@@ -55,22 +55,28 @@ o1.SetContent([ 2, 3 ])
 ? o1.NumberOfItems()
 #--&gt; 3</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="map" data-k="map  map"><div class="ln mono"><a href="stzyielder/map.html">Map</a></div><div class="lt">map <a class="ex" href="stzyielder/map.html">1 examples run</a><pre class="rx">oY = new stzYielder([ 12, 0, 30, -5, 18 ])
 ? @@( oY.Filter(:IsPositive) )
-? @@( oY.Map(:Double) )
-? oY.Reduce(:Sum)
 #--&gt; [ 12, 30, 18 ]
+
+? @@( oY.Map(:Double) )
 #--&gt; [ 24, 0, 60, -10, 36 ]
+
+? oY.Reduce(:Sum)
 #--&gt; 55</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts"><i class="y" title="Q: chains">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="n" title="XT: extended (does not exist for this method)">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="mapindexed" data-k="mapindexed  map"><div class="ln mono">MapIndexed</div><div class="lt">map<span class="ext-line"><span class="exts"><i class="y" title="Q: chains">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="n" title="XT: extended (does not exist for this method)">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="filter" data-k="filter  filter"><div class="ln mono"><a href="stzyielder/filter.html">Filter</a></div><div class="lt">filter <a class="ex" href="stzyielder/filter.html">1 examples run</a><pre class="rx">oY = new stzYielder([ 12, 0, 30, -5, 18 ])
 ? @@( oY.Filter(:IsPositive) )
-? @@( oY.Map(:Double) )
-? oY.Reduce(:Sum)
 #--&gt; [ 12, 30, 18 ]
+
+? @@( oY.Map(:Double) )
 #--&gt; [ 24, 0, 60, -10, 36 ]
+
+? oY.Reduce(:Sum)
 #--&gt; 55</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts"><i class="y" title="Q: chains">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="n" title="XT: extended (does not exist for this method)">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="reduce" data-k="reduce  reduce"><div class="ln mono"><a href="stzyielder/reduce.html">Reduce</a></div><div class="lt">reduce <a class="ex" href="stzyielder/reduce.html">1 examples run</a><pre class="rx">oY = new stzYielder([ 12, 0, 30, -5, 18 ])
 ? @@( oY.Filter(:IsPositive) )
-? @@( oY.Map(:Double) )
-? oY.Reduce(:Sum)
 #--&gt; [ 12, 30, 18 ]
+
+? @@( oY.Map(:Double) )
 #--&gt; [ 24, 0, 60, -10, 36 ]
+
+? oY.Reduce(:Sum)
 #--&gt; 55</pre><span class="rx-src">library test</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="reduceconcat" data-k="reduceconcat concat reduce"><span id="concat"></span><div class="ln mono">ReduceConcat</div><div class="lt">reduce<small>also written: <span class="mono">Concat</span></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzYielder([&quot;hello&quot;, &quot;WORLD&quot;, &quot;  mixed  &quot;])
 ? o1.ReduceConcat(&quot; &quot;)
 #--&gt; hello WORLD   mixed</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="mapfiltered" data-k="mapfiltered  filter + map"><div class="ln mono">MapFiltered</div><div class="lt">filter + map<span class="ext-line"><span class="exts"><i class="y" title="Q: chains">Q</i><i class="n" title="CS: case sensitivity (does not exist for this method)">CS</i><i class="n" title="XT: extended (does not exist for this method)">XT</i><i class="n" title="Z: positions (does not exist for this method)">Z</i><i class="n" title="ZZ: sections (does not exist for this method)">ZZ</i><i class="n" title="IB: bounds (does not exist for this method)">IB</i><i class="n" title="W: condition (does not exist for this method)">W</i><i class="n" title="U: unique (does not exist for this method)">U</i></span></span></div></div><div class="lane lane2 rrow" id="countwhere" data-k="countwhere  count where"><div class="ln mono">CountWhere</div><div class="lt">count where<details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzYielder([&quot;hello&quot;, &quot;WORLD&quot;, &quot;  mixed  &quot;])
