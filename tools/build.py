@@ -800,7 +800,7 @@ def narration_items(lang, files, runs, cards, groups, rel=""):
         meta = " · ".join(x for x in (NGENRE[lang][c["genre"]], area, c["year"], c["author"], note) if x)
         lis.append(f'<li data-genre="{esc(c["genre"])}" data-area="{esc(c["area"] or "")}" data-year="{esc(c["year"])}">'
                    f'<a href="{rel}narrations/{narration_slug(f)}.html"><b>{esc(title_of(r))}</b></a>'
-                   f'<p>{esc(c["abstract"])}</p><span class="rx-src">{esc(meta)}</span></li>')
+                   f'<p>{esc(story.prose(c["abstract"]))}</p><span class="rx-src">{esc(meta)}</span></li>')
     return "".join(lis)
 
 READING_ORDER = ["stz-mental-mode-narration.md", "stz-bridging-minds-and-code.md", "stz-functions-as-linguistic-expressions.md", "stz-function-forms-narration.md",

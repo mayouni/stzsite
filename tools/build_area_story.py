@@ -138,11 +138,11 @@ def design_html(lang, slug):
         ab = ABSTRACTS.get(p, {}).get(lang, "")
         last = t["doc_last"].format(d=x["last"]) if x.get("last") and x.get("last") != x.get("first") else ""
         meta = t["doc_meta"].format(lines=f'{x["lines"]:,}'.replace(",", " " if lang == "fr" else ","), sections=x["sections"], first=x.get("first") or "?", last=last)
-        outline = x.get("outline") or []
+        outline = [prose(h) for h in (x.get("outline") or [])]
         shown = outline[:8]
         ol = "".join(f'<li>{esc(h)}</li>' for h in shown)
         more = f'<li class="more">{t["more_outline"].format(n=len(outline) - len(shown))}</li>' if len(outline) > len(shown) else ""
-        cards.append(f'<article class="doc"><h3>{esc(x["title"])}</h3><p class="mono dmeta">{esc(meta)}</p>'
+        cards.append(f'<article class="doc"><h3>{esc(prose(x["title"]))}</h3><p class="mono dmeta">{esc(meta)}</p>'
                      + (f'<p>{esc(ab)}</p>' if ab else "") +
                      (f'<p class="olabel">{t["outline"]}</p><ul class="outline">{ol}{more}</ul>' if ol else "") +
                      f'<p class="proof"><a href="{GH_BLOB}{esc(p)}">{t["read"]}</a> · <span class="mono">{esc(p)}</span></p></article>')
@@ -156,7 +156,7 @@ def articles_html(lang, slug, narration_slug, title_of):
     lis = []
     for f in files:
         c = cards[f]
-        ab = c.get("abstract") or ""
+        ab = prose(c.get("abstract") or "")
         lis.append(f'<li><a href="../narrations/{narration_slug(f)}.html">{esc(title_of(NARR_RUN[f]))}</a> <span class="mono">{esc(c.get("year") or "")}{(" · " + esc(c["genre"])) if c.get("genre") else ""}</span>'
                    + (f'<span class="abs">{esc(ab)}</span>' if ab else "") + "</li>")
     return f'<h2>{t["articles_h"]} <span class="mono">({len(files)})</span></h2><p>{t["articles_p"]}</p><ul class="narr arts">{"".join(lis)}</ul>'
@@ -205,12 +205,12 @@ def class_treasures(lang, cls, area, area_label, narration_slug, title_of):
         return f'<div class="treasures">{doors}</div>' if doors else ""
     out = [f'<div class="treasures"><h2>{t["h"]}</h2>{doors}']
     if docs:
-        lis = "".join(f'<li><a href="{GH_BLOB}{esc(p)}">{esc(DESIGN["docs"][p]["title"])}</a> <span class="mono">{t["mentions"].format(n=n)}</span>'
+        lis = "".join(f'<li><a href="{GH_BLOB}{esc(p)}">{esc(prose(DESIGN["docs"][p]["title"]))}</a> <span class="mono">{t["mentions"].format(n=n)}</span>'
                       + (f'<span class="abs">{esc(ABSTRACTS.get(p, {}).get(lang, ""))}</span>' if ABSTRACTS.get(p, {}).get(lang) else "") + "</li>" for p, n in docs)
         out.append(f'<h3>{t["docs"]} <span class="mono">({len(docs)})</span></h3><ul class="narr arts">{lis}</ul>')
     if arts:
         lis = "".join(f'<li><a href="../narrations/{narration_slug(f)}.html">{esc(title_of(NARR_RUN[f]))}</a> <span class="mono">{esc(cards[f].get("year") or "")}</span>'
-                      + (f'<span class="abs">{esc(cards[f]["abstract"])}</span>' if cards[f].get("abstract") else "") + "</li>" for f in arts)
+                      + (f'<span class="abs">{esc(prose(cards[f]["abstract"]))}</span>' if cards[f].get("abstract") else "") + "</li>" for f in arts)
         out.append(f'<h3>{t["arts"]} <span class="mono">({len(arts)})</span></h3><ul class="narr arts">{lis}</ul>')
     out.append("</div>")
     return "".join(out)

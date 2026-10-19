@@ -2,7 +2,7 @@
 
   - every local link and source in every page resolves to a file of the site;
   - the platform's former language is never named in PROSE (library code is shown as written, so code and pre
-    blocks are left out), except on the pages that tell the history: whyring, history, roots.
+    blocks are left out), except on the pages that tell the history (whyring, history, roots) and in the runtime sentence.
 
     python tools/integrity_check.py        -> "<files> files; <links> local links; <dangling> dangling; <n> files with the word in code"
 """
@@ -12,6 +12,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 HREF = re.compile(r'(?:href|src)="([^"]+)"')
 CODE = re.compile(r"<(code|pre)[^>]*>(.*?)</\1>", re.S)
 WORD = re.compile(r"\bRing\b")
+RUNTIME = re.compile(r"(?:sa face Ring|its Ring face|Ring\+\+ (?:est le pont|is the bridge))")   # the runtime sentence, allowed everywhere
 
 pages = [ROOT / "index.html", ROOT / "deck-check.html", ROOT / "404.html"] + [p for lang in ("en", "fr") for p in (ROOT / lang).rglob("*.html")]
 pages = [p for p in pages if p.exists()]
@@ -29,9 +30,10 @@ for p in pages:
         if target not in EXISTS and not (ROOT / target).is_dir():
             dangling += 1
             if dangling <= 20: print("  dangling:", p.relative_to(ROOT).as_posix(), "->", h)
-    if p.stem not in ("whyring", "history", "roots"):
+    if p.stem not in ("whyring", "history", "roots", "glossary"):
         body = s[s.find("<main"):s.rfind("</main>")] if "<main" in s else s
         prose = html.unescape(re.sub("<[^>]+>", " ", CODE.sub(" ", body)))
+        prose = RUNTIME.sub(" ", prose)                  # the one sentence allowed everywhere: the runtime, named on purpose
         if WORD.search(prose): word_files.append(p.relative_to(ROOT).as_posix())
 for w in word_files[:12]: print("  the word in prose:", w)
 print(f"{len(pages)} files; {links} local links; {dangling} dangling; {len(word_files)} files with the word in prose")
