@@ -232,8 +232,28 @@ def para_html(x):
     h = re.sub(r"`([^`]+)`", lambda m: "<code>" + m.group(1) + "</code>", h)
     return h
 
-USES_T = {"fr": {"h": "Les usages les plus parlants", "p": "Trois méthodes qui montrent ce que la classe sait faire ; chaque exemple a été exécuté dans la bibliothèque.", "all": "Toutes les méthodes, par section, plus bas."},
-          "en": {"h": "The most expressive uses", "p": "Three methods that show what the class is for; every example was run inside the library.", "all": "Every method, by section, further down."}}
+USES_T = {"fr": {"h": "Les usages les plus parlants", "p": "{n} méthodes qui montrent ce que la classe sait faire ; chaque exemple a été exécuté dans la bibliothèque.", "one": "Une méthode qui montre ce que la classe sait faire ; son exemple a été exécuté dans la bibliothèque.", "all": "Toutes les méthodes, par section, plus bas."},
+          "en": {"h": "The most expressive uses", "p": "{n} methods that show what the class is for; every example was run inside the library.", "one": "One method that shows what the class is for; its example was run inside the library.", "all": "Every method, by section, further down."}}
+COUNT_WORDS = {"en": ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"], "fr": ["", "Une", "Deux", "Trois", "Quatre", "Cinq", "Six", "Sept", "Huit"]}
+
+
+def pick_example_html(cls, name, exs, rdata, lang):
+    """the library example a captioned pick shows: the shortest one that CALLS the method, under a budget wide enough
+    for an expressive example -- the row budget (five lines) is sized for a table cell, and a pick is not a cell"""
+    call = re.compile(r"\b" + re.escape(name) + r"\s*\(", re.I)
+    best = None
+    for e in exs or []:
+        code = e["code"].strip("\n")
+        if code.count("\n") > 16 or len(code) > 900 or e["out"].count("\n") > 14 or len(e["out"]) > 700: continue
+        if not call.search(code): continue
+        key = (code.count("\n"), len(code))
+        if best is None or key < best[0]: best = (key, e)
+    if not best: return ""
+    e = best[1]
+    code = e["code"].strip("\n")
+    body = esc(code) + "\n" + "\n".join("#--&gt; " + esc(l) for l in e["out"].strip("\n").split("\n"))
+    src = {"en": "library test", "fr": "test de la bibliothèque"}[lang]
+    return f'<pre class="rx">{body}</pre><span class="rx-src">{src}</span>'
 
 def class_intro_html(lang, c, entries, rdata, example_html):
     """a class page opens on what the class is and what it is for, then on its most expressive uses, run"""
@@ -247,13 +267,18 @@ def class_intro_html(lang, c, entries, rdata, example_html):
     if isinstance(picks, list): picks = {m: {} for m in picks}
     keys = {k[1].lower(): k[1] for k in entries if k[0] == c["name"]}          # the method's registered spelling
     for m, cap in picks.items():
-        name = keys.get(m.lower())
+        name = keys.get(m.lower()) or next((o[0] for o in c.get("own", []) if o[0].lower() == m.lower()), None)   # a method with only a row example
         if not name: continue
         exs = entries.get((c["name"], name))
-        ex = example_html(c["name"], name, exs, rdata, lang)
-        if not ex or ex.startswith("<details"): continue                     # a composed example proves nothing a reader wants here
+        ex = pick_example_html(c["name"], name, exs, rdata, lang) or example_html(c["name"], name, exs, rdata, lang)
+        if not ex: continue
+        if ex.startswith("<details"):                                        # a composed example, chosen and captioned on purpose: shown open
+            ex = re.sub(r"^<details[^>]*><summary>[^<]*</summary>", "", ex).replace("</details>", "")
+            if len(ex) > 700: continue                                       # unless its setup is a wall (a GeoJSON string is not an example)
         caption = cap.get(lang) if isinstance(cap, dict) else ""
         uses.append(f'<div class="use"><h3 class="mono">{esc(name)}</h3>' + (f"<p>{para_html(caption)}</p>" if caption else "") + ex + "</div>")
     if uses:
-        out.append(f'<h2>{t["h"]}</h2><p>{t["p"]}</p><div class="uses">{"".join(uses)}</div><p class="proof">{t["all"]}</p>')
+        n = len(uses)
+        lead = t["one"] if n == 1 else t["p"].format(n=COUNT_WORDS[lang][n] if n < len(COUNT_WORDS[lang]) else str(n))
+        out.append(f'<h2>{t["h"]}</h2><p>{lead}</p><div class="uses">{"".join(uses)}</div><p class="proof">{t["all"]}</p>')
     return "".join(out)

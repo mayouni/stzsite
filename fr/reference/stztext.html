@@ -42,7 +42,63 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/linguistic/stzText.ring" target="_blank" rel="noopener noreferrer">la source: base/linguistic/stzText.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/nlp.html">La référence du domaine : Traitement du langage et linguistique</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p><code>stzText</code> est une chaîne élevée au sens : les mêmes caractères, lus maintenant comme des mots, des phrases, des noms, un ton et des sujets, sans rien à installer ni à télécharger.</p><p>Construisez-le à partir de tout texte, <code>new stzText(&quot;...&quot;)</code> ou <code>Q(&quot;...&quot;).TextQ()</code>, et interrogez-le en mots simples. <code>Sentiment()</code> dit positif, négatif ou neutre, et <code>IsPositive()</code> répond avec sa confiance, certainement, probablement ou apparemment, et un <code>Why()</code>. <code>NamedEntities()</code> trouve les personnes, les organisations et les lieux ; <code>POSTags()</code> étiquette chaque mot ; <code>NounPhrases()</code> applique la forme classique du groupe nominal ; <code>Stemmed()</code> et <code>Lemmatized()</code> ramènent les mots à leur racine ou à leur forme de dictionnaire, en 25 langues pour les racines et trois pour les lemmes ; <code>KeyPhrases()</code>, <code>RankedKeywords()</code> et <code>Summary()</code> extraient ce qui compte ; <code>ReadingEase()</code> note la prose.</p><p>Chacun est un algorithme de référence publié, embarqué dans le moteur, Snowball, VADER, l&#x27;étiqueteur de NLTK, TextRank, WordNet, si bien qu&#x27;un premier appel marche hors ligne dès que la bibliothèque est chargée. Quand un modèle local est présent, le même texte répond aussi à <code>Embedding()</code>, <code>SemanticSimilarityWith()</code>, <code>ClassifiedAs(labels)</code> et <code>SummarizedAbstractively()</code> ; sans modèle, ils se replient ou restent vides, honnêtement, et <code>HasSemanticModel()</code> dit dans quel cas vous êtes.</p><p>Il sert partout où un texte doit être compris plutôt que seulement conservé : lire des retours, trier des messages, trouver de qui et d&#x27;où parle un document, mesurer le niveau de lecture d&#x27;une leçon, bâtir le vocabulaire d&#x27;un monde à partir des textes qui le décrivent.</p></div><h2>Les usages les plus parlants</h2><p>Quatre méthodes qui montrent ce que la classe sait faire ; chaque exemple a été exécuté dans la bibliothèque.</p><div class="uses"><div class="use"><h3 class="mono">NamedEntities</h3><p>Personnes, organisations et lieux, trouvés par des règles sans modèle, et inscrits dans le monde partagé seulement sur demande.</p><pre class="rx">t = new stzText(&quot;Barack Obama visited Paris.&quot;)
+# NeuralEntities() is empty without a NER-head model
+? @@(t.NeuralEntities())
+# NamedEntities() still works via the rule-based fallback
+? len(t.NamedEntities()) &gt;= 1
+#--&gt; [ ]
+#--&gt; 1</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">IsPositive</h3><p>Un verdict avec sa confiance : une louange appuyée est certainement positive, un énoncé plat seulement apparemment pas.</p><pre class="rx"># an emphatic praise is CERTAINLY positive
+? Q(&quot;I absolutely love this wonderful amazing library!&quot;).TextQ().IsPositive()
+# ...
+? Evidentially()
+# ...
+? Why()
+# a neutral statement is only APPARENTLY not positive
+? Q(&quot;The sky is blue.&quot;).TextQ().IsPositive()
+# ...
+? Evidentially()
+# ...
+? Why()
+#--&gt; 1
+#--&gt; certainly
+#--&gt; certainly yes: positive in tone
+#--&gt; 0
+#--&gt; apparently
+#--&gt; apparently not: positive in tone</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">IsSemanticallySimilarTo</h3><p>Une paraphrase proche est probablement semblable, un texte sans rapport certainement pas, et <code>Why()</code> le dit en mots.</p><pre class="rx">oT = Q(&quot;cats are wonderful pets&quot;).TextQ()
+# a close paraphrase is PROBABLY similar
+? oT.IsSemanticallySimilarTo(&quot;dogs are wonderful pets&quot;, 0.5)
+# ...
+? Evidentially()
+# ...
+? Why()
+# an unrelated text is CERTAINLY not
+? Q(&quot;the stock market crashed&quot;).TextQ().IsSemanticallySimilarTo(&quot;kittens love to play&quot;, 0.5)
+# ...
+? Why()
+#--&gt; 1
+#--&gt; probably
+#--&gt; probably yes: semantically similar to &quot;dogs are wonderful pets&quot;
+#--&gt; 0
+#--&gt; certainly not: semantically similar to &quot;kittens love to play&quot;</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">ClassifiedAs</h3><p>Un texte rangé sous la plus proche des étiquettes que vous donnez.</p><pre class="rx">t = new stzText(&quot;the stock market prices fell sharply on wall street today&quot;)
+# ClassifiedAs picks the closest label
+? t.ClassifiedAs([ &quot;market finance&quot;, &quot;cooking food&quot; ])
+# Classify returns ranked [label, score] pairs, best first
+? t.Classify([ &quot;market finance&quot;, &quot;cooking food&quot; ])[1][1]
+# Classify keeps all labels
+? len(t.Classify([ &quot;market finance&quot;, &quot;cooking food&quot;, &quot;space travel&quot; ]))
+# ClassifyQ is the basic stzList
+? classname(t.ClassifyQ([ &quot;a&quot;, &quot;b&quot; ]))
+# ClassifyQQ is stzListOfPairs
+? classname(t.ClassifyQQ([ &quot;a&quot;, &quot;b&quot; ]))
+# a non-list of labels is rejected
+? @@(t.Classify(&quot;not a list&quot;))
+#--&gt; market finance
+#--&gt; market finance
+#--&gt; 3
+#--&gt; stzlist
+#--&gt; stzlistofpairs
+#--&gt; [ ]</pre><span class="rx-src">test de la bibliothèque</span></div></div><p class="proof">Toutes les méthodes, par section, plus bas.</p>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/nlp.html">Le récit de son domaine : Traitement du langage et linguistique</a> · <a href="../guide/nlp.html">La référence de son domaine</a></p><h3>Documents de conception qui la nomment <span class="mono">(3)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/stz-information-tagging-strategy.md" target="_blank" rel="noopener noreferrer">Softanza Information-Tagging Strategy<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">9 mentions</span><span class="abs">Stratégie, au statut en construction active (2026-07-08), pour rendre chaque unité de la bibliothèque retrouvable et explicable en langage naturel : méthodes, exemples de tests récoltés et recettes d&#x27;intention se normalisent en un seul enregistrement de connaissance, rédigé en quatre couches dont les InfoTags #@, la qualité de recherche étant mesurée, non affirmée.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Softanza Intelligence Architecture<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">8 mentions</span><span class="abs">La feuille de route unique du travail sur l&#x27;intelligence, issue de la directive de l&#x27;auteur : l&#x27;intelligence dérive une connaissance nouvelle d&#x27;une connaissance existante tenue en graphe gouverné, d&#x27;où six lois, cinq fondations, une carte des modules, un état audité et un parcours R1 à R8.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/NATURAL_VISION.md" target="_blank" rel="noopener noreferrer">The Softanza Natural Programming Vision<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">5 mentions</span><span class="abs">Une synthèse du dossier de programmation naturelle, écrite le 2026-07-10, lisant cinq ans de couches comme trois attaques d&#x27;un même écart entre intention humaine et exécution, et proposant une architecture à quatre étages sur un seul atome, l&#x27;identifiant sémantique ; ses cinq étapes sont réalisées.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#adjectives">A</a> <a href="#chunks">C</a> <a href="#entitiesoftype">E</a> <a href="#hypernyms">H</a> <a href="#issynonymof">I</a> <a href="#keyphrases">K</a> <a href="#lemmatizedinlanguage">L</a> <a href="#mostpositivesentence">M</a> <a href="#negativescore">N</a> <a href="#organizations">O</a> <a href="#positivescore">P</a> <a href="#registernamedentities">R</a> <a href="#stemmedinlanguage">S</a> <a href="#taggedwords">T</a> <a href="#verbs">V</a> <a href="#withoutstopwords">W</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

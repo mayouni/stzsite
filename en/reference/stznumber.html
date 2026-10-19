@@ -42,7 +42,21 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/number/stzNumber.ring" target="_blank" rel="noopener noreferrer">the source: base/number/stzNumber.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/numeric.html">The area reference: Numeric &amp; optimization</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p><code>stzNumber</code> is a number that can be questioned: is it prime, even, a multiple of 3, between two bounds; what are its factors, its digits, its integer and fractional parts; and, the question no ordinary number answers, is it exact, and if not, why.</p><p>It holds its value as text, so nothing is lost on the way in: <code>new stzNumber(&quot;1234567.1234567&quot;)</code> keeps every digit, and <code>Round()</code> is a property of the object you can set, <code>[ 981.123456701, :Round = 5 ]</code>, rather than a global that surprises you later. Comparison follows: <code>IsEqualTo(&quot;5.1200000000000001&quot;)</code> and <code>IsEqualTo([ x, :Round = 16 ])</code> ask two different questions and get two answers.</p><p>Number theory is a sentence away, <code>Q(54).PrimeFactors()</code>, <code>Q(12).GCD(18)</code>, <code>Q(10).Fibonacci()</code>, <code>Q(25).MultiplesUnder(1080)</code>; and so is the vocabulary people use, <code>IsDoubleOf</code>, <code>IsTripleOf</code>, <code>IsEven</code> or its Hausa twin <code>IsZawji</code>. The operators work on it: <code>o1 * Q(5)</code>, <code>o1 / 500</code>.</p><p>It is the scalar under <code>stzListOfNumbers</code>, money, decimals and the exact tower; use it when a value must keep its digits, say its exactness, or be reasoned about in words.</p></div><h2>The most expressive uses</h2><p>Three methods that show what the class is for; every example was run inside the library.</p><div class="uses"><div class="use"><h3 class="mono">Round</h3><p>The rounding belongs to the number, not to a global setting: declare it, and every reading honours it.</p><pre class="rx">StzDecimals(3) # Change the program round and memorises it
+    <div class="essay"><p><code>stzNumber</code> is a number that can be questioned: is it prime, even, a multiple of 3, between two bounds; what are its factors, its digits, its integer and fractional parts; and, the question no ordinary number answers, is it exact, and if not, why.</p><p>It holds its value as text, so nothing is lost on the way in: <code>new stzNumber(&quot;1234567.1234567&quot;)</code> keeps every digit, and <code>Round()</code> is a property of the object you can set, <code>[ 981.123456701, :Round = 5 ]</code>, rather than a global that surprises you later. Comparison follows: <code>IsEqualTo(&quot;5.1200000000000001&quot;)</code> and <code>IsEqualTo([ x, :Round = 16 ])</code> ask two different questions and get two answers.</p><p>Number theory is a sentence away, <code>Q(54).PrimeFactors()</code>, <code>Q(12).GCD(18)</code>, <code>Q(10).Fibonacci()</code>, <code>Q(25).MultiplesUnder(1080)</code>; and so is the vocabulary people use, <code>IsDoubleOf</code>, <code>IsTripleOf</code>, <code>IsEven</code> or its Hausa twin <code>IsZawji</code>. The operators work on it: <code>o1 * Q(5)</code>, <code>o1 / 500</code>.</p><p>It is the scalar under <code>stzListOfNumbers</code>, money, decimals and the exact tower; use it when a value must keep its digits, say its exactness, or be reasoned about in words.</p></div><h2>The most expressive uses</h2><p>Five methods that show what the class is for; every example was run inside the library.</p><div class="uses"><div class="use"><h3 class="mono">IsPrime</h3><p>The questions people ask of a number, asked in their words.</p><pre class="rx">? Q(169).IsPrime()
+? Q(17).IsPrime()
+? @@( Q(54).Divirdos() ) + NL	# Misspelled, but works!
+? @@( Q(54).Factors() ) + NL
+? @@( Q(54).PrimeFactors() ) + NL
+? @@( Q(54).PrimeDividors() )
+#--&gt; 0
+#--&gt; 1
+#--&gt; [ 1, 2, 3, 6, 9, 18, 27, 54 ]
+#--&gt; 
+#--&gt; [ 1, 2, 3, 6, 9, 18, 27, 54 ]
+#--&gt; 
+#--&gt; [ 2, 3 ]
+#--&gt; 
+#--&gt; [ 2, 3 ]</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">Round</h3><p>The rounding belongs to the number, not to a global setting: declare it, and every reading honours it.</p><pre class="rx">StzDecimals(3) # Change the program round and memorises it
 o1 = new stzNumber([ 981.123456701, :round = 5 ])
 ? o1.Round()
 ? o1.NumericValue() # Sensitive to current on the program round, 3.
@@ -54,7 +68,37 @@ o1 = new stzNumber([ 981.123456701, :round = 5 ])
 ? Q(5.12).IsEqualTo([ 5.1200000000000001, :Round = 16 ])
 #--&gt; 1
 #--&gt; 1
-#--&gt; 0</pre><span class="rx-src">library test</span></div></div><p class="proof">Every method, by section, further down.</p>
+#--&gt; 0</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">Factorial</h3><p>Factorial, GCD, LCM, Fibonacci: number theory one word away.</p><pre class="rx"># 5! is 120
+? Q(5).Factorial()
+# GCD(12,18) is 6
+? Q(12).GCD(18)
+# LCM(4,6) is 12
+? Q(4).LCM(6)
+# Fibonacci(10) is 55
+? Q(10).Fibonacci()
+#--&gt; 120
+#--&gt; 6
+#--&gt; 12
+#--&gt; 55</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">NextNumber</h3><p>The next and the previous number, without changing the one you hold.</p><pre class="rx"># next number
+? (new stzNumber(41)).NextNumber()
+# previous number
+? (new stzNumber(41)).PreviousNumber()
+# ...and they do not mutate the number
+? (new stzNumber(41)).NextNumberQ().Content()
+oKeep = new stzNumber(41)
+oKeep.NextNumber()
+# ...proven
+? oKeep.Content()
+# IncrementQ chains, which it did not before
+? (new stzNumber(7)).IncrementQ().Content()
+# ...and DecrementQ
+? (new stzNumber(7)).DecrementQ().Content()
+#--&gt; 42
+#--&gt; 40
+#--&gt; 42
+#--&gt; 41
+#--&gt; 8
+#--&gt; 6</pre><span class="rx-src">library test</span></div></div><p class="proof">Every method, by section, further down.</p>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/numeric.html">The story of its area: Numeric &amp; optimization</a> · <a href="../guide/numeric.html">Its area's reference</a></p><h3>Design documents that name it <span class="mono">(5)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_NUMERIC_FOUNDATION.md" target="_blank" rel="noopener noreferrer">Numbers in Softanza — a global rethink<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">9 mentions</span><span class="abs">A library-wide rethink of numbers, phases 0 to 7 complete, superseding the number-engine plan with five pillars: visible exactness, a numeric frame named at the call site, engine-resident arrays, Zig SIMD kernels, and one authority per algorithm.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_NUMBER_ENGINE_PLAN.md" target="_blank" rel="noopener noreferrer">Softanza Numbers, Engine-Side<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">9 mentions</span><span class="abs">A six-phase plan, superseded on 2026-07-25 by the numeric foundation, to make arbitrary-precision arithmetic first-class: it corrects the claim that no big-number engine exists, since StzBigInt already works, and proposes a big-number class, decimals, rationals and complex numbers.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/math/SOFTANZA_MATH_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA MATH PLAN -- the map, the contracts, the phases<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">5 mentions</span><span class="abs">The math charter&#x27;s companion plan, headed draft M0, mapping what exists with line numbers, listing the contracts consumed, and recording phases M1 to M6 (figures, motion, a course, the Tukey tier, core deepening, a bridge to Lean) with their shipped results.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/DOCREFORM_PILOT_STATE.md" target="_blank" rel="noopener noreferrer">DOCREFORM -- state after wave 2 (handoff, 2026-10-05)<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">4 mentions</span><span class="abs">A handoff recording the state of DOCREFORM after waves 2 to 4 (2026-10-05): which classes have every root method documented and checked, the library-wide pass rate, the live documentation gate, the defects probing found but did not fix, and the decisions open for the author.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/math/CHARTER.md" target="_blank" rel="noopener noreferrer">stzlib-math -- the charter (M0)<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">3 mentions</span><span class="abs">The charter of the math plane (M0), a draft awaiting the author&#x27;s ratification: mathematics in Softanza is seen first, proven always and learned in the learner&#x27;s own language; it fixes the vocabulary and laws and lists the decisions only the author can make.</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#add">A</a> <a href="#billions">B</a> <a href="#content">C</a> <a href="#decimals">D</a> <a href="#exactness">E</a> <a href="#fractionalpart">F</a> <a href="#greatestcommondividor">G</a> <a href="#hasfractionalpart">H</a> <a href="#init">I</a> <a href="#kform">K</a> <a href="#leastcommonmultiple">L</a> <a href="#maxnumberofdigits">M</a> <a href="#numberwithsign">N</a> <a href="#operator">O</a> <a href="#previousnumber">P</a> <a href="#returntype">R</a> <a href="#setreturntype">S</a> <a href="#theseadded">T</a> <a href="#update">U</a> <a href="#whynotexact">W</a> <a href="#zerosremoved">Z</a></p><p><b>Sections</b> <a href="#ismultipleof">checking if the number is multiple of a given number</a> · <a href="#numberofdigits">integer &amp; fractional parts (called also decimal parts)</a> · <a href="#regime">rounds</a> · <a href="#removespaces">removing spaces from number</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

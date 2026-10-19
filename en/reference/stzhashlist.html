@@ -42,16 +42,38 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/list/stzHashList.ring" target="_blank" rel="noopener noreferrer">the source: base/list/stzHashList.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/collections.html">The area reference: Collections &amp; objects</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p><code>stzHashList</code> is the list of pairs: a key and its value, in order, <code>[ :name = &quot;Aya&quot;, :age = 30, :city = &quot;Niamey&quot; ]</code>. It keeps the order you gave, folds its keys to lowercase, and can be questioned from either side, by key or by value.</p><p><code>o1[:stats]</code> or <code>ValueByKey(:stats)</code> reads a value; <code>Keys()</code>, <code>Values()</code>, <code>Pairs()</code> give the three views; <code>FindValue(18)</code> tells under which positions a value sits; <code>KeysForValue</code> goes the other way. When values are themselves lists, <code>FindValueOrItem(:can)</code> and <code>FindInLists</code> look inside them and answer with the pair and the place, so a nested record is searched without a loop.</p><p>Updating reads like editing: <code>AddPair</code>, <code>InsertBefore</code>, <code>RemoveByKey</code>, <code>ReplaceValueByKey</code>, <code>ReverseKeysAndValues</code>; and the safe discipline the library teaches holds, <code>HasKey</code> before reading, because a lookup must never silently create an entry.</p><p>It is the shape of a record, a configuration, a result set with named parts; and it is not a hash map: lookups walk the list, which is the trap its page states.</p></div><h2>The most expressive uses</h2><p>Three methods that show what the class is for; every example was run inside the library.</p><div class="uses"><div class="use"><h3 class="mono">ValueByKey</h3><p>A value by its key, by the method or by the bracket.</p><pre class="rx">o1 = new stzHashList([ :math = 18, :stats = 16, :history = 14 ])
+    <div class="essay"><p><code>stzHashList</code> is the list of pairs: a key and its value, in order, <code>[ :name = &quot;Aya&quot;, :age = 30, :city = &quot;Niamey&quot; ]</code>. It keeps the order you gave, folds its keys to lowercase, and can be questioned from either side, by key or by value.</p><p><code>o1[:stats]</code> or <code>ValueByKey(:stats)</code> reads a value; <code>Keys()</code>, <code>Values()</code>, <code>Pairs()</code> give the three views; <code>FindValue(18)</code> tells under which positions a value sits; <code>KeysForValue</code> goes the other way. When values are themselves lists, <code>FindValueOrItem(:can)</code> and <code>FindInLists</code> look inside them and answer with the pair and the place, so a nested record is searched without a loop.</p><p>Updating reads like editing: <code>AddPair</code>, <code>InsertBefore</code>, <code>RemoveByKey</code>, <code>ReplaceValueByKey</code>, <code>ReverseKeysAndValues</code>; and the safe discipline the library teaches holds, <code>HasKey</code> before reading, because a lookup must never silently create an entry.</p><p>It is the shape of a record, a configuration, a result set with named parts; and it is not a hash map: lookups walk the list, which is the trap its page states.</p></div><h2>The most expressive uses</h2><p>Five methods that show what the class is for; every example was run inside the library.</p><div class="uses"><div class="use"><h3 class="mono">ValueByKey</h3><p>A value by its key, by the method or by the bracket.</p><pre class="rx">o1 = new stzHashList([ :math = 18, :stats = 16, :history = 14 ])
 ? o1.ValueByKey(:stats)
 ? o1[:stats]
 #--&gt; 16
-#--&gt; 16</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">Keys</h3><p>Keys are read the same whether the pairs were written with colons or as lists.</p><pre class="rx">o1 = new stzHashList( [ :one = 1, :two = 2 ] )
+#--&gt; 16</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">FindValue</h3><p>The positions where a value sits, whatever its type.</p><pre class="rx">o1 = new stzHashList([
+	:math = 18,
+	:stats = &quot;good&quot;,
+	:chemistry = 18,
+	:history = [ 10, 15 ]
+])
+? @@( o1.FindValue(18) )
+? @@( o1.FindValue(&quot;good&quot;) )	// TODO: CaseSensitivity
+? @@( o1.FindValue([ 10, 15 ]) )
+#--&gt; [ 1, 3 ]
+#--&gt; [ 2 ]
+#--&gt; [ 4 ]</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">FindValueOrItem</h3><p>A value found whether it is the pair&#x27;s value or an item inside it.</p><pre class="rx">o1 = new stzHashList([
+	:One	= :can,
+	:Two  	= [ :is, :will, :can, :some, :can ],
+	:Three	= :NONE,
+	:Four	= [ :will, :not ],
+	:Five	= :can
+])
+? o1.FindValueOrItem(:can) # called also FindVitem(:can)
+#--&gt; 1
+#--&gt; 2
+#--&gt; 5</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">Keys</h3><p>Keys are read the same whether the pairs were written with colons or as lists.</p><pre class="rx">o1 = new stzHashList( [ :one = 1, :two = 2 ] )
 ? o1.Keys()
 o1 = new stzHashList( [ [&quot;one&quot;, 1], [ &quot;two&quot;, 2] ] )
 ? o1.Keys()
 #--&gt; one
 #--&gt; two
+#--&gt; 
 #--&gt; one
 #--&gt; two</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">Content</h3><p>Keys are folded to lowercase: the trap and the rule, stated by the class itself.</p><pre class="rx">o1 = new stzHashList([ [ &quot;NAME&quot;, &quot;Mansour&quot;] , [ &quot;AGE&quot; , 45 ] ])
 ? @@( o1.Content() ) # Keys are automatically lowercased

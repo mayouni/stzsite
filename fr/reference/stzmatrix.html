@@ -42,7 +42,50 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/number/stzMatrix.ring" target="_blank" rel="noopener noreferrer">la source: base/number/stzMatrix.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/numeric.html">La référence du domaine : Numérique et optimisation</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p><code>stzMatrix</code> est une grille de nombres avec les deux vocabulaires dont une grille a besoin : l&#x27;algèbre, transposée, produit, déterminant, inverse, résolution, normes, puissances, et l&#x27;édition, ajouter à cette ligne, multiplier ces colonnes, trouver chaque cellule portant cette valeur, remplacer une section.</p><p>Construisez-la depuis une liste de lignes, <code>new stzMatrix([ [1,2,3], [4,5,6], [7,8,9] ])</code>. L&#x27;algèbre est celle du moteur et s&#x27;accorde avec le contenu : remplacez une ligne et <code>Determinant()</code> répond pour la nouvelle matrice ; <code>MultiplyByMatrix</code>, <code>Transpose</code>, <code>Solve</code>, <code>Trace</code>, <code>FrobeniusNorm</code>, <code>Power</code>. L&#x27;édition s&#x27;adresse comme une personne montre du doigt : <code>AddXT(10, :InCol = 2)</code>, <code>AddInRows([1, 3], 100)</code> ou <code>[ :From = 1, :To = 2 ]</code>, <code>MultiplyCols([1, 3], :By = 2)</code>, <code>AddInDiagonal</code>, <code>ReplaceElementsAt([ [1,3], [2,2] ], :By = 0)</code>.</p><p>La recherche est spatiale. <code>FindElement(99)</code> rend les positions de chaque 99 en paires <code>[ligne, colonne]</code> ; <code>FindRow</code> et <code>FindCol</code> trouvent une ligne ou une colonne entière, <code>FindCols</code> plusieurs à la fois ; <code>Section([1,1], [2,2])</code> découpe un bloc, <code>SectionQQ</code> en fait une liste qui continue de répondre, <code>Max()</code>, <code>Min()</code>, <code>Sum()</code>, et <code>ElementsInSectionZ</code> donne chaque valeur avec sa position. <code>ReplaceElementInSectionByMany</code> remet à chaque occurrence le remplacement suivant à son tour.</p><p>Elle sert une méthode numérique, une transformation, une table de scores, un plateau de jeu, tout ce qui est disposé en lignes et colonnes où l&#x27;on veut à la fois calculer et montrer.</p></div><h2>Les usages les plus parlants</h2><p>Cinq méthodes qui montrent ce que la classe sait faire ; chaque exemple a été exécuté dans la bibliothèque.</p><div class="uses"><div class="use"><h3 class="mono">FindElement</h3><p>Chaque cellule portant 99, en paires ligne et colonne.</p><pre class="rx">o1 = new stzMatrix([
+	[ 80, 85, 99 ],
+	[ 70, 75, 80 ],
+	[ 99, 65, 99 ]
+])
+? @@( o1.FindElement(99) )
+#--&gt; [ [ 1, 3 ], [ 3, 1 ], [ 3, 3 ] ]</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">ReplaceRow</h3><p>Remplacer une ligne, et le déterminant du moteur répond pour la nouvelle matrice.</p><pre class="rx">oM = new stzMatrix([ [1,2], [3,4] ])
+# the determinant is right to begin with
+? oM.Determinant()
+oM.ReplaceRow(1, [99, 2])
+# the content shows the change
+? @@(oM.Content())
+# and the ENGINE agrees: 99*4 - 2*3
+? oM.Determinant()
+#--&gt; -2
+#--&gt; [ [ 99, 2 ], [ 3, 4 ] ]
+#--&gt; 390</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">MultiplyCols</h3><p>Les colonnes 1 et 3 doublées, la colonne 2 intacte.</p><pre class="rx">oM = new stzMatrix([ [1,0,3], [4,0,6], [7,0,9] ])
+oM.MultiplyCols([1, 3], :By = 2)
+# columns 1 and 3 doubled, column 2 untouched
+? @@(oM.Content())
+#--&gt; [ [ 2, 0, 6 ], [ 8, 0, 12 ], [ 14, 0, 18 ] ]</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">FindCols</h3><p>Plusieurs colonnes trouvées à la fois, dont une qui apparaît deux fois.</p><pre class="rx">oM = new stzMatrix([ [88,85,88], [70,88,70], [99,65,99] ])
+# FindCol
+? @@(oM.FindCol([ 88, 70, 99 ]))
+oM2 = new stzMatrix([ [88,85,88,1], [70,88,70,1], [99,65,99,1] ])
+# ...and FindCols, which could not work without it
+? @@(oM2.FindCols([ [1,1,1], [88,70,99] ]))
+#--&gt; [ 1, 3 ]
+#--&gt; [ 1, 3, 4 ]</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">ReplaceElementInSectionByMany</h3><p>Chaque occurrence de 1 dans la section prend le remplacement suivant à son tour.</p><pre class="rx">oM = new stzMatrix([ [1,2,1], [4,1,6], [1,8,9] ])
+oM.ReplaceElementInSectionByMany(1, [1,1], [3,3], [ 70, 80, 90 ])
+# each occurrence of 1 takes the next replacement
+? @@(oM.Content())
+oX = new stzMatrix([ [1,2,1], [4,1,6], [1,8,9] ])
+oX.ReplaceElementInSectionByManyXT(1, [1,1], [3,3], [ 70, 80 ])
+# ...and the XT form CYCLES the replacements
+? @@(oX.Content())
+oF = new stzMatrix([ [1,2,3], [4,5,6], [7,8,9] ])
+# FindInSection with one element
+? @@(oF.FindInSection(5, [1,1], [3,3]))
+# ...and with several
+? @@(oF.FindInSection([1,5,9], [1,1], [3,3]))
+#--&gt; [ [ 70, 2, 80 ], [ 4, 90, 6 ], [ 1, 8, 9 ] ]
+#--&gt; [ [ 70, 2, 80 ], [ 4, 70, 6 ], [ 80, 8, 9 ] ]
+#--&gt; [ [ 2, 2 ] ]
+#--&gt; [ [ 1, 1 ], [ 2, 2 ], [ 3, 3 ] ]</pre><span class="rx-src">test de la bibliothèque</span></div></div><p class="proof">Toutes les méthodes, par section, plus bas.</p>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/numeric.html">Le récit de son domaine : Numérique et optimisation</a> · <a href="../guide/numeric.html">La référence de son domaine</a></p><h3>Documents de conception qui la nomment <span class="mono">(3)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_NUMERIC_FOUNDATION.md" target="_blank" rel="noopener noreferrer">Numbers in Softanza — a global rethink<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">10 mentions</span><span class="abs">Une refonte des nombres pour toute la bibliothèque, phases 0 à 7 terminées, qui remplace le plan du moteur numérique par cinq piliers : exactitude visible, cadre numérique nommé à l&#x27;appel, tableaux résidents dans le moteur, noyaux SIMD en Zig, et une seule autorité par algorithme.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Softanza Intelligence Architecture<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">6 mentions</span><span class="abs">La feuille de route unique du travail sur l&#x27;intelligence, issue de la directive de l&#x27;auteur : l&#x27;intelligence dérive une connaissance nouvelle d&#x27;une connaissance existante tenue en graphe gouverné, d&#x27;où six lois, cinq fondations, une carte des modules, un état audité et un parcours R1 à R8.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/math/SOFTANZA_MATH_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA MATH PLAN -- the map, the contracts, the phases<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">3 mentions</span><span class="abs">Plan compagnon de la charte mathématique, présenté comme brouillon M0, cartographiant l&#x27;existant avec numéros de ligne, listant les contrats consommés et consignant les phases M1 à M6 (figures, mouvement, un cours, le niveau Tukey, approfondissement du cœur, un pont vers Lean) avec leurs résultats livrés.</span></li></ul><h3>Narrations qui en parlent <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="../narrations/stzmatrix-matrix-computing-in-softanza-narration.html">Matrix Computing in Softanza with stzMatrix</a> <span class="mono">2025</span><span class="abs">Matrices are the unsung heroes of computational problem-solving, powering everything from data analysis to image processing and machine learning.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#add">A</a> <a href="#classname">C</a> <a href="#divideelementwise">D</a> <a href="#frobeniusnorm">F</a> <a href="#hadamardproduct">H</a> <a href="#init">I</a> <a href="#multiply">M</a> <a href="#power">P</a> <a href="#rows">R</a> <a href="#size">S</a> <a href="#trace">T</a></p><p><b>Sections</b> <a href="#addmatrix">matrix-to-matrix operations</a> · <a href="#findelement">finding thing in the matrix</a> · <a href="#replaceelementsat">replacement by many elements</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

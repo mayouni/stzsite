@@ -52,11 +52,20 @@
 #--&gt; 1
 #--&gt; 1
 #--&gt; 1
-#--&gt; ...</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">MatchWordsIn</h3><p>La portée est dans le verbe : des mots entiers, et non un drapeau réglé ailleurs.</p><pre class="rx">o1 = new stzRegex(&quot;pre\w+&quot;)
+#--&gt; 1</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">MatchWordsIn</h3><p>La portée est dans le verbe : des mots entiers, et non un drapeau réglé ailleurs.</p><pre class="rx">o1 = new stzRegex(&quot;pre\w+&quot;)
 ? o1.MatchWordsIn(&quot;prefix preprocess present compress&quot;)  # matches pre* words
 ? o1.MatchWordsIn(&quot;compress&quot;)
 #--&gt; 1
-#--&gt; 0</pre><span class="rx-src">test de la bibliothèque</span></div></div><p class="proof">Toutes les méthodes, par section, plus bas.</p>
+#--&gt; 0</pre><span class="rx-src">test de la bibliothèque</span></div><div class="use"><h3 class="mono">PartialMatchInfo</h3><p>Quand une correspondance est partielle, l&#x27;objet dit ce qui a correspondu et où cela s&#x27;est arrêté.</p><pre class="rx">o1 = new stzRegex(&quot;hello\d{3}&quot;)
+? @@NL(o1.PartialMatchInfo(&quot;hello12&quot;))
+#--&gt; [
+#--&gt; 	[ &quot;matchtype&quot;, &quot;partial&quot; ],
+#--&gt; 	[ &quot;matched&quot;, &quot;hello12&quot; ],
+#--&gt; 	[
+#--&gt; 		&quot;section&quot;,
+#--&gt; 		[ 1, 7 ]
+#--&gt; 	]
+#--&gt; ]</pre><span class="rx-src">test de la bibliothèque</span></div></div><p class="proof">Toutes les méthodes, par section, plus bas.</p>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/regex.html">Le récit de son domaine : Recherche de motifs</a> · <a href="../guide/regex.html">La référence de son domaine</a></p><h3>Narrations qui en parlent <span class="mono">(4)</span></h3><ul class="narr arts"><li><a href="../narrations/stzregex-mastering-regex-with-softanza-narration.html">Mastering Regular Expressions with Softanza: A Modern Approach to Pattern Matching</a> <span class="mono">2025</span><span class="abs">Regular expressions are a powerful tool for pattern matching and text processing, but their traditional syntax and behavior can be complex and unintuitive.</span></li><li><a href="../narrations/stzregexdata-library-narration.html">Simplifying Regular Expressions with the Enhanced stzRegexData Library</a> <span class="mono">2025</span><span class="abs">Regular expressions (regex) have become indispensable tools for handling text-based data. They are used across a wide array of domains, from user interface (UI) applications and natural language processing (NLP) to code generation and data parsing.</span></li><li><a href="../narrations/stzregexmaker-making-regex-human-freindly-narration.html">The Softanza RegexMaker: Making Regex Human-Friendly</a> <span class="mono">2025</span><span class="abs">Regular expressions (regex) are powerful but notorious for their cryptic syntax. The Softanza RegexMaker class reimagines regex creation with a declarative, human-readable approach.</span></li><li><a href="../narrations/stzregexuter-regex-as-computational-reactive-medium.html">Softanza Regexuter: Regex as Computational Reactive Medium</a> <span class="mono">2025</span><span class="abs">The stzRegexuter class extends traditional pattern matching into a sophisticated system for reactive computational processing.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#copy">C</a> <a href="#explain">E</a> <a href="#findmatches">F</a> <a href="#hasmatch">H</a> <a href="#init">I</a> <a href="#lastmatchkind">L</a> <a href="#matchtype">M</a> <a href="#numberofmatches">N</a> <a href="#pattern">P</a> <a href="#recursivematchinfo">R</a> <a href="#setpattern">S</a> <a href="#valuesandtheirpositions">V</a></p><p><b>Sections</b> <a href="#string">general methods</a> · <a href="#hasmatch">matching methods</a> · <a href="#hasgroups">group capture-related methods</a> · <a href="#iscompletematch">partial match</a> · <a href="#matchrecursive">recursive (nested) match</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

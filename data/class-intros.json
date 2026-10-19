@@ -235,5 +235,337 @@
     "fr": "Les clés sont repliées en minuscules : le piège et la règle, dits par la classe elle-même."
    }
   }
+ },
+ "stzText": {
+  "en": [
+   "`stzText` is a string raised to meaning: the same characters, now read as words, sentences, names, tone and topics, with nothing to install or download.",
+   "Build it from any text, `new stzText(\"...\")` or `Q(\"...\").TextQ()`, and ask in plain words. `Sentiment()` says positive, negative or neutral, and `IsPositive()` answers with its confidence, certainly, probably or apparently, and a `Why()`. `NamedEntities()` finds people, organisations and places; `POSTags()` labels every word; `NounPhrases()` applies the classic noun-phrase shape; `Stemmed()` and `Lemmatized()` reduce words to their root or dictionary form, in 25 languages for stems and three for lemmas; `KeyPhrases()`, `RankedKeywords()` and `Summary()` extract what matters; `ReadingEase()` grades the prose.",
+   "Every one of these is a published reference algorithm embedded in the engine, Snowball, VADER, NLTK's tagger, TextRank, WordNet, so a first call works offline the moment the library loads. When a local model is present, the same text also answers `Embedding()`, `SemanticSimilarityWith()`, `ClassifiedAs(labels)` and `SummarizedAbstractively()`; without one they fall back or stay empty, honestly, and `HasSemanticModel()` says which case you are in.",
+   "It serves wherever text must be understood rather than merely stored: reading feedback, sorting messages, finding who and where a document speaks of, sizing the reading level of a lesson, building the vocabulary of a world from the texts that describe it."
+  ],
+  "fr": [
+   "`stzText` est une chaîne élevée au sens : les mêmes caractères, lus maintenant comme des mots, des phrases, des noms, un ton et des sujets, sans rien à installer ni à télécharger.",
+   "Construisez-le à partir de tout texte, `new stzText(\"...\")` ou `Q(\"...\").TextQ()`, et interrogez-le en mots simples. `Sentiment()` dit positif, négatif ou neutre, et `IsPositive()` répond avec sa confiance, certainement, probablement ou apparemment, et un `Why()`. `NamedEntities()` trouve les personnes, les organisations et les lieux ; `POSTags()` étiquette chaque mot ; `NounPhrases()` applique la forme classique du groupe nominal ; `Stemmed()` et `Lemmatized()` ramènent les mots à leur racine ou à leur forme de dictionnaire, en 25 langues pour les racines et trois pour les lemmes ; `KeyPhrases()`, `RankedKeywords()` et `Summary()` extraient ce qui compte ; `ReadingEase()` note la prose.",
+   "Chacun est un algorithme de référence publié, embarqué dans le moteur, Snowball, VADER, l'étiqueteur de NLTK, TextRank, WordNet, si bien qu'un premier appel marche hors ligne dès que la bibliothèque est chargée. Quand un modèle local est présent, le même texte répond aussi à `Embedding()`, `SemanticSimilarityWith()`, `ClassifiedAs(labels)` et `SummarizedAbstractively()` ; sans modèle, ils se replient ou restent vides, honnêtement, et `HasSemanticModel()` dit dans quel cas vous êtes.",
+   "Il sert partout où un texte doit être compris plutôt que seulement conservé : lire des retours, trier des messages, trouver de qui et d'où parle un document, mesurer le niveau de lecture d'une leçon, bâtir le vocabulaire d'un monde à partir des textes qui le décrivent."
+  ],
+  "picks": {
+   "NamedEntities": {
+    "en": "People, organisations and places, found by rules with no model, and registered into the shared world only when asked.",
+    "fr": "Personnes, organisations et lieux, trouvés par des règles sans modèle, et inscrits dans le monde partagé seulement sur demande."
+   },
+   "IsPositive": {
+    "en": "A verdict with its confidence: emphatic praise is certainly positive, a flat statement only apparently not.",
+    "fr": "Un verdict avec sa confiance : une louange appuyée est certainement positive, un énoncé plat seulement apparemment pas."
+   },
+   "IsSemanticallySimilarTo": {
+    "en": "A close paraphrase is probably similar, an unrelated text certainly not, and `Why()` says so in words.",
+    "fr": "Une paraphrase proche est probablement semblable, un texte sans rapport certainement pas, et `Why()` le dit en mots."
+   },
+   "ClassifiedAs": {
+    "en": "A text sorted under the nearest of the labels you give.",
+    "fr": "Un texte rangé sous la plus proche des étiquettes que vous donnez."
+   },
+   "SentencesQQ": {
+    "en": "The Q ladder: `SentencesQ()` is a plain list, `SentencesQQ()` a list of texts that keep answering as texts.",
+    "fr": "L'échelle Q : `SentencesQ()` est une liste simple, `SentencesQQ()` une liste de textes qui continuent de répondre comme des textes."
+   }
+  }
+ },
+ "stzGraph": {
+  "en": [
+   "`stzGraph` is the structure beneath every connected thing in Softanza: nodes, edges, properties on both, and the questions a graph can answer, is there a path, what is reachable, where are the bottlenecks, what is the shortest way.",
+   "It keeps structure apart from meaning. You add nodes and edges, `AddNode(\"A\")`, `AddEdge(\"A\", \"B\")`, give them properties, `AddNodeXTT(\"alice\", \"Person\", [:age = 30])`, and the graph stays a graph; a workflow, an org chart, a state machine, a knowledge base, a diagram are classes that inherit from it and add their own vocabulary. The algorithms are compiled in the engine: breadth and depth searches, shortest paths, connected and strongly connected components, articulation points, topological order, cycle detection, centralities, PageRank, communities, minimum spanning tree, maximum flow.",
+   "Two things make it more than a data structure. Constraints: a graph can carry rules, loaded from a file of them, and refuse an edge it forbids, `WhyCannotAddEdge` saying why. And a query language, `StzGraphQueryQ(oGraph) { Match(...) Set(...) Select(...) }`, that reads, updates and deletes by pattern instead of by loop.",
+   "It serves anywhere relations are the data: dependencies, hierarchies, flows of money or of work, networks of services, the code of a program, the links between the facts a world knows."
+  ],
+  "fr": [
+   "`stzGraph` est la structure sous toute chose connectée dans Softanza : des nœuds, des arêtes, des propriétés sur les deux, et les questions qu'un graphe sait résoudre, y a-t-il un chemin, qu'atteint-on, où sont les goulets, quelle est la voie la plus courte.",
+   "Il tient la structure à part du sens. On ajoute des nœuds et des arêtes, `AddNode(\"A\")`, `AddEdge(\"A\", \"B\")`, on leur donne des propriétés, `AddNodeXTT(\"alice\", \"Person\", [:age = 30])`, et le graphe reste un graphe ; un flux de travail, un organigramme, un automate, une base de connaissances, un diagramme sont des classes qui en héritent et y ajoutent leur propre vocabulaire. Les algorithmes sont compilés dans le moteur : parcours en largeur et en profondeur, plus courts chemins, composantes connexes et fortement connexes, points d'articulation, ordre topologique, détection de cycles, centralités, PageRank, communautés, arbre couvrant minimal, flot maximal.",
+   "Deux choses en font plus qu'une structure de données. Les contraintes : un graphe peut porter des règles, chargées depuis un fichier, et refuser une arête qu'elles interdisent, `WhyCannotAddEdge` disant pourquoi. Et un langage de requête, `StzGraphQueryQ(oGraph) { Match(...) Set(...) Select(...) }`, qui lit, met à jour et supprime par motif plutôt que par boucle.",
+   "Il sert partout où les relations sont la donnée : dépendances, hiérarchies, flux d'argent ou de travail, réseaux de services, le code d'un programme, les liens entre les faits qu'un monde connaît."
+  ],
+  "picks": {
+   "IsBipartite": {
+    "en": "A question of structure, answered: a path is bipartite, a triangle is not.",
+    "fr": "Une question de structure, résolue : un chemin est biparti, un triangle non."
+   },
+   "MSTWeight": {
+    "en": "Weights on the edges, and the minimum spanning tree's total in one call.",
+    "fr": "Des poids sur les arêtes, et le total de l'arbre couvrant minimal en un appel."
+   },
+   "LoadFromStzRulz": {
+    "en": "Rules loaded from a file of them: the graph then knows what it must refuse.",
+    "fr": "Des règles chargées depuis un fichier : le graphe sait alors ce qu'il doit refuser."
+   },
+   "AddNodeXTT": {
+    "en": "A node with a kind and properties, then a query that matches it and updates it by pattern.",
+    "fr": "Un nœud avec une sorte et des propriétés, puis une requête qui le reconnaît et le met à jour par motif."
+   },
+   "NodeCount": {
+    "en": "A query deletes by pattern, and the count says the node is gone.",
+    "fr": "Une requête supprime par motif, et le compte dit que le nœud est parti."
+   }
+  }
+ },
+ "stzDiagram": {
+  "en": [
+   "`stzDiagram` is a graph that can be drawn: every node and edge of `stzGraph`, plus a notation, a layout, a theme, and twenty-four node shapes, rendered as SVG with no device, as PNG on the GPU, or as text in a terminal.",
+   "You declare what the picture means, not where its boxes go. `SetNotation` names the visual language, flowchart, BPMN, UML, DRAKON, org chart, Petri net and the rest, each a profile declared as data over the same renderer; a notation that forbids self-links makes `Edit` refuse one. `SetLayout` picks the direction, and a layout name the class does not know is refused rather than stored. The layout engine is deterministic, so the same diagram renders bit for bit the same, and a test can compare pictures.",
+   "Editing is a command-based session: `Edit`, `Undo`, `Redo`, an `EditLog`, `PickAt(x, y)` to find what sits under a point, `RewireAnchor`, `Pin` and `DragTo` that re-solve the picture around a shape you hold. Visual rules can be registered and applied, templates and annotations added, clusters drawn, and `Fact` and `Rendition` let a reader ask the drawing what it shows.",
+   "It serves wherever a structure must be seen and discussed: a process, an organisation, a state machine, a schema, a network, a lesson; and because the author edits meaning while the layout owns the geometry, no hand-placed box can assert a relation the graph does not contain."
+  ],
+  "fr": [
+   "`stzDiagram` est un graphe que l'on peut dessiner : chaque nœud et chaque arête de `stzGraph`, plus une notation, une mise en page, un thème et vingt-quatre formes de nœuds, rendus en SVG sans périphérique, en PNG sur le GPU, ou en texte dans un terminal.",
+   "On déclare ce que l'image veut dire, pas où vont ses boîtes. `SetNotation` nomme le langage visuel, organigramme de programmation, BPMN, UML, DRAKON, organigramme d'entreprise, réseau de Petri et les autres, chacun un profil déclaré comme donnée sur le même moteur de rendu ; une notation qui interdit les boucles sur soi fait que `Edit` en refuse une. `SetLayout` choisit la direction, et un nom de mise en page que la classe ne connaît pas est refusé plutôt que rangé. Le moteur de mise en page est déterministe : le même diagramme se rend bit pour bit à l'identique, et un test peut comparer des images.",
+   "L'édition est une session par commandes : `Edit`, `Undo`, `Redo`, un `EditLog`, `PickAt(x, y)` pour trouver ce qui est sous un point, `RewireAnchor`, `Pin` et `DragTo` qui re-résolvent l'image autour d'une forme que l'on tient. Des règles visuelles peuvent être enregistrées et appliquées, des modèles et des annotations ajoutés, des grappes dessinées, et `Fact` et `Rendition` laissent un lecteur demander au dessin ce qu'il montre.",
+   "Il sert partout où une structure doit être vue et discutée : un processus, une organisation, un automate, un schéma, un réseau, une leçon ; et parce que l'auteur édite le sens tandis que la mise en page possède la géométrie, aucune boîte placée à la main ne peut affirmer une relation que le graphe ne contient pas."
+  ],
+  "picks": {}
+ },
+ "stzGeoMap": {
+  "en": [
+   "`stzGeoMap` draws a map of real features, regions, points, flows, fields, on a projection, and judges what it draws: it refuses a claim the picture cannot honestly make.",
+   "You bind a projection and a set of features, then say what is shown: `SetValues`, one value per feature in the features' own order, with `\"\"` where the map has a hole; `SetClasses` and `SetRamp` for a choropleth; `SetGroups` for a bloc map, where a country claimed by two groups belongs to the first and is reported; symbols whose area carries the value, never their radius; flows as great circles; hexagonal bins of points, an empty cell not drawn because an empty cell is not a quantity of zero. `AssignPoints`, `CountPointsIn` and `DensityPointsIn` are the spatial join, a table of wells or clinics becoming one number per region, and a density is what a choropleth may honestly colour.",
+   "Then the furniture, each piece measured: a scale bar drawn at a stated latitude and refused when the scale varies too much across the sheet, a north arrow, a graticule, insets with a locator scale, the day-night terminator and twilight at a given moment, streamlines of a vector field. Labels follow four rules shared by the professional tools, and `LabelReport` says in four numbers what the labelling did and dropped.",
+   "It serves whoever must put a quantity on a territory, a census, a rainfall, a market, and be believed: the Niger map on this site, official census over open boundaries, is drawn by this class."
+  ],
+  "fr": [
+   "`stzGeoMap` dessine une carte de traits réels, régions, points, flux, champs, sur une projection, et juge ce qu'elle dessine : elle refuse une affirmation que l'image ne peut honnêtement porter.",
+   "On lie une projection et un jeu de traits, puis on dit ce qui est montré : `SetValues`, une valeur par trait dans l'ordre des traits, avec `\"\"` là où la carte a un trou ; `SetClasses` et `SetRamp` pour une carte choroplèthe ; `SetGroups` pour une carte de blocs, où un pays revendiqué par deux groupes appartient au premier et cela est signalé ; des symboles dont l'aire porte la valeur, jamais le rayon ; des flux en grands cercles ; des cases hexagonales de points, une case vide non dessinée parce qu'une case vide n'est pas une quantité nulle. `AssignPoints`, `CountPointsIn` et `DensityPointsIn` sont la jointure spatiale, une table de puits ou de dispensaires devenant un nombre par région, et une densité est ce qu'une carte choroplèthe peut honnêtement colorier.",
+   "Puis l'habillage, chaque pièce mesurée : une barre d'échelle tracée à une latitude dite et refusée quand l'échelle varie trop sur la feuille, une flèche du nord, un graticule, des encarts avec une échelle de repérage, le terminateur jour-nuit et le crépuscule à un instant donné, les lignes de courant d'un champ de vecteurs. Les étiquettes suivent quatre règles partagées par les outils professionnels, et `LabelReport` dit en quatre nombres ce que l'étiquetage a fait et abandonné.",
+   "Elle sert à qui doit poser une quantité sur un territoire, un recensement, une pluviométrie, un marché, et être cru : la carte du Niger de ce site, recensement officiel sur limites ouvertes, est dessinée par cette classe."
+  ],
+  "picks": {
+   "ScaleBarAt": {
+    "en": "A scale bar at a stated latitude, with the variation that would make it a lie.",
+    "fr": "Une barre d'échelle à une latitude dite, avec la variation qui en ferait un mensonge."
+   },
+   "DensityPointsIn": {
+    "en": "Points joined to regions and turned into a density, the one thing a choropleth may colour.",
+    "fr": "Des points joints aux régions et changés en densité, la seule chose qu'une carte choroplèthe peut colorier."
+   },
+   "HexBin": {
+    "en": "Points binned into hexagons: centre, size and count, and an empty cell is not drawn.",
+    "fr": "Des points rangés en hexagones : centre, taille et compte, et une case vide n'est pas dessinée."
+   },
+   "LabelReport": {
+    "en": "Four numbers that say what the labelling did and dropped.",
+    "fr": "Quatre nombres qui disent ce que l'étiquetage a fait et abandonné."
+   }
+  }
+ },
+ "stzCanvas": {
+  "en": [
+   "`stzCanvas` is the drawing surface of Softanza: a retained list of shapes and text that always answers as SVG, with no device at all, and renders to lossless PNG when a GPU is present.",
+   "You add shapes, `AddRect`, `AddRoundRect`, `AddCircle`, `AddEllipse`, `AddLine`, `AddPolyline`, `AddPolygon`, a gradient rectangle, an image, a mesh, and name their `Fill` and `Stroke`; the stroke is drawn on top of the fill so the two agree on the silhouette. Text sits on a baseline you give, `AddText`, can run vertically, and can be justified to a width exactly, with the engine elongating first and sharing what is left over the spaces, which is how Arabic kashida justification works. The same text pipeline shapes every script.",
+   "`ToSVG()` is the floor: vector, always available, everywhere. `ToPNG()` and `ToPNGHiRes()` use the GPU, supersampled at the level a measurement found to be the knee, four, beyond which more samples buy almost nothing. `Pick(x, y)` returns the tag of the topmost shape under a point from the display list itself, which is what makes a drawing interactive; `SetRegion` pans a viewer over a huge picture with the same call and a different origin; `Show()` puts the picture in a real window.",
+   "It is the surface under charts, diagrams, maps, sound plots and the area pictures of this site; use it directly when you want to draw something of your own, with the engine's text and colour behind you."
+  ],
+  "fr": [
+   "`stzCanvas` est la surface de dessin de Softanza : une liste retenue de formes et de textes qui répond toujours en SVG, sans aucun périphérique, et se rend en PNG sans perte quand un GPU est présent.",
+   "On ajoute des formes, `AddRect`, `AddRoundRect`, `AddCircle`, `AddEllipse`, `AddLine`, `AddPolyline`, `AddPolygon`, un rectangle en dégradé, une image, un maillage, et l'on nomme leur `Fill` et leur `Stroke` ; le contour est tracé par-dessus le remplissage pour que les deux s'accordent sur la silhouette. Le texte repose sur une ligne de base que l'on donne, `AddText`, peut courir à la verticale, et peut être justifié sur une largeur exacte, le moteur allongeant d'abord et partageant le reste sur les espaces, ce qui est la justification arabe par kashida. La même chaîne de texte façonne toutes les écritures.",
+   "`ToSVG()` est le plancher : vectoriel, toujours disponible, partout. `ToPNG()` et `ToPNGHiRes()` emploient le GPU, suréchantillonné au niveau qu'une mesure a trouvé être le coude, quatre, au-delà duquel davantage d'échantillons n'achète presque rien. `Pick(x, y)` rend l'étiquette de la forme la plus haute sous un point, depuis la liste d'affichage elle-même, ce qui rend un dessin interactif ; `SetRegion` fait défiler un afficheur sur une image immense avec le même appel et une autre origine ; `Show()` met l'image dans une vraie fenêtre.",
+   "C'est la surface sous les graphiques, les diagrammes, les cartes, les tracés sonores et les images de domaines de ce site ; employez-la directement pour dessiner quelque chose à vous, avec le texte et la couleur du moteur derrière vous."
+  ],
+  "picks": {
+   "AddRect": {
+    "en": "A rectangle, and the canvas answers as SVG at once, with no device.",
+    "fr": "Un rectangle, et le canevas répond aussitôt en SVG, sans périphérique."
+   },
+   "AddCircle": {
+    "en": "A circle on the same retained list.",
+    "fr": "Un cercle sur la même liste retenue."
+   }
+  }
+ },
+ "stzDataSet": {
+  "en": [
+   "`stzDataSet` is a list of measurements that answers a statistician's questions: not only the mean and the spread, but the confidence interval with its method named, the five numbers of a box plot, the correlation with another set, the insights worth reporting.",
+   "Its methods are grouped as a statistician thinks. Comparison: mean, median, mode, variance with its convention named, `VarianceSample` divides by N−1 as R and pandas do, geometric and harmonic means, trimmed and weighted means, percentiles and quartiles, z-scores, outliers, confidence intervals. Composition: frequency tables, unique values, diversity and entropy, contingency tables. Relation: `CorrelationWith`, rank correlation, `PartialCorrelation` holding a third set fixed, chi-square association, mutual information, regression coefficients. Then normalisation, validation, and an insights engine that reads the numbers and writes what they say.",
+   "The arithmetic underneath is the engine's, compensated and careful: a sum of `1e16` plus a thousand ones gives exactly `10000000000001000`, where naive addition drifts; and the statistics a table or a plot needs are handed to this class rather than recomputed, because two classes once disagreed on a variance.",
+   "It serves whoever has numbers to describe, compare or explain, a survey, a set of sensor readings, a column of a table, the residuals of a fit, and wants each answer to say which convention it used."
+  ],
+  "fr": [
+   "`stzDataSet` est une liste de mesures qui répond aux questions d'un statisticien : non seulement la moyenne et la dispersion, mais l'intervalle de confiance avec sa méthode nommée, les cinq nombres d'une boîte à moustaches, la corrélation avec un autre jeu, les constats dignes d'un rapport.",
+   "Ses méthodes sont groupées comme pense un statisticien. Comparaison : moyenne, médiane, mode, variance avec sa convention nommée, `VarianceSample` divise par N−1 comme R et pandas, moyennes géométrique et harmonique, moyennes tronquée et pondérée, percentiles et quartiles, scores z, valeurs aberrantes, intervalles de confiance. Composition : tables de fréquences, valeurs uniques, diversité et entropie, tables de contingence. Relation : `CorrelationWith`, corrélation des rangs, `PartialCorrelation` en tenant un troisième jeu fixe, association du khi-deux, information mutuelle, coefficients de régression. Puis la normalisation, la validation, et un moteur de constats qui lit les nombres et écrit ce qu'ils disent.",
+   "L'arithmétique en dessous est celle du moteur, compensée et soigneuse : une somme de `1e16` plus mille unités donne exactement `10000000000001000`, là où l'addition naïve dérive ; et les statistiques dont une table ou un tracé a besoin sont confiées à cette classe plutôt que recalculées, parce que deux classes se sont un jour contredites sur une variance.",
+   "Elle sert à qui a des nombres à décrire, comparer ou expliquer, une enquête, des relevés de capteurs, une colonne de table, les résidus d'un ajustement, et veut que chaque réponse dise quelle convention elle a suivie."
+  ],
+  "picks": {
+   "Median": {
+    "en": "The mean and the median of the same eight values: 8.5 and 6, and the gap between them is the first thing a statistician reads.",
+    "fr": "La moyenne et la médiane des mêmes huit valeurs : 8,5 et 6, et l'écart entre elles est la première chose qu'un statisticien lit."
+   },
+   "PartialCorrelation": {
+    "en": "A correlation, and the same correlation with a third set held fixed.",
+    "fr": "Une corrélation, et la même corrélation en tenant un troisième jeu fixe."
+   },
+   "Sum": {
+    "en": "Compensated summation: ten quadrillion plus a thousand ones gives exactly the right answer, in three classes that agree.",
+    "fr": "Sommation compensée : dix millions de milliards plus mille unités donnent exactement la bonne réponse, dans trois classes qui s'accordent."
+   },
+   "SortedData": {
+    "en": "The data in order, without changing the set.",
+    "fr": "Les données dans l'ordre, sans changer le jeu."
+   }
+  }
+ },
+ "stzDateTime": {
+  "en": [
+   "`stzDateTime` is a moment in time that speaks every dialect of the calendar: it reads a date in whatever form it arrives, does arithmetic on it in plain words, and writes it back in the form a reader expects.",
+   "Build it from an ISO string, `StzDateTimeQ(\"2024-03-15 10:30:00\")`, from a list of components, from a Unix timestamp, or from an epoch counted in any unit, `[ :FromEpochHours = 480000 ]`. Then move it the way you would say it: `oDateTime + \"2 days 5 hours\"`, `oDateTime - \"3 hours\"`, `AddNatural(\"1 day 2 hours\")`, or the chain `AddDaysQ(5).AddHoursQ(3).AddMinutesQ(30)`. Ask where it stands, `IsBefore`, `IsAfter`, `IsBetween(a, :And = b)`, `IsToday`, `IsTomorrow`, and how far it is from another moment, `DurationTo(other, :In = :Days)`.",
+   "Writing it out is where the breadth shows. `ToEuropean()` gives `15/03/2024 10:30:00 AM`, `ToAmerican()` the month first, `ToIso8601()` the `T`, `ToLong()` the weekday spelled out, `ToRelative()` a phrase, and `ToStringXT(\"dddd h:mm AP\")` any shape you name; every family comes in a 12-hour and a 24-hour form, so the choice of clock is never a surprise.",
+   "It serves wherever time is data: a log to align, a deadline to compute, a schedule to render in a reader's own convention, an interval to measure, and it is the moment that `stzDate`, `stzTime`, `stzCalendar` and `stzTimeLine` build on."
+  ],
+  "fr": [
+   "`stzDateTime` est un instant qui parle tous les dialectes du calendrier : il lit une date sous la forme où elle arrive, fait de l'arithmétique dessus en mots simples, et la réécrit sous la forme qu'un lecteur attend.",
+   "Construisez-le depuis une chaîne ISO, `StzDateTimeQ(\"2024-03-15 10:30:00\")`, depuis une liste de composantes, depuis un horodatage Unix, ou depuis une époque comptée en n'importe quelle unité, `[ :FromEpochHours = 480000 ]`. Puis déplacez-le comme vous le diriez : `oDateTime + \"2 days 5 hours\"`, `oDateTime - \"3 hours\"`, `AddNatural(\"1 day 2 hours\")`, ou la chaîne `AddDaysQ(5).AddHoursQ(3).AddMinutesQ(30)`. Demandez où il se situe, `IsBefore`, `IsAfter`, `IsBetween(a, :And = b)`, `IsToday`, `IsTomorrow`, et à quelle distance il est d'un autre instant, `DurationTo(other, :In = :Days)`.",
+   "L'écriture est là où l'étendue se voit. `ToEuropean()` donne `15/03/2024 10:30:00 AM`, `ToAmerican()` le mois d'abord, `ToIso8601()` le `T`, `ToLong()` le jour de la semaine en toutes lettres, `ToRelative()` une tournure, et `ToStringXT(\"dddd h:mm AP\")` toute forme que vous nommez ; chaque famille existe en forme 12 heures et 24 heures, si bien que le choix d'horloge n'est jamais une surprise.",
+   "Il sert partout où le temps est une donnée : un journal à aligner, une échéance à calculer, un horaire à rendre dans la convention du lecteur, un intervalle à mesurer, et c'est l'instant sur lequel `stzDate`, `stzTime`, `stzCalendar` et `stzTimeLine` sont bâtis."
+  ],
+  "picks": {
+   "ToEuropean": {
+    "en": "The same moment written three ways: as stored, as a European 12-hour clock, as a 24-hour one.",
+    "fr": "Le même instant écrit de trois façons : tel que rangé, en horloge européenne 12 heures, en 24 heures."
+   },
+   "Content": {
+    "en": "Arithmetic in words: add two days, then three hours, then both at once.",
+    "fr": "L'arithmétique en mots : ajouter deux jours, puis trois heures, puis les deux à la fois."
+   },
+   "DurationTo": {
+    "en": "The distance between two moments, in the unit you name.",
+    "fr": "La distance entre deux instants, dans l'unité que vous nommez."
+   },
+   "IsBetween": {
+    "en": "A moment inside a window, the bounds given as strings or as objects.",
+    "fr": "Un instant dans une fenêtre, les bornes données comme chaînes ou comme objets."
+   },
+   "AddDaysQ": {
+    "en": "The chain: five days, three hours, thirty minutes, one expression.",
+    "fr": "La chaîne : cinq jours, trois heures, trente minutes, une seule expression."
+   },
+   "ToStringXT": {
+    "en": "Any shape you name, with a format string.",
+    "fr": "Toute forme que vous nommez, par une chaîne de format."
+   }
+  }
+ },
+ "stzFolder": {
+  "en": [
+   "`stzFolder` is a folder you can ask questions of and move around in: what is here, what is deeper, does this path exist, is it inside me, and then create, count, delete, with the answers given in a listing form that never varies.",
+   "Open it on a path, `new stzFolder(\"D:/project\")`, and read it: `Files()` and `Folders()` for the children, `DeepFiles()` and `DeepFolders()` for the whole tree, `CountFiles()`, `DeepCountFiles()`, `Size()`, `IsEmpty()`. The listing form is fixed, `/name` for a file and `/name/` for a folder, so a name read from a listing can be given back to any method unchanged. Test what you are about to touch: `Contains`, `DeepContains`, `DeepContainsTheseFiles`, `IsSubfolderOf`, `IsInside`, `IsOutside`, `AllExist`, `MissingPathsAmong`; and normalise what a user typed, `NormalizePath`, so that slashes, case and trailing separators stop mattering.",
+   "Then navigate, as in a shell that remembers: `GoTo`, `GoUp`, `GoHome`, `GoBack`, `PathHistory`, `DistanceFromHome`. And act: `CreateFolder`, `CreatePath` for a deep path in one call, `DeleteFolder`, `RemoveTree`, `DeepDeleteFiles`, with a batch mode for sweeps over many entries.",
+   "It serves whoever handles a tree of files, a build, a corpus, a set of generated proofs, an upload directory, and wants the question \"is this path inside the folder I was given\" to have one correct answer, with non-ASCII names read as they are."
+  ],
+  "fr": [
+   "`stzFolder` est un dossier que l'on peut interroger et dans lequel on peut se déplacer : qu'y a-t-il ici, qu'y a-t-il plus profond, ce chemin existe-t-il, est-il en moi, puis créer, compter, supprimer, les réponses données sous une forme de listage qui ne varie jamais.",
+   "Ouvrez-le sur un chemin, `new stzFolder(\"D:/project\")`, et lisez-le : `Files()` et `Folders()` pour les enfants, `DeepFiles()` et `DeepFolders()` pour tout l'arbre, `CountFiles()`, `DeepCountFiles()`, `Size()`, `IsEmpty()`. La forme de listage est fixe, `/name` pour un fichier et `/name/` pour un dossier, si bien qu'un nom lu dans un listage peut être redonné à toute méthode sans changement. Vérifiez ce que vous allez toucher : `Contains`, `DeepContains`, `DeepContainsTheseFiles`, `IsSubfolderOf`, `IsInside`, `IsOutside`, `AllExist`, `MissingPathsAmong` ; et normalisez ce qu'un utilisateur a tapé, `NormalizePath`, pour que barres, casse et séparateurs finaux cessent de compter.",
+   "Puis naviguez, comme dans un interpréteur qui se souvient : `GoTo`, `GoUp`, `GoHome`, `GoBack`, `PathHistory`, `DistanceFromHome`. Et agissez : `CreateFolder`, `CreatePath` pour un chemin profond en un appel, `DeleteFolder`, `RemoveTree`, `DeepDeleteFiles`, avec un mode par lots pour les balayages sur de nombreuses entrées.",
+   "Il sert à qui manie un arbre de fichiers, une compilation, un corpus, un jeu de preuves générées, un répertoire de dépôt, et veut que la question « ce chemin est-il dans le dossier qu'on m'a donné » ait une seule réponse juste, les noms non ASCII lus tels quels."
+  ],
+  "picks": {}
+ },
+ "stzAppServer": {
+  "en": [
+   "`stzAppServer` is a web server that is also a host: it answers HTTP, serves over TLS, exposes a database table as a REST resource in one call, mounts a sign-in router and an OpenID provider, listens to raw devices, and ticks a fleet of agents between requests, on the same loop, in the same process.",
+   "Routing is the familiar shape, `Get_(\"/hello\", fHandler)`, `Post`, `Put_`, `Delete`, `Use` for middleware, `Static` for files, and `Expose(oDb, \"customers\")` gives a table the full CRUD floor, `GET /api/customers`, `POST`, `PUT`, `DELETE`, keyed by its id column. `Start(0)` binds an ephemeral port and raises on failure, never a half-started server; `StartTls` terminates TLS below the router, so every handler runs on decrypted bytes; `Run()` serves forever and `ServeOne()` drains exactly one event, which is how a test drives a server deterministically.",
+   "Security is mounted, not bolted on. `MountAuth(oAuth)` puts a whole sign-in surface at a prefix, with secure cookies whenever the listener is TLS; `MountOidcProvider` turns this server's login into the login of other applications; `RequireSignedRequests` refuses, with a replay ledger, any off-loopback request that is not signed; `AuthWhy()` says in words why the last request was refused. And `Observe(oMonitor)` records every request's response time into `http.request.ms`, the perf system's well-known subject.",
+   "Agents live here too: `HostAgents`, `SuperviseAgent`, `AgentTicks`, `RetireAgent`, refused until the agent's declared obligations are fulfilled. The server is one entry point for a whole service: its routes, its users, its instruments and its background workers, supervised together."
+  ],
+  "fr": [
+   "`stzAppServer` est un serveur web qui est aussi un hôte : il répond en HTTP, sert en TLS, expose une table de base de données comme ressource REST en un appel, monte un routeur de connexion et un fournisseur OpenID, écoute des appareils bruts, et fait avancer une flotte d'agents entre les requêtes, sur la même boucle, dans le même processus.",
+   "Le routage a la forme familière, `Get_(\"/hello\", fHandler)`, `Post`, `Put_`, `Delete`, `Use` pour l'intergiciel, `Static` pour les fichiers, et `Expose(oDb, \"customers\")` donne à une table le plancher CRUD complet, `GET /api/customers`, `POST`, `PUT`, `DELETE`, par sa colonne id. `Start(0)` lie un port éphémère et lève une erreur en cas d'échec, jamais un serveur à moitié démarré ; `StartTls` termine TLS sous le routeur, si bien que chaque gestionnaire tourne sur des octets déchiffrés ; `Run()` sert sans fin et `ServeOne()` vide exactement un événement, ce qui permet à un test de piloter un serveur de façon déterministe.",
+   "La sécurité se monte, elle ne se visse pas. `MountAuth(oAuth)` pose toute une surface de connexion sous un préfixe, avec des témoins sécurisés dès que l'écoute est en TLS ; `MountOidcProvider` fait de la connexion de ce serveur la connexion d'autres applications ; `RequireSignedRequests` refuse, avec un registre de rejeu, toute requête hors boucle locale qui n'est pas signée ; `AuthWhy()` dit en mots pourquoi la dernière requête a été refusée. Et `Observe(oMonitor)` enregistre le temps de réponse de chaque requête dans `http.request.ms`, le sujet connu du système de performance.",
+   "Les agents vivent ici aussi : `HostAgents`, `SuperviseAgent`, `AgentTicks`, `RetireAgent`, refusé tant que les obligations déclarées de l'agent ne sont pas remplies. Le serveur est un point d'entrée unique pour tout un service : ses routes, ses utilisateurs, ses instruments et ses travailleurs de fond, supervisés ensemble."
+  ],
+  "picks": {}
+ },
+ "stzAuth": {
+  "en": [
+   "`stzAuth` is the sign-in of an application, complete: passwords, sessions, a second factor, magic links, one-time codes, passkeys, roles, lockout, and the enterprise doors, SAML and OpenID, each as a method rather than a product to integrate.",
+   "A user is registered with `Register(name, password)` and only a salted Argon2id hash is stored; an older PBKDF2 hash is accepted once and upgraded on the way through. `Login` returns an opaque token, or `\"\"` on a wrong password and on a lockout alike, so the answer leaks nothing. Sessions have an absolute `SetSessionTTL` and an idle `SetIdleTTL` that slides on every validation; `SessionsOf` is the \"your devices\" page, `RevokeSession` signs one out, `RevokeAllSessions` signs out everywhere, and `RotateSession` issues a new token after a privilege change, the classic fixation defence. Every `...At(now)` form takes an explicit clock, so a test of expiry runs in no time at all.",
+   "The second factor is enrolled in two steps, `EnableTotp` then `ConfirmTotp`, so a mis-scanned secret can never lock a user out, and recovery codes come back once, in plain text, from the confirmation. `RequestMagicLink` and `RequestEmailOtp` send through a mail port you bind, a sandbox in development, and store only the hash of a 256-bit token. Roles are defined and granted, `DefineRole`, `GrantRole`, `HasRole`, and `SessionActor` turns a session into the governed actor the rest of the library reasons about, `SessionCan`, `SessionMayProceed`.",
+   "It persists through a store you choose, in memory by default or SQLite with `SetStore(StzAuthDbStoreQ(\"auth.db\"))`, and it mounts on `stzAppServer` in one call. It serves any application that has users, and wants its authentication read, in the open, as a list of methods whose refusals explain themselves."
+  ],
+  "fr": [
+   "`stzAuth` est la connexion d'une application, complète : mots de passe, sessions, second facteur, liens magiques, codes à usage unique, clés d'accès, rôles, verrouillage, et les portes d'entreprise, SAML et OpenID, chacune comme méthode plutôt que comme produit à intégrer.",
+   "Un utilisateur s'inscrit par `Register(name, password)` et seul un hachage salé Argon2id est conservé ; un ancien hachage PBKDF2 est accepté une fois et mis à niveau au passage. `Login` rend un jeton opaque, ou `\"\"` aussi bien pour un mot de passe faux que pour un verrouillage, si bien que la réponse ne révèle rien. Les sessions ont une durée absolue `SetSessionTTL` et une durée d'inactivité `SetIdleTTL` qui glisse à chaque validation ; `SessionsOf` est la page « vos appareils », `RevokeSession` en déconnecte un, `RevokeAllSessions` déconnecte partout, et `RotateSession` émet un nouveau jeton après un changement de privilège, la défense classique contre la fixation. Chaque forme `...At(now)` prend une horloge explicite, si bien qu'un test d'expiration ne prend aucun temps.",
+   "Le second facteur s'enrôle en deux étapes, `EnableTotp` puis `ConfirmTotp`, pour qu'un secret mal scanné ne puisse jamais exclure un utilisateur, et les codes de récupération reviennent une fois, en clair, depuis la confirmation. `RequestMagicLink` et `RequestEmailOtp` envoient par un port de courrier que vous liez, un bac à sable en développement, et ne conservent que le hachage d'un jeton de 256 bits. Les rôles se définissent et s'accordent, `DefineRole`, `GrantRole`, `HasRole`, et `SessionActor` fait d'une session l'acteur gouverné sur lequel le reste de la bibliothèque raisonne, `SessionCan`, `SessionMayProceed`.",
+   "Il persiste par un magasin que vous choisissez, en mémoire par défaut ou SQLite avec `SetStore(StzAuthDbStoreQ(\"auth.db\"))`, et se monte sur `stzAppServer` en un appel. Il sert toute application qui a des utilisateurs et veut que son authentification se lise, à découvert, comme une liste de méthodes dont les refus s'expliquent."
+  ],
+  "picks": {}
+ },
+ "stzMatrix": {
+  "en": [
+   "`stzMatrix` is a grid of numbers with the two vocabularies a grid needs: the algebra, transpose, product, determinant, inverse, solve, norms, powers, and the editing, add to this row, multiply those columns, find every cell holding this value, replace a section.",
+   "Build it from a list of rows, `new stzMatrix([ [1,2,3], [4,5,6], [7,8,9] ])`. The algebra is the engine's and agrees with the content: replace a row and `Determinant()` answers for the new matrix; `MultiplyByMatrix`, `Transpose`, `Solve`, `Trace`, `FrobeniusNorm`, `Power`. The editing is addressed the way a person points: `AddXT(10, :InCol = 2)`, `AddInRows([1, 3], 100)` or `[ :From = 1, :To = 2 ]`, `MultiplyCols([1, 3], :By = 2)`, `AddInDiagonal`, `ReplaceElementsAt([ [1,3], [2,2] ], :By = 0)`.",
+   "Finding is spatial. `FindElement(99)` returns the positions of every 99 as `[row, col]` pairs; `FindRow` and `FindCol` find a whole row or column, `FindCols` several at once; `Section([1,1], [2,2])` cuts a block, `SectionQQ` makes it a list that keeps answering, `Max()`, `Min()`, `Sum()`, and `ElementsInSectionZ` gives each value with its position. `ReplaceElementInSectionByMany` hands each occurrence the next replacement in turn.",
+   "It serves a numerical method, a transformation, a table of scores, a game board, anything laid out in rows and columns where you want to both compute and point."
+  ],
+  "fr": [
+   "`stzMatrix` est une grille de nombres avec les deux vocabulaires dont une grille a besoin : l'algèbre, transposée, produit, déterminant, inverse, résolution, normes, puissances, et l'édition, ajouter à cette ligne, multiplier ces colonnes, trouver chaque cellule portant cette valeur, remplacer une section.",
+   "Construisez-la depuis une liste de lignes, `new stzMatrix([ [1,2,3], [4,5,6], [7,8,9] ])`. L'algèbre est celle du moteur et s'accorde avec le contenu : remplacez une ligne et `Determinant()` répond pour la nouvelle matrice ; `MultiplyByMatrix`, `Transpose`, `Solve`, `Trace`, `FrobeniusNorm`, `Power`. L'édition s'adresse comme une personne montre du doigt : `AddXT(10, :InCol = 2)`, `AddInRows([1, 3], 100)` ou `[ :From = 1, :To = 2 ]`, `MultiplyCols([1, 3], :By = 2)`, `AddInDiagonal`, `ReplaceElementsAt([ [1,3], [2,2] ], :By = 0)`.",
+   "La recherche est spatiale. `FindElement(99)` rend les positions de chaque 99 en paires `[ligne, colonne]` ; `FindRow` et `FindCol` trouvent une ligne ou une colonne entière, `FindCols` plusieurs à la fois ; `Section([1,1], [2,2])` découpe un bloc, `SectionQQ` en fait une liste qui continue de répondre, `Max()`, `Min()`, `Sum()`, et `ElementsInSectionZ` donne chaque valeur avec sa position. `ReplaceElementInSectionByMany` remet à chaque occurrence le remplacement suivant à son tour.",
+   "Elle sert une méthode numérique, une transformation, une table de scores, un plateau de jeu, tout ce qui est disposé en lignes et colonnes où l'on veut à la fois calculer et montrer."
+  ],
+  "picks": {
+   "FindElement": {
+    "en": "Every cell holding 99, as row and column pairs.",
+    "fr": "Chaque cellule portant 99, en paires ligne et colonne."
+   },
+   "SectionQQ": {
+    "en": "A block cut from the matrix, and asked for its max, min and sum in one scope.",
+    "fr": "Un bloc découpé dans la matrice, et interrogé sur son maximum, son minimum et sa somme dans une seule portée."
+   },
+   "ReplaceRow": {
+    "en": "Replace a row, and the engine's determinant answers for the new matrix.",
+    "fr": "Remplacer une ligne, et le déterminant du moteur répond pour la nouvelle matrice."
+   },
+   "MultiplyCols": {
+    "en": "Columns 1 and 3 doubled, column 2 untouched.",
+    "fr": "Les colonnes 1 et 3 doublées, la colonne 2 intacte."
+   },
+   "FindCols": {
+    "en": "Several columns found at once, including one that appears twice.",
+    "fr": "Plusieurs colonnes trouvées à la fois, dont une qui apparaît deux fois."
+   },
+   "ReplaceElementInSectionByMany": {
+    "en": "Each occurrence of 1 in the section takes the next replacement in turn.",
+    "fr": "Chaque occurrence de 1 dans la section prend le remplacement suivant à son tour."
+   }
+  }
+ },
+ "stzRegexMaker": {
+  "en": [
+   "`stzRegexMaker` builds a regular expression by saying what it must match, one fragment at a time, and hands back both the pattern and its parts, so a pattern can be read, explained and edited where it would otherwise be a line of symbols.",
+   "You add fragments by their meaning: `AddWordBoundary(:start)`, `AddCapturingGroup(\"digits\", \"\\d+\")`, `AddAmongChars(\"abc\", :OneOrMore)`, `AddNotAmongDigits(\"123\")`, `AddCharsRange(\"a-f\")`, `AddLiteral`, `AddBackReference`, `AddUnicodeCategory`, `AddComment`; `SetCase(:insensitive)` sets the flag; `AddMatchLength(\"\\w+\", :shortest)` chooses between the lazy, the greedy and the possessive quantifier by naming what you want rather than how it is spelled. The declarative face says it in a sentence: `CanContainADigitBetween(2, 5)`, `CanContainACharAmong(\"xyz\")`.",
+   "The maker keeps what it made. `Pattern()` is the string; `Fragments()` is the list of its pieces, `[ \"\\b\", \"(?P<\", \"digits\", \">\", \"\\d+\", \")\", \"\\b\" ]`; `Sequences()` the same pieces as computable commands; `Quantifiers()` what repeats; `DefineGroup` and `ReuseGroup` name a sub-pattern once and use it several times. The result runs on `stzRegex` like any other pattern.",
+   "It serves whoever must write a pattern that someone else will have to read, a validator, an extractor, a tokenizer, and wants the pattern to carry its own explanation."
+  ],
+  "fr": [
+   "`stzRegexMaker` construit une expression régulière en disant ce qu'elle doit reconnaître, un fragment à la fois, et rend à la fois le motif et ses parties, si bien qu'un motif peut être lu, expliqué et édité là où il ne serait autrement qu'une ligne de symboles.",
+   "On ajoute des fragments par leur sens : `AddWordBoundary(:start)`, `AddCapturingGroup(\"digits\", \"\\d+\")`, `AddAmongChars(\"abc\", :OneOrMore)`, `AddNotAmongDigits(\"123\")`, `AddCharsRange(\"a-f\")`, `AddLiteral`, `AddBackReference`, `AddUnicodeCategory`, `AddComment` ; `SetCase(:insensitive)` pose le drapeau ; `AddMatchLength(\"\\w+\", :shortest)` choisit entre le quantificateur paresseux, gourmand et possessif en nommant ce que l'on veut plutôt que la façon de l'écrire. La face déclarative le dit en une phrase : `CanContainADigitBetween(2, 5)`, `CanContainACharAmong(\"xyz\")`.",
+   "Le constructeur garde ce qu'il a fait. `Pattern()` est la chaîne ; `Fragments()` la liste de ses pièces, `[ \"\\b\", \"(?P<\", \"digits\", \">\", \"\\d+\", \")\", \"\\b\" ]` ; `Sequences()` les mêmes pièces en commandes calculables ; `Quantifiers()` ce qui se répète ; `DefineGroup` et `ReuseGroup` nomment un sous-motif une fois et l'emploient plusieurs. Le résultat tourne sur `stzRegex` comme tout autre motif.",
+   "Il sert à qui doit écrire un motif que quelqu'un d'autre devra lire, un validateur, un extracteur, un découpeur, et veut que le motif porte sa propre explication."
+  ],
+  "picks": {
+   "AddMatchLength": {
+    "en": "Shortest, longest, complete: the quantifier named by what you want, and spelled by the maker.",
+    "fr": "Le plus court, le plus long, complet : le quantificateur nommé par ce que l'on veut, et écrit par le constructeur."
+   },
+   "SetCase": {
+    "en": "A flag, a named group and a comment, assembled into one readable pattern.",
+    "fr": "Un drapeau, un groupe nommé et un commentaire, assemblés en un motif lisible."
+   },
+   "Fragments": {
+    "en": "The pattern as its pieces, so each one can be explained.",
+    "fr": "Le motif en ses pièces, pour que chacune puisse être expliquée."
+   },
+   "AddNotAmongChars": {
+    "en": "A negated class added in words.",
+    "fr": "Une classe niée ajoutée en mots."
+   }
+  }
  }
 }

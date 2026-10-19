@@ -42,7 +42,63 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/linguistic/stzText.ring" target="_blank" rel="noopener noreferrer">the source: base/linguistic/stzText.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/nlp.html">The area reference: NLP &amp; linguistics</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p><code>stzText</code> is a string raised to meaning: the same characters, now read as words, sentences, names, tone and topics, with nothing to install or download.</p><p>Build it from any text, <code>new stzText(&quot;...&quot;)</code> or <code>Q(&quot;...&quot;).TextQ()</code>, and ask in plain words. <code>Sentiment()</code> says positive, negative or neutral, and <code>IsPositive()</code> answers with its confidence, certainly, probably or apparently, and a <code>Why()</code>. <code>NamedEntities()</code> finds people, organisations and places; <code>POSTags()</code> labels every word; <code>NounPhrases()</code> applies the classic noun-phrase shape; <code>Stemmed()</code> and <code>Lemmatized()</code> reduce words to their root or dictionary form, in 25 languages for stems and three for lemmas; <code>KeyPhrases()</code>, <code>RankedKeywords()</code> and <code>Summary()</code> extract what matters; <code>ReadingEase()</code> grades the prose.</p><p>Every one of these is a published reference algorithm embedded in the engine, Snowball, VADER, NLTK&#x27;s tagger, TextRank, WordNet, so a first call works offline the moment the library loads. When a local model is present, the same text also answers <code>Embedding()</code>, <code>SemanticSimilarityWith()</code>, <code>ClassifiedAs(labels)</code> and <code>SummarizedAbstractively()</code>; without one they fall back or stay empty, honestly, and <code>HasSemanticModel()</code> says which case you are in.</p><p>It serves wherever text must be understood rather than merely stored: reading feedback, sorting messages, finding who and where a document speaks of, sizing the reading level of a lesson, building the vocabulary of a world from the texts that describe it.</p></div><h2>The most expressive uses</h2><p>Four methods that show what the class is for; every example was run inside the library.</p><div class="uses"><div class="use"><h3 class="mono">NamedEntities</h3><p>People, organisations and places, found by rules with no model, and registered into the shared world only when asked.</p><pre class="rx">t = new stzText(&quot;Barack Obama visited Paris.&quot;)
+# NeuralEntities() is empty without a NER-head model
+? @@(t.NeuralEntities())
+# NamedEntities() still works via the rule-based fallback
+? len(t.NamedEntities()) &gt;= 1
+#--&gt; [ ]
+#--&gt; 1</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">IsPositive</h3><p>A verdict with its confidence: emphatic praise is certainly positive, a flat statement only apparently not.</p><pre class="rx"># an emphatic praise is CERTAINLY positive
+? Q(&quot;I absolutely love this wonderful amazing library!&quot;).TextQ().IsPositive()
+# ...
+? Evidentially()
+# ...
+? Why()
+# a neutral statement is only APPARENTLY not positive
+? Q(&quot;The sky is blue.&quot;).TextQ().IsPositive()
+# ...
+? Evidentially()
+# ...
+? Why()
+#--&gt; 1
+#--&gt; certainly
+#--&gt; certainly yes: positive in tone
+#--&gt; 0
+#--&gt; apparently
+#--&gt; apparently not: positive in tone</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">IsSemanticallySimilarTo</h3><p>A close paraphrase is probably similar, an unrelated text certainly not, and <code>Why()</code> says so in words.</p><pre class="rx">oT = Q(&quot;cats are wonderful pets&quot;).TextQ()
+# a close paraphrase is PROBABLY similar
+? oT.IsSemanticallySimilarTo(&quot;dogs are wonderful pets&quot;, 0.5)
+# ...
+? Evidentially()
+# ...
+? Why()
+# an unrelated text is CERTAINLY not
+? Q(&quot;the stock market crashed&quot;).TextQ().IsSemanticallySimilarTo(&quot;kittens love to play&quot;, 0.5)
+# ...
+? Why()
+#--&gt; 1
+#--&gt; probably
+#--&gt; probably yes: semantically similar to &quot;dogs are wonderful pets&quot;
+#--&gt; 0
+#--&gt; certainly not: semantically similar to &quot;kittens love to play&quot;</pre><span class="rx-src">library test</span></div><div class="use"><h3 class="mono">ClassifiedAs</h3><p>A text sorted under the nearest of the labels you give.</p><pre class="rx">t = new stzText(&quot;the stock market prices fell sharply on wall street today&quot;)
+# ClassifiedAs picks the closest label
+? t.ClassifiedAs([ &quot;market finance&quot;, &quot;cooking food&quot; ])
+# Classify returns ranked [label, score] pairs, best first
+? t.Classify([ &quot;market finance&quot;, &quot;cooking food&quot; ])[1][1]
+# Classify keeps all labels
+? len(t.Classify([ &quot;market finance&quot;, &quot;cooking food&quot;, &quot;space travel&quot; ]))
+# ClassifyQ is the basic stzList
+? classname(t.ClassifyQ([ &quot;a&quot;, &quot;b&quot; ]))
+# ClassifyQQ is stzListOfPairs
+? classname(t.ClassifyQQ([ &quot;a&quot;, &quot;b&quot; ]))
+# a non-list of labels is rejected
+? @@(t.Classify(&quot;not a list&quot;))
+#--&gt; market finance
+#--&gt; market finance
+#--&gt; 3
+#--&gt; stzlist
+#--&gt; stzlistofpairs
+#--&gt; [ ]</pre><span class="rx-src">library test</span></div></div><p class="proof">Every method, by section, further down.</p>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/nlp.html">The story of its area: NLP &amp; linguistics</a> · <a href="../guide/nlp.html">Its area's reference</a></p><h3>Design documents that name it <span class="mono">(3)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/stz-information-tagging-strategy.md" target="_blank" rel="noopener noreferrer">Softanza Information-Tagging Strategy<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">9 mentions</span><span class="abs">A strategy, status active build (2026-07-08), for making every unit of the library retrievable and explainable in natural language: methods, harvested test examples and intent recipes normalize to one knowledge record, authored in four layers including #@ InfoTags, with retrieval quality measured rather than asserted.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Softanza Intelligence Architecture<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">8 mentions</span><span class="abs">The single roadmap governing intelligence work, from the author&#x27;s directive: intelligence derives new knowledge from existing knowledge held as a governed graph, hence six laws, five foundations, a module map, an audited current state and one path R1 to R8.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/NATURAL_VISION.md" target="_blank" rel="noopener noreferrer">The Softanza Natural Programming Vision<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">5 mentions</span><span class="abs">A synthesis of the natural-programming folder written on 2026-07-10, reading five years of layers as three attacks on one gap between human intention and execution, and proposing a four-floor architecture over one atom, the semantic ID; its five sequencing steps are recorded as landed.</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#adjectives">A</a> <a href="#chunks">C</a> <a href="#entitiesoftype">E</a> <a href="#hypernyms">H</a> <a href="#issynonymof">I</a> <a href="#keyphrases">K</a> <a href="#lemmatizedinlanguage">L</a> <a href="#mostpositivesentence">M</a> <a href="#negativescore">N</a> <a href="#organizations">O</a> <a href="#positivescore">P</a> <a href="#registernamedentities">R</a> <a href="#stemmedinlanguage">S</a> <a href="#taggedwords">T</a> <a href="#verbs">V</a> <a href="#withoutstopwords">W</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>
