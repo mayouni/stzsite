@@ -130,10 +130,11 @@ class QForms:
                     rem = n[:-len(t)]
                     r = rec(rem)                         # the rest may itself be a method plus extensions
                     if r: return (r[0], r[1] + [t])
-                    if rem.lower() in names:
+                    base_key = rem.lower() if rem.lower() in names else (rem.lower() + "_" if rem.lower() + "_" in names else None)
+                    if base_key:               # End_ is the method of EndQ: the underscore was forced by the host language
                         # the language is case-insensitive: the rest may be written FindSt for the method FindST,
                         # which is itself Find + ST. Resolve it to the spelling the library gave it, and fold that
-                        real = names[rem.lower()][0]
+                        real = names[base_key][0]
                         if real != rem:
                             r = rec(real)
                             if r: return (r[0], r[1] + [t])

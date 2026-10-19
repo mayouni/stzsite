@@ -12,7 +12,7 @@
  "stzCalendar": [
   {
    "id": "working",
-   "code": "StzCalendarQ([2024, 10]) {\n\n    SetWorkingDays([ \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\" ])\n\n    # Thu 2024-10-03 is a working day\n    ? IsWorkingDay(\"2024-10-03\")\n\n    # Sat 2024-10-05 is not a working day\n    ? IsWorkingDay(\"2024-10-05\")\n\n    # October 2024 has 23 working days\n    ? len(WorkingDays())\n}"
+   "code": "StzCalendarQ([2024, 10]) {\n\n    SetWorkingDays([\n        \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\"\n    ])\n\n    # Thu 2024-10-03 is a working day\n    ? IsWorkingDay(\"2024-10-03\")\n\n    # Sat 2024-10-05 is not a working day\n    ? IsWorkingDay(\"2024-10-05\")\n\n    # October 2024 has 23 working days\n    ? len(WorkingDays())\n}"
   },
   {
    "id": "holiday",
@@ -136,7 +136,7 @@
  "stzGeoMap": [
   {
    "id": "points",
-   "code": "cJson = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\n\noMap = StzGeoMap(new stzGeoProjection(:mercator), StzGeoFeaturesFromJson(cJson))\n\n# one well falls inside region A\n? @@( oMap.CountPointsIn([ 2, 3 ]) )\n\n# and the density the region carries\n? @@( oMap.DensityPointsIn([ 2, 3 ]) )"
+   "code": "cJson = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",'\ncJson += '\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",'\ncJson += '\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\n\noProj = new stzGeoProjection(:mercator)\noMap = StzGeoMap(oProj, StzGeoFeaturesFromJson(cJson))\n\n# one well falls inside region A\n? @@( oMap.CountPointsIn([ 2, 3 ]) )\n\n# and the density the region carries\n? @@( oMap.DensityPointsIn([ 2, 3 ]) )"
   }
  ],
  "stzCanvas": [
@@ -196,11 +196,11 @@
  "stzTimeLine": [
   {
    "id": "plan",
-   "code": "o1 = new stzTimeLine(:Start = \"2024-01-01 00:00:00\", :End = \"2024-12-31 23:59:59\")\no1 {\n    AddPoint(\"MEETING\", \"2024-03-15 10:00:00\")\n    AddSpan(\"PROJECT\", \"2024-03-01 00:00:00\", \"2024-05-31 23:59:59\")\n    AddSpan(\"CAMPAIGN\", \"2024-03-10 00:00:00\", \"2024-04-10 23:59:59\")\n}\n\n# what is live at the moment of the meeting?\n? @@( o1.WhatsAt(\"2024-03-15 10:00:00\") )\n\n# and in August?\n? @@( o1.WhatsAt(\"2024-08-15 10:00:00\") )"
+   "code": "cFrom = \"2024-01-01 00:00:00\"\ncTo = \"2024-12-31 23:59:59\"\n\no1 = new stzTimeLine(:Start = cFrom, :End = cTo)\no1 {\n    AddPoint(\"MEETING\", \"2024-03-15 10:00:00\")\n    AddSpan(\"PROJECT\", \"2024-03-01 00:00:00\", \"2024-05-31 23:59:59\")\n    AddSpan(\"CAMPAIGN\", \"2024-03-10 00:00:00\", \"2024-04-10 23:59:59\")\n}\n\n# what is live at the moment of the meeting?\n? @@NL( o1.WhatsAt(\"2024-03-15 10:00:00\") )\n\n# and in August?\n? @@( o1.WhatsAt(\"2024-08-15 10:00:00\") )"
   },
   {
    "id": "blocked",
-   "code": "o1 = new stzTimeLine(\"2024-01-01\", \"2024-12-31\")\no1.AddBlockedSpan(\"BLACKOUT\", \"2024-08-01 00:00:00\", \"2024-08-08 23:59:59\")\n\n# no event may be added during the blackout\n? o1.IsBlocked(\"2024-08-05 14:30:00\")\n\n? o1.IsBlocked(\"2024-09-05 14:30:00\")"
+   "code": "o1 = new stzTimeLine(\"2024-01-01\", \"2024-12-31\")\ncFrom = \"2024-08-01 00:00:00\"\ncTo = \"2024-08-08 23:59:59\"\no1.AddBlockedSpan(\"BLACKOUT\", cFrom, cTo)\n\n# no event may be added during the blackout\n? o1.IsBlocked(\"2024-08-05 14:30:00\")\n\n? o1.IsBlocked(\"2024-09-05 14:30:00\")"
   }
  ],
  "stzLocale": [
@@ -228,7 +228,7 @@
  "stzAgentGraph": [
   {
    "id": "unsound",
-   "code": "oAG = new stzAgentGraph(\"mailer-bad\")\noAG {\n    AddLLMActor(\"writer\")\n    AddEffect(\"send\")\n\n    Proposes(\"writer\", \"send\")\n}\n\n# a model proposing straight to an effect\n? oAG.IsSound()\n\n? oAG.Violations()[1][:message]"
+   "code": "oAG = new stzAgentGraph(\"mailer-bad\")\noAG {\n    AddLLMActor(\"writer\")\n    AddEffect(\"send\")\n\n    Proposes(\"writer\", \"send\")\n}\n\n# a model proposing straight to an effect\n? oAG.IsSound()\n\n# which invariant is broken, and on which node\n? oAG.Violations()[1][:invariant]\n\n? oAG.Violations()[1][:node]"
   },
   {
    "id": "sound",
@@ -266,13 +266,13 @@
  "stzXml": [
   {
    "id": "read",
-   "code": "o1 = new stzXml(\"<shop><item price='3'>tea</item><item price='5'>rice</item></shop>\")\n\n? o1.IsValid()\n\n# the text of every item\n? @@( o1.TextsAt(\"shop/item\") )"
+   "code": "cXml = \"<shop>\"\ncXml += \"<item price='3'>tea</item>\"\ncXml += \"<item price='5'>rice</item>\"\ncXml += \"</shop>\"\n\no1 = new stzXml(cXml)\n\n? o1.IsValid()\n\n# the text of every item\n? @@( o1.TextsAt(\"shop/item\") )"
   }
  ],
  "stzHtml": [
   {
    "id": "find",
-   "code": "o1 = new stzHtml(\"<html><body><h1 id='top'>Hello</h1><a class='link' href='/a'>A</a><a class='link' href='/b'>B</a></body></html>\")\n\n# what the page is made of\n? @@( o1.TagsUsed() )\n\n# every element of a class\n? len(o1.Find(\".link\"))\n\n# the visible text, scripts and styles left out\n? o1.PlainText()"
+   "code": "cHtml = \"<html><body><h1 id='top'>Hello</h1>\"\ncHtml += \"<a class='link' href='/a'>A</a>\"\ncHtml += \"<a class='link' href='/b'>B</a>\"\ncHtml += \"</body></html>\"\n\no1 = new stzHtml(cHtml)\n\n# what the page is made of\n? @@( o1.TagsUsed() )\n\n# every element of a class\n? len(o1.Find(\".link\"))\n\n# the visible text, scripts and styles left out\n? o1.PlainText()"
   }
  ],
  "stzSecret": [
@@ -284,7 +284,7 @@
  "stzNeuralNetwork": [
   {
    "id": "xor",
-   "code": "oN = new stzNeuralNetwork([ :Inputs = 2 ])\noN {\n    AddDenseLayer(4, :Tanh)\n    AddDenseLayer(1, :Sigmoid)\n}\n\noT = new stzTrainer()\noT.SetLearningRate(0.5)\noT.Train(oN, [ [0,0], [0,1], [1,0], [1,1] ], [ [0], [1], [1], [0] ], 2000)\n\n# 01 -> 1, which no single layer can learn\n? oN.Predict([0,1])[1] > 0.5\n\n# 11 -> 0\n? oN.Predict([1,1])[1] > 0.5"
+   "code": "oN = new stzNeuralNetwork([ :Inputs = 2 ])\noN {\n    AddDenseLayer(4, :Tanh)\n    AddDenseLayer(1, :Sigmoid)\n}\n\noT = new stzTrainer()\noT.SetLearningRate(0.5)\naX = [ [0,0], [0,1], [1,0], [1,1] ]\naY = [ [0], [1], [1], [0] ]\noT.Train(oN, aX, aY, 2000)\n\n# 01 -> 1, which no single layer can learn\n? oN.Predict([0,1])[1] > 0.5\n\n# 11 -> 0\n? oN.Predict([1,1])[1] > 0.5"
   }
  ],
  "stzWorkflow": [
@@ -342,7 +342,7 @@
  "area:i18n": [
   {
    "id": "locale",
-   "code": "o1 = new stzLocale(\"fr_FR\")\no2 = new stzLocale(\"fa_IR\")\n\n# a locale knows its own currency, and the name of its language in that language\n? o1.CurrencyAbbreviation()\n\n? o2.LanguageNativeName()"
+   "code": "o1 = new stzLocale(\"fr_FR\")\no2 = new stzLocale(\"fa_IR\")\n\n# a locale knows its currency, and its language's name in that language\n? o1.CurrencyAbbreviation()\n\n? o2.LanguageNativeName()"
   }
  ],
  "area:nlp": [
@@ -360,7 +360,7 @@
  "area:documentation": [
   {
    "id": "howto",
-   "code": "# the library documents itself, and no model is involved\no1 = StzSelfDocQ(\"stzList\")\n? o1.HowTo(\"remove duplicates\")"
+   "code": "# the library documents itself, and no model is involved\no1 = StzSelfDocQ(\"stzList\")\n? StzFindFirst(\"RemoveDuplicates\", o1.HowTo(\"remove duplicates\")) > 0"
   }
  ]
 }

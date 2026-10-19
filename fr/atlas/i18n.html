@@ -45,7 +45,7 @@
     <div class="essay"><p>Une locale dit comment une valeur s&#x27;écrit ; une culture dit comment elle sera lue. Softanza tient les deux à part, et refuse de déduire un sens d&#x27;un seul code de locale.</p><p>Les données sont possédées et versionnées : 261 pays, 323 langues, 143 écritures, 495 abréviations de locales, générées hors ligne et estampillées de leur source, pour qu&#x27;une locale se résolve sans rien télécharger. Une locale connaît le code ISO de sa monnaie et le signe que les gens écrivent, et le nom de sa langue dans cette langue ; la locale iranienne commence sa semaine le samedi et nomme le jour en persan. Dates et heures sont portées par le moteur, avec une construction validée, des allers-retours ISO 8601 et une quarantaine de formats nommés.</p><div class="sample"><pre class="rx">o1 = new stzLocale(&quot;fr_FR&quot;)
 o2 = new stzLocale(&quot;fa_IR&quot;)
 
-# a locale knows its own currency, and the name of its language in that language
+# a locale knows its currency, and its language&#x27;s name in that language
 ? o1.CurrencyAbbreviation()
 #--&gt; EUR
 

@@ -17,6 +17,7 @@ import qforms
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent))
 from haro import FORMER as WORD      # the former name, standing alone; a name the library owns (```ring, learn.ring, Ring++) is not it
+LINE_MAX = 72        # characters of the sample box at the reading size: 819 px of 10.8 px each, less a margin
 RX = re.compile(r'<pre class="rx">(.*?)</pre>(<span class="rx-src">(.*?)</span>)?', re.S)
 
 def main():
@@ -37,6 +38,9 @@ def main():
                 if qforms.unchained(code, plain): bad.append((rel, "calls a Q form as a bare statement", code.split("\n")[-1][:70]))
                 if not out and kind != "narrations": bad.append((rel, "prints nothing", code.split("\n")[-1][:70]))
                 if not m.group(3): bad.append((rel, "names no source", code.split("\n")[-1][:70]))
+                if 'class="sample"' in text[max(0, m.start() - 40):m.start()]:       # a sample of an introduction: one line is one line, never wrapped
+                    for ln in body.split("\n"):
+                        if len(ln) > LINE_MAX: bad.append((rel, f"a line of {len(ln)} characters is too long for its box ({LINE_MAX})", ln[:70]))
     print(f"{count} examples checked")
     for (lang, kind), n in sorted(per.items()): print(f"  {lang} {kind:11} {n}")
     for b in bad[:40]: print("FAIL", *b)

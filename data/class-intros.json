@@ -411,7 +411,7 @@
    "The composition of an agent system as a graph that can be judged: who proposes, who guards, what has an effect on the world, where the trace goes, and the proof that no effect is reachable without passing a gate.",
    "Nodes are declared by kind, a language-model actor, a guardian, an effect, a trace sink, and edges by meaning, proposes, guards, traces. A model actor starts with an empty set of capabilities and its output is marked as open text.",
    "@unsound",
-   "The verdict is not an opinion: the violation says in a sentence which rule was broken and where. Add a guardian before the effect and a witness after it, and the same system is sound.",
+   "The verdict is not an opinion: the violation names which invariant was broken, and on which node. Add a guardian before the effect and a witness after it, and the same system is sound.",
    "@sound",
    "Capabilities are granted through a governed door that refuses what no door allows, and any node whose properties no longer match the sealed record is reported as tampered with. The same invariants exist as a declared rule set and as findings in the library's unified shape, so a CI report collects them beside every other rule. It serves whoever builds with language models and must show, before the first message is sent, that nothing effectful happens without a deterministic gate in front of it."
   ],
@@ -419,7 +419,7 @@
    "La composition d'un système d'agents comme graphe que l'on peut juger : qui propose, qui garde, ce qui a un effet sur le monde, où va la trace, et la preuve qu'aucun effet n'est atteignable sans passer une porte.",
    "Les nœuds se déclarent par sorte, un acteur modèle de langage, un gardien, un effet, un puits de trace, et les arêtes par sens, propose, garde, trace. Un acteur modèle part avec un ensemble de capacités vide et sa sortie est marquée comme texte ouvert.",
    "@unsound",
-   "Le verdict n'est pas une opinion : la violation dit en une phrase quelle règle a été rompue et où. Ajoutez un gardien avant l'effet et un témoin après, et le même système est sain.",
+   "Le verdict n'est pas une opinion : la violation nomme l'invariant rompu, et sur quel nœud. Ajoutez un gardien avant l'effet et un témoin après, et le même système est sain.",
    "@sound",
    "Les capacités s'accordent par une porte gouvernée qui refuse ce qu'aucune porte n'autorise, et tout nœud dont les propriétés ne correspondent plus à l'enregistrement scellé est signalé comme altéré. Les mêmes invariants existent comme jeu de règles déclaré et comme constats dans la forme unifiée de la bibliothèque, si bien qu'un rapport d'intégration les recueille à côté de toute autre règle. Il sert à qui bâtit avec des modèles de langage et doit montrer, avant le premier message envoyé, que rien d'effectif n'arrive sans une porte déterministe devant."
   ]

@@ -23,7 +23,7 @@ T = {
          "by_area": "Par domaine", "class_h": "Classe", "own_h": "Méthodes", "inherited_h": "Héritées", "area_h": "Domaine",
          "methods_az": "Toutes les méthodes, de A à Z", "letter": "Lettre", "filter": "Filtrer les méthodes…", "filter_classes": "Filtrer les classes…",
          "source": "la source", "inherits": "Hérite aussi de", "method": "Méthode", "explanation": "Explication, telle que la source la porte", "aka": "aussi nommée", "written": "aussi écrite", "forms": "aussi acceptée", "name_of": "autre nom de", "other_name_of": "{a} est un autre nom de {r}",
-         "chip_q": "chaînable", "chip_cs": "sensible à la casse", "chip_xt": "étendue", "no_desc": "(sans commentaire dans la source : le nom se lit comme une phrase)", "section": "dans la section",
+         "chip_q": "chaînable", "chip_cs": "sensible à la casse", "chip_xt": "étendue", "no_desc": "Pas encore décrite. Son nom, lu comme une phrase :", "section": "dans la section",
          "note": "Les explications sont citées dans la langue de la source, l'anglais. Récolte : {harvested}. Un commentaire absent est signalé plutôt qu'inventé.",
          "area_edu": "Le Système d'apprentissage", "area_other": "Autres", "back": "Toutes les classes", "guide": "La référence du domaine :", "count_in": "méthodes propres dans", "page_title": "Référence"},
   "en": {"title": "Reference", "kicker": "The library documents itself",
@@ -33,7 +33,7 @@ T = {
          "by_area": "By area", "class_h": "Class", "own_h": "Methods", "inherited_h": "Inherited", "area_h": "Area",
          "methods_az": "Every method, A to Z", "letter": "Letter", "filter": "Filter the methods…", "filter_classes": "Filter the classes…",
          "source": "the source", "inherits": "Also inherits from", "method": "Method", "explanation": "Explanation, as the source carries it", "aka": "also named", "written": "also written", "forms": "also accepted", "name_of": "another name of", "other_name_of": "{a} is another name of {r}",
-         "chip_q": "chainable", "chip_cs": "case-sensitive", "chip_xt": "extended", "no_desc": "(no comment in the source: the name reads as a sentence)", "section": "in the section",
+         "chip_q": "chainable", "chip_cs": "case-sensitive", "chip_xt": "extended", "no_desc": "Not described yet. Its name, read as a sentence:", "section": "in the section",
          "note": "Explanations are quoted in the language of the source, English. Harvest: {harvested}. A missing comment is reported rather than invented.",
          "area_edu": "The Learning System", "area_other": "Other", "back": "All classes", "guide": "The area reference:", "count_in": "own methods in", "page_title": "Reference"},
 }

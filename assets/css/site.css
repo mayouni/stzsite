@@ -171,7 +171,7 @@ code,pre,kbd{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
 .way span{display:block;font-family:"IBM Plex Mono",monospace;font-size:var(--label);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
 
 /* code: never sideways (Rules 14, 114); code above its output, one axis (Rule 8) */
-pre{margin:16px 0 0;font-size:var(--code);line-height:1.6;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:16px 18px;white-space:pre-wrap;overflow-wrap:anywhere;overflow:visible;max-width:920px}
+pre{margin:16px 0 0;font-size:var(--code);line-height:1.6;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:16px 18px;white-space:pre;overflow-wrap:normal;overflow-x:auto;overflow-y:visible;max-width:920px}
 .run{margin-top:24px;max-width:920px}
 .run>div+div{margin-top:8px}
 .run .lbl{font-family:"IBM Plex Mono",monospace;font-size:var(--label);font-weight:600;letter-spacing:.06em;color:var(--ink-2)}
