@@ -244,10 +244,11 @@ def build_reference(ctx):
     <p class="proof"><a href="{GH}{esc(c["file"])}">{t["source"]}: base/{esc(c["file"])}</a> · <a href="../reference.html">{t["back"]}</a>{(' · <a href="../guide/' + a + '.html">' + t["guide"] + ' ' + esc(area_title[a][lang]) + '</a>') if a in area_title else ''}</p>
   </div></section>
   <div class="wrap page-body">
+    {story.class_intro_html(lang, c, entries, rdata, rowex.example_html)}
     {story.class_treasures(lang, c, a if a in area_title else "", area_title[a][lang] if a in area_title else "", narration_slug, title_of)}
+    {jump_html(lang, c)}
     {extshow.legend(lang, "../")}
     {rowex.legend(c, entries, rdata, lang)}
-    {jump_html(lang, c)}
     <input id="flt" class="flt" type="search" placeholder="{esc(t["filter"])}" aria-label="{esc(t["filter"])}">
     <div class="lanes rtable"><div class="lane lane2 rhead"><div class="ln">{t["method"]}</div><div class="lt">{t["explanation"]}</div></div>{"".join(rows)}</div>
   </div>

@@ -34,6 +34,8 @@ ABSTRACTS = _load("designdocs-abstracts.json", {})
 NARR_META = _load("narrations-meta.json", {"articles": {}})
 NARR_RUN = _load("narrations-run.json", {})
 REFERENCE = _load("reference.json", {"classes": []})
+AREA_INTROS = _load("area-intros.json", {})      # the essay of each area, written by hand from the sources (the author, 2026-10-19)
+CLASS_INTROS = _load("class-intros.json", {})    # the introduction of a class and its most expressive uses, written by hand
 
 RATING_CLASS = {"Strong": "strong", "Solid": "solid", "Partial": "partial", "Emerging": "emerging"}
 RATINGS = ["Strong", "Solid", "Partial", "Emerging"]
@@ -213,4 +215,45 @@ def class_treasures(lang, cls, area, area_label, narration_slug, title_of):
                       + (f'<span class="abs">{esc(prose(cards[f]["abstract"]))}</span>' if cards[f].get("abstract") else "") + "</li>" for f in arts)
         out.append(f'<h3>{t["arts"]} <span class="mono">({len(arts)})</span></h3><ul class="narr arts">{lis}</ul>')
     out.append("</div>")
+    return "".join(out)
+
+
+# ---- the essay of an area, and the introduction of a class ----------------------------------------
+def essay_html(lang, slug):
+    """the area told in a few paragraphs, written from the Compass, the design documents and the narrations"""
+    e = AREA_INTROS.get(slug, {}).get(lang) or []
+    if not e: return ""
+    return '<div class="essay">' + "".join(f"<p>{para_html(x)}</p>" for x in e) + "</div>"
+
+def para_html(x):
+    """a paragraph written in the data: **bold** and `code` only"""
+    h = esc(x)
+    h = re.sub(r"\*\*(.+?)\*\*", lambda m: "<b>" + m.group(1) + "</b>", h)
+    h = re.sub(r"`([^`]+)`", lambda m: "<code>" + m.group(1) + "</code>", h)
+    return h
+
+USES_T = {"fr": {"h": "Les usages les plus parlants", "p": "Trois méthodes qui montrent ce que la classe sait faire ; chaque exemple a été exécuté dans la bibliothèque.", "all": "Toutes les méthodes, par section, plus bas."},
+          "en": {"h": "The most expressive uses", "p": "Three methods that show what the class is for; every example was run inside the library.", "all": "Every method, by section, further down."}}
+
+def class_intro_html(lang, c, entries, rdata, example_html):
+    """a class page opens on what the class is and what it is for, then on its most expressive uses, run"""
+    ci = CLASS_INTROS.get(c["name"]) or {}
+    paras = ci.get(lang) or []
+    if not paras: return ""
+    t = USES_T[lang]
+    out = ['<div class="essay">' + "".join(f"<p>{para_html(x)}</p>" for x in paras) + "</div>"]
+    uses = []
+    picks = ci.get("picks") or {}
+    if isinstance(picks, list): picks = {m: {} for m in picks}
+    keys = {k[1].lower(): k[1] for k in entries if k[0] == c["name"]}          # the method's registered spelling
+    for m, cap in picks.items():
+        name = keys.get(m.lower())
+        if not name: continue
+        exs = entries.get((c["name"], name))
+        ex = example_html(c["name"], name, exs, rdata, lang)
+        if not ex or ex.startswith("<details"): continue                     # a composed example proves nothing a reader wants here
+        caption = cap.get(lang) if isinstance(cap, dict) else ""
+        uses.append(f'<div class="use"><h3 class="mono">{esc(name)}</h3>' + (f"<p>{para_html(caption)}</p>" if caption else "") + ex + "</div>")
+    if uses:
+        out.append(f'<h2>{t["h"]}</h2><p>{t["p"]}</p><div class="uses">{"".join(uses)}</div><p class="proof">{t["all"]}</p>')
     return "".join(out)

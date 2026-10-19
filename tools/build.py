@@ -743,6 +743,7 @@ def build_group_page(lang, idx, groups, i):
     counts = story.lane_counts(g["slug"], d, g)
     body = f"""{story.rating_bar(counts, lang)}
     <p class="proof">{ui["measured"]}{colon} {esc(g["peers"])} · {ui["folders"]}{colon} {folders} · <a href="../guide/{g["slug"]}.html">{ui["guide"]}</a></p>
+    {story.essay_html(lang, g["slug"])}
     {hero}
     {story.compass_head(lang, g["slug"], d)}
     {sg}

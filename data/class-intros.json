@@ -1,0 +1,239 @@
+{
+ "about": "The introduction that opens a class page, and the methods whose run examples open it (the stzsite desk, 2026-10-19): written by hand from the class's own methods, the library's tests and its narrations. 'picks' names methods that carry a run example; the page shows them first, as Wolfram's function pages show basic examples before the details.",
+ "stzString": {
+  "en": [
+   "`stzString` is the text object of Softanza: a sequence of characters that a person reads, counted in Unicode code points and never in bytes, with more than two thousand methods that say what they do.",
+   "You build it from any text, `new stzString(\"salam\")` or the short `Q(\"salam\")`, and then you ask: how many characters, where is a word, what sits between two marks, what does a character's name say, what is left once the diacritics or the double spaces are gone. Every answer is right for Arabic, Hebrew, Greek or an emoji, because the engine underneath counts characters and not bytes, and every position starts at 1.",
+   "Its methods come in families that read like sentences: `Find`, `FindAll`, `FindNext`, `FindAsSections`; `Contains`, `StartsWith`, `EndsWith`; `Replace`, `ReplaceMany`, `Remove`; `Section`, `Slice`, `Halves`; `Uppercase`, `Simplified`, `Boxify`. A method that changes the object has a twin that returns a changed copy, `Replaced`, and a chainable form, `ReplaceQ`, so what a call does to its object is visible in its name. The `/` and `*` operators split and repeat a string the way they do a list.",
+   "It is used wherever text is data: cleaning user input, parsing a line, building a report, comparing names that are nearly the same, reading a file in a language the programmer does not speak. The larger families, finding, splitting, replacing, bounding, formatting, walking, checking, also live in their own classes, `stzStringFinder`, `stzStringSplitter` and the others, built on the same engine handle."
+  ],
+  "fr": [
+   "`stzString` est l'objet texte de Softanza : une suite de caractères qu'une personne lit, comptés en points de code Unicode et jamais en octets, avec plus de deux mille méthodes qui disent ce qu'elles font.",
+   "On le construit à partir de n'importe quel texte, `new stzString(\"salam\")` ou le raccourci `Q(\"salam\")`, puis on l'interroge : combien de caractères, où est un mot, qu'y a-t-il entre deux repères, que dit le nom d'un caractère, que reste-t-il une fois partis les accents ou les doubles espaces. Chaque réponse est juste pour l'arabe, l'hébreu, le grec ou un emoji, parce que le moteur en dessous compte des caractères et non des octets, et que chaque position commence à 1.",
+   "Ses méthodes viennent en familles qui se lisent comme des phrases : `Find`, `FindAll`, `FindNext`, `FindAsSections` ; `Contains`, `StartsWith`, `EndsWith` ; `Replace`, `ReplaceMany`, `Remove` ; `Section`, `Slice`, `Halves` ; `Uppercase`, `Simplified`, `Boxify`. Une méthode qui change l'objet a une jumelle qui rend une copie changée, `Replaced`, et une forme chaînable, `ReplaceQ` : ce qu'un appel fait à son objet se lit dans son nom. Les opérateurs `/` et `*` découpent et répètent une chaîne comme ils le font d'une liste.",
+   "On s'en sert partout où le texte est une donnée : nettoyer une saisie, analyser une ligne, bâtir un rapport, comparer des noms presque identiques, lire un fichier dans une langue que le programmeur ne parle pas. Les grandes familles, trouver, découper, remplacer, borner, mettre en forme, parcourir, vérifier, vivent aussi dans leurs propres classes, `stzStringFinder`, `stzStringSplitter` et les autres, bâties sur le même handle du moteur."
+  ],
+  "picks": {
+   "NumberOfChars": {
+    "en": "Characters, not bytes: a three-character string whose middle character takes three bytes still counts 3, and `[2]` reaches it.",
+    "fr": "Des caractères, pas des octets : une chaîne de trois caractères dont le caractère du milieu prend trois octets compte 3, et `[2]` l'atteint."
+   },
+   "SubStringsBoundedBy": {
+    "en": "What sits between two marks, found at once: the words between `<<` and `>>`.",
+    "fr": "Ce qui se tient entre deux repères, trouvé d'un coup : les mots entre `<<` et `>>`."
+   },
+   "FindManyAsSections": {
+    "en": "Several needles in one pass, each occurrence as a position or as its start-and-end section.",
+    "fr": "Plusieurs aiguilles en un seul passage, chaque occurrence comme position ou comme section début-fin."
+   },
+   "CharsNames": {
+    "en": "Every character has a name in Unicode, and the string can tell them.",
+    "fr": "Chaque caractère a un nom dans Unicode, et la chaîne sait les dire."
+   },
+   "FindNext": {
+    "en": "A search can start anywhere, `:StartingAt = n`, and says 0 when nothing follows.",
+    "fr": "Une recherche peut partir de n'importe où, `:StartingAt = n`, et répond 0 quand rien ne suit."
+   },
+   "Repeated": {
+    "en": "The same verb repeats a number, a list or a string: the unit changes, the sentence does not.",
+    "fr": "Le même verbe répète un nombre, une liste ou une chaîne : l'unité change, la phrase non."
+   }
+  }
+ },
+ "stzRegex": {
+  "en": [
+   "`stzRegex` is a regular expression you can question: does the whole text fit, does the pattern occur anywhere, what did it capture and under which names, and, as the user types, is the input still on its way to a match.",
+   "The pattern itself is standard `PCRE2`, with Unicode always on and the whole feature set: lookaround, backreferences, recursion, conditionals. What the class adds is clarity about the question. `Match(text)` anchors the pattern on the whole content; `MatchFirst(text)` searches it anywhere; `MatchLine`, `MatchWord` and `MatchSegment` choose the scope in the verb instead of a flag set somewhere else. `Matches()` returns every value found, `MatchesZ()` the values with their positions, `CaptureXT()` the named groups as pairs.",
+   "Its most unusual gift is partial matching: `MatchAsYouType(\"123-45\")` answers yes for a social-security pattern because the text can still become a match, and no for `\"abc\"`, which lets a form validate a field while it is being typed. A pattern can also come from the catalogue by name, `rx(pat(:url))`, and explain itself.",
+   "It serves wherever text must be recognised rather than merely searched: validating input, extracting fields from logs and lines, tokenising, driving the `stzRegexuter` that runs code at each match. For building a pattern from words instead of symbols, see `stzRegexMaker`."
+  ],
+  "fr": [
+   "`stzRegex` est une expression régulière que l'on peut interroger : tout le texte épouse-t-il le motif, le motif apparaît-il quelque part, qu'a-t-il capturé et sous quels noms, et, pendant que l'utilisateur tape, la saisie est-elle encore en chemin vers une correspondance.",
+   "Le motif lui-même est du `PCRE2` standard, Unicode toujours allumé et tout l'arsenal : regards autour, références arrière, récursion, conditionnelles. Ce que la classe ajoute, c'est la clarté sur la question. `Match(texte)` ancre le motif sur tout le contenu ; `MatchFirst(texte)` le cherche n'importe où ; `MatchLine`, `MatchWord` et `MatchSegment` choisissent la portée dans le verbe plutôt que dans un drapeau réglé ailleurs. `Matches()` rend toutes les valeurs trouvées, `MatchesZ()` les valeurs avec leurs positions, `CaptureXT()` les groupes nommés en paires.",
+   "Son don le plus singulier est la correspondance partielle : `MatchAsYouType(\"123-45\")` répond oui pour un motif de numéro de sécurité sociale parce que le texte peut encore devenir une correspondance, et non pour `\"abc\"`, ce qui permet à un formulaire de valider un champ pendant la frappe. Un motif peut aussi venir du catalogue par son nom, `rx(pat(:url))`, et s'expliquer.",
+   "Elle sert partout où un texte doit être reconnu et non seulement cherché : valider une saisie, extraire des champs de journaux et de lignes, découper en jetons, piloter le `stzRegexuter` qui exécute du code à chaque occurrence. Pour bâtir un motif avec des mots plutôt que des symboles, voir `stzRegexMaker`."
+  ],
+  "picks": {
+   "MatchAsYouType": {
+    "en": "A field validated while it is typed: `123-45` is still on its way to a social-security number, `abc` never will be.",
+    "fr": "Un champ validé pendant la frappe : `123-45` est encore en chemin vers un numéro de sécurité sociale, `abc` ne le sera jamais."
+   },
+   "CaptureXT": {
+    "en": "Named groups come back as pairs, name and value, in the order the pattern wrote them.",
+    "fr": "Les groupes nommés reviennent en paires, nom et valeur, dans l'ordre où le motif les a écrits."
+   },
+   "MatchesZ": {
+    "en": "Every value the pattern found, with the position where it sits.",
+    "fr": "Chaque valeur trouvée par le motif, avec la position où elle se tient."
+   },
+   "MatchWordsIn": {
+    "en": "The scope is in the verb: match whole words, not a flag set elsewhere.",
+    "fr": "La portée est dans le verbe : des mots entiers, et non un drapeau réglé ailleurs."
+   },
+   "PartialMatchInfo": {
+    "en": "When a match is partial, the object says what matched and where it stopped.",
+    "fr": "Quand une correspondance est partielle, l'objet dit ce qui a correspondu et où cela s'est arrêté."
+   }
+  }
+ },
+ "stzList": {
+  "en": [
+   "`stzList` is the list of Softanza: an ordered collection of anything, numbers, strings, other lists, objects, that answers the same questions a string does, does it contain, how many, where, and adds everything a collection owes: sorting, grouping, set operations, deep search, and a functional pipeline that runs inside the engine.",
+   "You build it from any list, `new stzList([ 5, 3, 8 ])` or `Q([ 5, 3, 8 ])`. Then `Find`, `Contains`, `NumberOfOccurrence` work as on text; `Sort`, `SortBy('len(@item)')`, `Reverse`, `RemoveDuplicates` reshape it; `Union`, `Intersection`, `Difference` treat it as a set; `Classify`, `Partition`, `Chunked`, `Zip` regroup it; `Map`, `Filter`, `ReduceXT('@accumulator + @item', 0)` run a pipeline whose predicates are strings evaluated in the engine, or functions when you prefer the language.",
+   "A nested list is reached by path: `DeepFind(\"🌞\")` lists where a value sits at any depth, `DeepReplace` and `DeepRemove` act there. Duplicates are a vocabulary of their own, `Duplicates`, `DuplicatesZ` with positions, `DupOrigins`, consecutive duplicates. And the grammar of the whole library holds: `Add` changes the list, `Added` returns a copy with the item, `AddQ` chains.",
+   "It is the structure under tables, hash lists, grids and trees, and the one most programs touch first; the Zig core beneath it is tuned for millions of items, with measured residency wins when a list stays inside the engine between calls."
+  ],
+  "fr": [
+   "`stzList` est la liste de Softanza : une collection ordonnée de n'importe quoi, nombres, chaînes, autres listes, objets, qui répond aux mêmes questions qu'une chaîne, contient-elle, combien, où, et ajoute tout ce qu'une collection doit : tri, regroupement, opérations d'ensembles, recherche en profondeur, et un pipeline fonctionnel qui tourne dans le moteur.",
+   "On la construit à partir de toute liste, `new stzList([ 5, 3, 8 ])` ou `Q([ 5, 3, 8 ])`. Puis `Find`, `Contains`, `NumberOfOccurrence` marchent comme sur du texte ; `Sort`, `SortBy('len(@item)')`, `Reverse`, `RemoveDuplicates` la remodèlent ; `Union`, `Intersection`, `Difference` la traitent en ensemble ; `Classify`, `Partition`, `Chunked`, `Zip` la regroupent ; `Map`, `Filter`, `ReduceXT('@accumulator + @item', 0)` font tourner un pipeline dont les prédicats sont des chaînes évaluées dans le moteur, ou des fonctions quand on préfère le langage.",
+   "Une liste imbriquée s'atteint par chemin : `DeepFind(\"🌞\")` donne où une valeur se trouve à toute profondeur, `DeepReplace` et `DeepRemove` agissent là. Les doublons ont leur propre vocabulaire, `Duplicates`, `DuplicatesZ` avec positions, `DupOrigins`, doublons consécutifs. Et la grammaire de toute la bibliothèque tient : `Add` change la liste, `Added` rend une copie avec l'élément, `AddQ` enchaîne.",
+   "C'est la structure sous les tables, les listes associatives, les grilles et les arbres, et celle que la plupart des programmes touchent en premier ; le cœur Zig en dessous est réglé pour des millions d'éléments, avec des gains de résidence mesurés quand une liste reste dans le moteur entre deux appels."
+  ],
+  "picks": {
+   "DeepFind": {
+    "en": "A value in a nested list is found by its path, at any depth, and replaced or removed there.",
+    "fr": "Une valeur dans une liste imbriquée se trouve par son chemin, à toute profondeur, et s'y remplace ou s'y retire."
+   },
+   "DuplicatesZ": {
+    "en": "The duplicated values, each with the positions of its repeats.",
+    "fr": "Les valeurs dupliquées, chacune avec les positions de ses répétitions."
+   },
+   "SortBy": {
+    "en": "A sort by any expression of the item, here its length.",
+    "fr": "Un tri par n'importe quelle expression de l'élément, ici sa longueur."
+   },
+   "ReduceXT": {
+    "en": "A fold written as a sentence about the accumulator and the item, with its starting value.",
+    "fr": "Un repli écrit comme une phrase sur l'accumulateur et l'élément, avec sa valeur de départ."
+   },
+   "ReplaceManyByMany": {
+    "en": "Several values replaced by several others in one call, each by its own.",
+    "fr": "Plusieurs valeurs remplacées par plusieurs autres en un appel, chacune par la sienne."
+   },
+   "FindDupSecutiveItems": {
+    "en": "Duplicates that follow each other are a question of their own, answered with positions.",
+    "fr": "Les doublons qui se suivent sont une question à part, répondue par des positions."
+   }
+  }
+ },
+ "stzNumber": {
+  "en": [
+   "`stzNumber` is a number that can be questioned: is it prime, even, a multiple of 3, between two bounds; what are its factors, its digits, its integer and fractional parts; and, the question no ordinary number answers, is it exact, and if not, why.",
+   "It holds its value as text, so nothing is lost on the way in: `new stzNumber(\"1234567.1234567\")` keeps every digit, and `Round()` is a property of the object you can set, `[ 981.123456701, :Round = 5 ]`, rather than a global that surprises you later. Comparison follows: `IsEqualTo(\"5.1200000000000001\")` and `IsEqualTo([ x, :Round = 16 ])` ask two different questions and get two answers.",
+   "Number theory is a sentence away, `Q(54).PrimeFactors()`, `Q(12).GCD(18)`, `Q(10).Fibonacci()`, `Q(25).MultiplesUnder(1080)`; and so is the vocabulary people use, `IsDoubleOf`, `IsTripleOf`, `IsEven` or its Hausa twin `IsZawji`. The operators work on it: `o1 * Q(5)`, `o1 / 500`.",
+   "It is the scalar under `stzListOfNumbers`, money, decimals and the exact tower; use it when a value must keep its digits, say its exactness, or be reasoned about in words."
+  ],
+  "fr": [
+   "`stzNumber` est un nombre que l'on peut interroger : est-il premier, pair, multiple de 3, entre deux bornes ; quels sont ses facteurs, ses chiffres, sa partie entière et sa partie décimale ; et, la question à laquelle aucun nombre ordinaire ne répond, est-il exact, et sinon, pourquoi.",
+   "Il garde sa valeur comme texte, donc rien ne se perd à l'entrée : `new stzNumber(\"1234567.1234567\")` garde chaque chiffre, et `Round()` est une propriété de l'objet que l'on règle, `[ 981.123456701, :Round = 5 ]`, plutôt qu'un réglage global qui surprend plus tard. La comparaison suit : `IsEqualTo(\"5.1200000000000001\")` et `IsEqualTo([ x, :Round = 16 ])` posent deux questions différentes et obtiennent deux réponses.",
+   "La théorie des nombres est à une phrase, `Q(54).PrimeFactors()`, `Q(12).GCD(18)`, `Q(10).Fibonacci()`, `Q(25).MultiplesUnder(1080)` ; et le vocabulaire des gens aussi, `IsDoubleOf`, `IsTripleOf`, `IsEven` ou son jumeau haoussa `IsZawji`. Les opérateurs marchent dessus : `o1 * Q(5)`, `o1 / 500`.",
+   "C'est le scalaire sous `stzListOfNumbers`, la monnaie, les décimaux et la tour exacte ; on l'emploie quand une valeur doit garder ses chiffres, dire son exactitude, ou se raisonner avec des mots."
+  ],
+  "picks": {
+   "PrimeFactorsXT": {
+    "en": "A number taken apart: its prime factors, and each factor with its cofactor.",
+    "fr": "Un nombre démonté : ses facteurs premiers, et chaque facteur avec son cofacteur."
+   },
+   "IsPrime": {
+    "en": "The questions people ask of a number, asked in their words.",
+    "fr": "Les questions que l'on pose à un nombre, posées avec ses mots."
+   },
+   "Round": {
+    "en": "The rounding belongs to the number, not to a global setting: declare it, and every reading honours it.",
+    "fr": "L'arrondi appartient au nombre, pas à un réglage global : déclarez-le, et chaque lecture le respecte."
+   },
+   "IsEqualTo": {
+    "en": "Equal at the default rounding, and not equal at sixteen decimals: two questions, two answers.",
+    "fr": "Égaux à l'arrondi par défaut, et différents à seize décimales : deux questions, deux réponses."
+   },
+   "Factorial": {
+    "en": "Factorial, GCD, LCM, Fibonacci: number theory one word away.",
+    "fr": "Factorielle, PGCD, PPCM, Fibonacci : la théorie des nombres à un mot."
+   },
+   "NextNumber": {
+    "en": "The next and the previous number, without changing the one you hold.",
+    "fr": "Le nombre suivant et le précédent, sans changer celui que l'on tient."
+   }
+  }
+ },
+ "stzListOfNumbers": {
+  "en": [
+   "`stzListOfNumbers` is a list that knows its items are numbers, and so can answer what only numbers allow: the sum, the mean, the n largest with their positions, the nearest value to a target, the steps between consecutive items, the running total.",
+   "Ask it directly: `Nearest(17)` gives the closest number, `NeighborsOf(5)` the two around a value, `ClassifyByNearestTo([ 5, 10, 20 ])` sorts every number under its nearest centre, `Steps()` the differences, `Cumulate()` the running sums, `Clip(3, 5)` the values held between bounds. Arithmetic over the whole list reads as it sounds: `AddToEveryNumber(2)`, `SubStructManyOneByOne`, `AddToEachW(1, :Where = '...')` for the items that satisfy a condition.",
+   "Its sums are compensated, so `1e16` plus a thousand ones gives exactly `10000000000001000` where naive addition drifts. And when a million numbers must be worked on, `ToStzNumBuffer()` hands them to the engine once: eight reductions then cost 0.04 s instead of 0.28 s, a boundary named at the call site rather than paid on every step.",
+   "It is the numeric list under statistics, tables and plots; use it whenever a list of measurements must be described, searched or transformed as numbers."
+  ],
+  "fr": [
+   "`stzListOfNumbers` est une liste qui sait que ses éléments sont des nombres, et peut donc répondre à ce que seuls les nombres permettent : la somme, la moyenne, les n plus grands avec leurs positions, la valeur la plus proche d'une cible, les pas entre éléments consécutifs, le total cumulé.",
+   "On la questionne directement : `Nearest(17)` donne le nombre le plus proche, `NeighborsOf(5)` les deux qui entourent une valeur, `ClassifyByNearestTo([ 5, 10, 20 ])` range chaque nombre sous son centre le plus proche, `Steps()` les différences, `Cumulate()` les sommes cumulées, `Clip(3, 5)` les valeurs maintenues entre deux bornes. L'arithmétique sur toute la liste se lit comme elle s'entend : `AddToEveryNumber(2)`, `SubStructManyOneByOne`, `AddToEachW(1, :Where = '...')` pour les éléments qui satisfont une condition.",
+   "Ses sommes sont compensées : `1e16` plus mille unités donne exactement `10000000000001000` là où l'addition naïve dérive. Et quand un million de nombres doivent être travaillés, `ToStzNumBuffer()` les confie au moteur une seule fois : huit réductions coûtent alors 0,04 s au lieu de 0,28 s, une frontière nommée à l'appel plutôt que payée à chaque pas.",
+   "C'est la liste numérique sous les statistiques, les tables et les tracés ; on l'emploie dès qu'une liste de mesures doit être décrite, cherchée ou transformée en tant que nombres."
+  ],
+  "picks": {
+   "ClassifyByNearestTo": {
+    "en": "Every number sorted under the centre it is nearest to: a clustering in one line.",
+    "fr": "Chaque nombre rangé sous le centre dont il est le plus proche : un regroupement en une ligne."
+   },
+   "Nearest": {
+    "en": "The value nearest to a target, however the target is phrased.",
+    "fr": "La valeur la plus proche d'une cible, quelle que soit la façon de la dire."
+   },
+   "Steps": {
+    "en": "The steps between consecutive numbers, folded when they repeat.",
+    "fr": "Les pas entre nombres consécutifs, repliés quand ils se répètent."
+   },
+   "Cumulate": {
+    "en": "The running total, in place.",
+    "fr": "Le total cumulé, sur place."
+   },
+   "AddToEachW": {
+    "en": "An operation applied only to the numbers that satisfy a condition.",
+    "fr": "Une opération appliquée aux seuls nombres qui satisfont une condition."
+   },
+   "ToStzNumBuffer": {
+    "en": "A million numbers handed to the engine once and worked on there: eight reductions in 0.04 s instead of 0.28 s.",
+    "fr": "Un million de nombres confiés au moteur une seule fois et travaillés là : huit réductions en 0,04 s au lieu de 0,28 s."
+   }
+  }
+ },
+ "stzHashList": {
+  "en": [
+   "`stzHashList` is the list of pairs: a key and its value, in order, `[ :name = \"Aya\", :age = 30, :city = \"Niamey\" ]`. It keeps the order you gave, folds its keys to lowercase, and can be questioned from either side, by key or by value.",
+   "`o1[:stats]` or `ValueByKey(:stats)` reads a value; `Keys()`, `Values()`, `Pairs()` give the three views; `FindValue(18)` tells under which positions a value sits; `KeysForValue` goes the other way. When values are themselves lists, `FindValueOrItem(:can)` and `FindInLists` look inside them and answer with the pair and the place, so a nested record is searched without a loop.",
+   "Updating reads like editing: `AddPair`, `InsertBefore`, `RemoveByKey`, `ReplaceValueByKey`, `ReverseKeysAndValues`; and the safe discipline the library teaches holds, `HasKey` before reading, because a lookup must never silently create an entry.",
+   "It is the shape of a record, a configuration, a result set with named parts; and it is not a hash map: lookups walk the list, which is the trap its page states."
+  ],
+  "fr": [
+   "`stzHashList` est la liste de paires : une clé et sa valeur, dans l'ordre, `[ :name = \"Aya\", :age = 30, :city = \"Niamey\" ]`. Elle garde l'ordre donné, replie ses clés en minuscules, et s'interroge des deux côtés, par clé ou par valeur.",
+   "`o1[:stats]` ou `ValueByKey(:stats)` lit une valeur ; `Keys()`, `Values()`, `Pairs()` donnent les trois vues ; `FindValue(18)` dit sous quelles positions une valeur se trouve ; `KeysForValue` fait le chemin inverse. Quand les valeurs sont elles-mêmes des listes, `FindValueOrItem(:can)` et `FindInLists` regardent dedans et répondent par la paire et la place : un enregistrement imbriqué se cherche sans boucle.",
+   "La mise à jour se lit comme une édition : `AddPair`, `InsertBefore`, `RemoveByKey`, `ReplaceValueByKey`, `ReverseKeysAndValues` ; et la discipline sûre que la bibliothèque enseigne tient, `HasKey` avant de lire, parce qu'une lecture ne doit jamais créer une entrée en silence.",
+   "C'est la forme d'un enregistrement, d'une configuration, d'un résultat à parties nommées ; et ce n'est pas une table de hachage : les recherches parcourent la liste, le piège que sa page énonce."
+  ],
+  "picks": {
+   "ValueByKey": {
+    "en": "A value by its key, by the method or by the bracket.",
+    "fr": "Une valeur par sa clé, par la méthode ou par le crochet."
+   },
+   "FindValue": {
+    "en": "The positions where a value sits, whatever its type.",
+    "fr": "Les positions où une valeur se trouve, quel que soit son type."
+   },
+   "FindValueOrItem": {
+    "en": "A value found whether it is the pair's value or an item inside it.",
+    "fr": "Une valeur trouvée qu'elle soit la valeur de la paire ou un élément en son sein."
+   },
+   "FindInLists": {
+    "en": "Inside the values that are lists, each occurrence with its pair and its place.",
+    "fr": "Dans les valeurs qui sont des listes, chaque occurrence avec sa paire et sa place."
+   },
+   "Keys": {
+    "en": "Keys are read the same whether the pairs were written with colons or as lists.",
+    "fr": "Les clés se lisent de même que les paires aient été écrites avec des deux-points ou comme des listes."
+   },
+   "Content": {
+    "en": "Keys are folded to lowercase: the trap and the rule, stated by the class itself.",
+    "fr": "Les clés sont repliées en minuscules : le piège et la règle, dits par la classe elle-même."
+   }
+  }
+ }
+}
