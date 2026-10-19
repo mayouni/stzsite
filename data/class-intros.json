@@ -567,5 +567,253 @@
     "fr": "Une classe niée ajoutée en mots."
    }
   }
+ },
+ "stzCalendar": {
+  "en": [
+   "`stzCalendar` is a month, a quarter or a year that knows what a working day is: its boundaries, its weeks, the days people actually work, the holidays, the business hours and the breaks, with the arithmetic those imply.",
+   "Open it on a period, `new stzCalendar([2024, 10])` for a month or `[2024, \"Q3\"]` for a quarter, and read it: `Start()`, `End_()`, `TotalDays()`, `TotalWeeks()`, `MonthName()`, `QuarterNumber()`. Then teach it the shape of work: `SetWorkingDays([\"Monday\", ..., \"Friday\"])`, `AddHoliday(\"2024-10-15\", \"National Day\")`, `SetBusinessHours`, `AddBreak`. From then on `IsWorkingDay(\"2024-10-03\")` answers for a Thursday and refuses a Saturday, `WorkingDays()` counts the 23 of October, `IsHoliday` and `HolidayName` read the days off, and the first and last working days of the period, the next working day after a date, the working days between two dates, are all one call.",
+   "The point is that a calendar is a rule, not a list. Two companies in the same month have different calendars, a Sunday-to-Thursday week and a Monday-to-Friday one, and every question about deadlines, delivery dates and payroll is answered against the rule that applies.",
+   "It serves schedules, deadlines, payroll, service-level clocks that must stop at the weekend, and the planning of anything measured in working days, and it is the calendar `stzTimeLine` lays its events on."
+  ],
+  "fr": [
+   "`stzCalendar` est un mois, un trimestre ou une année qui sait ce qu'est un jour ouvré : ses bornes, ses semaines, les jours où l'on travaille réellement, les fériés, les heures d'ouverture et les pauses, avec l'arithmétique qu'ils impliquent.",
+   "Ouvrez-le sur une période, `new stzCalendar([2024, 10])` pour un mois ou `[2024, \"Q3\"]` pour un trimestre, et lisez-le : `Start()`, `End_()`, `TotalDays()`, `TotalWeeks()`, `MonthName()`, `QuarterNumber()`. Puis enseignez-lui la forme du travail : `SetWorkingDays([\"Monday\", ..., \"Friday\"])`, `AddHoliday(\"2024-10-15\", \"National Day\")`, `SetBusinessHours`, `AddBreak`. Dès lors `IsWorkingDay(\"2024-10-03\")` répond oui pour un jeudi et non pour un samedi, `WorkingDays()` compte les 23 d'octobre, `IsHoliday` et `HolidayName` lisent les jours chômés, et le premier et le dernier jour ouvré de la période, le prochain jour ouvré après une date, les jours ouvrés entre deux dates, tiennent en un appel.",
+   "L'idée est qu'un calendrier est une règle, pas une liste. Deux entreprises dans le même mois ont deux calendriers, une semaine du dimanche au jeudi et une du lundi au vendredi, et chaque question sur les échéances, les dates de livraison et la paie est répondue selon la règle qui s'applique.",
+   "Il sert les horaires, les échéances, la paie, les horloges de niveau de service qui doivent s'arrêter le week-end, et la planification de tout ce qui se mesure en jours ouvrés ; c'est le calendrier sur lequel `stzTimeLine` pose ses événements."
+  ],
+  "picks": {
+   "Year": {
+    "en": "A month opened by its two numbers, and read by name and size.",
+    "fr": "Un mois ouvert par ses deux nombres, et lu par son nom et sa taille."
+   },
+   "SetWorkingDays": {
+    "en": "Five working days declared; a Thursday passes, a Saturday does not, and October counts 23.",
+    "fr": "Cinq jours ouvrés déclarés ; un jeudi passe, un samedi non, et octobre en compte 23."
+   },
+   "AddHoliday": {
+    "en": "A holiday with its name, asked back by date.",
+    "fr": "Un férié avec son nom, redemandé par sa date."
+   },
+   "Start": {
+    "en": "A quarter, and where it begins.",
+    "fr": "Un trimestre, et où il commence."
+   }
+  }
+ },
+ "stzTimeLine": {
+  "en": [
+   "`stzTimeLine` is a stretch of time with things on it: points, which happen at a moment, and spans, which last, each with a label; and the questions a planner asks of them, what is at this moment, what lies between these two, what overlaps, what is blocked.",
+   "Open it on a start and an end, `new stzTimeLine(:From = \"2024-10-10\", :To = \"2024-10-22 16:40:00\")`, a time being added to a bare date. Place events: `AddPoint(\"MEETING\", \"2024-03-15 10:00:00\")`, `AddSpan(\"PROJECT\", from, to)`, `AddPeriod`, `AddMoment`; the names are synonyms, so you say it the way you think it. Then ask: `WhatsAt(moment)` lists what is live then, a point or a span; `PointsBetween` and `SpansBetween` cut a window; `SortedPoints` and `SortedSpans` put them in order; `HasOverlaps` says whether two spans collide; `Duration`, `Summary`, `Content` describe the whole.",
+   "A blocked span is a rule the timeline enforces: `AddBlockedSpan(\"BLACKOUT\", from, to)`, and `IsBlocked(moment)` refuses an event inside it, a span partly inside being reported as such. Labels can be found, renamed and removed, and the timeline shows itself as text.",
+   "It serves a project plan, a schedule of releases, a history of incidents, a campaign calendar, an audit of what happened when, and it reads its dates through `stzDateTime`, so any form that class understands is accepted here."
+  ],
+  "fr": [
+   "`stzTimeLine` est une étendue de temps avec des choses dessus : des points, qui arrivent à un instant, et des étendues, qui durent, chacun avec une étiquette ; et les questions qu'un planificateur leur pose, qu'y a-t-il à cet instant, qu'y a-t-il entre ces deux-là, qu'est-ce qui se chevauche, qu'est-ce qui est bloqué.",
+   "Ouvrez-la sur un début et une fin, `new stzTimeLine(:From = \"2024-10-10\", :To = \"2024-10-22 16:40:00\")`, une heure étant ajoutée à une date nue. Placez des événements : `AddPoint(\"MEETING\", \"2024-03-15 10:00:00\")`, `AddSpan(\"PROJECT\", from, to)`, `AddPeriod`, `AddMoment` ; les noms sont synonymes, on le dit comme on le pense. Puis interrogez : `WhatsAt(moment)` liste ce qui est en cours alors, point ou étendue ; `PointsBetween` et `SpansBetween` découpent une fenêtre ; `SortedPoints` et `SortedSpans` mettent en ordre ; `HasOverlaps` dit si deux étendues se heurtent ; `Duration`, `Summary`, `Content` décrivent l'ensemble.",
+   "Une étendue bloquée est une règle que la ligne de temps fait respecter : `AddBlockedSpan(\"BLACKOUT\", from, to)`, et `IsBlocked(moment)` refuse un événement dedans, une étendue en partie dedans étant signalée comme telle. Les étiquettes se cherchent, se renomment et se retirent, et la ligne de temps se montre en texte.",
+   "Elle sert un plan de projet, un calendrier de versions, un historique d'incidents, un calendrier de campagne, un audit de ce qui est arrivé quand ; elle lit ses dates par `stzDateTime`, si bien que toute forme comprise par cette classe est acceptée ici."
+  ],
+  "picks": {
+   "WhatsAt": {
+    "en": "A moment asked what is live then: a meeting, two spans, and nothing at all later.",
+    "fr": "Un instant interrogé sur ce qui est en cours : une réunion, deux étendues, et rien du tout plus tard."
+   },
+   "PointsBetween": {
+    "en": "A window cut from the year, and the events inside it.",
+    "fr": "Une fenêtre découpée dans l'année, et les événements dedans."
+   },
+   "AddBlockedSpan": {
+    "en": "A blackout declared, and an event inside it refused with a reason.",
+    "fr": "Un gel déclaré, et un événement dedans refusé avec sa raison."
+   },
+   "SortedSpans": {
+    "en": "Quarters added out of order, read back in order.",
+    "fr": "Des trimestres ajoutés dans le désordre, relus dans l'ordre."
+   },
+   "Content": {
+    "en": "A bare date gets its time; the whole line as data.",
+    "fr": "Une date nue reçoit son heure ; toute la ligne comme donnée."
+   }
+  }
+ },
+ "stzLocale": {
+  "en": [
+   "`stzLocale` is the answer to \"where and in what language\": a country, a language and a script, resolved from whatever fragment you have, and from them the numbers, dates, currency, phone code and letters a reader of that place expects.",
+   "Name it any way the world does: `new stzLocale(\"de-DE\")`, `\"pt_Latn_BR\"`, `\"ar-TN\"`, `[ :Language = :Spanish, :Country = :Spain ]`, or just `[ :Country = :Niger ]`, and the missing parts are filled from the best default, so Niger alone answers `fr_NE`, French, and `+227`; Arabic alone answers Egypt, Arabic script and Tunisia resolves to Arabic. Then read: `Abbreviation()` and `bcp47Abbreviation()`, `CountryName`, `CountryNumber`, `CountryPhoneCode`, `LanguageName`, `LanguageNativeName`, isiZulu for South Africa, `ScriptName`, `CurrencyName`, `CurrencySymbol`, `CurrencyFractionalUnit`.",
+   "The conventions follow: `DecimalPoint`, `GroupSeparator`, `NegativeSign`, `amText` and `pmText`, `TimeShortFormat` and `TimeLongFormat`, `ToLowercase` and `ToUppercase` by the rules of that language rather than of ASCII. A date written through `stzDateTime` reads the locale's clock, and a number formatted for a reader reads its separators.",
+   "It serves any program that speaks to people in more than one place: an invoice, a form, a report, a message, and the first screen of an application that must open in the reader's own convention."
+  ],
+  "fr": [
+   "`stzLocale` est la réponse à « où et dans quelle langue » : un pays, une langue et une écriture, résolus depuis le fragment que vous avez, et à partir d'eux les nombres, les dates, la monnaie, l'indicatif téléphonique et les lettres qu'un lecteur de ce lieu attend.",
+   "Nommez-la comme le monde le fait : `new stzLocale(\"de-DE\")`, `\"pt_Latn_BR\"`, `\"ar-TN\"`, `[ :Language = :Spanish, :Country = :Spain ]`, ou simplement `[ :Country = :Niger ]`, et les parts manquantes sont remplies par le meilleur défaut, si bien que le Niger seul répond `fr_NE`, français, et `+227` ; l'arabe seul répond l'Égypte, l'écriture arabe, et la Tunisie se résout en arabe. Puis lisez : `Abbreviation()` et `bcp47Abbreviation()`, `CountryName`, `CountryNumber`, `CountryPhoneCode`, `LanguageName`, `LanguageNativeName`, isiZulu pour l'Afrique du Sud, `ScriptName`, `CurrencyName`, `CurrencySymbol`, `CurrencyFractionalUnit`.",
+   "Les conventions suivent : `DecimalPoint`, `GroupSeparator`, `NegativeSign`, `amText` et `pmText`, `TimeShortFormat` et `TimeLongFormat`, `ToLowercase` et `ToUppercase` selon les règles de cette langue plutôt que de l'ASCII. Une date écrite par `stzDateTime` lit l'horloge de la locale, et un nombre formaté pour un lecteur lit ses séparateurs.",
+   "Elle sert tout programme qui parle à des gens en plus d'un lieu : une facture, un formulaire, un rapport, un message, et le premier écran d'une application qui doit s'ouvrir dans la convention propre du lecteur."
+  ],
+  "picks": {
+   "CountryPhoneCode": {
+    "en": "Egypt from `ar_eg`, Niger from a country alone, Niger again from a bare symbol.",
+    "fr": "L'Égypte depuis `ar_eg`, le Niger depuis un pays seul, le Niger encore depuis un simple symbole."
+   },
+   "LanguageName": {
+    "en": "A country alone, and the language and abbreviation filled from it.",
+    "fr": "Un pays seul, et la langue et l'abréviation remplies à partir de lui."
+   },
+   "CountryName": {
+    "en": "Arabic alone defaults to Egypt; a country tag, in any case, overrides it.",
+    "fr": "L'arabe seul se résout en Égypte ; une étiquette de pays, quelle que soit sa casse, l'emporte."
+   },
+   "TimeShortFormat": {
+    "en": "The clock formats a locale expects, short, long and narrow.",
+    "fr": "Les formats d'heure qu'une locale attend, court, long et étroit."
+   },
+   "ToLowercase": {
+    "en": "Case, the day-half words, and every numeric separator of one locale in a row.",
+    "fr": "La casse, les mots du matin et du soir, et chaque séparateur numérique d'une locale à la suite."
+   }
+  }
+ },
+ "stzPivotTable": {
+  "en": [
+   "`stzPivotTable` is the analyst's cross-tabulation: rows by one column, columns by another, a value aggregated in each cell, totals at the margins, from any `stzTable`.",
+   "Build it on a table and declare the pivot in sentences: `SetRowsBy(:Region)`, `SetColsBy(:Product)`, `SetValues(:Sales)`, `SetAggregateFunction(:Sum)`, or the one-call `Analyze`. Labels, the separator between stacked row labels, the label of the totals, the value shown for an empty cell and the order of the columns are all settings, so the printed table says what the reader wants it to say. `Generate()` computes it; `Value(row, col)`, `RowTotal`, `ColumnTotal` and `GrandTotal` read it; `ToTable()` gives it back as a plain table to filter, sort or chart; `Show()` prints it aligned.",
+   "A pivot can be saved and loaded, so a report is a file rather than a program, and because it inherits from `stzList`, everything a list can do applies to its rows.",
+   "It serves sales by region and product, incidents by month and severity, grades by class and subject, any question of the form \"how much of this, by that and that\"."
+  ],
+  "fr": [
+   "`stzPivotTable` est le tableau croisé de l'analyste : des lignes selon une colonne, des colonnes selon une autre, une valeur agrégée dans chaque cellule, des totaux en marge, à partir de toute `stzTable`.",
+   "Construisez-le sur une table et déclarez le pivot en phrases : `SetRowsBy(:Region)`, `SetColsBy(:Product)`, `SetValues(:Sales)`, `SetAggregateFunction(:Sum)`, ou l'appel unique `Analyze`. Les étiquettes, le séparateur entre étiquettes de ligne empilées, l'étiquette des totaux, la valeur montrée pour une cellule vide et l'ordre des colonnes sont des réglages, si bien que la table imprimée dit ce que le lecteur veut qu'elle dise. `Generate()` le calcule ; `Value(row, col)`, `RowTotal`, `ColumnTotal` et `GrandTotal` le lisent ; `ToTable()` le rend comme table ordinaire à filtrer, trier ou tracer ; `Show()` l'imprime aligné.",
+   "Un pivot se sauve et se recharge, si bien qu'un rapport est un fichier plutôt qu'un programme, et parce qu'il hérite de `stzList`, tout ce qu'une liste sait faire s'applique à ses lignes.",
+   "Il sert les ventes par région et produit, les incidents par mois et gravité, les notes par classe et matière, toute question de la forme « combien de ceci, par cela et cela »."
+  ],
+  "picks": {}
+ },
+ "stzSound": {
+  "en": [
+   "`stzSound` is a sound you can hold: a buffer of samples at a rate, with a channel count, that can be measured, transformed, analysed, saved and heard, the audio itself living in the engine and never copied into the language.",
+   "Load it from a file or make it, `MakeSilence`, and read it: `Frames()`, `Channels()`, `SampleRate()`, `Duration()`, `Peak()`, `Rms()`, `SampleAt(frame, channel)`. Change it: `ResampleTo(rate)`, sinc quality unless you ask for fast, `ToMono()`, `ToStereo()`, `MixIn(other)`, `SetSampleAt`. Keep it: `SaveAs(path)` writes 16-bit, measured at one quantum of round-trip error, `SaveAsFloat` writes 32, `ToWavBytes()` hands the file back as bytes for a service that never touches a disk.",
+   "Then analyse it, every result a grid with its axes named: `ToSpectrum()`, `ToSpectrogram()`, computed on every core since each row is an independent transform, `DominantFrequency()`, `ToOnsets()`, where the notes start, `Tempo()`, which answers −1 rather than a confident number from two events, and `Loudness()` by the broadcast standard, which refuses a rate the standard's coefficients were not specified for; `LoudnessMetric()` says which figure you were given. `Play()` plays it and waits.",
+   "It serves a cue in an interface, a recording to measure, a dataset of clips to classify, a lesson on signals, and it is the buffer the earcons, the sound graph and the sound plots are built on."
+  ],
+  "fr": [
+   "`stzSound` est un son que l'on peut tenir : un tampon d'échantillons à une cadence, avec un nombre de canaux, qui se mesure, se transforme, s'analyse, se sauve et s'écoute, l'audio lui-même vivant dans le moteur et jamais copié dans le langage.",
+   "Chargez-le d'un fichier ou fabriquez-le, `MakeSilence`, et lisez-le : `Frames()`, `Channels()`, `SampleRate()`, `Duration()`, `Peak()`, `Rms()`, `SampleAt(frame, channel)`. Changez-le : `ResampleTo(rate)`, qualité sinc sauf à demander la rapide, `ToMono()`, `ToStereo()`, `MixIn(other)`, `SetSampleAt`. Gardez-le : `SaveAs(path)` écrit en 16 bits, mesuré à un quantum d'erreur aller-retour, `SaveAsFloat` en 32, `ToWavBytes()` rend le fichier en octets pour un service qui ne touche jamais un disque.",
+   "Puis analysez-le, chaque résultat une grille aux axes nommés : `ToSpectrum()`, `ToSpectrogram()`, calculé sur tous les cœurs puisque chaque ligne est une transformée indépendante, `DominantFrequency()`, `ToOnsets()`, où les notes commencent, `Tempo()`, qui répond −1 plutôt qu'un nombre assuré tiré de deux événements, et `Loudness()` selon la norme de diffusion, qui refuse une cadence pour laquelle les coefficients de la norme n'ont pas été spécifiés ; `LoudnessMetric()` dit quelle mesure vous avez reçue. `Play()` le joue et attend.",
+   "Il sert un signal dans une interface, un enregistrement à mesurer, un jeu d'extraits à classer, une leçon sur les signaux, et c'est le tampon sur lequel les earcons, le graphe sonore et les tracés sonores sont bâtis."
+  ],
+  "picks": {}
+ },
+ "stzGpu": {
+  "en": [
+   "`stzGpu` is the graphics card as a calculator: vectors uploaded once, kernels run on them, results read back or kept resident, and, before any of that, a measurement of where this machine's card actually starts to win.",
+   "`IsAvailable()`, `DeviceName()` and `AdapterCount()` say what is there. `Run(kernel, vectors)` is the one-shot door, data in and data out; `UploadQ` keeps a vector on the device until freed, `RunQ` keeps the result resident, and `ApplyOnQ` chains kernels over resident buffers with no transfer at all. A kernel comes from `stzKernelMaker` or as raw WGSL on the same binding contract, and `Verify` judges a candidate against the reference and against the device's measured floors: could a dispatch touching these bytes finish in that time at all.",
+   "`Calibrate()` is the method that makes the rest honest. It measures the crossover on this hardware and stores it, so the faces that may use the GPU, nearest neighbours, convolution, matrix products, attention, route to it only above the size where it was measured to win: on the laptop that built this, k-NN at 384 dimensions loses at a thousand items and wins at sixteen thousand. The foundries, `FoundryMatmul`, `FoundryAttention`, `FoundryPairdist`, race kernel variants under a checker and report a winner with its ratio. And `Wake()` exists because an idle card sleeps and the first submit pays for it.",
+   "It serves whoever has a large enough problem, embeddings to compare, a signal to convolve, a network to run, and wants the GPU used when it helps and left alone when it does not, with the decision recorded as a number."
+  ],
+  "fr": [
+   "`stzGpu` est la carte graphique comme calculateur : des vecteurs envoyés une fois, des noyaux exécutés dessus, des résultats relus ou gardés résidents, et, avant tout cela, une mesure de l'endroit où la carte de cette machine commence réellement à gagner.",
+   "`IsAvailable()`, `DeviceName()` et `AdapterCount()` disent ce qui est là. `Run(kernel, vectors)` est la porte en un coup, données en entrée et données en sortie ; `UploadQ` garde un vecteur sur la carte jusqu'à sa libération, `RunQ` garde le résultat résident, et `ApplyOnQ` enchaîne des noyaux sur des tampons résidents sans aucun transfert. Un noyau vient de `stzKernelMaker` ou en WGSL brut sur le même contrat de liaison, et `Verify` juge un candidat contre la référence et contre les planchers mesurés de la carte : un envoi touchant ces octets peut-il seulement finir en ce temps.",
+   "`Calibrate()` est la méthode qui rend le reste honnête. Elle mesure le point de bascule sur ce matériel et le conserve, si bien que les faces qui peuvent employer le GPU, plus proches voisins, convolution, produits de matrices, attention, n'y routent qu'au-dessus de la taille où il a été mesuré gagnant : sur l'ordinateur portable qui a bâti ceci, le k-NN à 384 dimensions perd à mille éléments et gagne à seize mille. Les fonderies, `FoundryMatmul`, `FoundryAttention`, `FoundryPairdist`, font courir des variantes de noyau sous un vérificateur et rapportent un vainqueur avec son rapport. Et `Wake()` existe parce qu'une carte au repos s'endort et que le premier envoi le paie.",
+   "Il sert à qui a un problème assez grand, des plongements à comparer, un signal à convoluer, un réseau à exécuter, et veut que le GPU soit employé quand il aide et laissé tranquille sinon, la décision consignée en un nombre."
+  ],
+  "picks": {}
+ },
+ "stzAgentGraph": {
+  "en": [
+   "`stzAgentGraph` is the composition of an agent system as a graph that can be judged: who proposes, who guards, what has an effect on the world, where the trace goes, and the proof that no effect is reachable without passing a gate.",
+   "Declare the nodes by kind, `AddLLMActor(\"writer\")`, `AddPIActor`, `AddGuardian(\"gate\")`, `AddEffect(\"send\")`, `AddTraceSink(\"audit\")`, `AddTool`, `AddInput`, `AddCheckpoint`, and the edges by meaning, `Proposes(\"writer\", \"gate\")`, `Guards(\"gate\", \"send\")`, `Feeds`, `Traces`, `Escalates`. An LLM actor starts with an empty capability set and its output is tainted as open text; `Grant()` is the governed way to add a capability and refuses one no door allows, while `Tampering()` reports any node whose properties no longer match the sealed record.",
+   "`IsSound()` is the verdict: a writer proposing straight to `send` fails, and `Violations()` says why in a sentence, *effect 'send' has no guardian edge into it -- every effect passes a pi-gate*. The same invariants are available as a declared rule set, `RuleSetQ()`, and as findings in the library's unified shape, so a CI report collects them beside every other rule; `Explain()` reads the composition back in words.",
+   "It serves whoever builds with language models and must show, before the first message is sent, that nothing effectful happens without a deterministic gate in front of it."
+  ],
+  "fr": [
+   "`stzAgentGraph` est la composition d'un système d'agents comme graphe que l'on peut juger : qui propose, qui garde, ce qui a un effet sur le monde, où va la trace, et la preuve qu'aucun effet n'est atteignable sans passer une porte.",
+   "Déclarez les nœuds par sorte, `AddLLMActor(\"writer\")`, `AddPIActor`, `AddGuardian(\"gate\")`, `AddEffect(\"send\")`, `AddTraceSink(\"audit\")`, `AddTool`, `AddInput`, `AddCheckpoint`, et les arêtes par sens, `Proposes(\"writer\", \"gate\")`, `Guards(\"gate\", \"send\")`, `Feeds`, `Traces`, `Escalates`. Un acteur LLM part avec un ensemble de capacités vide et sa sortie est marquée comme texte ouvert ; `Grant()` est la voie gouvernée pour ajouter une capacité et refuse celle qu'aucune porte n'autorise, tandis que `Tampering()` signale tout nœud dont les propriétés ne correspondent plus à l'enregistrement scellé.",
+   "`IsSound()` est le verdict : un rédacteur proposant droit à `send` échoue, et `Violations()` dit pourquoi en une phrase, *effect 'send' has no guardian edge into it -- every effect passes a pi-gate*. Les mêmes invariants existent comme jeu de règles déclaré, `RuleSetQ()`, et comme constats dans la forme unifiée de la bibliothèque, si bien qu'un rapport d'intégration les recueille à côté de toute autre règle ; `Explain()` relit la composition en mots.",
+   "Il sert à qui bâtit avec des modèles de langage et doit montrer, avant le premier message envoyé, que rien d'effectif n'arrive sans une porte déterministe devant."
+  ],
+  "picks": {
+   "IsSound": {
+    "en": "A writer proposing straight to an effect: unsound, and the violation says why.",
+    "fr": "Un rédacteur proposant droit à un effet : non sain, et la violation dit pourquoi."
+   },
+   "AddGuardian": {
+    "en": "The same system with a gate between the writer and the effect, and a trace: sound.",
+    "fr": "Le même système avec une porte entre le rédacteur et l'effet, et une trace : sain."
+   }
+  }
+ },
+ "stzVirtualFileSystem": {
+  "en": [
+   "`stzVirtualFileSystem` is a twin of a file system in which an agent rehearses: every create, write, copy, move and delete is recorded against the twin and touches nothing real, so a plan can be inspected before anything is committed.",
+   "Mirror reality into it, `MirrorFile(path)` for one file or `MirrorFrom(folder)` for one level of a directory, then let the plan run: `CreateFile`, `WriteFile`, `CreateFolder`, `CopyFile`, `MoveFile`, `DeleteFile`, `DeleteFolder`. Inspection is free and reads the twin, never the disk: `Exists`, `ContentOf`, `SizeOf`, `OriginOf`, which says where a node came from, `Paths`, `NumberOfNodes`, `TreeView`, `Show`.",
+   "This is the workbench of the safe world: an agent binds to it, acts, and what it produced is a plan of changes; only a committing actor, a different thing with a different capability, carries the plan onto the real file system. The twin is what makes \"show me what you would do\" a question with an exact answer.",
+   "It serves any automation that writes files, a code migration, a document generator, an installer, a cleanup, and any agent that must be allowed to try before it is allowed to act."
+  ],
+  "fr": [
+   "`stzVirtualFileSystem` est un jumeau d'un système de fichiers dans lequel un agent répète : chaque création, écriture, copie, déplacement et suppression est enregistré contre le jumeau et ne touche rien de réel, si bien qu'un plan peut être inspecté avant que quoi que ce soit soit validé.",
+   "Reflétez-y la réalité, `MirrorFile(path)` pour un fichier ou `MirrorFrom(folder)` pour un niveau de répertoire, puis laissez le plan courir : `CreateFile`, `WriteFile`, `CreateFolder`, `CopyFile`, `MoveFile`, `DeleteFile`, `DeleteFolder`. L'inspection est gratuite et lit le jumeau, jamais le disque : `Exists`, `ContentOf`, `SizeOf`, `OriginOf`, qui dit d'où vient un nœud, `Paths`, `NumberOfNodes`, `TreeView`, `Show`.",
+   "C'est l'établi du monde sûr : un agent s'y lie, agit, et ce qu'il a produit est un plan de changements ; seul un acteur validant, une chose différente avec une capacité différente, porte le plan sur le vrai système de fichiers. Le jumeau est ce qui fait de « montre-moi ce que tu ferais » une question à réponse exacte.",
+   "Il sert toute automatisation qui écrit des fichiers, une migration de code, un générateur de documents, un installeur, un nettoyage, et tout agent qui doit pouvoir essayer avant de pouvoir agir."
+  ],
+  "picks": {}
+ },
+ "stzSystemCall": {
+  "en": [
+   "`stzSystemCall` runs a program and gives back what it said: its output, its error stream and its exit code, each separately, with the arguments passed as a list and never through a quoted shell string.",
+   "Name the program and its arguments, `SetProgram`, `SetArgs` or `WithArgs`, `AddArg`, or hand a command line to `ParseCommandString`; set a `Timeout`; choose what to capture, `CaptureOutput`, `CaptureError`, and whether a console shows, `Silently`. Then `Run()`, and read: `Output()`, `OutputAsLines()`, `Error()`, `ExitCode()`. `SetReturnType` converts the output on the way back, a number, a list of lines, so a caller that wants a count gets a count.",
+   "The call runs once and answers with all three channels together; it used to run twice to collect them, and the double execution was found and closed. Running by argument list rather than a shell string is what makes a filename with a space, a quote or a non-ASCII letter arrive intact.",
+   "It serves a build step, a conversion through an external tool, a system query, a test that drives another process, and anything else a program must delegate to the machine it runs on."
+  ],
+  "fr": [
+   "`stzSystemCall` exécute un programme et rend ce qu'il a dit : sa sortie, son flux d'erreur et son code de sortie, chacun à part, les arguments passés en liste et jamais par une chaîne d'interpréteur entre guillemets.",
+   "Nommez le programme et ses arguments, `SetProgram`, `SetArgs` ou `WithArgs`, `AddArg`, ou confiez une ligne de commande à `ParseCommandString` ; posez un `Timeout` ; choisissez ce qui est capturé, `CaptureOutput`, `CaptureError`, et si une console s'affiche, `Silently`. Puis `Run()`, et lisez : `Output()`, `OutputAsLines()`, `Error()`, `ExitCode()`. `SetReturnType` convertit la sortie au retour, un nombre, une liste de lignes, si bien qu'un appelant qui veut un compte reçoit un compte.",
+   "L'appel s'exécute une fois et répond avec les trois canaux ensemble ; il s'exécutait deux fois pour les recueillir, et la double exécution a été trouvée et fermée. Exécuter par liste d'arguments plutôt que par chaîne d'interpréteur est ce qui fait qu'un nom de fichier avec une espace, un guillemet ou une lettre non ASCII arrive intact.",
+   "Il sert une étape de compilation, une conversion par un outil externe, une interrogation du système, un test qui pilote un autre processus, et tout ce qu'un programme doit déléguer à la machine où il tourne."
+  ],
+  "picks": {}
+ },
+ "stzMetric": {
+  "en": [
+   "`stzMetric` is one measured thing with a name: a counter, a gauge or a timer, fed from the program and read as a number, a rate, a percentile or a sentence, and exported in the vocabularies the monitoring world already speaks.",
+   "A counter takes `Increment()` and answers `RatePerSecond()`, the slope of its cumulative count over the retained window. A gauge takes `Set(level)` and answers `SlopePerMs()`, `Mean`, `Min`, `Max`. A timer takes `Record(ms)` or a stopwatch straight in, `RecordWatch`, and answers `P50`, `P95`, `P99` from a constant-size histogram fit for an unbounded stream, `ExactPercentile` over the recent window when exactness matters, and `MeanMs` exact over the lifetime because the engine keeps the true sum. `Value()` is the current answer of any kind, `Count()` the samples ever recorded, `SeriesQ()` the series itself.",
+   "`PromName()` and `PromText()` write the metric in Prometheus exposition, `OtelMetricJson()` as one OpenTelemetry fragment, `Explain()` as a sentence a person reads. A metric can carry labels and belong to a family, one child per route the traffic actually took.",
+   "It serves a request bracket, a queue, a cache, a worker, anything whose health is a number over time, and it is what `stzPerfMonitor` collects and what the service-level checks read."
+  ],
+  "fr": [
+   "`stzMetric` est une chose mesurée avec un nom : un compteur, une jauge ou un chronomètre, alimenté par le programme et lu comme nombre, taux, percentile ou phrase, et exporté dans les vocabulaires que le monde de la supervision parle déjà.",
+   "Un compteur prend `Increment()` et répond `RatePerSecond()`, la pente de son cumul sur la fenêtre retenue. Une jauge prend `Set(level)` et répond `SlopePerMs()`, `Mean`, `Min`, `Max`. Un chronomètre prend `Record(ms)` ou un chronomètre directement, `RecordWatch`, et répond `P50`, `P95`, `P99` depuis un histogramme de taille constante fait pour un flux sans borne, `ExactPercentile` sur la fenêtre récente quand l'exactitude compte, et `MeanMs` exact sur toute la durée parce que le moteur garde la vraie somme. `Value()` est la réponse courante de toute sorte, `Count()` les échantillons jamais enregistrés, `SeriesQ()` la série elle-même.",
+   "`PromName()` et `PromText()` écrivent la métrique en exposition Prometheus, `OtelMetricJson()` en un fragment OpenTelemetry, `Explain()` en une phrase qu'une personne lit. Une métrique peut porter des étiquettes et appartenir à une famille, un enfant par route que le trafic a réellement prise.",
+   "Elle sert une parenthèse de requête, une file, un cache, un travailleur, tout ce dont la santé est un nombre dans le temps, et c'est ce que `stzPerfMonitor` recueille et ce que les contrôles de niveau de service lisent."
+  ],
+  "picks": {}
+ },
+ "stzCodeGraph": {
+  "en": [
+   "`stzCodeGraph` is a program read as a graph: its classes, methods, functions, inheritance, imports and, with a real parser, its calls; so that the questions a maintainer asks, who defines this, who inherits it, what breaks if I change it, what is never called, are answered by a query and not by a search.",
+   "Point it at a root, `SetRoot(path)`, for the language the subclass knows, and the source is parsed through the vendored tree-sitter grammar in the engine, with no runtime of that language required. Then ask: `Classes()`, `MethodsOf(class)`, `OwnersOf(method)`, every class that defines it, `ParentOf`, `AncestryOf`, `SubclassesOf`, `DescendantsOf`, `ImportsOf`, `FileOf`. `ImpactOf(method)` is the question before an edit: the classes defining it plus every descendant that inherits it unchanged. With call edges, `CallersOf`, `CalleesOf`, `DeadCode()`, every defined routine no recorded call reaches, and `CyclicCalls()`.",
+   "`CheckRules()` runs the code rules over the graph and answers findings in the library's unified shape, each with class, method and line, which is how the knob gate and the other code rules sit in one CI report with the graph rules of every other domain.",
+   "It serves a refactoring, a review, an onboarding, a migration between languages, and the library's own self-documentation, which reads itself through this class."
+  ],
+  "fr": [
+   "`stzCodeGraph` est un programme lu comme graphe : ses classes, méthodes, fonctions, héritages, importations et, avec un vrai analyseur, ses appels ; si bien que les questions d'un mainteneur, qui définit ceci, qui en hérite, que casse-t-on en le changeant, qu'est-ce qui n'est jamais appelé, trouvent réponse par une requête et non par une recherche.",
+   "Pointez-le sur une racine, `SetRoot(path)`, pour le langage que la sous-classe connaît, et la source est analysée par la grammaire tree-sitter embarquée dans le moteur, sans qu'aucun environnement de ce langage soit requis. Puis demandez : `Classes()`, `MethodsOf(class)`, `OwnersOf(method)`, chaque classe qui la définit, `ParentOf`, `AncestryOf`, `SubclassesOf`, `DescendantsOf`, `ImportsOf`, `FileOf`. `ImpactOf(method)` est la question avant une modification : les classes qui la définissent plus chaque descendant qui l'hérite sans la redéfinir. Avec les arêtes d'appel, `CallersOf`, `CalleesOf`, `DeadCode()`, toute routine définie qu'aucun appel enregistré n'atteint, et `CyclicCalls()`.",
+   "`CheckRules()` fait courir les règles de code sur le graphe et répond des constats dans la forme unifiée de la bibliothèque, chacun avec classe, méthode et ligne, ce qui met la porte des boutons et les autres règles de code dans un seul rapport d'intégration avec les règles de graphe de tous les autres domaines.",
+   "Il sert une refonte, une revue, une prise en main, une migration entre langages, et l'auto-documentation de la bibliothèque, qui se lit elle-même par cette classe."
+  ],
+  "picks": {}
+ },
+ "stzLLMFunction": {
+  "en": [
+   "`stzLLMFunction` is a language model wrapped as a function with a declared return type: a number, a boolean, a string, one of a list, or a structure, so that what comes back is either the shape you asked for or a refusal that says why.",
+   "Name it and give it a prompt, `SetPrompt`, then declare the return: `ReturnsNumber()`, `ReturnsBoolean()`, `ReturnsOneOf([...])`, or `ReturnsStructure(fields)`, an `stzOutputSchema` compiled and judged at declaration, so a defective schema never reaches a model. `Call_(args)` or `Of(args)` runs it; `Budget`, `SetRetries` and `SetRetrySampling` bound the cost, the first attempt always greedy; `Why()` and `LastFindings()` explain a refusal in the unified finding shape, so it stands in a CI report. `RefuseUnknownFields()` closes the world: a field the schema never declared refuses the answer rather than being dropped in silence.",
+   "When a structure is declared and the engine enforces grammars, decoding is constrained to the schema, `IsConstrainingDecoding()` tells you before the call, `GrammarUsed()` shows the grammar, and `WasLastAnswerConstrained()` tells you after. For tests and offline work, `UseResponder(fake)` puts a fake where the model stands and `SeedAnswer` plants a known answer; `AddGolden` and `RunGoldens` keep a set of expected answers, structures included, that the function is checked against.",
+   "It serves any program that wants a model's judgement as a typed value, a classification, an extraction, a score, a filled record, and wants to know, every time, whether the value was earned or the call was refused."
+  ],
+  "fr": [
+   "`stzLLMFunction` est un modèle de langage enveloppé comme fonction à type de retour déclaré : un nombre, un booléen, une chaîne, un élément d'une liste, ou une structure, si bien que ce qui revient est soit la forme demandée, soit un refus qui dit pourquoi.",
+   "Nommez-la et donnez-lui une consigne, `SetPrompt`, puis déclarez le retour : `ReturnsNumber()`, `ReturnsBoolean()`, `ReturnsOneOf([...])`, ou `ReturnsStructure(fields)`, un `stzOutputSchema` compilé et jugé à la déclaration, si bien qu'un schéma défectueux n'atteint jamais un modèle. `Call_(args)` ou `Of(args)` l'exécute ; `Budget`, `SetRetries` et `SetRetrySampling` bornent le coût, la première tentative toujours gloutonne ; `Why()` et `LastFindings()` expliquent un refus dans la forme unifiée des constats, qui tient dans un rapport d'intégration. `RefuseUnknownFields()` ferme le monde : un champ que le schéma n'a jamais déclaré refuse la réponse plutôt que d'être abandonné en silence.",
+   "Quand une structure est déclarée et que le moteur fait respecter les grammaires, le décodage est contraint au schéma, `IsConstrainingDecoding()` vous le dit avant l'appel, `GrammarUsed()` montre la grammaire, et `WasLastAnswerConstrained()` vous le dit après. Pour les tests et le travail hors ligne, `UseResponder(fake)` met un faux là où se tient le modèle et `SeedAnswer` plante une réponse connue ; `AddGolden` et `RunGoldens` tiennent un jeu de réponses attendues, structures comprises, contre lequel la fonction est vérifiée.",
+   "Elle sert tout programme qui veut le jugement d'un modèle comme valeur typée, une classification, une extraction, un score, une fiche remplie, et veut savoir, à chaque fois, si la valeur a été gagnée ou si l'appel a été refusé."
+  ],
+  "picks": {}
  }
 }
