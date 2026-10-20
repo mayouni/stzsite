@@ -16,6 +16,9 @@ description: The Softanza application host: the reactor-driven server, the live 
 <div class="card"><h3>The services plane <b>(built)</b></h3><p>The dependencies a solution reaches, virtualised: HTTP, data, mail, text messages, payments, an AI model and sign-in. A service is declared, a sandbox is bound to it while developing, the live service at deployment, and production refuses the fake.</p></div>
 </div>
 
+<!--SAMPLE:stzAppServer.start-->
+
+
 ## What the Atlas says is missing {#gaps}
 
 <p class="proof"><b>in construction</b> The server is real and competent, and the Atlas states its gaps in its own words: middleware is registered and never invoked, and there is no JSON body parsing, no streaming and no WebSocket. The standout of this area is not the server but the services plane, where a stateful double sits under a governance gate and a production deployment structurally refuses a fake dependency, even for a fully entitled human. The ratings, lane by lane, are on the Atlas page of the <a href="atlas/web.html">web and application server</a> and of <a href="atlas/concurrency.html">concurrency</a>.</p>

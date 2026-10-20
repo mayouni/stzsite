@@ -6,6 +6,9 @@ lede: With Softanza you build applications: you declare a world, and it runs. Th
 description: Applications in Softanza: an application is a living world of meaning, declared once; the planes that hold it up, with their stages, and the pages that tell the host, the road to the device, the surfaces and a first application.
 ---
 
+
+<!--SAMPLE:stzApp.world-->
+
 ## An application is a living world {#world}
 
 An application, in Softanza, is a world of meaning and not a stack of screens. It is made of a domain, which is the things in it and their truths; a life, which is what it does and what it wants; and a body, which is where it endures. It is met by being seen, engaged, tuned and reached. A platform is then a constellation of such worlds, told on <a href="platforms.html">the platform of platforms page</a>.

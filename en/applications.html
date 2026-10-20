@@ -39,6 +39,33 @@
     <p class="lede">With Softanza you build applications: you declare a world, and it runs. This page maps what holds that up, plane by plane, with each plane's stage, and says which surfaces exist today.</p>
   </div></section>
   <div class="wrap page-body">
+<div class="sample"><pre class="rx">oApp = new stzApp("SonibankVisits")
+oApp {
+    AddThingQ(:Client) { Has([ :code, :name, :city ]) }
+    AddThingQ(:Visit)  { Of(:Client)  Has([
+        :agent,
+        :date,
+        :subject
+    ]) }
+
+    AddFlowQ(:agent, :records, :Visit) {
+        Require(:subject)  Then( Keep(:Visit) )
+    }
+    AddReactionQ(:Client).Unseen(90, :Days) { Propose(:Visit) }
+}
+
+# the declaration, read back in words
+oApp.Explain()
+#--&gt; WORLD SonibankVisits   lives in: memory (not persisted)
+#--&gt;   BEING
+#--&gt;     client (code, name, city)
+#--&gt;     visit (agent, date, subject)
+#--&gt;   RELATIONS
+#--&gt;     visit of client
+#--&gt;   BECOMING
+#--&gt;     when agent records visit require subject then keep visit
+#--&gt;     whenever client unseen 90 days -&gt; propose visit</pre><span class="rx-src">run in the library on 2026-10-20</span></div>
+
 <h2 id="world">An application is a living world</h2>
 <p>An application, in Softanza, is a world of meaning and not a stack of screens. It is made of a domain, which is the things in it and their truths; a life, which is what it does and what it wants; and a body, which is where it endures. It is met by being seen, engaged, tuned and reached. A platform is then a constellation of such worlds, told on <a href="platforms.html">the platform of platforms page</a>.</p>
 <p>The application layer carries no name of its own. It is a part of the foundation and not a kind of product, so the site says what it is and then shows how.</p>

@@ -16,6 +16,9 @@ description: L'hôte d'applications de Softanza : le serveur piloté par le réa
 <div class="card"><h3>Le plan des services <b>(construit)</b></h3><p>Les dépendances qu'atteint une solution, virtualisées : HTTP, données, courriel, SMS, paiements, un modèle d'IA et la connexion. Un service est déclaré, un bac à sable lui est lié en développement, le service réel au déploiement, et la production refuse le faux.</p></div>
 </div>
 
+<!--SAMPLE:stzAppServer.start-->
+
+
 ## Ce que l'Atlas dit qui manque {#gaps}
 
 <p class="proof"><b>en construction</b> Le serveur est réel et compétent, et l'Atlas énonce ses manques dans ses propres mots : les intergiciels sont enregistrés et jamais invoqués, et il n'y a ni lecture de corps JSON, ni flux continu, ni WebSocket. Ce qui distingue ce domaine n'est pas le serveur mais le plan des services, où un double à état se tient sous une porte de gouvernance et où un déploiement de production refuse structurellement une dépendance factice, même pour un humain pleinement habilité. Les notes, couloir par couloir, sont sur la page de l'Atlas du <a href="atlas/web.html">serveur web et d'applications</a> et de la <a href="atlas/concurrency.html">concurrence</a>.</p>

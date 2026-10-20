@@ -16,6 +16,9 @@ description: Le monde comme construction Softanza d'une application : le domaine
 
 Retirez l'une des trois et il n'y a plus de monde.
 
+
+<!--SAMPLE:stzApp.world-->
+
 ## Rencontré de l'extérieur de quatre façons {#met}
 
 <ol class="steps">

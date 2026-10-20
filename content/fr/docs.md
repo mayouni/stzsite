@@ -22,3 +22,6 @@ Chaque domaine de la plateforme a ses classes dans la référence. Choisissez un
 </div>
 
 <p class="way"><span>La manière Softanza</span> La bibliothèque se documente elle-même. Un objet répond par ses propres méthodes, explique chacune, et dit comment ; cette documentation est cette réponse, rassemblée et publiée, et non un manuel écrit à côté du code.</p>
+
+
+<!--SAMPLE:area:documentation.howto-->

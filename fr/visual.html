@@ -48,6 +48,20 @@
 <li><b>La phrase honnête.</b> Le plan de vision le dit ainsi : il peut dessiner, et il ne peut pas voir. Une image se vérifie en la comparant et en la regardant, et seule la seconde est celle d'une personne.</li>
 </ul>
 
+<div class="sample"><pre class="rx">o1 = new stzHistogram([ 2, 3, 3, 4, 4, 4, 5, 5, 6 ])
+o1.SetBinCount(4)
+
+? o1.ToString()
+#--&gt; ▲
+#--&gt; │
+#--&gt; │
+#--&gt; │         ██  ██
+#--&gt; │     ██  ██  ██
+#--&gt; │ ██  ██  ██  ██
+#--&gt; ╰───────────────►
+#--&gt;   2   3   4   5
+#--&gt;   3   4   5   6</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-20</span></div>
+
 <p class="proof"><b>en construction</b> La perception est due. Les rendus de ce site ont été regardés par l'agent d'IA qui a écrit la page, et par personne d'autre encore ; le regard de l'auteur est la porte qui reste ouverte. C'est un état et pas un échec, et le site le dit sur chaque page où une image est le sujet.</p>
   </div>
 </main>

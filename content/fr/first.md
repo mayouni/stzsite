@@ -19,6 +19,9 @@ description: Comment construire une première application dans Softanza : le mon
 
 La narration <a href="narrations/stzapp-building-your-first-app-narration.html">Votre première application avec stzApp</a> en construit un pour une banque de Niamey, un outil pour des agents de terrain qui visitent des clients, et sa page dit quels blocs ont tenu leur promesse à l'exécution.
 
+
+<!--SAMPLE:stzApp.world-->
+
 ## Ce qu'il y a derrière {#behind}
 
 <p class="proof"><b>en construction</b> L'être du monde est jugé par des gardes, ses réactions s'y déclenchent, et la constellation de mondes a son propre garde. Une route plus courte n'existe pas encore : il n'y a pas de commande qui crée une application, et la route de cinq minutes qu'un premier visiteur attendrait, de rien à une page servie, est une cible et pas un chemin. La narration est une histoire racontée en code, et c'est la page par où commencer. Son ouverture dit elle-même qu'elle est écrite comme si la construction était déjà livrée, ce qui explique que ses blocs soient marqués comme ils le sont.</p>

@@ -48,6 +48,33 @@
 </div>
 
 <p>Strip any of the three and there is no world.</p>
+<div class="sample"><pre class="rx">oApp = new stzApp("SonibankVisits")
+oApp {
+    AddThingQ(:Client) { Has([ :code, :name, :city ]) }
+    AddThingQ(:Visit)  { Of(:Client)  Has([
+        :agent,
+        :date,
+        :subject
+    ]) }
+
+    AddFlowQ(:agent, :records, :Visit) {
+        Require(:subject)  Then( Keep(:Visit) )
+    }
+    AddReactionQ(:Client).Unseen(90, :Days) { Propose(:Visit) }
+}
+
+# the declaration, read back in words
+oApp.Explain()
+#--&gt; WORLD SonibankVisits   lives in: memory (not persisted)
+#--&gt;   BEING
+#--&gt;     client (code, name, city)
+#--&gt;     visit (agent, date, subject)
+#--&gt;   RELATIONS
+#--&gt;     visit of client
+#--&gt;   BECOMING
+#--&gt;     when agent records visit require subject then keep visit
+#--&gt;     whenever client unseen 90 days -&gt; propose visit</pre><span class="rx-src">run in the library on 2026-10-20</span></div>
+
 <h2 id="met">Met from outside in four ways</h2>
 <ol class="steps">
 <li value="1"><b>Seen.</b> The world has a presence: it can be looked at, in whatever surface.</li>

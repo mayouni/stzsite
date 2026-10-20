@@ -258,6 +258,12 @@ def sample_html(sn, lang):
     body = esc(rowex.promise_body(sn["code"], sn["out"]))
     return f'<div class="sample"><pre class="rx">{body}</pre><span class="rx-src">{SAMPLE_T[lang].format(d=esc(sn["ran"][:10]))}</span></div>'
 
+def sample_by_key(lang, key):
+    """a run sample for any page: "stzApp.world" (a class introduction's) or "area:documentation.howto" (an area essay's)"""
+    cls, sid = key.rsplit(".", 1)
+    row = next((r for r in INTRO_RUN.get(cls, []) if r["id"] == sid), None)
+    return sample_html(row, lang) if row else ""
+
 def pick_example_html(cls, name, exs, rdata, lang):
     """the library example a captioned pick shows: the shortest one that CALLS the method, under a budget wide enough
     for an expressive example -- the row budget (five lines) is sized for a table cell, and a pick is not a cell"""

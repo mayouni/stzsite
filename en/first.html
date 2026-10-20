@@ -51,6 +51,33 @@
 </ol>
 
 <p>The narration <a href="narrations/stzapp-building-your-first-app-narration.html">Your first app with stzApp</a> builds one for a bank in Niamey, a tool for field agents who visit clients, and its page says which blocks kept their promise when run.</p>
+<div class="sample"><pre class="rx">oApp = new stzApp("SonibankVisits")
+oApp {
+    AddThingQ(:Client) { Has([ :code, :name, :city ]) }
+    AddThingQ(:Visit)  { Of(:Client)  Has([
+        :agent,
+        :date,
+        :subject
+    ]) }
+
+    AddFlowQ(:agent, :records, :Visit) {
+        Require(:subject)  Then( Keep(:Visit) )
+    }
+    AddReactionQ(:Client).Unseen(90, :Days) { Propose(:Visit) }
+}
+
+# the declaration, read back in words
+oApp.Explain()
+#--&gt; WORLD SonibankVisits   lives in: memory (not persisted)
+#--&gt;   BEING
+#--&gt;     client (code, name, city)
+#--&gt;     visit (agent, date, subject)
+#--&gt;   RELATIONS
+#--&gt;     visit of client
+#--&gt;   BECOMING
+#--&gt;     when agent records visit require subject then keep visit
+#--&gt;     whenever client unseen 90 days -&gt; propose visit</pre><span class="rx-src">run in the library on 2026-10-20</span></div>
+
 <h2 id="behind">What is behind it</h2>
 <p class="proof"><b>in construction</b> The world's being is judged by guards, its reactions fire in them, and the constellation of worlds has its own guard. A shorter road does not exist yet: there is no command that creates an application, and the five-minute route that a first-time visitor would expect, from nothing to a served page, is a target and not a path. The narration is a story told in code, and it is the page to start from. Its own opening says it is written as if the construct already shipped, which is why its blocks are marked as they are.</p>
   </div>

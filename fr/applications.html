@@ -39,6 +39,33 @@
     <p class="lede">Avec Softanza on construit des applications : on déclare un monde, et il tourne. Cette page cartographie ce qui le porte, plan par plan, avec l'étape de chacun, et dit quelles surfaces existent aujourd'hui.</p>
   </div></section>
   <div class="wrap page-body">
+<div class="sample"><pre class="rx">oApp = new stzApp("SonibankVisits")
+oApp {
+    AddThingQ(:Client) { Has([ :code, :name, :city ]) }
+    AddThingQ(:Visit)  { Of(:Client)  Has([
+        :agent,
+        :date,
+        :subject
+    ]) }
+
+    AddFlowQ(:agent, :records, :Visit) {
+        Require(:subject)  Then( Keep(:Visit) )
+    }
+    AddReactionQ(:Client).Unseen(90, :Days) { Propose(:Visit) }
+}
+
+# the declaration, read back in words
+oApp.Explain()
+#--&gt; WORLD SonibankVisits   lives in: memory (not persisted)
+#--&gt;   BEING
+#--&gt;     client (code, name, city)
+#--&gt;     visit (agent, date, subject)
+#--&gt;   RELATIONS
+#--&gt;     visit of client
+#--&gt;   BECOMING
+#--&gt;     when agent records visit require subject then keep visit
+#--&gt;     whenever client unseen 90 days -&gt; propose visit</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-20</span></div>
+
 <h2 id="world">Une application est un monde vivant</h2>
 <p>Une application, dans Softanza, est un monde de sens et pas une pile d'écrans. Elle est faite d'un domaine, qui est les choses qui s'y trouvent et leurs vérités ; d'une vie, qui est ce qu'elle fait et ce qu'elle veut ; et d'un corps, qui est l'endroit où elle dure. On la rencontre en la voyant, en l'engageant, en l'accordant et en l'atteignant. Une plateforme est alors une constellation de tels mondes, racontée sur <a href="platforms.html">la page de la plateforme de plateformes</a>.</p>
 <p>La couche applicative ne porte pas de nom propre. C'est une partie de la fondation et pas une sorte de produit, si bien que le site dit ce que c'est, puis montre comment.</p>

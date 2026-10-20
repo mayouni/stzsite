@@ -6,6 +6,9 @@ lede: Avec Softanza on construit des applications : on déclare un monde, et il 
 description: Les applications dans Softanza : une application est un monde vivant de sens, déclaré une fois ; les plans qui la portent, avec leurs étapes, et les pages qui racontent l'hôte, le chemin vers l'appareil, les surfaces et une première application.
 ---
 
+
+<!--SAMPLE:stzApp.world-->
+
 ## Une application est un monde vivant {#world}
 
 Une application, dans Softanza, est un monde de sens et pas une pile d'écrans. Elle est faite d'un domaine, qui est les choses qui s'y trouvent et leurs vérités ; d'une vie, qui est ce qu'elle fait et ce qu'elle veut ; et d'un corps, qui est l'endroit où elle dure. On la rencontre en la voyant, en l'engageant, en l'accordant et en l'atteignant. Une plateforme est alors une constellation de tels mondes, racontée sur <a href="platforms.html">la page de la plateforme de plateformes</a>.

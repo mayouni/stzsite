@@ -59,13 +59,13 @@ o2 = Q(&quot;The sky is blue.&quot;).TextQ()
 ? Why()
 #--&gt; apparently not: positive in tone</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-20</span></div><div class="sample"><pre class="rx"># near-natural code: the chain is the sentence, and the refusal is too
 ? Q(&quot;AnnIE&quot;).AtMost(2).VowelNB()
-#--&gt; 0
+#--&gt; FALSE
 
 ? Why()
 #--&gt; no: expected atmost 2, found 3
 
 ? Q(&quot;Anne&quot;).AtMost(2).VowelNB()
-#--&gt; 1
+#--&gt; TRUE
 
 ? Why()
 #--&gt; yes: expected atmost 2, found 2</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-20</span></div><p>La ligne honnête : c&#x27;est la meilleure chaîne classique embarquée et sans installation de ses pairs, compétitive avec NLTK et plus simple à atteindre, et un étage sous spaCy et Stanza sur exactement ce qui exige un modèle : reconnaissance neuronale d&#x27;entités, analyse en dépendances, plongements appris. Ces appels existent sur <code>stzText</code> et s&#x27;affinent quand un modèle local est présent ; la fonderie qui en fournirait un est l&#x27;échelon dû.</p></div>

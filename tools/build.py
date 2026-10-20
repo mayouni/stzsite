@@ -501,6 +501,8 @@ def inject(body_html, lang, idx, groups, rel="../"):
     body_html = re.sub(r"<!--SHOWCASE:([a-z0-9-]+)(?::([0-9,]+))?-->",
                        lambda m: showcase_html(lang, m.group(1), heading=False,
                                                only=[int(x) for x in m.group(2).split(",")] if m.group(2) else None), body_html)
+    # <!--SAMPLE:stzApp.world-->: a sample the introductions run, beside the idea it shows (tools/intro_run.py)
+    body_html = re.sub(r"(?:<p>)?<!--SAMPLE:([\w:.\-]+)-->(?:</p>)?", lambda m: story.sample_by_key(lang, m.group(1)), body_html)
     return diagram_imgs(body_html, rel)
 
 LONG = []
@@ -1010,7 +1012,7 @@ def build_profiles(lang):
         body = (f'<h2>{ui["start_h"]}</h2><p><a href="{start["page"]}">{esc(st_txt)}</a>.</p>'
                 f'<h2 id="path">{ui["path_h"]}</h2><p class="proof">{ui["stage_intro"]}</p>{"".join(path)}'
                 f'<h2 id="site">{ui["site_h"]}</h2>{"".join(site)}'
-                f'<h2 id="offer">{ui["offer_h"]}</h2><p>{ui["offer"]} {offer}.</p>'
+                f'<h2 id="offer">{ui["offer_h"]}</h2><p>{ui["offer"]} {offer}.</p>{story.sample_by_key(lang, p_["sample"]) if p_.get("sample") else ""}'
                 + (f'<h2>{ui["pos_h"]}</h2>{pos}' if pos else ""))
         slug = f"for-{p_['id']}"
         page = page_shell(lang, slug, p_["title"][lang], p_["card"][lang], esc(p_["name"][lang]), esc(p_["title"][lang]), esc(p_["card"][lang]), body,

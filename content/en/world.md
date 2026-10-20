@@ -16,6 +16,9 @@ description: The world as the Softanza construct of an application: the domain, 
 
 Strip any of the three and there is no world.
 
+
+<!--SAMPLE:stzApp.world-->
+
 ## Met from outside in four ways {#met}
 
 <ol class="steps">

@@ -22,3 +22,6 @@ Every area of the platform has its classes in the reference. Pick an area to ope
 </div>
 
 <p class="way"><span>The Softanza way</span> The library documents itself. An object answers with its own methods, explains each one, and says how; this documentation is that answer, collected and published, not a manual written beside the code.</p>
+
+
+<!--SAMPLE:area:documentation.howto-->

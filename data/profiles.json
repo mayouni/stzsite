@@ -110,7 +110,8 @@
     "page": "start.html",
     "en": "The Start page: the install, then your first program",
     "fr": "La page Démarrer : l'installation, puis votre premier programme"
-   }
+   },
+   "sample": "stzList.deep"
   },
   {
    "id": "analysts",
@@ -220,7 +221,8 @@
     "page": "first.html",
     "en": "Your first application, declared as a world",
     "fr": "Votre première application, déclarée comme un monde"
-   }
+   },
+   "sample": "stzDataSet.centre"
   },
   {
    "id": "architects",
@@ -326,7 +328,8 @@
     "page": "architecture.html",
     "en": "How Softanza is built, from the engine to the folders",
     "fr": "Comment Softanza est construite, du moteur aux dossiers"
-   }
+   },
+   "sample": "stzDiagram.flow"
   },
   {
    "id": "leaders",
@@ -417,7 +420,8 @@
     "page": "offering.html#decide",
     "en": "For an organisation, in eight answers",
     "fr": "Pour une organisation, en huit réponses"
-   }
+   },
+   "sample": "stzAgentGraph.unsound"
   },
   {
    "id": "educators",
@@ -505,7 +509,8 @@
     "page": "education.html",
     "en": "The Education page, by the door that fits you",
     "fr": "La page Éducation, par la porte qui vous convient"
-   }
+   },
+   "sample": "stzNumber.prime"
   },
   {
    "id": "agents",
@@ -591,7 +596,8 @@
     "page": "agents.html",
     "en": "How an agent reads Softanza",
     "fr": "Comment un agent lit Softanza"
-   }
+   },
+   "sample": "stzSecret.mask"
   }
  ]
 }

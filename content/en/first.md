@@ -19,6 +19,9 @@ description: How to build a first application in Softanza: the world as a domain
 
 The narration <a href="narrations/stzapp-building-your-first-app-narration.html">Your first app with stzApp</a> builds one for a bank in Niamey, a tool for field agents who visit clients, and its page says which blocks kept their promise when run.
 
+
+<!--SAMPLE:stzApp.world-->
+
 ## What is behind it {#behind}
 
 <p class="proof"><b>in construction</b> The world's being is judged by guards, its reactions fire in them, and the constellation of worlds has its own guard. A shorter road does not exist yet: there is no command that creates an application, and the five-minute route that a first-time visitor would expect, from nothing to a served page, is a target and not a path. The narration is a story told in code, and it is the page to start from. Its own opening says it is written as if the construct already shipped, which is why its blocks are marked as they are.</p>

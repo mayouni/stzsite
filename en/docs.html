@@ -52,6 +52,11 @@
 </div>
 
 <p class="way"><span><a href="way.html">The Softanza way</a></span> The library documents itself. An object answers with its own methods, explains each one, and says how; this documentation is that answer, collected and published, not a manual written beside the code.</p>
+
+<div class="sample"><pre class="rx"># the library documents itself, and no model is involved
+o1 = StzSelfDocQ(&quot;stzList&quot;)
+? StzFindFirst(&quot;RemoveDuplicates&quot;, o1.HowTo(&quot;remove duplicates&quot;)) &gt; 0
+#--&gt; TRUE</pre><span class="rx-src">run in the library on 2026-10-20</span></div>
   </div>
 </main>
 </div>
