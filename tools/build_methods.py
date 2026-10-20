@@ -129,7 +129,7 @@ def build_methods(ctx):
                    + "".join(f'<li>{t["howto"]} : <a href="../../howto/{howto_page(r)}.html">{esc(howto_intent(r, lang))}</a></li>'.replace(" : ", ": " if lang == "en" else " : ")
                              for r in howtos.get((cls, meth), []))
                    + "</ul>")
-            lede = prose(desc) if desc else f'{t["no_desc"]} <span class="mono">{esc(split_camel(meth))}</span>'
+            lede = prose(desc) if desc else (f'{t["no_desc"].split(".")[0]}.' if len(split_camel(meth).split()[-1]) == 1 else f'{t["no_desc"]} <span class="mono">{esc(split_camel(meth))}</span>')
             aka_html = f'<p class="proof">{t["aka"]}: {prose(aka)}</p>' if aka else ""
             written = c["also_written"].get(meth.lower(), [])        # its other names: listed once, here
             if written: aka_html += f'<p class="proof">{t["written"]}: <span class="mono">{esc(" · ".join(written))}</span></p>'

@@ -54,6 +54,14 @@ def split_camel(name):
     s = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1 \2", s)
     return s.lower()
 
+def undescribed(t, name):
+    """a method with no description says so, and gives its name read as a sentence -- unless the name ends in a lone letter
+    (WorkingDaysBetweenN: N is "number of", not a word), where the sentence would be wrong: until the self-documentation
+    grammar supplies it (STZSITE-NAMESENTENCE-01) the row says only that it is not described"""
+    sent = split_camel(name)
+    if len(sent.split()[-1]) == 1: return f'<i>{esc(t["no_desc"].split(".")[0])}.</i>'
+    return f'<i>{esc(t["no_desc"])}</i> <span class="mono">{esc(sent)}</span>'
+
 def chips(name, t):
     out = []
     base = name
@@ -205,7 +213,7 @@ def build_reference(ctx):
             rows = []
             for m in c["own"]:
                 name, aka, desc = m
-                d = prose(desc) if desc else f'<i>{esc(t["no_desc"])}</i> <span class="mono">{esc(split_camel(name))}</span>'
+                d = prose(desc) if desc else undescribed(t, name)
                 aka_html = f'<small>{t["aka"]}: {prose(aka)}</small>' if aka else ""
                 sec = c["sections"].get(name.lower())          # the harvest read a section title as this method's comment: say it is the section
                 sec_html = f'<small>{t["section"]} <b>{prose(sec)}</b></small>' if sec else ""
@@ -227,7 +235,7 @@ def build_reference(ctx):
             for name, aka, desc, owner in c["extra"]:      # a method of an ancestor to which this class gives extensions
                 exs = entries.get((c["name"], name))
                 nm = f'<a href="{c["name"].lower()}/{mslug(name)}.html">{esc(name)}</a>' if exs else esc(name)
-                d = prose(desc) if desc else f'<i>{esc(t["no_desc"])}</i> <span class="mono">{esc(split_camel(name))}</span>'
+                d = prose(desc) if desc else undescribed(t, name)
                 strip = extshow.row_strip(c["variants"].get(name.lower(), []), lang)
                 rows.append(f'<div class="lane lane2 rrow" id="{esc(name.lower())}" data-k="{esc((name + " " + desc).lower())}"><div class="ln mono">{nm}</div><div class="lt">{d}<small>{extshow.T[lang]["inherited"].format(owner=esc(owner))}</small><span class="ext-line">{strip}</span></div></div>')
             title = c["name"]
