@@ -365,7 +365,11 @@ oHierarchy {
        │ Manager │       
        ╰─────────╯  </pre>
 <p>Extract insights:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>? oHierarchy.ReachableFrom(:@person)  #--&gt; [:@person, :@employee, :@manager]
+<div class="nblock"><div class="lbl">Haro</div><pre>? oHierarchy.ReachableFrom(:@person)  #--&gt; [
+    :@person,
+    :@employee,
+    :@manager
+]
 ? oHierarchy.Explain()</pre><p class="ran nv-illus">illustration</p></div>
 <p>Output:</p>
 <pre>Graph: TypeSystem

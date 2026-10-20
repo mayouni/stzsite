@@ -42,18 +42,30 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;B&quot;, &quot;B&quot;, &quot;b&quot;, &quot;C&quot;, &quot;B&quot;, &quot;C&quot;, &quot;C&quot;, &quot;c&quot;, &quot;A&quot; ])
+    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    "A",
+    "B",
+    "B",
+    "B",
+    "b",
+    "C",
+    "B",
+    "C",
+    "C",
+    "c",
+    "A"
+])
 # finddupsecutiveitems example 1
 ? @@( o1.FindDupSecutiveItems() )
 # finddupsecutiveitems example 2
 ? @@( o1.DupSecutiveItemsZ() )
 # finddupsecutiveitems example 3
-? @@( o1.FindThisDupSecutiveItem(&quot;B&quot;) )
+? @@( o1.FindThisDupSecutiveItem("B") )
 # finddupsecutiveitems example 4
-? @@( o1.FindThisDupSecutiveItemCS(&quot;B&quot;, :CS = FALSE) )
+? @@( o1.FindThisDupSecutiveItemCS("B", :CS = FALSE) )
 # finddupsecutiveitems example 5
-? @@( o1.DupSecutiveItemCSZ(&quot;B&quot;, FALSE) )
-o1.RemoveDupSecutiveItemCS(&quot;B&quot;, FALSE)
+? @@( o1.DupSecutiveItemCSZ("B", FALSE) )
+o1.RemoveDupSecutiveItemCS("B", FALSE)
 # finddupsecutiveitems example 6
 ? @@( o1.Content() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 3, 4, 9 ]
 [ [ &quot;B&quot;, [ 3, 4 ] ], [ &quot;C&quot;, [ 9 ] ] ]

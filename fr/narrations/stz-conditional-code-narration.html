@@ -169,10 +169,17 @@ a deprecated alias of <code>W</code>.</p>
 <h2 id="the-wf-family-anonymous-function-constraints">The <code>WF</code> family — anonymous-function constraints</h2>
 <p><code>WF</code> takes a Haro function <code>f(item)</code> that returns true/false. It is called
 natively, so the constraint can be <em>anything</em> Haro can express.</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>o = new stzList([ &quot;alpha&quot;, &quot;BETA&quot;, &quot;gamma&quot;, &quot;DELTA&quot; ])
+<div class="nblock"><div class="lbl">Haro</div><pre>o = new stzList([ "alpha", "BETA", "gamma", "DELTA" ])
 
-? @@( o.FindWF(   func x { return Q(x).IsUppercase() } ) )   #--&gt; [ 2, 4 ]
-? @@( o.ItemsWF(  func x { return len(x) &gt; 4 } ) )           #--&gt; [ &quot;alpha&quot;, &quot;gamma&quot;, &quot;DELTA&quot; ]
+? @@( o.FindWF(   func x { return Q(x).IsUppercase() } ) )   #--&gt; [
+    2,
+    4
+]
+? @@( o.ItemsWF(  func x { return len(x) &gt; 4 } ) )           #--&gt; [
+    "alpha",
+    "gamma",
+    "DELTA"
+]
 ? o.CheckWF(      func x { return isString(x) } )            #--&gt; TRUE
 ? o.CountWF(      func x { return Q(x).IsLowercase() } )     #--&gt; 2</pre><p class="ran nv-illus">illustration</p></div>
 <p>The <code>WF</code> set mirrors the <code>W</code> set: <code>FindWF</code>/<code>FindAllWF</code>/<code>PositionsWF</code>,

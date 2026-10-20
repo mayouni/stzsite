@@ -58,7 +58,16 @@
 <p>While the fellowing returns the substring <strong>starting at</strong> position 3 <strong>and spanning</strong> 5 positions forward:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>Q(&quot;SOFTANZA&quot;).Range(3, 5) #--&gt; &quot;TANZA&quot; : </pre><p class="ran nv-illus">illustration</p></div>
 <p>The <code>Section()</code> function works the same way with both <strong>strings</strong> and <strong>lists</strong>:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>? Q([ &quot;S&quot;, &quot;O&quot;, &quot;F&quot;, &quot;T&quot;, &quot;A&quot;, &quot;N&quot;, &quot;Z&quot;, &quot;A&quot; ]).Section(3, 5) #--&gt; [ &quot;T&quot;, &quot;A&quot;, &quot;N&quot; ]</pre><p class="ran nv-illus">illustration</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q([
+    "S",
+    "O",
+    "F",
+    "T",
+    "A",
+    "N",
+    "Z",
+    "A"
+]).Section(3, 5) #--&gt; [ "T", "A", "N" ]</pre><p class="ran nv-illus">illustration</p></div>
 <blockquote>
 <p>The <code>Range()</code> function is also used in the same way with both strings and lists.</p>
 </blockquote>
@@ -166,12 +175,26 @@ oSections.MergeSections()
 <p>This output shows us all the duplicated substrings and their positions (as sections) in the string. For our purpose, we need just the sections themselves, so let's just add <code>Find</code> at the beginning of the <code>DupSecutiveSubStringsZZ()</code> method:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Extract just the sections:
 ? @@( o1.FindDupSecutiveSubStringsZZ() )
-#--&gt; [ [ 9, 12 ], [ 10, 13 ], [ 26, 29 ], [ 11, 14 ], [ 8, 11 ], [ 12, 15 ] ]
+#--&gt; [
+#--&gt;     [ 9, 12 ],
+#--&gt;     [ 10, 13 ],
+#--&gt;     [ 26, 29 ],
+#--&gt;     [ 11, 14 ],
+#--&gt;     [ 8, 11 ],
+#--&gt;     [ 12, 15 ]
+#--&gt; ]
 
 # Sort them in descending order for processing
 aSections = reverse( @Sort(o1.FindDupSecutiveSubStringsZZ()) )
 ? @@(aSections)
-#--&gt; [ [ 26, 29 ], [ 12, 15 ], [ 11, 14 ], [ 10, 13 ], [ 9, 12 ], [ 8, 11 ] ]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:44 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; [
+#--&gt;     [ 26, 29 ],
+#--&gt;     [ 12, 15 ],
+#--&gt;     [ 11, 14 ],
+#--&gt;     [ 10, 13 ],
+#--&gt;     [ 9, 12 ],
+#--&gt;     [ 8, 11 ]
+#--&gt; ]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:44 au commit 4a184e6f0 : a tenu sa promesse</p></div>
 <p>Now, let's demonstrate why proper section merging is crucial. If we try to remove these sections one by one without merging them first:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>for section in aSections
 	o1.RemoveSection(section[1], section[2])
@@ -188,7 +211,14 @@ o1.RemoveSections(aSections)
 <div class="nblock"><div class="lbl">Haro</div><pre>? @@( StzListOfSectionsQ(aSections).MergeSectionsQ().Content() )
 #--&gt; [ [ 8, 15 ], [ 26, 29 ] ]</pre><p class="ran nv-illus">illustration</p></div>
 <p>What happened here is remarkable. Softanza took our complex list of overlapping sections:</p>
-<pre>[ [ 9, 12 ], [ 10, 13 ], [ 26, 29 ], [ 11, 14 ], [ 8, 11 ], [ 12, 15 ] ]</pre>
+<pre>[
+    [ 9, 12 ],
+    [ 10, 13 ],
+    [ 26, 29 ],
+    [ 11, 14 ],
+    [ 8, 11 ],
+    [ 12, 15 ]
+]</pre>
 <p>And merged them into two clean, <strong>non-overlapping</strong> sections:</p>
 <pre>[ [ 8, 15 ], [ 26, 29 ] ]</pre>
 <p>This merging process ensures that our string manipulation operations work correctly. The first merged section <code>[8, 15]</code> cleanly captures all the overlapping <code>"Haro"</code> duplicates, while the second section <code>[26, 29]</code> handles the duplicated <code>"Ruby"</code>. When these merged sections are used internally with <code>RemoveSections()</code>, we get exactly the result we want.</p>

@@ -43,7 +43,15 @@
   <div class="wrap page-body">
     
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ :monday, :monday, :monday ])
-? o1.IsMadeOfOneOfThese([ :sunday, :monday, :saturday, :wednesday, :thirsday, :friday, :saturday ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/624_ismadeofoneofthese.ring" target="_blank" rel="noopener noreferrer">624_ismadeofoneofthese.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;me&quot;, &quot;you&quot;, &quot;all&quot;, &quot;the&quot;, &quot;others&quot; ])
+? o1.IsMadeOfOneOfThese([
+    :sunday,
+    :monday,
+    :saturday,
+    :wednesday,
+    :thirsday,
+    :friday,
+    :saturday
+])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/624_ismadeofoneofthese.ring" target="_blank" rel="noopener noreferrer">624_ismadeofoneofthese.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;me&quot;, &quot;you&quot;, &quot;all&quot;, &quot;the&quot;, &quot;others&quot; ])
 # containsoneofthese example 1
 ? @@( o1.ContainsOneOfThese([ &quot;me&quot;, &quot;you&quot; ]) )
 # containsoneofthese example 2

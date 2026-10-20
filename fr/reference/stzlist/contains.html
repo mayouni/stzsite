@@ -80,15 +80,27 @@ TRUE</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibli
 2
 4
 3
-6</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/265_containscs.ring" target="_blank" rel="noopener noreferrer">265_containscs.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;1&quot;, &quot;1&quot;, [ &quot;2&quot;, &quot;♥&quot;, &quot;2&quot;], &quot;1&quot;, [ &quot;2&quot;, [&quot;3&quot;, &quot;🌞&quot;] ] , &quot;3&quot; ])
-? o1.FindFirst(&quot;3&quot;)
-? o1.FindNth(3, &quot;1&quot;)
-? o1.Contains([ &quot;2&quot;, &quot;♥&quot;, &quot;2&quot;])
-? o1.DeepContains(&quot;🌞&quot;)
-? o1.DeepContainsMany([ &quot;1&quot;, &quot;♥&quot;, &quot;3&quot;, &quot;🌞&quot; ]) # Or DeepContainsThese()
-? o1.DeepContainsBoth(&quot;♥&quot;, :And = &quot;🌞&quot;)
-? o1.DeepContainsOneOfThese([&quot;_&quot;, &quot;🌞&quot;, &quot;0&quot; ])
-? o1.DeepContainsNOfThese(2, [&quot;_&quot;, &quot;🌞&quot;, &quot;0&quot;, &quot;♥&quot; ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>6
+6</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/265_containscs.ring" target="_blank" rel="noopener noreferrer">265_containscs.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    "1",
+    "1",
+    [ "2", "♥", "2"],
+    "1",
+    [ "2", ["3", "🌞"] ],
+    "3"
+])
+? o1.FindFirst("3")
+? o1.FindNth(3, "1")
+? o1.Contains([ "2", "♥", "2"])
+? o1.DeepContains("🌞")
+? o1.DeepContainsMany([
+    "1",
+    "♥",
+    "3",
+    "🌞"
+]) # Or DeepContainsThese()
+? o1.DeepContainsBoth("♥", :And = "🌞")
+? o1.DeepContainsOneOfThese(["_", "🌞", "0" ])
+? o1.DeepContainsNOfThese(2, ["_", "🌞", "0", "♥" ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>6
 4
 TRUE
 TRUE

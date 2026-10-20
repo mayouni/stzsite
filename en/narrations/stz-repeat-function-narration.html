@@ -101,22 +101,25 @@ Q(5).RepeatedXT(:InA = :ListOfStrings, :OfSize = 3)
 </blockquote>
 <h2 id="multidimensional-structures">Multidimensional Structures</h2>
 <p>Grids, tables, and other complex data structures can also be generated with elegance and ease:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>@@( Q(&quot;A&quot;).RepeatedXT(:InA = :Grid, :OfSize = [3, 3]) )
+<div class="nblock"><div class="lbl">Haro</div><pre>@@( Q("A").RepeatedXT(:InA = :Grid, :OfSize = [3, 3]) )
 #--&gt;
 # [
-# [ &quot;A&quot;, &quot;A&quot;, &quot;A&quot; ],
-# [ &quot;A&quot;, &quot;A&quot;, &quot;A&quot; ],
-# [ &quot;A&quot;, &quot;A&quot;, &quot;A&quot; ]
+# [ "A", "A", "A" ],
+# [ "A", "A", "A" ],
+# [ "A", "A", "A" ]
 # ]
 
-? @@( Q(&quot;A&quot;).RepeatedXT(:InA = :Table, :OfSize = [3, 3]) )
+? @@( Q("A").RepeatedXT(:InA = :Table, :OfSize = [3, 3]) )
 #--&gt; [
-# [ &quot;COL1&quot;, [ &quot;A&quot;, &quot;A&quot;, &quot;A&quot; ] ],
-# [ &quot;COL2&quot;, [ &quot;A&quot;, &quot;A&quot;, &quot;A&quot; ] ],
-# [ &quot;COL3&quot;, [ &quot;A&quot;, &quot;A&quot;, &quot;A&quot; ] ]
+# [ "COL1", [ "A", "A", "A" ] ],
+# [ "COL2", [ "A", "A", "A" ] ],
+# [ "COL3", [ "A", "A", "A" ] ]
 # ]
 
-? Q(&quot;A&quot;).RepeatXTQ(:InA = :Table, :OfSize = [3, 3]).ToStzTable().Show()
+? Q("A").RepeatXTQ(:InA = :Table, :OfSize = [
+    3,
+    3
+]).ToStzTable().Show()
 #--&gt;
 # COL1   COL2   COL3
 # ----- ------ -----

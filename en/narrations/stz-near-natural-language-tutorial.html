@@ -49,7 +49,11 @@
 <div class="lbl">Python, shown for comparison, not run</div><pre>if word.islower() and word.isascii() and len(word) == 4:
     # process word</pre>
 <p>With Softanza's NNP, the same logic becomes:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;haro&quot;).IsAXT([:Lowercase, :Latin, :String]).WhichQ().HasAQ().LengthQ().EqualTo(4)
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q("haro").IsAXT([
+    :Lowercase,
+    :Latin,
+    :String
+]).WhichQ().HasAQ().LengthQ().EqualTo(4)
 #--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
 <p>NNP isn't AI or natural language processing—it's carefully designed method chaining that makes code <strong>thinkable</strong>. You write executable expressions that read like sentences while maintaining full programming precision.</p>
 <p><em>For an in-depth exploration of NNP's philosophy and elegant design principles, see the companion article "Near-Natural Programming: Bridging Human Thought and Code Execution."</em></p>
@@ -143,13 +147,21 @@ SetLastValue(3)
 ? Q(&quot;AnnIE&quot;).Vowel()      # Returns random vowel</pre><p class="ran nv-illus">illustration</p></div>
 <h2 id="working-with-collections">Working with Collections</h2>
 <h3 id="natural-collection-queries">Natural Collection Queries</h3>
-<div class="nblock"><div class="lbl">Haro</div><pre>? Q([&quot;Haro&quot;, :and = &quot;Ruby&quot;]).AreBothQ(:strings)
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q(["Haro", :and = "Ruby"]).AreBothQ(:strings)
 #--&gt; TRUE
 
-? Q([&quot;Haro&quot;, :and = &quot;Ruby&quot;]).AreBothQ(:strings).HavingQ().TheirQ().FirstCharQ().EqualTo(&quot;R&quot;)
+? Q([
+    "Haro",
+    :and = "Ruby"
+]).AreBothQ(:strings).HavingQ().TheirQ().FirstCharQ().EqualTo("R")
 #--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
 <h3 id="list-validations">List Validations</h3>
-<div class="nblock"><div class="lbl">Haro</div><pre>? Q([-1200, -10200, -820, -10]).AreQ(:numbers).ThatQ().AreNegativeQ().AndQ().DividableBy(10)
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q([
+    -1200,
+    -10200,
+    -820,
+    -10
+]).AreQ(:numbers).ThatQ().AreNegativeQ().AndQ().DividableBy(10)
 #--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
 <h2 id="future-programming-planning-ahead">Future Programming: Planning Ahead</h2>
 <h3 id="basic-future-actions">Basic Future Actions</h3>
@@ -178,17 +190,32 @@ ExecuteFutureOn(oStr)
 CleanFuture()  # Clear the queue</pre><p class="ran nv-illus">illustration</p></div>
 <h2 id="advanced-natural-expressions">Advanced Natural Expressions</h2>
 <h3 id="complex-property-chains">Complex Property Chains</h3>
-<div class="nblock"><div class="lbl">Haro</div><pre>? QM(&quot;haro&quot;).IsAQ([:Lowercase, :Latin, :String]).WhichQ().HasAQ().LengthQ().EqualTo(4)
+<div class="nblock"><div class="lbl">Haro</div><pre>? QM("haro").IsAQ([
+    :Lowercase,
+    :Latin,
+    :String
+]).WhichQ().HasAQ().LengthQ().EqualTo(4)
 #--&gt; TRUE
 
-? TheStringQM(&quot;haro&quot;).IsAQ([:Lowercase, :Latin, :String]).WithAQ().LengthQ().Of(4)
+? TheStringQM("haro").IsAQ([
+    :Lowercase,
+    :Latin,
+    :String
+]).WithAQ().LengthQ().Of(4)
 #--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
 <h3 id="context-rich-validations">Context-Rich Validations</h3>
-<div class="nblock"><div class="lbl">Haro</div><pre>? TheWordQM(&quot;haro&quot;).IsAQ([:Lowercase, :Latin, :Word]).WithQ().ALengthQ().
+<div class="nblock"><div class="lbl">Haro</div><pre>? TheWordQM("haro").IsAQ([
+    :Lowercase,
+    :Latin,
+    :Word
+]).WithQ().ALengthQ().
   OfQ(4)._Q(:Letters).AndQ().OnlyQM(1).VowelNB()
 #--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
 <h3 id="comparative-expressions">Comparative Expressions</h3>
-<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;haro&quot;).IsTheQ([:Lowercase, :string]).WhichIsQ().TheQ().ReverseOfB(&quot;gnir&quot;)
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q("haro").IsTheQ([
+    :Lowercase,
+    :string
+]).WhichIsQ().TheQ().ReverseOfB("gnir")
 #--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
 <h2 id="error-tolerance">Error Tolerance</h2>
 <p>NNP handles common variations and typos:</p>

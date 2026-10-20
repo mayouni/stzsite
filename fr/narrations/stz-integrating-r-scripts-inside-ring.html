@@ -162,14 +162,31 @@ R.Execute()
 ? @@( R.Result() )</pre><p class="ran nv-illus">illustration</p></div>
 <p>Output:</p>
 <pre>[
-    [ &quot;raw_data&quot;, [ 18.20, 19.50, 22.10, 23.40, 25.80, 26.90, 27.50, 28.10, 26.80, 25.20 ] ],
-    [ &quot;statistics&quot;,
-        [ [ &quot;mean&quot;, 24.35 ],
-          [ &quot;sd&quot;, 3.44 ],
-          [ &quot;quartiles&quot;, [ 22.43, 25.50, 26.88 ] ],
-          [ &quot;range&quot;, [ 18.20, 28.10 ] ] ]
+    [
+        "raw_data",
+        [
+            18.20,
+            19.50,
+            22.10,
+            23.40,
+            25.80,
+            26.90,
+            27.50,
+            28.10,
+            26.80,
+            25.20
+        ]
     ],
-    [ &quot;analysis&quot;, [ [ &quot;above_25&quot;, 6 ], [ &quot;percent_above_25&quot;, 60 ] ] ]
+    [ "statistics",
+        [ [ "mean", 24.35 ],
+          [ "sd", 3.44 ],
+          [ "quartiles", [ 22.43, 25.50, 26.88 ] ],
+          [ "range", [ 18.20, 28.10 ] ] ]
+    ],
+    [
+        "analysis",
+        [ [ "above_25", 6 ], [ "percent_above_25", 60 ] ]
+    ]
 ]</pre>
 <h2 id="nested-calculations-with-custom-functions">Nested Calculations with Custom Functions</h2>
 <p>Softanza’s <code>R()</code> function lets you define and execute custom R functions seamlessly within Haro. Here’s an example where we analyze two numerical groups, compute key metrics, and compare them:</p>
@@ -212,28 +229,36 @@ proff()
 <p>The result gives a structured view of the data, metrics, and comparisons, all computed in a single <code>R()</code> call:</p>
 <pre>[
 	[
-		&quot;groups&quot;,
+		"groups",
 		[
-			[ &quot;group_a&quot;, [ 15, 18, 21, 24, 27 ] ],
-			[ &quot;group_b&quot;, [ 22, 25, 28, 31, 34 ] ]
+			[ "group_a", [ 15, 18, 21, 24, 27 ] ],
+			[ "group_b", [ 22, 25, 28, 31, 34 ] ]
 		]
 	],
 	[
-		&quot;metrics&quot;,
+		"metrics",
 		[
 			[
-				&quot;group_a_metrics&quot;,
-				[ [ &quot;mean&quot;, 21 ], [ &quot;variance&quot;, 22.50 ], [ &quot;coefficient_variation&quot;, 22.59 ] ]
+				"group_a_metrics",
+				[
+				    [ "mean", 21 ],
+				    [ "variance", 22.50 ],
+				    [ "coefficient_variation", 22.59 ]
+				]
 			],
 			[
-				&quot;group_b_metrics&quot;,
-				[ [ &quot;mean&quot;, 28 ], [ &quot;variance&quot;, 22.50 ], [ &quot;coefficient_variation&quot;, 16.94 ] ]
+				"group_b_metrics",
+				[
+				    [ "mean", 28 ],
+				    [ "variance", 22.50 ],
+				    [ "coefficient_variation", 16.94 ]
+				]
 			]
 		]
 	],
 	[
-		&quot;comparison&quot;,
-		[ [ &quot;mean_difference&quot;, 7 ], [ &quot;ratio&quot;, 1.33 ] ]
+		"comparison",
+		[ [ "mean_difference", 7 ], [ "ratio", 1.33 ] ]
 	]
 ]</pre>
 <h2 id="time-series-analysis-and-aggregation">Time Series Analysis and Aggregation</h2>
@@ -271,24 +296,27 @@ proff()
 <p>This example showcases how <code>R()</code> enables time series manipulation and statistical aggregation in one integrated step:</p>
 <pre>[
 	[
-		&quot;time_series&quot;,
+		"time_series",
 		[
-			[ &quot;dates&quot;, [ &quot;2024-01-01&quot;, &quot;2024-01-02&quot;, ...,  &quot;2024-01-30&quot; ] ],
-			[ &quot;values&quot;, [ 116.31, 98.84, ..., 87.77, 92.12 ] ]
+			[
+			    "dates",
+			    [ "2024-01-01", "2024-01-02", ...,  "2024-01-30" ]
+			],
+			[ "values", [ 116.31, 98.84, ..., 87.77, 92.12 ] ]
 		]
 	],
 	[
-		&quot;weekly_stats&quot;,
+		"weekly_stats",
 		[
-			[ &quot;week_means&quot;, [ 99.69, 108.34, 92.70, 91.40, 89.95 ] ],
-			[ &quot;week_sds&quot;, [ 10.97, 16.15, 6.34, 15.47, 3.08 ] ]
+			[ "week_means", [ 99.69, 108.34, 92.70, 91.40, 89.95 ] ],
+			[ "week_sds", [ 10.97, 16.15, 6.34, 15.47, 3.08 ] ]
 		]
 	],
 	[
-		&quot;trends&quot;,
+		"trends",
 		[
-			[ &quot;overall_trend&quot;, [ 106.51, -0.58 ] ],
-			[ &quot;volatility&quot;, 18.97 ]
+			[ "overall_trend", [ 106.51, -0.58 ] ],
+			[ "volatility", 18.97 ]
 		]
 	]
 ]</pre>

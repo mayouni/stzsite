@@ -203,9 +203,12 @@ oTimeLine.BlockPoint(&quot;HR-EVAL&quot;)</pre><p class="ran nv-illus">illustrat
 <div class="nblock"><div class="lbl">Haro</div><pre>oTimeLine.AddPoint(&quot;MEETING&quot;, &quot;2024-07-10&quot;)
 #--&gt; ERROR: Point &#x27;MEETING&#x27; falls within a blocked span or blocked point</pre><p class="ran nv-illus">illustration</p></div>
 <p>Check proactively using the unified <code>IsBlocked()</code> method, which handles both single times and ranges:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>? oTimeLine.IsBlocked(&quot;2024-07-10&quot;)  # TRUE (single datetime)
-? oTimeLine.IsBlocked([&quot;2024-07-14&quot;, &quot;2024-07-16&quot;])  # TRUE (range with partial overlap)
-? oTimeLine.IsBlocked(&quot;HR-EVAL&quot;)  # TRUE (if blocked by label)</pre><p class="ran nv-illus">illustration</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oTimeLine.IsBlocked("2024-07-10")  # TRUE (single datetime)
+? oTimeLine.IsBlocked([
+    "2024-07-14",
+    "2024-07-16"
+])  # TRUE (range with partial overlap)
+? oTimeLine.IsBlocked("HR-EVAL")  # TRUE (if blocked by label)</pre><p class="ran nv-illus">illustration</p></div>
 <p><code>IsBlocked()</code> intelligently handles datetimes, ranges as lists, or labels for flexibility (to be explicit you can use <code>IsBlockedSection(pStart, pEnd)</code> instead)</p>
 <p>And <strong>see it visually</strong>:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oTimeLine.Show()</pre><p class="ran nv-illus">illustration</p></div>

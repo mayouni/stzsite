@@ -45,9 +45,12 @@
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;b&quot;, &quot;b&quot;, &quot;b&quot;, &quot;c&quot; ])
 o1.RemoveItemsAtPositions([2,3,4])
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>a
-c</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/635_removeitemsatpositions.ring" target="_blank" rel="noopener noreferrer">635_removeitemsatpositions.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;E&quot;, &quot;a&quot;, &quot;c&quot;, &quot;V&quot;, &quot;E&quot; ])
-? o1.FindMany([ &quot;a&quot;, &quot;c&quot; ])
-? o1 - These([ &quot;a&quot;, &quot;c&quot; ]) # Same as: o1.RemoveItemsAtPositions([ 1, 3, 4 ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+c</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/635_removeitemsatpositions.ring" target="_blank" rel="noopener noreferrer">635_removeitemsatpositions.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ "a", "E", "a", "c", "V", "E" ])
+? o1.FindMany([ "a", "c" ])
+? o1 - These([
+    "a",
+    "c"
+]) # Same as: o1.RemoveItemsAtPositions([ 1, 3, 4 ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 3
 4
 

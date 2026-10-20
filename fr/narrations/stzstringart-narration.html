@@ -348,13 +348,17 @@ You can configure the table's stroke, adjustment, and other thinks, but let's ke
 </blockquote>
 <h3 id="visual-search-and-highlight">Visual Search and Highlight</h3>
 <p>One of Softanza's unique features is its ability to visually find and highlight elements within a string or list. This can be incredibly useful for debugging, data analysis, or creating interactive tutorials.</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>load &quot;stzlib.ring&quot;
+<div class="nblock"><div class="lbl">Haro</div><pre>load "stzlib.ring"
 
-? Q(&quot;RINGORIALAND&quot;).vizFindAll(&quot;I&quot;)
+? Q("RINGORIALAND").vizFindAll("I")
 #--&gt; RINGORIALAND
 #    -^----^-----
 
-? Q(&quot;CAIRO&quot;).vizFindXT(&quot;I&quot;, [:Boxed = TRUE, :Rounded = TRUE, :VisualSign = &quot;♥&quot;])
+? Q("CAIRO").vizFindXT("I", [
+    :Boxed = TRUE,
+    :Rounded = TRUE,
+    :VisualSign = "♥"
+])
 #--&gt;
 #    ╭───┬───┬───┬───┬───╮
 #--&gt; │ C │ A │ I │ R │ O │

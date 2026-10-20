@@ -113,8 +113,11 @@ sandbox). No <code>eval()</code> is involved.</p>
 <p>When you need real Haro logic (your own functions, object methods, anything the
 DSL deliberately doesn't allow), use the <strong><code>WF()</code></strong> form, which takes an
 anonymous function — full power, still no <code>eval()</code>:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>o2 = new stzList([ &quot;alpha&quot;, &quot;BETA&quot;, &quot;gamma&quot;, &quot;DELTA&quot; ])
-? @@( o2.FindWF( func x { return Q(x).IsUppercase() } ) )  #--&gt; [ 2, 4 ]</pre><p class="ran nv-illus">illustration</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>o2 = new stzList([ "alpha", "BETA", "gamma", "DELTA" ])
+? @@( o2.FindWF( func x { return Q(x).IsUppercase() } ) )  #--&gt; [
+    2,
+    4
+]</pre><p class="ran nv-illus">illustration</p></div>
 <blockquote>
 <p>Note: the <code>W</code> DSL is both fast and fully expressive, so the older
 <code>W</code>-vs-<code>WXT</code> split (a speed/expressiveness trade-off from the <code>eval()</code> era)
@@ -184,15 +187,18 @@ o1.DeepReplace(&quot;you&quot;, :By = &quot;♥&quot;)
 <p>Complex recursive operations become single, intuitive function calls that work regardless of nesting depth.</p>
 <h3 id="freeform-functions-ultimate-flexibility">FreeForm Functions: Ultimate Flexibility</h3>
 <p>FreeForm Functions (FX) allow parameter flexibility and intelligent defaults:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzString(&quot;I love Haro programming&quot;)
-? o1.Content()  #--&gt; &quot;I love Haro programming&quot;
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzString("I love Haro programming")
+? o1.Content()  #--&gt; "I love Haro programming"
 
 # Parameters in any order
-? o1.SectionFX([:To = 11, :From = 8])    #--&gt; &quot;Haro&quot;
-? o1.SectionFX([:From = 8, :To = 11])    #--&gt; &quot;Haro&quot; (same result)
+? o1.SectionFX([:To = 11, :From = 8])    #--&gt; "Haro"
+? o1.SectionFX([
+    :From = 8,
+    :To = 11
+])    #--&gt; "Haro" (same result)
 
 # Intelligent defaults when parameters omitted
-o2 = new stzString(&quot;hello world&quot;)  
+o2 = new stzString("hello world")  
 ? o2.ReplaceNextOccurrenceFX([])  #--&gt; Uses intelligent defaults</pre><p class="ran nv-illus">illustration</p></div>
 <p>Programmers can provide parameters in any order or omit them entirely, with Softanza intelligently inferring intent. The FX suffix distinguishes FreeForm from Future forms (F/FF).</p>
 <h2 id="multilingual-programming-universal-expression">Multilingual Programming: Universal Expression</h2>
@@ -209,7 +215,12 @@ o2 = new stzString(&quot;hello world&quot;)
 <h3 id="statement-forms-logic-as-natural-assertions">Statement Forms: Logic as Natural Assertions</h3>
 <p>The X() suffix enables natural logical statements:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>? AllNumbersInQQX([ -2, -4, -21 ]).AreNegativeX()  #--&gt; TRUE
-? NoNumberInQQX([ -2, -4, -21, 10800 ]).IsPositiveX()  #--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+? NoNumberInQQX([
+    -2,
+    -4,
+    -21,
+    10800
+]).IsPositiveX()  #--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
 <p>Complex logical validations become readable assertions that mirror human reasoning.</p>
 <h2 id="the-technical-achievement">The Technical Achievement</h2>
 <p>What makes Softanza remarkable is achieving natural language expressiveness without machine learning or NLP systems. Instead, it uses pure linguistic design principles embedded in function architecture:</p>

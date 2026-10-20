@@ -74,11 +74,19 @@ moisture and drives a pump. Here is their whole dev-to-deploy session.</p>
 you instantiate, read live from the engine:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzDevSystem()
 
-? o1.OSName() + &quot; / &quot; + o1.Architecture() + &quot; / &quot; + o1.BitSize() + &quot;-bit&quot;
+? o1.OSName() + " / " + o1.Architecture() + " / " + o1.BitSize() + "-bit"
 #--&gt; windows / x64 / 64-bit
 
 ? @@( o1.Capabilities() )
-#--&gt; [ &quot;filesystem&quot;, &quot;process&quot;, &quot;network&quot;, &quot;environment&quot;, &quot;dynamic_load&quot;, &quot;threads&quot;, &quot;clock&quot; ]
+#--&gt; [
+#--&gt;     "filesystem",
+#--&gt;     "process",
+#--&gt;     "network",
+#--&gt;     "environment",
+#--&gt;     "dynamic_load",
+#--&gt;     "threads",
+#--&gt;     "clock"
+#--&gt; ]
 
 ? o1.Lacks(:gpio)
 #--&gt; 1</pre><p class="ran nv-kept">run on 2026-10-08 20:42 at commit 4a184e6f0: kept its promise</p></div>

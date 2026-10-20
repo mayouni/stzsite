@@ -59,16 +59,19 @@ you do <strong>not</strong> then turn the rule on the graph. In Softanza the gra
 subject you hold: you <strong>attach</strong> the rule to it, and it becomes part of the
 graph's own logic. From then on you ask the <em>graph</em> — to check itself, to say
 whether it is sound, to report.</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>oRule = new stzGraphRule(&quot;no-llm-effectful&quot;)
-oRule.SetDomainQ(&quot;agentic&quot;)
-oRule.WhenQ(&quot;kind&quot;, &quot;equals&quot;, &quot;llm_actor&quot;)
-oRule.WhenQ(&quot;capabilities&quot;, &quot;contains&quot;, &quot;effectful&quot;)
-oRule.ThenViolationQ(&quot;an LLM proposes, only a pi-gate commits&quot;)
+<div class="nblock"><div class="lbl">Haro</div><pre>oRule = new stzGraphRule("no-llm-effectful")
+oRule.SetDomainQ("agentic")
+oRule.WhenQ("kind", "equals", "llm_actor")
+oRule.WhenQ("capabilities", "contains", "effectful")
+oRule.ThenViolationQ("an LLM proposes, only a pi-gate commits")
 
-g = new stzGraph(&quot;agents&quot;)
-g.AddNode(&quot;writer&quot;)
-g.SetNodeProperty(&quot;writer&quot;, &quot;kind&quot;, &quot;llm_actor&quot;)
-g.SetNodeProperty(&quot;writer&quot;, &quot;capabilities&quot;, [ &quot;inference&quot;, &quot;effectful&quot; ])
+g = new stzGraph("agents")
+g.AddNode("writer")
+g.SetNodeProperty("writer", "kind", "llm_actor")
+g.SetNodeProperty("writer", "capabilities", [
+    "inference",
+    "effectful"
+])
 
 g.AddRule(oRule)        # the rule is now part of THIS graph
 g.RulesReport()         # the graph reports on itself</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:42 au commit 4a184e6f0 : a tenu sa promesse</p></div>

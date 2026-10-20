@@ -42,7 +42,15 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ [&quot;03&quot;, &quot;04&quot;], 3, [&quot;01&quot;,&quot;02&quot;], 1, &quot;Two&quot;, 2, &quot;One&quot; ])
+    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    ["03", "04"],
+    3,
+    ["01","02"],
+    1,
+    "Two",
+    2,
+    "One"
+])
 ? @@( o1.Sorted() ) # Or o1.SortedInAscending()
 ? @@( o1.SortedInDescending() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 1, 2, 3, &quot;One&quot;, &quot;Two&quot;, [ &quot;01&quot;, &quot;02&quot; ], [ &quot;03&quot;, &quot;04&quot; ] ]
 [ [ &quot;03&quot;, &quot;04&quot; ], [ &quot;01&quot;, &quot;02&quot; ], &quot;Two&quot;, &quot;One&quot;, 3, 2, 1 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/64_sorted.ring" target="_blank" rel="noopener noreferrer">64_sorted.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>

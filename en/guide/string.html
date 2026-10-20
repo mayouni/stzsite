@@ -285,8 +285,12 @@ o1.InsertBefore([4, 7], &quot;_&quot;)
 o1.ExtendToNChars(5)
 # &#x27;ABC&#x27; padded to width 5
 ? o1.Content()
-#--&gt; ABC</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring/insertsubstrings.html">InsertSubStrings</a> InsertSubStrings(anPos, pacStr): insert pacStr[i] at anPos[i], processed from highest position down so earlier positions stay valid. <span class="in">in stzString</span><pre class="rx">o1 = new stzString(&quot;All our software versions must be updated!&quot;)
-o1.InsertSubStrings( o1.PositionAfter(&quot;versions&quot;), [ &quot;V1&quot;, &quot;V2&quot;, &quot;V3&quot; ])
+#--&gt; ABC</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring/insertsubstrings.html">InsertSubStrings</a> InsertSubStrings(anPos, pacStr): insert pacStr[i] at anPos[i], processed from highest position down so earlier positions stay valid. <span class="in">in stzString</span><pre class="rx">o1 = new stzString("All our software versions must be updated!")
+o1.InsertSubStrings( o1.PositionAfter("versions"), [
+    "V1",
+    "V2",
+    "V3"
+])
 # parenthesized with padding spaces
 ? o1.Content()
 #--&gt; All our software versions (V1, V2, V3)  must be updated!</pre><span class="rx-src">library test</span></li><li><a class="mono" href="../reference/stzstring/extendtowithcharsin.html">ExtendToWithCharsIn</a> Pad the string to total length n by cycling the given chars or range (mutating). <span class="in">in stzString</span><pre class="rx">o1 = new stzString(&quot;123&quot;)
@@ -384,25 +388,90 @@ o1.SortLines()
 #--&gt; aaa
 #--&gt; bbb</pre><span class="rx-src">composed from the signature, run for this page</span></details></li></ul><p class="proof">and 6 more in the reference</p><h3>Converting</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzstring.html#tohex">ToHex</a> The string&#x27;s bytes in hexadecimal form. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.ToHex()
-#--&gt; 62616e616e612073706c6974</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring.html#tolist">ToList</a> ToList: if the string represents a Haro list literal (&quot;[1,2,3]&quot;), eval it into the actual list. Otherwise returns the chars. Used by stzSmallFuncs.StzN to count list-in-string elements. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
+#--&gt; 62616e616e612073706c6974</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring.html#tolist">ToList</a> ToList: if the string represents a Haro list literal (&quot;[1,2,3]&quot;), eval it into the actual list. Otherwise returns the chars. Used by stzSmallFuncs.StzN to count list-in-string elements. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString("banana split")
 ? @@( o1.ToList() )
-#--&gt; [ &quot;b&quot;, &quot;a&quot;, &quot;n&quot;, &quot;a&quot;, &quot;n&quot;, &quot;a&quot;, &quot; &quot;, &quot;s&quot;, &quot;p&quot;, &quot;l&quot;, &quot;i&quot;, &quot;t&quot; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring.html#toslug">ToSlug</a> The string turned into a URL slug (lowercase, hyphens). <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
+#--&gt; [
+#--&gt;     "b",
+#--&gt;     "a",
+#--&gt;     "n",
+#--&gt;     "a",
+#--&gt;     "n",
+#--&gt;     "a",
+#--&gt;     " ",
+#--&gt;     "s",
+#--&gt;     "p",
+#--&gt;     "l",
+#--&gt;     "i",
+#--&gt;     "t"
+#--&gt; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring.html#toslug">ToSlug</a> The string turned into a URL slug (lowercase, hyphens). <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.ToSlug()
 #--&gt; banana-split</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring.html#tooctal">ToOctal</a> The string&#x27;s bytes in octal form. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.ToOctal()
 #--&gt; 142 141 156 141 156 141 040 163 160 154 151 164</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring.html#tobinary">ToBinary</a> The string&#x27;s bytes in binary form. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.ToBinary()
-#--&gt; 01100010 01100001 01101110 01100001 01101110 01100001 00100000 01110011 01110000 01101100 01101001 01110100</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring/tolistinstring.html">ToListInString</a> ToListInString(): the hosted list rendered in normal form (@@). <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
+#--&gt; 01100010 01100001 01101110 01100001 01101110 01100001 00100000 01110011 01110000 01101100 01101001 01110100</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring/tolistinstring.html">ToListInString</a> ToListInString(): the hosted list rendered in normal form (@@). <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString("banana split")
 ? o1.ToListInString()
-#--&gt; [ &quot;b&quot;, &quot;a&quot;, &quot;n&quot;, &quot;a&quot;, &quot;n&quot;, &quot;a&quot;, &quot; &quot;, &quot;s&quot;, &quot;p&quot;, &quot;l&quot;, &quot;i&quot;, &quot;t&quot; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring.html#tolistinstringnf">ToListInStringNF</a> The content as a list literal in normal form, as a string. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
+#--&gt; [
+#--&gt;     "b",
+#--&gt;     "a",
+#--&gt;     "n",
+#--&gt;     "a",
+#--&gt;     "n",
+#--&gt;     "a",
+#--&gt;     " ",
+#--&gt;     "s",
+#--&gt;     "p",
+#--&gt;     "l",
+#--&gt;     "i",
+#--&gt;     "t"
+#--&gt; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring.html#tolistinstringnf">ToListInStringNF</a> The content as a list literal in normal form, as a string. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString("banana split")
 ? o1.ToListInStringNF()
-#--&gt; [ &quot;b&quot;, &quot;a&quot;, &quot;n&quot;, &quot;a&quot;, &quot;n&quot;, &quot;a&quot;, &quot; &quot;, &quot;s&quot;, &quot;p&quot;, &quot;l&quot;, &quot;i&quot;, &quot;t&quot; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring.html#tolistofstzchars">ToListOfStzChars</a> Vowels: return the list of vowel chars in the string (ASCII a/e/i/o/u, case-insensitive). Ported from archive line 103163; self-contained byte scan. NumberOfVowels / VowelN are simple count aliases; VowelsB / HasVowels are predicates. Transform the chars of the string into a list of stzChar objects (each backed by stzStringChar via the alias). <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
+#--&gt; [
+#--&gt;     "b",
+#--&gt;     "a",
+#--&gt;     "n",
+#--&gt;     "a",
+#--&gt;     "n",
+#--&gt;     "a",
+#--&gt;     " ",
+#--&gt;     "s",
+#--&gt;     "p",
+#--&gt;     "l",
+#--&gt;     "i",
+#--&gt;     "t"
+#--&gt; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring.html#tolistofstzchars">ToListOfStzChars</a> Vowels: return the list of vowel chars in the string (ASCII a/e/i/o/u, case-insensitive). Ported from archive line 103163; self-contained byte scan. NumberOfVowels / VowelN are simple count aliases; VowelsB / HasVowels are predicates. Transform the chars of the string into a list of stzChar objects (each backed by stzStringChar via the alias). <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString("banana split")
 ? @@( o1.ToListOfStzChars() )
-#--&gt; [ @noname, @noname, @noname, @noname, @noname, @noname, @noname, @noname, @noname, @noname, @noname, @noname ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring/tolistinshortform.html">ToListInShortForm</a> ToListInShortForm(): render the hosted list in the short range syntax -- &quot;1 : 3&quot; for numbers, &#x27;&quot;A&quot; : &quot;D&quot;&#x27; for strings. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
+#--&gt; [
+#--&gt;     @noname,
+#--&gt;     @noname,
+#--&gt;     @noname,
+#--&gt;     @noname,
+#--&gt;     @noname,
+#--&gt;     @noname,
+#--&gt;     @noname,
+#--&gt;     @noname,
+#--&gt;     @noname,
+#--&gt;     @noname,
+#--&gt;     @noname,
+#--&gt;     @noname
+#--&gt; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring/tolistinshortform.html">ToListInShortForm</a> ToListInShortForm(): render the hosted list in the short range syntax -- &quot;1 : 3&quot; for numbers, &#x27;&quot;A&quot; : &quot;D&quot;&#x27; for strings. <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
 ? o1.ToListInShortForm()
-#--&gt; &quot;b&quot; : &quot;t&quot;</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring/tolistinnormalform.html">ToListInNormalForm</a> ToListInNormalForm(): the hosted list rendered in normal bracketed form (whatever syntax hosted it -- short ranges included). <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString(&quot;banana split&quot;)
+#--&gt; &quot;b&quot; : &quot;t&quot;</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstring/tolistinnormalform.html">ToListInNormalForm</a> ToListInNormalForm(): the hosted list rendered in normal bracketed form (whatever syntax hosted it -- short ranges included). <span class="in">in stzString</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzString("banana split")
 ? o1.ToListInNormalForm()
-#--&gt; [ &quot;b&quot;, &quot;a&quot;, &quot;n&quot;, &quot;a&quot;, &quot;n&quot;, &quot;a&quot;, &quot; &quot;, &quot;s&quot;, &quot;p&quot;, &quot;l&quot;, &quot;i&quot;, &quot;t&quot; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstringlist.html#tostring">ToString</a> The strings joined with newlines, as one string. <span class="in">in stzStringList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzStringList([ &quot;tea&quot;, &quot;rice&quot;, &quot;fish&quot; ])
+#--&gt; [
+#--&gt;     "b",
+#--&gt;     "a",
+#--&gt;     "n",
+#--&gt;     "a",
+#--&gt;     "n",
+#--&gt;     "a",
+#--&gt;     " ",
+#--&gt;     "s",
+#--&gt;     "p",
+#--&gt;     "l",
+#--&gt;     "i",
+#--&gt;     "t"
+#--&gt; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details></li><li><a class="mono" href="../reference/stzstringlist.html#tostring">ToString</a> The strings joined with newlines, as one string. <span class="in">in stzStringList</span><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzStringList([ &quot;tea&quot;, &quot;rice&quot;, &quot;fish&quot; ])
 ? o1.ToString()
 #--&gt; tea
 #--&gt; rice

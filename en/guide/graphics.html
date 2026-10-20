@@ -44,9 +44,15 @@
 o1.TakesColor(:warm)
 o1.TakesColor(:cool)
 o1.TakesScalar(:sharp)
-o1.AddNode(:final, [ :Op = :Mix, :In = [ :shaded, :warm, :rim ] ])
+o1.AddNode(:final, [
+    :Op = :Mix,
+    :In = [ :shaded, :warm, :rim ]
+])
 o1.AddNode(:rim, [ :Op = :Fresnel, :In = [ :sharp ] ])
-o1.AddNode(:shaded, [ :Op = :Multiply, :In = [ :cool, :lit ] ])
+o1.AddNode(:shaded, [
+    :Op = :Multiply,
+    :In = [ :cool, :lit ]
+])
 o1.AddNode(:lit, [ :Op = :Lit, :In = [ 0.25 ] ])
 o1.Emits(:final)
 o1.Compile()

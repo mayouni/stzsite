@@ -96,15 +96,26 @@ StzLocaleQ([ :Language = :English ]) {
 <h2 id="days-and-months-in-native-languages">Days and Months in Native Languages</h2>
 <p>The library excels at providing localized calendar data:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>? NamesOfDaysIn(:Japanese)
-#--&gt; [ &quot;日曜日&quot;, &quot;月曜日&quot;, &quot;火曜日&quot;, &quot;水曜日&quot;, &quot;木曜日&quot;, &quot;金曜日&quot;, &quot;土曜日&quot; ]
+#--&gt; [ "日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日" ]
 
 ? NamesOfDaysIn(:Persian)
-#--&gt; [ &quot;شنبه&quot;, &quot;یکشنبه&quot;, &quot;دوشنبه&quot;, &quot;سه‌شنبه&quot;, &quot;چهارشنبه&quot;, &quot;پنجشنبه&quot;, &quot;جمعه&quot; ]</pre><p class="ran nv-illus">illustration</p></div>
-<p>You can bridge languages elegantly:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>? Association([ NamesOfDaysIn(:English), NamesOfDaysIn(:Japanese) ])
 #--&gt; [
-#     [ &quot;Sunday&quot;, &quot;日曜日&quot; ],
-#     [ &quot;Monday&quot;, &quot;月曜日&quot; ],
+#--&gt;     "شنبه",
+#--&gt;     "یکشنبه",
+#--&gt;     "دوشنبه",
+#--&gt;     "سه‌شنبه",
+#--&gt;     "چهارشنبه",
+#--&gt;     "پنجشنبه",
+#--&gt;     "جمعه"
+#--&gt; ]</pre><p class="ran nv-illus">illustration</p></div>
+<p>You can bridge languages elegantly:</p>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Association([
+    NamesOfDaysIn(:English),
+    NamesOfDaysIn(:Japanese)
+])
+#--&gt; [
+#     [ "Sunday", "日曜日" ],
+#     [ "Monday", "月曜日" ],
 #     ...
 #   ]</pre><p class="ran nv-illus">illustration</p></div>
 <h2 id="comprehensive-currency-information">Comprehensive Currency Information</h2>

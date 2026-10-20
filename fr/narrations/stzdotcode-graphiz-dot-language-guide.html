@@ -164,20 +164,28 @@ The more specific level always wins. An individual node's <code>fillcolor</code>
 <h3 id="shape-example">Shape Example</h3>
 <div class="nblock"><div class="lbl">Haro</div><pre>Dot = new stzDotCode()
 
-Dot.SetCode(&#x27;
+Dot.SetCode('
 digraph Shapes {
     graph [rankdir=LR]
-    node [style=filled, fontname=&quot;Arial&quot;]
+    node [style=filled, fontname="Arial"]
     
-    box_node [shape=box, fillcolor=lightblue, label=&quot;Process&quot;]
-    circle_node [shape=circle, fillcolor=lightgreen, label=&quot;State&quot;]
-    decision [shape=diamond, fillcolor=yellow, label=&quot;Decision?&quot;]
+    box_node [shape=box, fillcolor=lightblue, label="Process"]
+    circle_node [
+        shape=circle,
+        fillcolor=lightgreen,
+        label="State"
+    ]
+    decision [
+        shape=diamond,
+        fillcolor=yellow,
+        label="Decision?"
+    ]
     
     box_node -&gt; circle_node -&gt; decision
 }
-&#x27;)
+')
 
-Dot.SetOutputFile(&quot;shapes.svg&quot;)
+Dot.SetOutputFile("shapes.svg")
 Dot.ExecuteAndView()</pre><p class="ran nv-illus">illustration</p></div>
 <p><img alt="graph5.png" src="../../assets/img/narrations/graph5.webp" />
 A horizontal diagram showing three different node shapes connected by arrows.</p>
@@ -186,26 +194,30 @@ A horizontal diagram showing three different node shapes connected by arrows.</p
 <h3 id="edge-styling-options">Edge Styling Options</h3>
 <div class="nblock"><div class="lbl">Haro</div><pre>Dot = new stzDotCode()
 
-Dot.SetCode(&#x27;
+Dot.SetCode('
 digraph EdgeStyles {
     graph [rankdir=TB, nodesep=0.8]
-    node [shape=box, style=&quot;rounded,filled&quot;, fillcolor=lightblue]
+    node [
+        shape=box,
+        style="rounded,filled",
+        fillcolor=lightblue
+    ]
     
-    A [label=&quot;Node A&quot;]
-    B [label=&quot;Node B&quot;]
-    C [label=&quot;Node C&quot;]
-    D [label=&quot;Node D&quot;]
+    A [label="Node A"]
+    B [label="Node B"]
+    C [label="Node C"]
+    D [label="Node D"]
     
     # Normal solid edge
-    A -&gt; B [label=&quot;Normal&quot;]
+    A -&gt; B [label="Normal"]
     
     # Dashed: optional or weak connection
-    A -&gt; C [label=&quot;Optional&quot;, style=dashed]
+    A -&gt; C [label="Optional", style=dashed]
     
     # Bold: strong or primary path
-    A -&gt; D [label=&quot;Primary&quot;, style=bold, penwidth=3]
+    A -&gt; D [label="Primary", style=bold, penwidth=3]
 }
-&#x27;)
+')
 
 Dot.RunAndView()</pre><p class="ran nv-illus">illustration</p></div>
 <p><img alt="graph6.png" src="../../assets/img/narrations/graph6.webp" /></p>
@@ -213,29 +225,33 @@ Dot.RunAndView()</pre><p class="ran nv-illus">illustration</p></div>
 <p>haro</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>Dot = new stzDotcode()
 
-Dot.SetCode(&#x27;
+Dot.SetCode('
 digraph ArrowTypes {
     graph [rankdir=LR, nodesep=0.8]
-    node [shape=box, style=&quot;rounded,filled&quot;, fillcolor=lightblue]
-    edge [fontname=&quot;Arial&quot;, fontsize=10]
+    node [
+        shape=box,
+        style="rounded,filled",
+        fillcolor=lightblue
+    ]
+    edge [fontname="Arial", fontsize=10]
     
-    A [label=&quot;Node A&quot;]
-    B [label=&quot;Normal&quot;]
-    C [label=&quot;Dot&quot;]
-    D [label=&quot;Diamond&quot;]
-    E [label=&quot;Both&quot;]
-    F [label=&quot;Back&quot;]
-    G [label=&quot;None&quot;]
+    A [label="Node A"]
+    B [label="Normal"]
+    C [label="Dot"]
+    D [label="Diamond"]
+    E [label="Both"]
+    F [label="Back"]
+    G [label="None"]
     
-    A -&gt; B [arrowhead=normal, label=&quot;normal&quot;]
-    A -&gt; C [arrowhead=dot, label=&quot;dot&quot;]
-    A -&gt; D [arrowhead=diamond, label=&quot;diamond&quot;]
-    A -&gt; E [dir=both, label=&quot;both&quot;]
-    A -&gt; F [dir=back, label=&quot;back&quot;]
-    A -&gt; G [dir=none, label=&quot;none&quot;]
+    A -&gt; B [arrowhead=normal, label="normal"]
+    A -&gt; C [arrowhead=dot, label="dot"]
+    A -&gt; D [arrowhead=diamond, label="diamond"]
+    A -&gt; E [dir=both, label="both"]
+    A -&gt; F [dir=back, label="back"]
+    A -&gt; G [dir=none, label="none"]
 }
-&#x27;)
-Dot.SetOutputFile(&quot;arrow_types.svg&quot;)
+')
+Dot.SetOutputFile("arrow_types.svg")
 Dot.ExecuteAndView()</pre><p class="ran nv-illus">illustration</p></div>
 <p><img alt="graph7.png" src="../../assets/img/narrations/graph7.webp" />
 Seven edges from Node A to different target nodes, each demonstrating a different arrow style.</p>
@@ -428,40 +444,58 @@ Dot.RunAndView()</pre><p class="ran nv-illus">illustration</p></div>
 <p>haro</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>Do = new stzDotCode()
 
-Dot.SetCode(&#x27;
+Dot.SetCode('
 digraph StateMachine {
-    graph [rankdir=LR, bgcolor=white, fontname=&quot;Arial&quot;]
-    node [fontname=&quot;Arial&quot;, style=filled]
-    edge [fontname=&quot;Arial&quot;, fontsize=10]
+    graph [rankdir=LR, bgcolor=white, fontname="Arial"]
+    node [fontname="Arial", style=filled]
+    edge [fontname="Arial", fontsize=10]
     
     # Special states
-    start [shape=circle, fillcolor=black, width=0.3, label=&quot;&quot;]
-    end [shape=doublecircle, fillcolor=black, width=0.3, label=&quot;&quot;]
+    start [shape=circle, fillcolor=black, width=0.3, label=""]
+    end [
+        shape=doublecircle,
+        fillcolor=black,
+        width=0.3,
+        label=""
+    ]
     
     # Regular states
-    idle [shape=circle, fillcolor=lightblue, label=&quot;Idle&quot;]
-    processing [shape=circle, fillcolor=yellow, label=&quot;Processing&quot;]
-    waiting [shape=circle, fillcolor=orange, label=&quot;Waiting&quot;]
-    complete [shape=circle, fillcolor=lightgreen, label=&quot;Complete&quot;]
-    error [shape=circle, fillcolor=red, fontcolor=white, label=&quot;Error&quot;]
+    idle [shape=circle, fillcolor=lightblue, label="Idle"]
+    processing [
+        shape=circle,
+        fillcolor=yellow,
+        label="Processing"
+    ]
+    waiting [shape=circle, fillcolor=orange, label="Waiting"]
+    complete [
+        shape=circle,
+        fillcolor=lightgreen,
+        label="Complete"
+    ]
+    error [
+        shape=circle,
+        fillcolor=red,
+        fontcolor=white,
+        label="Error"
+    ]
     
     # Transitions
-    start -&gt; idle [label=&quot;init&quot;]
-    idle -&gt; processing [label=&quot;start()&quot;]
-    processing -&gt; waiting [label=&quot;wait_for_input()&quot;]
-    processing -&gt; complete [label=&quot;success&quot;]
-    processing -&gt; error [label=&quot;exception&quot;]
-    waiting -&gt; processing [label=&quot;input_received()&quot;]
-    waiting -&gt; error [label=&quot;timeout&quot;]
-    error -&gt; idle [label=&quot;retry()&quot;, style=dashed]
-    complete -&gt; end [label=&quot;finalize&quot;]
+    start -&gt; idle [label="init"]
+    idle -&gt; processing [label="start()"]
+    processing -&gt; waiting [label="wait_for_input()"]
+    processing -&gt; complete [label="success"]
+    processing -&gt; error [label="exception"]
+    waiting -&gt; processing [label="input_received()"]
+    waiting -&gt; error [label="timeout"]
+    error -&gt; idle [label="retry()", style=dashed]
+    complete -&gt; end [label="finalize"]
     
     # Self-loop
-    idle -&gt; idle [label=&quot;ping()&quot;, style=dotted]
+    idle -&gt; idle [label="ping()", style=dotted]
 }
-&#x27;)
+')
 
-Dot.SetOutputFile(&quot;state_machine.svg&quot;)
+Dot.SetOutputFile("state_machine.svg")
 Dot.ExecuteAndView()</pre><p class="ran nv-illus">illustration</p></div>
 <p><img alt="graph12.png" src="../../assets/img/narrations/graph12.webp" /></p>
 <h3 id="process-workflow">Process Workflow</h3>

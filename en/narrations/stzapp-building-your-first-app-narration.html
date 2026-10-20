@@ -54,13 +54,25 @@ ships. Watch a world come into being, begin to move — and begin to strive.</p>
 </blockquote>
 <h2 id="the-setting">The setting</h2>
 <h2 id="being-the-worlds-things-and-their-truths">Being — the world's things and their truths</h2>
-<div class="nblock"><div class="lbl">Haro</div><pre>load &quot;stzlib.ring&quot;
-oApp = new stzApp(&quot;SonibankVisits&quot;)
+<div class="nblock"><div class="lbl">Haro</div><pre>load "stzlib.ring"
+oApp = new stzApp("SonibankVisits")
 
 oApp {
-    Thing(:Account) { Has([ :number, :chapter, :balance ])  IsTrue(:balance) = &#x27;@ &gt;= 0&#x27; }
-    Thing(:Client)  { Has([ :code, :name, :city ])  Owns(:Account) }
-    Thing(:Visit)   { Of(:Client)  Has([ :agent, :date, :subject ]) }
+    Thing(:Account) { Has([
+        :number,
+        :chapter,
+        :balance
+    ])  IsTrue(:balance) = '@ &gt;= 0' }
+    Thing(:Client)  { Has([
+        :code,
+        :name,
+        :city
+    ])  Owns(:Account) }
+    Thing(:Visit)   { Of(:Client)  Has([
+        :agent,
+        :date,
+        :subject
+    ]) }
     Knows(:Account, :belongsTo, :Client)
 }</pre><p class="ran nv-illus">illustration</p></div>
 <p>A <strong>domain</strong> — a graph of things — declared without ever saying "graph," and told what <em>should</em>
@@ -108,7 +120,11 @@ it: stale clients surface on their own (reaction), and the plan quietly reorders
 its goal, proposing the visits that would make "every client seen this quarter" become true. With
 no UI at all, the world already <strong>lives and wants</strong>.</p>
 <h2 id="seen-engaged-tuned-reached-the-emergents">Seen · Engaged · Tuned · Reached (the emergents)</h2>
-<div class="nblock"><div class="lbl">Haro</div><pre>oApp.Screen(:ClientFile) { ToUnderstand(:Client)  Shows([ :identity, :accounts, :visits ]) }
+<div class="nblock"><div class="lbl">Haro</div><pre>oApp.Screen(:ClientFile) { ToUnderstand(:Client)  Shows([
+    :identity,
+    :accounts,
+    :visits
+]) }
 oApp.Refine(:balance).Bounds(0, 1_000_000)
 oApp.Reaches([ :mobile, :desktop, :web ])
 oApp.Generate(:all)</pre><p class="ran nv-illus">illustration</p></div>

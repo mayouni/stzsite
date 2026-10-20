@@ -42,10 +42,22 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;.&quot;, &quot;.&quot;, &quot;3&quot;, &quot;4&quot;, &quot;.&quot;, &quot;.&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;.&quot;, &quot;.&quot; ])
-? o1.YieldXT( &#x27;@item&#x27;, :FromPosition = 4, :To = -3 )
-? o1.YieldXT( &#x27;@char&#x27;, :StartingAt = 3, :Until = &#x27; @item = &quot;.&quot; &#x27; )
-? o1.YieldXT( &#x27;@char&#x27;, :StartingAt = 3, :UntilXT = &#x27; @item = &quot;.&quot; &#x27; )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>4
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    ".",
+    ".",
+    "3",
+    "4",
+    ".",
+    ".",
+    "7",
+    "8",
+    "9",
+    ".",
+    "."
+])
+? o1.YieldXT( '@item', :FromPosition = 4, :To = -3 )
+? o1.YieldXT( '@char', :StartingAt = 3, :Until = ' @item = "." ' )
+? o1.YieldXT( '@char', :StartingAt = 3, :UntilXT = ' @item = "." ' )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>4
 .
 .
 7
@@ -57,13 +69,21 @@
 
 3
 4
-.</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/333_yieldxt.ring" target="_blank" rel="noopener noreferrer">333_yieldxt.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ]).ToNumberW(&#x27;{ @number = len(@list) }&#x27;) # Or ToNumberXT()
-? Q([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ]).ToNumberW(&#x27;{
+.</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/333_yieldxt.ring" target="_blank" rel="noopener noreferrer">333_yieldxt.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([
+    "a",
+    "b",
+    "c"
+]).ToNumberW('{ @number = len(@list) }') # Or ToNumberXT()
+? Q([ "a", "b", "c" ]).ToNumberW('{
 	@number = QRT(@list, :stzListOfChars).UnicodesQRT(:stzListOfNumbers).Sum()
-}&#x27;)
-? QRT([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;], :stzListOfChars).Unicodes()
-? Q([ &quot;Me&quot;, &quot;and&quot;, &quot;You!&quot; ]).ToNumberW(&#x27;{ @number += len(@item) }&#x27;)
-? Q([ &quot;Me&quot;, &quot;and&quot;, &quot;You!&quot; ]).Yield(&#x27;len(@item)&#x27;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>3
+}')
+? QRT(["a", "b", "c"], :stzListOfChars).Unicodes()
+? Q([
+    "Me",
+    "and",
+    "You!"
+]).ToNumberW('{ @number += len(@item) }')
+? Q([ "Me", "and", "You!" ]).Yield('len(@item)')</pre></div><div class="out"><div class="lbl">Sortie</div><pre>3
 294
 97
 98

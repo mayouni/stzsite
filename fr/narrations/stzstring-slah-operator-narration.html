@@ -83,8 +83,12 @@
 </blockquote>
 <h2 id="4-distributing-strings-equally-among-stakeholders">4. Distributing Strings Equally Among Stakeholders</h2>
 <p>Distribute string segments among <strong>stakeholders</strong> in <strong>equal</strong> portions.</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>? @@( Q(&quot;RingRubyJava&quot;) / [ &quot;Qute&quot;, &quot;Nice&quot;, &quot;Good&quot; ] )
-#--&gt; [ [ &quot;Qute&quot;, &quot;Haro&quot; ], [ &quot;Nice&quot;, &quot;Ruby&quot; ], [ &quot;Good&quot;, &quot;Java&quot; ] ]</pre><p class="ran nv-illus">illustration</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@( Q("RingRubyJava") / [ "Qute", "Nice", "Good" ] )
+#--&gt; [
+#--&gt;     [ "Qute", "Haro" ],
+#--&gt;     [ "Nice", "Ruby" ],
+#--&gt;     [ "Good", "Java" ]
+#--&gt; ]</pre><p class="ran nv-illus">illustration</p></div>
 <p><strong>Practical Applications:</strong>
 - <strong>Team Collaboration:</strong> Assign equal portions of text to team members for review.<br />
 - <strong>Task Distribution:</strong> Evenly divide workload among agents, processes, or devices.<br />
@@ -92,13 +96,18 @@
 <p><strong>NOTE</strong>: <code>@@(val)</code> is a Softanza small function, akin to a <strong>pair of glasses</strong> that enhance vision, designed to produce a readable string representation of any value <code>val</code>. Specifically, when <code>val</code> is a list, it is rendered with brackets (<strong>[</strong>, <strong>]</strong>) and commas (<strong>,</strong>), like you see in <code>[ [ "Qute", "Haro" ], [ "Nice", "Ruby" ], [ "Good", "Java" ] ]</code> above, accurately representing the list structure regardless of its depth.</p>
 <h2 id="5-allocating-strings-by-custom-rules">5. Allocating Strings by Custom Rules</h2>
 <p>Allocate string segments to <strong>stakeholders</strong> based on a <strong>custom distribution</strong> schema.</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>? @@( Q(&quot;IAmRingDeveloper&quot;) / [
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@( Q("IAmRingDeveloper") / [
     :Subject = 1,
     :Verb    = 2,
     :Noun1   = 4,
     :Noun2   = :RemainingChars
 ])
-#--&gt; [ :Subject = &quot;I&quot;, :Verb = &quot;Am&quot;, :Noun1 = &quot;Haro&quot;, :Noun2 = &quot;Developer&quot; ]</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; [
+#--&gt;     :Subject = "I",
+#--&gt;     :Verb = "Am",
+#--&gt;     :Noun1 = "Haro",
+#--&gt;     :Noun2 = "Developer"
+#--&gt; ]</pre><p class="ran nv-illus">illustration</p></div>
 <p><strong>Practical Applications:</strong>
 - <strong>Text Parsing:</strong> Extract specific elements like subject, verb, or object for linguistic analysis.<br />
 - <strong>Custom Task Allocation:</strong> Dynamically adjust portions based on priority or weight.<br />

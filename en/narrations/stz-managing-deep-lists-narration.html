@@ -119,8 +119,11 @@
 <div class="nblock"><div class="lbl">Haro</div><pre>? @@( o1.DeepFindAt(&quot;♥&quot;, [2, 3, 2]) )
 #--&gt; [2, 3, 2]  # Returns the path if found</pre><p class="ran nv-illus">illustration</p></div>
 <p>To find occurrences along a path (from root to endpoint):</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>? @@( o1.DeepFindIn(&quot;♥&quot;, [2, 3, 2]) )
-#--&gt; [ [2, 1], [2, 3, 2] ]  # Returns all paths where &quot;♥&quot; is found</pre><p class="ran nv-illus">illustration</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>? @@( o1.DeepFindIn("♥", [2, 3, 2]) )
+#--&gt; [
+#--&gt;     [2, 1],
+#--&gt;     [2, 3, 2]
+#--&gt; ]  # Returns all paths where "♥" is found</pre><p class="ran nv-illus">illustration</p></div>
 <p>Similarly, you can make targeted changes:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Replace only at the endpoint
 o1.DeepReplaceAt(&quot;★&quot;, [2, 3, 2])
@@ -132,17 +135,20 @@ o1.DeepReplaceAt(&quot;★&quot;, [2, 3, 2])
 #]</pre><p class="ran nv-illus">illustration</p></div>
 <h2 id="operations-on-specific-items">Operations on Specific Items</h2>
 <p>As your needs grow more sophisticated, you may want to apply changes only to specific items. Softanza uses the "This" indicator for such operations:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre># Replace only if the item at the path equals &quot;♥&quot;
-o1.DeepReplaceThisAt(&quot;♥&quot;, &quot;★&quot;, [2, 4])
+<div class="nblock"><div class="lbl">Haro</div><pre># Replace only if the item at the path equals "♥"
+o1.DeepReplaceThisAt("♥", "★", [2, 4])
 ? @@NL( o1.Content() )
 #--&gt; [
-#    &quot;A&quot;,
-#    [ &quot;♥&quot;, &quot;B&quot;, [ &quot;C&quot;, &quot;★&quot;, &quot;D&quot;, &quot;♥&quot; ], &quot;★&quot;, &quot;E&quot;, &quot;♥&quot; ],
-#    &quot;E&quot;
+#    "A",
+#    [ "♥", "B", [ "C", "★", "D", "♥" ], "★", "E", "♥" ],
+#    "E"
 #]
 
-# No change if the item doesn&#x27;t match
-o1.DeepReplaceThisAt(&quot;C&quot;, &quot;★&quot;, [2, 4])  # No effect since &quot;★&quot; is at [2, 4], not &quot;C&quot;</pre><p class="ran nv-illus">illustration</p></div>
+# No change if the item doesn't match
+o1.DeepReplaceThisAt("C", "★", [
+    2,
+    4
+])  # No effect since "★" is at [2, 4], not "C"</pre><p class="ran nv-illus">illustration</p></div>
 <p>The same principle applies to operations along paths:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Replace all &quot;♥&quot; symbols along path [2, 3] with &quot;★&quot;
 o1.DeepReplaceThisIn(&quot;♥&quot;, &quot;★&quot;, [2, 3])
@@ -183,13 +189,17 @@ o1.DeepReplaceManyByManyIn([&quot;△&quot;, &quot;C&quot;], [&quot;○&quot;, &
 #]</pre><p class="ran nv-illus">illustration</p></div>
 <h2 id="extended-processing">Extended Processing</h2>
 <p>When dealing with uneven replacement lists, the "XT" suffix enables cycling through replacement values:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre># Replace &quot;○&quot;, &quot;□&quot; and &quot;★&quot; with cycling through &quot;■&quot; and &quot;▲&quot;
-o1.DeepReplaceManyByManyInXT([&quot;○&quot;, &quot;□&quot;, &quot;★&quot;], [&quot;■&quot;, &quot;▲&quot;], [2, 3])
+<div class="nblock"><div class="lbl">Haro</div><pre># Replace "○", "□" and "★" with cycling through "■" and "▲"
+o1.DeepReplaceManyByManyInXT([
+    "○",
+    "□",
+    "★"
+], ["■", "▲"], [2, 3])
 ? @@NL( o1.Content() )
 #--&gt; [
-#    &quot;A&quot;,
-#    [ &quot;◆&quot;, &quot;B&quot;, [ &quot;▲&quot;, &quot;■&quot;, &quot;■&quot;, &quot;▲&quot; ], &quot;■&quot;, &quot;E&quot;, &quot;◆&quot; ],
-#    &quot;E&quot;
+#    "A",
+#    [ "◆", "B", [ "▲", "■", "■", "▲" ], "■", "E", "◆" ],
+#    "E"
 #]</pre><p class="ran nv-illus">illustration</p></div>
 <h2 id="advanced-path-operations">Advanced Path Operations</h2>
 <p>As you become more familiar with paths, Softanza offers tools to help you manage them:</p>

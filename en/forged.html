@@ -70,7 +70,17 @@ oReg.Bind(:mail, new stzMailSandbox())
 oReg.SetPhase(:production)
 ? oReg.IsSound()
 ? @@( oReg.Findings() )</pre></div><div class="out"><div class="lbl">Output</div><pre>0
-[ [ [ &quot;invariant&quot;, &quot;sandbox-in-production&quot; ], [ &quot;severity&quot;, &quot;error&quot; ], [ &quot;where&quot;, &quot;restolean/mail&quot; ], [ &quot;message&quot;, &quot;still bound to a SANDBOX in a production phase -- a fake must never ship&quot; ] ] ]</pre></div></div><p class="ran">run on 2026-10-04 01:42 inside the library at commit 0e72e2e2c</p>
+[
+    [
+        [ "invariant", "sandbox-in-production" ],
+        [ "severity", "error" ],
+        [ "where", "restolean/mail" ],
+        [
+            "message",
+            "still bound to a SANDBOX in a production phase -- a fake must never ship"
+        ]
+    ]
+]</pre></div></div><p class="ran">run on 2026-10-04 01:42 inside the library at commit 0e72e2e2c</p>
 
 <p>The first line is 0, not sound. The second says why: a fake must never ship. The fake is refused by name, and a service that was declared and never bound raises when asked for, instead of silently doing nothing.</p>
 <p class="way"><span><a href="way.html">The Softanza way</a></span> "We tested against the sandbox" means something only if the code is byte for byte the code that ships. So the phase decides what comes back, and the check that nothing fake ships is enforced, not remembered.</p>
@@ -79,10 +89,25 @@ oReg.SetPhase(:production)
 <h2 id="organizium">Organizium and Sonibank: an organisation judged by its own chart</h2>
 <p>Organizium is an assessment platform for organisations: a questionnaire, a scoring engine, a maturity model, a referential of norms and indicators, an organisation chart with its gaps of conformity, a simulation of before and after, and recommendations. It was first built for a bank: Organizium Standard Edition is installed, under licence, on the internal network of Sonibank in Niamey, and the installation guide delivered to the bank attests it. A second version, in 2026, carried 48 questions in eight dimensions, an agent made of rules with no AI model, and a funding matcher, first for DIKO.</p>
 <p>What the library carries of it is easy to point at. A bank's regulator has rules about who reports to whom: a board must exist, the audit function must report to the board, a risk function must exist, operations must not report through treasury. The library's organisation chart carries these as validators, with the regulators' rule bases beside it (BCEAO, Basel III, SOX, PCI DSS, ISO 27001, GDPR, HIPAA).</p>
-<div class="run"><div><div class="lbl">Softanza</div><pre>oOrg = new stzOrgChart(&quot;bank&quot;)
-oOrg.AddPositionXTT(&quot;ceo&quot;, &quot;Chief Executive&quot;, [ :department = &quot;executive&quot; ])
-oOrg.AddPositionXTT(&quot;audit&quot;, &quot;Internal Audit&quot;, [ :department = &quot;audit&quot;, :reportsTo = &quot;ceo&quot; ])
-? @@( oOrg.ValidateBCEAOGovernance() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ [ &quot;status&quot;, &quot;fail&quot; ], [ &quot;domain&quot;, &quot;BCEAO_governance&quot; ], [ &quot;issuecount&quot;, 3 ], [ &quot;issues&quot;, [ &quot;BCEAO-001: No Board of Directors found&quot;, &quot;BCEAO-002: Audit reports to non-board position&quot;, &quot;BCEAO-003: No dedicated Risk Management function&quot; ] ] ]</pre></div></div><p class="ran">run on 2026-10-04 01:42 inside the library at commit 0e72e2e2c</p>
+<div class="run"><div><div class="lbl">Softanza</div><pre>oOrg = new stzOrgChart("bank")
+oOrg.AddPositionXTT("ceo", "Chief Executive", [ :department = "executive" ])
+oOrg.AddPositionXTT("audit", "Internal Audit", [
+    :department = "audit",
+    :reportsTo = "ceo"
+])
+? @@( oOrg.ValidateBCEAOGovernance() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[
+    [ "status", "fail" ],
+    [ "domain", "BCEAO_governance" ],
+    [ "issuecount", 3 ],
+    [
+        "issues",
+        [
+            "BCEAO-001: No Board of Directors found",
+            "BCEAO-002: Audit reports to non-board position",
+            "BCEAO-003: No dedicated Risk Management function"
+        ]
+    ]
+]</pre></div></div><p class="ran">run on 2026-10-04 01:42 inside the library at commit 0e72e2e2c</p>
 
 <p>Three findings, each a rule with a number a bank's auditor can read. <span class="mono">base/graph/stzOrgChart.ring</span> holds the validators; the library also names the rule bases <span class="mono">stzBCEAORuleBase</span>, <span class="mono">stzBaselIIIRuleBase</span> and their siblings.</p>
 <p>The other thing that was born in Organizium is the web layer. Its repository, started on 4 February 2026, holds a framework of single-file worlds for the web, a first query notation, and the interface constitution with its rule file and the verifier that checks a page against it: an early form of what the site calls <a href="zui.html">Zui</a> today. They are not public yet; the site quotes none of their text.</p>

@@ -92,12 +92,22 @@ o1.AddEdge(&quot;B&quot;, &quot;D&quot;)
 ? o1.IsExceptionalTransition(&quot;an&quot;, &quot;an&quot;, &quot;an&quot;)
 #--&gt; FALSE</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzmathsubstance.html#isdefinedas">IsDefinedAs</a> Is pcName defined as pcFunction over exactly these objects, in order? <span class="in">dans stzMathSubstance</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzMathSubstance(StzDotDomain())
 ? o1.IsDefinedAs(&quot;a&quot;, &quot;a&quot;, [ 2, 3 ])
-#--&gt; FALSE</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li></ul><p class="proof">et 9 autres dans la référence</p><h3>Trouver</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzorgchart.html#positionsbylevel">PositionsByLevel</a> organizational metrics <span class="in">dans stzOrgChart</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzOrgChart(&quot;firm&quot;)
-o1.AddPositionXTT(&quot;ceo&quot;, &quot;CEO&quot;, [ :level = &quot;executive&quot; ])
-o1.AddPositionXTT(&quot;cfo&quot;, &quot;CFO&quot;, [ :level = &quot;senior&quot;, :reportsTo = &quot;ceo&quot; ])
-o1.AddPositionXTT(&quot;clerk&quot;, &quot;Clerk&quot;, [ :level = &quot;staff&quot;, :reportsTo = &quot;cfo&quot; ])
+#--&gt; FALSE</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li></ul><p class="proof">et 9 autres dans la référence</p><h3>Trouver</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzorgchart.html#positionsbylevel">PositionsByLevel</a> organizational metrics <span class="in">dans stzOrgChart</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzOrgChart("firm")
+o1.AddPositionXTT("ceo", "CEO", [ :level = "executive" ])
+o1.AddPositionXTT("cfo", "CFO", [
+    :level = "senior",
+    :reportsTo = "ceo"
+])
+o1.AddPositionXTT("clerk", "Clerk", [
+    :level = "staff",
+    :reportsTo = "cfo"
+])
 ? @@( o1.PositionsByLevel() )
-#--&gt; [ [ &quot;executive&quot;, [ &quot;ceo&quot; ] ], [ &quot;management&quot;, [ ] ], [ &quot;staff&quot;, [ &quot;clerk&quot; ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzgraph.html#findq">FindQ</a> Opens a rich query on the graph. The finder is an OBJECT, so it carries the Q -- there is no data-shaped twin of a query builder. <span class="in">dans stzGraph</span></li><li><a class="mono" href="../reference/stzdiagram.html#lastcanvas">LastCanvas</a> The picture as last drawn. A live session redraws THIS between gestures instead of building a new one -- the difference between a frame that costs a present and a frame that costs a layout. <span class="in">dans stzDiagram</span></li><li><a class="mono" href="../reference/stzorgchart.html#positions">Positions</a> Found 2026-08-29 by the scope governance on its first run over this domain, and not by any of the 22 assertions the org suite already passed: every one of them checks what the rules SAY, and a rule that governs nothing says nothing. The count of governed subjects is what made it visible -- no-self-report governs 0 positions in a chart of four, which no verdict-shaped test can express. <span class="in">dans stzOrgChart</span></li></ul><h3>Compter et mesurer</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzgraph.html#maxflow">MaxFlow</a> Maximum flow from pcSource to pcSink (Edmonds-Karp, engine). Edge :weight is the capacity (default 1). Returns the flow value. <span class="in">dans stzGraph</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzGraph(&quot;g&quot;)
+#--&gt; [
+#--&gt;     [ "executive", [ "ceo" ] ],
+#--&gt;     [ "management", [ ] ],
+#--&gt;     [ "staff", [ "clerk" ] ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzgraph.html#findq">FindQ</a> Opens a rich query on the graph. The finder is an OBJECT, so it carries the Q -- there is no data-shaped twin of a query builder. <span class="in">dans stzGraph</span></li><li><a class="mono" href="../reference/stzdiagram.html#lastcanvas">LastCanvas</a> The picture as last drawn. A live session redraws THIS between gestures instead of building a new one -- the difference between a frame that costs a present and a frame that costs a layout. <span class="in">dans stzDiagram</span></li><li><a class="mono" href="../reference/stzorgchart.html#positions">Positions</a> Found 2026-08-29 by the scope governance on its first run over this domain, and not by any of the 22 assertions the org suite already passed: every one of them checks what the rules SAY, and a rule that governs nothing says nothing. The count of governed subjects is what made it visible -- no-self-report governs 0 positions in a chart of four, which no verdict-shaped test can express. <span class="in">dans stzOrgChart</span></li></ul><h3>Compter et mesurer</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzgraph.html#maxflow">MaxFlow</a> Maximum flow from pcSource to pcSink (Edmonds-Karp, engine). Edge :weight is the capacity (default 1). Returns the flow value. <span class="in">dans stzGraph</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzGraph(&quot;g&quot;)
 o1.AddNode(&quot;A&quot;) o1.AddNode(&quot;B&quot;) o1.AddNode(&quot;C&quot;)
 o1.AddNode(&quot;D&quot;)
 o1.AddEdge(&quot;A&quot;, &quot;B&quot;) o1.AddEdge(&quot;A&quot;, &quot;C&quot;)
@@ -127,17 +137,33 @@ o1.AddNode(&quot;D&quot;)
 o1.AddEdge(&quot;A&quot;, &quot;B&quot;) o1.AddEdge(&quot;A&quot;, &quot;C&quot;)
 o1.AddEdge(&quot;B&quot;, &quot;D&quot;)
 ? o1.NumberOfStronglyConnectedComponents()
-#--&gt; 4</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzorgchart.html#averagespanofcontrol">AverageSpanOfControl</a> organizational metrics <span class="in">dans stzOrgChart</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzOrgChart(&quot;firm&quot;)
-o1.AddPositionXTT(&quot;ceo&quot;, &quot;CEO&quot;, [ :level = &quot;executive&quot; ])
-o1.AddPositionXTT(&quot;cfo&quot;, &quot;CFO&quot;, [ :level = &quot;senior&quot;, :reportsTo = &quot;ceo&quot; ])
-o1.AddPositionXTT(&quot;clerk&quot;, &quot;Clerk&quot;, [ :level = &quot;staff&quot;, :reportsTo = &quot;cfo&quot; ])
+#--&gt; 4</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzorgchart.html#averagespanofcontrol">AverageSpanOfControl</a> organizational metrics <span class="in">dans stzOrgChart</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzOrgChart("firm")
+o1.AddPositionXTT("ceo", "CEO", [ :level = "executive" ])
+o1.AddPositionXTT("cfo", "CFO", [
+    :level = "senior",
+    :reportsTo = "ceo"
+])
+o1.AddPositionXTT("clerk", "Clerk", [
+    :level = "staff",
+    :reportsTo = "cfo"
+])
 ? o1.AverageSpanOfControl()
-#--&gt; 1</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzorgchart.html#numberofpositionsbylevel">NumberOfPositionsByLevel</a> organizational metrics <span class="in">dans stzOrgChart</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzOrgChart(&quot;firm&quot;)
-o1.AddPositionXTT(&quot;ceo&quot;, &quot;CEO&quot;, [ :level = &quot;executive&quot; ])
-o1.AddPositionXTT(&quot;cfo&quot;, &quot;CFO&quot;, [ :level = &quot;senior&quot;, :reportsTo = &quot;ceo&quot; ])
-o1.AddPositionXTT(&quot;clerk&quot;, &quot;Clerk&quot;, [ :level = &quot;staff&quot;, :reportsTo = &quot;cfo&quot; ])
+#--&gt; 1</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzorgchart.html#numberofpositionsbylevel">NumberOfPositionsByLevel</a> organizational metrics <span class="in">dans stzOrgChart</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzOrgChart("firm")
+o1.AddPositionXTT("ceo", "CEO", [ :level = "executive" ])
+o1.AddPositionXTT("cfo", "CFO", [
+    :level = "senior",
+    :reportsTo = "ceo"
+])
+o1.AddPositionXTT("clerk", "Clerk", [
+    :level = "staff",
+    :reportsTo = "cfo"
+])
 ? @@( o1.NumberOfPositionsByLevel() )
-#--&gt; [ [ &quot;executive&quot;, 1 ], [ &quot;management&quot;, 0 ], [ &quot;staff&quot;, 1 ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzgraph.html#mincut">MinCut</a> Minimum cut between pcSource and pcSink: the saturated edges crossing the cut, as a list of [from, to] id pairs (max-flow / min-cut). Engine. <span class="in">dans stzGraph</span></li><li><a class="mono" href="../reference/stzgraph.html#averagepathlength">AveragePathLength</a> Mean shortest-path length over all reachable pairs (engine, all-pairs BFS). <span class="in">dans stzGraph</span></li><li><a class="mono" href="../reference/stzstoryboard.html#numberofholes">NumberOfHoles</a> how many numbers this narration shows, all of them from facts <span class="in">dans stzStoryboard</span></li><li><a class="mono" href="../reference/stzstoryboard.html#numberofframes">NumberOfFrames</a> what the storyboard is, once written <span class="in">dans stzStoryboard</span></li></ul><h3>Remplacer et modifier</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzgraph.html#setedgeweight">SetEdgeWeight</a> Override the (engine) weight of a directed edge. Used by stzGraphPlanner to push per-optimisation transition costs before an engine A* search. Returns 1 on success, 0 if the edge is unknown. <span class="in">dans stzGraph</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzGraph(&quot;g&quot;)
+#--&gt; [
+#--&gt;     [ "executive", 1 ],
+#--&gt;     [ "management", 0 ],
+#--&gt;     [ "staff", 1 ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzgraph.html#mincut">MinCut</a> Minimum cut between pcSource and pcSink: the saturated edges crossing the cut, as a list of [from, to] id pairs (max-flow / min-cut). Engine. <span class="in">dans stzGraph</span></li><li><a class="mono" href="../reference/stzgraph.html#averagepathlength">AveragePathLength</a> Mean shortest-path length over all reachable pairs (engine, all-pairs BFS). <span class="in">dans stzGraph</span></li><li><a class="mono" href="../reference/stzstoryboard.html#numberofholes">NumberOfHoles</a> how many numbers this narration shows, all of them from facts <span class="in">dans stzStoryboard</span></li><li><a class="mono" href="../reference/stzstoryboard.html#numberofframes">NumberOfFrames</a> what the storyboard is, once written <span class="in">dans stzStoryboard</span></li></ul><h3>Remplacer et modifier</h3><ul class="fnlist"><li><a class="mono" href="../reference/stzgraph.html#setedgeweight">SetEdgeWeight</a> Override the (engine) weight of a directed edge. Used by stzGraphPlanner to push per-optimisation transition costs before an engine A* search. Returns 1 on success, 0 if the edge is unknown. <span class="in">dans stzGraph</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzGraph(&quot;g&quot;)
 o1.AddNode(&quot;A&quot;) o1.AddNode(&quot;B&quot;) o1.AddNode(&quot;C&quot;)
 o1.AddNode(&quot;D&quot;)
 o1.AddEdge(&quot;A&quot;, &quot;B&quot;) o1.AddEdge(&quot;A&quot;, &quot;C&quot;)
@@ -165,12 +191,22 @@ o1.AddNode(&quot;D&quot;)
 o1.AddEdge(&quot;A&quot;, &quot;B&quot;) o1.AddEdge(&quot;A&quot;, &quot;C&quot;)
 o1.AddEdge(&quot;B&quot;, &quot;D&quot;)
 ? o1.ConvertColorTogray(&quot;a&quot;)
-#--&gt; #FFFFFF</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzorgchart.html#totreenodes">ToTreeNodes</a> Options ride through to stzTreeCanvas: :Font :Title :NodeWidth :NodeHeight :HGap :VGap :Background :NodeColor :NodeBorder :LineColor :TextColor :FontSize :Width :Height <span class="in">dans stzOrgChart</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzOrgChart(&quot;firm&quot;)
-o1.AddPositionXTT(&quot;ceo&quot;, &quot;CEO&quot;, [ :level = &quot;executive&quot; ])
-o1.AddPositionXTT(&quot;cfo&quot;, &quot;CFO&quot;, [ :level = &quot;senior&quot;, :reportsTo = &quot;ceo&quot; ])
-o1.AddPositionXTT(&quot;clerk&quot;, &quot;Clerk&quot;, [ :level = &quot;staff&quot;, :reportsTo = &quot;cfo&quot; ])
+#--&gt; #FFFFFF</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzorgchart.html#totreenodes">ToTreeNodes</a> Options ride through to stzTreeCanvas: :Font :Title :NodeWidth :NodeHeight :HGap :VGap :Background :NodeColor :NodeBorder :LineColor :TextColor :FontSize :Width :Height <span class="in">dans stzOrgChart</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzOrgChart("firm")
+o1.AddPositionXTT("ceo", "CEO", [ :level = "executive" ])
+o1.AddPositionXTT("cfo", "CFO", [
+    :level = "senior",
+    :reportsTo = "ceo"
+])
+o1.AddPositionXTT("clerk", "Clerk", [
+    :level = "staff",
+    :reportsTo = "cfo"
+])
 ? @@( o1.ToTreeNodes() )
-#--&gt; [ [ &quot;ceo&quot;, &quot;CEO&quot;, &quot;&quot; ], [ &quot;cfo&quot;, &quot;CFO&quot;, &quot;ceo&quot; ], [ &quot;clerk&quot;, &quot;Clerk&quot;, &quot;cfo&quot; ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzworkflow.html#toworkflow">ToWorkflow</a> export <span class="in">dans stzWorkflow</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzWorkflow(&quot;affirm65b&quot;)
+#--&gt; [
+#--&gt;     [ "ceo", "CEO", "" ],
+#--&gt;     [ "cfo", "CFO", "ceo" ],
+#--&gt;     [ "clerk", "Clerk", "cfo" ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details></li><li><a class="mono" href="../reference/stzworkflow.html#toworkflow">ToWorkflow</a> export <span class="in">dans stzWorkflow</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzWorkflow(&quot;affirm65b&quot;)
 ? o1.ToWorkflow()
 #--&gt; workflow &quot;affirm65b&quot;
 #--&gt;     type: sequential

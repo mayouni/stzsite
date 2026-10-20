@@ -160,14 +160,17 @@
 <h2 id="step-10-creating-a-personal-plan">Step 10 — Creating a Personal Plan</h2>
 <p>The analyst now defines what <em>they</em> care about:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>aBusinessPlan = [
-  [:function = &quot;Mean&quot;, :description = &quot;Typical sales&quot;],
-  [:function = &quot;CoefficientOfVariation&quot;, :description = &quot;Stability&quot;],
-  [:condition = &quot;ContainsOutliers()&quot;,
-   :function = &quot;Outliers&quot;,
-   :description = &quot;Risk events&quot;]
+  [:function = "Mean", :description = "Typical sales"],
+  [
+      :function = "CoefficientOfVariation",
+      :description = "Stability"
+  ],
+  [:condition = "ContainsOutliers()",
+   :function = "Outliers",
+   :description = "Risk events"]
 ]
 
-oSales.AddPlan(:Business, &quot;Business Overview&quot;, &quot;Quick decision view&quot;, aBusinessPlan)
+oSales.AddPlan(:Business, "Business Overview", "Quick decision view", aBusinessPlan)
 
 oSales.ExecutePlan(:Business)</pre><p class="ran nv-illus">illustration</p></div>
 <p><strong>Output:</strong></p>
@@ -275,20 +278,22 @@ oSales.ExecutePlan(:Business)</pre><p class="ran nv-illus">illustration</p></div
 <div class="lbl">Python, montré pour comparaison, non exécuté</div><pre>import pandas as pd
 import scipy.stats as stats
 
-df = pd.DataFrame({&#x27;value&#x27;: data})
-print(f&quot;Mean: {df[&#x27;value&#x27;].mean()}&quot;)
-print(f&quot;Median: {df[&#x27;value&#x27;].median()}&quot;)
-print(f&quot;Std: {df[&#x27;value&#x27;].std()}&quot;)
+df = pd.DataFrame({'value': data})
+print(f"Mean: {df['value'].mean()}")
+print(f"Median: {df['value'].median()}")
+print(f"Std: {df['value'].std()}")
 
-Q1 = df[&#x27;value&#x27;].quantile(0.25)
-Q3 = df[&#x27;value&#x27;].quantile(0.75)
+Q1 = df['value'].quantile(0.25)
+Q3 = df['value'].quantile(0.75)
 IQR = Q3 - Q1
-outliers = df[(df[&#x27;value&#x27;] &lt; Q1 - 1.5*IQR) | (df[&#x27;value&#x27;] &gt; Q3 + 1.5*IQR)]
-print(f&quot;Outliers: {len(outliers)}&quot;)
+outliers = df[
+    (df['value'] &lt; Q1 - 1.5*IQR) | (df['value'] &gt; Q3 + 1.5*IQR)
+]
+print(f"Outliers: {len(outliers)}")
 
-skew = stats.skew(df[&#x27;value&#x27;])
-kurt = stats.kurtosis(df[&#x27;value&#x27;])
-print(f&quot;Skewness: {skew}, Kurtosis: {kurt}&quot;)</pre>
+skew = stats.skew(df['value'])
+kurt = stats.kurtosis(df['value'])
+print(f"Skewness: {skew}, Kurtosis: {kurt}")</pre>
 <p><strong>Softanza</strong> can make it in two lines:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oData = new stzDataSet(data)
 oData.ExecutePlan(:EDA)</pre><p class="ran nv-illus">illustration</p></div>

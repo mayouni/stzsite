@@ -43,12 +43,19 @@
   <div class="wrap page-body">
     
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? Q( 1:5 ).IsListOf(:Numbers)
-? Q( &quot;A&quot;:&quot;E&quot; ).IsListOf(:Strings)
-? Q([ 1:5, &quot;A&quot;:&quot;E&quot; ]).IsListOf(:Lists)
+? Q( "A":"E" ).IsListOf(:Strings)
+? Q([ 1:5, "A":"E" ]).IsListOf(:Lists)
 ? Q( [ 1:5, 6:10, 11:15 ] ).IsListOf(:ListOfNumbers)
-? Q( [ 1:5, 6:10, 11:15 ] ).IsListOf(:ListsOfNumbers) // #NOTE the support of plural form
-? Q( [ &quot;A&quot;:&quot;E&quot;, &quot;a&quot;:&quot;e&quot; ] ).IsListOf(:ListOfStrings)
-? Q( [ &quot;A&quot;:&quot;E&quot;, &quot;a&quot;:&quot;e&quot; ] ).IsListOf(:ListsOfStrings) //#NOTE the support of plural form</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE
+? Q( [
+    1:5,
+    6:10,
+    11:15
+] ).IsListOf(:ListsOfNumbers) // #NOTE the support of plural form
+? Q( [ "A":"E", "a":"e" ] ).IsListOf(:ListOfStrings)
+? Q( [
+    "A":"E",
+    "a":"e"
+] ).IsListOf(:ListsOfStrings) //#NOTE the support of plural form</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE
 TRUE
 TRUE
 TRUE
@@ -58,12 +65,18 @@ TRUE</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibli
 oNumber2 = StzNumberQ(12)
 oNumber3 = StzNumberQ(24)
 ? Q([ oNumber1, oNumber2, oNumber3 ]).IsListOf(:StzNumbers)
-? Q([ [oNumber1, oNumber2], [oNumber2, oNumber3] ]).IsListOf(:ListsOfStzNumbers)
-oString1 = StzStringQ(&quot;Win&quot;)
-oString2 = StzStringQ(&quot;Loose&quot;)
-oString3 = StzStringQ(&quot;Don&#x27;t care!&quot;)
+? Q([
+    [oNumber1, oNumber2],
+    [oNumber2, oNumber3]
+]).IsListOf(:ListsOfStzNumbers)
+oString1 = StzStringQ("Win")
+oString2 = StzStringQ("Loose")
+oString3 = StzStringQ("Don't care!")
 ? Q([ oString1, oString2, oString3 ]).IsListOf(:StzStrings)
-? Q([ [oString1, oString2], [oString2, oString3] ]).IsListOf(:ListsOfStzStrings)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE
+? Q([
+    [oString1, oString2],
+    [oString2, oString3]
+]).IsListOf(:ListsOfStzStrings)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE
 TRUE
 TRUE
 TRUE</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/504_islistof.ring" target="_blank" rel="noopener noreferrer">504_islistof.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>

@@ -54,11 +54,23 @@ chk(&quot;TEXT_DIRECTION rtl becomes --rmlui-direction&quot;,
     StzFindFirst(&quot;--rmlui-direction: rtl&quot;, oRtl.ToRml()) &gt; 0)
 chk(&quot;...and never the CSS spelling RCSS rejects&quot;,
     StzFindFirst(&quot;; direction:&quot;, oRtl.ToRml()) = 0)</pre></div><div class="out"><div class="lbl">Output</div><pre>  [OK] TEXT_DIRECTION rtl becomes --rmlui-direction
-  [OK] ...and never the CSS spelling RCSS rejects</pre></div></div><p class="ran">run on 2026-10-01 21:18 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/gui/gui_stzui_narrated.ring" target="_blank" rel="noopener noreferrer">base/test/gui/gui_stzui_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p style="margin-top:32px"><b>An application is declared as a world of things, truths and relations, and it explains itself in plain text.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oApp = new stzApp(&quot;SonibankVisits&quot;)
+  [OK] ...and never the CSS spelling RCSS rejects</pre></div></div><p class="ran">run on 2026-10-01 21:18 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/gui/gui_stzui_narrated.ring" target="_blank" rel="noopener noreferrer">base/test/gui/gui_stzui_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p style="margin-top:32px"><b>An application is declared as a world of things, truths and relations, and it explains itself in plain text.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oApp = new stzApp("SonibankVisits")
 oApp {
-    AddThingQ(:Account) { Has([ :number, :chapter, :balance ])  IsTrue(:balance, &quot;@ &gt;= 0&quot;) }
-    AddThingQ(:Client)  { Has([ :code, :name, :city ])  Owns(:Account) }
-    AddThingQ(:Visit)   { Of(:Client)  Has([ :agent, :date, :subject ]) }
+    AddThingQ(:Account) { Has([
+        :number,
+        :chapter,
+        :balance
+    ])  IsTrue(:balance, "@ &gt;= 0") }
+    AddThingQ(:Client)  { Has([
+        :code,
+        :name,
+        :city
+    ])  Owns(:Account) }
+    AddThingQ(:Visit)   { Of(:Client)  Has([
+        :agent,
+        :date,
+        :subject
+    ]) }
     AddRelation(:Account, :belongsTo, :Client)
 }
 oApp.Explain()</pre></div><div class="out"><div class="lbl">Output</div><pre>WORLD SonibankVisits   lives in: memory (not persisted)

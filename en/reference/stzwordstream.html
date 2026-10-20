@@ -64,9 +64,16 @@ o1.FeedChunks([ &quot;one two&quot;, &quot;two three&quot; ])
 o1.Feed(&quot;the cat saw the dog and the cat ran&quot;)
 ? @@( o1.TopWords(2) )
 #--&gt; [ [ &quot;the&quot;, 3 ], [ &quot;cat&quot;, 2 ] ]</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="wordsandtheircounts" data-k="wordsandtheircounts  [[word, count], ...] over everything fed, in first-appearance order."><div class="ln mono">WordsAndTheirCounts</div><div class="lt">[[word, count], ...] over everything fed, in first-appearance order.<details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzWordStream()
-o1.Feed(&quot;the cat saw the dog and the cat ran&quot;)
+o1.Feed("the cat saw the dog and the cat ran")
 ? @@( o1.WordsAndTheirCounts() )
-#--&gt; [ [ &quot;the&quot;, 3 ], [ &quot;cat&quot;, 2 ], [ &quot;saw&quot;, 1 ], [ &quot;dog&quot;, 1 ], [ &quot;and&quot;, 1 ], [ &quot;ran&quot;, 1 ] ]</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="mostfrequentwords" data-k="mostfrequentwords  just the words of the top-n (drops the counts)."><div class="ln mono">MostFrequentWords</div><div class="lt">Just the words of the top-N (drops the counts).<details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzWordStream()
+#--&gt; [
+#--&gt;     [ "the", 3 ],
+#--&gt;     [ "cat", 2 ],
+#--&gt;     [ "saw", 1 ],
+#--&gt;     [ "dog", 1 ],
+#--&gt;     [ "and", 1 ],
+#--&gt;     [ "ran", 1 ]
+#--&gt; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="mostfrequentwords" data-k="mostfrequentwords  just the words of the top-n (drops the counts)."><div class="ln mono">MostFrequentWords</div><div class="lt">Just the words of the top-N (drops the counts).<details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzWordStream()
 o1.Feed(&quot;the cat saw the dog and the cat ran&quot;)
 ? @@( o1.MostFrequentWords(2) )
 #--&gt; [ &quot;the&quot;, &quot;cat&quot; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="mostfrequentword" data-k="mostfrequentword  querying"><div class="ln mono">MostFrequentWord</div><div class="lt">querying<details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzWordStream()

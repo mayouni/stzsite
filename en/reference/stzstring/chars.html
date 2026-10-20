@@ -48,11 +48,15 @@ oA = new stzString(&quot;a&quot;)
 oBigA = new stzString( oA.Repeated(200000) )
 # Chars() returns 200,000 single chars
 ? len(oBigA.Chars())</pre></div><div class="out"><div class="lbl">Output</div><pre>200000</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/999_engine_string_millions_narrated.ring" target="_blank" rel="noopener noreferrer">999_engine_string_millions_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre># chars of 12309 are numbers
-? Q(&quot;12309&quot;).CharsQ().NumbrifiedQ().Are(:Numbers)
+? Q("12309").CharsQ().NumbrifiedQ().Are(:Numbers)
 # chars of 248 are even positive numbers
-? Q(&quot;248&quot;).CharsQ().NumberifiedQ().Are([ :Even, :Positive, :Numbers ])
+? Q("248").CharsQ().NumberifiedQ().Are([
+    :Even,
+    :Positive,
+    :Numbers
+])
 # these are punctuation chars
-? Q([ &quot;,&quot;, &quot;:&quot;, &quot;;&quot; ]).Are([ :Punctuation, :Chars ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+? Q([ ",", ":", ";" ]).Are([ :Punctuation, :Chars ])</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 1
 1</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/451_what_you_think_is_what_you_write.ring" target="_blank" rel="noopener noreferrer">451_what_you_think_is_what_you_write.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><h2>Scope <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># CharsW with a { Q(@char).isLetter() } block keeps just the letters
 ? @@( Q(&quot;~~H/U/S/S/E/I/N~~&quot;).CharsW(&#x27;{ Q(@char).isLetter() }&#x27;) )

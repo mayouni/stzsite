@@ -49,7 +49,14 @@
 
 <h2 id="find-first-then-apply">Find first, then apply</h2>
 <div class="vs">
-<div class="side stz"><div class="lbl">Softanza</div><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
+<div class="side stz"><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    "tea",
+    "rice",
+    "tea",
+    "fish",
+    "rice",
+    "tea"
+])
 ? @@( o1.FindAll("tea") )
 ? @@( o1.DuplicatesRemoved() )</pre><pre class="o">[ 1, 3, 6 ]
 [ "tea", "rice", "fish" ]</pre></div>

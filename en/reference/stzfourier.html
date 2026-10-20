@@ -56,9 +56,27 @@
 ? o1.IsRadix2Length()
 #--&gt; TRUE</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="transform" data-k="transform dft spectrum the spectrum, as a list of [re, im] pairs, one per frequency bin."><span id="dft"></span><span id="spectrum"></span><div class="ln mono">Transform</div><div class="lt">The spectrum, as a list of [re, im] pairs, one per frequency bin.<small>also written: <span class="mono">DFT · Spectrum</span></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzFourier([3,3,3,3,3,3,3,3])
 ? @@( o1.Transform() )
-#--&gt; [ [ 24, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ] ]</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="inversetransform" data-k="inversetransform inversedft back to the time domain. inversetransform(transform()) is the identity."><span id="inversedft"></span><div class="ln mono">InverseTransform</div><div class="lt">Back to the time domain. InverseTransform(Transform()) is the identity.<small>also written: <span class="mono">InverseDFT</span></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzFourier([3,3,3,3,3,3,3,3])
+#--&gt; [
+#--&gt;     [ 24, 0 ],
+#--&gt;     [ 0, 0 ],
+#--&gt;     [ 0, 0 ],
+#--&gt;     [ 0, 0 ],
+#--&gt;     [ 0, 0 ],
+#--&gt;     [ 0, 0 ],
+#--&gt;     [ 0, 0 ],
+#--&gt;     [ 0, 0 ]
+#--&gt; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="inversetransform" data-k="inversetransform inversedft back to the time domain. inversetransform(transform()) is the identity."><span id="inversedft"></span><div class="ln mono">InverseTransform</div><div class="lt">Back to the time domain. InverseTransform(Transform()) is the identity.<small>also written: <span class="mono">InverseDFT</span></small><details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzFourier([3,3,3,3,3,3,3,3])
 ? @@( o1.InverseTransform() )
-#--&gt; [ [ 3, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ] ]</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="magnitudes" data-k="magnitudes  each of these is one engine call, not a transform this class then walks. the readings are what callers actually want -- raw complex bins are rarely the answer -- so they belong to the engine and every language over it, not to a loop written once per binding. |x_k| per bin: &quot;how much of this frequency is present&quot;. phase-blind, which is what you want when looking for a periodicity."><div class="ln mono">Magnitudes</div><div class="lt">EACH OF THESE IS ONE ENGINE CALL, not a transform this class then walks. The readings are what callers actually want -- raw complex bins are rarely the answer -- so they belong to the engine and every language over it, not to a loop written once per binding. |X_k| per bin: &quot;how much of this frequency is present&quot;. Phase-blind, which is what you want when looking for a periodicity.<details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzFourier([3,3,3,3,3,3,3,3])
+#--&gt; [
+#--&gt;     [ 3, 0 ],
+#--&gt;     [ 0, 0 ],
+#--&gt;     [ 0, 0 ],
+#--&gt;     [ 0, 0 ],
+#--&gt;     [ 0, 0 ],
+#--&gt;     [ 0, 0 ],
+#--&gt;     [ 0, 0 ],
+#--&gt;     [ 0, 0 ]
+#--&gt; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="magnitudes" data-k="magnitudes  each of these is one engine call, not a transform this class then walks. the readings are what callers actually want -- raw complex bins are rarely the answer -- so they belong to the engine and every language over it, not to a loop written once per binding. |x_k| per bin: &quot;how much of this frequency is present&quot;. phase-blind, which is what you want when looking for a periodicity."><div class="ln mono">Magnitudes</div><div class="lt">EACH OF THESE IS ONE ENGINE CALL, not a transform this class then walks. The readings are what callers actually want -- raw complex bins are rarely the answer -- so they belong to the engine and every language over it, not to a loop written once per binding. |X_k| per bin: &quot;how much of this frequency is present&quot;. Phase-blind, which is what you want when looking for a periodicity.<details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzFourier([3,3,3,3,3,3,3,3])
 ? @@( o1.Magnitudes() )
 #--&gt; [ 24, 0, 0, 0, 0, 0, 0, 0 ]</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="phases" data-k="phases  the phase angle of each bin, in radians."><div class="ln mono">Phases</div><div class="lt">The phase angle of each bin, in radians.<details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzFourier([3,3,3,3,3,3,3,3])
 ? @@( o1.Phases() )

@@ -54,7 +54,11 @@ niger</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibl
 ? o1.Country()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>pt_BR
 portuguese
 latin
-brazil</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/locale/69_abbreviation.ring" target="_blank" rel="noopener noreferrer">69_abbreviation.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><h2>Portée <span class="mono">(4)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzLocale([ :Language = &quot;portuguese&quot;, :Script = &quot;Latn&quot;, :Country = &quot;BR&quot; ])
+brazil</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/locale/69_abbreviation.ring" target="_blank" rel="noopener noreferrer">69_abbreviation.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><h2>Portée <span class="mono">(4)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzLocale([
+    :Language = "portuguese",
+    :Script = "Latn",
+    :Country = "BR"
+])
 ? o1.Abbreviation()
 ? o1.LanguageName()
 ? o1.CountryName()
@@ -86,19 +90,23 @@ o1 = new stzLocale(&quot;TN-Arab&quot;) # TN here means the TswaNa language in S
 tunisia
 tunisia
 south_africa
-tswana</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/locale/from_string_841_pr.ring" target="_blank" rel="noopener noreferrer">from_string_841_pr.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzLocale([ :Language = &quot;french&quot;, :Country = &quot;Mali&quot; ])
+tswana</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/locale/from_string_841_pr.ring" target="_blank" rel="noopener noreferrer">from_string_841_pr.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzLocale([ :Language = "french", :Country = "Mali" ])
 ? o1.Country()
 ? o1.Langauge()
 ? o1.Script() + NL
-o1 = new stzLocale([ :Language = &quot;ara&quot;, :Script = &quot;arabic&quot; ])
+o1 = new stzLocale([ :Language = "ara", :Script = "arabic" ])
 ? o1.Country()
 ? o1.Langauge()
 ? o1.Script() + NL
-o1 = new stzLocale([ :Country = &quot;brazil&quot;, :Script = &quot;latin&quot; ])
+o1 = new stzLocale([ :Country = "brazil", :Script = "latin" ])
 ? o1.Country()
 ? o1.Langauge()
 ? o1.Script() + NL
-o1 = new stzLocale([ :Country = &quot;Spain&quot;, :Language = &quot;Spanish&quot;, :Script = &quot;latin&quot; ])
+o1 = new stzLocale([
+    :Country = "Spain",
+    :Language = "Spanish",
+    :Script = "latin"
+])
 ? o1.Country()
 ? o1.Langauge()
 ? o1.Script()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>mali

@@ -85,7 +85,7 @@ oDur4 = DurationQ(&quot;1 hour 15 minutes&quot;)
 <p>No format conversion needed—just instantiate and work.</p>
 <h2 id="component-access-precise-breakdowns">Component Access: Precise Breakdowns</h2>
 <p>Extract exactly what you need:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>oDuration = new stzDuration(&quot;2 days 5 hours 30 minutes 45 seconds&quot;)
+<div class="nblock"><div class="lbl">Haro</div><pre>oDuration = new stzDuration("2 days 5 hours 30 minutes 45 seconds")
 
 # Individual components
 ? oDuration.Days()           #--&gt; 2
@@ -100,7 +100,13 @@ oDur4 = DurationQ(&quot;1 hour 15 minutes&quot;)
 
 # Complete breakdown as hash
 ? oDuration.Components()
-#--&gt; [:Days = 2, :Hours = 5, :Minutes = 30, :Seconds = 45, :Milliseconds = 0]</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; [
+#--&gt;     :Days = 2,
+#--&gt;     :Hours = 5,
+#--&gt;     :Minutes = 30,
+#--&gt;     :Seconds = 45,
+#--&gt;     :Milliseconds = 0
+#--&gt; ]</pre><p class="ran nv-illus">illustration</p></div>
 <p>Notice <code>TotalHours()</code> returns 53 (cumulative), while <code>Hours()</code> returns 5 (component within days). Choose based on your calculation needs.</p>
 <h2 id="arithmetic-natural-operations">Arithmetic: Natural Operations</h2>
 <p>Duration math works like you'd expect, with intelligent polymorphism:</p>
@@ -309,32 +315,35 @@ oDuration = DurationQ(nEndTime - nStartTime)
 <h2 id="project-time-estimation-complete-example">Project Time Estimation: Complete Example</h2>
 <p>The opening example expanded with real-world details:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>aTasks = [
-    [&quot;Design mockups&quot;, DurationQ(&quot;2 days&quot;)],
-    [&quot;Backend development&quot;, DurationQ(&quot;5 days&quot;)],
-    [&quot;Frontend development&quot;, DurationQ(&quot;4 days&quot;)],
-    [&quot;Testing&quot;, DurationQ(172800)],        # API gave us seconds (2 days)
-    [&quot;Deployment&quot;, DurationQ(&quot;1 day&quot;)]
+    ["Design mockups", DurationQ("2 days")],
+    ["Backend development", DurationQ("5 days")],
+    ["Frontend development", DurationQ("4 days")],
+    [
+        "Testing",
+        DurationQ(172800)
+    ],        # API gave us seconds (2 days)
+    ["Deployment", DurationQ("1 day")]
 ]
 
 # Calculate total project time
 oTotalProject = DurationQ(0)
 
-? &quot;Task breakdown:&quot;
+? "Task breakdown:"
 for aTask in aTasks
-    ? &quot;  &quot; + aTask[1] + &quot;: &quot; + aTask[2].ToCompact()
+    ? "  " + aTask[1] + ": " + aTask[2].ToCompact()
     oTotalProject = oTotalProject + aTask[2]
 next
 
-? &quot;&quot;
-? &quot;Total: &quot; + oTotalProject.ToHuman()
+? ""
+? "Total: " + oTotalProject.ToHuman()
 #--&gt; Total: 14 days
 
 # Add 20% buffer for realistic estimates
 oWithBuffer = oTotalProject * 1.20
-? &quot;With buffer: &quot; + oWithBuffer.ToHuman()
+? "With buffer: " + oWithBuffer.ToHuman()
 #--&gt; With buffer: 16 days, 19 hours, and 12 minutes
 
-? &quot;Working days needed: &quot; + oWithBuffer.TotalDays()
+? "Working days needed: " + oWithBuffer.TotalDays()
 #--&gt; Working days needed: 16
 
 #--&gt;

@@ -43,9 +43,16 @@
 <p>Softanza speaks one vocabulary at three depths. Core holds the lean essentials, for programs that need little. Base is the whole platform, the one the rest of this site describes. Max adds advanced pieces on top of base. A program chooses its depth by the file it loads; base loads core first, and max loads base.</p>
 <figure class="diagram"><img class="wide-only" src="../assets/img/diagrams/layers-en.png" alt="Four bands, top to bottom. Max, stx, loaded by stxLib: walkers, big numbers, multilingual strings, a test framework, 40 classes. Base, stz, emphasised, loaded by stzLib: the full platform, 44 domain folders, 644 classes, some 36,000 method names. Core, stk, loaded by stkLib: the lean essentials, strings, lists, numbers, objects, 17 classes. The engine, Zig: 89 modules behind a plain C interface, the substance written once." width="1376" height="768"><img class="narrow-only" loading="lazy" src="../assets/img/diagrams/layers-narrow-en.png" alt="Four bands, top to bottom. Max, stx, loaded by stxLib: walkers, big numbers, multilingual strings, a test framework, 40 classes. Base, stz, emphasised, loaded by stzLib: the full platform, 44 domain folders, 644 classes, some 36,000 method names. Core, stk, loaded by stkLib: the lean essentials, strings, lists, numbers, objects, 17 classes. The engine, Zig: 89 modules behind a plain C interface, the substance written once." width="640" height="1112"><figcaption>Three layers of one vocabulary over one engine. A program chooses its layer by the file it loads.</figcaption></figure>
 
-<p style="margin-top:32px"><b>At the core level, a lean stkList answers the two basic searches, the first and the last position, in plain code with no call to the engine.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stkList([ &quot;one&quot;, &quot;and&quot;, &quot;one&quot;, &quot;makes&quot;, &quot;two&quot;, &quot;ones&quot; ])
-? o1.FindFirst(&quot;one&quot;)
-? o1.FindLast(&quot;one&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+<p style="margin-top:32px"><b>At the core level, a lean stkList answers the two basic searches, the first and the last position, in plain code with no call to the engine.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stkList([
+    "one",
+    "and",
+    "one",
+    "makes",
+    "two",
+    "ones"
+])
+? o1.FindFirst("one")
+? o1.FindLast("one")</pre></div><div class="out"><div class="lbl">Output</div><pre>1
 3</pre></div></div><p class="ran">run on 2026-10-02 02:42 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/core/test/stkListTest.ring" target="_blank" rel="noopener noreferrer">core/test/stkListTest.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p style="margin-top:32px"><b>At the base level, stzList answers the same questions with the same verbs, and adds relative searches with named parameters.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;_&quot;, &quot;_&quot;, &quot;♥&quot;, &quot;_&quot;, &quot;_&quot;, &quot;♥&quot;, &quot;_&quot; ])
 ? o1.FindFirst(&quot;♥&quot;)
 ? o1.FindLast(&quot;♥&quot;)
@@ -93,16 +100,24 @@
 <li><strong>A script with nothing to install.</strong> A program in the platform's script becomes a native executable with its virtual machine compiled into it, so the target machine needs no runtime installed. This is proven today on a one-line program.</li>
 <li><strong>Only what is used, for the web.</strong> A product declares what each of its parts needs, and the builder ships only the engine groups declared: a build that carries the solver alone is smaller than the full one.</li>
 </ul>
-<p style="margin-top:32px"><b>Declare what each part of a product needs, and Softanza computes the engine subset to ship: the phone&#x27;s on-device module carries only the aggregation and solver groups.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oDelivery = new stzDelivery(&quot;restolean&quot;)
+<p style="margin-top:32px"><b>Declare what each part of a product needs, and Softanza computes the engine subset to ship: the phone&#x27;s on-device module carries only the aggregation and solver groups.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>oDelivery = new stzDelivery("restolean")
 oDelivery.AddSuperApp(:phone, :Android)
 oDelivery.AddBackend(:api, :LinuxServer)
 oDelivery.AddFirmware(:node, :ESP32)
-oDelivery.NeedsIn(:phone, [ :Unicode, :DateTime, :PivotTable, :ConstraintSolver, :Collection, :Neural, :Regex ])
+oDelivery.NeedsIn(:phone, [
+    :Unicode,
+    :DateTime,
+    :PivotTable,
+    :ConstraintSolver,
+    :Collection,
+    :Neural,
+    :Regex
+])
 oDelivery.NeedsIn(:api,   [ :PivotTable, :Neural ])
 oDelivery.NeedsIn(:node,  [ :GPIO, :Pattern ])
 oPlan = oDelivery.Plan()
-? &quot;engine caps: &quot; + @@( oPlan.EngineCapsFor(:phone) )
-? &quot;wasm groups: &quot; + @@( StzWasmGroupsFor( oPlan.EngineCapsFor(:phone) ) )</pre></div><div class="out"><div class="lbl">Output</div><pre>engine caps: [ &quot;pivottable&quot;, &quot;constraintsolver&quot; ]
+? "engine caps: " + @@( oPlan.EngineCapsFor(:phone) )
+? "wasm groups: " + @@( StzWasmGroupsFor( oPlan.EngineCapsFor(:phone) ) )</pre></div><div class="out"><div class="lbl">Output</div><pre>engine caps: [ &quot;pivottable&quot;, &quot;constraintsolver&quot; ]
 wasm groups: [ &quot;aggregation&quot;, &quot;solver&quot; ]</pre></div></div><p class="ran">run on 2026-10-02 02:42 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-emulating-the-whole-solution-narration.md" target="_blank" rel="noopener noreferrer">base/doc/narrations/stz-emulating-the-whole-solution-narration.md<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
 
 <p>What does not exist yet is a whole Softanza program and its engine packed into one file with no dependency, holding only the code the program uses. That is the direction. The next distribution, still an experiment, is designed as one static binary, and its runner already embeds its virtual machine in a single executable.</p>

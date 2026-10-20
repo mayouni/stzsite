@@ -41,56 +41,137 @@
   </div></section>
   <div class="wrap page-body">
     <input id="flt" class="flt" type="search" placeholder="Filtrer les méthodes…" aria-label="Filtrer les méthodes…">
-    <div class="lanes rtable"><div class="lane rrow" data-k="v"><div class="ln mono">V</div><div class="lr mono">1</div><div class="lt"><a href="stzdataset.html#v">stzDataSet</a><small>autre nom de <span class="mono">Variance</span></small></div></div><div class="lane rrow" data-k="v"><div class="ln mono">v</div><div class="lr mono">1</div><div class="lt"><a href="stzforeachobject.html#v">stzForEachObject</a></div></div><div class="lane rrow" data-k="vacancy"><div class="ln mono">Vacancy</div><div class="lr mono">2</div><div class="lt"><a href="stzorgchart.html#vacancy">stzOrgChart</a> · <a href="stzorgchartreporter.html#vacancy">stzOrgChartReporter</a><small>autre nom de <span class="mono">VacancyReport</span></small></div></div><div class="lane rrow" data-k="vacancyrate"><div class="ln mono">VacancyRate</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#vacancyrate">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart(&quot;firm&quot;)
-o1.AddPositionXTT(&quot;ceo&quot;, &quot;CEO&quot;, [ :level = &quot;executive&quot; ])
-o1.AddPositionXTT(&quot;cfo&quot;, &quot;CFO&quot;, [ :level = &quot;senior&quot;, :reportsTo = &quot;ceo&quot; ])
-o1.AddPositionXTT(&quot;clerk&quot;, &quot;Clerk&quot;, [ :level = &quot;staff&quot;, :reportsTo = &quot;cfo&quot; ])
+    <div class="lanes rtable"><div class="lane rrow" data-k="v"><div class="ln mono">V</div><div class="lr mono">1</div><div class="lt"><a href="stzdataset.html#v">stzDataSet</a><small>autre nom de <span class="mono">Variance</span></small></div></div><div class="lane rrow" data-k="v"><div class="ln mono">v</div><div class="lr mono">1</div><div class="lt"><a href="stzforeachobject.html#v">stzForEachObject</a></div></div><div class="lane rrow" data-k="vacancy"><div class="ln mono">Vacancy</div><div class="lr mono">2</div><div class="lt"><a href="stzorgchart.html#vacancy">stzOrgChart</a> · <a href="stzorgchartreporter.html#vacancy">stzOrgChartReporter</a><small>autre nom de <span class="mono">VacancyReport</span></small></div></div><div class="lane rrow" data-k="vacancyrate"><div class="ln mono">VacancyRate</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#vacancyrate">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart("firm")
+o1.AddPositionXTT("ceo", "CEO", [ :level = "executive" ])
+o1.AddPositionXTT("cfo", "CFO", [
+    :level = "senior",
+    :reportsTo = "ceo"
+])
+o1.AddPositionXTT("clerk", "Clerk", [
+    :level = "staff",
+    :reportsTo = "cfo"
+])
 ? o1.VacancyRate()
-#--&gt; 100</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="vacancyreport"><div class="ln mono">VacancyReport</div><div class="lr mono">2</div><div class="lt"><a href="stzorgchart.html#vacancyreport">stzOrgChart</a> · <a href="stzorgchartreporter.html#vacancyreport">stzOrgChartReporter</a></div></div><div class="lane rrow" data-k="vacant"><div class="ln mono">Vacant</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#vacant">stzOrgChart</a><small>autre nom de <span class="mono">VacantPositions</span></small></div></div><div class="lane rrow" data-k="vacantnodes"><div class="ln mono">VacantNodes</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#vacantnodes">stzOrgChart</a><small>autre nom de <span class="mono">VacantPositions</span></small></div></div><div class="lane rrow" data-k="vacantpositions"><div class="ln mono">VacantPositions</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#vacantpositions">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart(&quot;firm&quot;)
-o1.AddPositionXTT(&quot;ceo&quot;, &quot;CEO&quot;, [ :level = &quot;executive&quot; ])
-o1.AddPositionXTT(&quot;cfo&quot;, &quot;CFO&quot;, [ :level = &quot;senior&quot;, :reportsTo = &quot;ceo&quot; ])
-o1.AddPositionXTT(&quot;clerk&quot;, &quot;Clerk&quot;, [ :level = &quot;staff&quot;, :reportsTo = &quot;cfo&quot; ])
+#--&gt; 100</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="vacancyreport"><div class="ln mono">VacancyReport</div><div class="lr mono">2</div><div class="lt"><a href="stzorgchart.html#vacancyreport">stzOrgChart</a> · <a href="stzorgchartreporter.html#vacancyreport">stzOrgChartReporter</a></div></div><div class="lane rrow" data-k="vacant"><div class="ln mono">Vacant</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#vacant">stzOrgChart</a><small>autre nom de <span class="mono">VacantPositions</span></small></div></div><div class="lane rrow" data-k="vacantnodes"><div class="ln mono">VacantNodes</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#vacantnodes">stzOrgChart</a><small>autre nom de <span class="mono">VacantPositions</span></small></div></div><div class="lane rrow" data-k="vacantpositions"><div class="ln mono">VacantPositions</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#vacantpositions">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart("firm")
+o1.AddPositionXTT("ceo", "CEO", [ :level = "executive" ])
+o1.AddPositionXTT("cfo", "CFO", [
+    :level = "senior",
+    :reportsTo = "ceo"
+])
+o1.AddPositionXTT("clerk", "Clerk", [
+    :level = "staff",
+    :reportsTo = "cfo"
+])
 ? @@( o1.VacantPositions() )
-#--&gt; [ &quot;ceo&quot;, &quot;cfo&quot;, &quot;clerk&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="validate"><div class="ln mono">Validate</div><div class="lr mono">8</div><div class="lt"><a href="stzdataset.html#validate">stzDataSet</a> · <a href="stzdatawrangler.html#validate">stzDataWrangler</a> · <a href="stzgraph.html#validate">stzGraph</a> · <a href="stzorgchart.html#validate">stzOrgChart</a> · <a href="stzorgchartbceaovalidator.html#validate">stzOrgChartBCEAOValidator</a> · <a href="stzorgchartsodvalidator.html#validate">stzOrgChartSODValidator</a> · <a href="stzplatformprofile.html#validate">stzPlatformProfile</a> · <a href="stzupdateplan.html#validate">stzUpdatePlan</a><small>autre nom de <span class="mono">ValidateData</span></small></div></div><div class="lane rrow" data-k="validateagainst"><div class="ln mono">ValidateAgainst</div><div class="lr mono">1</div><div class="lt"><a href="stzcomputepipeline.html#validateagainst">stzComputePipeline</a></div></div><div class="lane rrow" data-k="validateastyped"><div class="ln mono">ValidateAsTyped</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#validateastyped">stzRegex</a><small>autre nom de <span class="mono">MatchAsYouType</span></small></div></div><div class="lane rrow" data-k="validatebanking"><div class="ln mono">ValidateBanking</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#validatebanking">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart(&quot;firm&quot;)
-o1.AddPositionXTT(&quot;ceo&quot;, &quot;CEO&quot;, [ :level = &quot;executive&quot; ])
-o1.AddPositionXTT(&quot;cfo&quot;, &quot;CFO&quot;, [ :level = &quot;senior&quot;, :reportsTo = &quot;ceo&quot; ])
-o1.AddPositionXTT(&quot;clerk&quot;, &quot;Clerk&quot;, [ :level = &quot;staff&quot;, :reportsTo = &quot;cfo&quot; ])
+#--&gt; [ "ceo", "cfo", "clerk" ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="validate"><div class="ln mono">Validate</div><div class="lr mono">8</div><div class="lt"><a href="stzdataset.html#validate">stzDataSet</a> · <a href="stzdatawrangler.html#validate">stzDataWrangler</a> · <a href="stzgraph.html#validate">stzGraph</a> · <a href="stzorgchart.html#validate">stzOrgChart</a> · <a href="stzorgchartbceaovalidator.html#validate">stzOrgChartBCEAOValidator</a> · <a href="stzorgchartsodvalidator.html#validate">stzOrgChartSODValidator</a> · <a href="stzplatformprofile.html#validate">stzPlatformProfile</a> · <a href="stzupdateplan.html#validate">stzUpdatePlan</a><small>autre nom de <span class="mono">ValidateData</span></small></div></div><div class="lane rrow" data-k="validateagainst"><div class="ln mono">ValidateAgainst</div><div class="lr mono">1</div><div class="lt"><a href="stzcomputepipeline.html#validateagainst">stzComputePipeline</a></div></div><div class="lane rrow" data-k="validateastyped"><div class="ln mono">ValidateAsTyped</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#validateastyped">stzRegex</a><small>autre nom de <span class="mono">MatchAsYouType</span></small></div></div><div class="lane rrow" data-k="validatebanking"><div class="ln mono">ValidateBanking</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#validatebanking">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart("firm")
+o1.AddPositionXTT("ceo", "CEO", [ :level = "executive" ])
+o1.AddPositionXTT("cfo", "CFO", [
+    :level = "senior",
+    :reportsTo = "ceo"
+])
+o1.AddPositionXTT("clerk", "Clerk", [
+    :level = "staff",
+    :reportsTo = "cfo"
+])
 ? @@( o1.ValidateBanking() )
-#--&gt; [ [ &quot;status&quot;, &quot;pass&quot; ], [ &quot;domain&quot;, &quot;banking&quot; ], [ &quot;issuecount&quot;, 0 ], [ &quot;issues&quot;, [ ] ], [ &quot;affectednodes&quot;, [ ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="validatebceaogovernance"><div class="ln mono">ValidateBCEAOGovernance</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#validatebceaogovernance">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart(&quot;firm&quot;)
-o1.AddPositionXTT(&quot;ceo&quot;, &quot;CEO&quot;, [ :level = &quot;executive&quot; ])
-o1.AddPositionXTT(&quot;cfo&quot;, &quot;CFO&quot;, [ :level = &quot;senior&quot;, :reportsTo = &quot;ceo&quot; ])
-o1.AddPositionXTT(&quot;clerk&quot;, &quot;Clerk&quot;, [ :level = &quot;staff&quot;, :reportsTo = &quot;cfo&quot; ])
+#--&gt; [
+#--&gt;     [ "status", "pass" ],
+#--&gt;     [ "domain", "banking" ],
+#--&gt;     [ "issuecount", 0 ],
+#--&gt;     [ "issues", [ ] ],
+#--&gt;     [ "affectednodes", [ ] ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="validatebceaogovernance"><div class="ln mono">ValidateBCEAOGovernance</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#validatebceaogovernance">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart("firm")
+o1.AddPositionXTT("ceo", "CEO", [ :level = "executive" ])
+o1.AddPositionXTT("cfo", "CFO", [
+    :level = "senior",
+    :reportsTo = "ceo"
+])
+o1.AddPositionXTT("clerk", "Clerk", [
+    :level = "staff",
+    :reportsTo = "cfo"
+])
 ? @@( o1.ValidateBCEAOGovernance() )
-#--&gt; [ [ &quot;status&quot;, &quot;fail&quot; ], [ &quot;domain&quot;, &quot;BCEAO_governance&quot; ], [ &quot;issuecount&quot;, 2 ], [ &quot;issues&quot;, [ &quot;BCEAO-001: No Board of Directors found&quot;, &quot;BCEAO-003: No dedicated Risk Management function&quot; ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="validatebottleneck"><div class="ln mono">ValidateBottleneck</div><div class="lr mono">1</div><div class="lt"><a href="stzworkflow.html#validatebottleneck">stzWorkflow</a><pre class="rx">o1 = new stzWorkflow(&quot;affirm65b&quot;)
+#--&gt; [
+#--&gt;     [ "status", "fail" ],
+#--&gt;     [ "domain", "BCEAO_governance" ],
+#--&gt;     [ "issuecount", 2 ],
+#--&gt;     [
+#--&gt;         "issues",
+#--&gt;         [
+#--&gt;             "BCEAO-001: No Board of Directors found",
+#--&gt;             "BCEAO-003: No dedicated Risk Management function"
+#--&gt;         ]
+#--&gt;     ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="validatebottleneck"><div class="ln mono">ValidateBottleneck</div><div class="lr mono">1</div><div class="lt"><a href="stzworkflow.html#validatebottleneck">stzWorkflow</a><pre class="rx">o1 = new stzWorkflow("affirm65b")
 ? @@( o1.ValidateBottleneck() )
-#--&gt; [ [ &quot;status&quot;, &quot;pass&quot; ], [ &quot;domain&quot;, &quot;bottleneck&quot; ], [ &quot;rulegroup&quot;, &quot;bottleneck&quot; ], [ &quot;issuecount&quot;, 0 ], [ &quot;issues&quot;, [ ] ], [ &quot;affectednodes&quot;, [ ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzWorkflow</span></div></div><div class="lane rrow" data-k="validatebytype"><div class="ln mono">ValidateByType</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#validatebytype">stzGraph</a><pre class="rx">o1 = new stzGraph(&quot;g&quot;)
+#--&gt; [
+#--&gt;     [ "status", "pass" ],
+#--&gt;     [ "domain", "bottleneck" ],
+#--&gt;     [ "rulegroup", "bottleneck" ],
+#--&gt;     [ "issuecount", 0 ],
+#--&gt;     [ "issues", [ ] ],
+#--&gt;     [ "affectednodes", [ ] ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzWorkflow</span></div></div><div class="lane rrow" data-k="validatebytype"><div class="ln mono">ValidateByType</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#validatebytype">stzGraph</a><pre class="rx">o1 = new stzGraph(&quot;g&quot;)
 o1.AddNode(&quot;A&quot;) o1.AddNode(&quot;B&quot;) o1.AddNode(&quot;C&quot;)
 o1.AddNode(&quot;D&quot;)
 o1.AddEdge(&quot;A&quot;, &quot;B&quot;) o1.AddEdge(&quot;A&quot;, &quot;C&quot;)
 o1.AddEdge(&quot;B&quot;, &quot;D&quot;)
 ? @@( o1.ValidateByType() )
-#--&gt; [ 1, &quot;&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGraph</span></div></div><div class="lane rrow" data-k="validatecompleteness"><div class="ln mono">ValidateCompleteness</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#validatecompleteness">stzGraph</a><pre class="rx">o1 = new stzGraph(&quot;g&quot;)
-o1.AddNode(&quot;A&quot;) o1.AddNode(&quot;B&quot;) o1.AddNode(&quot;C&quot;)
-o1.AddNode(&quot;D&quot;)
-o1.AddEdge(&quot;A&quot;, &quot;B&quot;) o1.AddEdge(&quot;A&quot;, &quot;C&quot;)
-o1.AddEdge(&quot;B&quot;, &quot;D&quot;)
+#--&gt; [ 1, &quot;&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGraph</span></div></div><div class="lane rrow" data-k="validatecompleteness"><div class="ln mono">ValidateCompleteness</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#validatecompleteness">stzGraph</a><pre class="rx">o1 = new stzGraph("g")
+o1.AddNode("A") o1.AddNode("B") o1.AddNode("C")
+o1.AddNode("D")
+o1.AddEdge("A", "B") o1.AddEdge("A", "C")
+o1.AddEdge("B", "D")
 ? @@( o1.ValidateCompleteness() )
-#--&gt; [ [ &quot;status&quot;, &quot;pass&quot; ], [ &quot;rulegroup&quot;, &quot;completeness&quot; ], [ &quot;domain&quot;, &quot;completeness&quot; ], [ &quot;issuecount&quot;, 0 ], [ &quot;issues&quot;, [ ] ], [ &quot;affectednodes&quot;, [ ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGraph</span></div></div><div class="lane rrow" data-k="validatecompliance"><div class="ln mono">ValidateCompliance</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#validatecompliance">stzOrgChart</a><small>autre nom de <span class="mono">ValidateBCEAOGovernance</span></small></div></div><div class="lane rrow" data-k="validatedag"><div class="ln mono">ValidateDAG</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#validatedag">stzGraph</a><pre class="rx">o1 = new stzGraph(&quot;g&quot;)
-o1.AddNode(&quot;A&quot;) o1.AddNode(&quot;B&quot;) o1.AddNode(&quot;C&quot;)
-o1.AddNode(&quot;D&quot;)
-o1.AddEdge(&quot;A&quot;, &quot;B&quot;) o1.AddEdge(&quot;A&quot;, &quot;C&quot;)
-o1.AddEdge(&quot;B&quot;, &quot;D&quot;)
+#--&gt; [
+#--&gt;     [ "status", "pass" ],
+#--&gt;     [ "rulegroup", "completeness" ],
+#--&gt;     [ "domain", "completeness" ],
+#--&gt;     [ "issuecount", 0 ],
+#--&gt;     [ "issues", [ ] ],
+#--&gt;     [ "affectednodes", [ ] ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGraph</span></div></div><div class="lane rrow" data-k="validatecompliance"><div class="ln mono">ValidateCompliance</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#validatecompliance">stzOrgChart</a><small>autre nom de <span class="mono">ValidateBCEAOGovernance</span></small></div></div><div class="lane rrow" data-k="validatedag"><div class="ln mono">ValidateDAG</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#validatedag">stzGraph</a><pre class="rx">o1 = new stzGraph("g")
+o1.AddNode("A") o1.AddNode("B") o1.AddNode("C")
+o1.AddNode("D")
+o1.AddEdge("A", "B") o1.AddEdge("A", "C")
+o1.AddEdge("B", "D")
 ? @@( o1.ValidateDAG() )
-#--&gt; [ [ &quot;status&quot;, &quot;pass&quot; ], [ &quot;rulegroup&quot;, &quot;dag&quot; ], [ &quot;domain&quot;, &quot;dag&quot; ], [ &quot;issuecount&quot;, 0 ], [ &quot;issues&quot;, [ ] ], [ &quot;affectednodes&quot;, [ ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGraph</span></div></div><div class="lane rrow" data-k="validatedata"><div class="ln mono">ValidateData</div><div class="lr mono">1</div><div class="lt"><a href="stzdataset.html#validatedata">stzDataSet</a><pre class="rx">o1 = new stzDataSet([ 2, 4, 4, 5, 7, 9, 12, 25 ])
+#--&gt; [
+#--&gt;     [ "status", "pass" ],
+#--&gt;     [ "rulegroup", "dag" ],
+#--&gt;     [ "domain", "dag" ],
+#--&gt;     [ "issuecount", 0 ],
+#--&gt;     [ "issues", [ ] ],
+#--&gt;     [ "affectednodes", [ ] ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGraph</span></div></div><div class="lane rrow" data-k="validatedata"><div class="ln mono">ValidateData</div><div class="lr mono">1</div><div class="lt"><a href="stzdataset.html#validatedata">stzDataSet</a><pre class="rx">o1 = new stzDataSet([ 2, 4, 4, 5, 7, 9, 12, 25 ])
 ? @@( o1.ValidateData() )
-#--&gt; [ &quot;Data quality appears good&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzDataSet</span></div></div><div class="lane rrow" data-k="validatedatatypes"><div class="ln mono">ValidateDataTypes</div><div class="lr mono">1</div><div class="lt"><a href="stzdatawrangler.html#validatedatatypes">stzDataWrangler</a></div></div><div class="lane rrow" data-k="validatedeadlock"><div class="ln mono">ValidateDeadlock</div><div class="lr mono">1</div><div class="lt"><a href="stzworkflow.html#validatedeadlock">stzWorkflow</a><pre class="rx">o1 = new stzWorkflow(&quot;affirm65b&quot;)
+#--&gt; [ &quot;Data quality appears good&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzDataSet</span></div></div><div class="lane rrow" data-k="validatedatatypes"><div class="ln mono">ValidateDataTypes</div><div class="lr mono">1</div><div class="lt"><a href="stzdatawrangler.html#validatedatatypes">stzDataWrangler</a></div></div><div class="lane rrow" data-k="validatedeadlock"><div class="ln mono">ValidateDeadlock</div><div class="lr mono">1</div><div class="lt"><a href="stzworkflow.html#validatedeadlock">stzWorkflow</a><pre class="rx">o1 = new stzWorkflow("affirm65b")
 ? @@( o1.ValidateDeadlock() )
-#--&gt; [ [ &quot;status&quot;, &quot;pass&quot; ], [ &quot;domain&quot;, &quot;deadlock&quot; ], [ &quot;rulegroup&quot;, &quot;deadlock&quot; ], [ &quot;issuecount&quot;, 0 ], [ &quot;issues&quot;, [ ] ], [ &quot;affectednodes&quot;, [ ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzWorkflow</span></div></div><div class="lane rrow" data-k="validateexpression"><div class="ln mono">validateExpression</div><div class="lr mono">1</div><div class="lt"><a href="stzcoeffextractor.html#validateexpression">stzCoeffExtractor</a></div></div><div class="lane rrow" data-k="validatenonvacancy"><div class="ln mono">ValidateNonVacancy</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#validatenonvacancy">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart(&quot;firm&quot;)
-o1.AddPositionXTT(&quot;ceo&quot;, &quot;CEO&quot;, [ :level = &quot;executive&quot; ])
-o1.AddPositionXTT(&quot;cfo&quot;, &quot;CFO&quot;, [ :level = &quot;senior&quot;, :reportsTo = &quot;ceo&quot; ])
-o1.AddPositionXTT(&quot;clerk&quot;, &quot;Clerk&quot;, [ :level = &quot;staff&quot;, :reportsTo = &quot;cfo&quot; ])
+#--&gt; [
+#--&gt;     [ "status", "pass" ],
+#--&gt;     [ "domain", "deadlock" ],
+#--&gt;     [ "rulegroup", "deadlock" ],
+#--&gt;     [ "issuecount", 0 ],
+#--&gt;     [ "issues", [ ] ],
+#--&gt;     [ "affectednodes", [ ] ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzWorkflow</span></div></div><div class="lane rrow" data-k="validateexpression"><div class="ln mono">validateExpression</div><div class="lr mono">1</div><div class="lt"><a href="stzcoeffextractor.html#validateexpression">stzCoeffExtractor</a></div></div><div class="lane rrow" data-k="validatenonvacancy"><div class="ln mono">ValidateNonVacancy</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#validatenonvacancy">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart("firm")
+o1.AddPositionXTT("ceo", "CEO", [ :level = "executive" ])
+o1.AddPositionXTT("cfo", "CFO", [
+    :level = "senior",
+    :reportsTo = "ceo"
+])
+o1.AddPositionXTT("clerk", "Clerk", [
+    :level = "staff",
+    :reportsTo = "cfo"
+])
 ? @@( o1.ValidateNonVacancy() )
-#--&gt; [ [ &quot;status&quot;, &quot;pass&quot; ], [ &quot;domain&quot;, &quot;vacancy&quot; ], [ &quot;issuecount&quot;, 0 ], [ &quot;issues&quot;, [ ] ], [ &quot;affectednodes&quot;, [ ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="validateontology"><div class="ln mono">ValidateOntology</div><div class="lr mono">1</div><div class="lt"><a href="stzknowledgegraph.html#validateontology">stzKnowledgeGraph</a><pre class="rx">o1 = new stzKnowledgeGraph(&quot;fluency-space&quot;)
+#--&gt; [
+#--&gt;     [ "status", "pass" ],
+#--&gt;     [ "domain", "vacancy" ],
+#--&gt;     [ "issuecount", 0 ],
+#--&gt;     [ "issues", [ ] ],
+#--&gt;     [ "affectednodes", [ ] ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="validateontology"><div class="ln mono">ValidateOntology</div><div class="lr mono">1</div><div class="lt"><a href="stzknowledgegraph.html#validateontology">stzKnowledgeGraph</a><pre class="rx">o1 = new stzKnowledgeGraph(&quot;fluency-space&quot;)
 ? o1.ValidateOntology()
 #--&gt; 1</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzKnowledgeGraph</span></div></div><div class="lane rrow" data-k="validateproblem"><div class="ln mono">validateProblem</div><div class="lr mono">1</div><div class="lt"><a href="stzlinearsolver.html#validateproblem">stzLinearSolver</a><pre class="rx">o1 = new stzLinearSolver()
 o1.AddIntegerVariable(&quot;x&quot;, 0, 100)
@@ -98,75 +179,170 @@ o1.AddIntegerVariable(&quot;y&quot;, 0, 100)
 o1.AddConstraint(&quot;2*x + y&quot;, &quot;&lt;=&quot;, 100)
 o1.Maximize(&quot;3*x + 2*y&quot;)
 ? o1.validateProblem()
-#--&gt; 1</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzLinearSolver</span></div></div><div class="lane rrow" data-k="validateranges"><div class="ln mono">ValidateRanges</div><div class="lr mono">1</div><div class="lt"><a href="stzdatawrangler.html#validateranges">stzDataWrangler</a></div></div><div class="lane rrow" data-k="validatereachability"><div class="ln mono">ValidateReachability</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#validatereachability">stzGraph</a><pre class="rx">o1 = new stzGraph(&quot;g&quot;)
-o1.AddNode(&quot;A&quot;) o1.AddNode(&quot;B&quot;) o1.AddNode(&quot;C&quot;)
-o1.AddNode(&quot;D&quot;)
-o1.AddEdge(&quot;A&quot;, &quot;B&quot;) o1.AddEdge(&quot;A&quot;, &quot;C&quot;)
-o1.AddEdge(&quot;B&quot;, &quot;D&quot;)
+#--&gt; 1</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzLinearSolver</span></div></div><div class="lane rrow" data-k="validateranges"><div class="ln mono">ValidateRanges</div><div class="lr mono">1</div><div class="lt"><a href="stzdatawrangler.html#validateranges">stzDataWrangler</a></div></div><div class="lane rrow" data-k="validatereachability"><div class="ln mono">ValidateReachability</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#validatereachability">stzGraph</a><pre class="rx">o1 = new stzGraph("g")
+o1.AddNode("A") o1.AddNode("B") o1.AddNode("C")
+o1.AddNode("D")
+o1.AddEdge("A", "B") o1.AddEdge("A", "C")
+o1.AddEdge("B", "D")
 ? @@( o1.ValidateReachability() )
-#--&gt; [ [ &quot;status&quot;, &quot;pass&quot; ], [ &quot;rulegroup&quot;, &quot;reachability&quot; ], [ &quot;domain&quot;, &quot;reachability&quot; ], [ &quot;issuecount&quot;, 0 ], [ &quot;issues&quot;, [ ] ], [ &quot;affectednodes&quot;, [ ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGraph</span></div></div><div class="lane rrow" data-k="validatescenarios"><div class="ln mono">validateScenarios</div><div class="lr mono">1</div><div class="lt"><a href="stzstochasticsolver.html#validatescenarios">stzStochasticSolver</a><pre class="rx">o1 = new stzStochasticSolver()
+#--&gt; [
+#--&gt;     [ "status", "pass" ],
+#--&gt;     [ "rulegroup", "reachability" ],
+#--&gt;     [ "domain", "reachability" ],
+#--&gt;     [ "issuecount", 0 ],
+#--&gt;     [ "issues", [ ] ],
+#--&gt;     [ "affectednodes", [ ] ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGraph</span></div></div><div class="lane rrow" data-k="validatescenarios"><div class="ln mono">validateScenarios</div><div class="lr mono">1</div><div class="lt"><a href="stzstochasticsolver.html#validatescenarios">stzStochasticSolver</a><pre class="rx">o1 = new stzStochasticSolver()
 o1.AddVariable(&quot;x&quot;, 0, 10)
 o1.AddScenario(&quot;good&quot;, &quot;high demand&quot;, [ :d = 8 ], 0.6)
 o1.AddScenario(&quot;bad&quot;, &quot;low demand&quot;, [ :d = 3 ], 0.4)
 o1.Maximize(&quot;x&quot;)
 o1.ValidateScenarios()
 ? &quot;the probabilities sum to 1&quot;
-#--&gt; the probabilities sum to 1</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzStochasticSolver</span></div></div><div class="lane rrow" data-k="validatesegregationofduties"><div class="ln mono">ValidateSegregationOfDuties</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#validatesegregationofduties">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart(&quot;firm&quot;)
-o1.AddPositionXTT(&quot;ceo&quot;, &quot;CEO&quot;, [ :level = &quot;executive&quot; ])
-o1.AddPositionXTT(&quot;cfo&quot;, &quot;CFO&quot;, [ :level = &quot;senior&quot;, :reportsTo = &quot;ceo&quot; ])
-o1.AddPositionXTT(&quot;clerk&quot;, &quot;Clerk&quot;, [ :level = &quot;staff&quot;, :reportsTo = &quot;cfo&quot; ])
+#--&gt; the probabilities sum to 1</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzStochasticSolver</span></div></div><div class="lane rrow" data-k="validatesegregationofduties"><div class="ln mono">ValidateSegregationOfDuties</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#validatesegregationofduties">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart("firm")
+o1.AddPositionXTT("ceo", "CEO", [ :level = "executive" ])
+o1.AddPositionXTT("cfo", "CFO", [
+    :level = "senior",
+    :reportsTo = "ceo"
+])
+o1.AddPositionXTT("clerk", "Clerk", [
+    :level = "staff",
+    :reportsTo = "cfo"
+])
 ? @@( o1.ValidateSegregationOfDuties() )
-#--&gt; [ [ &quot;status&quot;, &quot;pass&quot; ], [ &quot;domain&quot;, &quot;segregation_of_duties&quot; ], [ &quot;issuecount&quot;, 0 ], [ &quot;issues&quot;, [ ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="validatesla"><div class="ln mono">ValidateSLA</div><div class="lr mono">1</div><div class="lt"><a href="stzworkflow.html#validatesla">stzWorkflow</a><pre class="rx">o1 = new stzWorkflow(&quot;affirm65b&quot;)
+#--&gt; [
+#--&gt;     [ "status", "pass" ],
+#--&gt;     [ "domain", "segregation_of_duties" ],
+#--&gt;     [ "issuecount", 0 ],
+#--&gt;     [ "issues", [ ] ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="validatesla"><div class="ln mono">ValidateSLA</div><div class="lr mono">1</div><div class="lt"><a href="stzworkflow.html#validatesla">stzWorkflow</a><pre class="rx">o1 = new stzWorkflow("affirm65b")
 ? @@( o1.ValidateSLA() )
-#--&gt; [ [ &quot;status&quot;, &quot;pass&quot; ], [ &quot;domain&quot;, &quot;sla&quot; ], [ &quot;rulegroup&quot;, &quot;sla&quot; ], [ &quot;issuecount&quot;, 0 ], [ &quot;issues&quot;, [ ] ], [ &quot;affectednodes&quot;, [ ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzWorkflow</span></div></div><div class="lane rrow" data-k="validatespanofcontrol"><div class="ln mono">ValidateSpanOfControl</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#validatespanofcontrol">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart(&quot;firm&quot;)
-o1.AddPositionXTT(&quot;ceo&quot;, &quot;CEO&quot;, [ :level = &quot;executive&quot; ])
-o1.AddPositionXTT(&quot;cfo&quot;, &quot;CFO&quot;, [ :level = &quot;senior&quot;, :reportsTo = &quot;ceo&quot; ])
-o1.AddPositionXTT(&quot;clerk&quot;, &quot;Clerk&quot;, [ :level = &quot;staff&quot;, :reportsTo = &quot;cfo&quot; ])
+#--&gt; [
+#--&gt;     [ "status", "pass" ],
+#--&gt;     [ "domain", "sla" ],
+#--&gt;     [ "rulegroup", "sla" ],
+#--&gt;     [ "issuecount", 0 ],
+#--&gt;     [ "issues", [ ] ],
+#--&gt;     [ "affectednodes", [ ] ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzWorkflow</span></div></div><div class="lane rrow" data-k="validatespanofcontrol"><div class="ln mono">ValidateSpanOfControl</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#validatespanofcontrol">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart("firm")
+o1.AddPositionXTT("ceo", "CEO", [ :level = "executive" ])
+o1.AddPositionXTT("cfo", "CFO", [
+    :level = "senior",
+    :reportsTo = "ceo"
+])
+o1.AddPositionXTT("clerk", "Clerk", [
+    :level = "staff",
+    :reportsTo = "cfo"
+])
 ? @@( o1.ValidateSpanOfControl() )
-#--&gt; [ [ &quot;status&quot;, &quot;pass&quot; ], [ &quot;domain&quot;, &quot;span_of_control&quot; ], [ &quot;issues&quot;, [ ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="validatesuccession"><div class="ln mono">ValidateSuccession</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#validatesuccession">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart(&quot;firm&quot;)
-o1.AddPositionXTT(&quot;ceo&quot;, &quot;CEO&quot;, [ :level = &quot;executive&quot; ])
-o1.AddPositionXTT(&quot;cfo&quot;, &quot;CFO&quot;, [ :level = &quot;senior&quot;, :reportsTo = &quot;ceo&quot; ])
-o1.AddPositionXTT(&quot;clerk&quot;, &quot;Clerk&quot;, [ :level = &quot;staff&quot;, :reportsTo = &quot;cfo&quot; ])
+#--&gt; [
+#--&gt;     [ "status", "pass" ],
+#--&gt;     [ "domain", "span_of_control" ],
+#--&gt;     [ "issues", [ ] ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="validatesuccession"><div class="ln mono">ValidateSuccession</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#validatesuccession">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart("firm")
+o1.AddPositionXTT("ceo", "CEO", [ :level = "executive" ])
+o1.AddPositionXTT("cfo", "CFO", [
+    :level = "senior",
+    :reportsTo = "ceo"
+])
+o1.AddPositionXTT("clerk", "Clerk", [
+    :level = "staff",
+    :reportsTo = "cfo"
+])
 ? @@( o1.ValidateSuccession() )
-#--&gt; [ [ &quot;status&quot;, &quot;pass&quot; ], [ &quot;domain&quot;, &quot;succession&quot; ], [ &quot;issuecount&quot;, 0 ], [ &quot;issues&quot;, [ ] ], [ &quot;affectednodes&quot;, [ ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="validatevacancy"><div class="ln mono">ValidateVacancy</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#validatevacancy">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart(&quot;firm&quot;)
-o1.AddPositionXTT(&quot;ceo&quot;, &quot;CEO&quot;, [ :level = &quot;executive&quot; ])
-o1.AddPositionXTT(&quot;cfo&quot;, &quot;CFO&quot;, [ :level = &quot;senior&quot;, :reportsTo = &quot;ceo&quot; ])
-o1.AddPositionXTT(&quot;clerk&quot;, &quot;Clerk&quot;, [ :level = &quot;staff&quot;, :reportsTo = &quot;cfo&quot; ])
+#--&gt; [
+#--&gt;     [ "status", "pass" ],
+#--&gt;     [ "domain", "succession" ],
+#--&gt;     [ "issuecount", 0 ],
+#--&gt;     [ "issues", [ ] ],
+#--&gt;     [ "affectednodes", [ ] ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="validatevacancy"><div class="ln mono">ValidateVacancy</div><div class="lr mono">1</div><div class="lt"><a href="stzorgchart.html#validatevacancy">stzOrgChart</a><pre class="rx">o1 = new stzOrgChart("firm")
+o1.AddPositionXTT("ceo", "CEO", [ :level = "executive" ])
+o1.AddPositionXTT("cfo", "CFO", [
+    :level = "senior",
+    :reportsTo = "ceo"
+])
+o1.AddPositionXTT("clerk", "Clerk", [
+    :level = "staff",
+    :reportsTo = "cfo"
+])
 ? @@( o1.ValidateVacancy() )
-#--&gt; [ [ &quot;status&quot;, &quot;fail&quot; ], [ &quot;domain&quot;, &quot;vacancy&quot; ], [ &quot;issuecount&quot;, 3 ], [ &quot;issues&quot;, [ &quot;Vacant positions: 3&quot; ] ], [ &quot;affectednodes&quot;, [ &quot;ceo&quot;, &quot;cfo&quot;, &quot;clerk&quot; ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="validatewith"><div class="ln mono">ValidateWith</div><div class="lr mono">1</div><div class="lt"><a href="stzgraphquery.html#validatewith">stzGraphQuery</a></div></div><div class="lane rrow" data-k="validation"><div class="ln mono">Validation</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#validation">stzGraph</a><small>autre nom de <span class="mono">ValidationSummary</span></small></div></div><div class="lane rrow" data-k="validationresult"><div class="ln mono">ValidationResult</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#validationresult">stzGraph</a><small>autre nom de <span class="mono">ValidationSummary</span></small></div></div><div class="lane rrow" data-k="validationsummary"><div class="ln mono">ValidationSummary</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#validationsummary">stzGraph</a><pre class="rx">o1 = new stzGraph(&quot;g&quot;)
-o1.AddNode(&quot;A&quot;) o1.AddNode(&quot;B&quot;) o1.AddNode(&quot;C&quot;)
-o1.AddNode(&quot;D&quot;)
-o1.AddEdge(&quot;A&quot;, &quot;B&quot;) o1.AddEdge(&quot;A&quot;, &quot;C&quot;)
-o1.AddEdge(&quot;B&quot;, &quot;D&quot;)
+#--&gt; [
+#--&gt;     [ "status", "fail" ],
+#--&gt;     [ "domain", "vacancy" ],
+#--&gt;     [ "issuecount", 3 ],
+#--&gt;     [ "issues", [ "Vacant positions: 3" ] ],
+#--&gt;     [ "affectednodes", [ "ceo", "cfo", "clerk" ] ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzOrgChart</span></div></div><div class="lane rrow" data-k="validatewith"><div class="ln mono">ValidateWith</div><div class="lr mono">1</div><div class="lt"><a href="stzgraphquery.html#validatewith">stzGraphQuery</a></div></div><div class="lane rrow" data-k="validation"><div class="ln mono">Validation</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#validation">stzGraph</a><small>autre nom de <span class="mono">ValidationSummary</span></small></div></div><div class="lane rrow" data-k="validationresult"><div class="ln mono">ValidationResult</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#validationresult">stzGraph</a><small>autre nom de <span class="mono">ValidationSummary</span></small></div></div><div class="lane rrow" data-k="validationsummary"><div class="ln mono">ValidationSummary</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#validationsummary">stzGraph</a><pre class="rx">o1 = new stzGraph("g")
+o1.AddNode("A") o1.AddNode("B") o1.AddNode("C")
+o1.AddNode("D")
+o1.AddEdge("A", "B") o1.AddEdge("A", "C")
+o1.AddEdge("B", "D")
 ? @@( o1.ValidationSummary() )
-#--&gt; [ [ &quot;status&quot;, &quot;not_run&quot; ], [ &quot;message&quot;, &quot;No validation run yet&quot; ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGraph</span></div></div><div class="lane rrow" data-k="validators"><div class="ln mono">Validators</div><div class="lr mono">2</div><div class="lt"><a href="stzgraph.html#validators">stzGraph</a> · <a href="stzorgchart.html#validators">stzOrgChart</a><pre class="rx">o1 = new stzGraph(&quot;g&quot;)
-o1.AddNode(&quot;A&quot;) o1.AddNode(&quot;B&quot;) o1.AddNode(&quot;C&quot;)
-o1.AddNode(&quot;D&quot;)
-o1.AddEdge(&quot;A&quot;, &quot;B&quot;) o1.AddEdge(&quot;A&quot;, &quot;C&quot;)
-o1.AddEdge(&quot;B&quot;, &quot;D&quot;)
+#--&gt; [
+#--&gt;     [ "status", "not_run" ],
+#--&gt;     [ "message", "No validation run yet" ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGraph</span></div></div><div class="lane rrow" data-k="validators"><div class="ln mono">Validators</div><div class="lr mono">2</div><div class="lt"><a href="stzgraph.html#validators">stzGraph</a> · <a href="stzorgchart.html#validators">stzOrgChart</a><pre class="rx">o1 = new stzGraph("g")
+o1.AddNode("A") o1.AddNode("B") o1.AddNode("C")
+o1.AddNode("D")
+o1.AddEdge("A", "B") o1.AddEdge("A", "C")
+o1.AddEdge("B", "D")
 ? @@( o1.Validators() )
-#--&gt; [ &quot;dag&quot;, &quot;reachability&quot;, &quot;completeness&quot;, &quot;bottleneck&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGraph</span></div></div><div class="lane rrow" data-k="value"><div class="ln mono">Value</div><div class="lr mono">45</div><div class="lt"><a href="stzbinarynumber.html#value">stzBinaryNumber</a> · <a href="stzcache.html#value">stzCache</a> · <a href="stzchainoftruth.html#value">stzChainOfTruth</a> · <a href="stzchainofvalue.html#value">stzChainOfValue</a> · <a href="stzconstraint.html#value">stzConstraint</a> · <a href="stzcountry.html#value">stzCountry</a> · <a href="stzcurrency.html#value">stzCurrency</a> · <a href="stzdatabase.html#value">stzDatabase</a> · <a href="stzentity.html#value">stzEntity</a> · <a href="stzfalseobject.html#value">stzFalseObject</a> · <a href="stzhashlist.html#value">stzHashList</a> · <a href="stzhexnumber.html#value">stzHexNumber</a> · <a href="stzitemcs.html#value">stzItemCS</a> · <a href="stzlanguage.html#value">stzLanguage</a> · <a href="stzlistinstring.html#value">stzListInString</a> · <a href="stzlistofbytes.html#value">stzListOfBytes</a> · <a href="stzlistofentities.html#value">stzListOfEntities</a> · <a href="stzlistofhashlists.html#value">stzListOfHashLists</a> · <a href="stzlistoflists.html#value">stzListOfLists</a> · <a href="stzlistofnamedobjects.html#value">stzListOfNamedObjects</a> · <a href="stzlistofnumbers.html#value">stzListOfNumbers</a> · <a href="stzlistofpairs.html#value">stzListOfPairs</a> · <a href="stzlistofsets.html#value">stzListOfSets</a> · <a href="stzlocale.html#value">stzLocale</a> · <a href="stzmathmotion.html#value">stzMathMotion</a> · <a href="stzmetric.html#value">stzMetric</a> · <a href="stzmetricfamily.html#value">stzMetricFamily</a> · <a href="stznullobject.html#value">stzNullObject</a> · <a href="stznumber.html#value">stzNumber</a> · <a href="stznumbrex.html#value">stzNumbrex</a> · <a href="stzobjectguard.html#value">stzObjectGuard</a> · <a href="stzoccurrences.html#value">stzOccurrences</a> · <a href="stzoctalnumber.html#value">stzOctalNumber</a> · <a href="stzordinal.html#value">stzOrdinal</a> · <a href="stzpair.html#value">stzPair</a> · <a href="stzpairoflists.html#value">stzPairOfLists</a> · <a href="stzpairofnumbers.html#value">stzPairOfNumbers</a> · <a href="stzpivottable.html#value">stzPivotTable</a> · <a href="stzscript.html#value">stzScript</a> · <a href="stzsequence.html#value">stzSequence</a> · <a href="stzset.html#value">stzSet</a> · <a href="stzsplitter.html#value">stzSplitter</a> · <a href="stzsqlitedatasource.html#value">stzSqliteDataSource</a> · <a href="stzstringchar.html#value">stzStringChar</a> · <a href="stztrueobject.html#value">stzTrueObject</a><small>autre nom de <span class="mono">Content · Current · NthValue · Number · NumericValue</span></small></div></div><div class="lane rrow" data-k="valueandgradientat"><div class="ln mono">ValueAndGradientAt</div><div class="lr mono">1</div><div class="lt"><a href="stzmathfunction.html#valueandgradientat">stzMathFunction</a><pre class="rx">o1 = new stzMathFunction(&quot;x^2 + 3*x*y&quot;, [ &quot;x&quot;, &quot;y&quot; ])
+#--&gt; [
+#--&gt;     "dag",
+#--&gt;     "reachability",
+#--&gt;     "completeness",
+#--&gt;     "bottleneck"
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGraph</span></div></div><div class="lane rrow" data-k="value"><div class="ln mono">Value</div><div class="lr mono">45</div><div class="lt"><a href="stzbinarynumber.html#value">stzBinaryNumber</a> · <a href="stzcache.html#value">stzCache</a> · <a href="stzchainoftruth.html#value">stzChainOfTruth</a> · <a href="stzchainofvalue.html#value">stzChainOfValue</a> · <a href="stzconstraint.html#value">stzConstraint</a> · <a href="stzcountry.html#value">stzCountry</a> · <a href="stzcurrency.html#value">stzCurrency</a> · <a href="stzdatabase.html#value">stzDatabase</a> · <a href="stzentity.html#value">stzEntity</a> · <a href="stzfalseobject.html#value">stzFalseObject</a> · <a href="stzhashlist.html#value">stzHashList</a> · <a href="stzhexnumber.html#value">stzHexNumber</a> · <a href="stzitemcs.html#value">stzItemCS</a> · <a href="stzlanguage.html#value">stzLanguage</a> · <a href="stzlistinstring.html#value">stzListInString</a> · <a href="stzlistofbytes.html#value">stzListOfBytes</a> · <a href="stzlistofentities.html#value">stzListOfEntities</a> · <a href="stzlistofhashlists.html#value">stzListOfHashLists</a> · <a href="stzlistoflists.html#value">stzListOfLists</a> · <a href="stzlistofnamedobjects.html#value">stzListOfNamedObjects</a> · <a href="stzlistofnumbers.html#value">stzListOfNumbers</a> · <a href="stzlistofpairs.html#value">stzListOfPairs</a> · <a href="stzlistofsets.html#value">stzListOfSets</a> · <a href="stzlocale.html#value">stzLocale</a> · <a href="stzmathmotion.html#value">stzMathMotion</a> · <a href="stzmetric.html#value">stzMetric</a> · <a href="stzmetricfamily.html#value">stzMetricFamily</a> · <a href="stznullobject.html#value">stzNullObject</a> · <a href="stznumber.html#value">stzNumber</a> · <a href="stznumbrex.html#value">stzNumbrex</a> · <a href="stzobjectguard.html#value">stzObjectGuard</a> · <a href="stzoccurrences.html#value">stzOccurrences</a> · <a href="stzoctalnumber.html#value">stzOctalNumber</a> · <a href="stzordinal.html#value">stzOrdinal</a> · <a href="stzpair.html#value">stzPair</a> · <a href="stzpairoflists.html#value">stzPairOfLists</a> · <a href="stzpairofnumbers.html#value">stzPairOfNumbers</a> · <a href="stzpivottable.html#value">stzPivotTable</a> · <a href="stzscript.html#value">stzScript</a> · <a href="stzsequence.html#value">stzSequence</a> · <a href="stzset.html#value">stzSet</a> · <a href="stzsplitter.html#value">stzSplitter</a> · <a href="stzsqlitedatasource.html#value">stzSqliteDataSource</a> · <a href="stzstringchar.html#value">stzStringChar</a> · <a href="stztrueobject.html#value">stzTrueObject</a><small>autre nom de <span class="mono">Content · Current · NthValue · Number · NumericValue</span></small></div></div><div class="lane rrow" data-k="valueandgradientat"><div class="ln mono">ValueAndGradientAt</div><div class="lr mono">1</div><div class="lt"><a href="stzmathfunction.html#valueandgradientat">stzMathFunction</a><pre class="rx">o1 = new stzMathFunction(&quot;x^2 + 3*x*y&quot;, [ &quot;x&quot;, &quot;y&quot; ])
 ? @@( o1.ValueAndGradientAt([ &quot;an&quot;, &quot;a&quot; ]) )
 #--&gt; [ [ &quot;value&quot;, 0 ], [ &quot;gradient&quot;, [ 0.00, 0.00 ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzMathFunction</span></div></div><div class="lane rrow" data-k="valueat"><div class="ln mono">ValueAt</div><div class="lr mono">6</div><div class="lt"><a href="stzgeofield.html#valueat">stzGeoField</a> · <a href="stzgeomap.html#valueat">stzGeoMap</a> · <a href="stzmathfunction.html#valueat">stzMathFunction</a> · <a href="stzobjective.html#valueat">stzObjective</a> · <a href="stzperfseries.html#valueat">stzPerfSeries</a> · <a href="stzpolynomial.html#valueat">stzPolynomial</a><pre class="rx">oF = new stzMathFunction(&quot;x^3 - 2*x&quot;, [ &quot;x&quot; ])
 ? oF.ValueAt([ 2 ])
-#--&gt; 4</pre><span class="rx-src">test de la bibliothèque · stzMathFunction</span></div></div><div class="lane rrow" data-k="valueatposition"><div class="ln mono">ValueAtPosition</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueatposition">stzHashList</a><small>autre nom de <span class="mono">NthValue</span></small></div></div><div class="lane rrow" data-k="valuebykey"><div class="ln mono">ValueByKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuebykey">stzHashList</a><pre class="rx">o1 = new stzHashList([ :math = 18, :stats = 16, :history = 14 ])
+#--&gt; 4</pre><span class="rx-src">test de la bibliothèque · stzMathFunction</span></div></div><div class="lane rrow" data-k="valueatposition"><div class="ln mono">ValueAtPosition</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueatposition">stzHashList</a><small>autre nom de <span class="mono">NthValue</span></small></div></div><div class="lane rrow" data-k="valuebykey"><div class="ln mono">ValueByKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuebykey">stzHashList</a><pre class="rx">o1 = new stzHashList([
+    :math = 18,
+    :stats = 16,
+    :history = 14
+])
 ? o1.ValueByKey(:stats)
 #--&gt; 16
 
 ? o1[:stats]
-#--&gt; 16</pre><span class="rx-src">test de la bibliothèque · stzHashList</span></div></div><div class="lane rrow" data-k="valuecorrespondingtokey"><div class="ln mono">ValueCorrespondingToKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuecorrespondingtokey">stzHashList</a><small>autre nom de <span class="mono">ValueByKey</span></small></div></div><div class="lane rrow" data-k="valuecorrespondingtothiskey"><div class="ln mono">ValueCorrespondingToThisKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuecorrespondingtothiskey">stzHashList</a><small>autre nom de <span class="mono">ValueByKey</span></small></div></div><div class="lane rrow" data-k="valueexists"><div class="ln mono">ValueExists</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueexists">stzHashList</a><small>autre nom de <span class="mono">ContainsValue</span></small></div></div><div class="lane rrow" data-k="valuefloatbykey"><div class="ln mono">ValueFloatByKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuefloatbykey">stzHashList</a><pre class="rx">o1 = new stzHashList([ :name = &quot;Aya&quot;, :age = 30, :city = &quot;Niamey&quot; ])
-? o1.ValueFloatByKey(&quot;a&quot;)
-#--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzHashList</span></div></div><div class="lane rrow" data-k="valueininnthpair"><div class="ln mono">ValueInInNthPair</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueininnthpair">stzHashList</a><pre class="rx">o1 = new stzHashList([ :name = &quot;Aya&quot;, :age = 30, :city = &quot;Niamey&quot; ])
+#--&gt; 16</pre><span class="rx-src">test de la bibliothèque · stzHashList</span></div></div><div class="lane rrow" data-k="valuecorrespondingtokey"><div class="ln mono">ValueCorrespondingToKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuecorrespondingtokey">stzHashList</a><small>autre nom de <span class="mono">ValueByKey</span></small></div></div><div class="lane rrow" data-k="valuecorrespondingtothiskey"><div class="ln mono">ValueCorrespondingToThisKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuecorrespondingtothiskey">stzHashList</a><small>autre nom de <span class="mono">ValueByKey</span></small></div></div><div class="lane rrow" data-k="valueexists"><div class="ln mono">ValueExists</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueexists">stzHashList</a><small>autre nom de <span class="mono">ContainsValue</span></small></div></div><div class="lane rrow" data-k="valuefloatbykey"><div class="ln mono">ValueFloatByKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuefloatbykey">stzHashList</a><pre class="rx">o1 = new stzHashList([
+    :name = "Aya",
+    :age = 30,
+    :city = "Niamey"
+])
+? o1.ValueFloatByKey("a")
+#--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzHashList</span></div></div><div class="lane rrow" data-k="valueininnthpair"><div class="ln mono">ValueInInNthPair</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueininnthpair">stzHashList</a><pre class="rx">o1 = new stzHashList([
+    :name = "Aya",
+    :age = 30,
+    :city = "Niamey"
+])
 ? o1.ValueInInNthPair(2)
-#--&gt; 30</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzHashList</span></div></div><div class="lane rrow" data-k="valueinitiator"><div class="ln mono">ValueInitiator</div><div class="lr mono">1</div><div class="lt"><a href="stzchainofvalue.html#valueinitiator">stzChainOfValue</a></div></div><div class="lane rrow" data-k="valueinkey"><div class="ln mono">ValueInKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueinkey">stzHashList</a><small>autre nom de <span class="mono">ValueByKey</span></small></div></div><div class="lane rrow" data-k="valueinnthpairq"><div class="ln mono">ValueInNthPairQ</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueinnthpairq">stzHashList</a></div></div><div class="lane rrow" data-k="valueinpair"><div class="ln mono">ValueInPair</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueinpair">stzHashList</a></div></div><div class="lane rrow" data-k="valueintbykey"><div class="ln mono">ValueIntByKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueintbykey">stzHashList</a><pre class="rx">o1 = new stzHashList([ :name = &quot;Aya&quot;, :age = 30, :city = &quot;Niamey&quot; ])
-? o1.ValueIntByKey(&quot;a&quot;)
+#--&gt; 30</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzHashList</span></div></div><div class="lane rrow" data-k="valueinitiator"><div class="ln mono">ValueInitiator</div><div class="lr mono">1</div><div class="lt"><a href="stzchainofvalue.html#valueinitiator">stzChainOfValue</a></div></div><div class="lane rrow" data-k="valueinkey"><div class="ln mono">ValueInKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueinkey">stzHashList</a><small>autre nom de <span class="mono">ValueByKey</span></small></div></div><div class="lane rrow" data-k="valueinnthpairq"><div class="ln mono">ValueInNthPairQ</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueinnthpairq">stzHashList</a></div></div><div class="lane rrow" data-k="valueinpair"><div class="ln mono">ValueInPair</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueinpair">stzHashList</a></div></div><div class="lane rrow" data-k="valueintbykey"><div class="ln mono">ValueIntByKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueintbykey">stzHashList</a><pre class="rx">o1 = new stzHashList([
+    :name = "Aya",
+    :age = 30,
+    :city = "Niamey"
+])
+? o1.ValueIntByKey("a")
 #--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzHashList</span></div></div><div class="lane rrow" data-k="valueinthiskey"><div class="ln mono">ValueInThisKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueinthiskey">stzHashList</a><small>autre nom de <span class="mono">ValueByKey</span></small></div></div><div class="lane rrow" data-k="valueinthispair"><div class="ln mono">ValueInThisPair</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueinthispair">stzHashList</a><small>autre nom de <span class="mono">ValueInPair</span></small></div></div><div class="lane rrow" data-k="valueof"><div class="ln mono">ValueOf</div><div class="lr mono">7</div><div class="lt"><a href="stzenvironment.html#valueof">stzEnvironment</a> · <a href="stzgeomap.html#valueof">stzGeoMap</a> · <a href="stzgeosamples.html#valueof">stzGeoSamples</a> · <a href="stzmathdiagram.html#valueof">stzMathDiagram</a> · <a href="stzoptimmodel.html#valueof">stzOptimModel</a> · <a href="stzrefinablecode.html#valueof">stzRefinableCode</a> · <a href="stzuibindings.html#valueof">stzUiBindings</a><small>autre nom de <span class="mono">Var</span></small></div></div><div class="lane rrow" data-k="valueofkey"><div class="ln mono">ValueOfKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueofkey">stzHashList</a><small>autre nom de <span class="mono">ValueByKey</span></small></div></div><div class="lane rrow" data-k="valueofthiskey"><div class="ln mono">ValueOfThisKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueofthiskey">stzHashList</a><small>autre nom de <span class="mono">ValueByKey</span></small></div></div><div class="lane rrow" data-k="valueonkey"><div class="ln mono">ValueOnKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueonkey">stzHashList</a><small>autre nom de <span class="mono">ValueByKey</span></small></div></div><div class="lane rrow" data-k="valueonthiskey"><div class="ln mono">ValueOnThisKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valueonthiskey">stzHashList</a><small>autre nom de <span class="mono">ValueByKey</span></small></div></div><div class="lane rrow" data-k="valueq"><div class="ln mono">ValueQ</div><div class="lr mono">1</div><div class="lt"><a href="stzquestion.html#valueq">stzQuestion</a><pre class="rx">? WhatQ().TheQ().ValueQ().Of(12)   #--&gt; 12</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzQuestion</span></div></div><div class="lane rrow" data-k="valuerefof"><div class="ln mono">ValueRefOf</div><div class="lr mono">1</div><div class="lt"><a href="stznaturalengine.html#valuerefof">stzNaturalEngine</a></div></div><div class="lane rrow" data-k="valuerelatedtokey"><div class="ln mono">ValueRelatedToKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuerelatedtokey">stzHashList</a><small>autre nom de <span class="mono">ValueByKey</span></small></div></div><div class="lane rrow" data-k="valuerelatedtothiskey"><div class="ln mono">ValueRelatedToThisKey</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuerelatedtothiskey">stzHashList</a><small>autre nom de <span class="mono">ValueByKey</span></small></div></div><div class="lane rrow" data-k="values"><div class="ln mono">Values</div><div class="lr mono">10</div><div class="lt"><a href="stzbarplot.html#values">stzBarPlot</a> · <a href="stzdataset.html#values">stzDataSet</a> · <a href="stzentity.html#values">stzEntity</a> · <a href="stzforeachobjectold.html#values">stzForEachObjectOld</a> · <a href="stzgeofield.html#values">stzGeoField</a> · <a href="stzgeosamples.html#values">stzGeoSamples</a> · <a href="stzhashlist.html#values">stzHashList</a> · <a href="stzlistinstring.html#values">stzListInString</a> · <a href="stznaturalengine.html#values">stzNaturalEngine</a> · <a href="stzperfseries.html#values">stzPerfSeries</a><pre class="rx">o1 = new stzBarPlot([ [ &quot;A&quot;, 100 ], [ &quot;B&quot;, 300 ] ])
 ? @@( o1.Values() )
-#--&gt; [ 100, 300 ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzBarPlot</span></div></div><div class="lane rrow" data-k="valuesandkeys"><div class="ln mono">ValuesAndKeys</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuesandkeys">stzHashList</a><pre class="rx">o1 = new stzHashList([ :name = &quot;Aya&quot;, :age = 30, :city = &quot;Niamey&quot; ])
+#--&gt; [ 100, 300 ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzBarPlot</span></div></div><div class="lane rrow" data-k="valuesandkeys"><div class="ln mono">ValuesAndKeys</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuesandkeys">stzHashList</a><pre class="rx">o1 = new stzHashList([
+    :name = "Aya",
+    :age = 30,
+    :city = "Niamey"
+])
 ? @@( o1.ValuesAndKeys() )
-#--&gt; [ [ &quot;Aya&quot;, &quot;name&quot; ], [ 30, &quot;age&quot; ], [ &quot;Niamey&quot;, &quot;city&quot; ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzHashList</span></div></div><div class="lane rrow" data-k="valuesandtheirpositions"><div class="ln mono">ValuesAndTheirPositions</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#valuesandtheirpositions">stzRegex</a></div></div><div class="lane rrow" data-k="valuesarelistsofsamesize"><div class="ln mono">ValuesAreListsOfSameSize</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuesarelistsofsamesize">stzHashList</a></div></div><div class="lane rrow" data-k="valuesassections"><div class="ln mono">ValuesAsSections</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#valuesassections">stzRegex</a></div></div><div class="lane rrow" data-k="valuesatpositions"><div class="ln mono">ValuesAtPositions</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuesatpositions">stzHashList</a><pre class="rx">o1 = new stzHashList([ :name = &quot;Aya&quot;, :age = 30, :city = &quot;Niamey&quot; ])
+#--&gt; [
+#--&gt;     [ "Aya", "name" ],
+#--&gt;     [ 30, "age" ],
+#--&gt;     [ "Niamey", "city" ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzHashList</span></div></div><div class="lane rrow" data-k="valuesandtheirpositions"><div class="ln mono">ValuesAndTheirPositions</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#valuesandtheirpositions">stzRegex</a></div></div><div class="lane rrow" data-k="valuesarelistsofsamesize"><div class="ln mono">ValuesAreListsOfSameSize</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuesarelistsofsamesize">stzHashList</a></div></div><div class="lane rrow" data-k="valuesassections"><div class="ln mono">ValuesAsSections</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#valuesassections">stzRegex</a></div></div><div class="lane rrow" data-k="valuesatpositions"><div class="ln mono">ValuesAtPositions</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuesatpositions">stzHashList</a><pre class="rx">o1 = new stzHashList([
+    :name = "Aya",
+    :age = 30,
+    :city = "Niamey"
+])
 ? @@( o1.ValuesAtPositions([ 1, 2 ]) )
-#--&gt; [ &quot;Aya&quot;, 30 ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzHashList</span></div></div><div class="lane rrow" data-k="valuesatthesepositions"><div class="ln mono">ValuesAtThesePositions</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuesatthesepositions">stzHashList</a><small>autre nom de <span class="mono">ValuesAtPositions</span></small></div></div><div class="lane rrow" data-k="valuesexist"><div class="ln mono">ValuesExist</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuesexist">stzHashList</a><small>autre nom de <span class="mono">ContainsValues</span></small></div></div><div class="lane rrow" data-k="valuesfor"><div class="ln mono">ValuesFor</div><div class="lr mono">1</div><div class="lt"><a href="stzgeoatlas.html#valuesfor">stzGeoAtlas</a></div></div><div class="lane rrow" data-k="valuesfromarea"><div class="ln mono">ValuesFromArea</div><div class="lr mono">1</div><div class="lt"><a href="stzgeomap.html#valuesfromarea">stzGeoMap</a><pre class="rx">cJ = &#x27;{&quot;type&quot;:&quot;FeatureCollection&quot;,&quot;features&quot;:[{&quot;type&quot;:&quot;Feature&quot;,&quot;properties&quot;:{&quot;name&quot;:&quot;A&quot;},&quot;geometry&quot;:{&quot;type&quot;:&quot;Polygon&quot;,&quot;coordinates&quot;:[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}&#x27;
+#--&gt; [ "Aya", 30 ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzHashList</span></div></div><div class="lane rrow" data-k="valuesatthesepositions"><div class="ln mono">ValuesAtThesePositions</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuesatthesepositions">stzHashList</a><small>autre nom de <span class="mono">ValuesAtPositions</span></small></div></div><div class="lane rrow" data-k="valuesexist"><div class="ln mono">ValuesExist</div><div class="lr mono">1</div><div class="lt"><a href="stzhashlist.html#valuesexist">stzHashList</a><small>autre nom de <span class="mono">ContainsValues</span></small></div></div><div class="lane rrow" data-k="valuesfor"><div class="ln mono">ValuesFor</div><div class="lr mono">1</div><div class="lt"><a href="stzgeoatlas.html#valuesfor">stzGeoAtlas</a></div></div><div class="lane rrow" data-k="valuesfromarea"><div class="ln mono">ValuesFromArea</div><div class="lr mono">1</div><div class="lt"><a href="stzgeomap.html#valuesfromarea">stzGeoMap</a><pre class="rx">cJ = &#x27;{&quot;type&quot;:&quot;FeatureCollection&quot;,&quot;features&quot;:[{&quot;type&quot;:&quot;Feature&quot;,&quot;properties&quot;:{&quot;name&quot;:&quot;A&quot;},&quot;geometry&quot;:{&quot;type&quot;:&quot;Polygon&quot;,&quot;coordinates&quot;:[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}&#x27;
 oF = StzGeoFeaturesFromJson(cJ)
 o1 = StzGeoMap(new stzGeoProjection(:mercator), oF)
 ? @@( o1.ValuesFromArea() )
@@ -177,12 +353,25 @@ o1.AddScenario(&quot;bad&quot;, &quot;low demand&quot;, [ :d = 3 ], 0.4)
 o1.Maximize(&quot;x&quot;)
 ? @@( o1.variableNames() )
 #--&gt; [ &quot;x&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzStochasticSolver</span></div></div><div class="lane rrow" data-k="variables"><div class="ln mono">Variables</div><div class="lr mono">5</div><div class="lt"><a href="stzenvironment.html#variables">stzEnvironment</a> · <a href="stzlistinstring.html#variables">stzListInString</a> · <a href="stzmathfunction.html#variables">stzMathFunction</a> · <a href="stzmultiobjectivesolver.html#variables">stzMultiObjectiveSolver</a> · <a href="stzobjective.html#variables">stzObjective</a><small>autre nom de <span class="mono">VarNames</span></small></div></div><div class="lane rrow" data-k="variables"><div class="ln mono">variables</div><div class="lr mono">2</div><div class="lt"><a href="stzlinearsolver.html#variables">stzLinearSolver</a> · <a href="stzstochasticsolver.html#variables">stzStochasticSolver</a><pre class="rx">o1 = new stzLinearSolver()
-o1.AddIntegerVariable(&quot;x&quot;, 0, 100)
-o1.AddIntegerVariable(&quot;y&quot;, 0, 100)
-o1.AddConstraint(&quot;2*x + y&quot;, &quot;&lt;=&quot;, 100)
-o1.Maximize(&quot;3*x + 2*y&quot;)
+o1.AddIntegerVariable("x", 0, 100)
+o1.AddIntegerVariable("y", 0, 100)
+o1.AddConstraint("2*x + y", "&lt;=", 100)
+o1.Maximize("3*x + 2*y")
 ? @@( o1.variables() )
-#--&gt; [ [ [ &quot;name&quot;, &quot;x&quot; ], [ &quot;lowerbound&quot;, 0 ], [ &quot;upperbound&quot;, 100 ], [ &quot;type&quot;, &quot;integer&quot; ] ], [ [ &quot;name&quot;, &quot;y&quot; ], [ &quot;lowerbound&quot;, 0 ], [ &quot;upperbound&quot;, 100 ], [ &quot;type&quot;, &quot;integer&quot; ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzLinearSolver</span></div></div><div class="lane rrow" data-k="variablesandtheirtypes"><div class="ln mono">VariablesAndTheirTypes</div><div class="lr mono">1</div><div class="lt"><a href="stzlistinstring.html#variablesandtheirtypes">stzListInString</a></div></div><div class="lane rrow" data-k="variance"><div class="ln mono">Variance</div><div class="lr mono">3</div><div class="lt"><a href="stzdataset.html#variance">stzDataSet</a> · <a href="stzlist.html#variance">stzList</a> · <a href="stznumbuffer.html#variance">stzNumBuffer</a><small>autre nom de <span class="mono">VarianceSample</span></small></div></div><div class="lane rrow" data-k="variancepopulation"><div class="ln mono">VariancePopulation</div><div class="lr mono">3</div><div class="lt"><a href="stzdataset.html#variancepopulation">stzDataSet</a> · <a href="stzlist.html#variancepopulation">stzList</a> · <a href="stznumbuffer.html#variancepopulation">stzNumBuffer</a><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
+#--&gt; [
+#--&gt;     [
+#--&gt;         [ "name", "x" ],
+#--&gt;         [ "lowerbound", 0 ],
+#--&gt;         [ "upperbound", 100 ],
+#--&gt;         [ "type", "integer" ]
+#--&gt;     ],
+#--&gt;     [
+#--&gt;         [ "name", "y" ],
+#--&gt;         [ "lowerbound", 0 ],
+#--&gt;         [ "upperbound", 100 ],
+#--&gt;         [ "type", "integer" ]
+#--&gt;     ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzLinearSolver</span></div></div><div class="lane rrow" data-k="variablesandtheirtypes"><div class="ln mono">VariablesAndTheirTypes</div><div class="lr mono">1</div><div class="lt"><a href="stzlistinstring.html#variablesandtheirtypes">stzListInString</a></div></div><div class="lane rrow" data-k="variance"><div class="ln mono">Variance</div><div class="lr mono">3</div><div class="lt"><a href="stzdataset.html#variance">stzDataSet</a> · <a href="stzlist.html#variance">stzList</a> · <a href="stznumbuffer.html#variance">stzNumBuffer</a><small>autre nom de <span class="mono">VarianceSample</span></small></div></div><div class="lane rrow" data-k="variancepopulation"><div class="ln mono">VariancePopulation</div><div class="lr mono">3</div><div class="lt"><a href="stzdataset.html#variancepopulation">stzDataSet</a> · <a href="stzlist.html#variancepopulation">stzList</a> · <a href="stznumbuffer.html#variancepopulation">stzNumBuffer</a><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
 ? o1.VariancePopulation()
 #--&gt; 5.60</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzList</span></div></div><div class="lane rrow" data-k="varianceq"><div class="ln mono">VarianceQ</div><div class="lr mono">1</div><div class="lt"><a href="stzquestion.html#varianceq">stzQuestion</a></div></div><div class="lane rrow" data-k="variancesample"><div class="ln mono">VarianceSample</div><div class="lr mono">3</div><div class="lt"><a href="stzdataset.html#variancesample">stzDataSet</a> · <a href="stzlist.html#variancesample">stzList</a> · <a href="stznumbuffer.html#variancesample">stzNumBuffer</a><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
 ? o1.VarianceSample()

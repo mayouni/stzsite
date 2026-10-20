@@ -61,11 +61,13 @@ slot; every <code>stzLog</code> record written while it is open -- any log, in
 any object, on any Haro face -- stamps the active trace id as an
 ordinary queryable field. Close the scope and logging is anonymous
 again:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>StzOpenTraceScope(&quot;&quot;)
-$oLog.Info(&quot;charging the card&quot;)
-$oLog.Record(:warn, &quot;gateway slow, retrying&quot;, [ [ :gateway, &quot;stripe&quot; ] ])
+<div class="nblock"><div class="lbl">Haro</div><pre>StzOpenTraceScope("")
+$oLog.Info("charging the card")
+$oLog.Record(:warn, "gateway slow, retrying", [
+    [ :gateway, "stripe" ]
+])
 StzCloseTraceScope()
-$oLog.Info(&quot;nightly cleanup&quot;)
+$oLog.Info("nightly cleanup")
 see $oLog.AsText()</pre><p class="ran nv-illus">illustration</p></div>
 <div class="out"><div class="lbl">Sortie promise</div><pre>1785482186005 INFO restolean: charging the card  {traceId=6e262c37f3c493b30f6a4297aad02273}
 1785482186005 WARN restolean: gateway slow, retrying  {gateway=stripe, traceId=6e262c37f3c493b30f6a4297aad02273}

@@ -74,7 +74,12 @@ o1.Add(1)
 	RemoveCharsWQ(&#x27;Q(@Char).IsNumberInString()&#x27;).
 	RemoveSpacesQ().
 	RemoveDuplicatedCharsQ().
-	History() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[ &quot;1 AA 2 B 3 CCC 4 DD 5 Z&quot;, &quot; AA  B  CCC  DD  Z&quot;, &quot;AABCCCDDZ&quot;, &quot;ABCDZ&quot; ]</pre></div></div><p class="ran">run on 2026-10-01 21:17 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/466_keeping_the_history_of_updates_of_a_softanza_objec.ring" target="_blank" rel="noopener noreferrer">base/test/string/466_keeping_the_history_of_updates_of_a_softanza_objec.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p style="margin-top:32px"><b>Truth is configurable: once &#x27;no&#x27; and &#x27;off&#x27; are declared as markers, a string containing one counts as false.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>SetSubStringsMakingAStringFalse([ &quot;no&quot;, &quot;off&quot; ])
+	History() )</pre></div><div class="out"><div class="lbl">Output</div><pre>[
+    "1 AA 2 B 3 CCC 4 DD 5 Z",
+    " AA  B  CCC  DD  Z",
+    "AABCCCDDZ",
+    "ABCDZ"
+]</pre></div></div><p class="ran">run on 2026-10-01 21:17 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/466_keeping_the_history_of_updates_of_a_softanza_objec.ring" target="_blank" rel="noopener noreferrer">base/test/string/466_keeping_the_history_of_updates_of_a_softanza_objec.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p style="margin-top:32px"><b>Truth is configurable: once &#x27;no&#x27; and &#x27;off&#x27; are declared as markers, a string containing one counts as false.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>SetSubStringsMakingAStringFalse([ &quot;no&quot;, &quot;off&quot; ])
 Then(&quot;a string carrying a marker is FALSE&quot;, IsTrueXT(&quot;no way&quot;), FALSE)
 Then(&quot;...and IsFalseXT says so&quot;, IsFalseXT(&quot;no way&quot;), TRUE)
 Then(&quot;a string without one is still TRUE&quot;, IsTrueXT(&quot;Hello&quot;), TRUE)</pre></div><div class="out"><div class="lbl">Output</div><pre>  THEN  a string carrying a marker is FALSE  [PASS]

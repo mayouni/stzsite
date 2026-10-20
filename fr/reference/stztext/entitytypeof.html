@@ -42,16 +42,19 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>t1 = new stzText(&quot;Barack Obama loves the wonderful city of Paris.&quot;)
+    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>t1 = new stzText("Barack Obama loves the wonderful city of Paris.")
 # EntityTypeOf picks the closest type
-? t1.EntityTypeOf(&quot;New York City&quot;, [ &quot;city location&quot;, &quot;food dish&quot; ])
+? t1.EntityTypeOf("New York City", [
+    "city location",
+    "food dish"
+])
 # a non-list of types is rejected
-? t1.EntityTypeOf(&quot;Paris&quot;, &quot;not a list&quot;)
-ae = t1.EntitiesTypedAs([ &quot;person&quot;, &quot;place&quot; ])
+? t1.EntityTypeOf("Paris", "not a list")
+ae = t1.EntitiesTypedAs([ "person", "place" ])
 # EntitiesTypedAs returns [entity, type] pairs for detected entities
 ? len(ae) &gt;= 1 and len(ae[1]) = 2
 # EntitiesTypedAsQQ is stzListOfPairs
-? classname(t1.EntitiesTypedAsQQ([ &quot;person&quot;, &quot;place&quot; ]))</pre></div><div class="out"><div class="lbl">Sortie</div><pre>city location
+? classname(t1.EntitiesTypedAsQQ([ "person", "place" ]))</pre></div><div class="out"><div class="lbl">Sortie</div><pre>city location
 
 1
 stzlistofpairs</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/natural/text_query_layer_narrated.ring" target="_blank" rel="noopener noreferrer">text_query_layer_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>

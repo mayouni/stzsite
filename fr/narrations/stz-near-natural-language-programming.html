@@ -55,7 +55,11 @@ is_valid = (word.islower() and
 <p>It's functional, but it doesn't <em>flow</em>. The code prioritizes the machine's needs over the programmer's natural expression. What if we could write code that mirrors our thoughts more closely—without sacrificing precision, performance, or computability?</p>
 <h2 id="introducing-near-natural-programming">Introducing Near-Natural Programming</h2>
 <p>Enter Softanza, a library for the Haro programming language that transforms code into near-natural expressions. Here's the same validation, now reading like a sentence:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;haro&quot;).IsAXTQ([:Lowercase, :Latin, :String]).WhichQ().HasAQ().LengthQ().EqualTo(4)
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q("haro").IsAXTQ([
+    :Lowercase,
+    :Latin,
+    :String
+]).WhichQ().HasAQ().LengthQ().EqualTo(4)
 #--&gt; TRUE</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:42 au commit 4a184e6f0 : a tenu sa promesse</p></div>
 <p>This isn't magic or AI trickery—it's a carefully crafted system of methods and conventions that lets developers articulate logic in a way that feels intuitive and human. We call it Near-Natural Programming (NNP): close enough to natural language to be readable and expressive, yet structured enough to execute as pure code.</p>
 <p>At its heart, NNP in Softanza allows you to chain ideas fluidly, using words like "Which," "Has," "And," and "That" to build logical narratives. It's about making code not just workable, but <em>thinkable</em>—reducing the mental translation between idea and implementation.</p>
@@ -121,7 +125,10 @@ eval(cCode)</pre><p class="ran nv-illus">illustration</p></div>
 <h2 id="real-world-power-in-everyday-code">Real-World Power in Everyday Code</h2>
 <h3 id="natural-validations">Natural Validations</h3>
 <p>Replace nested conditions with flowing queries:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>? Q([&quot;Haro&quot;, :and = &quot;Ruby&quot;]).AreBothQ(:strings).HavingQ().TheirQ().FirstCharQ().EqualTo(&quot;R&quot;)
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q([
+    "Haro",
+    :and = "Ruby"
+]).AreBothQ(:strings).HavingQ().TheirQ().FirstCharQ().EqualTo("R")
 #--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
 <h3 id="context-aware-operations">Context-Aware Operations</h3>
 <p>Use remembered values elegantly:</p>
@@ -134,7 +141,12 @@ SetLastValue([&quot;A&quot;, &quot;I&quot;, &quot;E&quot;])
 #--&gt; TRUE</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:42 au commit 4a184e6f0 : a tenu sa promesse</p></div>
 <h3 id="complex-logical-chains">Complex Logical Chains</h3>
 <p>Handle multiple criteria seamlessly:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>? Q([-1200, -10200, -820, -10]).AreQ(:numbers).ThatQ().AreNegativeQ().AndQ().DividableBy(10)
+<div class="nblock"><div class="lbl">Haro</div><pre>? Q([
+    -1200,
+    -10200,
+    -820,
+    -10
+]).AreQ(:numbers).ThatQ().AreNegativeQ().AndQ().DividableBy(10)
 #--&gt; TRUE</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:42 au commit 4a184e6f0 : a tenu sa promesse</p></div>
 <h3 id="future-oriented-programming">Future-Oriented Programming</h3>
 <p>Plan and execute multi-step transformations:</p>

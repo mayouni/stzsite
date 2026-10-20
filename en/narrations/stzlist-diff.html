@@ -100,9 +100,15 @@ The next natural question is:</p>
 <p>Some differences are neither pure additions nor pure removals.
 They are <strong>transformations</strong>.</p>
 <p>To capture that idea, a further extension was introduced: <strong>XTT</strong>, <em>yet another eXTension</em>.</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzList([ &quot;green&quot;, [ &quot;A&quot;, &quot;B&quot; ], &quot;rediness&quot;, &quot;blues&quot; ])
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzList([ "green", [ "A", "B" ], "rediness", "blues" ])
 
-? @@NL( o1.DiffXTT([ &quot;yellow&quot;, &quot;red&quot;, [ &quot;A&quot; ], &quot;blue&quot;, &quot;gray&quot; ]) )</pre><p class="ran nv-illus">illustration</p></div>
+? @@NL( o1.DiffXTT([
+    "yellow",
+    "red",
+    [ "A" ],
+    "blue",
+    "gray"
+]) )</pre><p class="ran nv-illus">illustration</p></div>
 <p>Result:</p>
 <pre>[
 	[

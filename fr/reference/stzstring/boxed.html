@@ -42,7 +42,10 @@
   </div></section>
   <div class="wrap page-body">
     <h2>Les formes de ce verbe</h2><p><a class="mono" href="../stzstring.html#box">Box</a> · <b class="mono">Boxed</b></p>
-    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? StzStringQ(&quot;CAIRO&quot;).BoxedXT([ :EachChar = TRUE, :AllCorners = :Round ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>╭───┬───┬───┬───┬───╮
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? StzStringQ("CAIRO").BoxedXT([
+    :EachChar = TRUE,
+    :AllCorners = :Round
+])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>╭───┬───┬───┬───┬───╮
 │ C │ A │ I │ R │ O │
 ╰───┴───┴───┴───┴───╯</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofstrings/91_boxedxt_each_char_round.ring" target="_blank" rel="noopener noreferrer">91_boxedxt_each_char_round.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre># one box
 ? StzStringQ(&quot;SOFTANZA&quot;).BoxedXT([])
@@ -63,16 +66,32 @@
 			:TextAdjustedTo = :Center
 		])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>╭─────────────────────┐
 │ SOFTANZA IS AWSOME! │
-└─────────────────────╯</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/749_boxedxt.ring" target="_blank" rel="noopener noreferrer">749_boxedxt.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>cTop = &quot;╭────────────────────╮&quot;
-cBot = &quot;╰────────────────────╯&quot;
+└─────────────────────╯</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/749_boxedxt.ring" target="_blank" rel="noopener noreferrer">749_boxedxt.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>cTop = "╭────────────────────╮"
+cBot = "╰────────────────────╯"
 # centered
-? StzStringQ(&quot;PARIS&quot;).BoxedXT([ :AllCorners = :Round, :Width = 20, :TextAdjustedTo = :Center ])
+? StzStringQ("PARIS").BoxedXT([
+    :AllCorners = :Round,
+    :Width = 20,
+    :TextAdjustedTo = :Center
+])
 # left
-? StzStringQ(&quot;PARIS&quot;).BoxedXT([ :AllCorners = :Round, :Width = 20, :TextAdjustedTo = :Left ])
+? StzStringQ("PARIS").BoxedXT([
+    :AllCorners = :Round,
+    :Width = 20,
+    :TextAdjustedTo = :Left
+])
 # right
-? StzStringQ(&quot;PARIS&quot;).BoxedXT([ :AllCorners = :Round, :Width = 20, :TextAdjustedTo = :Right ])
+? StzStringQ("PARIS").BoxedXT([
+    :AllCorners = :Round,
+    :Width = 20,
+    :TextAdjustedTo = :Right
+])
 # justified
-? StzStringQ(&quot;PARIS&quot;).BoxedXT([ :AllCorners = :Round, :Width = 20, :TextAdjustedTo = :Justified ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>╭────────────────────╮
+? StzStringQ("PARIS").BoxedXT([
+    :AllCorners = :Round,
+    :Width = 20,
+    :TextAdjustedTo = :Justified
+])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>╭────────────────────╮
 │       PARIS        │
 ╰────────────────────╯
 ╭────────────────────╮

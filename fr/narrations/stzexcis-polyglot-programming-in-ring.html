@@ -214,23 +214,25 @@
 <h3 id="part-1-statistical-analysis-in-r">Part 1: Statistical Analysis in R</h3>
 <p>Calculate average grades using R’s statistical prowess.</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Student grade data
-students = [[&quot;Alice&quot;, [85, 90, 78]], [&quot;Bob&quot;, [72, 65, 70]]]
+students = [["Alice", [85, 90, 78]], ["Bob", [72, 65, 70]]]
 
 # R calculates averages
 R = XR()
-R.SetCode(&#x27;
-    students &lt;- &#x27; + @@R(students) + &#x27;
+R.SetCode('
+    students &lt;- ' + @@R(students) + '
     results &lt;- list()
     for (i in 1:length(students)) {
         student_name &lt;- students[[i]][1]
         grades &lt;- students[[i]][[2]]
-        results[[i]] &lt;- list(name = student_name, mean = mean(grades))
+        results[
+            [i]
+        ] &lt;- list(name = student_name, mean = mean(grades))
     }
     res &lt;- results
-&#x27;)
+')
 R.Run()
 stats = R.Result()
-# Output: [[&quot;Alice&quot;, 84.33], [&quot;Bob&quot;, 69]]</pre><p class="ran nv-illus">illustration</p></div>
+# Output: [["Alice", 84.33], ["Bob", 69]]</pre><p class="ran nv-illus">illustration</p></div>
 <blockquote>
 <p><strong>Note</strong> : As mentioned before, the <code>@@R(students)</code> function is actually used here to transfor the Haro <code>student</code>variable to a computable form by R language.</p>
 </blockquote>
@@ -264,20 +266,26 @@ ranked = C.Result()
 <h3 id="part-3-rule-based-classification-in-prolog">Part 3: Rule-Based Classification in Prolog</h3>
 <p>Classify students using Prolog’s logical reasoning.</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>Prolog = XPlg()
-Prolog.SetCode(&#x27;
-    classification(Average, &quot;Excellent&quot;) :- Average &gt;= 80.
-    classification(Average, &quot;Average&quot;) :- Average &gt;= 70, Average &lt; 80.
-    classification(Average, &quot;Needs Improvement&quot;) :- Average &lt; 70.
+Prolog.SetCode('
+    classification(Average, "Excellent") :- Average &gt;= 80.
+    classification(Average, "Average") :- Average &gt;= 70, Average &lt; 80.
+    classification(Average, "Needs Improvement") :- Average &lt; 70.
     analyze_students(Result) :-
-        Student1 = [&quot;&#x27; + @@Plg(stats[1][1]) + &#x27;&quot;, &#x27; + @@Plg(stats[1][2]) + &#x27;],
-        Student2 = [&quot;&#x27; + @@Plg(stats[2][1]) + &#x27;&quot;, &#x27; + @@Plg(stats[2][2]) + &#x27;],
+        Student1 = [
+            "' + @@Plg(stats[1][1]) + '",
+            ' + @@Plg(stats[1][2]) + '
+        ],
+        Student2 = [
+            "' + @@Plg(stats[2][1]) + '",
+            ' + @@Plg(stats[2][2]) + '
+        ],
         classification(Student1[2], Grade1),
         classification(Student2[2], Grade2),
         Result = [[Student1[1], Grade1], [Student2[1], Grade2]].
-&#x27;)
+')
 Prolog.Run()
 analysis = Prolog.Result()
-# Output: [[&quot;Alice&quot;, &quot;Excellent&quot;], [&quot;Bob&quot;, &quot;Needs Improvement&quot;]]</pre><p class="ran nv-illus">illustration</p></div>
+# Output: [["Alice", "Excellent"], ["Bob", "Needs Improvement"]]</pre><p class="ran nv-illus">illustration</p></div>
 <p>This pipeline demonstrates EXCIS’s ability to chain specialized languages seamlessly, with Haro as the glue.</p>
 <h2 id="revolutionizing-development-with-xai-integration">Revolutionizing Development with XAI Integration</h2>
 <p>The <strong>XAI</strong> component elevates EXCIS by integrating large language models (LLMs) as first-class runtimes, enabling natural language queries and reasoning within Haro.</p>

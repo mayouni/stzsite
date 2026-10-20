@@ -80,7 +80,11 @@ Surprising, right? It doesn&#x27;t stop there. &quot;O&quot;, &quot;Ο&quot;, an
 <li>Cyrillic "О" → <code>1054</code></li>
 </ul>
 <p>They look the same but belong to different scripts. Softanza's <code>Scripts()</code> function shows this:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>? Scripts([&quot;O&quot;, &quot;Ο&quot;, &quot;О&quot;])  #--&gt; [ &quot;latin&quot;, &quot;greek&quot;, &quot;cyrillic&quot; ]</pre><p class="ran nv-illus">illustration</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Scripts([
+    "O",
+    "Ο",
+    "О"
+])  #--&gt; [ "latin", "greek", "cyrillic" ]</pre><p class="ran nv-illus">illustration</p></div>
 <h2 id="the-hidden-threat-invisible-characters-and-security-implications">The Hidden Threat: Invisible Characters and Security Implications</h2>
 <p>The security risks extend beyond visually similar characters. Consider <em>invisible</em> characters. These aren't empty; they're characters that render as whitespace or have no visual representation. This might seem harmless, but it can be exploited.</p>
 <p>Remember the Twitter incident? Attackers used zero-width characters to bypass filters, create misleading profiles, or even disrupt timelines. These invisible characters, inserted into usernames or tweets, were nearly impossible for users to detect visually, allowing for impersonation and other malicious activities.</p>

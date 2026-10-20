@@ -126,11 +126,17 @@ oCal {
 }</pre><p class="ran nv-illus">illustration</p></div>
 <p>October 2024 spans 31 days, Tuesday to Thursday. This <em>fences</em> your scope—you can't accidentally leak into September or November. All queries stay within this boundary.</p>
 <p><strong>Layer 2: Working Days</strong></p>
-<div class="nblock"><div class="lbl">Haro</div><pre>oCal.SetWorkingDays([&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;])
+<div class="nblock"><div class="lbl">Haro</div><pre>oCal.SetWorkingDays([
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+])
 
 oCal {
-    ? IsWorkingDay(&quot;2024-10-03&quot;)  #--&gt; 1 (TRUE, Thursday)
-    ? IsWorkingDay(&quot;2024-10-05&quot;)  #--&gt; 0 (FALSE, Saturday)
+    ? IsWorkingDay("2024-10-03")  #--&gt; 1 (TRUE, Thursday)
+    ? IsWorkingDay("2024-10-05")  #--&gt; 0 (FALSE, Saturday)
     ? HowManWorkingDays()         #--&gt; 23
 }</pre><p class="ran nv-illus">illustration</p></div>
 <p>October 2024 has 31 days, but only <strong>23 are working days</strong> (Mon-Fri). Weekends (Oct 5-6, 12-13, 19-20, 26-27 = 8 days) are auto-filtered. All downstream calculations skip weekends automatically.</p>
@@ -159,9 +165,16 @@ oCal {
 <p>Each working day yields 7 usable hours. This compounds through layers: start with 31 calendar days → filter to 23 working → multiply by 7 hours per day = 161.</p>
 <p><strong>Layer 5: Custom Constraints</strong></p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oCal {
-    AddConstraint(&quot;MaintWindow&quot;, [:Every, :Wednesday, :From, &quot;14:00&quot;, :To, &quot;16:00&quot;])
+    AddConstraint("MaintWindow", [
+        :Every,
+        :Wednesday,
+        :From,
+        "14:00",
+        :To,
+        "16:00"
+    ])
     
-    ? ApplyConstraints(&quot;2024-10-09&quot;)  #--&gt; 5 (not 7)
+    ? ApplyConstraints("2024-10-09")  #--&gt; 5 (not 7)
 }</pre><p class="ran nv-illus">illustration</p></div>
 <p>Oct 9 is a Wednesday. Normally 7 hours (9-17, minus lunch). But the maintenance window (2-4pm, 2 hours) further reduces it to <strong>5 usable hours</strong>. Constraints layer recursively.</p>
 <p><strong>Synthesis: Query Usable Time Across Ranges</strong></p>
@@ -242,7 +255,13 @@ Summary:
 <h2 id="comparison-and-navigation">Comparison and Navigation</h2>
 <p><strong>What If: Compare Two Periods</strong></p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oCal1 = new stzCalendar([2024, 10])
-oCal1.SetWorkingDays([&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;])
+oCal1.SetWorkingDays([
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+])
 
 oCal2 = oCal1.Copy()
 oCal2.GotoNextMonth()
@@ -253,30 +272,36 @@ oCal2.GotoNextMonth()
 ? @@NL(oCal1.CompareWith(oCal2))
 #--&gt;
 # [
-#     [ &quot;Metric&quot;, &quot;This Calendar&quot;, &quot;Other Calendar&quot;, &quot;Difference&quot; ],
-#     [ &quot;Total Days&quot;, 31, 30, 1 ],
-#     [ &quot;Working Days&quot;, 23, 21, 2 ],
-#     [ &quot;Available Hours&quot;, 184, 168, 16 ],
-#     [ &quot;Holidays&quot;, 0, 0, 0 ],
-#     [ &quot;Total Weeks&quot;, 5, 5, 0 ]
+#     [ "Metric", "This Calendar", "Other Calendar", "Difference" ],
+#     [ "Total Days", 31, 30, 1 ],
+#     [ "Working Days", 23, 21, 2 ],
+#     [ "Available Hours", 184, 168, 16 ],
+#     [ "Holidays", 0, 0, 0 ],
+#     [ "Total Weeks", 5, 5, 0 ]
 # ]</pre><p class="ran nv-illus">illustration</p></div>
 <p>October has 31 days (23 working), November has 30 (21 working). That's a 16-hour gap (2 fewer working days × 8 hours). Use this for sprint planning: tighter capacity in November means fewer stories.</p>
 <h2 id="timeline-integration-events-meet-constraints">Timeline Integration: Events Meet Constraints</h2>
 <p>Overlay events to detect conflicts against constraints:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oCal = new stzCalendar([2024, 10])
 oCal {
-    SetWorkingDays([&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;])
-    AddHoliday(&quot;2024-10-05&quot;, &quot;Independence Day&quot;)
+    SetWorkingDays([
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+    ])
+    AddHoliday("2024-10-05", "Independence Day")
 }
 
-oTimeline = new stzTimeLine(&quot;2024-10-01&quot;, &quot;2024-10-31&quot;)
-oTimeline.AddPoint(&quot;STANDUP&quot;, &quot;2024-10-10 09:00:00&quot;)
-oTimeline.AddSpan(&quot;PROJECT&quot;, &quot;2024-10-15&quot;, &quot;2024-10-20&quot;)
+oTimeline = new stzTimeLine("2024-10-01", "2024-10-31")
+oTimeline.AddPoint("STANDUP", "2024-10-10 09:00:00")
+oTimeline.AddSpan("PROJECT", "2024-10-15", "2024-10-20")
 
 oCal.MarkTimeline(oTimeline)
 oCal.Show()
 #--&gt;
-&#x27;
+'
                 October 2024
 ╭─────────────────────────────────────────╮
 │ Mon   Tue   Wed   Thu   Fri   Sat   Sun │
@@ -319,16 +344,22 @@ Legend:
 <p>Combine layers to validate sprints:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oCal = new stzCalendar([2024, 10])
 oCal {
-    SetWorkingDays([&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;])
-    SetBusinessHours(&quot;09:00:00&quot;, &quot;17:00:00&quot;)
-    AddBreak(&quot;12:00:00&quot;, &quot;13:00:00&quot;, &quot;Lunch&quot;)
-    AddHoliday(&quot;2024-10-05&quot;, &quot;Independence Day&quot;)
+    SetWorkingDays([
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+    ])
+    SetBusinessHours("09:00:00", "17:00:00")
+    AddBreak("12:00:00", "13:00:00", "Lunch")
+    AddHoliday("2024-10-05", "Independence Day")
 }
 
 aTasks = [
-    [&quot;Design&quot;, 40],
-    [&quot;Development&quot;, 80],
-    [&quot;Testing&quot;, 32]
+    ["Design", 40],
+    ["Development", 80],
+    ["Testing", 32]
 ]
 
 nRequired = 0
@@ -339,10 +370,10 @@ next
 nAvailable = oCal.AvailableHoursN()
 
 if nRequired &lt;= nAvailable
-    ? &quot;âœ&quot; Sprint fits: &quot; + nRequired + &quot;h needed, &quot; + nAvailable + &quot;h available&quot;
-    #--&gt; âœ&quot; Sprint fits: 152h needed, 161h available
+    ? "âœ" Sprint fits: " + nRequired + "h needed, " + nAvailable + "h available"
+    #--&gt; âœ" Sprint fits: 152h needed, 161h available
 else
-    ? &quot;âœ— Capacity exceeded by &quot; + (nRequired - nAvailable) + &quot; hours&quot;
+    ? "âœ— Capacity exceeded by " + (nRequired - nAvailable) + " hours"
 ok</pre><p class="ran nv-illus">illustration</p></div>
 <p>152 hours required; 161 available (23 working days × 7 hours). Sprint fits with 9-hour buffer. This calculation is bulletproof: every hour is justified by the constraint stack.</p>
 <h2 id="querying-details-drilling-deeper">Querying Details: Drilling Deeper</h2>

@@ -63,18 +63,28 @@
 <p><code>stzNatural</code> rests on three cleanly separated pillars:</p>
 <h3 id="1-language-definitions-alanguagedefinitions">1. <strong>Language Definitions</strong> (<code>$aLanguageDefinitions</code>)</h3>
 <p>A pure data structure mapping words in any language to semantic identifiers:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>[:natural = &quot;uppercase&quot;, :semantic = &quot;METHOD_UPPERCASE&quot;],
-[:natural = &quot;maiɗa&quot;,    :semantic = &quot;METHOD_UPPERCASE&quot;],   // Hausa (Latin)
-[:natural = &quot;ميّرد&quot;,     :semantic = &quot;METHOD_UPPERCASE&quot;]    // Hausa (Ajami)</pre><p class="ran nv-illus">illustration</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>[:natural = "uppercase", :semantic = "METHOD_UPPERCASE"],
+[
+    :natural = "maiɗa",
+    :semantic = "METHOD_UPPERCASE"
+],   // Hausa (Latin)
+[
+    :natural = "ميّرد",
+    :semantic = "METHOD_UPPERCASE"
+]    // Hausa (Ajami)</pre><p class="ran nv-illus">illustration</p></div>
 <p>Add Swahili? Arabic? Just append a new block. No recompilation needed.</p>
 <h3 id="2-semantic-operations-asemanticoperations">2. <strong>Semantic Operations</strong> (<code>$aSemanticOperations</code>)</h3>
 <p>Language-agnostic definitions of what each semantic ID <em>does</em>:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>[
-  :semantic_id = &quot;METHOD_BOX&quot;,
-  :stz_signature = &quot;@var.Box()&quot;,
+  :semantic_id = "METHOD_BOX",
+  :stz_signature = "@var.Box()",
   :supports_modifiers = 1,
   :modifiers = [
-    [:semantic_id = &quot;MODIFIER_ROUNDED&quot;, :stz_method = &quot;BoxXT&quot;, :stz_param = &quot;:Rounded = 1&quot;]
+    [
+        :semantic_id = "MODIFIER_ROUNDED",
+        :stz_method = "BoxXT",
+        :stz_param = ":Rounded = 1"
+    ]
   ]
 ]</pre><p class="ran nv-illus">illustration</p></div>
 <p>This decouples <em>meaning</em> from <em>implementation</em>—enabling rich behaviors like modifiers.</p>
@@ -185,7 +195,10 @@ All produce identical output—and identical internal Haro code.</p>
 ]</pre><p class="ran nv-illus">illustration</p></div>
 <p>Need a <strong>new method</strong> like <code>encrypt</code>?
 1. Add to <code>$aSemanticOperations</code>:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>[:semantic_id = &quot;METHOD_ENCRYPT&quot;, :stz_signature = &quot;@var.Encrypt()&quot;]</pre><p class="ran nv-illus">illustration</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>[
+    :semantic_id = "METHOD_ENCRYPT",
+    :stz_signature = "@var.Encrypt()"
+]</pre><p class="ran nv-illus">illustration</p></div>
 <ol>
 <li>Map natural words in any language:</li>
 </ol>

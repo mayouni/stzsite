@@ -39,8 +39,11 @@
     <h1>Find the main topics or key phrases a text is about</h1>
   </div></section>
   <div class="wrap page-body">
-<div class="run"><div><div class="lbl">Softanza</div><pre>Q(&quot;Machine learning models require large training datasets and careful evaluation.&quot;).TextQ().KeyPhrases(2)
-#--&gt; [ &quot;Machine learning models require large training datasets&quot;, &quot;careful evaluation&quot; ]</pre></div><div class="out"><div class="lbl">Output</div><pre>Machine learning models require large training datasets
+<div class="run"><div><div class="lbl">Softanza</div><pre>Q("Machine learning models require large training datasets and careful evaluation.").TextQ().KeyPhrases(2)
+#--&gt; [
+#--&gt;     "Machine learning models require large training datasets",
+#--&gt;     "careful evaluation"
+#--&gt; ]</pre></div><div class="out"><div class="lbl">Output</div><pre>Machine learning models require large training datasets
 careful evaluation</pre></div></div><p class="ran nv-kept">ran: printed what the recipe promises</p><p class="proof">run on 2026-10-02 22:33 inside the library at commit 0e72e2e2c; the expression carrying the promise was printed for the run · <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/quickers/recipes/text/topics.md" target="_blank" rel="noopener noreferrer">The recipe on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><h2>The methods</h2><p><a class="mono" href="../reference/stztext.html#keyphrases">stzText.KeyPhrases</a> · <a class="mono" href="../reference/stztext.html#rankedkeywords">stzText.RankedKeywords</a> · <a class="mono" href="../reference/stztext.html#topkeyphrase">stzText.TopKeyPhrase</a></p><p class="proof">Words for this task: topics, themes, subjects, key phrases, keywords, what it is about, main points</p>
   </div>
 </main>

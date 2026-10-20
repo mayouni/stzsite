@@ -121,29 +121,44 @@
 #--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzRegex</span></div></div><div class="lane rrow" data-k="matchbranches"><div class="ln mono">MatchBranches</div><div class="lr mono">1</div><div class="lt"><a href="stzgraphex.html#matchbranches">stzGraphex</a></div></div><div class="lane rrow" data-k="matchcandidates"><div class="ln mono">MatchCandidates</div><div class="lr mono">1</div><div class="lt"><a href="stzmathdiagram.html#matchcandidates">stzMathDiagram</a><pre class="rx">o1 = new stzMathDiagram(StzGraphDomain(), new stzMathSubstance(StzGraphDomain()), StzCurvedGraphStyle())
 ? o1.MatchCandidates()
 #--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzMathDiagram</span></div></div><div class="lane rrow" data-k="matchedge"><div class="ln mono">MatchEdge</div><div class="lr mono">1</div><div class="lt"><a href="stzgraphquery.html#matchedge">stzGraphQuery</a></div></div><div class="lane rrow" data-k="matchedparts"><div class="ln mono">MatchedParts</div><div class="lr mono">4</div><div class="lt"><a href="stzmatrex.html#matchedparts">stzMatrex</a> · <a href="stznumbrex.html#matchedparts">stzNumbrex</a> · <a href="stztablex.html#matchedparts">stzTablex</a> · <a href="stztimex.html#matchedparts">stzTimex</a></div></div><div class="lane rrow" data-k="matchedsubstrings"><div class="ln mono">MatchedSubStrings</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#matchedsubstrings">stzRegex</a><small>autre nom de <span class="mono">Matches</span></small></div></div><div class="lane rrow" data-k="matchedvalues"><div class="ln mono">MatchedValues</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#matchedvalues">stzRegex</a><small>autre nom de <span class="mono">Matches</span></small></div></div><div class="lane rrow" data-k="matchedvaluesxt"><div class="ln mono">MatchedValuesXT</div><div class="lr mono">2</div><div class="lt"><a href="stzlistexuter.html#matchedvaluesxt">stzListexuter</a> · <a href="stzregexuter.html#matchedvaluesxt">stzRegexuter</a><pre class="rx">o1 = new stzRegexuter()
-o1.Trigger([ &quot;numbers&quot;, &quot;\d+&quot; ])
-o1.Trigger([ &quot;words&quot;, &quot;[a-zA-Z]+&quot; ])
-o1.AddCode(&quot;numbers&quot;, &quot;{ @value = number(@value) * 2 }&quot;)
-o1.AddCode(&quot;words&quot;, &quot;{ @value = upper(@value) }&quot;)
-o1.Process(&quot;hello 123 world 456&quot;)
+o1.Trigger([ "numbers", "\d+" ])
+o1.Trigger([ "words", "[a-zA-Z]+" ])
+o1.AddCode("numbers", "{ @value = number(@value) * 2 }")
+o1.AddCode("words", "{ @value = upper(@value) }")
+o1.Process("hello 123 world 456")
 ? @@( o1.MatchedValuesXT() )
-#--&gt; [ [ &quot;123&quot;, 246 ], [ &quot;456&quot;, 912 ], [ &quot;hello&quot;, &quot;HELLO&quot; ], [ &quot;world&quot;, &quot;WORLD&quot; ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzRegexuter</span></div></div><div class="lane rrow" data-k="matches"><div class="ln mono">Matches</div><div class="lr mono">6</div><div class="lt"><a href="stzfolder.html#matches">stzFolder</a> · <a href="stzlistexuter.html#matches">stzListexuter</a> · <a href="stzpassword.html#matches">stzPassword</a> · <a href="stzregex.html#matches">stzRegex</a> · <a href="stzregexuter.html#matches">stzRegexuter</a> · <a href="stzstringlist.html#matches">stzStringList</a><pre class="rx">o1 = new stzStringList([ &quot;tea&quot;, &quot;rice&quot;, &quot;fish&quot; ])
+#--&gt; [
+#--&gt;     [ "123", 246 ],
+#--&gt;     [ "456", 912 ],
+#--&gt;     [ "hello", "HELLO" ],
+#--&gt;     [ "world", "WORLD" ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzRegexuter</span></div></div><div class="lane rrow" data-k="matches"><div class="ln mono">Matches</div><div class="lr mono">6</div><div class="lt"><a href="stzfolder.html#matches">stzFolder</a> · <a href="stzlistexuter.html#matches">stzListexuter</a> · <a href="stzpassword.html#matches">stzPassword</a> · <a href="stzregex.html#matches">stzRegex</a> · <a href="stzregexuter.html#matches">stzRegexuter</a> · <a href="stzstringlist.html#matches">stzStringList</a><pre class="rx">o1 = new stzStringList([ &quot;tea&quot;, &quot;rice&quot;, &quot;fish&quot; ])
 ? o1.Matches(&quot;a&quot;)
 #--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzStringList</span></div></div><div class="lane rrow" data-k="matchesall"><div class="ln mono">MatchesAll</div><div class="lr mono">1</div><div class="lt"><a href="stzmatrex.html#matchesall">stzMatrex</a></div></div><div class="lane rrow" data-k="matchesallin"><div class="ln mono">MatchesAllIn</div><div class="lr mono">1</div><div class="lt"><a href="stzmatrex.html#matchesallin">stzMatrex</a><small>autre nom de <span class="mono">MatchesAll</span></small></div></div><div class="lane rrow" data-k="matchesandresults"><div class="ln mono">MatchesAndResults</div><div class="lr mono">2</div><div class="lt"><a href="stzlistexuter.html#matchesandresults">stzListexuter</a> · <a href="stzregexuter.html#matchesandresults">stzRegexuter</a><pre class="rx">o1 = new stzRegexuter()
-o1.Trigger([ &quot;numbers&quot;, &quot;\d+&quot; ])
-o1.Trigger([ &quot;words&quot;, &quot;[a-zA-Z]+&quot; ])
-o1.AddCode(&quot;numbers&quot;, &quot;{ @value = number(@value) * 2 }&quot;)
-o1.AddCode(&quot;words&quot;, &quot;{ @value = upper(@value) }&quot;)
-o1.Process(&quot;hello 123 world 456&quot;)
+o1.Trigger([ "numbers", "\d+" ])
+o1.Trigger([ "words", "[a-zA-Z]+" ])
+o1.AddCode("numbers", "{ @value = number(@value) * 2 }")
+o1.AddCode("words", "{ @value = upper(@value) }")
+o1.Process("hello 123 world 456")
 ? @@( o1.MatchesAndResults() )
-#--&gt; [ [ &quot;123&quot;, 246 ], [ &quot;456&quot;, 912 ], [ &quot;hello&quot;, &quot;HELLO&quot; ], [ &quot;world&quot;, &quot;WORLD&quot; ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzRegexuter</span></div></div><div class="lane rrow" data-k="matchesandtheirpositions"><div class="ln mono">MatchesAndTheirPositions</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#matchesandtheirpositions">stzRegex</a></div></div><div class="lane rrow" data-k="matchesandtheirresults"><div class="ln mono">MatchesAndTheirResults</div><div class="lr mono">2</div><div class="lt"><a href="stzlistexuter.html#matchesandtheirresults">stzListexuter</a> · <a href="stzregexuter.html#matchesandtheirresults">stzRegexuter</a><pre class="rx">o1 = new stzRegexuter()
-o1.Trigger([ &quot;numbers&quot;, &quot;\d+&quot; ])
-o1.Trigger([ &quot;words&quot;, &quot;[a-zA-Z]+&quot; ])
-o1.AddCode(&quot;numbers&quot;, &quot;{ @value = number(@value) * 2 }&quot;)
-o1.AddCode(&quot;words&quot;, &quot;{ @value = upper(@value) }&quot;)
-o1.Process(&quot;hello 123 world 456&quot;)
+#--&gt; [
+#--&gt;     [ "123", 246 ],
+#--&gt;     [ "456", 912 ],
+#--&gt;     [ "hello", "HELLO" ],
+#--&gt;     [ "world", "WORLD" ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzRegexuter</span></div></div><div class="lane rrow" data-k="matchesandtheirpositions"><div class="ln mono">MatchesAndTheirPositions</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#matchesandtheirpositions">stzRegex</a></div></div><div class="lane rrow" data-k="matchesandtheirresults"><div class="ln mono">MatchesAndTheirResults</div><div class="lr mono">2</div><div class="lt"><a href="stzlistexuter.html#matchesandtheirresults">stzListexuter</a> · <a href="stzregexuter.html#matchesandtheirresults">stzRegexuter</a><pre class="rx">o1 = new stzRegexuter()
+o1.Trigger([ "numbers", "\d+" ])
+o1.Trigger([ "words", "[a-zA-Z]+" ])
+o1.AddCode("numbers", "{ @value = number(@value) * 2 }")
+o1.AddCode("words", "{ @value = upper(@value) }")
+o1.Process("hello 123 world 456")
 ? @@( o1.MatchesAndTheirResults() )
-#--&gt; [ [ &quot;123&quot;, 246 ], [ &quot;456&quot;, 912 ], [ &quot;hello&quot;, &quot;HELLO&quot; ], [ &quot;world&quot;, &quot;WORLD&quot; ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzRegexuter</span></div></div><div class="lane rrow" data-k="matchesassections"><div class="ln mono">MatchesAsSections</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#matchesassections">stzRegex</a></div></div><div class="lane rrow" data-k="matchesformat"><div class="ln mono">MatchesFormat</div><div class="lr mono">1</div><div class="lt"><a href="stztablex.html#matchesformat">stzTablex</a></div></div><div class="lane rrow" data-k="matchesnone"><div class="ln mono">MatchesNone</div><div class="lr mono">1</div><div class="lt"><a href="stzmatrex.html#matchesnone">stzMatrex</a><pre class="rx">oMx = new stzMatrex(&quot;{property(symmetric)}&quot;)
+#--&gt; [
+#--&gt;     [ "123", 246 ],
+#--&gt;     [ "456", 912 ],
+#--&gt;     [ "hello", "HELLO" ],
+#--&gt;     [ "world", "WORLD" ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzRegexuter</span></div></div><div class="lane rrow" data-k="matchesassections"><div class="ln mono">MatchesAsSections</div><div class="lr mono">1</div><div class="lt"><a href="stzregex.html#matchesassections">stzRegex</a></div></div><div class="lane rrow" data-k="matchesformat"><div class="ln mono">MatchesFormat</div><div class="lr mono">1</div><div class="lt"><a href="stztablex.html#matchesformat">stzTablex</a></div></div><div class="lane rrow" data-k="matchesnone"><div class="ln mono">MatchesNone</div><div class="lr mono">1</div><div class="lt"><a href="stzmatrex.html#matchesnone">stzMatrex</a><pre class="rx">oMx = new stzMatrex(&quot;{property(symmetric)}&quot;)
 aMatrices = [
 	[[1, 2], [3, 4]],
 	[[5, 6], [7, 8]]
@@ -267,19 +282,47 @@ oD = new stzDataSet(aV)
 #--&gt; 6</pre><span class="rx-src">test de la bibliothèque · stzDataSet</span></div></div><div class="lane rrow" data-k="medianq"><div class="ln mono">MedianQ</div><div class="lr mono">1</div><div class="lt"><a href="stzquestion.html#medianq">stzQuestion</a></div></div><div class="lane rrow" data-k="meets"><div class="ln mono">Meets</div><div class="lr mono">2</div><div class="lt"><a href="stzapp.html#meets">stzApp</a> · <a href="stzresourcespec.html#meets">stzResourceSpec</a></div></div><div class="lane rrow" data-k="melody"><div class="ln mono">Melody</div><div class="lr mono">1</div><div class="lt"><a href="stzsounduniverse.html#melody">stzSoundUniverse</a></div></div><div class="lane rrow" data-k="membernames"><div class="ln mono">MemberNames</div><div class="lr mono">1</div><div class="lt"><a href="stzcomputefederation.html#membernames">stzComputeFederation</a></div></div><div class="lane rrow" data-k="membersof"><div class="ln mono">MembersOf</div><div class="lr mono">1</div><div class="lt"><a href="stzoptimfile.html#membersof">stzOptimFile</a></div></div><div class="lane rrow" data-k="membersoffering"><div class="ln mono">MembersOffering</div><div class="lr mono">1</div><div class="lt"><a href="stzcomputefederation.html#membersoffering">stzComputeFederation</a></div></div><div class="lane rrow" data-k="memfreebytes"><div class="ln mono">MemFreeBytes</div><div class="lr mono">1</div><div class="lt"><a href="stzsystemprofile.html#memfreebytes">stzSystemProfile</a></div></div><div class="lane rrow" data-k="memorybytes"><div class="ln mono">MemoryBytes</div><div class="lr mono">1</div><div class="lt"><a href="stzprocess.html#memorybytes">stzProcess</a></div></div><div class="lane rrow" data-k="memorymb"><div class="ln mono">MemoryMB</div><div class="lr mono">1</div><div class="lt"><a href="stzresourcespec.html#memorymb">stzResourceSpec</a></div></div><div class="lane rrow" data-k="memoryq"><div class="ln mono">MemoryQ</div><div class="lr mono">2</div><div class="lt"><a href="stzllmagent.html#memoryq">stzLLMAgent</a> · <a href="stzpiagent.html#memoryq">stzPIAgent</a></div></div><div class="lane rrow" data-k="memorytrendperhour"><div class="ln mono">MemoryTrendPerHour</div><div class="lr mono">1</div><div class="lt"><a href="stzperfprofile.html#memorytrendperhour">stzPerfProfile</a></div></div><div class="lane rrow" data-k="memtotalbytes"><div class="ln mono">MemTotalBytes</div><div class="lr mono">1</div><div class="lt"><a href="stzsystemprofile.html#memtotalbytes">stzSystemProfile</a></div></div><div class="lane rrow" data-k="menuof"><div class="ln mono">MenuOf</div><div class="lr mono">1</div><div class="lt"><a href="stzapptopology.html#menuof">stzAppTopology</a><small>autre nom de <span class="mono">DatasetOf</span></small></div></div><div class="lane rrow" data-k="merge"><div class="ln mono">Merge</div><div class="lr mono">3</div><div class="lt"><a href="stzlist.html#merge">stzList</a> · <a href="stzlistmerger.html#merge">stzListMerger</a> · <a href="stzlistofsections.html#merge">stzListOfSections</a><pre class="rx">o1 = new stzList([ &quot;tea&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;fish&quot; ])
 o1.Merge()
 ? @@( o1.Content() )
-#--&gt; [ &quot;tea&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;fish&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzList</span></div></div><div class="lane rrow" data-k="mergeadjuscent"><div class="ln mono">MergeAdjuscent</div><div class="lr mono">1</div><div class="lt"><a href="stzlistofsections.html#mergeadjuscent">stzListOfSections</a><pre class="rx">o1 = new stzListOfSections([ [ 8, 11 ], [ 9, 12 ], [ 10, 13 ], [ 11, 14 ], [ 12, 15 ], [ 26, 29 ] ])
+#--&gt; [ &quot;tea&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;fish&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzList</span></div></div><div class="lane rrow" data-k="mergeadjuscent"><div class="ln mono">MergeAdjuscent</div><div class="lr mono">1</div><div class="lt"><a href="stzlistofsections.html#mergeadjuscent">stzListOfSections</a><pre class="rx">o1 = new stzListOfSections([
+    [ 8, 11 ],
+    [ 9, 12 ],
+    [ 10, 13 ],
+    [ 11, 14 ],
+    [ 12, 15 ],
+    [ 26, 29 ]
+])
 o1.MergeAdjuscent()
 ? @@( o1.Content() )
-#--&gt; [ [ 8, 15 ], [ 26, 29 ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzListOfSections</span></div></div><div class="lane rrow" data-k="mergecontiguous"><div class="ln mono">MergeContiguous</div><div class="lr mono">1</div><div class="lt"><a href="stzlistofsections.html#mergecontiguous">stzListOfSections</a><pre class="rx">o1 = new stzListOfSections([ [ 8, 11 ], [ 9, 12 ], [ 10, 13 ], [ 11, 14 ], [ 12, 15 ], [ 26, 29 ] ])
+#--&gt; [ [ 8, 15 ], [ 26, 29 ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzListOfSections</span></div></div><div class="lane rrow" data-k="mergecontiguous"><div class="ln mono">MergeContiguous</div><div class="lr mono">1</div><div class="lt"><a href="stzlistofsections.html#mergecontiguous">stzListOfSections</a><pre class="rx">o1 = new stzListOfSections([
+    [ 8, 11 ],
+    [ 9, 12 ],
+    [ 10, 13 ],
+    [ 11, 14 ],
+    [ 12, 15 ],
+    [ 26, 29 ]
+])
 o1.MergeContiguous()
 ? @@( o1.Content() )
 #--&gt; [ [ 8, 15 ], [ 26, 29 ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzListOfSections</span></div></div><div class="lane rrow" data-k="merged"><div class="ln mono">Merged</div><div class="lr mono">3</div><div class="lt"><a href="stzlist.html#merged">stzList</a> · <a href="stzlistmerger.html#merged">stzListMerger</a> · <a href="stzlistofsections.html#merged">stzListOfSections</a><pre class="rx">? @@( Q([ 0, 1:3, 4:7, 8:10 ]).Merged() )
 #--&gt; [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]</pre><span class="rx-src">test de la bibliothèque · stzList</span></div></div><div class="lane rrow" data-k="mergedq"><div class="ln mono">MergedQ</div><div class="lr mono">1</div><div class="lt"><a href="stzquestion.html#mergedq">stzQuestion</a></div></div><div class="lane rrow" data-k="mergedwith"><div class="ln mono">MergedWith</div><div class="lr mono">2</div><div class="lt"><a href="stzlist.html#mergedwith">stzList</a> · <a href="stzlistmerger.html#mergedwith">stzListMerger</a><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
 ? @@( o1.MergedWith([ 2, 3 ]) )
-#--&gt; [ 5, 3, 8, 3, 1, 2, 3 ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzList</span></div></div><div class="lane rrow" data-k="mergeincluded"><div class="ln mono">MergeIncluded</div><div class="lr mono">1</div><div class="lt"><a href="stzlistofsections.html#mergeincluded">stzListOfSections</a></div></div><div class="lane rrow" data-k="mergeinclusive"><div class="ln mono">MergeInclusive</div><div class="lr mono">1</div><div class="lt"><a href="stzlistofsections.html#mergeinclusive">stzListOfSections</a></div></div><div class="lane rrow" data-k="mergenodes"><div class="ln mono">MergeNodes</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#mergenodes">stzGraph</a></div></div><div class="lane rrow" data-k="mergeoverlapping"><div class="ln mono">MergeOverlapping</div><div class="lr mono">1</div><div class="lt"><a href="stzlistofsections.html#mergeoverlapping">stzListOfSections</a><pre class="rx">o1 = new stzListOfSections([ [ 8, 11 ], [ 9, 12 ], [ 10, 13 ], [ 11, 14 ], [ 12, 15 ], [ 26, 29 ] ])
+#--&gt; [ 5, 3, 8, 3, 1, 2, 3 ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzList</span></div></div><div class="lane rrow" data-k="mergeincluded"><div class="ln mono">MergeIncluded</div><div class="lr mono">1</div><div class="lt"><a href="stzlistofsections.html#mergeincluded">stzListOfSections</a></div></div><div class="lane rrow" data-k="mergeinclusive"><div class="ln mono">MergeInclusive</div><div class="lr mono">1</div><div class="lt"><a href="stzlistofsections.html#mergeinclusive">stzListOfSections</a></div></div><div class="lane rrow" data-k="mergenodes"><div class="ln mono">MergeNodes</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#mergenodes">stzGraph</a></div></div><div class="lane rrow" data-k="mergeoverlapping"><div class="ln mono">MergeOverlapping</div><div class="lr mono">1</div><div class="lt"><a href="stzlistofsections.html#mergeoverlapping">stzListOfSections</a><pre class="rx">o1 = new stzListOfSections([
+    [ 8, 11 ],
+    [ 9, 12 ],
+    [ 10, 13 ],
+    [ 11, 14 ],
+    [ 12, 15 ],
+    [ 26, 29 ]
+])
 o1.MergeOverlapping()
 ? @@( o1.Content() )
-#--&gt; [ [ 8, 15 ], [ 26, 29 ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzListOfSections</span></div></div><div class="lane rrow" data-k="mergeoverlappingsections"><div class="ln mono">MergeOverlappingSections</div><div class="lr mono">1</div><div class="lt"><a href="stzlistofsections.html#mergeoverlappingsections">stzListOfSections</a><pre class="rx">o1 = new stzListOfSections([ [ 8, 11 ], [ 9, 12 ], [ 10, 13 ], [ 11, 14 ], [ 12, 15 ], [ 26, 29 ] ])
+#--&gt; [ [ 8, 15 ], [ 26, 29 ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzListOfSections</span></div></div><div class="lane rrow" data-k="mergeoverlappingsections"><div class="ln mono">MergeOverlappingSections</div><div class="lr mono">1</div><div class="lt"><a href="stzlistofsections.html#mergeoverlappingsections">stzListOfSections</a><pre class="rx">o1 = new stzListOfSections([
+    [ 8, 11 ],
+    [ 9, 12 ],
+    [ 10, 13 ],
+    [ 11, 14 ],
+    [ 12, 15 ],
+    [ 26, 29 ]
+])
 o1.MergeOverlappingSections()
 ? @@( o1.Content() )
 #--&gt; [ [ 8, 15 ], [ 26, 29 ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzListOfSections</span></div></div><div class="lane rrow" data-k="mergewith"><div class="ln mono">MergeWith</div><div class="lr mono">2</div><div class="lt"><a href="stzlist.html#mergewith">stzList</a> · <a href="stzlistmerger.html#mergewith">stzListMerger</a><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
@@ -308,18 +351,31 @@ o1 = new stzDiagramToMermaid(oD)
 ? o1.MidMonth()
 #--&gt; 16/05/2026</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzDate</span></div></div><div class="lane rrow" data-k="midpointof"><div class="ln mono">MidpointOf</div><div class="lr mono">1</div><div class="lt"><a href="stzgeoellipsoid.html#midpointof">stzGeoEllipsoid</a><pre class="rx">o1 = new stzGeoEllipsoid(:WGS84)
 ? @@( o1.MidpointOf(2, 5, 2, 2) )
-#--&gt; [ 2.00, 3.50 ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGeoEllipsoid</span></div></div><div class="lane rrow" data-k="millions"><div class="ln mono">Millions</div><div class="lr mono">1</div><div class="lt"><a href="stznumber.html#millions">stzNumber</a></div></div><div class="lane rrow" data-k="millisecond"><div class="ln mono">Millisecond</div><div class="lr mono">1</div><div class="lt"><a href="stztime.html#millisecond">stzTime</a><pre class="rx">oTime = new stzTime([:Hour = 14, :Minute = 30, :Second = 45, :Millisecond = 123])
+#--&gt; [ 2.00, 3.50 ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGeoEllipsoid</span></div></div><div class="lane rrow" data-k="millions"><div class="ln mono">Millions</div><div class="lr mono">1</div><div class="lt"><a href="stznumber.html#millions">stzNumber</a></div></div><div class="lane rrow" data-k="millisecond"><div class="ln mono">Millisecond</div><div class="lr mono">1</div><div class="lt"><a href="stztime.html#millisecond">stzTime</a><pre class="rx">oTime = new stzTime([
+    :Hour = 14,
+    :Minute = 30,
+    :Second = 45,
+    :Millisecond = 123
+])
 ? oTime.Millisecond()
 #--&gt; 123
 
 ? oTime.ToLong()
-#--&gt; 14:30:45.123</pre><span class="rx-src">test de la bibliothèque · stzTime</span></div></div><div class="lane rrow" data-k="millisecondn"><div class="ln mono">MillisecondN</div><div class="lr mono">1</div><div class="lt"><a href="stztime.html#millisecondn">stzTime</a><pre class="rx">o1 = new stzTime([ :Hour = 0, :Minute = 0, :Second = 0 ])
+#--&gt; 14:30:45.123</pre><span class="rx-src">test de la bibliothèque · stzTime</span></div></div><div class="lane rrow" data-k="millisecondn"><div class="ln mono">MillisecondN</div><div class="lr mono">1</div><div class="lt"><a href="stztime.html#millisecondn">stzTime</a><pre class="rx">o1 = new stzTime([
+    :Hour = 0,
+    :Minute = 0,
+    :Second = 0
+])
 ? o1.MillisecondN()
 #--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzTime</span></div></div><div class="lane rrow" data-k="milliseconds"><div class="ln mono">MilliSeconds</div><div class="lr mono">1</div><div class="lt"><a href="stzdatetime.html#milliseconds">stzDateTime</a><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
 ? o1.MilliSeconds()
 #--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzDateTime</span></div></div><div class="lane rrow" data-k="milliseconds"><div class="ln mono">Milliseconds</div><div class="lr mono">2</div><div class="lt"><a href="stzduration.html#milliseconds">stzDuration</a> · <a href="stztime.html#milliseconds">stzTime</a><pre class="rx">o1 = new stzDuration(&quot;3 hours 25 minutes 42 seconds&quot;)
 ? o1.Milliseconds()
-#--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzDuration</span></div></div><div class="lane rrow" data-k="millisecondsfrom"><div class="ln mono">MillisecondsFrom</div><div class="lr mono">1</div><div class="lt"><a href="stzdatetime.html#millisecondsfrom">stzDateTime</a></div></div><div class="lane rrow" data-k="millisecondsn"><div class="ln mono">MilliSecondsN</div><div class="lr mono">1</div><div class="lt"><a href="stzdatetime.html#millisecondsn">stzDateTime</a><small>autre nom de <span class="mono">MilliSeconds</span></small></div></div><div class="lane rrow" data-k="millisecondsn"><div class="ln mono">MillisecondsN</div><div class="lr mono">1</div><div class="lt"><a href="stztime.html#millisecondsn">stzTime</a><pre class="rx">o1 = new stzTime([ :Hour = 0, :Minute = 0, :Second = 0 ])
+#--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzDuration</span></div></div><div class="lane rrow" data-k="millisecondsfrom"><div class="ln mono">MillisecondsFrom</div><div class="lr mono">1</div><div class="lt"><a href="stzdatetime.html#millisecondsfrom">stzDateTime</a></div></div><div class="lane rrow" data-k="millisecondsn"><div class="ln mono">MilliSecondsN</div><div class="lr mono">1</div><div class="lt"><a href="stzdatetime.html#millisecondsn">stzDateTime</a><small>autre nom de <span class="mono">MilliSeconds</span></small></div></div><div class="lane rrow" data-k="millisecondsn"><div class="ln mono">MillisecondsN</div><div class="lr mono">1</div><div class="lt"><a href="stztime.html#millisecondsn">stzTime</a><pre class="rx">o1 = new stzTime([
+    :Hour = 0,
+    :Minute = 0,
+    :Second = 0
+])
 ? o1.MillisecondsN()
 #--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzTime</span></div></div><div class="lane rrow" data-k="millisecondssince"><div class="ln mono">MillisecondsSince</div><div class="lr mono">1</div><div class="lt"><a href="stzdatetime.html#millisecondssince">stzDateTime</a></div></div><div class="lane rrow" data-k="millisecondsto"><div class="ln mono">MillisecondsTo</div><div class="lr mono">1</div><div class="lt"><a href="stzdatetime.html#millisecondsto">stzDateTime</a></div></div><div class="lane rrow" data-k="min"><div class="ln mono">Min</div><div class="lr mono">10</div><div class="lt"><a href="stzdataset.html#min">stzDataSet</a> · <a href="stzgeofield.html#min">stzGeoField</a> · <a href="stzintseq.html#min">stzIntSeq</a> · <a href="stzlist.html#min">stzList</a> · <a href="stzlistofnumbers.html#min">stzListOfNumbers</a> · <a href="stzlistsorter.html#min">stzListSorter</a> · <a href="stzmatrix.html#min">stzMatrix</a> · <a href="stzmetric.html#min">stzMetric</a> · <a href="stznumbuffer.html#min">stzNumBuffer</a> · <a href="stzperfseries.html#min">stzPerfSeries</a><pre class="rx">o1 = new stzListOfNumbers([ 12, 10, 98, 3, 23, 98, 7 ])
 ? o1.Min()
@@ -356,7 +412,11 @@ o1.AddEdge(&quot;B&quot;, &quot;D&quot;)
 #--&gt; 30
 
 ? oTime.Second()
-#--&gt; 45</pre><span class="rx-src">test de la bibliothèque · stzTime</span></div></div><div class="lane rrow" data-k="minuten"><div class="ln mono">MinuteN</div><div class="lr mono">1</div><div class="lt"><a href="stztime.html#minuten">stzTime</a><pre class="rx">o1 = new stzTime([ :Hour = 0, :Minute = 0, :Second = 0 ])
+#--&gt; 45</pre><span class="rx-src">test de la bibliothèque · stzTime</span></div></div><div class="lane rrow" data-k="minuten"><div class="ln mono">MinuteN</div><div class="lr mono">1</div><div class="lt"><a href="stztime.html#minuten">stzTime</a><pre class="rx">o1 = new stzTime([
+    :Hour = 0,
+    :Minute = 0,
+    :Second = 0
+])
 ? o1.MinuteN()
 #--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzTime</span></div></div><div class="lane rrow" data-k="minutes"><div class="ln mono">Minutes</div><div class="lr mono">3</div><div class="lt"><a href="stzdatetime.html#minutes">stzDateTime</a> · <a href="stzduration.html#minutes">stzDuration</a> · <a href="stztime.html#minutes">stzTime</a><pre class="rx">o1 = new stzDateTime([ :FromEpochHours = 480000 ])
 ? o1.Minutes()
@@ -401,7 +461,14 @@ o1.AddNode(&quot;D&quot;)
 o1.AddEdge(&quot;A&quot;, &quot;B&quot;) o1.AddEdge(&quot;A&quot;, &quot;C&quot;)
 o1.AddEdge(&quot;B&quot;, &quot;D&quot;)
 ? @@( o1.MostCriticalNodes(2) )
-#--&gt; [ &quot;a&quot;, &quot;b&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGraph</span></div></div><div class="lane rrow" data-k="mostduplicateditem"><div class="ln mono">MostDuplicatedItem</div><div class="lr mono">1</div><div class="lt"><a href="stzlistduplicates.html#mostduplicateditem">stzListDuplicates</a><pre class="rx">o1 = new stzListDuplicates([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;a&quot;, &quot;b&quot;, &quot;d&quot;])
+#--&gt; [ &quot;a&quot;, &quot;b&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGraph</span></div></div><div class="lane rrow" data-k="mostduplicateditem"><div class="ln mono">MostDuplicatedItem</div><div class="lr mono">1</div><div class="lt"><a href="stzlistduplicates.html#mostduplicateditem">stzListDuplicates</a><pre class="rx">o1 = new stzListDuplicates([
+    "a",
+    "b",
+    "c",
+    "a",
+    "b",
+    "d"
+])
 ? o1.MostDuplicatedItem()
 #--&gt; a</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzListDuplicates</span></div></div><div class="lane rrow" data-k="mostfrequent"><div class="ln mono">MostFrequent</div><div class="lr mono">3</div><div class="lt"><a href="stzcorpus.html#mostfrequent">stzCorpus</a> · <a href="stzlist.html#mostfrequent">stzList</a> · <a href="stzlistclassifier.html#mostfrequent">stzListClassifier</a><pre class="rx">o1 = new stzList([ 5, 3, 8, 3, 1 ])
 ? o1.MostFrequent()
@@ -488,13 +555,17 @@ o1.MoveToStart(2)
 ? @@( o1.Content() )
 #--&gt; [ 3, 5, 8, 3, 1 ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzList</span></div></div><div class="lane rrow" data-k="moveup"><div class="ln mono">MoveUp</div><div class="lr mono">2</div><div class="lt"><a href="stzgrid.html#moveup">stzGrid</a> · <a href="stzgridnav.html#moveup">stzGridNav</a></div></div><div class="lane rrow" data-k="moveupn"><div class="ln mono">MoveUpN</div><div class="lr mono">1</div><div class="lt"><a href="stzgrid.html#moveupn">stzGrid</a></div></div><div class="lane rrow" data-k="moveupncells"><div class="ln mono">MoveUpNCells</div><div class="lr mono">1</div><div class="lt"><a href="stzgrid.html#moveupncells">stzGrid</a></div></div><div class="lane rrow" data-k="moveupnnodes"><div class="ln mono">MoveUpNNodes</div><div class="lr mono">1</div><div class="lt"><a href="stzgrid.html#moveupnnodes">stzGrid</a></div></div><div class="lane rrow" data-k="movingaverage"><div class="ln mono">MovingAverage</div><div class="lr mono">1</div><div class="lt"><a href="stzdataset.html#movingaverage">stzDataSet</a><pre class="rx">o1 = new stzDataSet([ 2, 4, 4, 5, 7, 9, 12, 25 ])
 ? @@( o1.MovingAverage(2) )
-#--&gt; [ 3, 4, 4.50, 6, 8, 10.50, 18.50 ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzDataSet</span></div></div><div class="lane rrow" data-k="movingmean"><div class="ln mono">MovingMean</div><div class="lr mono">1</div><div class="lt"><a href="stzdataset.html#movingmean">stzDataSet</a><small>autre nom de <span class="mono">MovingAverage</span></small></div></div><div class="lane rrow" data-k="movmean"><div class="ln mono">MovMean</div><div class="lr mono">1</div><div class="lt"><a href="stzdataset.html#movmean">stzDataSet</a><small>autre nom de <span class="mono">MovingAverage</span></small></div></div><div class="lane rrow" data-k="mseconds"><div class="ln mono">MSeconds</div><div class="lr mono">1</div><div class="lt"><a href="stzdatetime.html#mseconds">stzDateTime</a><small>autre nom de <span class="mono">MilliSeconds</span></small></div></div><div class="lane rrow" data-k="msecondsn"><div class="ln mono">MSecondsN</div><div class="lr mono">1</div><div class="lt"><a href="stzdatetime.html#msecondsn">stzDateTime</a><small>autre nom de <span class="mono">MilliSeconds</span></small></div></div><div class="lane rrow" data-k="msecsto"><div class="ln mono">MSecsTo</div><div class="lr mono">2</div><div class="lt"><a href="stzdatetime.html#msecsto">stzDateTime</a> · <a href="stztime.html#msecsto">stzTime</a></div></div><div class="lane rrow" data-k="mslf"><div class="ln mono">MSLF</div><div class="lr mono">1</div><div class="lt"><a href="stznumber.html#mslf">stzNumber</a><small>autre nom de <span class="mono">MostSquareLikeFactors</span></small></div></div><div class="lane rrow" data-k="mstedges"><div class="ln mono">MSTEdges</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#mstedges">stzGraph</a><pre class="rx">o1 = new stzGraph(&quot;g&quot;)
-o1.AddNode(&quot;A&quot;) o1.AddNode(&quot;B&quot;) o1.AddNode(&quot;C&quot;)
-o1.AddNode(&quot;D&quot;)
-o1.AddEdge(&quot;A&quot;, &quot;B&quot;) o1.AddEdge(&quot;A&quot;, &quot;C&quot;)
-o1.AddEdge(&quot;B&quot;, &quot;D&quot;)
+#--&gt; [ 3, 4, 4.50, 6, 8, 10.50, 18.50 ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzDataSet</span></div></div><div class="lane rrow" data-k="movingmean"><div class="ln mono">MovingMean</div><div class="lr mono">1</div><div class="lt"><a href="stzdataset.html#movingmean">stzDataSet</a><small>autre nom de <span class="mono">MovingAverage</span></small></div></div><div class="lane rrow" data-k="movmean"><div class="ln mono">MovMean</div><div class="lr mono">1</div><div class="lt"><a href="stzdataset.html#movmean">stzDataSet</a><small>autre nom de <span class="mono">MovingAverage</span></small></div></div><div class="lane rrow" data-k="mseconds"><div class="ln mono">MSeconds</div><div class="lr mono">1</div><div class="lt"><a href="stzdatetime.html#mseconds">stzDateTime</a><small>autre nom de <span class="mono">MilliSeconds</span></small></div></div><div class="lane rrow" data-k="msecondsn"><div class="ln mono">MSecondsN</div><div class="lr mono">1</div><div class="lt"><a href="stzdatetime.html#msecondsn">stzDateTime</a><small>autre nom de <span class="mono">MilliSeconds</span></small></div></div><div class="lane rrow" data-k="msecsto"><div class="ln mono">MSecsTo</div><div class="lr mono">2</div><div class="lt"><a href="stzdatetime.html#msecsto">stzDateTime</a> · <a href="stztime.html#msecsto">stzTime</a></div></div><div class="lane rrow" data-k="mslf"><div class="ln mono">MSLF</div><div class="lr mono">1</div><div class="lt"><a href="stznumber.html#mslf">stzNumber</a><small>autre nom de <span class="mono">MostSquareLikeFactors</span></small></div></div><div class="lane rrow" data-k="mstedges"><div class="ln mono">MSTEdges</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#mstedges">stzGraph</a><pre class="rx">o1 = new stzGraph("g")
+o1.AddNode("A") o1.AddNode("B") o1.AddNode("C")
+o1.AddNode("D")
+o1.AddEdge("A", "B") o1.AddEdge("A", "C")
+o1.AddEdge("B", "D")
 ? @@( o1.MSTEdges() )
-#--&gt; [ [ &quot;a&quot;, &quot;b&quot;, 1 ], [ &quot;a&quot;, &quot;c&quot;, 1 ], [ &quot;b&quot;, &quot;d&quot;, 1 ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGraph</span></div></div><div class="lane rrow" data-k="mstweight"><div class="ln mono">MSTWeight</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#mstweight">stzGraph</a><pre class="rx">o1 = new stzGraph(&quot;g&quot;)
+#--&gt; [
+#--&gt;     [ "a", "b", 1 ],
+#--&gt;     [ "a", "c", 1 ],
+#--&gt;     [ "b", "d", 1 ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page · stzGraph</span></div></div><div class="lane rrow" data-k="mstweight"><div class="ln mono">MSTWeight</div><div class="lr mono">1</div><div class="lt"><a href="stzgraph.html#mstweight">stzGraph</a><pre class="rx">o1 = new stzGraph(&quot;g&quot;)
 o1.AddNode(&quot;A&quot;) o1.AddNode(&quot;B&quot;) o1.AddNode(&quot;C&quot;)
 o1.AddNode(&quot;D&quot;)
 o1.AddEdge(&quot;A&quot;, &quot;B&quot;) o1.AddEdge(&quot;A&quot;, &quot;C&quot;)

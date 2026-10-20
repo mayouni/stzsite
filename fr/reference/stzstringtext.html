@@ -147,13 +147,27 @@ o1.TruncateWords(2)
 ? o1.NumberOfOccurrenceOfWord(&quot;an&quot;)
 #--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts"><i class="n" title="Q: enchaîne (n&#x27;existe pas pour cette méthode)">Q</i><i class="y" title="CS: casse">CS</i><i class="n" title="XT: étendue (n&#x27;existe pas pour cette méthode)">XT</i><i class="n" title="Z: positions (n&#x27;existe pas pour cette méthode)">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="wordfrequency" data-k="wordfrequency frequencyofword each word paired with its frequency."><span id="frequencyofword"></span><div class="ln mono">WordFrequency</div><div class="lt">Each word paired with its frequency.<small>aussi écrite: <span class="mono">FrequencyOfWord</span></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText(&quot;The quick brown fox. It jumps!&quot;)
 ? o1.WordFrequency(&quot;an&quot;)
-#--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="wordsandtheircounts" data-k="wordsandtheircounts  same as wordsandtheircountscs: [[word, count], ...] in first-appearance order. engine-direct, one pass."><div class="ln mono">WordsAndTheirCounts</div><div class="lt">Same as WordsAndTheirCountsCS: [[word, count], ...] in first-appearance order. ENGINE-DIRECT, ONE pass.<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText(&quot;The quick brown fox. It jumps!&quot;)
+#--&gt; 0</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="wordsandtheircounts" data-k="wordsandtheircounts  same as wordsandtheircountscs: [[word, count], ...] in first-appearance order. engine-direct, one pass."><div class="ln mono">WordsAndTheirCounts</div><div class="lt">Same as WordsAndTheirCountsCS: [[word, count], ...] in first-appearance order. ENGINE-DIRECT, ONE pass.<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText("The quick brown fox. It jumps!")
 ? @@( o1.WordsAndTheirCounts() )
-#--&gt; [ [ &quot;The&quot;, 1 ], [ &quot;quick&quot;, 1 ], [ &quot;brown&quot;, 1 ], [ &quot;fox&quot;, 1 ], [ &quot;It&quot;, 1 ], [ &quot;jumps&quot;, 1 ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts"><i class="n" title="Q: enchaîne (n&#x27;existe pas pour cette méthode)">Q</i><i class="y" title="CS: casse">CS</i><i class="n" title="XT: étendue (n&#x27;existe pas pour cette méthode)">XT</i><i class="n" title="Z: positions (n&#x27;existe pas pour cette méthode)">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="mostfrequentwords" data-k="mostfrequentwords  same as mostfrequentwordscs: the top-n most frequent words as [[word, count], ...], count descending (ties by first appearance). engine-direct, one pass + partial rank."><div class="ln mono">MostFrequentWords</div><div class="lt">Same as MostFrequentWordsCS: The top-N most frequent words as [[word, count], ...], count descending (ties by first appearance). ENGINE-DIRECT, ONE pass + partial rank.<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText(&quot;The quick brown fox. It jumps!&quot;)
+#--&gt; [
+#--&gt;     [ "The", 1 ],
+#--&gt;     [ "quick", 1 ],
+#--&gt;     [ "brown", 1 ],
+#--&gt;     [ "fox", 1 ],
+#--&gt;     [ "It", 1 ],
+#--&gt;     [ "jumps", 1 ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts"><i class="n" title="Q: enchaîne (n&#x27;existe pas pour cette méthode)">Q</i><i class="y" title="CS: casse">CS</i><i class="n" title="XT: étendue (n&#x27;existe pas pour cette méthode)">XT</i><i class="n" title="Z: positions (n&#x27;existe pas pour cette méthode)">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="mostfrequentwords" data-k="mostfrequentwords  same as mostfrequentwordscs: the top-n most frequent words as [[word, count], ...], count descending (ties by first appearance). engine-direct, one pass + partial rank."><div class="ln mono">MostFrequentWords</div><div class="lt">Same as MostFrequentWordsCS: The top-N most frequent words as [[word, count], ...], count descending (ties by first appearance). ENGINE-DIRECT, ONE pass + partial rank.<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText(&quot;The quick brown fox. It jumps!&quot;)
 ? @@( o1.MostFrequentWords(2) )
-#--&gt; [ [ &quot;The&quot;, 1 ], [ &quot;quick&quot;, 1 ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts"><i class="n" title="Q: enchaîne (n&#x27;existe pas pour cette méthode)">Q</i><i class="y" title="CS: casse">CS</i><i class="n" title="XT: étendue (n&#x27;existe pas pour cette méthode)">XT</i><i class="n" title="Z: positions (n&#x27;existe pas pour cette méthode)">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="wordsandtheirfrequencies" data-k="wordsandtheirfrequencies  word frequency (ring logic)"><div class="ln mono">WordsAndTheirFrequencies</div><div class="lt">word frequency (ring logic)<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText(&quot;The quick brown fox. It jumps!&quot;)
+#--&gt; [ [ &quot;The&quot;, 1 ], [ &quot;quick&quot;, 1 ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts"><i class="n" title="Q: enchaîne (n&#x27;existe pas pour cette méthode)">Q</i><i class="y" title="CS: casse">CS</i><i class="n" title="XT: étendue (n&#x27;existe pas pour cette méthode)">XT</i><i class="n" title="Z: positions (n&#x27;existe pas pour cette méthode)">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="wordsandtheirfrequencies" data-k="wordsandtheirfrequencies  word frequency (ring logic)"><div class="ln mono">WordsAndTheirFrequencies</div><div class="lt">word frequency (ring logic)<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText("The quick brown fox. It jumps!")
 ? @@( o1.WordsAndTheirFrequencies() )
-#--&gt; [ [ &quot;The&quot;, 0.17 ], [ &quot;quick&quot;, 0.17 ], [ &quot;brown&quot;, 0.17 ], [ &quot;fox&quot;, 0.17 ], [ &quot;It&quot;, 0.17 ], [ &quot;jumps&quot;, 0.17 ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="mostfrequentword" data-k="mostfrequentword  the word that occurs most often in the string."><div class="ln mono">MostFrequentWord</div><div class="lt">The word that occurs most often in the string.<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText(&quot;The quick brown fox. It jumps!&quot;)
+#--&gt; [
+#--&gt;     [ "The", 0.17 ],
+#--&gt;     [ "quick", 0.17 ],
+#--&gt;     [ "brown", 0.17 ],
+#--&gt;     [ "fox", 0.17 ],
+#--&gt;     [ "It", 0.17 ],
+#--&gt;     [ "jumps", 0.17 ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="mostfrequentword" data-k="mostfrequentword  the word that occurs most often in the string."><div class="ln mono">MostFrequentWord</div><div class="lt">The word that occurs most often in the string.<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText(&quot;The quick brown fox. It jumps!&quot;)
 ? o1.MostFrequentWord()
 #--&gt; The</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="lessfrequentword" data-k="lessfrequentword  word frequency (ring logic)"><div class="ln mono">LessFrequentWord</div><div class="lt">word frequency (ring logic)<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText(&quot;The quick brown fox. It jumps!&quot;)
 ? o1.LessFrequentWord()
@@ -161,9 +175,16 @@ o1.TruncateWords(2)
 ? @@( o1.NMostFrequentWords(2) )
 #--&gt; [ &quot;The&quot;, &quot;quick&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="wordspositions" data-k="wordspositions  word positions (ring logic)"><div class="ln mono">WordsPositions</div><div class="lt">word positions (ring logic)<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText(&quot;The quick brown fox. It jumps!&quot;)
 ? @@( o1.WordsPositions() )
-#--&gt; [ 1, 5, 11, 17, 22, 25 ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="wordsandtheirpositions" data-k="wordsandtheirpositions  word positions (ring logic)"><div class="ln mono">WordsAndTheirPositions</div><div class="lt">word positions (ring logic)<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText(&quot;The quick brown fox. It jumps!&quot;)
+#--&gt; [ 1, 5, 11, 17, 22, 25 ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="wordsandtheirpositions" data-k="wordsandtheirpositions  word positions (ring logic)"><div class="ln mono">WordsAndTheirPositions</div><div class="lt">word positions (ring logic)<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText("The quick brown fox. It jumps!")
 ? @@( o1.WordsAndTheirPositions() )
-#--&gt; [ [ &quot;The&quot;, [ 1 ] ], [ &quot;quick&quot;, [ 5 ] ], [ &quot;brown&quot;, [ 11 ] ], [ &quot;fox.&quot;, [ 17 ] ], [ &quot;It&quot;, [ 22 ] ], [ &quot;jumps!&quot;, [ 25 ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="wordssortingorder" data-k="wordssortingorder  word sorting checks (ring logic)"><div class="ln mono">WordsSortingOrder</div><div class="lt">word sorting checks (ring logic)<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText(&quot;The quick brown fox. It jumps!&quot;)
+#--&gt; [
+#--&gt;     [ "The", [ 1 ] ],
+#--&gt;     [ "quick", [ 5 ] ],
+#--&gt;     [ "brown", [ 11 ] ],
+#--&gt;     [ "fox.", [ 17 ] ],
+#--&gt;     [ "It", [ 22 ] ],
+#--&gt;     [ "jumps!", [ 25 ] ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="wordssortingorder" data-k="wordssortingorder  word sorting checks (ring logic)"><div class="ln mono">WordsSortingOrder</div><div class="lt">word sorting checks (ring logic)<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText(&quot;The quick brown fox. It jumps!&quot;)
 ? o1.WordsSortingOrder()
 #--&gt; unsorted</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="wordsaresorted" data-k="wordsaresorted  word sorting checks (ring logic)"><div class="ln mono">WordsAreSorted</div><div class="lt">word sorting checks (ring logic)<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText(&quot;The quick brown fox. It jumps!&quot;)
 ? o1.WordsAreSorted()
@@ -209,9 +230,40 @@ o1.Lowercase()
 #--&gt; the quick brown fox. it jumps!</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="uppercase" data-k="uppercase  uppercase the text in place (mutating)."><div class="ln mono">Uppercase</div><div class="lt">Uppercase the text in place (mutating).<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText(&quot;The quick brown fox. It jumps!&quot;)
 o1.Uppercase()
 ? o1.Content()
-#--&gt; THE QUICK BROWN FOX. IT JUMPS!</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="chars" data-k="chars  the chars of the text, as a list."><div class="ln mono">Chars</div><div class="lt">The chars of the text, as a list.<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText(&quot;The quick brown fox. It jumps!&quot;)
+#--&gt; THE QUICK BROWN FOX. IT JUMPS!</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="chars" data-k="chars  the chars of the text, as a list."><div class="ln mono">Chars</div><div class="lt">The chars of the text, as a list.<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText("The quick brown fox. It jumps!")
 ? @@( o1.Chars() )
-#--&gt; [ &quot;T&quot;, &quot;h&quot;, &quot;e&quot;, &quot; &quot;, &quot;q&quot;, &quot;u&quot;, &quot;i&quot;, &quot;c&quot;, &quot;k&quot;, &quot; &quot;, &quot;b&quot;, &quot;r&quot;, &quot;o&quot;, &quot;w&quot;, &quot;n&quot;, &quot; &quot;, &quot;f&quot;, &quot;o&quot;, &quot;x&quot;, &quot;.&quot;, &quot; &quot;, &quot;I&quot;, &quot;t&quot;, &quot; &quot;, &quot;j&quot;, &quot;u&quot;, &quot;m&quot;, &quot;p&quot;, &quot;s&quot;, &quot;!&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="numberofchars2" data-k="numberofchars2  engine twin of numberofchars (codepoint count)."><div class="ln mono">NumberOfChars2</div><div class="lt">Engine twin of NumberOfChars (codepoint count).<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText(&quot;The quick brown fox. It jumps!&quot;)
+#--&gt; [
+#--&gt;     "T",
+#--&gt;     "h",
+#--&gt;     "e",
+#--&gt;     " ",
+#--&gt;     "q",
+#--&gt;     "u",
+#--&gt;     "i",
+#--&gt;     "c",
+#--&gt;     "k",
+#--&gt;     " ",
+#--&gt;     "b",
+#--&gt;     "r",
+#--&gt;     "o",
+#--&gt;     "w",
+#--&gt;     "n",
+#--&gt;     " ",
+#--&gt;     "f",
+#--&gt;     "o",
+#--&gt;     "x",
+#--&gt;     ".",
+#--&gt;     " ",
+#--&gt;     "I",
+#--&gt;     "t",
+#--&gt;     " ",
+#--&gt;     "j",
+#--&gt;     "u",
+#--&gt;     "m",
+#--&gt;     "p",
+#--&gt;     "s",
+#--&gt;     "!"
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="numberofchars2" data-k="numberofchars2  engine twin of numberofchars (codepoint count)."><div class="ln mono">NumberOfChars2</div><div class="lt">Engine twin of NumberOfChars (codepoint count).<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzStringText(&quot;The quick brown fox. It jumps!&quot;)
 ? o1.NumberOfChars2()
 #--&gt; 30</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div></div>
   </div>

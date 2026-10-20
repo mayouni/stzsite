@@ -50,8 +50,12 @@ o1.SpacifyXT( &quot; &quot;, 3, :Backward )
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>99 999 999 999</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/275_content.ring" target="_blank" rel="noopener noreferrer">275_content.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><h2>Scope <span class="mono">(8)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;99999999999&quot;)
 o1.SpacifyXT( &quot;_&quot;, 3, :Backward )
 # underscores group every 3 digits from the right
-? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>99_999_999_999</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/270_content.ring" target="_blank" rel="noopener noreferrer">270_content.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;12345269775114&quot;)
-o1.SpacifyXT( [ &quot; &quot;, &quot;.&quot;, :LastChars = 6 ], [ 3, 2 ], :Backward )
+? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>99_999_999_999</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/270_content.ring" target="_blank" rel="noopener noreferrer">270_content.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString("12345269775114")
+o1.SpacifyXT( [
+    " ",
+    ".",
+    :LastChars = 6
+], [ 3, 2 ], :Backward )
 # head-3, tail-2
 ? o1.Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>12 345 269.77 51 14</pre></div></div><p class="ran">run on 2026-10-02 04:23 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/282_content.ring" target="_blank" rel="noopener noreferrer">282_content.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;99999999999&quot;)
 o1.SpacifyXT( :Using = &quot; &quot;, :Step = 3, :Going = :Backward )

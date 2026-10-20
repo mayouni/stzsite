@@ -92,9 +92,12 @@ Lx(&quot;[@!N]&quot;).Match([42]) #--&gt; FALSE (because 42 is a number)</pre><p
 <p>This can be useful when filtering out unwanted data types from a dataset.</p>
 <h3 id="alternation-patterns">Alternation Patterns</h3>
 <p>Alternation allows <strong>either-or</strong> matches, providing flexibility when validating structured data:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>Lx(&quot;[@N|@S]&quot;).Match(42)        #--&gt; TRUE
-Lx(&quot;[@N|@S]&quot;).Match(&quot;hello&quot;)   #--&gt; TRUE
-Lx(&quot;[@N|@S]&quot;).Match([42, 99])  #--&gt; FALSE (expects a single number or string)</pre><p class="ran nv-illus">illustration</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>Lx("[@N|@S]").Match(42)        #--&gt; TRUE
+Lx("[@N|@S]").Match("hello")   #--&gt; TRUE
+Lx("[@N|@S]").Match([
+    42,
+    99
+])  #--&gt; FALSE (expects a single number or string)</pre><p class="ran nv-illus">illustration</p></div>
 <h3 id="explicit-sets">Explicit Sets</h3>
 <p>We can define a <strong>fixed set of valid values</strong> using explicit sets:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>Lx(&quot;[@N{1;2;3}]&quot;).Match(2)  #--&gt; TRUE
@@ -102,8 +105,12 @@ Lx(&quot;[@N{4}]&quot;).Match(4)  #--&gt; TRUE
 Lx(&quot;[@N{5}]&quot;).Match(6)  #--&gt; FALSE (not in the set)</pre><p class="ran nv-illus">illustration</p></div>
 <h3 id="nested-patterns">Nested Patterns</h3>
 <p>Listex is particularly powerful when dealing with <strong>nested structures</strong>. This is useful for validating <strong>complex configurations</strong> and <strong>hierarchical data</strong>:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>Lx(&quot;[@N, [@N2], @N]&quot;).Match([1, [2, 3], 4]) #--&gt; TRUE
-Lx(&quot;[@N, [@N2], @N]&quot;).Match([1, [2], 4]) #--&gt; FALSE (inner list must have exactly 2 elements)</pre><p class="ran nv-illus">illustration</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>Lx("[@N, [@N2], @N]").Match([1, [2, 3], 4]) #--&gt; TRUE
+Lx("[@N, [@N2], @N]").Match([
+    1,
+    [2],
+    4
+]) #--&gt; FALSE (inner list must have exactly 2 elements)</pre><p class="ran nv-illus">illustration</p></div>
 <h2 id="why-softanza-listex-stands-out">Why Softanza Listex Stands Out</h2>
 <p>Softanza Listex represents a true innovation in pattern matching by addressing a gap left by other languages. While some languages have <strong>partial support</strong> for structured pattern matching, none provide the <strong>regex-like expressiveness tailored for list validation</strong>. Here’s how Listex compares:</p>
 <table>

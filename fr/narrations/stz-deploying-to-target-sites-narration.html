@@ -82,11 +82,16 @@ effectful actor — its own story:
 <h2 id="bind-each-part-of-the-solution-to-its-site">Bind each part of the solution to its site</h2>
 <p>The delivery planner already holds the solution — the phone super-app, the backend, the ESP32
 node. Deployment adds <em>where each part lands</em>:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>oDelivery = new stzDelivery(&quot;restolean&quot;)
+<div class="nblock"><div class="lbl">Haro</div><pre>oDelivery = new stzDelivery("restolean")
 oDelivery.AddSuperApp(:phone, :Android)
 oDelivery.AddBackend(:api, :LinuxServer)
 oDelivery.AddFirmware(:node, :ESP32)
-oDelivery.NeedsIn(:phone, [ :Unicode, :PivotTable, :ConstraintSolver, :Collection ])
+oDelivery.NeedsIn(:phone, [
+    :Unicode,
+    :PivotTable,
+    :ConstraintSolver,
+    :Collection
+])
 oDelivery.NeedsIn(:api,   [ :PivotTable ])
 oDelivery.NeedsIn(:node,  [ :GPIO, :Pattern ])
 

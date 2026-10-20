@@ -42,22 +42,56 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;tea&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;fish&quot;, &quot;rice&quot;, &quot;tea&quot; ])
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    "tea",
+    "rice",
+    "tea",
+    "fish",
+    "rice",
+    "tea"
+])
 ? o1.NumberOfItems()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>6</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/01-find-then-apply.en.md" target="_blank" rel="noopener noreferrer">01-find-then-apply.en.md<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;teeba&quot;, &quot;hussein&quot;, &quot;haneen&quot; , &quot;hussein&quot; ])
 ? o1.DuplicatesRemoved()
 ? o1.NumberOfItems()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>teeba
 hussein
 haneen
 
-4</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/456_duplicatesremoved.ring" target="_blank" rel="noopener noreferrer">456_duplicatesremoved.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><h2>Portée <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? StzListQ([ &quot;A&quot;, 1, &quot;B&quot;, 2, &quot;C&quot;, 3 ]).NumberOfItemsW(&#x27; isNumber(@item) &#x27;)
-? StzListQ([ &quot;A&quot;, 1, &quot;B&quot;, 2, &quot;C&quot;, 3 ]).NumberOfItemsW(&#x27; isString(@item) &#x27;)
-? StzListQ([ 1, 2, 3, 4, 5, 6 ]).NumberOfItemsWF( func x { return Q(x).IsDividableBy(2) } )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>3
+4</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/456_duplicatesremoved.ring" target="_blank" rel="noopener noreferrer">456_duplicatesremoved.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><h2>Portée <span class="mono">(3)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? StzListQ([
+    "A",
+    1,
+    "B",
+    2,
+    "C",
+    3
+]).NumberOfItemsW(' isNumber(@item) ')
+? StzListQ([
+    "A",
+    1,
+    "B",
+    2,
+    "C",
+    3
+]).NumberOfItemsW(' isString(@item) ')
+? StzListQ([
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+]).NumberOfItemsWF( func x { return Q(x).IsDividableBy(2) } )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>3
 3
 3</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/524_numberofitemswxt.ring" target="_blank" rel="noopener noreferrer">524_numberofitemswxt.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 14, 10, 14, 14, 20 ])
 # botharebetween example 1
-? @@( QRT([2, 4], :stzPairOfNumbers).BothAreBetween(1, o1.NumberOfItems()) )
+? @@( QRT([
+    2,
+    4
+], :stzPairOfNumbers).BothAreBetween(1, o1.NumberOfItems()) )
 # botharebetween example 2
-? @@( QRT([0, 4], :stzPairOfNumbers).BothAreBetween(1, o1.NumberOfItems()) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+? @@( QRT([
+    0,
+    4
+], :stzPairOfNumbers).BothAreBetween(1, o1.NumberOfItems()) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
 0</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/184_botharebetween.ring" target="_blank" rel="noopener noreferrer">184_botharebetween.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;emm&quot;, &quot;EMM&quot;, &quot;eMm&quot;, &quot;EMM&quot; ])
 ? o1.Find(&quot;EMM&quot;) # Same as FindCS(&quot;EMM&quot;, :CS = TRUE)
 ? o1.FindCS(&quot;EMM&quot;, :CS = FALSE)

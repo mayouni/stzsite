@@ -42,11 +42,19 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ :Language = &quot;arabic&quot;, :Country = &quot;tn&quot;, :Script = &quot;arabic&quot; ])
+    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    :Language = "arabic",
+    :Country = "tn",
+    :Script = "arabic"
+])
 ? o1.IsLocaleList() + NL
-o1 = new stzList([ :Language = &quot;ar&quot;, :Country = &quot;TN&quot;, :script = &quot;arabic&quot; ])
+o1 = new stzList([
+    :Language = "ar",
+    :Country = "TN",
+    :script = "arabic"
+])
 ? o1.IsLocaleList() + NL
-? StringIsScriptName(&quot;latin&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>TRUE
+? StringIsScriptName("latin")</pre></div><div class="out"><div class="lbl">Output</div><pre>TRUE
 
 TRUE
 

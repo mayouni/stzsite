@@ -39,8 +39,11 @@
     <h1>Trouver les sujets ou les expressions clés d&#x27;un texte</h1>
   </div></section>
   <div class="wrap page-body">
-<div class="run"><div><div class="lbl">Softanza</div><pre>Q(&quot;Machine learning models require large training datasets and careful evaluation.&quot;).TextQ().KeyPhrases(2)
-#--&gt; [ &quot;Machine learning models require large training datasets&quot;, &quot;careful evaluation&quot; ]</pre></div><div class="out"><div class="lbl">Sortie</div><pre>Machine learning models require large training datasets
+<div class="run"><div><div class="lbl">Softanza</div><pre>Q("Machine learning models require large training datasets and careful evaluation.").TextQ().KeyPhrases(2)
+#--&gt; [
+#--&gt;     "Machine learning models require large training datasets",
+#--&gt;     "careful evaluation"
+#--&gt; ]</pre></div><div class="out"><div class="lbl">Sortie</div><pre>Machine learning models require large training datasets
 careful evaluation</pre></div></div><p class="ran nv-kept">exécuté : a affiché ce que la recette promet</p><p class="proof">exécuté le 2026-10-02 22:33 dans la bibliothèque au commit 0e72e2e2c ; l'expression qui porte la promesse a été affichée pour l'exécution · <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/quickers/recipes/text/topics.md" target="_blank" rel="noopener noreferrer">La recette sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><h2>Les méthodes</h2><p><a class="mono" href="../reference/stztext.html#keyphrases">stzText.KeyPhrases</a> · <a class="mono" href="../reference/stztext.html#rankedkeywords">stzText.RankedKeywords</a> · <a class="mono" href="../reference/stztext.html#topkeyphrase">stzText.TopKeyPhrase</a></p><p class="proof">Les mots de cette tâche : topics, themes, subjects, key phrases, keywords, what it is about, main points</p><p class="proof">La recette est écrite en anglais, comme la bibliothèque ; son intention est traduite ici.</p>
   </div>
 </main>

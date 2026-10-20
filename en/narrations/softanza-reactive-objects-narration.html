@@ -525,35 +525,45 @@ Rs = new stzReactive()
 
 # Create search object
 oXSearch = Rs.ReactiveObject()
-oXSearch.SetAttribute(:@Query, &quot;&quot;)
+oXSearch.SetAttribute(:@Query, "")
 
 # Immediate watch (fires on every change)
 oXSearch.Watch(:@Query, func(attr, oldval, newval) {
-    ? &quot;🔍 Search query changed: &quot; + @@(newval)
+    ? "🔍 Search query changed: " + @@(newval)
 })
 
 # Debounced (waits 800ms)
 oXSearch.DebounceAttribute(:@Query, 800, func(attr, oldval, newval) {
-    ? &quot;🎯 Debounced search executed for: (&quot; + newval + &quot;)&quot;
-    ? &quot;    (This simulates an API call)&quot;
+    ? "🎯 Debounced search executed for: (" + newval + ")"
+    ? "    (This simulates an API call)"
 })
 
 # Simulate typing
-queries = [&quot;h&quot;, &quot;he&quot;, &quot;hel&quot;, &quot;hell&quot;, &quot;hello&quot;, &quot;hello w&quot;, &quot;hello wo&quot;, &quot;hello wor&quot;, &quot;hello world&quot;]
+queries = [
+    "h",
+    "he",
+    "hel",
+    "hell",
+    "hello",
+    "hello w",
+    "hello wo",
+    "hello wor",
+    "hello world"
+]
 currentQuery = 1
 
 Rs.SetTimeout(100, func {
-    ? &quot;Simulating rapid typing (debounced search will fire only after typing stops):&quot;
+    ? "Simulating rapid typing (debounced search will fire only after typing stops):"
     TypeNext()
 })
 
 Rs.Start()
-? NL + &quot;✅ Sample completed.&quot;
+? NL + "✅ Sample completed."
 
 func TypeNext()
     if currentQuery &lt;= len(queries)
         query = queries[currentQuery]
-        ? &quot;⌨️ Typing: &quot; + @@(query)
+        ? "⌨️ Typing: " + @@(query)
         oXSearch.SetAttribute(:@Query, query)
         currentQuery++
         

@@ -56,17 +56,22 @@ re-run green). Performance system P3 --
 <code>doc/design/SOFTANZA_PERF_SYSTEM.md</code>.</p>
 </blockquote>
 <h2 id="instruments-need-somewhere-to-stand">Instruments need somewhere to stand</h2>
-<div class="nblock"><div class="lbl">Haro</div><pre>oMon = StzPerfMonitor(&quot;restolean&quot;)
+<div class="nblock"><div class="lbl">Haro</div><pre>oMon = StzPerfMonitor("restolean")
 oMon.WatchMemory().WatchCpu().Every(100)
 
 oSrv = new stzAppServer()
 oSrv.Observe(oMon)                  # &lt;- the whole integration
-oSrv.Get(&quot;/menu&quot;, func oReq, oResp { oResp.Json([ &quot;dish&quot;, &quot;Couscous&quot;, &quot;price&quot;, 12 ]) })
-oSrv.Start(0, &quot;127.0.0.1&quot;)
+oSrv.Get("/menu", func oReq, oResp { oResp.Json([
+    "dish",
+    "Couscous",
+    "price",
+    12
+]) })
+oSrv.Start(0, "127.0.0.1")
 # ... 30 real requests over real HTTP ...
-? &quot;R p95 (exact)  : &quot; + oMon.MetricQ(&quot;http.request.ms&quot;).ExactPercentile(95) + &quot; ms&quot;
-? &quot;R mean (exact) : &quot; + oMon.MetricQ(&quot;http.request.ms&quot;).MeanMs() + &quot; ms&quot;
-? &quot;X measured     : &quot; + oMon.MetricQ(&quot;http.requests&quot;).RatePerSecond() + &quot; req/s&quot;</pre><p class="ran nv-illus">illustration</p></div>
+? "R p95 (exact)  : " + oMon.MetricQ("http.request.ms").ExactPercentile(95) + " ms"
+? "R mean (exact) : " + oMon.MetricQ("http.request.ms").MeanMs() + " ms"
+? "X measured     : " + oMon.MetricQ("http.requests").RatePerSecond() + " req/s"</pre><p class="ran nv-illus">illustration</p></div>
 <div class="out"><div class="lbl">Sortie promise</div><pre>R p95 (exact)  : 1.25 ms
 R mean (exact) : 1.19 ms
 X measured     : 134.14 req/s</pre></div>
@@ -119,8 +124,11 @@ http_errors_total 0</pre></div>
 crossing -- who, what, and how it ended. P3 adds the missing column:
 <em>what it took</em>. One timer at the one choke point both modes share
 (<code>_Roundtrip</code>) prices local and remote crossings alike:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>oB.Create(:phone, &quot;orders&quot;, [ [ &quot;dish&quot;, &quot;Couscous&quot; ], [ &quot;qty&quot;, 2 ] ])
-oB.Rows(:admin, &quot;orders&quot;)
+<div class="nblock"><div class="lbl">Haro</div><pre>oB.Create(:phone, "orders", [
+    [ "dish", "Couscous" ],
+    [ "qty", 2 ]
+])
+oB.Rows(:admin, "orders")
 oB.Show()</pre><p class="ran nv-illus">illustration</p></div>
 <div class="out"><div class="lbl">Sortie promise</div><pre>Live backend &#x27;restolean&#x27; -- live, port 58739, 3 crossing(s)
   #1 phone POST orders -&gt; 201 (13.12 ms)

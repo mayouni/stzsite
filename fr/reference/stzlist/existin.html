@@ -42,10 +42,14 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]).ExistsIn([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;x&quot;, &quot;z&quot;])
-? @@(Q([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;x&quot;, &quot;z&quot;]).FindAll([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]))
-? Q([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]).ExistsIn([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;x&quot;, &quot;z&quot;, [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]])
-? Q([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]).ExistIn([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;x&quot;, &quot;z&quot;])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>FALSE
+    <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(["a", "b", "c"]).ExistsIn(["a", "b", "c", "x", "z"])
+? @@(Q(["a", "b", "c", "x", "z"]).FindAll(["a", "b", "c"]))
+? Q([
+    "a",
+    "b",
+    "c"
+]).ExistsIn(["a", "b", "c", "x", "z", ["a", "b", "c"]])
+? Q(["a", "b", "c"]).ExistIn(["a", "b", "c", "x", "z"])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>FALSE
 [ ]
 TRUE
 1</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/622_existsin.ring" target="_blank" rel="noopener noreferrer">622_existsin.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>

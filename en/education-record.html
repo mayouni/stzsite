@@ -78,15 +78,36 @@ LEVEL s4: missing 24</pre></div></div><p class="ran">run on 2026-10-05 21:34 ins
 <p>A wrong answer to exercise 1.1 is refused. The checker ran the file in a fresh process and says what it printed; it does not say what it should have printed.</p>
 <div class="run"><div><div class="lbl">At the command line</div><pre># wrong.ring
 # Selects the object, and stops there: nothing was applied.
-o1 = new stzList([ &quot;tea&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;fish&quot;, &quot;rice&quot;, &quot;tea&quot; ])
+o1 = new stzList([
+    "tea",
+    "rice",
+    "tea",
+    "fish",
+    "rice",
+    "tea"
+])
 ? @@( o1.Content() )
 
-learn.ring ada submit ex-01-01 wrong.ring</pre></div><div class="out"><div class="lbl">Output</div><pre>REFUSED ex-01-01: Your program ran, but what it printed is not yet what the task asks. It printed: [&quot;tea&quot;,&quot;rice&quot;,&quot;tea&quot;,&quot;fish&quot;,&quot;rice&quot;,&quot;tea&quot;]</pre></div></div><p class="ran">run on 2026-10-05 21:34 inside the library at commit 4a184e6f0</p>
+learn.ring ada submit ex-01-01 wrong.ring</pre></div><div class="out"><div class="lbl">Output</div><pre>REFUSED ex-01-01: Your program ran, but what it printed is not yet what the task asks. It printed: [
+    "tea",
+    "rice",
+    "tea",
+    "fish",
+    "rice",
+    "tea"
+]</pre></div></div><p class="ran">run on 2026-10-05 21:34 inside the library at commit 4a184e6f0</p>
 
 <p>A right answer passes. The verdict is the checker's: it ran the file, and nobody read it. The learner is now on chapter 2 and one exercise nearer the first level, with four missing instead of five.</p>
 <div class="run"><div><div class="lbl">At the command line</div><pre># right.ring
 # The dedicated word for the whole move.
-? @@( StzListQ([ &quot;tea&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;fish&quot;, &quot;rice&quot;, &quot;tea&quot; ]).DuplicatesRemoved() )
+? @@( StzListQ([
+    "tea",
+    "rice",
+    "tea",
+    "fish",
+    "rice",
+    "tea"
+]).DuplicatesRemoved() )
 
 learn.ring ada submit ex-01-01 right.ring</pre></div><div class="out"><div class="lbl">Output</div><pre>PASSED ex-01-01: Every promise of the exercise was kept when your program ran.</pre></div></div><p class="ran">run on 2026-10-05 21:34 inside the library at commit 4a184e6f0</p>
 

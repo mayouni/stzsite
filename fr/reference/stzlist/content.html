@@ -58,8 +58,22 @@
 TWO
 THREE
 
-[ &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot;, &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/406_multiply_operator_object.ring" target="_blank" rel="noopener noreferrer">406_multiply_operator_object.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? @@( Q([&quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;, &quot;five&quot;, &quot;six&quot; ]) / 3 ) + NL
-? @@( ( Q([&quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;, &quot;five&quot;, &quot;six&quot; ]) / Q(3) ).Content() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ [ &quot;one&quot;, &quot;two&quot; ], [ &quot;three&quot;, &quot;four&quot; ], [ &quot;five&quot;, &quot;six&quot; ] ]
+[ &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot;, &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/406_multiply_operator_object.ring" target="_blank" rel="noopener noreferrer">406_multiply_operator_object.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? @@( Q([
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six"
+]) / 3 ) + NL
+? @@( ( Q([
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six"
+]) / Q(3) ).Content() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ [ &quot;one&quot;, &quot;two&quot; ], [ &quot;three&quot;, &quot;four&quot; ], [ &quot;five&quot;, &quot;six&quot; ] ]
 
 [ [ &quot;one&quot;, &quot;two&quot; ], [ &quot;three&quot;, &quot;four&quot; ], [ &quot;five&quot;, &quot;six&quot; ] ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/listofnumbers/23_pr.ring" target="_blank" rel="noopener noreferrer">23_pr.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList(1:7)
 o1 - 4:6

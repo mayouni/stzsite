@@ -233,7 +233,14 @@ o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
 <p>stzGrid excels at creating and managing paths between points:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>StzGridQ([8, 6]) {
   # Add many obstacles in one command
-  AddObstacles([ [3, 2], [3, 3], [3, 4], [5, 2], [5, 3], [5, 4] ])
+  AddObstacles([
+      [3, 2],
+      [3, 3],
+      [3, 4],
+      [5, 2],
+      [5, 3],
+      [5, 4]
+  ])
   
   # Create a path manually by specifying the traversed nodes
   AddPath([
@@ -356,7 +363,10 @@ o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
 <p>Let's analyze the connectivity of various node pairs within such a grid structure:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Test connectivity
 ? o1.AreConnected([1, 1], [2, 2])  #--&gt; TRUE - same region
-? o1.AreConnected([1, 1], [8, 6])  #--&gt; FALSE - different regions
+? o1.AreConnected([
+    1,
+    1
+], [8, 6])  #--&gt; FALSE - different regions
 
 # Find and paint all connected regions
 o1.ShowRegions()</pre><p class="ran nv-illus">illustration</p></div>

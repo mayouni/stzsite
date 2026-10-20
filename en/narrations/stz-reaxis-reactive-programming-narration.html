@@ -212,15 +212,19 @@ Rs {
 Rs {
     # PHASE 1: DECLARE - Describe behavior without execution
     
-    oMonitorStream = CreateStreamXT(&quot;temperature-monitor&quot;, :SENSOR)
+    oMonitorStream = CreateStreamXT("temperature-monitor", :SENSOR)
     oMonitorStream {
         # Buffer for sensor bursts
         SetBufferSize(500)
-        SetOverflowStrategy(&quot;latest&quot;)  # Accept newest, drop oldest
+        SetOverflowStrategy("latest")  # Accept newest, drop oldest
         
         # Processing pipeline
         Transform(func temp { 
-            return [temp, CurrentTime(), CalculateHeatIndex(temp)] 
+            return [
+                temp,
+                CurrentTime(),
+                CalculateHeatIndex(temp)
+            ] 
         })
         
         Filter(func data { return data[3] &gt; DANGER_THRESHOLD })
@@ -231,7 +235,7 @@ Rs {
         })
         
         OnBufferOverflow(func(oStats) {
-            ? &quot;Sensor data overflow - possible sensor malfunction&quot;
+            ? "Sensor data overflow - possible sensor malfunction"
             SwitchToBackupSensor()
         })
         

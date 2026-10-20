@@ -74,15 +74,21 @@ g2.AddNode(&quot;A&quot;) g2.AddNode(&quot;B&quot;) g2.AddNode(&quot;C&quot;)
 g2.AddEdge(&quot;A&quot;, &quot;B&quot;) g2.AddEdge(&quot;B&quot;, &quot;C&quot;)
 o1 = new stzGraphComparison(g1, [ g2 ])
 ? o1.LeastImpactful()
-#--&gt; V1</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="withcycles" data-k="withcycles  "><div class="ln mono">WithCycles</div><div class="lt"><i>Not described yet. Its name, read as a sentence:</i> <span class="mono">with cycles</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="withoutcycles" data-k="withoutcycles  "><div class="ln mono">WithoutCycles</div><div class="lt"><i>Not described yet. Its name, read as a sentence:</i> <span class="mono">without cycles</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="bymetric" data-k="bymetric  "><div class="ln mono">ByMetric</div><div class="lt"><i>Not described yet. Its name, read as a sentence:</i> <span class="mono">by metric</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="recommend" data-k="recommend  "><div class="ln mono">Recommend</div><div class="lt"><i>Not described yet. Its name, read as a sentence:</i> <span class="mono">recommend</span><details class="rxd"><summary>composed example</summary><pre class="rx">g1 = new stzGraph(&quot;base&quot;)
-g1.AddNode(&quot;A&quot;) g1.AddNode(&quot;B&quot;)
-g1.AddEdge(&quot;A&quot;, &quot;B&quot;)
-g2 = new stzGraph(&quot;other&quot;)
-g2.AddNode(&quot;A&quot;) g2.AddNode(&quot;B&quot;) g2.AddNode(&quot;C&quot;)
-g2.AddEdge(&quot;A&quot;, &quot;B&quot;) g2.AddEdge(&quot;B&quot;, &quot;C&quot;)
+#--&gt; V1</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="withcycles" data-k="withcycles  "><div class="ln mono">WithCycles</div><div class="lt"><i>Not described yet. Its name, read as a sentence:</i> <span class="mono">with cycles</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="withoutcycles" data-k="withoutcycles  "><div class="ln mono">WithoutCycles</div><div class="lt"><i>Not described yet. Its name, read as a sentence:</i> <span class="mono">without cycles</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="bymetric" data-k="bymetric  "><div class="ln mono">ByMetric</div><div class="lt"><i>Not described yet. Its name, read as a sentence:</i> <span class="mono">by metric</span><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="recommend" data-k="recommend  "><div class="ln mono">Recommend</div><div class="lt"><i>Not described yet. Its name, read as a sentence:</i> <span class="mono">recommend</span><details class="rxd"><summary>composed example</summary><pre class="rx">g1 = new stzGraph("base")
+g1.AddNode("A") g1.AddNode("B")
+g1.AddEdge("A", "B")
+g2 = new stzGraph("other")
+g2.AddNode("A") g2.AddNode("B") g2.AddNode("C")
+g2.AddEdge("A", "B") g2.AddEdge("B", "C")
 o1 = new stzGraphComparison(g1, [ g2 ])
 ? @@( o1.Recommend() )
-#--&gt; [ [ &quot;recommended&quot;, &quot;V1&quot; ], [ &quot;reason&quot;, &quot;Best balance of structure, connectivity, and acyclicity&quot; ] ]</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div></div>
+#--&gt; [
+#--&gt;     [ "recommended", "V1" ],
+#--&gt;     [
+#--&gt;         "reason",
+#--&gt;         "Best balance of structure, connectivity, and acyclicity"
+#--&gt;     ]
+#--&gt; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div></div>
   </div>
 </main>
 </div>

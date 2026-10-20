@@ -43,10 +43,22 @@
   <div class="wrap page-body">
     
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;c&quot;, 12 ])
-? o1.HasSameContentAs([ &quot;a&quot;, 12, &quot;c&quot; ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/638_hassamecontentas.ring" target="_blank" rel="noopener noreferrer">638_hassamecontentas.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? ListContains([ &quot;q&quot;, &quot;r&quot;, [ 2, 1 ] ], [ 2, 1 ])
-? StzListQ([ &quot;q&quot;, &quot;r&quot;, [ 2, 1] ]).HasSameContentAs([ &quot;r&quot;, [ 2, 1], &quot;q&quot; ])
-? StzListQ([ &quot;q&quot;, &quot;r&quot;, [ 2, 1] ]).HasSameSortingOrderAs([ &quot;r&quot;, [ 2, 1], &quot;q&quot; ])
-? StzListQ([ &quot;q&quot;, &quot;r&quot;, [ 2, 1] ]).IsEqualTo([ &quot;q&quot;, &quot;r&quot;, [2, 1] ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE
+? o1.HasSameContentAs([ &quot;a&quot;, 12, &quot;c&quot; ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/638_hassamecontentas.ring" target="_blank" rel="noopener noreferrer">638_hassamecontentas.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? ListContains([ "q", "r", [ 2, 1 ] ], [ 2, 1 ])
+? StzListQ([
+    "q",
+    "r",
+    [ 2, 1]
+]).HasSameContentAs([ "r", [ 2, 1], "q" ])
+? StzListQ([
+    "q",
+    "r",
+    [ 2, 1]
+]).HasSameSortingOrderAs([ "r", [ 2, 1], "q" ])
+? StzListQ([
+    "q",
+    "r",
+    [ 2, 1]
+]).IsEqualTo([ "q", "r", [2, 1] ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE
 TRUE
 FALSE
 TRUE</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/431_listcontains.ring" target="_blank" rel="noopener noreferrer">431_listcontains.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><h2>Portée <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;b&quot;, &quot;c&quot; ])

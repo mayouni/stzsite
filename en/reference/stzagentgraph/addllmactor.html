@@ -75,24 +75,31 @@ oRep.Collect(oCG)
 ? oRep.NumberOfFindings()
 # ...the gate is sound
 ? oRep.IsSound()</pre></div><div class="out"><div class="lbl">Output</div><pre>0
-TRUE</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graph/rulereport_narrated.ring" target="_blank" rel="noopener noreferrer">rulereport_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAG = new stzAgentGraph(&quot;bad&quot;)
-oAG.AddLLMActor(&quot;writer&quot;)
-oAG.AddEffect(&quot;send&quot;)
-oAG.Proposes(&quot;writer&quot;, &quot;send&quot;)
-aLegacyAgent = StzCheckAgentGraph(oAG.GraphQ())     # [ :invariant, :node, ... ]
-aLegacyCode  = StzCheckCode(&quot;class Bag&quot; + nl + &quot;def Len()&quot; + nl + &quot;	return 1&quot; + nl)  # [ :line, ... ]
-oRep = new stzRuleReport(&quot;mixed&quot;)
-oRep.IngestLegacy(aLegacyAgent, &quot;agentic&quot;)
-oRep.IngestLegacy(aLegacyCode, &quot;code&quot;)
+TRUE</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/graph/rulereport_narrated.ring" target="_blank" rel="noopener noreferrer">rulereport_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>oAG = new stzAgentGraph("bad")
+oAG.AddLLMActor("writer")
+oAG.AddEffect("send")
+oAG.Proposes("writer", "send")
+aLegacyAgent = StzCheckAgentGraph(oAG.GraphQ())     # [
+    :invariant,
+    :node,
+    ...
+]
+aLegacyCode  = StzCheckCode("class Bag" + nl + "def Len()" + nl + "	return 1" + nl)  # [
+    :line,
+    ...
+]
+oRep = new stzRuleReport("mixed")
+oRep.IngestLegacy(aLegacyAgent, "agentic")
+oRep.IngestLegacy(aLegacyCode, "code")
 # legacy findings are normalized into the unified shape
 ? HasKey(oRep.Findings()[1], :rule) and HasKey(oRep.Findings()[1], :subject) and
 	     HasKey(oRep.Findings()[1], :where)
 # ...the invariant name became :rule
 ? len(oRep.Findings()[1][:rule]) &gt; 0
 # ...tagged with the given subject
-? len(oRep.FindingsOfSubject(&quot;agentic&quot;)) &gt;= 1
+? len(oRep.FindingsOfSubject("agentic")) &gt;= 1
 # ...and the code line landed in :where
-? len(oRep.FindingsOfSubject(&quot;code&quot;)) &gt;= 1
+? len(oRep.FindingsOfSubject("code")) &gt;= 1
 # the one gate spans legacy sources too
 ? oRep.IsSound()</pre></div><div class="out"><div class="lbl">Output</div><pre>TRUE
 TRUE

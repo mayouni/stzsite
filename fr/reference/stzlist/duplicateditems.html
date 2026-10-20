@@ -42,8 +42,38 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 1, &quot;*&quot;, 10:12, &quot;B&quot;, 2, 1, &quot;*&quot;, &quot;A&quot;, 3, &quot;*&quot;, &quot;B&quot;, 10:12, &quot;B&quot; ])
-? @@( o1.DuplicatesZ() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ [ 1, [ 6 ] ], [ &quot;*&quot;, [ 7, 10 ] ], [ [ 10, 11, 12 ], [ 12 ] ], [ &quot;B&quot;, [ 11, 13 ] ] ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/252_duplicatesz.ring" target="_blank" rel="noopener noreferrer">252_duplicatesz.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;A&quot;, &quot;C&quot;, &quot;D&quot;, &quot;B&quot;, &quot;E&quot;, &quot;a&quot; , &quot;b&quot;])
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    1,
+    "*",
+    10:12,
+    "B",
+    2,
+    1,
+    "*",
+    "A",
+    3,
+    "*",
+    "B",
+    10:12,
+    "B"
+])
+? @@( o1.DuplicatesZ() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[
+    [ 1, [ 6 ] ],
+    [ "*", [ 7, 10 ] ],
+    [ [ 10, 11, 12 ], [ 12 ] ],
+    [ "B", [ 11, 13 ] ]
+]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/252_duplicatesz.ring" target="_blank" rel="noopener noreferrer">252_duplicatesz.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    "A",
+    "B",
+    "A",
+    "A",
+    "C",
+    "D",
+    "B",
+    "E",
+    "a",
+    "b"
+])
 ? @@( o1.DuplicatesCSZ(:CaseSensitive = FALSE) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ [ &quot;A&quot;, [ 3, 4, 9 ] ], [ &quot;B&quot;, [ 7, 10 ] ] ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/256_duplicatescsz.ring" target="_blank" rel="noopener noreferrer">256_duplicatescsz.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><h2>Portée <span class="mono">(8)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 5, 7, 5, 5, 4, 7, 1 ])
 ? o1.Duplicates()
 ? o1.FindDuplicates()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>5
@@ -56,13 +86,53 @@
 ? o1.Duplicates()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>2
 
 *
-4</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/260_numberofduplicates.ring" target="_blank" rel="noopener noreferrer">260_numberofduplicates.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>aList = [ &quot;A&quot;, &quot;B&quot;, 1, &quot;A&quot;, &quot;A&quot;, 1, &quot;C&quot;, 1:2, &quot;D&quot;, &quot;B&quot;, &quot;E&quot;, &#x27;&quot;1&quot;&#x27;, 1:2 ]
+4</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/260_numberofduplicates.ring" target="_blank" rel="noopener noreferrer">260_numberofduplicates.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>aList = [
+    "A",
+    "B",
+    1,
+    "A",
+    "A",
+    1,
+    "C",
+    1:2,
+    "D",
+    "B",
+    "E",
+    '"1"',
+    1:2
+]
 o1 = new stzList(aList)
 ? @@( o1.DuplicatesZ() )
-? &quot;&quot;
-? @@( o1.DuplicatesXTZ() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ [ &quot;A&quot;, [ 4, 5 ] ], [ &quot;B&quot;, [ 10 ] ], [ 1, [ 6 ] ], [ [ 1, 2 ], [ 13 ] ] ]
+? ""
+? @@( o1.DuplicatesXTZ() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[
+    [ "A", [ 4, 5 ] ],
+    [ "B", [ 10 ] ],
+    [ 1, [ 6 ] ],
+    [ [ 1, 2 ], [ 13 ] ]
+]
 
-[ [ &quot;A&quot;, [ 1, 4, 5 ] ], [ &quot;B&quot;, [ 2, 10 ] ], [ 1, [ 3, 6 ] ], [ &quot;C&quot;, [ 7 ] ], [ [ 1, 2 ], [ 8, 13 ] ], [ &quot;D&quot;, [ 9 ] ], [ &quot;E&quot;, [ 11 ] ], [ &#x27;&quot;1&quot;&#x27;, [ 12 ] ] ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/253_duplicatesz.ring" target="_blank" rel="noopener noreferrer">253_duplicatesz.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;A&quot;, &quot;B&quot;, &quot;B&quot;, &quot;B&quot;, &quot;b&quot;, &quot;C&quot;, &quot;B&quot;, &quot;C&quot;, &quot;C&quot;, &quot;c&quot;, &quot;A&quot; ])
+[
+    [ "A", [ 1, 4, 5 ] ],
+    [ "B", [ 2, 10 ] ],
+    [ 1, [ 3, 6 ] ],
+    [ "C", [ 7 ] ],
+    [ [ 1, 2 ], [ 8, 13 ] ],
+    [ "D", [ 9 ] ],
+    [ "E", [ 11 ] ],
+    [ '"1"', [ 12 ] ]
+]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/253_duplicatesz.ring" target="_blank" rel="noopener noreferrer">253_duplicatesz.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    "A",
+    "B",
+    "B",
+    "B",
+    "b",
+    "C",
+    "B",
+    "C",
+    "C",
+    "c",
+    "A"
+])
 ? o1.DupOrigins() # Same As Duplicates()
 ? o1.FindDupOrigins()
 o1.RemoveDupOrigins()
@@ -74,7 +144,19 @@ C
 2
 6
 
-[ &quot;B&quot;, &quot;B&quot;, &quot;b&quot;, &quot;B&quot;, &quot;C&quot;, &quot;C&quot;, &quot;c&quot;, &quot;A&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/140_duporigins.ring" target="_blank" rel="noopener noreferrer">140_duporigins.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;a&quot;, &quot;ab&quot;, &quot;b&quot;, 1:3, &quot;a&quot;, &quot;ab&quot;, &quot;abc&quot;, &quot;b&quot;, &quot;bc&quot;, 1:3,&quot;c&quot; ])
+[ &quot;B&quot;, &quot;B&quot;, &quot;b&quot;, &quot;B&quot;, &quot;C&quot;, &quot;C&quot;, &quot;c&quot;, &quot;A&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/140_duporigins.ring" target="_blank" rel="noopener noreferrer">140_duporigins.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    "a",
+    "ab",
+    "b",
+    1:3,
+    "a",
+    "ab",
+    "abc",
+    "b",
+    "bc",
+    1:3,
+    "c"
+])
 ? o1.FindDuplicates()
 ? @@( o1.ItemsAtPositions( o1.FindDuplicates() ) )
 ? @@( o1.Duplicates() ) + NL
@@ -83,10 +165,15 @@ C
 8
 10
 
-[ &quot;a&quot;, &quot;ab&quot;, &quot;b&quot;, [ 1, 2, 3 ] ]
-[ &quot;a&quot;, &quot;ab&quot;, &quot;b&quot;, [ 1, 2, 3 ] ]
+[ "a", "ab", "b", [ 1, 2, 3 ] ]
+[ "a", "ab", "b", [ 1, 2, 3 ] ]
 
-[ [ &quot;a&quot;, [ 5 ] ], [ &quot;ab&quot;, [ 6 ] ], [ &quot;b&quot;, [ 8 ] ], [ [ 1, 2, 3 ], [ 10 ] ] ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/266_findduplicates.ring" target="_blank" rel="noopener noreferrer">266_findduplicates.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 5, 7, 5, 5, 4, 7 ])
+[
+    [ "a", [ 5 ] ],
+    [ "ab", [ 6 ] ],
+    [ "b", [ 8 ] ],
+    [ [ 1, 2, 3 ], [ 10 ] ]
+]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/266_findduplicates.ring" target="_blank" rel="noopener noreferrer">266_findduplicates.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 5, 7, 5, 5, 4, 7 ])
 ? o1.ContainsDuplicates()
 ? o1.HowManyDuplicates()
 ? @@( o1.FindDuplicates() )
@@ -96,7 +183,17 @@ o1.RemoveDuplicates()
 3
 [ 3, 4, 6 ]
 [ [ 5, [ 3, 4 ] ], [ 7, [ 6 ] ] ]
-[ 5, 7, 4 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/243_containsduplicates.ring" target="_blank" rel="noopener noreferrer">243_containsduplicates.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;_&quot;, &quot;ONE&quot;, &quot;_&quot;, &quot;_&quot;, &quot;TWO&quot;, &quot;_&quot;, &quot;THREE&quot;, &quot;*&quot;, &quot;*&quot; ])
+[ 5, 7, 4 ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/243_containsduplicates.ring" target="_blank" rel="noopener noreferrer">243_containsduplicates.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    "_",
+    "ONE",
+    "_",
+    "_",
+    "TWO",
+    "_",
+    "THREE",
+    "*",
+    "*"
+])
 ? o1.ContainsDuplicates()
 ? @@( o1.FindDuplicates() )
 ? @@( o1.Duplicates() )
@@ -106,20 +203,44 @@ o1.RemoveDuplicates()
 [ 3, 4, 6, 9 ]
 [ &quot;_&quot;, &quot;*&quot; ]
 [ [ &quot;_&quot;, [ 3, 4, 6 ] ], [ &quot;*&quot;, [ 9 ] ] ]
-[ &quot;_&quot;, &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot;, &quot;*&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/234_containsduplicates.ring" target="_blank" rel="noopener noreferrer">234_containsduplicates.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;tunis&quot;, 1:3, 1:3, &quot;gafsa&quot;, &quot;tunis&quot;, &quot;tunis&quot;, 1:3, &quot;gabes&quot;, &quot;tunis&quot;, &quot;regueb&quot;, &quot;regueb&quot; ])
+[ &quot;_&quot;, &quot;ONE&quot;, &quot;TWO&quot;, &quot;THREE&quot;, &quot;*&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:22 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/234_containsduplicates.ring" target="_blank" rel="noopener noreferrer">234_containsduplicates.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    "tunis",
+    1:3,
+    1:3,
+    "gafsa",
+    "tunis",
+    "tunis",
+    1:3,
+    "gabes",
+    "tunis",
+    "regueb",
+    "regueb"
+])
 o1.Reverse()
 ? @@( o1.Content() ) + NL
 ? o1.NumberOfDuplicates()
-? o1.NumberOfDuplicatesOf(&quot;tunis&quot;) + NL	# Or NumberOfOccurrence(&quot;tunis&quot;)
+? o1.NumberOfDuplicatesOf("tunis") + NL	# Or NumberOfOccurrence("tunis")
 ? @@( o1.DuplicatedItems() ) + NL
-? @@( o1.DuplicatesRemoved() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ &quot;regueb&quot;, &quot;regueb&quot;, &quot;tunis&quot;, &quot;gabes&quot;, [ 1, 2, 3 ], &quot;tunis&quot;, &quot;tunis&quot;, &quot;gafsa&quot;, [ 1, 2, 3 ], [ 1, 2, 3 ], &quot;tunis&quot; ]
+? @@( o1.DuplicatesRemoved() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[
+    "regueb",
+    "regueb",
+    "tunis",
+    "gabes",
+    [ 1, 2, 3 ],
+    "tunis",
+    "tunis",
+    "gafsa",
+    [ 1, 2, 3 ],
+    [ 1, 2, 3 ],
+    "tunis"
+]
 
 6
 4
 
-[ &quot;regueb&quot;, &quot;tunis&quot;, [ 1, 2, 3 ] ]
+[ "regueb", "tunis", [ 1, 2, 3 ] ]
 
-[ &quot;regueb&quot;, &quot;tunis&quot;, &quot;gabes&quot;, [ 1, 2, 3 ], &quot;gafsa&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/588_reverse.ring" target="_blank" rel="noopener noreferrer">588_reverse.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p class="proof">et 2 autres dans les tests</p>
+[ "regueb", "tunis", "gabes", [ 1, 2, 3 ], "gafsa" ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/588_reverse.ring" target="_blank" rel="noopener noreferrer">588_reverse.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p class="proof">et 2 autres dans les tests</p>
     <h2>Les extensions de cette méthode</h2><p class="proof">Chaque extension, et si elle existe pour cette méthode ; une extension qui existe se compose avec les autres (FindSTCS).</p><div class="lanes rtable"><div class="lane lane3e rhead"><div class="ln">Extension</div><div class="lr">Existe</div><div class="lt">Ce qu'elle ajoute · Les noms</div></div><div class="lane lane3e"><div class="ln mono">Q</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">fait ce que fait la méthode, puis rend l&#x27;objet, pour que l&#x27;appel puisse s&#x27;enchaîner</div></div><div class="lane lane3e"><div class="ln mono">QQ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">enchaîne sur le type d&#x27;objet suivant, plus précis (l&#x27;échelle des Q)</div></div><div class="lane lane3e"><div class="ln mono">QQQ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">enchaîne sur le type d&#x27;objet le plus précis (l&#x27;échelle des Q)</div></div><div class="lane lane3e"><div class="ln mono">QRT</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend le résultat comme un objet du type demandé</div></div><div class="lane lane3e"><div class="ln mono">CS</div><div class="lr"><span class="exts"><i class="y">oui</i></span></div><div class="lt">prend un indicateur de sensibilité à la casse · <span class="mono">Duplicates<mark class="ext">CS</mark></span>, <span class="mono">DuplicatedItems<mark class="ext">CS</mark></span>, <span class="mono">DuplicatedStrings<mark class="ext">CS</mark></span>, <span class="mono">Duplicates<mark class="ext">CS</mark>Z</span> et 1 autres</div></div><div class="lane lane3e"><div class="ln mono">ST</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend la position de départ (StartingAt)</div></div><div class="lane lane3e"><div class="ln mono">IB</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend des bornes incluses (IncludingBounds)</div></div><div class="lane lane3e"><div class="ln mono">XT</div><div class="lr"><span class="exts"><i class="y">oui</i></span></div><div class="lt">la forme étendue : plus de paramètres que la méthode de base · <span class="mono">Duplicates<mark class="ext">XT</mark>Z</span>, <span class="mono">DuplicatesCS<mark class="ext">XT</mark>Z</span></div></div><div class="lane lane3e"><div class="ln mono">XTT</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">encore une extension : une forme étendue de plus, après XT</div></div><div class="lane lane3e"><div class="ln mono">Z</div><div class="lr"><span class="exts"><i class="y">oui</i></span></div><div class="lt">inclut la position dans ce qu&#x27;elle rend · <span class="mono">Duplicates<mark class="ext">Z</mark></span>, <span class="mono">Duplications<mark class="ext">Z</mark></span>, <span class="mono">DuplicatedItems<mark class="ext">Z</mark></span>, <span class="mono">DuplicatesCS<mark class="ext">Z</mark></span> et 2 autres</div></div><div class="lane lane3e"><div class="ln mono">ZZ</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend les positions comme des sections, [début, fin]</div></div><div class="lane lane3e"><div class="ln mono">W</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">choisit selon une condition</div></div><div class="lane lane3e"><div class="ln mono">WF</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">choisit selon une condition, avec les mots-clés expressifs (@NextItem, @PreviousItem...)</div></div><div class="lane lane3e"><div class="ln mono">D</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend une direction, en avant ou en arrière (Directional)</div></div><div class="lane lane3e"><div class="ln mono">F</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend une fonction (la condition ou la mise à jour est donnée comme une fonction) ; le document des formes emploie aussi F pour la forme future, qui diffère l&#x27;action</div></div><div class="lane lane3e"><div class="ln mono">Many</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">travaille sur une collection d&#x27;éléments au lieu d&#x27;un seul (la forme plurielle)</div></div><div class="lane lane3e"><div class="ln mono">Except</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">prend des exceptions, ce qu&#x27;il faut laisser de côté (la forme exceptionnelle)</div></div><div class="lane lane3e"><div class="ln mono">U</div><div class="lr"><span class="exts"><i class="n txt">non</i></span></div><div class="lt">rend le résultat sans doublon</div></div></div>
     <p class="proof">Chaque exemple est un fichier de test de la bibliothèque, exécuté dans la bibliothèque pour cette page ; seuls ceux dont la sortie a tenu toutes les promesses écrites par leur fichier sont montrés. Les explications, les titres et le code sont ceux de la bibliothèque, en anglais.</p>
     <h2>Voir aussi</h2><ul><li><a href="../stzlist.html#duplicateditems">La classe stzList</a></li><li><a href="../../guide/collections.html">La référence du domaine : Collections et objets</a></li><li>Les autres méthodes de ces exemples : <a class="mono" href="../stzlist/containsduplicateditems.html">stzList.ContainsDuplicatedItems</a> · <a class="mono" href="../stzlist/duplicatesremoved.html">stzList.DuplicatesRemoved</a> · <a class="mono" href="../stzlist/findduporigins.html">stzList.FindDupOrigins</a> · <a class="mono" href="../stzlist/findduplicates.html">stzList.FindDuplicates</a> · <a class="mono" href="../stzlist/itemsatpositions.html">stzList.ItemsAtPositions</a> · <a class="mono" href="../stzlist/numberofduplicates.html">stzList.NumberOfDuplicates</a> · <a class="mono" href="../stzlist/numberofoccurrence.html">stzList.NumberOfOccurrence</a> · <a class="mono" href="../stzlist/removeduporigins.html">stzList.RemoveDupOrigins</a> · <a class="mono" href="../stzlist/removeduplicates.html">stzList.RemoveDuplicates</a> · <a class="mono" href="../stzlist/reverse.html">stzList.Reverse</a></li></ul>

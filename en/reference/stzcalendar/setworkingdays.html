@@ -43,11 +43,17 @@
   <div class="wrap page-body">
     
     <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzCalendar([2024, 10])
-o1.SetWorkingDays([ &quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot; ])
+o1.SetWorkingDays([
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+])
 # Thu 2024-10-03 is a working day
-? o1.IsWorkingDay(&quot;2024-10-03&quot;)
+? o1.IsWorkingDay("2024-10-03")
 # Sat 2024-10-05 is not a working day
-? o1.IsWorkingDay(&quot;2024-10-05&quot;)
+? o1.IsWorkingDay("2024-10-05")
 # October 2024 has 23 working days
 ? len(o1.WorkingDays())</pre></div><div class="out"><div class="lbl">Output</div><pre>TRUE
 FALSE

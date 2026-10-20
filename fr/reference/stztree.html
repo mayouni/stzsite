@@ -50,21 +50,43 @@
     <input id="flt" class="flt" type="search" placeholder="Filtrer les méthodes…" aria-label="Filtrer les méthodes…">
     <div class="lanes rtable"><div class="lane lane2 rhead"><div class="ln">Méthode</div><div class="lt">Explication, telle que la source la porte</div></div><div class="lane lane2 rrow" id="init" data-k="init  "><div class="ln mono">init</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">init</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="root" data-k="root  "><div class="ln mono">Root</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">root</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
 :root = [
-:node1 = [ &quot;X&quot;, :node11 = [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;X&quot; ] ],
+:node1 = [ "X", :node11 = [ "A", "B", "C", "D", "X" ] ],
 :node2 = [ 1, 2, 3 ],
-:node3 = [ &quot;X&quot;, 4, 5 ]
+:node3 = [ "X", 4, 5 ]
 ]
 )
 ? @@( o1.Root() )
-#--&gt; [ &quot;root&quot;, [ [ &quot;node1&quot;, [ &quot;X&quot;, [ &quot;node11&quot;, [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;X&quot; ] ] ] ], [ &quot;node2&quot;, [ 1, 2, 3 ] ], [ &quot;node3&quot;, [ &quot;X&quot;, 4, 5 ] ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="show" data-k="show  visualizing the tree content"><div class="ln mono">Show</div><div class="lt">visualizing the tree content<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="branches" data-k="branches allbranches managing branches"><span id="allbranches"></span><div class="ln mono">Branches</div><div class="lt">managing branches<small>aussi écrite: <span class="mono">AllBranches</span></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
+#--&gt; [
+#--&gt;     "root",
+#--&gt;     [
+#--&gt;         [
+#--&gt;             "node1",
+#--&gt;             [
+#--&gt;                 "X",
+#--&gt;                 [
+#--&gt;                     "node11",
+#--&gt;                     [ "A", "B", "C", "D", "X" ]
+#--&gt;                 ]
+#--&gt;             ]
+#--&gt;         ],
+#--&gt;         [ "node2", [ 1, 2, 3 ] ],
+#--&gt;         [ "node3", [ "X", 4, 5 ] ]
+#--&gt;     ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="show" data-k="show  visualizing the tree content"><div class="ln mono">Show</div><div class="lt">visualizing the tree content<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="branches" data-k="branches allbranches managing branches"><span id="allbranches"></span><div class="ln mono">Branches</div><div class="lt">managing branches<small>aussi écrite: <span class="mono">AllBranches</span></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
 :root = [
-:node1 = [ &quot;X&quot;, :node11 = [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;X&quot; ] ],
+:node1 = [ "X", :node11 = [ "A", "B", "C", "D", "X" ] ],
 :node2 = [ 1, 2, 3 ],
-:node3 = [ &quot;X&quot;, 4, 5 ]
+:node3 = [ "X", 4, 5 ]
 ]
 )
 ? @@( o1.Branches() )
-#--&gt; [ &quot;[:root]&quot;, &quot;[:root][:node1]&quot;, &quot;[:root][:node1][:node11]&quot;, &quot;[:root][:node2]&quot;, &quot;[:root][:node3]&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="nodes" data-k="nodes allnodes "><span id="allnodes"></span><div class="ln mono">Nodes</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">nodes</span><small>aussi écrite: <span class="mono">AllNodes</span></small><small>dans la section <b>managing nodes</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
+#--&gt; [
+#--&gt;     "[:root]",
+#--&gt;     "[:root][:node1]",
+#--&gt;     "[:root][:node1][:node11]",
+#--&gt;     "[:root][:node2]",
+#--&gt;     "[:root][:node3]"
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="nodes" data-k="nodes allnodes "><span id="allnodes"></span><div class="ln mono">Nodes</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">nodes</span><small>aussi écrite: <span class="mono">AllNodes</span></small><small>dans la section <b>managing nodes</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
 :root = [
 :node1 = [ &quot;X&quot;, :node11 = [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;X&quot; ] ],
 :node2 = [ 1, 2, 3 ],
@@ -74,29 +96,54 @@
 ? @@( o1.Nodes() )
 #--&gt; [ &quot;root&quot;, &quot;node1&quot;, &quot;node11&quot;, &quot;node2&quot;, &quot;node3&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts"><i class="n" title="Q: enchaîne (n&#x27;existe pas pour cette méthode)">Q</i><i class="n" title="CS: casse (n&#x27;existe pas pour cette méthode)">CS</i><i class="n" title="XT: étendue (n&#x27;existe pas pour cette méthode)">XT</i><i class="y" title="Z: positions">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="thesenodes" data-k="thesenodes  "><div class="ln mono">TheseNodes</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">these nodes</span><small>dans la section <b>managing nodes</b></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="nodesandtheirbranches" data-k="nodesandtheirbranches  "><div class="ln mono">NodesAndTheirBranches</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">nodes and their branches</span><small>dans la section <b>managing nodes</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
 :root = [
-:node1 = [ &quot;X&quot;, :node11 = [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;X&quot; ] ],
+:node1 = [ "X", :node11 = [ "A", "B", "C", "D", "X" ] ],
 :node2 = [ 1, 2, 3 ],
-:node3 = [ &quot;X&quot;, 4, 5 ]
+:node3 = [ "X", 4, 5 ]
 ]
 )
 ? @@( o1.NodesAndTheirBranches() )
-#--&gt; [ [ &quot;root&quot;, &quot;[:root]&quot; ], [ &quot;node1&quot;, &quot;[:root][:node1]&quot; ], [ &quot;node11&quot;, &quot;[:root][:node1][:node11]&quot; ], [ &quot;node2&quot;, &quot;[:root][:node2]&quot; ], [ &quot;node3&quot;, &quot;[:root][:node3]&quot; ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="findnode" data-k="findnode  "><div class="ln mono">FindNode</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">find node</span><small>dans la section <b>managing nodes</b></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="node" data-k="node itemsinnode "><span id="itemsinnode"></span><div class="ln mono">Node</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">node</span><small>aussi écrite: <span class="mono">ItemsInNode</span></small><small>dans la section <b>managing nodes</b></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="nodeat" data-k="nodeat  "><div class="ln mono">NodeAt</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">node at</span><small>dans la section <b>managing nodes</b></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="nodesat" data-k="nodesat  "><div class="ln mono">NodesAt</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">nodes at</span><small>dans la section <b>managing nodes</b></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="findthesenodes" data-k="findthesenodes  "><div class="ln mono">FindTheseNodes</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">find these nodes</span><small>dans la section <b>managing nodes</b></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="findnodes" data-k="findnodes findallnodes "><span id="findallnodes"></span><div class="ln mono">FindNodes</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">find nodes</span><small>aussi écrite: <span class="mono">FindAllNodes</span></small><small>dans la section <b>managing nodes</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
+#--&gt; [
+#--&gt;     [ "root", "[:root]" ],
+#--&gt;     [ "node1", "[:root][:node1]" ],
+#--&gt;     [ "node11", "[:root][:node1][:node11]" ],
+#--&gt;     [ "node2", "[:root][:node2]" ],
+#--&gt;     [ "node3", "[:root][:node3]" ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="findnode" data-k="findnode  "><div class="ln mono">FindNode</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">find node</span><small>dans la section <b>managing nodes</b></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="node" data-k="node itemsinnode "><span id="itemsinnode"></span><div class="ln mono">Node</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">node</span><small>aussi écrite: <span class="mono">ItemsInNode</span></small><small>dans la section <b>managing nodes</b></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="nodeat" data-k="nodeat  "><div class="ln mono">NodeAt</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">node at</span><small>dans la section <b>managing nodes</b></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="nodesat" data-k="nodesat  "><div class="ln mono">NodesAt</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">nodes at</span><small>dans la section <b>managing nodes</b></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="findthesenodes" data-k="findthesenodes  "><div class="ln mono">FindTheseNodes</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">find these nodes</span><small>dans la section <b>managing nodes</b></small><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="findnodes" data-k="findnodes findallnodes "><span id="findallnodes"></span><div class="ln mono">FindNodes</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">find nodes</span><small>aussi écrite: <span class="mono">FindAllNodes</span></small><small>dans la section <b>managing nodes</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
 :root = [
-:node1 = [ &quot;X&quot;, :node11 = [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;X&quot; ] ],
+:node1 = [ "X", :node11 = [ "A", "B", "C", "D", "X" ] ],
 :node2 = [ 1, 2, 3 ],
-:node3 = [ &quot;X&quot;, 4, 5 ]
+:node3 = [ "X", 4, 5 ]
 ]
 )
 ? @@( o1.FindNodes() )
-#--&gt; [ &quot;[:root]&quot;, &quot;[:root][:node1]&quot;, &quot;[:root][:node1][:node11]&quot;, &quot;[:root][:node2]&quot;, &quot;[:root][:node3]&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="items" data-k="items allitems "><span id="allitems"></span><div class="ln mono">Items</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">items</span><small>aussi écrite: <span class="mono">AllItems</span></small><small>dans la section <b>managing items</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
+#--&gt; [
+#--&gt;     "[:root]",
+#--&gt;     "[:root][:node1]",
+#--&gt;     "[:root][:node1][:node11]",
+#--&gt;     "[:root][:node2]",
+#--&gt;     "[:root][:node3]"
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="items" data-k="items allitems "><span id="allitems"></span><div class="ln mono">Items</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">items</span><small>aussi écrite: <span class="mono">AllItems</span></small><small>dans la section <b>managing items</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
 :root = [
-:node1 = [ &quot;X&quot;, :node11 = [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;X&quot; ] ],
+:node1 = [ "X", :node11 = [ "A", "B", "C", "D", "X" ] ],
 :node2 = [ 1, 2, 3 ],
-:node3 = [ &quot;X&quot;, 4, 5 ]
+:node3 = [ "X", 4, 5 ]
 ]
 )
 ? @@( o1.Items() )
-#--&gt; [ &quot;X&quot;, &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;X&quot;, 1, 2, 3, &quot;X&quot;, 4, 5 ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts"><i class="y" title="Q: enchaîne">Q</i><i class="y" title="CS: casse">CS</i><i class="y" title="XT: étendue">XT</i><i class="y" title="Z: positions">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="y" title="W: condition">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i><i class="y" title="WF: choisit selon une condition, avec les mots-clés expressifs (@NextItem, @PreviousItem...)">WF</i><i class="y" title="Except: prend des exceptions, ce qu&#x27;il faut laisser de côté (la forme exceptionnelle)">Except</i></span></span></div></div><div class="lane lane2 rrow" id="itemsandtheirpaths" data-k="itemsandtheirpaths  "><div class="ln mono">ItemsAndTheirPaths</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">items and their paths</span><small>dans la section <b>managing items</b></small><span class="ext-line"><span class="exts"><i class="n" title="Q: enchaîne (n&#x27;existe pas pour cette méthode)">Q</i><i class="y" title="CS: casse">CS</i><i class="n" title="XT: étendue (n&#x27;existe pas pour cette méthode)">XT</i><i class="n" title="Z: positions (n&#x27;existe pas pour cette méthode)">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="finditem" data-k="finditem  "><div class="ln mono">FindItem</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">find item</span><small>dans la section <b>finding items</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
+#--&gt; [
+#--&gt;     "X",
+#--&gt;     "A",
+#--&gt;     "B",
+#--&gt;     "C",
+#--&gt;     "D",
+#--&gt;     "X",
+#--&gt;     1,
+#--&gt;     2,
+#--&gt;     3,
+#--&gt;     "X",
+#--&gt;     4,
+#--&gt;     5
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts"><i class="y" title="Q: enchaîne">Q</i><i class="y" title="CS: casse">CS</i><i class="y" title="XT: étendue">XT</i><i class="y" title="Z: positions">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="y" title="W: condition">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i><i class="y" title="WF: choisit selon une condition, avec les mots-clés expressifs (@NextItem, @PreviousItem...)">WF</i><i class="y" title="Except: prend des exceptions, ce qu&#x27;il faut laisser de côté (la forme exceptionnelle)">Except</i></span></span></div></div><div class="lane lane2 rrow" id="itemsandtheirpaths" data-k="itemsandtheirpaths  "><div class="ln mono">ItemsAndTheirPaths</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">items and their paths</span><small>dans la section <b>managing items</b></small><span class="ext-line"><span class="exts"><i class="n" title="Q: enchaîne (n&#x27;existe pas pour cette méthode)">Q</i><i class="y" title="CS: casse">CS</i><i class="n" title="XT: étendue (n&#x27;existe pas pour cette méthode)">XT</i><i class="n" title="Z: positions (n&#x27;existe pas pour cette méthode)">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="finditem" data-k="finditem  "><div class="ln mono">FindItem</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">find item</span><small>dans la section <b>finding items</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
 :root = [
 :node1 = [ &quot;X&quot;, :node11 = [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;X&quot; ] ],
 :node2 = [ 1, 2, 3 ],

@@ -42,16 +42,25 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString(&quot;Baba, Mama, and Dada&quot;)
+    <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzString("Baba, Mama, and Dada")
 # one of the two is there
-? o1.ContainsOneOfTheseCS([ &quot;Mom&quot;, &quot;mama&quot; ], :CaseSensitive = FALSE)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/596_containsoneofthesecs.ring" target="_blank" rel="noopener noreferrer">596_containsoneofthesecs.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre># both present -&gt; ContainsOneOfThese TRUE
-? Q(&quot;me you all the others&quot;).ContainsOneOfThese([ &quot;me&quot;, &quot;you&quot; ])
+? o1.ContainsOneOfTheseCS([
+    "Mom",
+    "mama"
+], :CaseSensitive = FALSE)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE</pre></div></div><p class="ran">exécuté le 2026-10-02 04:24 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/596_containsoneofthesecs.ring" target="_blank" rel="noopener noreferrer">596_containsoneofthesecs.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre># both present -&gt; ContainsOneOfThese TRUE
+? Q("me you all the others").ContainsOneOfThese([ "me", "you" ])
 # both present -&gt; ContainsOnlyOneOfThese FALSE
-? Q(&quot;me you all the others&quot;).ContainsOnlyOneOfThese([ &quot;me&quot;, &quot;you&quot; ])
+? Q("me you all the others").ContainsOnlyOneOfThese([
+    "me",
+    "you"
+])
 # only one present -&gt; ContainsOnlyOneOfThese TRUE
-? Q(&quot;me and all the others&quot;).ContainsOnlyOneOfThese([ &quot;me&quot;, &quot;you&quot; ])
+? Q("me and all the others").ContainsOnlyOneOfThese([
+    "me",
+    "you"
+])
 # only one present -&gt; ContainsOneOfThese TRUE
-? Q(&quot;me and all the others&quot;).ContainsOneOfThese([ &quot;me&quot;, &quot;you&quot; ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE
+? Q("me and all the others").ContainsOneOfThese([ "me", "you" ])</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE
 FALSE
 TRUE
 TRUE</pre></div></div><p class="ran">exécuté le 2026-10-02 04:23 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/string/13_containsoneofthese.ring" target="_blank" rel="noopener noreferrer">13_containsoneofthese.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>

@@ -43,13 +43,20 @@
   <div class="wrap page-body">
     
     <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzHashList([
-	:one	= &quot;will not be classified&quot;,
-	:two	= [ &quot;will&quot;, &quot;be&quot;, &quot;classified&quot; ],
-	:three	= [ &quot;this&quot;, &quot;one&quot;, &quot;also&quot;, &quot;will&quot; , &quot;be&quot;, &quot;classsified&quot; ],
-	:four	= &quot;nor this will be classified&quot;,
-	:five	= [ &quot;guess&quot;, &quot;if&quot;, &quot;this&quot;, &quot;will&quot;, &quot;be&quot;, &quot;classified&quot; ],
-	:six	= &quot;and this&quot;,
-	:seven	= &quot;and this&quot; #TODO // use an object and test
+	:one	= "will not be classified",
+	:two	= [ "will", "be", "classified" ],
+	:three	= [
+	    "this",
+	    "one",
+	    "also",
+	    "will",
+	    "be",
+	    "classsified"
+	],
+	:four	= "nor this will be classified",
+	:five	= [ "guess", "if", "this", "will", "be", "classified" ],
+	:six	= "and this",
+	:seven	= "and this" #TODO // use an object and test
 ])
 ? o1.HowManyKlassInLists()
 ? @@NL( o1.KlassifyItemsInLists() ) # Or KlassifyInLists()</pre></div><div class="out"><div class="lbl">Output</div><pre>9

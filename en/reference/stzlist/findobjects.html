@@ -42,7 +42,16 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ Q(&quot;one&quot;), Q(1), Q(&quot;two&quot;), Q(2), Q(&quot;three&quot;), Q(3), Q(1:2), NullObject() ])
+    <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    Q("one"),
+    Q(1),
+    Q("two"),
+    Q(2),
+    Q("three"),
+    Q(3),
+    Q(1:2),
+    NullObject()
+])
 ? @@( o1.FindStzNumbers() )
 ? @@( o1.FindStzStrings() )
 ? @@( o1.FindStzLists() )

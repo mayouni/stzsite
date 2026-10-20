@@ -64,12 +64,20 @@ and reading a moisture sensor. Three parts, three worlds — Android, a Linux
 server, a microcontroller.</p>
 <p>You describe the solution in one vocabulary — its parts, their targets, and the
 Softanza capabilities each part's code uses:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>oDelivery = new stzDelivery(&quot;restolean&quot;)
+<div class="nblock"><div class="lbl">Haro</div><pre>oDelivery = new stzDelivery("restolean")
 oDelivery.AddSuperApp(:phone, :Android)
 oDelivery.AddBackend(:api, :LinuxServer)
 oDelivery.AddFirmware(:node, :ESP32)
 
-oDelivery.NeedsIn(:phone, [ :Unicode, :DateTime, :PivotTable, :ConstraintSolver, :Collection, :Neural, :Regex ])
+oDelivery.NeedsIn(:phone, [
+    :Unicode,
+    :DateTime,
+    :PivotTable,
+    :ConstraintSolver,
+    :Collection,
+    :Neural,
+    :Regex
+])
 oDelivery.NeedsIn(:api,   [ :PivotTable, :Neural ])
 oDelivery.NeedsIn(:node,  [ :GPIO, :Pattern ])</pre><p class="ran nv-illus">illustration</p></div>
 <p>Nothing is built yet. You have only <em>said what is true</em>.</p>
@@ -78,10 +86,10 @@ oDelivery.NeedsIn(:node,  [ :GPIO, :Pattern ])</pre><p class="ran nv-illus">illu
 capability, on that part's target, it chooses how to deliver it and states the
 reason — as inspectable text, not a decision hidden in code:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>? oDelivery.Plan().Explain()</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:41 au commit 4a184e6f0 : a tenu sa promesse</p></div>
-<div class="out"><div class="lbl">Sortie promise</div><pre>Solution &#x27;restolean&#x27; -- placement &amp; scope plan (rehearsal; nothing built yet)
+<div class="out"><div class="lbl">Sortie promise</div><pre>Solution 'restolean' -- placement &amp; scope plan (rehearsal; nothing built yet)
 ==============================================================================
 
-  Part &#x27;phone&#x27; [superapp] -&gt; android (mobile / edge)
+  Part 'phone' [superapp] -&gt; android (mobile / edge)
      Unicode            [target]    Unicode: the target-platform is strong at it -&gt; use its own
      DateTime           [target]    DateTime: the target-platform is strong at it -&gt; use its own
      PivotTable         [stz.wasm]  PivotTable: Softanza-differential, mobile weak -&gt; the on-device engine
@@ -89,17 +97,20 @@ reason — as inspectable text, not a decision hidden in code:</p>
      Collection         [stz.js]    Collection: ergonomic -&gt; a Softanza construct in the target language
      Neural             [server]    Neural: heavy -&gt; runs on the backend, not the edge
      Regex              [stz.js]    Regex: ergonomic -&gt; a Softanza construct in the target language
-     -&gt; stz.wasm carries: [ &quot;PivotTable&quot;, &quot;ConstraintSolver&quot; ]  (~27 KB, 2 of 7)
+     -&gt; stz.wasm carries: [
+         "PivotTable",
+         "ConstraintSolver"
+     ]  (~27 KB, 2 of 7)
 
-  Part &#x27;api&#x27; [backend] -&gt; linuxserver (server)
+  Part 'api' [backend] -&gt; linuxserver (server)
      PivotTable         [engine]    PivotTable: the server hosts the native engine
      Neural             [engine]    Neural: the server hosts the native engine
      -&gt; runs on the full native engine (server has everything)
 
-  Part &#x27;node&#x27; [firmware] -&gt; esp32 (mcu / edge)
+  Part 'node' [firmware] -&gt; esp32 (mcu / edge)
      GPIO               [firmware]  GPIO: Softanza-differential, mcu strong -&gt; the on-device engine
      Pattern            [firmware]  Pattern: Softanza-differential, mcu weak -&gt; the on-device engine
-     -&gt; firmware carries: [ &quot;GPIO&quot;, &quot;Pattern&quot; ]  (~6 KB, 2 of 2)
+     -&gt; firmware carries: [ "GPIO", "Pattern" ]  (~6 KB, 2 of 2)
 
   Summary: 11 capabilities across 3 parts -&gt; target 2, engine 6, construct 2, server 1.
   Build() will compile exactly this scope; Deploy() will commit it.</pre></div>

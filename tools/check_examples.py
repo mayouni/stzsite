@@ -41,6 +41,9 @@ def main():
                 if 'class="sample"' in text[max(0, m.start() - 40):m.start()]:       # a sample of an introduction: one line is one line, never wrapped
                     for ln in body.split("\n"):
                         if len(ln) > LINE_MAX: bad.append((rel, f"a line of {len(ln)} characters is too long for its box ({LINE_MAX})", ln[:70]))
+    import fit
+    for sel in fit.no_scroll((ROOT / "assets" / "css" / "site.css").read_text(encoding="utf-8")):
+        bad.append(("assets/css/site.css", "gives code a scroll bar (StzZui: never)", sel))
     print(f"{count} examples checked")
     for (lang, kind), n in sorted(per.items()): print(f"  {lang} {kind:11} {n}")
     for b in bad[:40]: print("FAIL", *b)

@@ -74,7 +74,12 @@ o1 = new stzList(L(&#x27; &quot;♥1&quot; : &quot;♥3&quot; &#x27;))
 ? o1.CountW(&quot;{ @item &gt; 5 }&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>[ 2, 3, 5 ]
 [ 7, 10, 8 ]
 3</pre></div></div><p class="ran">exécuté le 2026-10-09 00:30 dans la bibliothèque au commit 4a184e6f0 ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/07-declare-what-not-how.en.md" target="_blank" rel="noopener noreferrer">base/education/program/courses/elementary-introduction/chapters/07-declare-what-not-how.en.md<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><h2 id="manageability">7 · Gouvernabilité</h2><p>Savoir pourquoi cela a échoué, à quelle vitesse cela a tourné, et ce que cela a fait, sans quitter le code.</p><ul class="narr"><li><b>Messages d&#x27;erreur informatifs</b> <span class="rx-src">construit · une erreur porte Où, Quoi, Pourquoi et Que faire</span></li><li><b>Pile d&#x27;appels visualisée</b> <span class="rx-src">un nom seulement · aucun fichier ne la construit ; le module de contexte de trace est autre chose</span></li><li><b>Performance mesurable</b> <span class="rx-src">construit · le plan de performance, six couloirs forts ; le profileur</span></li><li><b>Fonctions et objets cachables</b> <span class="rx-src">forme changée · les décorateurs ont disparu ; une classe de cache et un cache du moteur les remplacent</span></li><li><b>Fonctions journalisables</b> <span class="rx-src">forme changée · les décorateurs ont disparu ; une classe de journal sert dans 30 fichiers</span></li></ul><p style="margin-top:32px"><b>Gouvernabilité : une erreur dit où elle s&#x27;est produite, quoi, pourquoi, et que faire.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>try
-	StzRaise([ :Where = &quot;Greeting()&quot;, :What = &quot;no name was given&quot;, :Why = &quot;a greeting needs someone to greet&quot;, :Todo = &quot;pass the name as the first parameter&quot; ])
+	StzRaise([
+	    :Where = "Greeting()",
+	    :What = "no name was given",
+	    :Why = "a greeting needs someone to greet",
+	    :Todo = "pass the name as the first parameter"
+	])
 catch
 	? cCatchError
 done</pre></div><div class="out"><div class="lbl">Sortie</div><pre>in file Greeting():

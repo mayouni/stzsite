@@ -39,8 +39,12 @@
     <h1>Trouver les personnes, les lieux et les organisations cités dans un texte</h1>
   </div></section>
   <div class="wrap page-body">
-<div class="run"><div><div class="lbl">Softanza</div><pre>Q(&quot;Alice met Bob in Paris.&quot;).TextQ().NamedEntities()
-#--&gt; [ [ &quot;Alice&quot;, &quot;PERSON&quot; ], [ &quot;Bob&quot;, &quot;PERSON&quot; ], [ &quot;Paris&quot;, &quot;LOCATION&quot; ] ]</pre></div><div class="out"><div class="lbl">Sortie</div><pre>Alice
+<div class="run"><div><div class="lbl">Softanza</div><pre>Q("Alice met Bob in Paris.").TextQ().NamedEntities()
+#--&gt; [
+#--&gt;     [ "Alice", "PERSON" ],
+#--&gt;     [ "Bob", "PERSON" ],
+#--&gt;     [ "Paris", "LOCATION" ]
+#--&gt; ]</pre></div><div class="out"><div class="lbl">Sortie</div><pre>Alice
 PERSON
 Bob
 PERSON

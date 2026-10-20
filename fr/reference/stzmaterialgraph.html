@@ -52,9 +52,15 @@
 o1.TakesColor(:warm)
 o1.TakesColor(:cool)
 o1.TakesScalar(:sharp)
-o1.AddNode(:final, [ :Op = :Mix, :In = [ :shaded, :warm, :rim ] ])
+o1.AddNode(:final, [
+    :Op = :Mix,
+    :In = [ :shaded, :warm, :rim ]
+])
 o1.AddNode(:rim, [ :Op = :Fresnel, :In = [ :sharp ] ])
-o1.AddNode(:shaded, [ :Op = :Multiply, :In = [ :cool, :lit ] ])
+o1.AddNode(:shaded, [
+    :Op = :Multiply,
+    :In = [ :cool, :lit ]
+])
 o1.AddNode(:lit, [ :Op = :Lit, :In = [ 0.25 ] ])
 o1.Emits(:final)
 o1.Compile()
@@ -63,9 +69,15 @@ o1.Compile()
 o1.TakesColor(:warm)
 o1.TakesColor(:cool)
 o1.TakesScalar(:sharp)
-o1.AddNode(:final, [ :Op = :Mix, :In = [ :shaded, :warm, :rim ] ])
+o1.AddNode(:final, [
+    :Op = :Mix,
+    :In = [ :shaded, :warm, :rim ]
+])
 o1.AddNode(:rim, [ :Op = :Fresnel, :In = [ :sharp ] ])
-o1.AddNode(:shaded, [ :Op = :Multiply, :In = [ :cool, :lit ] ])
+o1.AddNode(:shaded, [
+    :Op = :Multiply,
+    :In = [ :cool, :lit ]
+])
 o1.AddNode(:lit, [ :Op = :Lit, :In = [ 0.25 ] ])
 o1.Emits(:final)
 o1.Compile()
@@ -74,31 +86,54 @@ o1.Compile()
 o1.TakesColor(:warm)
 o1.TakesColor(:cool)
 o1.TakesScalar(:sharp)
-o1.AddNode(:final, [ :Op = :Mix, :In = [ :shaded, :warm, :rim ] ])
+o1.AddNode(:final, [
+    :Op = :Mix,
+    :In = [ :shaded, :warm, :rim ]
+])
 o1.AddNode(:rim, [ :Op = :Fresnel, :In = [ :sharp ] ])
-o1.AddNode(:shaded, [ :Op = :Multiply, :In = [ :cool, :lit ] ])
+o1.AddNode(:shaded, [
+    :Op = :Multiply,
+    :In = [ :cool, :lit ]
+])
 o1.AddNode(:lit, [ :Op = :Lit, :In = [ 0.25 ] ])
 o1.Emits(:final)
 o1.Compile()
 ? @@( o1.Uses() )
-#--&gt; [ [ &quot;final&quot;, 0 ], [ &quot;rim&quot;, 1 ], [ &quot;shaded&quot;, 1 ], [ &quot;lit&quot;, 1 ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="reusesaved" data-k="reusesaved  how many `let` bindings the emission saved over expanding the graph as a tree: every extra consumer of a node is a subtree not re-emitted."><div class="ln mono">ReuseSaved</div><div class="lt">How many `let` bindings the emission SAVED over expanding the graph as a tree: every extra consumer of a node is a subtree not re-emitted.<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="affects" data-k="affects  reachability, answered by the same stzgraph the rest of the plane uses. affects() lists them, impactof() counts them -- the house convention, where impactof is a number and reachablefrom is a list that includes the node itself."><div class="ln mono">Affects</div><div class="lt">Reachability, answered by the same stzGraph the rest of the plane uses. Affects() lists them, ImpactOf() counts them -- the house convention, where ImpactOf is a NUMBER and ReachableFrom is a LIST that includes the node itself.<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzMaterialGraph()
+#--&gt; [
+#--&gt;     [ "final", 0 ],
+#--&gt;     [ "rim", 1 ],
+#--&gt;     [ "shaded", 1 ],
+#--&gt;     [ "lit", 1 ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="reusesaved" data-k="reusesaved  how many `let` bindings the emission saved over expanding the graph as a tree: every extra consumer of a node is a subtree not re-emitted."><div class="ln mono">ReuseSaved</div><div class="lt">How many `let` bindings the emission SAVED over expanding the graph as a tree: every extra consumer of a node is a subtree not re-emitted.<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="affects" data-k="affects  reachability, answered by the same stzgraph the rest of the plane uses. affects() lists them, impactof() counts them -- the house convention, where impactof is a number and reachablefrom is a list that includes the node itself."><div class="ln mono">Affects</div><div class="lt">Reachability, answered by the same stzGraph the rest of the plane uses. Affects() lists them, ImpactOf() counts them -- the house convention, where ImpactOf is a NUMBER and ReachableFrom is a LIST that includes the node itself.<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzMaterialGraph()
 o1.TakesColor(:warm)
 o1.TakesColor(:cool)
 o1.TakesScalar(:sharp)
-o1.AddNode(:final, [ :Op = :Mix, :In = [ :shaded, :warm, :rim ] ])
+o1.AddNode(:final, [
+    :Op = :Mix,
+    :In = [ :shaded, :warm, :rim ]
+])
 o1.AddNode(:rim, [ :Op = :Fresnel, :In = [ :sharp ] ])
-o1.AddNode(:shaded, [ :Op = :Multiply, :In = [ :cool, :lit ] ])
+o1.AddNode(:shaded, [
+    :Op = :Multiply,
+    :In = [ :cool, :lit ]
+])
 o1.AddNode(:lit, [ :Op = :Lit, :In = [ 0.25 ] ])
 o1.Emits(:final)
 o1.Compile()
 ? @@( o1.Affects(:rim) )
-#--&gt; [ &quot;final&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="impactof" data-k="impactof  "><div class="ln mono">ImpactOf</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">impact of</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzMaterialGraph()
+#--&gt; [ "final" ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="impactof" data-k="impactof  "><div class="ln mono">ImpactOf</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">impact of</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzMaterialGraph()
 o1.TakesColor(:warm)
 o1.TakesColor(:cool)
 o1.TakesScalar(:sharp)
-o1.AddNode(:final, [ :Op = :Mix, :In = [ :shaded, :warm, :rim ] ])
+o1.AddNode(:final, [
+    :Op = :Mix,
+    :In = [ :shaded, :warm, :rim ]
+])
 o1.AddNode(:rim, [ :Op = :Fresnel, :In = [ :sharp ] ])
-o1.AddNode(:shaded, [ :Op = :Multiply, :In = [ :cool, :lit ] ])
+o1.AddNode(:shaded, [
+    :Op = :Multiply,
+    :In = [ :cool, :lit ]
+])
 o1.AddNode(:lit, [ :Op = :Lit, :In = [ 0.25 ] ])
 o1.Emits(:final)
 o1.Compile()
@@ -107,9 +142,15 @@ o1.Compile()
 o1.TakesColor(:warm)
 o1.TakesColor(:cool)
 o1.TakesScalar(:sharp)
-o1.AddNode(:final, [ :Op = :Mix, :In = [ :shaded, :warm, :rim ] ])
+o1.AddNode(:final, [
+    :Op = :Mix,
+    :In = [ :shaded, :warm, :rim ]
+])
 o1.AddNode(:rim, [ :Op = :Fresnel, :In = [ :sharp ] ])
-o1.AddNode(:shaded, [ :Op = :Multiply, :In = [ :cool, :lit ] ])
+o1.AddNode(:shaded, [
+    :Op = :Multiply,
+    :In = [ :cool, :lit ]
+])
 o1.AddNode(:lit, [ :Op = :Lit, :In = [ 0.25 ] ])
 o1.Emits(:final)
 o1.Compile()

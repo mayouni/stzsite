@@ -44,11 +44,19 @@
     
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 1, 2, 3, &quot;*&quot;, 5, 6, &quot;*&quot;, 8, 9 ])
 # findnext example 1
-? @@( o1.FindNext(&quot;*&quot;, :StartingAt = 4) )</pre></div><div class="out"><div class="lbl">Output</div><pre>7</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/173_findnext.ring" target="_blank" rel="noopener noreferrer">173_findnext.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? @FindNext([ &quot;_&quot;, &quot;_&quot;, &quot;•&quot;, &quot;_&quot;, &quot;•&quot;, &quot;_&quot;, &quot;_&quot; ], &quot;•&quot;, :StartingAt = 3)
-? @FindNext([ &quot;_&quot;, &quot;_&quot;, [&quot;•&quot;], &quot;_&quot;, [&quot;•&quot;], &quot;_&quot;, &quot;_&quot; ], &quot;•&quot;, 3)
-? @FindNext([ &quot;_&quot;, &quot;_&quot;, [&quot;•&quot;], &quot;_&quot;, [&quot;•&quot;], &quot;_&quot;, &quot;_&quot; ], [&quot;•&quot;], 3)
-o1 = new stzList([ &quot;_&quot;, &quot;_&quot;, [&quot;•&quot;], &quot;_&quot;, [&quot;•&quot;], &quot;_&quot;, &quot;_&quot; ])
-? o1.FindNext([&quot;•&quot;], :StartingAt = 3)</pre></div><div class="out"><div class="lbl">Output</div><pre>5
+? @@( o1.FindNext(&quot;*&quot;, :StartingAt = 4) )</pre></div><div class="out"><div class="lbl">Output</div><pre>7</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/173_findnext.ring" target="_blank" rel="noopener noreferrer">173_findnext.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>? @FindNext([
+    "_",
+    "_",
+    "•",
+    "_",
+    "•",
+    "_",
+    "_"
+], "•", :StartingAt = 3)
+? @FindNext([ "_", "_", ["•"], "_", ["•"], "_", "_" ], "•", 3)
+? @FindNext([ "_", "_", ["•"], "_", ["•"], "_", "_" ], ["•"], 3)
+o1 = new stzList([ "_", "_", ["•"], "_", ["•"], "_", "_" ])
+? o1.FindNext(["•"], :StartingAt = 3)</pre></div><div class="out"><div class="lbl">Output</div><pre>5
 0
 -1
 5</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/303_write_a_document_about_it.ring" target="_blank" rel="noopener noreferrer">303_write_a_document_about_it.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><h2>Scope <span class="mono">(4)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ 14, 10, 14, 14, 20 ])

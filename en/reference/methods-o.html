@@ -52,11 +52,20 @@ o1.AddConstraint(&quot;2*x + y&quot;, &quot;&lt;=&quot;, 100)
 o1.Maximize(&quot;3*x + 2*y&quot;)
 ? o1.objective()
 #--&gt; 3*x + 2*y</pre><span class="rx-src">composed from the signature, run for this page · stzLinearSolver</span></div></div><div class="lane rrow" data-k="objective"><div class="ln mono">Objective</div><div class="lr mono">1</div><div class="lt"><a href="stzoptimmodel.html#objective">stzOptimModel</a></div></div><div class="lane rrow" data-k="objectivecoefficients"><div class="ln mono">ObjectiveCoefficients</div><div class="lr mono">1</div><div class="lt"><a href="stzoptimmodel.html#objectivecoefficients">stzOptimModel</a></div></div><div class="lane rrow" data-k="objectives"><div class="ln mono">objectives</div><div class="lr mono">1</div><div class="lt"><a href="stzmultiobjectivesolver.html#objectives">stzMultiObjectiveSolver</a><pre class="rx">o1 = new stzMultiObjectiveSolver()
-o1.AddVariable(&quot;x&quot;, 0, 10)
-o1.Maximize(&quot;x&quot;)
-o1.Minimize(&quot;x&quot;)
+o1.AddVariable("x", 0, 10)
+o1.Maximize("x")
+o1.Minimize("x")
 ? @@( o1.objectives() )
-#--&gt; [ [ [ &quot;expression&quot;, &quot;x&quot; ], [ &quot;type&quot;, &quot;maximize&quot; ] ], [ [ &quot;expression&quot;, &quot;x&quot; ], [ &quot;type&quot;, &quot;minimize&quot; ] ] ]</pre><span class="rx-src">composed from the signature, run for this page · stzMultiObjectiveSolver</span></div></div><div class="lane rrow" data-k="objectivetype"><div class="ln mono">objectiveType</div><div class="lr mono">2</div><div class="lt"><a href="stzlinearsolver.html#objectivetype">stzLinearSolver</a> · <a href="stzstochasticsolver.html#objectivetype">stzStochasticSolver</a><pre class="rx">o1 = new stzLinearSolver()
+#--&gt; [
+#--&gt;     [
+#--&gt;         [ "expression", "x" ],
+#--&gt;         [ "type", "maximize" ]
+#--&gt;     ],
+#--&gt;     [
+#--&gt;         [ "expression", "x" ],
+#--&gt;         [ "type", "minimize" ]
+#--&gt;     ]
+#--&gt; ]</pre><span class="rx-src">composed from the signature, run for this page · stzMultiObjectiveSolver</span></div></div><div class="lane rrow" data-k="objectivetype"><div class="ln mono">objectiveType</div><div class="lr mono">2</div><div class="lt"><a href="stzlinearsolver.html#objectivetype">stzLinearSolver</a> · <a href="stzstochasticsolver.html#objectivetype">stzStochasticSolver</a><pre class="rx">o1 = new stzLinearSolver()
 o1.AddIntegerVariable(&quot;x&quot;, 0, 100)
 o1.AddIntegerVariable(&quot;y&quot;, 0, 100)
 o1.AddConstraint(&quot;2*x + y&quot;, &quot;&lt;=&quot;, 100)
@@ -90,9 +99,15 @@ o1.AddEdge(&quot;B&quot;, &quot;D&quot;)
 o1.TakesColor(:warm)
 o1.TakesColor(:cool)
 o1.TakesScalar(:sharp)
-o1.AddNode(:final, [ :Op = :Mix, :In = [ :shaded, :warm, :rim ] ])
+o1.AddNode(:final, [
+    :Op = :Mix,
+    :In = [ :shaded, :warm, :rim ]
+])
 o1.AddNode(:rim, [ :Op = :Fresnel, :In = [ :sharp ] ])
-o1.AddNode(:shaded, [ :Op = :Multiply, :In = [ :cool, :lit ] ])
+o1.AddNode(:shaded, [
+    :Op = :Multiply,
+    :In = [ :cool, :lit ]
+])
 o1.AddNode(:lit, [ :Op = :Lit, :In = [ 0.25 ] ])
 o1.Emits(:final)
 o1.Compile()
@@ -103,7 +118,14 @@ o1 = StzGeoPoints([ 1, 1, 2, 2, 3, 3 ], oW)
 ? o1.Outside()
 #--&gt; 0</pre><span class="rx-src">composed from the signature, run for this page · stzGeoPoints</span></div></div><div class="lane rrow" data-k="outsidefences"><div class="ln mono">OutsideFences</div><div class="lr mono">1</div><div class="lt"><a href="stztukeysummary.html#outsidefences">stzTukeySummary</a></div></div><div class="lane rrow" data-k="over"><div class="ln mono">Over</div><div class="lr mono">2</div><div class="lt"><a href="stzmathclaim.html#over">stzMathClaim</a> · <a href="stzsla.html#over">stzSla</a><pre class="rx">o1 = new stzMathClaim(&quot;3^2 + 4^2 + 1 = 5^2&quot;)
 ? o1.Over()
-#--&gt; real</pre><span class="rx-src">composed from the signature, run for this page · stzMathClaim</span></div></div><div class="lane rrow" data-k="overflow"><div class="ln mono">Overflow</div><div class="lr mono">1</div><div class="lt"><a href="stznode.html#overflow">stzNode</a></div></div><div class="lane rrow" data-k="overflowstats"><div class="ln mono">OverflowStats</div><div class="lr mono">1</div><div class="lt"><a href="stzreactivestream.html#overflowstats">stzReactiveStream</a></div></div><div class="lane rrow" data-k="overlappedsectionsmerged"><div class="ln mono">OverLappedSectionsMerged</div><div class="lr mono">1</div><div class="lt"><a href="stzlistofsections.html#overlappedsectionsmerged">stzListOfSections</a><pre class="rx">o1 = new stzListOfSections([ [ 8, 11 ], [ 9, 12 ], [ 10, 13 ], [ 11, 14 ], [ 12, 15 ], [ 26, 29 ] ])
+#--&gt; real</pre><span class="rx-src">composed from the signature, run for this page · stzMathClaim</span></div></div><div class="lane rrow" data-k="overflow"><div class="ln mono">Overflow</div><div class="lr mono">1</div><div class="lt"><a href="stznode.html#overflow">stzNode</a></div></div><div class="lane rrow" data-k="overflowstats"><div class="ln mono">OverflowStats</div><div class="lr mono">1</div><div class="lt"><a href="stzreactivestream.html#overflowstats">stzReactiveStream</a></div></div><div class="lane rrow" data-k="overlappedsectionsmerged"><div class="ln mono">OverLappedSectionsMerged</div><div class="lr mono">1</div><div class="lt"><a href="stzlistofsections.html#overlappedsectionsmerged">stzListOfSections</a><pre class="rx">o1 = new stzListOfSections([
+    [ 8, 11 ],
+    [ 9, 12 ],
+    [ 10, 13 ],
+    [ 11, 14 ],
+    [ 12, 15 ],
+    [ 26, 29 ]
+])
 ? @@( o1.OverLappedSectionsMerged() )
 #--&gt; [ [ 8, 15 ], [ 26, 29 ] ]</pre><span class="rx-src">composed from the signature, run for this page · stzListOfSections</span></div></div><div class="lane rrow" data-k="overlappingperiods"><div class="ln mono">OverlappingPeriods</div><div class="lr mono">1</div><div class="lt"><a href="stztimeline.html#overlappingperiods">stzTimeLine</a><small>another name of <span class="mono">OverlappingSpans</span></small></div></div><div class="lane rrow" data-k="overlappingspans"><div class="ln mono">OverlappingSpans</div><div class="lr mono">1</div><div class="lt"><a href="stztimeline.html#overlappingspans">stzTimeLine</a></div></div><div class="lane rrow" data-k="overlay"><div class="ln mono">Overlay</div><div class="lr mono">1</div><div class="lt"><a href="stzprogram.html#overlay">stzProgram</a></div></div><div class="lane rrow" data-k="overlayname"><div class="ln mono">OverlayName</div><div class="lr mono">1</div><div class="lt"><a href="stzcohort.html#overlayname">stzCohort</a></div></div><div class="lane rrow" data-k="overlayreport"><div class="ln mono">OverlayReport</div><div class="lr mono">1</div><div class="lt"><a href="stzprogram.html#overlayreport">stzProgram</a></div></div><div class="lane rrow" data-k="overruns"><div class="ln mono">Overruns</div><div class="lr mono">1</div><div class="lt"><a href="stzmicrophone.html#overruns">stzMicrophone</a></div></div><div class="lane rrow" data-k="overwritefile"><div class="ln mono">OverwriteFile</div><div class="lr mono">1</div><div class="lt"><a href="stzfolder.html#overwritefile">stzFolder</a><small>another name of <span class="mono">FileOverwrite</span></small></div></div><div class="lane rrow" data-k="ownersof"><div class="ln mono">OwnersOf</div><div class="lr mono">1</div><div class="lt"><a href="stzcodegraph.html#ownersof">stzCodeGraph</a></div></div><div class="lane rrow" data-k="owns"><div class="ln mono">Owns</div><div class="lr mono">7</div><div class="lt"><a href="stzagenthostresponder.html#owns">stzAgentHostResponder</a> · <a href="stzapp.html#owns">stzApp</a> · <a href="stzauthresponder.html#owns">stzAuthResponder</a> · <a href="stzcapabilityresponder.html#owns">stzCapabilityResponder</a> · <a href="stzratelimiterresponder.html#owns">stzRateLimiterResponder</a> · <a href="stzresponderset.html#owns">stzResponderSet</a> · <a href="stzsecretstoreresponder.html#owns">stzSecretStoreResponder</a></div></div></div>
   </div>

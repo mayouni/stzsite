@@ -125,21 +125,24 @@ done
 <h2 id="languages">Les langues sont des données</h2>
 <p>Un paquet de langue est un bloc de données rattaché aux mêmes sens que l'anglais. Cinq paquets sont livrés : anglais, haoussa en écriture latine, français, arabe et turc. En ajouter un ne demande ni code ni chargement.</p>
 <p style="margin-top:32px"><b>Une langue ajoutée pendant que le programme tourne, comme un bloc de données : pas de code, pas de chargement, et sa première phrase s&#x27;exécute.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>StzAddNaturalLanguage([
-	:code = &quot;sw&quot;,
-	:name = &quot;swahili&quot;,
-	:script = &quot;latin&quot;,
-	:ignored_words = [ &quot;na&quot;, &quot;ya&quot;, &quot;kwa&quot;, &quot;hii&quot; ],
+	:code = "sw",
+	:name = "swahili",
+	:script = "latin",
+	:ignored_words = [ "na", "ya", "kwa", "hii" ],
 	:semantic_mappings = [
-		[:natural = &quot;unda&quot;,   :semantic = &quot;CREATE_OBJECT&quot;],
-		[:natural = &quot;orodha&quot;, :semantic = &quot;OBJECT_LIST&quot;],
-		[:natural = &quot;na&quot;,     :semantic = &quot;VALUE_INDICATOR&quot;]
+		[:natural = "unda",   :semantic = "CREATE_OBJECT"],
+		[:natural = "orodha", :semantic = "OBJECT_LIST"],
+		[:natural = "na",     :semantic = "VALUE_INDICATOR"]
 	],
 	:phrases = [
-		[:semantic = &quot;METHOD_REMOVEDUPLICATES&quot;, :words = &quot;ondoa nakala, futa nakala&quot;]
+		[
+		    :semantic = "METHOD_REMOVEDUPLICATES",
+		    :words = "ondoa nakala, futa nakala"
+		]
 	]
 ])
-? StzHasLanguagePack(&quot;sw&quot;)
-? @@( NaturallyIn(&quot;sw&quot;, &quot;Unda orodha na [ 9, 4, 9 ] ondoa nakala&quot;).Result() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+? StzHasLanguagePack("sw")
+? @@( NaturallyIn("sw", "Unda orodha na [ 9, 4, 9 ] ondoa nakala").Result() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
 [ 9, 4 ]</pre></div></div><p class="ran">exécuté le 2026-10-08 21:47 dans la bibliothèque au commit 4a184e6f0 ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/natural/multilingual_pack_narrated.ring" target="_blank" rel="noopener noreferrer">base/test/natural/multilingual_pack_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
 
 <p>Le haoussa en écriture ajami est nommé dans la bibliothèque et pas livré ; le zarma et le peul ne sont pas encore là. Ce sont les prochains paquets à écrire, et un paquet est une donnée.</p>

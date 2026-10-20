@@ -78,15 +78,36 @@ LEVEL s4: missing 24</pre></div></div><p class="ran">exécuté le 2026-10-05 21:
 <p>Une mauvaise réponse à l'exercice 1.1 est refusée. Le vérificateur a exécuté le fichier dans un processus neuf et dit ce qu'il a affiché ; il ne dit pas ce qu'il aurait dû afficher.</p>
 <div class="run"><div><div class="lbl">En ligne de commande</div><pre># wrong.ring
 # Selects the object, and stops there: nothing was applied.
-o1 = new stzList([ &quot;tea&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;fish&quot;, &quot;rice&quot;, &quot;tea&quot; ])
+o1 = new stzList([
+    "tea",
+    "rice",
+    "tea",
+    "fish",
+    "rice",
+    "tea"
+])
 ? @@( o1.Content() )
 
-learn.ring ada submit ex-01-01 wrong.ring</pre></div><div class="out"><div class="lbl">Sortie</div><pre>REFUSED ex-01-01: Your program ran, but what it printed is not yet what the task asks. It printed: [&quot;tea&quot;,&quot;rice&quot;,&quot;tea&quot;,&quot;fish&quot;,&quot;rice&quot;,&quot;tea&quot;]</pre></div></div><p class="ran">exécuté le 2026-10-05 21:34 dans la bibliothèque au commit 4a184e6f0</p>
+learn.ring ada submit ex-01-01 wrong.ring</pre></div><div class="out"><div class="lbl">Sortie</div><pre>REFUSED ex-01-01: Your program ran, but what it printed is not yet what the task asks. It printed: [
+    "tea",
+    "rice",
+    "tea",
+    "fish",
+    "rice",
+    "tea"
+]</pre></div></div><p class="ran">exécuté le 2026-10-05 21:34 dans la bibliothèque au commit 4a184e6f0</p>
 
 <p>Une bonne réponse passe. Le verdict est celui du vérificateur : il a exécuté le fichier, et personne ne l'a lu. L'apprenant est maintenant au chapitre 2 et un exercice plus près du premier niveau, avec quatre manquants au lieu de cinq.</p>
 <div class="run"><div><div class="lbl">En ligne de commande</div><pre># right.ring
 # The dedicated word for the whole move.
-? @@( StzListQ([ &quot;tea&quot;, &quot;rice&quot;, &quot;tea&quot;, &quot;fish&quot;, &quot;rice&quot;, &quot;tea&quot; ]).DuplicatesRemoved() )
+? @@( StzListQ([
+    "tea",
+    "rice",
+    "tea",
+    "fish",
+    "rice",
+    "tea"
+]).DuplicatesRemoved() )
 
 learn.ring ada submit ex-01-01 right.ring</pre></div><div class="out"><div class="lbl">Sortie</div><pre>PASSED ex-01-01: Every promise of the exercise was kept when your program ran.</pre></div></div><p class="ran">exécuté le 2026-10-05 21:34 dans la bibliothèque au commit 4a184e6f0</p>
 

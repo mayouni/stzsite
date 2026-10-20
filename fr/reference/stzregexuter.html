@@ -85,48 +85,78 @@ o1.AddCode(&quot;words&quot;, &quot;{ @value = upper(@value) }&quot;)
 o1.Process(&quot;hello 123 world 456&quot;)
 ? @@( o1.Results() )
 #--&gt; [ 246, 912, &quot;HELLO&quot;, &quot;WORLD&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts"><i class="n" title="Q: enchaîne (n&#x27;existe pas pour cette méthode)">Q</i><i class="n" title="CS: casse (n&#x27;existe pas pour cette méthode)">CS</i><i class="y" title="XT: étendue">XT</i><i class="n" title="Z: positions (n&#x27;existe pas pour cette méthode)">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="resultxt" data-k="resultxt  "><div class="ln mono">ResultXT</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">result xt</span><small>dans la section <b>result methods</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzRegexuter()
-o1.Trigger([ &quot;numbers&quot;, &quot;\d+&quot; ])
-o1.Trigger([ &quot;words&quot;, &quot;[a-zA-Z]+&quot; ])
-o1.AddCode(&quot;numbers&quot;, &quot;{ @value = number(@value) * 2 }&quot;)
-o1.AddCode(&quot;words&quot;, &quot;{ @value = upper(@value) }&quot;)
-o1.Process(&quot;hello 123 world 456&quot;)
+o1.Trigger([ "numbers", "\d+" ])
+o1.Trigger([ "words", "[a-zA-Z]+" ])
+o1.AddCode("numbers", "{ @value = number(@value) * 2 }")
+o1.AddCode("words", "{ @value = upper(@value) }")
+o1.Process("hello 123 world 456")
 ? @@( o1.ResultXT() )
-#--&gt; [ [ 246, &quot;123&quot; ], [ 912, &quot;456&quot; ], [ &quot;HELLO&quot;, &quot;hello&quot; ], [ &quot;WORLD&quot;, &quot;world&quot; ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="resultsandmatches" data-k="resultsandmatches  "><div class="ln mono">ResultsAndMatches</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">results and matches</span><small>dans la section <b>result methods</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzRegexuter()
-o1.Trigger([ &quot;numbers&quot;, &quot;\d+&quot; ])
-o1.Trigger([ &quot;words&quot;, &quot;[a-zA-Z]+&quot; ])
-o1.AddCode(&quot;numbers&quot;, &quot;{ @value = number(@value) * 2 }&quot;)
-o1.AddCode(&quot;words&quot;, &quot;{ @value = upper(@value) }&quot;)
-o1.Process(&quot;hello 123 world 456&quot;)
+#--&gt; [
+#--&gt;     [ 246, "123" ],
+#--&gt;     [ 912, "456" ],
+#--&gt;     [ "HELLO", "hello" ],
+#--&gt;     [ "WORLD", "world" ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="resultsandmatches" data-k="resultsandmatches  "><div class="ln mono">ResultsAndMatches</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">results and matches</span><small>dans la section <b>result methods</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzRegexuter()
+o1.Trigger([ "numbers", "\d+" ])
+o1.Trigger([ "words", "[a-zA-Z]+" ])
+o1.AddCode("numbers", "{ @value = number(@value) * 2 }")
+o1.AddCode("words", "{ @value = upper(@value) }")
+o1.Process("hello 123 world 456")
 ? @@( o1.ResultsAndMatches() )
-#--&gt; [ [ 246, &quot;123&quot; ], [ 912, &quot;456&quot; ], [ &quot;HELLO&quot;, &quot;hello&quot; ], [ &quot;WORLD&quot;, &quot;world&quot; ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="resultsandtheirmatches" data-k="resultsandtheirmatches  "><div class="ln mono">ResultsAndTheirMatches</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">results and their matches</span><small>dans la section <b>result methods</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzRegexuter()
-o1.Trigger([ &quot;numbers&quot;, &quot;\d+&quot; ])
-o1.Trigger([ &quot;words&quot;, &quot;[a-zA-Z]+&quot; ])
-o1.AddCode(&quot;numbers&quot;, &quot;{ @value = number(@value) * 2 }&quot;)
-o1.AddCode(&quot;words&quot;, &quot;{ @value = upper(@value) }&quot;)
-o1.Process(&quot;hello 123 world 456&quot;)
+#--&gt; [
+#--&gt;     [ 246, "123" ],
+#--&gt;     [ 912, "456" ],
+#--&gt;     [ "HELLO", "hello" ],
+#--&gt;     [ "WORLD", "world" ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="resultsandtheirmatches" data-k="resultsandtheirmatches  "><div class="ln mono">ResultsAndTheirMatches</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">results and their matches</span><small>dans la section <b>result methods</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzRegexuter()
+o1.Trigger([ "numbers", "\d+" ])
+o1.Trigger([ "words", "[a-zA-Z]+" ])
+o1.AddCode("numbers", "{ @value = number(@value) * 2 }")
+o1.AddCode("words", "{ @value = upper(@value) }")
+o1.Process("hello 123 world 456")
 ? @@( o1.ResultsAndTheirMatches() )
-#--&gt; [ [ 246, &quot;123&quot; ], [ 912, &quot;456&quot; ], [ &quot;HELLO&quot;, &quot;hello&quot; ], [ &quot;WORLD&quot;, &quot;world&quot; ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="matchedvaluesxt" data-k="matchedvaluesxt  "><div class="ln mono">MatchedValuesXT</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">matched values xt</span><small>dans la section <b>result methods</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzRegexuter()
-o1.Trigger([ &quot;numbers&quot;, &quot;\d+&quot; ])
-o1.Trigger([ &quot;words&quot;, &quot;[a-zA-Z]+&quot; ])
-o1.AddCode(&quot;numbers&quot;, &quot;{ @value = number(@value) * 2 }&quot;)
-o1.AddCode(&quot;words&quot;, &quot;{ @value = upper(@value) }&quot;)
-o1.Process(&quot;hello 123 world 456&quot;)
+#--&gt; [
+#--&gt;     [ 246, "123" ],
+#--&gt;     [ 912, "456" ],
+#--&gt;     [ "HELLO", "hello" ],
+#--&gt;     [ "WORLD", "world" ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="matchedvaluesxt" data-k="matchedvaluesxt  "><div class="ln mono">MatchedValuesXT</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">matched values xt</span><small>dans la section <b>result methods</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzRegexuter()
+o1.Trigger([ "numbers", "\d+" ])
+o1.Trigger([ "words", "[a-zA-Z]+" ])
+o1.AddCode("numbers", "{ @value = number(@value) * 2 }")
+o1.AddCode("words", "{ @value = upper(@value) }")
+o1.Process("hello 123 world 456")
 ? @@( o1.MatchedValuesXT() )
-#--&gt; [ [ &quot;123&quot;, 246 ], [ &quot;456&quot;, 912 ], [ &quot;hello&quot;, &quot;HELLO&quot; ], [ &quot;world&quot;, &quot;WORLD&quot; ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="matchesandresults" data-k="matchesandresults  "><div class="ln mono">MatchesAndResults</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">matches and results</span><small>dans la section <b>result methods</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzRegexuter()
-o1.Trigger([ &quot;numbers&quot;, &quot;\d+&quot; ])
-o1.Trigger([ &quot;words&quot;, &quot;[a-zA-Z]+&quot; ])
-o1.AddCode(&quot;numbers&quot;, &quot;{ @value = number(@value) * 2 }&quot;)
-o1.AddCode(&quot;words&quot;, &quot;{ @value = upper(@value) }&quot;)
-o1.Process(&quot;hello 123 world 456&quot;)
+#--&gt; [
+#--&gt;     [ "123", 246 ],
+#--&gt;     [ "456", 912 ],
+#--&gt;     [ "hello", "HELLO" ],
+#--&gt;     [ "world", "WORLD" ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="matchesandresults" data-k="matchesandresults  "><div class="ln mono">MatchesAndResults</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">matches and results</span><small>dans la section <b>result methods</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzRegexuter()
+o1.Trigger([ "numbers", "\d+" ])
+o1.Trigger([ "words", "[a-zA-Z]+" ])
+o1.AddCode("numbers", "{ @value = number(@value) * 2 }")
+o1.AddCode("words", "{ @value = upper(@value) }")
+o1.Process("hello 123 world 456")
 ? @@( o1.MatchesAndResults() )
-#--&gt; [ [ &quot;123&quot;, 246 ], [ &quot;456&quot;, 912 ], [ &quot;hello&quot;, &quot;HELLO&quot; ], [ &quot;world&quot;, &quot;WORLD&quot; ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="matchesandtheirresults" data-k="matchesandtheirresults  "><div class="ln mono">MatchesAndTheirResults</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">matches and their results</span><small>dans la section <b>result methods</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzRegexuter()
-o1.Trigger([ &quot;numbers&quot;, &quot;\d+&quot; ])
-o1.Trigger([ &quot;words&quot;, &quot;[a-zA-Z]+&quot; ])
-o1.AddCode(&quot;numbers&quot;, &quot;{ @value = number(@value) * 2 }&quot;)
-o1.AddCode(&quot;words&quot;, &quot;{ @value = upper(@value) }&quot;)
-o1.Process(&quot;hello 123 world 456&quot;)
+#--&gt; [
+#--&gt;     [ "123", 246 ],
+#--&gt;     [ "456", 912 ],
+#--&gt;     [ "hello", "HELLO" ],
+#--&gt;     [ "world", "WORLD" ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="matchesandtheirresults" data-k="matchesandtheirresults  "><div class="ln mono">MatchesAndTheirResults</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">matches and their results</span><small>dans la section <b>result methods</b></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzRegexuter()
+o1.Trigger([ "numbers", "\d+" ])
+o1.Trigger([ "words", "[a-zA-Z]+" ])
+o1.AddCode("numbers", "{ @value = number(@value) * 2 }")
+o1.AddCode("words", "{ @value = upper(@value) }")
+o1.Process("hello 123 world 456")
 ? @@( o1.MatchesAndTheirResults() )
-#--&gt; [ [ &quot;123&quot;, 246 ], [ &quot;456&quot;, 912 ], [ &quot;hello&quot;, &quot;HELLO&quot; ], [ &quot;world&quot;, &quot;WORLD&quot; ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="executecomputation" data-k="executecomputation  private methods"><div class="ln mono">executeComputation</div><div class="lt">private methods<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div></div>
+#--&gt; [
+#--&gt;     [ "123", 246 ],
+#--&gt;     [ "456", 912 ],
+#--&gt;     [ "hello", "HELLO" ],
+#--&gt;     [ "world", "WORLD" ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="executecomputation" data-k="executecomputation  private methods"><div class="ln mono">executeComputation</div><div class="lt">private methods<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div></div>
   </div>
 </main>
 </div>

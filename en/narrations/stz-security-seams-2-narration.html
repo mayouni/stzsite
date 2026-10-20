@@ -76,10 +76,13 @@ code nobody ever issued arrive as exactly the same miss.</p>
 <p>So the provider now remembers the codes it has spent — bounded, and
 they are single-use and short-lived, so an old entry has nothing left to
 protect:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>aAuth = oOp.AuthorizeAt([ :clientId = &quot;shop-app&quot;, ... ], &quot;dana&quot;, $NOW)
-oOp.ExchangeCodeAt(&quot;shop-app&quot;, &quot;s3cret&quot;, aAuth[:code], ...)   # succeeds
-oOp.ExchangeCodeAt(&quot;shop-app&quot;, &quot;s3cret&quot;, aAuth[:code], ...)   # the replay
-oOp.ExchangeCodeAt(&quot;shop-app&quot;, &quot;s3cret&quot;, &quot;a-code-nobody-issued&quot;, ...)</pre><p class="ran nv-illus">illustration</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>aAuth = oOp.AuthorizeAt([
+    :clientId = "shop-app",
+    ...
+], "dana", $NOW)
+oOp.ExchangeCodeAt("shop-app", "s3cret", aAuth[:code], ...)   # succeeds
+oOp.ExchangeCodeAt("shop-app", "s3cret", aAuth[:code], ...)   # the replay
+oOp.ExchangeCodeAt("shop-app", "s3cret", "a-code-nobody-issued", ...)</pre><p class="ran nv-illus">illustration</p></div>
 <div class="out"><div class="lbl">Promised output</div><pre>  [OK] the second is refused
   [OK] ...and recorded as a REPLAY, the error it is
   [OK] a code that was never issued is NOT called a replay
@@ -94,8 +97,11 @@ and every application adds more. Wiring each one would have produced a
 seam that saw the library's own refusals and missed the ones an
 application wrote — the more interesting half.</p>
 <p>The verdict is read once, where the response is final:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>oSrv.Get(&quot;/vault&quot;, func oReq, oResp {
-    oResp.Status(403, &quot;Forbidden&quot;).Json([ &quot;error&quot;, &quot;not yours&quot; ]) })</pre><p class="ran nv-illus">illustration</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>oSrv.Get("/vault", func oReq, oResp {
+    oResp.Status(403, "Forbidden").Json([
+        "error",
+        "not yours"
+    ]) })</pre><p class="ran nv-illus">illustration</p></div>
 <div class="out"><div class="lbl">Promised output</div><pre>  [OK] a real 403 came back over a real socket
   [OK] ...and the refusal reached the ledger from a USER&#x27;s route
   [OK] ...naming the method and path, and nothing from the headers

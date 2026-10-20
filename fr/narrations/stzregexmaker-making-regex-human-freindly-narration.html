@@ -59,13 +59,22 @@ rxm()</pre><p class="ran nv-illus">illustration</p></div>
 <p>With RegexMaker:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>rxm() {
     # Two uppercase letters
-    CanContainAChar(:Between = [&quot;A&quot;, :And = &quot;Z&quot;], :RepeatedExactly = 2Times())
+    CanContainAChar(:Between = [
+        "A",
+        :And = "Z"
+    ], :RepeatedExactly = 2Times())
     
     # Optional separator (hyphen or space)
-    CanContainAChar(:Among = [&quot;-&quot;, &quot; &quot;], :RepeatedAtMost = 1Time())
+    CanContainAChar(:Among = [
+        "-",
+        " "
+    ], :RepeatedAtMost = 1Time())
     
     # Three digits
-    CanContainADigit(:From = [&quot;0&quot;, :To = &quot;9&quot;], :RepeatedExactly = 3Times())
+    CanContainADigit(:From = [
+        "0",
+        :To = "9"
+    ], :RepeatedExactly = 3Times())
     
     # Repeat separator and two letters
     RepeatSequence(2)

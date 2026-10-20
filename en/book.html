@@ -52,12 +52,26 @@
 
 <p>The same chapter opens with the same sentence in the four languages, and the same cell runs in each. The French, Arabic and Hausa editions carry, on every chapter and world page, a note in their own language that they await review by a native speaker: 0 of 35 units have been reviewed (<a href="education-record.html#limits">the record</a>). It is written on the page, not hidden.</p>
 <div class="pair">
-<div><h4>Hausa · Nemo, sannan ka aiwatar</h4><p>Kowane wurin aiki yana karɓar buƙatu: gidan abinci yana karɓar oda, banki yana karɓar tikiti, kuma buƙata ɗaya takan zo fiye da sau ɗaya.</p><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
+<div><h4>Hausa · Nemo, sannan ka aiwatar</h4><p>Kowane wurin aiki yana karɓar buƙatu: gidan abinci yana karɓar oda, banki yana karɓar tikiti, kuma buƙata ɗaya takan zo fiye da sau ɗaya.</p><pre>o1 = new stzList([
+    "tea",
+    "rice",
+    "tea",
+    "fish",
+    "rice",
+    "tea"
+])
 ? o1.NumberOfItems()
-#--> 6</pre><p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/01-find-then-apply.ha.md" target="_blank" rel="noopener noreferrer">01-find-then-apply.ha.md<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p></div>
-<div><h4>French · Trouver, puis agir</h4><p>Tout lieu de travail reçoit des demandes : un restaurant reçoit des commandes, une banque reçoit des tickets, et la même demande arrive souvent plusieurs fois.</p><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
+#--&gt; 6</pre><p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/01-find-then-apply.ha.md" target="_blank" rel="noopener noreferrer">01-find-then-apply.ha.md<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p></div>
+<div><h4>French · Trouver, puis agir</h4><p>Tout lieu de travail reçoit des demandes : un restaurant reçoit des commandes, une banque reçoit des tickets, et la même demande arrive souvent plusieurs fois.</p><pre>o1 = new stzList([
+    "tea",
+    "rice",
+    "tea",
+    "fish",
+    "rice",
+    "tea"
+])
 ? o1.NumberOfItems()
-#--> 6</pre><p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/01-find-then-apply.fr.md" target="_blank" rel="noopener noreferrer">01-find-then-apply.fr.md<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p></div>
+#--&gt; 6</pre><p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/01-find-then-apply.fr.md" target="_blank" rel="noopener noreferrer">01-find-then-apply.fr.md<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p></div>
 </div>
 
 <p>The library's natural layer understands an instruction in the four languages of the course and runs it:</p>

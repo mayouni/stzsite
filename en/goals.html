@@ -74,7 +74,12 @@ o1 = new stzList(L(&#x27; &quot;♥1&quot; : &quot;♥3&quot; &#x27;))
 ? o1.CountW(&quot;{ @item &gt; 5 }&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>[ 2, 3, 5 ]
 [ 7, 10, 8 ]
 3</pre></div></div><p class="ran">run on 2026-10-09 00:30 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/07-declare-what-not-how.en.md" target="_blank" rel="noopener noreferrer">base/education/program/courses/elementary-introduction/chapters/07-declare-what-not-how.en.md<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><h2 id="manageability">7 · Manageability</h2><p>Know why it failed, how fast it ran, and what it did, without leaving the code.</p><ul class="narr"><li><b>Informative error messages</b> <span class="rx-src">built · an error carries Where, What, Why and Todo</span></li><li><b>Visualised call stack</b> <span class="rx-src">a name only · no file builds it; the trace-context module is a different thing</span></li><li><b>Measurable performance</b> <span class="rx-src">built · the performance plane, six strong lanes; the profiler</span></li><li><b>Cachable functions and objects</b> <span class="rx-src">changed form · the decorators are gone; a cache class and an engine cache replace them</span></li><li><b>Loggable functions</b> <span class="rx-src">changed form · the decorators are gone; a log class is used in 30 files</span></li></ul><p style="margin-top:32px"><b>Manageability: an error says where it happened, what, why, and what to do about it.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>try
-	StzRaise([ :Where = &quot;Greeting()&quot;, :What = &quot;no name was given&quot;, :Why = &quot;a greeting needs someone to greet&quot;, :Todo = &quot;pass the name as the first parameter&quot; ])
+	StzRaise([
+	    :Where = "Greeting()",
+	    :What = "no name was given",
+	    :Why = "a greeting needs someone to greet",
+	    :Todo = "pass the name as the first parameter"
+	])
 catch
 	? cCatchError
 done</pre></div><div class="out"><div class="lbl">Output</div><pre>in file Greeting():

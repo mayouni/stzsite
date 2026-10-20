@@ -42,7 +42,12 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oTime = new stzTime([:Hour = 14, :Minute = 30, :Second = 45, :Millisecond = 123])
+    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oTime = new stzTime([
+    :Hour = 14,
+    :Minute = 30,
+    :Second = 45,
+    :Millisecond = 123
+])
 ? oTime.Millisecond()
 ? oTime.ToLong()</pre></div><div class="out"><div class="lbl">Output</div><pre>123
 14:30:45.123</pre></div></div><p class="ran">run on 2026-10-02 04:24 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/time/31_working_with_milliseconds.ring" target="_blank" rel="noopener noreferrer">31_working_with_milliseconds.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>

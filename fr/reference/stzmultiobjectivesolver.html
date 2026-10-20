@@ -49,26 +49,49 @@
     <p class="proof">Exemples : 0 viennent des tests de la bibliothèque ; 8 ont été composés à partir de la signature de chaque méthode et exécutés pour cette page, sur un objet neuf, par exemple <span class="mono">o1 = new stzMultiObjectiveSolver() o1.AddVariable(&quot;x&quot;, 0, 10) o1.Maximize(&quot;x&quot;) o1.Minimize(&quot;x&quot;)</span>. 36 méthodes n'en ont pas encore. Exemples exécutés le 2026-10-04 07:31 dans la bibliothèque au commit 0e72e2e2c.</p>
     <input id="flt" class="flt" type="search" placeholder="Filtrer les méthodes…" aria-label="Filtrer les méthodes…">
     <div class="lanes rtable"><div class="lane lane2 rhead"><div class="ln">Méthode</div><div class="lt">Explication, telle que la source la porte</div></div><div class="lane lane2 rrow" id="init" data-k="init  "><div class="ln mono">init</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">init</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="clear" data-k="clear  "><div class="ln mono">clear</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">clear</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="addvariable" data-k="addvariable  variables management (inherited from stzlinearsolver)"><div class="ln mono">addVariable</div><div class="lt">Variables Management (inherited from stzLinearSolver)<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="addintegervariable" data-k="addintegervariable  same as addvariable: variables management (inherited from stzlinearsolver)"><div class="ln mono">addIntegerVariable</div><div class="lt">Same as addVariable: Variables Management (inherited from stzLinearSolver)<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="addbinaryvariable" data-k="addbinaryvariable  same as addvariable: variables management (inherited from stzlinearsolver)"><div class="ln mono">addBinaryVariable</div><div class="lt">Same as addVariable: Variables Management (inherited from stzLinearSolver)<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="variables" data-k="variables  "><div class="ln mono">Variables</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">variables</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzMultiObjectiveSolver()
-o1.AddVariable(&quot;x&quot;, 0, 10)
-o1.Maximize(&quot;x&quot;)
-o1.Minimize(&quot;x&quot;)
+o1.AddVariable("x", 0, 10)
+o1.Maximize("x")
+o1.Minimize("x")
 ? @@( o1.Variables() )
-#--&gt; [ [ [ &quot;name&quot;, &quot;x&quot; ], [ &quot;lowerbound&quot;, 0 ], [ &quot;upperbound&quot;, 10 ], [ &quot;type&quot;, &quot;continuous&quot; ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="vars" data-k="vars  "><div class="ln mono">Vars</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">vars</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzMultiObjectiveSolver()
-o1.AddVariable(&quot;x&quot;, 0, 10)
-o1.Maximize(&quot;x&quot;)
-o1.Minimize(&quot;x&quot;)
+#--&gt; [
+#--&gt;     [
+#--&gt;         [ "name", "x" ],
+#--&gt;         [ "lowerbound", 0 ],
+#--&gt;         [ "upperbound", 10 ],
+#--&gt;         [ "type", "continuous" ]
+#--&gt;     ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="vars" data-k="vars  "><div class="ln mono">Vars</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">vars</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzMultiObjectiveSolver()
+o1.AddVariable("x", 0, 10)
+o1.Maximize("x")
+o1.Minimize("x")
 ? @@( o1.Vars() )
-#--&gt; [ [ [ &quot;name&quot;, &quot;x&quot; ], [ &quot;lowerbound&quot;, 0 ], [ &quot;upperbound&quot;, 10 ], [ &quot;type&quot;, &quot;continuous&quot; ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="variablenames" data-k="variablenames varnames "><span id="varnames"></span><div class="ln mono">VariableNames</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">variable names</span><small>aussi écrite: <span class="mono">VarNames</span></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzMultiObjectiveSolver()
+#--&gt; [
+#--&gt;     [
+#--&gt;         [ "name", "x" ],
+#--&gt;         [ "lowerbound", 0 ],
+#--&gt;         [ "upperbound", 10 ],
+#--&gt;         [ "type", "continuous" ]
+#--&gt;     ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="variablenames" data-k="variablenames varnames "><span id="varnames"></span><div class="ln mono">VariableNames</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">variable names</span><small>aussi écrite: <span class="mono">VarNames</span></small><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzMultiObjectiveSolver()
 o1.AddVariable(&quot;x&quot;, 0, 10)
 o1.Maximize(&quot;x&quot;)
 o1.Minimize(&quot;x&quot;)
 ? @@( o1.VariableNames() )
 #--&gt; [ &quot;x&quot; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="addconstraint" data-k="addconstraint  constraints management (inherited from stzlinearsolver)"><div class="ln mono">addConstraint</div><div class="lt">Constraints Management (inherited from stzLinearSolver)<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="constraints" data-k="constraints  "><div class="ln mono">constraints</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">constraints</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="addobjective" data-k="addobjective  multi-objective functions"><div class="ln mono">addObjective</div><div class="lt">Multi-Objective Functions<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="maximize" data-k="maximize  "><div class="ln mono">maximize</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">maximize</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="minimize" data-k="minimize  "><div class="ln mono">minimize</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">minimize</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="objectives" data-k="objectives  "><div class="ln mono">objectives</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">objectives</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzMultiObjectiveSolver()
-o1.AddVariable(&quot;x&quot;, 0, 10)
-o1.Maximize(&quot;x&quot;)
-o1.Minimize(&quot;x&quot;)
+o1.AddVariable("x", 0, 10)
+o1.Maximize("x")
+o1.Minimize("x")
 ? @@( o1.objectives() )
-#--&gt; [ [ [ &quot;expression&quot;, &quot;x&quot; ], [ &quot;type&quot;, &quot;maximize&quot; ] ], [ [ &quot;expression&quot;, &quot;x&quot; ], [ &quot;type&quot;, &quot;minimize&quot; ] ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="setnsgaparameters" data-k="setnsgaparameters  algorithm parameters"><div class="ln mono">setNSGAParameters</div><div class="lt">Algorithm Parameters<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="solve" data-k="solve  solving methods"><div class="ln mono">solve</div><div class="lt">Solving Methods<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzMultiObjectiveSolver()
+#--&gt; [
+#--&gt;     [
+#--&gt;         [ "expression", "x" ],
+#--&gt;         [ "type", "maximize" ]
+#--&gt;     ],
+#--&gt;     [
+#--&gt;         [ "expression", "x" ],
+#--&gt;         [ "type", "minimize" ]
+#--&gt;     ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="setnsgaparameters" data-k="setnsgaparameters  algorithm parameters"><div class="ln mono">setNSGAParameters</div><div class="lt">Algorithm Parameters<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="solve" data-k="solve  solving methods"><div class="ln mono">solve</div><div class="lt">Solving Methods<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzMultiObjectiveSolver()
 o1.AddVariable(&quot;x&quot;, 0, 10)
 o1.Maximize(&quot;x&quot;)
 o1.Minimize(&quot;x&quot;)
@@ -81,12 +104,19 @@ o1.Minimize(&quot;x&quot;)
 o1.Solve(&quot;nsga_ii&quot;)
 ? len(o1.ParetoSolutions())
 #--&gt; 50</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="bestcompromisesolution" data-k="bestcompromisesolution  "><div class="ln mono">bestCompromiseSolution</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">best compromise solution</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzMultiObjectiveSolver()
-o1.AddVariable(&quot;x&quot;, 0, 10)
-o1.Maximize(&quot;x&quot;)
-o1.Minimize(&quot;x&quot;)
-o1.Solve(&quot;nsga_ii&quot;)
+o1.AddVariable("x", 0, 10)
+o1.Maximize("x")
+o1.Minimize("x")
+o1.Solve("nsga_ii")
 ? @@( o1.BestCompromiseSolution() )
-#--&gt; [ [ &quot;solution&quot;, [ [ &quot;x&quot;, 0 ] ] ], [ &quot;objectives&quot;, [ 0, 0 ] ], [ &quot;rank&quot;, 1 ], [ &quot;crowdingdistance&quot;, 999999 ], [ &quot;dominatedsolutions&quot;, [ ] ], [ &quot;dominationcount&quot;, 0 ] ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="status" data-k="status  "><div class="ln mono">status</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">status</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzMultiObjectiveSolver()
+#--&gt; [
+#--&gt;     [ "solution", [ [ "x", 0 ] ] ],
+#--&gt;     [ "objectives", [ 0, 0 ] ],
+#--&gt;     [ "rank", 1 ],
+#--&gt;     [ "crowdingdistance", 999999 ],
+#--&gt;     [ "dominatedsolutions", [ ] ],
+#--&gt;     [ "dominationcount", 0 ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="status" data-k="status  "><div class="ln mono">status</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">status</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzMultiObjectiveSolver()
 o1.AddVariable(&quot;x&quot;, 0, 10)
 o1.Maximize(&quot;x&quot;)
 o1.Minimize(&quot;x&quot;)

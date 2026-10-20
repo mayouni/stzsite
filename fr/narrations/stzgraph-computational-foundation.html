@@ -76,7 +76,10 @@
 end</pre><p class="ran nv-illus">illustration</p></div>
 <h3 id="properties-metadata-bridge">Properties: Metadata Bridge</h3>
 <p>Nodes store metadata without interpreting it:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>AddNodeXT(:@step, &quot;Validate&quot;, :Process, [&quot;priority&quot; = &quot;high&quot;, &quot;owner&quot; = &quot;team-a&quot;])</pre><p class="ran nv-illus">illustration</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>AddNodeXT(:@step, "Validate", :Process, [
+    "priority" = "high",
+    "owner" = "team-a"
+])</pre><p class="ran nv-illus">illustration</p></div>
 <p>stzGraph keeps properties inert; domain layers interpret them (stzDiagram uses priority/owner; stzEntity adds cardinality/constraints).</p>
 <hr />
 <h2 id="design-principles">Design Principles</h2>

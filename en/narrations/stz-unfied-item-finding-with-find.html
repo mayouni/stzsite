@@ -89,23 +89,34 @@ class company position name symbol</pre><p class="ran nv-illus">illustration</p>
 <p>Softanza eliminates these challenges by maintaining object finding at the language level through named objects, providing a consistent interface across all data types:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>
 # Casting the Person object into a named object so it becomes findable
-oFriend = StzNamedObjectQ(:oFriend = new Person(&quot;Mahmoud&quot;))
+oFriend = StzNamedObjectQ(:oFriend = new Person("Mahmoud"))
 
 # Create the list made of various items types (number, string, list, object)
-aMyList = [ 10, oFriend, &quot;hello&quot;, [1, 2, 3], oFriend, [1, 2, 3], &quot;HELLO&quot; ]
+aMyList = [
+    10,
+    oFriend,
+    "hello",
+    [1, 2, 3],
+    oFriend,
+    [1, 2, 3],
+    "HELLO"
+]
 
 # Performing the finding in the same way using same @Find() function
 ? @@( @Find(aMyList, 10 ) )          # --&gt; [1]
-? @@( @Find(aMyList, &quot;hello&quot;) )      # --&gt; [3]
+? @@( @Find(aMyList, "hello") )      # --&gt; [3]
 ? @@( @Find(aMyList, [1, 2, 3]) )    # --&gt; [4, 6]
 ? @@( @Find(aMyList, oFriend) )      # --&gt; [2, 5]
 
 # @Find can be sensitive to case using the CS() prefix
-? @@( @FindCS(aMyList, &quot;HELLO&quot;, FALSE) )  # --&gt; [3, 7]  # Case-insensitive
-? @@( @FindCS(aMyList, &quot;HELLO&quot;, TRUE) )   # --&gt; [7]     # Case-sensitive
+? @@( @FindCS(aMyList, "HELLO", FALSE) )  # --&gt; [
+    3,
+    7
+]  # Case-insensitive
+? @@( @FindCS(aMyList, "HELLO", TRUE) )   # --&gt; [7]     # Case-sensitive
 
 class Person
-    name = &quot;&quot;
+    name = ""
     def init(cName)
         name = cName</pre><p class="ran nv-illus">illustration</p></div>
 <h3 id="trade-offs-and-design-considerations">Trade-offs and Design Considerations</h3>

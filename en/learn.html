@@ -44,7 +44,14 @@
 <div class="card"><h3>3 · Ask in order: does it contain, how many, where</h3><p>Contain, count, find. Each question is a method named like the question. Then apply: remove, replace, keep. Find first, then apply.</p></div>
 </div>
 
-<div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ "tea", "rice", "tea", "fish", "rice", "tea" ])
+<div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    "tea",
+    "rice",
+    "tea",
+    "fish",
+    "rice",
+    "tea"
+])
 ? o1.ContainsDuplicates()
 ? o1.NumberOfOccurrence("tea")
 ? @@( o1.FindAll("tea") )

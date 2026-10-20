@@ -168,19 +168,28 @@ setV(:name = &quot;cherihen&quot;)
 <p>When you assign to variables with duplicate names, the last assignment takes precedence.</p>
 <p>This behavior follows the principle of "last assignment wins" - when duplicate variable names appear in the list, only the final value for each name is retained:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Last assignment wins with duplicate names
-Vr([ :name1, :name2, :name2 ]) &#x27;=&#x27; Vl([ &quot;Hussein&quot;, &quot;Haneen&quot;, &quot;Teeba&quot; ])
+Vr([
+    :name1,
+    :name2,
+    :name2
+]) '=' Vl([ "Hussein", "Haneen", "Teeba" ])
 ? v(:name2)
 #--&gt; Teeba</pre><p class="ran nv-kept">run on 2026-10-08 20:41 at commit 4a184e6f0: kept its promise</p></div>
 <h3 id="providing-insufficient-values">Providing Insufficient Values</h3>
 <p>When you don't provide enough values for all variables, Softanza sets missing variables to empty strings.</p>
 <p>This demonstrates Softanza's graceful handling of mismatched list lengths. Variables without corresponding values are automatically initialized to empty strings rather than causing errors:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Missing values default to empty string
-Vr([ :name1, :name2, :name3 ]) &#x27;=&#x27; Vl([ &quot;Hussein&quot;, &quot;Haneen&quot; ])
+Vr([ :name1, :name2, :name3 ]) '=' Vl([ "Hussein", "Haneen" ])
 ? @@( TempVarsXT() )
-#--&gt; [ :say = null, :name1 = &quot;Hussein&quot;, :name2 = &quot;Haneen&quot;, :name3 = &quot;&quot; ]
+#--&gt; [
+#--&gt;     :say = null,
+#--&gt;     :name1 = "Hussein",
+#--&gt;     :name2 = "Haneen",
+#--&gt;     :name3 = ""
+#--&gt; ]
 
 ? @@( v(:name3) )
-#--&gt; &quot;&quot;</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; ""</pre><p class="ran nv-illus">illustration</p></div>
 <h2 id="named-objects-a-special-kind-of-named-variable">Named Objects: A Special Kind of Named Variable</h2>
 <p>Named objects extend the NamedVars concept to Softanza objects, making them findable in lists through a unified interface.</p>
 <blockquote>
@@ -205,7 +214,16 @@ oHello = new stzString(:oHello = &quot;Hello Haro!&quot;)
 <p>Once you have named objects, you can search for them in lists by name, which provides a more elegant way to work with object collections than Haro's built-in approaches.</p>
 <h3 id="finding-named-objects-in-lists">Finding Named Objects in Lists</h3>
 <p>This comprehensive example shows various ways to locate and analyze objects within a list. The different finding methods provide granular control over object discovery based on naming status and specific names:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzList([ &quot;one&quot;, oGreeting, 12, oGreeting, Q(&quot;two&quot;), oHello, 10 , Q(10) ])
+<div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzList([
+    "one",
+    oGreeting,
+    12,
+    oGreeting,
+    Q("two"),
+    oHello,
+    10,
+    Q(10)
+])
 
 # Find all objects
 ? @@( o1.FindObjects() )
@@ -214,9 +232,9 @@ oHello = new stzString(:oHello = &quot;Hello Haro!&quot;)
 # Find objects with their names and positions
 ? @@( o1.ObjectsZ() )
 #--&gt; [
-#     [ &quot;ogreeting&quot;, [ 2, 4 ] ],
-#     [ &quot;@noname&quot;,  [ 5, 8 ] ],
-#     [ &quot;ohello&quot;,    [ 6 ]    ]
+#     [ "ogreeting", [ 2, 4 ] ],
+#     [ "@noname",  [ 5, 8 ] ],
+#     [ "ohello",    [ 6 ]    ]
 # ]
 
 # Find specific named object

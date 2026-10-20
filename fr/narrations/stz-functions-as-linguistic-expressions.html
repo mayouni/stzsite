@@ -719,7 +719,11 @@ o1 = new stzList([
 <div class="nblock"><div class="lbl">Haro</div><pre>o1.ReplaceNextOccurrenceFF([&quot;haro&quot;, :With = &quot;♥&quot;])
 #--&gt; ♥ php haro ruby haro</pre><p class="ran nv-illus">illustration</p></div>
 <p>You can reorder the parameters as you like:  </p>
-<div class="nblock"><div class="lbl">Haro</div><pre>o1.ReplaceNextOccurrenceFF([:Of = &quot;haro&quot;, :With = &quot;♥&quot;, :StartingAt = 1])
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.ReplaceNextOccurrenceFF([
+    :Of = "haro",
+    :With = "♥",
+    :StartingAt = 1
+])
 #--&gt; ♥ php haro ruby haro</pre><p class="ran nv-illus">illustration</p></div>
 <p>Or omit all parameters, letting Softanza infer the defaults:  </p>
 <div class="nblock"><div class="lbl">Haro</div><pre>o1.ReplaceNextOccurrenceFF([])

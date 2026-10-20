@@ -159,12 +159,24 @@ No external consultants. No months of workshops.</p>
 </ul>
 <p>Before committing, we simulate the impact quantitatively:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>    aChanges = [
-        [:type = &quot;add_position&quot;,     :id = &quot;dir_digital&quot;, :title = &quot;Director Digital Banking&quot;],
-        [:type = &quot;change_reporting&quot;, :subordinate = &quot;vp_eng&quot;, :supervisor = &quot;dir_digital&quot;],
-        [:type = &quot;change_reporting&quot;, :subordinate = &quot;dir_digital&quot;, :supervisor = &quot;ceo&quot;]
+        [
+            :type = "add_position",
+            :id = "dir_digital",
+            :title = "Director Digital Banking"
+        ],
+        [
+            :type = "change_reporting",
+            :subordinate = "vp_eng",
+            :supervisor = "dir_digital"
+        ],
+        [
+            :type = "change_reporting",
+            :subordinate = "dir_digital",
+            :supervisor = "ceo"
+        ]
     ]
 
-    ? &quot;=== REORGANIZATION SIMULATION RESULTS ===&quot;
+    ? "=== REORGANIZATION SIMULATION RESULTS ==="
     ? SimulateReorganization(aChanges)</pre><p class="ran nv-illus">illustration</p></div>
 <p>The engine returns a precise before/after comparison:</p>
 <pre>Metric                  Before    After     Change

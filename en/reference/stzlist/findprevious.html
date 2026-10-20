@@ -45,10 +45,21 @@
     <h2>Basic examples <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;1&quot;, &quot;2&quot;, &quot;♥&quot;, &quot;4&quot;, &quot;♥&quot;, &quot;6&quot;, &quot;7&quot; ])
 ? o1.FindPrevious(&quot;♥&quot;, :StartingAt = 5)
 ? o1.FindNthPrevious(2, &quot;♥&quot;, :StartingAt = 6)</pre></div><div class="out"><div class="lbl">Output</div><pre>3
-3</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/276_findprevious.ring" target="_blank" rel="noopener noreferrer">276_findprevious.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;_&quot;, &quot;_&quot;, &quot;♥&quot;, &quot;_&quot;, &quot;_&quot;, &quot;♥&quot;, &quot;_&quot; , &quot;♥&quot;, &quot;_&quot;, &quot;_&quot; ])
-? o1.FindPrevious(&quot;♥&quot;, :StartingAt = 5)
-? o1.FindNthPrevious(2, &quot;♥&quot;, :StartingAt = 7)
-? o1.FindNthPrevious(3, &quot;♥&quot;, :StartingAt = 9)</pre></div><div class="out"><div class="lbl">Output</div><pre>3
+3</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/276_findprevious.ring" target="_blank" rel="noopener noreferrer">276_findprevious.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    "_",
+    "_",
+    "♥",
+    "_",
+    "_",
+    "♥",
+    "_",
+    "♥",
+    "_",
+    "_"
+])
+? o1.FindPrevious("♥", :StartingAt = 5)
+? o1.FindNthPrevious(2, "♥", :StartingAt = 7)
+? o1.FindNthPrevious(3, "♥", :StartingAt = 9)</pre></div><div class="out"><div class="lbl">Output</div><pre>3
 3
 3</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/268_findprevious.ring" target="_blank" rel="noopener noreferrer">268_findprevious.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><h2>Scope <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;_&quot;, &quot;_&quot;, &quot;♥&quot;, &quot;_&quot;, &quot;_&quot;, &quot;♥&quot;, &quot;_&quot; ])
 ? o1.FindFirst(&quot;♥&quot;)

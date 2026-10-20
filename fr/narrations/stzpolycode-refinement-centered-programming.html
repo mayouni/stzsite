@@ -56,13 +56,13 @@
 <p>And the function updates automatically.</p>
 <h2 id="a-playful-introduction-birthday-card-generator">A Playful Introduction: Birthday Card Generator</h2>
 <p>Let's see this concept in action with a simple birthday card generator:</p>
-<div class="lbl">Python, montré pour comparaison, non exécuté</div><pre>stzPolyCode(&quot;BirthdayCardGenerator&quot;) {
+<div class="lbl">Python, montré pour comparaison, non exécuté</div><pre>stzPolyCode("BirthdayCardGenerator") {
     # --- EXPLORATION PHASE ---
     XAi() {
-        RunCode(&#x27;
+        RunCode('
             Create a function that generates a birthday message
-            with the recipient\&#x27;s name and age
-        &#x27;)
+            with the recipient\'s name and age
+        ')
         
         generatedCode = PyCode()
     }
@@ -73,25 +73,25 @@
     # The system displays:
     /*
     def generate_birthday_card(name, age):
-        &lt;R:PARAM name=&quot;greeting&quot; value=&quot;Happy Birthday&quot; type=&quot;str&quot; desc=&quot;Birthday greeting&quot;&gt;
-        &lt;R:BLOCK name=&quot;message_template&quot; desc=&quot;The message template&quot;&gt;
-        message = f&quot;{greeting}, {name}! Congratulations on turning {age}!&quot;
+        &lt;R:PARAM name="greeting" value="Happy Birthday" type="str" desc="Birthday greeting"&gt;
+        &lt;R:BLOCK name="message_template" desc="The message template"&gt;
+        message = f"{greeting}, {name}! Congratulations on turning {age}!"
         &lt;/R:BLOCK&gt;
         
-        &lt;R:ALGO name=&quot;style&quot; options=&quot;formal,casual,funny&quot; selected=&quot;casual&quot;&gt;
+        &lt;R:ALGO name="style" options="formal,casual,funny" selected="casual"&gt;
         # Casual style
-        message += f&quot;\nWishing you a fantastic day filled with joy and laughter!&quot;
+        message += f"\nWishing you a fantastic day filled with joy and laughter!"
         &lt;/R:ALGO&gt;
         
         return message
     */
     
-    # Now let&#x27;s make some refinements
-    refinementView.SetParam(&quot;greeting&quot;, &quot;Many Happy Returns&quot;)
-    refinementView.SetAlgo(&quot;style&quot;, &quot;funny&quot;, &quot;&quot;&quot;
+    # Now let's make some refinements
+    refinementView.SetParam("greeting", "Many Happy Returns")
+    refinementView.SetAlgo("style", "funny", """
     # Funny style
-    message += f&quot;\nAnother year older, but don&#x27;t worry—you&#x27;re still younger than you&#x27;ll be next year! Have a great day!&quot;
-    &quot;&quot;&quot;)
+    message += f"\nAnother year older, but don't worry—you're still younger than you'll be next year! Have a great day!"
+    """)
     
     refinedCode = refinementView.Apply()
     
@@ -101,7 +101,10 @@
     }
     
     func CreateBirthdayMessage(recipientName, age) {
-        return birthdayService.Run(&quot;generate_birthday_card&quot;, [recipientName, age])
+        return birthdayService.Run("generate_birthday_card", [
+            recipientName,
+            age
+        ])
     }
 }</pre>
 <p>This example shows several key benefits:
@@ -153,13 +156,13 @@ def calculate_discount(price, customer_tier=&#x27;regular&#x27;):
 &lt;/R:FUNC&gt;</pre>
 <h2 id="a-practical-example-weather-data-analysis">A Practical Example: Weather Data Analysis</h2>
 <p>Let's examine a more practical example that shows how refinement points enable natural customization:</p>
-<div class="lbl">Python, montré pour comparaison, non exécuté</div><pre>stzPolyCode(&quot;WeatherAnalyzer&quot;) {
+<div class="lbl">Python, montré pour comparaison, non exécuté</div><pre>stzPolyCode("WeatherAnalyzer") {
     # --- EXPLORATION PHASE ---
     XAi() {
-        RunCode(&#x27;
+        RunCode('
             Create a function that analyzes daily temperature data,
             identifies unusual patterns, and generates a summary report
-        &#x27;)
+        ')
         
         generatedCode = PyCode()
     }
@@ -167,7 +170,7 @@ def calculate_discount(price, customer_tier=&#x27;regular&#x27;):
     # --- REFINEMENT PHASE ---
     refinementView = RefineCode(generatedCode)
     
-    # Let&#x27;s explore what we can refine
+    # Let's explore what we can refine
     refinementView.ShowAllRefinements()
     
     /*
@@ -182,11 +185,11 @@ def calculate_discount(price, customer_tier=&#x27;regular&#x27;):
     +-------------------+------------------+--------------------------------------------+
     */
     
-    # Let&#x27;s learn more about the anomaly detection options
-    refinementView.Explore(&quot;anomaly_detection&quot;)
+    # Let's learn more about the anomaly detection options
+    refinementView.Explore("anomaly_detection")
     
     /*
-    REFINEMENT DETAILS: &quot;anomaly_detection&quot;
+    REFINEMENT DETAILS: "anomaly_detection"
     Type: ALGO (Algorithm selection)
     Description: Algorithm for detecting unusual patterns in temperature data
     
@@ -195,7 +198,10 @@ def calculate_discount(price, customer_tier=&#x27;regular&#x27;):
     # Statistical approach
     mean_temp = np.mean(temperatures)
     std_temp = np.std(temperatures)
-    anomalies = [i for i, temp in enumerate(temperatures) if abs(temp - mean_temp) &gt; temp_threshold * std_temp]</pre>
+    anomalies = [
+        i for i,
+        temp in enumerate(temperatures) if abs(temp - mean_temp) &gt; temp_threshold * std_temp
+    ]</pre>
 <p>AVAILABLE ALTERNATIVES:
 +------------------+----------------------------------------+-------------------------------+
 | OPTION           | STRENGTHS                              | WHEN TO USE                   |

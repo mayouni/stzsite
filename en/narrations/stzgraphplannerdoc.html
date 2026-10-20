@@ -281,16 +281,25 @@ oPlanner {
 <h3 id="when-plans-explain-themselves">When Plans Explain Themselves</h3>
 <p>Most AI systems are black boxes. You get an answer but no understanding. Softanza believes plans should be <em>conversational</em>.</p>
 <p>Let's start as ususal with a stzGraph object:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>oGraph = new stzGraph(&quot;complex_route&quot;)
+<div class="nblock"><div class="lbl">Haro</div><pre>oGraph = new stzGraph("complex_route")
 oGraph {
-    AddNode(&quot;start&quot;)
-    AddNode(&quot;point_a&quot;)
-    AddNode(&quot;point_b&quot;)
-    AddNode(&quot;end&quot;)
+    AddNode("start")
+    AddNode("point_a")
+    AddNode("point_b")
+    AddNode("end")
     
-    AddEdgeXTT(&quot;start&quot;, &quot;point_a&quot;, &quot;road&quot;, [:distance = 10, :traffic = 2])
-    AddEdgeXTT(&quot;point_a&quot;, &quot;point_b&quot;, &quot;road&quot;, [:distance = 15, :traffic = 8])
-    AddEdgeXTT(&quot;point_b&quot;, &quot;end&quot;, &quot;road&quot;, [:distance = 5, :traffic = 1])
+    AddEdgeXTT("start", "point_a", "road", [
+        :distance = 10,
+        :traffic = 2
+    ])
+    AddEdgeXTT("point_a", "point_b", "road", [
+        :distance = 15,
+        :traffic = 8
+    ])
+    AddEdgeXTT("point_b", "end", "road", [
+        :distance = 5,
+        :traffic = 1
+    ])
 }</pre><p class="ran nv-illus">illustration</p></div>
 <p>Now we do our planning mission:</p>
 <pre>oPlanner = new stzGraphPlanner(oGraph)
@@ -400,32 +409,35 @@ Using(:safest)    // Avoids unpredictable routes
 Execute()</pre><p class="ran nv-illus">illustration</p></div>
 <p>Same graph, same endpoints—different strategies. Profiles make strategy <strong>part of the domain language</strong>, not buried in code.</p>
 <p>Here's a complete example showing profile usage:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>oGraph = new stzGraph(&quot;delivery_network&quot;)
+<div class="nblock"><div class="lbl">Haro</div><pre>oGraph = new stzGraph("delivery_network")
 oGraph {
-    AddNodeXTT(&quot;warehouse&quot;, &quot;Main Warehouse&quot;, [:x = 0, :y = 0])
-    AddNodeXTT(&quot;suburb_a&quot;, &quot;Suburb A&quot;, [:x = 10, :y = 5])
-    AddNodeXTT(&quot;suburb_b&quot;, &quot;Suburb B&quot;, [:x = 15, :y = 10])
-    AddNodeXTT(&quot;customer&quot;, &quot;Customer Location&quot;, [:x = 25, :y = 20])
+    AddNodeXTT("warehouse", "Main Warehouse", [:x = 0, :y = 0])
+    AddNodeXTT("suburb_a", "Suburb A", [:x = 10, :y = 5])
+    AddNodeXTT("suburb_b", "Suburb B", [:x = 15, :y = 10])
+    AddNodeXTT("customer", "Customer Location", [
+        :x = 25,
+        :y = 20
+    ])
     
-    AddEdgeXTT(&quot;warehouse&quot;, &quot;suburb_a&quot;, &quot;highway&quot;, [
+    AddEdgeXTT("warehouse", "suburb_a", "highway", [
         :distance = 12, :time = 25, :cost = 10
     ])
-    AddEdgeXTT(&quot;suburb_a&quot;, &quot;customer&quot;, &quot;road&quot;, [
+    AddEdgeXTT("suburb_a", "customer", "road", [
         :distance = 18, :time = 20, :cost = 15
     ])
     
-    AddEdgeXTT(&quot;warehouse&quot;, &quot;suburb_b&quot;, &quot;backroad&quot;, [
+    AddEdgeXTT("warehouse", "suburb_b", "backroad", [
         :distance = 20, :time = 20, :cost = 8
     ])
-    AddEdgeXTT(&quot;suburb_b&quot;, &quot;customer&quot;, &quot;highway&quot;, [
+    AddEdgeXTT("suburb_b", "customer", "highway", [
         :distance = 15, :time = 15, :cost = 12
     ])
 }
 
 oPlanner = new stzGraphPlanner(oGraph)
 oPlanner {
-    AddPlan(&quot;fast_delivery&quot;)
-    Walk(:From = &quot;warehouse&quot;, :To = &quot;customer&quot;)
+    AddPlan("fast_delivery")
+    Walk(:From = "warehouse", :To = "customer")
     Using(:fastest)
     Execute()
 
@@ -433,7 +445,7 @@ oPlanner {
     #--&gt; 35
     
     ? @@( Route() )
-    #--&gt; [ &quot;warehouse&quot;, &quot;suburb_b&quot;, &quot;customer&quot; ]
+    #--&gt; [ "warehouse", "suburb_b", "customer" ]
 }</pre><p class="ran nv-illus">illustration</p></div>
 <hr />
 <h2 id="part-five-the-comparison-problem">Part Five: The Comparison Problem</h2>
@@ -548,31 +560,41 @@ RECOMMENDATION:
 <h3 id="comparing-many-strategies-simultaneously">Comparing Many Strategies Simultaneously</h3>
 <p>Real scenarios have multiple alternatives. Compare them all at once:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>// Create 4 different strategies
-AddPlan(&quot;ultra_fast&quot;)
-Walk(:From = &quot;warehouse&quot;, :To = &quot;destination&quot;)
+AddPlan("ultra_fast")
+Walk(:From = "warehouse", :To = "destination")
 Using(:fastest)
 Execute()
 
-AddPlan(&quot;budget&quot;)
+AddPlan("budget")
 Using(:cheapest)
 Execute()
 
-AddPlan(&quot;short_distance&quot;)
+AddPlan("short_distance")
 Using(:shortest)
 Execute()
 
-AddPlan(&quot;balanced&quot;)
+AddPlan("balanced")
 Using(:balanced)
 Execute()
 
 // Compare all 4
-oMulti = CompareMultiple([&quot;ultra_fast&quot;, &quot;budget&quot;, &quot;short_distance&quot;, &quot;balanced&quot;])</pre><p class="ran nv-illus">illustration</p></div>
+oMulti = CompareMultiple([
+    "ultra_fast",
+    "budget",
+    "short_distance",
+    "balanced"
+])</pre><p class="ran nv-illus">illustration</p></div>
 <h3 id="ranking-as-structured-data">Ranking as Structured Data</h3>
 <p>When multiple plans are compared, <strong>stzGraphPlanner does not produce text—it produces data</strong>. Ranking tables are returned as structured collections that can be consumed programmatically by dashboards, reports, UI components, or analytics pipelines.</p>
 <p>This distinction matters. A ranking is not just something to <em>read</em>—it is something to <em>act upon</em>. The same ranking table can power a console display, a decision widget, an automated rule engine, or a visual comparison chart without transformation.</p>
 <p>Get rankings:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>? oMulti.RankBy(&quot;cost&quot;)
-//→ [ [&quot;budget&quot;, 25], [&quot;balanced&quot;, 45], [&quot;short_distance&quot;, 50], [&quot;ultra_fast&quot;, 90] ]
+<div class="nblock"><div class="lbl">Haro</div><pre>? oMulti.RankBy("cost")
+//→ [
+    ["budget", 25],
+    ["balanced", 45],
+    ["short_distance", 50],
+    ["ultra_fast", 90]
+]
 
 oMulti.ShowRankingTable()</pre><p class="ran nv-illus">illustration</p></div>
 <p>Output:</p>
@@ -591,92 +613,97 @@ Rank | Plan Name      | Cost  | Steps
 ? oMulti.WorstBy(&quot;cost&quot;)
 //→ &quot;ultra_fast&quot;</pre><p class="ran nv-illus">illustration</p></div>
 <p>Complete multi-plan comparison example:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>oGraph = new stzGraph(&quot;multi_strategy&quot;)
+<div class="nblock"><div class="lbl">Haro</div><pre>oGraph = new stzGraph("multi_strategy")
 oGraph {
-    AddNode(&quot;warehouse&quot;)
-    AddNode(&quot;route_highway&quot;)
-    AddNode(&quot;route_backroad&quot;)
-    AddNode(&quot;route_express&quot;)
-    AddNode(&quot;destination&quot;)
+    AddNode("warehouse")
+    AddNode("route_highway")
+    AddNode("route_backroad")
+    AddNode("route_express")
+    AddNode("destination")
     
-    AddEdgeXTT(&quot;warehouse&quot;, &quot;route_highway&quot;, &quot;path&quot;, [
+    AddEdgeXTT("warehouse", "route_highway", "path", [
         :time = 10, :cost = 50, :distance = 20
     ])
-    AddEdgeXTT(&quot;route_highway&quot;, &quot;destination&quot;, &quot;path&quot;, [
+    AddEdgeXTT("route_highway", "destination", "path", [
         :time = 8, :cost = 40, :distance = 15
     ])
     
-    AddEdgeXTT(&quot;warehouse&quot;, &quot;route_backroad&quot;, &quot;path&quot;, [
+    AddEdgeXTT("warehouse", "route_backroad", "path", [
         :time = 25, :cost = 15, :distance = 30
     ])
-    AddEdgeXTT(&quot;route_backroad&quot;, &quot;destination&quot;, &quot;path&quot;, [
+    AddEdgeXTT("route_backroad", "destination", "path", [
         :time = 20, :cost = 10, :distance = 25
     ])
     
-    AddEdgeXTT(&quot;warehouse&quot;, &quot;route_express&quot;, &quot;path&quot;, [
+    AddEdgeXTT("warehouse", "route_express", "path", [
         :time = 5, :cost = 80, :distance = 18
     ])
-    AddEdgeXTT(&quot;route_express&quot;, &quot;destination&quot;, &quot;path&quot;, [
+    AddEdgeXTT("route_express", "destination", "path", [
         :time = 4, :cost = 60, :distance = 12
     ])
 }
 
 oPlanner = new stzGraphPlanner(oGraph)
 oPlanner {
-    AddPlan(&quot;ultra_fast&quot;)
-    Walk(:From = &quot;warehouse&quot;, :To = &quot;destination&quot;)
+    AddPlan("ultra_fast")
+    Walk(:From = "warehouse", :To = "destination")
     Using(:fastest)
     Execute()
     
-    AddPlan(&quot;budget&quot;)
-    Walk(:From = &quot;warehouse&quot;, :To = &quot;destination&quot;)
+    AddPlan("budget")
+    Walk(:From = "warehouse", :To = "destination")
     Using(:cheapest)
     Execute()
     
-    AddPlan(&quot;short_distance&quot;)
-    Walk(:From = &quot;warehouse&quot;, :To = &quot;destination&quot;)
+    AddPlan("short_distance")
+    Walk(:From = "warehouse", :To = "destination")
     Using(:shortest)
     Execute()
     
-    AddPlan(&quot;balanced&quot;)
-    Walk(:From = &quot;warehouse&quot;, :To = &quot;destination&quot;)
+    AddPlan("balanced")
+    Walk(:From = "warehouse", :To = "destination")
     Using(:balanced)
     Execute()
     
-    oMulti = CompareManyQ([&quot;ultra_fast&quot;, &quot;budget&quot;, &quot;short_distance&quot;, &quot;balanced&quot;])
+    oMulti = CompareManyQ([
+        "ultra_fast",
+        "budget",
+        "short_distance",
+        "balanced"
+    ])
     
     ? @@NL( oMulti.CompareAll() )
     #--&gt; [
-    #      [ &quot;total_plans&quot;, 4 ],
-    #      [ &quot;plans&quot;, [
-    #        [ [ &quot;plan&quot;, &quot;ultra_fast&quot; ], [ &quot;cost&quot;, 15.30 ], [ &quot;steps&quot;, 3 ],
-    #          [ &quot;route&quot;, [ &quot;warehouse&quot;, &quot;route_express&quot;, &quot;destination&quot; ] ] ],
-    #        [ [ &quot;plan&quot;, &quot;budget&quot; ], [ &quot;cost&quot;, 31 ], [ &quot;steps&quot;, 3 ],
-    #          [ &quot;route&quot;, [ &quot;warehouse&quot;, &quot;route_backroad&quot;, &quot;destination&quot; ] ] ],
-    #        [ [ &quot;plan&quot;, &quot;short_distance&quot; ], [ &quot;cost&quot;, 30 ], [ &quot;steps&quot;, 3 ],
-    #          [ &quot;route&quot;, [ &quot;warehouse&quot;, &quot;route_express&quot;, &quot;destination&quot; ] ] ],
-    #        [ [ &quot;plan&quot;, &quot;balanced&quot; ], [ &quot;cost&quot;, 42 ], [ &quot;steps&quot;, 3 ],
-    #          [ &quot;route&quot;, [ &quot;warehouse&quot;, &quot;route_backroad&quot;, &quot;destination&quot; ] ] ]
+    #      [ "total_plans", 4 ],
+    #      [ "plans", [
+    #        [ [ "plan", "ultra_fast" ], [ "cost", 15.30 ], [ "steps", 3 ],
+    #          [ "route", [ "warehouse", "route_express", "destination" ] ] ],
+    #        [ [ "plan", "budget" ], [ "cost", 31 ], [ "steps", 3 ],
+    #          [ "route", [ "warehouse", "route_backroad", "destination" ] ] ],
+    #        [ [ "plan", "short_distance" ], [ "cost", 30 ], [ "steps", 3 ],
+    #          [ "route", [ "warehouse", "route_express", "destination" ] ] ],
+    #        [ [ "plan", "balanced" ], [ "cost", 42 ], [ "steps", 3 ],
+    #          [ "route", [ "warehouse", "route_backroad", "destination" ] ] ]
     #      ]],
-    #      [ &quot;best_by_cost&quot;, &quot;ultra_fast&quot; ],
-    #      [ &quot;best_by_steps&quot;, &quot;ultra_fast&quot; ]
+    #      [ "best_by_cost", "ultra_fast" ],
+    #      [ "best_by_steps", "ultra_fast" ]
     #    ]
     
-    ? @@NL( oMulti.RankBy(&quot;cost&quot;) )
+    ? @@NL( oMulti.RankBy("cost") )
     #--&gt; [
-    #      [ &quot;ultra_fast&quot;, 15.30 ],
-    #      [ &quot;short_distance&quot;, 30 ],
-    #      [ &quot;budget&quot;, 31 ],
-    #      [ &quot;balanced&quot;, 42 ]
+    #      [ "ultra_fast", 15.30 ],
+    #      [ "short_distance", 30 ],
+    #      [ "budget", 31 ],
+    #      [ "balanced", 42 ]
     #    ]
     
     oMulti.ShowRankingTable()
     #--&gt; Displays formatted table
     
-    ? oMulti.BestBy(&quot;cost&quot;)
+    ? oMulti.BestBy("cost")
     #--&gt; ultra_fast
     
-    ? oMulti.WorstBy(&quot;cost&quot;)
+    ? oMulti.WorstBy("cost")
     #--&gt; balanced
 }</pre><p class="ran nv-illus">illustration</p></div>
 <p><strong>Pattern</strong>: When you have many options, ranking tables and quick queries help identify the right strategy for your context.</p>

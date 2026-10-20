@@ -539,16 +539,19 @@ Those already carry the shared report's shape, so joining them to the project-wi
 CI gate is one line:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oShop2.SetPhaseQ(:production)
 
-oPosture = new stzSecurityPosture(&quot;shop&quot;)
+oPosture = new stzSecurityPosture("shop")
 oPosture.SetServices(oShop2)
 
-oRep = new stzRuleReport(&quot;ci&quot;)
+oRep = new stzRuleReport("ci")
 oRep.Ingest(aFindings)                              # the graph rules
-oRep.IngestLegacy(oShop2.Findings(), &quot;services&quot;)    # the registry
-oRep.IngestLegacy(oPosture.Findings(), &quot;security&quot;)  # the security posture
+oRep.IngestLegacy(oShop2.Findings(), "services")    # the registry
+oRep.IngestLegacy(oPosture.Findings(), "security")  # the security posture
 
 ? oRep.NumberOfFindings()            # --&gt; 7
-? @@(oRep.Subjects())                # --&gt; [ &quot;services&quot;, &quot;security&quot; ]
+? @@(oRep.Subjects())                # --&gt; [
+    "services",
+    "security"
+]
 ? len(oRep.Errors())                 # --&gt; 6
 ? len(oRep.Warnings())               # --&gt; 1
 ? oRep.IsSound()                     # --&gt; 0</pre><p class="ran nv-illus">illustration</p></div>

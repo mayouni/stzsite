@@ -43,14 +43,18 @@
   <div class="wrap page-body">
     
     <h2>Exemples de base <span class="mono">(2)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre># five digits
-? (new stzNumber(12590)).ApplyFormatXT([ :ThousandsSeparator = &quot;.&quot; ])
+? (new stzNumber(12590)).ApplyFormatXT([ :ThousandsSeparator = "." ])
 # seven digits
-? (new stzNumber(1234567)).ApplyFormatXT([ :ThousandsSeparator = &quot;,&quot; ])
+? (new stzNumber(1234567)).ApplyFormatXT([ :ThousandsSeparator = "," ])
 # ten digits
-? (new stzNumber(1234567890)).ApplyFormatXT([ :ThousandsSeparator = &quot; &quot; ])
+? (new stzNumber(1234567890)).ApplyFormatXT([ :ThousandsSeparator = " " ])
 # a number below a thousand needs no separator
-? (new stzNumber(590)).ApplyFormatXT([ :ThousandsSeparator = &quot;,&quot; ])
-cW = (new stzNumber(12590)).ApplyFormatXT([ :Width = 15, :AlignTo = :Center, :ThousandsSeparator = &quot;.&quot; ])
+? (new stzNumber(590)).ApplyFormatXT([ :ThousandsSeparator = "," ])
+cW = (new stzNumber(12590)).ApplyFormatXT([
+    :Width = 15,
+    :AlignTo = :Center,
+    :ThousandsSeparator = "."
+])
 # asking for width 15 does not pad (yet)
 ? len(cW)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>+12.590
 +1,234,567

@@ -57,9 +57,16 @@ oM.SolveWith(:auto)
 ? @@( oM.Solution() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>optimal
 130
 [ [ &quot;x&quot;, 30 ], [ &quot;y&quot;, 20 ] ]</pre></div></div><p class="ran">exécuté le 2026-10-02 04:25 dans la bibliothèque au commit 0e72e2e2c ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/math/chapters/12-an-optimisation-model.en.md" target="_blank" rel="noopener noreferrer">12-an-optimisation-model.en.md<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><h2>Portée <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>oN = new stzOptimModel()
-oN.Vars([ :chairs = [ 0, :integer ], :tables = [ 0, :integer ] ])
-oN.Maximize(&quot;30*chairs + 45*tables&quot;)
-oN.SubjectTo([ &quot;2*chairs + 5*tables &lt;= 250&quot;, &quot;chairs &lt;= 60&quot;, &quot;tables &lt;= 60&quot; ])
+oN.Vars([
+    :chairs = [ 0, :integer ],
+    :tables = [ 0, :integer ]
+])
+oN.Maximize("30*chairs + 45*tables")
+oN.SubjectTo([
+    "2*chairs + 5*tables &lt;= 250",
+    "chairs &lt;= 60",
+    "tables &lt;= 60"
+])
 oN.Solve()
 ? @@( oN.Solution() )
 ? oN.Objective()

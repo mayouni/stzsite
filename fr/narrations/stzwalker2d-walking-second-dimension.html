@@ -358,9 +358,18 @@ Wks2D([w1, w2]) {
 }</pre><p class="ran nv-illus">illustration</p></div>
 <h3 id="working-with-different-step-patterns">Working with Different Step Patterns</h3>
 <div class="nblock"><div class="lbl">Haro</div><pre>// Create walkers with different step patterns
-w1 = new stzWalker2D([1, 1], [3, 3], 1)        // Constant step of 1
-w2 = new stzWalker2D([1, 1], [5, 5], 2)        // Constant step of 2
-w3 = new stzWalker2D([1, 1], [4, 4], [1, 2, 1])  // Variable step pattern
+w1 = new stzWalker2D([
+    1,
+    1
+], [3, 3], 1)        // Constant step of 1
+w2 = new stzWalker2D([
+    1,
+    1
+], [5, 5], 2)        // Constant step of 2
+w3 = new stzWalker2D([
+    1,
+    1
+], [4, 4], [1, 2, 1])  // Variable step pattern
 
 walkers = Wks2D([w1, w2, w3])
 

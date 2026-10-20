@@ -52,10 +52,13 @@ every output block is its actual output.</p>
 <h3 id="a-log-you-can-query-while-the-program-is-still-running">A log you can query while the program is still running</h3>
 <hr />
 <h2 id="a-log-is-a-stream-of-leveled-entries">A log is a stream of leveled entries</h2>
-<div class="nblock"><div class="lbl">Haro</div><pre>oLog = new stzLog(&quot;deploy&quot;)
-oLog.Info(&quot;build started&quot;)
-oLog.Warn(&quot;low disk&quot;)
-oLog.Record(:error, &quot;compile failed&quot;, [ [ :part, &quot;api&quot; ], [ :code, 2 ] ])
+<div class="nblock"><div class="lbl">Haro</div><pre>oLog = new stzLog("deploy")
+oLog.Info("build started")
+oLog.Warn("low disk")
+oLog.Record(:error, "compile failed", [
+    [ :part, "api" ],
+    [ :code, 2 ]
+])
 
 ? oLog.AsText()</pre><p class="ran nv-illus">illustration</p></div>
 <div class="out"><div class="lbl">Sortie promise</div><pre>1784766158766 INFO deploy: build started

@@ -30,6 +30,7 @@ import build_proof
 import external
 import build_search
 from haro import SHOWN, shown_code, shown_names
+import fit
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
@@ -1384,6 +1385,8 @@ def main():
         print("reading arc (Rule 123), paragraphs past 800 characters:")
         for l in LONG: print("  ", l)
     print(f"haro names: {shown_names(ROOT)} forced trailing underscores removed from shown method names")
+    nb, nl = fit.fit_site(ROOT)
+    print(f"code laid out to fit its box: {nb} blocks, {nl} lines added, never wrapped and never scrolled")
     print("contrast:")
     if not check_contrast():
         print("CONTRAST BELOW TARGET"); sys.exit(1)

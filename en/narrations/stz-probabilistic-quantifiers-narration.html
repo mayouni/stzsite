@@ -110,16 +110,32 @@ Average = 10
 - <code>NothingInQQX()</code> checks whether <strong>none</strong> of the elements in the list satisfy a condition.
 - <code>EverythingInQQX()</code> checks whether <strong>all</strong> of them do.</p>
 <p>Here’s an example of how it works:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>? NothingInQQX([ &quot;aee@net&quot;, &quot;@com.com&quot;, &quot;--?mail@org&quot; ]).MatchesX(rxp(:eMail))
+<div class="nblock"><div class="lbl">Haro</div><pre>? NothingInQQX([
+    "aee@net",
+    "@com.com",
+    "--?mail@org"
+]).MatchesX(rxp(:eMail))
 #--&gt; TRUE  # No element in the list matches the email pattern.
 
-? NothingInQQX([ &quot;aee@net&quot;, &quot;@com.com&quot;, &quot;--?mail@org&quot;, &quot;info@mail.com&quot; ]).MatchesX(rxp(:eMail))
+? NothingInQQX([
+    "aee@net",
+    "@com.com",
+    "--?mail@org",
+    "info@mail.com"
+]).MatchesX(rxp(:eMail))
 #--&gt; FALSE # At least one element matches the email pattern.
 
-? EverythingInQQX([ &quot;hello@mail.com&quot;, &quot;info@mail.org&quot; ]).MatchesX(rxp(:eMail))
+? EverythingInQQX([
+    "hello@mail.com",
+    "info@mail.org"
+]).MatchesX(rxp(:eMail))
 #--&gt; TRUE  # All elements match the email pattern.
 
-? EverythingInQQX([ &quot;hello@mail.com&quot;, &quot;info@mail.org&quot;, &quot;~;@com&quot; ]).MatchesX(rxp(:eMail))
+? EverythingInQQX([
+    "hello@mail.com",
+    "info@mail.org",
+    "~;@com"
+]).MatchesX(rxp(:eMail))
 #--&gt; FALSE # Not all elements match the email pattern.</pre><p class="ran nv-illus">illustration</p></div>
 <p>This approach combines intuitive expression with precise logic, allowing for clear and concise condition validation.</p>
 <blockquote>

@@ -57,12 +57,15 @@ assertions). Performance system P8 --
 <code>doc/design/SOFTANZA_PERF_SYSTEM.md</code>.</p>
 </blockquote>
 <h2 id="the-gap-the-comparison-named">The gap the comparison named</h2>
-<div class="nblock"><div class="lbl">Haro</div><pre>oF = StzMetricFamily(&quot;checkout.ms&quot;, :Timer, [ &quot;route&quot;, &quot;method&quot; ])
-oF.Child([ &quot;/menu&quot;, &quot;GET&quot; ]).Record(12)
-oF.Child([ &quot;/menu&quot;, &quot;GET&quot; ]).Record(18)
-oF.Child([ &quot;/pay&quot;, &quot;POST&quot; ]).Record(220)
-? oF.Child([ &quot;/menu&quot;, &quot;GET&quot; ]).ExactPercentile(95)
-? oF.Child([ &quot;/pay&quot;, &quot;POST&quot; ]).ExactPercentile(95)</pre><p class="ran nv-illus">illustration</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>oF = StzMetricFamily("checkout.ms", :Timer, [
+    "route",
+    "method"
+])
+oF.Child([ "/menu", "GET" ]).Record(12)
+oF.Child([ "/menu", "GET" ]).Record(18)
+oF.Child([ "/pay", "POST" ]).Record(220)
+? oF.Child([ "/menu", "GET" ]).ExactPercentile(95)
+? oF.Child([ "/pay", "POST" ]).ExactPercentile(95)</pre><p class="ran nv-illus">illustration</p></div>
 <div class="out"><div class="lbl">Sortie promise</div><pre>children     : 3 (incl. the reserved overflow)
 /menu p95    : 18 ms
 /pay  p95    : 220 ms</pre></div>
@@ -76,8 +79,14 @@ monitor -- and a Haro-side child registry would fork per copy: the
 server's face would know routes the user's face never sees. So the
 child registry is an ENGINE store, like every other perf truth:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oF2 = oF                                  # a Haro copy
-oF2.Child([ &quot;/refund&quot;, &quot;POST&quot; ]).Record(77)   # a child born through the COPY
-? oF.Child([ &quot;/refund&quot;, &quot;POST&quot; ]).Count()     # read through the ORIGINAL</pre><p class="ran nv-illus">illustration</p></div>
+oF2.Child([
+    "/refund",
+    "POST"
+]).Record(77)   # a child born through the COPY
+? oF.Child([
+    "/refund",
+    "POST"
+]).Count()     # read through the ORIGINAL</pre><p class="ran nv-illus">illustration</p></div>
 <div class="out"><div class="lbl">Sortie promise</div><pre>born through the copy, seen by the original: 1 sample(s)</pre></div>
 <p>Each face keeps only a small reconstruction cache of child wrapper
 objects -- derived state, rebuilt on miss, never the truth.</p>

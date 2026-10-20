@@ -73,16 +73,20 @@
 <h3 id="data-analysis-with-pandas">Data Analysis with Pandas</h3>
 <p>Consider a scenario where a Haro application needs to process sales data. With <code>py()</code>, it’s straightforward:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>py() {
-@(&#x27;import pandas as pd
+@('import pandas as pd
 import numpy as np
 
 res = {
-    &quot;sales_data&quot;: {
-        &quot;total_revenue&quot;: sum([a*b for a,b in zip([100, 150, 200, 120], [10.5, 8.75, 12.25, 15.00])]),
-        &quot;average_price&quot;: np.mean([10.5, 8.75, 12.25, 15.00]),
-        &quot;best_seller&quot;: &quot;C&quot;
+    "sales_data": {
+        "total_revenue": sum([
+            a*b for a,
+            b in zip([100, 150, 200, 120],
+            [10.5, 8.75, 12.25, 15.00])
+        ]),
+        "average_price": np.mean([10.5, 8.75, 12.25, 15.00]),
+        "best_seller": "C"
     }
-}&#x27;)
+}')
 
 Execute()
 ? @@(Result())
@@ -124,14 +128,20 @@ Execute()
 }</pre><p class="ran nv-illus">illustration</p></div>
 <p>Result:</p>
 <pre>[
-    [ &quot;text_analysis&quot;,
+    [ "text_analysis",
         [
-            [ &quot;word_count&quot;, 30 ],
-            [ &quot;char_count&quot;, 195 ],
-            [ &quot;word_frequency&quot;,
-                [ [ &quot;haro&quot;, 3 ], [ &quot;python&quot;, 2 ], [ &quot;and&quot;, 2 ], [ &quot;is&quot;, 1 ], ... ]
+            [ "word_count", 30 ],
+            [ "char_count", 195 ],
+            [ "word_frequency",
+                [
+                    [ "haro", 3 ],
+                    [ "python", 2 ],
+                    [ "and", 2 ],
+                    [ "is", 1 ],
+                    ...
+                ]
             ],
-            [ &quot;sentences&quot;, 3 ]
+            [ "sentences", 3 ]
         ]
     ]
 ]</pre>
@@ -159,9 +169,33 @@ Execute()
 }</pre><p class="ran nv-illus">illustration</p></div>
 <p>Result:</p>
 <pre>[
-    [ &quot;accuracy&quot;, 0.90 ],
-    [ &quot;feature_importance&quot;, [ 0.03, 0.09, 0.33, 0.55 ] ],
-    [ &quot;predictions&quot;, [ 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0 ] ]
+    [ "accuracy", 0.90 ],
+    [ "feature_importance", [ 0.03, 0.09, 0.33, 0.55 ] ],
+    [
+        "predictions",
+        [
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+        ]
+    ]
 ]</pre>
 <h2 id="a-glimpse-into-py-in-haro-notepad">A Glimpse into <code>py()</code> in Haro NotePad</h2>
 <p>Here’s a live example from my Haro NotePad session, showcasing one of the cases discussed earlier:</p>

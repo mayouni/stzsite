@@ -70,12 +70,25 @@ o1.Maximize(&quot;3*x + 2*y&quot;)
 o1.addBinaryVariable(&quot;z&quot;)
 ? @@( o1.variableNames() )
 #--&gt; [ &quot;x&quot;, &quot;y&quot;, &quot;z&quot; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="variables" data-k="variables  variables management"><div class="ln mono">variables</div><div class="lt">variables management<details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzLinearSolver()
-o1.AddIntegerVariable(&quot;x&quot;, 0, 100)
-o1.AddIntegerVariable(&quot;y&quot;, 0, 100)
-o1.AddConstraint(&quot;2*x + y&quot;, &quot;&lt;=&quot;, 100)
-o1.Maximize(&quot;3*x + 2*y&quot;)
+o1.AddIntegerVariable("x", 0, 100)
+o1.AddIntegerVariable("y", 0, 100)
+o1.AddConstraint("2*x + y", "&lt;=", 100)
+o1.Maximize("3*x + 2*y")
 ? @@( o1.variables() )
-#--&gt; [ [ [ &quot;name&quot;, &quot;x&quot; ], [ &quot;lowerbound&quot;, 0 ], [ &quot;upperbound&quot;, 100 ], [ &quot;type&quot;, &quot;integer&quot; ] ], [ [ &quot;name&quot;, &quot;y&quot; ], [ &quot;lowerbound&quot;, 0 ], [ &quot;upperbound&quot;, 100 ], [ &quot;type&quot;, &quot;integer&quot; ] ] ]</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="variablenames" data-k="variablenames  variables management"><div class="ln mono">variableNames</div><div class="lt">variables management<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="addconstraint" data-k="addconstraint  constraints management"><div class="ln mono">addConstraint</div><div class="lt">constraints management<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="constraints" data-k="constraints  constraints management"><div class="ln mono">constraints</div><div class="lt">constraints management<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="maximize" data-k="maximize  objective function"><div class="ln mono">maximize</div><div class="lt">objective function<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="minimize" data-k="minimize  objective function"><div class="ln mono">minimize</div><div class="lt">objective function<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="objective" data-k="objective  objective function"><div class="ln mono">objective</div><div class="lt">objective function<details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzLinearSolver()
+#--&gt; [
+#--&gt;     [
+#--&gt;         [ "name", "x" ],
+#--&gt;         [ "lowerbound", 0 ],
+#--&gt;         [ "upperbound", 100 ],
+#--&gt;         [ "type", "integer" ]
+#--&gt;     ],
+#--&gt;     [
+#--&gt;         [ "name", "y" ],
+#--&gt;         [ "lowerbound", 0 ],
+#--&gt;         [ "upperbound", 100 ],
+#--&gt;         [ "type", "integer" ]
+#--&gt;     ]
+#--&gt; ]</pre><span class="rx-src">composed from the signature, run for this page</span></details><span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="variablenames" data-k="variablenames  variables management"><div class="ln mono">variableNames</div><div class="lt">variables management<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="addconstraint" data-k="addconstraint  constraints management"><div class="ln mono">addConstraint</div><div class="lt">constraints management<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="constraints" data-k="constraints  constraints management"><div class="ln mono">constraints</div><div class="lt">constraints management<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="maximize" data-k="maximize  objective function"><div class="ln mono">maximize</div><div class="lt">objective function<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="minimize" data-k="minimize  objective function"><div class="ln mono">minimize</div><div class="lt">objective function<span class="ext-line"><span class="exts none">no extension</span></span></div></div><div class="lane lane2 rrow" id="objective" data-k="objective  objective function"><div class="ln mono">objective</div><div class="lt">objective function<details class="rxd"><summary>composed example</summary><pre class="rx">o1 = new stzLinearSolver()
 o1.AddIntegerVariable(&quot;x&quot;, 0, 100)
 o1.AddIntegerVariable(&quot;y&quot;, 0, 100)
 o1.AddConstraint(&quot;2*x + y&quot;, &quot;&lt;=&quot;, 100)

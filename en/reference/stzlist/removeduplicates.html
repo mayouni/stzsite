@@ -57,7 +57,17 @@ o1.RemoveDuplicates()
 3
 [ 3, 4, 6 ]
 [ [ 5, [ 3, 4 ] ], [ 7, [ 6 ] ] ]
-[ 5, 7, 4 ]</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/243_containsduplicates.ring" target="_blank" rel="noopener noreferrer">243_containsduplicates.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([ &quot;_&quot;, &quot;ONE&quot;, &quot;_&quot;, &quot;_&quot;, &quot;TWO&quot;, &quot;_&quot;, &quot;THREE&quot;, &quot;*&quot;, &quot;*&quot; ])
+[ 5, 7, 4 ]</pre></div></div><p class="ran">run on 2026-10-02 04:22 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/list/243_containsduplicates.ring" target="_blank" rel="noopener noreferrer">243_containsduplicates.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><div class="run"><div><div class="lbl">Softanza</div><pre>o1 = new stzList([
+    "_",
+    "ONE",
+    "_",
+    "_",
+    "TWO",
+    "_",
+    "THREE",
+    "*",
+    "*"
+])
 ? o1.ContainsDuplicates()
 ? @@( o1.FindDuplicates() )
 ? @@( o1.Duplicates() )

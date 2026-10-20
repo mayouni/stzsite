@@ -42,8 +42,14 @@
   </div></section>
   <div class="wrap page-body">
     
-    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>aNames = [ [ &quot;1-24&quot;, &quot;25-74&quot;, &quot;75-199&quot;, &quot;200++&quot;, &quot;NA&quot; ], [ &quot;1973&quot;, &quot;1974&quot;, &quot;1975&quot; ] ]
-oRes = StzMathFigureQ(:ResidualPlot, [ :of = aDeaths, :names = aNames ])
+    <h2>Basic examples <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>aNames = [
+    [ "1-24", "25-74", "75-199", "200++", "NA" ],
+    [ "1973", "1974", "1975" ]
+]
+oRes = StzMathFigureQ(:ResidualPlot, [
+    :of = aDeaths,
+    :names = aNames
+])
 ? oRes.Why()
 ? len( oRes.Violations() )</pre></div><div class="out"><div class="lbl">Output</div><pre>a residual-versus-fit of 5 x 3 cells: common 8, residual fourth-spread 1, 4 beyond the outside fences, 2 far out, 3 ringed on another cell&#x27;s spot; nothing to lay out -- no rule minted an unknown
 0</pre></div></div><p class="ran">run on 2026-10-02 04:25 inside the library at commit 0e72e2e2c; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/math/chapters/13-tukeys-first-look.en.md" target="_blank" rel="noopener noreferrer">13-tukeys-first-look.en.md<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>

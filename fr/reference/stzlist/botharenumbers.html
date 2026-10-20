@@ -43,7 +43,10 @@
   <div class="wrap page-body">
     
     <h2>Exemples de base <span class="mono">(1)</span></h2><div class="run"><div><div class="lbl">Softanza</div><pre>? BothAreNumbers(5, -12)
-? Q([ 5, -12 ]).BothAreNumbers() # Q() elevates the list to a stzList object
+? Q([
+    5,
+    -12
+]).BothAreNumbers() # Q() elevates the list to a stzList object
 Q([ 5, -12 ]) {
 	? BothAreNumbers()	# the 0-arg method -- works
 }

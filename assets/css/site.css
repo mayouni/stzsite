@@ -171,7 +171,7 @@ code,pre,kbd{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
 .way span{display:block;font-family:"IBM Plex Mono",monospace;font-size:var(--label);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
 
 /* code: never sideways (Rules 14, 114); code above its output, one axis (Rule 8) */
-pre{margin:16px 0 0;font-size:var(--code);line-height:1.6;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:16px 18px;white-space:pre;overflow-wrap:normal;overflow-x:auto;overflow-y:visible;max-width:920px}
+pre{margin:16px 0 0;font-size:var(--code);line-height:1.6;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:16px 18px;white-space:pre-wrap;overflow-wrap:anywhere;overflow:visible;max-width:920px}
 .run{margin-top:24px;max-width:920px}
 .run>div+div{margin-top:8px}
 .run .lbl{font-family:"IBM Plex Mono",monospace;font-size:var(--label);font-weight:600;letter-spacing:.06em;color:var(--ink-2)}
@@ -609,7 +609,7 @@ pre.rx{margin:10px 0 0;max-width:none}
 /* the discipline: its seven steps and fourteen rules, each with its sample on its own line; the way callout points at the page */
 .way span a{color:inherit;text-decoration:underline}
 ol.rules li,ol.steps li{margin:14px 0;max-width:var(--measure)}
-ol.rules code,ol.steps code{display:block;margin-top:6px;overflow-x:auto}
+ol.rules code,ol.steps code{display:block;margin-top:6px;white-space:pre-wrap;overflow-wrap:anywhere}
 
 /* the home: one call to action, two doors; the audience rows are links */
 .hero-panel .cta{margin:18px 0 6px}

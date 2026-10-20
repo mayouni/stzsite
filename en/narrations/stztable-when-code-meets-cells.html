@@ -156,38 +156,42 @@ o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
 ╰─────────┴───────┴───────╯</pre>
 <p>The <code>ToJson()</code> method generates a compact JSON string, preserving column names and data. For a formatted output with newlines and indentation, use <code>ToJsonXT()</code>. The <code>IsJson()</code> function, available via <code>stzString</code> (e.g., <code>Q(cJson).IsJson()</code>), validates JSON input before import. These methods facilitate working with APIs or JSON files, streamlining data integration into <code>stzTable</code> for further analysis.</p>
 <pre>aData = [
-	[ &quot;product&quot;, [ &quot;Apple&quot;, &quot;Orange&quot;, &quot;Banana&quot; ] ],
-	[ &quot;price&quot;,   [ &quot;$1.50&quot;, &quot;$1.20&quot;, &quot;$0.80&quot; ] ],
-	[ &quot;stock&quot;,   [ &quot;100&quot;, &quot;150&quot;, &quot;200&quot; ] ]
+	[ "product", [ "Apple", "Orange", "Banana" ] ],
+	[ "price",   [ "$1.50", "$1.20", "$0.80" ] ],
+	[ "stock",   [ "100", "150", "200" ] ]
 ]
 
 o1 = new stzTable(aData)
 
 ? o1.ToJson()
-#--&gt; {&quot;product&quot;:[&quot;Apple&quot;,&quot;Orange&quot;,&quot;Banana&quot;],&quot;price&quot;:[&quot;$1.50&quot;,&quot;$1.20&quot;,&quot;$0.80&quot;],&quot;stock&quot;:[&quot;100&quot;,&quot;150&quot;,&quot;200&quot;]}
+#--&gt; {"product":[
+#--&gt;     "Apple",
+#--&gt;     "Orange",
+#--&gt;     "Banana"
+#--&gt; ],"price":["$1.50","$1.20","$0.80"],"stock":["100","150","200"]}
 
 
 
 ? o1.ToJsonXT()
-&#x27;
+'
 {
-	&quot;product&quot;: [
-		&quot;Apple&quot;,
-		&quot;Orange&quot;,
-		&quot;Banana&quot;
+	"product": [
+		"Apple",
+		"Orange",
+		"Banana"
 	],
-	&quot;price&quot;: [
-		&quot;$1.50&quot;,
-		&quot;$1.20&quot;,
-		&quot;$0.80&quot;
+	"price": [
+		"$1.50",
+		"$1.20",
+		"$0.80"
 	],
-	&quot;stock&quot;: [
-		&quot;100&quot;,
-		&quot;150&quot;,
-		&quot;200&quot;
+	"stock": [
+		"100",
+		"150",
+		"200"
 	]
 }
-&#x27;</pre>
+'</pre>
 <h3 id="importing-and-exporting-html-tables">Importing and exporting HTML Tables</h3>
 <p>The <code>stzTable</code> class supports importing HTML tables, enabling integration of web-based data into Haro applications. Using <code>stzString</code>, you can verify HTML table markup and convert it into an <code>stzTable</code> object with the <code>FromHtml()</code> method, which extracts column headers from <code>&lt;thead&gt;</code> and data from <code>&lt;tbody&gt;</code>.</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>cHtmlStr = &#x27;
@@ -310,10 +314,10 @@ o1 = new stzTable(aData)
 <div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzTable([
 	[ :ID,	 :EMPLOYEE,    	:SALARY	],
 	#-------------------------------#
-	[ 10,	 &quot;Ali&quot;,		35000	],
-	[ 20,	 &quot;Dania&quot;,	28900	],
-	[ 30,	 &quot;Han&quot;,		25982	],
-	[ 40,	 &quot;Ali&quot;,		12870	]
+	[ 10,	 "Ali",		35000	],
+	[ 20,	 "Dania",	28900	],
+	[ 30,	 "Han",		25982	],
+	[ 40,	 "Ali",		12870	]
 ])
 
 # Getting basic information
@@ -325,17 +329,17 @@ o1 = new stzTable(aData)
 #--&gt; 4
 
 ? o1.Columns()
-#--&gt; :[ &quot;id&quot;, &quot;employee&quot;, &quot;salary&quot; ]
+#--&gt; :[ "id", "employee", "salary" ]
 
 ? o1.Rows()             
-#--&gt; &#x27;
+#--&gt; '
 [
-	[ 10,	 &quot;Ali&quot;,		35000	],
-	[ 20,	 &quot;Dania&quot;,	28900	],
-	[ 30,	 &quot;Han&quot;,		25982	],
-	[ 40,	 &quot;Ali&quot;,		12870	]
+	[ 10,	 "Ali",		35000	],
+	[ 20,	 "Dania",	28900	],
+	[ 30,	 "Han",		25982	],
+	[ 40,	 "Ali",		12870	]
 ]
-&#x27;
+'
 # Checking for specific columns
 
 ? o1.HasColumn(:EMPLOYEE)
@@ -349,7 +353,11 @@ o1 = new stzTable(aData)
 ? o1.FindColumnByName(:SALARY)   # Or simply FindCol(:SALARY)
 #--&gt; [ 3 ]
 
-? o1.FindRowByValue([ 30, &quot;Han&quot;, 25982 ]) # Or simply FindRow(...)
+? o1.FindRowByValue([
+    30,
+    "Han",
+    25982
+]) # Or simply FindRow(...)
 #--&gt; [ 3 ]</pre><p class="ran nv-illus">illustration</p></div>
 <h3 id="cell-access-and-navigation">Cell Access and Navigation</h3>
 <p><code>stzTable</code> provides powerful and flexible ways to access individual cells or groups of cells:</p>
@@ -357,7 +365,7 @@ o1 = new stzTable(aData)
 
 o1.Show()
 #--&gt;
-&#x27;
+'
  ╭────┬──────────┬────────╮
  │ Id │ Employee │ Salary │
  ├────┼──────────┼────────┤
@@ -366,19 +374,22 @@ o1.Show()
  │ 30 │ Han      │  25982 │
  │ 40 │ Ali      │  12870 │
  ╰────┴──────────┴────────╯
-&#x27;
+'
 # Accessing individual cells
 
 ? o1.Cell(:SALARY, 2)  // Gets the value in the SALARY column, row 2
 #--&gt; 28900
     
 ? o1.CellZ(:EMPLOYEE, 3)  // or CellAndPosition() ~&gt; Gets both value and position
-#--&gt; [ &quot;Han&quot;, [2, 3] ]
+#--&gt; [ "Han", [2, 3] ]
     
 # Getting a section or range of cells
 
-? o1.Section([:ID, 1], [:EMPLOYEE, 2])  # Gets a rectangular section of cells
-#--&gt; [ 10, &quot;Ali&quot;, 20, &quot;Dania&quot; ]
+? o1.Section([
+    :ID,
+    1
+], [:EMPLOYEE, 2])  # Gets a rectangular section of cells
+#--&gt; [ 10, "Ali", 20, "Dania" ]
     
 ? o1.Range(:SALARY, 1, 3)  # Gets a range of cells in a column
 #--&gt; [ 35000, 28900, 25982 ]
@@ -386,10 +397,10 @@ o1.Show()
 # Getting all cells in a column or row
 
 ? o1.Col(:EMPLOYEE)
-#--&gt; [ &quot;Ali&quot;, &quot;Dania&quot;, &quot;Han&quot;, &quot;Ali&quot; ]
+#--&gt; [ "Ali", "Dania", "Han", "Ali" ]
     
 ? o1.Row(2)
-#--&gt; [ 20, &quot;Dania&quot;, 28900 ]</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; [ 20, "Dania", 28900 ]</pre><p class="ran nv-illus">illustration</p></div>
 <blockquote>
 <p><strong>Note</strong>: In the example above, if you need to get the cells of the column <code>:EMPLOYEE</code> without duplication of the string <code>"Ali"</code>, then use the <code>U()</code> small function like this: <code>U( o1.Col(:EMPLOYEE) )</code> to get just <code>[ "Ali", "Dania", "Han" ]</code>.</p>
 </blockquote>
@@ -436,7 +447,7 @@ o1.Show()
 
 o1.Show()
 #--&gt;
-&#x27;
+'
  ╭────┬──────────┬────────╮
  │ Id │ Employee │ Salary │
  ├────┼──────────┼────────┤
@@ -445,38 +456,51 @@ o1.Show()
  │ 30 │ Han      │  25982 │
  │ 40 │ Ali      │  12870 │
  ╰────┴──────────┴────────╯
-&#x27;
+'
 # Finding cells by value
 
-? o1.Find(&quot;Ali&quot;)  	// Finds all positions where &quot;Ali&quot; appears
+? o1.Find("Ali")  	// Finds all positions where "Ali" appears
 #--&gt; [ [2, 1], [2, 4] ]
 
-? o1.FindMany([&quot;Ali&quot;, 35000])  // Finds multiple values
+? o1.FindMany(["Ali", 35000])  // Finds multiple values
 #--&gt; [ [2, 1], [3, 1], [2, 4 ] ]
 
-? o1.FindAllExcept([&quot;Ali&quot;, &quot;Dania&quot;])  // Finds all cells except specified values
-#--&gt; [ [1, 1], [ 3,1], [1, 2], [3, 2], [1, 3], [2, 3], [3, 3], [1, 4], [3, 4] ]
+? o1.FindAllExcept([
+    "Ali",
+    "Dania"
+])  // Finds all cells except specified values
+#--&gt; [
+#--&gt;     [1, 1],
+#--&gt;     [ 3,1],
+#--&gt;     [1, 2],
+#--&gt;     [3, 2],
+#--&gt;     [1, 3],
+#--&gt;     [2, 3],
+#--&gt;     [3, 3],
+#--&gt;     [1, 4],
+#--&gt;     [3, 4]
+#--&gt; ]
 
 # Finding by occurrence
 
-? o1.FindNth(&quot;Ali&quot;, 2)  // Finds the 2nd occurrence of &quot;Ali&quot;
+? o1.FindNth("Ali", 2)  // Finds the 2nd occurrence of "Ali"
 #--&gt; [ 2, 4 ]
 
 ? o1.FindFirst(35000)   // Finds the first occurrence of 35000
 #--&gt; [ 3, 1 ]
 
-? o1.FindLast(&quot;Dania&quot;)  // Finds the last occurrence of &quot;Dania&quot;, which is also the only and first!
+? o1.FindLast("Dania")  // Finds the last occurrence of "Dania", which is also the only and first!
 #--&gt; [ 2, 2 ]
 
 # Counting occurrences using thre alternatives
 
-? o1.NumberOfOccurrence(&quot;Ali&quot;)  // Counts occurrences of &quot;Ali&quot;
+? o1.NumberOfOccurrence("Ali")  // Counts occurrences of "Ali"
 #--&gt; 2
 
-? Count(&quot;Dania&quot;)
+? Count("Dania")
 #--&gt; 1
 
-? HowMany(&quot;Mansour&quot;)
+? HowMany("Mansour")
 #--&gt; 0</pre><p class="ran nv-illus">illustration</p></div>
 <h3 id="finding-subvalues-inside-cells">Finding Subvalues Inside Cells</h3>
 <p>A notable feature is the ability to search for partial matches within cells:</p>
@@ -657,32 +681,55 @@ o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
 <div class="nblock"><div class="lbl">Haro</div><pre># Replacing individual cells
 
 o1.ReplaceCell(:SALARY, 2, 30000)  // Replaces a single cell value
-o1.ReplaceCells([[:SALARY, 2], [:SALARY, 3]], 30000)  // Replaces multiple cells with the same value
-o1.ReplaceCellsXT([[:SALARY, 2], [:SALARY, 3]], [30000, 31000])  // Replaces multiple cells with different values
+o1.ReplaceCells([
+    [:SALARY, 2],
+    [:SALARY, 3]
+], 30000)  // Replaces multiple cells with the same value
+o1.ReplaceCellsXT([
+    [:SALARY, 2],
+    [:SALARY, 3]
+], [30000, 31000])  // Replaces multiple cells with different values
 
 # Replacing based on value
 
-o1.ReplaceCellValue(&quot;Ali&quot;, &quot;Alexander&quot;)  // Replaces all occurrences of &quot;Ali&quot; with &quot;Alexander&quot;
-o1.ReplaceNthCellValue(&quot;Ali&quot;, &quot;Alexander&quot;, 2)  // Replaces the 2nd occurrence of &quot;Ali&quot;
+o1.ReplaceCellValue("Ali", "Alexander")  // Replaces all occurrences of "Ali" with "Alexander"
+o1.ReplaceNthCellValue("Ali", "Alexander", 2)  // Replaces the 2nd occurrence of "Ali"
 
 # Replacing columns and rows
 
-o1.ReplaceColumn(:SALARY, [40000, 35000, 42000, 38000])  // Replaces an entire column
-o1.ReplaceRow(2, [20, &quot;Daniel&quot;, 32000])  // Replaces an entire row</pre><p class="ran nv-illus">illustration</p></div>
+o1.ReplaceColumn(:SALARY, [
+    40000,
+    35000,
+    42000,
+    38000
+])  // Replaces an entire column
+o1.ReplaceRow(2, [
+    20,
+    "Daniel",
+    32000
+])  // Replaces an entire row</pre><p class="ran nv-illus">illustration</p></div>
 <p>It's possible to replace subvalues by adding the <code>In</code> to any of the methods above. For example:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>o1.ReplaceInCol(:EMPLOYEE, &quot;a&quot;, &quot;A&quot;) // Replace all the lowercase &quot;a&quot;s in the EMPLOYEE column by an uppercase &quot;A&quot;</pre><p class="ran nv-illus">illustration</p></div>
 <h3 id="adding-and-removing-data">Adding and Removing Data</h3>
 <p><code>stzTable</code> makes it simple to modify your table structure by adding or removing elements:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Adding columns and rows
 
-o1.AddCol(:DEPARTMENT, [&quot;Sales&quot;, &quot;IT&quot;, &quot;HR&quot;, &quot;Marketing&quot;])  // Adds a new column
-o1.AddRow([50, &quot;NewGuy&quot;, 30000, &quot;Finance&quot;])  // Adds a new row
+o1.AddCol(:DEPARTMENT, [
+    "Sales",
+    "IT",
+    "HR",
+    "Marketing"
+])  // Adds a new column
+o1.AddRow([50, "NewGuy", 30000, "Finance"])  // Adds a new row
 
 # Removing columns and rows
 
 o1.RemoveCol(:SALARY)  // Removes the SALARY column
 o1.RemoveRow(3)  // Removes row 3
-o1.RemoveColsExcept([:ID, :EMPLOYEE])  // Keeps only specified columns
+o1.RemoveColsExcept([
+    :ID,
+    :EMPLOYEE
+])  // Keeps only specified columns
 o1.RemoveRowsExcept([1, 2])  // Keeps only specified rows</pre><p class="ran nv-illus">illustration</p></div>
 <h3 id="restructuring-your-table">Restructuring Your Table</h3>
 <p><code>stzTable</code> provides powerful methods for restructuring your table:</p>
@@ -752,18 +799,31 @@ o1.Show()
 <p><code>stzTable</code> goes beyond basic operations with advanced manipulation capabilities:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Inserting at specific positions
 
-o1.InsertColumn(:DEPARTMENT, [&quot;Sales&quot;, &quot;IT&quot;, &quot;HR&quot;, &quot;Marketing&quot;], :At = 2)  // Inserts a column at position 2
-o1.InsertRow([50, &quot;NewGuy&quot;, 30000, &quot;Finance&quot;], :At = 3)  // Inserts a row at position 3
+o1.InsertColumn(:DEPARTMENT, [
+    "Sales",
+    "IT",
+    "HR",
+    "Marketing"
+], :At = 2)  // Inserts a column at position 2
+o1.InsertRow([
+    50,
+    "NewGuy",
+    30000,
+    "Finance"
+], :At = 3)  // Inserts a row at position 3
 
 # Erasing (clearing) data without removing structure
 
 o1.EraseColumn(:NOTES)  // Clears all values in the NOTES column
 o1.EraseRow(4)  // Clears all values in row 4
-o1.EraseSection([:ID, 2], [:SALARY, 4])  // Clears a section of the table
+o1.EraseSection([
+    :ID,
+    2
+], [:SALARY, 4])  // Clears a section of the table
 
 # Filling with values
 
-o1.Fill(&quot;N/A&quot;)  // Fills the entire table with &quot;N/A&quot;</pre><p class="ran nv-illus">illustration</p></div>
+o1.Fill("N/A")  // Fills the entire table with "N/A"</pre><p class="ran nv-illus">illustration</p></div>
 <p>The distinction between <em>removing</em> (which changes the table structure) and <em>erasing</em> (which keeps the structure but clears values) highlights the thoughtful design of the API.</p>
 <h3 id="creating-subtables">Creating Subtables</h3>
 <p><code>stzTable</code> makes it easy to extract portions of your data as new tables:</p>
@@ -911,7 +971,7 @@ o1.AddCalculatedRow([
 <p><code>stzTable</code> implements many familiar <strong>spreadsheet functions</strong> for performing calculations on ranges of cells.</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>o1 = new stzTable([
 
-	[ &quot;A&quot;, &quot;B&quot;, &quot;C&quot; ],
+	[ "A", "B", "C" ],
 
 	[  12,  10,   8 ],
 	[  10,  14,  24 ],
@@ -919,7 +979,10 @@ o1.AddCalculatedRow([
 
 ])
 
-? o1.KOUNT([ :A, 1 ], [ :C, 3 ]) # We use &quot;K&quot; because we have an other Count() method alternative of len()
+? o1.KOUNT([
+    :A,
+    1
+], [ :C, 3 ]) # We use "K" because we have an other Count() method alternative of len()
 #--&gt; 9
 
 ? o1.SUM([ :A, 1 ], [ :C, 3 ])
@@ -1002,7 +1065,10 @@ o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
 <h3 id="multi-column-grouping-with-aggregations">Multi-Column Grouping with Aggregations</h3>
 <p>For more advanced analysis, you can group by multiple columns and simultaneously apply aggregation functions to numeric columns using the extended form <code>GroupByXT(aCols, aAggregations)</code>, as shown below:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Group by Product and Region with aggregations
-o1.GroupByXT([ :Product, :Region ], [ :Sales = &#x27;Sum&#x27;, :Units = &#x27;Average&#x27; ])
+o1.GroupByXT([
+    :Product,
+    :Region
+], [ :Sales = 'Sum', :Units = 'Average' ])
 o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
 <p>Output:</p>
 <pre>╭────────┬───────────┬────────┬───────────┬─────────┬───────┬───────╮
@@ -1020,7 +1086,11 @@ o1.Show()</pre><p class="ran nv-illus">illustration</p></div>
 <p>This creates a hierarchical grouping with the primary column (Product) and secondary column (Region), while calculating the sum of Sales and the average of Units for each group.</p>
 <h3 id="enhanced-visualization-with-row-numbers-and-subtotals">Enhanced Visualization with Row Numbers and Subtotals</h3>
 <p>The <code>ShowXT()</code> method with the <code>:SubTotal</code> and <code>:GrandTotal</code> parameters provides a more comprehensive view of your grouped data:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>o1.ShowXT([ :RowNumber = TRUE, :SubTotal = TRUE, :GrandTotal = TRUE ])</pre><p class="ran nv-illus">illustration</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>o1.ShowXT([
+    :RowNumber = TRUE,
+    :SubTotal = TRUE,
+    :GrandTotal = TRUE
+])</pre><p class="ran nv-illus">illustration</p></div>
 <p>Output:</p>
 <pre>╭─────────────────────┬────────┬────────────┬────────────╮
 │ # │     Product     │ Region │ Sum(sales) │ Sum(units) │
@@ -1053,12 +1123,30 @@ o1.ShowXT([ :RowNumber = TRUE ])</pre><p class="ran nv-illus">illustration</p></
 <div class="nblock"><div class="lbl">Haro</div><pre>╭───┬─────────────────┬───────────┬────────────────────────────────┬──────────────╮
 │ # │    Employee     │   Role    │              Task              │ Productivity │
 ├───┼─────────────────┼───────────┼────────────────────────────────┼──────────────┤
-│ 1 │ Sara            │ Developer │ [ &quot;Coding&quot;, &quot;Debugging&quot; ]      │         8.50 │
-│ 2 │ Mike            │ Manager   │ [ &quot;Planning&quot;, &quot;Review&quot; ]       │         7.20 │
-│ 3 │ Lena            │ Designer  │ [ &quot;UI&quot;, &quot;Prototyping&quot; ]        │            9 │
-│ 4 │ Omar            │ Developer │ [ &quot;Coding&quot;, &quot;Testing&quot; ]        │            8 │
-│ 5 │ Tara            │ Manager   │ [ &quot;Planning&quot;, &quot;Coordination&quot; ] │         7.80 │
-│ 6 │ Alex            │ Designer  │ [ &quot;UI&quot;, &quot;Animation&quot; ]          │         8.70 │
+│ 1 │ Sara            │ Developer │ [
+    "Coding",
+    "Debugging"
+]      │         8.50 │
+│ 2 │ Mike            │ Manager   │ [
+    "Planning",
+    "Review"
+]       │         7.20 │
+│ 3 │ Lena            │ Designer  │ [
+    "UI",
+    "Prototyping"
+]        │            9 │
+│ 4 │ Omar            │ Developer │ [
+    "Coding",
+    "Testing"
+]        │            8 │
+│ 5 │ Tara            │ Manager   │ [
+    "Planning",
+    "Coordination"
+] │         7.80 │
+│ 6 │ Alex            │ Designer  │ [
+    "UI",
+    "Animation"
+]          │         8.70 │
 ╰───┴─────────────────┴───────────┴────────────────────────────────┴──────────────╯</pre><p class="ran nv-illus">illustration</p></div>
 <p>Now, if you call <code>GroupBy(:Task)</code>:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>o1.GroupBy(:Task)
@@ -1132,7 +1220,10 @@ oCopy.Show()</pre><p class="ran nv-illus">illustration</p></div>
 │ West   │     47000  │       470 │
 ╰────────┴────────────┴───────────╯</pre>
 <div class="nblock"><div class="lbl">Haro</div><pre># Group by Product and Quarter with sums
-oCopy.GroupByXT([ :Product, :Quarter ], [ :Sales = &#x27;Sum&#x27;, :Units = &#x27;Sum&#x27; ])
+oCopy.GroupByXT([
+    :Product,
+    :Quarter
+], [ :Sales = 'Sum', :Units = 'Sum' ])
 oCopy.Show()</pre><p class="ran nv-illus">illustration</p></div>
 <p>Output:</p>
 <pre>╭───────────┬─────────┬────────────┬───────────╮
@@ -1149,21 +1240,63 @@ oCopy.Show()</pre><p class="ran nv-illus">illustration</p></div>
 <p>The seamless integration between these classes lets you convert any <code>stzTable</code> object into a pivot table with a fluent interface that's both powerful and intuitive:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Starting with employee data in a stzTable
 o1 = new stzTable([
-    [ :Department, :Location,   :Gender,  :Experience,  :Salary   ],
+    [
+        :Department,
+        :Location,
+        :Gender,
+        :Experience,
+        :Salary
+    ],
     # ------------------------------------------------------------ #
-    [ &quot;Sales&quot;,     &quot;New York&quot;,  &quot;Male&quot;,   &quot;Junior&quot;,      45000    ],
-    [ &quot;Sales&quot;,     &quot;New York&quot;,  &quot;Female&quot;, &quot;Junior&quot;,      46000    ],
-    [ &quot;IT&quot;,        &quot;Chicago&quot;,   &quot;Male&quot;,   &quot;Junior&quot;,      50000    ],
-    [ &quot;IT&quot;,        &quot;Chicago&quot;,   &quot;Female&quot;, &quot;Senior&quot;,      83000    ],
-    [ &quot;HR&quot;,        &quot;New York&quot;,  &quot;Female&quot;, &quot;Senior&quot;,      69000    ],
+    [
+        "Sales",
+        "New York",
+        "Male",
+        "Junior",
+        45000
+    ],
+    [
+        "Sales",
+        "New York",
+        "Female",
+        "Junior",
+        46000
+    ],
+    [
+        "IT",
+        "Chicago",
+        "Male",
+        "Junior",
+        50000
+    ],
+    [
+        "IT",
+        "Chicago",
+        "Female",
+        "Senior",
+        83000
+    ],
+    [
+        "HR",
+        "New York",
+        "Female",
+        "Senior",
+        69000
+    ],
     # ...and more records
 ])
 
 # Transform into a pivot table with multi-dimensional analysis
 o1.ToStzPivotTable() {
     Analyze([ :Salary ], :Using = :SUM)       # What to analyze and how
-    SetRowsBy([ :Department, :Location ])     # Two-level row grouping
-    SetColsBy([ :Experience, :Gender ])       # Two-level column grouping
+    SetRowsBy([
+        :Department,
+        :Location
+    ])     # Two-level row grouping
+    SetColsBy([
+        :Experience,
+        :Gender
+    ])       # Two-level column grouping
     
     Show()  # Display the formatted pivot table
 }</pre><p class="ran nv-illus">illustration</p></div>
