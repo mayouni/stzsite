@@ -42,7 +42,35 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/datetime/stzDate.ring" target="_blank" rel="noopener noreferrer">la source: base/datetime/stzDate.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/i18n.html">La référence du domaine : Internationalisation</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Un jour du calendrier, sans ses heures : il lit une date sous la forme où elle arrive, fait dessus l&#x27;arithmétique des jours, des semaines, des mois et des années, et connaît le calendrier, années bissextiles et longueur d&#x27;un mois comprises.</p><p>Il se réécrit pour le lecteur qui le demande, dans l&#x27;ordre européen, l&#x27;ordre américain, la forme ISO, ou toute forme que l&#x27;on nomme.</p><div class="sample"><pre class="rx">o1 = StzDateQ(&quot;15/07/2024&quot;)
+
+# the same day, written for three readers
+? o1.ToEuropean()
+#--&gt; 15/07/2024
+
+? o1.ToAmerican()
+#--&gt; 07/15/2024
+
+? o1.ToISO8601()
+#--&gt; 2024-07-15
+
+# and in any shape you name
+? o1.ToStringXT(&quot;dddd, MMMM d, yyyy&quot;)
+#--&gt; Monday, July 15, 2024</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-20</span></div><p>L&#x27;arithmétique suit le calendrier, non l&#x27;addition d&#x27;un nombre : vingt jours après le quinze mars, c&#x27;est le quatre avril, et une question sur le calendrier trouve sa réponse dans la date elle-même.</p><div class="sample"><pre class="rx">o1 = StzDateQ(&quot;15/03/2024&quot;)
+
+# twenty days later crosses into April
+o1.AddDays(20)
+? o1.Date()
+#--&gt; 04/04/2024
+
+o2 = StzDateQ(&quot;15/02/2024&quot;)
+
+# the calendar is known, leap years included
+? o2.IsLeapYear()
+#--&gt; TRUE
+
+? o2.DaysInMonth()
+#--&gt; 29</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-20</span></div><p>Une date peut être comparée à une autre, mesurée par rapport à elle en jours, interrogée sur la semaine de l&#x27;année où elle tombe, convertie en jour julien. C&#x27;est le jour que <code>stzDateTime</code> détache, et celui dans lequel <code>stzCalendar</code> et <code>stzTimeLine</code> se déploient.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/i18n.html">Le récit de son domaine : Internationalisation</a> · <a href="../guide/i18n.html">La référence de son domaine</a></p><h3>Narrations qui en parlent <span class="mono">(2)</span></h3><ul class="narr arts"><li><a href="../narrations/stzdate-date-programming-in-softanza.html">Date Programming Made Easy in Softanza</a> <span class="mono">2025</span><span class="abs">You&#x27;re building a project timeline tracker. The client wants to see &quot;in 2 weeks&quot; instead of &quot;14/10/2025&quot;. You need to add three months to a contract start date, but only if it falls on a weekday.</span></li><li><a href="../narrations/stzdatetime-guide-narration.html">stzDateTime: Elegant DateTime Operations in Softanza</a> <span class="mono">2025</span><span class="abs">DateTime manipulation is a universal programming challenge—combining date and time logic while handling formats, timezones, and arithmetic.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#adddays">A</a> <a href="#copy">C</a> <a href="#dayaftermonthend">D</a> <a href="#endofmonth">E</a> <a href="#firstdayofmonth">F</a> <a href="#init">I</a> <a href="#lastdayofmonth">L</a> <a href="#midmonth">M</a> <a href="#nextday">N</a> <a href="#operator">O</a> <a href="#parsestringdate">P</a> <a href="#setdate">S</a> <a href="#tohuman">T</a> <a href="#weeksto">W</a> <a href="#yearsto">Y</a></p><p><b>Sections</b> <a href="#adddays">enhanced arithmetic operations</a> · <a href="#nextday">smart navigation methods</a> · <a href="#daysto">comparison methods</a> · <a href="#year">enhanced getters</a> · <a href="#tohuman">human-readable formatting</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

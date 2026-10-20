@@ -42,7 +42,18 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/geo/stzGeoProjection.ring" target="_blank" rel="noopener noreferrer">the source: base/geo/stzGeoProjection.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/geo.html">The area reference: Geo &amp; cartography</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>A projection is a promise about the earth, and every promise costs something: this class holds one, and says what it costs.</p><div class="sample"><pre class="rx">o1 = new stzGeoProjection(:mercator)
+
+# what kind of lie this projection tells
+? o1.IsConformal()
+#--&gt; TRUE
+
+? o1.IsEqualArea()
+#--&gt; FALSE
+
+# and how much bigger a place at 70 degrees north is drawn
+? o1.ArealScaleAt(0, 70)
+#--&gt; 8.55</pre><span class="rx-src">run in the library on 2026-10-20</span></div><p>It knows what kind of lie it tells, equal-area, conformal, azimuthal or conic, and it measures how big or small a place is drawn against how big it really is: on a Mercator at 70 degrees north, 8.5 times, the whole Greenland argument in one number. The distortion is averaged by ground and not by cell, because the polar rows of a latitude grid are slivers.</p><p>A projection whose name promises equal area can be asked whether it keeps the promise, measured rather than declared. It is rotated, centred on a place, fitted to a box, to a set of points or to one country, and it answers the two questions of any map: where does this place go, and what place is this pixel. It is the projection under <code>stzGeoMap</code>.</p></div>
     <div class="treasures"><p class="proof"><a href="../atlas/geo.html">The story of its area: Geo &amp; cartography</a> · <a href="../guide/geo.html">Its area's reference</a></p></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#arealscaleat">A</a> <a href="#centeron">C</a> <a href="#distortionat">D</a> <a href="#fittosphere">F</a> <a href="#graticule">G</a> <a href="#holdsitsclaim">H</a> <a href="#init">I</a> <a href="#kindnumber">K</a> <a href="#line">L</a> <a href="#name">N</a> <a href="#outline">O</a> <a href="#params">P</a> <a href="#rotate">R</a> <a href="#scale">S</a> <a href="#translate">T</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

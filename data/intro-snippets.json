@@ -416,5 +416,77 @@
    "id": "kernel",
    "code": "oK = StzKernelMakerQ()\noK {\n    TakesVector(:A)\n    TakesVector(:B)\n    TakesScalar(:alpha)\n    ReturnsVector(:C)\n    ForEachElement('{ @C = alpha * @A + @B }')\n}\n\n# a kernel is authored and transpiled with no device at all\n? StzFindFirst(\"v_c[i] = p.s_alpha * v_a[i] + v_b[i];\", oK.ToWGSL()) > 0\n\n# and every kernel binds the same contract, the tile first\n? StzFindFirst(\"@binding(0)\", oK.ToWGSL()) > 0"
   }
+ ],
+ "stzDate": [
+  {
+   "id": "forms",
+   "code": "o1 = StzDateQ(\"15/07/2024\")\n\n# the same day, written for three readers\n? o1.ToEuropean()\n\n? o1.ToAmerican()\n\n? o1.ToISO8601()\n\n# and in any shape you name\n? o1.ToStringXT(\"dddd, MMMM d, yyyy\")"
+  },
+  {
+   "id": "calendar",
+   "code": "o1 = StzDateQ(\"15/03/2024\")\n\n# twenty days later crosses into April\no1.AddDays(20)\n? o1.Date()\n\no2 = StzDateQ(\"15/02/2024\")\n\n# the calendar is known, leap years included\n? o2.IsLeapYear()\n\n? o2.DaysInMonth()"
+  }
+ ],
+ "stzTime": [
+  {
+   "id": "clock",
+   "code": "o1 = new stzTime(\"14:30:45\")\n\n# two hours later\no1.AddHours(2)\n? o1.Content()\n\n# forty-five minutes more roll into the next hour\no1.AddMinutes(45)\n? o1.Content()"
+  },
+  {
+   "id": "day",
+   "code": "o1 = new stzTime(\"10:00:00\")\no2 = new stzTime(\"14:30:00\")\n\n# the distance between two times, in the unit you name\n? o1.MinutesTo(o2)\n\n# and what part of the day each one is\n? o2.IsAfternoon()\n\n? o1.IsWorkHours()"
+  }
+ ],
+ "stzGrid": [
+  {
+   "id": "moves",
+   "code": "o1 = new stzGrid([ 6, 4 ])\n\no1.MoveTo(3, 2)\n? @@( o1.Position() )\n\no1.MoveRightNNodes(2)\n? @@( o1.Position() )\n\n# a move off the edge does not happen: the position stays\no1.MoveRightNNodes(5)\n? @@( o1.Position() )"
+  }
+ ],
+ "stzMatrex": [
+  {
+   "id": "shape",
+   "code": "oMx = new stzMatrex(\"{shape(square) & property(identity)}\")\n\n? oMx.Match([ [ 1, 0, 0 ], [ 0, 1, 0 ], [ 0, 0, 1 ] ])\n\n? oMx.Match([ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ])"
+  },
+  {
+   "id": "range",
+   "code": "oMx = new stzMatrex(\"{element(0..10)}\")\n\n# every element must lie between 0 and 10\n? oMx.Match([ [ 1, 2, 3 ], [ 4, 5, 6 ] ])\n\n? oMx.Match([ [ 1, 2, 15 ], [ 4, 5, 6 ] ])"
+  }
+ ],
+ "stzStopwatch": [
+  {
+   "id": "lap",
+   "code": "o1 = new stzStopwatch(\"job\")\no1.Start()\n? o1.IsRunning()\n\no1.Lap(\"parse\")\no1.Lap(\"render\")\no1.Stop()\n\n? o1.IsRunning()\n\n? o1.NumberOfLaps()\n\n# the clock is monotonic, and its trace identity is a W3C one\n? o1.Elapsed() >= 0\n\n? len(o1.TraceId())"
+  }
+ ],
+ "stzEarcons": [
+  {
+   "id": "cue",
+   "code": "oE = new stzEarcons()\n\n# what a meaning sounds like, with no audio device\noSound = oE.ToSoundOf(\"Danger.Alert\")\n\n? oSound.Duration() > 0\n\n? oSound.Channels()"
+  }
+ ],
+ "stzReactor": [
+  {
+   "id": "timer",
+   "code": "o1 = new stzReactor()\n\n# a timer runs on the loop, not on the caller\nnJob = o1.SubmitTimer(50)\n? o1.JobState(nJob)\n\n# the caller waits for it, with a deadline\n? o1.AwaitTimer(nJob, 1000)"
+  }
+ ],
+ "stzGeoProjection": [
+  {
+   "id": "claims",
+   "code": "o1 = new stzGeoProjection(:mercator)\n\n# what kind of lie this projection tells\n? o1.IsConformal()\n\n? o1.IsEqualArea()\n\n# and how much bigger a place at 70 degrees north is drawn\n? o1.ArealScaleAt(0, 70)"
+  }
+ ],
+ "stzHistogram": [
+  {
+   "id": "bins",
+   "code": "o1 = new stzHistogram([ 2, 3, 3, 4, 4, 4, 5, 5, 6 ])\no1.SetBinCount(4)\n\n? o1.ToString()"
+  }
+ ],
+ "stzOutputSchema": [
+  {
+   "id": "parse",
+   "code": "oS = StzOutputSchemaQ([\n    [ :field = \"name\", :type = :string ],\n    [ :field = \"age\",  :type = :number,\n      :must = [ [ \">=\", 0 ], [ \"<=\", 130 ] ] ],\n    [ :field = \"mood\", :type = :oneof,\n      :choices = [ \"positive\", \"negative\" ] ]\n])\n\n# an answer wrapped in prose is read as the structure it holds\ncAnswer = 'Sure: { \"name\": \"Ada\", \"age\": \"36\", \"mood\": \"POSITIVE\" }'\naV = oS.ParseOutput(cAnswer)\n\n? aV[:ok]\n\n# and a representable scalar arrives as what was declared\n? aV[:value][:age] + 1\n\n# prose that is not a structure is refused, not scavenged\n? oS.ParseOutput(\"I would rather not say.\")[:ok]"
+  }
  ]
 }

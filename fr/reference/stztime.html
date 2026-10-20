@@ -42,7 +42,29 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/datetime/stzTime.ring" target="_blank" rel="noopener noreferrer">la source: base/datetime/stzTime.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/i18n.html">La référence du domaine : Internationalisation</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Une heure du jour, sans la date : heures, minutes, secondes et millisecondes, avec l&#x27;arithmétique d&#x27;une horloge, où deux heures plus tard, c&#x27;est deux heures plus tard, et quarante-cinq minutes de plus passent à l&#x27;heure suivante.</p><div class="sample"><pre class="rx">o1 = new stzTime(&quot;14:30:45&quot;)
+
+# two hours later
+o1.AddHours(2)
+? o1.Content()
+#--&gt; 16:30:45
+
+# forty-five minutes more roll into the next hour
+o1.AddMinutes(45)
+? o1.Content()
+#--&gt; 17:15:45</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-20</span></div><p>Une heure sait quelle partie de la journée elle est : matin, après-midi, soir ou nuit, avant ou après midi, heures de travail, minuit et midi eux-mêmes ; et elle connaît la distance à une autre heure, dans l&#x27;unité que l&#x27;on nomme.</p><div class="sample"><pre class="rx">o1 = new stzTime(&quot;10:00:00&quot;)
+o2 = new stzTime(&quot;14:30:00&quot;)
+
+# the distance between two times, in the unit you name
+? o1.MinutesTo(o2)
+#--&gt; 270
+
+# and what part of the day each one is
+? o2.IsAfternoon()
+#--&gt; TRUE
+
+? o1.IsWorkHours()
+#--&gt; TRUE</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-20</span></div><p>C&#x27;est la part de <code>stzDateTime</code> qui n&#x27;a pas de date, et la lecture naturelle d&#x27;un horaire : heures d&#x27;ouverture, tableau de service, durée mesurée sur une horloge.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/i18n.html">Le récit de son domaine : Internationalisation</a> · <a href="../guide/i18n.html">La référence de son domaine</a></p><h3>Narrations qui en parlent <span class="mono">(4)</span></h3><ul class="narr arts"><li><a href="../narrations/stztimex-a-pattern-language-for-time-in-softanza.html">stzTimex: A Pattern Language for Time in Softanza</a> <span class="mono">2025</span><span class="abs">Working with time in code is often a tangle of arithmetic and conditions — subtracting timestamps, looping through events, comparing durations, checking overlaps. The logic sprawls, becomes brittle, and hides intent.</span></li><li><a href="../narrations/stztime-handling-time-in-softanza.html">Time Handling in Softanza</a> <span class="mono">2025</span><span class="abs">In applications such as scheduling tools or timers, developers often face repetitive tasks when handling time. These include converting between 12-hour and 24-hour formats, calculating durations with potential carry-overs across hours or days, and performin...</span></li><li><a href="../narrations/stztimeline-managing-temporal-structures-narration.html">**Time Modeling in Softanza using stzTimeLine**</a> <span class="mono">2025</span><span class="abs">Imagine you’re planning a product launch. You’ve got milestones, sprints, blackout dates for holidays, and three HR reviews scattered across the year. In most systems, that’s a spreadsheet or a calendar invite.</span></li><li><a href="../narrations/stztimeline-temporal-design-philosophy-in-softanza.html">Temporal Design Philosophy of stzTimeLine</a> <span class="mono">2025</span><span class="abs">Most time-handling libraries across ecosystems (Python’s datetime, Java’s java.time, JavaScript’s Luxon, etc.) treat time as scalar values to be parsed, formatted, or arithmetically manipulated. They stop at representation and calculation.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#addseconds">A</a> <a href="#copy">C</a> <a href="#endofhour">E</a> <a href="#hoursto">H</a> <a href="#init">I</a> <a href="#msecsto">M</a> <a href="#nexthour">N</a> <a href="#operator">O</a> <a href="#parsestringtime">P</a> <a href="#roundtonearesthour">R</a> <a href="#subtractseconds">S</a> <a href="#tohour">T</a></p><p><b>Sections</b> <a href="#addseconds">arithmetic operations</a> · <a href="#secsto">comparison methods</a> · <a href="#isam">utility checks</a> · <a href="#hour">getters</a> · <a href="#nexthour">smart navigation</a> · <a href="#tostring">formatting</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

@@ -691,5 +691,181 @@
    "@find",
    "Un nœud garde sa place dans le document, si bien qu'un élément trouvé peut être interrogé sur son texte, ses attributs et ses enfants. L'analyse est celle du moteur. Il sert à lire une page pour un prix ou un titre, à vérifier qu'une page générée a la structure promise, à extraire les liens d'un document, et aux tests d'une application web qui doivent demander à la page ce qu'elle contient."
   ]
+ },
+ "stzDate": {
+  "en": [
+   "A day of the calendar, without its hours: it reads a date in the form that arrives, does the arithmetic of days, weeks, months and years on it, and knows the calendar, leap years and the length of a month included.",
+   "It is written back for whichever reader is asking, in the European order, the American order, the ISO form, or any shape you name.",
+   "@forms",
+   "Arithmetic follows the calendar, not the addition of a number: twenty days after the fifteenth of March is the fourth of April, and a question about the calendar is answered by the date itself.",
+   "@calendar",
+   "A date can be compared with another, measured against it in days, asked what week of the year it falls in, converted to a Julian day. It is the day that `stzDateTime` splits off, and the day that `stzCalendar` and `stzTimeLine` are laid out in."
+  ],
+  "fr": [
+   "Un jour du calendrier, sans ses heures : il lit une date sous la forme où elle arrive, fait dessus l'arithmétique des jours, des semaines, des mois et des années, et connaît le calendrier, années bissextiles et longueur d'un mois comprises.",
+   "Il se réécrit pour le lecteur qui le demande, dans l'ordre européen, l'ordre américain, la forme ISO, ou toute forme que l'on nomme.",
+   "@forms",
+   "L'arithmétique suit le calendrier, non l'addition d'un nombre : vingt jours après le quinze mars, c'est le quatre avril, et une question sur le calendrier trouve sa réponse dans la date elle-même.",
+   "@calendar",
+   "Une date peut être comparée à une autre, mesurée par rapport à elle en jours, interrogée sur la semaine de l'année où elle tombe, convertie en jour julien. C'est le jour que `stzDateTime` détache, et celui dans lequel `stzCalendar` et `stzTimeLine` se déploient."
+  ]
+ },
+ "stzTime": {
+  "en": [
+   "A time of day, without the date: hours, minutes, seconds and milliseconds, with the arithmetic of a clock, where two hours later is two hours later and forty-five minutes more roll into the next hour.",
+   "@clock",
+   "A time knows what part of the day it is: morning, afternoon, evening or night, before or after noon, working hours, midnight and noon themselves; and it knows the distance to another time, in the unit you name.",
+   "@day",
+   "It is the part of `stzDateTime` that has no date, and the natural reading of a schedule: opening hours, a timetable, a duration measured on a clock."
+  ],
+  "fr": [
+   "Une heure du jour, sans la date : heures, minutes, secondes et millisecondes, avec l'arithmétique d'une horloge, où deux heures plus tard, c'est deux heures plus tard, et quarante-cinq minutes de plus passent à l'heure suivante.",
+   "@clock",
+   "Une heure sait quelle partie de la journée elle est : matin, après-midi, soir ou nuit, avant ou après midi, heures de travail, minuit et midi eux-mêmes ; et elle connaît la distance à une autre heure, dans l'unité que l'on nomme.",
+   "@day",
+   "C'est la part de `stzDateTime` qui n'a pas de date, et la lecture naturelle d'un horaire : heures d'ouverture, tableau de service, durée mesurée sur une horloge."
+  ]
+ },
+ "stzGrid": {
+  "en": [
+   "A place you move on: a number of columns and rows, a current position, and the moves that a board game, a map editor or a pixel cursor needs, one node at a time or several, forward or backward in a declared direction.",
+   "@moves",
+   "A move that would leave the grid does not happen, and the position stays where it was, so a program never has to guard every step against the edge. The grid also answers where a move would lead, the node so many steps up or down, before it is taken.",
+   "It serves game boards, tile maps, seating plans and any surface whose unit of thought is the cell and the cursor."
+  ],
+  "fr": [
+   "Un lieu où l'on se déplace : un nombre de colonnes et de lignes, une position courante, et les déplacements dont un jeu de plateau, un éditeur de carte ou un curseur de pixels a besoin, d'un nœud ou de plusieurs, en avant ou en arrière dans une direction déclarée.",
+   "@moves",
+   "Un déplacement qui sortirait de la grille n'a pas lieu et la position reste où elle était, si bien qu'un programme n'a jamais à garder chaque pas contre le bord. La grille répond aussi à la question de savoir où mènerait un déplacement, le nœud tant de pas plus haut ou plus bas, avant qu'il soit fait.",
+   "Elle sert les plateaux de jeu, les cartes de tuiles, les plans de salle et toute surface dont l'unité de pensée est la cellule et le curseur."
+  ]
+ },
+ "stzMatrex": {
+  "en": [
+   "The idea of a regular expression, moved from text to matrices: instead of writing the loop that checks whether a matrix is square, or an identity, or holds only values from 0 to 10, you state what you mean in braces, and the library tests it.",
+   "@shape",
+   "A pattern says the size, the shape, a property such as symmetric, diagonal, upper or lower triangular, or the elements allowed, as a range or as a set; the parts combine with and, or and not.",
+   "@range",
+   "It serves the validation of the input of a numerical routine, the checking of a test fixture, and the writing down, in one line, of what a function requires of its matrix. Its relatives do the same for lists, numbers, tables, graphs and timelines."
+  ],
+  "fr": [
+   "L'idée de l'expression régulière, portée du texte aux matrices : au lieu d'écrire la boucle qui vérifie qu'une matrice est carrée, ou une identité, ou ne contient que des valeurs de 0 à 10, on dit ce que l'on veut entre accolades, et la bibliothèque le vérifie.",
+   "@shape",
+   "Un motif dit la taille, la forme, une propriété comme symétrique, diagonale, triangulaire supérieure ou inférieure, ou les éléments permis, en intervalle ou en ensemble ; les parties se combinent par et, ou et non.",
+   "@range",
+   "Elle sert à valider l'entrée d'une routine numérique, à contrôler un jeu d'essai, et à écrire en une ligne ce qu'une fonction exige de sa matrice. Ses parentes font de même pour les listes, les nombres, les tables, les graphes et les chronologies."
+  ]
+ },
+ "stzStopwatch": {
+  "en": [
+   "A stopwatch that tells the truth about time: it counts on a monotonic clock, which no change of the system's clock can bend, and it carries the identity that lets its reading join a trace.",
+   "@lap",
+   "It starts, pauses, resumes, stops and resets; laps are split readings taken without stopping, each with a label. The house unit is the millisecond, and the same reading is available in nanoseconds, microseconds or seconds, the unit named in the verb.",
+   "The reading exports as an OpenTelemetry span, and its trace identity can be handed to a call to another service, or adopted from one that arrived, so that a measurement joins one trace across services. It serves timing a step of a program, a request, a build, and it is the clock under `stzMetric` and `stzPerfMonitor`."
+  ],
+  "fr": [
+   "Un chronomètre qui dit la vérité sur le temps : il compte sur une horloge monotone, qu'aucun changement de l'horloge du système ne peut tordre, et il porte l'identité qui permet à sa lecture de rejoindre une trace.",
+   "@lap",
+   "Il démarre, se met en pause, reprend, s'arrête et se remet à zéro ; les tours sont des lectures intermédiaires prises sans arrêter, chacune avec une étiquette. L'unité de la maison est la milliseconde, et la même lecture existe en nanosecondes, microsecondes ou secondes, l'unité étant nommée dans le verbe.",
+   "La lecture s'exporte en intervalle OpenTelemetry, et son identité de trace peut être transmise à un appel vers un autre service, ou adoptée depuis un appel arrivé, si bien qu'une mesure rejoint une seule trace à travers les services. Il sert à chronométrer une étape d'un programme, une requête, une compilation, et c'est l'horloge sous `stzMetric` et `stzPerfMonitor`."
+  ]
+ },
+ "stzEarcons": {
+  "en": [
+   "A meaning that has a sound: an author names what happened, a danger, an alert, a success, and the library answers with a sound built for that meaning, under rules for when it may be heard at all.",
+   "@cue",
+   "What a meaning sounds like is data and needs no audio device, so a build machine can check it. Whether a cue is heard is a decision: it must rise above the noise of the room by a margin, ten loudness units for a cue and twenty for an alert, and a cue that cannot is dropped and counted rather than played into the noise.",
+   "An alert that can be talked over is no alert. While one sounds, lesser cues are lowered on a ramp so that nothing clicks, and everything done behind the listener's back is counted, so that \"why did that get quiet\" has a number for an answer. A cue can also be followed by a spoken phrase that says which one it was, in a language the machine can actually speak. It serves interfaces for people who cannot look at the screen, and every program whose warnings must be heard."
+  ],
+  "fr": [
+   "Un sens qui a un son : un auteur nomme ce qui est arrivé, un danger, une alerte, une réussite, et la bibliothèque répond par un son construit pour ce sens, sous des règles qui disent quand il peut seulement être entendu.",
+   "@cue",
+   "Ce à quoi ressemble un sens est une donnée et n'exige aucun périphérique audio, si bien qu'une machine de compilation peut le vérifier. Qu'un signal soit entendu est une décision : il doit dépasser le bruit de la pièce d'une marge, dix unités de sonie pour un signal et vingt pour une alerte, et un signal qui n'y parvient pas est abandonné et compté plutôt que joué dans le bruit.",
+   "Une alerte que l'on peut couvrir n'est pas une alerte. Pendant qu'elle sonne, les signaux moindres sont baissés sur une rampe pour que rien ne claque, et tout ce qui est fait dans le dos de l'auditeur est compté, si bien que « pourquoi est-ce devenu plus bas » a un nombre pour réponse. Un signal peut aussi être suivi d'une phrase parlée qui dit lequel c'était, dans une langue que la machine sait réellement parler. Il sert les interfaces pour qui ne peut pas regarder l'écran, et tout programme dont les avertissements doivent être entendus."
+  ]
+ },
+ "stzReactor": {
+  "en": [
+   "The event loop under the rest: timers, TCP, HTTP, child processes and listeners run on a loop that is not the caller's, and the caller collects what happened as jobs, by asking, or by waiting with a deadline.",
+   "@timer",
+   "Every kind of work has the same shape: submit it and get a job; ask whether it is ready without taking anything; wait for it for a bounded time; or do both in one call and take the result. A request to a web address runs on a worker with the system's own TLS, a child process is captured and can be killed, a listener reports its connections as events to be drained.",
+   "Events are drained, never called back: no function of the program is ever entered from the loop, which keeps the loop fast and the program simple. It is the loop under `stzAppServer`, under the agent host and under the cluster, and a program can use it directly when it must wait for several things at once."
+  ],
+  "fr": [
+   "La boucle d'événements sous le reste : minuteries, TCP, HTTP, processus enfants et écouteurs tournent sur une boucle qui n'est pas celle de l'appelant, et l'appelant recueille ce qui est arrivé comme des travaux, en demandant, ou en attendant avec une échéance.",
+   "@timer",
+   "Chaque sorte de travail a la même forme : on le soumet et l'on obtient un travail ; on demande s'il est prêt sans rien prendre ; on l'attend un temps borné ; ou l'on fait les deux en un appel et l'on prend le résultat. Une requête vers une adresse web tourne sur un travailleur avec le TLS du système lui-même, un processus enfant est capturé et peut être tué, un écouteur rapporte ses connexions comme des événements à drainer.",
+   "Les événements sont drainés, jamais rappelés : aucune fonction du programme n'est jamais appelée depuis la boucle, ce qui garde la boucle rapide et le programme simple. C'est la boucle sous `stzAppServer`, sous l'hôte d'agents et sous la grappe, et un programme peut l'employer directement quand il doit attendre plusieurs choses à la fois."
+  ]
+ },
+ "stzAgentHost": {
+  "en": [
+   "An agent that perceives, decides and acts is a job like any other, and the host is where it is supervised: ticked on a timer or on an event, traced at every tick, paused, resumed, and retired only when it has earned it.",
+   "An agent is handed to the host fully configured, with the interval at which it should run; or, instead of a timer, the channel whose events should make it tick. Priorities order a pass, ties broken by order of registration, so that the order is total and reproducible. Every tick leaves an entry in a trace that names the agent.",
+   "Retirement is a contract. An agent's decommission obligations are declared, and the host refuses to retire it until each one is fulfilled, saying which one is missing. A whole folder of agent files can be loaded, and the files that were not admitted are reported with the reason, in the library's unified finding shape, rather than swallowed. The host can share the loop of another host: the agent host is the same host as the web server.",
+   "It serves any program that runs more than one agent and must be able to say, afterwards, what each one did and why it was allowed to."
+  ],
+  "fr": [
+   "Un agent qui perçoit, décide et agit est un travail comme un autre, et l'hôte est l'endroit où il est supervisé : cadencé par une minuterie ou par un événement, tracé à chaque cycle, mis en pause, repris, et retiré seulement quand il l'a mérité.",
+   "Un agent est confié à l'hôte entièrement configuré, avec l'intervalle auquel il doit tourner ; ou, au lieu d'une minuterie, le canal dont les événements doivent le faire avancer. Les priorités ordonnent une passe, les égalités étant tranchées par l'ordre d'enregistrement, si bien que l'ordre est total et reproductible. Chaque cycle laisse une entrée dans une trace qui nomme l'agent.",
+   "Le retrait est un contrat. Les obligations de désaffectation d'un agent sont déclarées, et l'hôte refuse de le retirer tant que chacune n'est pas remplie, en disant laquelle manque. Un dossier entier de fichiers d'agents peut être chargé, et les fichiers qui n'ont pas été admis sont rapportés avec leur raison, dans la forme unifiée des constats de la bibliothèque, plutôt qu'avalés. L'hôte peut partager la boucle d'un autre hôte : l'hôte d'agents est le même hôte que le serveur web.",
+   "Il sert tout programme qui fait tourner plus d'un agent et doit pouvoir dire, après coup, ce que chacun a fait et pourquoi il y était autorisé."
+  ]
+ },
+ "stzGeoProjection": {
+  "en": [
+   "A projection is a promise about the earth, and every promise costs something: this class holds one, and says what it costs.",
+   "@claims",
+   "It knows what kind of lie it tells, equal-area, conformal, azimuthal or conic, and it measures how big or small a place is drawn against how big it really is: on a Mercator at 70 degrees north, 8.5 times, the whole Greenland argument in one number. The distortion is averaged by ground and not by cell, because the polar rows of a latitude grid are slivers.",
+   "A projection whose name promises equal area can be asked whether it keeps the promise, measured rather than declared. It is rotated, centred on a place, fitted to a box, to a set of points or to one country, and it answers the two questions of any map: where does this place go, and what place is this pixel. It is the projection under `stzGeoMap`."
+  ],
+  "fr": [
+   "Une projection est une promesse sur la terre, et toute promesse coûte quelque chose : cette classe en tient une, et dit ce qu'elle coûte.",
+   "@claims",
+   "Elle sait quelle sorte de mensonge elle dit, équivalente, conforme, azimutale ou conique, et elle mesure à quel point un lieu est dessiné plus grand ou plus petit qu'il ne l'est : sur une Mercator à 70 degrés nord, 8,5 fois, tout l'argument du Groenland en un nombre. La déformation est moyennée par surface au sol et non par cellule, parce que les rangées polaires d'une grille de latitudes sont des lamelles.",
+   "Une projection dont le nom promet l'équivalence des aires peut être interrogée sur le respect de sa promesse, mesuré et non déclaré. On la tourne, on la centre sur un lieu, on l'ajuste à une boîte, à un ensemble de points ou à un pays, et elle répond aux deux questions de toute carte : où va ce lieu, et quel lieu est ce pixel. C'est la projection sous `stzGeoMap`."
+  ]
+ },
+ "stzHistogram": {
+  "en": [
+   "A histogram drawn where it is asked for: in a terminal, as a vector picture, or as a PNG on the GPU, from the same binning, which lives in the engine and is checked character for character against its first implementation.",
+   "@bins",
+   "The bins are declared by their number or their range, the values can be filtered, and what each bar holds is chosen: a frequency, a sum, an average, a minimum, a maximum. The axes take labels and the picture a title.",
+   "Binning and drawing are done in the engine, so the same histogram arrives from any language that binds it. It serves the first look at a column of numbers, before any model: how it is spread, where it piles up, whether the outlier is one value or a family."
+  ],
+  "fr": [
+   "Un histogramme dessiné là où on le demande : dans un terminal, en image vectorielle, ou en PNG sur le GPU, à partir du même découpage en classes, qui vit dans le moteur et est vérifié caractère par caractère contre sa première réalisation.",
+   "@bins",
+   "Les classes se déclarent par leur nombre ou leur étendue, les valeurs peuvent être filtrées, et ce que contient chaque barre se choisit : une fréquence, une somme, une moyenne, un minimum, un maximum. Les axes prennent des étiquettes et l'image un titre.",
+   "Le découpage et le dessin sont faits dans le moteur, si bien que le même histogramme arrive de tout langage qui s'y lie. Il sert au premier regard sur une colonne de nombres, avant tout modèle : comment elle se répartit, où elle s'accumule, si la valeur aberrante est une valeur ou une famille."
+  ]
+ },
+ "stzOutputSchema": {
+  "en": [
+   "The shape that a model's answer must have, declared once and judged before the answer is believed: fields, their types, their allowed values, their bounds, which of them are optional.",
+   "@parse",
+   "The declaration is compiled and judged when it is made, so a defective schema never reaches a model. A model's answer arrives as text, wrapped in prose or in a fence, or written as a plain memo, and it is read in any of those forms; what cannot be read is refused with the rule it failed, not scavenged for something that looks right.",
+   "A representable value is coerced to the declared type, so the string \"36\" arrives as the number 36, and a value outside the bounds or outside the choices is a finding that names the field. A schema can say that an undeclared field refuses the whole answer. It can also write itself as a short clause for the prompt, and as a grammar that constrains the decoding itself, and it says which of its constraints the grammar cannot carry.",
+   "It serves any program that wants a model's answer as a record it can trust, and it is what `stzLLMFunction` declares its structured returns with."
+  ],
+  "fr": [
+   "La forme que doit avoir la réponse d'un modèle, déclarée une fois et jugée avant que la réponse soit crue : des champs, leurs types, leurs valeurs permises, leurs bornes, lesquels sont facultatifs.",
+   "@parse",
+   "La déclaration est compilée et jugée quand elle est faite, si bien qu'un schéma défectueux n'atteint jamais un modèle. La réponse d'un modèle arrive comme texte, enveloppée de prose ou d'une clôture, ou écrite comme un simple mémo, et elle est lue sous chacune de ces formes ; ce qui ne peut être lu est refusé avec la règle qu'il a manquée, et non fouillé pour y trouver quelque chose qui ressemble au but.",
+   "Une valeur représentable est convertie au type déclaré, si bien que la chaîne « 36 » arrive comme le nombre 36, et une valeur hors des bornes ou hors des choix est un constat qui nomme le champ. Un schéma peut dire qu'un champ non déclaré refuse toute la réponse. Il peut aussi s'écrire comme une courte clause pour la consigne, et comme une grammaire qui contraint le décodage lui-même, et il dit lesquelles de ses contraintes la grammaire ne peut pas porter.",
+   "Il sert tout programme qui veut la réponse d'un modèle comme un enregistrement auquel se fier, et c'est avec lui que `stzLLMFunction` déclare ses retours structurés."
+  ]
+ },
+ "stzCourse": {
+  "en": [
+   "A course is a plan, and what has been written of it: its chapters in order, which names each chapter teaches, which chapter requires which, and the exercises, with the worlds in which they run, in each language.",
+   "The facts of a course come from its own files, and an overlay can add to them without replacing them. What is planned is kept apart from what ships: a chapter planned and not yet written is named, never counted among the shipped ones, and a chapter with no text in a language is a red fact, not a quiet fall back to English.",
+   "Prerequisites are walked to the root, and a cycle raises. The course reads its own chapters to know what each one teaches, the names its cells call, so that the question where a method is first taught is answered from the text. A chapter can be run, every cell in one fresh process over the world the course supplies, and in several languages side by side, each in its own process. It serves a curriculum that must be checked as code is checked."
+  ],
+  "fr": [
+   "Un cours est un plan, et ce qui en a été écrit : ses chapitres dans l'ordre, les noms que chaque chapitre enseigne, quel chapitre exige quel autre, et les exercices, avec les mondes où ils s'exécutent, dans chaque langue.",
+   "Les faits d'un cours viennent de ses propres fichiers, et une surcouche peut y ajouter sans les remplacer. Ce qui est prévu est tenu à part de ce qui est livré : un chapitre prévu et pas encore écrit est nommé, jamais compté parmi les livrés, et un chapitre sans texte dans une langue est un fait rouge, non un repli silencieux sur l'anglais.",
+   "Les prérequis sont parcourus jusqu'à la racine, et un cycle lève une erreur. Le cours lit ses propres chapitres pour savoir ce que chacun enseigne, les noms que ses cellules appellent, si bien que la question où une méthode est enseignée pour la première fois trouve réponse dans le texte. Un chapitre peut être exécuté, chaque cellule dans un processus neuf sur le monde que le cours fournit, et en plusieurs langues côte à côte, chacune dans son processus. Il sert un cursus qui doit être vérifié comme on vérifie du code."
+  ]
  }
 }

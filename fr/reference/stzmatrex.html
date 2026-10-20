@@ -42,7 +42,20 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/regex/stzMatrex.ring" target="_blank" rel="noopener noreferrer">la source: base/regex/stzMatrex.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/regex.html">La référence du domaine : Recherche de motifs</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>L&#x27;idée de l&#x27;expression régulière, portée du texte aux matrices : au lieu d&#x27;écrire la boucle qui vérifie qu&#x27;une matrice est carrée, ou une identité, ou ne contient que des valeurs de 0 à 10, on dit ce que l&#x27;on veut entre accolades, et la bibliothèque le vérifie.</p><div class="sample"><pre class="rx">oMx = new stzMatrex(&quot;{shape(square) &amp; property(identity)}&quot;)
+
+? oMx.Match([ [ 1, 0, 0 ], [ 0, 1, 0 ], [ 0, 0, 1 ] ])
+#--&gt; TRUE
+
+? oMx.Match([ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ])
+#--&gt; FALSE</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-20</span></div><p>Un motif dit la taille, la forme, une propriété comme symétrique, diagonale, triangulaire supérieure ou inférieure, ou les éléments permis, en intervalle ou en ensemble ; les parties se combinent par et, ou et non.</p><div class="sample"><pre class="rx">oMx = new stzMatrex(&quot;{element(0..10)}&quot;)
+
+# every element must lie between 0 and 10
+? oMx.Match([ [ 1, 2, 3 ], [ 4, 5, 6 ] ])
+#--&gt; TRUE
+
+? oMx.Match([ [ 1, 2, 15 ], [ 4, 5, 6 ] ])
+#--&gt; FALSE</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-20</span></div><p>Elle sert à valider l&#x27;entrée d&#x27;une routine numérique, à contrôler un jeu d&#x27;essai, et à écrire en une ligne ce qu&#x27;une fonction exige de sa matrice. Ses parentes font de même pour les listes, les nombres, les tables, les graphes et les chronologies.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/regex.html">Le récit de son domaine : Recherche de motifs</a> · <a href="../guide/regex.html">La référence de son domaine</a></p><h3>Narrations qui en parlent <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="../narrations/stzmatrex-declarative-pattern-matching-for-matrices.html">stzMatrex: Declarative Pattern Matching for Matrices in Softanza</a> <span class="mono">2025</span><span class="abs">Matrices are not just collections of numbers — they embody structure, geometry, and mathematical meaning. Recognizing whether a matrix is square, symmetric, diagonal, or identity is often more significant than performing arithmetic operations on it.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#addconstraint">A</a> <a href="#checksize">C</a> <a href="#disabledebug">D</a> <a href="#extractparts">E</a> <a href="#findmatchingmatrices">F</a> <a href="#init">I</a> <a href="#match">M</a> <a href="#normalizepattern">N</a> <a href="#or_">O</a> <a href="#parsepattern">P</a> <a href="#removeconstraint">R</a> <a href="#splitbyoperator">S</a> <a href="#tokens">T</a></p><p><b>Sections</b> <a href="#checksize">checking methods</a> · <a href="#matchedparts">query methods</a> · <a href="#matchingmatrices">advanced query methods</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

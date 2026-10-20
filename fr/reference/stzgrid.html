@@ -42,7 +42,20 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/list/stzGrid.ring" target="_blank" rel="noopener noreferrer">la source: base/list/stzGrid.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/collections.html">La référence du domaine : Collections et objets</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Un lieu où l&#x27;on se déplace : un nombre de colonnes et de lignes, une position courante, et les déplacements dont un jeu de plateau, un éditeur de carte ou un curseur de pixels a besoin, d&#x27;un nœud ou de plusieurs, en avant ou en arrière dans une direction déclarée.</p><div class="sample"><pre class="rx">o1 = new stzGrid([ 6, 4 ])
+
+o1.MoveTo(3, 2)
+? @@( o1.Position() )
+#--&gt; [ 3, 2 ]
+
+o1.MoveRightNNodes(2)
+? @@( o1.Position() )
+#--&gt; [ 5, 2 ]
+
+# a move off the edge does not happen: the position stays
+o1.MoveRightNNodes(5)
+? @@( o1.Position() )
+#--&gt; [ 5, 2 ]</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-20</span></div><p>Un déplacement qui sortirait de la grille n&#x27;a pas lieu et la position reste où elle était, si bien qu&#x27;un programme n&#x27;a jamais à garder chaque pas contre le bord. La grille répond aussi à la question de savoir où mènerait un déplacement, le nœud tant de pas plus haut ou plus bas, avant qu&#x27;il soit fait.</p><p>Elle sert les plateaux de jeu, les cartes de tuiles, les plans de salle et toute surface dont l&#x27;unité de pensée est la cellule et le curseur.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/collections.html">Le récit de son domaine : Collections et objets</a> · <a href="../guide/collections.html">La référence de son domaine</a></p><h3>Narrations qui en parlent <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="../narrations/stzgrid-navigator-grid-mastering.html">The Navigator&#x27;s Grid: Mastering stzGrid in the Softanza Library</a> <span class="mono">2025</span><span class="abs">The stzGrid class is a powerful navigational framework in the Softanza library, offering elegant solutions for working with two-dimensional grid structures. This article uses visual examples and practical applications to help you fully grasp its capabilities.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#addobstacle">A</a> <a href="#currentposition">C</a> <a href="#direction">D</a> <a href="#euclideandistanceto">E</a> <a href="#fill">F</a> <a href="#getscoreat">G</a> <a href="#heuristiccost">H</a> <a href="#init">I</a> <a href="#lowestfscore">L</a> <a href="#movetonode">M</a> <a href="#numberofcolumns">N</a> <a href="#obstaclechar">O</a> <a href="#position">P</a> <a href="#removeobstacle">R</a> <a href="#size">S</a> <a href="#tostring">T</a> <a href="#walkableneighbors">W</a> <a href="#zigzagpath">Z</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

@@ -42,7 +42,18 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/geo/stzGeoProjection.ring" target="_blank" rel="noopener noreferrer">la source: base/geo/stzGeoProjection.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/geo.html">La référence du domaine : Géographie et cartographie</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Une projection est une promesse sur la terre, et toute promesse coûte quelque chose : cette classe en tient une, et dit ce qu&#x27;elle coûte.</p><div class="sample"><pre class="rx">o1 = new stzGeoProjection(:mercator)
+
+# what kind of lie this projection tells
+? o1.IsConformal()
+#--&gt; TRUE
+
+? o1.IsEqualArea()
+#--&gt; FALSE
+
+# and how much bigger a place at 70 degrees north is drawn
+? o1.ArealScaleAt(0, 70)
+#--&gt; 8.55</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-20</span></div><p>Elle sait quelle sorte de mensonge elle dit, équivalente, conforme, azimutale ou conique, et elle mesure à quel point un lieu est dessiné plus grand ou plus petit qu&#x27;il ne l&#x27;est : sur une Mercator à 70 degrés nord, 8,5 fois, tout l&#x27;argument du Groenland en un nombre. La déformation est moyennée par surface au sol et non par cellule, parce que les rangées polaires d&#x27;une grille de latitudes sont des lamelles.</p><p>Une projection dont le nom promet l&#x27;équivalence des aires peut être interrogée sur le respect de sa promesse, mesuré et non déclaré. On la tourne, on la centre sur un lieu, on l&#x27;ajuste à une boîte, à un ensemble de points ou à un pays, et elle répond aux deux questions de toute carte : où va ce lieu, et quel lieu est ce pixel. C&#x27;est la projection sous <code>stzGeoMap</code>.</p></div>
     <div class="treasures"><p class="proof"><a href="../atlas/geo.html">Le récit de son domaine : Géographie et cartographie</a> · <a href="../guide/geo.html">La référence de son domaine</a></p></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#arealscaleat">A</a> <a href="#centeron">C</a> <a href="#distortionat">D</a> <a href="#fittosphere">F</a> <a href="#graticule">G</a> <a href="#holdsitsclaim">H</a> <a href="#init">I</a> <a href="#kindnumber">K</a> <a href="#line">L</a> <a href="#name">N</a> <a href="#outline">O</a> <a href="#params">P</a> <a href="#rotate">R</a> <a href="#scale">S</a> <a href="#translate">T</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>
