@@ -410,5 +410,11 @@
    "id": "tukey",
    "code": "oT = StzTukeySummaryQ([ 2, 4, 4, 5, 7, 9, 12, 25 ])\n\n# the summary names the convention it used, in words\n? StzFindFirst(\"fourths\", oT.Why()) > 0\n\n? StzFindFirst(\"quartiles\", oT.Why()) > 0"
   }
+ ],
+ "stzGpu": [
+  {
+   "id": "kernel",
+   "code": "oK = StzKernelMakerQ()\noK {\n    TakesVector(:A)\n    TakesVector(:B)\n    TakesScalar(:alpha)\n    ReturnsVector(:C)\n    ForEachElement('{ @C = alpha * @A + @B }')\n}\n\n# a kernel is authored and transpiled with no device at all\n? StzFindFirst(\"v_c[i] = p.s_alpha * v_a[i] + v_b[i];\", oK.ToWGSL()) > 0\n\n# and every kernel binds the same contract, the tile first\n? StzFindFirst(\"@binding(0)\", oK.ToWGSL()) > 0"
+  }
  ]
 }
