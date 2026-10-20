@@ -362,5 +362,53 @@
    "id": "howto",
    "code": "# the library documents itself, and no model is involved\no1 = StzSelfDocQ(\"stzList\")\n? StzFindFirst(\"RemoveDuplicates\", o1.HowTo(\"remove duplicates\")) > 0"
   }
+ ],
+ "stzAuth": [
+  {
+   "id": "session",
+   "code": "oAuth = new stzAuth()\noAuth.Register(\"aya\", \"correct horse battery\")\n\ncToken = oAuth.Login(\"aya\", \"correct horse battery\")\n\n# the session belongs to a user\n? oAuth.UserOfSession(cToken)\n\n? oAuth.IsValidSession(cToken)\n\n# signing out ends it\noAuth.Logout(cToken)\n? oAuth.IsValidSession(cToken)"
+  }
+ ],
+ "stzDatabase": [
+  {
+   "id": "rows",
+   "code": "o1 = new stzDatabase(\":memory:\")\no1.Exec(\"CREATE TABLE city (name TEXT, people INTEGER)\")\n\n# values are bound apart from the statement\no1.ExecWith(\"INSERT INTO city VALUES (?, ?)\", [ \"Niamey\", 1500000 ])\n\n? @@( o1.Rows(\"SELECT name, people FROM city\") )\n\n? o1.Value(\"SELECT count(*) FROM city\")"
+  }
+ ],
+ "stzApp": [
+  {
+   "id": "world",
+   "code": "oApp = new stzApp(\"SonibankVisits\")\noApp {\n    AddThingQ(:Client) { Has([ :code, :name, :city ]) }\n    AddThingQ(:Visit)  { Of(:Client)  Has([ :agent, :date, :subject ]) }\n\n    AddFlowQ(:agent, :records, :Visit) {\n        Require(:subject)  Then( Keep(:Visit) )\n    }\n    AddReactionQ(:Client).Unseen(90, :Days) { Propose(:Visit) }\n}\n\n# the declaration, read back in words\noApp.Explain()"
+  }
+ ],
+ "stzCodeGraph": [
+  {
+   "id": "python",
+   "code": "cPy  = \"class Animal:\" + NL\ncPy += \"    def speak(self):\" + NL\ncPy += \"        return '...'\" + NL + NL\ncPy += \"class Dog(Animal):\" + NL\ncPy += \"    def speak(self):\" + NL\ncPy += \"        return 'woof'\" + NL + NL\ncPy += \"class Puppy(Dog):\" + NL\ncPy += \"    pass\"\n\noGraph = StzPyCodeGraphFromSource(cPy)\n\n? @@( oGraph.Classes() )\n\n# where a puppy comes from\n? @@( oGraph.AncestryOf(\"Puppy\") )\n\n# who feels a change to speak()\n? @@( oGraph.ImpactOf(\"speak\")[:inheritedBy] )"
+  }
+ ],
+ "stzHttpClient": [
+  {
+   "id": "settings",
+   "code": "o1 = new stzHttpClient()\n\n# the timeouts are settings that can be read back\no1.SetConnectTimeout(2000)\no1.SetRequestTimeout(5000)\n\n? o1.ConnectTimeout()\n\n? o1.RequestTimeout()"
+  }
+ ],
+ "stzProcess": [
+  {
+   "id": "child",
+   "code": "o1 = new stzProcess()\no1.Spawn(\"echo hello\")\n\n? o1.ReadOutputAll()\n\n? o1.Wait()"
+  }
+ ],
+ "stzSystemCall": [
+  {
+   "id": "run",
+   "code": "o1 = new stzSystemCall(\"echo hello\")\no1.Run()\n\n? o1.Output()\n\n? o1.ExitCode()"
+  }
+ ],
+ "area:stats": [
+  {
+   "id": "tukey",
+   "code": "oT = StzTukeySummaryQ([ 2, 4, 4, 5, 7, 9, 12, 25 ])\n\n# the summary names the convention it used, in words\n? StzFindFirst(\"fourths\", oT.Why()) > 0\n\n? StzFindFirst(\"quartiles\", oT.Why()) > 0"
+  }
  ]
 }

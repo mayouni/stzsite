@@ -268,11 +268,13 @@
   "en": [
    "The sign-in of an application, complete: passwords, sessions, a second factor, magic links, one-time codes, passkeys, roles, lockout, and the enterprise doors, SAML and OpenID, each as a method rather than a product to integrate.",
    "A user is registered with a password and only a salted Argon2id hash is stored; an older hash is accepted once and upgraded on the way through. A login returns an opaque token, or an empty string on a wrong password and on a lockout alike, so the answer leaks nothing. Sessions have an absolute and an idle lifetime; a user's devices can be listed and one signed out, or all of them; and a session's token is rotated after a privilege change, the classic fixation defence. Every call that depends on time has a form that takes the clock, so a test of expiry takes no time at all.",
+   "@session",
    "The second factor is enrolled in two steps, so a mis-scanned secret can never lock a user out, and the recovery codes come back once, in plain text, from the confirmation. Magic links and one-time codes go through a mail port you bind, a sandbox in development, and only the hash of a 256-bit token is stored. Roles are defined and granted, and a session becomes the governed actor that the rest of the library reasons about. It persists through a store you choose, in memory by default or SQLite, and mounts on `stzAppServer` in one call."
   ],
   "fr": [
    "La connexion d'une application, complète : mots de passe, sessions, second facteur, liens magiques, codes à usage unique, clés d'accès, rôles, verrouillage, et les portes d'entreprise, SAML et OpenID, chacune comme méthode plutôt que comme produit à intégrer.",
    "Un utilisateur s'inscrit avec un mot de passe et seul un hachage salé Argon2id est conservé ; un ancien hachage est accepté une fois et mis à niveau au passage. Une connexion rend un jeton opaque, ou une chaîne vide aussi bien pour un mot de passe faux que pour un verrouillage, si bien que la réponse ne révèle rien. Les sessions ont une durée absolue et une durée d'inactivité ; les appareils d'un utilisateur peuvent être listés et l'un déconnecté, ou tous ; et le jeton d'une session est renouvelé après un changement de privilège, la défense classique contre la fixation. Chaque appel qui dépend du temps a une forme qui prend l'horloge, si bien qu'un test d'expiration ne prend aucun temps.",
+   "@session",
    "Le second facteur s'enrôle en deux étapes, pour qu'un secret mal scanné ne puisse jamais exclure un utilisateur, et les codes de récupération reviennent une fois, en clair, depuis la confirmation. Les liens magiques et les codes à usage unique passent par un port de courrier que l'on lie, un bac à sable en développement, et seul le hachage d'un jeton de 256 bits est conservé. Les rôles se définissent et s'accordent, et une session devient l'acteur gouverné sur lequel le reste de la bibliothèque raisonne. Il persiste par un magasin que l'on choisit, en mémoire par défaut ou SQLite, et se monte sur `stzAppServer` en un appel."
   ]
  },
@@ -442,11 +444,13 @@
   "en": [
    "Runs a program and gives back what it said: its output, its error stream and its exit code, each separately, with the arguments passed as a list and never through a quoted shell string.",
    "The program and its arguments are named, or a command line is handed over to be parsed; a timeout is set; what to capture is chosen, the output, the error, and whether a console shows. The call runs once and answers with all three channels together. It used to run twice to collect them, and the double execution was found and closed.",
+   "@run",
    "The output can be converted on the way back, to a number or to a list of lines, so a caller that wants a count receives a count. Running by argument list rather than by a shell string is what makes a filename with a space, a quote or a non-ASCII letter arrive intact. It serves a build step, a conversion through an external tool, a system query, a test that drives another process, and anything else a program must delegate to the machine it runs on."
   ],
   "fr": [
    "Exécute un programme et rend ce qu'il a dit : sa sortie, son flux d'erreur et son code de sortie, chacun à part, les arguments passés en liste et jamais par une chaîne d'interpréteur entre guillemets.",
    "Le programme et ses arguments sont nommés, ou une ligne de commande est confiée pour être analysée ; un délai est posé ; ce qui est capturé est choisi, la sortie, l'erreur, et si une console s'affiche. L'appel s'exécute une fois et répond avec les trois canaux ensemble. Il s'exécutait deux fois pour les recueillir, et la double exécution a été trouvée et fermée.",
+   "@run",
    "La sortie peut être convertie au retour, en nombre ou en liste de lignes, si bien qu'un appelant qui veut un compte reçoit un compte. Exécuter par liste d'arguments plutôt que par chaîne d'interpréteur est ce qui fait qu'un nom de fichier avec une espace, un guillemet ou une lettre non ASCII arrive intact. Il sert une étape de compilation, une conversion par un outil externe, une interrogation du système, un test qui pilote un autre processus, et tout ce qu'un programme doit déléguer à la machine où il tourne."
   ]
  },
@@ -473,12 +477,14 @@
    "A program read as a graph: its classes, methods, functions, inheritance, imports and, with a real parser, its calls; so that the questions a maintainer asks, who defines this, who inherits it, what breaks if I change it, what is never called, are answered by a query and not by a search.",
    "It is pointed at a root, for the language its subclass knows, and the source is parsed by the tree-sitter grammar embedded in the engine, with no runtime of that language required. Then it answers about structure: the classes, the methods of a class, every class that defines a method, a parent, the ancestry up to a root, the subclasses and descendants, the imports, the file.",
    "The question to ask before an edit is the impact of a method: the classes that define it plus every descendant that inherits it unchanged. With call edges it also answers who calls what, which defined routine no recorded call reaches, and which routines can reach themselves.",
+   "@python",
    "The code rules run over the graph and answer findings in the library's unified shape, each with class, method and line, which is how the knob gate and the other code rules sit in one CI report with the graph rules of every other domain. It serves a refactoring, a review, an onboarding, a migration between languages, and the library's own self-documentation, which reads itself through this class."
   ],
   "fr": [
    "Un programme lu comme graphe : ses classes, méthodes, fonctions, héritages, importations et, avec un vrai analyseur, ses appels ; si bien que les questions d'un mainteneur, qui définit ceci, qui en hérite, que casse-t-on en le changeant, qu'est-ce qui n'est jamais appelé, trouvent réponse par une requête et non par une recherche.",
    "On le pointe sur une racine, pour le langage que sa sous-classe connaît, et la source est analysée par la grammaire tree-sitter embarquée dans le moteur, sans qu'aucun environnement de ce langage soit requis. Puis il répond sur la structure : les classes, les méthodes d'une classe, chaque classe qui définit une méthode, un parent, la filiation jusqu'à une racine, les sous-classes et descendants, les importations, le fichier.",
    "La question à poser avant une modification est l'impact d'une méthode : les classes qui la définissent plus chaque descendant qui l'hérite sans la redéfinir. Avec les arêtes d'appel, il répond aussi qui appelle quoi, quelle routine définie aucun appel enregistré n'atteint, et quelles routines peuvent s'atteindre elles-mêmes.",
+   "@python",
    "Les règles de code courent sur le graphe et répondent des constats dans la forme unifiée de la bibliothèque, chacun avec classe, méthode et ligne, ce qui met la porte des boutons et les autres règles de code dans un seul rapport d'intégration avec les règles de graphe de tous les autres domaines. Il sert une refonte, une revue, une prise en main, une migration entre langages, et l'auto-documentation de la bibliothèque, qui se lit elle-même par cette classe."
   ]
  },
@@ -532,12 +538,14 @@
   "en": [
    "An application declared as a world rather than coded as a program: its things, their relations and instances, its flows, its reactions, its goals, its body and its screens, held as one graph that can be asked, checked and run.",
    "The declaration reads in the vocabulary of what the application is. A thing is declared, then related, then populated with instances. A flow says what happens when, in a block that requires something and then keeps something. A reaction says what the world should propose when a thing lacks something. A goal names a purpose, and pursuing it measures the gap on the live world graph and turns each missing piece into a proposal rather than an action.",
+   "@world",
    "Everything can be read back as data, the things, the surfaces, an explanation, so that a generator, a documentation tool or a platform asks the declaration instead of reaching into it. When the application is made live, its reactions are wired into a running reactive system, one proposal is made for each instance that lacks what a reaction wants, and what comes out is a list of proposals to be accepted or refused.",
    "It serves whoever builds a business or a game as a set of rules and goals first and a screen second, and wants the same declaration to feed the interface, the documentation and the check."
   ],
   "fr": [
    "Une application déclarée comme un monde plutôt que codée comme un programme : ses choses, leurs relations et instances, ses flux, ses réactions, ses buts, son corps et ses écrans, tenus comme un seul graphe que l'on peut interroger, vérifier et exécuter.",
    "La déclaration se lit dans le vocabulaire de ce qu'est l'application. Une chose est déclarée, puis reliée, puis peuplée d'instances. Un flux dit ce qui arrive quand, dans un bloc qui exige quelque chose puis garde quelque chose. Une réaction dit ce que le monde doit proposer quand une chose manque de quelque chose. Un but nomme un dessein, et le poursuivre mesure l'écart sur le graphe du monde vivant et transforme chaque pièce manquante en proposition plutôt qu'en action.",
+   "@world",
    "Tout se relit comme donnée, les choses, les surfaces, une explication, si bien qu'un générateur, un outil de documentation ou une plateforme interroge la déclaration au lieu de fouiller dedans. Quand l'application est rendue vivante, ses réactions sont branchées sur un système réactif en marche, une proposition est faite pour chaque instance qui manque de ce qu'une réaction veut, et ce qui sort est une liste de propositions à accepter ou à refuser.",
    "Elle sert qui bâtit une entreprise ou un jeu comme un ensemble de règles et de buts d'abord et un écran ensuite, et veut que la même déclaration alimente l'interface, la documentation et la vérification."
   ]
@@ -546,12 +554,14 @@
   "en": [
    "The client side of the web: GET and POST, forms, downloads, many requests at once, authentication in every common scheme, and the timeouts, proxies and certificates that a real network demands, each a setting that can be read back.",
    "It is configured once, headers, cookies, a bearer token, Basic or digest authentication, a client certificate for mutual TLS, a proxy, redirects, certificate verification, compression, and then it speaks: get, post, post a form, download a file, read the response. A batch of GETs runs in parallel, one thread per address, and comes back together. Timeouts are the engine's own, with process-wide defaults, and the pool of kept-alive connections can be shown and released.",
+   "@settings",
    "Tracing is built in: a fresh W3C trace context can be attached to a request and the header value returned to be recorded, or one that arrived can be continued, so that a call across services can be followed from end to end.",
    "It serves any program that talks to another service, an API, a download, a webhook, a health probe."
   ],
   "fr": [
    "Le côté client du web : GET et POST, formulaires, téléchargements, nombreuses requêtes à la fois, authentification sous tous les schémas courants, et les délais, mandataires et certificats qu'exige un vrai réseau, chacun un réglage que l'on peut relire.",
    "On le configure une fois, en-têtes, témoins, jeton porteur, authentification Basic ou digest, certificat client pour le TLS mutuel, mandataire, redirections, vérification des certificats, compression, puis il parle : lire, envoyer, envoyer un formulaire, télécharger un fichier, lire la réponse. Un lot de lectures s'exécute en parallèle, un fil par adresse, et revient ensemble. Les délais sont ceux du moteur, avec des valeurs par défaut pour tout le processus, et le réservoir de connexions maintenues peut être montré et libéré.",
+   "@settings",
    "Le traçage est intégré : un contexte de trace W3C neuf peut être attaché à une requête et la valeur d'en-tête rendue pour être consignée, ou bien on poursuit celui qui est arrivé, si bien qu'un appel à travers des services se suit de bout en bout.",
    "Il sert tout programme qui parle à un autre service, une API, un téléchargement, un crochet web, une sonde de santé."
   ]
@@ -560,12 +570,14 @@
   "en": [
    "A SQLite database in the process: a file is opened, SQL is run, rows come back, with transactions that take the lock when they begin and failures that raise rather than hide.",
    "A statement runs and answers with the rows it changed; a query answers with rows as lists, or with one scalar. The bound forms are the safe ones: values are passed apart from the statement, a string as text, a whole number as an integer, another number as a real, and a typed query gives numbers back as numbers rather than as text.",
+   "@rows",
    "A transaction takes the write lock at once, so a busy database refuses at the start of a unit, where the whole unit can be retried, and it ends in a commit or a rollback. A query that fails partway through its rows raises, so that a half answer is never mistaken for a whole one.",
    "The database is the store under other parts of the library: `stzAppServer` can publish one of its tables as a REST resource, and `stzAuth` can keep its users in one. It serves any program that needs structured storage without a server: a cache, a log, a user table, an agent's memory."
   ],
   "fr": [
    "Une base SQLite dans le processus : on ouvre un fichier, on exécute du SQL, on récupère des lignes, avec des transactions qui prennent le verrou quand elles commencent et des échecs qui lèvent une erreur plutôt que de se cacher.",
    "Une instruction s'exécute et répond par les lignes modifiées ; une requête répond par des lignes sous forme de listes, ou par un scalaire. Les formes liées sont les sûres : les valeurs sont passées à part de l'instruction, une chaîne comme texte, un entier comme entier, un autre nombre comme réel, et une requête typée rend les nombres comme nombres plutôt que comme texte.",
+   "@rows",
    "Une transaction prend le verrou d'écriture aussitôt, si bien qu'une base occupée refuse au début d'une unité, où l'on peut la rejouer entière, et elle se termine par une validation ou une annulation. Une requête qui échoue en cours de lecture lève une erreur, si bien qu'une demi-réponse n'est jamais prise pour une réponse entière.",
    "La base est le magasin sous d'autres parties de la bibliothèque : `stzAppServer` peut publier l'une de ses tables comme ressource REST, et `stzAuth` peut y garder ses utilisateurs. Elle sert tout programme qui a besoin d'un stockage structuré sans serveur : un cache, un journal, une table d'utilisateurs, la mémoire d'un agent."
   ]
@@ -638,12 +650,14 @@
   "en": [
    "A child process held in the hand: started, read as it speaks, waited for, killed, and never left behind, since closing the handle of a running child kills it first.",
    "Starting it is an effectful act, the kind that a virtual system rehearses before it is allowed to happen. The output is read as a stream, which blocks until at least one byte arrives and answers an empty string at the end, or all at once to the end; the error stream is read the same way. Waiting answers the exit code and may be done twice, and success or failure can be asked for, or the child ended at once.",
+   "@child",
    "The object also knows its own process: its id, and its uptime on the monotonic clock in seconds, milliseconds or nanoseconds. The difference from `stzSystemCall` is the difference between a conversation and a command: a system call runs to completion and returns three channels, a process is held open and talked to while it runs.",
    "It serves a long-running tool read line by line, a server that a test starts and stops, a worker that the program supervises, and anything where \"wait for it to finish\" is not the whole story."
   ],
   "fr": [
    "Un processus enfant que l'on tient en main : démarré, lu pendant qu'il parle, attendu, tué, et jamais abandonné, puisque fermer le descripteur d'un enfant en marche le tue d'abord.",
    "Le démarrer est un acte effectif, de ceux qu'un système virtuel répète avant qu'on le laisse arriver. La sortie se lit en flux, ce qui bloque jusqu'à l'arrivée d'au moins un octet et répond une chaîne vide à la fin, ou d'un coup jusqu'au bout ; le flux d'erreur se lit de même. Attendre répond le code de sortie et peut se faire deux fois, la réussite ou l'échec peuvent être demandés, ou l'enfant terminé aussitôt.",
+   "@child",
    "L'objet connaît aussi son propre processus : son identifiant, et sa durée de vie sur l'horloge monotone en secondes, millisecondes ou nanosecondes. La différence avec `stzSystemCall` est celle d'une conversation et d'une commande : un appel système va jusqu'au bout et rend trois canaux, un processus est tenu ouvert et on lui parle pendant qu'il tourne.",
    "Il sert un outil de longue durée lu ligne à ligne, un serveur qu'un test démarre et arrête, un travailleur que le programme supervise, et tout cas où « attendre qu'il finisse » n'est pas toute l'histoire."
   ]

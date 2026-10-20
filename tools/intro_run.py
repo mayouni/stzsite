@@ -9,7 +9,7 @@ what each printed. A sample that raises an error is reported and kept out of the
 
     python tools/intro_run.py <path to libraries/stzlib of a library checkout> [Class ...]
 """
-import json, re, sys, subprocess, pathlib, datetime, shutil
+import json, re, sys, subprocess, pathlib, datetime, shutil, tempfile
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "data" / "intro-snippets.json"
@@ -27,8 +27,9 @@ def main():
     result = json.loads(OUT.read_text(encoding="utf-8")) if (only and OUT.exists()) else {}
     result = {k: v for k, v in result.items() if k in src}          # a class that no longer has samples keeps none
     commit = subprocess.run(["git", "-C", str(lib.parent.parent), "rev-parse", "--short=9", "HEAD"], capture_output=True, text=True).stdout.strip()
-    work = lib / "base" / "test" / "_stzsite_intro"
-    work.mkdir(parents=True, exist_ok=True)
+    work = pathlib.Path(tempfile.mkdtemp(prefix="stzsite_intro_"))          # the scripts live here, never in the library
+    cwd = lib / "base" / "test"                                              # the engine finds its libraries from a folder inside the checkout
+    stz_base = (lib / "base" / "stzBase.ring").as_posix()
     report = []
     try:
         for cls, snippets in src.items():
@@ -40,10 +41,10 @@ def main():
                 code = sn["code"].replace("\r", "")
                 body += [f'? "@@BEGIN {i}"', "try", code, "catch", '    ? "@@ERROR " + cCatchError', "done", f'? "@@END {i}"', ""]
             script = work / (re.sub(r"[^A-Za-z0-9]+", "_", cls) + ".ring")
-            script.write_text("\n".join(['load "../../stzBase.ring"', ""] + body) + "\n", encoding="utf-8")
+            script.write_text("\n".join(['load "' + stz_base + '"', ""] + body) + "\n", encoding="utf-8")
             started = datetime.datetime.now()
             try:
-                p = subprocess.run(["ring", script.name], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=240)
+                p = subprocess.run(["ring", str(script)], cwd=cwd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=240)
                 out = p.stdout + ("\n" + p.stderr if p.stderr else "")
             except subprocess.TimeoutExpired as e:
                 out = (e.stdout or b"").decode("utf-8", "replace") if isinstance(e.stdout, bytes) else (e.stdout or "")

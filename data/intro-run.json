@@ -4,471 +4,15 @@
    "id": "chart",
    "code": "oOrg = new stzOrgChart(\"acme\")\noOrg {\n    AddExecutivePosition(\"ceo\")\n    AddManagementPosition(\"cfo\")\n    AddStaffPosition(\"clerk\")\n\n    ReportsTo(\"cfo\", \"ceo\")\n    ReportsTo(\"clerk\", \"cfo\")\n}\n\n# three positions\n? oOrg.NumberOfNodes()",
    "out": "3",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
   },
   {
    "id": "rogue",
    "code": "oOrg = new stzOrgChart(\"acme\")\noOrg {\n    AddExecutivePosition(\"ceo\")\n    AddStaffPosition(\"rogue\")\n    ReportsTo(\"rogue\", \"rogue\")\n}\n\noRep = new stzRuleReport(\"acme\")\n# the org chart checks itself into the gate\noRep.Collect(oOrg)\n\n# the gate collected orgchart findings\n? len(oRep.FindingsOfSubject(\"orgchart\")) >= 1",
    "out": "1",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzString": [
-  {
-   "id": "count",
-   "code": "o1 = new stzString(\"s㊱m\")\n\n# three characters, not five bytes\n? o1.NumberOfChars()\n\n# the second one is the circled number\n? o1[2]",
-   "out": "3\n㊱",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "find",
-   "code": "o1 = new stzString(\"...emm...eh..emm...eh\")\n\n# where is \"emm\"?\n? @@( o1.Find(\"emm\") )\n\n# and what are the first and last positions of each?\n? @@( o1.FindAsSections(\"emm\") )",
-   "out": "[ 4, 14 ]\n[ [ 4, 6 ], [ 14, 16 ] ]",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "names",
-   "code": "# every character has a name, and the name says what it is\n? @@NL( Q(\"◐◰☁\").CharsNames() )",
-   "out": "[\n\t\"CIRCLE WITH LEFT HALF BLACK\",\n\t\"WHITE SQUARE WITH UPPER LEFT QUADRANT\",\n\t\"CLOUD\"\n]",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "forms",
-   "code": "o1 = new stzString(\"hello world\")\n\n# Replaced returns a changed copy and leaves the string alone\n? o1.Replaced(\"world\", \"Softanza\")\n? o1.Content()\n\n# Replace changes the string itself\no1.Replace(\"world\", \"Softanza\")\n? o1.Content()",
-   "out": "hello Softanza\nhello world\nhello Softanza",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzRegex": [
-  {
-   "id": "match",
-   "code": "o1 = new stzRegex(\"[a-z]+@[a-z]+\\.com\")\n\n# Match anchors the pattern on the whole text\n? o1.Match(\"kal@stz.com\")\n? o1.Match(\"write to kal@stz.com\")\n\n# MatchFirst looks for it anywhere\n? o1.MatchFirst(\"write to kal@stz.com\")",
-   "out": "1\n0\n1",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "typing",
-   "code": "o1 = new stzRegex(\"\\d{3}-\\d{2}-\\d{4}\")\n\n# the text is on its way to a match\n? o1.MatchAsYouType(\"123-45\")\n\n# this one can never become one\n? o1.MatchAsYouType(\"abc\")",
-   "out": "1\n0",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzList": [
-  {
-   "id": "sort",
-   "code": "o1 = new stzList([ \"abcde\", \"a\", \"abc\", \"ab\", \"abcd\" ])\n\n# the predicate is a string that the engine evaluates\no1.SortBy('len(@item)')\n? @@( o1.Content() )",
-   "out": "[ \"a\", \"ab\", \"abc\", \"abcd\", \"abcde\" ]",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "deep",
-   "code": "o1 = new stzList([\n    \"you\",\n    \"other\",\n    [ \"other\", \"you\", [ \"you\" ], \"other\" ],\n    \"other\",\n    \"you\"\n])\n\n# three levels deep\n? o1.NumberOfLevels()\n\n# every place where \"you\" sits, at any depth\n? @@( o1.DeepFind(\"you\") )",
-   "out": "3\n[ [ 1 ], [ 3, 2 ], [ 3, 3, 1 ], [ 5 ] ]",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "forms",
-   "code": "o1 = new stzList([ 5, 3, 8 ])\n\n# Added returns a copy with the item and leaves the list alone\n? @@( o1.Added(1) )\n? @@( o1.Content() )\n\n# Add changes the list itself\no1.Add(1)\n? @@( o1.Content() )",
-   "out": "[ 5, 3, 8, 1 ]\n[ 5, 3, 8 ]\n[ 5, 3, 8, 1 ]",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzNumber": [
-  {
-   "id": "prime",
-   "code": "? Q(17).IsPrime()\n\n? Q(169).IsPrime()\n\n# the numbers that divide 54\n? @@( Q(54).Factors() )\n\n# and the prime ones among them\n? @@( Q(54).PrimeFactors() )",
-   "out": "1\n0\n[ 1, 2, 3, 6, 9, 18, 27, 54 ]\n[ 2, 3 ]",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "theory",
-   "code": "# 5! is 120\n? Q(5).Factorial()\n\n# GCD(12, 18) is 6\n? Q(12).GCD(18)\n\n# LCM(4, 6) is 12\n? Q(4).LCM(6)\n\n# Fibonacci(10) is 55\n? Q(10).Fibonacci()",
-   "out": "120\n6\n12\n55",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "exact",
-   "code": "# the same question, asked at two precisions\n? Q(5.12).IsEqualTo(5.1200000000000001)\n\n? Q(5.12).IsEqualTo([ 5.1200000000000001, :Round = 16 ])",
-   "out": "1\n0",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzListOfNumbers": [
-  {
-   "id": "nearest",
-   "code": "o1 = new stzListOfNumbers([ 2, 7, 18, 10, 12, 25, 4 ])\n\n# the number of the list that is nearest to 17\n? o1.Nearest(17)\n\n# and to 88\n? o1.Nearest(88)",
-   "out": "18\n25",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "steps",
-   "code": "o1 = new stzListOfNumbers([ 1, 2, 5, 6, 9, 10 ])\n\n# the distinct steps between consecutive numbers\n? @@( o1.Steps() )\n\n# the running total\no1.Cumulate()\n? @@( o1.Content() )",
-   "out": "[ 1, 3 ]\n[ 1, 2, 7, 13, 22, 32 ]",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "classify",
-   "code": "o1 = new stzListOfNumbers([ 4, 8, 15, 16, 23, 42 ])\n\n# every number goes under the centre it is nearest to\n? @@( o1.ClassifyByNearestTo([ 5, 20 ]) )",
-   "out": "[ [ 5, [ 4, 8 ] ], [ 20, [ 15, 16, 23, 42 ] ] ]",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzHashList": [
-  {
-   "id": "read",
-   "code": "o1 = new stzHashList([ :math = 18, :stats = 16, :history = 14 ])\n\n# read a value by its key\n? o1[:stats]\n\n# the keys, in the order they were given\n? @@( o1.Keys() )\n\n# which positions hold the value 18?\n? @@( o1.FindValue(18) )",
-   "out": "16\n[ \"math\", \"stats\", \"history\" ]\n[ 1 ]",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "lower",
-   "code": "o1 = new stzHashList([ [ \"NAME\", \"Mansour\" ], [ \"AGE\", 45 ] ])\n\n# keys are folded to lowercase\n? @@( o1.Content() )",
-   "out": "[ [ \"name\", \"Mansour\" ], [ \"age\", 45 ] ]",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzText": [
-  {
-   "id": "tone",
-   "code": "o1 = new stzText(\"I love this library, it is wonderful\")\n\n? o1.Sentiment()\n\n? o1.IsPositive()",
-   "out": "positive\n1",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "entities",
-   "code": "o1 = new stzText(\"Mansour lives in Niamey and works for Softanza\")\n\n# who and where, found by rules, with no model\n? @@NL( o1.NamedEntities() )",
-   "out": "[\n\t[ \"Mansour\", \"ENTITY\" ],\n\t[ \"Niamey\", \"LOCATION\" ],\n\t[ \"Softanza\", \"ENTITY\" ]\n]",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "phrases",
-   "code": "o1 = new stzText(\"The quick brown fox jumps over the lazy dog\")\n\n? @@( o1.NounPhrases() )",
-   "out": "[ \"The quick brown fox\", \"the lazy dog\" ]",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzGraph": [
-  {
-   "id": "bipartite",
-   "code": "oG = new stzGraph(\"trip\")\noG {\n    AddNode(\"A\")\n    AddNode(\"B\")\n    AddNode(\"C\")\n\n    AddEdge(\"A\", \"B\")\n    AddEdge(\"B\", \"C\")\n}\n\n# a path can be coloured with two colours\n? oG.IsBipartite()\n\n# add the edge that closes the triangle\noG.AddEdge(\"A\", \"C\")\n? oG.IsBipartite()",
-   "out": "1\n0",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "path",
-   "code": "oG = new stzGraph(\"roads\")\noG {\n    AddNodes([ \"A\", \"B\", \"C\", \"D\" ])\n\n    AddEdge(\"A\", \"B\")\n    AddEdge(\"B\", \"C\")\n    AddEdge(\"C\", \"D\")\n    AddEdge(\"A\", \"D\")\n}\n\n# the shortest way from A to C\n? @@( oG.ShortestPath(\"A\", \"C\") )",
-   "out": "[ \"a\", \"b\", \"c\" ]",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "weight",
-   "code": "oG = new stzGraph(\"network\")\noG {\n    AddNodes([ \"A\", \"B\", \"C\" ])\n\n    AddEdgeXTT(\"A\", \"B\", \"link\", [ :weight = 1 ])\n    AddEdgeXTT(\"B\", \"C\", \"link\", [ :weight = 2 ])\n    AddEdgeXTT(\"A\", \"C\", \"link\", [ :weight = 5 ])\n}\n\n# the cheapest tree that connects all three\n? oG.MSTWeight()",
-   "out": "3",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzDiagram": [
-  {
-   "id": "flow",
-   "code": "o1 = new stzDiagram(\"flow\")\no1 {\n    AddNode(\"start\")\n    AddNode(\"check\")\n    AddNode(\"done\")\n\n    AddEdge(\"start\", \"check\")\n    AddEdge(\"check\", \"done\")\n}\n\n# a diagram is a graph, so it answers like one\n? o1.NumberOfNodes()\n\n# and it knows how it will be drawn\n? o1.Layout()\n\n? o1.Notation()\n\n# the picture is vector, and needs no device\n? StzFindFirst(\"<svg\", o1.ToSVG()) > 0",
-   "out": "3\ntopdown\ndefault\n1",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzCanvas": [
-  {
-   "id": "draw",
-   "code": "o1 = new stzCanvas(300, 120)\no1 {\n    SetBackground(\"white\")\n    AddRect(10, 10, 120, 100)\n    AddCircle(220, 60, 40)\n}\n\n# two shapes on the display list\n? o1.ShapeCount()\n\n# the same picture, as SVG: vector, with no device\n? StzFindFirst(\"<svg\", o1.ToSVG()) > 0",
-   "out": "2\n1",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzDataSet": [
-  {
-   "id": "centre",
-   "code": "o1 = new stzDataSet([ 2, 4, 4, 5, 7, 9, 12, 25 ])\n\n# the outlier pulls the mean up\n? o1.Mean()\n\n# and leaves the median where it was\n? o1.Median()",
-   "out": "8.50\n6",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "partial",
-   "code": "oX = new stzDataSet([ 1, 2, 3, 4, 5 ])\noY = new stzDataSet([ 2, 1, 4, 3, 6 ])\noZ = new stzDataSet([ 3, 1, 4, 1, 5 ])\n\n# how X moves with Y\n? oX.CorrelationWith(oY)\n\n# and the same, once Z is held fixed\n? oX.PartialCorrelation(oY, oZ)",
-   "out": "0.82\n0.98",
-   "ran": "2026-10-19 23:49",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzDateTime": [
-  {
-   "id": "forms",
-   "code": "o1 = StzDateTimeQ(\"2024-03-15 10:30:00\")\n\n# the same moment, written for three readers\n? o1.ToEuropean()\n\n? o1.ToAmerican()\n\n? o1.ToLong()",
-   "out": "15/03/2024 10:30:00 AM\n03/15/2024 10:30:00 AM\nFriday, March 15, 2024 10:30:00 AM",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "words",
-   "code": "o1 = StzDateTimeQ(\"2024-03-15 10:00:00\")\n\n# arithmetic in words\no1 + \"2 days 5 hours\"\n? o1.Content()\n\n# and the distance between two moments, in the unit you name\no2 = StzDateTimeQ(\"2024-03-15 10:00:00\")\n? o2.DurationTo(\"2024-03-20 14:30:15\", :In = :Days)",
-   "out": "2024-03-17 15:00:00\n5",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzFolder": [
-  {
-   "id": "make",
-   "code": "StzMakeDir(\"demo\")\n\no1 = new stzFolder(\"demo\")\no1.CreateFolders([ \"src\", \"docs\", \"tests\" ])\n\n# three folders were made\n? o1.CountFolders()\n\n# listed in a form that never varies\n? @@( o1.Folders() )",
-   "out": "3\n[ \"/docs/\", \"/src/\", \"/tests/\" ]",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzAppServer": [
-  {
-   "id": "start",
-   "code": "o1 = new stzAppServer()\n\n# port 0 asks the system for a free one\no1.Start(0, \"127.0.0.1\")\n? o1.IsRunning()\n\no1.Stop()\n? o1.IsRunning()",
-   "out": "1\n0",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzMatrix": [
-  {
-   "id": "find",
-   "code": "o1 = new stzMatrix([\n    [ 80, 85, 99 ],\n    [ 70, 75, 80 ],\n    [ 99, 65, 99 ]\n])\n\n# every cell that holds 99, as row and column\n? @@( o1.FindElement(99) )",
-   "out": "[ [ 1, 3 ], [ 3, 1 ], [ 3, 3 ] ]",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "det",
-   "code": "o1 = new stzMatrix([ [ 1, 2 ], [ 3, 4 ] ])\n\n? o1.Determinant()\n\n# replace a row, and the engine answers for the new matrix\no1.ReplaceRow(1, [ 99, 2 ])\n? o1.Determinant()",
-   "out": "-2\n390",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzRegexMaker": [
-  {
-   "id": "build",
-   "code": "o1 = new stzRegexMaker()\no1 {\n    AddWordBoundary(:start)\n    AddCapturingGroup(\"digits\", \"\\d+\")\n    AddWordBoundary(:end)\n}\n\n# the pattern\n? o1.Pattern()\n\n# and its pieces, each of which can be explained\n? @@( o1.Fragments() )",
-   "out": "\\b(?P<digits>\\d+)\\b\n[ \"\\b\", \"(?P<\", \"digits\", \">\", \"\\d+\", \")\", \"\\b\" ]",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzLocale": [
-  {
-   "id": "niger",
-   "code": "# a country alone is enough: the language is filled in from it\no1 = new stzLocale([ :Country = :Niger ])\n\n? o1.Abbreviation()\n\n? o1.LanguageName()\n\n? o1.CountryPhoneCode()",
-   "out": "fr_NE\nfrench\n+227",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "parts",
-   "code": "o1 = new stzLocale(\"pt_Latn_BR\")\n\n? o1.Abbreviation()\n\n? o1.LanguageName()\n\n? o1.ScriptName()\n\n? o1.CountryName()",
-   "out": "pt_BR\nportuguese\nlatin\nbrazil",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzPivotTable": [
-  {
-   "id": "sales",
-   "code": "oTab = new stzTable([\n    [ :Region, :Product, :Sales ],\n    [ \"North\", \"Tea\", 10 ],\n    [ \"North\", \"Rice\", 30 ],\n    [ \"South\", \"Tea\", 20 ],\n    [ \"South\", \"Rice\", 5 ]\n])\n\no1 = new stzPivotTable(oTab)\no1 {\n    SetRowsBy(:Region)\n    SetColsBy(:Product)\n    SetValues(:Sales)\n    SetAggregateFunction(:Sum)\n    Generate()\n}\n\n# sales of tea in the north\n? o1.Value(\"North\", \"Tea\")\n\n# everything the south sold\n? o1.RowTotal(\"South\")\n\n? o1.GrandTotal()",
-   "out": "10\n25\n65",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzSound": [
-  {
-   "id": "silence",
-   "code": "o1 = new stzSound(\"\")\n\n# two seconds, one channel, 44,100 frames a second\no1.MakeSilence(2, 1, 44100)\n\n? o1.Frames()\n\n? o1.Duration()\n\n# the same sound at half the rate\no1.ResampleTo(22050)\n\n? o1.Frames()\n\n? o1.Duration()",
-   "out": "88200\n2\n44100\n2",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzVirtualFileSystem": [
-  {
-   "id": "twin",
-   "code": "o1 = new stzVirtualFileSystem()\no1.CreateFolder(\"config\")\no1.CreateFile(\"config/greenhouse.ini\", \"[zone]\")\n\n# the twin knows the file\n? o1.Exists(\"config/greenhouse.ini\")\n\n? @@( o1.Paths() )\n\n# and nothing was written on the disk\n? fexists(\"config/greenhouse.ini\")",
-   "out": "1\n[ \"config\", \"config/greenhouse.ini\" ]\n0",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzMetric": [
-  {
-   "id": "counter",
-   "code": "o1 = new stzMetric(\"app.requests\", :counter)\no1.Increment()\no1.Increment()\no1.Increment()\n\n? o1.Value()\n\n# the same metric, in the name Prometheus reads\n? o1.PromName()",
-   "out": "3\napp_requests",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "timer",
-   "code": "o1 = new stzMetric(\"http.request.ms\", :timer)\no1 {\n    Record(12)\n    Record(15)\n    Record(18)\n    Record(250)\n}\n\n? o1.Count()\n\n# the exact mean over the lifetime\n? o1.MeanMs()",
-   "out": "4\n73.75",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzLLMFunction": [
-  {
-   "id": "seed",
-   "code": "o1 = new stzLLMFunction(\"wordcount\")\no1.SetPrompt(\"Count the words of the text.\")\no1.ReturnsNumber()\no1.Budget(10)\n\n# offline, a known answer is seeded, explicitly\no1.SeedAnswer(\"the quick brown fox\", 4)\n\n? o1.Call_(\"the quick brown fox\")",
-   "out": "4",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzPerfMonitor": [
-  {
-   "id": "declare",
-   "code": "o1 = new stzPerfMonitor(\"shop\")\no1 {\n    NewCounter(\"orders\")\n    NewTimer(\"checkout.ms\")\n}\n\n? o1.NumberOfMetrics()\n\n? @@( o1.Metrics() )",
-   "out": "2\n[ [ \"orders\", \"counter\" ], [ \"checkout.ms\", \"timer\" ] ]",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzSecret": [
-  {
-   "id": "mask",
-   "code": "o1 = new stzSecret(\"deploy-key\")\no1.FromEnv(\"DEPLOY_KEY\")\n\n# what any display or file sees\n? o1.Descriptor()\n\n# where the value lives, which is not the value\n? o1.SourceLocator()",
-   "out": "<secret 'deploy-key' (secret) from env:DEPLOY_KEY>\nDEPLOY_KEY",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  }
- ],
- "stzWorkflow": [
-  {
-   "id": "states",
-   "code": "o1 = new stzWorkflow(\"order\")\no1 {\n    SetWorkflowType(:StateMachine)\n\n    AddState(\"new\")\n    AddState(\"paid\")\n    AddState(\"shipped\")\n\n    AddTransition(\"new\", \"paid\", \"pay\")\n    AddTransition(\"paid\", \"shipped\", \"ship\")\n}\n\n? o1.IsStateMachine()\n\n? o1.NumberOfNodes()",
-   "out": "1\n3",
-   "ran": "2026-10-19 23:50",
-   "commit": "4a184e6f0"
-  }
- ],
- "area:string": [
-  {
-   "id": "chars",
-   "code": "# five characters, which is what a person counts\n? Q(\"héllo\").NumberOfChars()\n\n# and six bytes, which is what a machine stores\n? len(\"héllo\")",
-   "out": "5\n6",
-   "ran": "2026-10-20 00:04",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "case",
-   "code": "o1 = new stzString(\"Tea and tea\")\n\n# case matters unless you say it does not, in the one same function\n? @@( o1.FindCS(\"tea\", TRUE) )\n\n? @@( o1.FindCS(\"tea\", FALSE) )",
-   "out": "[ 9 ]\n[ 1, 9 ]",
-   "ran": "2026-10-20 00:04",
-   "commit": "4a184e6f0"
-  }
- ],
- "area:regex": [
-  {
-   "id": "match",
-   "code": "o1 = new stzRegex(\"[a-z]+@[a-z]+\\.com\")\n\n# does the whole text fit the pattern?\n? o1.Match(\"write to kal@stz.com\")\n\n# does it occur anywhere?\n? o1.MatchFirst(\"write to kal@stz.com\")",
-   "out": "0\n1",
-   "ran": "2026-10-20 00:04",
-   "commit": "4a184e6f0"
-  }
- ],
- "area:collections": [
-  {
-   "id": "find",
-   "code": "# one function, whether the host is a string or a list\n? @@( StzFind(\"tea\", \"tea rice tea fish\") )\n\n? @@( StzFind(\"tea\", [ \"tea\", \"rice\", \"tea\", \"fish\" ]) )",
-   "out": "[ 1, 10 ]\n[ 1, 3 ]",
-   "ran": "2026-10-20 00:04",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "pred",
-   "code": "o1 = new stzList([ 5, 12, 8, 30 ])\n\n# a predicate written as a string runs inside the engine\n? @@( o1.Filter('@item > 10') )",
-   "out": "[ 12, 30 ]",
-   "ran": "2026-10-20 00:04",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "forms",
-   "code": "o1 = new stzList([ 5, 3, 8 ])\n\n# the past form returns a copy and leaves the list alone\n? @@( o1.Added(1) )\n? @@( o1.Content() )\n\n# the plain verb changes the list itself\no1.Add(1)\n? @@( o1.Content() )",
-   "out": "[ 5, 3, 8, 1 ]\n[ 5, 3, 8 ]\n[ 5, 3, 8, 1 ]",
-   "ran": "2026-10-20 00:04",
-   "commit": "4a184e6f0"
-  }
- ],
- "area:numeric": [
-  {
-   "id": "exact",
-   "code": "o1 = new stzNumber(\"1\")\no1.Divide(\"3\")\n\n# one third cannot be written in decimals, and the number says so\n? o1.IsExact()\n\n? o1.Why()",
-   "out": "0\nthe division does not terminate in 6 decimal place(s)",
-   "ran": "2026-10-20 00:04",
-   "commit": "4a184e6f0"
-  },
-  {
-   "id": "money",
-   "code": "# a price stays money: two places, with the accountant's rounding\no1 = StzMoneyQ(\"19.99\")\no1.MultiplyBy(\"0.15\")\n\n? o1.Content()",
-   "out": "3.00",
-   "ran": "2026-10-20 00:04",
-   "commit": "4a184e6f0"
-  }
- ],
- "area:tables": [
-  {
-   "id": "col",
-   "code": "oT = new stzTable([\n    [ :ORDER, :ITEM, :PRICE ],\n    [ 1, \"Tea\", 3 ],\n    [ 2, \"Rice\", 5 ],\n    [ 3, \"Tea\", 3 ]\n])\n\n# a column is a list you can sum, or filter with a condition\n? @@( oT.Col(:PRICE) )",
-   "out": "[ 3, 5, 3 ]",
-   "ran": "2026-10-20 00:04",
-   "commit": "4a184e6f0"
-  }
- ],
- "area:nlp": [
-  {
-   "id": "phrases",
-   "code": "o1 = new stzText(\"The quick brown fox jumps over the lazy dog\")\n\n# two noun phrases, and nothing was fetched to find them\n? @@( o1.NounPhrases() )",
-   "out": "[ \"The quick brown fox\", \"the lazy dog\" ]",
-   "ran": "2026-10-20 00:04",
-   "commit": "4a184e6f0"
-  }
- ],
- "area:graphics": [
-  {
-   "id": "legible",
-   "code": "# legibility is a number that can say no\n? StzIsLegible(\"#999999\", :White)\n\n? StzIsLegible(\"#333333\", :White)",
-   "out": "0\n1",
-   "ran": "2026-10-20 00:04",
-   "commit": "4a184e6f0"
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
   }
  ],
  "stzCalendar": [
@@ -476,15 +20,201 @@
    "id": "working",
    "code": "StzCalendarQ([2024, 10]) {\n\n    SetWorkingDays([\n        \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\"\n    ])\n\n    # Thu 2024-10-03 is a working day\n    ? IsWorkingDay(\"2024-10-03\")\n\n    # Sat 2024-10-05 is not a working day\n    ? IsWorkingDay(\"2024-10-05\")\n\n    # October 2024 has 23 working days\n    ? len(WorkingDays())\n}",
    "out": "1\n0\n23",
-   "ran": "2026-10-20 00:30",
-   "commit": "4a184e6f0"
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
   },
   {
    "id": "holiday",
    "code": "StzCalendarQ([2024, 10]) {\n\n    AddHoliday(\"2024-10-15\", \"National Day\")\n\n    # the 15th is a holiday\n    ? IsHoliday(\"2024-10-15\")\n\n    # the 16th is not\n    ? IsHoliday(\"2024-10-16\")\n\n    # and the holiday has a name\n    ? HolidayName(\"2024-10-15\")\n}",
    "out": "1\n0\nNational Day",
-   "ran": "2026-10-20 00:30",
-   "commit": "4a184e6f0"
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzString": [
+  {
+   "id": "count",
+   "code": "o1 = new stzString(\"s㊱m\")\n\n# three characters, not five bytes\n? o1.NumberOfChars()\n\n# the second one is the circled number\n? o1[2]",
+   "out": "3\n㊱",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "find",
+   "code": "o1 = new stzString(\"...emm...eh..emm...eh\")\n\n# where is \"emm\"?\n? @@( o1.Find(\"emm\") )\n\n# and what are the first and last positions of each?\n? @@( o1.FindAsSections(\"emm\") )",
+   "out": "[ 4, 14 ]\n[ [ 4, 6 ], [ 14, 16 ] ]",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "names",
+   "code": "# every character has a name, and the name says what it is\n? @@NL( Q(\"◐◰☁\").CharsNames() )",
+   "out": "[\n\t\"CIRCLE WITH LEFT HALF BLACK\",\n\t\"WHITE SQUARE WITH UPPER LEFT QUADRANT\",\n\t\"CLOUD\"\n]",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "forms",
+   "code": "o1 = new stzString(\"hello world\")\n\n# Replaced returns a changed copy and leaves the string alone\n? o1.Replaced(\"world\", \"Softanza\")\n? o1.Content()\n\n# Replace changes the string itself\no1.Replace(\"world\", \"Softanza\")\n? o1.Content()",
+   "out": "hello Softanza\nhello world\nhello Softanza",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzRegex": [
+  {
+   "id": "match",
+   "code": "o1 = new stzRegex(\"[a-z]+@[a-z]+\\.com\")\n\n# Match anchors the pattern on the whole text\n? o1.Match(\"kal@stz.com\")\n? o1.Match(\"write to kal@stz.com\")\n\n# MatchFirst looks for it anywhere\n? o1.MatchFirst(\"write to kal@stz.com\")",
+   "out": "1\n0\n1",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "typing",
+   "code": "o1 = new stzRegex(\"\\d{3}-\\d{2}-\\d{4}\")\n\n# the text is on its way to a match\n? o1.MatchAsYouType(\"123-45\")\n\n# this one can never become one\n? o1.MatchAsYouType(\"abc\")",
+   "out": "1\n0",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzList": [
+  {
+   "id": "sort",
+   "code": "o1 = new stzList([ \"abcde\", \"a\", \"abc\", \"ab\", \"abcd\" ])\n\n# the predicate is a string that the engine evaluates\no1.SortBy('len(@item)')\n? @@( o1.Content() )",
+   "out": "[ \"a\", \"ab\", \"abc\", \"abcd\", \"abcde\" ]",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "deep",
+   "code": "o1 = new stzList([\n    \"you\",\n    \"other\",\n    [ \"other\", \"you\", [ \"you\" ], \"other\" ],\n    \"other\",\n    \"you\"\n])\n\n# three levels deep\n? o1.NumberOfLevels()\n\n# every place where \"you\" sits, at any depth\n? @@( o1.DeepFind(\"you\") )",
+   "out": "3\n[ [ 1 ], [ 3, 2 ], [ 3, 3, 1 ], [ 5 ] ]",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "forms",
+   "code": "o1 = new stzList([ 5, 3, 8 ])\n\n# Added returns a copy with the item and leaves the list alone\n? @@( o1.Added(1) )\n? @@( o1.Content() )\n\n# Add changes the list itself\no1.Add(1)\n? @@( o1.Content() )",
+   "out": "[ 5, 3, 8, 1 ]\n[ 5, 3, 8 ]\n[ 5, 3, 8, 1 ]",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzNumber": [
+  {
+   "id": "prime",
+   "code": "? Q(17).IsPrime()\n\n? Q(169).IsPrime()\n\n# the numbers that divide 54\n? @@( Q(54).Factors() )\n\n# and the prime ones among them\n? @@( Q(54).PrimeFactors() )",
+   "out": "1\n0\n[ 1, 2, 3, 6, 9, 18, 27, 54 ]\n[ 2, 3 ]",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "theory",
+   "code": "# 5! is 120\n? Q(5).Factorial()\n\n# GCD(12, 18) is 6\n? Q(12).GCD(18)\n\n# LCM(4, 6) is 12\n? Q(4).LCM(6)\n\n# Fibonacci(10) is 55\n? Q(10).Fibonacci()",
+   "out": "120\n6\n12\n55",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "exact",
+   "code": "# the same question, asked at two precisions\n? Q(5.12).IsEqualTo(5.1200000000000001)\n\n? Q(5.12).IsEqualTo([ 5.1200000000000001, :Round = 16 ])",
+   "out": "1\n0",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzListOfNumbers": [
+  {
+   "id": "nearest",
+   "code": "o1 = new stzListOfNumbers([ 2, 7, 18, 10, 12, 25, 4 ])\n\n# the number of the list that is nearest to 17\n? o1.Nearest(17)\n\n# and to 88\n? o1.Nearest(88)",
+   "out": "18\n25",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "steps",
+   "code": "o1 = new stzListOfNumbers([ 1, 2, 5, 6, 9, 10 ])\n\n# the distinct steps between consecutive numbers\n? @@( o1.Steps() )\n\n# the running total\no1.Cumulate()\n? @@( o1.Content() )",
+   "out": "[ 1, 3 ]\n[ 1, 3, 8, 14, 23, 33 ]",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "classify",
+   "code": "o1 = new stzListOfNumbers([ 4, 8, 15, 16, 23, 42 ])\n\n# every number goes under the centre it is nearest to\n? @@( o1.ClassifyByNearestTo([ 5, 20 ]) )",
+   "out": "[ [ 5, [ 4, 8 ] ], [ 20, [ 15, 16, 23, 42 ] ] ]",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzHashList": [
+  {
+   "id": "read",
+   "code": "o1 = new stzHashList([ :math = 18, :stats = 16, :history = 14 ])\n\n# read a value by its key\n? o1[:stats]\n\n# the keys, in the order they were given\n? @@( o1.Keys() )\n\n# which positions hold the value 18?\n? @@( o1.FindValue(18) )",
+   "out": "16\n[ \"math\", \"stats\", \"history\" ]\n[ 1 ]",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "lower",
+   "code": "o1 = new stzHashList([ [ \"NAME\", \"Mansour\" ], [ \"AGE\", 45 ] ])\n\n# keys are folded to lowercase\n? @@( o1.Content() )",
+   "out": "[ [ \"name\", \"Mansour\" ], [ \"age\", 45 ] ]",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzText": [
+  {
+   "id": "tone",
+   "code": "o1 = new stzText(\"I love this library, it is wonderful\")\n\n? o1.Sentiment()\n\n? o1.IsPositive()",
+   "out": "positive\n1",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "entities",
+   "code": "o1 = new stzText(\"Mansour lives in Niamey and works for Softanza\")\n\n# who and where, found by rules, with no model\n? @@NL( o1.NamedEntities() )",
+   "out": "[\n\t[ \"Mansour\", \"ENTITY\" ],\n\t[ \"Niamey\", \"LOCATION\" ],\n\t[ \"Softanza\", \"ENTITY\" ]\n]",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "phrases",
+   "code": "o1 = new stzText(\"The quick brown fox jumps over the lazy dog\")\n\n? @@( o1.NounPhrases() )",
+   "out": "[ \"The quick brown fox\", \"the lazy dog\" ]",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzGraph": [
+  {
+   "id": "bipartite",
+   "code": "oG = new stzGraph(\"trip\")\noG {\n    AddNode(\"A\")\n    AddNode(\"B\")\n    AddNode(\"C\")\n\n    AddEdge(\"A\", \"B\")\n    AddEdge(\"B\", \"C\")\n}\n\n# a path can be coloured with two colours\n? oG.IsBipartite()\n\n# add the edge that closes the triangle\noG.AddEdge(\"A\", \"C\")\n? oG.IsBipartite()",
+   "out": "1\n0",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "path",
+   "code": "oG = new stzGraph(\"roads\")\noG {\n    AddNodes([ \"A\", \"B\", \"C\", \"D\" ])\n\n    AddEdge(\"A\", \"B\")\n    AddEdge(\"B\", \"C\")\n    AddEdge(\"C\", \"D\")\n    AddEdge(\"A\", \"D\")\n}\n\n# the shortest way from A to C\n? @@( oG.ShortestPath(\"A\", \"C\") )",
+   "out": "[ \"a\", \"b\", \"c\" ]",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "weight",
+   "code": "oG = new stzGraph(\"network\")\noG {\n    AddNodes([ \"A\", \"B\", \"C\" ])\n\n    AddEdgeXTT(\"A\", \"B\", \"link\", [ :weight = 1 ])\n    AddEdgeXTT(\"B\", \"C\", \"link\", [ :weight = 2 ])\n    AddEdgeXTT(\"A\", \"C\", \"link\", [ :weight = 5 ])\n}\n\n# the cheapest tree that connects all three\n? oG.MSTWeight()",
+   "out": "3",
+   "ran": "2026-10-20 01:46",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzDiagram": [
+  {
+   "id": "flow",
+   "code": "o1 = new stzDiagram(\"flow\")\no1 {\n    AddNode(\"start\")\n    AddNode(\"check\")\n    AddNode(\"done\")\n\n    AddEdge(\"start\", \"check\")\n    AddEdge(\"check\", \"done\")\n}\n\n# a diagram is a graph, so it answers like one\n? o1.NumberOfNodes()\n\n# and it knows how it will be drawn\n? o1.Layout()\n\n? o1.Notation()\n\n# the picture is vector, and needs no device\n? StzFindFirst(\"<svg\", o1.ToSVG()) > 0",
+   "out": "3\ntopdown\ndefault\n1",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
   }
  ],
  "stzGeoMap": [
@@ -492,8 +222,92 @@
    "id": "points",
    "code": "cJson = '{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",'\ncJson += '\"properties\":{\"name\":\"A\"},\"geometry\":{\"type\":\"Polygon\",'\ncJson += '\"coordinates\":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}}]}'\n\noProj = new stzGeoProjection(:mercator)\noMap = StzGeoMap(oProj, StzGeoFeaturesFromJson(cJson))\n\n# one well falls inside region A\n? @@( oMap.CountPointsIn([ 2, 3 ]) )\n\n# and the density the region carries\n? @@( oMap.DensityPointsIn([ 2, 3 ]) )",
    "out": "[ 1 ]\n[ 0.05 ]",
-   "ran": "2026-10-20 00:30",
-   "commit": "4a184e6f0"
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzCanvas": [
+  {
+   "id": "draw",
+   "code": "o1 = new stzCanvas(300, 120)\no1 {\n    SetBackground(\"white\")\n    AddRect(10, 10, 120, 100)\n    AddCircle(220, 60, 40)\n}\n\n# two shapes on the display list\n? o1.ShapeCount()\n\n# the same picture, as SVG: vector, with no device\n? StzFindFirst(\"<svg\", o1.ToSVG()) > 0",
+   "out": "2\n1",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzDataSet": [
+  {
+   "id": "centre",
+   "code": "o1 = new stzDataSet([ 2, 4, 4, 5, 7, 9, 12, 25 ])\n\n# the outlier pulls the mean up\n? o1.Mean()\n\n# and leaves the median where it was\n? o1.Median()",
+   "out": "8.50\n6",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "partial",
+   "code": "oX = new stzDataSet([ 1, 2, 3, 4, 5 ])\noY = new stzDataSet([ 2, 1, 4, 3, 6 ])\noZ = new stzDataSet([ 3, 1, 4, 1, 5 ])\n\n# how X moves with Y\n? oX.CorrelationWith(oY)\n\n# and the same, once Z is held fixed\n? oX.PartialCorrelation(oY, oZ)",
+   "out": "0.82\n0.98",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzDateTime": [
+  {
+   "id": "forms",
+   "code": "o1 = StzDateTimeQ(\"2024-03-15 10:30:00\")\n\n# the same moment, written for three readers\n? o1.ToEuropean()\n\n? o1.ToAmerican()\n\n? o1.ToLong()",
+   "out": "15/03/2024 10:30:00 AM\n03/15/2024 10:30:00 AM\nFriday, March 15, 2024 10:30:00 AM",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "words",
+   "code": "o1 = StzDateTimeQ(\"2024-03-15 10:00:00\")\n\n# arithmetic in words\no1 + \"2 days 5 hours\"\n? o1.Content()\n\n# and the distance between two moments, in the unit you name\no2 = StzDateTimeQ(\"2024-03-15 10:00:00\")\n? o2.DurationTo(\"2024-03-20 14:30:15\", :In = :Days)",
+   "out": "2024-03-17 15:00:00\n5",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzFolder": [
+  {
+   "id": "make",
+   "code": "StzMakeDir(\"demo\")\n\no1 = new stzFolder(\"demo\")\no1.CreateFolders([ \"src\", \"docs\", \"tests\" ])\n\n# three folders were made\n? o1.CountFolders()\n\n# listed in a form that never varies\n? @@( o1.Folders() )",
+   "out": "3\n[ \"/docs/\", \"/src/\", \"/tests/\" ]",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzAppServer": [
+  {
+   "id": "start",
+   "code": "o1 = new stzAppServer()\n\n# port 0 asks the system for a free one\no1.Start(0, \"127.0.0.1\")\n? o1.IsRunning()\n\no1.Stop()\n? o1.IsRunning()",
+   "out": "1\n0",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzMatrix": [
+  {
+   "id": "find",
+   "code": "o1 = new stzMatrix([\n    [ 80, 85, 99 ],\n    [ 70, 75, 80 ],\n    [ 99, 65, 99 ]\n])\n\n# every cell that holds 99, as row and column\n? @@( o1.FindElement(99) )",
+   "out": "[ [ 1, 3 ], [ 3, 1 ], [ 3, 3 ] ]",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "det",
+   "code": "o1 = new stzMatrix([ [ 1, 2 ], [ 3, 4 ] ])\n\n? o1.Determinant()\n\n# replace a row, and the engine answers for the new matrix\no1.ReplaceRow(1, [ 99, 2 ])\n? o1.Determinant()",
+   "out": "-2\n390",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzRegexMaker": [
+  {
+   "id": "build",
+   "code": "o1 = new stzRegexMaker()\no1 {\n    AddWordBoundary(:start)\n    AddCapturingGroup(\"digits\", \"\\d+\")\n    AddWordBoundary(:end)\n}\n\n# the pattern\n? o1.Pattern()\n\n# and its pieces, each of which can be explained\n? @@( o1.Fragments() )",
+   "out": "\\b(?P<digits>\\d+)\\b\n[ \"\\b\", \"(?P<digits>\\d+)\", \"\\b\" ]",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
   }
  ],
  "stzTimeLine": [
@@ -501,60 +315,49 @@
    "id": "plan",
    "code": "cFrom = \"2024-01-01 00:00:00\"\ncTo = \"2024-12-31 23:59:59\"\n\no1 = new stzTimeLine(:Start = cFrom, :End = cTo)\no1 {\n    AddPoint(\"MEETING\", \"2024-03-15 10:00:00\")\n    AddSpan(\"PROJECT\", \"2024-03-01 00:00:00\", \"2024-05-31 23:59:59\")\n    AddSpan(\"CAMPAIGN\", \"2024-03-10 00:00:00\", \"2024-04-10 23:59:59\")\n}\n\n# what is live at the moment of the meeting?\n? @@NL( o1.WhatsAt(\"2024-03-15 10:00:00\") )\n\n# and in August?\n? @@( o1.WhatsAt(\"2024-08-15 10:00:00\") )",
    "out": "[\n\t[ \"MEETING\", \"point\" ],\n\t[ \"PROJECT\", \"span\" ],\n\t[ \"CAMPAIGN\", \"span\" ]\n]\n[ ]",
-   "ran": "2026-10-20 00:30",
-   "commit": "4a184e6f0"
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
   },
   {
    "id": "blocked",
    "code": "o1 = new stzTimeLine(\"2024-01-01\", \"2024-12-31\")\ncFrom = \"2024-08-01 00:00:00\"\ncTo = \"2024-08-08 23:59:59\"\no1.AddBlockedSpan(\"BLACKOUT\", cFrom, cTo)\n\n# no event may be added during the blackout\n? o1.IsBlocked(\"2024-08-05 14:30:00\")\n\n? o1.IsBlocked(\"2024-09-05 14:30:00\")",
    "out": "1\n0",
-   "ran": "2026-10-20 00:30",
-   "commit": "4a184e6f0"
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
   }
  ],
- "stzXml": [
+ "stzLocale": [
   {
-   "id": "read",
-   "code": "cXml = \"<shop>\"\ncXml += \"<item price='3'>tea</item>\"\ncXml += \"<item price='5'>rice</item>\"\ncXml += \"</shop>\"\n\no1 = new stzXml(cXml)\n\n? o1.IsValid()\n\n# the text of every item\n? @@( o1.TextsAt(\"shop/item\") )",
-   "out": "1\n[ \"tea\", \"rice\" ]",
-   "ran": "2026-10-20 00:31",
-   "commit": "4a184e6f0"
+   "id": "niger",
+   "code": "# a country alone is enough: the language is filled in from it\no1 = new stzLocale([ :Country = :Niger ])\n\n? o1.Abbreviation()\n\n? o1.LanguageName()\n\n? o1.CountryPhoneCode()",
+   "out": "fr_NE\nfrench\n+227",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "parts",
+   "code": "o1 = new stzLocale(\"pt_Latn_BR\")\n\n? o1.Abbreviation()\n\n? o1.LanguageName()\n\n? o1.ScriptName()\n\n? o1.CountryName()",
+   "out": "pt_BR\nportuguese\nlatin\nbrazil",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
   }
  ],
- "stzHtml": [
+ "stzPivotTable": [
   {
-   "id": "find",
-   "code": "cHtml = \"<html><body><h1 id='top'>Hello</h1>\"\ncHtml += \"<a class='link' href='/a'>A</a>\"\ncHtml += \"<a class='link' href='/b'>B</a>\"\ncHtml += \"</body></html>\"\n\no1 = new stzHtml(cHtml)\n\n# what the page is made of\n? @@( o1.TagsUsed() )\n\n# every element of a class\n? len(o1.Find(\".link\"))\n\n# the visible text, scripts and styles left out\n? o1.PlainText()",
-   "out": "[ \"html\", \"body\", \"h1\", \"a\" ]\n2\nHelloAB",
-   "ran": "2026-10-20 00:31",
-   "commit": "4a184e6f0"
+   "id": "sales",
+   "code": "oTab = new stzTable([\n    [ :Region, :Product, :Sales ],\n    [ \"North\", \"Tea\", 10 ],\n    [ \"North\", \"Rice\", 30 ],\n    [ \"South\", \"Tea\", 20 ],\n    [ \"South\", \"Rice\", 5 ]\n])\n\no1 = new stzPivotTable(oTab)\no1 {\n    SetRowsBy(:Region)\n    SetColsBy(:Product)\n    SetValues(:Sales)\n    SetAggregateFunction(:Sum)\n    Generate()\n}\n\n# sales of tea in the north\n? o1.Value(\"North\", \"Tea\")\n\n# everything the south sold\n? o1.RowTotal(\"South\")\n\n? o1.GrandTotal()",
+   "out": "10\n25\n65",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
   }
  ],
- "stzNeuralNetwork": [
+ "stzSound": [
   {
-   "id": "xor",
-   "code": "oN = new stzNeuralNetwork([ :Inputs = 2 ])\noN {\n    AddDenseLayer(4, :Tanh)\n    AddDenseLayer(1, :Sigmoid)\n}\n\noT = new stzTrainer()\noT.SetLearningRate(0.5)\naX = [ [0,0], [0,1], [1,0], [1,1] ]\naY = [ [0], [1], [1], [0] ]\noT.Train(oN, aX, aY, 2000)\n\n# 01 -> 1, which no single layer can learn\n? oN.Predict([0,1])[1] > 0.5\n\n# 11 -> 0\n? oN.Predict([1,1])[1] > 0.5",
-   "out": "1\n0",
-   "ran": "2026-10-20 00:31",
-   "commit": "4a184e6f0"
-  }
- ],
- "area:i18n": [
-  {
-   "id": "locale",
-   "code": "o1 = new stzLocale(\"fr_FR\")\no2 = new stzLocale(\"fa_IR\")\n\n# a locale knows its currency, and its language's name in that language\n? o1.CurrencyAbbreviation()\n\n? o2.LanguageNativeName()",
-   "out": "EUR\nفارسی",
-   "ran": "2026-10-20 00:32",
-   "commit": "4a184e6f0"
-  }
- ],
- "area:documentation": [
-  {
-   "id": "howto",
-   "code": "# the library documents itself, and no model is involved\no1 = StzSelfDocQ(\"stzList\")\n? StzFindFirst(\"RemoveDuplicates\", o1.HowTo(\"remove duplicates\")) > 0",
-   "out": "1",
-   "ran": "2026-10-20 00:32",
-   "commit": "4a184e6f0"
+   "id": "silence",
+   "code": "o1 = new stzSound(\"\")\n\n# two seconds, one channel, 44,100 frames a second\no1.MakeSilence(2, 1, 44100)\n\n? o1.Frames()\n\n? o1.Duration()\n\n# the same sound at half the rate\no1.ResampleTo(22050)\n\n? o1.Frames()\n\n? o1.Duration()",
+   "out": "88200\n2\n44100\n2",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
   }
  ],
  "stzAgentGraph": [
@@ -562,15 +365,284 @@
    "id": "unsound",
    "code": "oAG = new stzAgentGraph(\"mailer-bad\")\noAG {\n    AddLLMActor(\"writer\")\n    AddEffect(\"send\")\n\n    Proposes(\"writer\", \"send\")\n}\n\n# a model proposing straight to an effect\n? oAG.IsSound()\n\n# which invariant is broken, and on which node\n? oAG.Violations()[1][:invariant]\n\n? oAG.Violations()[1][:node]",
    "out": "0\neffects-guarded\nsend",
-   "ran": "2026-10-20 00:43",
-   "commit": "4a184e6f0"
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
   },
   {
    "id": "sound",
    "code": "oAG = new stzAgentGraph(\"mailer\")\noAG {\n    AddLLMActor(\"writer\")\n    AddGuardian(\"gate\")\n    AddEffect(\"send\")\n    AddTraceSink(\"audit\")\n\n    Proposes(\"writer\", \"gate\")\n    Guards(\"gate\", \"send\")\n    Traces(\"send\", \"audit\")\n}\n\n# the same system, with a gate before the effect and a witness after it\n? oAG.IsSound()",
    "out": "1",
-   "ran": "2026-10-20 00:43",
-   "commit": "4a184e6f0"
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzVirtualFileSystem": [
+  {
+   "id": "twin",
+   "code": "o1 = new stzVirtualFileSystem()\no1.CreateFolder(\"config\")\no1.CreateFile(\"config/greenhouse.ini\", \"[zone]\")\n\n# the twin knows the file\n? o1.Exists(\"config/greenhouse.ini\")\n\n? @@( o1.Paths() )\n\n# and nothing was written on the disk\n? fexists(\"config/greenhouse.ini\")",
+   "out": "1\n[ \"config\", \"config/greenhouse.ini\" ]\n0",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzMetric": [
+  {
+   "id": "counter",
+   "code": "o1 = new stzMetric(\"app.requests\", :counter)\no1.Increment()\no1.Increment()\no1.Increment()\n\n? o1.Value()\n\n# the same metric, in the name Prometheus reads\n? o1.PromName()",
+   "out": "3\napp_requests",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "timer",
+   "code": "o1 = new stzMetric(\"http.request.ms\", :timer)\no1 {\n    Record(12)\n    Record(15)\n    Record(18)\n    Record(250)\n}\n\n? o1.Count()\n\n# the exact mean over the lifetime\n? o1.MeanMs()",
+   "out": "4\n73.75",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzLLMFunction": [
+  {
+   "id": "seed",
+   "code": "o1 = new stzLLMFunction(\"wordcount\")\no1.SetPrompt(\"Count the words of the text.\")\no1.ReturnsNumber()\no1.Budget(10)\n\n# offline, a known answer is seeded, explicitly\no1.SeedAnswer(\"the quick brown fox\", 4)\n\n? o1.Call_(\"the quick brown fox\")",
+   "out": "4",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzPerfMonitor": [
+  {
+   "id": "declare",
+   "code": "o1 = new stzPerfMonitor(\"shop\")\no1 {\n    NewCounter(\"orders\")\n    NewTimer(\"checkout.ms\")\n}\n\n? o1.NumberOfMetrics()\n\n? @@( o1.Metrics() )",
+   "out": "2\n[ [ \"orders\", \"counter\" ], [ \"checkout.ms\", \"timer\" ] ]",
+   "ran": "2026-10-20 01:47",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzXml": [
+  {
+   "id": "read",
+   "code": "cXml = \"<shop>\"\ncXml += \"<item price='3'>tea</item>\"\ncXml += \"<item price='5'>rice</item>\"\ncXml += \"</shop>\"\n\no1 = new stzXml(cXml)\n\n? o1.IsValid()\n\n# the text of every item\n? @@( o1.TextsAt(\"shop/item\") )",
+   "out": "1\n[ \"tea\", \"rice\" ]",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzHtml": [
+  {
+   "id": "find",
+   "code": "cHtml = \"<html><body><h1 id='top'>Hello</h1>\"\ncHtml += \"<a class='link' href='/a'>A</a>\"\ncHtml += \"<a class='link' href='/b'>B</a>\"\ncHtml += \"</body></html>\"\n\no1 = new stzHtml(cHtml)\n\n# what the page is made of\n? @@( o1.TagsUsed() )\n\n# every element of a class\n? len(o1.Find(\".link\"))\n\n# the visible text, scripts and styles left out\n? o1.PlainText()",
+   "out": "[ \"html\", \"body\", \"h1\", \"a\" ]\n2\nHelloAB",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzSecret": [
+  {
+   "id": "mask",
+   "code": "o1 = new stzSecret(\"deploy-key\")\no1.FromEnv(\"DEPLOY_KEY\")\n\n# what any display or file sees\n? o1.Descriptor()\n\n# where the value lives, which is not the value\n? o1.SourceLocator()",
+   "out": "<secret 'deploy-key' (secret) from env:DEPLOY_KEY>\nDEPLOY_KEY",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzNeuralNetwork": [
+  {
+   "id": "xor",
+   "code": "oN = new stzNeuralNetwork([ :Inputs = 2 ])\noN {\n    AddDenseLayer(4, :Tanh)\n    AddDenseLayer(1, :Sigmoid)\n}\n\noT = new stzTrainer()\noT.SetLearningRate(0.5)\naX = [ [0,0], [0,1], [1,0], [1,1] ]\naY = [ [0], [1], [1], [0] ]\noT.Train(oN, aX, aY, 2000)\n\n# 01 -> 1, which no single layer can learn\n? oN.Predict([0,1])[1] > 0.5\n\n# 11 -> 0\n? oN.Predict([1,1])[1] > 0.5",
+   "out": "1\n0",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzWorkflow": [
+  {
+   "id": "states",
+   "code": "o1 = new stzWorkflow(\"order\")\no1 {\n    SetWorkflowType(:StateMachine)\n\n    AddState(\"new\")\n    AddState(\"paid\")\n    AddState(\"shipped\")\n\n    AddTransition(\"new\", \"paid\", \"pay\")\n    AddTransition(\"paid\", \"shipped\", \"ship\")\n}\n\n? o1.IsStateMachine()\n\n? o1.NumberOfNodes()",
+   "out": "1\n3",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "area:string": [
+  {
+   "id": "chars",
+   "code": "# five characters, which is what a person counts\n? Q(\"héllo\").NumberOfChars()\n\n# and six bytes, which is what a machine stores\n? len(\"héllo\")",
+   "out": "5\n6",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "case",
+   "code": "o1 = new stzString(\"Tea and tea\")\n\n# case matters unless you say it does not, in the one same function\n? @@( o1.FindCS(\"tea\", TRUE) )\n\n? @@( o1.FindCS(\"tea\", FALSE) )",
+   "out": "[ 9 ]\n[ 1, 9 ]",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "area:regex": [
+  {
+   "id": "match",
+   "code": "o1 = new stzRegex(\"[a-z]+@[a-z]+\\.com\")\n\n# does the whole text fit the pattern?\n? o1.Match(\"write to kal@stz.com\")\n\n# does it occur anywhere?\n? o1.MatchFirst(\"write to kal@stz.com\")",
+   "out": "0\n1",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "area:collections": [
+  {
+   "id": "find",
+   "code": "# one function, whether the host is a string or a list\n? @@( StzFind(\"tea\", \"tea rice tea fish\") )\n\n? @@( StzFind(\"tea\", [ \"tea\", \"rice\", \"tea\", \"fish\" ]) )",
+   "out": "[ 1, 10 ]\n[ 1, 3 ]",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "pred",
+   "code": "o1 = new stzList([ 5, 12, 8, 30 ])\n\n# a predicate written as a string runs inside the engine\n? @@( o1.Filter('@item > 10') )",
+   "out": "[ 12, 30 ]",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "forms",
+   "code": "o1 = new stzList([ 5, 3, 8 ])\n\n# the past form returns a copy and leaves the list alone\n? @@( o1.Added(1) )\n? @@( o1.Content() )\n\n# the plain verb changes the list itself\no1.Add(1)\n? @@( o1.Content() )",
+   "out": "[ 5, 3, 8, 1 ]\n[ 5, 3, 8 ]\n[ 5, 3, 8, 1 ]",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "area:numeric": [
+  {
+   "id": "exact",
+   "code": "o1 = new stzNumber(\"1\")\no1.Divide(\"3\")\n\n# one third cannot be written in decimals, and the number says so\n? o1.IsExact()\n\n? o1.Why()",
+   "out": "0\nthe division does not terminate in 6 decimal place(s)",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "money",
+   "code": "# a price stays money: two places, with the accountant's rounding\no1 = StzMoneyQ(\"19.99\")\no1.MultiplyBy(\"0.15\")\n\n? o1.Content()",
+   "out": "3.00",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "area:tables": [
+  {
+   "id": "col",
+   "code": "oT = new stzTable([\n    [ :ORDER, :ITEM, :PRICE ],\n    [ 1, \"Tea\", 3 ],\n    [ 2, \"Rice\", 5 ],\n    [ 3, \"Tea\", 3 ]\n])\n\n# a column is a list you can sum, or filter with a condition\n? @@( oT.Col(:PRICE) )",
+   "out": "[ 3, 5, 3 ]",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "area:i18n": [
+  {
+   "id": "locale",
+   "code": "o1 = new stzLocale(\"fr_FR\")\no2 = new stzLocale(\"fa_IR\")\n\n# a locale knows its currency, and its language's name in that language\n? o1.CurrencyAbbreviation()\n\n? o2.LanguageNativeName()",
+   "out": "EUR\nفارسی",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "area:nlp": [
+  {
+   "id": "phrases",
+   "code": "o1 = new stzText(\"The quick brown fox jumps over the lazy dog\")\n\n# two noun phrases, and nothing was fetched to find them\n? @@( o1.NounPhrases() )",
+   "out": "[ \"The quick brown fox\", \"the lazy dog\" ]",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "area:graphics": [
+  {
+   "id": "legible",
+   "code": "# legibility is a number that can say no\n? StzIsLegible(\"#999999\", :White)\n\n? StzIsLegible(\"#333333\", :White)",
+   "out": "0\n1",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "area:documentation": [
+  {
+   "id": "howto",
+   "code": "# the library documents itself, and no model is involved\no1 = StzSelfDocQ(\"stzList\")\n? StzFindFirst(\"RemoveDuplicates\", o1.HowTo(\"remove duplicates\")) > 0",
+   "out": "1",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzAuth": [
+  {
+   "id": "session",
+   "code": "oAuth = new stzAuth()\noAuth.Register(\"aya\", \"correct horse battery\")\n\ncToken = oAuth.Login(\"aya\", \"correct horse battery\")\n\n# the session belongs to a user\n? oAuth.UserOfSession(cToken)\n\n? oAuth.IsValidSession(cToken)\n\n# signing out ends it\noAuth.Logout(cToken)\n? oAuth.IsValidSession(cToken)",
+   "out": "aya\n1\n0",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzDatabase": [
+  {
+   "id": "rows",
+   "code": "o1 = new stzDatabase(\":memory:\")\no1.Exec(\"CREATE TABLE city (name TEXT, people INTEGER)\")\n\n# values are bound apart from the statement\no1.ExecWith(\"INSERT INTO city VALUES (?, ?)\", [ \"Niamey\", 1500000 ])\n\n? @@( o1.Rows(\"SELECT name, people FROM city\") )\n\n? o1.Value(\"SELECT count(*) FROM city\")",
+   "out": "[ [ \"Niamey\", \"1500000\" ] ]\n1",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzApp": [
+  {
+   "id": "world",
+   "code": "oApp = new stzApp(\"SonibankVisits\")\noApp {\n    AddThingQ(:Client) { Has([ :code, :name, :city ]) }\n    AddThingQ(:Visit)  { Of(:Client)  Has([ :agent, :date, :subject ]) }\n\n    AddFlowQ(:agent, :records, :Visit) {\n        Require(:subject)  Then( Keep(:Visit) )\n    }\n    AddReactionQ(:Client).Unseen(90, :Days) { Propose(:Visit) }\n}\n\n# the declaration, read back in words\noApp.Explain()",
+   "out": "WORLD SonibankVisits   lives in: memory (not persisted)\n  BEING\n    client (code, name, city)\n    visit (agent, date, subject)\n  RELATIONS\n    visit of client\n  BECOMING\n    when agent records visit require subject then keep visit\n    whenever client unseen 90 days -> propose visit",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzCodeGraph": [
+  {
+   "id": "python",
+   "code": "cPy  = \"class Animal:\" + NL\ncPy += \"    def speak(self):\" + NL\ncPy += \"        return '...'\" + NL + NL\ncPy += \"class Dog(Animal):\" + NL\ncPy += \"    def speak(self):\" + NL\ncPy += \"        return 'woof'\" + NL + NL\ncPy += \"class Puppy(Dog):\" + NL\ncPy += \"    pass\"\n\noGraph = StzPyCodeGraphFromSource(cPy)\n\n? @@( oGraph.Classes() )\n\n# where a puppy comes from\n? @@( oGraph.AncestryOf(\"Puppy\") )\n\n# who feels a change to speak()\n? @@( oGraph.ImpactOf(\"speak\")[:inheritedBy] )",
+   "out": "[ \"Animal\", \"Dog\", \"Puppy\" ]\n[ \"Puppy\", \"Dog\", \"Animal\" ]\n[ \"Puppy\" ]",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzHttpClient": [
+  {
+   "id": "settings",
+   "code": "o1 = new stzHttpClient()\n\n# the timeouts are settings that can be read back\no1.SetConnectTimeout(2000)\no1.SetRequestTimeout(5000)\n\n? o1.ConnectTimeout()\n\n? o1.RequestTimeout()",
+   "out": "2000\n5000",
+   "ran": "2026-10-20 01:48",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzProcess": [
+  {
+   "id": "child",
+   "code": "o1 = new stzProcess()\no1.Spawn(\"echo hello\")\n\n? o1.ReadOutputAll()\n\n? o1.Wait()",
+   "out": "hello\n\n\n0",
+   "ran": "2026-10-20 01:49",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzSystemCall": [
+  {
+   "id": "run",
+   "code": "o1 = new stzSystemCall(\"echo hello\")\no1.Run()\n\n? o1.Output()\n\n? o1.ExitCode()",
+   "out": "hello\n\n\n0",
+   "ran": "2026-10-20 01:49",
+   "commit": "937cd920d"
+  }
+ ],
+ "area:stats": [
+  {
+   "id": "tukey",
+   "code": "oT = StzTukeySummaryQ([ 2, 4, 4, 5, 7, 9, 12, 25 ])\n\n# the summary names the convention it used, in words\n? StzFindFirst(\"fourths\", oT.Why()) > 0\n\n? StzFindFirst(\"quartiles\", oT.Why()) > 0",
+   "out": "1\n0",
+   "ran": "2026-10-20 01:56",
+   "commit": "937cd920d"
   }
  ]
 }
