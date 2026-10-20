@@ -50,7 +50,35 @@ o2 = new stzLocale(&quot;fa_IR&quot;)
 #--&gt; EUR
 
 ? o2.LanguageNativeName()
-#--&gt; فارسی</pre><span class="rx-src">run in the library on 2026-10-20</span></div><p>Then comes the part most libraries do not have: time is modelled, not only measured. One <code>stzTimeLine</code> holds events, spans and blocked windows, checks every insertion against them, and draws itself; <code>stzCalendar</code> knows working days, holidays, quarters, sprints and capacity. An event placed inside a maintenance window is refused the moment it is added.</p><p>This was a deliberate bet against ICU: no tens of megabytes of C++ and CLDR data. The bet has a price the page names plainly. There is no locale-aware collation, no plural rules or message formatting, no translation catalogue, no time-zone database, no calendar but the Gregorian. Four lanes rate Solid, four Partial, four Emerging. The next culture plane adds the missing half of the principle: an operation honours the culture it was given, or refuses, because ignoring a locale silently looks like success and returns wrong text.</p></div>
+#--&gt; فارسی</pre><span class="rx-src">run in the library on 2026-10-20</span></div><p>Then comes the part most libraries do not have: time is modelled, not only measured. One <code>stzTimeLine</code> holds events, spans and blocked windows, checks every insertion against them, and draws itself; <code>stzCalendar</code> knows working days, holidays, quarters, sprints and capacity. An event placed inside a maintenance window is refused the moment it is added.</p><div class="sample"><pre class="rx">o1 = new stzTimeLine(&quot;2024-01-01&quot;, &quot;2024-12-31&quot;)
+cFrom = &quot;2024-08-01 00:00:00&quot;
+cTo = &quot;2024-08-08 23:59:59&quot;
+o1.AddBlockedSpan(&quot;BLACKOUT&quot;, cFrom, cTo)
+
+# no event may be added during the blackout
+? o1.IsBlocked(&quot;2024-08-05 14:30:00&quot;)
+#--&gt; TRUE
+
+? o1.IsBlocked(&quot;2024-09-05 14:30:00&quot;)
+#--&gt; FALSE</pre><span class="rx-src">run in the library on 2026-10-20</span></div><div class="sample"><pre class="rx">StzCalendarQ([2024, 10]) {
+
+    SetWorkingDays([
+        &quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;
+    ])
+
+    # Thu 2024-10-03 is a working day
+    ? IsWorkingDay(&quot;2024-10-03&quot;)
+    #--&gt; TRUE
+
+    # Sat 2024-10-05 is not a working day
+    ? IsWorkingDay(&quot;2024-10-05&quot;)
+    #--&gt; FALSE
+
+    # October 2024 has 23 working days
+    ? len(WorkingDays())
+    #--&gt; 23
+
+}</pre><span class="rx-src">run in the library on 2026-10-20</span></div><p>This was a deliberate bet against ICU: no tens of megabytes of C++ and CLDR data. The bet has a price the page names plainly. There is no locale-aware collation, no plural rules or message formatting, no translation catalogue, no time-zone database, no calendar but the Gregorian. Four lanes rate Solid, four Partial, four Emerging. The next culture plane adds the missing half of the principle: an operation honours the culture it was given, or refuses, because ignoring a locale silently looks like success and returns wrong text.</p></div>
     <figure class="area-hero"><img src="../../assets/img/areas/i18n.webp" alt="nine languages naming themselves in their own script" width="1100" height="660"><figcaption><b>nine languages naming themselves in their own script.</b> rendered on 2026-10-01 at 04:00 by the site&#x27;s render script tools/areas.ring, run inside the library at commit 0e72e2e2c · <a href="https://github.com/mayouni/stzsite/blob/main/tools/areas.ring" target="_blank" rel="noopener noreferrer">the source<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></figcaption></figure>
     <h2>Where it stands</h2><p class="proof">The Softanza Compass's reading: every lane of the area rated against the best of its category, by what the guards prove. Read from the source on 2026-09-16. The Compass's sentences are in English, as it wrote them.</p><blockquote><p>This module is a deliberate bet against ICU. Rather than vendor tens of MB of C++ and CLDR data, Softanza ships broad hand-tables (261 countries, 323 languages, 143 scripts, Qt-sourced), a solid engine-backed datetime core with rich Haro-side formatting, and a distinctive business/holiday calendar. But that same choice leaves the CLDR crown jewels absent: no locale collation, no ICU MessageFormat or plural rules, no translation catalog, no locale-aware number/currency formatting, no timezone database (<code>ToUTC</code> is a no-op), and no non-Gregorian calendars. The data and the datetime basics are solid; almost everything that makes ICU, Babel and Luxon what they are is still owed.</p></blockquote><div class="note"><p><b>The honesty line on the ratings.</b> The clean-loading test dirs pass — <code>time</code>, <code>timeline</code> (54), <code>timex</code>, <code>i18n</code>, <code>script</code>, and <code>locale</code> (81/94) — and the engine Zig tests guard currency and datetime. But <code>datetime</code>, <code>date</code>, <code>calendar</code> and <code>currency</code> report large ERR counts that are all one C22 runner-load collision, not per-assertion failures, so those lanes&#x27; guards can&#x27;t fully vouch until it&#x27;s fixed. The engine locale functions (casing, AM/PM, number, day names) remain English/ASCII/US stubs.</p></div><div class="note"><p><b>The one-sentence position.</b> Softanza traded ICU&#x27;s weight for owned, committed data — and it shows on both sides: broad reference tables and a solid, well-formatted Gregorian datetime with a standout business calendar, but none of the CLDR machinery (collation, plural/message formatting, timezones, locale number formatting, multiple calendars) that the category leaders are defined by.</p></div>
     <div class="sg"><div><h4>What a crafter does with it, and what stands out</h4><ul><li>Reference tables whose row coverage rivals CLDR (261 countries, 323 languages, 143 scripts)</li><li>A business/holiday calendar with sprint and capacity planning that most i18n libraries lack</li><li>An engine-backed datetime core with validated construction</li><li>Natural-language epoch parsing (FromNaturalEpoch)</li></ul></div><div><h4>What is owed</h4><ul><li>A timezone database (IANA/Olson zones, offset math, DST)</li><li>Locale-aware number and currency formatting over the hint tables that already ship</li><li>Fix the datetime / date / calendar / currency C22 test-runner collision (~450 assertions)</li><li>Locale-aware collation, CLDR plural rules and a translation catalog</li></ul></div></div>

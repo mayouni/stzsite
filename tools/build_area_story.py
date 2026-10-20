@@ -229,7 +229,12 @@ def essay_html(lang, slug):
     body = []
     for x in e:
         if x.startswith("@"):
-            if x[1:].strip() in snippets: body.append(sample_html(snippets[x[1:].strip()], lang))   # a sample that did not run is left out
+            key = x[1:].strip()
+            if "." in key:                                       # @stzTimeLine.blocked: the sample a class introduction runs
+                cls, sid = key.split(".", 1)
+                row = next((r for r in INTRO_RUN.get(cls, []) if r["id"] == sid), None)
+                if row: body.append(sample_html(row, lang))
+            elif key in snippets: body.append(sample_html(snippets[key], lang))   # a sample that did not run is left out
         else:
             body.append(f"<p>{para_html(x)}</p>")
     return '<div class="essay">' + "".join(body) + "</div>"

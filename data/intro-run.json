@@ -464,31 +464,6 @@
    "commit": "937cd920d"
   }
  ],
- "area:string": [
-  {
-   "id": "chars",
-   "code": "# five characters, which is what a person counts\n? Q(\"héllo\").NumberOfChars()\n\n# and six bytes, which is what a machine stores\n? len(\"héllo\")",
-   "out": "5\n6",
-   "ran": "2026-10-20 01:48",
-   "commit": "937cd920d"
-  },
-  {
-   "id": "case",
-   "code": "o1 = new stzString(\"Tea and tea\")\n\n# case matters unless you say it does not, in the one same function\n? @@( o1.FindCS(\"tea\", TRUE) )\n\n? @@( o1.FindCS(\"tea\", FALSE) )",
-   "out": "[ 9 ]\n[ 1, 9 ]",
-   "ran": "2026-10-20 01:48",
-   "commit": "937cd920d"
-  }
- ],
- "area:regex": [
-  {
-   "id": "match",
-   "code": "o1 = new stzRegex(\"[a-z]+@[a-z]+\\.com\")\n\n# does the whole text fit the pattern?\n? o1.Match(\"write to kal@stz.com\")\n\n# does it occur anywhere?\n? o1.MatchFirst(\"write to kal@stz.com\")",
-   "out": "0\n1",
-   "ran": "2026-10-20 01:48",
-   "commit": "937cd920d"
-  }
- ],
  "area:collections": [
   {
    "id": "find",
@@ -512,22 +487,6 @@
    "commit": "937cd920d"
   }
  ],
- "area:numeric": [
-  {
-   "id": "exact",
-   "code": "o1 = new stzNumber(\"1\")\no1.Divide(\"3\")\n\n# one third cannot be written in decimals, and the number says so\n? o1.IsExact()\n\n? o1.Why()",
-   "out": "0\nthe division does not terminate in 6 decimal place(s)",
-   "ran": "2026-10-20 01:48",
-   "commit": "937cd920d"
-  },
-  {
-   "id": "money",
-   "code": "# a price stays money: two places, with the accountant's rounding\no1 = StzMoneyQ(\"19.99\")\no1.MultiplyBy(\"0.15\")\n\n? o1.Content()",
-   "out": "3.00",
-   "ran": "2026-10-20 01:48",
-   "commit": "937cd920d"
-  }
- ],
  "area:tables": [
   {
    "id": "col",
@@ -542,15 +501,6 @@
    "id": "locale",
    "code": "o1 = new stzLocale(\"fr_FR\")\no2 = new stzLocale(\"fa_IR\")\n\n# a locale knows its currency, and its language's name in that language\n? o1.CurrencyAbbreviation()\n\n? o2.LanguageNativeName()",
    "out": "EUR\nفارسی",
-   "ran": "2026-10-20 01:48",
-   "commit": "937cd920d"
-  }
- ],
- "area:nlp": [
-  {
-   "id": "phrases",
-   "code": "o1 = new stzText(\"The quick brown fox jumps over the lazy dog\")\n\n# two noun phrases, and nothing was fetched to find them\n? @@( o1.NounPhrases() )",
-   "out": "[ \"The quick brown fox\", \"the lazy dog\" ]",
    "ran": "2026-10-20 01:48",
    "commit": "937cd920d"
   }
@@ -762,6 +712,56 @@
    "code": "oS = StzOutputSchemaQ([\n    [ :field = \"name\", :type = :string ],\n    [ :field = \"age\",  :type = :number,\n      :must = [ [ \">=\", 0 ], [ \"<=\", 130 ] ] ],\n    [ :field = \"mood\", :type = :oneof,\n      :choices = [ \"positive\", \"negative\" ] ]\n])\n\n# an answer wrapped in prose is read as the structure it holds\ncAnswer = 'Sure: { \"name\": \"Ada\", \"age\": \"36\", \"mood\": \"POSITIVE\" }'\naV = oS.ParseOutput(cAnswer)\n\n? aV[:ok]\n\n# and a representable scalar arrives as what was declared\n? aV[:value][:age] + 1\n\n# prose that is not a structure is refused, not scavenged\n? oS.ParseOutput(\"I would rather not say.\")[:ok]",
    "out": "1\n37\n0",
    "ran": "2026-10-20 19:40",
+   "commit": "937cd920d"
+  }
+ ],
+ "area:string": [
+  {
+   "id": "between",
+   "code": "o1 = new stzString(\"Say [hello] and [bye] to [all]\")\n\n# what sits between two marks, all of it\n? @@( o1.SubStringsBoundedBy([ \"[\", \"]\" ]) )",
+   "out": "[ \"hello\", \"bye\", \"all\" ]",
+   "ran": "2026-10-20 19:57",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "rules",
+   "code": "# the empty string is never found, not even in itself\n? @@( Q(\"abc\").Find(\"\") )\n\n# Latin O and Greek Omicron look the same and stay two letters\n? StzFindFirst(\"O\", \"Ο\") > 0",
+   "out": "[ ]\n0",
+   "ran": "2026-10-20 19:57",
+   "commit": "937cd920d"
+  }
+ ],
+ "area:regex": [
+  {
+   "id": "shapes",
+   "code": "# a list is matched by its shape: a number, then a string\n? Lx(\"[@N, @S]\").Match([ 7, \"seven\" ])\n\n? Lx(\"[@N, @S]\").Match([ \"seven\", 7 ])\n\n# a number is matched by a property\no1 = new stzNumbrex(\"{@Property(Prime)}\")\n? o1.Match(17)\n\n? o1.Match(18)",
+   "out": "1\n0\n1\n0",
+   "ran": "2026-10-20 19:57",
+   "commit": "937cd920d"
+  }
+ ],
+ "area:nlp": [
+  {
+   "id": "verdict",
+   "code": "o1 = Q(\"I absolutely love this wonderful amazing library!\").TextQ()\n\n# a verdict, and how surely it is known\n? o1.IsPositive()\n\n? Why()\n\no2 = Q(\"The sky is blue.\").TextQ()\n\n? o2.IsPositive()\n\n? Why()",
+   "out": "1\ncertainly yes: positive in tone\n0\napparently not: positive in tone",
+   "ran": "2026-10-20 19:58",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "atmost",
+   "code": "# near-natural code: the chain is the sentence, and the refusal is too\n? Q(\"AnnIE\").AtMost(2).VowelNB()\n\n? Why()\n\n? Q(\"Anne\").AtMost(2).VowelNB()\n\n? Why()",
+   "out": "0\nno: expected atmost 2, found 3\n1\nyes: expected atmost 2, found 2",
+   "ran": "2026-10-20 19:58",
+   "commit": "937cd920d"
+  }
+ ],
+ "area:numeric": [
+  {
+   "id": "solve",
+   "code": "o1 = new stzMatrix([ [ 2, 1 ], [ 1, 3 ] ])\n\n# the unknowns of 2x + y = 3 and x + 3y = 5\n? @@( o1.SolveFor([ 3, 5 ]) )\n\n? o1.Determinant()",
+   "out": "[ 0.80, 1.40 ]\n5",
+   "ran": "2026-10-20 19:59",
    "commit": "937cd920d"
   }
  ]
