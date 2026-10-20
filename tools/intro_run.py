@@ -41,7 +41,13 @@ def main():
                 code = sn["code"].replace("\r", "")
                 body += [f'? "@@BEGIN {i}"', "try", code, "catch", '    ? "@@ERROR " + cCatchError', "done", f'? "@@END {i}"', ""]
             script = work / (re.sub(r"[^A-Za-z0-9]+", "_", cls) + ".ring")
-            script.write_text("\n".join(['load "' + stz_base + '"', ""] + body) + "\n", encoding="utf-8")
+            # a sample may need a helper file of the library's tests (the narrated guards): named in "prelude", never shown
+            loads = ['load "' + stz_base + '"']
+            for sn in snippets:
+                for pre in sn.get("prelude", []):
+                    ln = 'load "' + (lib / "base" / pre).as_posix() + '"'
+                    if ln not in loads: loads.append(ln)
+            script.write_text("\n".join(loads + [""] + body) + "\n", encoding="utf-8")
             started = datetime.datetime.now()
             try:
                 p = subprocess.run(["ring", str(script)], cwd=cwd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=240)

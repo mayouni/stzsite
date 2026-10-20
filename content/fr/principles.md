@@ -20,3 +20,24 @@ description: Les douze principes de Softanza, chacun en une phrase.
 <div class="card"><h3>11 · Programmer par cœur</h3><p>Ce que vous pensez est ce que vous écrivez. Le tribunal est sévère pour que la surface reste chaleureuse ; un tuteur demande et ne donne jamais la réponse.</p></div>
 <div class="card"><h3>12 · Née en Afrique</h3><p>Conçue entre la Tunisie, Niamey et Paris ; une banque et un restaurant comme références ; une machine nommée d'après un pont.</p></div>
 </div>
+
+## Quatre des douze, exécutés {#run}
+
+Les principes sont des phrases. Quatre d'entre eux, en code qui a tourné.
+
+**Exact par défaut (8).** Un nombre dit s'il est exact, et pourquoi quand il ne l'est pas.
+
+<!--SAMPLE:stzNumber.exact-->
+
+**Du code qui se lit (6).** L'humain est l'analyseur : le code est la phrase qu'il veut dire.
+
+<!--SAMPLE:area:principles.reads-->
+
+**Tout est jugé (2).** Une promesse ne compte qu'une fois tenue par une exécution qui aurait pu échouer.
+
+<!--SAMPLE:area:principles.judged-->
+
+**Des agents qui ne peuvent pas vous nuire (4).** Un modèle peut proposer, et un effet sans porte devant lui est refusé, avec la raison.
+
+<!--SAMPLE:stzAgentGraph.unsound-->
+

@@ -20,3 +20,24 @@ description: Softanza's twelve principles, each in one sentence.
 <div class="card"><h3>11 · Programming by heart</h3><p>What you think is what you write. The court is severe so that the surface can stay warm; a tutor asks and never gives the answer.</p></div>
 <div class="card"><h3>12 · Born in Africa</h3><p>Designed between Tunisia, Niamey and Paris; a bank and a restaurant as references; a machine named after a bridge.</p></div>
 </div>
+
+## Four of the twelve, run {#run}
+
+The principles are sentences. Four of them, in code that ran.
+
+**Exact by default (8).** A number says whether it is exact, and why when it is not.
+
+<!--SAMPLE:stzNumber.exact-->
+
+**Code that reads (6).** The human is the parser: the code is the sentence it means.
+
+<!--SAMPLE:area:principles.reads-->
+
+**Everything is judged (2).** A promise counts once a run that could have failed has kept it.
+
+<!--SAMPLE:area:principles.judged-->
+
+**Agents that cannot hurt you (4).** A model may propose, and an effect with no gate before it is refused, with the reason.
+
+<!--SAMPLE:stzAgentGraph.unsound-->
+

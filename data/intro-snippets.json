@@ -492,5 +492,18 @@
    "id": "parse",
    "code": "oS = StzOutputSchemaQ([\n    [ :field = \"name\", :type = :string ],\n    [ :field = \"age\",  :type = :number,\n      :must = [ [ \">=\", 0 ], [ \"<=\", 130 ] ] ],\n    [ :field = \"mood\", :type = :oneof,\n      :choices = [ \"positive\", \"negative\" ] ]\n])\n\n# an answer wrapped in prose is read as the structure it holds\ncAnswer = 'Sure: { \"name\": \"Ada\", \"age\": \"36\", \"mood\": \"POSITIVE\" }'\naV = oS.ParseOutput(cAnswer)\n\n? aV[:ok]\n\n# and a representable scalar arrives as what was declared\n? aV[:value][:age] + 1\n\n# prose that is not a structure is refused, not scavenged\n? oS.ParseOutput(\"I would rather not say.\")[:ok]"
   }
+ ],
+ "area:principles": [
+  {
+   "id": "reads",
+   "code": "# the code is the sentence: the string, uppercased, spaced out\n? Q(\"softanza\").UppercaseQ().Spacified()"
+  },
+  {
+   "id": "judged",
+   "code": "Scenario(\"a price keeps its two places\")\n    Given(\"a price of 19.99\")\n    oPrice = StzMoneyQ(\"19.99\")\n\n    When(\"15 percent of it is taken\")\n    oPrice.MultiplyBy(\"0.15\")\n\n    Then(\"the result is 3.00\", oPrice.Content(), \"3.00\")\nEndScenario()",
+   "prelude": [
+    "test/_narrated.ring"
+   ]
+  }
  ]
 }

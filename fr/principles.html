@@ -53,6 +53,57 @@
 <div class="card"><h3>11 · Programmer par cœur</h3><p>Ce que vous pensez est ce que vous écrivez. Le tribunal est sévère pour que la surface reste chaleureuse ; un tuteur demande et ne donne jamais la réponse.</p></div>
 <div class="card"><h3>12 · Née en Afrique</h3><p>Conçue entre la Tunisie, Niamey et Paris ; une banque et un restaurant comme références ; une machine nommée d'après un pont.</p></div>
 </div>
+
+<h2 id="run">Quatre des douze, exécutés</h2>
+<p>Les principes sont des phrases. Quatre d'entre eux, en code qui a tourné.</p>
+<p><strong>Exact par défaut (8).</strong> Un nombre dit s'il est exact, et pourquoi quand il ne l'est pas.</p>
+<div class="sample"><pre class="rx"># the same question, asked at two precisions
+? Q(5.12).IsEqualTo(5.1200000000000001)
+#--&gt; TRUE
+
+? Q(5.12).IsEqualTo([ 5.1200000000000001, :Round = 16 ])
+#--&gt; FALSE</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-20</span></div>
+
+<p><strong>Du code qui se lit (6).</strong> L'humain est l'analyseur : le code est la phrase qu'il veut dire.</p>
+<div class="sample"><pre class="rx"># the code is the sentence: the string, uppercased, spaced out
+? Q(&quot;softanza&quot;).UppercaseQ().Spacified()
+#--&gt; S O F T A N Z A</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div>
+
+<p><strong>Tout est jugé (2).</strong> Une promesse ne compte qu'une fois tenue par une exécution qui aurait pu échouer.</p>
+<div class="sample"><pre class="rx">Scenario(&quot;a price keeps its two places&quot;)
+    Given(&quot;a price of 19.99&quot;)
+    oPrice = StzMoneyQ(&quot;19.99&quot;)
+
+    When(&quot;15 percent of it is taken&quot;)
+    oPrice.MultiplyBy(&quot;0.15&quot;)
+
+    Then(&quot;the result is 3.00&quot;, oPrice.Content(), &quot;3.00&quot;)
+EndScenario()
+#--&gt; SCENARIO: a price keeps its two places
+#--&gt;   GIVEN a price of 19.99
+#--&gt;   WHEN  15 percent of it is taken
+#--&gt;   THEN  the result is 3.00  [PASS]
+#--&gt;   -&gt; 1 pass, 0 fail</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div>
+
+<p><strong>Des agents qui ne peuvent pas vous nuire (4).</strong> Un modèle peut proposer, et un effet sans porte devant lui est refusé, avec la raison.</p>
+<div class="sample"><pre class="rx">oAG = new stzAgentGraph(&quot;mailer-bad&quot;)
+oAG {
+    AddLLMActor(&quot;writer&quot;)
+    AddEffect(&quot;send&quot;)
+
+    Proposes(&quot;writer&quot;, &quot;send&quot;)
+}
+
+# a model proposing straight to an effect
+? oAG.IsSound()
+#--&gt; FALSE
+
+# which invariant is broken, and on which node
+? oAG.Violations()[1][:invariant]
+#--&gt; effects-guarded
+
+? oAG.Violations()[1][:node]
+#--&gt; send</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-20</span></div>
   </div>
 </main>
 </div>
@@ -61,7 +112,7 @@
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../index.html" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">La plateforme logicielle gouvernée de l&#x27;ère de l&#x27;IA. Déclarez ce que vous savez. Un tribunal le garde. Le modèle d&#x27;IA vient en dernier. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
-    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-20.</p></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-21.</p></div>
   </div>
 </div></footer>
 <script src="../assets/js/site.js"></script><script src="../assets/js/search-core.js"></script><script src="../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

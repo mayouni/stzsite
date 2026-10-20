@@ -764,5 +764,24 @@
    "ran": "2026-10-20 19:59",
    "commit": "937cd920d"
   }
+ ],
+ "area:principles": [
+  {
+   "id": "reads",
+   "code": "# the code is the sentence: the string, uppercased, spaced out\n? Q(\"softanza\").UppercaseQ().Spacified()",
+   "out": "S O F T A N Z A",
+   "ran": "2026-10-21 00:27",
+   "commit": "937cd920d"
+  },
+  {
+   "id": "judged",
+   "code": "Scenario(\"a price keeps its two places\")\n    Given(\"a price of 19.99\")\n    oPrice = StzMoneyQ(\"19.99\")\n\n    When(\"15 percent of it is taken\")\n    oPrice.MultiplyBy(\"0.15\")\n\n    Then(\"the result is 3.00\", oPrice.Content(), \"3.00\")\nEndScenario()",
+   "prelude": [
+    "test/_narrated.ring"
+   ],
+   "out": "\nSCENARIO: a price keeps its two places\n  GIVEN a price of 19.99\n  WHEN  15 percent of it is taken\n  THEN  the result is 3.00  [PASS]\n  -> 1 pass, 0 fail",
+   "ran": "2026-10-21 00:27",
+   "commit": "937cd920d"
+  }
  ]
 }
