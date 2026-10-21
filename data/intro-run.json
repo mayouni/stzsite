@@ -1024,5 +1024,113 @@
    "ran": "2026-10-21 02:25",
    "commit": "937cd920d"
   }
+ ],
+ "stzMathFunction": [
+  {
+   "id": "derivative",
+   "code": "oF = new stzMathFunction(\"x^3 - 2*x\", [ \"x\" ])\n\n# the value of the function at x = 2\n? oF.ValueAt([ 2 ])\n\noQ = new stzMathFunction(\"x^2 - 2\", [ \"x\" ])\n\n# and its slope, at 0 and at 1\n? oQ.DerivativeAt(\"x\", [ 0 ])\n\n? oQ.DerivativeAt(\"x\", [ 1 ])",
+   "out": "4\n0\n2",
+   "ran": "2026-10-21 07:43",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzRegexLookaroundMaker": [
+  {
+   "id": "look",
+   "code": "o1 = new stzRegexLookAroundMaker()\no1.MustBeFollowedByWord(\"hello\").ThenMatch(\"\\w+\")\n\n# the pattern that says it\n? o1.Pattern()\n\no2 = new stzRegexLookAroundMaker()\no2.CantBeFollowedBy(\"px\").ThenMatch(\"\\d+\")\n\n? o2.Pattern()",
+   "out": "(?=\\bhello\\b)\\w+\n(?!px)\\d+",
+   "ran": "2026-10-21 07:43",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzLogisticRegression": [
+  {
+   "id": "train",
+   "code": "oSet = new stzTrainingSet([\n    [ [ 0.0 ], \"lo\" ], [ [ 0.1 ], \"lo\" ], [ [ 0.2 ], \"lo\" ],\n    [ [ 0.8 ], \"hi\" ], [ [ 0.9 ], \"hi\" ], [ [ 1.0 ], \"hi\" ]\n])\n\no1 = new stzLogisticRegression(oSet)\no1.Train(300)\n\n# the weight has the sign the data implies\n? o1.Weights()[1] > 0\n\n? o1.Classify([ 0.05 ])\n\n? o1.Classify([ 0.95 ])\n\n# and it fits what it was trained on\n? o1.TrainingAccuracy()",
+   "out": "1\nlo\nhi\n1",
+   "ran": "2026-10-21 07:43",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzListOfTexts": [
+  {
+   "id": "rank",
+   "code": "o1 = new stzListOfTexts([\n    \"the stock market fell today\",\n    \"a chocolate cake recipe\"\n])\n\n# the text closest to a query, with no model loaded\n? o1.MostRelevantTo(\"financial market news\")\n\n# or all of them, best first, with their scores\n? o1.RankedForQuery(\"financial market news\")[1][1]",
+   "out": "the stock market fell today\nthe stock market fell today",
+   "ran": "2026-10-21 07:43",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzKMeans": [
+  {
+   "id": "clusters",
+   "code": "oK = new stzKMeans([ [ 1, 1 ], [ 1.2, 0.9 ], [ 8, 8 ], [ 7.9, 8.1 ] ])\noK.SetK(2)\noK.Run(50)\n\n# two clusters come back\n? len( oK.Clusters() )\n\n# and the near point and the far point are not in the same one\n? oK.ClusterOf([ 1, 1 ]) != oK.ClusterOf([ 8, 8 ])",
+   "out": "2\n1",
+   "ran": "2026-10-21 07:43",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzDecisionTree": [
+  {
+   "id": "weather",
+   "code": "oSet = new stzTrainingSet([\n    [ [ \"Sunny\", \"High\" ], \"no\" ], [ [ \"sunny\", \"high\" ], \"no\" ],\n    [ [ \"RAIN\", \"low\" ], \"yes\" ], [ [ \"rain\", \"LOW\" ], \"yes\" ],\n    [ [ \"Overcast\", \"High\" ], \"yes\" ]\n])\n\no1 = new stzDecisionTree(oSet)\no1.Train()\n\n# the case of a query does not matter\n? o1.Classify([ \"SUNNY\", \"HIGH\" ])\n\n? o1.Classify([ \"rain\", \"low\" ])\n\n? o1.Classify([ \"Overcast\", \"high\" ])",
+   "out": "no\nyes\nyes",
+   "ran": "2026-10-21 07:44",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzMathFigure": [
+  {
+   "id": "polish",
+   "code": "aDeaths = [\n    [ 14, 15, 14 ],\n    [  7,  4,  7 ],\n    [  8,  2, 10 ],\n    [ 15,  9, 10 ],\n    [  0,  2,  0 ]\n]\n\naNames = [\n    [ \"1-24\", \"25-74\", \"75-199\", \"200++\", \"NA\" ],\n    [ \"1973\", \"1974\", \"1975\" ]\n]\n\noRes = StzMathFigureQ(:ResidualPlot, [ :of = aDeaths, :names = aNames ])\n\n# the figure says what it shows\n? StzFindFirst(\"residual-versus-fit\", oRes.Why()) > 0\n\n# and no rule found a defect in it\n? len( oRes.Violations() )",
+   "out": "1\n0",
+   "ran": "2026-10-21 07:44",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzConditionalRegexMaker": [
+  {
+   "id": "ifthen",
+   "code": "cIso = \"\\d{4}-\\d{2}-\\d{2}\"\ncEu  = \"\\d{2}/\\d{2}/\\d{4}\"\n\no1 = new stzConditionalRegexMaker()\n\n# if it starts with four digits, a year-first date, else a day-first one\no1.IfMatch(\"^\\d{4}\").ThenMatch(cIso).ElseMatch(cEu)\n\n? o1.Pattern()",
+   "out": "(?(?=^\\d{4})\\d{4}-\\d{2}-\\d{2}|\\d{2}/\\d{2}/\\d{4})",
+   "ran": "2026-10-21 07:44",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzTrainingSet": [
+  {
+   "id": "examples",
+   "code": "oSet = new stzTrainingSet([])\noSet.AddExample([ 1, 1 ], \"near\")\noSet.AddExample([ 9, 9 ], \"far\")\n\n? oSet.NumberOfExamples()",
+   "out": "2",
+   "ran": "2026-10-21 07:44",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzExerciseCheck": [
+  {
+   "id": "check",
+   "code": "# an exercise: print the sum of 1 and 2\noNo = new stzExerciseCheck(\"demo\", [ \"3\" ], \"? 42\", [])\n\n? oNo.Passed()\n\n# and it says what it printed, instead of only no\n? StzFindFirst(\"It printed: 42\", oNo.Why()) > 0\n\noYes = new stzExerciseCheck(\"demo\", [ \"3\" ], \"? 1 + 2\", [])\n? oYes.Passed()",
+   "out": "0\n1\n1",
+   "ran": "2026-10-21 07:44",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzUnicodeData": [
+  {
+   "id": "names",
+   "code": "# a character, found by its name\n? StzUnicodeDataQ().CharByName(\"OSMANYA LETTER BA\")\n\n# and a name, found from its character\n? StzCharQ(\"ҁ\").Name()\n\n? Q(\"𐒁\").CharName()",
+   "out": "𐒁\nCYRILLIC SMALL LETTER KOPPA\nOSMANYA LETTER BA",
+   "ran": "2026-10-21 07:44",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzCCode": [
+  {
+   "id": "transpile",
+   "code": "# the @char form lowers to an access to the current position\n? StzCCodeQ('@char = \"I\"').Transpiled()\n\no1 = new stzCCode(\"isNumber(0+ @item)\")\no1.Transpile()\n\n# the @item form lowers the same way\n? o1.Content()",
+   "out": "This[@i] = \"I\"\nisNumber(0+ This[@i])",
+   "ran": "2026-10-21 07:44",
+   "commit": "937cd920d"
+  }
  ]
 }

@@ -42,7 +42,20 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/number/stzMathFunction.ring" target="_blank" rel="noopener noreferrer">the source: base/number/stzMathFunction.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/numeric.html">The area reference: Numeric &amp; optimization</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>A function written as a formula, with its variables named: its value at a point, its slope at a point, its gradient, and nothing approximated by a small step.</p><div class="sample"><pre class="rx">oF = new stzMathFunction(&quot;x^3 - 2*x&quot;, [ &quot;x&quot; ])
+
+# the value of the function at x = 2
+? oF.ValueAt([ 2 ])
+#--&gt; 4
+
+oQ = new stzMathFunction(&quot;x^2 - 2&quot;, [ &quot;x&quot; ])
+
+# and its slope, at 0 and at 1
+? oQ.DerivativeAt(&quot;x&quot;, [ 0 ])
+#--&gt; 0
+
+? oQ.DerivativeAt(&quot;x&quot;, [ 1 ])
+#--&gt; 2</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>The slope comes from automatic differentiation and not from a finite difference: the expression is evaluated forward, and a backward pass gives every partial derivative. The gradient comes with one entry per variable, in the order they were named; the value alone is available without the backward pass, which is what a line search wants; and the value and the gradient can be had together, because asking for them separately would evaluate the expression twice.</p><p>It is the object an optimiser is handed when it needs to descend, and the instrument that checks a gradient someone wrote by hand.</p></div>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/numeric.html">The story of its area: Numeric &amp; optimization</a> · <a href="../guide/numeric.html">Its area's reference</a></p><h3>Design documents that name it <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/math/SOFTANZA_MATH_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA MATH PLAN -- the map, the contracts, the phases<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">3 mentions</span><span class="abs">The math charter&#x27;s companion plan, headed draft M0, mapping what exists with line numbers, listing the contracts consumed, and recording phases M1 to M6 (figures, motion, a course, the Tukey tier, core deepening, a bridge to Lean) with their shipped results.</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#derivativeat">D</a> <a href="#expression">E</a> <a href="#free">F</a> <a href="#gradientat">G</a> <a href="#init">I</a> <a href="#numberofvariables">N</a> <a href="#variables">V</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

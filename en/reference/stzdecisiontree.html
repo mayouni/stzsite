@@ -42,7 +42,30 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/learning/stzDecisionTree.ring" target="_blank" rel="noopener noreferrer">the source: base/learning/stzDecisionTree.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/nlp.html">The area reference: NLP &amp; linguistics</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>A classifier that is a series of questions: a tree learned from labelled examples, where each branch tests one feature and each leaf holds a label, so that a decision can be read and not only obeyed.</p><div class="sample"><pre class="rx">oSet = new stzTrainingSet([
+    [
+        [ "Sunny", "High" ],
+        "no"
+    ], [ [ "sunny", "high" ], "no" ],
+    [
+        [ "RAIN", "low" ],
+        "yes"
+    ], [ [ "rain", "LOW" ], "yes" ],
+    [ [ "Overcast", "High" ], "yes" ]
+])
+
+o1 = new stzDecisionTree(oSet)
+o1.Train()
+
+# the case of a query does not matter
+? o1.Classify([ "SUNNY", "HIGH" ])
+#--&gt; no
+
+? o1.Classify([ "rain", "low" ])
+#--&gt; yes
+
+? o1.Classify([ "Overcast", "high" ])
+#--&gt; yes</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>Values are compared with their case folded, so &quot;SUNNY&quot; finds the branch that &quot;sunny&quot; made, and the root has one branch per folded value. The feature names can be set so that the tree reads as a sentence, and the learned model becomes a real graph, decision nodes joined by labelled edges to leaves, which can be queried and drawn like any other graph.</p><p>It serves the decision that must be explained to the person it concerns: a loan, a triage, a rule of thumb for a field agent, and a model small enough to be audited by a person.</p></div>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/nlp.html">The story of its area: NLP &amp; linguistics</a> · <a href="../guide/nlp.html">Its area's reference</a></p><h3>Design documents that name it <span class="mono">(2)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/stzGraph-A-Design-Foundation-for-Connected-Domains.md" target="_blank" rel="noopener noreferrer">stzGraph: A Design Foundation for Connected Domains<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">6 mentions</span><span class="abs">A design essay presenting stzGraph as Softanza&#x27;s architectural spine: structure is kept separate from semantics, every domain (code, workflows, state machines, knowledge, data models, natural language) is a class inheriting from the graph, and patterns found in one domain flow back to the core.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_NUMERIC_FOUNDATION.md" target="_blank" rel="noopener noreferrer">Numbers in Softanza — a global rethink<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">3 mentions</span><span class="abs">A library-wide rethink of numbers, phases 0 to 7 complete, superseding the number-engine plan with five pillars: visible exactness, a numeric frame named at the call site, engine-resident arrays, Zig SIMD kernels, and one authority per algorithm.</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#classify">C</a> <a href="#init">I</a> <a href="#setfeaturenames">S</a> <a href="#trainingsetq">T</a> <a href="#why">W</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

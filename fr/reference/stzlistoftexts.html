@@ -42,7 +42,18 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/linguistic/stzListOfTexts.ring" target="_blank" rel="noopener noreferrer">la source: base/linguistic/stzListOfTexts.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/nlp.html">La référence du domaine : Traitement du langage et linguistique</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Une liste de textes que l&#x27;on peut lire par le sens : lequel est le plus proche d&#x27;une question, lesquels sont positifs, lesquels se ressemblent le plus.</p><div class="sample"><pre class="rx">o1 = new stzListOfTexts([
+    &quot;the stock market fell today&quot;,
+    &quot;a chocolate cake recipe&quot;
+])
+
+# the text closest to a query, with no model loaded
+? o1.MostRelevantTo(&quot;financial market news&quot;)
+#--&gt; the stock market fell today
+
+# or all of them, best first, with their scores
+? o1.RankedForQuery(&quot;financial market news&quot;)[1][1]
+#--&gt; the stock market fell today</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div><p>Le classement emploie un encodeur croisé qui note ensemble une question et un document quand un modèle de reclassement est chargé, et se replie sur une note lexicale quand il n&#x27;y en a pas, si bien que le même appel marche sur une machine sans modèle. Le résultat est les paires, la meilleure d&#x27;abord, avec leurs notes, ou la meilleure seule, et les paires reviennent comme une liste de paires que l&#x27;on peut interroger comme telle. Un texte peut être retenu par son sentiment, positif, négatif ou neutre.</p><p>C&#x27;est ce qui fait d&#x27;une liste de textes plus qu&#x27;une liste de chaînes : une chaîne fluide peut dire « le plus semblable par le sens, puis les positifs ». Elle sert la recherche dans un ensemble de notes, le classement de réponses candidates, et le tri de messages.</p></div>
     <div class="treasures"><p class="proof"><a href="../atlas/nlp.html">Le récit de son domaine : Traitement du langage et linguistique</a> · <a href="../guide/nlp.html">La référence de son domaine</a></p></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#copy">C</a> <a href="#mostsimilarbymeaning">M</a> <a href="#rankedforquery">R</a> <a href="#thatare">T</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

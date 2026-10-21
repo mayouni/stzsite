@@ -42,7 +42,31 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/math/stzMathFigure.ring" target="_blank" rel="noopener noreferrer">la source: base/math/stzMathFigure.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/numeric.html">La référence du domaine : Numérique et optimisation</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Une figure mathématique déclarée par ce qu&#x27;elle est, une fonction, un tracé de résidus, un champ, et résolue en une image dont chaque marque dit ce qu&#x27;elle représente.</p><div class="sample"><pre class="rx">aDeaths = [
+    [ 14, 15, 14 ],
+    [  7,  4,  7 ],
+    [  8,  2, 10 ],
+    [ 15,  9, 10 ],
+    [  0,  2,  0 ]
+]
+
+aNames = [
+    [ "1-24", "25-74", "75-199", "200++", "NA" ],
+    [ "1973", "1974", "1975" ]
+]
+
+oRes = StzMathFigureQ(:ResidualPlot, [
+    :of = aDeaths,
+    :names = aNames
+])
+
+# the figure says what it shows
+? StzFindFirst("residual-versus-fit", oRes.Why()) &gt; 0
+#--&gt; TRUE
+
+# and no rule found a defect in it
+? len( oRes.Violations() )
+#--&gt; 0</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div><p>Une part est calculée, à partir des formules propres au domaine, et une part est résolue, la disposition des marques pour que rien ne se chevauche et que chaque note trouve sa place ; la figure dit ce qui a été calculé et ce qui a été résolu en une phrase chacun. Des règles jugent la disposition, si bien qu&#x27;un défaut est une violation que l&#x27;on peut compter et non une image un peu de travers. L&#x27;image peut changer de thème sans être résolue de nouveau, et une marque peut être épinglée ou déplacée pendant que le reste se pose autour d&#x27;elle.</p><p>C&#x27;est l&#x27;image d&#x27;un lissage médian, d&#x27;une fonction dont les zéros et les extrema sont marqués, d&#x27;une figure de leçon qui doit être exacte. Elle sert l&#x27;analyste qui veut voir les résidus et l&#x27;enseignant qui veut la bonne courbe.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/numeric.html">Le récit de son domaine : Numérique et optimisation</a> · <a href="../guide/numeric.html">La référence de son domaine</a></p><h3>Documents de conception qui la nomment <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/math/CHARTER.md" target="_blank" rel="noopener noreferrer">stzlib-math -- the charter (M0)<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">3 mentions</span><span class="abs">La charte du plan mathématique (M0), brouillon attendant la ratification de l&#x27;auteur : les mathématiques dans Softanza sont d&#x27;abord vues, toujours prouvées et apprises dans la langue de l&#x27;apprenant ; elle fixe le vocabulaire et les lois et liste les décisions que seul l&#x27;auteur peut prendre.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#diagram">D</a> <a href="#extrema">E</a> <a href="#fact">F</a> <a href="#init">I</a> <a href="#kind">K</a> <a href="#layout">L</a> <a href="#marks">M</a> <a href="#piececount">P</a> <a href="#runcount">R</a> <a href="#spec">S</a> <a href="#text">T</a> <a href="#unpin">U</a> <a href="#violations">V</a> <a href="#why">W</a> <a href="#zeros">Z</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

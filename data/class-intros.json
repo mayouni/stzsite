@@ -1261,5 +1261,177 @@
    "Un motif dit le nombre de colonnes et de lignes, les noms et les types des colonnes, qu'une colonne est unique, triée, complète ou numérique, une somme, une moyenne, un minimum ou un maximum qui doit tenir ; les motifs se combinent par et, ou et non. Un motif peut s'expliquer : les unités qu'il a lues et ce qu'elles signifiaient.",
    "Il sert à valider un import avant qu'il entre dans une table, à spécifier la forme d'un rapport, et à tester une transformation : le même langage dit ce qui entre et ce qui doit sortir."
   ]
+ },
+ "stzMathFunction": {
+  "en": [
+   "A function written as a formula, with its variables named: its value at a point, its slope at a point, its gradient, and nothing approximated by a small step.",
+   "@derivative",
+   "The slope comes from automatic differentiation and not from a finite difference: the expression is evaluated forward, and a backward pass gives every partial derivative. The gradient comes with one entry per variable, in the order they were named; the value alone is available without the backward pass, which is what a line search wants; and the value and the gradient can be had together, because asking for them separately would evaluate the expression twice.",
+   "It is the object an optimiser is handed when it needs to descend, and the instrument that checks a gradient someone wrote by hand."
+  ],
+  "fr": [
+   "Une fonction écrite comme une formule, ses variables nommées : sa valeur en un point, sa pente en un point, son gradient, et rien d'approché par un petit pas.",
+   "@derivative",
+   "La pente vient de la différentiation automatique et non d'une différence finie : l'expression est évaluée en avant, et une passe arrière donne chaque dérivée partielle. Le gradient vient avec une entrée par variable, dans l'ordre où elles ont été nommées ; la valeur seule est disponible sans la passe arrière, ce que veut une recherche linéaire ; et la valeur et le gradient peuvent s'obtenir ensemble, parce que les demander séparément évaluerait l'expression deux fois.",
+   "C'est l'objet que l'on remet à un optimiseur quand il doit descendre, et l'instrument qui vérifie un gradient écrit à la main."
+  ]
+ },
+ "stzRegexLookaroundMaker": {
+  "en": [
+   "Lookaround, the part of a regular expression that matches by what stands next to a thing without taking it: this must be followed by that, must not be preceded by this, written as sentences.",
+   "@look",
+   "Each condition has two spellings, one in words and one in the notation's own: followed by, looking ahead, preceded by, looking behind, and their negations, cannot be followed by, cannot be preceded by; a condition can name a whole word. The condition is then joined to what must match, and the maker writes the pattern. A lookahead is hard to read, and the sentence that produced it is not.",
+   "It is the sibling of `stzRegexMaker` for the one construct that most readers of patterns get wrong, and it serves the extraction of a number that is not followed by a unit, of a name that follows a title, of a word that stands before another."
+  ],
+  "fr": [
+   "Le regard autour, la part d'une expression régulière qui reconnaît par ce qui se tient à côté d'une chose sans la prendre : ceci doit être suivi de cela, ne doit pas être précédé de ceci, écrit en phrases.",
+   "@look",
+   "Chaque condition a deux orthographes, l'une en mots et l'autre dans la notation elle-même : suivi de, regard en avant, précédé de, regard en arrière, et leurs négations, ne peut pas être suivi de, ne peut pas être précédé de ; une condition peut nommer un mot entier. La condition est ensuite jointe à ce qui doit correspondre, et le constructeur écrit le motif. Un regard en avant est difficile à lire, et la phrase qui l'a produit ne l'est pas.",
+   "C'est le frère de `stzRegexMaker` pour la seule construction que la plupart des lecteurs de motifs comprennent mal, et il sert à extraire un nombre qui n'est pas suivi d'une unité, un nom qui suit un titre, un mot qui se tient avant un autre."
+  ]
+ },
+ "stzLogisticRegression": {
+  "en": [
+   "A classifier that learns a boundary between two classes and says how sure it is: from a training set of labelled examples, a weight for each feature and a bias, and for any new point a probability.",
+   "@train",
+   "Training is gradient descent with a learning rate that can be set, run in the engine in a single crossing for many rows. The probability of a point is scored by the rule it was fitted by, and the accuracy on the training set is a number the object reports. The training set is held live, so growing it grows what the model knows.",
+   "It is the smallest honest classifier and the one to try first, with a sentence that says how it reasoned. It serves the first model on a labelled table, and the baseline that a more complicated one must beat."
+  ],
+  "fr": [
+   "Un classificateur qui apprend une frontière entre deux classes et dit à quel point il est sûr : à partir d'un ensemble d'exemples étiquetés, un poids pour chaque caractéristique et un biais, et pour tout point neuf une probabilité.",
+   "@train",
+   "L'entraînement est une descente de gradient avec un taux d'apprentissage réglable, exécutée dans le moteur en une seule traversée pour de nombreuses lignes. La probabilité d'un point est évaluée par la règle qui a servi à l'ajuster, et la précision sur l'ensemble d'entraînement est un nombre que l'objet rapporte. L'ensemble d'entraînement est tenu vivant, si bien que le faire grandir fait grandir ce que le modèle sait.",
+   "C'est le plus petit classificateur honnête et celui qu'il faut essayer d'abord, avec une phrase qui dit comment il a raisonné. Il sert le premier modèle sur une table étiquetée, et la base de comparaison qu'un modèle plus compliqué doit dépasser."
+  ]
+ },
+ "stzListOfTexts": {
+  "en": [
+   "A list of texts that can be read by meaning: which one is closest to a question, which are positive, which are most alike.",
+   "@rank",
+   "The ranking uses a cross-encoder that scores a question and a document together when a reranking model is loaded, and falls back to a lexical score when none is, so the same call works on a machine with no model. The result is the pairs, best first, with their scores, or the best one alone, and the pairs come back as a list of pairs that can be queried as such. A text can be kept by its sentiment, positive, negative or neutral.",
+   "It is what makes a list of texts more than a list of strings: a fluent chain can say \"the most similar by meaning, then the positive ones\". It serves the search in a set of notes, the ranking of candidate answers, and the sorting of messages."
+  ],
+  "fr": [
+   "Une liste de textes que l'on peut lire par le sens : lequel est le plus proche d'une question, lesquels sont positifs, lesquels se ressemblent le plus.",
+   "@rank",
+   "Le classement emploie un encodeur croisé qui note ensemble une question et un document quand un modèle de reclassement est chargé, et se replie sur une note lexicale quand il n'y en a pas, si bien que le même appel marche sur une machine sans modèle. Le résultat est les paires, la meilleure d'abord, avec leurs notes, ou la meilleure seule, et les paires reviennent comme une liste de paires que l'on peut interroger comme telle. Un texte peut être retenu par son sentiment, positif, négatif ou neutre.",
+   "C'est ce qui fait d'une liste de textes plus qu'une liste de chaînes : une chaîne fluide peut dire « le plus semblable par le sens, puis les positifs ». Elle sert la recherche dans un ensemble de notes, le classement de réponses candidates, et le tri de messages."
+  ]
+ },
+ "stzKMeans": {
+  "en": [
+   "Groups found where nobody gave them: points that sit close together are put in one cluster, around a centre that the run moves until the groups stop changing.",
+   "@clusters",
+   "The number of groups is chosen, the run is bounded, and the answer is the clusters, their centres, the cluster of a new point, and the inertia, the total squared distance within the clusters, which says how tight they are. The distance is computed by the engine, in one scan of the assignments and not one scan per cluster.",
+   "It serves the first look at unlabelled data, the choice of examples to label, the grouping of a catalogue or of customers. Its neighbour, `stzKnn`, does the opposite work: the labels are given, and the point is placed among them."
+  ],
+  "fr": [
+   "Des groupes trouvés là où personne ne les a donnés : les points proches sont mis dans un même regroupement, autour d'un centre que l'exécution déplace jusqu'à ce que les groupes cessent de changer.",
+   "@clusters",
+   "Le nombre de groupes est choisi, l'exécution est bornée, et la réponse est les regroupements, leurs centres, le regroupement d'un point neuf, et l'inertie, la distance au carré totale à l'intérieur des regroupements, qui dit leur compacité. La distance est calculée par le moteur, en un seul passage sur les affectations et non un par regroupement.",
+   "Il sert au premier regard sur des données sans étiquettes, au choix des exemples à étiqueter, au regroupement d'un catalogue ou de clients. Son voisin, `stzKnn`, fait le travail inverse : les étiquettes sont données, et le point est placé parmi elles."
+  ]
+ },
+ "stzDecisionTree": {
+  "en": [
+   "A classifier that is a series of questions: a tree learned from labelled examples, where each branch tests one feature and each leaf holds a label, so that a decision can be read and not only obeyed.",
+   "@weather",
+   "Values are compared with their case folded, so \"SUNNY\" finds the branch that \"sunny\" made, and the root has one branch per folded value. The feature names can be set so that the tree reads as a sentence, and the learned model becomes a real graph, decision nodes joined by labelled edges to leaves, which can be queried and drawn like any other graph.",
+   "It serves the decision that must be explained to the person it concerns: a loan, a triage, a rule of thumb for a field agent, and a model small enough to be audited by a person."
+  ],
+  "fr": [
+   "Un classificateur qui est une suite de questions : un arbre appris à partir d'exemples étiquetés, où chaque branche teste une caractéristique et chaque feuille porte une étiquette, si bien qu'une décision peut être lue et pas seulement suivie.",
+   "@weather",
+   "Les valeurs sont comparées avec la casse ramenée, si bien que « SUNNY » trouve la branche que « sunny » a faite, et la racine a une branche par valeur ramenée. Les noms des caractéristiques peuvent être posés pour que l'arbre se lise comme une phrase, et le modèle appris devient un vrai graphe, des nœuds de décision reliés par des arêtes étiquetées à des feuilles, que l'on peut interroger et dessiner comme tout autre graphe.",
+   "Il sert la décision qui doit être expliquée à la personne qu'elle concerne : un prêt, un tri, une règle empirique pour un agent de terrain, et un modèle assez petit pour être audité par une personne."
+  ]
+ },
+ "stzMathFigure": {
+  "en": [
+   "A mathematical figure declared by what it is, a function, a residual plot, a field, and solved into a picture whose every mark says what it stands for.",
+   "@polish",
+   "Part of it is computed, from the domain's own formulas, and part is solved, the layout of the marks so that nothing overlaps and every note finds its place; the figure says what was computed and what was solved in one sentence each. Rules judge the layout, so a defect is a violation that can be counted and not an image that looks a little off. The picture can be themed without being solved again, and a mark can be pinned or dragged while the rest settles around it.",
+   "It is the picture of a median polish, of a function with its zeros and extrema marked, of a figure in a lesson that must be exact. It serves the analyst who wants the residuals seen and the teacher who wants the curve right."
+  ],
+  "fr": [
+   "Une figure mathématique déclarée par ce qu'elle est, une fonction, un tracé de résidus, un champ, et résolue en une image dont chaque marque dit ce qu'elle représente.",
+   "@polish",
+   "Une part est calculée, à partir des formules propres au domaine, et une part est résolue, la disposition des marques pour que rien ne se chevauche et que chaque note trouve sa place ; la figure dit ce qui a été calculé et ce qui a été résolu en une phrase chacun. Des règles jugent la disposition, si bien qu'un défaut est une violation que l'on peut compter et non une image un peu de travers. L'image peut changer de thème sans être résolue de nouveau, et une marque peut être épinglée ou déplacée pendant que le reste se pose autour d'elle.",
+   "C'est l'image d'un lissage médian, d'une fonction dont les zéros et les extrema sont marqués, d'une figure de leçon qui doit être exacte. Elle sert l'analyste qui veut voir les résidus et l'enseignant qui veut la bonne courbe."
+  ]
+ },
+ "stzMathMotion": {
+  "en": [
+   "A figure that moves with a slider: a parameter that the declaration mentions, a range, a place to start, and a figure that follows when the slider is moved.",
+   "A slider is a name in braces inside the declaration, with a range. Moving it is clamped to the range, the computed half follows on the next frame, and the solved half, the layout, on the next settle, whose cost is kept as a number. A frame can be drawn as SVG or as PNG, and the states that a figure passes through can be named and told as a story.",
+   "It serves a lesson in which a student pulls a parameter and watches the curve, and a check that a figure stays right all along the way."
+  ],
+  "fr": [
+   "Une figure qui bouge avec un curseur : un paramètre que la déclaration mentionne, une étendue, un point de départ, et une figure qui suit quand on déplace le curseur.",
+   "Un curseur est un nom entre accolades dans la déclaration, avec une étendue. Le déplacer est borné à l'étendue, la moitié calculée suit à l'image suivante, et la moitié résolue, la disposition, au prochain ajustement, dont le coût est gardé comme un nombre. Une image peut être dessinée en SVG ou en PNG, et les états que traverse une figure peuvent être nommés et racontés comme une histoire.",
+   "Elle sert une leçon où un élève tire un paramètre et regarde la courbe, et un contrôle qu'une figure reste juste tout au long du chemin."
+  ]
+ },
+ "stzConditionalRegexMaker": {
+  "en": [
+   "A conditional pattern written as if, then, else: if the text starts like this, it must go on like that, otherwise like the other thing.",
+   "@ifthen",
+   "The notation of a conditional in a regular expression is one of the least readable in the language, a question mark, a lookahead and a bar. The maker takes the three parts as sentences and writes it. It serves the field that may be written in two forms, a date year-first or day-first, a number with its unit before or after, and it is the sibling of the maker for lookaround."
+  ],
+  "fr": [
+   "Un motif conditionnel écrit comme si, alors, sinon : si le texte commence ainsi, il doit continuer comme cela, sinon comme l'autre chose.",
+   "@ifthen",
+   "La notation d'un conditionnel dans une expression régulière est l'une des moins lisibles du langage, un point d'interrogation, un regard en avant et une barre. Le constructeur prend les trois parties comme des phrases et l'écrit. Il sert au champ qui peut s'écrire sous deux formes, une date année d'abord ou jour d'abord, un nombre avec son unité avant ou après, et c'est le frère du constructeur de regard autour."
+  ]
+ },
+ "stzTrainingSet": {
+  "en": [
+   "The examples a model learns from: points with their labels, added one by one or all at once, counted, listed, and split into a part to learn from and a part to test on.",
+   "@examples",
+   "It is shared by the classifiers of the library, the nearest neighbours, the decision tree, the logistic regression, and each of them holds it live, so that growing it grows what they know. The split is deterministic, head and tail, so that a test tests the same thing every time. It serves any lesson in learning, and the data of a first model."
+  ],
+  "fr": [
+   "Les exemples dont un modèle apprend : des points avec leurs étiquettes, ajoutés un à un ou d'un coup, comptés, listés, et partagés en une part pour apprendre et une part pour tester.",
+   "@examples",
+   "Il est partagé par les classificateurs de la bibliothèque, les plus proches voisins, l'arbre de décision, la régression logistique, et chacun le tient vivant, si bien que le faire grandir fait grandir ce qu'ils savent. Le partage est déterministe, tête et queue, si bien qu'un test teste la même chose chaque fois. Il sert toute leçon d'apprentissage, et les données d'un premier modèle."
+  ]
+ },
+ "stzExerciseCheck": {
+  "en": [
+   "The check of an exercise: a learner's program is run, what it printed is compared with what the exercise promised, and the verdict says whether it passed and, in the learner's terms, why.",
+   "@check",
+   "It never gives the expected value away: the reason names what the program printed and what is still missing, not the answer. It keeps the evidence that a progress record needs, what was run and when, and a hash of it, with the output, the error and the exit code. It serves the tutor of the course, whose rule is to ask and never to give the answer, and every exercise that proves itself by refusing every wrong answer and accepting every right one."
+  ],
+  "fr": [
+   "La vérification d'un exercice : le programme d'un apprenant est exécuté, ce qu'il a imprimé est comparé à ce que l'exercice promettait, et le verdict dit s'il a réussi et, dans les termes de l'apprenant, pourquoi.",
+   "@check",
+   "Elle ne livre jamais la valeur attendue : la raison nomme ce que le programme a imprimé et ce qui manque encore, pas la réponse. Elle garde la preuve dont un dossier de progression a besoin, ce qui a été exécuté et quand, et son empreinte, avec la sortie, l'erreur et le code de sortie. Elle sert le tuteur du cours, dont la règle est de demander et de ne jamais donner la réponse, et tout exercice qui se prouve en refusant chaque mauvaise réponse et en acceptant chaque bonne."
+  ]
+ },
+ "stzUnicodeData": {
+  "en": [
+   "The Unicode database, asked in both directions: from a name to the character, and from a character to its name, with nothing to load, because the data lives in the engine.",
+   "@names",
+   "A character is found by its name, by its code in hexadecimal or decimal, or by a word its name contains, and a code gives back its name. Every assigned character of every script is one query away, so a Somali letter, an old Cyrillic one and a symbol are asked in the same way.",
+   "It serves the writer who has the name of a letter and not the letter, the engineer who meets a strange character in a log and needs to know what it is, and the lesson on scripts."
+  ],
+  "fr": [
+   "La base de données Unicode, interrogée dans les deux sens : d'un nom au caractère, et d'un caractère à son nom, sans rien à charger, parce que les données vivent dans le moteur.",
+   "@names",
+   "Un caractère se trouve par son nom, par son code en hexadécimal ou en décimal, ou par un mot que son nom contient, et un code redonne son nom. Chaque caractère attribué de chaque écriture est à une requête, si bien qu'une lettre somali, une vieille lettre cyrillique et un symbole se demandent de la même façon.",
+   "Elle sert à qui a le nom d'une lettre et non la lettre, à l'ingénieur qui rencontre un caractère étrange dans un journal et doit savoir ce que c'est, et à la leçon sur les écritures."
+  ]
+ },
+ "stzCCode": {
+  "en": [
+   "The small language inside the library's conditions: a condition written with @item or @char is lowered to the form the engine runs, and the lowering can be seen.",
+   "@transpile",
+   "A predicate given as a string is not text to the engine: it is transpiled to an access to the current position and evaluated in the loop. The object keeps the code, updates it, and shows both forms, so that a condition that surprises can be read as the engine reads it. It serves whoever writes a condition for a filter, a sort or a search and wants to know what will run."
+  ],
+  "fr": [
+   "Le petit langage à l'intérieur des conditions de la bibliothèque : une condition écrite avec @item ou @char est abaissée à la forme que le moteur exécute, et l'abaissement peut se voir.",
+   "@transpile",
+   "Un prédicat donné comme chaîne n'est pas du texte pour le moteur : il est transpilé en un accès à la position courante et évalué dans la boucle. L'objet garde le code, le met à jour, et montre les deux formes, si bien qu'une condition qui surprend peut se lire comme le moteur la lit. Il sert à qui écrit une condition pour un filtre, un tri ou une recherche et veut savoir ce qui va s'exécuter."
+  ]
  }
 }

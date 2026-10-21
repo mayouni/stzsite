@@ -42,7 +42,30 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/learning/stzDecisionTree.ring" target="_blank" rel="noopener noreferrer">la source: base/learning/stzDecisionTree.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/nlp.html">La référence du domaine : Traitement du langage et linguistique</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Un classificateur qui est une suite de questions : un arbre appris à partir d&#x27;exemples étiquetés, où chaque branche teste une caractéristique et chaque feuille porte une étiquette, si bien qu&#x27;une décision peut être lue et pas seulement suivie.</p><div class="sample"><pre class="rx">oSet = new stzTrainingSet([
+    [
+        [ "Sunny", "High" ],
+        "no"
+    ], [ [ "sunny", "high" ], "no" ],
+    [
+        [ "RAIN", "low" ],
+        "yes"
+    ], [ [ "rain", "LOW" ], "yes" ],
+    [ [ "Overcast", "High" ], "yes" ]
+])
+
+o1 = new stzDecisionTree(oSet)
+o1.Train()
+
+# the case of a query does not matter
+? o1.Classify([ "SUNNY", "HIGH" ])
+#--&gt; no
+
+? o1.Classify([ "rain", "low" ])
+#--&gt; yes
+
+? o1.Classify([ "Overcast", "high" ])
+#--&gt; yes</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div><p>Les valeurs sont comparées avec la casse ramenée, si bien que « SUNNY » trouve la branche que « sunny » a faite, et la racine a une branche par valeur ramenée. Les noms des caractéristiques peuvent être posés pour que l&#x27;arbre se lise comme une phrase, et le modèle appris devient un vrai graphe, des nœuds de décision reliés par des arêtes étiquetées à des feuilles, que l&#x27;on peut interroger et dessiner comme tout autre graphe.</p><p>Il sert la décision qui doit être expliquée à la personne qu&#x27;elle concerne : un prêt, un tri, une règle empirique pour un agent de terrain, et un modèle assez petit pour être audité par une personne.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/nlp.html">Le récit de son domaine : Traitement du langage et linguistique</a> · <a href="../guide/nlp.html">La référence de son domaine</a></p><h3>Documents de conception qui la nomment <span class="mono">(2)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/stzGraph-A-Design-Foundation-for-Connected-Domains.md" target="_blank" rel="noopener noreferrer">stzGraph: A Design Foundation for Connected Domains<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">6 mentions</span><span class="abs">Essai de conception présentant stzGraph comme colonne vertébrale architecturale de Softanza : la structure est séparée de la sémantique, chaque domaine (code, flux, automates, connaissance, modèles de données, langage naturel) est une classe héritant du graphe, et les motifs trouvés dans un domaine reviennent au cœur.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_NUMERIC_FOUNDATION.md" target="_blank" rel="noopener noreferrer">Numbers in Softanza — a global rethink<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">3 mentions</span><span class="abs">Une refonte des nombres pour toute la bibliothèque, phases 0 à 7 terminées, qui remplace le plan du moteur numérique par cinq piliers : exactitude visible, cadre numérique nommé à l&#x27;appel, tableaux résidents dans le moteur, noyaux SIMD en Zig, et une seule autorité par algorithme.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#classify">C</a> <a href="#init">I</a> <a href="#setfeaturenames">S</a> <a href="#trainingsetq">T</a> <a href="#why">W</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

@@ -42,7 +42,33 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/learning/stzLogisticRegression.ring" target="_blank" rel="noopener noreferrer">la source: base/learning/stzLogisticRegression.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/nlp.html">La référence du domaine : Traitement du langage et linguistique</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Un classificateur qui apprend une frontière entre deux classes et dit à quel point il est sûr : à partir d&#x27;un ensemble d&#x27;exemples étiquetés, un poids pour chaque caractéristique et un biais, et pour tout point neuf une probabilité.</p><div class="sample"><pre class="rx">oSet = new stzTrainingSet([
+    [
+        [ 0.0 ],
+        "lo"
+    ], [ [ 0.1 ], "lo" ], [ [ 0.2 ], "lo" ],
+    [
+        [ 0.8 ],
+        "hi"
+    ], [ [ 0.9 ], "hi" ], [ [ 1.0 ], "hi" ]
+])
+
+o1 = new stzLogisticRegression(oSet)
+o1.Train(300)
+
+# the weight has the sign the data implies
+? o1.Weights()[1] &gt; 0
+#--&gt; TRUE
+
+? o1.Classify([ 0.05 ])
+#--&gt; lo
+
+? o1.Classify([ 0.95 ])
+#--&gt; hi
+
+# and it fits what it was trained on
+? o1.TrainingAccuracy()
+#--&gt; 1</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div><p>L&#x27;entraînement est une descente de gradient avec un taux d&#x27;apprentissage réglable, exécutée dans le moteur en une seule traversée pour de nombreuses lignes. La probabilité d&#x27;un point est évaluée par la règle qui a servi à l&#x27;ajuster, et la précision sur l&#x27;ensemble d&#x27;entraînement est un nombre que l&#x27;objet rapporte. L&#x27;ensemble d&#x27;entraînement est tenu vivant, si bien que le faire grandir fait grandir ce que le modèle sait.</p><p>C&#x27;est le plus petit classificateur honnête et celui qu&#x27;il faut essayer d&#x27;abord, avec une phrase qui dit comment il a raisonné. Il sert le premier modèle sur une table étiquetée, et la base de comparaison qu&#x27;un modèle plus compliqué doit dépasser.</p></div>
     <div class="treasures"><p class="proof"><a href="../atlas/nlp.html">Le récit de son domaine : Traitement du langage et linguistique</a> · <a href="../guide/nlp.html">La référence de son domaine</a></p></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#bias">B</a> <a href="#classify">C</a> <a href="#init">I</a> <a href="#probability">P</a> <a href="#setlearningrate">S</a> <a href="#trainingsetq">T</a> <a href="#weights">W</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

@@ -42,7 +42,16 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/data/stzUnicodeData.ring" target="_blank" rel="noopener noreferrer">the source: base/data/stzUnicodeData.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/tables.html">The area reference: Tables &amp; data</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>The Unicode database, asked in both directions: from a name to the character, and from a character to its name, with nothing to load, because the data lives in the engine.</p><div class="sample"><pre class="rx"># a character, found by its name
+? StzUnicodeDataQ().CharByName(&quot;OSMANYA LETTER BA&quot;)
+#--&gt; 𐒁
+
+# and a name, found from its character
+? StzCharQ(&quot;ҁ&quot;).Name()
+#--&gt; CYRILLIC SMALL LETTER KOPPA
+
+? Q(&quot;𐒁&quot;).CharName()
+#--&gt; OSMANYA LETTER BA</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>A character is found by its name, by its code in hexadecimal or decimal, or by a word its name contains, and a code gives back its name. Every assigned character of every script is one query away, so a Somali letter, an old Cyrillic one and a symbol are asked in the same way.</p><p>It serves the writer who has the name of a letter and not the letter, the engineer who meets a strange character in a log and needs to know what it is, and the lesson on scripts.</p></div>
     <div class="treasures"><p class="proof"><a href="../atlas/tables.html">The story of its area: Tables &amp; data</a> · <a href="../guide/tables.html">Its area's reference</a></p></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#containscharname">C</a> <a href="#findcharname">F</a> <a href="#init">I</a> <a href="#numberofunicodechars">N</a> <a href="#searchcharname">S</a> <a href="#unicodesofcharscontaining">U</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

@@ -42,7 +42,16 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/common/stzCCode.ring" target="_blank" rel="noopener noreferrer">la source: base/common/stzCCode.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/collections.html">La référence du domaine : Collections et objets</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Le petit langage à l&#x27;intérieur des conditions de la bibliothèque : une condition écrite avec @item ou @char est abaissée à la forme que le moteur exécute, et l&#x27;abaissement peut se voir.</p><div class="sample"><pre class="rx"># the @char form lowers to an access to the current position
+? StzCCodeQ(&#x27;@char = &quot;I&quot;&#x27;).Transpiled()
+#--&gt; This[@i] = &quot;I&quot;
+
+o1 = new stzCCode(&quot;isNumber(0+ @item)&quot;)
+o1.Transpile()
+
+# the @item form lowers the same way
+? o1.Content()
+#--&gt; isNumber(0+ This[@i])</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div><p>Un prédicat donné comme chaîne n&#x27;est pas du texte pour le moteur : il est transpilé en un accès à la position courante et évalué dans la boucle. L&#x27;objet garde le code, le met à jour, et montre les deux formes, si bien qu&#x27;une condition qui surprend peut se lire comme le moteur la lit. Il sert à qui écrit une condition pour un filtre, un tri ou une recherche et veut savoir ce qui va s&#x27;exécuter.</p></div>
     <div class="treasures"><p class="proof"><a href="../atlas/collections.html">Le récit de son domaine : Collections et objets</a> · <a href="../guide/collections.html">La référence de son domaine</a></p></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#content">C</a> <a href="#executablesection">E</a> <a href="#init">I</a> <a href="#transpile">T</a> <a href="#update">U</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

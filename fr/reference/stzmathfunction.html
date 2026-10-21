@@ -42,7 +42,20 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/number/stzMathFunction.ring" target="_blank" rel="noopener noreferrer">la source: base/number/stzMathFunction.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/numeric.html">La référence du domaine : Numérique et optimisation</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Une fonction écrite comme une formule, ses variables nommées : sa valeur en un point, sa pente en un point, son gradient, et rien d&#x27;approché par un petit pas.</p><div class="sample"><pre class="rx">oF = new stzMathFunction(&quot;x^3 - 2*x&quot;, [ &quot;x&quot; ])
+
+# the value of the function at x = 2
+? oF.ValueAt([ 2 ])
+#--&gt; 4
+
+oQ = new stzMathFunction(&quot;x^2 - 2&quot;, [ &quot;x&quot; ])
+
+# and its slope, at 0 and at 1
+? oQ.DerivativeAt(&quot;x&quot;, [ 0 ])
+#--&gt; 0
+
+? oQ.DerivativeAt(&quot;x&quot;, [ 1 ])
+#--&gt; 2</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div><p>La pente vient de la différentiation automatique et non d&#x27;une différence finie : l&#x27;expression est évaluée en avant, et une passe arrière donne chaque dérivée partielle. Le gradient vient avec une entrée par variable, dans l&#x27;ordre où elles ont été nommées ; la valeur seule est disponible sans la passe arrière, ce que veut une recherche linéaire ; et la valeur et le gradient peuvent s&#x27;obtenir ensemble, parce que les demander séparément évaluerait l&#x27;expression deux fois.</p><p>C&#x27;est l&#x27;objet que l&#x27;on remet à un optimiseur quand il doit descendre, et l&#x27;instrument qui vérifie un gradient écrit à la main.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/numeric.html">Le récit de son domaine : Numérique et optimisation</a> · <a href="../guide/numeric.html">La référence de son domaine</a></p><h3>Documents de conception qui la nomment <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/math/SOFTANZA_MATH_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA MATH PLAN -- the map, the contracts, the phases<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">3 mentions</span><span class="abs">Plan compagnon de la charte mathématique, présenté comme brouillon M0, cartographiant l&#x27;existant avec numéros de ligne, listant les contrats consommés et consignant les phases M1 à M6 (figures, mouvement, un cours, le niveau Tukey, approfondissement du cœur, un pont vers Lean) avec leurs résultats livrés.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#derivativeat">D</a> <a href="#expression">E</a> <a href="#free">F</a> <a href="#gradientat">G</a> <a href="#init">I</a> <a href="#numberofvariables">N</a> <a href="#variables">V</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

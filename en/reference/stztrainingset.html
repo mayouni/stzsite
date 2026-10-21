@@ -42,7 +42,12 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/learning/stzTrainingSet.ring" target="_blank" rel="noopener noreferrer">the source: base/learning/stzTrainingSet.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/nlp.html">The area reference: NLP &amp; linguistics</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>The examples a model learns from: points with their labels, added one by one or all at once, counted, listed, and split into a part to learn from and a part to test on.</p><div class="sample"><pre class="rx">oSet = new stzTrainingSet([])
+oSet.AddExample([ 1, 1 ], &quot;near&quot;)
+oSet.AddExample([ 9, 9 ], &quot;far&quot;)
+
+? oSet.NumberOfExamples()
+#--&gt; 2</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>It is shared by the classifiers of the library, the nearest neighbours, the decision tree, the logistic regression, and each of them holds it live, so that growing it grows what they know. The split is deterministic, head and tail, so that a test tests the same thing every time. It serves any lesson in learning, and the data of a first model.</p></div>
     <div class="treasures"><p class="proof"><a href="../atlas/nlp.html">The story of its area: NLP &amp; linguistics</a> · <a href="../guide/nlp.html">Its area's reference</a></p></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#addexample">A</a> <a href="#examples">E</a> <a href="#init">I</a> <a href="#labels">L</a> <a href="#numberofexamples">N</a> <a href="#split">S</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>
