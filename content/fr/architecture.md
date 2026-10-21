@@ -8,7 +8,7 @@ description: Comment Softanza est construite : les couches core, base et max, le
 
 ## Trois couches au-dessus d'un moteur {#layers}
 
-Softanza parle un seul vocabulaire à trois profondeurs. Core contient l'essentiel, léger, pour les programmes qui ont besoin de peu. Base est la plateforme entière, celle que décrit le reste de ce site. Max ajoute des pièces avancées au-dessus de base. Un programme choisit sa profondeur par le fichier qu'il charge ; base charge d'abord core, et max charge base.
+Softanza utilise un seul vocabulaire à trois niveaux de profondeur. Core contient l'essentiel, léger, pour les programmes qui ont besoin de peu. Base est la plateforme entière, celle que décrit le reste de ce site. Max ajoute des pièces avancées au-dessus de base. Un programme choisit sa profondeur par le fichier qu'il charge ; base charge d'abord core, et max charge base.
 
 <figure class="diagram"><img src="../assets/img/diagrams/layers-fr.png" alt="Quatre bandes, de haut en bas. Max, stx, chargée par stxLib : marcheurs, grands nombres, chaînes multilingues, tests, 40 classes. Base, stz, mise en avant, chargée par stzLib : la plateforme entière, 44 dossiers, 644 classes, quelque 36 000 noms de méthodes. Core, stk, chargée par stkLib : l'essentiel, léger, chaînes, listes, nombres, objets, 17 classes. Le moteur, Zig : 89 modules derrière une interface C simple, la substance écrite une fois." width="1376" height="700"><figcaption>Trois couches d'un même vocabulaire au-dessus d'un seul moteur. Un programme choisit sa couche par le fichier qu'il charge.</figcaption></figure>
 

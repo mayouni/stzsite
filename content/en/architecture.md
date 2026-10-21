@@ -8,7 +8,7 @@ description: How Softanza is built: the core, base and max layers, the Zig engin
 
 ## Three layers over one engine {#layers}
 
-Softanza speaks one vocabulary at three depths. Core holds the lean essentials, for programs that need little. Base is the whole platform, the one the rest of this site describes. Max adds advanced pieces on top of base. A program chooses its depth by the file it loads; base loads core first, and max loads base.
+Softanza uses one vocabulary at three levels of depth. Core holds the lean essentials, for programs that need little. Base is the whole platform, the one the rest of this site describes. Max adds advanced pieces on top of base. A program chooses its depth by the file it loads; base loads core first, and max loads base.
 
 <figure class="diagram"><img src="../assets/img/diagrams/layers-en.png" alt="Four bands, top to bottom. Max, stx, loaded by stxLib: walkers, big numbers, multilingual strings, a test framework, 40 classes. Base, stz, emphasised, loaded by stzLib: the full platform, 44 domain folders, 644 classes, some 36,000 method names. Core, stk, loaded by stkLib: the lean essentials, strings, lists, numbers, objects, 17 classes. The engine, Zig: 89 modules behind a plain C interface, the substance written once." width="1376" height="700"><figcaption>Three layers of one vocabulary over one engine. A program chooses its layer by the file it loads.</figcaption></figure>
 
