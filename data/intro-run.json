@@ -783,5 +783,14 @@
    "ran": "2026-10-21 00:27",
    "commit": "937cd920d"
   }
+ ],
+ "stzCourse": [
+  {
+   "id": "chapters",
+   "code": "oP = StzProgramQ(\"../education/program\")\noC = oP.CourseQ(\"elementary-introduction\")\n\n# the chapters that ship, in course order\naIds = oC.ChapterIds()\n? @@NL( aIds )\n\n# the title of the first one, in French\n? oC.TitleOf(aIds[1], \"fr\")\n\n# and what the third needs first\n? @@( oC.Prerequisites(aIds[3]) )",
+   "out": "[\n\t\"find-then-apply\",\n\t\"a-first-sentence\",\n\t\"read-the-name-as-a-sentence\",\n\t\"say-it-in-your-language\",\n\t\"one-object-any-structure\",\n\t\"walk-ask-produce-act\",\n\t\"declare-what-not-how\",\n\t\"patterns-in-text\",\n\t\"patterns-in-structure\",\n\t\"when-code-meets-cells\",\n\t\"draw-the-answer\",\n\t\"teach-a-world\",\n\t\"the-gap-question\",\n\t\"an-agent-that-cannot-hurt\",\n\t\"write-a-narration\"\n]\nTrouver, puis agir\n[ \"a-first-sentence\", \"find-then-apply\" ]",
+   "ran": "2026-10-21 00:58",
+   "commit": "937cd920d"
+  }
  ]
 }

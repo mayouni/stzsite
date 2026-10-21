@@ -40,6 +40,38 @@
     <p class="lede">A course can be about anything, and every cell of it can compute with Softanza's twenty-eight areas. This page is for institutions and course designers: what the learning system is, what it has proved beyond programming, and the limits beside every claim.</p>
   </div></section>
   <div class="wrap page-body">
+<div class="sample"><pre class="rx">oP = StzProgramQ(&quot;../education/program&quot;)
+oC = oP.CourseQ(&quot;elementary-introduction&quot;)
+
+# the chapters that ship, in course order
+aIds = oC.ChapterIds()
+? @@NL( aIds )
+
+# the title of the first one, in French
+? oC.TitleOf(aIds[1], &quot;fr&quot;)
+
+# and what the third needs first
+? @@( oC.Prerequisites(aIds[3]) )
+#--&gt; [
+#--&gt; 	&quot;find-then-apply&quot;,
+#--&gt; 	&quot;a-first-sentence&quot;,
+#--&gt; 	&quot;read-the-name-as-a-sentence&quot;,
+#--&gt; 	&quot;say-it-in-your-language&quot;,
+#--&gt; 	&quot;one-object-any-structure&quot;,
+#--&gt; 	&quot;walk-ask-produce-act&quot;,
+#--&gt; 	&quot;declare-what-not-how&quot;,
+#--&gt; 	&quot;patterns-in-text&quot;,
+#--&gt; 	&quot;patterns-in-structure&quot;,
+#--&gt; 	&quot;when-code-meets-cells&quot;,
+#--&gt; 	&quot;draw-the-answer&quot;,
+#--&gt; 	&quot;teach-a-world&quot;,
+#--&gt; 	&quot;the-gap-question&quot;,
+#--&gt; 	&quot;an-agent-that-cannot-hurt&quot;,
+#--&gt; 	&quot;write-a-narration&quot;
+#--&gt; ]
+#--&gt; Trouver, puis agir
+#--&gt; [ &quot;a-first-sentence&quot;, &quot;find-then-apply&quot; ]</pre><span class="rx-src">run in the library on 2026-10-21</span></div>
+
 <h2 id="folder">A course is a folder</h2>
 <p>The learning system serves two different propositions. One is learning Softanza itself, which is <a href="learn.html">the Learn section</a>. The other, this page, is a capability of the platform: a course about any subject, written as plain-text chapters whose cells compute with the platform's areas and judge their own results. A learner's progress is a text file that can be read forever.</p>
 <ol class="steps">

@@ -42,6 +42,38 @@
 <h2 id="what">Ce que c'est, en un paragraphe</h2>
 <p>Un cours dans Softanza est du <strong>texte brut dans des dossiers</strong> : des chapitres dont chaque cellule s'exécute, des exercices vérifiés en exécutant le programme de l'apprenant, des compétences qui nomment le garde qui prouve chaque niveau, et des mondes sur lesquels l'apprenant raisonne. Rien d'autre n'est installé, ni serveur, ni base de données, ni compte : le système de fichiers est la console d'administration.</p>
 <p>Le même cadre porte l'introduction à Softanza, neuf missions situées à Zindara, un cours sur les agents gouvernés et un cours de mathématiques, en anglais, en français, en arabe et en haoussa (les trois derniers sont des brouillons, <a href="#missing">limites plus bas</a>). Il fait partie de la bibliothèque, comme les chaînes ou les graphes : le système d'apprentissage est écrit en Softanza, testé avec Softanza et enseigné avec Softanza.</p>
+<div class="sample"><pre class="rx">oP = StzProgramQ(&quot;../education/program&quot;)
+oC = oP.CourseQ(&quot;elementary-introduction&quot;)
+
+# the chapters that ship, in course order
+aIds = oC.ChapterIds()
+? @@NL( aIds )
+
+# the title of the first one, in French
+? oC.TitleOf(aIds[1], &quot;fr&quot;)
+
+# and what the third needs first
+? @@( oC.Prerequisites(aIds[3]) )
+#--&gt; [
+#--&gt; 	&quot;find-then-apply&quot;,
+#--&gt; 	&quot;a-first-sentence&quot;,
+#--&gt; 	&quot;read-the-name-as-a-sentence&quot;,
+#--&gt; 	&quot;say-it-in-your-language&quot;,
+#--&gt; 	&quot;one-object-any-structure&quot;,
+#--&gt; 	&quot;walk-ask-produce-act&quot;,
+#--&gt; 	&quot;declare-what-not-how&quot;,
+#--&gt; 	&quot;patterns-in-text&quot;,
+#--&gt; 	&quot;patterns-in-structure&quot;,
+#--&gt; 	&quot;when-code-meets-cells&quot;,
+#--&gt; 	&quot;draw-the-answer&quot;,
+#--&gt; 	&quot;teach-a-world&quot;,
+#--&gt; 	&quot;the-gap-question&quot;,
+#--&gt; 	&quot;an-agent-that-cannot-hurt&quot;,
+#--&gt; 	&quot;write-a-narration&quot;
+#--&gt; ]
+#--&gt; Trouver, puis agir
+#--&gt; [ &quot;a-first-sentence&quot;, &quot;find-then-apply&quot; ]</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div>
+
 <h2 id="machines">Ce dont les machines des apprenants ont besoin</h2>
 <p>Les cellules du cours tournent sur la machine de l'apprenant, pas dans le navigateur : le lecteur montre chaque programme et la réponse qu'il promet, et l'apprenant l'exécute. Chaque machine a besoin du dépôt, un seul dossier copié avec <code>git clone</code> ; de l'exécutant, version 1.27.0 ; et d'environ sept secondes pour la première exécution. Le moteur est livré compilé pour Windows, et se construit pour Linux et macOS depuis la source. Les trois étapes sont sur <a href="start.html#install">Démarrer</a>.</p>
 <h2 id="who">Qui fait quoi</h2>

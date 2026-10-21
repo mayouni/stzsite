@@ -505,5 +505,11 @@
     "test/_narrated.ring"
    ]
   }
+ ],
+ "stzCourse": [
+  {
+   "id": "chapters",
+   "code": "oP = StzProgramQ(\"../education/program\")\noC = oP.CourseQ(\"elementary-introduction\")\n\n# the chapters that ship, in course order\naIds = oC.ChapterIds()\n? @@NL( aIds )\n\n# the title of the first one, in French\n? oC.TitleOf(aIds[1], \"fr\")\n\n# and what the third needs first\n? @@( oC.Prerequisites(aIds[3]) )"
+  }
  ]
 }

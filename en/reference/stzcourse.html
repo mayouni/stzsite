@@ -42,7 +42,37 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/stzProgram.ring" target="_blank" rel="noopener noreferrer">the source: base/education/stzProgram.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p>A course is a plan, and what has been written of it: its chapters in order, which names each chapter teaches, which chapter requires which, and the exercises, with the worlds in which they run, in each language.</p><p>The facts of a course come from its own files, and an overlay can add to them without replacing them. What is planned is kept apart from what ships: a chapter planned and not yet written is named, never counted among the shipped ones, and a chapter with no text in a language is a red fact, not a quiet fall back to English.</p><p>Prerequisites are walked to the root, and a cycle raises. The course reads its own chapters to know what each one teaches, the names its cells call, so that the question where a method is first taught is answered from the text. A chapter can be run, every cell in one fresh process over the world the course supplies, and in several languages side by side, each in its own process. It serves a curriculum that must be checked as code is checked.</p></div>
+    <div class="essay"><p>A course is a plan, and what has been written of it: its chapters in order, which names each chapter teaches, which chapter requires which, and the exercises, with the worlds in which they run, in each language.</p><p>The facts of a course come from its own files, and an overlay can add to them without replacing them. What is planned is kept apart from what ships: a chapter planned and not yet written is named, never counted among the shipped ones, and a chapter with no text in a language is a red fact, not a quiet fall back to English.</p><div class="sample"><pre class="rx">oP = StzProgramQ(&quot;../education/program&quot;)
+oC = oP.CourseQ(&quot;elementary-introduction&quot;)
+
+# the chapters that ship, in course order
+aIds = oC.ChapterIds()
+? @@NL( aIds )
+
+# the title of the first one, in French
+? oC.TitleOf(aIds[1], &quot;fr&quot;)
+
+# and what the third needs first
+? @@( oC.Prerequisites(aIds[3]) )
+#--&gt; [
+#--&gt; 	&quot;find-then-apply&quot;,
+#--&gt; 	&quot;a-first-sentence&quot;,
+#--&gt; 	&quot;read-the-name-as-a-sentence&quot;,
+#--&gt; 	&quot;say-it-in-your-language&quot;,
+#--&gt; 	&quot;one-object-any-structure&quot;,
+#--&gt; 	&quot;walk-ask-produce-act&quot;,
+#--&gt; 	&quot;declare-what-not-how&quot;,
+#--&gt; 	&quot;patterns-in-text&quot;,
+#--&gt; 	&quot;patterns-in-structure&quot;,
+#--&gt; 	&quot;when-code-meets-cells&quot;,
+#--&gt; 	&quot;draw-the-answer&quot;,
+#--&gt; 	&quot;teach-a-world&quot;,
+#--&gt; 	&quot;the-gap-question&quot;,
+#--&gt; 	&quot;an-agent-that-cannot-hurt&quot;,
+#--&gt; 	&quot;write-a-narration&quot;
+#--&gt; ]
+#--&gt; Trouver, puis agir
+#--&gt; [ &quot;a-first-sentence&quot;, &quot;find-then-apply&quot; ]</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>Prerequisites are walked to the root, and a cycle raises. The course reads its own chapters to know what each one teaches, the names its cells call, so that the question where a method is first taught is answered from the text. A chapter can be run, every cell in one fresh process over the world the course supplies, and in several languages side by side, each in its own process. It serves a curriculum that must be checked as code is checked.</p></div>
     
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#curriculumfacts">C</a> <a href="#exercisesof">E</a> <a href="#hascurriculum">H</a> <a href="#init">I</a> <a href="#namestaughtby">N</a> <a href="#program">P</a> <a href="#requires">R</a> <a href="#slug">S</a> <a href="#trains">T</a> <a href="#unwrittenchapterids">U</a> <a href="#worldroleof">W</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

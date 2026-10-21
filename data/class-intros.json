@@ -860,11 +860,13 @@
   "en": [
    "A course is a plan, and what has been written of it: its chapters in order, which names each chapter teaches, which chapter requires which, and the exercises, with the worlds in which they run, in each language.",
    "The facts of a course come from its own files, and an overlay can add to them without replacing them. What is planned is kept apart from what ships: a chapter planned and not yet written is named, never counted among the shipped ones, and a chapter with no text in a language is a red fact, not a quiet fall back to English.",
+   "@chapters",
    "Prerequisites are walked to the root, and a cycle raises. The course reads its own chapters to know what each one teaches, the names its cells call, so that the question where a method is first taught is answered from the text. A chapter can be run, every cell in one fresh process over the world the course supplies, and in several languages side by side, each in its own process. It serves a curriculum that must be checked as code is checked."
   ],
   "fr": [
    "Un cours est un plan, et ce qui en a été écrit : ses chapitres dans l'ordre, les noms que chaque chapitre enseigne, quel chapitre exige quel autre, et les exercices, avec les mondes où ils s'exécutent, dans chaque langue.",
    "Les faits d'un cours viennent de ses propres fichiers, et une surcouche peut y ajouter sans les remplacer. Ce qui est prévu est tenu à part de ce qui est livré : un chapitre prévu et pas encore écrit est nommé, jamais compté parmi les livrés, et un chapitre sans texte dans une langue est un fait rouge, non un repli silencieux sur l'anglais.",
+   "@chapters",
    "Les prérequis sont parcourus jusqu'à la racine, et un cycle lève une erreur. Le cours lit ses propres chapitres pour savoir ce que chacun enseigne, les noms que ses cellules appellent, si bien que la question où une méthode est enseignée pour la première fois trouve réponse dans le texte. Un chapitre peut être exécuté, chaque cellule dans un processus neuf sur le monde que le cours fournit, et en plusieurs langues côte à côte, chacune dans son processus. Il sert un cursus qui doit être vérifié comme on vérifie du code."
   ]
  }

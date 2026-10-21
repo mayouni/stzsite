@@ -6,6 +6,9 @@ lede: Un cours peut porter sur n'importe quoi, et chacune de ses cellules peut c
 description: Le système d'apprentissage Softanza comme capacité pour institutions et concepteurs de cours : un cours est un dossier de chapitres dont les cellules calculent, le cours de mathématiques comme preuve, la démonstration de quinze minutes, et les trois limites.
 ---
 
+
+<!--SAMPLE:stzCourse.chapters-->
+
 ## Un cours est un dossier {#folder}
 
 Le système d'apprentissage sert deux propositions différentes. L'une est d'apprendre Softanza elle-même, c'est <a href="learn.html">la section Apprendre</a>. L'autre, cette page, est une capacité de la plateforme : un cours sur n'importe quel sujet, écrit en chapitres de texte brut dont les cellules calculent avec les domaines de la plateforme et jugent leurs propres résultats. La progression d'un apprenant est un fichier texte que l'on peut lire pour toujours.

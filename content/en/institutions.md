@@ -6,6 +6,9 @@ lede: A course can be about anything, and every cell of it can compute with Soft
 description: The Softanza learning system as a capability for institutions and course designers: a course is a folder of chapters whose cells compute, the mathematics course as proof, the fifteen-minute demonstration, and the three limits.
 ---
 
+
+<!--SAMPLE:stzCourse.chapters-->
+
 ## A course is a folder {#folder}
 
 The learning system serves two different propositions. One is learning Softanza itself, which is <a href="learn.html">the Learn section</a>. The other, this page, is a capability of the platform: a course about any subject, written as plain-text chapters whose cells compute with the platform's areas and judge their own results. A learner's progress is a text file that can be read forever.

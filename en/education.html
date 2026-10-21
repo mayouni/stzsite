@@ -42,6 +42,38 @@
 <h2 id="what">What it is, in one paragraph</h2>
 <p>A course in Softanza is <strong>plain text in folders</strong>: chapters whose every cell runs, exercises checked by running the learner's own program, skills that name the guard which proves each level, and worlds the learner reasons over. Nothing else is installed, no server, no database, no account: the file system is the administration console.</p>
 <p>The same frame carries the introduction to Softanza, nine missions set in Zindara, a course on governed agents and a course on mathematics, in English, French, Arabic and Hausa (the last three are drafts, <a href="#missing">limits below</a>). It is a part of the library, like strings or graphs: the learning system is written in Softanza, tested with Softanza, and taught with Softanza.</p>
+<div class="sample"><pre class="rx">oP = StzProgramQ(&quot;../education/program&quot;)
+oC = oP.CourseQ(&quot;elementary-introduction&quot;)
+
+# the chapters that ship, in course order
+aIds = oC.ChapterIds()
+? @@NL( aIds )
+
+# the title of the first one, in French
+? oC.TitleOf(aIds[1], &quot;fr&quot;)
+
+# and what the third needs first
+? @@( oC.Prerequisites(aIds[3]) )
+#--&gt; [
+#--&gt; 	&quot;find-then-apply&quot;,
+#--&gt; 	&quot;a-first-sentence&quot;,
+#--&gt; 	&quot;read-the-name-as-a-sentence&quot;,
+#--&gt; 	&quot;say-it-in-your-language&quot;,
+#--&gt; 	&quot;one-object-any-structure&quot;,
+#--&gt; 	&quot;walk-ask-produce-act&quot;,
+#--&gt; 	&quot;declare-what-not-how&quot;,
+#--&gt; 	&quot;patterns-in-text&quot;,
+#--&gt; 	&quot;patterns-in-structure&quot;,
+#--&gt; 	&quot;when-code-meets-cells&quot;,
+#--&gt; 	&quot;draw-the-answer&quot;,
+#--&gt; 	&quot;teach-a-world&quot;,
+#--&gt; 	&quot;the-gap-question&quot;,
+#--&gt; 	&quot;an-agent-that-cannot-hurt&quot;,
+#--&gt; 	&quot;write-a-narration&quot;
+#--&gt; ]
+#--&gt; Trouver, puis agir
+#--&gt; [ &quot;a-first-sentence&quot;, &quot;find-then-apply&quot; ]</pre><span class="rx-src">run in the library on 2026-10-21</span></div>
+
 <h2 id="machines">What the learners' machines need</h2>
 <p>The course's cells run on the learner's machine, not in the browser: the reader shows each program and the answer it promises, and the learner runs it. Each machine needs the repository, a single folder copied with <code>git clone</code>; the runtime, version 1.27.0; and about seven seconds for the first run. The engine ships compiled for Windows, and builds for Linux and macOS from source. The three steps are on <a href="start.html#install">Start</a>.</p>
 <h2 id="who">Who does what</h2>

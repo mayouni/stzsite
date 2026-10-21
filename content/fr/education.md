@@ -12,6 +12,9 @@ Un cours dans Softanza est du **texte brut dans des dossiers** : des chapitres d
 
 Le même cadre porte l'introduction à Softanza, neuf missions situées à Zindara, un cours sur les agents gouvernés et un cours de mathématiques, en anglais, en français, en arabe et en haoussa (les trois derniers sont des brouillons, <a href="#missing">limites plus bas</a>). Il fait partie de la bibliothèque, comme les chaînes ou les graphes : le système d'apprentissage est écrit en Softanza, testé avec Softanza et enseigné avec Softanza.
 
+
+<!--SAMPLE:stzCourse.chapters-->
+
 ## Ce dont les machines des apprenants ont besoin {#machines}
 
 Les cellules du cours tournent sur la machine de l'apprenant, pas dans le navigateur : le lecteur montre chaque programme et la réponse qu'il promet, et l'apprenant l'exécute. Chaque machine a besoin du dépôt, un seul dossier copié avec <code>git clone</code> ; de l'exécutant, version 1.27.0 ; et d'environ sept secondes pour la première exécution. Le moteur est livré compilé pour Windows, et se construit pour Linux et macOS depuis la source. Les trois étapes sont sur <a href="start.html#install">Démarrer</a>.

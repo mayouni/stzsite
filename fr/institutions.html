@@ -40,6 +40,38 @@
     <p class="lede">Un cours peut porter sur n'importe quoi, et chacune de ses cellules peut calculer avec les vingt-huit domaines de Softanza. Cette page s'adresse aux institutions et aux concepteurs de cours : ce qu'est le système d'apprentissage, ce qu'il a prouvé au-delà de la programmation, et les limites à côté de chaque affirmation.</p>
   </div></section>
   <div class="wrap page-body">
+<div class="sample"><pre class="rx">oP = StzProgramQ(&quot;../education/program&quot;)
+oC = oP.CourseQ(&quot;elementary-introduction&quot;)
+
+# the chapters that ship, in course order
+aIds = oC.ChapterIds()
+? @@NL( aIds )
+
+# the title of the first one, in French
+? oC.TitleOf(aIds[1], &quot;fr&quot;)
+
+# and what the third needs first
+? @@( oC.Prerequisites(aIds[3]) )
+#--&gt; [
+#--&gt; 	&quot;find-then-apply&quot;,
+#--&gt; 	&quot;a-first-sentence&quot;,
+#--&gt; 	&quot;read-the-name-as-a-sentence&quot;,
+#--&gt; 	&quot;say-it-in-your-language&quot;,
+#--&gt; 	&quot;one-object-any-structure&quot;,
+#--&gt; 	&quot;walk-ask-produce-act&quot;,
+#--&gt; 	&quot;declare-what-not-how&quot;,
+#--&gt; 	&quot;patterns-in-text&quot;,
+#--&gt; 	&quot;patterns-in-structure&quot;,
+#--&gt; 	&quot;when-code-meets-cells&quot;,
+#--&gt; 	&quot;draw-the-answer&quot;,
+#--&gt; 	&quot;teach-a-world&quot;,
+#--&gt; 	&quot;the-gap-question&quot;,
+#--&gt; 	&quot;an-agent-that-cannot-hurt&quot;,
+#--&gt; 	&quot;write-a-narration&quot;
+#--&gt; ]
+#--&gt; Trouver, puis agir
+#--&gt; [ &quot;a-first-sentence&quot;, &quot;find-then-apply&quot; ]</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div>
+
 <h2 id="folder">Un cours est un dossier</h2>
 <p>Le système d'apprentissage sert deux propositions différentes. L'une est d'apprendre Softanza elle-même, c'est <a href="learn.html">la section Apprendre</a>. L'autre, cette page, est une capacité de la plateforme : un cours sur n'importe quel sujet, écrit en chapitres de texte brut dont les cellules calculent avec les domaines de la plateforme et jugent leurs propres résultats. La progression d'un apprenant est un fichier texte que l'on peut lire pour toujours.</p>
 <ol class="steps">

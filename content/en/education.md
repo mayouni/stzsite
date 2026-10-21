@@ -12,6 +12,9 @@ A course in Softanza is **plain text in folders**: chapters whose every cell run
 
 The same frame carries the introduction to Softanza, nine missions set in Zindara, a course on governed agents and a course on mathematics, in English, French, Arabic and Hausa (the last three are drafts, <a href="#missing">limits below</a>). It is a part of the library, like strings or graphs: the learning system is written in Softanza, tested with Softanza, and taught with Softanza.
 
+
+<!--SAMPLE:stzCourse.chapters-->
+
 ## What the learners' machines need {#machines}
 
 The course's cells run on the learner's machine, not in the browser: the reader shows each program and the answer it promises, and the learner runs it. Each machine needs the repository, a single folder copied with <code>git clone</code>; the runtime, version 1.27.0; and about seven seconds for the first run. The engine ships compiled for Windows, and builds for Linux and macOS from source. The three steps are on <a href="start.html#install">Start</a>.
