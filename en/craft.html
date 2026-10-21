@@ -81,8 +81,8 @@ o1 = new stzString(&quot;..•.•..&quot;)
 5
 3</pre></div></div><p class="ran">run on 2026-10-15 13:37 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.en.md" target="_blank" rel="noopener noreferrer">base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.en.md<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p style="margin-top:32px"><b>A near-natural chain reads as the sentence &quot;each has at least two vowels&quot;, and when it is false, Why() names the item that failed.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([ &quot;AnnIE&quot;, &quot;aeiou&quot; ]).EachQ().AtLeastQ(2).VowelNB()
 ? Q([ &quot;AnnIE&quot;, &quot;sky&quot; ]).EachQ().AtLeastQ(2).VowelNB()
-? Why()</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-0
+? Why()</pre></div><div class="out"><div class="lbl">Output</div><pre>TRUE
+FALSE
 no: item 2 (&quot;sky&quot;) fails -- no: expected atleast 2, found 0</pre></div></div><p class="ran">run on 2026-10-15 13:37 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/natural/nnl_narrated.ring" target="_blank" rel="noopener noreferrer">base/test/natural/nnl_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
 
 <p class="way"><span><a href="way.html">The Softanza way</a></span> A small language inside an argument says what you want, and the library decides how to get it. The loop, the index and the temporary variable disappear from the page.</p>
@@ -114,7 +114,7 @@ Q(&quot;Niamey ♥&quot;) {
 	? StartsWith(&quot;Nia&quot;)
 }</pre></div><div class="out"><div class="lbl">Output</div><pre>8
 NIAMEY ♥
-1</pre></div></div><p class="ran">run on 2026-10-15 13:37 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-functions-as-linguistic-expressions.md" target="_blank" rel="noopener noreferrer">base/doc/narrations/stz-functions-as-linguistic-expressions.md<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p style="margin-top:32px"><b>Rules 5 and 6: a chain in the order of thought, one step per line with the dot at the end, each verb in its Q form so the sentence goes on.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(&quot;LIFE&quot;).
+TRUE</pre></div></div><p class="ran">run on 2026-10-15 13:37 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-functions-as-linguistic-expressions.md" target="_blank" rel="noopener noreferrer">base/doc/narrations/stz-functions-as-linguistic-expressions.md<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p style="margin-top:32px"><b>Rules 5 and 6: a chain in the order of thought, one step per line with the dot at the end, each verb in its Q form so the sentence goes on.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(&quot;LIFE&quot;).
 	LowercaseQ().
 	SpacifyQ().
 	CharsQ().
@@ -124,13 +124,13 @@ NIAMEY ♥
 	SpacifyQ().
 	ReplaceQ(&quot;I&quot;, :With = AHeart()).
 	Content()</pre></div><div class="out"><div class="lbl">Output</div><pre>L ♥ F E</pre></div></div><p class="ran">run on 2026-10-15 13:37 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzobject-history-narration.md" target="_blank" rel="noopener noreferrer">base/doc/narrations/stzobject-history-narration.md<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p style="margin-top:32px"><b>Rule 9, precision over generality: ContainsBoth says exactly what is asked, where a general Contains would need a loop.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(&quot;one two three&quot;).ContainsBoth(&quot;one&quot;, &quot;three&quot;)
-? Q([ 1, 2, 3 ]).ContainsBoth(1, 4)</pre></div><div class="out"><div class="lbl">Output</div><pre>1
-0</pre></div></div><p class="ran">run on 2026-10-15 13:37 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/string/stzString.ring" target="_blank" rel="noopener noreferrer">base/string/stzString.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p style="margin-top:32px"><b>Rule 12: a line of code can stay near-natural, a statement the library judges true or false, a question it answers from its knowledge.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre># a sentence the library can judge
+? Q([ 1, 2, 3 ]).ContainsBoth(1, 4)</pre></div><div class="out"><div class="lbl">Output</div><pre>TRUE
+FALSE</pre></div></div><p class="ran">run on 2026-10-15 13:37 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/string/stzString.ring" target="_blank" rel="noopener noreferrer">base/string/stzString.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p style="margin-top:32px"><b>Rule 12: a line of code can stay near-natural, a statement the library judges true or false, a question it answers from its knowledge.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre># a sentence the library can judge
 ? _(8).IsA(:Number).Which(&#x27;IsDoubleOf(4)&#x27;)._
 
 # and a question it answers from what it was told
 StzKnow(:Apple, :Fruit)
-? @@( WhatIs(:Apple) )</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+? @@( WhatIs(:Apple) )</pre></div><div class="out"><div class="lbl">Output</div><pre>TRUE
 [ &quot;fruit&quot; ]</pre></div></div><p class="ran">run on 2026-10-15 13:37 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/chainoftruth/16_all_these_return_1.ring" target="_blank" rel="noopener noreferrer">base/test/chainoftruth/16_all_these_return_1.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
 
 <p class="way"><span><a href="way.html">The Softanza way</a></span> The same rules serve the seven steps of the mental model, one rule or two at each step. <a href="way.html">The next page</a> sets the two side by side.</p>
@@ -159,7 +159,7 @@ def Sentiment()</pre>
 ? oDoc.HowTo(&quot;remove duplicates&quot;)
 ? oDoc.HasMethod(&quot;DuplicatesRemoved&quot;)
 ? oDoc.ExplainMethod(&quot;NoSuchThing&quot;)</pre></div><div class="out"><div class="lbl">Output</div><pre>Q([...]).RemoveDuplicates()   -- composed by grammar (remove duplicates)
-1
+TRUE
 No method &#x27;NoSuchThing&#x27; in stzList.</pre></div></div><p class="ran">run on 2026-10-15 13:37 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md" target="_blank" rel="noopener noreferrer">base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
 
 <p class="proof"><b>in construction</b> The convention is fully used on few methods so far: 106 lines name other words for a method, and the harvester does not yet read the example and answer-shape tags. The reference on this site is generated from what exists.</p>

@@ -92,7 +92,7 @@ try
 catch
     bRefused = 1
 done
-? bRefused</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+? bRefused</pre></div><div class="out"><div class="lbl">Output</div><pre>TRUE
 1</pre></div></div><p class="ran">run on 2026-10-08 21:47 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/natural/nnl_narrated.ring" target="_blank" rel="noopener noreferrer">base/test/natural/nnl_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
 
 <h2 id="refuses">What it does not know, it refuses</h2>
@@ -142,7 +142,7 @@ done
 	]
 ])
 ? StzHasLanguagePack("sw")
-? @@( NaturallyIn("sw", "Unda orodha na [ 9, 4, 9 ] ondoa nakala").Result() )</pre></div><div class="out"><div class="lbl">Output</div><pre>1
+? @@( NaturallyIn("sw", "Unda orodha na [ 9, 4, 9 ] ondoa nakala").Result() )</pre></div><div class="out"><div class="lbl">Output</div><pre>TRUE
 [ 9, 4 ]</pre></div></div><p class="ran">run on 2026-10-08 21:47 inside the library at commit 4a184e6f0; taken from <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/natural/multilingual_pack_narrated.ring" target="_blank" rel="noopener noreferrer">base/test/natural/multilingual_pack_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
 
 <p>Hausa in Ajami script is named in the library and not shipped; Zarma and Fulfulde are not there yet. They are the next packs to write, and a pack is data.</p>

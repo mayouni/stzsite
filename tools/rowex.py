@@ -238,3 +238,30 @@ def example_of_class(c, entries, data, lang):
     if not best: return ""
     code, out, src = best[1]
     return _html(code, out, src, lang, detours=data.get("detours"))
+
+
+RUNBLOCK = re.compile(r'(<div class="run"><div><div class="lbl">[^<]*</div><pre>)(.*?)(</pre></div><div class="out"><div class="lbl">[^<]*</div><pre>)(.*?)(</pre></div></div>)', re.S)
+
+def shown_truth(root):
+    """on every page, an output pane beside a code pane shows a predicate's 1/0 as TRUE/FALSE (the author, 2026-10-19), whatever tool
+    laid the block out; the hand-written pages carry their run blocks in the markdown, so this is the one place they are reached.
+    Only a line that is exactly 1 or 0 AND printed by a predicate line changes; returns the count"""
+    import html as _h, pathlib
+    n = 0
+    def fix(m):
+        nonlocal n
+        code, out = _h.unescape(m.group(2)), m.group(4)
+        rows = out.split(NL)
+        new = shown_out(code, _h.unescape(out)).split(NL)
+        if len(new) != len(rows): return m.group(0)
+        res = []
+        for r, v in zip(rows, new):
+            if r.strip() in ("1", "0") and v in ("TRUE", "FALSE"): res.append(v); n += 1
+            else: res.append(r)
+        return m.group(1) + m.group(2) + m.group(3) + NL.join(res) + m.group(5)
+    for d in (pathlib.Path(root) / "en", pathlib.Path(root) / "fr", pathlib.Path(root)):
+        for f in (d.rglob("*.html") if d.name in ("en", "fr") else d.glob("*.html")):
+            s = f.read_text(encoding="utf-8")
+            t = RUNBLOCK.sub(fix, s)
+            if t != s: f.write_text(t, encoding="utf-8")
+    return n

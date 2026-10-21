@@ -25,6 +25,7 @@ from build_howto import build_howto, load_howtos, howtos_by_method
 from build_ask import build_ask
 import build_area_story as story
 import build_ladder
+import rowex
 import qforms
 import build_proof
 import external
@@ -1387,6 +1388,7 @@ def main():
         print("reading arc (Rule 123), paragraphs past 800 characters:")
         for l in LONG: print("  ", l)
     print(f"haro names: {shown_names(ROOT)} forced trailing underscores removed from shown method names")
+    print(f"truth values: {rowex.shown_truth(ROOT)} outputs of a predicate shown as TRUE or FALSE, on every page")
     nb, nl = fit.fit_site(ROOT)
     print(f"code laid out to fit its box: {nb} blocks, {nl} lines added, never wrapped and never scrolled")
     print("contrast:")

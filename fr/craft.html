@@ -81,8 +81,8 @@ o1 = new stzString(&quot;..•.•..&quot;)
 5
 3</pre></div></div><p class="ran">exécuté le 2026-10-15 13:37 dans la bibliothèque au commit 4a184e6f0 ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.en.md" target="_blank" rel="noopener noreferrer">base/education/program/courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.en.md<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p style="margin-top:32px"><b>Une chaîne quasi naturelle se lit comme la phrase « chacun a au moins deux voyelles », et quand elle est fausse, Why() désigne l&#x27;élément fautif.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q([ &quot;AnnIE&quot;, &quot;aeiou&quot; ]).EachQ().AtLeastQ(2).VowelNB()
 ? Q([ &quot;AnnIE&quot;, &quot;sky&quot; ]).EachQ().AtLeastQ(2).VowelNB()
-? Why()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
-0
+? Why()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE
+FALSE
 no: item 2 (&quot;sky&quot;) fails -- no: expected atleast 2, found 0</pre></div></div><p class="ran">exécuté le 2026-10-15 13:37 dans la bibliothèque au commit 4a184e6f0 ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/natural/nnl_narrated.ring" target="_blank" rel="noopener noreferrer">base/test/natural/nnl_narrated.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
 
 <p class="way"><span><a href="way.html">La manière Softanza</a></span> Une petite langue dans un argument dit ce que l'on veut, et la bibliothèque décide comment l'obtenir. La boucle, l'indice et la variable temporaire disparaissent de la page.</p>
@@ -114,7 +114,7 @@ Q(&quot;Niamey ♥&quot;) {
 	? StartsWith(&quot;Nia&quot;)
 }</pre></div><div class="out"><div class="lbl">Sortie</div><pre>8
 NIAMEY ♥
-1</pre></div></div><p class="ran">exécuté le 2026-10-15 13:37 dans la bibliothèque au commit 4a184e6f0 ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-functions-as-linguistic-expressions.md" target="_blank" rel="noopener noreferrer">base/doc/narrations/stz-functions-as-linguistic-expressions.md<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p style="margin-top:32px"><b>Règles 5 et 6 : une chaîne dans l&#x27;ordre de la pensée, un pas par ligne et le point en fin de ligne, chaque verbe sous sa forme Q pour que la phrase continue.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(&quot;LIFE&quot;).
+TRUE</pre></div></div><p class="ran">exécuté le 2026-10-15 13:37 dans la bibliothèque au commit 4a184e6f0 ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-functions-as-linguistic-expressions.md" target="_blank" rel="noopener noreferrer">base/doc/narrations/stz-functions-as-linguistic-expressions.md<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p style="margin-top:32px"><b>Règles 5 et 6 : une chaîne dans l&#x27;ordre de la pensée, un pas par ligne et le point en fin de ligne, chaque verbe sous sa forme Q pour que la phrase continue.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(&quot;LIFE&quot;).
 	LowercaseQ().
 	SpacifyQ().
 	CharsQ().
@@ -124,13 +124,13 @@ NIAMEY ♥
 	SpacifyQ().
 	ReplaceQ(&quot;I&quot;, :With = AHeart()).
 	Content()</pre></div><div class="out"><div class="lbl">Sortie</div><pre>L ♥ F E</pre></div></div><p class="ran">exécuté le 2026-10-15 13:37 dans la bibliothèque au commit 4a184e6f0 ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzobject-history-narration.md" target="_blank" rel="noopener noreferrer">base/doc/narrations/stzobject-history-narration.md<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p style="margin-top:32px"><b>Règle 9, la précision avant la généralité : ContainsBoth dit exactement ce qui est demandé, là où un Contains général demanderait une boucle.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre>? Q(&quot;one two three&quot;).ContainsBoth(&quot;one&quot;, &quot;three&quot;)
-? Q([ 1, 2, 3 ]).ContainsBoth(1, 4)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
-0</pre></div></div><p class="ran">exécuté le 2026-10-15 13:37 dans la bibliothèque au commit 4a184e6f0 ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/string/stzString.ring" target="_blank" rel="noopener noreferrer">base/string/stzString.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p style="margin-top:32px"><b>Règle 12 : une ligne de code peut rester presque naturelle, une affirmation que la bibliothèque juge vraie ou fausse, une question à laquelle elle répond depuis ce qu&#x27;elle sait.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre># a sentence the library can judge
+? Q([ 1, 2, 3 ]).ContainsBoth(1, 4)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE
+FALSE</pre></div></div><p class="ran">exécuté le 2026-10-15 13:37 dans la bibliothèque au commit 4a184e6f0 ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/string/stzString.ring" target="_blank" rel="noopener noreferrer">base/string/stzString.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p style="margin-top:32px"><b>Règle 12 : une ligne de code peut rester presque naturelle, une affirmation que la bibliothèque juge vraie ou fausse, une question à laquelle elle répond depuis ce qu&#x27;elle sait.</b></p><div class="run"><div><div class="lbl">Softanza</div><pre># a sentence the library can judge
 ? _(8).IsA(:Number).Which(&#x27;IsDoubleOf(4)&#x27;)._
 
 # and a question it answers from what it was told
 StzKnow(:Apple, :Fruit)
-? @@( WhatIs(:Apple) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>1
+? @@( WhatIs(:Apple) )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>TRUE
 [ &quot;fruit&quot; ]</pre></div></div><p class="ran">exécuté le 2026-10-15 13:37 dans la bibliothèque au commit 4a184e6f0 ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/test/chainoftruth/16_all_these_return_1.ring" target="_blank" rel="noopener noreferrer">base/test/chainoftruth/16_all_these_return_1.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
 
 <p class="way"><span><a href="way.html">La manière Softanza</a></span> Les mêmes règles servent les sept étapes du modèle mental, une règle ou deux à chaque étape. <a href="way.html">La page suivante</a> met les deux côte à côte.</p>
@@ -159,7 +159,7 @@ def Sentiment()</pre>
 ? oDoc.HowTo(&quot;remove duplicates&quot;)
 ? oDoc.HasMethod(&quot;DuplicatesRemoved&quot;)
 ? oDoc.ExplainMethod(&quot;NoSuchThing&quot;)</pre></div><div class="out"><div class="lbl">Sortie</div><pre>Q([...]).RemoveDuplicates()   -- composed by grammar (remove duplicates)
-1
+TRUE
 No method &#x27;NoSuchThing&#x27; in stzList.</pre></div></div><p class="ran">exécuté le 2026-10-15 13:37 dans la bibliothèque au commit 4a184e6f0 ; tiré de <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md" target="_blank" rel="noopener noreferrer">base/education/program/courses/elementary-introduction/chapters/13-the-gap-question.en.md<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
 
 <p class="proof"><b>en construction</b> La convention n'est encore pleinement employée que sur peu de méthodes : 106 lignes donnent d'autres mots pour une méthode, et le moissonneur ne lit pas encore les étiquettes d'exemple et de forme de réponse. La référence de ce site est générée à partir de ce qui existe.</p>
