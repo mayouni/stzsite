@@ -42,7 +42,31 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/math/stzTukey.ring" target="_blank" rel="noopener noreferrer">the source: base/math/stzTukey.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/numeric.html">The area reference: Numeric &amp; optimization</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>A table taken apart into what is common, what belongs to each row, what belongs to each column, and what is left: John Tukey&#x27;s median polish, the way to read a two-way table before believing a model of it.</p><div class="sample"><pre class="rx">aDeaths = [
+    [ 14, 15, 14 ],
+    [  7,  4,  7 ],
+    [  8,  2, 10 ],
+    [ 15,  9, 10 ],
+    [  0,  2,  0 ]
+]
+
+oF = StzTukeyFitQ(aDeaths)
+oF.Polish()
+
+# the common value, then one effect per row
+? oF.Common()
+#--&gt; 8
+
+? @@( oF.Effects(:Row) )
+#--&gt; [ 6, -1, 0, 2, -8 ]
+
+# what is left in the third row, second column
+? oF.Residual(3, 2)
+#--&gt; -5
+
+# and the contract: data = fit + residual, to the last digit
+? oF.Check()
+#--&gt; 0</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>The polish sweeps medians out of the rows and the columns until nothing moves, with R&#x27;s own tolerance and its limit of sweeps, and it is R&#x27;s median polish exactly, in one crossing to the engine. The contract is checked and not assumed: the largest gap between the data and the fit plus the residual is a number the object reports.</p><p>What is left is where the table is interesting: the residuals, scaled by their fourth-spread, and a verdict on every cell that lies beyond Tukey&#x27;s far-out fence. It serves the reading of counts by region and year, of scores by class and subject, of any grid whose cells you suspect of hiding one that does not belong.</p></div>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/numeric.html">The story of its area: Numeric &amp; optimization</a> · <a href="../guide/numeric.html">Its area's reference</a></p><h3>Design documents that name it <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/stats/SOFTANZA_TUKEY_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA TUKEY PLAN — the exploration tier (TK0–TK6)<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">10 mentions</span><span class="abs">The plan of record for the exploration tier (TK0 to TK6), replacing three legacy notes never run: resistant statistics and displays in Zig behind one contract object, re-expression measured not eyeballed, verdicts in the house shape; TK0 to TK5 shipped, TK6&#x27;s memory refused.</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#common">C</a> <a href="#diagnostics">D</a> <a href="#effects">E</a> <a href="#fitted">F</a> <a href="#init">I</a> <a href="#numberofrows">N</a> <a href="#polish">P</a> <a href="#residuals">R</a> <a href="#settolerance">S</a> <a href="#why">W</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

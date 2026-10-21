@@ -42,7 +42,19 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/regex/stzGraphex.ring" target="_blank" rel="noopener noreferrer">la source: base/regex/stzGraphex.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/regex.html">La référence du domaine : Recherche de motifs</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Un motif pour un chemin dans un graphe : quelles sortes de nœuds, reliés par quelles sortes d&#x27;arêtes, écrit comme une flèche et testé contre le graphe.</p><div class="sample"><pre class="rx">oGraph = new stzGraph(&quot;Mixed&quot;)
+oGraph {
+    AddNodeXT(:a, &quot;User&quot;)
+    AddNodeXT(:b, &quot;ADMIN&quot;)
+    AddEdgeXT(:a, :b, &quot;Promotes&quot;)
+}
+
+# a pattern says what a path must look like
+cPattern = &quot;{@cs:@Node(User) -&gt; @Edge -&gt; @Node(admin)}&quot;
+oGx = new stzGraphex(cPattern, oGraph)
+
+? oGx.Match(oGraph)
+#--&gt; TRUE</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div><p>Un motif nomme les nœuds par leur étiquette ou leurs propriétés et les arêtes par les leurs, les relie par des flèches, propose des alternatives, et dit si la casse compte. Il est analysé en un graphe à lui et confronté à l&#x27;autre, et l&#x27;analyse est mise en cache pour la fois suivante ; un mode de débogage montre ce que le comparateur a essayé. C&#x27;est l&#x27;idée de l&#x27;expression régulière portée à la structure : on dit ce que l&#x27;on veut, et la bibliothèque cherche.</p><p>Il sert aux questions « y a-t-il un utilisateur qui promeut un administrateur » et « un agent atteint-il un effet sans porte », qui sont malaisées en boucles et simples en chemins.</p></div>
     <div class="treasures"><p class="proof"><a href="../atlas/regex.html">Le récit de son domaine : Recherche de motifs</a> · <a href="../guide/regex.html">La référence de son domaine</a></p></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#buildpatterngraph">B</a> <a href="#cachestats">C</a> <a href="#disabledebugmode">D</a> <a href="#enabledebugmode">E</a> <a href="#init">I</a> <a href="#listifygraph">L</a> <a href="#match">M</a> <a href="#normalizepattern">N</a> <a href="#parsepattern">P</a> <a href="#setcachesize">S</a> <a href="#traversepatternnode">T</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

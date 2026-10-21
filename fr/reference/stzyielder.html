@@ -42,7 +42,19 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/list/stzYielder.ring" target="_blank" rel="noopener noreferrer">la source: base/list/stzYielder.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/collections.html">La référence du domaine : Collections et objets</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Une liste lue en mots : garder les positifs, les doubler, les additionner. Les trois étapes d&#x27;un enchaînement se nomment par ce qu&#x27;elles font et ne s&#x27;écrivent pas comme des fonctions.</p><div class="sample"><pre class="rx">oY = new stzYielder([ 12, 0, 30, -5, 18 ])
+
+# the positives
+? @@( oY.Filter(:IsPositive) )
+#--&gt; [ 12, 30, 18 ]
+
+# doubled
+? @@( oY.Map(:Double) )
+#--&gt; [ 24, 0, 60, -10, 36 ]
+
+# and the sum of them all
+? oY.Reduce(:Sum)
+#--&gt; 55</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div><p>Un filtre, une transformation et une réduction prennent un nom pour la chose à faire, positifs, pairs, valeurs absolues, carrés, longueurs de chaînes, majuscules, la somme ou le produit, et les courantes sont des méthodes à part entière ; une fonction à soi est acceptée quand aucun nom ne convient. Une chaîne peut transformer et filtrer en une étape, et le résultat de chaque étape est la liste, prête pour la suivante.</p><p>Il sert le passage ordinaire sur une liste pour lequel écrire une boucle serait plus long que la phrase qui dit ce qu&#x27;elle fait.</p></div>
     <div class="treasures"><p class="proof"><a href="../atlas/collections.html">Le récit de son domaine : Collections et objets</a> · <a href="../guide/collections.html">La référence de son domaine</a></p></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#abs">A</a> <a href="#content">C</a> <a href="#doublevalues">D</a> <a href="#evens">E</a> <a href="#filter">F</a> <a href="#init">I</a> <a href="#lowercase">L</a> <a href="#map">M</a> <a href="#numberofitems">N</a> <a href="#odds">O</a> <a href="#positives">P</a> <a href="#reduce">R</a> <a href="#setcontent">S</a> <a href="#typenames">T</a> <a href="#uppercase">U</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

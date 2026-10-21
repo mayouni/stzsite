@@ -42,7 +42,20 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/regex/stzTablex.ring" target="_blank" rel="noopener noreferrer">the source: base/regex/stzTablex.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/regex.html">The area reference: Pattern matching</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>The pattern for tables: what a table must look like, said in braces and tested, instead of the procedural code that checks it.</p><div class="sample"><pre class="rx">oTable = new stzTable([
+    [ :ID, :NAME, :AGE ],
+    [ 1, &quot;Ali&quot;, 28 ],
+    [ 2, &quot;Sara&quot;, 32 ]
+])
+
+# a table that must have three columns and two rows
+oTx = new stzTablex(&quot;{cols(3) &amp; rows(2)}&quot;)
+? oTx.Match(oTable)
+#--&gt; TRUE
+
+oTx2 = new stzTablex(&quot;{cols(4)}&quot;)
+? oTx2.Match(oTable)
+#--&gt; FALSE</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>A pattern says the number of columns and rows, the names and the types of the columns, that a column is unique, sorted, complete or numeric, a sum, an average, a minimum or a maximum that must hold; patterns combine with and, or and not. A pattern can explain itself: the tokens it parsed and what they meant.</p><p>It serves the validation of an import before it enters a table, the specification of a report&#x27;s shape, and the test of a transformation: the same language states what goes in and what must come out.</p></div>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/regex.html">The story of its area: Pattern matching</a> · <a href="../guide/regex.html">Its area's reference</a></p><h3>Design documents that name it <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/DOCREFORM_PILOT_STATE.md" target="_blank" rel="noopener noreferrer">DOCREFORM -- state after wave 2 (handoff, 2026-10-05)<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">3 mentions</span><span class="abs">A handoff recording the state of DOCREFORM after waves 2 to 4 (2026-10-05): which classes have every root method documented and checked, the library-wide pass rate, the live documentation gate, the defects probing found but did not fix, and the decisions open for the author.</span></li></ul><h3>Narrations that speak of it <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="../narrations/stztablex-pattern-langauge-for-tables.html">stzTablex: Declarative Pattern Matching for Tables in Softanza</a> <span class="mono">2025</span><span class="abs">Tables are everywhere in programming—from CSV imports to database results, from spreadsheet data to configuration files. But validating table structure, checking data quality, and filtering table collections often requires verbose conditional logic that obs...</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#and_">A</a> <a href="#checkcols">C</a> <a href="#disabledebug">D</a> <a href="#extractparts">E</a> <a href="#howmanymatchedparts">H</a> <a href="#init">I</a> <a href="#match">M</a> <a href="#normalizepattern">N</a> <a href="#or_">O</a> <a href="#parsepattern">P</a> <a href="#removeprefix">R</a> <a href="#splitbyoperator">S</a> <a href="#tokens">T</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

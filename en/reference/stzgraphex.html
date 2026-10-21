@@ -42,7 +42,19 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/regex/stzGraphex.ring" target="_blank" rel="noopener noreferrer">the source: base/regex/stzGraphex.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/regex.html">The area reference: Pattern matching</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>A pattern for a path in a graph: which kinds of node, joined by which kinds of edge, written as an arrow and tested against the graph.</p><div class="sample"><pre class="rx">oGraph = new stzGraph(&quot;Mixed&quot;)
+oGraph {
+    AddNodeXT(:a, &quot;User&quot;)
+    AddNodeXT(:b, &quot;ADMIN&quot;)
+    AddEdgeXT(:a, :b, &quot;Promotes&quot;)
+}
+
+# a pattern says what a path must look like
+cPattern = &quot;{@cs:@Node(User) -&gt; @Edge -&gt; @Node(admin)}&quot;
+oGx = new stzGraphex(cPattern, oGraph)
+
+? oGx.Match(oGraph)
+#--&gt; TRUE</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>A pattern names nodes by their label or properties and edges by theirs, joins them with arrows, offers alternatives, and says whether case matters. It is parsed into a graph of its own and matched against the other, and the parse is cached for the next time; a debug mode shows what the matcher tried. It is the idea of the regular expression carried over to structure: you state what you mean, and the library searches.</p><p>It serves the questions &quot;is there a user who promotes an admin&quot; and &quot;does any agent reach an effect without a gate&quot;, which are awkward as loops and plain as paths.</p></div>
     <div class="treasures"><p class="proof"><a href="../atlas/regex.html">The story of its area: Pattern matching</a> · <a href="../guide/regex.html">Its area's reference</a></p></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#buildpatterngraph">B</a> <a href="#cachestats">C</a> <a href="#disabledebugmode">D</a> <a href="#enabledebugmode">E</a> <a href="#init">I</a> <a href="#listifygraph">L</a> <a href="#match">M</a> <a href="#normalizepattern">N</a> <a href="#parsepattern">P</a> <a href="#setcachesize">S</a> <a href="#traversepatternnode">T</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

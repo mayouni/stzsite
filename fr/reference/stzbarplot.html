@@ -42,7 +42,21 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/stats/stzBarPlot.ring" target="_blank" rel="noopener noreferrer">la source: base/stats/stzBarPlot.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/stats.html">La référence du domaine : Statistiques et visualisation</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Un diagramme en barres dessiné dans un terminal, par le moteur, sans rien ajouter : des étiquettes, des barres dans un caractère de son choix, les valeurs ou les pourcentages imprimés à côté.</p><div class="sample"><pre class="rx">o1 = new stzBarPlot([ [ &quot;A&quot;, 100 ], [ &quot;B&quot;, 300 ] ])
+o1.SetValues(TRUE)
+
+? o1.ToString()
+#--&gt; ▲
+#--&gt; │     300
+#--&gt; │     ██
+#--&gt; │     ██
+#--&gt; │     ██
+#--&gt; │ 100 ██
+#--&gt; │ ██  ██
+#--&gt; │ ██  ██
+#--&gt; │ ██  ██
+#--&gt; ╰─────────►
+#--&gt;    A   B</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div><p>La taille, la largeur d&#x27;une barre, l&#x27;espace entre les barres, les axes et leurs étiquettes, la ligne de moyenne sont des réglages. Le même tracé existe en SVG sans périphérique, et en PNG sur la carte graphique, partageant le sens mais non la mise en page, parce que cellules de caractères et pixels diffèrent. Chaque moteur de rendu est testé octet par octet contre ce que la première réalisation dessinait.</p><p>Il sert au premier regard sur une poignée de nombres, dans un journal ou un interpréteur, là où ouvrir une fenêtre serait déplacé.</p></div>
     <div class="treasures"><p class="proof"><a href="../atlas/stats.html">Le récit de son domaine : Statistiques et visualisation</a> · <a href="../guide/stats.html">La référence de son domaine</a></p></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#addlabels">A</a> <a href="#height">H</a> <a href="#init">I</a> <a href="#labels">L</a> <a href="#maxwidth">M</a> <a href="#plotkind">P</a> <a href="#setsize">S</a> <a href="#tostring">T</a> <a href="#values">V</a> <a href="#width">W</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

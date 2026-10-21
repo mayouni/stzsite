@@ -42,7 +42,22 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/learning/stzKnn.ring" target="_blank" rel="noopener noreferrer">the source: base/learning/stzKnn.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/nlp.html">The area reference: NLP &amp; linguistics</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>A classifier that asks the neighbours: the label of a new point is the label that most of its nearest examples carry.</p><div class="sample"><pre class="rx">oSet = new stzTrainingSet([])
+oSet.AddExample([ 1, 1 ], &quot;near&quot;)
+oSet.AddExample([ 1.1, 0.9 ], &quot;near&quot;)
+oSet.AddExample([ 9, 9 ], &quot;far&quot;)
+oSet.AddExample([ 9.1, 8.9 ], &quot;far&quot;)
+
+oKnn = new stzKnn(oSet)
+oKnn.SetK(1)
+
+# a query near the origin
+? oKnn.Classify([ 1.05, 1 ])
+#--&gt; near
+
+# and one out at nine
+? oKnn.Classify([ 8.9, 9 ])
+#--&gt; far</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>The training set is held live, so growing it grows what the classifier knows. The number of neighbours is a setting, and the vote can overrule proximity, which is the thing to read in a result that surprises. When the set is large the search can be approximate, with a number of trees and a budget of candidates as the dial of recall, and the classifier can report how far it agrees with the exact answer; on separable data they agree, and that is not a guarantee.</p><p>Its neighbour in the library is clustering, which finds the groups where no label was given. It serves a first classifier that needs no training, and a baseline against which a model must be worth its cost.</p></div>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/nlp.html">The story of its area: NLP &amp; linguistics</a> · <a href="../guide/nlp.html">Its area's reference</a></p><h3>Design documents that name it <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/gpu/SOFTANZA_GPU_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA GPU PLAN — analysis and phased plan (G0–G6)<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">4 mentions</span><span class="abs">The GPU plane&#x27;s plan of record (G0 to G6, all shipped): vendor wgpu-native because WGSL compiles from text at runtime and the same kernels reach the browser, measure where the GPU does not pay, and later add the kernel foundry and silent seams.</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#approximatetrees">A</a> <a href="#classify">C</a> <a href="#init">I</a> <a href="#k">K</a> <a href="#setk">S</a> <a href="#trainingsetq">T</a> <a href="#why">W</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

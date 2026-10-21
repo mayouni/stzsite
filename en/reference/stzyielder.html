@@ -42,7 +42,19 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/list/stzYielder.ring" target="_blank" rel="noopener noreferrer">the source: base/list/stzYielder.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/collections.html">The area reference: Collections &amp; objects</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>A list read in words: keep the positives, double them, add them up. The three steps of a pipeline are named by what they do and not written as functions.</p><div class="sample"><pre class="rx">oY = new stzYielder([ 12, 0, 30, -5, 18 ])
+
+# the positives
+? @@( oY.Filter(:IsPositive) )
+#--&gt; [ 12, 30, 18 ]
+
+# doubled
+? @@( oY.Map(:Double) )
+#--&gt; [ 24, 0, 60, -10, 36 ]
+
+# and the sum of them all
+? oY.Reduce(:Sum)
+#--&gt; 55</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>A filter, a map and a reduce take a name for the thing to do, positives, evens, absolute values, squares, string lengths, upper case, the sum or the product, and the common ones are methods of their own; a function of your own is accepted when no name fits. A chain can map and filter in one step, and the result of each step is the list, ready for the next.</p><p>It serves the everyday pass over a list for which writing a loop would be longer than the sentence that says what it does.</p></div>
     <div class="treasures"><p class="proof"><a href="../atlas/collections.html">The story of its area: Collections &amp; objects</a> · <a href="../guide/collections.html">Its area's reference</a></p></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#abs">A</a> <a href="#content">C</a> <a href="#doublevalues">D</a> <a href="#evens">E</a> <a href="#filter">F</a> <a href="#init">I</a> <a href="#lowercase">L</a> <a href="#map">M</a> <a href="#numberofitems">N</a> <a href="#odds">O</a> <a href="#positives">P</a> <a href="#reduce">R</a> <a href="#setcontent">S</a> <a href="#typenames">T</a> <a href="#uppercase">U</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

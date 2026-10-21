@@ -605,5 +605,65 @@
    "id": "warning",
    "code": "oSG = new stzSecurityGraph(\"s\")\noSG.AddSecret(\"inline\")\noSG.AddSite(\"prod\")\n\n# a site that references a secret kept in no store\noSG.References(\"prod\", \"inline\")\n\noRep = new stzRuleReport(\"sev\")\noRep.Collect(oSG)\n\n? len( oRep.Warnings() ) > 0\n\n? len( oRep.Errors() ) > 0"
   }
+ ],
+ "stzGraphRule": [
+  {
+   "id": "rule",
+   "code": "oRule = new stzGraphRule(\"no-llm-effectful\")\noRule {\n    SetDomainQ(\"agentic\")\n    SetSeverityQ(\"error\")\n    WhenQ(\"kind\", \"equals\", \"llm_actor\")\n    WhenQ(\"capabilities\", \"contains\", \"effectful\")\n    ThenViolationQ(\"an LLM proposes, a gate commits\")\n}\n\n# a rule is an object with an identity and a domain\n? oRule.Name()\n\n? oRule.Domain()\n\n# and clauses, which are all that is asked of a node\n? oRule.NumberOfClauses()"
+  }
+ ],
+ "stzSplitter": [
+  {
+   "id": "positions",
+   "code": "# five items, split at positions 3 and 5\no1 = new stzSplitter(5)\n\n# the sections that remain, as first and last positions\n? @@( o1.SplitAtPositions([ 3, 5 ]) )\n\n# before a position, the cut falls on the other side\n? @@( o1.SplitBeforePositions([ 3, 5 ]) )\n\n# and after it\n? @@( o1.SplitAfterPositions([ 3, 5 ]) )"
+  }
+ ],
+ "stzListOfLists": [
+  {
+   "id": "homolog",
+   "code": "o1 = new stzListOfLists([\n    [ \"A\", \"B\" ],\n    [ \"C\", \"D\", \"E\", \"F\" ],\n    [ \"I\" ]\n])\n\n? o1.IsHomolog()\n\n? o1.SizeOfLargestList()\n\n# every list is extended to the size of the largest\no1.Extend()\n? @@( o1.Content() )"
+  }
+ ],
+ "stzTukeyFit": [
+  {
+   "id": "polish",
+   "code": "aDeaths = [\n    [ 14, 15, 14 ],\n    [  7,  4,  7 ],\n    [  8,  2, 10 ],\n    [ 15,  9, 10 ],\n    [  0,  2,  0 ]\n]\n\noF = StzTukeyFitQ(aDeaths)\noF.Polish()\n\n# the common value, then one effect per row\n? oF.Common()\n\n? @@( oF.Effects(:Row) )\n\n# what is left in the third row, second column\n? oF.Residual(3, 2)\n\n# and the contract: data = fit + residual, to the last digit\n? oF.Check()"
+  }
+ ],
+ "stzYielder": [
+  {
+   "id": "pipeline",
+   "code": "oY = new stzYielder([ 12, 0, 30, -5, 18 ])\n\n# the positives\n? @@( oY.Filter(:IsPositive) )\n\n# doubled\n? @@( oY.Map(:Double) )\n\n# and the sum of them all\n? oY.Reduce(:Sum)"
+  }
+ ],
+ "stzGraphex": [
+  {
+   "id": "pattern",
+   "code": "oGraph = new stzGraph(\"Mixed\")\noGraph {\n    AddNodeXT(:a, \"User\")\n    AddNodeXT(:b, \"ADMIN\")\n    AddEdgeXT(:a, :b, \"Promotes\")\n}\n\n# a pattern says what a path must look like\ncPattern = \"{@cs:@Node(User) -> @Edge -> @Node(admin)}\"\noGx = new stzGraphex(cPattern, oGraph)\n\n? oGx.Match(oGraph)"
+  }
+ ],
+ "stzBarPlot": [
+  {
+   "id": "bars",
+   "code": "o1 = new stzBarPlot([ [ \"A\", 100 ], [ \"B\", 300 ] ])\no1.SetValues(TRUE)\n\n? o1.ToString()"
+  }
+ ],
+ "stzVectorIndex": [
+  {
+   "id": "search",
+   "code": "aDocs = [\n    [ 0.90, 0.10, 0.05, 0.00 ],   # topic A\n    [ 0.88, 0.14, 0.02, 0.01 ],   # topic A, phrased differently\n    [ 0.05, 0.02, 0.91, 0.10 ],   # topic B\n    [ 0.00, 0.01, 0.08, 0.95 ]    # topic C\n]\n\noIndex = new stzVectorIndex(aDocs)\noIndex.SetMetric(:Cosine)\n\n# a query on topic A finds both documents on topic A\naHits = oIndex.Search([ 0.89, 0.12, 0.03, 0.00 ], 2)\n? len(aHits)\n\n? oIndex.CosineFromDistance(aHits[1][2]) > 0.99\n\n# and a query on topic C finds the fourth\n? oIndex.Search([ 0.00, 0.00, 0.10, 0.98 ], 1)[1][1]"
+  }
+ ],
+ "stzKnn": [
+  {
+   "id": "classify",
+   "code": "oSet = new stzTrainingSet([])\noSet.AddExample([ 1, 1 ], \"near\")\noSet.AddExample([ 1.1, 0.9 ], \"near\")\noSet.AddExample([ 9, 9 ], \"far\")\noSet.AddExample([ 9.1, 8.9 ], \"far\")\n\noKnn = new stzKnn(oSet)\noKnn.SetK(1)\n\n# a query near the origin\n? oKnn.Classify([ 1.05, 1 ])\n\n# and one out at nine\n? oKnn.Classify([ 8.9, 9 ])"
+  }
+ ],
+ "stzTablex": [
+  {
+   "id": "shape",
+   "code": "oTable = new stzTable([\n    [ :ID, :NAME, :AGE ],\n    [ 1, \"Ali\", 28 ],\n    [ 2, \"Sara\", 32 ]\n])\n\n# a table that must have three columns and two rows\noTx = new stzTablex(\"{cols(3) & rows(2)}\")\n? oTx.Match(oTable)\n\noTx2 = new stzTablex(\"{cols(4)}\")\n? oTx2.Match(oTable)"
+  }
  ]
 }

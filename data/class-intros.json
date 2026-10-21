@@ -1121,5 +1121,145 @@
    "Les questions deviennent des chemins. Cet acteur peut-il atteindre quoi que ce soit d'effectif, par une chaîne d'outils et de délégations ? Quel est le rayon d'explosion de ce secret ? Où est le plus court chemin qui confère une capacité, et quelle coupure le ferme ? Un test de drapeau voit un saut ; l'atteignabilité les voit tous. Les acteurs portent une posture, de confiance, externe ou en bac à sable, et un acteur dont la posture ne correspond plus à celle enregistrée est signalé comme altéré.",
    "Le graphe se vérifie lui-même, avec ses propres règles : un secret gardé dans aucun magasin est un avertissement, un chemin vers un effet sans porte est une erreur, et les constats rejoignent le rapport unique de la bibliothèque. Il sert l'audit d'un système d'agents et d'un déploiement, avant une revue, comme un dessin qui peut faire échouer une compilation."
   ]
+ },
+ "stzGraphRule": {
+  "en": [
+   "A rule about a graph, written as an object: it has a name, a domain, a severity and a message, the clauses that say which nodes it concerns, and what it asks of them.",
+   "@rule",
+   "Clauses are plain: when a property equals, contains or compares, a node is in scope, and several clauses must all hold. A requirement turns a prohibition into an obligation: on a node in scope this must hold, or the node is a finding. A rule too rich for the clauses supplies a checker of its own, which receives the graph and returns the places and the messages. A rule can be declared universal, with the reason, when it governs every graph and may be exempted from none.",
+   "Rules are data that can be listed, loaded from a file and compared, and their findings come out in the library's one shape, to the one report. It serves a house rule that a team writes once and applies to agents, services, organisations and diagrams alike."
+  ],
+  "fr": [
+   "Une règle sur un graphe, écrite comme un objet : elle a un nom, un domaine, une gravité et un message, les clauses qui disent quels nœuds elle concerne, et ce qu'elle leur demande.",
+   "@rule",
+   "Les clauses sont simples : quand une propriété égale, contient ou compare, un nœud est dans la portée, et plusieurs clauses doivent toutes tenir. Une exigence change une interdiction en obligation : sur un nœud dans la portée ceci doit tenir, sinon le nœud est un constat. Une règle trop riche pour les clauses fournit un vérificateur à elle, qui reçoit le graphe et rend les lieux et les messages. Une règle peut être déclarée universelle, avec la raison, quand elle gouverne tout graphe et n'admet aucune exemption.",
+   "Les règles sont des données que l'on peut lister, charger depuis un fichier et comparer, et leurs constats sortent dans la forme unique de la bibliothèque, vers le rapport unique. Elle sert une règle de maison qu'une équipe écrit une fois et applique aux agents, aux services, aux organisations et aux diagrammes."
+  ]
+ },
+ "stzSplitter": {
+  "en": [
+   "Where a sequence is cut, as a question of positions only: how many items, and the sections that remain once a cut is made, given as first and last positions, whatever the sequence holds.",
+   "@positions",
+   "Cutting at a position takes the item out; cutting before or after it keeps it on one side. A list of positions gives all the sections at once, and a section can come back with its positions. The same splitter serves strings, lists and any structure that has a length, which is why finding, splitting and replacing in the library agree about where a section begins.",
+   "It is the arithmetic under the split verbs of `stzString` and `stzList`, and it serves any code that must cut something without caring what it is."
+  ],
+  "fr": [
+   "Où une suite est coupée, comme une question de positions seulement : combien d'éléments, et les sections qui restent une fois une coupure faite, données comme premières et dernières positions, quoi que la suite contienne.",
+   "@positions",
+   "Couper à une position retire l'élément ; couper avant ou après le garde d'un côté. Une liste de positions donne toutes les sections d'un coup, et une section peut revenir avec ses positions. Le même découpeur sert les chaînes, les listes et toute structure qui a une longueur, ce qui fait que chercher, découper et remplacer dans la bibliothèque s'accordent sur l'endroit où une section commence.",
+   "C'est l'arithmétique sous les verbes de découpe de `stzString` et `stzList`, et il sert tout code qui doit couper quelque chose sans se soucier de ce que c'est."
+  ]
+ },
+ "stzListOfLists": {
+  "en": [
+   "A list whose items are lists, with the vocabulary of rows and columns: the list at a position, the column across them all, a search that looks inside every list, and the ways to make uneven lists even.",
+   "@homolog",
+   "A list of lists is homologous when all its lists have the same size, and the check, the size of the largest and the extension are single calls; the extension can pad with any filler. Sorting can be on the whole list or on one column by a key, such as the length of a name. Searches report the list and the position, so a nested record is found without a loop.",
+   "It is the shape under a table before it has headers, and the natural container for the result of anything that returns rows."
+  ],
+  "fr": [
+   "Une liste dont les éléments sont des listes, avec le vocabulaire des lignes et des colonnes : la liste à une position, la colonne à travers toutes, une recherche qui regarde dans chaque liste, et les moyens d'égaliser des listes inégales.",
+   "@homolog",
+   "Une liste de listes est homologue quand toutes ses listes ont la même taille, et la vérification, la taille de la plus grande et l'extension sont des appels uniques ; l'extension peut compléter avec n'importe quel remplissage. Le tri peut porter sur la liste entière ou sur une colonne par une clé, comme la longueur d'un nom. Les recherches rapportent la liste et la position, si bien qu'un enregistrement imbriqué se trouve sans boucle.",
+   "C'est la forme sous une table avant qu'elle ait des en-têtes, et le conteneur naturel du résultat de tout ce qui rend des lignes."
+  ]
+ },
+ "stzTukeyFit": {
+  "en": [
+   "A table taken apart into what is common, what belongs to each row, what belongs to each column, and what is left: John Tukey's median polish, the way to read a two-way table before believing a model of it.",
+   "@polish",
+   "The polish sweeps medians out of the rows and the columns until nothing moves, with R's own tolerance and its limit of sweeps, and it is R's median polish exactly, in one crossing to the engine. The contract is checked and not assumed: the largest gap between the data and the fit plus the residual is a number the object reports.",
+   "What is left is where the table is interesting: the residuals, scaled by their fourth-spread, and a verdict on every cell that lies beyond Tukey's far-out fence. It serves the reading of counts by region and year, of scores by class and subject, of any grid whose cells you suspect of hiding one that does not belong."
+  ],
+  "fr": [
+   "Une table défaite en ce qui est commun, ce qui appartient à chaque ligne, ce qui appartient à chaque colonne, et ce qui reste : le lissage par les médianes de John Tukey, la façon de lire une table à deux entrées avant de croire un modèle d'elle.",
+   "@polish",
+   "Le lissage retire des médianes des lignes et des colonnes jusqu'à ce que plus rien ne bouge, avec la tolérance de R et sa limite de passes, et c'est le lissage médian de R exactement, en une traversée vers le moteur. Le contrat est vérifié et non présumé : le plus grand écart entre les données et l'ajustement plus le résidu est un nombre que l'objet rapporte.",
+   "Ce qui reste est là où la table est intéressante : les résidus, mis à l'échelle de leur écart de quarts, et un verdict sur chaque cellule qui dépasse la barrière lointaine de Tukey. Il sert la lecture de comptes par région et année, de notes par classe et matière, de toute grille dont on soupçonne une cellule de cacher celle qui n'a pas sa place."
+  ]
+ },
+ "stzYielder": {
+  "en": [
+   "A list read in words: keep the positives, double them, add them up. The three steps of a pipeline are named by what they do and not written as functions.",
+   "@pipeline",
+   "A filter, a map and a reduce take a name for the thing to do, positives, evens, absolute values, squares, string lengths, upper case, the sum or the product, and the common ones are methods of their own; a function of your own is accepted when no name fits. A chain can map and filter in one step, and the result of each step is the list, ready for the next.",
+   "It serves the everyday pass over a list for which writing a loop would be longer than the sentence that says what it does."
+  ],
+  "fr": [
+   "Une liste lue en mots : garder les positifs, les doubler, les additionner. Les trois étapes d'un enchaînement se nomment par ce qu'elles font et ne s'écrivent pas comme des fonctions.",
+   "@pipeline",
+   "Un filtre, une transformation et une réduction prennent un nom pour la chose à faire, positifs, pairs, valeurs absolues, carrés, longueurs de chaînes, majuscules, la somme ou le produit, et les courantes sont des méthodes à part entière ; une fonction à soi est acceptée quand aucun nom ne convient. Une chaîne peut transformer et filtrer en une étape, et le résultat de chaque étape est la liste, prête pour la suivante.",
+   "Il sert le passage ordinaire sur une liste pour lequel écrire une boucle serait plus long que la phrase qui dit ce qu'elle fait."
+  ]
+ },
+ "stzGraphex": {
+  "en": [
+   "A pattern for a path in a graph: which kinds of node, joined by which kinds of edge, written as an arrow and tested against the graph.",
+   "@pattern",
+   "A pattern names nodes by their label or properties and edges by theirs, joins them with arrows, offers alternatives, and says whether case matters. It is parsed into a graph of its own and matched against the other, and the parse is cached for the next time; a debug mode shows what the matcher tried. It is the idea of the regular expression carried over to structure: you state what you mean, and the library searches.",
+   "It serves the questions \"is there a user who promotes an admin\" and \"does any agent reach an effect without a gate\", which are awkward as loops and plain as paths."
+  ],
+  "fr": [
+   "Un motif pour un chemin dans un graphe : quelles sortes de nœuds, reliés par quelles sortes d'arêtes, écrit comme une flèche et testé contre le graphe.",
+   "@pattern",
+   "Un motif nomme les nœuds par leur étiquette ou leurs propriétés et les arêtes par les leurs, les relie par des flèches, propose des alternatives, et dit si la casse compte. Il est analysé en un graphe à lui et confronté à l'autre, et l'analyse est mise en cache pour la fois suivante ; un mode de débogage montre ce que le comparateur a essayé. C'est l'idée de l'expression régulière portée à la structure : on dit ce que l'on veut, et la bibliothèque cherche.",
+   "Il sert aux questions « y a-t-il un utilisateur qui promeut un administrateur » et « un agent atteint-il un effet sans porte », qui sont malaisées en boucles et simples en chemins."
+  ]
+ },
+ "stzBarPlot": {
+  "en": [
+   "A bar chart drawn in a terminal, by the engine, with nothing added: labels, bars in a character of your choosing, the values or the percentages printed beside them.",
+   "@bars",
+   "The size, the width of a bar, the space between bars, the axes and their labels, the average line are settings. The same plot is available as SVG with no device, and as PNG on the graphics card, sharing the meaning but not the layout, because character cells and pixels differ. Every renderer is tested byte for byte against what the first implementation drew.",
+   "It serves the first look at a handful of numbers, in a log or in a shell, where opening a window would be out of place."
+  ],
+  "fr": [
+   "Un diagramme en barres dessiné dans un terminal, par le moteur, sans rien ajouter : des étiquettes, des barres dans un caractère de son choix, les valeurs ou les pourcentages imprimés à côté.",
+   "@bars",
+   "La taille, la largeur d'une barre, l'espace entre les barres, les axes et leurs étiquettes, la ligne de moyenne sont des réglages. Le même tracé existe en SVG sans périphérique, et en PNG sur la carte graphique, partageant le sens mais non la mise en page, parce que cellules de caractères et pixels diffèrent. Chaque moteur de rendu est testé octet par octet contre ce que la première réalisation dessinait.",
+   "Il sert au premier regard sur une poignée de nombres, dans un journal ou un interpréteur, là où ouvrir une fenêtre serait déplacé."
+  ]
+ },
+ "stzVectorIndex": {
+  "en": [
+   "Search by meaning, for vectors: an index over a set of vectors that answers which of them are nearest to a query, quickly, by a forest of random trees.",
+   "@search",
+   "The metric is a choice: Euclidean compares positions, cosine compares directions, and text embeddings almost always want the cosine. More trees give better recall at the same budget and a bigger index; a seed makes the forest reproducible, so that a recall figure is a property of the code and not of the run that produced it. The distance returned is the squared Euclidean one, because the square root changes nothing about the order.",
+   "The approximation is measured and not asserted: the index can search exactly and report its recall against the exact answer. It serves the retrieval of the nearest documents to a question, the recommendation of the nearest item, and the speed-up of a classifier that votes among neighbours."
+  ],
+  "fr": [
+   "La recherche par le sens, pour des vecteurs : un index sur un ensemble de vecteurs qui répond lesquels sont les plus proches d'une requête, vite, par une forêt d'arbres aléatoires.",
+   "@search",
+   "La métrique est un choix : l'euclidienne compare des positions, le cosinus compare des directions, et les plongements de texte veulent presque toujours le cosinus. Plus d'arbres donnent un meilleur rappel au même budget et un plus gros index ; une graine rend la forêt reproductible, si bien qu'un chiffre de rappel est une propriété du code et non de l'exécution qui l'a produit. La distance rendue est l'euclidienne au carré, parce que la racine carrée ne change rien à l'ordre.",
+   "L'approximation est mesurée et non affirmée : l'index peut chercher exactement et rapporter son rappel contre la réponse exacte. Il sert la récupération des documents les plus proches d'une question, la recommandation de l'élément le plus proche, et l'accélération d'un classificateur qui vote parmi des voisins."
+  ]
+ },
+ "stzKnn": {
+  "en": [
+   "A classifier that asks the neighbours: the label of a new point is the label that most of its nearest examples carry.",
+   "@classify",
+   "The training set is held live, so growing it grows what the classifier knows. The number of neighbours is a setting, and the vote can overrule proximity, which is the thing to read in a result that surprises. When the set is large the search can be approximate, with a number of trees and a budget of candidates as the dial of recall, and the classifier can report how far it agrees with the exact answer; on separable data they agree, and that is not a guarantee.",
+   "Its neighbour in the library is clustering, which finds the groups where no label was given. It serves a first classifier that needs no training, and a baseline against which a model must be worth its cost."
+  ],
+  "fr": [
+   "Un classificateur qui interroge les voisins : l'étiquette d'un point neuf est celle que portent la plupart de ses exemples les plus proches.",
+   "@classify",
+   "L'ensemble d'entraînement est tenu vivant, si bien que le faire grandir fait grandir ce que sait le classificateur. Le nombre de voisins est un réglage, et le vote peut l'emporter sur la proximité, ce qu'il faut lire dans un résultat qui surprend. Quand l'ensemble est grand la recherche peut être approchée, avec un nombre d'arbres et un budget de candidats comme cadran du rappel, et le classificateur peut dire dans quelle mesure il s'accorde avec la réponse exacte ; sur des données séparables ils s'accordent, et ce n'est pas une garantie.",
+   "Son voisin dans la bibliothèque est le regroupement, qui trouve les groupes là où aucune étiquette n'était donnée. Il sert un premier classificateur qui n'exige aucun entraînement, et une base de comparaison que tout modèle doit valoir son coût de dépasser."
+  ]
+ },
+ "stzTablex": {
+  "en": [
+   "The pattern for tables: what a table must look like, said in braces and tested, instead of the procedural code that checks it.",
+   "@shape",
+   "A pattern says the number of columns and rows, the names and the types of the columns, that a column is unique, sorted, complete or numeric, a sum, an average, a minimum or a maximum that must hold; patterns combine with and, or and not. A pattern can explain itself: the tokens it parsed and what they meant.",
+   "It serves the validation of an import before it enters a table, the specification of a report's shape, and the test of a transformation: the same language states what goes in and what must come out."
+  ],
+  "fr": [
+   "Le motif pour les tables : à quoi une table doit ressembler, dit entre accolades et testé, au lieu du code procédural qui le vérifie.",
+   "@shape",
+   "Un motif dit le nombre de colonnes et de lignes, les noms et les types des colonnes, qu'une colonne est unique, triée, complète ou numérique, une somme, une moyenne, un minimum ou un maximum qui doit tenir ; les motifs se combinent par et, ou et non. Un motif peut s'expliquer : les unités qu'il a lues et ce qu'elles signifiaient.",
+   "Il sert à valider un import avant qu'il entre dans une table, à spécifier la forme d'un rapport, et à tester une transformation : le même langage dit ce qui entre et ce qui doit sortir."
+  ]
  }
 }

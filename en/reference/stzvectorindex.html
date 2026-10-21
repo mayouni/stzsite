@@ -42,7 +42,32 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/number/stzVectorIndex.ring" target="_blank" rel="noopener noreferrer">the source: base/number/stzVectorIndex.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/numeric.html">The area reference: Numeric &amp; optimization</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Search by meaning, for vectors: an index over a set of vectors that answers which of them are nearest to a query, quickly, by a forest of random trees.</p><div class="sample"><pre class="rx">aDocs = [
+    [ 0.90, 0.10, 0.05, 0.00 ],   # topic A
+    [
+        0.88,
+        0.14,
+        0.02,
+        0.01
+    ],   # topic A, phrased differently
+    [ 0.05, 0.02, 0.91, 0.10 ],   # topic B
+    [ 0.00, 0.01, 0.08, 0.95 ]    # topic C
+]
+
+oIndex = new stzVectorIndex(aDocs)
+oIndex.SetMetric(:Cosine)
+
+# a query on topic A finds both documents on topic A
+aHits = oIndex.Search([ 0.89, 0.12, 0.03, 0.00 ], 2)
+? len(aHits)
+#--&gt; 2
+
+? oIndex.CosineFromDistance(aHits[1][2]) &gt; 0.99
+#--&gt; TRUE
+
+# and a query on topic C finds the fourth
+? oIndex.Search([ 0.00, 0.00, 0.10, 0.98 ], 1)[1][1]
+#--&gt; 4</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>The metric is a choice: Euclidean compares positions, cosine compares directions, and text embeddings almost always want the cosine. More trees give better recall at the same budget and a bigger index; a seed makes the forest reproducible, so that a recall figure is a property of the code and not of the run that produced it. The distance returned is the squared Euclidean one, because the square root changes nothing about the order.</p><p>The approximation is measured and not asserted: the index can search exactly and report its recall against the exact answer. It serves the retrieval of the nearest documents to a question, the recommendation of the nearest item, and the speed-up of a classifier that votes among neighbours.</p></div>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/numeric.html">The story of its area: Numeric &amp; optimization</a> · <a href="../guide/numeric.html">Its area's reference</a></p><h3>Design documents that name it <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/gpu/SOFTANZA_GPU_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA GPU PLAN — analysis and phased plan (G0–G6)<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">8 mentions</span><span class="abs">The GPU plane&#x27;s plan of record (G0 to G6, all shipped): vendor wgpu-native because WGSL compiles from text at runtime and the same kernels reach the browser, measure where the GPU does not pay, and later add the kernel foundry and silent seams.</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#count">C</a> <a href="#dimensions">D</a> <a href="#init">I</a> <a href="#metric">M</a> <a href="#recallagainstexact">R</a> <a href="#settrees">S</a> <a href="#trees">T</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

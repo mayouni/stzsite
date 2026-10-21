@@ -42,7 +42,32 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/number/stzVectorIndex.ring" target="_blank" rel="noopener noreferrer">la source: base/number/stzVectorIndex.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/numeric.html">La référence du domaine : Numérique et optimisation</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>La recherche par le sens, pour des vecteurs : un index sur un ensemble de vecteurs qui répond lesquels sont les plus proches d&#x27;une requête, vite, par une forêt d&#x27;arbres aléatoires.</p><div class="sample"><pre class="rx">aDocs = [
+    [ 0.90, 0.10, 0.05, 0.00 ],   # topic A
+    [
+        0.88,
+        0.14,
+        0.02,
+        0.01
+    ],   # topic A, phrased differently
+    [ 0.05, 0.02, 0.91, 0.10 ],   # topic B
+    [ 0.00, 0.01, 0.08, 0.95 ]    # topic C
+]
+
+oIndex = new stzVectorIndex(aDocs)
+oIndex.SetMetric(:Cosine)
+
+# a query on topic A finds both documents on topic A
+aHits = oIndex.Search([ 0.89, 0.12, 0.03, 0.00 ], 2)
+? len(aHits)
+#--&gt; 2
+
+? oIndex.CosineFromDistance(aHits[1][2]) &gt; 0.99
+#--&gt; TRUE
+
+# and a query on topic C finds the fourth
+? oIndex.Search([ 0.00, 0.00, 0.10, 0.98 ], 1)[1][1]
+#--&gt; 4</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div><p>La métrique est un choix : l&#x27;euclidienne compare des positions, le cosinus compare des directions, et les plongements de texte veulent presque toujours le cosinus. Plus d&#x27;arbres donnent un meilleur rappel au même budget et un plus gros index ; une graine rend la forêt reproductible, si bien qu&#x27;un chiffre de rappel est une propriété du code et non de l&#x27;exécution qui l&#x27;a produit. La distance rendue est l&#x27;euclidienne au carré, parce que la racine carrée ne change rien à l&#x27;ordre.</p><p>L&#x27;approximation est mesurée et non affirmée : l&#x27;index peut chercher exactement et rapporter son rappel contre la réponse exacte. Il sert la récupération des documents les plus proches d&#x27;une question, la recommandation de l&#x27;élément le plus proche, et l&#x27;accélération d&#x27;un classificateur qui vote parmi des voisins.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/numeric.html">Le récit de son domaine : Numérique et optimisation</a> · <a href="../guide/numeric.html">La référence de son domaine</a></p><h3>Documents de conception qui la nomment <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/gpu/SOFTANZA_GPU_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA GPU PLAN — analysis and phased plan (G0–G6)<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">8 mentions</span><span class="abs">Plan de référence du plan GPU (G0 à G6, tout livré) : vendoriser wgpu-native parce que WGSL se compile du texte à l&#x27;exécution et les mêmes noyaux atteignent le navigateur, mesurer où le GPU ne paie pas, puis la fonderie de noyaux et les coutures silencieuses.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#count">C</a> <a href="#dimensions">D</a> <a href="#init">I</a> <a href="#metric">M</a> <a href="#recallagainstexact">R</a> <a href="#settrees">S</a> <a href="#trees">T</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

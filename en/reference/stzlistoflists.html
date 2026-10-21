@@ -42,7 +42,26 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/list/stzListOfLists.ring" target="_blank" rel="noopener noreferrer">the source: base/list/stzListOfLists.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/collections.html">The area reference: Collections &amp; objects</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>A list whose items are lists, with the vocabulary of rows and columns: the list at a position, the column across them all, a search that looks inside every list, and the ways to make uneven lists even.</p><div class="sample"><pre class="rx">o1 = new stzListOfLists([
+    [ "A", "B" ],
+    [ "C", "D", "E", "F" ],
+    [ "I" ]
+])
+
+? o1.IsHomolog()
+#--&gt; FALSE
+
+? o1.SizeOfLargestList()
+#--&gt; 4
+
+# every list is extended to the size of the largest
+o1.Extend()
+? @@( o1.Content() )
+#--&gt; [
+#--&gt;     [ "A", "B", "", "" ],
+#--&gt;     [ "C", "D", "E", "F" ],
+#--&gt;     [ "I", "", "", "" ]
+#--&gt; ]</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>A list of lists is homologous when all its lists have the same size, and the check, the size of the largest and the extension are single calls; the extension can pad with any filler. Sorting can be on the whole list or on one column by a key, such as the length of a name. Searches report the list and the position, so a nested record is found without a loop.</p><p>It is the shape under a table before it has headers, and the natural container for the result of anything that returns rows.</p></div>
     <div class="treasures"><p class="proof"><a href="../atlas/collections.html">The story of its area: Collections &amp; objects</a> · <a href="../guide/collections.html">Its area's reference</a></p></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#addlist">A</a> <a href="#biggestlists">B</a> <a href="#content">C</a> <a href="#firstlist">F</a> <a href="#init">I</a> <a href="#listat">L</a> <a href="#numberoflists">N</a> <a href="#positionsw">P</a> <a href="#sizes">S</a> <a href="#transpose">T</a> <a href="#update">U</a> <a href="#value">V</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>
