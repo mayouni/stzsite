@@ -42,7 +42,43 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/graph/stzGraphPlanner.ring" target="_blank" rel="noopener noreferrer">la source: base/graph/stzGraphPlanner.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/diagramming.html">La référence du domaine : Diagrammes et graphes</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Le chemin le moins cher dans un graphe, sous des plans nommés, qui ont des critères et qui s&#x27;expliquent : d&#x27;ici à là, en minimisant une distance, un coût, un risque ou un mélange, puis en comparant ce que chaque plan a choisi.</p><p>Un plan a un départ et un but, un nœud ou une fonction qui teste les nœuds, et des critères à minimiser ou maximiser sur les propriétés des arêtes, ou un profil : le plus rapide, le plus sûr, le moins cher, le plus court, équilibré, efficace. La recherche s&#x27;exécute dans le moteur comme une recherche à coût uniforme, si bien que le chemin est le moins cher dès qu&#x27;aucun coût n&#x27;est négatif.</p><div class="sample"><pre class="rx">g1 = new stzGraph("g1")
+g1 {
+    AddNodeXTT("a", "A", [ :x = 0 ])
+    AddNodeXTT("b", "B", [ :x = 1 ])
+    AddNodeXTT("c", "C", [ :x = 2 ])
+
+    AddEdgeXTT("a", "b", "r", [
+        :distance = 5,
+        :cost = 1
+    ])
+    AddEdgeXTT("b", "c", "r", [
+        :distance = 5,
+        :cost = 9
+    ])
+    AddEdgeXTT("a", "c", "r", [
+        :distance = 20,
+        :cost = 2
+    ])
+}
+
+o1 = new stzGraphPlanner(g1)
+
+# the shortest way from a to c
+o1.AddPlan("short")
+o1.Walk("a", "c")
+o1.Minimize("distance")
+o1.Execute()
+? @@( o1.Route() )
+#--&gt; [ "a", "b", "c" ]
+
+# the cheapest way is another route
+o1.AddPlan("cheap")
+o1.Walk("a", "c")
+o1.Minimize("cost")
+o1.Execute()
+? @@( o1.Route() )
+#--&gt; [ "a", "c" ]</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div><p>Chaque exécution est gardée dans un historique, et les plans exécutés peuvent être comparés, classés et filtrés, ce qui change un chemin en décision : pourquoi celui-ci, et ce que l&#x27;autre aurait coûté. Le planificateur prend une copie du graphe quand il est construit, si bien qu&#x27;une arête ajoutée ensuite n&#x27;est pas vue. Il sert une question de logistique, un flux de travail dont les étapes ont des coûts, un chemin à travers un réseau de services.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/diagramming.html">Le récit de son domaine : Diagrammes et graphes</a> · <a href="../guide/diagramming.html">La référence de son domaine</a></p><h3>Documents de conception qui la nomment <span class="mono">(3)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Softanza Intelligence Architecture<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">7 mentions</span><span class="abs">La feuille de route unique du travail sur l&#x27;intelligence, issue de la directive de l&#x27;auteur : l&#x27;intelligence dérive une connaissance nouvelle d&#x27;une connaissance existante tenue en graphe gouverné, d&#x27;où six lois, cinq fondations, une carte des modules, un état audité et un parcours R1 à R8.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/STZAPP_PURPOSE_DESIGN.md" target="_blank" rel="noopener noreferrer">stzApp — Deepening: Purpose (Goals &amp; Plans)<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">7 mentions</span><span class="abs">Complément à la conception de stzApp approfondissant le Dessein, bras de la Vie : un but est un état voulu du graphe exprimé en prédicat de requête, un plan une recherche vers lui sur le planificateur ; le monde déclare le but, le moteur trouve le plan.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/STZAPP_DESIGN.md" target="_blank" rel="noopener noreferrer">stzApp — an application is a living world of meaning<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">3 mentions</span><span class="abs">Conception prospective du construct stzApp, écrite alors que la classe est un squelette : une application est un monde vivant de sens fait d&#x27;un domaine, d&#x27;une vie et d&#x27;un corps, rencontré du dehors par présence, intention, affinage et portée, composé d&#x27;organes existants.</span></li></ul><h3>Narrations qui en parlent <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="../narrations/stzgraphplannerdoc.html">Intelligence in Motion: Graph Planning in Softanza</a> <span class="mono">2025</span><span class="abs">Softanza&#x27;s Graph Module already gives you powerful tools for representing connected systems. With stzGraph, you model networks of nodes and edges. With stzDiagram, you visualize relationships.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#addplan">A</a> <a href="#besthistoricalplan">B</a> <a href="#currentplan">C</a> <a href="#difference">D</a> <a href="#execute">E</a> <a href="#from">F</a> <a href="#history">H</a> <a href="#init">I</a> <a href="#minimize">M</a> <a href="#profile">P</a> <a href="#removeplan">R</a> <a href="#setcurrentplan">S</a> <a href="#to">T</a> <a href="#untilreachf">U</a> <a href="#workonplan">W</a></p><p><b>Sections</b> <a href="#walk">configuring a plan</a> · <a href="#cost">plan accessors</a> · <a href="#costbreakdown">explanation methods</a> · <a href="#compareto">comparison methods</a> · <a href="#comparemany">multi-plan comparison</a> · <a href="#history">historical comparison</a> · <a href="#filterplans">constraint-based filtering</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

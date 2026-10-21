@@ -792,5 +792,50 @@
    "ran": "2026-10-21 00:58",
    "commit": "937cd920d"
   }
+ ],
+ "stzKnowledgeGraph": [
+  {
+   "id": "gaps",
+   "code": "oKB = new stzKnowledgeGraph(\"restaurant\")\noKB.Know(\"margherita\", \"dish\").Know(\"tiramisu\", \"dish\")\n\n# a goal: every dish must say what it contains\noGoal = StzGoalQ().RequireEach(\"dish\", \"contains\")\noKB.AddConversationQ(\"setup\").SetGoal(oGoal)\n\n# the gaps are what the next questions will be made of\n? len( oKB.GapsIn(\"setup\") )",
+   "out": "2",
+   "ran": "2026-10-21 01:06",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzSoundGraph": [
+  {
+   "id": "tone",
+   "code": "o1 = new stzSoundGraph()\n\n# a sine at 440 hertz, then a master gain on top\no1.AddOscillator(:Sine, 440, 0.5)\no1.AddMasterGain()\n\n? o1.NodeCount()",
+   "out": "2",
+   "ran": "2026-10-21 01:07",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzServiceRegistry": [
+  {
+   "id": "phase",
+   "code": "oReg = new stzServiceRegistry(\"shop\")\noReg.Declare(\"payments\")\noReg.BindSandbox(\"payments\", new stzPaymentsSandbox())\n\n# the dependency is met by a fake\n? oReg.IsSandboxed(\"payments\")\n\n# which is allowed while building, and not in production\noReg.SetPhase(:production)\n? len( oReg.Findings() ) > 0",
+   "out": "1\n1",
+   "ran": "2026-10-21 01:08",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzSoundScore": [
+  {
+   "id": "notes",
+   "code": "o1 = new stzSoundScore(\"C4 E4 G4 ~\")\n\n# three notes and a rest: three events\n? o1.NumberOfEvents()\n\n# one octave up, in semitones\no1.Transpose(12)\n\n# the first note is C5 now: 523.25 hertz\n? o1.Events()[1][3]",
+   "out": "3\n523.25",
+   "ran": "2026-10-21 01:10",
+   "commit": "937cd920d"
+  }
+ ],
+ "stzGraphPlanner": [
+  {
+   "id": "route",
+   "code": "g1 = new stzGraph(\"g1\")\ng1 {\n    AddNodeXTT(\"a\", \"A\", [ :x = 0 ])\n    AddNodeXTT(\"b\", \"B\", [ :x = 1 ])\n    AddNodeXTT(\"c\", \"C\", [ :x = 2 ])\n\n    AddEdgeXTT(\"a\", \"b\", \"r\", [ :distance = 5,  :cost = 1 ])\n    AddEdgeXTT(\"b\", \"c\", \"r\", [ :distance = 5,  :cost = 9 ])\n    AddEdgeXTT(\"a\", \"c\", \"r\", [ :distance = 20, :cost = 2 ])\n}\n\no1 = new stzGraphPlanner(g1)\n\n# the shortest way from a to c\no1.AddPlan(\"short\")\no1.Walk(\"a\", \"c\")\no1.Minimize(\"distance\")\no1.Execute()\n? @@( o1.Route() )\n\n# the cheapest way is another route\no1.AddPlan(\"cheap\")\no1.Walk(\"a\", \"c\")\no1.Minimize(\"cost\")\no1.Execute()\n? @@( o1.Route() )",
+   "out": "[ \"a\", \"b\", \"c\" ]\n[ \"a\", \"c\" ]",
+   "ran": "2026-10-21 01:10",
+   "commit": "937cd920d"
+  }
  ]
 }

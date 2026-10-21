@@ -42,7 +42,43 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/graph/stzGraphPlanner.ring" target="_blank" rel="noopener noreferrer">the source: base/graph/stzGraphPlanner.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/diagramming.html">The area reference: Diagramming &amp; graphs</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>The cheapest route through a graph, under plans that are named, that have criteria and that explain themselves: from here to there, minimising a distance, a cost, a risk or a mix, and then comparing what each plan chose.</p><p>A plan has a start and a goal, a node or a function that tests nodes, and criteria to minimise or maximise over the properties of the edges, or a profile: fastest, safest, cheapest, shortest, balanced, efficient. The search runs in the engine as a uniform-cost search, so the route is the cheapest whenever no cost is negative.</p><div class="sample"><pre class="rx">g1 = new stzGraph("g1")
+g1 {
+    AddNodeXTT("a", "A", [ :x = 0 ])
+    AddNodeXTT("b", "B", [ :x = 1 ])
+    AddNodeXTT("c", "C", [ :x = 2 ])
+
+    AddEdgeXTT("a", "b", "r", [
+        :distance = 5,
+        :cost = 1
+    ])
+    AddEdgeXTT("b", "c", "r", [
+        :distance = 5,
+        :cost = 9
+    ])
+    AddEdgeXTT("a", "c", "r", [
+        :distance = 20,
+        :cost = 2
+    ])
+}
+
+o1 = new stzGraphPlanner(g1)
+
+# the shortest way from a to c
+o1.AddPlan("short")
+o1.Walk("a", "c")
+o1.Minimize("distance")
+o1.Execute()
+? @@( o1.Route() )
+#--&gt; [ "a", "b", "c" ]
+
+# the cheapest way is another route
+o1.AddPlan("cheap")
+o1.Walk("a", "c")
+o1.Minimize("cost")
+o1.Execute()
+? @@( o1.Route() )
+#--&gt; [ "a", "c" ]</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>Every execution is kept in a history, and the executed plans can be compared, ranked and filtered, which is what turns a route into a decision: why this one, and what would the other have cost. The planner takes a copy of the graph when it is built, so an edge added afterwards is not seen. It serves a question of logistics, a workflow whose steps have costs, a route across a network of services.</p></div>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/diagramming.html">The story of its area: Diagramming &amp; graphs</a> · <a href="../guide/diagramming.html">Its area's reference</a></p><h3>Design documents that name it <span class="mono">(3)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Softanza Intelligence Architecture<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">7 mentions</span><span class="abs">The single roadmap governing intelligence work, from the author&#x27;s directive: intelligence derives new knowledge from existing knowledge held as a governed graph, hence six laws, five foundations, a module map, an audited current state and one path R1 to R8.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/STZAPP_PURPOSE_DESIGN.md" target="_blank" rel="noopener noreferrer">stzApp — Deepening: Purpose (Goals &amp; Plans)<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">7 mentions</span><span class="abs">A companion to the stzApp design deepening Purpose, Life&#x27;s second arm: a goal is a wanted state of the graph expressed as a query predicate, a plan a search toward it over the graph planner; the world declares the goal, the engine finds the plan.</span></li><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/STZAPP_DESIGN.md" target="_blank" rel="noopener noreferrer">stzApp — an application is a living world of meaning<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">3 mentions</span><span class="abs">A forward design of the stzApp construct, written while the class is a stub: an application is a living world of meaning made of a domain, a life and a body, met from without by presence, intent, refinement and reach, composed from existing organs.</span></li></ul><h3>Narrations that speak of it <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="../narrations/stzgraphplannerdoc.html">Intelligence in Motion: Graph Planning in Softanza</a> <span class="mono">2025</span><span class="abs">Softanza&#x27;s Graph Module already gives you powerful tools for representing connected systems. With stzGraph, you model networks of nodes and edges. With stzDiagram, you visualize relationships.</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#addplan">A</a> <a href="#besthistoricalplan">B</a> <a href="#currentplan">C</a> <a href="#difference">D</a> <a href="#execute">E</a> <a href="#from">F</a> <a href="#history">H</a> <a href="#init">I</a> <a href="#minimize">M</a> <a href="#profile">P</a> <a href="#removeplan">R</a> <a href="#setcurrentplan">S</a> <a href="#to">T</a> <a href="#untilreachf">U</a> <a href="#workonplan">W</a></p><p><b>Sections</b> <a href="#walk">configuring a plan</a> · <a href="#cost">plan accessors</a> · <a href="#costbreakdown">explanation methods</a> · <a href="#compareto">comparison methods</a> · <a href="#comparemany">multi-plan comparison</a> · <a href="#history">historical comparison</a> · <a href="#filterplans">constraint-based filtering</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

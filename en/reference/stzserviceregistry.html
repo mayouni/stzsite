@@ -42,7 +42,18 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/service/stzServiceRegistry.ring" target="_blank" rel="noopener noreferrer">the source: base/service/stzServiceRegistry.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/web.html">The area reference: Web &amp; app server</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>The list of what a solution depends on, and what stands behind each dependency: a fake, a local equivalent, or the real thing. A dependency declared and not bound is a finding, and a fake still bound at deploy is a violation.</p><div class="sample"><pre class="rx">oReg = new stzServiceRegistry(&quot;shop&quot;)
+oReg.Declare(&quot;payments&quot;)
+oReg.BindSandbox(&quot;payments&quot;, new stzPaymentsSandbox())
+
+# the dependency is met by a fake
+? oReg.IsSandboxed(&quot;payments&quot;)
+#--&gt; TRUE
+
+# which is allowed while building, and not in production
+oReg.SetPhase(:production)
+? len( oReg.Findings() ) &gt; 0
+#--&gt; TRUE</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>A dependency is declared before anything is bound, which turns a missing one from a surprise at run time into a list. It is met by a sandbox, a faithful double that enforces the real service&#x27;s rules; by a genuine local equivalent, a SQLite file or a local model, which is not a fake and may ship; or by the real thing, which names the store secret that holds its credential and never the key itself.</p><p>The phase decides what is allowed. While developing or emulating, sandboxes are expected; in production they are a violation, even for a fully entitled human, because shipping a fake payment gateway is not a question of authority. The application calls services by name, and an unbound service raises rather than answering silently. It serves any team that codes a whole application against sandboxes and flips the registry to live at the deploy.</p></div>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/web.html">The story of its area: Web &amp; app server</a> · <a href="../guide/web.html">Its area's reference</a></p><h3>Design documents that name it <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_SERVICE_VIRTUALIZATION_PLAN.md" target="_blank" rel="noopener noreferrer">The Service-Virtualization Plane<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">4 mentions</span><span class="abs">A plan, status complete with all seven phases built, for the service-virtualization plane: code the whole solution fee-free against sandboxes of six categories of external service, then flip to live adapters at deploy through a governed registry that refuses a sandbox in production.</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#asrulegraph">A</a> <a href="#bind">B</a> <a href="#declare">D</a> <a href="#findingsvia">F</a> <a href="#has">H</a> <a href="#init">I</a> <a href="#localservices">L</a> <a href="#maygolive">M</a> <a href="#name">N</a> <a href="#postureof">P</a> <a href="#reportvia">R</a> <a href="#service">S</a> <a href="#unbind">U</a> <a href="#whynotlive">W</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

@@ -869,5 +869,113 @@
    "@chapters",
    "Les prérequis sont parcourus jusqu'à la racine, et un cycle lève une erreur. Le cours lit ses propres chapitres pour savoir ce que chacun enseigne, les noms que ses cellules appellent, si bien que la question où une méthode est enseignée pour la première fois trouve réponse dans le texte. Un chapitre peut être exécuté, chaque cellule dans un processus neuf sur le monde que le cours fournit, et en plusieurs langues côte à côte, chacune dans son processus. Il sert un cursus qui doit être vérifié comme on vérifie du code."
   ]
+ },
+ "stzKnowledgeGraph": {
+  "en": [
+   "A graph of what is known about a world, in triples: this entity is of that kind, this one relates to that one. It is a `stzGraph` that has learned to say \"dish\" and \"kind of\", and that can be asked what follows.",
+   "Facts are added with the plain verbs of a domain: know an entity, know a relation. Laws can be recorded on a relation, symmetric, unique, transitive, and a fact that contradicts a law is refused and recorded as a named refusal; in strict mode every fact must come with its source and its confidence.",
+   "What it keeps is also what it lacks. A goal says what must be true, and the gaps between the goal and the graph are the questions that a conversation should ask next.",
+   "@gaps",
+   "It serves any program that must draw knowledge from a person or an agent and keep only what it can check: the setup of a restaurant, a client file, the ontology of a bank. It is the memory under the conversations of the library."
+  ],
+  "fr": [
+   "Un graphe de ce que l'on sait d'un monde, en triplets : cette entité est de cette sorte, celle-ci se rapporte à celle-là. C'est un `stzGraph` qui a appris à dire « plat » et « sorte de », et à qui l'on peut demander ce qui s'ensuit.",
+   "Les faits s'ajoutent avec les verbes simples d'un domaine : connaître une entité, connaître une relation. Des lois peuvent être inscrites sur une relation, symétrique, unique, transitive, et un fait qui contredit une loi est refusé et consigné comme un refus nommé ; en mode strict, chaque fait doit venir avec sa source et sa confiance.",
+   "Ce qu'il garde est aussi ce qui lui manque. Un but dit ce qui doit être vrai, et les écarts entre le but et le graphe sont les questions qu'une conversation doit poser ensuite.",
+   "@gaps",
+   "Il sert tout programme qui doit tirer un savoir d'une personne ou d'un agent et ne garder que ce qu'il peut vérifier : la mise en place d'un restaurant, un dossier client, l'ontologie d'une banque. C'est la mémoire sous les conversations de la bibliothèque."
+  ]
+ },
+ "stzSoundScore": {
+  "en": [
+   "Music as data, before it is sound: a score is a list of events placed in beats, notes with a pitch and a length, strokes on a drum, rests, and an algebra to combine them.",
+   "It is written in the words a musician says: note names separated by spaces, one beat each, the octave carried along, a tilde for a rest. A note can glide between two pitches, a stroke belongs to an instrument. Scores combine like sentences: one after another, together, repeated, moved to another instrument.",
+   "@notes",
+   "Transposing moves notes by semitones, fractions allowed: a half is a quarter tone, which is what a maqam asks for. A drum pattern keeps its pitch when the rest is moved. Tempo, swing, velocity and quantizing are settings of the performance and not of the notes. Because the score is data, it can be analysed before it is heard, and rendered by any instrument or cultural universe. It serves composition by code, ear training, and the sounds of the earcons."
+  ],
+  "fr": [
+   "La musique comme donnée, avant d'être son : une partition est une liste d'événements placés en temps, notes avec une hauteur et une durée, coups sur un tambour, silences, et une algèbre pour les combiner.",
+   "Elle s'écrit avec les mots d'un musicien : des noms de notes séparés par des espaces, un temps chacun, l'octave reportée, un tilde pour un silence. Une note peut glisser entre deux hauteurs, un coup appartient à un instrument. Les partitions se combinent comme des phrases : l'une après l'autre, ensemble, répétées, portées sur un autre instrument.",
+   "@notes",
+   "Transposer déplace les notes en demi-tons, fractions permises : une demie est un quart de ton, ce que demande un maqam. Un motif de tambour garde sa hauteur quand le reste est déplacé. Le tempo, le swing, la vélocité et la quantification sont des réglages de l'exécution et non des notes. Parce que la partition est une donnée, elle peut être analysée avant d'être entendue, et rendue par tout instrument ou univers culturel. Elle sert la composition par le code, l'entraînement de l'oreille, et les sons des icônes sonores."
+  ]
+ },
+ "stzSoundGraph": {
+  "en": [
+   "A sound described as a graph: sources, shapers, mixes and an output, shaped like the Web Audio graph and rendered by the engine, bus by planar bus.",
+   "@tone",
+   "Sources are named by their waveform, sine, triangle, square or saw, or are a sound already held, a looping sound, or a timeline of notes each placed at its frame. Shapers take what they act on by name: gain, filters, envelopes that may start some seconds in, echo. Echo is called echo and not reverb: one repeat fading out is not a room, and a name that promises a hall and delivers one repeat is a false name. Nodes are named, an unknown name is an error that the caller hears about, and the output is the node chosen, by default the last.",
+   "A rendered graph has no device in its loop: the buffer it produces can be measured, saved or played. It serves synthesis, sound design, and every tone, cue and score of the library, which compile down to this graph."
+  ],
+  "fr": [
+   "Un son décrit comme un graphe : sources, façonneurs, mélanges et une sortie, à la forme du graphe de Web Audio et rendu par le moteur, bus planaire par bus planaire.",
+   "@tone",
+   "Les sources se nomment par leur forme d'onde, sinusoïde, triangle, carré ou dent de scie, ou sont un son déjà tenu, un son bouclé, ou une ligne de temps de notes placées chacune à son image. Les façonneurs prennent par leur nom ce sur quoi ils agissent : gain, filtres, enveloppes qui peuvent commencer quelques secondes plus tard, écho. L'écho s'appelle écho et non réverbération : une répétition qui s'éteint n'est pas une salle, et un nom qui promet un hall et livre une répétition est un faux nom. Les nœuds ont des noms, un nom inconnu est une erreur que l'appelant entend, et la sortie est le nœud choisi, par défaut le dernier.",
+   "Un graphe rendu n'a aucun périphérique dans sa boucle : le tampon qu'il produit peut être mesuré, sauvé ou joué. Il sert la synthèse, la conception sonore, et tout ton, signal et partition de la bibliothèque, qui se compilent jusqu'à ce graphe."
+  ]
+ },
+ "stzServiceRegistry": {
+  "en": [
+   "The list of what a solution depends on, and what stands behind each dependency: a fake, a local equivalent, or the real thing. A dependency declared and not bound is a finding, and a fake still bound at deploy is a violation.",
+   "@phase",
+   "A dependency is declared before anything is bound, which turns a missing one from a surprise at run time into a list. It is met by a sandbox, a faithful double that enforces the real service's rules; by a genuine local equivalent, a SQLite file or a local model, which is not a fake and may ship; or by the real thing, which names the store secret that holds its credential and never the key itself.",
+   "The phase decides what is allowed. While developing or emulating, sandboxes are expected; in production they are a violation, even for a fully entitled human, because shipping a fake payment gateway is not a question of authority. The application calls services by name, and an unbound service raises rather than answering silently. It serves any team that codes a whole application against sandboxes and flips the registry to live at the deploy."
+  ],
+  "fr": [
+   "La liste de ce dont une solution dépend, et de ce qui se tient derrière chaque dépendance : un faux, un équivalent local, ou la chose réelle. Une dépendance déclarée et non liée est un constat, et un faux encore lié au déploiement est une violation.",
+   "@phase",
+   "Une dépendance se déclare avant que rien soit lié, ce qui change une absence d'une surprise à l'exécution en une liste. Elle est satisfaite par un bac à sable, une doublure fidèle qui fait respecter les règles du vrai service ; par un véritable équivalent local, un fichier SQLite ou un modèle local, qui n'est pas un faux et peut être livré ; ou par la chose réelle, qui nomme le secret du magasin où se tient son identifiant et jamais la clé elle-même.",
+   "La phase décide de ce qui est permis. En développement ou en émulation, les bacs à sable sont attendus ; en production, ils sont une violation, même pour un humain pleinement habilité, parce que livrer une fausse passerelle de paiement n'est pas une question d'autorité. L'application appelle les services par leur nom, et un service non lié lève une erreur au lieu de répondre en silence. Il sert toute équipe qui code une application entière contre des bacs à sable et bascule le registre au réel au déploiement."
+  ]
+ },
+ "stzGraphPlanner": {
+  "en": [
+   "The cheapest route through a graph, under plans that are named, that have criteria and that explain themselves: from here to there, minimising a distance, a cost, a risk or a mix, and then comparing what each plan chose.",
+   "A plan has a start and a goal, a node or a function that tests nodes, and criteria to minimise or maximise over the properties of the edges, or a profile: fastest, safest, cheapest, shortest, balanced, efficient. The search runs in the engine as a uniform-cost search, so the route is the cheapest whenever no cost is negative.",
+   "@route",
+   "Every execution is kept in a history, and the executed plans can be compared, ranked and filtered, which is what turns a route into a decision: why this one, and what would the other have cost. The planner takes a copy of the graph when it is built, so an edge added afterwards is not seen. It serves a question of logistics, a workflow whose steps have costs, a route across a network of services."
+  ],
+  "fr": [
+   "Le chemin le moins cher dans un graphe, sous des plans nommés, qui ont des critères et qui s'expliquent : d'ici à là, en minimisant une distance, un coût, un risque ou un mélange, puis en comparant ce que chaque plan a choisi.",
+   "Un plan a un départ et un but, un nœud ou une fonction qui teste les nœuds, et des critères à minimiser ou maximiser sur les propriétés des arêtes, ou un profil : le plus rapide, le plus sûr, le moins cher, le plus court, équilibré, efficace. La recherche s'exécute dans le moteur comme une recherche à coût uniforme, si bien que le chemin est le moins cher dès qu'aucun coût n'est négatif.",
+   "@route",
+   "Chaque exécution est gardée dans un historique, et les plans exécutés peuvent être comparés, classés et filtrés, ce qui change un chemin en décision : pourquoi celui-ci, et ce que l'autre aurait coûté. Le planificateur prend une copie du graphe quand il est construit, si bien qu'une arête ajoutée ensuite n'est pas vue. Il sert une question de logistique, un flux de travail dont les étapes ont des coûts, un chemin à travers un réseau de services."
+  ]
+ },
+ "stzScene": {
+  "en": [
+   "A three-dimensional scene whose every number can be asked: meshes placed and parented, a camera and a lens, a light, a material, and the question of where a point of the world lands on the picture.",
+   "A mesh is placed, moved, coloured and parented to another, so that a child follows its parent. The world position is the number to assert on, because a child that did not follow shows up there and nowhere else. A parent that does not exist is refused, and a cycle is broken and counted rather than hung on. A flat scene has a hierarchy depth of 0, the witness that a hierarchy is actually a hierarchy.",
+   "Projection is answered by the library: where a three-dimensional point lands in canvas pixels, how deep, and whether it is in front of the camera or behind it. The drawing goes to the GPU, and the instance buffer can be handed to a compute kernel, so that the scene stops rewriting transforms and the device drives them. It serves a viewer, a game, a figure that moves, and the panels hung in a scene by the GUI plane."
+  ],
+  "fr": [
+   "Une scène en trois dimensions dont chaque nombre peut être interrogé : des maillages placés et rattachés, une caméra et un objectif, une lumière, une matière, et la question de savoir où un point du monde tombe sur l'image.",
+   "Un maillage est placé, déplacé, colorié et rattaché à un autre, si bien qu'un enfant suit son parent. La position dans le monde est le nombre sur lequel affirmer, parce qu'un enfant qui n'a pas suivi se voit là et nulle part ailleurs. Un parent qui n'existe pas est refusé, et un cycle est rompu et compté plutôt que de bloquer. Une scène à plat a une profondeur de hiérarchie de 0, le témoin qu'une hiérarchie en est bien une.",
+   "La projection est répondue par la bibliothèque : où un point en trois dimensions tombe en pixels du canevas, à quelle profondeur, et s'il est devant la caméra ou derrière. Le dessin va au GPU, et le tampon d'instances peut être confié à un noyau de calcul, si bien que la scène cesse de réécrire les transformations et que la carte les pilote. Elle sert une visionneuse, un jeu, une figure qui bouge, et les panneaux suspendus dans une scène par le plan GUI."
+  ]
+ },
+ "stzWindow": {
+  "en": [
+   "A window the program draws into: opened on the operating system, sampled for input once per frame, and drawn by the GPU, with the one number that separates a game from a slideshow, the time since the last frame.",
+   "A frame is a poll then a draw. The poll pumps the events and samples the keys and the mouse, so that everything the frame reads agrees with itself. A key can be asked as held, true on every frame, which is what movement wants, or as pressed, true once, which is what a menu wants. The time since the previous frame is what speeds are multiplied by, so that motion stops depending on how fast the machine happens to be.",
+   "Resizing from code lands at the next poll, by the same path as a dragged edge, and vertical sync is on by default and caps the loop at the monitor's refresh. Two loops are provided: show a still picture and wait for Escape, or run a function once per frame until the window closes. It serves tools, viewers and games, and it gives the accessibility bridge the native handle that it needs."
+  ],
+  "fr": [
+   "Une fenêtre dans laquelle le programme dessine : ouverte sur le système d'exploitation, échantillonnée pour les entrées une fois par image, et dessinée par le GPU, avec le seul nombre qui sépare un jeu d'un diaporama, le temps écoulé depuis la dernière image.",
+   "Une image est un relevé puis un dessin. Le relevé pompe les événements et échantillonne les touches et la souris, si bien que tout ce que l'image lit s'accorde avec lui-même. Une touche peut être demandée comme tenue, vraie à chaque image, ce que veut un déplacement, ou comme pressée, vraie une fois, ce que veut un menu. Le temps écoulé depuis l'image précédente est ce par quoi les vitesses se multiplient, si bien que le mouvement cesse de dépendre de la rapidité de la machine.",
+   "Redimensionner depuis le code prend effet au relevé suivant, par le même chemin qu'un bord que l'on tire, et la synchronisation verticale est active par défaut et plafonne la boucle au rafraîchissement de l'écran. Deux boucles sont fournies : montrer une image fixe et attendre Échap, ou exécuter une fonction à chaque image jusqu'à la fermeture de la fenêtre. Elle sert les outils, les visionneuses et les jeux, et donne au pont d'accessibilité le descripteur natif dont il a besoin."
+  ]
+ },
+ "stzAppBackend": {
+  "en": [
+   "The live state that the parts of a solution share: one backend that owns the data, serves it over a real server, and lets every part, a phone, an admin dashboard, read and write it over real HTTP, so that what one part writes another sees.",
+   "Before it, each part read its own frozen copy of the model, and an order created on a phone never reached the dashboard. The backend materialises every dataset of the model as a real SQLite table, seeded with the model's rows, and exposes each for create, read, update and delete. SQLite is the substrate because its connection is an engine handle, so a copied wrapper still addresses the same data: shared state kept in the language's own attributes fragments into private copies.",
+   "It runs on the loopback by default, and leaving the loopback requires a signing key, set on both sides, because on a real interface the callers are whoever can route to the port. The backend can run in a process of its own, or be reached where it already runs; the secret travels in the environment and never on a command line, which is readable by everyone. It serves a solution rehearsed on one machine and shipped to several."
+  ],
+  "fr": [
+   "L'état vivant que les parties d'une solution partagent : un seul serveur de données qui possède les données, les sert sur un vrai serveur, et laisse chaque partie, un téléphone, un tableau de bord d'administration, les lire et les écrire en vrai HTTP, si bien que ce qu'une partie écrit, une autre le voit.",
+   "Avant lui, chaque partie lisait sa propre copie figée du modèle, et une commande créée sur un téléphone n'arrivait jamais au tableau de bord. Le serveur matérialise chaque jeu de données du modèle en vraie table SQLite, garnie des lignes du modèle, et expose chacune pour créer, lire, modifier et supprimer. SQLite est le substrat parce que sa connexion est un descripteur du moteur, si bien qu'un enveloppeur copié adresse toujours les mêmes données : un état partagé gardé dans les attributs du langage lui-même se fragmente en copies privées.",
+   "Il tourne sur la boucle locale par défaut, et en sortir exige une clé de signature, posée des deux côtés, parce que sur une vraie interface les appelants sont quiconque peut atteindre le port. Il peut tourner dans un processus à part, ou être atteint là où il tourne déjà ; le secret voyage dans l'environnement et jamais sur une ligne de commande, que tout le monde peut lire. Il sert une solution répétée sur une machine et livrée sur plusieurs."
+  ]
  }
 }
