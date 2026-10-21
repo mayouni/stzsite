@@ -42,7 +42,7 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/datetime/stzCalendar.ring" target="_blank" rel="noopener noreferrer">the source: base/datetime/stzCalendar.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/i18n.html">The area reference: Internationalization</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p>A calendar is a rule, not a list. Two companies in the same month have different calendars, a Sunday-to-Thursday week and a Monday-to-Friday one, and every question about a deadline, a delivery date or a payroll is answered against the rule that applies. <code>stzCalendar</code> is a month, a quarter or a year that knows what a working day is.</p><p>Open it on a period, then teach it the shape of work: which days people work, and which days are holidays, by name.</p><div class="sample"><pre class="rx">StzCalendarQ([2024, 10]) {
+    <div class="essay"><p>stzCalendar is a class that holds a month, a quarter or a year, and knows which days are working days and which are holidays. A calendar is a rule and not a list.</p><p>Two companies in the same month can have different calendars, a Sunday-to-Thursday week and a Monday-to-Friday one, and every question about a deadline, a delivery date or a payroll must be answered against the rule that applies. You open the class on a period, then you tell it which days people work and which days are holidays, by name.</p><p>The example below opens October 2024 with a Monday-to-Friday week. It checks that Thursday 3 October is a working day (1), that Saturday 5 October is not (0), and counts the working days of the month: 23.</p><div class="sample"><pre class="rx">StzCalendarQ([2024, 10]) {
 
     SetWorkingDays([
         &quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;, &quot;Friday&quot;
@@ -60,7 +60,7 @@
     ? len(WorkingDays())
     #--&gt; 23
 
-}</pre><span class="rx-src">run in the library on 2026-10-20</span></div><p>A holiday is declared with its name and read back by date, so that the same calendar can say both that a day is off and why.</p><div class="sample"><pre class="rx">StzCalendarQ([2024, 10]) {
+}</pre><span class="rx-src">run in the library on 2026-10-20</span></div><p>A holiday is declared with its name and read back by date, so the same calendar can say both that a day is off and why. The example below declares 15 October 2024 as National Day. It checks that the 15th is a holiday (1), that the 16th is not (0), and prints the name of the holiday: National Day.</p><div class="sample"><pre class="rx">StzCalendarQ([2024, 10]) {
 
     AddHoliday(&quot;2024-10-15&quot;, &quot;National Day&quot;)
 
@@ -76,7 +76,7 @@
     ? HolidayName(&quot;2024-10-15&quot;)
     #--&gt; National Day
 
-}</pre><span class="rx-src">run in the library on 2026-10-20</span></div><p>It serves schedules, deadlines, payroll, service clocks that must stop at the weekend, and the planning of anything measured in working days. It is the calendar that <code>stzTimeLine</code> lays its events on.</p></div>
+}</pre><span class="rx-src">run in the library on 2026-10-20</span></div><p>Use stzCalendar for schedules, deadlines, payroll, service clocks that must stop at the weekend, and the planning of anything measured in working days. It is the calendar on which stzTimeLine places its events.</p></div>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/i18n.html">The story of its area: Internationalization</a> · <a href="../guide/i18n.html">Its area's reference</a></p><h3>Narrations that speak of it <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="../narrations/stzcalendar-time-capacity-planning-in-softanza.html">Time Capacity Planning in Softanza: Mastering Constraints with stzCalendar</a> <span class="mono">2025</span><span class="abs">Most scheduling tools treat time as a grid—a static calendar of slots you fill with events, often leading to manual guesswork and overlooked conflicts.</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#addholiday">A</a> <a href="#businesshours">B</a> <a href="#containsdays">C</a> <a href="#dateinfo">D</a> <a href="#end_">E</a> <a href="#firstworkingday">F</a> <a href="#gotonextday">G</a> <a href="#hasdays">H</a> <a href="#init">I</a> <a href="#lastworkingday">L</a> <a href="#monthnumber">M</a> <a href="#numberofworkingdays">N</a> <a href="#previousday">P</a> <a href="#quarternumber">Q</a> <a href="#rangeinfo">R</a> <a href="#start">S</a> <a href="#totaldays">T</a> <a href="#vizwidth">V</a> <a href="#workingdaysn">W</a> <a href="#year">Y</a></p><p><b>Sections</b> <a href="#previousday">navigating the calendar back and forth</a> · <a href="#marktimeline">timeline integration</a> · <a href="#comparewith">multi-calendar comparison</a> · <a href="#setvizheight">visual display system for stzcalendar</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

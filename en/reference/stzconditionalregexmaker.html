@@ -42,7 +42,7 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/regex/stzRegexMaker.ring" target="_blank" rel="noopener noreferrer">the source: base/regex/stzRegexMaker.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/regex.html">The area reference: Pattern matching</a></p>
   </div></section>
   <div class="wrap page-body">
-    <div class="essay"><p>A conditional pattern written as if, then, else: if the text starts like this, it must go on like that, otherwise like the other thing.</p><div class="sample"><pre class="rx">cIso = &quot;\d{4}-\d{2}-\d{2}&quot;
+    <div class="essay"><p>stzConditionalRegexMaker is a class that writes a conditional regular expression from three parts: if, then and else. A regular expression is a pattern that describes text. A conditional says: if the text starts like this, it must go on like that, otherwise it must have this other form.</p><p>You need it for a field that may be written in two forms, such as a date with the year first or with the day first, or a number with its unit before or after. The example below gives the condition that the text starts with four digits. The form for that case is a year-first date, with four, two and two digits separated by dashes. The other form is a day-first date, with two, two and four digits separated by slashes. The example prints the pattern that the class wrote.</p><div class="sample"><pre class="rx">cIso = &quot;\d{4}-\d{2}-\d{2}&quot;
 cEu  = &quot;\d{2}/\d{2}/\d{4}&quot;
 
 o1 = new stzConditionalRegexMaker()
@@ -51,7 +51,7 @@ o1 = new stzConditionalRegexMaker()
 o1.IfMatch(&quot;^\d{4}&quot;).ThenMatch(cIso).ElseMatch(cEu)
 
 ? o1.Pattern()
-#--&gt; (?(?=^\d{4})\d{4}-\d{2}-\d{2}|\d{2}/\d{2}/\d{4})</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>The notation of a conditional in a regular expression is one of the least readable in the language, a question mark, a lookahead and a bar. The maker takes the three parts as sentences and writes it. It serves the field that may be written in two forms, a date year-first or day-first, a number with its unit before or after, and it is the sibling of the maker for lookaround.</p></div>
+#--&gt; (?(?=^\d{4})\d{4}-\d{2}-\d{2}|\d{2}/\d{2}/\d{4})</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>In a regular expression, the notation of a conditional is one of the least readable in the language: a question mark, a lookahead (a check on the text that follows) and a bar. The class takes the three parts as sentences and writes the notation for you.</p><p>Use it for the fields that have two forms. For conditions that only look at the text next to a match, use <code>stzRegexLookaroundMaker</code>, the neighbouring maker for lookaround.</p></div>
     <div class="treasures"><p class="proof"><a href="../atlas/regex.html">The story of its area: Pattern matching</a> · <a href="../guide/regex.html">Its area's reference</a></p></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#elsematch">E</a> <a href="#init">I</a> <a href="#pattern">P</a> <a href="#reset">R</a> <a href="#thenmatch">T</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>
