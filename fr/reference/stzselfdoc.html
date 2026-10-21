@@ -42,7 +42,18 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/meta/stzSelfDoc.ring" target="_blank" rel="noopener noreferrer">la source: base/meta/stzSelfDoc.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/meta.html">La référence du domaine : Métaprogrammation et règles de code</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Une classe à qui l&#x27;on peut poser des questions sur elle-même : quelles méthodes elle a, quel ancêtre définit chacune, ce que dit la source de l&#x27;une d&#x27;elles, et, en mots, quelle méthode fait ce que l&#x27;on veut dire.</p><div class="sample"><pre class="rx">oDoc = StzSelfDocQ(&quot;stzList&quot;)
+
+# asked in words, it composes the name
+? StzFindFirst(&quot;RemoveDuplicates&quot;, oDoc.HowTo(&quot;remove duplicates&quot;)) &gt; 0
+#--&gt; TRUE
+
+# and answers whether a name exists
+? oDoc.HasMethod(&quot;DuplicatesRemoved&quot;)
+#--&gt; TRUE
+
+? oDoc.HasMethod(&quot;Duplicatez&quot;)
+#--&gt; FALSE</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div><p>Le savoir est déjà dans la source, si bien qu&#x27;aucun modèle de langage n&#x27;est en jeu. Une demande en mots est composée en nom de méthode par la grammaire des noms de la bibliothèque, et la réponse dit qu&#x27;il a été composé et non trouvé ; demander une méthode qui n&#x27;existe pas est refusé au lieu d&#x27;être inventé. Une méthode peut être expliquée depuis le commentaire qui la précède, une classe peut recevoir une question, et la meilleure méthode pour une intention peut être choisie.</p><p>C&#x27;est l&#x27;auto-documentation dont la référence de ce site est récoltée, et contre laquelle les recettes pratiques ont été vérifiées. Elle sert le programmeur qui ne connaît pas le nom, et l&#x27;agent qui ne doit pas en deviner un.</p></div>
     <div class="treasures"><p class="proof"><a href="../atlas/meta.html">Le récit de son domaine : Métaprogrammation et règles de code</a> · <a href="../guide/meta.html">La référence de son domaine</a></p></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#ask">A</a> <a href="#bestmethodfor">B</a> <a href="#classname">C</a> <a href="#descriptionof">D</a> <a href="#explainmethod">E</a> <a href="#hasmethod">H</a> <a href="#init">I</a> <a href="#methodnames">M</a> <a href="#numberofmethods">N</a> <a href="#source">S</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

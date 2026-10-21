@@ -42,7 +42,23 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/number/stzSimilarity.ring" target="_blank" rel="noopener noreferrer">la source: base/number/stzSimilarity.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/numeric.html">La référence du domaine : Numérique et optimisation</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>À quel point deux listes de nombres se ressemblent, et à quelle distance elles sont : le produit scalaire, le cosinus, les distances euclidienne et de Manhattan, sur des vecteurs de toute longueur, et le vecteur unité d&#x27;une direction.</p><div class="sample"><pre class="rx">oS = new stzSimilarity()
+
+# 1*4 + 2*5 + 3*6
+? oS.Dot([ 1, 2, 3 ], [ 4, 5, 6 ])
+#--&gt; 32
+
+# from the origin to (3, 4)
+? oS.EuclideanFromLists([ 0, 0 ], [ 3, 4 ])
+#--&gt; 5
+
+# 3 + 4 + 0
+? oS.ManhattanFromLists([ 1, 2, 3 ], [ 4, 6, 3 ])
+#--&gt; 7
+
+# a vector of length one, in the same direction
+? @@( oS.NormalizedList([ 3, 4 ]) )
+#--&gt; [ 0.60, 0.80 ]</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div><p>Chaque mesure répond à une question différente. Le produit scalaire pèse deux vecteurs l&#x27;un contre l&#x27;autre ; le cosinus, entre moins un et un, ignore leurs longueurs et demande seulement s&#x27;ils pointent dans le même sens, ce que veut une comparaison de plongements ; la distance euclidienne est la ligne droite, celle de Manhattan la marche le long de la grille. Des formes pour trois dimensions existent pour le cas courant.</p><p>C&#x27;est l&#x27;arithmétique sous la recherche par similarité : les plus proches voisins d&#x27;un vecteur, le regroupement d&#x27;un corpus, la comparaison d&#x27;une phrase avec une autre. Il sert tout ce qui a été changé en liste de nombres et doit être comparé.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/numeric.html">Le récit de son domaine : Numérique et optimisation</a> · <a href="../guide/numeric.html">La référence de son domaine</a></p><h3>Documents de conception qui la nomment <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_INTELLIGENCE_ARCHITECTURE.md" target="_blank" rel="noopener noreferrer">Softanza Intelligence Architecture<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">4 mentions</span><span class="abs">La feuille de route unique du travail sur l&#x27;intelligence, issue de la directive de l&#x27;auteur : l&#x27;intelligence dérive une connaissance nouvelle d&#x27;une connaissance existante tenue en graphe gouverné, d&#x27;où six lois, cinq fondations, une carte des modules, un état audité et un parcours R1 à R8.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#cosine3">C</a> <a href="#dotproduct3">D</a> <a href="#euclidean3">E</a> <a href="#init">I</a> <a href="#manhattan3">M</a> <a href="#normalizedlist">N</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

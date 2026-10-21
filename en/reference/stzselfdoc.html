@@ -42,7 +42,18 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/meta/stzSelfDoc.ring" target="_blank" rel="noopener noreferrer">the source: base/meta/stzSelfDoc.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/meta.html">The area reference: Metaprogramming &amp; code rules</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>A class that can be asked about itself: what methods it has, which ancestor defines each, what the source says about one, and, in words, which method does what you mean.</p><div class="sample"><pre class="rx">oDoc = StzSelfDocQ(&quot;stzList&quot;)
+
+# asked in words, it composes the name
+? StzFindFirst(&quot;RemoveDuplicates&quot;, oDoc.HowTo(&quot;remove duplicates&quot;)) &gt; 0
+#--&gt; TRUE
+
+# and answers whether a name exists
+? oDoc.HasMethod(&quot;DuplicatesRemoved&quot;)
+#--&gt; TRUE
+
+? oDoc.HasMethod(&quot;Duplicatez&quot;)
+#--&gt; FALSE</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>The knowledge is already in the source, so no language model is involved. A request in words is composed into a method name by the naming grammar of the library, and the answer says that it was composed and not found; asking for a method that does not exist is refused instead of being invented. A method can be explained from the comment above it, a class can be asked a question, and the best method for an intent can be chosen.</p><p>This is the self-documentation from which the reference of this site is harvested, and against which the how-to recipes were checked. It serves a programmer who does not know the name, and an agent that must not guess one.</p></div>
     <div class="treasures"><p class="proof"><a href="../atlas/meta.html">The story of its area: Metaprogramming &amp; code rules</a> · <a href="../guide/meta.html">Its area's reference</a></p></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#ask">A</a> <a href="#bestmethodfor">B</a> <a href="#classname">C</a> <a href="#descriptionof">D</a> <a href="#explainmethod">E</a> <a href="#hasmethod">H</a> <a href="#init">I</a> <a href="#methodnames">M</a> <a href="#numberofmethods">N</a> <a href="#source">S</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

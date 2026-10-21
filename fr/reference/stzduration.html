@@ -42,7 +42,23 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/datetime/stzDuration.ring" target="_blank" rel="noopener noreferrer">la source: base/datetime/stzDuration.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/i18n.html">La référence du domaine : Internationalisation</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Une durée qui se lit comme les gens la disent : deux heures et trente minutes, un jour, trois heures et quarante-cinq minutes, ou un nombre de secondes qu&#x27;une horloge montre comme 1:01:05.</p><div class="sample"><pre class="rx">o1 = new stzDuration(3665)
+
+# a number of seconds, read as a clock
+? o1.Content()
+#--&gt; 1:01:05
+
+o2 = new stzDuration("2 hours 30 minutes")
+? o2.ToHuman()
+#--&gt; 2 hours and 30 minutes
+
+o3 = new stzDuration([
+    :Days = 1,
+    :Hours = 3,
+    :Minutes = 45
+])
+? o3.ToCompact()
+#--&gt; 1d 3h 45m</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div><p>Elle se construit depuis des secondes, depuis une phrase, ou depuis des parties nommées, jusqu&#x27;à la milliseconde, et elle rend n&#x27;importe quelle unité : secondes, minutes, heures ou jours au total, ses composantes, une phrase humaine qui arrondit comme les gens, une forme compacte, ou tout format que l&#x27;on nomme. Elle se compare et se calcule dans les mêmes mots : plus longue que, entre, ajouter, soustraire, multiplier, diviser.</p><p>C&#x27;est la réponse de <code>stzDateTime</code> et <code>stzTime</code> quand on leur demande la distance entre deux instants, et l&#x27;unité que les chronologies et les calendriers additionnent.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/i18n.html">Le récit de son domaine : Internationalisation</a> · <a href="../guide/i18n.html">La référence de son domaine</a></p><h3>Narrations qui en parlent <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="../narrations/stzduration-measuring-time-in-softanza.html">stzDuration: Measuring Time in Softanza</a> <span class="mono">2025</span><span class="abs">You&#x27;re building a project tracker. Three tasks took &quot;2 days&quot;, &quot;5 days&quot;, and &quot;4 days&quot; respectively. How long is the project? Add a 20% buffer and show it in human terms.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#add">A</a> <a href="#components">C</a> <a href="#days">D</a> <a href="#hours">H</a> <a href="#init">I</a> <a href="#joinparts">J</a> <a href="#minutes">M</a> <a href="#operator">O</a> <a href="#parsedurationstring">P</a> <a href="#seconds">S</a> <a href="#totalseconds">T</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

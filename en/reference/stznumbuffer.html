@@ -42,7 +42,29 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/number/stzNumBuffer.ring" target="_blank" rel="noopener noreferrer">the source: base/number/stzNumBuffer.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="../reference.html">All classes</a> · <a href="../guide/numeric.html">The area reference: Numeric &amp; optimization</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>A million numbers held by the engine and not by the language: a buffer that stays resident across calls, so that the cost of crossing between the two is paid once and every operation after it is a pass over memory.</p><div class="sample"><pre class="rx">oBuf = StzNumBufferQ([ 2, 4, 6, 8 ])
+
+? oBuf.Size()
+#--&gt; 4
+
+? oBuf.Sum()
+#--&gt; 20
+
+? oBuf.Mean()
+#--&gt; 5
+
+# a copy moves, and the original does not
+oCopy = oBuf.Copy()
+oCopy.Scale(100)
+
+? @@( oCopy.ToList() )
+#--&gt; [ 200, 400, 600, 800 ]
+
+? @@( oBuf.ToList() )
+#--&gt; [ 2, 4, 6, 8 ]
+
+oBuf.Free()
+oCopy.Free()</pre><span class="rx-src">run in the library on 2026-10-21</span></div><p>A reduction comes back as one number; arithmetic acts on the buffer itself, scaling, adding a scalar, adding or multiplying another buffer, with no crossing per item; a list is materialised only when a person wants to look, in one crossing. A read past the end is refused and not guessed, and the index starts at 1 like every other.</p><p>The language has no destructors, so a large buffer is freed by a call, which is the honest burden of the design. Sums are compensated like those of the other numeric classes. It serves any list of numbers too large for a loop over its items: signals, measurements, features, and it is what <code>stzListOfNumbers</code> hands its numbers to when a million of them must be worked on.</p></div>
     <div class="treasures"><h2>What the library wrote about this class</h2><p class="proof"><a href="../atlas/numeric.html">The story of its area: Numeric &amp; optimization</a> · <a href="../guide/numeric.html">Its area's reference</a></p><h3>Design documents that name it <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_NUMERIC_FOUNDATION.md" target="_blank" rel="noopener noreferrer">Numbers in Softanza — a global rethink<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> <span class="mono">4 mentions</span><span class="abs">A library-wide rethink of numbers, phases 0 to 7 complete, superseding the number-engine plan with five pillars: visible exactness, a numeric frame named at the call site, engine-resident arrays, Zig SIMD kernels, and one authority per algorithm.</span></li></ul></div>
     <nav class="jump" aria-label="Jump to"><p><b>Jump to</b> <a href="#addscalar">A</a> <a href="#copy">C</a> <a href="#dot">D</a> <a href="#free">F</a> <a href="#handle">H</a> <a href="#init">I</a> <a href="#multiplybuffer">M</a> <a href="#numberofitems">N</a> <a href="#resize">R</a> <a href="#setitem">S</a> <a href="#tolist">T</a> <a href="#variancesample">V</a></p></nav>
     <p class="proof">Under each method, its extensions (Q CS XT Z ZZ IB W U): bold and ticked, it exists; struck, it does not. <a href="../reference.html#extensions">The extensions and what they mean</a></p>

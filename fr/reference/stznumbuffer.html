@@ -42,7 +42,29 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/number/stzNumBuffer.ring" target="_blank" rel="noopener noreferrer">la source: base/number/stzNumBuffer.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/numeric.html">La référence du domaine : Numérique et optimisation</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Un million de nombres tenus par le moteur et non par le langage : un tampon qui reste résident d&#x27;un appel à l&#x27;autre, si bien que le coût de la traversée entre les deux est payé une fois et que chaque opération après elle est un passage sur la mémoire.</p><div class="sample"><pre class="rx">oBuf = StzNumBufferQ([ 2, 4, 6, 8 ])
+
+? oBuf.Size()
+#--&gt; 4
+
+? oBuf.Sum()
+#--&gt; 20
+
+? oBuf.Mean()
+#--&gt; 5
+
+# a copy moves, and the original does not
+oCopy = oBuf.Copy()
+oCopy.Scale(100)
+
+? @@( oCopy.ToList() )
+#--&gt; [ 200, 400, 600, 800 ]
+
+? @@( oBuf.ToList() )
+#--&gt; [ 2, 4, 6, 8 ]
+
+oBuf.Free()
+oCopy.Free()</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div><p>Une réduction revient comme un seul nombre ; l&#x27;arithmétique agit sur le tampon lui-même, mise à l&#x27;échelle, ajout d&#x27;un scalaire, ajout ou produit d&#x27;un autre tampon, sans traversée par élément ; une liste n&#x27;est matérialisée que lorsqu&#x27;une personne veut regarder, en une traversée. Une lecture au-delà de la fin est refusée et non devinée, et l&#x27;indice commence à 1 comme tous les autres.</p><p>Le langage n&#x27;a pas de destructeurs, si bien qu&#x27;un grand tampon se libère par un appel, ce qui est la charge honnête de la conception. Les sommes sont compensées comme celles des autres classes numériques. Il sert toute liste de nombres trop grande pour une boucle sur ses éléments : signaux, mesures, caractéristiques, et c&#x27;est à lui que <code>stzListOfNumbers</code> confie ses nombres quand un million d&#x27;entre eux doivent être travaillés.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/numeric.html">Le récit de son domaine : Numérique et optimisation</a> · <a href="../guide/numeric.html">La référence de son domaine</a></p><h3>Documents de conception qui la nomment <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/design/SOFTANZA_NUMERIC_FOUNDATION.md" target="_blank" rel="noopener noreferrer">Numbers in Softanza — a global rethink<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">4 mentions</span><span class="abs">Une refonte des nombres pour toute la bibliothèque, phases 0 à 7 terminées, qui remplace le plan du moteur numérique par cinq piliers : exactitude visible, cadre numérique nommé à l&#x27;appel, tableaux résidents dans le moteur, noyaux SIMD en Zig, et une seule autorité par algorithme.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#addscalar">A</a> <a href="#copy">C</a> <a href="#dot">D</a> <a href="#free">F</a> <a href="#handle">H</a> <a href="#init">I</a> <a href="#multiplybuffer">M</a> <a href="#numberofitems">N</a> <a href="#resize">R</a> <a href="#setitem">S</a> <a href="#tolist">T</a> <a href="#variancesample">V</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

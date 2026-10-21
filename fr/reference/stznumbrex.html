@@ -42,7 +42,23 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/regex/stzNumbrex.ring" target="_blank" rel="noopener noreferrer">la source: base/regex/stzNumbrex.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/regex.html">La référence du domaine : Recherche de motifs</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Un motif pour les nombres, entre accolades : au lieu d&#x27;écrire la boucle qui teste si un nombre est premier, multiple de cinq ou de quatre chiffres, on le dit, et la bibliothèque le teste.</p><div class="sample"><pre class="rx">o1 = new stzNumbrex(&quot;{@Relation(Mod:5=0)}&quot;)
+
+# a multiple of 5
+? o1.Match(10)
+#--&gt; TRUE
+
+? o1.Match(13)
+#--&gt; FALSE
+
+o2 = new stzNumbrex(&quot;{@Digit4}&quot;)
+
+# four digits
+? o2.Match(1234)
+#--&gt; TRUE
+
+? o2.Match(123)
+#--&gt; FALSE</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div><p>Un motif nomme une propriété, premier, parfait, de Fibonacci, carré, palindrome, abondant, triangulaire ou cube ; une relation, comme un reste ; les chiffres, combien et lesquels ; les facteurs ; les diviseurs ; et les motifs se combinent par et, ou et non. Les parties qui ont correspondu peuvent être extraites, si bien qu&#x27;un motif est une façon de décomposer un nombre autant que de le tester.</p><p>Il appartient à la famille née de l&#x27;expression régulière : la même idée, un motif qui dit ce que l&#x27;on veut, appliquée aux nombres, comme ses parentes l&#x27;appliquent aux listes, aux tables, aux matrices, aux graphes et aux chronologies.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/regex.html">Le récit de son domaine : Recherche de motifs</a> · <a href="../guide/regex.html">La référence de son domaine</a></p><h3>Narrations qui en parlent <span class="mono">(2)</span></h3><ul class="narr arts"><li><a href="../narrations/stznumbex-number-patterns-made-simple.html">stzNumbrex: A Pattern Language for Numbers</a> <span class="mono">2025</span><span class="abs">Validating numbers can be a chore. Take RGB colors—three integers from 0 to 255. Usually, you&#x27;d write lots of code: check the list length, loop through each number, confirm it’s an integer, not negative, and not over 255.</span></li><li><a href="../narrations/stznumbrex-pattern-language-for-number.html">stzNumbrex: A Pattern Language for Numbers in Softanza</a> <span class="mono">2025</span><span class="abs">Numbers aren’t just quantities — they embody structure, logic, and identity. A number like 42 is not merely a scalar: it’s even, composite, divisible by 3 and 7, and composed of digits [4, 2].</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#checkproperty">C</a> <a href="#digits">D</a> <a href="#extractparts">E</a> <a href="#factors">F</a> <a href="#getproperdivisors">G</a> <a href="#init">I</a> <a href="#match">M</a> <a href="#normalizepattern">N</a> <a href="#parsepattern">P</a> <a href="#splitbyoperator">S</a> <a href="#tokens">T</a> <a href="#value">V</a></p><p><b>Sections</b> <a href="#checkproperty">property checking</a> · <a href="#matchedparts">query methods</a> · <a href="#matchingnumberafter">advanced query methods</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>

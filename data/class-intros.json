@@ -977,5 +977,149 @@
    "Avant lui, chaque partie lisait sa propre copie figée du modèle, et une commande créée sur un téléphone n'arrivait jamais au tableau de bord. Le serveur matérialise chaque jeu de données du modèle en vraie table SQLite, garnie des lignes du modèle, et expose chacune pour créer, lire, modifier et supprimer. SQLite est le substrat parce que sa connexion est un descripteur du moteur, si bien qu'un enveloppeur copié adresse toujours les mêmes données : un état partagé gardé dans les attributs du langage lui-même se fragmente en copies privées.",
    "Il tourne sur la boucle locale par défaut, et en sortir exige une clé de signature, posée des deux côtés, parce que sur une vraie interface les appelants sont quiconque peut atteindre le port. Il peut tourner dans un processus à part, ou être atteint là où il tourne déjà ; le secret voyage dans l'environnement et jamais sur une ligne de commande, que tout le monde peut lire. Il sert une solution répétée sur une machine et livrée sur plusieurs."
   ]
+ },
+ "stzOptimModel": {
+  "en": [
+   "An optimisation problem written as a model: variables with their bounds, an objective to maximise or minimise, constraints, and an answer that says whether it is optimal, infeasible or unbounded.",
+   "@plan",
+   "Variables are declared with a lower bound, an upper bound or none, and an integer marker; the objective and the constraints are written as sentences of arithmetic. The engine solves the model, and when it is asked to choose it picks the method itself; the answer carries what it needed, the nodes explored and the iterations.",
+   "A problem with no answer says so. Asked for more than the bounds allow, the model reports that it is infeasible, and not a number.",
+   "@infeasible",
+   "The model has a comparable form, an abstract syntax tree, so that two ways of writing the same problem can be checked for agreeing on the mathematics and not only on the answer, because two different wrong models can produce the same number. It reads back as a sentence for a narration, and it can say why it answered what it did. It serves production plans, mixes, schedules, and every problem of the shape \"the most of this, within those limits\"."
+  ],
+  "fr": [
+   "Un problème d'optimisation écrit comme un modèle : des variables avec leurs bornes, un objectif à maximiser ou minimiser, des contraintes, et une réponse qui dit si elle est optimale, infaisable ou non bornée.",
+   "@plan",
+   "Les variables se déclarent avec une borne inférieure, une borne supérieure ou aucune, et un marqueur d'entier ; l'objectif et les contraintes s'écrivent comme des phrases d'arithmétique. Le moteur résout le modèle, et quand on lui demande de choisir il prend la méthode lui-même ; la réponse porte ce qu'il lui a fallu, les nœuds explorés et les itérations.",
+   "Un problème sans réponse le dit. À qui demande plus que les bornes ne permettent, le modèle répond qu'il est infaisable, et non un nombre.",
+   "@infeasible",
+   "Le modèle a une forme comparable, un arbre de syntaxe abstraite, si bien que deux façons d'écrire le même problème peuvent être vérifiées sur l'accord des mathématiques et non seulement des réponses, parce que deux modèles faux et différents peuvent donner le même nombre. Il se relit comme une phrase pour une narration, et il peut dire pourquoi il a répondu ce qu'il a répondu. Il sert les plans de production, les mélanges, les horaires, et tout problème de la forme « le plus possible de ceci, dans ces limites »."
+  ]
+ },
+ "stzNumBuffer": {
+  "en": [
+   "A million numbers held by the engine and not by the language: a buffer that stays resident across calls, so that the cost of crossing between the two is paid once and every operation after it is a pass over memory.",
+   "@buffer",
+   "A reduction comes back as one number; arithmetic acts on the buffer itself, scaling, adding a scalar, adding or multiplying another buffer, with no crossing per item; a list is materialised only when a person wants to look, in one crossing. A read past the end is refused and not guessed, and the index starts at 1 like every other.",
+   "The language has no destructors, so a large buffer is freed by a call, which is the honest burden of the design. Sums are compensated like those of the other numeric classes. It serves any list of numbers too large for a loop over its items: signals, measurements, features, and it is what `stzListOfNumbers` hands its numbers to when a million of them must be worked on."
+  ],
+  "fr": [
+   "Un million de nombres tenus par le moteur et non par le langage : un tampon qui reste résident d'un appel à l'autre, si bien que le coût de la traversée entre les deux est payé une fois et que chaque opération après elle est un passage sur la mémoire.",
+   "@buffer",
+   "Une réduction revient comme un seul nombre ; l'arithmétique agit sur le tampon lui-même, mise à l'échelle, ajout d'un scalaire, ajout ou produit d'un autre tampon, sans traversée par élément ; une liste n'est matérialisée que lorsqu'une personne veut regarder, en une traversée. Une lecture au-delà de la fin est refusée et non devinée, et l'indice commence à 1 comme tous les autres.",
+   "Le langage n'a pas de destructeurs, si bien qu'un grand tampon se libère par un appel, ce qui est la charge honnête de la conception. Les sommes sont compensées comme celles des autres classes numériques. Il sert toute liste de nombres trop grande pour une boucle sur ses éléments : signaux, mesures, caractéristiques, et c'est à lui que `stzListOfNumbers` confie ses nombres quand un million d'entre eux doivent être travaillés."
+  ]
+ },
+ "stzRuleReport": {
+  "en": [
+   "One gate for every rule of the library: each graph checks itself and hands its findings to a single report, in a single shape, whatever domain they came from.",
+   "@gate",
+   "A finding says which rule, about which subject, where, how severe and in what words. The report collects them from code rules, agent graphs, security reachability, organisation charts, service registries and diagram models; it counts the errors and the warnings, names the subjects that produced any, and says whether the whole is sound. Older checkers whose findings had other shapes are ingested under a subject and normalised.",
+   "Each graph owns its rules and the report only reads them, which is what lets one gate in the build judge eleven domains. It serves the build that must fail on a security hole and on an organisation chart with a loop alike."
+  ],
+  "fr": [
+   "Une seule porte pour toutes les règles de la bibliothèque : chaque graphe se vérifie lui-même et remet ses constats à un seul rapport, sous une seule forme, quel que soit le domaine d'où ils viennent.",
+   "@gate",
+   "Un constat dit quelle règle, à propos de quel sujet, où, avec quelle gravité et en quels mots. Le rapport les recueille des règles de code, des graphes d'agents, de l'atteignabilité en sécurité, des organigrammes, des registres de services et des modèles de diagrammes ; il compte les erreurs et les avertissements, nomme les sujets qui en ont produit, et dit si l'ensemble est sain. Les anciens vérificateurs dont les constats avaient d'autres formes sont versés sous un sujet et normalisés.",
+   "Chaque graphe possède ses règles et le rapport ne fait que les lire, ce qui permet à une seule porte de la compilation de juger onze domaines. Il sert la compilation qui doit échouer aussi bien sur une faille de sécurité que sur un organigramme à boucle."
+  ]
+ },
+ "stzDuration": {
+  "en": [
+   "A length of time that reads as people say it: two hours and thirty minutes, a day, three hours and forty-five minutes, or a number of seconds that a clock shows as 1:01:05.",
+   "@forms",
+   "It is built from seconds, from a sentence, or from named parts, down to the millisecond, and it gives back any unit: total seconds, minutes, hours or days, its components, a human sentence that rounds as people do, a compact form, or any format you name. It compares and does arithmetic in the same words: longer than, between, add, subtract, multiply, divide.",
+   "It is the answer of `stzDateTime` and `stzTime` when asked how far apart two moments are, and the unit that timelines and calendars add up."
+  ],
+  "fr": [
+   "Une durée qui se lit comme les gens la disent : deux heures et trente minutes, un jour, trois heures et quarante-cinq minutes, ou un nombre de secondes qu'une horloge montre comme 1:01:05.",
+   "@forms",
+   "Elle se construit depuis des secondes, depuis une phrase, ou depuis des parties nommées, jusqu'à la milliseconde, et elle rend n'importe quelle unité : secondes, minutes, heures ou jours au total, ses composantes, une phrase humaine qui arrondit comme les gens, une forme compacte, ou tout format que l'on nomme. Elle se compare et se calcule dans les mêmes mots : plus longue que, entre, ajouter, soustraire, multiplier, diviser.",
+   "C'est la réponse de `stzDateTime` et `stzTime` quand on leur demande la distance entre deux instants, et l'unité que les chronologies et les calendriers additionnent."
+  ]
+ },
+ "stzComplex": {
+  "en": [
+   "A number with an imaginary part: 3+4i prints as itself, shows only the imaginary part when the real one is zero, and only the real part when the imaginary one is.",
+   "@plane",
+   "It answers the questions of the plane: the distance from the origin, the angle from the real axis, the conjugate. The verbs keep the library's grammar: an active verb changes the number, the passive form returns the parts as data and leaves the number alone, and the Q form returns a new chainable number.",
+   "The modulus is computed through the hypotenuse and the division by Smith's formula, so that parts above ten to the hundred and fifty-fourth, which overflow the textbook formulas, still give the answer that was asked. It serves signals, geometry on the plane, and a lesson on numbers that are more than points on a line."
+  ],
+  "fr": [
+   "Un nombre avec une partie imaginaire : 3+4i s'écrit comme lui-même, ne montre que la partie imaginaire quand la réelle est nulle, et que la partie réelle quand l'imaginaire l'est.",
+   "@plane",
+   "Il répond aux questions du plan : la distance à l'origine, l'angle depuis l'axe réel, le conjugué. Les verbes gardent la grammaire de la bibliothèque : un verbe actif change le nombre, la forme passive rend les parties comme donnée et laisse le nombre intact, et la forme Q rend un nombre neuf chaînable.",
+   "Le module se calcule par l'hypoténuse et la division par la formule de Smith, si bien que des parties au-dessus de dix puissance cent cinquante-quatre, qui font déborder les formules de manuel, donnent encore la réponse demandée. Il sert les signaux, la géométrie du plan, et une leçon sur des nombres qui sont plus que des points sur une droite."
+  ]
+ },
+ "stzSimilarity": {
+  "en": [
+   "How alike two lists of numbers are, and how far apart: the dot product, the cosine, the Euclidean and the Manhattan distances, on vectors of any length, and the unit vector of a direction.",
+   "@vectors",
+   "Each measure answers a different question. The dot product weighs two vectors against each other; the cosine, between minus one and one, ignores their lengths and asks only whether they point the same way, which is what a comparison of embeddings wants; the Euclidean distance is the straight line, the Manhattan distance the walk along the grid. Forms for three dimensions exist for the common case.",
+   "It is the arithmetic under similarity search: the nearest neighbours of a vector, the grouping of a corpus, the comparison of one sentence with another. It serves anything that has been turned into a list of numbers and must be compared."
+  ],
+  "fr": [
+   "À quel point deux listes de nombres se ressemblent, et à quelle distance elles sont : le produit scalaire, le cosinus, les distances euclidienne et de Manhattan, sur des vecteurs de toute longueur, et le vecteur unité d'une direction.",
+   "@vectors",
+   "Chaque mesure répond à une question différente. Le produit scalaire pèse deux vecteurs l'un contre l'autre ; le cosinus, entre moins un et un, ignore leurs longueurs et demande seulement s'ils pointent dans le même sens, ce que veut une comparaison de plongements ; la distance euclidienne est la ligne droite, celle de Manhattan la marche le long de la grille. Des formes pour trois dimensions existent pour le cas courant.",
+   "C'est l'arithmétique sous la recherche par similarité : les plus proches voisins d'un vecteur, le regroupement d'un corpus, la comparaison d'une phrase avec une autre. Il sert tout ce qui a été changé en liste de nombres et doit être comparé."
+  ]
+ },
+ "stzTukeySummary": {
+  "en": [
+   "A column of numbers summarised the way John Tukey did, so that one wild value cannot sway the summary: the median, the two fourths, the distance between them, the fences beyond which a value is an outlier.",
+   "@fences",
+   "It states which convention it uses, Tukey's fourths or percentile quartiles, because they differ and a summary that does not say which is half a summary; the convention is a setting, and the summary says in words what was used. Beyond the fences lie the outside values, and beyond the far-out fences the far-out ones; the letter values extend the ladder outward from the median.",
+   "Robust measures sit beside them, the trimean, the median absolute deviation, a biweight, skewness and tail weight, and a diagnosis of the shape. It serves the first look at a column before any model, and the choice of a statistic that survives its own outliers."
+  ],
+  "fr": [
+   "Une colonne de nombres résumée comme John Tukey le faisait, pour qu'une valeur sauvage ne puisse pas entraîner le résumé : la médiane, les deux quarts, la distance entre eux, les barrières au-delà desquelles une valeur est aberrante.",
+   "@fences",
+   "Il dit quelle convention il emploie, les quarts de Tukey ou les quartiles par centiles, parce qu'ils diffèrent et qu'un résumé qui ne dit pas lesquels n'est qu'à moitié un résumé ; la convention est un réglage, et le résumé dit en mots ce qui a été employé. Au-delà des barrières se trouvent les valeurs extérieures, et au-delà des barrières lointaines les valeurs lointaines ; les valeurs-lettres prolongent l'échelle vers l'extérieur depuis la médiane.",
+   "Des mesures robustes les accompagnent, la trimoyenne, l'écart absolu médian, un biweight, l'asymétrie et le poids des queues, et un diagnostic de la forme. Il sert au premier regard sur une colonne avant tout modèle, et au choix d'une statistique qui survit à ses propres valeurs aberrantes."
+  ]
+ },
+ "stzSelfDoc": {
+  "en": [
+   "A class that can be asked about itself: what methods it has, which ancestor defines each, what the source says about one, and, in words, which method does what you mean.",
+   "@howto",
+   "The knowledge is already in the source, so no language model is involved. A request in words is composed into a method name by the naming grammar of the library, and the answer says that it was composed and not found; asking for a method that does not exist is refused instead of being invented. A method can be explained from the comment above it, a class can be asked a question, and the best method for an intent can be chosen.",
+   "This is the self-documentation from which the reference of this site is harvested, and against which the how-to recipes were checked. It serves a programmer who does not know the name, and an agent that must not guess one."
+  ],
+  "fr": [
+   "Une classe à qui l'on peut poser des questions sur elle-même : quelles méthodes elle a, quel ancêtre définit chacune, ce que dit la source de l'une d'elles, et, en mots, quelle méthode fait ce que l'on veut dire.",
+   "@howto",
+   "Le savoir est déjà dans la source, si bien qu'aucun modèle de langage n'est en jeu. Une demande en mots est composée en nom de méthode par la grammaire des noms de la bibliothèque, et la réponse dit qu'il a été composé et non trouvé ; demander une méthode qui n'existe pas est refusé au lieu d'être inventé. Une méthode peut être expliquée depuis le commentaire qui la précède, une classe peut recevoir une question, et la meilleure méthode pour une intention peut être choisie.",
+   "C'est l'auto-documentation dont la référence de ce site est récoltée, et contre laquelle les recettes pratiques ont été vérifiées. Elle sert le programmeur qui ne connaît pas le nom, et l'agent qui ne doit pas en deviner un."
+  ]
+ },
+ "stzNumbrex": {
+  "en": [
+   "A pattern for numbers, in braces: instead of writing the loop that tests whether a number is prime, a multiple of five or four digits long, you say it, and the library tests it.",
+   "@numbers",
+   "A pattern names a property, prime, perfect, Fibonacci, square, palindromic, abundant, triangular or cube; a relation, such as a remainder; the digits, how many and which; the factors; the divisors; and patterns combine with and, or and not. The parts that matched can be extracted, so a pattern is a way to pull a number apart as well as to test it.",
+   "It belongs to the family that began with the regular expression: the same idea, a pattern that says what you mean, applied to numbers, as its relatives apply it to lists, tables, matrices, graphs and timelines."
+  ],
+  "fr": [
+   "Un motif pour les nombres, entre accolades : au lieu d'écrire la boucle qui teste si un nombre est premier, multiple de cinq ou de quatre chiffres, on le dit, et la bibliothèque le teste.",
+   "@numbers",
+   "Un motif nomme une propriété, premier, parfait, de Fibonacci, carré, palindrome, abondant, triangulaire ou cube ; une relation, comme un reste ; les chiffres, combien et lesquels ; les facteurs ; les diviseurs ; et les motifs se combinent par et, ou et non. Les parties qui ont correspondu peuvent être extraites, si bien qu'un motif est une façon de décomposer un nombre autant que de le tester.",
+   "Il appartient à la famille née de l'expression régulière : la même idée, un motif qui dit ce que l'on veut, appliquée aux nombres, comme ses parentes l'appliquent aux listes, aux tables, aux matrices, aux graphes et aux chronologies."
+  ]
+ },
+ "stzSecurityGraph": {
+  "en": [
+   "The security of a solution drawn as a graph: actors, tools, secrets, stores, sites and capabilities, with the edges that say who holds what, who may act as whom, and what a tool confers.",
+   "@warning",
+   "Questions become paths. Can this actor reach anything effectful, through a chain of tools and delegations? What is the blast radius of this secret? Where is the shortest path that confers a capability, and which cut closes it? A flag check sees one hop; reachability sees them all. Actors carry a posture, trusted, external or sandboxed, and an actor whose posture no longer matches the one recorded is reported as tampered with.",
+   "The graph checks itself, with rules of its own: a secret kept in no store is a warning, a way to an effect with no gate is an error, and the findings join the library's single report. It serves the audit of an agent system and of a deployment, before a review, as a drawing that can fail a build."
+  ],
+  "fr": [
+   "La sécurité d'une solution dessinée comme un graphe : acteurs, outils, secrets, magasins, sites et capacités, avec les arêtes qui disent qui détient quoi, qui peut agir comme qui, et ce qu'un outil confère.",
+   "@warning",
+   "Les questions deviennent des chemins. Cet acteur peut-il atteindre quoi que ce soit d'effectif, par une chaîne d'outils et de délégations ? Quel est le rayon d'explosion de ce secret ? Où est le plus court chemin qui confère une capacité, et quelle coupure le ferme ? Un test de drapeau voit un saut ; l'atteignabilité les voit tous. Les acteurs portent une posture, de confiance, externe ou en bac à sable, et un acteur dont la posture ne correspond plus à celle enregistrée est signalé comme altéré.",
+   "Le graphe se vérifie lui-même, avec ses propres règles : un secret gardé dans aucun magasin est un avertissement, un chemin vers un effet sans porte est une erreur, et les constats rejoignent le rapport unique de la bibliothèque. Il sert l'audit d'un système d'agents et d'un déploiement, avant une revue, comme un dessin qui peut faire échouer une compilation."
+  ]
  }
 }

@@ -42,7 +42,21 @@
     <p class="proof"><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/number/stzComplex.ring" target="_blank" rel="noopener noreferrer">la source: base/number/stzComplex.ring<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="../reference.html">Toutes les classes</a> · <a href="../guide/numeric.html">La référence du domaine : Numérique et optimisation</a></p>
   </div></section>
   <div class="wrap page-body">
-    
+    <div class="essay"><p>Un nombre avec une partie imaginaire : 3+4i s&#x27;écrit comme lui-même, ne montre que la partie imaginaire quand la réelle est nulle, et que la partie réelle quand l&#x27;imaginaire l&#x27;est.</p><div class="sample"><pre class="rx">oZ = new stzComplex(3, 4)
+
+? oZ.Content()
+#--&gt; 3+4i
+
+# the distance from the origin
+? oZ.Modulus()
+#--&gt; 5
+
+# the conjugate, with the original untouched
+? @@( oZ.Conjugated() )
+#--&gt; [ 3, -4 ]
+
+? oZ.Content()
+#--&gt; 3+4i</pre><span class="rx-src">exécuté dans la bibliothèque le 2026-10-21</span></div><p>Il répond aux questions du plan : la distance à l&#x27;origine, l&#x27;angle depuis l&#x27;axe réel, le conjugué. Les verbes gardent la grammaire de la bibliothèque : un verbe actif change le nombre, la forme passive rend les parties comme donnée et laisse le nombre intact, et la forme Q rend un nombre neuf chaînable.</p><p>Le module se calcule par l&#x27;hypoténuse et la division par la formule de Smith, si bien que des parties au-dessus de dix puissance cent cinquante-quatre, qui font déborder les formules de manuel, donnent encore la réponse demandée. Il sert les signaux, la géométrie du plan, et une leçon sur des nombres qui sont plus que des points sur une droite.</p></div>
     <div class="treasures"><h2>Ce que la bibliothèque a écrit sur cette classe</h2><p class="proof"><a href="../atlas/numeric.html">Le récit de son domaine : Numérique et optimisation</a> · <a href="../guide/numeric.html">La référence de son domaine</a></p><h3>Documents de conception qui la nomment <span class="mono">(1)</span></h3><ul class="narr arts"><li><a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/math/SOFTANZA_MATH_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA MATH PLAN -- the map, the contracts, the phases<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> <span class="mono">4 mentions</span><span class="abs">Plan compagnon de la charte mathématique, présenté comme brouillon M0, cartographiant l&#x27;existant avec numéros de ligne, listant les contrats consommés et consignant les phases M1 à M6 (figures, mouvement, un cours, le niveau Tukey, approfondissement du cœur, un pont vers Lean) avec leurs résultats livrés.</span></li></ul></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#argument">A</a> <a href="#content">C</a> <a href="#dividedby">D</a> <a href="#equals">E</a> <a href="#init">I</a> <a href="#modulus">M</a> <a href="#negate">N</a> <a href="#parts">P</a> <a href="#realpart">R</a> <a href="#times">T</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>
