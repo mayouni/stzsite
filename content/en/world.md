@@ -2,7 +2,7 @@
 title: The world
 title_html: The <i>world</i>
 kicker: What an application is made of
-lede: Softanza models a thing by asking what it essentially is. An application, stripped of its plumbing, is a living world of meaning: made of a domain, a life and a body, and met from outside by being seen, engaged, tuned and reached.
+lede: In Softanza, a world is the description of an application: what exists in it, what it does and where it is kept. A world has three parts: a domain (the things and what is true of them), a life (how it reacts and what it aims for) and a body (where it is stored). It is met from outside in four ways: it is seen, engaged, tuned and reached.
 description: The world as the Softanza construct of an application: the domain, the life with its reactions and its goals, the body, and the four ways it is met, each with its stage.
 ---
 

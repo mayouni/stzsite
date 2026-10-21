@@ -2,7 +2,7 @@
 title: Par l'exemple
 title_html: Par <i>l'exemple</i>
 kicker: Un paradigme
-lede: Montrez-le. La bibliothèque le trouve, le prouve, et garde votre exemple comme test.
+lede: La programmation par l'exemple consiste à montrer un exemple à la bibliothèque et à demander ce qui le produit. Softanza la décrit à trois niveaux, et cette page dit jusqu'où chacun est arrivé. La bibliothèque garde déjà un exemple comme test : un appel écrit avec sa réponse, comparée à ce qui s'imprime réellement.
 description: La programmation par l'exemple dans Softanza, à trois niveaux avec une étape honnête à chacun : trouver une méthode à partir d'un exemple, induire un motif à partir d'exemples, et synthétiser une chaîne de verbes, sans que rien n'induise encore.
 ---
 

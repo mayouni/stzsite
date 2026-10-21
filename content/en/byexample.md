@@ -2,7 +2,7 @@
 title: By example
 title_html: By <i>example</i>
 kicker: A paradigm
-lede: Show it. The library finds it, proves it, and keeps your example as the test.
+lede: Programming by example means showing the library an example and asking what produces it. Softanza describes it at three levels, and this page says how far each has come. The library already keeps an example as a test: a call written with its answer, compared with what really prints.
 description: Programming by example in Softanza, at three levels with an honest stage at each: finding a method from an example, inducing a pattern from examples, and synthesising a chain of verbs, with nothing inducing yet.
 ---
 

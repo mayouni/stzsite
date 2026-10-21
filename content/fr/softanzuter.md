@@ -2,7 +2,7 @@
 title: Le Softanzuter
 title_html: Le <i>Softanzuter</i>
 kicker: Un paradigme
-lede: Pas de l'informatique réactive sur une machine abstraite. Une façon de programmer de façon déclarative des disciplines complexes : des motifs liés à du code, des facultés qui partagent un état, et un esprit construit dessus.
+lede: Le Softanzuter est le paradigme de Softanza pour programmer de façon déclarative des disciplines complexes : on lie des motifs à du code, plusieurs facultés partagent un état, et un agent est construit dessus. Cette page donne la définition, une échelle de quatre échelons du motif à l'agent, et l'étape de chaque échelon. Ce n'est pas de la programmation réactive sur une machine abstraite.
 description: Le paradigme du Softanzuter : une définition, une échelle de quatre échelons du motif à l'agent, deux moteurs qui tournent, un moteur universel prévu et les frères qui restent une vision, chacun avec son étape.
 ---
 

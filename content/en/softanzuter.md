@@ -2,7 +2,7 @@
 title: The Softanzuter
 title_html: The <i>Softanzuter</i>
 kicker: A paradigm
-lede: Not reactive computing on an abstract machine. A way of programming complex disciplines declaratively: patterns bound to code, faculties that share one state, and a mind built on them.
+lede: The Softanzuter is Softanza's paradigm for programming complex disciplines declaratively: you bind patterns to code, several faculties share one state, and an agent is built on them. This page gives the definition, a ladder of four rungs from the pattern to the agent, and the stage of each rung. It is not reactive programming on an abstract machine.
 description: The Softanzuter paradigm: a definition, a ladder of four rungs from the pattern to the agent, two engines that run, a planned universal engine and the siblings that remain vision, each with its stage.
 ---
 

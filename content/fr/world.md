@@ -2,7 +2,7 @@
 title: Le monde
 title_html: Le <i>monde</i>
 kicker: De quoi une application est faite
-lede: Softanza modélise une chose en demandant ce qu'elle est essentiellement. Une application, dépouillée de sa plomberie, est un monde vivant de sens : fait d'un domaine, d'une vie et d'un corps, et rencontré de l'extérieur en étant vu, engagé, accordé et atteint.
+lede: Dans Softanza, un monde est la description d'une application : ce qui existe en elle, ce qu'elle fait et où elle est conservée. Un monde a trois parties : un domaine (les choses et ce qui est vrai d'elles), une vie (comment il réagit et ce qu'il vise) et un corps (où il est stocké). On le rencontre de l'extérieur de quatre façons : il est vu, engagé, accordé et atteint.
 description: Le monde comme construction Softanza d'une application : le domaine, la vie avec ses réactions et ses buts, le corps, et les quatre façons dont il est rencontré, chacune avec son étape.
 ---
 
