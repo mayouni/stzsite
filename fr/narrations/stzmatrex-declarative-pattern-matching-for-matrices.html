@@ -53,7 +53,7 @@ Instead of writing conditional checks or nested loops, you can now express a mat
     [2, 4, 5],
     [3, 5, 6]
 ])
-#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; TRUE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>In one expression, you’ve defined a concept — “a square symmetric matrix” — and tested it instantly.
 Let’s explore how this pattern engine turns matrix semantics into readable, declarative logic.</p>
 <hr />
@@ -69,7 +69,7 @@ aMatrix = [
 ]
 
 ? oMx.Match(aMatrix)
-#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; TRUE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>If we test a wrong size, the match fails:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oMx = new stzMatrex(&quot;{size(2x2)}&quot;)
 
@@ -80,7 +80,7 @@ aMatrix = [
 ]
 
 ? oMx.Match(aMatrix)
-#--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; FALSE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>When you need a generic matcher for any dimension, the notation <code>mxn</code> works elegantly:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oMx = new stzMatrex(&quot;{size(mxn)}&quot;)
 
@@ -93,7 +93,7 @@ aMatrix3 = [[1,2,3,4]]
 ? oMx.Match(aMatrix2)
 #--&gt; TRUE
 ? oMx.Match(aMatrix3)
-#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; TRUE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>These size patterns provide the foundation for structural reasoning in numerical workflows.</p>
 <h2 id="2-recognizing-matrix-shape">2. Recognizing Matrix Shape</h2>
 <p>Shape patterns let you distinguish between geometric configurations — square, rectangular, tall, wide, or vector-like.</p>
@@ -105,7 +105,7 @@ aRect = [[1, 2, 3], [4, 5, 6]]
 ? oMx.Match(aSquare)
 #--&gt; TRUE
 ? oMx.Match(aRect)
-#--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; FALSE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>The same idea extends naturally to other shapes:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oMxTall = new stzMatrex(&quot;{shape(tall)}&quot;)
 oMxWide = new stzMatrex(&quot;{shape(wide)}&quot;)
@@ -116,7 +116,7 @@ aWide = [[1, 2, 3, 4]]
 ? oMxTall.Match(aTall)
 #--&gt; TRUE
 ? oMxWide.Match(aWide)
-#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; TRUE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>For directional structures, you can match row and column vectors explicitly:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oMxRow = new stzMatrex(&quot;{shape(row)}&quot;)
 oMxCol = new stzMatrex(&quot;{shape(column)}&quot;)
@@ -127,7 +127,7 @@ aCol = [[1],[2],[3]]
 ? oMxRow.Match(aRow)
 #--&gt; TRUE
 ? oMxCol.Match(aCol)
-#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; TRUE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>These shape-based expressions clarify algorithms that depend on the matrix’s orientation.</p>
 <h2 id="3-detecting-matrix-properties">3. Detecting Matrix Properties</h2>
 <p>Beyond shape, <code>stzMatrex</code> can detect <em>mathematical properties</em> directly — such as whether a matrix is identity, diagonal, symmetric, or triangular.</p>
@@ -148,7 +148,7 @@ aNotIdentity = [
 ? oMx.Match(aIdentity)
 #--&gt; TRUE
 ? oMx.Match(aNotIdentity)
-#--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; FALSE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Other intrinsic properties follow the same syntax:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oMx = new stzMatrex(&quot;{property(symmetric)}&quot;)
 
@@ -167,7 +167,7 @@ aAsymmetric = [
 ? oMx.Match(aSymmetric)
 #--&gt; TRUE
 ? oMx.Match(aAsymmetric)
-#--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; FALSE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>The same logic identifies diagonal, upper, lower, and zero matrices, allowing you to encode classification rules directly in patterns.</p>
 <h2 id="4-applying-element-constraints">4. Applying Element Constraints</h2>
 <p>Sometimes the structure is less important than what the matrix contains.
@@ -189,7 +189,7 @@ aOutOfRange = [
 ? oMx.Match(aInRange)
 #--&gt; TRUE
 ? oMx.Match(aOutOfRange)
-#--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; FALSE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>You can also define discrete sets or single-value matrices:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oMx = new stzMatrex(&quot;{element({0;1})}&quot;)
 
@@ -200,7 +200,7 @@ aBinary = [
 ]
 
 ? oMx.Match(aBinary)
-#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; TRUE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>These patterns make it easy to validate numerical domains across large data structures.</p>
 <h2 id="5-combining-logical-conditions">5. Combining Logical Conditions</h2>
 <p>Matrix conditions can combine through logical operators <code>&amp;</code>, <code>|</code>, and <code>@!</code>.
@@ -222,7 +222,7 @@ aSquare = [
 ? oMx.Match(aId)
 #--&gt; TRUE
 ? oMx.Match(aSquare)
-#--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; FALSE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Alternations are equally clear:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oMx = new stzMatrex(&quot;{(size(2x2) | size(3x3)) &amp; property(diagonal)}&quot;)
 
@@ -240,7 +240,7 @@ aDiag3x3 = [
 ? oMx.Match(aDiag2x2)
 #--&gt; TRUE
 ? oMx.Match(aDiag3x3)
-#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; TRUE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>This logical composition is a natural way to describe high-level matrix requirements.</p>
 <h2 id="6-matching-sets-of-matrices">6. Matching Sets of Matrices</h2>
 <p>When working with collections, <code>stzMatrex</code> can search, count, and extract all matching matrices.</p>
@@ -254,7 +254,7 @@ aMatrices = [
 ]
 
 ? oMx.CountMatchingMatrices(:In = aMatrices)
-#--&gt; 2</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; 2</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>To retrieve them:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>? @@NL(oMx.MatchingMatricesIn(aMatrices))
 #--&gt;
@@ -320,7 +320,7 @@ aMatrices = [
 
 aFiltered = oMx.FilterMatrices(aMatrices)
 ? len(aFiltered)
-#--&gt; 2</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; 2</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Filtering based on structural rules reduces preprocessing complexity in multi-matrix computations.</p>
 <h2 id="9-analytical-operations-on-similarity-and-constraints">9. Analytical Operations on Similarity and Constraints</h2>
 <p>Pattern analysis often extends beyond exact matches.
@@ -347,7 +347,7 @@ aCandidates = [
 ]
 
 ? @@(oMx.MostSimilarMatrix(:To = aTarget, :In = aCandidates))
-#--&gt; [[1,2],[3,4]]</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; [[1,2],[3,4]]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>And patterns can evolve interactively:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oMx = new stzMatrex(&quot;{size(3x3)}&quot;)
 
@@ -363,7 +363,7 @@ aMatrix = [
 oMx.AddConstraint(&quot;property(symmetric)&quot;)
 
 ? oMx.Match(aMatrix)
-#--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; FALSE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>This adaptability makes <code>stzMatrex</code> well-suited for progressive data validation and iterative model checking.</p>
 <h2 id="10-debugging-and-pattern-inspection">10. Debugging and Pattern Inspection</h2>
 <p>For deeper insight, <code>stzMatrex</code> offers verbose introspection tools.</p>
@@ -481,7 +481,7 @@ Together, they unify the computational and semantic dimensions of matrix work in
 {element(0..10) &amp; @!property(diagonal)}</pre><p class="ran nv-illus">illustration</p></div>
 <p>you bring the expressive clarity of pattern languages into the numeric world.
 <code>stzMatrex</code> turns structural logic into a readable art — bridging mathematics and meaning in one line of code.</p>
-<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « stzMatrex: Declarative Pattern Matching for Matrices in Softanza ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stzmatrex-declarative-pattern-matching-for-matrices.html</p><p class="proof">Non exécuté : son code ne se charge pas tel qu'il est écrit. L'article est publié tel qu'il est écrit ; ses blocs sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzMatrex-Declarative-Pattern-Matching-for-Matrices.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « stzMatrex: Declarative Pattern Matching for Matrices in Softanza ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stzmatrex-declarative-pattern-matching-for-matrices.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-30 12:20 dans la bibliothèque au commit 0950e246a, bloc après bloc dans un seul processus : 17 bloc(s) sur 24 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzMatrex-Declarative-Pattern-Matching-for-Matrices.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
   </div>
 </main>
 </div>
@@ -490,7 +490,7 @@ Together, they unify the computational and semantic dimensions of matrix work in
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">La plateforme logicielle gouvernée de l&#x27;ère de l&#x27;IA. Déclarez ce que vous savez. Un tribunal le garde. Le modèle d&#x27;IA vient en dernier. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
-    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-21.</p></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-30.</p></div>
   </div>
 </div></footer>
 <script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

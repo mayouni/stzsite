@@ -2,7 +2,7 @@
 title: Pourquoi Softanza quitte Ring
 title_html: Pourquoi Softanza <i>quitte Ring</i>
 kicker: L'histoire, racontée une fois
-lede: Softanza est née sur Ring et le quitte. Cette page dit pourquoi, en trois raisons, et ce qui reste. Elle nomme des décisions et des documents et jamais le caractère d'une personne, et elle commence par dire merci.
+lede: Softanza est née sur Ring et l'a quitté. Cette page dit pourquoi, en trois raisons, et ce qui reste. Elle nomme des décisions et des documents et jamais le caractère d'une personne, et elle commence par dire merci.
 description: Pourquoi Softanza quitte Ring : merci d'abord, puis trois raisons, les limites rencontrées à l'échelle de la production, une direction qu'on n'a pas pu influencer, et la gouvernance comme propriété de conception, et ce qui reste.
 ---
 

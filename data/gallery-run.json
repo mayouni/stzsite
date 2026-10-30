@@ -1,10 +1,11 @@
 {
- "commit": "4a184e6f0",
- "ran": "2026-10-09 04:49",
+ "commit": "0950e246a",
+ "ran": "2026-10-30 11:55",
  "pictures": {
   "connectome": {
+   "note": "strokes 2224, tips 1238, boutons 471",
    "caption": "",
-   "seconds": 32.6,
+   "seconds": 10.0,
    "status": "ran",
    "committed_bytes": 548715,
    "source": "base/test/graphics/connectome.ring",
@@ -19,7 +20,7 @@
   "connectome_real": {
    "note": "SKIPPED, by name: nm_cnic_006.swc not present -- see connectome_DATA.md for the fetch.",
    "caption": "",
-   "seconds": 3.1,
+   "seconds": 0.1,
    "status": "ran",
    "committed_bytes": 418319,
    "source": "base/test/graphics/connectome_real.ring",
@@ -30,8 +31,9 @@
    ]
   },
   "geo_blocs": {
+   "note": "SKIPPED, by name: atlas/countries-110m.json is not present -- see atlas/README.md.",
    "caption": "",
-   "seconds": 3.5,
+   "seconds": 0.1,
    "status": "ran",
    "committed_bytes": 195054,
    "source": "base/test/graphics/geo_blocs.ring",
@@ -42,8 +44,9 @@
    ]
   },
   "geo_field": {
+   "note": "SKIPPED, by name: atlas/admin1_tunisia.geojson is not present -- see atlas/README.md.",
    "caption": "",
-   "seconds": 3.6,
+   "seconds": 0.1,
    "status": "ran",
    "committed_bytes": 106662,
    "source": "base/test/graphics/geo_field.ring",
@@ -54,14 +57,15 @@
    ]
   },
   "geo_flow_gallery": {
+   "note": "-> geo_flow_gallery.png",
    "caption": "",
-   "seconds": 9.4,
+   "seconds": 2.5,
    "status": "ran",
    "committed_bytes": 561272,
    "source": "base/test/graphics/geo_flow_gallery.ring",
    "rendered": true,
-   "bytes": 561272,
-   "identical": true,
+   "bytes": 561345,
+   "identical": false,
    "size": [
     1292,
     1368
@@ -70,7 +74,7 @@
   "geo_france": {
    "note": "SKIPPED, by name: atlas/admin1_france.geojson is not present -- see atlas/README.md.",
    "caption": "",
-   "seconds": 3.3,
+   "seconds": 0.1,
    "status": "ran",
    "committed_bytes": 157064,
    "source": "base/test/graphics/geo_france.ring",
@@ -81,8 +85,9 @@
    ]
   },
   "geo_furniture": {
+   "note": "SKIPPED, by name: atlas/countries-110m.json is not present -- see atlas/README.md.",
    "caption": "",
-   "seconds": 3.9,
+   "seconds": 0.1,
    "status": "ran",
    "committed_bytes": 525429,
    "source": "base/test/graphics/geo_furniture.ring",
@@ -93,8 +98,9 @@
    ]
   },
   "geo_gallery": {
+   "note": "-> geo_gallery.png",
    "caption": "",
-   "seconds": 8.1,
+   "seconds": 2.7,
    "status": "ran",
    "committed_bytes": 526313,
    "source": "base/test/graphics/geo_gallery.ring",
@@ -107,8 +113,9 @@
    ]
   },
   "geo_geodesy": {
+   "note": "SKIPPED, by name: atlas/countries-110m.json is not present -- see atlas/README.md.",
    "caption": "",
-   "seconds": 3.6,
+   "seconds": 0.1,
    "status": "ran",
    "committed_bytes": 175233,
    "source": "base/test/graphics/geo_geodesy.ring",
@@ -119,8 +126,9 @@
    ]
   },
   "geo_inside": {
+   "note": "SKIPPED, by name: atlas/admin1_niger.geojson is not present -- see atlas/README.md.",
    "caption": "",
-   "seconds": 3.5,
+   "seconds": 0.1,
    "status": "ran",
    "committed_bytes": 111836,
    "source": "base/test/graphics/geo_inside.ring",
@@ -131,8 +139,9 @@
    ]
   },
   "geo_interp": {
+   "note": "SKIPPED, by name: atlas/admin1_tunisia.geojson is not present -- see atlas/README.md.",
    "caption": "",
-   "seconds": 3.6,
+   "seconds": 0.1,
    "status": "ran",
    "committed_bytes": 171941,
    "source": "base/test/graphics/geo_interp.ring",
@@ -143,8 +152,9 @@
    ]
   },
   "geo_join": {
+   "note": "SKIPPED, by name: atlas/admin1_tunisia.geojson is not present -- see atlas/README.md.",
    "caption": "",
-   "seconds": 3.6,
+   "seconds": 0.1,
    "status": "ran",
    "committed_bytes": 147282,
    "source": "base/test/graphics/geo_join.ring",
@@ -155,8 +165,9 @@
    ]
   },
   "geo_modes": {
+   "note": "SKIPPED, by name: atlas/admin1_tunisia.geojson is not present -- see atlas/README.md.",
    "caption": "",
-   "seconds": 3.5,
+   "seconds": 0.1,
    "status": "ran",
    "committed_bytes": 117660,
    "source": "base/test/graphics/geo_modes.ring",
@@ -167,8 +178,9 @@
    ]
   },
   "geo_points": {
+   "note": "SKIPPED, by name: atlas/admin1_tunisia.geojson is not present -- see atlas/README.md.",
    "caption": "",
-   "seconds": 3.5,
+   "seconds": 0.1,
    "status": "ran",
    "committed_bytes": 136796,
    "source": "base/test/graphics/geo_points.ring",
@@ -179,8 +191,9 @@
    ]
   },
   "geo_processes": {
+   "note": "-> geo_processes.png",
    "caption": "",
-   "seconds": 6.6,
+   "seconds": 2.6,
    "status": "ran",
    "committed_bytes": 159182,
    "source": "base/test/graphics/geo_processes.ring",
@@ -193,8 +206,9 @@
    ]
   },
   "geo_sheet": {
+   "note": "SKIPPED, by name: atlas/countries-110m.json is not present -- see atlas/README.md.",
    "caption": "",
-   "seconds": 3.8,
+   "seconds": 0.1,
    "status": "ran",
    "committed_bytes": 231454,
    "source": "base/test/graphics/geo_sheet.ring",
@@ -205,8 +219,9 @@
    ]
   },
   "geo_stream_density": {
+   "note": "-> geo_stream_density.png",
    "caption": "",
-   "seconds": 5.6,
+   "seconds": 2.4,
    "status": "ran",
    "committed_bytes": 827641,
    "source": "base/test/graphics/geo_stream_density.ring",
@@ -219,11 +234,15 @@
    ]
   },
   "gg4_framegraph": {
+   "note": "==============================================================",
    "caption": "",
-   "seconds": 4.4,
+   "seconds": 2.4,
    "status": "ran",
    "committed_bytes": 1821,
    "source": "base/test/graphics/gg4_framegraph.ring",
+   "respelt": [
+    "nBad"
+   ],
    "rendered": true,
    "bytes": 379,
    "identical": false,
@@ -235,7 +254,7 @@
   "gg4_oneframe": {
    "note": "==============================================================",
    "caption": "",
-   "seconds": 5.2,
+   "seconds": 1.0,
    "status": "ran",
    "committed_bytes": 277268,
    "source": "base/test/graphics/gg4_oneframe.ring",
@@ -248,11 +267,16 @@
    ]
   },
   "gg5_gallery": {
+   "note": "==============================================================",
    "caption": "",
-   "seconds": 8.7,
+   "seconds": 3.0,
    "status": "ran",
    "committed_bytes": 472024,
    "source": "base/test/graphics/gg5_gallery.ring",
+   "respelt": [
+    "nBad",
+    "nOk"
+   ],
    "rendered": true,
    "bytes": 472024,
    "identical": true,
@@ -262,11 +286,15 @@
    ]
   },
   "gg5_materialgraph": {
+   "note": "==============================================================",
    "caption": "",
-   "seconds": 10.0,
+   "seconds": 1.4,
    "status": "ran",
    "committed_bytes": 212632,
    "source": "base/test/graphics/gg5_materialgraph.ring",
+   "respelt": [
+    "nBad"
+   ],
    "rendered": true,
    "bytes": 193369,
    "identical": false,
@@ -276,11 +304,16 @@
    ]
   },
   "gg_diagram_native": {
+   "note": "==============================================================",
    "caption": "",
-   "seconds": 5.1,
+   "seconds": 2.6,
    "status": "ran",
    "committed_bytes": 8840,
    "source": "base/test/graphics/gg_diagram_native.ring",
+   "respelt": [
+    "nBad",
+    "nOk"
+   ],
    "rendered": true,
    "bytes": 5668,
    "identical": false,
@@ -290,11 +323,16 @@
    ]
   },
   "gg_nodeshapes": {
+   "note": "==============================================================",
    "caption": "",
-   "seconds": 95.9,
+   "seconds": 3.9,
    "status": "ran",
    "committed_bytes": 72899,
    "source": "base/test/graphics/gg_nodeshapes.ring",
+   "respelt": [
+    "nBad",
+    "nOk"
+   ],
    "rendered": true,
    "bytes": 72899,
    "identical": true,
@@ -304,11 +342,16 @@
    ]
   },
   "gg_window_overlay": {
+   "note": "==============================================================",
    "caption": "",
-   "seconds": 4.2,
+   "seconds": 0.7,
    "status": "ran",
    "committed_bytes": 52427,
    "source": "base/test/graphics/gg_window_overlay.ring",
+   "respelt": [
+    "nBad",
+    "nOk"
+   ],
    "rendered": true,
    "bytes": 24573,
    "identical": false,
@@ -320,7 +363,7 @@
   "graph_layout_hierarchical": {
    "note": "==============================================================",
    "caption": "",
-   "seconds": 11.7,
+   "seconds": 3.1,
    "status": "ran",
    "committed_bytes": 401106,
    "source": "base/test/graphics/graph_layout_hierarchical.ring",
@@ -335,7 +378,7 @@
   "niger_density": {
    "note": "In read() in file niger_density.ring",
    "caption": "",
-   "seconds": 4.1,
+   "seconds": 0.1,
    "status": "failed",
    "committed_bytes": 221997,
    "source": "base/test/graphics/niger_density.ring",
@@ -348,7 +391,7 @@
   "showcase_window": {
    "note": "",
    "caption": "",
-   "seconds": 240.1,
+   "seconds": 240.4,
    "status": "timed out",
    "committed_bytes": 18504,
    "source": "base/test/graphics/showcase_window.ring",

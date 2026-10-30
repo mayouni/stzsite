@@ -1,6 +1,6 @@
 {
- "ran": "2026-10-08 20:13",
- "commit": "4a184e6f0",
+ "ran": "2026-10-30 11:09",
+ "commit": "0950e246a",
  "rule": "the name changed and nothing else, plus the declared data pairs; every renamed file audited and run",
  "files": {
   "courses/elementary-introduction/chapters/03-read-the-name-as-a-sentence.ar.md": [

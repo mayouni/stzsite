@@ -2,7 +2,7 @@
 title: Why Softanza leaves Ring
 title_html: Why Softanza <i>leaves Ring</i>
 kicker: The story, told once
-lede: Softanza was born on Ring and is leaving it. This page says why, in three reasons, and what stays. It names decisions and documents and never a person's character, and it says thank you first.
+lede: Softanza was born on Ring and has left it. This page says why, in three reasons, and what stays. It names decisions and documents and never a person's character, and it says thank you first.
 description: Why Softanza leaves Ring: thanks first, then three reasons, the limits met at production scale, a direction that could not be influenced, and governance as a design property, and what stays.
 ---
 

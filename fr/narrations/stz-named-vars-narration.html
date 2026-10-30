@@ -62,7 +62,7 @@ Vr( &#x27;user_&#x27; + 123 ) &#x27;=&#x27; Vl( &quot;Hussein&quot; )
 
 # Access the variable
 ? v( :user_123 )
-#--&gt; Hussein</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:41 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; Hussein</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <h2 id="assigning-values-to-named-variables">Assigning Values to Named Variables</h2>
 <p>Once named variables are created, you can modify their values using either the original Vr/Vl syntax or the more convenient combined syntax.</p>
 <p>Here we show two ways to update an existing named variable - first using the original <code>Vr/Vl</code> pattern, then using the more concise <code>VrVl</code> combined syntax:</p>
@@ -74,13 +74,13 @@ Vr( :user_123 ) &#x27;=&#x27; Vl( &quot;Mansour&quot; )
 # Or using VrVl combined syntax
 VrVl( :user_123 = &quot;Ahmad&quot; )
 ? v(:user_123)
-#--&gt; Ahmad</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:41 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; Ahmad</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <h3 id="getting-variable-name-and-value">Getting Variable Name and Value</h3>
 <p>Beyond simple value retrieval, you often need both the variable name and its value for debugging, logging, or meta-programming purposes.</p>
 <p>The <code>vxt()</code> function returns both the variable name and its value as a list, which is particularly useful for inspection and debugging:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Get both name and value
 ? @@( vxt( :user_123 ) )
-#--&gt; [ &quot;user_123&quot;, &quot;Ahmad&quot; ]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:41 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; [ &quot;user_123&quot;, &quot;Ahmad&quot; ]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <h2 id="multiple-variable-assignment">Multiple Variable Assignment</h2>
 <p>Working with sets of related variables is common in programming. Softanza allows you to assign values to multiple variables simultaneously.</p>
 <h3 id="assigning-to-multiple-variables-at-once">Assigning to Multiple Variables at Once</h3>
@@ -96,7 +96,7 @@ next
 
 # Get names and values together
 ? @@( VarVal([ :x, :y, :z ]) ) # Same as VrVl()
-#--&gt; [ [ &quot;x&quot;, 3 ], [ &quot;y&quot;, 6 ], [ &quot;z&quot;, 9 ] ]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:41 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; [ [ &quot;x&quot;, 3 ], [ &quot;y&quot;, 6 ], [ &quot;z&quot;, 9 ] ]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <h3 id="creating-multiple-variables-in-a-loop">Creating Multiple Variables in a Loop</h3>
 <p>Here's a practical example of creating a series of related variables with systematic naming. We generate 10 variables with sequential names and corresponding values, then demonstrate both individual access and bulk inspection:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Create 10 variables (name1 to name10) with values (10 to 100)
@@ -120,14 +120,14 @@ for i = 1 to 10 { ? @@(vxt( &#x27;name&#x27; + i )) }
 #    [ &quot;name7&quot;, 70 ]
 #    [ &quot;name8&quot;, 80 ]
 #    [ &quot;name9&quot;, 90 ]
-#    [ &quot;name10&quot;, 100 ]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:41 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#    [ &quot;name10&quot;, 100 ]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <h3 id="range-based-multiple-assignment">Range-Based Multiple Assignment</h3>
 <p>When you need to create many variables with systematic names, you can use ranges. In Haro, "a":"z" creates a list of letters from "a" to "z", and 1:26 creates a list of numbers from 1 to 26.</p>
 <p>This elegant approach creates all 26 letter variables in one line, each mapped to its alphabetical position. The range syntax makes bulk variable creation very concise:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Create variables a to z with values 1 to 26
 Vr( &quot;a&quot; : &quot;z&quot; ) &#x27;=&#x27; Vl( 1 : NumberOfLatinLetters() )
 ? v(:t)
-#--&gt; 20</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:41 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; 20</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <h2 id="variable-state-tracking">Variable State Tracking</h2>
 <p>Softanza keeps track of variable assignments and changes, allowing you to inspect the history of modifications. This is valuable for debugging and understanding variable state changes.</p>
 <h3 id="temporary-values-and-history">Temporary Values and History</h3>
@@ -174,7 +174,7 @@ Vr([
     :name2
 ]) '=' Vl([ "Hussein", "Haneen", "Teeba" ])
 ? v(:name2)
-#--&gt; Teeba</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:41 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; Teeba</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <h3 id="providing-insufficient-values">Providing Insufficient Values</h3>
 <p>When you don't provide enough values for all variables, Softanza sets missing variables to empty strings.</p>
 <p>This demonstrates Softanza's graceful handling of mismatched list lengths. Variables without corresponding values are automatically initialized to empty strings rather than causing errors:</p>
@@ -210,7 +210,7 @@ oGreeting.SetVarName(:oGreeting)
 # Or create with name directly
 oHello = new stzString(:oHello = &quot;Hello Haro!&quot;)
 ? oHello.VarName()
-#--&gt; ohello</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:41 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; ohello</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Once you have named objects, you can search for them in lists by name, which provides a more elegant way to work with object collections than Haro's built-in approaches.</p>
 <h3 id="finding-named-objects-in-lists">Finding Named Objects in Lists</h3>
 <p>This comprehensive example shows various ways to locate and analyze objects within a list. The different finding methods provide granular control over object discovery based on naming status and specific names:</p>
@@ -247,7 +247,7 @@ oHello = new stzString(:oHello = &quot;Hello Haro!&quot;)
 
 # Find only unnamed objects
 ? @@( o1.FindUnnamedObjects() )
-#--&gt; [ 5, 8 ]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:41 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; [ 5, 8 ]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Object naming can be changed after creation, providing flexibility in how you organize and reference your objects.</p>
 <h3 id="object-name-management">Object Name Management</h3>
 <p>These utility functions help manage object identity and naming. The ability to check naming status and rename objects provides dynamic control over object organization:</p>
@@ -262,7 +262,7 @@ o1 = new stzString(:nation = &quot;Niger&quot;)
 # Rename objects
 o1.RenameIt(:country) # Or SetVarName()
 ? o1.VarName()
-#--&gt; country</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:41 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; country</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Working with object collections becomes more powerful when you can analyze the distribution and characteristics of named vs unnamed objects.</p>
 <h3 id="advanced-list-operations-with-named-objects">Advanced List Operations with Named Objects</h3>
 <p>These advanced operations provide statistical and analytical capabilities for object collections. They help understand the naming patterns and distribution within your object lists:</p>
@@ -291,7 +291,7 @@ o1.RenameIt(:country) # Or SetVarName()
 <li><strong>AI/ML Applications</strong>: Variable feature engineering</li>
 <li><strong>Code Generation</strong>: Meta-programming scenarios</li>
 </ol>
-<h2>Lectures liées</h2><ul><li><a href="stzstring-duplicates-narration.html">Decoding Duplicates: Exploring Duplicate Detection and Removal with Softanza</a></li><li><a href="stzobject-history-narration.html">The Narrative of Transformations: Tracking Object History in Softanza</a></li><li><a href="stz-near-natural-language-tutorial.html">Softanza Near-Natural Programming Tutorial</a></li><li><a href="stz-near-natural-language-programming.html">Near-Natural Programming: Bridging Human Thought and Code Execution</a></li></ul><h2>Citer</h2><p class="mono cite">Mansour Ayouni. « Named Variables in Softanza: the What, Why and How! ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stz-named-vars-narration.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-08 20:41 dans la bibliothèque au commit 4a184e6f0, bloc après bloc dans un seul processus : 10 bloc(s) sur 13 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-named-vars-narration.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+<h2>Lectures liées</h2><ul><li><a href="stzstring-duplicates-narration.html">Decoding Duplicates: Exploring Duplicate Detection and Removal with Softanza</a></li><li><a href="stzobject-history-narration.html">The Narrative of Transformations: Tracking Object History in Softanza</a></li><li><a href="stz-near-natural-language-tutorial.html">Softanza Near-Natural Programming Tutorial</a></li><li><a href="stz-near-natural-language-programming.html">Near-Natural Programming: Bridging Human Thought and Code Execution</a></li></ul><h2>Citer</h2><p class="mono cite">Mansour Ayouni. « Named Variables in Softanza: the What, Why and How! ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stz-named-vars-narration.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-30 12:20 dans la bibliothèque au commit 0950e246a, bloc après bloc dans un seul processus : 10 bloc(s) sur 13 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-named-vars-narration.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
   </div>
 </main>
 </div>
@@ -300,7 +300,7 @@ o1.RenameIt(:country) # Or SetVarName()
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">La plateforme logicielle gouvernée de l&#x27;ère de l&#x27;IA. Déclarez ce que vous savez. Un tribunal le garde. Le modèle d&#x27;IA vient en dernier. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
-    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-21.</p></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-30.</p></div>
   </div>
 </div></footer>
 <script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

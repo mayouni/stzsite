@@ -20,6 +20,7 @@ the temporary folder created in the library is removed at the end.
     python tools/proof_run.py <path to libraries/stzlib>
 """
 import json, re, sys, pathlib, subprocess, datetime, shutil, tempfile
+from runtime import RNXC          # the runtime the examples run on (tools/runtime.py)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "proof-run.json"
@@ -147,7 +148,7 @@ def main():
     t0 = datetime.datetime.now()
     commit = subprocess.run(["git", "-C", str(lib.parent.parent), "rev-parse", "--short=9", "HEAD"], capture_output=True, text=True).stdout.strip()
     try:
-        p = subprocess.run(["ring", "proof.ring"], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=3000)
+        p = subprocess.run(RNXC + ["proof.ring"], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=3000)
         out = (p.stdout or "").replace("\r", "")
     finally:
         shutil.rmtree(work, ignore_errors=True)

@@ -74,7 +74,7 @@ g.SetNodeProperty("writer", "capabilities", [
 ])
 
 g.AddRule(oRule)        # the rule is now part of THIS graph
-g.RulesReport()         # the graph reports on itself</pre><p class="ran nv-kept">run on 2026-10-08 20:42 at commit 4a184e6f0: kept its promise</p></div>
+g.RulesReport()         # the graph reports on itself</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <div class="out"><div class="lbl">Promised output</div><pre>Rule report &#x27;agents&#x27;: 1 finding(s), 1 error(s), 0 warning(s) -&gt; UNSOUND (errors present)
   [agentic] 1 finding(s)
     ERROR no-llm-effectful @ writer -- an LLM proposes, only a pi-gate commits</pre></div>
@@ -95,11 +95,11 @@ forms. First, a real call inside a method:</p>
 nF = len(aF)
 for i = 1 to nF
     ? aF[i][:rule] + &quot;  @line &quot; + aF[i][:line] + &quot;  [&quot; + aF[i][:severity] + &quot;]&quot;
-next</pre><p class="ran nv-kept">run on 2026-10-08 20:42 at commit 4a184e6f0: kept its promise</p></div>
+next</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <div class="out"><div class="lbl">Promised output</div><pre>engine-first  @line 3  [warning]</pre></div>
 <p>Now the same three characters, <code>substr(</code>, but as a method <em>definition</em> rather
 than a call:</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>? &quot;findings: &quot; + len(StzCheckCode(&quot;class Foo&quot; + nl + &quot;def substr(x)&quot; + nl + &quot;	return x&quot; + nl))</pre><p class="ran nv-kept">run on 2026-10-08 20:42 at commit 4a184e6f0: kept its promise</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>? &quot;findings: &quot; + len(StzCheckCode(&quot;class Foo&quot; + nl + &quot;def substr(x)&quot; + nl + &quot;	return x&quot; + nl))</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <div class="out"><div class="lbl">Promised output</div><pre>findings: 0</pre></div>
 <p>Nothing. The old text scanner flagged both — <code>" substr("</code> matches a <code>def substr(</code>
 line just as happily as a call site. The graph rule reads the <em>call edges</em>, and a
@@ -115,7 +115,7 @@ nQ = len(aQ)
 for i = 1 to nQ
     ? aQ[i][:rule] + &quot;  [&quot; + aQ[i][:severity] + &quot;]&quot;
     ? &quot;  &quot; + aQ[i][:message]
-next</pre><p class="ran nv-kept">run on 2026-10-08 20:42 at commit 4a184e6f0: kept its promise</p></div>
+next</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <div class="out"><div class="lbl">Promised output</div><pre>q-has-plain-twin  [warning]
   &#x27;SetLevelQ&#x27; is a Q mutator with no plain twin &#x27;SetLevel&#x27; in class &#x27;Bag&#x27; -- both are required (Q chains, plain acts)</pre></div>
 <p>It flags <code>SetLevelQ</code> (a mutator verb, no twin) but leaves a noun accessor like
@@ -132,7 +132,7 @@ try
     oAG.Grant(&quot;writer&quot;, &quot;effectful&quot;)
 catch
     ? cCatchError
-done</pre><p class="ran nv-kept">run on 2026-10-08 20:42 at commit 4a184e6f0: kept its promise</p></div>
+done</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <div class="out"><div class="lbl">Promised output</div><pre>REFUSED: granting &#x27;effectful&#x27; to llm actor &#x27;writer&#x27; -- an LLM proposes, only a pi-gate commits (no-llm-effectful, enforced at CONSTRUCTION, not merely audited).</pre></div>
 <p>The violation can no longer enter the graph through the sanctioned API. The rule
 stays as the backstop for anything that reaches the graph another way; the gate
@@ -148,7 +148,7 @@ oSG.AddTool(&quot;shell&quot;)
 oSG.Uses(&quot;llm&quot;, &quot;shell&quot;)
 oSG.Grants(&quot;shell&quot;, &quot;effectful&quot;)
 
-? &quot;llm holds effectful directly? no. reaches it by a path? &quot; + oSG.ReachesEffectful(&quot;llm&quot;)</pre><p class="ran nv-kept">run on 2026-10-08 20:42 at commit 4a184e6f0: kept its promise</p></div>
+? &quot;llm holds effectful directly? no. reaches it by a path? &quot; + oSG.ReachesEffectful(&quot;llm&quot;)</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <div class="out"><div class="lbl">Promised output</div><pre>llm holds effectful directly? no. reaches it by a path? 1</pre></div>
 <p>The <code>llm</code> holds only <code>inference</code>. A flag check passes it. But the graph sees the
 path <code>llm → shell → effectful</code>, and <code>sandboxed-reaches-effectful</code> — a reachability
@@ -197,7 +197,7 @@ exactly why it will not.</em></p>
 (21), <code>securitygraph_narrated</code> (22), <code>rulereport_narrated</code> (23), <code>orgrule_narrated</code>
 (22).
 Design: <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/../design/SOFTANZA_GRAPH_RULES_PLAN.md" target="_blank" rel="noopener noreferrer">SOFTANZA_GRAPH_RULES_PLAN.md<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a>.</p>
-<h2>Related reading</h2><ul><li><a href="stzgraphplannerdoc.html">Intelligence in Motion: Graph Planning in Softanza</a></li><li><a href="stzorgchartdoc.html">Introducing stzOrgChart - The Strategic Organizational Intelligence Platform</a></li></ul><h2>Cite</h2><p class="mono cite">Mansour Ayouni. "Rules That See the Whole Picture". Softanza narrations, 2026. https://mayouni.github.io/stzsite/en/narrations/stz-rules-as-graph-rules-narration.html</p><p class="proof">Run in Haro's name on 2026-10-08 20:42 inside the library at commit 4a184e6f0, block after block in one process: 6 of 7 blocks kept their promise; the others are illustrations. The code of the articles is Haro code. Where an article was written before the language took its present name, the name was changed and nothing else. Genre, area and series read from the file's name, the year from its first commit: derived, until the article carries its own header. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-rules-as-graph-rules-narration.md" target="_blank" rel="noopener noreferrer">The file on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
+<h2>Related reading</h2><ul><li><a href="stzgraphplannerdoc.html">Intelligence in Motion: Graph Planning in Softanza</a></li><li><a href="stzorgchartdoc.html">Introducing stzOrgChart - The Strategic Organizational Intelligence Platform</a></li></ul><h2>Cite</h2><p class="mono cite">Mansour Ayouni. "Rules That See the Whole Picture". Softanza narrations, 2026. https://mayouni.github.io/stzsite/en/narrations/stz-rules-as-graph-rules-narration.html</p><p class="proof">Run in Haro's name on 2026-10-30 12:20 inside the library at commit 0950e246a, block after block in one process: 6 of 7 blocks kept their promise; the others are illustrations. The code of the articles is Haro code. Where an article was written before the language took its present name, the name was changed and nothing else. Genre, area and series read from the file's name, the year from its first commit: derived, until the article carries its own header. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-rules-as-graph-rules-narration.md" target="_blank" rel="noopener noreferrer">The file on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
   </div>
 </main>
 </div>
@@ -206,7 +206,7 @@ Design: <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/ba
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">The Governed Software Platform of the AI Age. Declare what you know. A court keeps it. The AI model comes last. Born in Africa. Useful to the World!</p><div class="themes" role="group" aria-label="Display"><button type="button" data-set-theme="light">Use the light theme</button><button type="button" data-set-theme="dark">Use the dark theme</button><button type="button" data-set-theme="auto">Follow the system</button></div></div>
-    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/en/" target="_blank" rel="noopener noreferrer">Softanza: The Governed Software Platform of the AI Age<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></i> (second of the AYOUNI books), AYOUNI, 2026, draft.</p><p>If this site or its books are useful to your organisation, I work with organisations on their subjects: paper copies in quantity, workshops and training, talks, consulting and the building of solutions. Write to kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/offer/" target="_blank" rel="noopener noreferrer">How these books are offered, and how to work with the author<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="https://mayouni.github.io/ayouni/licence/" target="_blank" rel="noopener noreferrer">The licence<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-21.</p></div>
+    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/en/" target="_blank" rel="noopener noreferrer">Softanza: The Governed Software Platform of the AI Age<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></i> (second of the AYOUNI books), AYOUNI, 2026, draft.</p><p>If this site or its books are useful to your organisation, I work with organisations on their subjects: paper copies in quantity, workshops and training, talks, consulting and the building of solutions. Write to kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/offer/" target="_blank" rel="noopener noreferrer">How these books are offered, and how to work with the author<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="https://mayouni.github.io/ayouni/licence/" target="_blank" rel="noopener noreferrer">The licence<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-30.</p></div>
   </div>
 </div></footer>
 <script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

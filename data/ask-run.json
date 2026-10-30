@@ -1,6 +1,6 @@
 {
- "ran": "2026-10-02 23:02",
- "seconds": 138.0,
+ "ran": "2026-10-30 09:59",
+ "seconds": 20.3,
  "questions": [
   {
    "file": "list/average.md",
@@ -13,7 +13,7 @@
    "ask": [
     "Mean",
     "Average",
-    "MeanByCoefficient"
+    "Median"
    ],
    "howto_method": "Mean",
    "howto_grade": "other",
@@ -29,13 +29,13 @@
    ],
    "howto": "Q([...]).Contains(...)   -- composed by grammar (contains)",
    "ask": [
-    "IsListOfTexts",
-    "ContainsAll",
-    "ContainsEach"
+    "ContainsAllCS",
+    "ContainsManyCS",
+    "ContainsEachCS"
    ],
    "howto_method": "Contains",
    "howto_grade": "same",
-   "ask_grade": "other",
+   "ask_grade": "same",
    "ask_first": "other"
   },
   {
@@ -46,13 +46,13 @@
     "Filter",
     "FilterQ"
    ],
-   "howto": "Q([...]).Merge()   -- retrieved by meaning (merge)",
+   "howto": "Q([...]).SplitW(\"...\")   -- retrieved by meaning (split -- where a condition holds)",
    "ask": [
+    "SplitW",
     "Merge",
-    "TrimmedToSize",
-    "RemoveAllExcept"
+    "KeepFirst"
    ],
-   "howto_method": "Merge",
+   "howto_method": "SplitW",
    "howto_grade": "other",
    "ask_grade": "other",
    "ask_first": "other"
@@ -65,16 +65,16 @@
     "Find",
     "FindItem"
    ],
-   "howto": "Q([...]).FindItem(...)   -- retrieved by meaning (grammar suggested FindPosition, not implemented here) (find item)",
+   "howto": "Q([...]).FindLast(...)   -- retrieved by meaning (grammar suggested FindPosition, not implemented here) (find last)",
    "ask": [
-    "FindItem",
-    "FindFirst",
-    "FindFirstCS"
+    "FindLast",
+    "FindNth",
+    "FindItem"
    ],
-   "howto_method": "FindItem",
-   "howto_grade": "same",
+   "howto_method": "FindLast",
+   "howto_grade": "other",
    "ask_grade": "same",
-   "ask_first": "same"
+   "ask_first": "other"
   },
   {
    "file": "list/first-last.md",
@@ -87,8 +87,8 @@
    "howto": "Q([...]).LastItem()   -- retrieved by meaning (last item)",
    "ask": [
     "LastItem",
-    "FirstItem",
-    "Reverse"
+    "NListify",
+    "FirstItem"
    ],
    "howto_method": "LastItem",
    "howto_grade": "same",
@@ -103,13 +103,13 @@
     "Max",
     "Min"
    ],
-   "howto": "Q(...).Bottom3Z()   -- retrieved by meaning (bottom3 z)",
+   "howto": "Q(...).SortUp()   -- retrieved by meaning (sort up)",
    "ask": [
-    "Bottom3Z",
-    "Top3Z",
-    "Sort"
+    "SortUp",
+    "Farthst",
+    "SortDown"
    ],
-   "howto_method": "Bottom3Z",
+   "howto_method": "SortUp",
    "howto_grade": "other",
    "ask_grade": "other",
    "ask_first": "other"
@@ -125,12 +125,12 @@
    "howto": "Q([...]).RemoveAllExcept([...])   -- retrieved by meaning (grammar suggested RemoveDuplicateUniqueOnes, not implemented here) (remove all except -- with exceptions)",
    "ask": [
     "RemoveAllExcept",
-    "RemoveItemsOtherThan",
-    "RemoveDuplicates"
+    "RemoveDupSecutiveItemsCS",
+    "RemoveItemsOtherThan"
    ],
    "howto_method": "RemoveAllExcept",
    "howto_grade": "other",
-   "ask_grade": "same",
+   "ask_grade": "other",
    "ask_first": "other"
   },
   {
@@ -164,7 +164,7 @@
    "ask": [
     "Sort",
     "SortCS",
-    "SortAscending"
+    "SortInAscending"
    ],
    "howto_method": "Sort",
    "howto_grade": "same",
@@ -178,13 +178,13 @@
    "methods": [
     "Sum"
    ],
-   "howto": "Q(...).AddManyOneByOne([...])   -- retrieved by meaning (grammar suggested AddUp, not implemented here) (add many one by one)",
+   "howto": "Q(...).AddToEachNumber(0)   -- retrieved by meaning (grammar suggested AddUp, not implemented here) (add to each number)",
    "ask": [
-    "AddManyOneByOne",
-    "ManyAddOneByOne",
+    "AddToEachNumber",
+    "AddToEveryNumber",
     "AddManyNumbersOneByOne"
    ],
-   "howto_method": "AddManyOneByOne",
+   "howto_method": "AddToEachNumber",
    "howto_grade": "other",
    "ask_grade": "other",
    "ask_first": "other"
@@ -217,13 +217,13 @@
     "Divisors",
     "PrimeFactors"
    ],
-   "howto": "Q(5).Factors()   -- retrieved by meaning (factors)",
+   "howto": "Q(5).Divisors()   -- retrieved by meaning (divisors)",
    "ask": [
-    "Factors",
     "Divisors",
-    "Dividors"
+    "PrimeDivisors",
+    "DivisorsXT"
    ],
-   "howto_method": "Factors",
+   "howto_method": "Divisors",
    "howto_grade": "same",
    "ask_grade": "same",
    "ask_first": "same"
@@ -235,13 +235,13 @@
    "methods": [
     "IsPrime"
    ],
-   "howto": "Q(5).ReturnType()   -- retrieved by meaning (return type)",
+   "howto": "Q(5).isWeiferich(...)   -- retrieved by meaning (tests whether is weiferich)",
    "ask": [
+    "isWeiferich",
     "ReturnType",
-    "SetReturnType",
-    "SetReturnTypeAs"
+    "SetReturnType"
    ],
-   "howto_method": "ReturnType",
+   "howto_method": "isWeiferich",
    "howto_grade": "other",
    "ask_grade": "other",
    "ask_first": "other"
@@ -257,14 +257,14 @@
    ],
    "howto": "Q(\"...\").Contains(\"...\")   -- composed by grammar (contains)",
    "ask": [
+    "Markers",
     "Contains",
-    "ContainsDuplicates",
-    "ContainsXT"
+    "Check"
    ],
    "howto_method": "Contains",
    "howto_grade": "same",
    "ask_grade": "same",
-   "ask_first": "same"
+   "ask_first": "other"
   },
   {
    "file": "string/count-occurrences.md",
@@ -293,13 +293,13 @@
     "Find",
     "FindFirst"
    ],
-   "howto": "Q(\"...\").Contains(\"...\")   -- retrieved by meaning (grammar suggested FindOccurs, not implemented here) (contains)",
+   "howto": "Q(\"...\").Count(\"...\")   -- retrieved by meaning (grammar suggested FindOccurs, not implemented here) (count)",
    "ask": [
-    "Contains",
     "Count",
-    "CountCS"
+    "CountCS",
+    "Contains"
    ],
-   "howto_method": "Contains",
+   "howto_method": "Count",
    "howto_grade": "other",
    "ask_grade": "other",
    "ask_first": "other"
@@ -315,7 +315,7 @@
    "ask": [
     "Repeat",
     "MultiplyBy",
-    "RepeatQ"
+    "ReplaceManyByManyCS"
    ],
    "howto_method": "Repeat",
    "howto_grade": "verb",
@@ -334,7 +334,7 @@
    "ask": [
     "Replace",
     "ReplaceCS",
-    "ReplaceQ"
+    "ReplaceAll"
    ],
    "howto_method": "Replace",
    "howto_grade": "same",
@@ -351,8 +351,8 @@
    "howto": "Q(\"...\").Reverse()   -- composed by grammar (reverse)",
    "ask": [
     "Reverse",
-    "ReverseQ",
-    "Reversed"
+    "Reversed",
+    "ReverseQ"
    ],
    "howto_method": "Reverse",
    "howto_grade": "verb",
@@ -371,7 +371,7 @@
    "ask": [
     "Split",
     "SplitAroundPositions",
-    "SplitQ"
+    "SplitAt"
    ],
    "howto_method": "Split",
    "howto_grade": "same",
@@ -386,16 +386,16 @@
     "StartsWith",
     "EndsWith"
    ],
-   "howto": "Q(\"...\").StartsWith(\"...\")   -- retrieved by meaning (starts with)",
+   "howto": "Q(\"...\").Markers()   -- retrieved by meaning (markers)",
    "ask": [
+    "Markers",
     "StartsWith",
-    "StartsWithCS",
     "EndsWith"
    ],
-   "howto_method": "StartsWith",
-   "howto_grade": "same",
+   "howto_method": "Markers",
+   "howto_grade": "other",
    "ask_grade": "same",
-   "ask_first": "same"
+   "ask_first": "other"
   },
   {
    "file": "string/trim.md",
@@ -425,16 +425,16 @@
     "Uppercased",
     "Lowercased"
    ],
-   "howto": "Q(\"...\").IsHybridcase()   -- retrieved by meaning (tests whether is hybridcase)",
+   "howto": "Q(\"...\").Uppercase()   -- retrieved by meaning (uppercase)",
    "ask": [
-    "IsHybridcase",
     "Uppercase",
-    "Lowercase"
+    "Lowercase",
+    "FindSubStringBoundedByCS"
    ],
-   "howto_method": "IsHybridcase",
-   "howto_grade": "other",
+   "howto_method": "Uppercase",
+   "howto_grade": "verb",
    "ask_grade": "verb",
-   "ask_first": "other"
+   "ask_first": "verb"
   },
   {
    "file": "text/detect-language.md",
@@ -448,7 +448,7 @@
    "ask": [
     "Language",
     "DetectedLanguage",
-    "LemmatizedInLanguage"
+    "EntitiesOfType"
    ],
    "howto_method": "Language",
    "howto_grade": "same",
@@ -468,8 +468,8 @@
    "howto": "Q(\"...\").TextQ().NamedEntities()   -- retrieved by meaning (grammar suggested FindPeoplePlacesOrganizationsMentioned, not implemented here) (named entities)",
    "ask": [
     "NamedEntities",
-    "Locations",
-    "Organizations"
+    "Organizations",
+    "Entities"
    ],
    "howto_method": "NamedEntities",
    "howto_grade": "same",
@@ -490,7 +490,7 @@
    "ask": [
     "Lemmatized",
     "StemmedInLanguage",
-    "Stem"
+    "Stemmed"
    ],
    "howto_method": "Lemmatized",
    "howto_grade": "same",
@@ -509,8 +509,8 @@
    "howto": "Q(\"...\").TextQ().Sentiment()   -- retrieved by meaning (sentiment)",
    "ask": [
     "Sentiment",
-    "SentimentScore",
-    "SentimentCompound"
+    "PositiveSentences",
+    "NegativeSentences"
    ],
    "howto_method": "Sentiment",
    "howto_grade": "same",
@@ -529,8 +529,8 @@
    "howto": "Q(\"...\").TextQ().KeyPhrases(0)   -- retrieved by meaning (grammar suggested FindMainTopicsKeyPhrases, not implemented here) (key phrases)",
    "ask": [
     "KeyPhrases",
-    "KeyPhrasesXT",
-    "KeyPhrasesQ"
+    "KeyPhrasesQ",
+    "ParseTree"
    ],
    "howto_method": "KeyPhrases",
    "howto_grade": "same",
@@ -543,25 +543,25 @@
    "call": "Ask",
    "class": "stzList",
    "arg": "remove duplicates",
-   "out": "Unique  1.30  remove duplicates / unique (engine-backed)\nUniqueCS  1.30  remove duplicates / unique (engine-backed)\nRemoveDuplicates  1.30  remove duplicates / unique (engine-backed)"
+   "out": "RemoveDuplicates  1.30  Removes the repeated occurrences of every item, keeping the first of each, in place.\nExtractDuplicates  1.30  Removes the repeats of duplicated items, in place, and returns them.\nRemoveDuplicatesCS  1.30  Removes the repeated occurrences of every item, keeping the first of each, in place. (with the case-sensitivity dial)"
   },
   {
    "call": "HowTo",
    "class": "stzString",
    "arg": "replace one word with another",
-   "out": "Q(\"...\").Replace(\"...\", \"...\")   -- retrieved by meaning (grammar suggested ReplaceAnother, not implemented here) (replace)"
+   "out": "Q(\"...\").CosineSimilarityWithCS(\"...\", ...)   -- retrieved by meaning (grammar suggested ReplaceAnother, not implemented here) (cosine similarity with -- case-sensitively)"
   },
   {
    "call": "ExplainMethod",
    "class": "stzList",
    "arg": "RemoveDuplicates",
-   "out": "RemoveDuplicates -- remove duplicates / unique (engine-backed)\n  e.g. tested in: Remove duplicates A full cleaning pipeline Removing duplicate items from a list in place with RemoveDuplicates(). Sort and deduplicate"
+   "out": "RemoveDuplicates -- Removes the repeated occurrences of every item, keeping the first of each, in place.\n  returns: nothing; the list changes\n  see: WithoutDuplication, DuplicatedItems\n  example: o1.RemoveDuplicates()\n           ? @@( o1.Content() )\n           #--> [ \"a\", \"b\", \"c\" ]"
   },
   {
    "call": "Ask",
    "class": "stzText",
    "arg": "what is the mood of this text",
-   "out": "Sentiment  1.10  The overall tone/mood of the text as \"positive\", \"negative\", or \"neutral\".\nStem  0.25  Same as Stemmed: The text with every word reduced to its root/stem (\"running\" -> \"run\").\nVerbs  0.25  The verbs (action words) in the text."
+   "out": "Sentiment  1.10  Returns the tone of the text as \"positive\" at a score of 0.05 or more, \"negative\" at -0.05 or less, and \"neutral\" in between.\nStem  0.19  Same as Stemmed: Returns the text with every word cut to its English stem, so running becomes run.\nVerbs  0.19  Returns the action words, those whose tag starts with VB, in all their forms."
   }
  ]
 }

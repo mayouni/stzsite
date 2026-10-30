@@ -497,6 +497,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzdatetime/toiso8601.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzdatetime/toisowithms.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzdatetime/tolong.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzdatetime/tolongdate.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzdatetime/tosimple.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzdatetime/tosimple24h.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzdatetime/tostring.html</loc></url>
@@ -634,17 +635,14 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid/moveright.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid/moverightnnodes.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid/moveto.html</loc></url>
-<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid/movetonextnthnode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid/movetonextposition.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid/movetonode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid/movetonthnextnode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid/movetopreviousposition.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid/moveup.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid/moveupnnodes.html</loc></url>
-<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid/nextnthnode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid/nthnodeup.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid/position.html</loc></url>
-<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid/previousnthnode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid/setdirection.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid/size.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzgrid.html</loc></url>
@@ -1031,6 +1029,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofgrids.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofhashlists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistoflists/content.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistoflists/findinlists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistoflists/listshavesamenumberofitems.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistoflists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofnamedobjects.html</loc></url>
@@ -1041,7 +1040,6 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofnumbers/clip.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofnumbers/containsadividablenumberby.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofnumbers/content.html</loc></url>
-<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofnumbers/cumulate.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofnumbers/dividablenumbersby.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofnumbers/farthest.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofnumbers/findmax.html</loc></url>
@@ -1059,6 +1057,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofnumbers/substructfromeach.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofnumbers/substructmanyonebyone.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofnumbers/sum.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofnumbers/walker.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofnumbers.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofobjects.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlistofpairs.html</loc></url>
@@ -1107,6 +1106,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlocale/timelongformat.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlocale/timenarrowformat.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlocale/timeshortformat.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlocale/totitlecase.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlocale.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlog.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stzlogisticregression/classify.html</loc></url>
@@ -1972,6 +1972,7 @@
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztablesorter.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztablestructure.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztablesubset.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/fr/reference/stztablex/countmatchingtables.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztablex/match.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztablex.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/fr/reference/stztcpclient.html</loc></url>
@@ -2637,6 +2638,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzdatetime/toiso8601.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzdatetime/toisowithms.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzdatetime/tolong.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzdatetime/tolongdate.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzdatetime/tosimple.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzdatetime/tosimple24h.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzdatetime/tostring.html</loc></url>
@@ -2774,17 +2776,14 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid/moveright.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid/moverightnnodes.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid/moveto.html</loc></url>
-<url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid/movetonextnthnode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid/movetonextposition.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid/movetonode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid/movetonthnextnode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid/movetopreviousposition.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid/moveup.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid/moveupnnodes.html</loc></url>
-<url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid/nextnthnode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid/nthnodeup.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid/position.html</loc></url>
-<url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid/previousnthnode.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid/setdirection.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid/size.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzgrid.html</loc></url>
@@ -3171,6 +3170,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofgrids.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofhashlists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistoflists/content.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistoflists/findinlists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistoflists/listshavesamenumberofitems.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistoflists.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofnamedobjects.html</loc></url>
@@ -3181,7 +3181,6 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofnumbers/clip.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofnumbers/containsadividablenumberby.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofnumbers/content.html</loc></url>
-<url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofnumbers/cumulate.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofnumbers/dividablenumbersby.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofnumbers/farthest.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofnumbers/findmax.html</loc></url>
@@ -3199,6 +3198,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofnumbers/substructfromeach.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofnumbers/substructmanyonebyone.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofnumbers/sum.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofnumbers/walker.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofnumbers.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofobjects.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlistofpairs.html</loc></url>
@@ -3247,6 +3247,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlocale/timelongformat.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlocale/timenarrowformat.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlocale/timeshortformat.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stzlocale/totitlecase.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlocale.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlog.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stzlogisticregression/classify.html</loc></url>
@@ -4112,6 +4113,7 @@
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztablesorter.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztablestructure.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztablesubset.html</loc></url>
+<url><loc>https://mayouni.github.io/stzsite/en/reference/stztablex/countmatchingtables.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztablex/match.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztablex.html</loc></url>
 <url><loc>https://mayouni.github.io/stzsite/en/reference/stztcpclient.html</loc></url>

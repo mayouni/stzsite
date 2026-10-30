@@ -17,7 +17,7 @@ Le même cadre porte l'introduction à Softanza, neuf missions situées à Zinda
 
 ## Ce dont les machines des apprenants ont besoin {#machines}
 
-Les cellules du cours tournent sur la machine de l'apprenant, pas dans le navigateur : le lecteur montre chaque programme et la réponse qu'il promet, et l'apprenant l'exécute. Chaque machine a besoin du dépôt, un seul dossier copié avec <code>git clone</code> ; de l'exécutant, version 1.27.0 ; et d'environ sept secondes pour la première exécution. Le moteur est livré compilé pour Windows, et se construit pour Linux et macOS depuis la source. Les trois étapes sont sur <a href="start.html#install">Démarrer</a>.
+Les cellules du cours tournent sur la machine de l'apprenant, pas dans le navigateur : le lecteur montre chaque programme et la réponse qu'il promet, et l'apprenant l'exécute. Chaque machine a besoin du dépôt, un seul dossier copié avec <code>git clone</code> ; de l'exécutant, une archive pour Windows ou Linux qui porte le moteur de la bibliothèque ; et d'environ vingt secondes pour la première exécution, un dixième de seconde pour les suivantes. Les trois étapes sont sur <a href="start.html#install">Démarrer</a>.
 
 ## Qui fait quoi {#who}
 

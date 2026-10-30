@@ -54,7 +54,7 @@
 #--&gt; 0
 
 ? Q(&quot;text&quot;).Count(&quot;&quot;) 
-#--&gt; 0</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:44 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; 0</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>This prevents the confusion found in some languages where empty substrings are implicitly considered "present" at every position in a string.</p>
 <blockquote>
 <p>NOTE: The small <code>Q(val)</code> function converts the value <code>val</code> into its corresponding Softanza object. In this case, <code>Q("text")</code> returns an <code>stzString("text")</code> object.</p>
@@ -65,7 +65,7 @@
 #--&gt; [ ]
 
 ? @@( Q(&quot;text&quot;).FindAll(&quot;&quot;) )
-#--&gt; [ ]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:44 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; [ ]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Also, finding the first position of <code>""</code> always returns <code>0</code>, which means it does not even exist:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;&quot;).FindFirst(&quot;&quot;)
 #--&gt; 0
@@ -85,7 +85,7 @@
 #--&gt; FALSE
 
 ? Q(&quot;text&quot;).Contains(&quot;&quot;)
-#--&gt; FALSE</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:44 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; FALSE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>This behavior eliminates ambiguities in mainstream languages, where <code>""</code> is often considered contained within any string.</p>
 <h2 id="rule-4-emptiness-is-irreplaceable-but-stretchable">Rule 4: Emptiness Is Irreplaceable but Stretchable</h2>
 <p>Replacing any value with emptiness has no meaningful effect, nor does replacing an empty string with another empty string.</p>
@@ -102,7 +102,7 @@
 #--&gt; &quot;text&quot;
 
 ? @@( Q(&quot;text&quot;).ReplaceQ(&quot;&quot;, &quot;X&quot;).Content() )
-#--&gt; &quot;text&quot;</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:44 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; &quot;text&quot;</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>However, replacing emptiness with a non-empty string stretches the empty string to host the new content.</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>
 ? @@( Q(&quot;&quot;).ReplaceQ(&quot;&quot;, &quot;X&quot;).Content() )
@@ -121,7 +121,7 @@
 #--&gt; &quot;&quot;
 
 ? @@( Q(&quot;text&quot;).RemoveQ(&quot;&quot;).Content() ) 
-#--&gt; &quot;text&quot;</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:44 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; &quot;text&quot;</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>This ensures logical consistency and avoids unintended alterations.</p>
 <h2 id="logical-fluency-and-real-world-implications">Logical Fluency and Real-World Implications</h2>
 <p>Softanza’s rules for handling emptiness prevent common errors and make programs more predictable.</p>
@@ -141,12 +141,12 @@ nPosition = substr(&quot;haro&quot;, val) #--&gt; 1
 
 // Removing with Softanza
 ? Q(&quot;Haro&quot;).RemoveQ(val).Content()
-#--&gt; &quot;Haro&quot;</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:44 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; &quot;Haro&quot;</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Softanza ensures no modifications occur when dealing with empty strings, preventing such traps and ensuring logical fluency in real-world programming.</p>
 <hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>By treating emptiness as <strong>uncountable</strong>, <strong>unfindable</strong>, <strong>uncontainable</strong>, <strong>irreplaceable</strong>, and <strong>irremovable</strong>, <strong>Softanza</strong> provides a consistent and logical framework for string operations. These rules eliminate ambiguities found in other languages, fostering clean and maintainable code.</p>
-<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « Emptiness in Strings, Clear Rules: The Softanza Way ». Softanza narrations, 2024. https://mayouni.github.io/stzsite/fr/narrations/stzstring-emptiness-narration.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-08 20:44 dans la bibliothèque au commit 4a184e6f0, bloc après bloc dans un seul processus : 6 bloc(s) sur 9 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzstring-emptiness-narration.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « Emptiness in Strings, Clear Rules: The Softanza Way ». Softanza narrations, 2024. https://mayouni.github.io/stzsite/fr/narrations/stzstring-emptiness-narration.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-30 12:20 dans la bibliothèque au commit 0950e246a, bloc après bloc dans un seul processus : 6 bloc(s) sur 9 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzstring-emptiness-narration.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
   </div>
 </main>
 </div>
@@ -155,7 +155,7 @@ nPosition = substr(&quot;haro&quot;, val) #--&gt; 1
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">La plateforme logicielle gouvernée de l&#x27;ère de l&#x27;IA. Déclarez ce que vous savez. Un tribunal le garde. Le modèle d&#x27;IA vient en dernier. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
-    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-21.</p></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-30.</p></div>
   </div>
 </div></footer>
 <script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

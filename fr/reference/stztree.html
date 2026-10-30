@@ -46,7 +46,7 @@
     <div class="treasures"><p class="proof"><a href="../atlas/collections.html">Le récit de son domaine : Collections et objets</a> · <a href="../guide/collections.html">La référence de son domaine</a></p></div>
     <nav class="jump" aria-label="Aller à"><p><b>Aller à</b> <a href="#addnodeat">A</a> <a href="#branches">B</a> <a href="#findnode">F</a> <a href="#init">I</a> <a href="#lastnodeinbranch">L</a> <a href="#nodes">N</a> <a href="#root">R</a> <a href="#show">S</a> <a href="#thesenodes">T</a></p><p><b>Sections</b> <a href="#nodes">managing nodes</a> · <a href="#items">managing items</a> · <a href="#finditem">finding items</a> · <a href="#numberofnodesinbranch">geeting nodes from a branch</a></p></nav>
     <p class="proof">Sous chaque méthode, ses extensions (Q CS XT Z ZZ IB W U) : en gras et cochée, elle existe ; barrée, elle n'existe pas. <a href="../reference.html#extensions">Les extensions et leur sens</a></p>
-    <p class="proof">Exemples : 0 viennent des tests de la bibliothèque ; 12 ont été composés à partir de la signature de chaque méthode et exécutés pour cette page, sur un objet neuf, par exemple <span class="mono">o1 = new stzTree( :root = [ :node1 = [ &quot;X&quot;, :node11 = [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;X&quot; ] ], :node2 = [ 1, 2, 3 ], :node3 = [ &quot;X&quot;, 4, 5 ] ] )</span>. 22 méthodes n'en ont pas encore. Exemples exécutés le 2026-10-03 20:23 dans la bibliothèque au commit 0e72e2e2c.</p>
+    <p class="proof">Exemples : 0 viennent des tests de la bibliothèque ; 17 ont été composés à partir de la signature de chaque méthode et exécutés pour cette page, sur un objet neuf, par exemple <span class="mono">o1 = new stzTree( :root = [ :node1 = [ &quot;X&quot;, :node11 = [ &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;X&quot; ] ], :node2 = [ 1, 2, 3 ], :node3 = [ &quot;X&quot;, 4, 5 ] ] )</span>. 17 méthodes n'en ont pas encore. Exemples exécutés le 2026-10-30 12:20 dans la bibliothèque au commit 0e72e2e2c.</p>
     <input id="flt" class="flt" type="search" placeholder="Filtrer les méthodes…" aria-label="Filtrer les méthodes…">
     <div class="lanes rtable"><div class="lane lane2 rhead"><div class="ln">Méthode</div><div class="lt">Explication, telle que la source la porte</div></div><div class="lane lane2 rrow" id="init" data-k="init  "><div class="ln mono">init</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">init</span><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="root" data-k="root  "><div class="ln mono">Root</div><div class="lt"><i>Pas encore décrite. Son nom, lu comme une phrase :</i> <span class="mono">root</span><details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
 :root = [
@@ -191,7 +191,124 @@
 ]
 )
 ? o1.LastNodeInBranch(&quot;a&quot;)
-#--&gt; a</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="removethisitemcs" data-k="removethisitemcs  removing items and nodes"><div class="ln mono">RemoveThisItemCS</div><div class="lt">removing items and nodes<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="removeitem" data-k="removeitem  removing items and nodes"><div class="ln mono">RemoveItem</div><div class="lt">removing items and nodes<span class="ext-line"><span class="exts"><i class="n" title="Q: enchaîne (n&#x27;existe pas pour cette méthode)">Q</i><i class="y" title="CS: casse">CS</i><i class="n" title="XT: étendue (n&#x27;existe pas pour cette méthode)">XT</i><i class="n" title="Z: positions (n&#x27;existe pas pour cette méthode)">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="removetheseitems" data-k="removetheseitems  removing items and nodes"><div class="ln mono">RemoveTheseItems</div><div class="lt">removing items and nodes<span class="ext-line"><span class="exts"><i class="n" title="Q: enchaîne (n&#x27;existe pas pour cette méthode)">Q</i><i class="y" title="CS: casse">CS</i><i class="n" title="XT: étendue (n&#x27;existe pas pour cette méthode)">XT</i><i class="n" title="Z: positions (n&#x27;existe pas pour cette méthode)">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="removeitems" data-k="removeitems  removing items and nodes"><div class="ln mono">RemoveItems</div><div class="lt">removing items and nodes<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="removeallitems" data-k="removeallitems  removing items and nodes"><div class="ln mono">RemoveAllItems</div><div class="lt">removing items and nodes<span class="ext-line"><span class="exts none">aucune extension</span></span></div></div></div>
+#--&gt; a</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="removethisitemcs" data-k="removethisitemcs  removing items and nodes"><div class="ln mono">RemoveThisItemCS</div><div class="lt">removing items and nodes<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
+:root = [
+:node1 = [ "X", :node11 = [ "A", "B", "C", "D", "X" ] ],
+:node2 = [ 1, 2, 3 ],
+:node3 = [ "X", 4, 5 ]
+]
+)
+o1.RemoveThisItemCS(3, TRUE)
+? @@( o1.Content() )
+#--&gt; [
+#--&gt;     [
+#--&gt;         "root",
+#--&gt;         [
+#--&gt;             [
+#--&gt;                 "node1",
+#--&gt;                 [
+#--&gt;                     "X",
+#--&gt;                     [
+#--&gt;                         "node11",
+#--&gt;                         [ "A", "B", "C", "D", "X" ]
+#--&gt;                     ]
+#--&gt;                 ]
+#--&gt;             ],
+#--&gt;             [ "node2", [ 1, 2 ] ],
+#--&gt;             [ "node3", [ "X", 4, 5 ] ]
+#--&gt;         ]
+#--&gt;     ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="removeitem" data-k="removeitem  removing items and nodes"><div class="ln mono">RemoveItem</div><div class="lt">removing items and nodes<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
+:root = [
+:node1 = [ "X", :node11 = [ "A", "B", "C", "D", "X" ] ],
+:node2 = [ 1, 2, 3 ],
+:node3 = [ "X", 4, 5 ]
+]
+)
+o1.RemoveItem(3)
+? @@( o1.Content() )
+#--&gt; [
+#--&gt;     [
+#--&gt;         "root",
+#--&gt;         [
+#--&gt;             [
+#--&gt;                 "node1",
+#--&gt;                 [
+#--&gt;                     "X",
+#--&gt;                     [
+#--&gt;                         "node11",
+#--&gt;                         [ "A", "B", "C", "D", "X" ]
+#--&gt;                     ]
+#--&gt;                 ]
+#--&gt;             ],
+#--&gt;             [ "node2", [ 1, 2 ] ],
+#--&gt;             [ "node3", [ "X", 4, 5 ] ]
+#--&gt;         ]
+#--&gt;     ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts"><i class="n" title="Q: enchaîne (n&#x27;existe pas pour cette méthode)">Q</i><i class="y" title="CS: casse">CS</i><i class="n" title="XT: étendue (n&#x27;existe pas pour cette méthode)">XT</i><i class="n" title="Z: positions (n&#x27;existe pas pour cette méthode)">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="removetheseitems" data-k="removetheseitems  removing items and nodes"><div class="ln mono">RemoveTheseItems</div><div class="lt">removing items and nodes<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
+:root = [
+:node1 = [ "X", :node11 = [ "A", "B", "C", "D", "X" ] ],
+:node2 = [ 1, 2, 3 ],
+:node3 = [ "X", 4, 5 ]
+]
+)
+o1.RemoveTheseItems([ 2, 3 ])
+? @@( o1.Content() )
+#--&gt; [
+#--&gt;     [
+#--&gt;         "root",
+#--&gt;         [
+#--&gt;             [
+#--&gt;                 "node1",
+#--&gt;                 [
+#--&gt;                     "X",
+#--&gt;                     [
+#--&gt;                         "node11",
+#--&gt;                         [ "A", "B", "C", "D", "X" ]
+#--&gt;                     ]
+#--&gt;                 ]
+#--&gt;             ],
+#--&gt;             [ "node2", [ 1 ] ],
+#--&gt;             [ "node3", [ "X", 4, 5 ] ]
+#--&gt;         ]
+#--&gt;     ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts"><i class="n" title="Q: enchaîne (n&#x27;existe pas pour cette méthode)">Q</i><i class="y" title="CS: casse">CS</i><i class="n" title="XT: étendue (n&#x27;existe pas pour cette méthode)">XT</i><i class="n" title="Z: positions (n&#x27;existe pas pour cette méthode)">Z</i><i class="n" title="ZZ: sections (n&#x27;existe pas pour cette méthode)">ZZ</i><i class="n" title="IB: bornes (n&#x27;existe pas pour cette méthode)">IB</i><i class="n" title="W: condition (n&#x27;existe pas pour cette méthode)">W</i><i class="n" title="U: sans doublon (n&#x27;existe pas pour cette méthode)">U</i></span></span></div></div><div class="lane lane2 rrow" id="removeitems" data-k="removeitems  removing items and nodes"><div class="ln mono">RemoveItems</div><div class="lt">removing items and nodes<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
+:root = [
+:node1 = [ "X", :node11 = [ "A", "B", "C", "D", "X" ] ],
+:node2 = [ 1, 2, 3 ],
+:node3 = [ "X", 4, 5 ]
+]
+)
+o1.RemoveItems()
+? @@( o1.Content() )
+#--&gt; [
+#--&gt;     [
+#--&gt;         "root",
+#--&gt;         [
+#--&gt;             [ "node1", [ [ "node11", [ ] ] ] ],
+#--&gt;             [ "node2", [ ] ],
+#--&gt;             [ "node3", [ ] ]
+#--&gt;         ]
+#--&gt;     ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div><div class="lane lane2 rrow" id="removeallitems" data-k="removeallitems  removing items and nodes"><div class="ln mono">RemoveAllItems</div><div class="lt">removing items and nodes<details class="rxd"><summary>exemple composé</summary><pre class="rx">o1 = new stzTree(
+:root = [
+:node1 = [ "X", :node11 = [ "A", "B", "C", "D", "X" ] ],
+:node2 = [ 1, 2, 3 ],
+:node3 = [ "X", 4, 5 ]
+]
+)
+o1.RemoveAllItems()
+? @@( o1.Content() )
+#--&gt; [
+#--&gt;     [
+#--&gt;         "root",
+#--&gt;         [
+#--&gt;             [ "node1", [ [ "node11", [ ] ] ] ],
+#--&gt;             [ "node2", [ ] ],
+#--&gt;             [ "node3", [ ] ]
+#--&gt;         ]
+#--&gt;     ]
+#--&gt; ]</pre><span class="rx-src">composé à partir de la signature, exécuté pour cette page</span></details><span class="ext-line"><span class="exts none">aucune extension</span></span></div></div></div>
   </div>
 </main>
 </div>

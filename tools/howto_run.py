@@ -14,6 +14,7 @@ try block; the temporary folder created in the library is removed at the end.
     python tools/howto_run.py <path to libraries/stzlib>
 """
 import json, re, sys, pathlib, subprocess, datetime, shutil
+from runtime import RNXC          # the runtime the examples run on (tools/runtime.py)
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from showcase_run import verdict
 from harvest_examples import FORBIDDEN
@@ -94,7 +95,7 @@ def main():
     def run(lines):
         script = work / "howto.ring"
         script.write_text("\n".join(['load "../../../max/stzMax.ring"', ""] + lines) + "\n", encoding="utf-8")
-        p = subprocess.run(["ring", script.name], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300)
+        p = subprocess.run(RNXC + [script.name], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300)
         return (p.stdout or "").replace("\r", "")
     t0 = datetime.datetime.now()
     try:

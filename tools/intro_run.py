@@ -10,6 +10,7 @@ what each printed. A sample that raises an error is reported and kept out of the
     python tools/intro_run.py <path to libraries/stzlib of a library checkout> [Class ...]
 """
 import json, re, sys, subprocess, pathlib, datetime, shutil, tempfile
+from runtime import RNXC          # the runtime the examples run on (tools/runtime.py)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "data" / "intro-snippets.json"
@@ -50,7 +51,7 @@ def main():
             script.write_text("\n".join(loads + [""] + body) + "\n", encoding="utf-8")
             started = datetime.datetime.now()
             try:
-                p = subprocess.run(["ring", str(script)], cwd=cwd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=240)
+                p = subprocess.run(RNXC + [str(script)], cwd=cwd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=240)
                 out = p.stdout + ("\n" + p.stderr if p.stderr else "")
             except subprocess.TimeoutExpired as e:
                 out = (e.stdout or b"").decode("utf-8", "replace") if isinstance(e.stdout, bytes) else (e.stdout or "")

@@ -54,7 +54,7 @@
 #--&gt; 0
 
 ? Q(&quot;text&quot;).Count(&quot;&quot;) 
-#--&gt; 0</pre><p class="ran nv-kept">run on 2026-10-08 20:44 at commit 4a184e6f0: kept its promise</p></div>
+#--&gt; 0</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <p>This prevents the confusion found in some languages where empty substrings are implicitly considered "present" at every position in a string.</p>
 <blockquote>
 <p>NOTE: The small <code>Q(val)</code> function converts the value <code>val</code> into its corresponding Softanza object. In this case, <code>Q("text")</code> returns an <code>stzString("text")</code> object.</p>
@@ -65,7 +65,7 @@
 #--&gt; [ ]
 
 ? @@( Q(&quot;text&quot;).FindAll(&quot;&quot;) )
-#--&gt; [ ]</pre><p class="ran nv-kept">run on 2026-10-08 20:44 at commit 4a184e6f0: kept its promise</p></div>
+#--&gt; [ ]</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <p>Also, finding the first position of <code>""</code> always returns <code>0</code>, which means it does not even exist:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>? Q(&quot;&quot;).FindFirst(&quot;&quot;)
 #--&gt; 0
@@ -85,7 +85,7 @@
 #--&gt; FALSE
 
 ? Q(&quot;text&quot;).Contains(&quot;&quot;)
-#--&gt; FALSE</pre><p class="ran nv-kept">run on 2026-10-08 20:44 at commit 4a184e6f0: kept its promise</p></div>
+#--&gt; FALSE</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <p>This behavior eliminates ambiguities in mainstream languages, where <code>""</code> is often considered contained within any string.</p>
 <h2 id="rule-4-emptiness-is-irreplaceable-but-stretchable">Rule 4: Emptiness Is Irreplaceable but Stretchable</h2>
 <p>Replacing any value with emptiness has no meaningful effect, nor does replacing an empty string with another empty string.</p>
@@ -102,7 +102,7 @@
 #--&gt; &quot;text&quot;
 
 ? @@( Q(&quot;text&quot;).ReplaceQ(&quot;&quot;, &quot;X&quot;).Content() )
-#--&gt; &quot;text&quot;</pre><p class="ran nv-kept">run on 2026-10-08 20:44 at commit 4a184e6f0: kept its promise</p></div>
+#--&gt; &quot;text&quot;</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <p>However, replacing emptiness with a non-empty string stretches the empty string to host the new content.</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>
 ? @@( Q(&quot;&quot;).ReplaceQ(&quot;&quot;, &quot;X&quot;).Content() )
@@ -121,7 +121,7 @@
 #--&gt; &quot;&quot;
 
 ? @@( Q(&quot;text&quot;).RemoveQ(&quot;&quot;).Content() ) 
-#--&gt; &quot;text&quot;</pre><p class="ran nv-kept">run on 2026-10-08 20:44 at commit 4a184e6f0: kept its promise</p></div>
+#--&gt; &quot;text&quot;</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <p>This ensures logical consistency and avoids unintended alterations.</p>
 <h2 id="logical-fluency-and-real-world-implications">Logical Fluency and Real-World Implications</h2>
 <p>Softanza’s rules for handling emptiness prevent common errors and make programs more predictable.</p>
@@ -141,12 +141,12 @@ nPosition = substr(&quot;haro&quot;, val) #--&gt; 1
 
 // Removing with Softanza
 ? Q(&quot;Haro&quot;).RemoveQ(val).Content()
-#--&gt; &quot;Haro&quot;</pre><p class="ran nv-kept">run on 2026-10-08 20:44 at commit 4a184e6f0: kept its promise</p></div>
+#--&gt; &quot;Haro&quot;</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <p>Softanza ensures no modifications occur when dealing with empty strings, preventing such traps and ensuring logical fluency in real-world programming.</p>
 <hr />
 <h2 id="conclusion">Conclusion</h2>
 <p>By treating emptiness as <strong>uncountable</strong>, <strong>unfindable</strong>, <strong>uncontainable</strong>, <strong>irreplaceable</strong>, and <strong>irremovable</strong>, <strong>Softanza</strong> provides a consistent and logical framework for string operations. These rules eliminate ambiguities found in other languages, fostering clean and maintainable code.</p>
-<h2>Cite</h2><p class="mono cite">Mansour Ayouni. "Emptiness in Strings, Clear Rules: The Softanza Way". Softanza narrations, 2024. https://mayouni.github.io/stzsite/en/narrations/stzstring-emptiness-narration.html</p><p class="proof">Run in Haro's name on 2026-10-08 20:44 inside the library at commit 4a184e6f0, block after block in one process: 6 of 9 blocks kept their promise; the others are illustrations. The code of the articles is Haro code. Where an article was written before the language took its present name, the name was changed and nothing else. Genre, area and series read from the file's name, the year from its first commit: derived, until the article carries its own header. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzstring-emptiness-narration.md" target="_blank" rel="noopener noreferrer">The file on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
+<h2>Cite</h2><p class="mono cite">Mansour Ayouni. "Emptiness in Strings, Clear Rules: The Softanza Way". Softanza narrations, 2024. https://mayouni.github.io/stzsite/en/narrations/stzstring-emptiness-narration.html</p><p class="proof">Run in Haro's name on 2026-10-30 12:20 inside the library at commit 0950e246a, block after block in one process: 6 of 9 blocks kept their promise; the others are illustrations. The code of the articles is Haro code. Where an article was written before the language took its present name, the name was changed and nothing else. Genre, area and series read from the file's name, the year from its first commit: derived, until the article carries its own header. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzstring-emptiness-narration.md" target="_blank" rel="noopener noreferrer">The file on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
   </div>
 </main>
 </div>
@@ -155,7 +155,7 @@ nPosition = substr(&quot;haro&quot;, val) #--&gt; 1
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">The Governed Software Platform of the AI Age. Declare what you know. A court keeps it. The AI model comes last. Born in Africa. Useful to the World!</p><div class="themes" role="group" aria-label="Display"><button type="button" data-set-theme="light">Use the light theme</button><button type="button" data-set-theme="dark">Use the dark theme</button><button type="button" data-set-theme="auto">Follow the system</button></div></div>
-    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/en/" target="_blank" rel="noopener noreferrer">Softanza: The Governed Software Platform of the AI Age<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></i> (second of the AYOUNI books), AYOUNI, 2026, draft.</p><p>If this site or its books are useful to your organisation, I work with organisations on their subjects: paper copies in quantity, workshops and training, talks, consulting and the building of solutions. Write to kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/offer/" target="_blank" rel="noopener noreferrer">How these books are offered, and how to work with the author<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="https://mayouni.github.io/ayouni/licence/" target="_blank" rel="noopener noreferrer">The licence<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-21.</p></div>
+    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/en/" target="_blank" rel="noopener noreferrer">Softanza: The Governed Software Platform of the AI Age<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></i> (second of the AYOUNI books), AYOUNI, 2026, draft.</p><p>If this site or its books are useful to your organisation, I work with organisations on their subjects: paper copies in quantity, workshops and training, talks, consulting and the building of solutions. Write to kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/offer/" target="_blank" rel="noopener noreferrer">How these books are offered, and how to work with the author<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="https://mayouni.github.io/ayouni/licence/" target="_blank" rel="noopener noreferrer">The licence<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-30.</p></div>
   </div>
 </div></footer>
 <script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

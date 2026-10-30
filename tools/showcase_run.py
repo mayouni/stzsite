@@ -13,13 +13,17 @@ A snippet taken from a narrated guard may call that guard's own helpers (Then,
 Given, When from the shared test helper; a Chk defined in the guard file). The
 shared helper is loaded, and a helper defined in the source guard is copied
 from that file, word for word, to the end of the script, so the snippet prints
-exactly what the guard prints. The snippets of one area run in one process, in
+exactly what the guard prints -- with one spelling changed: the counter it
+writes (nPass++) is a top-level name, which Ring++ asks for as $nPass in a
+function (Rule A), so the copy and its declaration say $nPass. Ring reads the
+two spellings alike, so the output is the guard's on either runtime. The snippets of one area run in one process, in
 order, so a later snippet may use what an earlier one built. Nothing is written
 in the library except a temporary folder, which is removed at the end.
 
     python tools/showcase_run.py <path to libraries/stzlib of a library checkout> [area ...]
 """
 import json, re, sys, subprocess, pathlib, datetime, shutil
+from runtime import RNXC          # the runtime the examples run on (tools/runtime.py)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "data" / "showcase-src.json"
@@ -73,9 +77,15 @@ def helpers_from(lib, source, code):
         taken.add(name)
         body = defs[name]
         out.append(body)
-        counters |= set(re.findall(r"\b(n[A-Z]\w*)\+\+", body))
+        counters |= set(re.findall(r"(?<![$@\w.])(n[A-Z]\w*)\+\+", body))
         todo += [c.lower() for c in re.findall(r"\b(\w+)\s*\(", body) if c.lower() in defs and c.lower() not in SHARED]
-    return out, counters
+    return [dollar(h, counters) for h in out], counters
+
+def dollar(body, counters):
+    """The helper with each counter it writes spelt $name: a top-level global, as Rule A asks of a function."""
+    for c in counters:
+        body = re.sub(rf"(?<![$@\w.]){re.escape(c)}\b", "$" + c, body)
+    return body
 
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
@@ -114,12 +124,12 @@ def main():
                 body += [f'? "@@BEGIN {i}"', "try", code, "catch", '    ? "@@ERROR " + cCatchError', "done", f'? "@@END {i}"', ""]
             if not usable:
                 continue
-            lines = ['load "../../stzBase.ring"', 'load "../_narrated.ring"', ""] + [f"{c} = 0" for c in sorted(counters)] + [""] + body + [""] + tail
+            lines = ['load "../../stzBase.ring"', 'load "../_narrated.ring"', ""] + [f"${c} = 0" for c in sorted(counters)] + [""] + body + [""] + tail
             script = work / f"{slug}.ring"
             script.write_text("\n".join(lines) + "\n", encoding="utf-8")
             started = datetime.datetime.now()
             try:
-                p = subprocess.run(["ring", script.name], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=240)
+                p = subprocess.run(RNXC + [script.name], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=240)
                 out = p.stdout + ("\n" + p.stderr if p.stderr else "")
             except subprocess.TimeoutExpired as e:
                 out = (e.stdout or b"").decode("utf-8", "replace") if isinstance(e.stdout, bytes) else (e.stdout or "")

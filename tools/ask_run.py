@@ -14,6 +14,7 @@ to show. One process, inside the library; the temporary folder is removed.
     python tools/ask_run.py --regrade      # grade the stored answers again, without asking
 """
 import json, re, sys, pathlib, subprocess, datetime, shutil, collections
+from runtime import RNXC          # the runtime the examples run on (tools/runtime.py)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "ask-run.json"
@@ -80,9 +81,10 @@ def main():
         qs.append({"file": r["file"], "intent": r["intent"], "class": cls, "methods": [m.split(".", 1)[1] for m in r["methods"] if m.startswith(cls + ".")]})
     work = lib / "base" / "test" / "_stzsite_ask"
     work.mkdir(parents=True, exist_ok=True)
-    lines = ['load "../../../max/stzMax.ring"', "", "aDocs = []", "func Sd(c)",
-             "    for i = 1 to len(aDocs)", "        if aDocs[i][1] = c return aDocs[i][2] ok", "    next",
-             "    o = StzSelfDocQ(c)", "    aDocs + [ c, o ]", "    return o", ""]
+    # the cache is a top-level name read in a function: $aDocs, as Ring++ asks (Rule A); Ring reads it alike
+    lines = ['load "../../../max/stzMax.ring"', "", "$aDocs = []", "func Sd(c)",
+             "    for i = 1 to len($aDocs)", "        if $aDocs[i][1] = c return $aDocs[i][2] ok", "    next",
+             "    o = StzSelfDocQ(c)", "    $aDocs + [ c, o ]", "    return o", ""]
     body = []
     for i, q in enumerate(qs):
         body += [f'? "@@Q {i}"', "try", f"    oS = Sd({ring_str(q['class'])})",
@@ -103,7 +105,7 @@ def main():
     script.write_text("\n".join(lines[:3] + body + [""] + lines[3:]) + "\n", encoding="utf-8")
     t0 = datetime.datetime.now()
     try:
-        p = subprocess.run(["ring", script.name], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=900)
+        p = subprocess.run(RNXC + [script.name], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=900)
         out = (p.stdout or "").replace("\r", "")
     finally:
         shutil.rmtree(work, ignore_errors=True)

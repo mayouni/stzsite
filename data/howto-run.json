@@ -32,7 +32,7 @@
     "out": "4"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "list/contains.md": {
   "intent": "Check whether a list contains an item",
@@ -68,7 +68,7 @@
     "out": "1"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "list/filter.md": {
   "intent": "Keep only the list items that match a condition",
@@ -105,7 +105,7 @@
     "out": "4\n5\n6"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "list/find.md": {
   "intent": "Find the position of an item in a list",
@@ -141,7 +141,7 @@
     "out": "2"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "list/first-last.md": {
   "intent": "Get the first or last element of a list",
@@ -180,7 +180,7 @@
     "out": "5\n7"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "list/max-min.md": {
   "intent": "Get the largest or smallest value in a list",
@@ -219,7 +219,7 @@
     "out": "9\n2"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "list/remove-duplicates.md": {
   "intent": "Remove duplicate items from a list (keep the unique ones)",
@@ -256,7 +256,7 @@
     "out": "1\n2\n3"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "list/reverse.md": {
   "intent": "Reverse the order of items in a list",
@@ -292,7 +292,7 @@
     "out": "3\n2\n1"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "list/sort.md": {
   "intent": "Sort a list into ascending order",
@@ -330,7 +330,7 @@
     "out": "1\n2\n3"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "list/sum.md": {
   "intent": "Add up all the numbers in a list",
@@ -366,7 +366,7 @@
     "out": "10"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "number/even-odd.md": {
   "intent": "Check whether a number is even or odd",
@@ -409,7 +409,7 @@
     "out": "1"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "number/factors.md": {
   "intent": "Get all the factors (divisors) of a number",
@@ -446,7 +446,7 @@
     "out": "1\n2\n3\n4\n6\n12"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "number/is-prime.md": {
   "intent": "Check whether a number is prime",
@@ -480,7 +480,7 @@
     "out": "1"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "string/contains.md": {
   "intent": "Check whether a string contains a substring",
@@ -518,7 +518,7 @@
     "out": "1"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "string/count-occurrences.md": {
   "intent": "Count how many times a substring appears",
@@ -553,7 +553,7 @@
     "out": "3"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "string/find.md": {
   "intent": "Find where a substring occurs in a string",
@@ -591,7 +591,7 @@
     "out": "1\n13"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "string/repeat.md": {
   "intent": "Repeat a string several times",
@@ -625,7 +625,7 @@
     "out": "ababab"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "string/replace.md": {
   "intent": "Replace occurrences of one substring with another",
@@ -660,7 +660,7 @@
     "out": "I like dogs"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "string/reverse.md": {
   "intent": "Reverse the characters of a string",
@@ -694,7 +694,7 @@
     "out": "aznatfoS"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "string/section.md": {
   "intent": "Extract a portion (substring) between two positions",
@@ -759,7 +759,7 @@
     "out": "a\nb\nc"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "string/starts-ends-with.md": {
   "intent": "Check whether a string starts or ends with something",
@@ -795,7 +795,7 @@
     "out": "1\n1"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "string/trim.md": {
   "intent": "Remove leading and trailing whitespace from a string",
@@ -832,7 +832,7 @@
     "out": "hi"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "string/uppercase.md": {
   "intent": "Convert a string to upper case (or lower case)",
@@ -878,7 +878,7 @@
     "out": "hello"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "text/detect-language.md": {
   "intent": "Detect which natural language a text is written in",
@@ -914,7 +914,7 @@
     "out": "english"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "text/entities.md": {
   "intent": "Find the people, places, and organizations mentioned in text",
@@ -961,7 +961,7 @@
     "out": "Alice\nBob"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "text/normalize-words.md": {
   "intent": "Reduce words to their base or root form (lemmatize / stem)",
@@ -1000,7 +1000,7 @@
     "out": "The child be run happily."
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "text/sentiment.md": {
   "intent": "Detect the emotional tone (positive or negative) of some text",
@@ -1039,7 +1039,7 @@
     "out": "positive"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  },
  "text/summarize.md": {
   "intent": "Summarize a text down to its most important sentences",
@@ -1108,6 +1108,6 @@
     "out": "Machine learning models require large training datasets\ncareful evaluation"
    }
   ],
-  "ran": "2026-10-02 22:33"
+  "ran": "2026-10-30 12:20"
  }
 }

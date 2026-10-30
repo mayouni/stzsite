@@ -8,6 +8,7 @@ pinned commit, and keeps what each printed in data/edu-run.json; the page puts t
     python tools/edu_run.py <path to libraries/stzlib>
 """
 import json, re, sys, pathlib, subprocess, datetime, shutil
+from runtime import RNXC          # the runtime the examples run on (tools/runtime.py)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "edu-run.json"
@@ -48,7 +49,7 @@ def main():
     (work / "teach.ring").write_text(NL.join(lines) + NL, encoding="utf-8")
     t0 = datetime.datetime.now()
     try:
-        p = subprocess.run(["ring", "teach.ring"], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300)
+        p = subprocess.run(RNXC + ["teach.ring"], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300)
         out = (p.stdout or "").replace("\r", "")
     finally:
         shutil.rmtree(work, ignore_errors=True)

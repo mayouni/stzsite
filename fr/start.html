@@ -36,7 +36,7 @@
     <p class="lede">Un dépôt public, une installation en trois étapes, un premier programme, le lecteur du cours comme page de ce site. Chaque commande de cette page a été exécutée le soir de la publication.</p>
   </div></section>
   <div class="wrap page-body">
-<p class="proof"><b>L'exécution, en clair</b> Softanza tourne aujourd'hui sur sa face Ring, gardée pour que le code déjà écrit continue de fonctionner. Ring++ est le pont, en construction. Haro est la destination.</p>
+<p class="proof"><b>L'exécution, en clair</b> Softanza tourne sur Ring++, un compilateur et une machine virtuelle à lui, et sa face Ring garde en marche le code déjà écrit. Ring lui-même est retiré du projet. Haro est la destination.</p>
 
 <h2 id="who">Qui êtes-vous ?</h2>
 <p>Chaque lecteur a une page qui lit tout le site depuis sa place : par où commencer, le chemin, et les pages qui comptent pour lui.</p>
@@ -54,14 +54,14 @@
 <pre>git clone https://github.com/mayouni/stzlib.git
 cd stzlib/libraries/stzlib</pre>
 
-<p><strong>2. Prendre l'exécutant</strong>, version 1.27.0, celle avec laquelle ces pages ont été exécutées, sur <a href="https://ring-lang.net" target="_blank" rel="noopener noreferrer">ring-lang.net<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a>. Lancer l'exécutant sans argument affiche sa version, ce qui montre qu'il est là. Le moteur Zig est livré en bibliothèques compilées pour Windows et se construit pour Linux et macOS depuis la source ; le dépôt dit comment.</p>
+<p><strong>2. Prendre l'exécutant</strong> sur <a href="https://github.com/mayouni/ringpp/releases/latest" target="_blank" rel="noopener noreferrer">sa dernière version publiée<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> : une archive pour Windows, une pour Linux, décompressée n'importe où. Le moteur Zig de la bibliothèque est dedans, construit pour l'exécutant, et rien ne se compile sur votre machine. L'exécutant est un seul programme, <code>bin/rnxc</code> (<code>bin\rnxc.exe</code> sous Windows) : lancé sans argument, il affiche comment l'utiliser, ce qui montre qu'il est là.</p>
 <p><strong>3. Écrire le premier programme.</strong> Dans le dossier <code>libraries/stzlib</code>, créer un fichier <code>first.ring</code> dont la première ligne charge la bibliothèque, puis le programme de la section suivante :</p>
 <pre>load "stzLib.ring"</pre>
 
 <p>Le lancer depuis ce dossier :</p>
-<pre>ring first.ring</pre>
+<pre>rnxc first.ring</pre>
 
-<p>Le premier lancement prend environ sept secondes, parce que la bibliothèque et son moteur se chargent.</p>
+<p>Donner à <code>rnxc</code> son chemin complet, ou mettre son dossier dans le chemin. Le premier lancement prend environ vingt secondes, parce que la bibliothèque se compile ; chaque lancement suivant part de la forme compilée, en un dixième de seconde.</p>
 <h2 id="first">Le premier programme</h2>
 <div class="run"><div><div class="lbl">premier</div><pre>o1 = new stzList([ "A", "", "B", "", "", "C" ])
 ? o1.ContainsEmptyStrings()
@@ -70,7 +70,7 @@ cd stzlib/libraries/stzlib</pre>
 ┌──────────┐
 │ Softanza │
 └──────────┘</pre></div></div>
-<p class="ran">exécuté le 2026-10-09 à 00:52 par <code>ring first.ring</code> depuis <code>libraries/stzlib</code>, en 6,9 secondes, Softanza au commit <a href="https://github.com/mayouni/stzlib/commit/4a184e6f0" target="_blank" rel="noopener noreferrer">4a184e6f0<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+<p class="ran">exécuté le 2026-10-29 à 18:46 par <code>rnxc first.ring</code> depuis <code>libraries/stzlib</code>, en 18,8 secondes la première fois et 0,1 seconde ensuite, Softanza au commit <a href="https://github.com/mayouni/stzlib/commit/0950e246a" target="_blank" rel="noopener noreferrer">0950e246a<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
 
 <h2 id="map">Quelle page répond à quoi</h2>
 <p>Le site a une page par sorte de question. Quand vous ne connaissez pas un nom, appuyez sur <kbd>/</kbd> ou <kbd>Ctrl</kbd>+<kbd>K</kbd> sur n'importe quelle page : la recherche trouve les classes, les méthodes, les domaines et les recettes.</p>
@@ -117,7 +117,7 @@ ring demo.ring rehearsal</pre>
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../index.html" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">La plateforme logicielle gouvernée de l&#x27;ère de l&#x27;IA. Déclarez ce que vous savez. Un tribunal le garde. Le modèle d&#x27;IA vient en dernier. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
-    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-21.</p></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-30.</p></div>
   </div>
 </div></footer>
 <script src="../assets/js/site.js"></script><script src="../assets/js/search-core.js"></script><script src="../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

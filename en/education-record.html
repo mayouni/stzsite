@@ -73,7 +73,7 @@ LEVEL s0: missing 5 -- ex-01-01, ex-02-01, ex-03-01, ex-04-01, project-s0
 LEVEL s1: missing 9
 LEVEL s2: missing 14
 LEVEL s3: missing 21
-LEVEL s4: missing 24</pre></div></div><p class="ran">run on 2026-10-05 21:34 inside the library at commit 4a184e6f0</p>
+LEVEL s4: missing 24</pre></div></div><p class="ran">run on 2026-10-30 09:53 inside the library at commit 0950e246a</p>
 
 <p>A wrong answer to exercise 1.1 is refused. The checker ran the file in a fresh process and says what it printed; it does not say what it should have printed.</p>
 <div class="run"><div><div class="lbl">At the command line</div><pre># wrong.ring
@@ -95,7 +95,7 @@ learn.ring ada submit ex-01-01 wrong.ring</pre></div><div class="out"><div class
     "fish",
     "rice",
     "tea"
-]</pre></div></div><p class="ran">run on 2026-10-05 21:34 inside the library at commit 4a184e6f0</p>
+]</pre></div></div><p class="ran">run on 2026-10-30 09:53 inside the library at commit 0950e246a</p>
 
 <p>A right answer passes. The verdict is the checker's: it ran the file, and nobody read it. The learner is now on chapter 2 and one exercise nearer the first level, with four missing instead of five.</p>
 <div class="run"><div><div class="lbl">At the command line</div><pre># right.ring
@@ -109,7 +109,7 @@ learn.ring ada submit ex-01-01 wrong.ring</pre></div><div class="out"><div class
     "tea"
 ]).DuplicatesRemoved() )
 
-learn.ring ada submit ex-01-01 right.ring</pre></div><div class="out"><div class="lbl">Output</div><pre>PASSED ex-01-01: Every promise of the exercise was kept when your program ran.</pre></div></div><p class="ran">run on 2026-10-05 21:34 inside the library at commit 4a184e6f0</p>
+learn.ring ada submit ex-01-01 right.ring</pre></div><div class="out"><div class="lbl">Output</div><pre>PASSED ex-01-01: Every promise of the exercise was kept when your program ran.</pre></div></div><p class="ran">run on 2026-10-30 09:53 inside the library at commit 0950e246a</p>
 
 <div class="run"><div><div class="lbl">At the command line</div><pre>learn.ring ada status</pre></div><div class="out"><div class="lbl">Output</div><pre>LEARNER ada  (en, world: workplace)
 ON chapter 2: a-first-sentence -- A first sentence
@@ -118,17 +118,17 @@ LEVEL s0: missing 4 -- ex-02-01, ex-03-01, ex-04-01, project-s0
 LEVEL s1: missing 8
 LEVEL s2: missing 13
 LEVEL s3: missing 20
-LEVEL s4: missing 23</pre></div></div><p class="ran">run on 2026-10-05 21:34 inside the library at commit 4a184e6f0</p>
+LEVEL s4: missing 23</pre></div></div><p class="ran">run on 2026-10-30 09:53 inside the library at commit 0950e246a</p>
 
 <p>On chapter 2, the learner asks about something they have not reached. The tutor names the later chapter, explains nothing of it, and asks about the exercise in hand. It is rule-based: no AI model, no network.</p>
-<div class="run"><div><div class="lbl">At the command line</div><pre>learn.ring ada ask ex-02-01 &quot;How do I use KnowRelation to teach a world?&quot;</pre></div><div class="out"><div class="lbl">Output</div><pre>That belongs to chapter 12, &#x27;Teach a world&#x27;. You are on chapter 2, and the later chapter stands on what this one teaches, so I will not explain it yet. Which step of your current exercise is still open?</pre></div></div><p class="ran">run on 2026-10-05 21:34 inside the library at commit 4a184e6f0</p>
+<div class="run"><div><div class="lbl">At the command line</div><pre>learn.ring ada ask ex-02-01 &quot;How do I use KnowRelation to teach a world?&quot;</pre></div><div class="out"><div class="lbl">Output</div><pre>That belongs to chapter 12, &#x27;Teach a world&#x27;. You are on chapter 2, and the later chapter stands on what this one teaches, so I will not explain it yet. Which step of your current exercise is still open?</pre></div></div><p class="ran">run on 2026-10-30 09:53 inside the library at commit 0950e246a</p>
 
 <p>Asked in French, Arabic or Hausa, the tutor answers in that language, and those answers are drafts like the chapters. How many units a native speaker has read is a number the library prints, and today it is none:</p>
 <div class="run"><div><div class="lbl">At the command line</div><pre>review_sheet.ring sheet.md --lang fr
 review_sheet.ring sheet.md --lang ar
 review_sheet.ring sheet.md --lang ha</pre></div><div class="out"><div class="lbl">Output</div><pre>REVIEW SHEET fr: 0 of 35 units reviewed
 REVIEW SHEET ar: 0 of 35 units reviewed
-REVIEW SHEET ha: 0 of 35 units reviewed</pre></div></div><p class="ran">run on 2026-10-05 21:34 inside the library at commit 4a184e6f0</p>
+REVIEW SHEET ha: 0 of 35 units reviewed</pre></div></div><p class="ran">run on 2026-10-30 09:53 inside the library at commit 0950e246a</p>
 
 <h2 id="reviews">How a draft stops being a draft</h2>
 <p>The library's own definition of a <strong>unit</strong>: a chapter with its exercises, a world page, the skills, or the tutor's texts. French, Arabic and Hausa each have 35. A unit stops being a draft when a native speaker's sign-off is recorded for it in a file named for the language; the page then drops the notice and names who signed.</p>
@@ -145,7 +145,7 @@ REVIEW SHEET ha: 0 of 35 units reviewed</pre></div></div><p class="ran">run on 2
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../index.html" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">The Governed Software Platform of the AI Age. Declare what you know. A court keeps it. The AI model comes last. Born in Africa. Useful to the World!</p><div class="themes" role="group" aria-label="Display"><button type="button" data-set-theme="light">Use the light theme</button><button type="button" data-set-theme="dark">Use the dark theme</button><button type="button" data-set-theme="auto">Follow the system</button></div></div>
-    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/en/" target="_blank" rel="noopener noreferrer">Softanza: The Governed Software Platform of the AI Age<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></i> (second of the AYOUNI books), AYOUNI, 2026, draft.</p><p>If this site or its books are useful to your organisation, I work with organisations on their subjects: paper copies in quantity, workshops and training, talks, consulting and the building of solutions. Write to kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/offer/" target="_blank" rel="noopener noreferrer">How these books are offered, and how to work with the author<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="https://mayouni.github.io/ayouni/licence/" target="_blank" rel="noopener noreferrer">The licence<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-21.</p></div>
+    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/en/" target="_blank" rel="noopener noreferrer">Softanza: The Governed Software Platform of the AI Age<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></i> (second of the AYOUNI books), AYOUNI, 2026, draft.</p><p>If this site or its books are useful to your organisation, I work with organisations on their subjects: paper copies in quantity, workshops and training, talks, consulting and the building of solutions. Write to kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/offer/" target="_blank" rel="noopener noreferrer">How these books are offered, and how to work with the author<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="https://mayouni.github.io/ayouni/licence/" target="_blank" rel="noopener noreferrer">The licence<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-30.</p></div>
   </div>
 </div></footer>
 <script src="../assets/js/site.js"></script><script src="../assets/js/search-core.js"></script><script src="../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

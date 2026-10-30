@@ -69,7 +69,7 @@ oReg.Declare(:mail)
 oReg.Bind(:mail, new stzMailSandbox())
 oReg.SetPhase(:production)
 ? oReg.IsSound()
-? @@( oReg.Findings() )</pre></div><div class="out"><div class="lbl">Output</div><pre>0
+? @@( oReg.Findings() )</pre></div><div class="out"><div class="lbl">Output</div><pre>FALSE
 [
     [
         [ "invariant", "sandbox-in-production" ],
@@ -80,7 +80,7 @@ oReg.SetPhase(:production)
             "still bound to a SANDBOX in a production phase -- a fake must never ship"
         ]
     ]
-]</pre></div></div><p class="ran">run on 2026-10-04 01:42 inside the library at commit 0e72e2e2c</p>
+]</pre></div></div><p class="ran">run on 2026-10-30 09:52 inside the library at commit 0e72e2e2c</p>
 
 <p>The first line is 0, not sound. The second says why: a fake must never ship. The fake is refused by name, and a service that was declared and never bound raises when asked for, instead of silently doing nothing.</p>
 <p class="way"><span><a href="way.html">The Softanza way</a></span> "We tested against the sandbox" means something only if the code is byte for byte the code that ships. So the phase decides what comes back, and the check that nothing fake ships is enforced, not remembered.</p>
@@ -107,7 +107,7 @@ oOrg.AddPositionXTT("audit", "Internal Audit", [
             "BCEAO-003: No dedicated Risk Management function"
         ]
     ]
-]</pre></div></div><p class="ran">run on 2026-10-04 01:42 inside the library at commit 0e72e2e2c</p>
+]</pre></div></div><p class="ran">run on 2026-10-30 09:52 inside the library at commit 0e72e2e2c</p>
 
 <p>Three findings, each a rule with a number a bank's auditor can read. <span class="mono">base/graph/stzOrgChart.ring</span> holds the validators; the library also names the rule bases <span class="mono">stzBCEAORuleBase</span>, <span class="mono">stzBaselIIIRuleBase</span> and their siblings.</p>
 <p>The other thing that was born in Organizium is the web layer. Its repository, started on 4 February 2026, holds a framework of single-file worlds for the web, a first query notation, and the interface constitution with its rule file and the verifier that checks a page against it: an early form of what the site calls <a href="zui.html">Zui</a> today. They are not public yet; the site quotes none of their text.</p>
@@ -128,7 +128,7 @@ oOrg.AddPositionXTT("audit", "Internal Audit", [
 <p>A restaurant, a bank and an NGO have nothing in common, and each asked for the same five things in its own words: a shared ground, a world for each person and each device, bonds between them, rules, and roles. The library names that construction, a constellation of worlds, and the site calls it <a href="platforms.html">a platform of platforms</a>. It is not a theory that was applied afterwards: it is what the projects had in common once they were set side by side.</p>
 <h2 id="limits">What the projects did not prove</h2>
 <p>The customer platforms run today on ordinary stacks: Organizium at Sonibank is a Python application, RestoLean is single-file web worlds, DIKO Hub is not built. Their declarations are being written as Softanza's own, so that moving them onto the Softanza engine is a change of engine, not of plan; it is a step ahead, not a step taken. Some lessons above are carried by public files and some only by documents that are not public yet: the page marks which. And what the author remembers and no file proves is not listed.</p>
-<p class="proof">The library's files named above are public; the repositories of the projects are not, and the site quotes none of their text beyond what each section says. Every run on this page was made inside the library on 2026-10-04 01:42 at commit 0e72e2e2c.</p>
+<p class="proof">The library's files named above are public; the repositories of the projects are not, and the site quotes none of their text beyond what each section says. Every run on this page was made inside the library on 2026-10-30 09:52 at commit 0e72e2e2c.</p>
   </div>
 </main>
 </div>
@@ -137,7 +137,7 @@ oOrg.AddPositionXTT("audit", "Internal Audit", [
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../index.html" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">The Governed Software Platform of the AI Age. Declare what you know. A court keeps it. The AI model comes last. Born in Africa. Useful to the World!</p><div class="themes" role="group" aria-label="Display"><button type="button" data-set-theme="light">Use the light theme</button><button type="button" data-set-theme="dark">Use the dark theme</button><button type="button" data-set-theme="auto">Follow the system</button></div></div>
-    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/en/" target="_blank" rel="noopener noreferrer">Softanza: The Governed Software Platform of the AI Age<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></i> (second of the AYOUNI books), AYOUNI, 2026, draft.</p><p>If this site or its books are useful to your organisation, I work with organisations on their subjects: paper copies in quantity, workshops and training, talks, consulting and the building of solutions. Write to kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/offer/" target="_blank" rel="noopener noreferrer">How these books are offered, and how to work with the author<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="https://mayouni.github.io/ayouni/licence/" target="_blank" rel="noopener noreferrer">The licence<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-21.</p></div>
+    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/en/" target="_blank" rel="noopener noreferrer">Softanza: The Governed Software Platform of the AI Age<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></i> (second of the AYOUNI books), AYOUNI, 2026, draft.</p><p>If this site or its books are useful to your organisation, I work with organisations on their subjects: paper copies in quantity, workshops and training, talks, consulting and the building of solutions. Write to kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/offer/" target="_blank" rel="noopener noreferrer">How these books are offered, and how to work with the author<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="https://mayouni.github.io/ayouni/licence/" target="_blank" rel="noopener noreferrer">The licence<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-30.</p></div>
   </div>
 </div></footer>
 <script src="../assets/js/site.js"></script><script src="../assets/js/search-core.js"></script><script src="../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

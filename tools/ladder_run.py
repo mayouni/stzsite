@@ -18,6 +18,7 @@ created in the library is removed at the end.
     python tools/ladder_run.py <path to libraries/stzlib>
 """
 import json, re, sys, pathlib, subprocess, datetime, shutil
+from runtime import RNXC          # the runtime the examples run on (tools/runtime.py)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "ladder-run.json"
@@ -57,7 +58,7 @@ def main():
     (work / "ladder.ring").write_text("\n".join(code) + "\n", encoding="utf-8")
     t0 = datetime.datetime.now()
     try:
-        p = subprocess.run(["ring", "ladder.ring"], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=900)
+        p = subprocess.run(RNXC + ["ladder.ring"], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=900)
         out = (p.stdout or "").replace("\r", "")
     finally:
         shutil.rmtree(work, ignore_errors=True)

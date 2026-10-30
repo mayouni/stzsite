@@ -17,7 +17,7 @@ The same frame carries the introduction to Softanza, nine missions set in Zindar
 
 ## What the learners' machines need {#machines}
 
-The course's cells run on the learner's machine, not in the browser: the reader shows each program and the answer it promises, and the learner runs it. Each machine needs the repository, a single folder copied with <code>git clone</code>; the runtime, version 1.27.0; and about seven seconds for the first run. The engine ships compiled for Windows, and builds for Linux and macOS from source. The three steps are on <a href="start.html#install">Start</a>.
+The course's cells run on the learner's machine, not in the browser: the reader shows each program and the answer it promises, and the learner runs it. Each machine needs the repository, a single folder copied with <code>git clone</code>; the runtime, one archive for Windows or Linux that carries the library's engine; and about twenty seconds for the first run, a tenth of a second for the next. The three steps are on <a href="start.html#install">Start</a>.
 
 ## Who does what {#who}
 

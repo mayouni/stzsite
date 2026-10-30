@@ -60,7 +60,7 @@
 #    [ 2, 3, 4 ],
 #    [ 2, 4 ],
 #    [ 2, 6 ]
-#]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:41 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>The <code>DeepFind()</code> method traverses the entire structure and returns a list of paths where the item exists. Each path is a list of indices that pinpoints the exact location of the item.</p>
 <h2 id="making-global-changes">Making Global Changes</h2>
 <p>Once you've found items, you'll often want to replace them. Softanza makes this simple too:</p>
@@ -70,11 +70,11 @@
 #    &quot;A&quot;,
 #    [ &quot;*&quot;, &quot;B&quot;, [ &quot;C&quot;, &quot;*&quot;, &quot;D&quot;, &quot;*&quot; ], &quot;*&quot;, &quot;E&quot;, &quot;*&quot; ],
 #    &quot;E&quot;
-#]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:41 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Need to remove items instead? Just as easy:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>o1.DeepRemove(&quot;*&quot;)
 ? @@NL( o1.Content() )
-#--&gt; [ &quot;A&quot;, [ &quot;B&quot;, [ &quot;C&quot;, &quot;D&quot; ], &quot;E&quot; ], &quot;E&quot; ]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:41 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; [ &quot;A&quot;, [ &quot;B&quot;, [ &quot;C&quot;, &quot;D&quot; ], &quot;E&quot; ], &quot;E&quot; ]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>These methods operate throughout the entire data structure, making sweeping changes with minimal code.</p>
 <h2 id="working-with-specific-paths">Working with Specific Paths</h2>
 <p>But what if you need more precision? What if you want to operate on just part of your data structure? This is where paths come in.</p>
@@ -101,7 +101,7 @@
 #    [ 3, 2 ],
 #    [ 3, 2, 1 ],
 #    [ 4 ]
-#]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:41 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>With paths, you can access specific items directly:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>? o1.ItemAtPath([2, 2, 2])
 #--&gt; &quot;item222&quot;
@@ -218,7 +218,7 @@ o1.DeepReplaceManyByManyInXT([
 
 # Find the common ancestor of multiple paths
 ? @@( CommonPath([ [2, 1, 3], [2, 1, 4], [2, 1, 5] ]) )
-#--&gt; [2, 1]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:41 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+#--&gt; [2, 1]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <h3 id="expanding-and-focusing">Expanding and Focusing</h3>
 <div class="nblock"><div class="lbl">Haro</div><pre># Expand a path to include all its subpaths
 ? @@NL( o1.ExpandPath([2, 3]) )
@@ -436,7 +436,7 @@ o1.DeepUppercaseString(&quot;other&quot;)
 <h2 id="conclusion">Conclusion</h2>
 <p>Softanza transforms complex operations on deep lists from tedious tasks into elegant one-liners. By providing intuitive methods that build on familiar concepts, it lets you focus on what you want to accomplish rather than how to navigate complex structures.</p>
 <p>The library's consistent naming patterns make your code more readable and maintainable. As your needs grow from simple searches to complex replacements across multiple paths, Softanza offers just the right tool for each challenge.</p>
-<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « Taming Deep Lists with Softanza ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stz-managing-deep-lists-narration.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-08 20:41 dans la bibliothèque au commit 4a184e6f0, bloc après bloc dans un seul processus : 5 bloc(s) sur 19 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-managing-deep-lists-narration.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « Taming Deep Lists with Softanza ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stz-managing-deep-lists-narration.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-30 12:20 dans la bibliothèque au commit 0950e246a, bloc après bloc dans un seul processus : 5 bloc(s) sur 19 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-managing-deep-lists-narration.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
   </div>
 </main>
 </div>
@@ -445,7 +445,7 @@ o1.DeepUppercaseString(&quot;other&quot;)
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">La plateforme logicielle gouvernée de l&#x27;ère de l&#x27;IA. Déclarez ce que vous savez. Un tribunal le garde. Le modèle d&#x27;IA vient en dernier. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
-    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-21.</p></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-30.</p></div>
   </div>
 </div></footer>
 <script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

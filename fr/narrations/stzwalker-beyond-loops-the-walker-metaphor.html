@@ -60,13 +60,13 @@ oWalker = Wk(1, 10, 2)
 
 # Identify positions that remain off the immediate stepping path:
 ? oWalker.Unwalkables()
-# --&gt; [2, 4, 6, 8, 10]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:45 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+# --&gt; [2, 4, 6, 8, 10]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>This pre-emptive mapping provides a strategic overview of the traversal landscape. Whether planning to navigate around obstacles, aligning with synchronized workflows, or preparing for conditional logic, developers gain deep insights into the sequence’s structure from the very beginning.</p>
 <h2 id="taking-the-first-steps-movement-with-awareness">Taking the First Steps: Movement with Awareness</h2>
 <p>Unlike traditional loops—where the current index is simply incremented—stzWalker actively tracks its journey. Each movement is “aware” of the context: what has already been traversed, where the walker is now, and which positions still lie ahead. This makes even simple movements powerful:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Take a single step forward
 ? oWalker.Walk()
-# --&gt; [1, 3]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:45 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+# --&gt; [1, 3]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>After this step, the walker not only updates its current position but also records the pathway taken. This immediate contextualization translates into several useful queries:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Retrieve the current position
 ? oWalker.CurrentPosition()
@@ -74,7 +74,7 @@ oWalker = Wk(1, 10, 2)
 
 # See the remaining positions that can be traversed
 ? oWalker.RemainingWalkables()
-# --&gt; [5, 7, 9]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:45 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+# --&gt; [5, 7, 9]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>This design transforms iteration from a passive counter update into a dynamic exploration with full situational awareness.</p>
 <h2 id="tracking-history-the-walkers-memory">Tracking History: The Walker's Memory</h2>
 <p>One of the standout advantages of stzWalker is its meticulous history tracking. Every move, whether forward or backward, is stored in the walker’s internal log. This complete journey history can be utilized for debugging, auditing, or even for implementing rollback capabilities.</p>
@@ -86,7 +86,7 @@ oWalker.WalkNSteps(3)
 
 # Inspect the historical log of all traversed positions
 ? oWalker.History()
-# --&gt; [1, 2, 3, 4]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:45 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+# --&gt; [1, 2, 3, 4]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Bidirectional movement is recorded just as faithfully:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Walk backward to revisit earlier positions
 oWalker.WalkBackward(2)
@@ -111,11 +111,11 @@ oWalker.Reset()
 <div class="nblock"><div class="lbl">Haro</div><pre># Revert to the first position
 oWalker.WalkToFirst()
 ? oWalker.CurrentPosition()
-# --&gt; 1</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:45 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+# --&gt; 1</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>And for cases where traversal needs to cover a custom range:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Walk a custom segment of the path
 ? oWalker.WalkBetween(3, 7)
-# --&gt; [3, 4, 5, 6, 7]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:45 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+# --&gt; [3, 4, 5, 6, 7]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>This level of precision is indispensable when dealing with complex data structures, allowing developers to compose navigational flows that are both readable and expressive.</p>
 <h2 id="direction-determination-the-two-level-approach">Direction Determination: The Two-Level Approach</h2>
 <p>A crucial aspect of stzWalker’s design is its flexible and powerful handling of directionality. This is achieved through a two-level system:</p>
@@ -204,16 +204,16 @@ oWalkers = new stzListOfWalkers([w1, w2, w3])</pre><p class="ran nv-illus">illus
 <p>Intersections and commonalities in traversal pathways can be computed effortlessly:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Identify common positions across all walkers
 ? oWalkers.CommonWalkables()
-# --&gt; [4, 10]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:45 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+# --&gt; [4, 10]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Real-time snapshots of the traversal state are equally accessible:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Query current positions of all walkers
 ? oWalkers.CurrentPositions()
-# --&gt; [2, 1, 4]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:45 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+# --&gt; [2, 1, 4]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Moreover, synchronous movement is as simple as issuing a single command across the entire system:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre># Advance all walkers in unison
 oWalkers.WalkAllNSteps(1)
 ? oWalkers.CurrentPositions()
-# --&gt; [4, 4, 10]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:45 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+# --&gt; [4, 4, 10]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>This synchronized traversal is invaluable in multi-dimensional algorithms or simulations, where different aspects of the system must evolve concurrently.</p>
 <h2 id="path-finding-capabilities-traversal-intelligence">Path Finding Capabilities: Traversal Intelligence</h2>
 <p>StzWalker’s built-in path analysis features allow for advanced sequence matching and predictive navigation. This capability is particularly compelling when dealing with multiple walkers, as it can quickly determine which of them can traverse a given set of positions—ideal for pattern matching, conditional routing, or even game AI pathfinding.</p>
@@ -232,7 +232,7 @@ oWalkers = new stzListOfWalkers([
 <div class="nblock"><div class="lbl">Haro</div><pre># After several steps, check for previously walked sequences
 oWalkers.WalkNSteps(3)
 ? oWalkers.FindWalkedPath([6, 8])
-# --&gt; [2, 3]</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:45 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+# --&gt; [2, 3]</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Such intelligent path finding simplifies what would otherwise require intricate custom logic and manual index arithmetic.</p>
 <h2 id="integrating-robustness-and-real-world-applications">Integrating Robustness and Real-World Applications</h2>
 <p>Beyond its impressive feature set, the stzWalker paradigm is designed with real-world applications in mind:</p>
@@ -374,7 +374,7 @@ oWalkers.WalkNSteps(3)
 <h2 id="conclusion">Conclusion</h2>
 <p>Softanza’s stzWalker innovation represents a paradigm shift in how developers approach traversal. By reconceptualizing iteration as an intelligent, aware navigation system, stzWalker eliminates the limitations of traditional loops—reducing error-prone manual tracking and opening the door to advanced, expressive traversal patterns.</p>
 <p>Whether you are analyzing data sequences, synchronizing parallel workflows, or designing complex algorithms, stzWalker’s fluent API, built-in history, dynamic path finding, and multi-walker coordination empower you to transform mechanical iteration into an orchestrated, purposeful journey. The future of traversal is not about mere repetition; it’s about intelligent navigation, robust control, and innovative expression—and stzWalker leads the way.</p>
-<h2>Lectures liées</h2><ul><li><a href="stzwalker2d-walking-second-dimension.html">Beyond Inner Loops: Walking on the Second Dimension in Softanza</a></li></ul><h2>Citer</h2><p class="mono cite">Mansour Ayouni. « Beyond Loops: The Walker Metaphor in Softanza ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stzwalker-beyond-loops-the-walker-metaphor.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-08 20:45 dans la bibliothèque au commit 4a184e6f0, bloc après bloc dans un seul processus : 10 bloc(s) sur 18 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzwalker-beyond-loops-the -walker-metaphor.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+<h2>Lectures liées</h2><ul><li><a href="stzwalker2d-walking-second-dimension.html">Beyond Inner Loops: Walking on the Second Dimension in Softanza</a></li></ul><h2>Citer</h2><p class="mono cite">Mansour Ayouni. « Beyond Loops: The Walker Metaphor in Softanza ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stzwalker-beyond-loops-the-walker-metaphor.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-30 12:20 dans la bibliothèque au commit 0950e246a, bloc après bloc dans un seul processus : 10 bloc(s) sur 18 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzwalker-beyond-loops-the -walker-metaphor.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
   </div>
 </main>
 </div>
@@ -383,7 +383,7 @@ oWalkers.WalkNSteps(3)
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">La plateforme logicielle gouvernée de l&#x27;ère de l&#x27;IA. Déclarez ce que vous savez. Un tribunal le garde. Le modèle d&#x27;IA vient en dernier. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
-    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-21.</p></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-30.</p></div>
   </div>
 </div></footer>
 <script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

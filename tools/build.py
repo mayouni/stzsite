@@ -1271,10 +1271,10 @@ BANNED = [(re.compile(r"\bZin\b"), "Zin: its innovations are Softanza's now, and
 # prose names the former language and its bridge. It is written HERE, once, and a page says <!--RUNTIME--> where it stands; the
 # rule below refuses the name anywhere else in the prose, so the exception stays one sentence (and, when it is written, the page
 # that tells why Softanza leaves it, 12.7, named in RING_PAGES).
-RUNTIME = {"en": "Softanza runs today on its Ring face, kept so that the code already written keeps working. Ring++ is the bridge, "
-                 "in construction. Haro is the destination.",
-           "fr": "Softanza tourne aujourd'hui sur sa face Ring, gardée pour que le code déjà écrit continue de fonctionner. Ring++ est "
-                 "le pont, en construction. Haro est la destination."}
+RUNTIME = {"en": "Softanza runs on Ring++, a compiler and virtual machine of its own, and its Ring face keeps the code already "
+                 "written working. Ring itself is retired from the project. Haro is the destination.",
+           "fr": "Softanza tourne sur Ring++, un compilateur et une machine virtuelle à lui, et sa face Ring garde en marche le "
+                 "code déjà écrit. Ring lui-même est retiré du projet. Haro est la destination."}
 RING_PAGES = {"whyring"}
 PROSE_RING = re.compile(r"(?<![\w./`-])Ring(?![\w.])")
 

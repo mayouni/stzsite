@@ -68,7 +68,7 @@ oTime {
     AddHours(1) 
     ? Content() 
 }
-#--&gt; 10:05:00</pre><p class="ran nv-kept">run on 2026-10-08 20:45 at commit 4a184e6f0: kept its promise</p></div>
+#--&gt; 10:05:00</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <p>Here, Content() retrieves the updated string representation. This chaining pattern, inspired by natural expression, keeps the code concise while building complex calculations step by step.</p>
 <p>Subtraction works similarly, enabling quick backtracking for scenarios like logging past events.</p>
 <h3 id="comparing-and-measuring-durations">Comparing and Measuring Durations</h3>
@@ -107,9 +107,9 @@ oEnd = new stzTime(&quot;21:30:00&quot;)
 <div class="nblock"><div class="lbl">Haro</div><pre>oTime = new stzTime(&quot;15:20:00&quot;)
 ? oTime.ToSimple()     #--&gt; 3:20 PM
 ? oTime.To12Hour()     #--&gt; 3:20:00 PM
-? oTime.AMPM()         #--&gt; PM</pre><p class="ran nv-illus">illustration</p></div>
+? oTime.AMPM()         #--&gt; PM</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <p>Custom formats use a template string for precise control.</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>? oTime.ToStringXT(&quot;h:mm:ss AP&quot;)  #--&gt; 3:20:00 PM</pre><p class="ran nv-illus">illustration</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>? oTime.ToStringXT(&quot;h:mm:ss AP&quot;)  #--&gt; 3:20:00 PM</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <p>Accessing individual components is equally direct, supporting both 24-hour and contextual views.</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oDetailed = TimeQ(&quot;15:20:45.123&quot;)
 oDetailed {
@@ -125,7 +125,7 @@ oDetailed {
 <h3 id="ensuring-valid-inputs">Ensuring Valid Inputs</h3>
 <p>To prevent runtime issues, Softanza includes built-in validation. The IsTime() function checks strings upfront.</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>? IsTime(&quot;15:20:00&quot;)   #--&gt; TRUE
-? IsTime(&quot;24:00:00&quot;)   #--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+? IsTime(&quot;24:00:00&quot;)   #--&gt; FALSE</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <p>For object creation, wrap in a try-catch to handle invalids gracefully.</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>try
     oTime = TimeQ(&quot;15:70:00&quot;)
@@ -190,7 +190,7 @@ done</pre><p class="ran nv-illus">illustration</p></div>
 </table>
 <h2 id="conclusion">Conclusion</h2>
 <p>By building on the Softanza Engine's foundation and investing in a natural-oriented, feature-rich API, Softanza's stzTime class transforms time handling from a tedious chore into an intuitive process. This is particularly valuable for time-centric applications like calendars, event trackers, or analytics tools, where clarity and reliability directly impact development speed and user experience.</p>
-<h2>Cite</h2><p class="mono cite">Mansour Ayouni. "Time Handling in Softanza". Softanza narrations, 2025. https://mayouni.github.io/stzsite/en/narrations/stztime-handling-time-in-softanza.html</p><p class="proof">Run in Haro's name on 2026-10-08 20:45 inside the library at commit 4a184e6f0, block after block in one process: 1 of 15 blocks kept their promise; the others are illustrations. The code of the articles is Haro code. Where an article was written before the language took its present name, the name was changed and nothing else. Genre, area and series read from the file's name, the year from its first commit: derived, until the article carries its own header. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stztime-handling-time-in-softanza.md" target="_blank" rel="noopener noreferrer">The file on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
+<h2>Cite</h2><p class="mono cite">Mansour Ayouni. "Time Handling in Softanza". Softanza narrations, 2025. https://mayouni.github.io/stzsite/en/narrations/stztime-handling-time-in-softanza.html</p><p class="proof">Run in Haro's name on 2026-10-30 12:20 inside the library at commit 0950e246a, block after block in one process: 4 of 15 blocks kept their promise; the others are illustrations. The code of the articles is Haro code. Where an article was written before the language took its present name, the name was changed and nothing else. Genre, area and series read from the file's name, the year from its first commit: derived, until the article carries its own header. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stztime-handling-time-in-softanza.md" target="_blank" rel="noopener noreferrer">The file on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
   </div>
 </main>
 </div>
@@ -199,7 +199,7 @@ done</pre><p class="ran nv-illus">illustration</p></div>
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">The Governed Software Platform of the AI Age. Declare what you know. A court keeps it. The AI model comes last. Born in Africa. Useful to the World!</p><div class="themes" role="group" aria-label="Display"><button type="button" data-set-theme="light">Use the light theme</button><button type="button" data-set-theme="dark">Use the dark theme</button><button type="button" data-set-theme="auto">Follow the system</button></div></div>
-    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/en/" target="_blank" rel="noopener noreferrer">Softanza: The Governed Software Platform of the AI Age<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></i> (second of the AYOUNI books), AYOUNI, 2026, draft.</p><p>If this site or its books are useful to your organisation, I work with organisations on their subjects: paper copies in quantity, workshops and training, talks, consulting and the building of solutions. Write to kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/offer/" target="_blank" rel="noopener noreferrer">How these books are offered, and how to work with the author<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="https://mayouni.github.io/ayouni/licence/" target="_blank" rel="noopener noreferrer">The licence<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-21.</p></div>
+    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/en/" target="_blank" rel="noopener noreferrer">Softanza: The Governed Software Platform of the AI Age<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></i> (second of the AYOUNI books), AYOUNI, 2026, draft.</p><p>If this site or its books are useful to your organisation, I work with organisations on their subjects: paper copies in quantity, workshops and training, talks, consulting and the building of solutions. Write to kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/offer/" target="_blank" rel="noopener noreferrer">How these books are offered, and how to work with the author<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="https://mayouni.github.io/ayouni/licence/" target="_blank" rel="noopener noreferrer">The licence<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-30.</p></div>
   </div>
 </div></footer>
 <script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

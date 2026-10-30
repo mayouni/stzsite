@@ -18,6 +18,7 @@ in the library is removed at the end.
     python tools/narrations_run.py <path to libraries/stzlib> --only=a.md,b.md   # re-run those, keep the others' records
 """
 import json, re, sys, pathlib, subprocess, datetime, shutil
+from runtime import RNXC          # the runtime the examples run on (tools/runtime.py)
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from showcase_run import verdict
 from harvest_examples import parse, FORBIDDEN
@@ -121,7 +122,7 @@ def main():
             script.write_text("\n".join(main_lines + [""] + tail) + "\n", encoding="utf-8")
             t0 = datetime.datetime.now()
             try:
-                p = subprocess.run(["ring", script.name], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=240)
+                p = subprocess.run(RNXC + [script.name], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=240)
                 out = (p.stdout or "").replace("\r", "")
             except subprocess.TimeoutExpired as e:
                 out = (e.stdout.decode("utf-8", "replace") if isinstance(e.stdout, bytes) else (e.stdout or "")).replace("\r", "")

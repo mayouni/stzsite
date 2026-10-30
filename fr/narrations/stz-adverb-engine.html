@@ -48,11 +48,11 @@
 <p>This seems straightforward:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>? Adverb(&quot;quick&quot;)    #--&gt; quickly
 ? Adverb(&quot;happy&quot;)    #--&gt; happily  
-? Adverb(&quot;gentle&quot;)   #--&gt; gently</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:40 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+? Adverb(&quot;gentle&quot;)   #--&gt; gently</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Add "-ly" and you're done, right? But then you encounter the rebels:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>? Adverb(&quot;good&quot;)     #--&gt; well
 ? Adverb(&quot;fast&quot;)     #--&gt; fast
-? Adverb(&quot;hard&quot;)     #--&gt; hard</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:40 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+? Adverb(&quot;hard&quot;)     #--&gt; hard</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>English refuses to cooperate. "Good" doesn't become "goodly"—it transforms into "well." Some words like "fast" stay unchanged. The simple suffix rule crumbles immediately.</p>
 <h2 id="domain-contexts">Domain Contexts</h2>
 <p>Beyond basic morphology, Softanza recognizes that context shapes language. Business and technical domains have their own conventions:</p>
@@ -60,7 +60,7 @@
 ? Adverb(&quot;science&quot;)      #--&gt; scientifically
 ? Adverb(&quot;sales&quot;)        #--&gt; sales-wise
 ? Adverb(&quot;accounting&quot;)   #--&gt; from an accounting perspective
-? Adverb(&quot;marketing&quot;)    #--&gt; from a marketing perspective</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:40 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+? Adverb(&quot;marketing&quot;)    #--&gt; from a marketing perspective</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Notice how "sales" becomes "sales-wise" rather than "salely"? Or how "accounting" and "marketing" get full prepositional phrases? This isn't arbitrary—it reflects how professionals actually speak in these fields.</p>
 <h2 id="geographic-intelligence">Geographic Intelligence</h2>
 <p>The system understands cultural and geographic terms:</p>
@@ -69,7 +69,7 @@
 ? Adverb(&quot;arab&quot;)      #--&gt; arabic
 ? Adverb(&quot;africa&quot;)    #--&gt; african
 ? Adverb(&quot;north&quot;)     #--&gt; northern
-? Adverb(&quot;west&quot;)      #--&gt; western</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:40 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+? Adverb(&quot;west&quot;)      #--&gt; western</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>When you say something is done "france," the system knows you mean in a "french" manner, not "francely."</p>
 <h2 id="morphological-patterns">Morphological Patterns</h2>
 <p>For regular transformations, Softanza handles the systematic patterns English actually follows:</p>
@@ -90,7 +90,7 @@
 </ol>
 <h2 id="the-priority-system-in-action">The Priority System in Action</h2>
 <p>Watch how priorities resolve conflicts. Consider "business":</p>
-<div class="nblock"><div class="lbl">Haro</div><pre>? Adverb(&quot;business&quot;)    #--&gt; business-wise</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:40 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+<div class="nblock"><div class="lbl">Haro</div><pre>? Adverb(&quot;business&quot;)    #--&gt; business-wise</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Why not "businessly"? The system processes:</p>
 <ol>
 <li><strong>Priority 1</strong>: Is "business" irregular? No.</li>
@@ -111,7 +111,7 @@ AddAdverbRule(&quot;^education$&quot;, &quot;educationally&quot;, &quot;exact&qu
 
 # Adding domain-specific rules for your context  
 AddAdverbRule(&quot;^legal$&quot;, &quot;legally&quot;, &quot;exact&quot;, 2, &quot;domain&quot;)
-? Adverb(&quot;legal&quot;)       #--&gt; legally</pre><p class="ran nv-kept">exécuté le 2026-10-08 20:40 au commit 4a184e6f0 : a tenu sa promesse</p></div>
+? Adverb(&quot;legal&quot;)       #--&gt; legally</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Categories enable systematic management:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>? len(GetAdverbRulesByCategory(&quot;domain&quot;))      #--&gt; 11
 ? len(GetAdverbRulesByCategory(&quot;morphology&quot;))  #--&gt; 12</pre><p class="ran nv-illus">illustration</p></div>
@@ -122,7 +122,7 @@ AddAdverbRule(&quot;^legal$&quot;, &quot;legally&quot;, &quot;exact&quot;, 2, &q
 <p>The engine sorts by priority and applies matching strategies: exact matching, regex with capture groups, preservation rules, and fallback defaults.</p>
 <h2 id="embracing-imperfection">Embracing Imperfection</h2>
 <p>Softanza's adverb function exemplifies pragmatic design: sophisticated enough to handle most cases correctly, flexible enough to adapt when it doesn't. Rather than pursuing impossible perfection, it provides tools for continuous improvement based on real-world usage and context-specific needs.</p>
-<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « From &quot;Quick&quot; to &quot;Quickly&quot;: Programmatic Adverb Formation ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stz-adverb-engine.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-08 20:40 dans la bibliothèque au commit 4a184e6f0, bloc après bloc dans un seul processus : 6 bloc(s) sur 10 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-adverb-engine.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+<h2>Citer</h2><p class="mono cite">Mansour Ayouni. « From &quot;Quick&quot; to &quot;Quickly&quot;: Programmatic Adverb Formation ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stz-adverb-engine.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-30 12:20 dans la bibliothèque au commit 0950e246a, bloc après bloc dans un seul processus : 6 bloc(s) sur 10 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stz-adverb-engine.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
   </div>
 </main>
 </div>
@@ -131,7 +131,7 @@ AddAdverbRule(&quot;^legal$&quot;, &quot;legally&quot;, &quot;exact&quot;, 2, &q
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">La plateforme logicielle gouvernée de l&#x27;ère de l&#x27;IA. Déclarez ce que vous savez. Un tribunal le garde. Le modèle d&#x27;IA vient en dernier. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
-    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-21.</p></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-30.</p></div>
   </div>
 </div></footer>
 <script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

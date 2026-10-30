@@ -9,6 +9,7 @@ the page hides.
     python tools/grammar_run.py <path to libraries/stzlib>      -> data/grammar-run.json
 """
 import json, re, sys, subprocess, pathlib, datetime, shutil
+from runtime import RNXC          # the runtime the examples run on (tools/runtime.py)
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from showcase_run import verdict
@@ -27,7 +28,7 @@ def main():
     started = datetime.datetime.now()
     try:
         (work / "grammar.ring").write_text("\n".join(lines) + "\n", encoding="utf-8")
-        p = subprocess.run(["ring", "grammar.ring"], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300)
+        p = subprocess.run(RNXC + ["grammar.ring"], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300)
         out = (p.stdout or "").replace("\r", "")
     finally:
         shutil.rmtree(work, ignore_errors=True)

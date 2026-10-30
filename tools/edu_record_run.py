@@ -16,6 +16,7 @@ they are told). The output is kept in data/edu-record-run.json; the page puts th
     python tools/edu_record_run.py <path to libraries/stzlib>      -> data/edu-record-run.json
 """
 import json, re, sys, pathlib, subprocess, datetime, shutil, tempfile
+from runtime import RNXC          # the runtime the examples run on (tools/runtime.py)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "edu-record-run.json"
@@ -49,7 +50,7 @@ def main():
 
     def desk(script, args):
         """one tool, run from its own folder; returns (stdout cleaned, exit code)"""
-        p = subprocess.run(["ring", script] + args, cwd=tools, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300)
+        p = subprocess.run(RNXC + [script] + args, cwd=tools, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300)
         out = (p.stdout or "").replace("\r", "")
         out = out.replace(str(work).replace(chr(92), "/"), "").replace(str(work), "")
         return re.sub(r"\n(?:[ \t]*\n)+", NL + NL, out).strip(), p.returncode

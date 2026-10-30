@@ -73,7 +73,7 @@ LEVEL s0: missing 5 -- ex-01-01, ex-02-01, ex-03-01, ex-04-01, project-s0
 LEVEL s1: missing 9
 LEVEL s2: missing 14
 LEVEL s3: missing 21
-LEVEL s4: missing 24</pre></div></div><p class="ran">exécuté le 2026-10-05 21:34 dans la bibliothèque au commit 4a184e6f0</p>
+LEVEL s4: missing 24</pre></div></div><p class="ran">exécuté le 2026-10-30 09:53 dans la bibliothèque au commit 0950e246a</p>
 
 <p>Une mauvaise réponse à l'exercice 1.1 est refusée. Le vérificateur a exécuté le fichier dans un processus neuf et dit ce qu'il a affiché ; il ne dit pas ce qu'il aurait dû afficher.</p>
 <div class="run"><div><div class="lbl">En ligne de commande</div><pre># wrong.ring
@@ -95,7 +95,7 @@ learn.ring ada submit ex-01-01 wrong.ring</pre></div><div class="out"><div class
     "fish",
     "rice",
     "tea"
-]</pre></div></div><p class="ran">exécuté le 2026-10-05 21:34 dans la bibliothèque au commit 4a184e6f0</p>
+]</pre></div></div><p class="ran">exécuté le 2026-10-30 09:53 dans la bibliothèque au commit 0950e246a</p>
 
 <p>Une bonne réponse passe. Le verdict est celui du vérificateur : il a exécuté le fichier, et personne ne l'a lu. L'apprenant est maintenant au chapitre 2 et un exercice plus près du premier niveau, avec quatre manquants au lieu de cinq.</p>
 <div class="run"><div><div class="lbl">En ligne de commande</div><pre># right.ring
@@ -109,7 +109,7 @@ learn.ring ada submit ex-01-01 wrong.ring</pre></div><div class="out"><div class
     "tea"
 ]).DuplicatesRemoved() )
 
-learn.ring ada submit ex-01-01 right.ring</pre></div><div class="out"><div class="lbl">Sortie</div><pre>PASSED ex-01-01: Every promise of the exercise was kept when your program ran.</pre></div></div><p class="ran">exécuté le 2026-10-05 21:34 dans la bibliothèque au commit 4a184e6f0</p>
+learn.ring ada submit ex-01-01 right.ring</pre></div><div class="out"><div class="lbl">Sortie</div><pre>PASSED ex-01-01: Every promise of the exercise was kept when your program ran.</pre></div></div><p class="ran">exécuté le 2026-10-30 09:53 dans la bibliothèque au commit 0950e246a</p>
 
 <div class="run"><div><div class="lbl">En ligne de commande</div><pre>learn.ring ada status</pre></div><div class="out"><div class="lbl">Sortie</div><pre>LEARNER ada  (en, world: workplace)
 ON chapter 2: a-first-sentence -- A first sentence
@@ -118,17 +118,17 @@ LEVEL s0: missing 4 -- ex-02-01, ex-03-01, ex-04-01, project-s0
 LEVEL s1: missing 8
 LEVEL s2: missing 13
 LEVEL s3: missing 20
-LEVEL s4: missing 23</pre></div></div><p class="ran">exécuté le 2026-10-05 21:34 dans la bibliothèque au commit 4a184e6f0</p>
+LEVEL s4: missing 23</pre></div></div><p class="ran">exécuté le 2026-10-30 09:53 dans la bibliothèque au commit 0950e246a</p>
 
 <p>Au chapitre 2, l'apprenant demande quelque chose qu'il n'a pas atteint. Le tuteur nomme le chapitre à venir, n'en explique rien, et interroge sur l'exercice en cours. Il est fondé sur des règles : ni modèle d'IA, ni réseau.</p>
-<div class="run"><div><div class="lbl">En ligne de commande</div><pre>learn.ring ada ask ex-02-01 &quot;How do I use KnowRelation to teach a world?&quot;</pre></div><div class="out"><div class="lbl">Sortie</div><pre>That belongs to chapter 12, &#x27;Teach a world&#x27;. You are on chapter 2, and the later chapter stands on what this one teaches, so I will not explain it yet. Which step of your current exercise is still open?</pre></div></div><p class="ran">exécuté le 2026-10-05 21:34 dans la bibliothèque au commit 4a184e6f0</p>
+<div class="run"><div><div class="lbl">En ligne de commande</div><pre>learn.ring ada ask ex-02-01 &quot;How do I use KnowRelation to teach a world?&quot;</pre></div><div class="out"><div class="lbl">Sortie</div><pre>That belongs to chapter 12, &#x27;Teach a world&#x27;. You are on chapter 2, and the later chapter stands on what this one teaches, so I will not explain it yet. Which step of your current exercise is still open?</pre></div></div><p class="ran">exécuté le 2026-10-30 09:53 dans la bibliothèque au commit 0950e246a</p>
 
 <p>Interrogé en français, en arabe ou en haoussa, le tuteur répond dans cette langue, et ces réponses sont des brouillons comme les chapitres. Combien d'unités un locuteur natif a relues est un nombre que la bibliothèque affiche, et aujourd'hui il est nul :</p>
 <div class="run"><div><div class="lbl">En ligne de commande</div><pre>review_sheet.ring sheet.md --lang fr
 review_sheet.ring sheet.md --lang ar
 review_sheet.ring sheet.md --lang ha</pre></div><div class="out"><div class="lbl">Sortie</div><pre>REVIEW SHEET fr: 0 of 35 units reviewed
 REVIEW SHEET ar: 0 of 35 units reviewed
-REVIEW SHEET ha: 0 of 35 units reviewed</pre></div></div><p class="ran">exécuté le 2026-10-05 21:34 dans la bibliothèque au commit 4a184e6f0</p>
+REVIEW SHEET ha: 0 of 35 units reviewed</pre></div></div><p class="ran">exécuté le 2026-10-30 09:53 dans la bibliothèque au commit 0950e246a</p>
 
 <h2 id="reviews">Comment un brouillon cesse d'en être un</h2>
 <p>La définition d'une <strong>unité</strong> par la bibliothèque elle-même : un chapitre avec ses exercices, une page de monde, les compétences, ou les textes du tuteur. Le français, l'arabe et le haoussa en ont chacun 35. Une unité cesse d'être un brouillon quand la validation d'un locuteur natif est enregistrée pour elle dans un fichier nommé d'après la langue ; la page retire alors l'avis et nomme qui l'a signée.</p>
@@ -145,7 +145,7 @@ REVIEW SHEET ha: 0 of 35 units reviewed</pre></div></div><p class="ran">exécut�
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../index.html" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">La plateforme logicielle gouvernée de l&#x27;ère de l&#x27;IA. Déclarez ce que vous savez. Un tribunal le garde. Le modèle d&#x27;IA vient en dernier. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
-    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-21.</p></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-30.</p></div>
   </div>
 </div></footer>
 <script src="../assets/js/site.js"></script><script src="../assets/js/search-core.js"></script><script src="../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

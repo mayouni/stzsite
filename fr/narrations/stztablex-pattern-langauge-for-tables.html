@@ -61,7 +61,7 @@
 
 oTx = new stzTablex(&quot;{cols(3) &amp; rows(2)}&quot;)
 ? oTx.Match(oTable)
-#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; TRUE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Structure patterns accept exact values or comparison operators:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oTx = new stzTablex(&quot;{cols(&gt;3) &amp; rows(&lt;100)}&quot;)
 
@@ -79,11 +79,11 @@ oTx = new stzTablex(&quot;{cols(3) &amp; rows(2)}&quot;)
 
 oTx = new stzTablex(&quot;{colname(employee) &amp; colname(salary)}&quot;)
 ? oTx.Match(oTable)
-#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; TRUE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>The <code>hascol()</code> token provides an alternative syntax:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oTx = new stzTablex(&quot;{hascol(employee) &amp; hascol(department)}&quot;)
 ? oTx.Match(oTable)
-#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; TRUE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>This column verification is essential when working with dynamic data sources where column presence cannot be guaranteed.</p>
 <hr />
 <h2 id="3-content-matching-with-case-control">3. Content Matching with Case Control</h2>
@@ -101,7 +101,7 @@ oTable2 = new stzTable([
 
 oTx = new stzTablex(&quot;{contains(Tunis)}&quot;)
 ? oTx.Match(oTable1)  #--&gt; TRUE
-? oTx.Match(oTable2)  #--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+? oTx.Match(oTable2)  #--&gt; FALSE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>By default, matching is <strong>case-insensitive</strong>. Use the <code>@cs:</code> prefix for exact case matching:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oTable = new stzTable([
     [ :NAME ],
@@ -160,11 +160,11 @@ oTx = new stzTablex(&quot;{@!duplicates(email)}&quot;)
 
 oTx = new stzTablex(&quot;{coltype(age:number) &amp; coltype(name:string) &amp; coltype(tags:list)}&quot;)
 ? oTx.Match(oTable)
-#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; TRUE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>For simpler checks, use the shorthand tokens:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oTx = new stzTablex(&quot;{numeric(age) &amp; alphabetic(name)}&quot;)
 ? oTx.Match(oTable)
-#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; TRUE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>Type validation catches data import errors early, before they propagate through your application logic.</p>
 <hr />
 <h2 id="6-statistical-constraints">6. Statistical Constraints</h2>
@@ -184,7 +184,7 @@ oTx = new stzTablex(&quot;{sumcol(sales:60000)}&quot;)
 # Sum must exceed 50000
 oTx = new stzTablex(&quot;{sumcol(sales:&gt;50000)}&quot;)
 ? oTx.Match(oTable)
-#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; TRUE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>The same constraint syntax applies to averages, minimums, and maximums:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oTable = new stzTable([
     [ :NAME, :SCORE ],
@@ -195,7 +195,7 @@ oTx = new stzTablex(&quot;{sumcol(sales:&gt;50000)}&quot;)
 
 oTx = new stzTablex(&quot;{avgcol(score:&gt;75) &amp; mincol(score:&gt;60) &amp; maxcol(score:&lt;100)}&quot;)
 ? oTx.Match(oTable)
-#--&gt; TRUE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; TRUE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>These statistical patterns enable validation of business rules: "average salary must exceed $40,000," "no price below cost," "all grades between 0 and 100."</p>
 <hr />
 <h2 id="7-data-quality-assessment">7. Data Quality Assessment</h2>
@@ -214,7 +214,7 @@ oTx = new stzTablex(&quot;{nulls(email)}&quot;)
 # Ensure no nulls
 oTx = new stzTablex(&quot;{@!nulls(email)}&quot;)
 ? oTx.Match(oTable)
-#--&gt; FALSE</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; FALSE</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>The <code>completeness()</code> token quantifies data coverage:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>oTable = new stzTable([
     [ :NAME, :PHONE ],
@@ -290,7 +290,7 @@ oTx = new stzTablex(&quot;{cols(3)}&quot;)
 # Retrieve matches
 aMatches = oTx.MatchingTablesIn(aTables)
 ? len(aMatches)
-#--&gt; 2</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; 2</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>This enables filtering data lake tables, validating batch imports, or finding conformant datasets in heterogeneous collections.</p>
 <hr />
 <h2 id="11-pattern-composition-and-reuse">11. Pattern Composition and Reuse</h2>
@@ -311,7 +311,7 @@ oFlexible = oStructure.Or(oQuality)
 # Negate
 oInverse = oQuality.Not()
 ? oInverse.Pattern()
-#--&gt; {@!unique(id) &amp; @!nulls(email)}</pre><p class="ran nv-illus">illustration</p></div>
+#--&gt; {@!unique(id) &amp; @!nulls(email)}</pre><p class="ran nv-kept">exécuté le 2026-10-30 12:20 au commit 0950e246a : a tenu sa promesse</p></div>
 <p>This compositional approach encourages pattern libraries—reusable validation rules across your application.</p>
 <hr />
 <h2 id="12-advanced-table-specific-patterns">12. Advanced Table-Specific Patterns</h2>
@@ -470,7 +470,7 @@ aExplain = oTx.Explain()
 <div class="nblock"><div class="lbl">Haro</div><pre>{unique(id) &amp; @!nulls(email) &amp; completeness(phone:90) &amp; avgcol(salary:&gt;40000)}</pre><p class="ran nv-illus">illustration</p></div>
 <p>instead of nested loops and conditionals, your code becomes self-explanatory. Table validation becomes pattern recognition—semantic, composable, and maintainable.</p>
 <p>Together with <code>stzTable</code> for manipulation and <code>stzPivotTable</code> for analysis, <code>stzTablex</code> completes Softanza's vision of tabular data as a first-class programming abstraction—where structure, semantics, and validation are expressed in the language of the domain rather than the mechanics of implementation.</p>
-<h2>Lectures liées</h2><ul><li><a href="stztable-when-code-meets-cells.html">&quot;Code Meets Cells&quot;: The Spreadsheet Metaphor in Softanza&#x27;s stzTable</a></li></ul><h2>Citer</h2><p class="mono cite">Mansour Ayouni. « stzTablex: Declarative Pattern Matching for Tables in Softanza ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stztablex-pattern-langauge-for-tables.html</p><p class="proof">Non exécuté : son code ne se charge pas tel qu'il est écrit. L'article est publié tel qu'il est écrit ; ses blocs sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stztablex-pattern-langauge-for-tables.md.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
+<h2>Lectures liées</h2><ul><li><a href="stztable-when-code-meets-cells.html">&quot;Code Meets Cells&quot;: The Spreadsheet Metaphor in Softanza&#x27;s stzTable</a></li></ul><h2>Citer</h2><p class="mono cite">Mansour Ayouni. « stzTablex: Declarative Pattern Matching for Tables in Softanza ». Softanza narrations, 2025. https://mayouni.github.io/stzsite/fr/narrations/stztablex-pattern-langauge-for-tables.html</p><p class="proof">Exécuté au nom de Haro le 2026-10-30 12:20 dans la bibliothèque au commit 0950e246a, bloc après bloc dans un seul processus : 11 bloc(s) sur 33 ont tenu leur promesse ; les autres sont des illustrations. Le code des articles est du code Haro. Là où un article a été écrit avant que la langue prenne son nom actuel, le nom a été changé et rien d'autre. Genre, domaine et série lus dans le nom du fichier, année tirée du premier commit : dérivés, jusqu'à ce que l'article porte son propre en-tête. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stztablex-pattern-langauge-for-tables.md.md" target="_blank" rel="noopener noreferrer">Le fichier sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p>
   </div>
 </main>
 </div>
@@ -479,7 +479,7 @@ aExplain = oTx.Explain()
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">La plateforme logicielle gouvernée de l&#x27;ère de l&#x27;IA. Déclarez ce que vous savez. Un tribunal le garde. Le modèle d&#x27;IA vient en dernier. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
-    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-21.</p></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-30.</p></div>
   </div>
 </div></footer>
 <script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

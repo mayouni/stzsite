@@ -245,7 +245,7 @@
    "what_fr": "Un tableau saisi à la main se rattache aux formes fournies par l'appelant ; un nom qui ne correspond à rien, ici Atlantis, est signalé et jamais deviné."
   },
   {
-   "code": "# the guard's fixture: one square, on a world Mercator map\noSq = StzGeoFeaturesFromJson(_FSquare())\noMe = StzGeoMap(new stzGeoProjection(:Mercator), oSq)\noMe.Projection().FitToSphere(900, 900, 4)\noC1 = new stzCanvas(600, 300)\noC1.SetBackground(\"#FFFFFF\")\noFont = new stzFont(\"../gpu/fixtures/amiri_arabic_subset.ttf\")   # a font the library commits\nnDrew = oMe.DrawScaleBarOn(oC1, oFont, 12, 40, 200, 140, 0, \"#333333\")\n? \"   drawing a bar on a world Mercator returned \" + nDrew",
+   "code": "# the guard's fixture: one square, on a world Mercator map\noSq = StzGeoFeaturesFromJson(_FSquare())\noMe = StzGeoMap(new stzGeoProjection(:Mercator), oSq)\noMe.Projection().FitToSphere(900, 900, 4)\noMe.SetPaper(0, 0, 900, 900)       # the sheet its scale is measured over, as in the guard\noC1 = new stzCanvas(600, 300)\noC1.SetBackground(\"#FFFFFF\")\noFont = new stzFont(\"../gpu/fixtures/amiri_arabic_subset.ttf\")   # a font the library commits\nnDrew = oMe.DrawScaleBarOn(oC1, oFont, 12, 40, 200, 140, 0, \"#333333\")\n? \"   drawing a bar on a world Mercator returned \" + nDrew",
    "expected": "   drawing a bar on a world Mercator returned 0",
    "source": "base/test/graphics/geo_furniture_narrated.ring (section THE SCALE BAR, AND WHEN IT REFUSES; oMe is a world Mercator map, and the next line of the guard asserts nDrew = 0)",
    "what_en": "Asked to draw a scale bar on a world Mercator map, the map declines and answers 0, because no single bar is true across that sheet.",

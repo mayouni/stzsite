@@ -31,7 +31,7 @@ Trois étapes. Rien ne s'installe au sens d'un installateur : un dossier, copié
 <pre>git clone https://github.com/mayouni/stzlib.git
 cd stzlib/libraries/stzlib</pre>
 
-**2. Prendre l'exécutant**, version 1.27.0, celle avec laquelle ces pages ont été exécutées, sur <a href="https://ring-lang.net">ring-lang.net</a>. Lancer l'exécutant sans argument affiche sa version, ce qui montre qu'il est là. Le moteur Zig est livré en bibliothèques compilées pour Windows et se construit pour Linux et macOS depuis la source ; le dépôt dit comment.
+**2. Prendre l'exécutant** sur <a href="https://github.com/mayouni/ringpp/releases/latest">sa dernière version publiée</a> : une archive pour Windows, une pour Linux, décompressée n'importe où. Le moteur Zig de la bibliothèque est dedans, construit pour l'exécutant, et rien ne se compile sur votre machine. L'exécutant est un seul programme, <code>bin/rnxc</code> (<code>bin\rnxc.exe</code> sous Windows) : lancé sans argument, il affiche comment l'utiliser, ce qui montre qu'il est là.
 
 **3. Écrire le premier programme.** Dans le dossier <code>libraries/stzlib</code>, créer un fichier <code>first.ring</code> dont la première ligne charge la bibliothèque, puis le programme de la section suivante :
 
@@ -39,9 +39,9 @@ cd stzlib/libraries/stzlib</pre>
 
 Le lancer depuis ce dossier :
 
-<pre>ring first.ring</pre>
+<pre>rnxc first.ring</pre>
 
-Le premier lancement prend environ sept secondes, parce que la bibliothèque et son moteur se chargent.
+Donner à <code>rnxc</code> son chemin complet, ou mettre son dossier dans le chemin. Le premier lancement prend environ vingt secondes, parce que la bibliothèque se compile ; chaque lancement suivant part de la forme compilée, en un dixième de seconde.
 
 ## Le premier programme {#first}
 
@@ -52,7 +52,7 @@ Le premier lancement prend environ sept secondes, parce que la bibliothèque et 
 ┌──────────┐
 │ Softanza │
 └──────────┘</pre></div></div>
-<p class="ran">exécuté le 2026-10-09 à 00:52 par <code>ring first.ring</code> depuis <code>libraries/stzlib</code>, en 6,9 secondes, Softanza au commit <a href="https://github.com/mayouni/stzlib/commit/4a184e6f0">4a184e6f0</a></p>
+<p class="ran">exécuté le 2026-10-29 à 18:46 par <code>rnxc first.ring</code> depuis <code>libraries/stzlib</code>, en 18,8 secondes la première fois et 0,1 seconde ensuite, Softanza au commit <a href="https://github.com/mayouni/stzlib/commit/0950e246a">0950e246a</a></p>
 
 ## Quelle page répond à quoi {#map}
 

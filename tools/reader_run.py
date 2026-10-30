@@ -10,6 +10,7 @@ and keeps the result only if every cell ran green. A rename that broke a cell is
     python tools/reader_run.py <path to libraries/stzlib>      -> reader.html, data/haro-rename.json
 """
 import json, re, sys, pathlib, subprocess, datetime, shutil, tempfile
+from runtime import RNXC          # the runtime the examples run on (tools/runtime.py)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
@@ -32,7 +33,7 @@ def main():
     try:
         record = haro.rename_program(lib / "base" / "education" / "program", work / "program")
         out = work / "reader.html"
-        p = subprocess.run(["ring", "build_reader.ring", str(out).replace(chr(92), "/"), "--program", str(work / "program").replace(chr(92), "/")],
+        p = subprocess.run(RNXC + ["build_reader.ring", str(out).replace(chr(92), "/"), "--program", str(work / "program").replace(chr(92), "/")],
                            cwd=tools, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=1800)
         log = (p.stdout or "").replace("\r", "").replace(str(work).replace(chr(92), "/"), "<copy>")
         print(log.strip())

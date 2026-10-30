@@ -19,6 +19,7 @@ temporary folder created in the library is removed at the end.
     python tools/rows_run.py <path to libraries/stzlib> [class ...] [--limit=N]
 """
 import json, re, sys, pathlib, subprocess, datetime, shutil, collections
+from runtime import RNXC          # the runtime the examples run on (tools/runtime.py)
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import qforms
 from harvest_examples import FORBIDDEN
@@ -207,7 +208,7 @@ def run_batch(work, items, timeout):
         lines += [f'? "@@BEGIN {i}"', "try"] + ["    " + l for l in setup.split("\n")] + ["    " + l for l in code.split("\n")] + ["catch", '    ? "@@ERROR " + cCatchError', "done", f'? "@@END {i}"']
     (work / "rows.ring").write_text("\n".join(lines) + "\n", encoding="utf-8")
     try:
-        p = subprocess.run(["ring", "rows.ring"], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=timeout)
+        p = subprocess.run(RNXC + ["rows.ring"], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=timeout)
         out = (p.stdout or "").replace("\r", "")
     except subprocess.TimeoutExpired as e:
         out = (e.stdout.decode("utf-8", "replace") if isinstance(e.stdout, bytes) else (e.stdout or "")).replace("\r", "")

@@ -6,13 +6,55 @@ province missing, a label across an edge), so the site shows each one and leaves
 the part a machine can do: it runs each script that has a picture of the same name, in a temporary folder of the library, keeps
 what it wrote, says whether it is byte for byte the picture the library committed, and hosts a copy for the page.
 
+The scripts are the library's tests, and the library's main branch migrated its code to Rule A (a top-level name is written
+$name inside a function) but not yet its tests: their `chk` helpers count with a bare `nOk++`, which Ring++ refuses. So the
+copy that runs is migrated first, as `rnxc migrate` lists it -- each name it names spelt $name in the copy, outside strings and
+comments, until it lists none -- and the record says which names were respelt. Ring reads the two spellings alike.
+
     python tools/gallery_run.py <path to libraries/stzlib>     -> data/gallery-run.json, assets/img/gallery/*.webp
 """
 import json, re, sys, hashlib, subprocess, pathlib, datetime, shutil, time
+from runtime import RNXC          # the runtime the examples run on (tools/runtime.py)
 from PIL import Image
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 import haro
+
+def dollar(src, names):
+    """src with every identifier in `names` (any case) spelt $name, outside strings and comments; a member (.x), a symbol
+    (:x) and a name already carrying $ or @ are left as they are"""
+    low, out, i, n = {x.lower() for x in names}, [], 0, len(src)
+    while i < n:
+        c = src[i]
+        if c in "\"'`":
+            j = src.find(c, i + 1); j = n - 1 if j < 0 else j
+            out.append(src[i:j + 1]); i = j + 1; continue
+        if c == "#" or src.startswith("//", i):
+            j = src.find(chr(10), i); j = n if j < 0 else j
+            out.append(src[i:j]); i = j; continue
+        if src.startswith("/*", i):
+            j = src.find("*/", i + 2); j = n if j < 0 else j + 2
+            out.append(src[i:j]); i = j; continue
+        if c.isalpha() or c in "_$@":
+            j = i
+            while j < n and (src[j].isalnum() or src[j] in "_$@"): j += 1
+            tok, prev = src[i:j], (src[i - 1] if i else "")
+            out.append("$" + tok if tok.lower() in low and prev not in (".", ":") else tok); i = j; continue
+        out.append(c); i += 1
+    return "".join(out)
+
+def migrated(work, name):
+    """ask rnxc which names of this copy break Rule A, spell them $name, and ask again until it lists none"""
+    path, seen = work / f"{name}.ring", set()
+    for _ in range(8):
+        p = subprocess.run(RNXC + ["migrate", path.name], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=240)
+        found = {f[2].strip() for f in (l.split(chr(9)) for l in (p.stdout or "").splitlines())
+                 if len(f) >= 3 and pathlib.Path(f[0]).name == path.name and f[2].strip()[:1] not in "$@"}
+        found = {x for x in found if x.lower() not in {s.lower() for s in seen}}
+        if not found: break
+        seen |= found
+        path.write_text(dollar(path.read_text(encoding="utf-8"), found), encoding="utf-8")
+    return sorted(seen)
 
 def caption(src):
     """the script's own first comment, in the platform's present name"""
@@ -46,9 +88,10 @@ def main():
             for f in work.glob("*"): f.unlink()
             src = (gdir / f"{n}.ring").read_text(encoding="utf-8", errors="replace").replace("\r", "")
             (work / f"{n}.ring").write_text(src, encoding="utf-8")
+            respelt = migrated(work, n)
             t0 = time.time(); status = "ran"; stdout = ""
             try:
-                p = subprocess.run(["ring", f"{n}.ring"], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=240)
+                p = subprocess.run(RNXC + [f"{n}.ring"], cwd=work, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=240)
                 stdout = (p.stdout or "") + "\n" + (p.stderr or "")
                 if p.returncode != 0 and not (work / f"{n}.png").exists(): status = "failed"
             except subprocess.TimeoutExpired:
@@ -57,6 +100,7 @@ def main():
             png = work / f"{n}.png"; committed = (gdir / f"{n}.png").read_bytes()
             said = [l.strip() for l in (stdout or "").splitlines() if l.strip()]
             rec = {"note": (said[-1][:160] if said else ""), "caption": caption(src), "seconds": sec, "status": status, "committed_bytes": len(committed), "source": f"base/test/graphics/{n}.ring"}
+            if respelt: rec["respelt"] = respelt          # the names the copy spelt $name (Rule A), as rnxc migrate listed them
             if png.exists():
                 fresh = png.read_bytes()
                 rec.update(rendered=True, bytes=len(fresh), identical=hashlib.sha256(fresh).digest() == hashlib.sha256(committed).digest())

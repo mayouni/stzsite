@@ -53,7 +53,7 @@
 <div class="nblock"><div class="lbl">Haro</div><pre>? StzStringQ(&#x27;[1,2,3]&#x27;).IsListInString()		#--&gt; TRUE
 ? StzStringQ(&#x27;1:3&#x27;).IsListInString()			#--&gt; TRUE
 ? StzStringQ(&#x27; &quot;A&quot;:&quot;C&quot; &#x27;).IsListInString()		#--&gt; TRUE
-? StzStringQ(&#x27; &quot;ا&quot;:&quot;ج&quot; &#x27;).IsListInString()		#--&gt; TRUE</pre><p class="ran nv-kept">run on 2026-10-08 20:43 at commit 4a184e6f0: kept its promise</p></div>
+? StzStringQ(&#x27; &quot;ا&quot;:&quot;ج&quot; &#x27;).IsListInString()		#--&gt; TRUE</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <p>Softanza isn’t just smart—it’s multilingual! It can recognize lists using standard syntax like <code>[1,2,3]</code>, short syntax like <code>1:3</code>, and even Unicode-based ranges such as <code>"ا":"ج"</code>. </p>
 <p>“Great,” you think, “but I wonder how these lists are structured?”</p>
 <blockquote>
@@ -65,21 +65,21 @@
 <div class="nblock"><div class="lbl">Haro</div><pre>? StzStringQ(&#x27;[1,2,3]&#x27;).IsListInNormalForm()		#--&gt; TRUE
 ? StzStringQ(&#x27;1:3&#x27;).IsListInShortForm()			#--&gt; TRUE
 ? StzStringQ(&#x27; &quot;A&quot;:&quot;C&quot; &#x27;).IsListInShortForm()		#--&gt; TRUE
-? StzStringQ(&#x27; &quot;ا&quot;:&quot;ج&quot; &#x27;).IsListInShortForm()		#--&gt; TRUE</pre><p class="ran nv-kept">run on 2026-10-08 20:43 at commit 4a184e6f0: kept its promise</p></div>
+? StzStringQ(&#x27; &quot;ا&quot;:&quot;ج&quot; &#x27;).IsListInShortForm()		#--&gt; TRUE</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <p>Now, you know whether you're dealing with a detailed list or a compact range. This is perfect for applications where the syntax style matters!</p>
 <h2 id="step-3-are-the-elements-contiguous">Step 3: Are the Elements Contiguous?</h2>
 <p>Let’s check if the elements form a contiguous range (either numeric or character-based). A simple call does the trick:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>? StzStringQ(&#x27;[1,3]&#x27;).IsContiguousListInString()	#--&gt; FALSE
 ? StzStringQ(&#x27;1:3&#x27;).IsContiguousListInString()		#--&gt; TRUE
 ? StzStringQ(&#x27; &quot;A&quot;:&quot;C&quot; &#x27;).IsContiguousListInString()	#--&gt; TRUE
-? StzStringQ(&#x27; &quot;ا&quot;:&quot;ج&quot; &#x27;).IsContiguousListInString()	#--&gt; TRUE</pre><p class="ran nv-kept">run on 2026-10-08 20:43 at commit 4a184e6f0: kept its promise</p></div>
+? StzStringQ(&#x27; &quot;ا&quot;:&quot;ج&quot; &#x27;).IsContiguousListInString()	#--&gt; TRUE</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <p>Softanza even considers the Unicode ordering of characters when determining contiguity. For example, <code>"ا"</code> to <code>"ج"</code> is contiguous in Arabic script.</p>
 <h2 id="step-4-transforming-forms">Step 4: Transforming Forms</h2>
 <p>Sometimes, you need to switch between forms. Softanza makes this effortless with <code>ToListInShortForm()</code> and <code>ToListInNormalForm()</code>:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>? @@( StzStringQ(&#x27;[1,2,3]&#x27;).ToListInShortForm() )	#--&gt; &quot;1 : 3&quot;
 ? @@( StzStringQ(&#x27;1:3&#x27;).ToListInNormalForm() )		#--&gt; &quot;[1, 2, 3]&quot;
 ? StzStringQ(&#x27; [&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;] &#x27;).ToListInShortForm()	#--&gt; &quot;A&quot; : &quot;D&quot;
-? StzStringQ(&#x27; &quot;ا&quot;:&quot;ج&quot; &#x27;).ToListInShortForm()		#--&gt; &quot;ا&quot; : &quot;ج&quot;</pre><p class="ran nv-kept">run on 2026-10-08 20:43 at commit 4a184e6f0: kept its promise</p></div>
+? StzStringQ(&#x27; &quot;ا&quot;:&quot;ج&quot; &#x27;).ToListInShortForm()		#--&gt; &quot;ا&quot; : &quot;ج&quot;</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <p>Whether you're debugging, formatting data, or preparing a string for transmission, these transformations simplify the process.</p>
 <h2 id="step-5-evaluating-lists-at-runtime">Step 5: Evaluating Lists at Runtime</h2>
 <p>Finally, when you're ready to convert the string back to a vibrant <strong>Haro list</strong> for further computation, just call <code>ToList()</code>:</p>
@@ -92,20 +92,20 @@
     "ت",
     "ث",
     "ج"
-]</pre><p class="ran nv-kept">run on 2026-10-08 20:43 at commit 4a184e6f0: kept its promise</p></div>
+]</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <p>This is where the magic happens. A list-in-string becomes a living, breathing Haro list, ready for loops, computations, or any operation you desire.</p>
 <h2 id="step-6-bonus-the-shortform-shortcut">Step 6: Bonus – The Shortform Shortcut</h2>
 <p>If you’re a fan of compact syntax, Softanza offers a sleek shortcut: <code>ToListInStringSF()</code>:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>? @@( StzStringQ(&#x27;[1,2,3]&#x27;).ToListInStringSF() )		#--&gt; &quot;1 : 3&quot;
 ? StzStringQ(&#x27; [&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;] &#x27;).ToListInStringSF()		#--&gt; &quot;A&quot; : &quot;D&quot;
-? StzStringQ(&#x27; [ &quot;ا&quot;, &quot;ب&quot;, &quot;ة&quot;, &quot;ت&quot; ] &#x27;).ToListInStringSF()+ NL	#--&gt; &quot;ا&quot; : &quot;ت&quot;</pre><p class="ran nv-kept">run on 2026-10-08 20:43 at commit 4a184e6f0: kept its promise</p></div>
+? StzStringQ(&#x27; [ &quot;ا&quot;, &quot;ب&quot;, &quot;ة&quot;, &quot;ت&quot; ] &#x27;).ToListInStringSF()+ NL	#--&gt; &quot;ا&quot; : &quot;ت&quot;</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <p>This feature is perfect for quick conversions without sacrificing clarity.</p>
 <h2 id="step-7-bonus-the-magic-of-q">Step 7: Bonus – The Magic of <code>Q()</code></h2>
 <p>Tired of typing <code>StzStringQ()</code> every time? Softanza introduces the <code>Q()</code> function, a concise utility that elevates your data to the appropriate Softanza object. For our case, it conveniently wraps your string into an <code>stzString</code> object:</p>
 <div class="nblock"><div class="lbl">Haro</div><pre>? Q(&#x27;[1,2,3]&#x27;).IsListInString()		#--&gt; TRUE
 ? Q(&#x27;1:3&#x27;).ToListInString()			#--&gt; [1, 2, 3]
 ? Q(&#x27; &quot;ا&quot;:&quot;ج&quot; &#x27;).ToListInShortForm()	#--&gt; &quot;ا&quot; : &quot;ج&quot;
-? Q(&#x27; &quot;A&quot;:&quot;C&quot; &#x27;).IsContiguousListInShortForm()	#--&gt; TRUE</pre><p class="ran nv-kept">run on 2026-10-08 20:43 at commit 4a184e6f0: kept its promise</p></div>
+? Q(&#x27; &quot;A&quot;:&quot;C&quot; &#x27;).IsContiguousListInShortForm()	#--&gt; TRUE</pre><p class="ran nv-kept">run on 2026-10-30 12:20 at commit 0950e246a: kept its promise</p></div>
 <p>With <code>Q()</code>, your workflow becomes smoother and more natural. It’s like a universal adapter that streamlines the process, letting you focus on what matters—building great software!</p>
 <hr />
 <h2 id="final-thoughts">Final Thoughts</h2>
@@ -115,7 +115,7 @@
 - Transform and evaluate lists seamlessly.
 - Simplify your coding experience with <code>Q()</code>.</p>
 <p>Whether you’re parsing, debugging, or creating innovative tools, Softanza's <code>StzString</code> utilities (and the <code>Q()</code> function!) open up a world of possibilities. So, go ahead—unleash the power of lists-in-strings and let your creativity soar!</p>
-<h2>Cite</h2><p class="mono cite">Mansour Ayouni. "Unlocking the Power of Lists-in-Strings with Softanza". Softanza narrations, 2024. https://mayouni.github.io/stzsite/en/narrations/stzlist-in-strings-narration.html</p><p class="proof">Run in Haro's name on 2026-10-08 20:43 inside the library at commit 4a184e6f0, block after block in one process: 7 of 8 blocks kept their promise; the others are illustrations. The code of the articles is Haro code. Where an article was written before the language took its present name, the name was changed and nothing else. Genre, area and series read from the file's name, the year from its first commit: derived, until the article carries its own header. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzlist-in-strings-narration.md" target="_blank" rel="noopener noreferrer">The file on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
+<h2>Cite</h2><p class="mono cite">Mansour Ayouni. "Unlocking the Power of Lists-in-Strings with Softanza". Softanza narrations, 2024. https://mayouni.github.io/stzsite/en/narrations/stzlist-in-strings-narration.html</p><p class="proof">Run in Haro's name on 2026-10-30 12:20 inside the library at commit 0950e246a, block after block in one process: 7 of 8 blocks kept their promise; the others are illustrations. The code of the articles is Haro code. Where an article was written before the language took its present name, the name was changed and nothing else. Genre, area and series read from the file's name, the year from its first commit: derived, until the article carries its own header. <a href="https://github.com/mayouni/stzlib/blob/main/libraries/stzlib/base/doc/narrations/stzlist-in-strings-narration.md" target="_blank" rel="noopener noreferrer">The file on GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p>
   </div>
 </main>
 </div>
@@ -124,7 +124,7 @@
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../../index.html" aria-label="Softanza"><img class="wm-light" src="../../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">The Governed Software Platform of the AI Age. Declare what you know. A court keeps it. The AI model comes last. Born in Africa. Useful to the World!</p><div class="themes" role="group" aria-label="Display"><button type="button" data-set-theme="light">Use the light theme</button><button type="button" data-set-theme="dark">Use the dark theme</button><button type="button" data-set-theme="auto">Follow the system</button></div></div>
-    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/en/" target="_blank" rel="noopener noreferrer">Softanza: The Governed Software Platform of the AI Age<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></i> (second of the AYOUNI books), AYOUNI, 2026, draft.</p><p>If this site or its books are useful to your organisation, I work with organisations on their subjects: paper copies in quantity, workshops and training, talks, consulting and the building of solutions. Write to kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/offer/" target="_blank" rel="noopener noreferrer">How these books are offered, and how to work with the author<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="https://mayouni.github.io/ayouni/licence/" target="_blank" rel="noopener noreferrer">The licence<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-21.</p></div>
+    <div><p>Every claim on this site links to the file, the guard or the render that proves it. Every code block that runs was run on the night of publication and its output sits beside it; the others say so.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/en/" target="_blank" rel="noopener noreferrer">Softanza: The Governed Software Platform of the AI Age<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></i> (second of the AYOUNI books), AYOUNI, 2026, draft.</p><p>If this site or its books are useful to your organisation, I work with organisations on their subjects: paper copies in quantity, workshops and training, talks, consulting and the building of solutions. Write to kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/offer/" target="_blank" rel="noopener noreferrer">How these books are offered, and how to work with the author<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a> · <a href="https://mayouni.github.io/ayouni/licence/" target="_blank" rel="noopener noreferrer">The licence<span class="xarr" aria-hidden="true"></span><span class="sr">(opens in a new tab)</span></a></p><p>The prose of this site was drafted with an AI assistant, Claude, under the author&#x27;s direction; the code, the runs and the figures come from the repositories. (Rule 99 of the Zui constitution: what a machine made says so.)</p><p>Fraunces, IBM Plex Sans and IBM Plex Mono, under the SIL Open Font License 1.1, hosted on this site; the site opens with no network. Site generated on 2026-10-30.</p></div>
   </div>
 </div></footer>
 <script src="../../assets/js/site.js"></script><script src="../../assets/js/search-core.js"></script><script src="../../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

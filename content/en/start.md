@@ -31,7 +31,7 @@ Three steps. Nothing is installed in the sense of an installer: one folder, copi
 <pre>git clone https://github.com/mayouni/stzlib.git
 cd stzlib/libraries/stzlib</pre>
 
-**2. Get the runtime**, version 1.27.0, the one these pages were run with, from <a href="https://ring-lang.net">ring-lang.net</a>. Starting the runtime with no argument prints its version, so you know it is there. The Zig engine ships as compiled libraries for Windows and builds for Linux and macOS from source; the repository says how.
+**2. Get the runtime** from <a href="https://github.com/mayouni/ringpp/releases/latest">its latest release</a>: one archive for Windows, one for Linux, unpacked anywhere. The library's Zig engine comes inside it, built for the runtime, so nothing is compiled on your machine. The runtime is one program, <code>bin/rnxc</code> (<code>bin\rnxc.exe</code> on Windows): started with no argument it prints how it is used, so you know it is there.
 
 **3. Write the first program.** In the folder <code>libraries/stzlib</code>, create a file <code>first.ring</code> whose first line loads the library, then the program of the next section:
 
@@ -39,9 +39,9 @@ cd stzlib/libraries/stzlib</pre>
 
 Run it from that folder:
 
-<pre>ring first.ring</pre>
+<pre>rnxc first.ring</pre>
 
-The first run takes about seven seconds, because the library and its engine load.
+Give <code>rnxc</code> its full path, or put its folder on your path. The first run takes about twenty seconds, because the library compiles; every later run starts from the compiled form, in a tenth of a second.
 
 ## The first program {#first}
 
@@ -52,7 +52,7 @@ The first run takes about seven seconds, because the library and its engine load
 ┌──────────┐
 │ Softanza │
 └──────────┘</pre></div></div>
-<p class="ran">run on 2026-10-09 at 00:52 as <code>ring first.ring</code> from <code>libraries/stzlib</code>, in 6.9 seconds, Softanza at commit <a href="https://github.com/mayouni/stzlib/commit/4a184e6f0">4a184e6f0</a></p>
+<p class="ran">run on 2026-10-29 at 18:46 as <code>rnxc first.ring</code> from <code>libraries/stzlib</code>, in 18.8 seconds the first time and 0.1 seconds after, Softanza at commit <a href="https://github.com/mayouni/stzlib/commit/0950e246a">0950e246a</a></p>
 
 ## Which page answers what {#map}
 

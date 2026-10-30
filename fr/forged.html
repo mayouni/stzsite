@@ -69,7 +69,7 @@ oReg.Declare(:mail)
 oReg.Bind(:mail, new stzMailSandbox())
 oReg.SetPhase(:production)
 ? oReg.IsSound()
-? @@( oReg.Findings() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>0
+? @@( oReg.Findings() )</pre></div><div class="out"><div class="lbl">Sortie</div><pre>FALSE
 [
     [
         [ "invariant", "sandbox-in-production" ],
@@ -80,7 +80,7 @@ oReg.SetPhase(:production)
             "still bound to a SANDBOX in a production phase -- a fake must never ship"
         ]
     ]
-]</pre></div></div><p class="ran">exécuté le 2026-10-04 01:42 dans la bibliothèque au commit 0e72e2e2c</p>
+]</pre></div></div><p class="ran">exécuté le 2026-10-30 09:52 dans la bibliothèque au commit 0e72e2e2c</p>
 
 <p>La première ligne est 0, pas saine. La seconde dit pourquoi : un faux ne doit jamais partir en production. Le faux est refusé par son nom, et un service déclaré mais jamais lié lève une erreur quand on le demande, au lieu de ne rien faire en silence.</p>
 <p class="way"><span><a href="way.html">La manière Softanza</a></span> « Nous avons testé contre le bac à sable » ne veut rien dire si le code n'est pas, octet pour octet, celui qui part. Alors c'est la phase qui décide ce qui revient, et la vérification que rien de faux ne part est imposée, pas retenue de mémoire.</p>
@@ -108,7 +108,7 @@ oOrg.AddPositionXTT("audit", "Internal Audit", [
             "BCEAO-003: No dedicated Risk Management function"
         ]
     ]
-]</pre></div></div><p class="ran">exécuté le 2026-10-04 01:42 dans la bibliothèque au commit 0e72e2e2c</p>
+]</pre></div></div><p class="ran">exécuté le 2026-10-30 09:52 dans la bibliothèque au commit 0e72e2e2c</p>
 
 <p>Trois constats, chacun une règle avec un numéro qu'un auditeur de banque sait lire. <span class="mono">base/graph/stzOrgChart.ring</span> porte les validateurs ; la bibliothèque nomme aussi les bases de règles <span class="mono">stzBCEAORuleBase</span>, <span class="mono">stzBaselIIIRuleBase</span> et leurs sœurs.</p>
 <p>L'autre chose née dans Organizium est la couche web. Son dépôt, commencé le 4 février 2026, contient un cadre de mondes en fichier unique pour le web, une première notation de requête, et la constitution d'interface avec son fichier de règles et le vérificateur qui contrôle une page contre elle : une forme précoce de ce que le site appelle aujourd'hui <a href="zui.html">Zui</a>. Ils ne sont pas encore publics ; le site n'en cite aucun texte.</p>
@@ -130,7 +130,7 @@ oOrg.AddPositionXTT("audit", "Internal Audit", [
 <h2 id="limits">Ce que les projets n'ont pas prouvé</h2>
 <p>Les plateformes clientes tournent aujourd'hui sur des piles ordinaires : Organizium à la Sonibank est une application Python, RestoLean est faite de mondes web en fichier unique, DIKO Hub n'est pas construit.</p>
 <p>Leurs déclarations s'écrivent comme celles de Softanza, si bien que les passer sur le moteur de Softanza est un changement de moteur, pas de plan ; c'est une étape devant, pas une étape faite. Certaines leçons ci-dessus sont portées par des fichiers publics et d'autres seulement par des documents qui ne sont pas encore publics : la page marque lesquelles. Et ce dont l'auteur se souvient et qu'aucun fichier ne prouve n'est pas listé.</p>
-<p class="proof">Les fichiers de la bibliothèque nommés ci-dessus sont publics ; les dépôts des projets ne le sont pas, et le site n'en cite rien au-delà de ce que chaque section dit. Chaque exécution de cette page a été faite dans la bibliothèque le 2026-10-04 01:42 au commit 0e72e2e2c.</p>
+<p class="proof">Les fichiers de la bibliothèque nommés ci-dessus sont publics ; les dépôts des projets ne le sont pas, et le site n'en cite rien au-delà de ce que chaque section dit. Chaque exécution de cette page a été faite dans la bibliothèque le 2026-10-30 09:52 au commit 0e72e2e2c.</p>
   </div>
 </main>
 </div>
@@ -139,7 +139,7 @@ oOrg.AddPositionXTT("audit", "Internal Audit", [
   <div class="foot-bottom">
     <div><a class="foot-mark" href="../index.html" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
       <p style="margin-top:12px">La plateforme logicielle gouvernée de l&#x27;ère de l&#x27;IA. Déclarez ce que vous savez. Un tribunal le garde. Le modèle d&#x27;IA vient en dernier. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
-    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-21.</p></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-10-30.</p></div>
   </div>
 </div></footer>
 <script src="../assets/js/site.js"></script><script src="../assets/js/search-core.js"></script><script src="../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>

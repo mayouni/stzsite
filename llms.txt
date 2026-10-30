@@ -8,11 +8,11 @@ This site was generated from the library at commit 0e72e2e2c. Its method example
 
 ## Run a program first
 
-Softanza runs today on the runtime of its former host language, kept so that the code already written keeps working; a bridge is in construction, and Haro is the destination. To run a program today:
+Softanza runs on its own runtime, a compiler and virtual machine, which keeps the code already written working; Haro is the destination. To run a program:
 
 1. `git clone https://github.com/mayouni/stzlib.git`, then `cd stzlib/libraries/stzlib`
-2. the runtime, version 1.27.0; the install page names it and links its download (the Zig engine ships compiled for Windows and builds for Linux and macOS from source)
-3. a file `first.ring` in that folder, whose first line is `load "stzLib.ring"`, run with the runtime's command given on the install page; the first run takes about seven seconds
+2. the runtime: one archive for Windows or Linux from https://github.com/mayouni/ringpp/releases/latest, which carries the library's engine; its program is `bin/rnxc`
+3. a file `first.ring` in that folder, whose first line is `load "stzLib.ring"`, run with `rnxc first.ring`; the first run takes about twenty seconds, the next a tenth of a second
 The install page: https://mayouni.github.io/stzsite/en/start.html#install. Methods take the parameters given as `signature` in https://mayouni.github.io/stzsite/agents/index.json, and the global functions are listed there under `functions`.
 
 ## How to think and write Softanza
@@ -55,7 +55,7 @@ Fourteen rules of writing:
 ## Documentation
 
 - [Documentation](https://mayouni.github.io/stzsite/en/docs.html): the whole scope, area by area
-- [Reference](https://mayouni.github.io/stzsite/en/reference.html): 575 classes, each method with the explanation the library gives of itself; 1,177 methods have an entry with examples run
+- [Reference](https://mayouni.github.io/stzsite/en/reference.html): 575 classes, each method with the explanation the library gives of itself; 1,178 methods have an entry with examples run
 - [How-to](https://mayouni.github.io/stzsite/en/howto.html): 28 recipes, each a task, its code and its output, run
 - [Narrations](https://mayouni.github.io/stzsite/en/narrations.html): the author's articles, 135 essays each a page, their code run in Haro's name where it can run
 - [The book](https://mayouni.github.io/stzsite/en/book.html): the Elementary Introduction, fifteen chapters in four languages; 15 proof pages show each chapter's cells run, the guard that proves them, and its exercises proving themselves
