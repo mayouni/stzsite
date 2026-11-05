@@ -15,3 +15,19 @@ description: Comment la fondation Softanza est prouvée : fichiers de test et ga
 </ul>
 
 <p class="proof"><b>en construction</b> Ce qui manque : pas d'intégration continue hébergée, et pas d'instrument qui mesure la couverture. Cinq exécutants plus anciens n'émettent pas de verdict lisible par une machine, ce qui explique que ce site ait le sien. Un test qui passe prouve ce qu'il teste, et la page des motifs montre deux tests de la bibliothèque qui affichent maintenant la mauvaise réponse.</p>
+
+## Des affirmations que les tests de la bibliothèque font aussi {#checks}
+
+Trois affirmations de ce site sont aussi faites par un test de la bibliothèque. Chaque vérification ci-dessous est citée avec le commit auquel elle a été enregistrée. L'édition vers laquelle mène le lien montre où la vérification est écrite et le code qu'elle exécute. [L'Atelier](atelier.html) explique comment les vérifications sont exécutées et enregistrées.
+
+**Le texte est traité par caractères, pas par octets.** Remplacer une lettre dans un mot accentué donne le mot attendu.
+
+<!--CITE:string/00_string_narrated#87ed4de2-->
+
+**Rien n'est un chiffre par accident.** Une chaîne vide n'est pas un chiffre.
+
+<!--CITE:string/95_digits#d7a41fea-->
+
+**Un nombre peut dire qu'il est exact.** Le produit de 19,99 par 0,15 est déclaré exact.
+
+<!--CITE:number/numeric_exactness_narrated#7c90e6b4-->

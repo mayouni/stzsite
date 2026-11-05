@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L&#x27;Atelier · Softanza</title>
+<meta name="description" content="L&#x27;Atelier de Softanza et son édition statique : les assertions de la bibliothèque, jugées et enregistrées à un commit, les cinq états d&#x27;une ligne de test montrés séparément, et chaque vérification citable par son commit et son identité.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Softanza">
+<meta property="og:title" content="L&#x27;Atelier · Softanza">
+<meta property="og:description" content="L&#x27;Atelier de Softanza et son édition statique : les assertions de la bibliothèque, jugées et enregistrées à un commit, les cinq états d&#x27;une ligne de test montrés séparément, et chaque vérification citable par son commit et son identité.">
+<meta property="og:image" content="https://mayouni.github.io/stzsite/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/mark-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/img/mark-64.png">
+<link rel="apple-touch-icon" href="../assets/img/mark-180.png">
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/search.css">
+<script>(function(){try{var q=new URLSearchParams(location.search).get('theme');var t=q||localStorage.getItem('stz-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+</head>
+<body class="page has-l2 page-atelier">
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="brandrow"><a class="brand" href="../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a><div class="tools"><a class="cta-start" href="start.html">Démarrer</a><a class="lang" href="../en/atelier.html" lang="en" hreflang="en">English</a></div></div>
+<header class="top">
+  <div class="topbar">
+    <a class="brand" href="../index.html?lang=fr" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+    <nav class="nav" aria-label="Menu principal"><a href="platform.html">Plateforme</a><a href="vision.html">Vision</a><a href="learn.html">Apprendre</a><a href="reference.html">Référence</a><a href="offering.html" aria-current=page>Adopter</a></nav>
+    <div class="tools"><a class="cta-start" href="start.html">Démarrer</a><a class="lang" href="../en/atelier.html" lang="en" hreflang="en">English</a></div>
+  </div>
+  <nav class="path" aria-label="Pages de la section"><div class="path-in"><a href="offering.html">Adopter</a><a href="proven.html" aria-current=location>Preuves</a><a href="solutions.html">Solutions</a></div></nav>
+</header>
+<div class="l2wrap">
+<nav class="level2 rail" aria-label="Preuves"><div class="l2-in"><p class="l2-h"><a href="proven.html" aria-current=location>Preuves</a></p><ul class="rail-1"><li><a href="estate.html">Le patrimoine, étape par étape</a></li><li><a href="real.html">Projets et références</a></li><li><a href="compare.html">Comparée</a></li><li><a href="atelier.html" aria-current=page>L&#x27;Atelier</a></li></ul></div></nav>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><ol class="crumbs-in"><li><a href="../index.html">Softanza</a></li><li><a href="offering.html">Adopter</a></li><li><a href="proven.html">Preuves</a></li><li class="here-crumb" aria-current="page">L&#x27;Atelier</li></ol></nav>
+  <section class="page-head"><div class="wrap">
+    <div class="eyebrow">Les vérifications propres de la bibliothèque, enregistrées</div>
+    <h1>L'<i>Atelier</i></h1>
+    <p class="lede">L'Atelier est un programme qui exécute les tests de la bibliothèque, une assertion à la fois, et enregistre le verdict de chacune. Cette page l'explique et renvoie à son édition statique, un ensemble de pages en lecture seule qui montrent ce qui a été enregistré à un commit de la bibliothèque. Rien n'y est exécuté.</p>
+  </div></section>
+  <div class="wrap page-body">
+<h2 id="what">Ce qu'est l'Atelier</h2>
+<p>L'Atelier est un programme qui exécute les tests de la bibliothèque Softanza et enregistre ce que chacun a trouvé. Chaque fichier de test de la bibliothèque raconte une courte histoire : quelques appels, chacun suivi d'une ligne qui dit ce que la bibliothèque doit répondre. Les tests appellent une telle ligne une <em>ligne Then</em>. Une <strong>vérification</strong> est l'une de ces lignes prise entière : sa description, les deux valeurs qu'elle compare et les aides que son fichier définit pour elle. La valeur attendue est toujours celle qu'a écrite l'auteur du test, jamais une valeur choisie par l'Atelier.</p>
+<p>Pour juger une vérification, l'Atelier charge la bibliothèque dans un programme en marche, appelle le code de la vérification et compare la réponse avec la valeur attendue. Le verdict est l'un de trois : la vérification a réussi ; elle a échoué, avec ce qui était attendu et ce qui est venu ; ou elle s'est terminée en erreur.</p>
+<p>Sur une machine qui a la bibliothèque, l'Atelier peut aussi tourner en direct. Il ne répond qu'à l'adresse 127.0.0.1, c'est-à-dire à cette machine seule. Ce site ne peut pas le faire tourner, et aucune page du site n'exécute de code. Ce qu'un site peut montrer, c'est ce qui a été enregistré.</p>
+<h2 id="edition">L'édition statique</h2>
+<p>Une édition est un dossier de pages construit à partir des données qu'un commit de la bibliothèque porte : les vérifications groupées par domaine, avec une zone de recherche ; la couverture de fichiers de test entiers ; et une page par vérification, trouvée par son identité. Tout est statique : la lire n'a pas besoin de serveur et ne charge rien.</p>
+<p>Les chiffres ci-dessous sont ceux de l'édition. Chacun est une affirmation sur le commit nommé sous eux et sur aucun autre, et l'édition le dit elle-même.</p>
+<div class="figures"><div class="figure"><b>1 129</b><span>vérifications enregistrées</span></div><div class="figure"><b>1 014</b><span>réussies</span></div><div class="figure"><b>89</b><span>échouées</span></div><div class="figure"><b>26</b><span>terminées en erreur</span></div></div><h3>Les cinq états d'une ligne Then</h3><p>lignes Then dans 1 418 fichiers de test narrés: 20 287; jugées: 15 206.</p><div class="figures"><div class="figure"><b>15 069</b><span>tenues</span></div><div class="figure"><b>137</b><span>divergentes</span></div><div class="figure"><b>4 923</b><span>non atteintes</span></div><div class="figure"><b>158</b><span>non jugées</span></div><div class="figure"><b>0</b><span>non perçues</span></div></div><p class="proof">Enregistré au commit <code>c08f96dee</code> de la bibliothèque, pris le 04/11/2026 16:34:54, jugé par rnxc <code>ringpp a8ad844 (installed)</code> avec le moteur the package&#x27;s, built for stzlib 0950e246a. Ces chiffres sont ceux de l'édition ; lisez-les là : <a href="../atelier/c08f96dee/index.html?lang=fr">l'édition</a> · <a href="../atelier/c08f96dee/coverage.html?lang=fr">sa couverture</a></p>
+
+<h2 id="counts">Deux comptes différents</h2>
+<p>Les quatre premiers chiffres comptent des vérifications : les lignes Then que l'Atelier exécute une à une dans un programme en marche. Les cinq suivants comptent chaque ligne Then des fichiers de test narrés, que l'Atelier exécute entiers : un fichier va de sa première ligne à sa dernière, et un juge compare ce qu'il a imprimé avec les affirmations qu'on y a trouvées.</p>
+<p>Chaque ligne Then finit dans l'un de cinq états. Ils sont montrés séparément et jamais additionnés :</p>
+<ul>
+<li><strong>tenue</strong> : la ligne a été jugée, et la réponse était celle qui était attendue.</li>
+<li><strong>divergente</strong> : la ligne a été jugée, et la réponse était différente.</li>
+<li><strong>non atteinte</strong> : le fichier s'est brisé, ou n'a jamais démarré, avant la ligne.</li>
+<li><strong>non jugée</strong> : le fichier a fini sans parcourir la ligne.</li>
+<li><strong>non perçue</strong> : la ligne concerne quelque chose qu'une personne doit voir ou entendre, et personne n'a encore dit ce qu'elle a perçu.</li>
+</ul>
+<p>Les verser dans « réussi » et « échoué » cacherait les lignes qui n'ont jamais été atteintes, qui ne sont ni des échecs ni des réussites.</p>
+<h2 id="cite">Citer une vérification</h2>
+<p>Chaque vérification a une identité : son fichier de test, un <code>#</code>, et huit chiffres hexadécimaux tirés de son texte. Jointe au commit auquel elle a été enregistrée, elle forme une citation, écrite <code>commit:identité</code>. Une citation sans son commit n'est pas une citation, parce qu'un verdict est vrai d'un seul commit. Le résolveur refuse une citation dont le commit n'est pas celui qui a été enregistré.</p>
+<p>Là où une page de ce site dit quelque chose que les tests de la bibliothèque disent aussi, elle cite la vérification. L'exemple ci-dessous est une vérification de la classe des chaînes : la page <a href="proven.html#checks">Prouvé</a> en cite trois autres.</p>
+<div class="cards"><div class="card"><h3>Replaced is codepoint-correct on multibyte input</h3><p>string/00_string_narrated.ring, ligne 35, scénario Replace and split. enregistré : réussie, au commit c08f96dee de la bibliothèque.</p><p class="proof">Citation <code>c08f96dee:string/00_string_narrated#87ed4de2</code> · <a href="../atelier/c08f96dee/check.html?id=string%2F00_string_narrated%2387ed4de2&amp;lang=fr">la vérification, dans l'édition</a></p></div></div>
+
+<h2 id="limits">Ce que cette page ne fait pas</h2>
+<ul>
+<li>Elle n'exécute rien : ni terrain de jeu, ni bouton qui lance du code. Un terrain de jeu hébergé a besoin d'un bac à sable, et il n'en existe pas encore.</li>
+<li>Elle ne change pas l'étape d'une page. Une citation dit qu'une vérification a réussi à un commit ; elle ne dit pas qu'une page est terminée.</li>
+<li>Elle ne cache pas ce qui n'est pas connu. Une ligne que personne n'a atteinte ni perçue reste dans son propre état.</li>
+</ul>
+  </div>
+</main>
+</div>
+<footer class="foot"><div class="wrap">
+  <nav class="map" aria-label="Site"><div><h3>Plateforme</h3><ul><li><a href="platform.html">Plateforme</a></li><li><a href="areas.html">Les domaines</a></li><li><a href="applications.html">Applications</a></li><li><a href="agentic.html">Agents sûrs</a></li><li><a href="architecture.html">Architecture</a></li></ul></div><div><h3>Vision</h3><ul><li><a href="vision.html">Vision</a></li><li><a href="principles.html">Principes</a></li><li><a href="history.html">Histoire</a></li><li><a href="wise.html">Wise coding</a></li><li><a href="softanza-book.html">Le livre</a></li></ul></div><div><h3>Apprendre</h3><ul><li><a href="learn.html">Apprendre</a></li><li><a href="book.html">Cours</a></li><li><a href="craft.html">Écrire</a></li><li><a href="narrations.html">Narrations</a></li><li><a href="education.html">Éducation</a></li></ul></div><div><h3>Référence</h3><ul><li><a href="reference.html">Référence</a></li><li><a href="howto.html">Comment faire</a></li><li><a href="docs.html">Docs</a></li><li><a href="ask.html">Interroger</a></li><li><a href="agents.html">Agents d&#x27;IA</a></li></ul></div><div><h3>Adopter</h3><ul><li><a href="offering.html">Adopter</a></li><li><a href="proven.html">Preuves</a></li><li><a href="solutions.html">Solutions</a></li></ul></div><div><h3>Démarrer</h3><ul><li><a href="start.html">Démarrer</a></li></ul></div><div><h3>Softanza</h3><ul><li><a href="https://github.com/mayouni/stzlib" target="_blank" rel="noopener noreferrer">Le dépôt sur GitHub<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></li><li><a href="tour.html">Mode présentation</a></li><li><a href="../deck-check.html">Vérifier hors ligne</a></li><li><a href="../index.html?lang=en" lang="en">English</a></li></ul></div></nav>
+  <div class="foot-bottom">
+    <div><a class="foot-mark" href="../index.html" aria-label="Softanza"><img class="wm-light" src="../assets/img/wordmark.png" alt="Softanza" width="660" height="105"><img class="wm-dark" src="../assets/img/wordmark-dark.png" alt="" width="660" height="105"></a>
+      <p style="margin-top:12px">La plateforme logicielle gouvernée de l&#x27;ère de l&#x27;IA. Déclarez ce que vous savez. Un tribunal le garde. Le modèle d&#x27;IA vient en dernier. Née en Afrique. Utile au monde !</p><div class="themes" role="group" aria-label="Affichage"><button type="button" data-set-theme="light">Passer en clair</button><button type="button" data-set-theme="dark">Passer en sombre</button><button type="button" data-set-theme="auto">Suivre le système</button></div></div>
+    <div><p>Chaque affirmation de ce site renvoie au fichier, au garde ou au rendu qui la prouve. Chaque bloc de code qui s&#x27;exécute a été exécuté le soir de la publication et sa sortie est à côté ; les autres le disent.</p><p>Mansour Ayouni, <i><a href="https://mayouni.github.io/ayouni/books/softanza/fr/" target="_blank" rel="noopener noreferrer">Softanza : la plateforme logicielle gouvernée de l'ère de l'IA<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></i> (deuxième des livres AYOUNI), AYOUNI, 2026, brouillon.</p><p>Si ce site ou ses livres sont utiles à votre organisation, je travaille avec les organisations sur leurs sujets : exemplaires papier en quantité, ateliers et formations, conférences, conseil et réalisation de solutions. Écrivez à kalidianow＠gmail.com. <a href="https://mayouni.github.io/ayouni/fr/offre/" target="_blank" rel="noopener noreferrer">Comment ces livres sont offerts, et comment travailler avec l'auteur<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a> · <a href="https://mayouni.github.io/ayouni/fr/licence/" target="_blank" rel="noopener noreferrer">La licence<span class="xarr" aria-hidden="true"></span><span class="sr">(s'ouvre dans un nouvel onglet)</span></a></p><p>Les textes de ce site ont été rédigés avec un assistant d&#x27;IA, Claude, sous la direction de l&#x27;auteur ; le code, les exécutions et les chiffres viennent des dépôts. (Règle 99 de la constitution Zui : ce qui est fait par une machine le dit.)</p><p>Polices Fraunces, IBM Plex Sans et IBM Plex Mono, sous licence SIL OFL 1.1, hébergées sur ce site ; le site s&#x27;ouvre sans réseau. Site généré le 2026-11-05.</p></div>
+  </div>
+</div></footer>
+<script src="../assets/js/site.js"></script><script src="../assets/js/search-core.js"></script><script src="../assets/js/search.js"></script><script>if(window.parent!==window){try{window.parent.postMessage({stzsite:'page',href:location.href},'*')}catch(e){}}</script>
+</body></html>

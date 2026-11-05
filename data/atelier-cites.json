@@ -1,0 +1,62 @@
+{
+ "c08f96dee:number/numeric_exactness_narrated#7c90e6b4": {
+  "citation": "c08f96dee:number/numeric_exactness_narrated#7c90e6b4",
+  "code": "func Run cInput\n\treturn AtelierThen((new stzNumber(\"19.99\")).MultiplyByQ(\"0.15\").IsExact(), TRUE)\n",
+  "commit": "c08f96dee",
+  "description": "an exact product knows it",
+  "domain": "number",
+  "file": "number/numeric_exactness_narrated.ring",
+  "harvested_from": "base/test at c08f96dee",
+  "id": "number/numeric_exactness_narrated#7c90e6b4",
+  "judged_by": {
+   "engine": "the package's, built for stzlib 0950e246a",
+   "library": "c08f96dee on atelier/a0",
+   "rnxc": "ringpp a8ad844 (installed)",
+   "taken": "04/11/2026 16:34:54"
+  },
+  "line": 90,
+  "said": "",
+  "scenario": "the exactness register: the number carries the fact",
+  "state": "pass"
+ },
+ "c08f96dee:string/00_string_narrated#87ed4de2": {
+  "citation": "c08f96dee:string/00_string_narrated#87ed4de2",
+  "code": "func Run cInput\n\treturn AtelierThen(Q(\"naïve\").Replaced(\"ï\", \"i\"), \"naive\")\n",
+  "commit": "c08f96dee",
+  "description": "Replaced is codepoint-correct on multibyte input",
+  "domain": "string",
+  "file": "string/00_string_narrated.ring",
+  "harvested_from": "base/test at c08f96dee",
+  "id": "string/00_string_narrated#87ed4de2",
+  "judged_by": {
+   "engine": "the package's, built for stzlib 0950e246a",
+   "library": "c08f96dee on atelier/a0",
+   "rnxc": "ringpp a8ad844 (installed)",
+   "taken": "04/11/2026 16:34:54"
+  },
+  "line": 35,
+  "said": "",
+  "scenario": "Replace and split",
+  "state": "pass"
+ },
+ "c08f96dee:string/95_digits#d7a41fea": {
+  "citation": "c08f96dee:string/95_digits#d7a41fea",
+  "code": "func Run cInput\n\treturn AtelierThen(Q(\"\").IsADigitInString(), FALSE)\n",
+  "commit": "c08f96dee",
+  "description": "an empty string is not a digit",
+  "domain": "string",
+  "file": "string/95_digits.ring",
+  "harvested_from": "base/test at c08f96dee",
+  "id": "string/95_digits#d7a41fea",
+  "judged_by": {
+   "engine": "the package's, built for stzlib 0950e246a",
+   "library": "c08f96dee on atelier/a0",
+   "rnxc": "ringpp a8ad844 (installed)",
+   "taken": "04/11/2026 16:34:54"
+  },
+  "line": 12,
+  "said": "",
+  "scenario": "The digit list and the digit predicates",
+  "state": "pass"
+ }
+}

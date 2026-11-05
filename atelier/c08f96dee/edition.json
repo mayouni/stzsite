@@ -1,0 +1,39 @@
+{
+"commit": "c08f96dee",
+"built": "2026-11-05 19:11",
+"taken": "04/11/2026 16:34:54",
+"library": "c08f96dee on atelier/a0",
+"rnxc": "ringpp a8ad844 (installed)",
+"engine": "the package's, built for stzlib 0950e246a",
+"checks_from": "c08f96dee",
+"source": "base/test",
+"checks": 1129,
+"counts": {
+"pass": 1014,
+"fail": 89,
+"err": 26
+},
+"tours": {
+"library": "c08f96dee on atelier/a0",
+"totals": {
+"files": 1418,
+"finished": 1324,
+"broke": 31,
+"not_started": 55,
+"hung": 8,
+"unreadable": 0,
+"kept_code": 41,
+"claims": 20287,
+"judged": 15206,
+"kept": 15069,
+"diverged": 137,
+"unreached": 4923,
+"unjudged": 158,
+"unperceived": 0,
+"extra": 1857,
+"ms": 987370
+}
+},
+"mixed": false,
+"ring_column": false
+}

@@ -26,6 +26,7 @@ from build_ask import build_ask
 import build_area_story as story
 import build_ladder
 import rowex
+import atelier
 import qforms
 import build_proof
 import external
@@ -110,7 +111,7 @@ FAMILIES = {
                 ("education-record", {"fr": "Ce qui est prouvé", "en": "What is proved"})],
   "docs": [("glossary", {"fr": "Glossaire", "en": "Glossary"})],
   "proven": [("estate", {"fr": "Le patrimoine, étape par étape", "en": "The estate, stage by stage"}), ("real", {"fr": "Projets et références", "en": "Projects and references"}),
-             ("compare", {"fr": "Comparée", "en": "Compared"})],
+             ("compare", {"fr": "Comparée", "en": "Compared"}), ("atelier", {"fr": "L'Atelier", "en": "The Atelier"})],
   "solutions": [("editions", {"fr": "Éditions", "en": "Editions"}), ("partners", {"fr": "Partenaires", "en": "Partners"}),
                 ("certification", {"fr": "Certification", "en": "Certification"})],
 }
@@ -469,6 +470,9 @@ COUNTS = {}                                         # figures read from the data
 
 def inject(body_html, lang, idx, groups, rel="../"):
     body_html = body_html.replace("<!--RUNTIME-->", RUNTIME[lang])
+    if "<!--ATELIER:" in body_html or "<!--CITE:" in body_html:      # the Atelier's edition and one cited check (tools/atelier.py)
+        body_html = body_html.replace("<!--ATELIER:counts-->", atelier.counts_html(lang) if "<!--ATELIER:counts-->" in body_html else "")
+        body_html = re.sub(r"(?:<p>)?<!--CITE:([^\s>]+)-->(?:</p>)?", lambda m: atelier.cite_html(lang, m.group(1)), body_html)
     fmt = (lambda n: f"{n:,}") if lang == "en" else (lambda n: f"{n:,}".replace(",", " "))
     body_html = body_html.replace("<!--METHODS-->", fmt(COUNTS["methods"])).replace("<!--CLASSES-->", fmt(COUNTS["classes"])).replace("<!--ENTRIES-->", fmt(COUNTS["entries"]))
     body_html = body_html.replace("<!--AREAS-->", domains_html(lang, idx, groups, "atlas/", rel))
@@ -897,7 +901,7 @@ def evidence(lang, e):
     return e
 
 PAGE_NAMES = {"gallery": {"fr": "La galerie", "en": "The gallery"}, "grammar": {"fr": "La grammaire des fonctions", "en": "The grammar of functions"}, "graphbeneath": {"fr": "Le graphe dessous", "en": "The graph beneath"}, "widths": {"fr": "Quatre largeurs", "en": "Four widths"}, "visual": {"fr": "Visuel par défaut", "en": "Visual by default"},
-              "proven": {"fr": "Prouvé", "en": "Proven"}, "reach": {"fr": "Portée", "en": "Reach"}, "declared": {"fr": "Les langages déclarés", "en": "The declared languages"}, "world": {"fr": "Le monde", "en": "The world"}, "whyring": {"fr": "Pourquoi Softanza quitte Ring", "en": "Why Softanza leaves Ring"}, "roots": {"fr": "Racines", "en": "Roots"}, "patterns": {"fr": "Langages de motifs", "en": "Pattern languages"}, "applications": {"fr": "Applications", "en": "Applications"}, "host": {"fr": "L'hôte", "en": "The host"},
+              "proven": {"fr": "Prouvé", "en": "Proven"}, "atelier": {"fr": "L'Atelier", "en": "The Atelier"}, "reach": {"fr": "Portée", "en": "Reach"}, "declared": {"fr": "Les langages déclarés", "en": "The declared languages"}, "world": {"fr": "Le monde", "en": "The world"}, "whyring": {"fr": "Pourquoi Softanza quitte Ring", "en": "Why Softanza leaves Ring"}, "roots": {"fr": "Racines", "en": "Roots"}, "patterns": {"fr": "Langages de motifs", "en": "Pattern languages"}, "applications": {"fr": "Applications", "en": "Applications"}, "host": {"fr": "L'hôte", "en": "The host"},
               "device": {"fr": "De l'éditeur à l'appareil", "en": "From the editor to the device"}, "surfaces": {"fr": "Surfaces", "en": "Surfaces"}, "real": {"fr": "Applications réelles", "en": "Real applications"},
               "first": {"fr": "Votre première application", "en": "Your first application"}, "store": {"fr": "Le magasin", "en": "The store"}, "way": {"fr": "La manière Softanza", "en": "The Softanza way"}, "innovations": {"fr": "Les innovations", "en": "Innovations"}, "conversations": {"fr": "Conversations", "en": "Conversations"}, "environment": {"fr": "L'environnement", "en": "The environment"}, "polyglot": {"fr": "Sept langues, une porte", "en": "Seven languages, one door"}, "goals": {"fr": "Sept buts de conception", "en": "Seven design goals"}, "softanzuter": {"fr": "Le Softanzuter", "en": "The Softanzuter"}, "natural": {"fr": "Naturel, et exécutable", "en": "Natural, and executable"},
               "byexample": {"fr": "Par l'exemple", "en": "By example"}, "craft": {"fr": "Comment Softanza s'écrit", "en": "How Softanza is written"},
@@ -1292,6 +1296,7 @@ def check_names():
 
 def main():
     make_og_card()
+    print(atelier.build())                 # the Atelier's static edition, derived from its pinned tree before any page cites it
     external.install(ROOT)                 # every page is marked as it is written
     install_rails()                        # and gets its rail and its trail, in the same write
     idx, groups = load_atlas()

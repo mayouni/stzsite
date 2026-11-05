@@ -12,7 +12,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 HREF = re.compile(r'(?:href|src)="([^"]+)"')
 CODE = re.compile(r"<(code|pre)[^>]*>(.*?)</\1>", re.S)
 WORD = re.compile(r"\bRing\b")
-RUNTIME = re.compile(r"(?:sa face Ring|its Ring face|Ring\+\+ (?:est le pont|is the bridge))")   # the runtime sentence, allowed everywhere
+RUNTIME = re.compile(r"(?:sa face Ring|its Ring face|Ring lui-même est retiré|(?:runs on|tourne sur) Ring\+\+|Ring itself is retired|Ring\+\+ (?:est le pont|is the bridge))")   # the runtime sentence, allowed everywhere
 
 pages = [ROOT / "index.html", ROOT / "deck-check.html", ROOT / "404.html"] + [p for lang in ("en", "fr") for p in (ROOT / lang).rglob("*.html")]
 pages = [p for p in pages if p.exists()]

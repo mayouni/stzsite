@@ -1,0 +1,6 @@
+{
+ "tree_commit": "680d696bd",
+ "recorded_at": "c08f96dee",
+ "why": "The first commit of the library that carries the Atelier's static edition and citation data (A3). The site's other pins, the ones the sample runs use, predate it and do not move for this: moving them is the author's call, and the run tools must first run on rnxc.",
+ "how": "A sparse checkout of the library at tree_commit, sibling folder _wtat (git worktree add --detach --no-checkout, then sparse-checkout set libraries/stzlib/atelier). Or STZ_ATELIER_TREE."
+}

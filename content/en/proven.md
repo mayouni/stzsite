@@ -15,3 +15,19 @@ description: How the Softanza foundation is proven: test files and scenario guar
 </ul>
 
 <p class="proof"><b>in construction</b> What is missing: no hosted continuous integration, and no instrument that measures coverage. Five older runners do not emit a machine-readable verdict, which is why this site runs its own. A test that passes proves what it tests, and the pattern page shows two of the library's own tests that now print the wrong answer.</p>
+
+## Claims that the library's own tests also make {#checks}
+
+Three claims of this site are also made by a test of the library. Each check below is cited with the commit at which it was recorded. The edition that the link leads to shows where the check is written and the code it runs. [The Atelier](atelier.html) explains how checks are run and recorded.
+
+**Text is handled by characters, not bytes.** Replacing a letter in an accented word gives the expected word.
+
+<!--CITE:string/00_string_narrated#87ed4de2-->
+
+**Nothing is a digit by accident.** An empty string is not a digit.
+
+<!--CITE:string/95_digits#d7a41fea-->
+
+**A number can say that it is exact.** The product of 19.99 and 0.15 is reported as exact.
+
+<!--CITE:number/numeric_exactness_narrated#7c90e6b4-->
